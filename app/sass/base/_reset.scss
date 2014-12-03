@@ -1,0 +1,19 @@
+@import "compass/css3/box-sizing";
+@import "compass/css3/transition";
+@import "helpers/placeholders";
+@import "ui/interaction";
+
+* {
+	text-decoration: none;
+}
+#{elements-of-type(block)},
+li {
+	@extend %has-layout;
+	@include box-sizing(border-box);
+}
+a {
+	@include transition(all $base-transition-speed-off);
+	&:hover {
+		@include transition(all $base-transition-speed-on);
+	}
+}
