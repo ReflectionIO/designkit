@@ -1,6 +1,17 @@
 .panel-left {
+	position: fixed;
 	width: 220px;
 	min-height: 100%;
 	padding-bottom: 50px;
+	margin-left: -220px;
+	display: inline-block;
+	float: left;
+	vertical-align: top;
 	background-color: $grey-panel-background;
+	@include transition(margin-left 0.2s ease-in);
+	.panel-left-open & {
+		position: relative;
+		margin-left: 0;
+		@include transition(margin-left 0.3s ease-out);
+	}
 }
