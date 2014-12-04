@@ -1,17 +1,25 @@
 .panel-left {
 	position: fixed;
 	width: 220px;
-	min-height: 100%;
+	min-height: 100vh;
+	padding-top: 42px;
 	padding-bottom: 50px;
 	margin-left: -220px;
 	display: inline-block;
 	float: left;
 	vertical-align: top;
 	background-color: $grey-panel-background;
-	@include transition(margin-left 0.2s ease-in);
+	@include transition(margin-left 0.15s ease-in);
+	@include breakpoint($phablet) {
+		position: fixed;
+		padding-top: 62px;
+	}
 	.panel-left-open & {
 		position: relative;
-		margin-left: 0;
-		@include transition(margin-left 0.3s ease-out);
+		margin-left: -220px;
+		@include breakpoint($laptop) {
+			margin-left: 0;
+			@include transition(margin-left 0.15s ease-out);
+		}
 	}
 }

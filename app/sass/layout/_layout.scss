@@ -7,18 +7,35 @@ $desktop-wide: 1600px;
 
 .l-page-container {
 	width: 100%;
+	min-height: 100vh;
+	overflow: visible;
+	@include transition(transform 0.15s ease-in);
+	&.panel-left-open {
+		@include transform(translateX(220px));
+		@include transition(transform 0.15s ease-out);
+		@include breakpoint($laptop) {
+			@include transform(translateX(0));
+		}		
+	}
 }
 .l-main {
 	width: 100%;
-	min-height: 400px;
+	min-height: 100vh;
+	padding-top: 42px;
 	display: inline-block;
 	float: right;
 	vertical-align: top;
 	background: $purple-reflection;
-	@include transition(width 0.2s ease-in);
+	@include transition(width 0.15s ease-in);
 	@include column-grid-background(12, 39, 18, 0, #6ea2e6, #576cb0, true);
+	@include breakpoint($phablet) {
+		padding-top: 62px;
+	}
 	.panel-left-open & {
-		width: calc(100% - 220px);
-		@include transition(width 0.3s ease-out);
+		width: 100%;
+		@include transition(width 0.15s ease-out);
+		@include breakpoint($laptop) {
+			width: calc(100% - 220px);
+		}
 	}
 }
