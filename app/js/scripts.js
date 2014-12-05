@@ -98,7 +98,9 @@
 	}
 
 	function initRightPanelInteraction() {
-
+		$('.link-log-in').on("click", function() {
+			$('.panel-right-container').toggleClass('is-showing');
+		});
 	}
 
 })(jQuery);

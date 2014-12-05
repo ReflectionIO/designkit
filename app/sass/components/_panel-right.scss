@@ -7,6 +7,7 @@ $form-field-background: #333338;
 	left: 0;
 	bottom: 0;
 	overflow: auto;
+	overflow-x: hidden;
 	z-index: 500;
 }
 .panel-right__overlay {
@@ -16,18 +17,32 @@ $form-field-background: #333338;
 	left: 0;
 	bottom: 0;
 	background-color: #29292b;
-	@include opacity(0.25);
+	@include opacity(0);
+	@include transition(opacity 0.18s);
+	.is-showing & {
+		@include opacity(0.35);
+		@include transition(opacity 0.27s);
+	}
+	.no-js & {
+		display: none;
+	}
 }
 .panel-right,
 .no-js .panel-right {
 	position: absolute;
-	right: 0;
+	right: -300px;
 	top: 0;
 	width: 300px;
 	min-height: 100%;
 	padding-top: 42px;
+	display: block;
 	background-color: $grey-panel-background;
 	overflow: auto;
+	@include transition(right 0.18s ease-in);
+	.is-showing & {
+		right: 0;
+		@include transition(right 0.12s 0.12s ease-out);
+	}
 	.reflection-form {
 		padding: 36px 26px 39px 28px;
 		font-family: $brand-accent-font;
@@ -118,4 +133,7 @@ $form-field-background: #333338;
 		padding: 29px 26px 38px 28px;
 		border-top: 1px solid #161617;
 	}
+}
+.no-js .panel-right {
+	right: 0;
 }
