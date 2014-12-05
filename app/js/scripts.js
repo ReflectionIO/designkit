@@ -2,6 +2,8 @@
 
 	initMainNavCollapsibleLists();
 	initLeftPanelInteraction();
+	initGlobalFormInteractions();
+	initRightPanelInteraction();
 
 	function initLeftPanelInteraction() {
 
@@ -70,11 +72,33 @@
 			topLevelNavItems.each(function(){
 				if($(this).hasClass('is-selected')) {
 					$(this).children("a").trigger("click");
-					console.log($(this).find("li.is-selected.js-is-collapsible > a"));
 					$(this).find("li.is-selected.js-is-collapsible > a").trigger("click");
 				}
 			});
 		}, 100);
+	}
+
+	function initGlobalFormInteractions() {
+		$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text]').each(function(){
+			console.log($(this).val());
+			var $this = $(this);
+			var $thisParent = $this.parent('.form-field');
+			if(!$(this).val().length) {
+				$thisParent.addClass('is-closed');
+			}
+			$this.on("focus", function(){
+				$thisParent.removeClass('is-closed');
+			});
+			$this.on("blur", function(){
+				if(!$this.val().length) {
+					$thisParent.addClass('is-closed');
+				}
+			});
+		});
+	}
+
+	function initRightPanelInteraction() {
+
 	}
 
 })(jQuery);
