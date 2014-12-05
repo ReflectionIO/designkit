@@ -74,7 +74,7 @@
 					$(this).find("li.is-selected.js-is-collapsible > a").trigger("click");
 				}
 			});
-		}, 500);
+		}, 100);
 	}
 
 })(jQuery);
