@@ -80,7 +80,6 @@
 
 	function initGlobalFormInteractions() {
 		$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text]').each(function(){
-			console.log($(this).val());
 			var $this = $(this);
 			var $thisParent = $this.parent('.form-field');
 			if(!$(this).val().length) {
@@ -108,6 +107,14 @@
 		$('.link-log-in').on("click", function() {
 			$('.panel-right-container').toggleClass('is-showing');
 			$('body').toggleClass('no-scroll');
+		});
+		$('.panel-right__overlay').on("click", function() {
+			if(!$('.actions-group__content').is(':visible')) {
+				$('.actions-group').trigger("click");
+			}
+			else {
+				$('.link-log-in').trigger("click");
+			}
 		});
 	}
 

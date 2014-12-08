@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 
     var Version = require("node-version-assets");
     var versionInstance = new Version({
-        assets: ['app/css/reflection-main.css'],
+        assets: ['app/css/reflection-main.css', 'app/css/reflection-main-ie8.css'],
         grepFiles: ['app/index.html'],
         keepOriginal: true
     });

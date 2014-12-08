@@ -8,23 +8,33 @@ $form-field-background: #333338;
 	bottom: 0;
 	overflow: hidden;
 	z-index: 500;
+	-ms-pointer-events: none;
 	pointer-events: none;
 	&.is-showing {
 		overflow: auto;
 		overflow-x: hidden;
+		-ms-pointer-events: auto;
 		pointer-events: auto;
 	}
-}
+	.no-csstransitions & {
+		display: none;
+		&.is-showing {
+			display: block;
+		}
+	}
+}	
 .panel-right__overlay {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 	left: 0;
 	bottom: 0;
 	background-color: #29292b;
 	@include opacity(0);
-	@include transition(opacity 0.18s);
+	visibility: hidden;
+	@include transition(opacity 0.18s, visibility 0.01s 0.27s);
 	.is-showing & {
+		visibility: visible;
 		@include opacity(0.35);
 		@include transition(opacity 0.27s);
 	}
@@ -110,7 +120,7 @@ $form-field-background: #333338;
 			color: lighten($purple-reflection, 10%);
 		}
 	}
-	@include breakpoint($phablet) {
+	@include breakpoint($phablet, true) {
 		padding-top: 62px;
 	}
 	.form-field--checkbox {
