@@ -272,20 +272,20 @@ li {
 .l-page-container {
   width: 100%;
   min-height: 100vh;
-  overflow: visible;
   -webkit-transition: -webkit-transform 0.15s ease-in;
   transition: transform 0.15s ease-in;
 }
-/* line 13, ../sass/layout/_layout.scss */
+/* line 12, ../sass/layout/_layout.scss */
 .l-page-container.panel-left-open {
   -ms-transform: translateX(220px);
   -webkit-transform: translateX(220px);
   transform: translateX(220px);
   -webkit-transition: -webkit-transform 0.15s ease-out;
   transition: transform 0.15s ease-out;
+  overflow: visible;
 }
 @media (min-width: 960px) {
-  /* line 13, ../sass/layout/_layout.scss */
+  /* line 12, ../sass/layout/_layout.scss */
   .l-page-container.panel-left-open {
     -ms-transform: translateX(0);
     -webkit-transform: translateX(0);
@@ -770,7 +770,7 @@ input:invalid {
   }
 }
 /* line 60, ../sass/components/_global-header.scss */
-.global-header .actions-group {
+.global-header .actions-group-container {
   position: relative;
   width: 53px;
   height: 42px;
@@ -778,9 +778,46 @@ input:invalid {
   float: right;
   vertical-align: top;
   border-left: 1px solid #1e2027;
+  background-color: #282b36;
+}
+@media (min-width: 480px) {
+  /* line 60, ../sass/components/_global-header.scss */
+  .global-header .actions-group-container {
+    width: 62px;
+    height: 62px;
+  }
+}
+@media (min-width: 720px) {
+  /* line 60, ../sass/components/_global-header.scss */
+  .global-header .actions-group-container {
+    height: 62px;
+    width: auto;
+    border-left: none;
+  }
+}
+/* line 79, ../sass/components/_global-header.scss */
+.global-header .actions-group {
+  position: relative;
+  width: 53px;
+  height: 42px;
+  display: inline-block;
+  vertical-align: top;
   background-color: #363a47;
 }
-/* line 69, ../sass/components/_global-header.scss */
+/* line 87, ../sass/components/_global-header.scss */
+.global-header .actions-group.is-on:before {
+  color: #C4C7D0;
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transition: -webkit-transform 0.32s;
+  transition: transform 0.32s;
+}
+/* line 94, ../sass/components/_global-header.scss */
+.global-header .actions-group.is-on:hover:before {
+  color: #C4C7D0;
+}
+/* line 98, ../sass/components/_global-header.scss */
 .global-header .actions-group:before {
   position: absolute;
   top: 0;
@@ -792,91 +829,83 @@ input:invalid {
   color: #6f7589;
   text-align: center;
   box-sizing: border-box;
-  -webkit-transition: color 0.2s;
-  transition: color 0.2s;
+  -webkit-transition: color 0.2s, -webkit-transform 0.3s;
+  transition: color 0.2s, transform 0.3s;
 }
 @media (min-width: 480px) {
-  /* line 60, ../sass/components/_global-header.scss */
+  /* line 79, ../sass/components/_global-header.scss */
   .global-header .actions-group {
     width: 62px;
     height: 62px;
   }
-  /* line 84, ../sass/components/_global-header.scss */
+  /* line 113, ../sass/components/_global-header.scss */
   .global-header .actions-group:before {
     width: 61px;
     line-height: 60px;
   }
 }
 @media (min-width: 720px) {
-  /* line 60, ../sass/components/_global-header.scss */
+  /* line 79, ../sass/components/_global-header.scss */
   .global-header .actions-group {
     height: 62px;
     width: auto;
     overflow: hidden;
-    border-left: none;
   }
-  /* line 94, ../sass/components/_global-header.scss */
+  /* line 122, ../sass/components/_global-header.scss */
   .global-header .actions-group:before {
     display: none;
   }
 }
-/* line 99, ../sass/components/_global-header.scss */
+/* line 127, ../sass/components/_global-header.scss */
 .global-header .actions-group__content {
-  position: absolute;
-  top: 42px;
-  right: 0;
-  width: 100%;
-}
-@media (min-width: 480px) {
-  /* line 99, ../sass/components/_global-header.scss */
-  .global-header .actions-group__content {
-    top: 62px;
-  }
+  display: none;
 }
 @media (min-width: 720px) {
-  /* line 99, ../sass/components/_global-header.scss */
+  /* line 127, ../sass/components/_global-header.scss */
   .global-header .actions-group__content {
     position: relative;
     top: 0;
+    display: inline-block;
   }
 }
 
 @media screen and (max-width: 720px) {
-  /* line 114, ../sass/components/_global-header.scss */
+  /* line 137, ../sass/components/_global-header.scss */
   .global-header .actions-group {
     cursor: pointer;
   }
-  /* line 116, ../sass/components/_global-header.scss */
+  /* line 139, ../sass/components/_global-header.scss */
   .global-header .actions-group:hover, .global-header .actions-group:active {
     background-color: #323643;
   }
-  /* line 118, ../sass/components/_global-header.scss */
+  /* line 141, ../sass/components/_global-header.scss */
   .global-header .actions-group:hover:before, .global-header .actions-group:active:before {
     color: #83899c;
   }
-  /* line 122, ../sass/components/_global-header.scss */
-  .global-header .actions-group:active:before {
-    border-top: 2px solid #282b36;
+  /* line 145, ../sass/components/_global-header.scss */
+  .global-header .actions-group:active {
+    position: relative;
+    top: 2px;
   }
-  /* line 125, ../sass/components/_global-header.scss */
+  /* line 149, ../sass/components/_global-header.scss */
   .global-header .actions-group.is-selected:before {
     color: #c4c7d0;
   }
 }
-/* line 130, ../sass/components/_global-header.scss */
+/* line 154, ../sass/components/_global-header.scss */
 .global-header__actions {
   display: inline-block;
   float: right;
   overflow: hidden;
 }
 
-/* line 135, ../sass/components/_global-header.scss */
+/* line 159, ../sass/components/_global-header.scss */
 .link-log-in-container {
   display: inline-block;
   background-color: #282b36;
 }
 
-/* line 139, ../sass/components/_global-header.scss */
+/* line 163, ../sass/components/_global-header.scss */
 .link-log-in {
   position: relative;
   height: 62px;
@@ -893,17 +922,17 @@ input:invalid {
   background-color: #363a47;
   box-sizing: border-box;
 }
-/* line 153, ../sass/components/_global-header.scss */
+/* line 177, ../sass/components/_global-header.scss */
 .link-log-in:hover, .link-log-in:active {
   color: white;
   background: #323643;
 }
-/* line 157, ../sass/components/_global-header.scss */
+/* line 181, ../sass/components/_global-header.scss */
 .link-log-in:active {
   top: 2px;
 }
 @media (min-width: 720px) {
-  /* line 139, ../sass/components/_global-header.scss */
+  /* line 163, ../sass/components/_global-header.scss */
   .link-log-in {
     border-left: 1px solid #1e2027;
   }
@@ -1311,12 +1340,18 @@ input:invalid {
   right: 0;
   left: 0;
   bottom: 0;
+  overflow: hidden;
+  z-index: 500;
+  pointer-events: none;
+}
+/* line 12, ../sass/components/_panel-right.scss */
+.panel-right-container.is-showing {
   overflow: auto;
   overflow-x: hidden;
-  z-index: 500;
+  pointer-events: auto;
 }
 
-/* line 13, ../sass/components/_panel-right.scss */
+/* line 18, ../sass/components/_panel-right.scss */
 .panel-right__overlay {
   position: absolute;
   top: 0;
@@ -1329,19 +1364,19 @@ input:invalid {
   -webkit-transition: opacity 0.18s;
   transition: opacity 0.18s;
 }
-/* line 22, ../sass/components/_panel-right.scss */
+/* line 27, ../sass/components/_panel-right.scss */
 .is-showing .panel-right__overlay {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=35);
   opacity: 0.35;
   -webkit-transition: opacity 0.27s;
   transition: opacity 0.27s;
 }
-/* line 26, ../sass/components/_panel-right.scss */
+/* line 31, ../sass/components/_panel-right.scss */
 .no-js .panel-right__overlay {
   display: none;
 }
 
-/* line 30, ../sass/components/_panel-right.scss */
+/* line 35, ../sass/components/_panel-right.scss */
 .panel-right,
 .no-js .panel-right {
   position: absolute;
@@ -1356,7 +1391,7 @@ input:invalid {
   -webkit-transition: right 0.18s ease-in;
   transition: right 0.18s ease-in;
 }
-/* line 42, ../sass/components/_panel-right.scss */
+/* line 47, ../sass/components/_panel-right.scss */
 .is-showing .panel-right, .is-showing
 .no-js .panel-right {
   right: 0;
@@ -1367,13 +1402,13 @@ input:invalid {
   -webkit-transition: right 0.12s ease-out 0.12s;
           transition: right 0.12s ease-out 0.12s;
 }
-/* line 46, ../sass/components/_panel-right.scss */
+/* line 51, ../sass/components/_panel-right.scss */
 .panel-right .reflection-form,
 .no-js .panel-right .reflection-form {
   padding: 36px 26px 39px 28px;
   font-family: "Open Sans", sans-serif;
 }
-/* line 50, ../sass/components/_panel-right.scss */
+/* line 55, ../sass/components/_panel-right.scss */
 .panel-right .form-field,
 .no-js .panel-right .form-field {
   position: relative;
@@ -1383,7 +1418,7 @@ input:invalid {
   border-radius: 3px;
   background-color: #333338;
 }
-/* line 57, ../sass/components/_panel-right.scss */
+/* line 62, ../sass/components/_panel-right.scss */
 .panel-right .form-field label,
 .no-js .panel-right .form-field label {
   padding-bottom: 27px;
@@ -1395,7 +1430,7 @@ input:invalid {
   -webkit-transition: padding 0.06s;
   transition: padding 0.06s;
 }
-/* line 65, ../sass/components/_panel-right.scss */
+/* line 70, ../sass/components/_panel-right.scss */
 .panel-right .form-field input,
 .no-js .panel-right .form-field input {
   position: absolute;
@@ -1407,12 +1442,12 @@ input:invalid {
   -webkit-transition: bottom 0.06s;
   transition: bottom 0.06s;
 }
-/* line 73, ../sass/components/_panel-right.scss */
+/* line 78, ../sass/components/_panel-right.scss */
 .panel-right .form-field + .form-link,
 .no-js .panel-right .form-field + .form-link {
   margin-top: 14px;
 }
-/* line 77, ../sass/components/_panel-right.scss */
+/* line 82, ../sass/components/_panel-right.scss */
 .panel-right .form-field.is-closed label,
 .no-js .panel-right .form-field.is-closed label {
   padding-top: 2px;
@@ -1425,14 +1460,14 @@ input:invalid {
   -webkit-transition: padding 0.06s;
   transition: padding 0.06s;
 }
-/* line 86, ../sass/components/_panel-right.scss */
+/* line 91, ../sass/components/_panel-right.scss */
 .panel-right .form-field.is-closed input,
 .no-js .panel-right .form-field.is-closed input {
   bottom: 6px;
   -webkit-transition: bottom 0.06s;
   transition: bottom 0.06s;
 }
-/* line 92, ../sass/components/_panel-right.scss */
+/* line 97, ../sass/components/_panel-right.scss */
 .panel-right input:-webkit-autofill,
 .no-js .panel-right input:-webkit-autofill {
   color: #81879d !important;
@@ -1440,7 +1475,7 @@ input:invalid {
   -webkit-text-fill-color: #81879d !important;
   background-color: #333338 !important;
 }
-/* line 98, ../sass/components/_panel-right.scss */
+/* line 103, ../sass/components/_panel-right.scss */
 .panel-right .form-link,
 .no-js .panel-right .form-link {
   font-size: 13px;
@@ -1450,51 +1485,51 @@ input:invalid {
   font-weight: 600;
   color: #6d69c5;
 }
-/* line 104, ../sass/components/_panel-right.scss */
+/* line 109, ../sass/components/_panel-right.scss */
 .panel-right .form-link:hover,
 .no-js .panel-right .form-link:hover {
   color: #918ed3;
 }
 @media (min-width: 480px) {
-  /* line 30, ../sass/components/_panel-right.scss */
+  /* line 35, ../sass/components/_panel-right.scss */
   .panel-right,
   .no-js .panel-right {
     padding-top: 62px;
   }
 }
-/* line 111, ../sass/components/_panel-right.scss */
+/* line 116, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox,
 .no-js .panel-right .form-field--checkbox {
   margin-bottom: 8px;
 }
-/* line 113, ../sass/components/_panel-right.scss */
+/* line 118, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox input, .panel-right .form-field--checkbox label,
 .no-js .panel-right .form-field--checkbox input,
 .no-js .panel-right .form-field--checkbox label {
   display: inline-block;
   vertical-align: top;
 }
-/* line 117, ../sass/components/_panel-right.scss */
+/* line 122, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox input,
 .no-js .panel-right .form-field--checkbox input {
   margin-right: 12px;
   background-color: #333338;
 }
-/* line 121, ../sass/components/_panel-right.scss */
+/* line 126, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox label,
 .no-js .panel-right .form-field--checkbox label {
   font-size: 13px;
   font-size: 1.3rem;
   color: #727686;
 }
-/* line 126, ../sass/components/_panel-right.scss */
+/* line 131, ../sass/components/_panel-right.scss */
 .panel-right .ref-button--login-form-submit,
 .no-js .panel-right .ref-button--login-form-submit {
   width: 100%;
   margin-top: 11px;
   box-sizing: border-box;
 }
-/* line 131, ../sass/components/_panel-right.scss */
+/* line 136, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container,
 .no-js .panel-right .blockquote-container {
   width: 100%;
@@ -1502,7 +1537,7 @@ input:invalid {
   border-top: 1px solid #161617;
 }
 
-/* line 137, ../sass/components/_panel-right.scss */
+/* line 142, ../sass/components/_panel-right.scss */
 .no-js .panel-right {
   right: 0;
 }
@@ -1525,6 +1560,11 @@ html, body {
 }
 
 /* line 30, ../sass/base/_base.scss */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* line 33, ../sass/base/_base.scss */
 p.browserupgrade {
   width: 100%;
   padding: 20px;

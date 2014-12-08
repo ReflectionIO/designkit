@@ -98,8 +98,16 @@
 	}
 
 	function initRightPanelInteraction() {
+		$('.actions-group').on("click", function() {
+			if(!$('.actions-group__content').is(':visible')) {
+				$('.panel-right-container').toggleClass('is-showing');
+				$('.actions-group').toggleClass('is-on');
+				$('body').toggleClass('no-scroll');
+			}
+		});
 		$('.link-log-in').on("click", function() {
 			$('.panel-right-container').toggleClass('is-showing');
+			$('body').toggleClass('no-scroll');
 		});
 	}
 

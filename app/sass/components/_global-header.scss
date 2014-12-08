@@ -57,7 +57,7 @@
 			display: inline-block;
 		}
 	}
-	.actions-group {
+	.actions-group-container {
 		position: relative;
 		width: 53px;
 		height: 42px;
@@ -65,7 +65,36 @@
 		float: right;
 		vertical-align: top;
 		border-left: 1px solid #1e2027;
-		background-color: $blue-dark;		
+		background-color: #282b36;
+		@include breakpoint($phablet) {
+			width: 62px;
+			height: 62px;
+		}
+		@include breakpoint($tablet) {
+			height: 62px;
+			width: auto;
+			border-left: none;
+		}
+	}
+	.actions-group {
+		position: relative;
+		width: 53px;
+		height: 42px;
+		display: inline-block;
+		vertical-align: top;
+		background-color: $blue-dark;
+		&.is-on {
+			&:before {
+				color: #C4C7D0;
+				@include transform(rotate(-90deg));
+				@include transition(transform 0.32s);
+			}
+		}
+		&.is-on:hover {
+			&:before {
+				color: #C4C7D0;
+			}
+		}
 		&:before {
 			position: absolute;
 			top: 0;
@@ -76,7 +105,7 @@
 			color: #6f7589;
 			text-align: center;
 			@include box-sizing(border-box);
-			@include transition(color $base-transition-speed-off);
+			@include transition(color $base-transition-speed-off, transform 0.3s);
 		}
 		@include breakpoint($phablet) {
 			width: 62px;
@@ -90,23 +119,17 @@
 			height: 62px;
 			width: auto;
 			overflow: hidden;
-			border-left: none;
 			&:before {
 				display: none;
 			}
 		}
 	}
 	.actions-group__content {
-		position: absolute;
-		top: 42px;
-		right: 0;
-		width: 100%;
-		@include breakpoint($phablet) {
-			top: 62px;
-		}
+		display: none;
 		@include breakpoint($tablet) {
 			position: relative;
 			top: 0;
+			display: inline-block;
 		}
 	}
 }
@@ -119,8 +142,9 @@
 				color: #83899c;
 			}
 		}
-		&:active:before {
-			border-top: 2px solid #282b36;
+		&:active {
+			position: relative;
+			top: 2px;
 		}
 		&.is-selected:before {
 			color: #c4c7d0;
