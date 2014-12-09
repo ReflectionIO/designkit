@@ -3,6 +3,7 @@
 /* Typography mixins, placeholders and variables */
 $brand-primary-font: 'Lato', sans-serif;
 $brand-accent-font: 'Open Sans', sans-serif;
+$source-sans-pro: 'Source Sans Pro', sans-serif;
 
 @font-face {
   font-family: "reflection-icons";
@@ -75,6 +76,9 @@ $brand-accent-font: 'Open Sans', sans-serif;
 .ref-icon-after--angle-left:after {
 	content: "k";
 }
+.ref-icon-after--triangle-down:after {
+	content: "q";
+}
 
 /* Base typography */
 #{headings()}, p, li, a, blockquote, time, span {
@@ -117,7 +121,42 @@ li {
 	line-height: 1.5;
 }
 blockquote {
+	position: relative;
+	padding-top: 38px;
+	font-family: $brand-accent-font;
+	@include font-size(14px);
+	font-weight: 600;
+	color: #727686;
 	@extend %font-smoothing;
+	&:before {
+		position: absolute;
+		top: 20px;
+		left: -4px;
+		display: block;
+		width: 100%;
+		font-family: $source-sans-pro;
+		content: "\201C";
+		@include font-size(80px);
+		color: #36363a;
+	}
+	p {
+		margin-bottom: 1.5em;
+		font-family: $brand-accent-font;
+		@include font-size(14px);
+		font-weight: 600;
+		line-height: 1.7;
+		color: #727686;
+	}	
 	cite {
+		font-family: $brand-primary-font;
+		@include font-size(14px);
+		font-weight: 400;
+		span {
+			margin-bottom: 4px;
+			display: block;
+			font-family: $brand-accent-font;
+			font-weight: 600;
+			color: $white-off;
+		}
 	}
 }
