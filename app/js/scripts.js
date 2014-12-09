@@ -37,6 +37,11 @@
 				collapsibleContainer.siblings().removeClass('is-selected');
 			}
 		});
+
+		if($(window).width() <= 480) {
+			$('.js-hamburger-button').removeClass('is-selected');
+			$('.l-page-container').removeClass('panel-left-open');
+		}
 	}
 
 	function initMainNavCollapsibleLists() {	
