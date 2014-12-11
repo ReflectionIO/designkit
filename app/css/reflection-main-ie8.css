@@ -185,103 +185,15 @@ li {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* Grid variables */
-/* responsive layout */
-/* Compass Grid Background variables */
-/* line 62, ../sass/layout/_grid.scss */
-.grid-container {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-/* line 67, ../sass/layout/_grid.scss */
-.grid-column--one-sixth {
-  display: inline;
-  float: left;
-  width: 16.66667%;
-  padding: 0 2%;
-}
-
-/* line 71, ../sass/layout/_grid.scss */
-.grid-column--one-quarter {
-  display: inline;
-  float: left;
-  width: 25%;
-  padding: 0 2%;
-}
-
-/* line 75, ../sass/layout/_grid.scss */
-.grid-column--one-third {
-  display: inline;
-  float: left;
-  width: 33.33333%;
-  padding: 0 2%;
-}
-
-/* line 79, ../sass/layout/_grid.scss */
-.grid-column--one-half {
-  display: inline;
-  float: left;
-  width: 50%;
-  padding: 0 2%;
-}
-
-/* line 83, ../sass/layout/_grid.scss */
-.grid-column--two-thirds {
-  display: inline;
-  float: left;
-  width: 66.66667%;
-  padding: 0 2%;
-}
-
-/* line 87, ../sass/layout/_grid.scss */
-.grid-column--three-quarters {
-  display: inline;
-  float: left;
-  width: 75%;
-  padding: 0 2%;
-}
-
-/* line 91, ../sass/layout/_grid.scss */
-.grid-column--full-width {
-  display: inline;
-  float: left;
-  width: 100%;
-  padding: 0 2%;
-}
-
-/* line 95, ../sass/layout/_grid.scss */
-.grid__row-container {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* line 100, ../sass/layout/_grid.scss */
-.grid__row {
-  display: block;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  *zoom: 1;
-}
-/* line 25, ../sass/layout/_grid.scss */
-.grid__row:before, .grid__row:after {
-  content: "";
-  display: table;
-}
-/* line 30, ../sass/layout/_grid.scss */
-.grid__row:after {
-  clear: both;
-}
-
 /* line 8, ../sass/layout/_layout.scss */
 .l-page-container {
   width: 100%;
   min-height: 100vh;
+  overflow: visible;
   -webkit-transition: -webkit-transform 0.15s ease-in;
   transition: transform 0.15s ease-in;
 }
-/* line 12, ../sass/layout/_layout.scss */
+/* line 13, ../sass/layout/_layout.scss */
 .l-page-container.panel-left-open {
   -ms-transform: translateX(220px);
   -webkit-transform: translateX(220px);
@@ -291,7 +203,7 @@ li {
   overflow: visible;
 }
 
-/* line 21, ../sass/layout/_layout.scss */
+/* line 22, ../sass/layout/_layout.scss */
 .l-main {
   width: 100%;
   padding-top: 42px;
@@ -302,11 +214,116 @@ li {
   transition: width 0.15s ease-in;
   padding-top: 62px;
 }
-/* line 32, ../sass/layout/_layout.scss */
+/* line 35, ../sass/layout/_layout.scss */
 .panel-left-open .l-main {
   width: 100%;
   -webkit-transition: width 0.15s ease-out;
   transition: width 0.15s ease-out;
+}
+
+/* Grid variables */
+/* responsive layout */
+/* Compass Grid Background variables */
+/* line 63, ../sass/layout/_grid.scss */
+.grid-container {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+/* line 78, ../sass/layout/_grid.scss */
+.grid__column {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+/* line 83, ../sass/layout/_grid.scss */
+.grid__column--one-twelfth {
+  display: inline;
+  float: left;
+  width: 8.33333%;
+  padding: 0 2%;
+}
+
+/* line 90, ../sass/layout/_grid.scss */
+.grid__column--one-sixth {
+  display: inline;
+  float: left;
+  width: 100%;
+  padding: 0 2%;
+}
+
+/* line 97, ../sass/layout/_grid.scss */
+.grid__column--one-quarter {
+  display: inline;
+  float: left;
+  width: 100%;
+  padding: 0 2%;
+}
+
+/* line 104, ../sass/layout/_grid.scss */
+.grid__column--one-third {
+  display: inline;
+  float: left;
+  width: 100%;
+  padding: 0 2%;
+}
+
+/* line 111, ../sass/layout/_grid.scss */
+.grid__column--one-half {
+  display: inline;
+  float: left;
+  width: 100%;
+  padding: 0 2%;
+}
+
+/* line 118, ../sass/layout/_grid.scss */
+.grid__column--two-thirds {
+  display: inline;
+  float: left;
+  width: 100%;
+  padding: 0 2%;
+}
+
+/* line 125, ../sass/layout/_grid.scss */
+.grid__column--three-quarters {
+  display: inline;
+  float: left;
+  width: 100%;
+  padding: 0 2%;
+}
+
+/* line 132, ../sass/layout/_grid.scss */
+.grid__column--full-width {
+  display: inline;
+  float: left;
+  width: 100%;
+  padding: 0 2%;
+}
+
+/* line 136, ../sass/layout/_grid.scss */
+.grid__row-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* line 141, ../sass/layout/_grid.scss */
+.grid__row {
+  display: block;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  *zoom: 1;
+}
+/* line 26, ../sass/layout/_grid.scss */
+.grid__row:before, .grid__row:after {
+  content: "";
+  display: table;
+}
+/* line 31, ../sass/layout/_grid.scss */
+.grid__row:after {
+  clear: both;
 }
 
 /* No files to import found in ../templates/* */
@@ -1205,15 +1222,14 @@ input:invalid {
   float: left;
   vertical-align: top;
   background-color: #28292c;
-  -webkit-transition: margin-left 0.15s ease-in;
-  transition: margin-left 0.15s ease-in;
   position: fixed;
   padding-top: 62px;
+  -webkit-transition: margin-left 0.15s ease-in;
+  transition: margin-left 0.15s ease-in;
 }
-/* line 17, ../sass/components/_panel-left.scss */
+/* line 19, ../sass/components/_panel-left.scss */
 .panel-left-open .panel-left {
   position: relative;
-  margin-left: -220px;
   margin-left: 0;
   -webkit-transition: margin-left 0.15s ease-out;
   transition: margin-left 0.15s ease-out;
@@ -1444,7 +1460,7 @@ input:invalid {
 }
 
 /* Global base styles */
-/* line 30, ../sass/base/_base.scss */
+/* line 31, ../sass/base/_base.scss */
 html, body {
   position: relative;
   overflow-x: hidden;
@@ -1455,12 +1471,12 @@ html, body {
   background-color: #fcfdfd;
 }
 
-/* line 41, ../sass/base/_base.scss */
+/* line 42, ../sass/base/_base.scss */
 body.no-scroll {
   overflow: hidden;
 }
 
-/* line 44, ../sass/base/_base.scss */
+/* line 45, ../sass/base/_base.scss */
 p.browserupgrade {
   width: 100%;
   padding: 20px;

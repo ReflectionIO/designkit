@@ -7,3 +7,18 @@
   font-size: $size;
   font-size: calculateRem($size);
 }
+@mixin vertical-centre-content() {
+	height: 100%;
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+  }
+  > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

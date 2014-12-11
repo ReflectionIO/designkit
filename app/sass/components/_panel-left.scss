@@ -8,15 +8,16 @@
 	display: inline-block;
 	float: left;
 	vertical-align: top;
-	background-color: $grey-panel-background;
-	@include transition(margin-left 0.15s ease-in);
+	background-color: $grey-panel-background;	
 	@include breakpoint($phablet, true) {
 		position: fixed;
 		padding-top: 62px;
 	}
+	@include breakpoint($laptop, true) {
+		@include transition(margin-left 0.15s ease-in);
+	}
 	.panel-left-open & {
 		position: relative;
-		margin-left: -220px;
 		@include breakpoint($laptop, true) {
 			margin-left: 0;
 			@include transition(margin-left 0.15s ease-out);

@@ -3,43 +3,94 @@
 	height: 414px;
 	margin-bottom: 50px;
 	background: $purple-reflection;
+	@include breakpoint($desktop-wide) {
+		height: 480px;
+	}
 	> div {
-		@extend %vertical-centre-content;
+		display: block;
 		text-align: center;
+		@include breakpoint($tablet, true) {
+			@include vertical-centre-content;
+		}
 	}	
 }
 .banner__graphic {
-	margin-top: -30px;
-	width: 200px;
+	width: 100%;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	@include breakpoint($tablet, true) {
+		width: 200px;
+		margin-top: -24px;
+	}
+	@include breakpoint($laptop, true) {
+		margin-left: -58px;
+	}
+	@include breakpoint($desktop-wide) {
+		width: 220px;
+	}
 	img {
-		width: 100%;
+		width: 80px;
+		@include breakpoint($tablet, true) {
+			width: 100%;
+		}
 	}
 }
 .banner__intro {
-	width: 422px;
-	margin-top: -10px;
-	margin-left: 40px;
-	text-align: left;
+	width: 100%;
+	@include breakpoint($tablet, true) {
+		width: 422px;
+		margin-top: -17px;
+		margin-left: 35px;
+		text-align: left;
+	}
+	@include breakpoint($desktop-wide) {
+		width: 460px;
+		margin-left: 55px;
+	}
 	h1 {
 		margin-bottom: 8px;
 		padding-left: 2px;
 		font-family: $brand-primary-font;
-		@include font-size(13px);
+		@include font-size(12px);
 		font-weight: 700;
 		text-transform: uppercase;
 		color: $white-off;
-		letter-spacing: 0.09em;
+		letter-spacing: 0.11em;
+		@include breakpoint($tablet, true) {
+			@include font-size(13px);
+		}
+		@include breakpoint($desktop-wide) {
+			@include font-size(15px);
+		}
 	}
 	h2 {
 		margin-bottom: 22px;
 		font-family: $brand-accent-font;
-		@include font-size(39px);
+		@include font-size(37px);
 		font-weight: 600;
 		color: white;
 		letter-spacing: -0.01em;
+		@include breakpoint($tablet, true) {
+			@include font-size(39px);
+		}
+		@include breakpoint($desktop-wide) {
+			@include font-size(61px);
+		}
 	}
 	p {
-		@include font-size(16px);
+		padding: 0 9%;
+		@include font-size(14px);
 		color: $purple-pale;
+		letter-spacing: 0.007em;
+		@include breakpoint($phablet) {
+			@include font-size(15px);
+		}
+		@include breakpoint($tablet, true) {
+			padding: 0;
+			@include font-size(16px);		
+		}
+		@include breakpoint($desktop-wide) {
+			@include font-size(18px);
+		}
 	}
 }
