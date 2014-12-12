@@ -76,7 +76,7 @@ li {
 
 /* Typography */
 /* line 28, ../sass/helpers/_placeholders.scss */
-.ref-button, h1, h2, h3, h4, h5, h6, p, li, a, blockquote, time, span, .form--search .form--search__input-search, html, body {
+.ref-button, h1, h2, h3, h4, h5, h6, p, li, a, blockquote, time, span, cite, .form--search .form--search__input-search, html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -86,7 +86,6 @@ li {
 .ref-button {
   display: inline-block;
   font-size: 13px;
-  font-size: 1.3rem;
   line-height: 1.1;
   color: #28292c;
   border: none;
@@ -158,7 +157,7 @@ li {
 
 /* Typography */
 /* line 28, ../sass/helpers/_placeholders.scss */
-.ref-button, h1, h2, h3, h4, h5, h6, p, li, a, blockquote, time, span, .form--search .form--search__input-search, html, body {
+.ref-button, h1, h2, h3, h4, h5, h6, p, li, a, blockquote, time, span, cite, .form--search .form--search__input-search, html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -168,7 +167,6 @@ li {
 .ref-button {
   display: inline-block;
   font-size: 13px;
-  font-size: 1.3rem;
   line-height: 1.1;
   color: #28292c;
   border: none;
@@ -185,7 +183,7 @@ li {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* line 8, ../sass/layout/_layout.scss */
+/* line 10, ../sass/layout/_layout.scss */
 .l-page-container {
   width: 100%;
   min-height: 100vh;
@@ -193,7 +191,7 @@ li {
   -webkit-transition: -webkit-transform 0.15s ease-in;
   transition: transform 0.15s ease-in;
 }
-/* line 13, ../sass/layout/_layout.scss */
+/* line 15, ../sass/layout/_layout.scss */
 .l-page-container.panel-left-open {
   -ms-transform: translateX(220px);
   -webkit-transform: translateX(220px);
@@ -203,7 +201,7 @@ li {
   overflow: visible;
 }
 
-/* line 22, ../sass/layout/_layout.scss */
+/* line 24, ../sass/layout/_layout.scss */
 .l-main {
   width: 100%;
   padding-top: 42px;
@@ -214,7 +212,7 @@ li {
   transition: width 0.15s ease-in;
   padding-top: 62px;
 }
-/* line 35, ../sass/layout/_layout.scss */
+/* line 37, ../sass/layout/_layout.scss */
 .panel-left-open .l-main {
   width: 100%;
   -webkit-transition: width 0.15s ease-out;
@@ -326,7 +324,20 @@ li {
   clear: both;
 }
 
-/* No files to import found in ../templates/* */
+/* line 145, ../sass/layout/_grid.scss */
+.grid__column--push-one {
+  margin-left: 8.33333%;
+}
+
+/* line 1, ../sass/templates/_typography.scss */
+.font-demo {
+  font-size: 20px;
+  font-size: 2em;
+  line-height: 1.5;
+  margin-bottom: 0;
+  color: #28292c;
+}
+
 /* Global */
 /* line 1, ../sass/ui/_icons.scss */
 .ref-icon-before, .ref-icon-after, .main-navigation > ul ul li.has-child {
@@ -339,14 +350,12 @@ li {
 /* line 10, ../sass/ui/_icons.scss */
 .ref-icon-before:before {
   font-size: 22px;
-  font-size: 2.2rem;
   position: relative;
 }
 
 /* line 18, ../sass/ui/_icons.scss */
 .ref-icon-after:after, .main-navigation > ul ul li.has-child:after {
   font-size: 22px;
-  font-size: 2.2rem;
   position: relative;
 }
 
@@ -357,7 +366,8 @@ li {
 
 /* Base */
 /* Font face declarations */
-/* Typography mixins, placeholders and variables */
+/* Typography variables */
+/* Font declarations */
 @font-face {
   font-family: "reflection-icons";
   src: url("../fonts/fontastic/reflection-icons.eot");
@@ -365,8 +375,8 @@ li {
   font-weight: normal;
   font-style: normal;
 }
-/* Icon font */
-/* line 20, ../sass/ui/_typography.scss */
+/* Typography placeholders */
+/* line 21, ../sass/ui/_typography.scss */
 .ref-icon-before:before, .ref-icon-after:after, .main-navigation > ul ul li.has-child:after {
   speak: none;
   font-family: "reflection-icons";
@@ -379,165 +389,341 @@ li {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 31, ../sass/ui/_typography.scss */
+/* Typography classes */
+/* line 34, ../sass/ui/_typography.scss */
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+/* line 38, ../sass/ui/_typography.scss */
+.open-sans-semi, h1, h2, h3, h4, h5, h6, .heading-style, .heading-style--heading-one, .heading-style--heading-two, .heading-style--heading-three, .heading-style--heading-four, .heading-style--heading-five, .heading-style--heading-six, ol.content-list--featured li:before {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+/* line 42, ../sass/ui/_typography.scss */
+.open-sans-bold, ol.content-list li:before,
+ol.content-list--minor li:before {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+}
+
+/* line 46, ../sass/ui/_typography.scss */
+.lato {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
+
+/* line 50, ../sass/ui/_typography.scss */
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+
+/* line 55, ../sass/ui/_typography.scss */
 .ref-icon-before--search:before {
   content: "a";
 }
 
-/* line 34, ../sass/ui/_typography.scss */
+/* line 58, ../sass/ui/_typography.scss */
 .ref-icon-before--cog:before {
   content: "b";
 }
 
-/* line 37, ../sass/ui/_typography.scss */
+/* line 61, ../sass/ui/_typography.scss */
 .ref-icon-before--hamburger:before {
   content: "d";
 }
 
-/* line 40, ../sass/ui/_typography.scss */
+/* line 64, ../sass/ui/_typography.scss */
 .ref-icon-before--my-data:before {
   content: "h";
 }
 
-/* line 43, ../sass/ui/_typography.scss */
+/* line 67, ../sass/ui/_typography.scss */
 .ref-icon-before--leaderboard:before {
   content: "i";
 }
 
-/* line 46, ../sass/ui/_typography.scss */
+/* line 70, ../sass/ui/_typography.scss */
 .ref-icon-before--forum:before {
   content: "c";
 }
 
-/* line 49, ../sass/ui/_typography.scss */
+/* line 73, ../sass/ui/_typography.scss */
 .ref-icon-before--blog:before {
   content: "g";
 }
 
-/* line 52, ../sass/ui/_typography.scss */
+/* line 76, ../sass/ui/_typography.scss */
 .ref-icon-before--help:before {
   content: "e";
 }
 
-/* line 55, ../sass/ui/_typography.scss */
+/* line 79, ../sass/ui/_typography.scss */
 .ref-icon-before--info:before {
   content: "f";
 }
 
-/* line 58, ../sass/ui/_typography.scss */
+/* line 82, ../sass/ui/_typography.scss */
 .ref-icon-before--facebook:before {
   content: "n";
 }
 
-/* line 61, ../sass/ui/_typography.scss */
+/* line 85, ../sass/ui/_typography.scss */
 .ref-icon-before--twitter:before {
   content: "o";
 }
 
-/* line 64, ../sass/ui/_typography.scss */
+/* line 88, ../sass/ui/_typography.scss */
 .ref-icon-before--linkedin:before {
   content: "p";
 }
 
-/* line 67, ../sass/ui/_typography.scss */
+/* line 91, ../sass/ui/_typography.scss */
 .ref-icon-after--angle-up:after {
   content: "m";
 }
 
-/* line 70, ../sass/ui/_typography.scss */
+/* line 94, ../sass/ui/_typography.scss */
 .ref-icon-after--angle-right:after {
   content: "l";
 }
 
-/* line 73, ../sass/ui/_typography.scss */
+/* line 97, ../sass/ui/_typography.scss */
 .ref-icon-after--angle-down:after {
   content: "j";
 }
 
-/* line 76, ../sass/ui/_typography.scss */
+/* line 100, ../sass/ui/_typography.scss */
 .ref-icon-after--angle-left:after {
   content: "k";
 }
 
-/* line 79, ../sass/ui/_typography.scss */
+/* line 103, ../sass/ui/_typography.scss */
 .ref-icon-after--triangle-down:after, .main-navigation > ul ul li.has-child:after {
   content: "q";
 }
 
 /* Base typography */
-/* line 87, ../sass/ui/_typography.scss */
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 1em;
+/* line 110, ../sass/ui/_typography.scss */
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, p:last-child, li:last-child, a:last-child, blockquote:last-child, time:last-child, span:last-child, cite:last-child {
+  margin-bottom: 0;
+}
+
+/* line 114, ../sass/ui/_typography.scss */
+h1, h2, h3, h4, h5, h6, .heading-style, h1, .heading-style--heading-one, h2, .heading-style--heading-two, h3, .heading-style--heading-three, h4, .heading-style--heading-four, h5, .heading-style--heading-five, h6, .heading-style--heading-six {
   overflow: visible;
-  font-weight: normal;
   line-height: 1;
+  color: #28292c;
+}
+/* line 119, ../sass/ui/_typography.scss */
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child, .heading-style:first-child, h1:first-child, .heading-style--heading-one:first-child, h2:first-child, .heading-style--heading-two:first-child, h3:first-child, .heading-style--heading-three:first-child, h4:first-child, .heading-style--heading-four:first-child, h5:first-child, .heading-style--heading-five:first-child, h6:first-child, .heading-style--heading-six:first-child {
+  margin-top: 0;
 }
 
-/* line 94, ../sass/ui/_typography.scss */
-h1 {
-  font-size: 36px;
-  font-size: 3.6rem;
+/* line 123, ../sass/ui/_typography.scss */
+h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
+h2 + h3, h2 + h4, h2 + h5, h2 + h6,
+h3 + h4, h3 + h5, h3 + h6,
+h4 + h5, h4 + h6,
+h5 + h6,
+.heading-style--heading-one + .heading-style--heading-two,
+.heading-style--heading-one + .heading-style--heading-three,
+.heading-style--heading-one + .heading-style--heading-four,
+.heading-style--heading-one + .heading-style--heading-five,
+.heading-style--heading-one + .heading-style--heading-six,
+.heading-style--heading-two + .heading-style--heading-three,
+.heading-style--heading-two + .heading-style--heading-four,
+.heading-style--heading-two + .heading-style--heading-five,
+.heading-style--heading-two + .heading-style--heading-six,
+.heading-style--heading-three + .heading-style--heading-four,
+.heading-style--heading-three + .heading-style--heading-five,
+.heading-style--heading-three + .heading-style--heading-six,
+.heading-style--heading-four + .heading-style--heading-five,
+.heading-style--heading-four + .heading-style--heading-six,
+.heading-style--heading-five + .heading-style--heading-six {
+  margin-top: 0;
 }
 
-/* line 97, ../sass/ui/_typography.scss */
-h2 {
-  font-size: 36px;
-  font-size: 3.6rem;
+/* line 146, ../sass/ui/_typography.scss */
+h1, .heading-style--heading-one {
+  margin-top: 0.94871794871795em;
+  margin-bottom: 0.43589743589744em;
+  font-size: 39px;
+  font-size: 3.9em;
+  line-height: 1.3333333em;
 }
 
-/* line 100, ../sass/ui/_typography.scss */
-h3 {
-  font-size: 22px;
-  font-size: 2.2rem;
+/* line 153, ../sass/ui/_typography.scss */
+h2, .heading-style--heading-two {
+  margin-top: 1.19354838709677em;
+  margin-bottom: 0.54838709677419em;
+  font-size: 31px;
+  font-size: 3.1em;
+  line-height: 1.35483870967742em;
 }
 
-/* line 103, ../sass/ui/_typography.scss */
-h4 {
-  font-size: 18px;
-  font-size: 1.8rem;
+/* line 160, ../sass/ui/_typography.scss */
+h3, .heading-style--heading-three {
+  margin-top: 1.48em;
+  margin-bottom: 0.68em;
+  font-size: 25px;
+  font-size: 2.5em;
+  line-height: 1.4em;
 }
 
-/* line 106, ../sass/ui/_typography.scss */
-h5 {
+/* line 167, ../sass/ui/_typography.scss */
+h4, .heading-style--heading-four {
+  margin-top: 1.85em;
+  margin-bottom: 0.75em;
+  font-size: 20px;
+  font-size: 2em;
+  line-height: 1.5em;
+}
+
+/* line 174, ../sass/ui/_typography.scss */
+h5, .heading-style--heading-five {
+  margin-top: 2.3125em;
+  margin-bottom: 1em;
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 1.6em;
+  line-height: 1.5em;
 }
 
-/* line 109, ../sass/ui/_typography.scss */
-h6 {
+/* line 181, ../sass/ui/_typography.scss */
+h6, .heading-style--heading-six {
+  margin-top: 2.64285714285714em;
+  margin-bottom: 1em;
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 1.4em;
+  line-height: 1.57142857142857em;
 }
 
-/* line 112, ../sass/ui/_typography.scss */
-p,
-cite {
+/* line 188, ../sass/ui/_typography.scss */
+p {
+  margin-bottom: 1.875em;
   font-size: 16px;
-  font-size: 1.6rem;
-  line-height: 1.5;
+  font-size: 1.6em;
+  line-height: 1.5625em;
+  color: #5b5d61;
 }
-/* line 116, ../sass/ui/_typography.scss */
-p a,
-cite a {
+/* line 193, ../sass/ui/_typography.scss */
+p a {
   text-decoration: none;
 }
 
-/* line 122, ../sass/ui/_typography.scss */
-li {
-  line-height: 1.5;
+/* line 199, ../sass/ui/_typography.scss */
+.p-style--minor {
+  margin-bottom: 2.14285714285714em;
+  font-size: 14px;
+  font-size: 1.4em;
+  line-height: 1.64285714285714em;
 }
 
-/* line 125, ../sass/ui/_typography.scss */
+/* line 204, ../sass/ui/_typography.scss */
+.p-style--featured {
+  margin-bottom: 1.5em;
+  font-size: 20px;
+  font-size: 2em;
+  line-height: 1.4em;
+}
+
+/* line 209, ../sass/ui/_typography.scss */
+.content-list-item, .content-list li, .content-list--featured li, .content-list--minor li {
+  color: #5b5d61;
+}
+
+/* line 212, ../sass/ui/_typography.scss */
+.content-list {
+  margin-bottom: 1.875em;
+  font-size: 16px;
+  font-size: 1.6em;
+  line-height: 1.375em;
+}
+/* line 216, ../sass/ui/_typography.scss */
+.content-list:last-child {
+  margin-bottom: 0;
+}
+/* line 219, ../sass/ui/_typography.scss */
+.content-list li {
+  margin-bottom: 0.62em;
+  padding-left: 31px;
+}
+
+/* line 225, ../sass/ui/_typography.scss */
+.content-list--featured {
+  margin-bottom: 1.5em;
+  font-size: 20px;
+  font-size: 2em;
+  line-height: 1.3em;
+}
+/* line 229, ../sass/ui/_typography.scss */
+.content-list--featured:last-child {
+  margin-bottom: 0;
+}
+/* line 232, ../sass/ui/_typography.scss */
+.content-list--featured li {
+  margin-bottom: 0.5em;
+  padding-left: 31px;
+}
+
+/* line 238, ../sass/ui/_typography.scss */
+.content-list--minor {
+  margin-bottom: 2.14285714285714em;
+  font-size: 14px;
+  font-size: 1.4em;
+  line-height: 1.42857142857143em;
+}
+/* line 242, ../sass/ui/_typography.scss */
+.content-list--minor:last-child {
+  margin-bottom: 0;
+}
+/* line 245, ../sass/ui/_typography.scss */
+.content-list--minor li {
+  margin-bottom: 0.44em;
+  padding-left: 26px;
+}
+
+/* line 251, ../sass/ui/_typography.scss */
+ol.content-list,
+ol.content-list--minor,
+ol.content-list--featured {
+  counter-reset: ordered-counter;
+}
+/* line 255, ../sass/ui/_typography.scss */
+ol.content-list li,
+ol.content-list--minor li,
+ol.content-list--featured li {
+  position: relative;
+}
+/* line 258, ../sass/ui/_typography.scss */
+ol.content-list li:before,
+ol.content-list--minor li:before,
+ol.content-list--featured li:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: counter(ordered-counter);
+  counter-increment: ordered-counter;
+  color: #c4c7d0;
+}
+
+/* line 274, ../sass/ui/_typography.scss */
+ol.content-list--featured li:before {
+  font-size: 1.9rem;
+}
+
+/* line 279, ../sass/ui/_typography.scss */
 blockquote {
   position: relative;
   padding-top: 38px;
   font-family: "Open Sans", sans-serif;
-  font-size: 14px;
-  font-size: 1.4rem;
   font-weight: 600;
   color: #727686;
 }
-/* line 133, ../sass/ui/_typography.scss */
+/* line 286, ../sass/ui/_typography.scss */
 blockquote:before {
   position: absolute;
   top: 20px;
@@ -547,33 +733,39 @@ blockquote:before {
   font-family: "Source Sans Pro", sans-serif;
   content: "\201C";
   font-size: 80px;
-  font-size: 8rem;
   color: #36363a;
 }
-/* line 144, ../sass/ui/_typography.scss */
+/* line 297, ../sass/ui/_typography.scss */
 blockquote p {
   margin-bottom: 1.5em;
   font-family: "Open Sans", sans-serif;
-  font-size: 14px;
-  font-size: 1.4rem;
   font-weight: 600;
   line-height: 1.7;
+  font-size: 14px;
+  font-size: 1.4em;
   color: #5b5d61;
 }
-/* line 152, ../sass/ui/_typography.scss */
+/* line 305, ../sass/ui/_typography.scss */
 blockquote cite {
   font-family: "Lato", sans-serif;
-  font-size: 14px;
-  font-size: 1.4rem;
   font-weight: 400;
+  font-size: 14px;
+  font-size: 1.4em;
+  line-height: 1.5;
 }
-/* line 156, ../sass/ui/_typography.scss */
+/* line 310, ../sass/ui/_typography.scss */
 blockquote cite span {
   margin-bottom: 4px;
   display: block;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   color: #fcfdfd;
+}
+
+/* line 319, ../sass/ui/_typography.scss */
+strong {
+  font-weight: 700;
+  color: #28292c;
 }
 
 /* Components */
@@ -595,7 +787,6 @@ blockquote cite span {
   padding: 0.9em 2em 1.2em 2em;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
-  font-size: 1.6rem;
   font-weight: 600;
   line-height: 1;
   color: white;
@@ -612,7 +803,6 @@ blockquote cite span {
   padding: 2px 0 0 0;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
-  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: -0.2px;
   color: #81879d;
@@ -628,7 +818,6 @@ blockquote cite span {
 /* line 22, ../sass/components/_form-search.scss */
 .form--search .ref-icon-before--search:before {
   font-size: 22px;
-  font-size: 2.2rem;
   line-height: 21px;
   color: #81879d;
 }
@@ -779,7 +968,7 @@ input:invalid {
   width: 50px;
   line-height: 40px;
   font-size: 24px;
-  font-size: 2.4rem;
+  font-size: 2.4em;
   color: #6f7589;
   text-align: center;
   box-sizing: border-box;
@@ -845,7 +1034,6 @@ input:invalid {
   vertical-align: top;
   font-family: "Open Sans", sans-serif;
   font-size: 13px;
-  font-size: 1.3rem;
   font-weight: 600;
   color: #81879d;
   background-color: #363a47;
@@ -894,7 +1082,7 @@ input:invalid {
   width: 50px;
   padding: 0;
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 1.8em;
   line-height: 42px;
   color: #6f7589;
   text-align: center;
@@ -949,7 +1137,7 @@ input:invalid {
   padding: 5px 0px 6px 30px;
   display: block;
   font-size: 13px;
-  font-size: 1.3rem;
+  font-size: 1.3em;
   line-height: 1.5;
   color: #767683;
 }
@@ -968,7 +1156,7 @@ input:invalid {
 .main-navigation > ul > li {
   margin-bottom: 4px;
   font-size: 12px;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   line-height: 1.5;
   font-weight: 700;
 }
@@ -1020,7 +1208,6 @@ input:invalid {
   position: relative;
   z-index: 1;
   font-size: 13px;
-  font-size: 1.3rem;
 }
 /* line 56, ../sass/components/_main-navigation.scss */
 .main-navigation > ul ul li.is-selected > a {
@@ -1220,6 +1407,7 @@ input:invalid {
   margin-left: -220px;
   display: inline-block;
   float: left;
+  font-size: 10px;
   vertical-align: top;
   background-color: #28292c;
   position: fixed;
@@ -1227,7 +1415,7 @@ input:invalid {
   -webkit-transition: margin-left 0.15s ease-in;
   transition: margin-left 0.15s ease-in;
 }
-/* line 19, ../sass/components/_panel-left.scss */
+/* line 20, ../sass/components/_panel-left.scss */
 .panel-left-open .panel-left {
   position: relative;
   margin-left: 0;
@@ -1304,13 +1492,14 @@ input:invalid {
   min-height: 100%;
   padding-top: 42px;
   display: block;
+  font-size: 10px;
   background-color: #28292c;
   overflow: auto;
   -webkit-transition: right 0.18s ease-in;
   transition: right 0.18s ease-in;
   padding-top: 62px;
 }
-/* line 57, ../sass/components/_panel-right.scss */
+/* line 58, ../sass/components/_panel-right.scss */
 .is-showing .panel-right, .is-showing
 .no-js .panel-right {
   right: 0;
@@ -1321,13 +1510,13 @@ input:invalid {
   -webkit-transition: right 0.12s ease-out 0.12s;
           transition: right 0.12s ease-out 0.12s;
 }
-/* line 61, ../sass/components/_panel-right.scss */
+/* line 62, ../sass/components/_panel-right.scss */
 .panel-right .reflection-form,
 .no-js .panel-right .reflection-form {
   padding: 36px 26px 39px 28px;
   font-family: "Open Sans", sans-serif;
 }
-/* line 65, ../sass/components/_panel-right.scss */
+/* line 66, ../sass/components/_panel-right.scss */
 .panel-right .form-field,
 .no-js .panel-right .form-field {
   position: relative;
@@ -1337,56 +1526,56 @@ input:invalid {
   border-radius: 3px;
   background-color: #333338;
 }
-/* line 72, ../sass/components/_panel-right.scss */
+/* line 73, ../sass/components/_panel-right.scss */
 .panel-right .form-field label,
 .no-js .panel-right .form-field label {
   padding-bottom: 27px;
   font-family: "Open Sans", sans-serif;
   font-size: 11.9px;
-  font-size: 1.19rem;
+  font-size: 1.19em;
   font-weight: 600;
   color: #fcfdfd;
   -webkit-transition: padding 0.06s;
   transition: padding 0.06s;
 }
-/* line 80, ../sass/components/_panel-right.scss */
+/* line 81, ../sass/components/_panel-right.scss */
 .panel-right .form-field input,
 .no-js .panel-right .form-field input {
   position: absolute;
   bottom: 10px;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 1.4em;
   color: #81879d;
   -webkit-transition: bottom 0.06s;
   transition: bottom 0.06s;
 }
-/* line 88, ../sass/components/_panel-right.scss */
+/* line 89, ../sass/components/_panel-right.scss */
 .panel-right .form-field + .form-link,
 .no-js .panel-right .form-field + .form-link {
   margin-top: 14px;
 }
-/* line 92, ../sass/components/_panel-right.scss */
+/* line 93, ../sass/components/_panel-right.scss */
 .panel-right .form-field.is-closed label,
 .no-js .panel-right .form-field.is-closed label {
   padding-top: 2px;
   padding-bottom: 1px;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 1.4em;
   color: #81879d;
   font-weight: 400;
   -webkit-transition: padding 0.06s;
   transition: padding 0.06s;
 }
-/* line 101, ../sass/components/_panel-right.scss */
+/* line 102, ../sass/components/_panel-right.scss */
 .panel-right .form-field.is-closed input,
 .no-js .panel-right .form-field.is-closed input {
   bottom: 6px;
   -webkit-transition: bottom 0.06s;
   transition: bottom 0.06s;
 }
-/* line 107, ../sass/components/_panel-right.scss */
+/* line 108, ../sass/components/_panel-right.scss */
 .panel-right input:-webkit-autofill,
 .no-js .panel-right input:-webkit-autofill {
   color: #81879d !important;
@@ -1394,54 +1583,54 @@ input:invalid {
   -webkit-text-fill-color: #81879d !important;
   background-color: #333338 !important;
 }
-/* line 113, ../sass/components/_panel-right.scss */
+/* line 114, ../sass/components/_panel-right.scss */
 .panel-right .form-link,
 .no-js .panel-right .form-link {
   font-size: 13px;
-  font-size: 1.3rem;
+  font-size: 1.3em;
   margin-bottom: 15px;
   display: block;
   font-weight: 600;
   color: #6d69c5;
 }
-/* line 119, ../sass/components/_panel-right.scss */
+/* line 120, ../sass/components/_panel-right.scss */
 .panel-right .form-link:hover,
 .no-js .panel-right .form-link:hover {
   color: #918ed3;
 }
-/* line 126, ../sass/components/_panel-right.scss */
+/* line 127, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox,
 .no-js .panel-right .form-field--checkbox {
   margin-bottom: 8px;
 }
-/* line 128, ../sass/components/_panel-right.scss */
+/* line 129, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox input, .panel-right .form-field--checkbox label,
 .no-js .panel-right .form-field--checkbox input,
 .no-js .panel-right .form-field--checkbox label {
   display: inline-block;
   vertical-align: top;
 }
-/* line 132, ../sass/components/_panel-right.scss */
+/* line 133, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox input,
 .no-js .panel-right .form-field--checkbox input {
   margin-right: 12px;
   background-color: #333338;
 }
-/* line 136, ../sass/components/_panel-right.scss */
+/* line 137, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox label,
 .no-js .panel-right .form-field--checkbox label {
   font-size: 13px;
-  font-size: 1.3rem;
+  font-size: 1.3em;
   color: #727686;
 }
-/* line 141, ../sass/components/_panel-right.scss */
+/* line 142, ../sass/components/_panel-right.scss */
 .panel-right .ref-button--login-form-submit,
 .no-js .panel-right .ref-button--login-form-submit {
   width: 100%;
   margin-top: 11px;
   box-sizing: border-box;
 }
-/* line 146, ../sass/components/_panel-right.scss */
+/* line 147, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container,
 .no-js .panel-right .blockquote-container {
   width: 100%;
@@ -1449,7 +1638,7 @@ input:invalid {
   border-top: 1px solid #161617;
 }
 
-/* line 152, ../sass/components/_panel-right.scss */
+/* line 153, ../sass/components/_panel-right.scss */
 .no-js .panel-right {
   right: 0;
 }

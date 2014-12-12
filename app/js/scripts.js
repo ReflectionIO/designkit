@@ -38,7 +38,7 @@
 			}
 		});
 
-		if($(window).width() <= 480) {
+		if($(window).width() <= 960) {
 			$('.js-hamburger-button').removeClass('is-selected');
 			$('.l-page-container').removeClass('panel-left-open');
 		}
