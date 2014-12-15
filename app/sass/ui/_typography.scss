@@ -1,8 +1,8 @@
 /* Font face declarations */
 
 /* Typography variables */
-$brand-primary-font: 'Lato', sans-serif;
-$brand-accent-font: 'Open Sans', sans-serif;
+$brand-body-font: 'Lato', sans-serif;
+$brand-heading-font: 'Open Sans', sans-serif;
 $source-sans-pro: 'Source Sans Pro', sans-serif;
 
 /* Font declarations */
@@ -32,23 +32,23 @@ $source-sans-pro: 'Source Sans Pro', sans-serif;
 
 /* Typography classes */
 .open-sans {
-	font-family: $brand-accent-font;
+	font-family: $brand-heading-font;
 	font-weight: 400;
 }
 .open-sans-semi {
-	font-family: $brand-accent-font;
+	font-family: $brand-heading-font;
 	font-weight: 600;
 }
 .open-sans-bold {
-	font-family: $brand-accent-font;
+	font-family: $brand-heading-font;
 	font-weight: 700;
 }
 .lato {
-	font-family: $brand-primary-font;
+	font-family: $brand-body-font;
 	font-weight: 400;
 }
 .lato-bold {
-	font-family: $brand-primary-font;
+	font-family: $brand-body-font;
 	font-weight: 700;
 }
 
@@ -139,30 +139,87 @@ h5 + h6,
 .heading-style--heading-three + .heading-style--heading-six,
 .heading-style--heading-four + .heading-style--heading-five,
 .heading-style--heading-four + .heading-style--heading-six,
-.heading-style--heading-five + .heading-style--heading-six {
+.heading-style--heading-five + .heading-style--heading-six,
+h1 + .heading-style--heading-two,
+h1 + .heading-style--heading-three,
+h1 + .heading-style--heading-four,
+h1 + .heading-style--heading-five,
+h1 + .heading-style--heading-six,
+h2 + .heading-style--heading-three,
+h2 + .heading-style--heading-four,
+h2 + .heading-style--heading-five,
+h2 + .heading-style--heading-six,
+h3 + .heading-style--heading-four,
+h3 + .heading-style--heading-five,
+h3 + .heading-style--heading-six,
+h4 + .heading-style--heading-five,
+h4 + .heading-style--heading-six,
+h5 + .heading-style--heading-six,
+.heading-style--heading-one + h2,
+.heading-style--heading-one + h3,
+.heading-style--heading-one + h4,
+.heading-style--heading-one + h5,
+.heading-style--heading-one + h6,
+.heading-style--heading-two + h3,
+.heading-style--heading-two + h4,
+.heading-style--heading-two + h5,
+.heading-style--heading-two + h6,
+.heading-style--heading-three + h4,
+.heading-style--heading-three + h5,
+.heading-style--heading-three + h6,
+.heading-style--heading-four + h5,
+.heading-style--heading-four + h6,
+.heading-style--heading-five + h6 {
 	margin-top: 0;
 }
 // Set up classes for reusable font sizes as per design kit
 h1, .heading-style--heading-one {
 	@extend .heading-style;
-	margin-top: 0.94871794871795em; // 37px
-	margin-bottom: 0.43589743589744em;
-	@include font-size(39px);
-	line-height: 1.3333333em;	
+	margin-top: 1.48em; // 37px
+	margin-bottom: 0.68em;
+	@include font-size(29px);
+	line-height: 1.4em;
+	&:first-child:last-child {
+		margin-bottom: 0.68em;
+	}
+	@include breakpoint($phablet) {
+		margin-top: 0.94871794871795em; // 37px
+		margin-bottom: 0.43589743589744em;
+		@include font-size(39px);
+		line-height: 1.3333333em;
+		&:first-child:last-child {
+			margin-bottom: 0.43589743589744em;
+		}
+	}		
 }
 h2, .heading-style--heading-two {
 	@extend .heading-style;
-	margin-top: 1.19354838709677em; // 37px
-	margin-bottom: 0.54838709677419em;
-	@include font-size(31px);
-	line-height: 1.35483870967742em;	
+	margin-top: 1.48em; // 37px
+	margin-bottom: 0.68em;
+	@include font-size(27px);
+	line-height: 1.4em;
+	&:first-child:last-child {
+		margin-bottom: 0.68em;
+	}
+	@include breakpoint($phablet) {
+		margin-top: 1.19354838709677em; // 37px
+		margin-bottom: 0.54838709677419em;
+		@include font-size(31px);
+		line-height: 1.35483870967742em;
+		&:first-child:last-child {
+			margin-bottom: 0.54838709677419em;
+		}
+	}
 }
 h3, .heading-style--heading-three {
 	@extend .heading-style;
 	margin-top: 1.48em; // 37px
 	margin-bottom: 0.68em;
 	@include font-size(25px);
-	line-height: 1.4em;	
+	line-height: 1.4em;
+	&:first-child:last-child {
+		margin-bottom: 0.68em;
+	}
 }
 h4, .heading-style--heading-four {
 	@extend .heading-style;
@@ -170,6 +227,9 @@ h4, .heading-style--heading-four {
 	margin-bottom: 0.75em;
 	@include font-size(20px);
 	line-height: 1.5em;
+	&:first-child:last-child {
+		margin-bottom: 0.75em;
+	}
 }
 h5, .heading-style--heading-five {
 	@extend .heading-style;
@@ -177,37 +237,58 @@ h5, .heading-style--heading-five {
 	margin-bottom: 1em;
 	@include font-size(16px);
 	line-height: 1.5em;	
+	&:first-child:last-child {
+		margin-bottom: 1em;
+	}
 }
 h6, .heading-style--heading-six {
 	@extend .heading-style;
 	margin-top: 2.64285714285714em; // 37px
 	margin-bottom: 1em;
 	@include font-size(14px);
-	line-height: 1.57142857142857em;	
+	line-height: 1.57142857142857em;
+	&:first-child:last-child {
+		margin-bottom: 1em;
+	}
 }
 p {
+	max-width: 650px;
 	margin-bottom: 1.875em; // 30px
 	@include font-size(16px);
 	line-height: 1.5625em;
 	color: $base-p-color;
+	@include breakpoint($desktop) {
+		max-width: 680px;
+	}
+	@include breakpoint($desktop-wide) {
+		max-width: 750px;
+	}
 	a {
 		text-decoration: none;
+		color: #6d69c5;
 		&:hover {
+			color: darken(#6d69c5, 10%);
 		}
 	}
 }
 .p-style--minor {
-	margin-bottom: 2.14285714285714em; // 30px
+	margin-bottom: 1.5em; // 21px
 	@include font-size(14px);
-	line-height: 1.64285714285714em;	
+	line-height: 1.64285714285714em;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 .p-style--featured {
 	margin-bottom: 1.5em;
 	@include font-size(20px);
 	line-height: 1.4em;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 .content-list-item {
-	color: $base-p-color;
+	color: #5b5b68;
 }
 .content-list {
 	margin-bottom: 1.875em; // 30px
@@ -276,10 +357,23 @@ ol.content-list--featured {
 		@extend .open-sans-semi;
 	}
 }
+ul.content-list,
+ul.content-list--featured,
+ul.content-list--minor {
+	li {
+		background: url(../images/common/bg-bullet.png) no-repeat left 0.6em;
+		background-size: 10px auto;
+	}
+}
+ul.content-list--minor {
+	li {
+		background-size: 8px auto;
+	}
+}
 blockquote {
 	position: relative;
 	padding-top: 38px;
-	font-family: $brand-accent-font;
+	font-family: $brand-heading-font;
 	font-weight: 600;
 	color: #727686;
 	@extend %font-smoothing;
@@ -296,21 +390,21 @@ blockquote {
 	}
 	p {
 		margin-bottom: 1.5em;
-		font-family: $brand-accent-font;
+		font-family: $brand-heading-font;
 		font-weight: 600;
 		line-height: 1.7;
 		@include font-size(14px);
 		color: $base-p-color;
 	}	
 	cite {
-		font-family: $brand-primary-font;
+		font-family: $brand-body-font;
 		font-weight: 400;
 		@include font-size(14px);
 		line-height: 1.5;
 		span {
 			margin-bottom: 4px;
 			display: block;
-			font-family: $brand-accent-font;
+			font-family: $brand-heading-font;
 			font-weight: 600;
 			color: $white-off;
 		}

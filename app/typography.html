@@ -166,7 +166,7 @@
 					</div>
 				</div>
 
-				<div class="grid__row dk-component-row">
+				<div class="grid__row dk-component-row dk-component-row--with-divider">
 					<div class="grid__column grid__column--one-third">
 						<h3 class="heading-style--heading-four">Lists</h3>
 						<p>Unordered lists are <strong>Lato Regular</strong> and <strong>#5b5b68</strong>. There are 3 sizes based on the prominence required for the list items: Large, Mid and Small each with differeing font sizes and lin-heights (see right).</p>
@@ -228,7 +228,123 @@
 					</div>
 				</div>
 
+				<div class="grid__column grid__column--full-width">
+					<h2>The Code</h2>
+				</div>
 				<div class="grid__row dk-component-row">
+					<div class="grid__column grid__column--one-third">
+						<h3 class="heading-style--heading-four">Font CSS classes and SASS variables</h3>
+						<p>Font classes are available for explicit styling of indiviual HTML elements, but it is preferable to style site components using SASS partials, one partial per component, to keep CSS styles encapsulated per component. Extending classes in SASS reduces the amount of CSS output in the main stylesheet, but for our solution component CSS should be kept separate from global CSS for integration reasons.</p>
+						<p>For styles that will appear in the global stylesheet, @extend the font classes in the SASS where a particular font is required for an element.</p>
+						<p>For site components use the available SASS variables for font family styling.</p>
+					</div>
+					<div class="grid__column grid__column--two-thirds">
+						<div class="code-box code-box-tall">
+							<code>
+								/* Available font classes */<br />
+								.open-sans<br />
+								.open-sans-semi<br />
+								.open-sans-bold <br />
+								.lato<br />
+								.lato-bold<br /><br />
+								/* Extend a font class in the SASS if the selector is to be included in the main stylesheet */<br />
+								@extend .open-sans;<br /><br />
+								/* Font variables for use in site componenets/SASS partials */<br />
+								$brand-body-font: 'Lato', sans-serif;<br />
+								$brand-heading-font: 'Open Sans', sans-serif;<br /><br />
+								/* Example: */<br />
+								font-family: $brand-body-font;<br />
+								font-weight: 700;
+							</code>
+						</div>
+					</div>
+				</div>
+
+				<div class="grid__row dk-component-row">
+					<div class="grid__column grid__column--one-third">
+						<h3 class="heading-style--heading-four">Headings</h3>
+						<p>Use one h1 heading per page for SEO purposes.</p>
+						<p>Components should use headings in the correct semantic order and each heading has base font styles, including font family, size, line height and top/bottom margins. Where a heading is required to be styled using another heading's styles, use the available heading classes.</p>
+						<p>For instance, an h2 should be followed by an h3, but if the h3 is to have the styles of an h4, the h3 can be given the class "heading-style--heading-four". This is demonstrated below.</p>
+						<h2>Heading Two</h2>
+						<h3 class="heading-style--heading-four">Heading Three, styled as Heading Four</h4>
+					</div>
+					<div class="grid__column grid__column--two-thirds">
+						<div class="code-box code-box-tall">
+							<code>
+								/* Available heading style classes */<br />
+								.heading-style--heading-one<br />
+								.heading-style--heading-two<br />
+								.heading-style--heading-three<br />
+								.heading-style--heading-four<br />
+								.heading-style--heading-five<br />
+								.heading-style--heading-six<br /><br />
+								/* font size mixin for calculating ems<br />
+								@include font-size(14px);
+							</code>
+						</div>
+					</div>
+				</div>
+
+				<div class="grid__row dk-component-row">
+					<div class="grid__column grid__column--one-third">
+						<h3 class="heading-style--heading-four">Font size units</h3>
+						<p>To generate a font size in ems from the SASS call the mixin font-size() with the px value required. This will output a font size in ems in the CSS.</p>
+						<p>Font sizes are stated in ems and inherit from the body px font size. For more control over a particular component font size at different breakpoints, the container of the component should have it's own explicit font size. This should be in px if the component is to remain unaffected by changes in body font size. Children of the componenet will inherit from the fixed component font size and not respond to changes in body font size.</p>
+						<p>The body font size changes at specific breakpoints to increase the font size of all inheriting elements.</p>
+					</div>
+					<div class="grid__column grid__column--two-thirds">
+						<div class="code-box">
+							<code>
+								/* Font size mixin for calculating ems<br />
+								@include font-size(14px);
+							</code>
+						</div>
+					</div>
+				</div>
+
+				<div class="grid__row dk-component-row">
+					<div class="grid__column grid__column--one-third">
+						<h3 class="heading-style--heading-four">Paragraphs</h3>
+						<p>Default styling is in place for the &lt;p&gt; element. Use SASS partials to style &lt;p&gt; elements specific to components if necessary, using the component container class name.</p>
+						<p>For featured paragraphs use the class "p-style--featured" on the &lt;p&gt; tag or on the container of the element.</p>
+						<p>For minor paragraphs use the class "p-style--minor" on the &lt;p&gt; tag or (preferably) on the container of the element. For instance, for smaller width columns use the "p-style--minor" on the column container to ensure all paragraphs have the smaller styling.</p>
+					</div>
+					<div class="grid__column grid__column--two-thirds">
+						<div class="code-box">
+							<code>
+								/* Classes for paragraph styles<br />
+								.p-style--minor<br />
+								.p-style--featured
+							</code>
+						</div>
+					</div>
+				</div>
+
+				<div class="grid__row dk-component-row">
+					<div class="grid__column grid__column--one-third">
+						<h3 class="heading-style--heading-four">Ordered and unordered lists</h3>
+						<p>Ordered and unordered lists in content require classes, because to provide styles based on just the &lt;ol&gt; or &lt;ul&gt; tag alone would mean that all lists on the site would inherit those styles, which is not suitable for lists that are not text content.</p>
+						<p>For a list with default font sizing and styles use the class "content-list" on the &lt;ol&gt; or &lt;ul&gt; tag.</p>
+						<p>For a minor list, use the class "content-list--minor".</p>
+						<p>For a featured list, use the class "content-list--featured".</p>
+					</div>
+					<div class="grid__column grid__column--two-thirds">
+						<div class="code-box code-box-tall">
+							<code>
+								/* Classes for ordered and unordered lists<br />
+								ul.content-list<br />
+								ul.content-list--minor<br />
+								ul.content-list--featured<br />
+								ol.content-list<br />
+								ol.content-list--minor<br />
+								ol.content-list--featured
+							</code>
+						</div>
+					</div>
+				</div>
+
+				<!-- <div class="grid__row dk-component-row">
 					<div class="grid__column grid__column--one-third">
 						<h1>Examples</h1>
 						<p>Body copy is all <strong>Lato Regular</strong> with a colour of <strong>#5b5b68</strong>. There are 3 main sizes based on application and size of container (see right for sizes and line-heights).</p>
@@ -238,22 +354,64 @@
 						<p>Main body copy is the most widely used and should be the default when creating text content. However if the containing element is small or narrow or the content is less important then Minor body copy must be used to maintain legibility and content hierarchy.</p>
 						<h4>Body Copy</h4>
 						<p>Bolded text is <strong>Lato Bold</strong> and coloured <strong>#29292c</strong> for extra prominence.</p>
+						<ul class="content-list">
+							<li>Main List</li>
+							<li>Font size 16px</li>
+							<li>Line-height 22px</li>
+							<li>Bottom margin 32px</li>
+							<li>Etiam mattis justo</li>
+							<li>exercitation ullamco</li>
+						</ul>
+						<h5>Body Copy</h5>
+						<p>Link text in <strong>Lato Bold</strong>, coloured <strong>#6d69c5</strong> and has the rollover effect seen on the right.</p>
+						<ol class="content-list--minor">
+							<li>Minor List</li>
+							<li>Font size 14px</li>
+							<li>Line-height 20px</li>
+							<li>Bottom margin 26px</li>
+							<li>Etiam mattis justo</li>
+							<li>exercitation ullamco</li>
+						</ol>
 						<h5>Body Copy</h5>
 						<p>Link text in <strong>Lato Bold</strong>, coloured <strong>#6d69c5</strong> and has the rollover effect seen on the right.</p>
 					</div>
 
 					<div class="grid__column grid__column--two-thirds">
-						<h1>Heading</h1>
+						<h1>Examples</h1>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 						<h2>Body Copy</h2>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
+						<ul class="content-list--featured">
+							<li>Featured List</li>
+							<li>Font size 20px</li>
+							<li>Line-height 26px</li>
+							<li>Bottom margin 36px</li>
+							<li>Etiam mattis justo</li>
+							<li>exercitation ullamco</li>
+						</ul>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 						<h3>Body Copy</h3>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
+						<ul class="content-list">
+							<li>Main List</li>
+							<li>Font size 16px</li>
+							<li>Line-height 22px</li>
+							<li>Bottom margin 32px</li>
+							<li>Etiam mattis justo</li>
+							<li>exercitation ullamco</li>
+						</ul>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 						<h4>Body Copy</h4>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
+						<ol class="content-list--minor">
+							<li>Minor List</li>
+							<li>Font size 14px</li>
+							<li>Line-height 20px</li>
+							<li>Bottom margin 26px</li>
+							<li>Etiam mattis justo</li>
+							<li>exercitation ullamco</li>
+						</ol>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 						<h5>Body Copy</h5>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
@@ -262,8 +420,8 @@
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 						<p>Minor body copy 14px, line height 23px (if container width over 400px) 22px (if container width under 400px) - lorem ipsum dolor sit amet, bolded text adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 					</div>
-				</div>
-				
+				</div> -->
+
 			</div>
 		</div>
 	</div>

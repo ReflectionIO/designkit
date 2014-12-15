@@ -32,12 +32,18 @@ html, body
 {
 	position: relative;
 	overflow-x: hidden;
-	font-family: $brand-primary-font;
+	@extend .lato;
 	font-size: 10px;
 	line-height: 1.5rem;
 	color: $base-font-color;
 	background-color: #fcfdfd;
 	@extend %font-smoothing;
+	@include breakpoint($desktop) {
+		font-size: 11px;
+	}
+	@include breakpoint($desktop-wide) {
+		font-size: 12px;
+	}
 }
 body.no-scroll {
 	overflow: hidden;
