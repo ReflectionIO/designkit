@@ -2,13 +2,9 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8" />
-  <!--[if IE 8]><html class="no-js ie8"><![endif]-->
 	<title>Reflection Design Kit - Typography</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:600' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" media="screen, projection" type="text/css" href="css/designkit.css" />
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
@@ -26,85 +22,14 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <header class="global-header">
-  	<div class="hamburger">
-  		<button class="hamburger__button ref-icon-before ref-icon-before--hamburger is-selected js-hamburger-button"></button>
-  	</div>
-		<div class="site-logo">
-			<a href="/">
-				<picture> <!-- uses js/picturefill.2.2.0.min.js -->
-					<!--[if IE 9]><video style="display: none;"><![endif]-->
-					<source srcset="images/logo-reflection-header.png" media="(min-width: 720px)" />
-					<source srcset="images/logo-reflection-header-mobile.png" />
-					<!--[if IE 9]></video><![endif]-->
-					<img src="images/logo-reflection-header.png" alt="Reflection logo" />
-				</picture>
-			</a>
-		</div>
-		<div class="global-header__actions">
-			<form class="form--search">
-				<label class="ref-icon-before ref-icon-before--search form--search__label-search" for="site-search">Search: </label>
-				<input type="search" name="site-search" id="site-search" placeholder="Search for app or developer" class="form--search__input-search" />
-			</form>
-			<div class="actions-group-container">
-				<div class="actions-group ref-icon-before ref-icon-before--cog">
-					<div class="actions-group__content">
-						<a href="#" class="ref-button ref-button--small">Apply</a>
-						<div class="link-log-in-container">
-							<a href="#" class="link-log-in">Log In</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+  <header id="js-component-import--global-header" class="global-header"></header>
 
-	<div class="l-page-container panel-left-open">		
-		<div class="panel-left">
-			<nav class="main-navigation js-main-nav" role="navigation">
-				<ul>
-					<li><a href="#" class="ref-icon-before ref-icon-before--my-data">Overview</a></li>
-					<li><a href="#" class="ref-icon-before ref-icon-before--blog">Brand</a></li>
-					<li class="has-child is-selected js-is-collapsible"><a href="#" class="ref-icon-before ref-icon-before--forum">Design Assets</a>
-						<ul>
-							<li class="is-selected"><a href="typography.html">Typography</a></li>
-						</ul>
-					</li>
-					<li><a href="#" class="ref-icon-before ref-icon-before--leaderboard">Grid &amp; Breakpoints</a></li>
-					<li><a href="#" class="ref-icon-before ref-icon-before--help">UI Components</a></li>
-					<li><a href="#" class="ref-icon-before ref-icon-before--info">UI Transitions</a></li>
-					<li><a href="#" class="ref-icon-before ref-icon-before--info">Sample Layouts</a></li>
-				</ul>
-			</nav>
-			<ul class="main-social-links">
-				<li><a href="#" class="ref-icon-before ref-icon-before--facebook" onclick="return false;"><span>Facebook</span></a></li>
-				<li><a href="#" class="ref-icon-before ref-icon-before--twitter" onclick="return false;"><span>Twitter</span></a></li>
-				<li><a href="#" class="ref-icon-before ref-icon-before--linkedin" onclick="return false;"><span>LinkedIn</span></a></li>
-			</ul>
-			<div class="main-footer-links">
-				<ul>
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">Terms &amp; Conditions</a></li>
-					<li><a href="#">Privacy</a></li>
-					<li><a href="#">Sitemap</a></li>
-				</ul>
-			</div>
-		</div>
+	<div class="l-page-container panel-left-open">
+		<div id="js-component-import--panel-left" class="panel-left"></div>
 
 		<div id="main" class="l-main" role="main">
 			
-			<div class="banner">
-				<div>
-					<div class="banner__graphic">
-						<img src="images/banner-icons/typography.png" alt="Tt" />
-					</div>
-					<div class="banner__intro">
-						<h1>Design Assets</h1>
-						<h2>Typography</h2>
-						<p>Below are the styling rules for sitewide typography. Our brand typefaces are clean, uncomplicated and easy to read at any size. Specific spacing rules to ensure legibility and UX integrity are detailed below alongside examples.</p>						
-					</div>
-				</div>
-			</div>
+			<div id="js-component-import--design-kit-banner" class="banner"></div>
 
 			<div class="grid-container dk-components-container">
 				<div class="grid__column grid__column--full-width">
@@ -401,40 +326,54 @@
 		</div>
 	</div>
 
-	<div class="panel-right-container">
-			<div class="panel-right__overlay"></div>
-			<div class="panel-right">
-				<form class="reflection-form" autocomplete="off">
-					<div class="form-field">						
-						<input type="email" name="email" id="email" autocomplete="off" />
-						<label for="email">Email</label>
-					</div>
-					<div class="form-field">						
-						<input type="password" name="password" id="password" autocomplete="off" />
-						<label for="password">Password</label>
-					</div>
-					<a href="#" class="form-link">I've misplaced my password</a>
-					<div class="form-field--checkbox">
-						<input type="checkbox" name="signedin" id="signedin" /><labeL for="signedin">Keep me signed in</label>
-					</div>
-					<input type="submit" class="ref-button ref-button--login-form-submit" value="Log in" />
-				</form>
-				<div class="blockquote-container">
-					<blockquote>
-						<p>We see our customers as invited guests to a party, and we are the hosts. It's our job every day to make every important aspect of the customer experience a little bit better.</p>
-						<footer>
-							<cite>
-								<span>Jeff Bezos</span>
-								Founder, Amazon
-							</cite>
-						</footer>
-					</blockquote>
-				</div>
-			</div>
-		</div>
-
+	<div id="js-component-import--panel-right" class="panel-right-container"></div>
+	
+	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+	<script src="bower_components/polymer/polymer.min.js"></script>
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/jquery-ui.custom.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+ 	<script src="js/templates/templates.js"></script>
 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
-	<script src="js/scripts.js"></script>
+
+  <script>
+  	window.addEventListener('HTMLImportsLoaded', function() {
+
+  		var templateFontDeclarations = Handlebars.templates['fontDeclarations'];
+			var htmlFontDeclarations = templateFontDeclarations({});
+			$("head").append(htmlFontDeclarations);
+
+	    var templateGlobalHeader = Handlebars.templates['globalHeader'];
+			var htmlGlobalHeader = templateGlobalHeader({});
+			$("#js-component-import--global-header").html(htmlGlobalHeader);
+
+			var templatePanelLeft = Handlebars.templates['panelLeft'];
+			var htmlPanelLeft = templatePanelLeft({});
+			$("#js-component-import--panel-left").html(htmlPanelLeft);
+
+			var templatePanelRight = Handlebars.templates['panelRight'];
+			var htmlPanelRight = templatePanelRight({});
+			$("#js-component-import--panel-right").html(htmlPanelRight);
+
+	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
+			var htmlDesignKitBanner = templateDesignKitBanner({ sectionTitle: "Design Assets", componentTitle: "Typography", Intro: "Below are the styling rules for sitewide typography. Our brand typefaces are clean, uncomplicated and easy to read at any size. Specific spacing rules to ensure legibility and UX integrity are detailed below alongside examples." });
+			$("#js-component-import--design-kit-banner").html(htmlDesignKitBanner);
+		});
+
+		function loadScripts() {
+		  loadComponentScripts();
+		}
+
+		function loadComponentScripts() {
+			var script = document.createElement('script');
+		  script.type = 'text/javascript';
+		  script.src = 'js/nav-structure.js';
+	  	document.body.appendChild(script);
+
+	  	var thisPageLink = $('#js-component-import--panel-left').find('a[href="typography.html"]');
+	  	thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
+	  }
+
+		window.onload = loadScripts;
+  </script>
 </body>

@@ -1,9 +1,11 @@
 (function($) {
-
-	initMainNavCollapsibleLists();
-	initLeftPanelInteraction();
-	initGlobalFormInteractions();
-	initRightPanelInteraction();
+	
+	function initialise() {
+		initMainNavCollapsibleLists();
+		initLeftPanelInteraction();
+		initGlobalFormInteractions();
+		initRightPanelInteraction();
+	};
 
 	function initLeftPanelInteraction() {
 
@@ -122,5 +124,9 @@
 			}
 		});
 	}
+
+	$(document).ready(function(){
+		initialise();
+	});
 
 })(jQuery);
