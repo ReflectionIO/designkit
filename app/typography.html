@@ -327,9 +327,7 @@
 	</div>
 
 	<div id="js-component-import--panel-right" class="panel-right-container"></div>
-	
-	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-	<script src="bower_components/polymer/polymer.min.js"></script>
+
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/jquery-ui.custom.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script>
@@ -337,7 +335,7 @@
 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
 
   <script>
-  	window.addEventListener('HTMLImportsLoaded', function() {
+  	(function($) {
 
   		var templateFontDeclarations = Handlebars.templates['fontDeclarations'];
 			var htmlFontDeclarations = templateFontDeclarations({});
@@ -356,9 +354,10 @@
 			$("#js-component-import--panel-right").html(htmlPanelRight);
 
 	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
-			var htmlDesignKitBanner = templateDesignKitBanner({ sectionTitle: "Design Assets", componentTitle: "Typography", Intro: "Below are the styling rules for sitewide typography. Our brand typefaces are clean, uncomplicated and easy to read at any size. Specific spacing rules to ensure legibility and UX integrity are detailed below alongside examples." });
+			var htmlDesignKitBanner = templateDesignKitBanner({ bannerImage: "images/banner-icons/typography.png", bannerImageAlt: "Tt", sectionTitle: "Design Assets", componentTitle: "Typography", Intro: "Below are the styling rules for sitewide typography. Our brand typefaces are clean, uncomplicated and easy to read at any size. Specific spacing rules to ensure legibility and UX integrity are detailed below alongside examples." });
 			$("#js-component-import--design-kit-banner").html(htmlDesignKitBanner);
-		});
+		
+		})(jQuery);
 
 		function loadScripts() {
 		  loadComponentScripts();

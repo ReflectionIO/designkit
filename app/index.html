@@ -50,7 +50,7 @@
 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
 
   <script>
-  	window.addEventListener('HTMLImportsLoaded', function() {
+  	(function($) {
 
   		var templateFontDeclarations = Handlebars.templates['fontDeclarations'];
 			var htmlFontDeclarations = templateFontDeclarations({});
@@ -71,7 +71,8 @@
 	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
 			var htmlDesignKitBanner = templateDesignKitBanner({ sectionTitle: "Design Assets", componentTitle: "Component Title", Intro: "Component Introduction" });
 			$("#js-component-import--design-kit-banner").html(htmlDesignKitBanner);
-		});
+			
+		})(jQuery);
 
 		function loadScripts() {
 		  loadComponentScripts();
