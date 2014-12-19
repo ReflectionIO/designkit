@@ -16,8 +16,22 @@
 }
 
 // Specific button types
-.ref-button-submit--search {
-	
+.ref-button--toggle {
+	@extend .ref-button--small;
+	padding: 8px 15px 10px;
+	color: $reflection-white;
+	background-color: $reflection-purple;
+	outline: none;
+	&:hover {
+		outline: none;
+		background-color: darken($reflection-purple, 3%);
+	}
+	&:active {
+		outline: none;
+		border-top: 2px solid $light-grey-2;
+		padding-bottom: 8px;
+		@include transition(none);
+	}
 }
 .ref-button--login-form-submit { // temp, should be replaced with global large button style
 	padding: 0.9em 2em 1.2em 2em;
