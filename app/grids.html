@@ -31,7 +31,7 @@
 			
 			<div id="js-component-import--design-kit-banner" class="banner banner--component"></div>
 
-			<div class="grid-container dk-components-container ">
+			<div class="grid-container dk-components-container">
 				<div class="grid__row grid__row--demo">
 					<ul class="tab-links-container">
 						<li class="grid__column grid__column--one-quarter grid-demo-column grid-demo-column--alternate">
@@ -147,7 +147,7 @@
 					</div>
 					<div class="grid__column grid__column--two-thirds">
 						<h3 class="heading-style--heading-six">Example</h3>
-						<img src="" />
+						<img src="images/grids/spacing.jpg" alt="Spacing example" />
 					</div>
 				</div>
 
@@ -199,7 +199,10 @@
 					<div class="grid__column grid__column--one-half">
 						<div class="code-box">
 							<code>
-								@include column(9);
+								@include column(9);<br /><br />
+								/* Columns within a nested grid */
+								// Creating a three column width column within a nested grid, where the nested grid container is 9 columns wide */
+								@include column(3,9)
 							</code>
 						</div>
 					</div>
@@ -236,7 +239,7 @@
 
 					<div class="grid__column grid__column--one-half">
 						<h3 class="heading-style--heading-four">Breakpoint mixin</h3>
-						<p>The Breakpoint (<a href="http://breakpoint-sass.com" target="_blank">http://breakpoint-sass.com</a>) ruby gem for SASS is used to create media queries. SASS styling should be structured from smallest screen width upwards. When styling for a particular breakpoint the breakpoint(x) mixin should be called, the x paramenter being a variable set to the minimum screen width size for the styling.</p>
+						<p>The Breakpoint (<a href="http://breakpoint-sass.com" target="_blank">http://breakpoint-sass.com</a>) Ruby gem for SASS is used to create media queries. SASS styling should be structured from smallest screen width upwards. When styling for a particular breakpoint the breakpoint(x) mixin should be called, where the x paramenter is a variable set to the minimum screen width size for the media query.</p>
 						<p>The code box example shows styling of the global header height for mobile and the call to the breakpoint mixin to add styling for "phablet" sized devices and up.</p>
 						<p>Calling breakpoint() with a second parameter "true" will include the CSS in the IE8 stylesheet.</p>
 					</div>
