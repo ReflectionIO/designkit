@@ -139,18 +139,30 @@
 					</div>
 				</div>
 
+				<div class="grid__row dk-component-row dk-component-row--with-divider">
+					<div class="grid__column grid__column--one-third">
+						<h3 class="heading-style--heading-four">Component Spacing</h3>
+						<p>Sections of content are structured in "rows", each section row with 60px bottom spacing. Columns within rows have 40px margin bottom for when content is stacked at lower screen widths. The 20px padding bottom of the section container makes up the 60px gap. For a section with a border bottom, there is 60px space above the border and 50px gap below before the next section.</p>
+						<p>Spacing is applied in rem units so that a change in body font size also increases the spacing between sections.</p>
+					</div>
+					<div class="grid__column grid__column--two-thirds">
+						<h3 class="heading-style--heading-six">Example</h3>
+						<img src="" />
+					</div>
+				</div>
+
 				<div class="grid__column grid__column--full-width">
 					<h2>The Code</h2>
 				</div>
 				<div class="grid__row dk-component-row">
 					<div class="grid__column grid__column--one-half">
 						<h3 class="heading-style--heading-four">Structure and CSS classes</h3>
-						<p>Site design is based on a twelve column grid that responds at different breakpoints.</p>
-						<p>The grid structure is generated from SASS using <a href="http://semantic.gs" target="_blank">http://semantic.gs</a> but the mixins have been customised to use padding between columns instead of margins. This is to enable solid background colour of columns including the gutters, which isn't possible with margins.</p>
-						<p>The grid is structured as per the code box, which also lists the available classes to generate columns, depending on how many columns of the grid the HTML element should fill. The code box example creates a grid with side margins that contains two columns: one that takes up one third of the twelve column grid, another that takes up two thirds.</p>
+						<p>Content layout is based on a twelve column grid that responds at different breakpoints.</p>
+						<p>The grid structure is generated from SASS using <a href="http://semantic.gs" target="_blank">http://semantic.gs</a> but the mixins have been customised to use padding between columns instead of margins. This is to enable solid background colour of columns including the gutters.</p>
+						<p>The code box shows the grid structure and available classes to generate the number of columns the element should fill. The code example creates a grid with side margins that contains two columns: one that takes up one third of the twelve column grid, another that takes up two thirds.</p>
 						<p>&lt;div class="grid-container"&gt; contains the grid and provides the right/left grid margin. Omit this tag if the grid does not require right/left margins.</p>
 						<p>&nbsp;&lt;div class="grid__row"&gt; creates a new cleared row for the grid layout, if required.</p>
-						<p>Columns require the base class "grid-column" to set column styles and then a class to represent the number of columns the element should take up. Available classes are listed in the code box.</p>
+						<p>Columns require the base class "grid-column" to set column styles and then a class to represent the number of columns the element should fill.</p>
 					</div>
 					<div class="grid__column grid__column--one-half">
 						<div class="code-box code-box-tall">
@@ -182,7 +194,7 @@
 				<div class="grid__row dk-component-row">
 					<div class="grid__column grid__column--one-half">
 						<h3 class="heading-style--heading-four">Creating column widths from the SASS</h3>
-						<p>Column widths can be generated in the SASS for an element by calling the grid mixins for generating rows and columns directly.</p>
+						<p>Column widths can be generated in the SASS for an element by calling the grid mixin column(x). Parameter x is the number of columns of the twelve column grid the element should fill.</p>
 					</div>
 					<div class="grid__column grid__column--one-half">
 						<div class="code-box">
@@ -195,8 +207,9 @@
 				<div class="grid__row dk-component-row dk-component-row--with-divider">
 					<div class="grid__column grid__column--one-half">
 						<h3 class="heading-style--heading-four">Nested grids</h3>
-						<p>A nested grid is for a grid within a grid. For example, you may need two grids side by side with their own number of columns for separating main content from aside content, like a grid of blog articles in the main section one the left, and a sidebar on the right.</p>
-						<p>Nested grids can be genereated by using the structure and classes in the code box.</p>
+						<p>A nested grid is a grid within the main grid. An example would be a nested grid of blog articles on the left and a sidebar on the right.</p>
+						<p>&lt;div class="grid__row-container"&gt; is the container for the nested grid and requires a class to set the number of columns.</p>
+						<p>When generating columns within a nested grid (the &lt;li&gt; elements in the code box example) the column mixin requires two parameters, @include column(x,z). x is the number of columns the element should fill based on the twelve column grid. z is the number of columns the parent grid fills. So for an element that requires three column widths of the twelve column grid, within a grid of 9 columns, the mixin call is @include column(3,9).</p>
 					</div>
 					<div class="grid__column grid__column--one-half">
 						<div class="code-box code-box-tall">
@@ -204,10 +217,10 @@
 								&lt;div class="grid-container"&gt;<br />
 								&nbsp;&lt;div class="grid__row-container grid__column--two-thirds"&gt;<br />
          				&nbsp;&nbsp;&lt;ul class="grid__row"&gt;<br />
-								&nbsp;&nbsp;&nbsp;&lt;li>Column content&lt;/li&gt;<br />
-								&nbsp;&nbsp;&nbsp;&lt;li>Column content&lt;/li&gt;<br />
-								&nbsp;&nbsp;&nbsp;&lt;li>Column content&lt;/li&gt;<br />
-								&nbsp;&nbsp;&nbsp;&lt;li>Column content&lt;/li&gt;<br />
+								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;<br />
+								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;<br />
+								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;<br />
+								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;<br />
 								&nbsp;&nbsp;&lt;/ul&gt;<br />
 								&nbsp;&lt;/div&gt;<br />
       					&nbsp;&lt;div class="grid__column grid__column--one-third">Sidebar&lt;/div&gt;
@@ -216,10 +229,37 @@
 					</div>
 				</div>
 
-				<div class="grid__row dk-component-row dk-component-row--with-divider">
+				<div class="grid__row dk-component-row">
 					<div class="grid__column grid__column--full-width">
 						<h2>Responsive Breakpoints</h2>
 					</div>
+
+					<div class="grid__column grid__column--one-half">
+						<h3 class="heading-style--heading-four">Breakpoint mixin</h3>
+						<p>The Breakpoint (<a href="http://breakpoint-sass.com" target="_blank">http://breakpoint-sass.com</a>) ruby gem for SASS is used to create media queries. SASS styling should be structured from smallest screen width upwards. When styling for a particular breakpoint the breakpoint(x) mixin should be called, the x paramenter being a variable set to the minimum screen width size for the styling.</p>
+						<p>The code box example shows styling of the global header height for mobile and the call to the breakpoint mixin to add styling for "phablet" sized devices and up.</p>
+						<p>Calling breakpoint() with a second parameter "true" will include the CSS in the IE8 stylesheet.</p>
+					</div>
+					<div class="grid__column grid__column--one-half">
+						<div class="code-box code-box-tall">
+							<code>
+								/* Breakpoint mixin example */
+								.global-header {<br />
+								&nbsp;height: 42px;<br />
+								&nbsp;@include breakpoint($phablet, true) {<br />
+								&nbsp;&nbsp;height: 62px;<br />
+								&nbsp;}<br />
+								}<br /><br />
+								/* Breakpoint variables */<br />
+								$phablet: 480px;<br />
+								$tablet: 720px;<br />
+								$laptop: 960px;<br />
+								$desktop: 1240px;<br />
+								$desktop-wide: 1600px;<br />
+							</code>
+						</div>
+					</div>
+
 				</div>
 			</div>
 	</div>
