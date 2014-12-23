@@ -11,7 +11,7 @@
 	font-weight: 600;
 	color: $reflection-white;
 	background-color: $reflection-purple;
-	@include transition(border 0s);
+	@include transition(border 0s, background-color 0.2s);
 	&:hover {
 		background-color: $reflection-red;
 	}
@@ -37,23 +37,29 @@
 }
 .ref-button--cta-large {
 	@extend .ref-button--cta-small;
-	padding: 1.15em 1.8em 1.2em 1.85em;
-	@include font-size(16px);
-	border-radius: 0.25em;
-	&:active {
-		border-top: 3px solid #b2334a;
-		padding-bottom: calc(1.2em - 3px);
-	}
-	&:disabled {
+	@include breakpoint($tablet) {
+		padding: 1.15em 1.8em 1.2em 1.85em;
+		@include font-size(16px);
+		border-radius: 0.25em;
 		&:active {
-			border-top: 0;
-			padding-bottom: 1.2em;
+			border-top: 3px solid #b2334a;
+			padding-bottom: calc(1.2em - 3px);
+		}
+		&:disabled {
+			&:active {
+				border-top: 0;
+				padding-bottom: 1.2em;
+			}
 		}
 	}
 }
 .ref-button--cta-large--wide {
 	@extend .ref-button--cta-large;
-	padding: 1.15em 2.3em 1.2em 2.35em;
+	padding-right: 2.3em;
+	padding-left: 2.35em;
+	@include breakpoint($tablet) {
+		padding: 1.15em 2.3em 1.2em 2.35em;
+	}
 }
 .ref-button--function-small {
 	@extend .ref-button;
@@ -92,26 +98,31 @@
 }
 .ref-button--function-large {
 	@extend .ref-button--function-small;
-	padding: 1.1em 1.85em 1.2em 1.85em;
-	@include font-size(16px);
-	&:active {
-		padding-bottom: calc(1.2em - 2px);
-	}
-	&:disabled {
+	@include breakpoint($tablet) {
+		padding: 1.1em 1.85em 1.2em 1.85em;
+		@include font-size(16px);
 		&:active {
-			padding-bottom: 1.2em;
+			padding-bottom: calc(1.2em - 2px);
+		}
+		&:disabled {
+			&:active {
+				padding-bottom: 1.2em;
+			}
 		}
 	}
 }
 .ref-button--function-large--wide {
 	@extend .ref-button--function-large;
-	padding: 1.1em 2.55em 1.2em 2.45em;
+	padding-left: 2.45em;
+	padding-right: 2.55em;
+	@include breakpoint($tablet) {
+		padding: 1.1em 2.55em 1.2em 2.45em;
+	}
 }
 .ref-button--full-width {
 	@extend .ref-button--cta-small;
 	width: 100%;
-	padding-top: 1.15em;
-	padding-bottom: 1.15em;
+	padding: 1.15em 0.5em;
 	@include font-size(16px);
 	&:active {
 		border-top: 3px solid #b2334a;
@@ -123,17 +134,118 @@
 			padding-bottom: 1.15em;
 		}
 	}
+	&.ref-button--success,
+	&.ref-button--error,
+	&.ref-button--is-loading {
+		&:active {
+			padding-bottom: 1.15em;
+		}
+	}
 }
 .ref-button--with-icon {
 	span {
 		position: relative;
-		top: -1px;
-		padding-left: 35px;
-		&:before {
+		top: -0.1em;
+		padding-left: 3.5rem;
+		&.ref-icon-before:before {
 			position: absolute;
 			top: 1px;
 			left: 0;
+			font-size: 2.2rem;
 		}
+	}
+}
+.ref-button--link {
+	padding: 0;
+	display: block;
+	clear: both;
+	@include font-size(14px);
+	@extend .open-sans-semi;
+	color: $reflection-purple;
+	border: none;
+	background: none;
+	cursor: pointer;
+	span {
+		position: relative;
+		padding-left: 3.5rem;
+		&:before {
+			position: absolute;
+			top: 0.1rem;
+			left: 0px;
+			font-size: 1.9rem;
+		}
+	}
+	&:hover {
+		color: #46438b;
+	}
+	&:active {
+		position: relative;
+		top: 2px;
+	}
+	&:disabled {
+		color: #c4c7d0;
+		&:hover, &:active {
+			top: 0;
+			color: #c4c7d0;
+		}
+		span:before {
+			color: #c4c7d0;
+		}
+	}
+}
+.ref-button--link-large {
+	@extend .ref-button--link;
+	@include font-size(16px);
+	span {
+		&:before {
+			position: absolute;
+			top: 0.1rem;
+			font-size: 2.2rem;
+		}
+	}
+}
+
+// Button states
+@keyframes backgroundMove {
+	0% { background-position: 0 0; }
+	100% { background-position: 470px 0; }
+}
+.ref-button--is-loading {
+	background-color: #ff4969;
+	background: repeating-linear-gradient(
+		-45deg,
+		#ff4969,
+		#ff4969 25%,
+		#ef4260 25%,
+		#ef4260 50%,
+		#ff4969 50%
+	) top left;
+	background-size: 47px 47px;
+	animation: backgroundMove 5s linear infinite;
+	cursor: default;
+	&:active {
+		top: 0;
+		border: none;
+	}
+}
+.ref-button--success {
+	background-color: $reflection-green;
+	cursor: default;
+	@include transition(background-color 0s);
+	&:active, &:hover {
+		top: 0;
+		border: none;
+		background-color: $reflection-green;
+	}
+}
+.ref-button--error {
+	background-color: $error-red;
+	cursor: default;
+	@include transition(background-color 0s);
+	&:active, &:hover {
+		top: 0;
+		border: none;
+		background-color: $error-red;
 	}
 }
 
@@ -167,18 +279,3 @@
 		background-color: $reflection-red;
 	}
 }
-
-// .ref-button--cta-small
-// .ref-button--cta-small--wide
-
-// .ref-button--cta-large
-// .ref-button--cta-large--wide
-
-// .ref-button--function-small
-// .ref-button--function-small--wide
-
-// .ref-button--function-large
-// .ref-button--function-large--wide
-
-// .ref-button--link-small
-// .ref-button--link-large
