@@ -91,7 +91,7 @@
 					</div>
 				</div>
 
-				<div class="grid__row dk-component-row dk-component-row--with-divider">
+				<div class="grid__row dk-component-row">
 					<div class="grid__column grid__column--one-third">
 						<h3 class="heading-style--heading-four">Lists</h3>
 						<p>Unordered lists are <strong>Lato Regular</strong> and <strong>#5b5b68</strong>. There are 3 sizes based on the prominence required for the list items: Large, Mid and Small each with differeing font sizes and lin-heights (see right).</p>
@@ -185,13 +185,13 @@
 					<h2>The Code</h2>
 				</div>
 				<div class="grid__row dk-component-row">
-					<div class="grid__column grid__column--one-third">
+					<div class="grid__column grid__column--one-third custom--tablet-one-half">
 						<h3 class="heading-style--heading-four">Font CSS classes and SASS variables</h3>
 						<p>Font classes are available for explicit styling of indiviual HTML elements, but it is preferable to style site components using SASS partials, one partial per component, to keep CSS styles encapsulated per component. Extending classes in SASS reduces the amount of CSS output in the main stylesheet, but for our solution component CSS should be kept separate from global CSS for integration purposes.</p>
 						<p>For styles that will appear in the global stylesheet, @extend the font classes in the SASS where a particular font is required for an element.</p>
 						<p>For site components use the available SASS variables for font family styling.</p>
 					</div>
-					<div class="grid__column grid__column--two-thirds">
+					<div class="grid__column grid__column--two-thirds custom--tablet-one-half">
 						<div class="code-box code-box-tall">
 							<code>
 								/* Available font classes */<br />
@@ -214,7 +214,7 @@
 				</div>
 
 				<div class="grid__row dk-component-row">
-					<div class="grid__column grid__column--one-third">
+					<div class="grid__column grid__column--one-third custom--tablet-one-half">
 						<h3 class="heading-style--heading-four">Headings</h3>
 						<p>Use one h1 heading per page for SEO purposes.</p>
 						<p>Components should use headings in the correct semantic order and each heading has base font styles, including font family, size, line height and top/bottom margins. Where a heading is required to be styled using another heading's styles, use the available heading classes.</p>
@@ -222,7 +222,7 @@
 						<h2>Heading Two</h2>
 						<h3 class="heading-style--heading-four">Heading Three, styled as Heading Four</h4>
 					</div>
-					<div class="grid__column grid__column--two-thirds">
+					<div class="grid__column grid__column--two-thirds custom--tablet-one-half">
 						<div class="code-box code-box-tall">
 							<code>
 								/* Available heading style classes */<br />
@@ -240,13 +240,13 @@
 				</div>
 
 				<div class="grid__row dk-component-row">
-					<div class="grid__column grid__column--one-third">
+					<div class="grid__column grid__column--one-third custom--tablet-one-half">
 						<h3 class="heading-style--heading-four">Font size units</h3>
 						<p>To generate a font size in ems from the SASS call the mixin font-size() with the px value required. This will output a font size in ems in the CSS.</p>
 						<p>Font sizes are stated in ems and inherit from the body px font size. For more control over a particular component font size at different breakpoints, the container of the component should have it's own explicit font size. This should be in px if the component is to remain unaffected by changes in body font size. Children of the componenet will inherit from the fixed component font size and not respond to changes in body font size.</p>
 						<p>The body font size changes at specific breakpoints to increase the font size of all inheriting elements.</p>
 					</div>
-					<div class="grid__column grid__column--two-thirds">
+					<div class="grid__column grid__column--two-thirds custom--tablet-one-half">
 						<div class="code-box">
 							<code>
 								/* Font size mixin for calculating ems<br />
@@ -257,13 +257,13 @@
 				</div>
 
 				<div class="grid__row dk-component-row">
-					<div class="grid__column grid__column--one-third">
+					<div class="grid__column grid__column--one-third custom--tablet-one-half">
 						<h3 class="heading-style--heading-four">Paragraphs</h3>
 						<p>Default styling is in place for the &lt;p&gt; element. Use SASS partials to style &lt;p&gt; elements specific to components if necessary.</p>
 						<p>For featured paragraphs use the class "p-style--featured" on the &lt;p&gt; tag or on the container of the element.</p>
 						<p>For minor paragraphs use the class "p-style--minor" on the &lt;p&gt; tag or (preferably) on the container of the element. For instance, for smaller width columns use the "p-style--minor" on the column container to ensure all paragraphs have the "minor" styling.</p>
 					</div>
-					<div class="grid__column grid__column--two-thirds">
+					<div class="grid__column grid__column--two-thirds custom--tablet-one-half">
 						<div class="code-box">
 							<code>
 								/* Classes for paragraph styles<br />
@@ -275,14 +275,14 @@
 				</div>
 
 				<div class="grid__row dk-component-row">
-					<div class="grid__column grid__column--one-third">
+					<div class="grid__column grid__column--one-third custom--tablet-one-half">
 						<h3 class="heading-style--heading-four">Ordered and unordered lists</h3>
 						<p>Ordered and unordered lists in content require classes, because to provide styles based on just the &lt;ol&gt; or &lt;ul&gt; tag alone would mean that all lists on the site would inherit those styles, which is not suitable for lists that are not text content.</p>
 						<p>For a list with default font sizing and styles use the class "content-list" on the &lt;ol&gt; or &lt;ul&gt; tag.</p>
 						<p>For a minor list, use the class "content-list--minor".</p>
 						<p>For a featured list, use the class "content-list--featured".</p>
 					</div>
-					<div class="grid__column grid__column--two-thirds">
+					<div class="grid__column grid__column--two-thirds custom--tablet-one-half">
 						<div class="code-box code-box-tall">
 							<code>
 								/* Classes for ordered and unordered lists<br />
@@ -298,13 +298,13 @@
 				</div>
 
 				<div class="grid__row dk-component-row">
-					<div class="grid__column grid__column--one-third">
+					<div class="grid__column grid__column--one-third custom--tablet-one-half">
 						<h3 class="heading-style--heading-four">Blockquotes</h3>
 						<p>Blockquote HTML should be structured as per the code box.</p>
 						<p>For a larger blockquote, use the class "blockquote--large" on the &lt;blockquote&gt; tag.</p>
 						<p>For blockquotes that appear elsewhere on the site, use a SASS partial for the component and specificity to style the blockquote further.</p>
 					</div>
-					<div class="grid__column grid__column--two-thirds">
+					<div class="grid__column grid__column--two-thirds custom--tablet-one-half">
 						<div class="code-box code-box-tall">
 							<code>
 								/* Blockquote HTML structure<br />
