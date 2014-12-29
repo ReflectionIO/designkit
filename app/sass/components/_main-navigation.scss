@@ -1,10 +1,14 @@
 $white-navigation: $reflection-white;
 $grey-hover: #bec2d2;
+$blur-opacity: 0.5;
 
 .main-navigation {
 	width: 100%;
 	padding: 27px 0 23px;
 	background-color: $dark-grey-1;
+	a {
+		@include transition(all $base-transition-speed-off, text-shadow 0.3s);
+	}
 	> ul {
 		> li {
 			margin-bottom: 4px;
@@ -22,6 +26,12 @@ $grey-hover: #bec2d2;
 				> a {
 					color: $white-navigation;
 					background-color: $reflection-purple;
+					.is-animating-out & {
+						text-shadow: 4px 0px 1px rgba(252,253,253, $blur-opacity);
+					}
+					.is-animating-in & {
+						text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
+					}
 					&:hover {
 						color: $white-navigation;
 					}
@@ -55,6 +65,12 @@ $grey-hover: #bec2d2;
 			&.is-selected {
 				> a {
 					color: $white-navigation;
+					.is-animating-out & {
+						text-shadow: 4px 0px 1px rgba(252,253,253, $blur-opacity);
+					}
+					.is-animating-in & {
+						text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
+					}
 					&:hover {
 						color: $white-navigation;
 					}
@@ -62,27 +78,39 @@ $grey-hover: #bec2d2;
 			}
 			&.has-child {
 				@extend .ref-icon-after;
-				@extend .ref-icon-after--triangle-down;
+				@extend .ref-icon-after--dot;
 				line-height: 1.5;
 				&:after {
 					position: absolute;
-					right: 21px;
-					top: 2px;
+					right: 9px;
+					top: 5px;
 					z-index: 10;
-					font-size: 13px;
-					color: $light-grey-1;
-					@include transition(transform 0.2s);
+					font-size: 12px;
+					color: #53586c;
+					@include transition(color 0.2s);
 				}
 				&.is-open {
 					&:after {			
-						@include transform(rotate(-180deg));
-						@include transition(transform 0.33s);
+						color: $reflection-purple;
+						@include transition(color 0.33s);
+						.is-animating-out & {
+							text-shadow: 4px 0px 1px rgba(109,105,197, $blur-opacity);
+						}
+						.is-animating-in & {
+							text-shadow: -4px 0px 1px rgba(109,105,197, $blur-opacity);
+						}
 					}
 				}
 			}
 			a {
 				padding: 0 38px 15px 29px;
-				color: $light-grey-1;	
+				color: $light-grey-1;
+				.is-animating-out & {
+					text-shadow: 4px 0px 1px rgba(129,135,157, $blur-opacity);
+				}
+				.is-animating-in & {
+					text-shadow: -4px 0px 1px rgba(129,135,157, $blur-opacity);
+				}
 				&:hover {
 					color: $grey-hover;
 				}
@@ -105,7 +133,7 @@ $grey-hover: #bec2d2;
 			margin-top: 22px;
 		}
 		> li:last-child a {
-			padding-bottom: 30px;
+			padding-bottom: 20px;
 		}
 		li.is-open {
 			+ li {
@@ -119,6 +147,18 @@ $grey-hover: #bec2d2;
 				z-index: 0;
 				@include transition(margin-top 0.2s ease-out);
 			}
+			> a {
+				color: #e1e5e8;
+				.is-animating-out & {
+					text-shadow: 4px 0px 1px rgba(225,229,232, $blur-opacity);
+				}
+				.is-animating-in & {
+					text-shadow: -4px 0px 1px rgba(225,229,232, $blur-opacity);
+				}
+				&:hover {
+					color: #e1e5e8;
+				}
+			}
 		}
 	}
 	ul ul ul {
@@ -131,6 +171,12 @@ $grey-hover: #bec2d2;
 		li.is-selected {
 			> a {
 				color: #e1e5e8;
+				.is-animating-out & {
+					text-shadow: 4px 0px 1px rgba(225,229,232, $blur-opacity);
+				}
+				.is-animating-in & {
+					text-shadow: -4px 0px 1px rgba(225,229,232, $blur-opacity);
+				}
 				&:hover {
 					color: #e1e5e8;
 				}
@@ -144,6 +190,12 @@ $grey-hover: #bec2d2;
 		z-index: 10;
 		color: #767683;
 		@include box-sizing(border-box);
+		.is-animating-out & {
+			text-shadow: 4px 0px 1px rgba(118,118,131, $blur-opacity);
+		}
+		.is-animating-in & {
+			text-shadow: -4px 0px 1px rgba(118,118,131, $blur-opacity);
+		}
 		&:hover {
 			color: #c6c6d4;
 		}

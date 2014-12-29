@@ -1,4 +1,5 @@
 $form-field-background: #333338;
+$blur-opacity: 0.7;
 
 .panel-right-container {
 	position: absolute;
@@ -78,6 +79,12 @@ $form-field-background: #333338;
 			font-weight: 600;
 			color: $reflection-white;
 			@include transition(padding 0.06s);
+			.is-animating-out & {
+				text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
+			}
+			.is-animating-in & {
+				text-shadow: 4px 0px 1px rgba(252,253,253, $blur-opacity);
+			}
 		}
 		input {
 			position: absolute;
@@ -86,6 +93,12 @@ $form-field-background: #333338;
 			@include font-size(14px);
 			color: $light-grey-1;
 			@include transition(bottom 0.06s);
+			.is-animating-out & {
+				text-shadow: -4px 0px 1px rgba(129,135,157, $blur-opacity);
+			}
+			.is-animating-in & {
+				text-shadow: 4px 0px 1px rgba(129,135,157, $blur-opacity);
+			}
 		}
 		+ .form-link {
 			margin-top: 14px;
@@ -99,6 +112,12 @@ $form-field-background: #333338;
 				color: $light-grey-1;
 				font-weight: 400;
 				@include transition(padding 0.06s);
+				.is-animating-out & {
+					text-shadow: -4px 0px 1px rgba(129,135,157, $blur-opacity);
+				}
+				.is-animating-in & {
+					text-shadow: 4px 0px 1px rgba(129,135,157, $blur-opacity);
+				}
 			}
 			input {
 				bottom: 6px;
@@ -111,6 +130,12 @@ $form-field-background: #333338;
 		-webkit-box-shadow: 0 0 0px 1000px $form-field-background inset;
 		-webkit-text-fill-color: $light-grey-1 !important;
 	  background-color: $form-field-background !important;
+	  .is-animating-out & {
+			text-shadow: -4px 0px 1px rgba(129,135,157, $blur-opacity);
+		}
+		.is-animating-in & {
+			text-shadow: 4px 0px 1px rgba(129,135,157, $blur-opacity);
+		}
 	}
 	.form-link {
 		@include font-size(13px);
@@ -118,6 +143,12 @@ $form-field-background: #333338;
 		display: block;
 		font-weight: 600;
 		color: $reflection-purple;
+		.is-animating-out & {
+			text-shadow: -4px 0px 1px rgba(109,105,197, $blur-opacity);
+		}
+		.is-animating-in & {
+			text-shadow: 4px 0px 1px rgba(109,105,197, $blur-opacity);
+		}
 		&:hover {
 			color: lighten($reflection-purple, 10%);
 		}
@@ -138,11 +169,25 @@ $form-field-background: #333338;
 		label {
 			@include font-size(13px);
 			color: $mid-grey-2;
+			.is-animating-out & {
+				text-shadow: -4px 0px 1px rgba(114,118,134, $blur-opacity);
+			}
+			.is-animating-in & {
+				text-shadow: 4px 0px 1px rgba(114,118,134, $blur-opacity);
+			}
 		}
 	}
 	.ref-button--full-width {
 		margin-top: 11px;
 		@include box-sizing(border-box);
+		.is-animating-out & {
+			text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
+			box-shadow: -4px 0px 1px rgba(109,105,197, $blur-opacity);
+		}
+		.is-animating-in & {
+			text-shadow: 4px 0px 1px rgba(252,253,253, $blur-opacity);
+			box-shadow: -4px 0px 1px rgba(109,105,197, $blur-opacity);
+		}
 	}
 	.blockquote-container {
 		width: 100%;
@@ -152,10 +197,36 @@ $form-field-background: #333338;
 			margin-bottom: 0;
 			&:before {
 				color: #36363a;
+				.is-animating-out & {
+					text-shadow: -4px 0px 1px rgba(54,54,58, $blur-opacity);
+				}
+				.is-animating-in & {
+					text-shadow: 4px 0px 1px rgba(54,54,58, $blur-opacity);
+				}
+			}
+			p {
+				.is-animating-out & {
+					text-shadow: -4px 0px 1px rgba(91,91,104, $blur-opacity);
+				}
+				.is-animating-in & {
+					text-shadow: 4px 0px 1px rgba(91,91,104, $blur-opacity);
+				}
 			}
 			cite {
+				.is-animating-out & {
+					text-shadow: -4px 0px 1px rgba(114,118,134, $blur-opacity);
+				}
+				.is-animating-in & {
+					text-shadow: 4px 0px 1px rgba(114,118,134, $blur-opacity);
+				}
 				span {
 					color: $reflection-white;
+					.is-animating-out & {
+						text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
+					}
+					.is-animating-in & {
+						text-shadow: 4px 0px 1px rgba(252,253,253, $blur-opacity);
+					}
 				}
 			}
 		}
