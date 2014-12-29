@@ -246,7 +246,7 @@ textarea, html, body {
   transition: transform 0.15s ease-in;
 }
 /* line 15, ../sass/layout/_layout.scss */
-.l-page-container.panel-left-open {
+.panel-left-open .l-page-container {
   -ms-transform: translateX(220px);
   -webkit-transform: translateX(220px);
   transform: translateX(220px);
@@ -256,7 +256,7 @@ textarea, html, body {
 }
 @media (min-width: 960px) {
   /* line 15, ../sass/layout/_layout.scss */
-  .l-page-container.panel-left-open {
+  .panel-left-open .l-page-container {
     -ms-transform: translateX(0);
     -webkit-transform: translateX(0);
     transform: translateX(0);
@@ -3274,7 +3274,6 @@ input:invalid {
   width: 50px;
   padding: 0;
   font-size: 18px;
-  font-size: 1.8em;
   line-height: 42px;
   color: #6f7589;
   text-align: center;
@@ -3329,12 +3328,13 @@ input:invalid {
 /* line 1, ../sass/components/_main-footer-links.scss */
 .main-footer-links {
   margin-top: 31px;
+  margin-bottom: 50px;
 }
-/* line 3, ../sass/components/_main-footer-links.scss */
+/* line 4, ../sass/components/_main-footer-links.scss */
 .main-footer-links li {
   display: block;
 }
-/* line 5, ../sass/components/_main-footer-links.scss */
+/* line 6, ../sass/components/_main-footer-links.scss */
 .main-footer-links li a {
   padding: 5px 0px 6px 30px;
   display: block;
@@ -3343,7 +3343,7 @@ input:invalid {
   line-height: 1.5;
   color: #767683;
 }
-/* line 11, ../sass/components/_main-footer-links.scss */
+/* line 12, ../sass/components/_main-footer-links.scss */
 .main-footer-links li a:hover {
   color: #bec2d2;
 }
@@ -3602,42 +3602,39 @@ input:invalid {
 /* line 1, ../sass/components/_panel-left.scss */
 .panel-left {
   position: fixed;
+  top: 0;
   width: 220px;
-  min-height: 100vh;
+  height: 100vh;
   padding-top: 42px;
-  padding-bottom: 50px;
-  margin-left: -220px;
+  left: -220px;
   display: inline-block;
+  z-index: 10;
   float: left;
+  overflow: auto;
   font-size: 10px;
   vertical-align: top;
   background-color: #29292c;
+  -webkit-transition: -webkit-transform 0.15s ease-in;
+  transition: transform 0.15s ease-in;
 }
 @media (min-width: 480px) {
   /* line 1, ../sass/components/_panel-left.scss */
   .panel-left {
-    position: fixed;
     padding-top: 62px;
   }
 }
-@media (min-width: 960px) {
-  /* line 1, ../sass/components/_panel-left.scss */
-  .panel-left {
-    -webkit-transition: margin-left 0.15s ease-in;
-    transition: margin-left 0.15s ease-in;
-  }
-}
-/* line 20, ../sass/components/_panel-left.scss */
+/* line 19, ../sass/components/_panel-left.scss */
 .panel-left-open .panel-left {
-  position: relative;
+  -ms-transform: translateX(220px);
+  -webkit-transform: translateX(220px);
+  transform: translateX(220px);
+  -webkit-transition: -webkit-transform 0.15s ease-out;
+  transition: transform 0.15s ease-out;
 }
-@media (min-width: 960px) {
-  /* line 20, ../sass/components/_panel-left.scss */
-  .panel-left-open .panel-left {
-    margin-left: 0;
-    -webkit-transition: margin-left 0.15s ease-out;
-    transition: margin-left 0.15s ease-out;
-  }
+
+/* line 24, ../sass/components/_panel-left.scss */
+#mCSB_1_scrollbar_vertical {
+  z-index: 100;
 }
 
 /* line 3, ../sass/components/_panel-right.scss */
@@ -3702,20 +3699,21 @@ input:invalid {
 /* line 45, ../sass/components/_panel-right.scss */
 .panel-right,
 .no-js .panel-right {
-  position: absolute;
+  position: fixed;
   right: -300px;
   top: 0;
   width: 300px;
-  min-height: 100%;
+  height: 100%;
   padding-top: 42px;
   display: block;
+  overflow: auto;
   font-size: 10px;
   background-color: #29292c;
   overflow: auto;
   -webkit-transition: right 0.18s ease-in;
   transition: right 0.18s ease-in;
 }
-/* line 58, ../sass/components/_panel-right.scss */
+/* line 59, ../sass/components/_panel-right.scss */
 .is-showing .panel-right, .is-showing
 .no-js .panel-right {
   right: 0;
@@ -3726,13 +3724,13 @@ input:invalid {
   -webkit-transition: right 0.12s ease-out 0.12s;
           transition: right 0.12s ease-out 0.12s;
 }
-/* line 62, ../sass/components/_panel-right.scss */
+/* line 63, ../sass/components/_panel-right.scss */
 .panel-right .reflection-form,
 .no-js .panel-right .reflection-form {
   padding: 36px 26px 39px 28px;
   font-family: "Open Sans", sans-serif;
 }
-/* line 66, ../sass/components/_panel-right.scss */
+/* line 67, ../sass/components/_panel-right.scss */
 .panel-right .form-field,
 .no-js .panel-right .form-field {
   position: relative;
@@ -3742,7 +3740,7 @@ input:invalid {
   border-radius: 3px;
   background-color: #333338;
 }
-/* line 73, ../sass/components/_panel-right.scss */
+/* line 74, ../sass/components/_panel-right.scss */
 .panel-right .form-field label,
 .no-js .panel-right .form-field label {
   padding-bottom: 27px;
@@ -3754,7 +3752,7 @@ input:invalid {
   -webkit-transition: padding 0.06s;
   transition: padding 0.06s;
 }
-/* line 81, ../sass/components/_panel-right.scss */
+/* line 82, ../sass/components/_panel-right.scss */
 .panel-right .form-field input,
 .no-js .panel-right .form-field input {
   position: absolute;
@@ -3766,12 +3764,12 @@ input:invalid {
   -webkit-transition: bottom 0.06s;
   transition: bottom 0.06s;
 }
-/* line 89, ../sass/components/_panel-right.scss */
+/* line 90, ../sass/components/_panel-right.scss */
 .panel-right .form-field + .form-link,
 .no-js .panel-right .form-field + .form-link {
   margin-top: 14px;
 }
-/* line 93, ../sass/components/_panel-right.scss */
+/* line 94, ../sass/components/_panel-right.scss */
 .panel-right .form-field.is-closed label,
 .no-js .panel-right .form-field.is-closed label {
   padding-top: 2px;
@@ -3784,14 +3782,14 @@ input:invalid {
   -webkit-transition: padding 0.06s;
   transition: padding 0.06s;
 }
-/* line 102, ../sass/components/_panel-right.scss */
+/* line 103, ../sass/components/_panel-right.scss */
 .panel-right .form-field.is-closed input,
 .no-js .panel-right .form-field.is-closed input {
   bottom: 6px;
   -webkit-transition: bottom 0.06s;
   transition: bottom 0.06s;
 }
-/* line 108, ../sass/components/_panel-right.scss */
+/* line 109, ../sass/components/_panel-right.scss */
 .panel-right input:-webkit-autofill,
 .no-js .panel-right input:-webkit-autofill {
   color: #81879d !important;
@@ -3799,7 +3797,7 @@ input:invalid {
   -webkit-text-fill-color: #81879d !important;
   background-color: #333338 !important;
 }
-/* line 114, ../sass/components/_panel-right.scss */
+/* line 115, ../sass/components/_panel-right.scss */
 .panel-right .form-link,
 .no-js .panel-right .form-link {
   font-size: 13px;
@@ -3809,7 +3807,7 @@ input:invalid {
   font-weight: 600;
   color: #6d69c5;
 }
-/* line 120, ../sass/components/_panel-right.scss */
+/* line 121, ../sass/components/_panel-right.scss */
 .panel-right .form-link:hover,
 .no-js .panel-right .form-link:hover {
   color: #918ed3;
@@ -3821,61 +3819,61 @@ input:invalid {
     padding-top: 62px;
   }
 }
-/* line 127, ../sass/components/_panel-right.scss */
+/* line 128, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox,
 .no-js .panel-right .form-field--checkbox {
   margin-bottom: 8px;
 }
-/* line 129, ../sass/components/_panel-right.scss */
+/* line 130, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox input, .panel-right .form-field--checkbox label,
 .no-js .panel-right .form-field--checkbox input,
 .no-js .panel-right .form-field--checkbox label {
   display: inline-block;
   vertical-align: top;
 }
-/* line 133, ../sass/components/_panel-right.scss */
+/* line 134, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox input,
 .no-js .panel-right .form-field--checkbox input {
   margin-right: 12px;
   background-color: #333338;
 }
-/* line 137, ../sass/components/_panel-right.scss */
+/* line 138, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox label,
 .no-js .panel-right .form-field--checkbox label {
   font-size: 13px;
   font-size: 1.3em;
   color: #727686;
 }
-/* line 142, ../sass/components/_panel-right.scss */
+/* line 143, ../sass/components/_panel-right.scss */
 .panel-right .ref-button--full-width,
 .no-js .panel-right .ref-button--full-width {
   margin-top: 11px;
   box-sizing: border-box;
 }
-/* line 146, ../sass/components/_panel-right.scss */
+/* line 147, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container,
 .no-js .panel-right .blockquote-container {
   width: 100%;
   padding: 29px 26px 38px 28px;
   border-top: 1px solid #161617;
 }
-/* line 150, ../sass/components/_panel-right.scss */
+/* line 151, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container blockquote,
 .no-js .panel-right .blockquote-container blockquote {
   margin-bottom: 0;
 }
-/* line 152, ../sass/components/_panel-right.scss */
+/* line 153, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container blockquote:before,
 .no-js .panel-right .blockquote-container blockquote:before {
   color: #36363a;
 }
-/* line 156, ../sass/components/_panel-right.scss */
+/* line 157, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container blockquote cite span,
 .no-js .panel-right .blockquote-container blockquote cite span {
   color: #fcfdfd;
 }
 
-/* line 163, ../sass/components/_panel-right.scss */
+/* line 164, ../sass/components/_panel-right.scss */
 .no-js .panel-right {
   right: 0;
 }
