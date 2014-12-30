@@ -24,7 +24,7 @@
 				window.setTimeout(function(){
 					$('.panel-left').removeClass('is-animating-in');
 				}, 140);
-			}			
+			}
 		});
 
 		var topLevelNavItems = $('.js-main-nav > ul > li');
@@ -66,12 +66,12 @@
 		topLevelNavItems.each(function(){
 			var totalHeight = 0;
 			$(this).find('li.has-child').each(function(){
-			var collapsibleList = $(this).children('ul');
+				var collapsibleList = $(this).children('ul');
 				collapsibleList.css("margin-top", -collapsibleList.height());
 				totalHeight += collapsibleList.height();
 			});
 			var collapsibleList = $(this).children('ul');
-			collapsibleList.css("margin-top", -totalHeight);
+			collapsibleList.css("margin-top", -collapsibleList.height());
 		});
 
 		$('.js-main-nav > ul > li ul li.js-is-collapsible a').on("click", function(e){
