@@ -2,62 +2,64 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
+    clean: {
+      build: ['build/app/images/*','build/app/css/*','build/app/js/*']
+    },
+
     copy: {
-      task0: {
-        src: 'app/index.html',
-        dest: 'build/index.html'
+      main: {
+        files: [
+          // includes files within path
+          {expand: true, src: ['app/**'], dest: 'build/', filter: 'isFile'},
+        ],
       },
     },
 
     useminPrepare: {
       html: 'app/index.html',
       options: {
-        dest: 'build/index.html'
+        root: 'app/',
+        dest: 'build/app/',
       }
     },
 
     filerev: {
-      options: {
-        algorithm: 'md5',
-        length: 8
-      },
-      images: {
-        src: 'app/images/*.{jpg,jpeg,gif,png,svg}',
-        dest: 'build/images/'
+      build: {
+        options: {
+          encoding: 'utf8',
+          algorithm: 'md5',
+          length: 20
+        },
+        files: [{
+          // add this line for js: 'build/app/js/*.js', currently not versioned
+          src: [
+            'build/app/images/*.{png,gif,jpg,svg}',
+            'build/app/css/*.css',
+          ]
+        }]
       }
     },
 
     usemin: {
-      html: ['build/index.html'],
+      html: ['build/app/*.html'],
+      css: ['build/app/css/*.css'],
       options: {
-        assetsDirs: ['build']
+        assetsDirs: ['build/app/','build/app/css']
       }
     },
   });
 
-  grunt.registerTask('version-assets', 'version the static assets just created', function() {
-
-    var Version = require("node-version-assets");
-    var versionInstance = new Version({
-        assets: ['app/css/reflection-main.css', 'app/css/reflection-main-ie8.css', 'app/css/designkit.css'],
-        grepFiles: ['app/index.html'],
-        keepOriginal: true
-    });
-
-    var cb = this.async(); // grunt async callback
-    versionInstance.run(cb);
-	});
-
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-filerev');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-usemin');
 
 	// make sure versioning is final task
-	grunt.registerTask('build', [
-    'version-assets',
-    'copy:task0',
+	grunt.registerTask('default', [
+    'clean:build',
     'useminPrepare',
+    'copy:main',
     'filerev',
-    'usemin'
+    'usemin',
   ]);
 };
