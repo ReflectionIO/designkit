@@ -272,6 +272,8 @@
 	</div>
 
 	<div id="js-component-import--panel-right" class="panel-right-container"></div>
+
+	<div id="js-component-import--search"></div>
 	
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/jquery-ui.custom.min.js"></script>
@@ -301,6 +303,10 @@
 			var htmlPanelRight = templatePanelRight({});
 			$("#js-component-import--panel-right").html(htmlPanelRight);
 
+			var templateSearchOverlay = Handlebars.templates['searchOverlay'];
+			var htmlSearchOverlay = templateSearchOverlay({});
+			$("#js-component-import--search").html(htmlSearchOverlay);
+
 	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
 			var htmlDesignKitBanner = templateDesignKitBanner({ bannerImage: "images/banner-icon-buttons.png", bannerImageAlt: "Button icon", sectionTitle: "Design Assets", componentTitle: "Buttons", Intro: "Our buttons perform a range of tasks such as linking to other sections, opening panels or submitting a form or a post. See and interact with the different types below and learn the applications in which they can be used." });
 			$("#js-component-import--design-kit-banner").html(htmlDesignKitBanner);
@@ -323,6 +329,11 @@
 			var script = document.createElement('script');
 		  script.type = 'text/javascript';
 		  script.src = 'js/nav-structure.js';
+	  	document.body.appendChild(script);
+
+	  	var script = document.createElement('script');
+		  script.type = 'text/javascript';
+		  script.src = 'js/search-global.js';
 	  	document.body.appendChild(script);
 
 	  	var thisPageLink = $('#js-component-import--panel-left').find('a[href="buttons.html"]');

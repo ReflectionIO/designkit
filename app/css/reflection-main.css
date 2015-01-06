@@ -164,10 +164,24 @@ a:hover {
   width: 100%;
   min-height: 100vh;
   overflow: visible;
-  -webkit-transition: -webkit-transform 0.15s ease-in;
-  transition: transform 0.15s ease-in;
+  -webkit-transition: -webkit-transform 0.15s ease-in, -webkit-filter 0.18s, -webkit-transform 0.15s ease-in, filter 0.18s;
+  transition: transform 0.15s ease-in, filter 0.18s;
 }
 /* line 15, ../sass/layout/_layout.scss */
+.l-page-container.is-blurred {
+  -webkit-filter: blur(0.3px);
+          filter: blur(0.3px);
+  -webkit-transition: -webkit-filter 0.5s, filter 0.5s;
+  transition: filter 0.5s;
+}
+/* line 19, ../sass/layout/_layout.scss */
+.l-page-container.is-blurred-heavy {
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+  -webkit-transition: -webkit-filter 0.5s, filter 0.5s;
+  transition: filter 0.5s;
+}
+/* line 23, ../sass/layout/_layout.scss */
 .panel-left-open .l-page-container {
   -ms-transform: translateX(220px);
   -webkit-transform: translateX(220px);
@@ -177,7 +191,7 @@ a:hover {
   overflow: visible;
 }
 @media (min-width: 960px) {
-  /* line 15, ../sass/layout/_layout.scss */
+  /* line 23, ../sass/layout/_layout.scss */
   .panel-left-open .l-page-container {
     -ms-transform: translateX(0);
     -webkit-transform: translateX(0);
@@ -185,7 +199,7 @@ a:hover {
   }
 }
 
-/* line 24, ../sass/layout/_layout.scss */
+/* line 32, ../sass/layout/_layout.scss */
 .l-main {
   width: 100%;
   padding-top: 42px;
@@ -196,19 +210,19 @@ a:hover {
   transition: width 0.15s ease-in;
 }
 @media (min-width: 480px) {
-  /* line 24, ../sass/layout/_layout.scss */
+  /* line 32, ../sass/layout/_layout.scss */
   .l-main {
     padding-top: 62px;
   }
 }
-/* line 37, ../sass/layout/_layout.scss */
+/* line 45, ../sass/layout/_layout.scss */
 .panel-left-open .l-main {
   width: 100%;
   -webkit-transition: width 0.15s ease-out;
   transition: width 0.15s ease-out;
 }
 @media (min-width: 960px) {
-  /* line 37, ../sass/layout/_layout.scss */
+  /* line 45, ../sass/layout/_layout.scss */
   .panel-left-open .l-main {
     width: calc(100% - 220px);
     -webkit-transition: width 0.15s ease-out;
@@ -577,7 +591,7 @@ a:hover {
 }
 
 /* line 45, ../sass/ui/_typography.scss */
-.open-sans-semi, h1, h2, h3, h4, h5, h6, .heading-style, .heading-style--heading-one, .heading-style--heading-two, .heading-style--heading-three, .heading-style--heading-four, .heading-style--heading-five, .heading-style--heading-six, ol.content-list--featured li:before, .ref-button--link, .ref-button--link-large {
+.open-sans-semi, h1, h2, h3, h4, h5, h6, .heading-style, .heading-style--heading-one, .heading-style--heading-two, .heading-style--heading-three, .heading-style--heading-four, .heading-style--heading-five, .heading-style--heading-six, ol.content-list--featured li:before, .ref-button--link, .ref-button--link-large, input[type="search"].search__input-search {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
@@ -1106,7 +1120,7 @@ strong {
 }
 
 /* line 5, ../sass/helpers/_helpers.scss */
-.hidden-text {
+.hidden-text, .search__label-search span {
   text-align: left;
   text-indent: -999em;
 }
@@ -3141,8 +3155,8 @@ input:invalid {
   font-size: 10px;
   vertical-align: top;
   background-color: #29292c;
-  -webkit-transition: left 0.15s ease-in, -webkit-transform 0.15s ease-in;
-  transition: left 0.15s ease-in, transform 0.15s ease-in;
+  -webkit-transition: left 0.15s ease-in, -webkit-transform 0.15s ease-in, -webkit-filter 0.27s, left 0.15s ease-in, -webkit-transform 0.15s ease-in, filter 0.27s;
+  transition: left 0.15s ease-in, transform 0.15s ease-in, filter 0.27s;
 }
 @media (min-width: 480px) {
   /* line 1, ../sass/components/_panel-left.scss */
@@ -3150,8 +3164,22 @@ input:invalid {
     padding-top: 62px;
   }
 }
+/* line 19, ../sass/components/_panel-left.scss */
+.panel-left.is-blurred {
+  -webkit-filter: blur(0.3px);
+          filter: blur(0.3px);
+  -webkit-transition: -webkit-filter 0.5s, filter 0.5s;
+  transition: filter 0.5s;
+}
+/* line 23, ../sass/components/_panel-left.scss */
+.panel-left.is-blurred-heavy {
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+  -webkit-transition: -webkit-filter 0.5s, filter 0.5s;
+  transition: filter 0.5s;
+}
 @media (min-width: 960px) {
-  /* line 19, ../sass/components/_panel-left.scss */
+  /* line 27, ../sass/components/_panel-left.scss */
   .panel-left-open .panel-left {
     left: 0px;
     -webkit-transition: left 0.15s ease-out;
@@ -3160,7 +3188,7 @@ input:invalid {
 }
 
 @media screen and (max-width: 960px) {
-  /* line 27, ../sass/components/_panel-left.scss */
+  /* line 35, ../sass/components/_panel-left.scss */
   .panel-left-open .panel-left {
     -ms-transform: translateX(220px);
     -webkit-transform: translateX(220px);
@@ -3169,7 +3197,7 @@ input:invalid {
     transition: transform 0.15s ease-out;
   }
 }
-/* line 32, ../sass/components/_panel-left.scss */
+/* line 40, ../sass/components/_panel-left.scss */
 #mCSB_1_scrollbar_vertical {
   z-index: 100;
 }
@@ -3527,6 +3555,116 @@ input:invalid {
   right: 0;
 }
 
+/* line 1, ../sass/components/_search-global.scss */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: #000;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: opacity 0.18s, visibility 0.01s 0.27s;
+  -o-transition: opacity 0.18s, visibility 0.01s 0.27s;
+  -webkit-transition: opacity 0.18s, visibility 0.01s;
+  -webkit-transition-delay: 0s, 0.27s;
+  -webkit-transition: opacity 0.18s, visibility 0.01s 0.27s;
+          transition: opacity 0.18s, visibility 0.01s 0.27s;
+}
+/* line 12, ../sass/components/_search-global.scss */
+.search-overlay.is-showing {
+  visibility: visible;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  -webkit-transition: opacity 0.27s;
+  transition: opacity 0.27s;
+}
+/* line 17, ../sass/components/_search-global.scss */
+.no-js .search-overlay {
+  display: none;
+}
+
+/* line 21, ../sass/components/_search-global.scss */
+.search-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1001;
+  text-align: center;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition: opacity 0.18s, visibility 0.01s 0.27s;
+  -o-transition: opacity 0.18s, visibility 0.01s 0.27s;
+  -webkit-transition: opacity 0.18s, visibility 0.01s;
+  -webkit-transition-delay: 0s, 0.27s;
+  -webkit-transition: opacity 0.18s, visibility 0.01s 0.27s;
+          transition: opacity 0.18s, visibility 0.01s 0.27s;
+}
+/* line 32, ../sass/components/_search-global.scss */
+.search-container.is-showing {
+  visibility: visible;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -moz-transition: opacity 0.2s 0.27s;
+  -o-transition: opacity 0.2s 0.27s;
+  -webkit-transition: opacity 0.2s;
+  -webkit-transition-delay: 0.27s;
+  -webkit-transition: opacity 0.2s 0.27s;
+          transition: opacity 0.2s 0.27s;
+}
+/* line 37, ../sass/components/_search-global.scss */
+.no-js .search-container {
+  display: none;
+}
+
+/* line 41, ../sass/components/_search-global.scss */
+.search__form {
+  margin-top: 230px;
+}
+
+/* line 44, ../sass/components/_search-global.scss */
+.search__label-search {
+  position: relative;
+  top: 8px;
+  width: 37px;
+  height: 37px;
+  line-height: 37px;
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 52, ../sass/components/_search-global.scss */
+.search__label-search:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  font-size: 37px;
+  color: #b5b8c5;
+}
+/* line 60, ../sass/components/_search-global.scss */
+.search__label-search span {
+  display: inline-block;
+}
+
+/* line 65, ../sass/components/_search-global.scss */
+input[type="search"].search__input-search {
+  margin-left: 13px;
+  padding-bottom: 8px;
+  display: inline-block;
+  vertical-align: top;
+  overflow: visible;
+  font-size: 31px;
+  line-height: 1.5;
+  color: white;
+  border-bottom: 1px solid #fff;
+}
+
 /* line 1, ../sass/components/_site-logo.scss */
 .site-logo {
   display: inline-block;
@@ -3556,11 +3694,12 @@ html, body {
 }
 
 /* line 48, ../sass/base/_base.scss */
+html.no-scroll,
 body.no-scroll {
   overflow: hidden;
 }
 
-/* line 51, ../sass/base/_base.scss */
+/* line 52, ../sass/base/_base.scss */
 p.browserupgrade {
   width: 100%;
   padding: 20px;

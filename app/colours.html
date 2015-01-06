@@ -232,6 +232,8 @@
 	</div>
 
 	<div id="js-component-import--panel-right" class="panel-right-container"></div>
+
+	<div id="js-component-import--search"></div>
 	
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/jquery-ui.custom.min.js"></script>
@@ -261,6 +263,10 @@
 			var htmlPanelRight = templatePanelRight({});
 			$("#js-component-import--panel-right").html(htmlPanelRight);
 
+			var templateSearchOverlay = Handlebars.templates['searchOverlay'];
+			var htmlSearchOverlay = templateSearchOverlay({});
+			$("#js-component-import--search").html(htmlSearchOverlay);
+
 	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
 			var htmlDesignKitBanner = templateDesignKitBanner({ bannerImage: "images/banner-icon-palette.png", bannerImageAlt: "Art palette icon", sectionTitle: "Design Assets", componentTitle: "Colours", Intro: "Our colour palette is designed to exude authority and trustworthiness whilst also making content easy to consume and interact with. Our colour accents are a clear identifier in our industry but also denote function as well as our brand values and personality." });
 			$("#js-component-import--design-kit-banner").html(htmlDesignKitBanner);
@@ -283,6 +289,11 @@
 			var script = document.createElement('script');
 		  script.type = 'text/javascript';
 		  script.src = 'js/nav-structure.js';
+	  	document.body.appendChild(script);
+
+	  	var script = document.createElement('script');
+		  script.type = 'text/javascript';
+		  script.src = 'js/search-global.js';
 	  	document.body.appendChild(script);
 
 			// open menu current
