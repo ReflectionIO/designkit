@@ -16,7 +16,7 @@ $base-margin-bottom: 4rem;
 		@include transform(translateX(220px));
 		@include transition(transform 0.15s ease-out);
 		overflow: visible;
-		@include breakpoint($laptop) {
+		@include breakpoint($laptop, true) {
 			@include transform(translateX(0));
 		}		
 	}
@@ -37,8 +37,9 @@ $base-margin-bottom: 4rem;
 	.panel-left-open & {
 		width: 100%;
 		@include transition(width 0.15s ease-out);
-		@include breakpoint($laptop) {
+		@include breakpoint($laptop, true) {
 			width: calc(100% - 220px);
+			@include transition(width 0.15s ease-out);
 		}
 	}
 }

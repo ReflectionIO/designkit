@@ -1,12 +1,14 @@
 .button-example-container {
 	@include column(8,8);
+	margin-bottom: 1em;
 	margin-bottom: 1rem;
 	overflow: visible;
-	@include breakpoint($phablet) {
+	@include breakpoint($phablet, true) {
 		@include column(4,8);
 	}
 	button {
 		margin-right: 20px;
+		margin-bottom: 2em;
 		margin-bottom: 2rem;
 		float: left;
 	}
@@ -20,7 +22,7 @@
 	+ .button-example-code-container {
 		margin-top: 1em;
 	}
-	@include breakpoint($tablet) {
+	@include breakpoint($tablet, true) {
 		@include vertical-centre-content;
 		h2 {
 			width: 49%;

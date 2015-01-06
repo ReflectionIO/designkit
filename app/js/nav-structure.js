@@ -1,12 +1,64 @@
 (function($) {
-	
+
 	function initialise() {
+		var ieVersion = detectIE();
+		//alert(ieVersion);
+		if(ieVersion) {
+			$('body').addClass('is-ie ie' + ieVersion);
+		}
+		setMainContentWidthForIE();
+		initBrowserPulling();
 		initMainNavCollapsibleLists();
 		initLeftPanelInteraction();
 		initGlobalFormInteractions();
 		initRightPanelInteraction();
 		initCustomScrollbar();
 	};
+
+	function initBrowserPulling() {
+		$(window).resize(function () {
+			setMainContentWidthForIE();
+	  });
+	}
+
+	function detectIE() {
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf('MSIE ');
+    var trident = ua.indexOf('Trident/');
+
+    if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    if (trident > 0) {
+        // IE 11 (or newer) => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    // other browser
+    return false;
+	}
+
+	function setMainContentWidthForIE() {
+		// calc(100%-220px) CSS does work for IE to set the width, but the width transition effect doesn't work for calc'd width in IE
+		// calculate the width for IE instead using JavaScript
+		if($('.is-ie').length > 0) {
+			if($(window).width() > 960) {
+				if($('.panel-left-open').length > 0) {
+					var mainContentElement = $('.is-ie .l-main');
+					mainContentElement.width($(window).width() - 220);
+				}
+				else {
+					$('.is-ie .l-main').width("100%");
+				}
+			}
+			else {
+				$('.is-ie .l-main').width("100%");
+			}
+		}
+	}
 
 	function initLeftPanelInteraction() {
 
@@ -15,14 +67,16 @@
 			if($('body').hasClass('panel-left-open')) {
 				$('.panel-left').addClass('is-animating-out');
 				$('body').removeClass('panel-left-open');
+				setMainContentWidthForIE();
 				window.setTimeout(function(){
-					$('.panel-left').removeClass('is-animating-out');
+					$('.panel-left').removeClass('is-animating-out'); // class for motion blur effect
 				}, 140);
 			} else {
 				$('body').toggleClass('panel-left-open');
 				$('.panel-left').addClass('is-animating-in');
+				setMainContentWidthForIE();
 				window.setTimeout(function(){
-					$('.panel-left').removeClass('is-animating-in');
+					$('.panel-left').removeClass('is-animating-in'); // class for motion blur effect
 				}, 140);
 			}
 		});
@@ -153,9 +207,11 @@
 	}
 
 	function initCustomScrollbar() {
-    $(".js-custom-scrollbar").mCustomScrollbar({
-    	scrollInertia: 200
-    });
+		if($('.ie10').length == 0 && $('.ie8').length == 0) {
+			$(".js-custom-scrollbar").mCustomScrollbar({
+	    	scrollInertia: 200
+	    });
+		}
 	}
 
 	$(document).ready(function(){

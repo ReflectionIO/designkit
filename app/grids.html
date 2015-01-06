@@ -60,8 +60,8 @@
 				</div>
 			
 				<div class="grid__row grid__row--demo">
-					<div class="grid__column grid__column--full-width grid-demo-column">
-						<button class="ref-button ref-button--toggle js-toggle-overlay">Overlay Grid</button>
+					<div class="grid__column grid__column--full-width grid-demo-column vertical-centre-content">
+						<button class="ref-button--cta-small js-toggle-overlay">Overlay Grid</button>
 					</div>
 				</div>
 			</div>
@@ -277,7 +277,9 @@
  	<script src="js/vendor/handlebars-v2.0.0.js"></script>
  	<script src="js/templates/templates.js"></script>
 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
-	<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
 
   <script>
   	(function($) {
@@ -309,6 +311,14 @@
 		}
 
 		function loadComponentScripts() {
+			// load custom scroll bars for everything but IE9/10
+			if (/*@cc_on!@*/true) {
+				var script = document.createElement('script');
+			  script.type = 'text/javascript';
+			  script.src = 'js/vendor/jquery.mCustomScrollbar.concat.min.js';
+		  	document.body.appendChild(script);
+			}
+	
 			var script = document.createElement('script');
 		  script.type = 'text/javascript';
 		  script.src = 'js/nav-structure.js';

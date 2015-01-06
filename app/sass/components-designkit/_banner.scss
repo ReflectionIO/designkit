@@ -6,7 +6,7 @@
 	@include breakpoint($phablet) {
 		padding-bottom: 80px;
 	}
-	@include breakpoint($tablet) {
+	@include breakpoint($tablet, true) {
 		height: 414px;
 		padding-bottom: 0;
 	}
@@ -35,11 +35,11 @@
 	width: 100%;
 	margin-top: 30px;
 	margin-bottom: 20px;
-	@include breakpoint($tablet, true) {
+	@include breakpoint($tablet) {
 		width: 150px;
 		margin-top: -24px;
 	}
-	@include breakpoint($laptop, true) {
+	@include breakpoint($laptop) {
 		margin-left: -10px;
 	}
 	@include breakpoint($desktop, true) {
@@ -90,7 +90,8 @@
 		color: white;
 		letter-spacing: -0.01em;
 		line-height: 1.1em;
-		@include breakpoint($phablet) {
+		overflow: visible;
+		@include breakpoint($phablet, true) {
 			@include font-size(51px);
 		}
 	}
@@ -98,12 +99,11 @@
 		@include font-size(15px);
 		color: $purple-pale;
 		letter-spacing: 0.007em;
-		@include breakpoint($phablet) {
+		@include breakpoint($phablet, true) {
 			@include font-size(17px);
 		}
 		@include breakpoint($tablet, true) {
-			padding: 0;
-			//@include font-size(16px);		
+			padding: 0;	
 		}
 	}
 }
