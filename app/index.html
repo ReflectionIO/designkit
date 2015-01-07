@@ -43,7 +43,36 @@
 
 	<div id="js-component-import--panel-right" class="panel-right-container"></div>
 
-	<div id="js-component-import--search"></div>
+	<div id="js-component-import--search">
+		<div class="search-overlay"></div>
+		<div class="search-container">
+			<form class="search__form">
+				<label class="ref-icon-before ref-icon-before--search search__label-search" for="site-search"><span>Search:</span></label>
+				<input type="search" name="search" id="search" placeholder="Search for app or developer" class="search__input-search js-get-items" />
+			</form>
+			<div class="search__results-container">
+				<div class="search__results-section js-item-results--apps">
+					<h2>Apps</h2>
+					<ul>
+						<li><a href="#"><img src="images/placeholder-app-thumb-sm1.png" alt="App icon"/>Lorem ipsum dolor</a></li>
+						<li><a href="#"><img src="images/placeholder-app-thumb-sm2.png" alt="App icon"/>Lorem ipsum dolor</a></li>
+						<li><a href="#"><img src="images/placeholder-app-thumb-sm3.png" alt="App icon"/>Lorem ipsum dolor</a></li>
+						<li><a href="#"><img src="images/placeholder-app-thumb-sm4.png" alt="App icon"/>Lorem ipsum dolor</a></li>
+						<li><a href="#"><img src="images/placeholder-app-thumb-sm5.png" alt="App icon"/>Lorem ipsum dolor</a></li>
+						<li><a href="#"><img src="images/placeholder-app-thumb-sm6.png" alt="App icon"/>Lorem ipsum dolor</a></li>
+					</ul>
+				</div>
+				<div class="search__results-section search__results-section--developers js-item-results--developers">
+					<h2>Developers</h2>
+					<ul>
+						<li><a href="#">Lorem ipsum dolor</a></li>
+						<li><a href="#">Lorem ipsum dolor</a></li>
+						<li><a href="#">Lorem ipsum dolor</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/jquery-ui.custom.min.js"></script>
@@ -75,7 +104,7 @@
 
 			var templateSearchOverlay = Handlebars.templates['searchOverlay'];
 			var htmlSearchOverlay = templateSearchOverlay({});
-			$("#js-component-import--search").html(htmlSearchOverlay);
+			// $("#js-component-import--search").html(htmlSearchOverlay);
 
 	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
 			var htmlDesignKitBanner = templateDesignKitBanner({ bannerImage: "images/banner-icon-typography.png", bannerImageAlt: "Tt", sectionTitle: "Design Assets", componentTitle: "Component Title", Intro: "Component Introduction" });
