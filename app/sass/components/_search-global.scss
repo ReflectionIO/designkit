@@ -30,27 +30,78 @@
 	visibility: hidden;
 	@include transition(opacity 0.18s, visibility 0.01s 0.27s);
 	&.is-showing {
+		overflow: auto;
 		visibility: visible;
 		@include opacity(1);
-		@include transition(opacity 0.2s 0.27s);
+		@include transition(opacity 0.2s 0.15s);
 	}
 	.no-js & {
 		display: none;
 	}
 }
 .search__form {
-	margin-top: 230px;
-	margin-bottom: 30px;
-	margin-left: -52px;
+	margin-top: 69px;
+	margin-bottom: 31px;
+	@include breakpoint($phablet) {
+		margin-top: 85px;
+	}
+	@include breakpoint($tablet) {
+		margin-top: 140px;
+		margin-left: 36px;
+	}
+	@include breakpoint($laptop) {
+		margin-top: 221px;
+		margin-left: -48px;
+	}
+	.button-cancel {
+		position: relative;
+		top: 10px;
+		width: 30px;
+		height: 30px;
+		margin-left: 10px;
+		display: inline-block;
+		background-color: transparent;
+		&:before {
+			font-size: 22px;
+			color: #b5b8c5;
+			@include transition(color $base-transition-speed-off);
+		}
+		&:hover {
+			&:before {
+				color: lighten(#b5b8c5, 20%);
+				@include transition(color $base-transition-speed-on);
+			}
+		}
+		&:active {
+			margin-top: 2px;
+		}
+		span {
+			display: inline-block;
+			text-align: left;
+			text-indent: -999em;
+		}
+		@include breakpoint($tablet) {
+			height: 22px;
+			top: 12px;
+			&:before {
+				font-size: 30px;
+			}
+		}
+	}
 }
 .search__label-search {
 	position: relative;
 	top: 8px;
 	width: 37px;
 	height: 37px;
+	margin: 0px auto 20px;
+	display: block;
 	line-height: 37px;
-	display: inline-block;
 	vertical-align: top;
+	@include breakpoint($tablet) {
+		display: inline-block;
+		margin: 0;
+	}
 	&:before {
 		position: absolute;
 		left: 0;
@@ -65,37 +116,52 @@
 	}
 }
 input[type="search"].search__input-search {
-	width: 430px;
+	width: 249px;
 	margin-left: 13px;
 	padding-bottom: 8px;
+	padding-right: 10px;
 	display: inline-block;
 	vertical-align: top;
 	overflow: visible;
 	@extend .open-sans-semi;
-	font-size: 31px;
+	font-size: 24px;
 	line-height: 1.5;
 	letter-spacing: -0.5px;
 	color: white;
 	border-bottom: 1px solid #fff;
+	@include breakpoint($tablet) {
+		width: 398px;
+		font-size: 31px;
+	}
 }
 .search__results-container {
-	width: 430px;
-	margin: 0 auto;
+	width: 292px;
+	margin: -1px auto 0;
 	overflow: visible;
+	@include breakpoint($tablet) {
+		width: 432px;
+	}
+	@include breakpoint($laptop) {
+		width: 444px;
+	}
 }
 .search__results-section {
 	position: relative;
-	margin-bottom: 35px;
+	margin-bottom: 22px;
 	overflow: visible;
 	text-align: left;
 	h2 {
-		position: absolute;
-		top: 0;
-		left: -118px;
 		width: 100px;
+		margin-left: 35px;
 		font-size: 15.9px;
-		text-align: right;
 		color: #b6b9c6;
+		@include breakpoint($laptop) {
+			position: absolute;
+			top: 0;
+			left: -118px;
+			margin-left: 0;
+			text-align: right;
+		}
 	}
 	ul {
 		max-height: 153px;
@@ -112,7 +178,11 @@ input[type="search"].search__input-search {
 		}
 	}
 	li {
-		margin-bottom: 6px;
+		margin-bottom: 5px;
+		overflow: visible;
+		@include breakpoint($laptop) {
+			margin-bottom: 4px;
+		}
 		img {
 			position: relative;
 			top: 2px;
@@ -122,8 +192,16 @@ input[type="search"].search__input-search {
 			vertical-align: top;
 		}
 		span {
-			width: 390px;
+			position: relative;
+			top: 2px;
+			width: 234px;
+			padding-bottom: 2px;
 			display: inline-block;
+			line-height: 1;
+			@include ellipses();
+			@include breakpoint($tablet) {
+				width: 390px;
+			}
 		}
 	}
 	&.search__results-section--developers {

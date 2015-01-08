@@ -2,32 +2,40 @@
 
 	function initialise() {
 		// Open search functionality
-		var searchForm = $('.form--search__input-search');
-		if(searchForm.length) {
-			searchForm.click(function(){
-				$('.search-overlay').toggleClass('is-showing');
-				$('.search-container').toggleClass('is-showing');
-				$('.l-page-container').toggleClass('is-blurred-heavy');
-				$('.panel-left').toggleClass('is-blurred-heavy');
-				$('html').toggleClass('no-scroll');
-				$('.search__input-search').select();
+		var searchOpenLink = $('.js-open-search'),
+				searchCancelLink = $('.js-close-search');
+		if(searchOpenLink.length) {
+			searchOpenLink.click(function(e){
+				e.preventDefault();
+				toggleSearchView();
+			});
+			searchCancelLink.click(function(e){
+				e.preventDefault();
+				toggleSearchView();
 			});
 		}
 
 		initSearch();
 	};
 
+	function toggleSearchView() {
+		$('.search-overlay').toggleClass('is-showing');
+		$('.search-container').toggleClass('is-showing');
+		$('.l-page-container').toggleClass('is-blurred-heavy');
+		$('.panel-left').toggleClass('is-blurred-heavy');
+		$('html').toggleClass('no-scroll');
+		$('.search__input-search').select();
+	}
+
 	function initSearch() {
-		// get mock data - for now set explicit, will become an ajax call to read a file that returns a json object
+		// get mock data from file - this will contain results when implemented so shouldn't need JS regex below
 		var data;
 		$.ajax({
-        url: "js/search-data.txt",
+        url: "js/search-data.json",
         async: true,
         dataType: "json",
         success: function (items){
-        	console.log('success');
           data = items;
-          console.log(data);
         }
     });
 		
@@ -35,7 +43,7 @@
 				$appsList = $('.js-item-results--apps ul'),
 				$devList = $('.js-item-results--developers ul');
 
-		// on key press loop through object and search
+		// on key up loop through object and search - for implentation, amend to call service to return results in json and display
 		$('.js-get-items').keyup(function(){
 			searchResultsApps = [];
 			searchResultsDevs = [];
