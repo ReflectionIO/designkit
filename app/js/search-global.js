@@ -12,6 +12,7 @@
 			searchCancelLink.click(function(e){
 				e.preventDefault();
 				toggleSearchView();
+				$('.js-get-items').blur();
 			});
 		}
 
