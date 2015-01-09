@@ -4,7 +4,7 @@
 	height: 42px;
 	z-index: 1000;
 	font-size: 0;
-	background-color: $blue-dark;
+	background-color: $dark-grey-2;
 	@include breakpoint($phablet, true) {
 		height: 62px;
 	}
@@ -25,36 +25,53 @@
 			width: 100%;
 		}
 	}
-	.ref-button--small {
+	.ref-button--cta-small--wide {
 		margin-top: 14px;
 		margin-right: 20px;
 		vertical-align: top;
+		font-size: 13px;
 	}
-	.form--search {
+	.search-link-container {
 		padding-top: 10px;
 		margin-right: 0;
 		display: inline-block;
 		vertical-align: top;
 		@include breakpoint($phablet) {			
-			padding-top: 18px;
+			padding-top: 21px;
 			margin-right: 6px;
 		}
 		@include breakpoint($tablet, true) {
-			margin-right: 10px;
+			margin-right: 23px;
 		}
 	}
-	.form--search__label-search {
-		width: 20px;
-		margin-right: 16px;
-		margin-top: 0;
-		@include breakpoint($phablet, true) {
-			margin-top: 3px;
+	.link-open-search {
+		font-family: $brand-heading-font;
+		font-size: 0;
+		font-weight: 400;
+		letter-spacing: -0.2px;
+		color: $light-grey-1;
+		border: none;
+		@extend %font-smoothing;
+		outline: none;
+		@include breakpoint($tablet) {
+			font-size: 14px;
 		}
-	}
-	.form--search__input-search {
-		display: none;
-		@include breakpoint($tablet, true) {
+		&:hover {
+			color: lighten($light-grey-1, 20%);
+		}
+		&:before {
+			position: relative;
+			top: -1px;
+			margin-right: 14px;
+			font-size: 22px;
+			line-height: 21px;
+			color: $mid-grey-2;
+			vertical-align: top;
+		}
+		span {
+			padding-top: 2px;
 			display: inline-block;
+			vertical-align: top;
 		}
 	}
 	.actions-group-container {
@@ -82,17 +99,17 @@
 		height: 42px;
 		display: inline-block;
 		vertical-align: top;
-		background-color: $blue-dark;
+		background-color: $dark-grey-2;
 		&.is-on {
 			&:before {
-				color: #C4C7D0;
+				color: $light-grey-2;
 				@include transform(rotate(-90deg));
 				@include transition(transform 0.32s);
 			}
 		}
 		&.is-on:hover {
 			&:before {
-				color: #C4C7D0;
+				color: $light-grey-2;
 			}
 		}
 		&:before {
@@ -101,7 +118,7 @@
 			left: 0;
 			width: 50px;
 			line-height: 40px;
-			@include font-size(24px);
+			font-size: 24px;
 			color: #6f7589;
 			text-align: center;
 			@include box-sizing(border-box);
@@ -147,7 +164,7 @@
 			top: 2px;
 		}
 		&.is-selected:before {
-			color: #c4c7d0;
+			color: $light-grey-2;
 		}
 	}
 }
@@ -168,11 +185,11 @@
 	padding-left: 29px;
 	display: inline-block;
 	vertical-align: top;
-	font-family: $brand-accent-font;
-	@include font-size(13px);
+	font-family: $brand-heading-font;
+	font-size: 13px;
 	font-weight: 600;
-	color: $brand-blue-grey;
-	background-color: $blue-dark;
+	color: $light-grey-1;
+	background-color: $dark-grey-2;
 	@include box-sizing(border-box);
 	&:hover, &:active {
 		color: white;

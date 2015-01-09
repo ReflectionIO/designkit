@@ -2,6 +2,7 @@ $border-black: #161617;
 $twitter-blue: #55acee;
 $facebook-blue: #3b5998;
 $linkedin-blue: #0976b4;
+$blur-opacity: 0.5;
 
 .main-social-links {
 	width: 100%;
@@ -38,6 +39,12 @@ $linkedin-blue: #0976b4;
 				color: #767683;
 				text-align: center;
 				@include transition(color $base-transition-speed-off);
+				.is-animating-out & {
+					text-shadow: 4px 0px 1px rgba(118,118,131, $blur-opacity);
+				}
+				.is-animating-in & {
+					text-shadow: -4px 0px 1px rgba(118,118,131, $blur-opacity);
+				}
 			}
 			&:hover {
 				background-color: #252527;

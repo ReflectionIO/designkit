@@ -1,25 +1,42 @@
 .panel-left {
 	position: fixed;
+	top: 0;
 	width: 220px;
-	min-height: 100vh;
+	height: 100vh;
 	padding-top: 42px;
-	padding-bottom: 50px;
-	margin-left: -220px;
+	left: -220px;
 	display: inline-block;
+	z-index: 10;
 	float: left;
+	overflow: auto;
+	font-size: 10px;
 	vertical-align: top;
-	background-color: $grey-panel-background;
-	@include transition(margin-left 0.15s ease-in);
+	background-color: $dark-grey-1;	
+	@include transition(left 0.15s ease-in, transform 0.15s ease-in, filter 0.27s);
 	@include breakpoint($phablet, true) {
-		position: fixed;
 		padding-top: 62px;
 	}
+	&.is-blurred {
+		filter: blur(0.3px);
+		@include transition(filter 0.5s);
+	}
+	&.is-blurred-heavy {
+		filter: blur(0.8px);
+		@include transition(filter 0.5s);
+	}
 	.panel-left-open & {
-		position: relative;
-		margin-left: -220px;
 		@include breakpoint($laptop, true) {
-			margin-left: 0;
-			@include transition(margin-left 0.15s ease-out);
+			left: 0px;
+			@include transition(left 0.15s ease-out);
 		}
 	}
+}
+@media screen and (max-width: $laptop) {
+	.panel-left-open .panel-left {
+		@include transform(translateX(220px));
+		@include transition(transform 0.15s ease-out);
+	}
+}
+#mCSB_1_scrollbar_vertical {
+	z-index: 100;
 }

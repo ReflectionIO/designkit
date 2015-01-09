@@ -5,36 +5,49 @@ $laptop: 960px;
 $desktop: 1240px;
 $desktop-wide: 1600px;
 
+$base-margin-bottom: 4rem;
+
 .l-page-container {
 	width: 100%;
 	min-height: 100vh;
-	@include transition(transform 0.15s ease-in);
-	&.panel-left-open {
+	overflow: visible;
+	@include transition(transform 0.15s ease-in, filter 0.18s);
+	&.is-blurred {
+		filter: blur(0.6px);
+		@include transition(filter 0.45s);
+	}
+	&.is-blurred-heavy {
+		filter: blur(0.8px);
+		@include transition(filter 0.5s);
+	}
+	.panel-left-open & {
 		@include transform(translateX(220px));
 		@include transition(transform 0.15s ease-out);
 		overflow: visible;
-		@include breakpoint($laptop) {
+		@include breakpoint($laptop, true) {
 			@include transform(translateX(0));
 		}		
 	}
 }
 .l-main {
 	width: 100%;
-	min-height: 100vh;
 	padding-top: 42px;
 	display: inline-block;
 	float: right;
 	vertical-align: top;
 	@include transition(width 0.15s ease-in);
-	@include column-grid-background(12, 39, 18, 0, #e9efef, #f1f5f5, true);
+	// SHOW THE GRID
+	// min-height: 100vh;
+	// @include column-grid-background(12, 39, 18, 0, #e9efef, #f1f5f5, true);
 	@include breakpoint($phablet, true) {
 		padding-top: 62px;
 	}
 	.panel-left-open & {
 		width: 100%;
 		@include transition(width 0.15s ease-out);
-		@include breakpoint($laptop) {
+		@include breakpoint($laptop, true) {
 			width: calc(100% - 220px);
+			@include transition(width 0.15s ease-out);
 		}
 	}
 }

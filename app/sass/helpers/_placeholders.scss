@@ -1,7 +1,7 @@
 @import "compass/css3/appearance";
 @import "helpers/mixins";
-@import "ui/interaction";
 @import "ui/colours";
+@import "ui/interaction";
 
 /* Layout */
 %has-layout {
@@ -29,17 +29,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+%hidden-text {
+  text-align: left;
+  text-indent: -999em;
+}
 
 /* UI */
 %button-base-style {
   display: inline-block;
   @include font-size(13px);
   line-height: 1.1;
-  color: $base-font-color;
+  color: $dark-grey-1;
+  text-shadow: none !important;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.23076923076923em; // 3px
   @include appearance(none);
-  cursor: pointer;  
+  outline: none;
+  cursor: pointer;
   @extend %font-smoothing;
   @include transition(background-color $base-transition-speed-off, color $base-transition-speed-off, border-color $base-transition-speed-off);
   &:hover {
