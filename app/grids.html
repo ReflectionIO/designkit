@@ -283,65 +283,16 @@
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->
 
+  <div id="js-appendScriptsContainer"></div>
+
 	<script src="js/designkit-global-templates.js"></script>
+  <script src="js/application.js"></script>
+  <script src="js/designkit-app.js"></script>
   <script>
-  	(function($) {
+  	function initScripts() {
+  		new GridsPage();
+  	}
 
-	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
-			var htmlDesignKitBanner = templateDesignKitBanner({ bannerImage: "images/banner-icon-grids.png", bannerImageAlt: "Grid icon", sectionTitle: "Design Assets", componentTitle: "Grids & Breakpoints", Intro: "The base grid for our responsive app is structured of 12 columns with 2% padding and 0 gutters. There is a fixed margin on either side which changes based on screen width: 30px on laptop /desktop, 20px on phablet and 10px on mobile. Use the tabs below to see how this grid changes across different devices." });
-			$("#js-component-import--design-kit-banner").html(htmlDesignKitBanner);
-		
-		})(jQuery);
-
-		function loadScripts() {
-		  loadComponentScripts();
-		}
-
-		function loadComponentScripts() {
-			// load custom scroll bars for everything but IE9/10
-			if (/*@cc_on!@*/true) {
-				var script = document.createElement('script');
-			  script.type = 'text/javascript';
-			  script.src = 'js/vendor/jquery.mCustomScrollbar.concat.min.js';
-		  	document.body.appendChild(script);
-			}
-	
-			var script = document.createElement('script');
-		  script.type = 'text/javascript';
-		  script.src = 'js/nav-structure.js';
-	  	document.body.appendChild(script);
-
-	  	var script = document.createElement('script');
-		  script.type = 'text/javascript';
-		  script.src = 'js/search-global.js';
-	  	document.body.appendChild(script);
-
-	  	var thisPageLink = $('#js-component-import--panel-left').find('a[href="grids.html"]');
-	  	thisPageLink.parent("li").addClass("is-selected");
-
-	  	$('.js-toggle-overlay').on("click", function(){
-	  		$('.grid-demo-layer-top').toggleClass("has-transparency");
-	  	});
-
-	  	$('.js-toggle-grid').on("click", function(e){
-	  		e.preventDefault();
-	  		$('.tab-links-container .grid-demo-column--alternate').removeClass('grid-demo-column--alternate');
-	  		$(this).parent('.grid-demo-column').addClass('grid-demo-column--alternate');
-	  	});
-	  	$('.js-change-grid-desktop').on("click", function(){
-	  		$('.grid-demo-container').removeClass("mobile-width phablet-width tablet-width");
-	  	});
-	  	$('.js-change-grid-tablet').on("click", function(){
-	  		$('.grid-demo-container').removeClass("mobile-width phablet-width").addClass("tablet-width");
-	  	});
-	  	$('.js-change-grid-phablet').on("click", function(){
-	  		$('.grid-demo-container').removeClass("mobile-width tablet-width").addClass("phablet-width");
-	  	});
-	  	$('.js-change-grid-mobile').on("click", function(){
-	  		$('.grid-demo-container').removeClass("phablet-width tablet-width").addClass("mobile-width");
-	  	});
-	  }
-
-		window.onload = loadScripts;
+  	window.onready = initScripts();
   </script>
 </body>

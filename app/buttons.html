@@ -284,62 +284,16 @@
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->
 
+	<div id="js-appendScriptsContainer"></div>
+
 	<script src="js/designkit-global-templates.js"></script>
+  <script src="js/application.js"></script>
+  <script src="js/designkit-app.js"></script>
   <script>
-  	(function($) {
+  	function initScripts() {
+  		new ButtonsPage();
+  	}
 
-	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
-			var htmlDesignKitBanner = templateDesignKitBanner({ bannerImage: "images/banner-icon-buttons.png", bannerImageAlt: "Button icon", sectionTitle: "Design Assets", componentTitle: "Buttons", Intro: "Our buttons perform a range of tasks such as linking to other sections, opening panels or submitting a form or a post. See and interact with the different types below and learn the applications in which they can be used." });
-			$("#js-component-import--design-kit-banner").html(htmlDesignKitBanner);
-		
-		})(jQuery);
-
-		function loadScripts() {
-		  loadComponentScripts();
-		}
-
-		function loadComponentScripts() {
-			// load custom scroll bars for everything but IE9/10
-			if (/*@cc_on!@*/true) {
-				var script = document.createElement('script');
-			  script.type = 'text/javascript';
-			  script.src = 'js/vendor/jquery.mCustomScrollbar.concat.min.js';
-		  	document.body.appendChild(script);
-			}
-
-			var script = document.createElement('script');
-		  script.type = 'text/javascript';
-		  script.src = 'js/nav-structure.js';
-	  	document.body.appendChild(script);
-
-	  	var script = document.createElement('script');
-		  script.type = 'text/javascript';
-		  script.src = 'js/search-global.js';
-	  	document.body.appendChild(script);
-
-	  	var thisPageLink = $('#js-component-import--panel-left').find('a[href="buttons.html"]');
-	  	thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
-
-	  	$('.js-submit-with-feedback').on("click", function(){
-	  		var thisButton = $(this);
-	  		if(!thisButton.hasClass("ref-button--is-loading") && !thisButton.hasClass("ref-button--success") && !thisButton.hasClass("ref-button--error")) {
-	  			thisButton.addClass("ref-button--is-loading").attr("value", "Loading...");
-
-		  		window.setTimeout(function(){
-		  			if(thisButton.hasClass("js-submit-success")) {
-		  				thisButton.removeClass("ref-button--is-loading").addClass("ref-button--success").attr("value", "Success!");
-		  			}
-		  			else {
-		  				thisButton.removeClass("ref-button--is-loading").addClass("ref-button--error").attr("value", "Oops, something went wrong");
-		  			}
-		  			window.setTimeout(function(){
-		  				thisButton.removeClass("ref-button--success ref-button--error").attr("value", "Submit");
-		  			}, 3000);
-		  		}, 3000);
-	  		}
-	  	});
-	  }
-
-		window.onload = loadScripts;
+  	window.onready = initScripts();
   </script>
 </body>

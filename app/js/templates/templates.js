@@ -11,7 +11,7 @@ templates['designKitBanner'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main"
     + "</h1>\n			<h2>"
     + escapeExpression(((helper = (helper = helpers.componentTitle || (depth0 != null ? depth0.componentTitle : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"componentTitle","hash":{},"data":data}) : helper)))
     + "</h2>\n			<p>"
-    + escapeExpression(((helper = (helper = helpers.Intro || (depth0 != null ? depth0.Intro : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"Intro","hash":{},"data":data}) : helper)))
+    + escapeExpression(((helper = (helper = helpers.intro || (depth0 != null ? depth0.intro : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"intro","hash":{},"data":data}) : helper)))
     + "</p>						\n		</div>\n	</div>\n<!-- </div> -->";
 },"useData":true});
 templates['fontDeclarations'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {

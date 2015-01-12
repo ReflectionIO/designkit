@@ -15,10 +15,16 @@ $base-margin-bottom: 4rem;
 	&.is-blurred {
 		filter: blur(0.6px);
 		@include transition(filter 0.45s);
+		.ie8 &, .ie9 & {
+			filter: none;
+		}
 	}
 	&.is-blurred-heavy {
 		filter: blur(0.8px);
 		@include transition(filter 0.5s);
+		.ie8 &, .ie9 & {
+			filter: none;
+		}
 	}
 	.panel-left-open & {
 		@include transform(translateX(220px));
