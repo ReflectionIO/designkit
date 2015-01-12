@@ -61,7 +61,7 @@
 		var dkPageProperties = {
 			bannerImage: "images/banner-icon-buttons.png",
 			bannerImageAlt: "Button icon", 
-			sectionTitle: "Design Assets", 
+			sectionTitle: "UI Components", 
 			componentTitle: "Buttons", 
 			intro: "Our buttons perform a range of tasks such as linking to other sections, opening panels or submitting a form or a post. See and interact with the different types below and learn the applications in which they can be used.",
 			pageUrl: "buttons.html"
@@ -103,12 +103,15 @@
 		var dkPageProperties = {
 			bannerImage: "images/banner-icon-grids.png",
 			bannerImageAlt: "Grid icon", 
-			sectionTitle: "Design Assets", 
+			sectionTitle: "Layout",
 			componentTitle: "Grids & Breakpoints", 
 			intro: "The base grid for our responsive app is structured of 12 columns with 2% padding and 0 gutters. There is a fixed margin on either side which changes based on screen width: 30px on laptop /desktop, 20px on phablet and 10px on mobile. Use the tabs below to see how this grid changes across different devices.",
 			pageUrl: "grids.html"
 		}
 		new DesignKitPage(dkPageProperties);
+
+		// Components
+		new Tabs();
 
 		// Functionality just for this template, and not reusable
 		this.templateFunctions();
@@ -119,11 +122,6 @@
   		$('.grid-demo-layer-top').toggleClass("has-transparency");
   	});
 
-  	$('.js-toggle-grid').on("click", function(e){
-  		e.preventDefault();
-  		$('.tab-links-container .grid-demo-column--alternate').removeClass('grid-demo-column--alternate');
-  		$(this).parent('.grid-demo-column').addClass('grid-demo-column--alternate');
-  	});
   	$('.js-change-grid-desktop').on("click", function(){
   		$('.grid-demo-container').removeClass("mobile-width phablet-width tablet-width");
   	});
@@ -151,5 +149,23 @@
 			pageUrl: "grids.html"
 		}
 		new DesignKitPage(dkPageProperties);
+	};
+
+
+// TabsPage object
+	var TabsPage = function() {
+		new Page();
+		var dkPageProperties = {
+			bannerImage: "images/banner-icon-folder.png",
+			bannerImageAlt: "Folder",
+			sectionTitle: "UI Components", 
+			componentTitle: "Tabs", 
+			intro: "Tabs switch between sections or types of content within a page. Their design with a container box indicates clearly what components within or below are asscoiated with them hierarchically.",
+			pageUrl: "tabs.html"
+		}
+		new DesignKitPage(dkPageProperties);
+
+		// Components
+		new Tabs();
 	};
 /* END PAGE OBJECTS FOR TEMPLATES */

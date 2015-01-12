@@ -81,11 +81,11 @@ li {
 }
 
 /* line 11, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content, .tab-link {
+.vertical-centre-content, .tabs__link {
   height: 100%;
 }
 /* line 13, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content:before, .tab-link:before {
+.vertical-centre-content:before, .tabs__link:before {
   content: '';
   display: inline-block;
   width: 0;
@@ -95,7 +95,7 @@ li {
   /* Adjusts for spacing */
 }
 /* line 21, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content > *, .tab-link > * {
+.vertical-centre-content > *, .tabs__link > * {
   display: inline-block;
   vertical-align: middle;
 }
@@ -962,11 +962,11 @@ li {
 }
 
 /* line 11, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content, .tab-link {
+.vertical-centre-content, .tabs__link {
   height: 100%;
 }
 /* line 13, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content:before, .tab-link:before {
+.vertical-centre-content:before, .tabs__link:before {
   content: '';
   display: inline-block;
   width: 0;
@@ -976,7 +976,7 @@ li {
   /* Adjusts for spacing */
 }
 /* line 21, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content > *, .tab-link > * {
+.vertical-centre-content > *, .tabs__link > * {
   display: inline-block;
   vertical-align: middle;
 }
@@ -1615,53 +1615,6 @@ textarea, .global-header .link-open-search, html, body {
   width: 100%;
   height: 100%;
   background-color: #fcfdfd;
-}
-
-/* line 85, ../sass/templates/_grid.scss */
-.tab-links-container li {
-  height: 60px;
-}
-
-/* line 89, ../sass/templates/_grid.scss */
-.tab-link {
-  width: 100%;
-  height: 100%;
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  color: #6d69c5;
-  text-transform: uppercase;
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-}
-/* line 99, ../sass/templates/_grid.scss */
-.grid-demo-column--alternate .tab-link {
-  color: #363a47;
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-}
-/* line 102, ../sass/templates/_grid.scss */
-.grid-demo-column--alternate .tab-link:hover {
-  color: #363a47;
-}
-/* line 106, ../sass/templates/_grid.scss */
-.tab-link:hover {
-  color: #4b46b5;
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-}
-/* line 110, ../sass/templates/_grid.scss */
-.tab-link span span, .tab-link span:before {
-  vertical-align: top;
-}
-/* line 113, ../sass/templates/_grid.scss */
-.tab-link span span {
-  position: relative;
-  top: 3px;
-}
-/* line 117, ../sass/templates/_grid.scss */
-.tab-link span:before {
-  margin-right: 12px;
 }
 
 /* line 1, ../sass/templates/_typography.scss */
@@ -3267,6 +3220,71 @@ input[type="search"].search__input-search {
   display: inline-block;
 }
 
+/* line 1, ../sass/components/_tabs.scss */
+.tabs-container {
+  width: 100%;
+}
+/* line 3, ../sass/components/_tabs.scss */
+.tabs-container li {
+  height: 72px;
+}
+
+/* line 7, ../sass/components/_tabs.scss */
+.tabs__tab {
+  height: 72px;
+  background-color: #fcfdfd;
+  text-align: center;
+}
+/* line 11, ../sass/components/_tabs.scss */
+.tabs__tab.is-active {
+  background-color: #f2f2f5;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+/* line 16, ../sass/components/_tabs.scss */
+.tabs__link {
+  width: 100%;
+  height: 100%;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #6d69c5;
+  text-transform: uppercase;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+/* line 26, ../sass/components/_tabs.scss */
+.tabs__link:hover {
+  color: #4b46b5;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+/* line 30, ../sass/components/_tabs.scss */
+.is-active .tabs__link {
+  color: #363a47;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+/* line 33, ../sass/components/_tabs.scss */
+.is-active .tabs__link:hover {
+  color: #363a47;
+}
+/* line 37, ../sass/components/_tabs.scss */
+.tabs__link span span, .tabs__link span:before {
+  vertical-align: middle;
+}
+/* line 40, ../sass/components/_tabs.scss */
+.tabs__link span:before {
+  margin-right: 0.6em;
+  font-size: 2.2rem;
+}
+
+/* line 45, ../sass/components/_tabs.scss */
+.tabs__content {
+  background-color: #f2f2f5;
+}
+
 /* Global base styles */
 /* line 31, ../sass/base/_base.scss */
 html, body {
@@ -3440,7 +3458,7 @@ p.browserupgrade {
   margin-bottom: 2rem;
 }
 /* line 24, ../sass/components-designkit/_dk-component.scss */
-.dk-component-row .grid__column {
+.dk-component-row > .grid__column {
   margin-bottom: 4em;
   margin-bottom: 4rem;
 }
