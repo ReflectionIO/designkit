@@ -3852,35 +3852,46 @@ input[type="search"].search__input-search {
 
 /* line 10, ../sass/components/_tabs.scss */
 .tabs__tab {
+  position: relative;
   height: 7.2rem;
   background-color: #fcfdfd;
   text-align: center;
 }
-/* line 14, ../sass/components/_tabs.scss */
-.tabs__tab.is-active {
+/* line 15, ../sass/components/_tabs.scss */
+.tabs__tab .tab-animate-active {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 0;
   background-color: #f2f2f5;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
+  -webkit-transition: height 0.3s;
+  transition: height 0.3s;
 }
-/* line 17, ../sass/components/_tabs.scss */
-.tabs-container--large-tabs .tabs__tab.is-active {
-  background-color: transparent;
+/* line 26, ../sass/components/_tabs.scss */
+.tabs__tab.is-active .tab-animate-active {
+  height: 100%;
+  -webkit-transition: height 0.3s;
+  transition: height 0.3s;
 }
-/* line 21, ../sass/components/_tabs.scss */
+/* line 31, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__tab {
   height: 13.7rem;
   border-top: 3px solid transparent;
 }
-/* line 24, ../sass/components/_tabs.scss */
+/* line 34, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__tab.is-active {
   border-top: 3px solid #f2f2f5;
 }
 
-/* line 29, ../sass/components/_tabs.scss */
+/* line 39, ../sass/components/_tabs.scss */
 .tabs__link {
+  position: relative;
   width: 100%;
   height: 100%;
   display: block;
+  z-index: 1;
   font-size: 1.39rem;
   font-weight: 700;
   letter-spacing: 0.6px;
@@ -3889,31 +3900,40 @@ input[type="search"].search__input-search {
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-/* line 40, ../sass/components/_tabs.scss */
+/* line 52, ../sass/components/_tabs.scss */
 .tabs__link:hover {
   color: #4b46b5;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-/* line 44, ../sass/components/_tabs.scss */
+/* line 57, ../sass/components/_tabs.scss */
+.tabs__link:active > span {
+  margin-top: 5px;
+  -webkit-transform: scale(0.98);
+      -ms-transform: scale(0.98);
+          transform: scale(0.98);
+}
+/* line 62, ../sass/components/_tabs.scss */
 .is-active .tabs__link {
   color: #363a47;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-/* line 47, ../sass/components/_tabs.scss */
+/* line 65, ../sass/components/_tabs.scss */
 .is-active .tabs__link:hover {
   color: #363a47;
 }
-/* line 51, ../sass/components/_tabs.scss */
+/* line 69, ../sass/components/_tabs.scss */
 .tabs__link > span {
   width: 100%;
+  -webkit-transition: margin-top 0.1s, -webkit-transform 0.1s;
+  transition: margin-top 0.1s, transform 0.1s;
 }
-/* line 54, ../sass/components/_tabs.scss */
+/* line 73, ../sass/components/_tabs.scss */
 .tabs__link span span, .tabs__link span:before {
   vertical-align: middle;
 }
-/* line 57, ../sass/components/_tabs.scss */
+/* line 76, ../sass/components/_tabs.scss */
 .tabs__link span > span {
   width: 80%;
   max-width: 80%;
@@ -3921,82 +3941,82 @@ input[type="search"].search__input-search {
   text-align: left;
 }
 @media (min-width: 720px) {
-  /* line 57, ../sass/components/_tabs.scss */
+  /* line 76, ../sass/components/_tabs.scss */
   .tabs__link span > span {
     width: auto;
   }
 }
-/* line 65, ../sass/components/_tabs.scss */
+/* line 84, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__link span > span {
   width: 80%;
   font-size: 1.6rem;
   margin-bottom: 10px;
 }
 @media (min-width: 720px) {
-  /* line 65, ../sass/components/_tabs.scss */
+  /* line 84, ../sass/components/_tabs.scss */
   .tabs-container--large-tabs .tabs__link span > span {
     width: auto;
     max-width: 80%;
   }
 }
-/* line 75, ../sass/components/_tabs.scss */
+/* line 94, ../sass/components/_tabs.scss */
 .tabs__link span b {
   padding-top: 10px;
   display: inline-block;
   line-height: 1.6;
 }
-/* line 79, ../sass/components/_tabs.scss */
+/* line 98, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__link span b {
   font-size: 1.4rem;
   text-transform: none;
   font-weight: 400;
 }
-/* line 85, ../sass/components/_tabs.scss */
+/* line 104, ../sass/components/_tabs.scss */
 .tabs__link span:before {
   margin-right: 0.6em;
   font-size: 2.2rem;
 }
-/* line 88, ../sass/components/_tabs.scss */
+/* line 107, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__link span:before {
   font-size: 2.9rem;
   margin-right: 0.5em;
   vertical-align: top;
 }
 @media (min-width: 720px) {
-  /* line 88, ../sass/components/_tabs.scss */
+  /* line 107, ../sass/components/_tabs.scss */
   .tabs-container--large-tabs .tabs__link span:before {
     font-size: 3.2rem;
   }
 }
 @media (min-width: 960px) {
-  /* line 88, ../sass/components/_tabs.scss */
+  /* line 107, ../sass/components/_tabs.scss */
   .tabs-container--large-tabs .tabs__link span:before {
     font-size: 3.8rem;
   }
 }
 
-/* line 101, ../sass/components/_tabs.scss */
+/* line 120, ../sass/components/_tabs.scss */
 .tabs__content-container {
   margin-bottom: 4rem;
 }
 
-/* line 104, ../sass/components/_tabs.scss */
+/* line 123, ../sass/components/_tabs.scss */
 .tabs__content {
   display: none;
   background-color: #f2f2f5;
 }
-/* line 107, ../sass/components/_tabs.scss */
+/* line 126, ../sass/components/_tabs.scss */
 .tabs__content * {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 109, ../sass/components/_tabs.scss */
+/* line 128, ../sass/components/_tabs.scss */
 .no-js .tabs__content * {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
 
-/* line 114, ../sass/components/_tabs.scss */
+/* line 133, ../sass/components/_tabs.scss */
 .tabs__content.tabs__content--is-showing {
   display: block;
 }
