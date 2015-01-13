@@ -1,16 +1,29 @@
 .tabs-container {
 	width: 100%;
 	li {
-		height: 72px;
+		height: 7.2rem;
+		.tabs-container--large-tabs & {
+			height: 13.7rem;
+		}
 	}
 }
 .tabs__tab {
-	height: 72px;
+	height: 7.2rem;
 	background-color: $reflection-white;
 	text-align: center;
 	&.is-active {
 		background-color: $panel-grey;
 		@include transition(background-color $base-transition-speed-on);
+		.tabs-container--large-tabs & {
+			background-color: transparent;
+		}
+	}
+	.tabs-container--large-tabs & {
+		height: 13.7rem;
+		border-top: 3px solid transparent;
+		&.is-active {
+			border-top: 3px solid $panel-grey;
+		}
 	}
 }
 .tabs__link {
@@ -18,8 +31,9 @@
 	width: 100%;
 	height: 100%;
 	display: block;
-	font-size: 1.4rem;
+	font-size: 1.39rem;
 	font-weight: 700;
+	letter-spacing: 0.6px;
 	color: $reflection-purple;
 	text-transform: uppercase;
 	@include transition(color $base-transition-speed-on);
@@ -34,14 +48,69 @@
 			color: $dark-grey-2;
 		}
 	}
+	> span {
+		width: 100%;
+	}
 	span span, span:before {
 		vertical-align: middle;
+	}
+	span > span {
+		width: 80%;
+		max-width: 80%;
+		display: inline-block;
+		text-align: left;
+		@include breakpoint($tablet) {
+				width: auto;
+		}
+		.tabs-container--large-tabs & {
+			width: 80%;
+			font-size: 1.6rem;
+			margin-bottom: 10px;
+			@include breakpoint($tablet) {
+				width: auto;
+				max-width: 80%;
+			}
+		}
+	}
+	span b {
+		padding-top: 10px;
+		display: inline-block;
+		line-height: 1.6;		
+		.tabs-container--large-tabs & {
+			font-size: 1.4rem;
+			text-transform: none;
+			font-weight: 400;
+		}
 	}
 	span:before {		
 		margin-right: 0.6em;
 		font-size: 2.2rem;
+		.tabs-container--large-tabs & {
+			font-size: 2.9rem;
+			margin-right: 0.5em;
+			vertical-align: top;
+			@include breakpoint($tablet) {
+				font-size: 3.2rem;
+			}
+			@include breakpoint($laptop) {
+				font-size: 3.8rem;
+			}
+		}
 	}
 }
+.tabs__content-container {
+	margin-bottom: 4rem;
+}
 .tabs__content {
+	display: none;
 	background-color: $panel-grey;
+	* {
+		@include opacity(0);
+		.no-js & {
+			@include opacity(1);
+		}
+	}
+}
+.tabs__content.tabs__content--is-showing {
+	display: block;
 }

@@ -348,10 +348,18 @@
 
 
 	var Tabs = function() {
+		$('.tabs__content--is-showing *').css("opacity", 1);
+
 		$('.js-tab-select').on("click", function(e){
   		e.preventDefault();
-  		$('.tabs-container .is-active').removeClass('is-active');
+  		var thisParent = $(this).parents(".tabs-container");
+  		thisParent.find('.is-active').removeClass('is-active');
   		$(this).parent('.tabs__tab').addClass('is-active');
+  		var contentId = $(this).attr("href");
+  		$(contentId).parents('.tabs__content-container').find('.tabs__content--is-showing').removeClass('tabs__content--is-showing');
+  		$(contentId).addClass('tabs__content--is-showing');
+  		$(contentId + ' *').css("opacity", 0);
+  		$(contentId + ' *').animate({opacity: 1}, 200);
   	});
 	};
 
