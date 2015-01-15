@@ -168,4 +168,32 @@
 		// Components
 		new Tabs();
 	};
+
+
+// InteractionsPage object
+	var InteractionsPage = function() {
+		new Page();
+		var dkPageProperties = {
+			bannerImage: "images/banner-icon-film.png",
+			bannerImageAlt: "Film icon",
+			sectionTitle: "UI Interactions",
+			componentTitle: "Interactions Overview",
+			intro: "These rules govern all motion, transitions and interactive behaviour throughout the site. All these behaviours are aligned with our core brand values, make the interface feel intuitive, provide clear feedback and provide obvious visual cues to intended function.",
+			pageUrl: "interactions.html"
+		}
+		new DesignKitPage(dkPageProperties);
+
+		// Components
+		new Tabs();
+
+		// Functionality just for this template, and not reusable
+		this.templateFunctions();
+	};
+
+	InteractionsPage.prototype.templateFunctions = function() {
+		$('.grid__column--one-third .js-main-nav a').on("click", function(e){
+			e.preventDefault();
+		});
+	};
+
 /* END PAGE OBJECTS FOR TEMPLATES */

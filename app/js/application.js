@@ -143,17 +143,19 @@
 			$(this).toggleClass('is-selected');
 			if($('body').hasClass('panel-left-open')) {
 				$('.panel-left').addClass('is-animating-out');
+				$('.l-main').addClass('is-animating-out');
 				$('body').removeClass('panel-left-open');
 				instance.setMainContentWidthForIE();
 				window.setTimeout(function(){
-					$('.panel-left').removeClass('is-animating-out'); // class for motion blur effect
+					$('.panel-left, .l-main').removeClass('is-animating-out'); // class for motion blur effect
 				}, 140);
 			} else {
 				$('body').toggleClass('panel-left-open');
 				$('.panel-left').addClass('is-animating-in');
+				$('.l-main').addClass('is-animating-in');
 				instance.setMainContentWidthForIE();
 				window.setTimeout(function(){
-					$('.panel-left').removeClass('is-animating-in'); // class for motion blur effect
+					$('.panel-left, .l-main').removeClass('is-animating-in'); // class for motion blur effect
 				}, 140);
 			}
 		});
@@ -220,7 +222,7 @@
 				$('.panel-left').toggleClass('is-blurred');
 			}
 		});
-		$('.link-log-in').on("click", function(e) {
+		$('.js-link-log-in').on("click", function(e) {
 			e.preventDefault();
 			if($('.panel-right-container').hasClass('is-showing')) {
 				$('.panel-right-container').addClass('is-animating-out');
@@ -245,7 +247,7 @@
 				$('.actions-group').trigger("click");
 			}
 			else {
-				$('.link-log-in').trigger("click");
+				$('.js-link-log-in-container .js-link-log-in').trigger("click");
 			}
 		});
 	};
