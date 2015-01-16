@@ -365,4 +365,64 @@
   	});
 	};
 
+
+	var FormFieldSelect = function() {
+		$('.js-field--select').each(function() {
+			var selectInput = $(this),
+					selectOptions = selectInput.find('option'),
+					optionsList = $('<ul>'),
+					refSelectContainer = $('<div>').addClass('reflection-select'),
+					refSelectDefault = $('<span>').addClass('ref-icon-after ref-icon-after--angle-down').text('Select an option');
+			
+			selectOptions.each(function(){
+				$this = $(this);
+				if($this.attr('value')) {
+					optionsList.append($('<li>').attr('data-value', $this.attr('value')).text($this.text()));
+				}
+				else {
+					refSelectDefault.text($this.text());
+				}
+			});
+
+			refSelectContainer.append(refSelectDefault).append(optionsList);
+			selectInput.parents('.form-field--select').append(refSelectContainer);
+
+			var listHeight = optionsList.innerHeight();			
+			optionsList.css('margin-top', -listHeight);
+			if(selectInput.parent('.form-field--select-disabled').length == 0) {
+				refSelectContainer.on('click', function() {
+					if(refSelectContainer.hasClass('is-open')) {
+						refSelectContainer.removeClass('is-open');
+						optionsList.css('margin-top', -listHeight);
+					}
+					else {
+						refSelectContainer.addClass('is-open');
+						optionsList.css('margin-top', "8px");
+					}
+				});
+			}
+
+			$(window).on("resize", function(){
+				listHeight = optionsList.innerHeight();
+				optionsList.css('margin-top', -listHeight);	
+			});
+
+			optionsList.find('li').on('click', function(){
+				listItem = $(this);
+				optionsList.find('li').removeClass('is-selected');
+				listItem.addClass('is-selected');
+				refSelectDefault.text(listItem.text()).addClass('is-activated');
+
+				selectOptions.each(function() {
+					if($(this).val() == listItem.data("value")) {
+						$(this).attr("selected", "selected");
+					}
+					else {
+						$(this).removeAttr("selected");	
+					}
+				});
+			});
+		});
+	};
+
 /* END COMPONENT OBJECTS */

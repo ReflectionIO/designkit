@@ -196,4 +196,36 @@
 		});
 	};
 
+
+// FormsPage object
+	var FormsPage = function() {
+		new Page();
+		var dkPageProperties = {
+			bannerImage: "images/banner-icon-buttons.png",
+			bannerImageAlt: "Button icon",
+			sectionTitle: "UI Components",
+			componentTitle: "Form Fields",
+			intro: "The following range of components are used to construct forms that can perform any function. Certain styles are altered based on the form fields location but the interactions and behaviours will remain consistent throughout as demonstrated below.",
+			pageUrl: "forms.html"
+		}
+		new DesignKitPage(dkPageProperties);
+
+		// Components
+		new FormFieldSelect();
+
+		// Functionality just for this template, and not reusable
+		this.templateFunctions();
+	};
+
+	FormsPage.prototype.templateFunctions = function() {
+		$('.js-inline-form-field-error-demo input').on("focus", function(e){
+			$(this).parents('.js-inline-form-field-error-demo').addClass('form-field--error');
+			$(this).siblings('label').html('Hint Label Text:<br />Error message lorem ipsum dolor amet');
+		});
+
+		$('.js-inline-form-field-error-demo input').on("blur", function(e){
+			$(this).parents('.js-inline-form-field-error-demo').removeClass('form-field--error');
+			$(this).siblings('label').html('Hint Label Text:');
+		});
+	};
 /* END PAGE OBJECTS FOR TEMPLATES */

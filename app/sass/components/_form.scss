@@ -21,11 +21,64 @@ textarea {
 	@extend %font-smoothing; 
 }
 .form-field {
+	position: relative;
+	width: 100%;
+	margin-bottom: 0.8rem;
+	padding: 8px 14px 10px;
+	border-radius: 3px;
+	background-color: $panel-grey;
 	label {
+		padding-bottom: 27px;
 		display: block;
+		font-family: $brand-heading-font;
+		font-size: 1.19rem;
+		font-weight: 600;
+		color: $light-grey-1;
+		@include transition(padding 0.06s);
+	}
+	input:focus + label {
+		color: $reflection-purple;
 	}
 	input, textarea {
 		display: block;
+		color: $mid-grey-1;
+	}
+	input[type="text"],
+	input[type="email"],
+	input[type="search"],
+	input[type="password"] {
+		position: absolute;
+		bottom: 10px;
+		font-family: $brand-heading-font;
+		font-size: 1.4rem;
+		@include transition(bottom 0.06s);
+	}
+	&.is-closed {
+		label {
+			padding-top: 2px;
+			padding-bottom: 1px;
+			font-family: $brand-heading-font;
+			font-size: 1.4rem;
+			color: $mid-grey-1;
+			font-weight: 400;
+			@include transition(padding 0.06s);
+		}
+		input {
+			bottom: 6px;
+			@include transition(bottom 0.06s);
+		}
+	}
+}
+.form-field.form-field--disabled {
+	background-color: #f7f7f9;
+	label {
+		color: $light-grey-2;
+	}
+}
+.form-field.form-field--error {
+	border: 1px solid #d23753;
+	input:focus + label, label {
+		color: #d23753;
 	}
 }
 input:required {
@@ -33,4 +86,170 @@ input:required {
 }
 input:invalid {
   box-shadow: none;
+}
+.js-field--select {
+	display: none;
+	.no-js & {
+		display: block;
+	}
+}
+.form-field--select {
+	padding: 8px 9px 0 14px;
+	&.form-field--select-disabled {
+		background-color: #f7f7f9;
+		span, li {
+			color: #c4c7d0;
+			background-color: #f7f7f9;
+			&:hover {
+				color: #c4c7d0;
+			}
+		}
+		span:after {
+			color: #c4c7d0;
+		}
+	}
+}
+.reflection-select {
+	cursor: pointer;
+	span, li {
+		display: block;
+		font-family: $brand-heading-font;
+		font-size: 1.4rem;
+		color: $light-grey-1;
+		@include transition(color $base-transition-speed-off);
+		&:hover {
+			color: #5b5b68;
+			@include transition(color $base-transition-speed-on);
+		}
+	}
+	span {		
+		position: relative;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding-bottom: 12px;
+		padding-top: 3px;
+		z-index: 10;
+		background: $panel-grey;
+		&:after {
+			position: absolute;
+			top: 2px;
+			right: 0;
+			font-size: 1.8rem;
+			color: $light-grey-1;
+			@include transition(transform $base-transition-speed-off);
+		}
+		&.is-activated {
+			color: #363a47;
+		}
+	}
+	ul {
+		margin-top: 0.8rem;
+		padding-bottom: 1.5rem;
+		@include transition(margin-top 0.16s ease-in);
+	}
+	li {
+		margin-bottom: 1.4rem;
+		padding-left: 5%;
+		color: $reflection-purple;
+		overflow: visible;
+		&:hover {
+			color: darken($reflection-purple, 10%);
+		}
+		&.is-selected {
+			font-weight: 600;
+			color: #363a47;
+		}
+	}
+	&.is-open {
+		span:after {
+			@include transform(rotate(179.5deg));
+			@include transition(transform $base-transition-speed-on);
+		}
+		ul {
+			@include transition(margin-top 0.2s ease-out);
+		}
+	}
+}
+.form-field--checkbox-list {
+	* {
+		overflow: visible;
+	}
+	position: relative;
+	width: 100%;
+	margin-bottom: 0.8rem;
+	li {
+		position: relative;
+		margin-bottom: 0.8rem;
+	}
+	input[type=checkbox] {
+		position: relative;
+		left: -999em;
+	}
+}
+.checkboxLabel {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 18px;
+	height: 18px;
+	padding: 0;
+	display: inline-block;
+	font-size: 0px;
+	cursor: pointer;
+	@include box-sizing(border-box);
+	line-height: 1;
+	text-decoration: none;
+	background-color: #f2f2f5;
+	overflow: visible;
+	@include transition(background-color 0.1s);
+	&:after {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 18px;
+		height: 18px;
+		content: "t";
+		speak: none;
+		font-family: "reflection-icons";
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-size: 18px;
+		color: $light-grey-2;
+		@include transition(color 0.1s);
+	}
+	&:hover {
+		background-color: $divider-grey;
+		@include transition(background-color 0.2s);
+		&:after {
+			display: block;
+		}
+	}
+	&:active {
+		border-top: 2px solid #bfc3c5;
+		background-color: $divider-grey;
+	}
+}
+input[type="checkbox"]:checked + label {
+	background-color: $reflection-green;
+	@include transition(background-color 0.2s);
+	&:after {
+		display: block;
+		color: #2cf9c9;
+		@include transition(color 0.2s);
+	}
+	&:active {
+		border-top: 2px solid #169f7f;
+	}
+}
+.checkboxVisibleLabel {
+	padding-left: 15px;
+	font-family: $brand-heading-font;
+	font-size: 1.3rem;
+	color: #363a47;
 }

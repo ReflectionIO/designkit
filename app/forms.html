@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Design Kit - Form Elements</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="css/designkit.css" />
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main-ie8.css" />
+	<![endif]-->
+ 	<!--[if !lt IE 9]><!-->
+		<script src="js/vendor/picturefill.2.2.0.min.js" async></script>
+	<!-- <![endif]-->
+	<!--[if (gte IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main.css" />
+	<!--<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+</head>
+<body class="panel-left-open">
+	<!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+
+		<div id="main" class="l-main" role="main">
+			
+			<div id="js-component-import--design-kit-banner" class="banner banner--component"></div>
+
+			<div class="grid-container dk-components-container">
+				<div class="grid__column grid__column--full-width">
+					<h2 class="heading-style--heading-three">Text input</h2>
+				</div>
+				<div class="grid__row dk-component-row">
+					<div class="grid__column grid__column--one-third">
+						<h3 class="heading-style--heading-six">Disabled</h3>
+						<div class="form-field form-field--disabled">						
+							<input type="text" name="text" id="text" autocomplete="off" disabled/>
+							<label for="email">Hint Label Text</label>
+						</div>
+						<h3 class="heading-style--heading-six">Active</h3>
+						<div class="form-field">						
+							<input type="email" name="email" id="email" autocomplete="off" />
+							<label for="email">Hint Label Text</label>
+						</div>
+						<h3 class="heading-style--heading-six">Inline Error (focus to demo)</h3>
+						<div class="form-field js-inline-form-field-error-demo">
+							<input type="email" name="email2" id="email2" autocomplete="off" />
+							<label for="email2">Hint Label Text:</label>
+						</div>
+						<h3 class="heading-style--heading-four">The Code</h3>
+						<p>Form inputs should be enclosed inside an element with class "form-field" for styled inputs. Omit the "form-field" containing element for a default input with no styling.</p>
+						<p>Inline error styling is achieved with the addition of the class "form-field--error" to the element with class "form-field" and by adding the error message content to the form label.</p>
+					</div>
+					<div class="grid__column grid__column--two-thirds">
+						<div class="code-box code-box-tall">
+							<code>
+								// Disabled<br />
+								&lt;div class="form-field form-field--disabled"&gt;<br />		
+									&lt;input type="text" name="text" id="text" autocomplete="off" disabled/&gt;<br />
+									&lt;label for="email">Hint Label Text&lt;/label&gt;<br />
+								&lt;/div><br /><br />
+								// Active<br />
+								&lt;div class="form-field"&gt;<br />
+									&lt;input type="email" name="email" id="email" autocomplete="off" /&gt;<br />
+									&lt;label for="email">Hint Label Text&lt;/label&gt;<br />
+								&lt;/div&gt;<br /><br />
+								// Inline Error<br />
+								&lt;div class="form-field form-field--error"&gt;
+									&lt;input type="email" name="email2" id="email2" autocomplete="off" /&gt;
+									&lt;label for="email2">Hint Label Text:&lt;/label&gt;
+								&lt;/div&gt;
+							</code>
+						</div>
+					</div>
+				</div>
+				<div class="grid__column grid__column--full-width">
+					<h2 class="heading-style--heading-three">Drop Down Default</h2>
+				</div>
+				<div class="grid__row dk-component-row">
+					<div class="grid__column grid__column--one-third">
+						<h3 class="heading-style--heading-six">Disabled</h3>
+						<div class="form-field form-field--select form-field--select-disabled">						
+							<select class="js-field--select" disabled>
+							    <option value="" disabled selected>Choose your option</option>
+							    <option value="s1">Option 1</option>
+							    <option value="s2">Option 2</option>
+							    <option value="s3">Option 3</option>
+							</select>
+						</div>
+						<h3 class="heading-style--heading-six">Active</h3>
+						<div class="form-field form-field--select">						
+							<select class="js-field--select">
+							    <option value="" disabled selected>Choose your option</option>
+							    <option value="a1">Option 1</option>
+							    <option value="a2">Option 2</option>
+							    <option value="a3">Option 3</option>
+							</select>
+						</div>
+					</div>
+					<div class="grid__column grid__column--two-thirds">
+						<div class="code-box code-box-tall">
+							<code>
+								// Disabled<br />
+								&lt;div class="form-field form-field--select form-field--select-disabled"&gt;<br />			
+								&nbsp;&lt;select class="js-field--select" disabled&gt;<br />
+								    &nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;<br />
+								    &nbsp;&nbsp;&lt;option value="s1">Option 1&lt;/option&gt;<br />
+								    &nbsp;&nbsp;&lt;option value="s2">Option 2&lt;/option&gt;<br />
+								    &nbsp;&nbsp;&lt;option value="s3">Option 3&lt;/option&gt;<br />
+								&nbsp;&lt;/select&gt;<br />
+								&lt;/div&gt;<br /><br />
+								// Active<br />
+								&lt;div class="form-field form-field--select"&gt;<br />			
+								&nbsp;&lt;select class="js-field--select"&gt;<br />
+								    &nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;<br />
+								    &nbsp;&nbsp;&lt;option value="a1">Option 1&lt;/option&gt;<br />
+								    &nbsp;&nbsp;&lt;option value="a2">Option 2&lt;/option&gt;<br />
+								    &nbsp;&nbsp;&lt;option value="a3">Option 3&lt;/option&gt;<br />
+								&nbsp;&lt;/select&gt;<br />
+								&lt;/div&gt;<br /><br />
+							</code>
+						</div>
+					</div>
+				</div>
+				<div class="grid__column grid__column--full-width">
+					<h2 class="heading-style--heading-three">Check Box</h2>
+				</div>
+				<div class="grid__row dk-component-row">
+					<div class="grid__column grid__column--one-third">
+						<h3 class="heading-style--heading-six">Disabled</h3>
+						<h3 class="heading-style--heading-six">Active</h3>
+						<div class="form-field--checkbox-list">
+							<ul>
+								<li>
+									<input type="checkbox" name="checkboxOne" id="checkboxOne" />
+									<label for="checkboxOne" class="checkboxLabel">Lorem ipsum dolor amet elict</label>
+									<label for="checkboxOne" class="checkboxVisibleLabel">Lorem ipsum dolor amet elict</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxTwo" id="checkboxTwo" />
+									<label for="checkboxTwo" class="checkboxLabel">Lorem ipsum dolor amet elict</label>
+									<label for="checkboxTwo" class="checkboxVisibleLabel">Lorem ipsum dolor amet elict</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxThree" id="checkboxThree" />
+									<label for="checkboxThree" class="checkboxLabel">Lorem ipsum dolor amet elict</label>
+									<label for="checkboxThree" class="checkboxVisibleLabel">Lorem ipsum dolor amet elict</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="grid__column grid__column--two-thirds">
+						<div class="code-box code-box-tall">
+							<code>
+								// Disabled<br />
+								
+								// Active<br />
+								
+							</code>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="js-component-import--panel-right" class="panel-right-container"></div>
+
+	<div id="js-component-import--search"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/jquery-ui.custom.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+ 	<script src="js/templates/templates.js"></script>
+	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js/designkit-global-templates.js"></script>
+  <script src="js/application.js"></script>
+  <script src="js/designkit-app.js"></script>
+  <script>
+  	function initScripts() {
+  		new FormsPage();
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>
