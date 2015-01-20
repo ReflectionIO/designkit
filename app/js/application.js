@@ -367,17 +367,49 @@
 
 
 	var FormFieldSelect = function() {
+		var pInstance = this;
+		$('.reflection-select').each(function(){
+			var $this = $(this),
+						selectedOptionsContainer = $this.find('.js-selected-values'),
+						optionsList = $this.find('ul'),
+						listItems = $this.find('li');
+
+			optionsList.css('margin-top', -optionsList.height());
+			pInstance.populateSelectedValues(listItems, selectedOptionsContainer);
+
+			if($this.parent('.form-field--select-disabled').length == 0) {
+				selectedOptionsContainer.on('click', function() {
+					if($this.hasClass('is-open')) {
+						$this.removeClass('is-open');
+						optionsList.css('margin-top', -optionsList.height());
+					}
+					else {
+						$this.addClass('is-open');
+						optionsList.css('margin-top', "9px");
+					}				
+				});
+			}
+
+			listItems.on("click", function(){
+				pInstance.populateSelectedValues(listItems, selectedOptionsContainer);
+			});
+		});
+
 		$('.js-field--select').each(function() {
 			var selectInput = $(this),
 					selectOptions = selectInput.find('option'),
 					optionsList = $('<ul>'),
 					refSelectContainer = $('<div>').addClass('reflection-select'),
-					refSelectDefault = $('<span>').addClass('ref-icon-after ref-icon-after--angle-down').text('Select an option');
+					refSelectDefault = $('<span>').addClass('ref-icon-after ref-icon-after--angle-down').text('Choose your option');
 			
 			selectOptions.each(function(){
 				$this = $(this);
 				if($this.attr('value')) {
-					optionsList.append($('<li>').attr('data-value', $this.attr('value')).text($this.text()));
+					var preSelectedClass = '';
+					if($this.data("previous")) {
+						preSelectedClass = 'pre-selected';
+					}
+					optionsList.append($('<li>').addClass(preSelectedClass).attr('data-value', $this.attr('value')).text($this.text()));
 				}
 				else {
 					refSelectDefault.text($this.text());
@@ -387,18 +419,28 @@
 			refSelectContainer.append(refSelectDefault).append(optionsList);
 			selectInput.parents('.form-field--select').append(refSelectContainer);
 
-			var listHeight = optionsList.innerHeight();			
+			var listHeight = optionsList.innerHeight();
 			optionsList.css('margin-top', -listHeight);
+
+			function toggleDropDown() {
+				if(refSelectContainer.hasClass('is-open')) {
+					refSelectContainer.removeClass('is-open');
+					optionsList.css('margin-top', -listHeight);
+				}
+				else {
+					refSelectContainer.addClass('is-open');
+					optionsList.css('margin-top', "9px");
+				}
+			};
+
 			if(selectInput.parent('.form-field--select-disabled').length == 0) {
-				refSelectContainer.on('click', function() {
-					if(refSelectContainer.hasClass('is-open')) {
-						refSelectContainer.removeClass('is-open');
-						optionsList.css('margin-top', -listHeight);
+				optionsList.find('li').on('click', function() {
+					if(!$(this).hasClass('pre-selected')) {
+						toggleDropDown();
 					}
-					else {
-						refSelectContainer.addClass('is-open');
-						optionsList.css('margin-top', "8px");
-					}
+				});
+				refSelectDefault.on('click', function() {
+					toggleDropDown();
 				});
 			}
 
@@ -408,21 +450,41 @@
 			});
 
 			optionsList.find('li').on('click', function(){
-				listItem = $(this);
-				optionsList.find('li').removeClass('is-selected');
-				listItem.addClass('is-selected');
-				refSelectDefault.text(listItem.text()).addClass('is-activated');
+				if(!$(this).hasClass('pre-selected')) {
+					listItem = $(this);
+					optionsList.find('li').removeClass('is-selected');
+					listItem.addClass('is-selected');
+					refSelectDefault.text(listItem.text()).addClass('is-activated');
 
-				selectOptions.each(function() {
-					if($(this).val() == listItem.data("value")) {
-						$(this).attr("selected", "selected");
-					}
-					else {
-						$(this).removeAttr("selected");	
-					}
-				});
+					selectOptions.each(function() {
+						if($(this).val() == listItem.data("value")) {
+							$(this).attr("selected", "selected");
+						}
+						else {
+							$(this).removeAttr("selected");	
+						}
+					});
+				}
 			});
 		});
+	};
+
+	FormFieldSelect.prototype.populateSelectedValues = function(listItems, selectedOptionsContainer) {
+		var selectedValues = '';
+		listItems.each(function(){
+			var $this = $(this);
+			if($this.find('input:checked').length > 0) {
+				selectedValues += $this.find('.checkboxLabelVisible').text() + ', ';
+			}
+		});
+
+		if(selectedValues.length > 0) {
+			selectedValues = selectedValues.substring(0, selectedValues.length - 2);
+			selectedOptionsContainer.text(selectedValues);
+		}
+		else {
+			selectedOptionsContainer.text('Choose your option(s)');
+		}
 	};
 
 /* END COMPONENT OBJECTS */
