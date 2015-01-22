@@ -5,8 +5,19 @@
 		color: $reflection-purple;
 		&:hover {
 			color: darken($reflection-purple, 10%);
+			.forms--dark-theme & {
+				color: lighten($reflection-purple, 10%);
+			}
 		}
-	}	
+	}
+}
+.forms--dark-theme {
+	h1, h2, h3, h4, h5, h6 {
+		color: $reflection-white;
+	}
+	p {
+		color: $light-grey-1;
+	}
 }
 .label--hidden-text {
 	text-align: left;
@@ -37,6 +48,9 @@ textarea {
 	padding: 8px 14px 10px;
 	border-radius: 3px;
 	background-color: $panel-grey;
+	.forms--mid-theme & {
+		background-color: #ffffff;
+	}	
 	label {
 		padding-bottom: 27px;
 		display: block;
@@ -53,6 +67,18 @@ textarea {
 		display: block;
 		color: $mid-grey-1;
 	}
+	.forms--dark-theme & {
+		background-color: #333338;
+		&.is-closed label {
+			color: $light-grey-1;
+		}
+		input:focus + label {
+			color: $reflection-white;
+		}
+		input, textarea {
+			color: $light-grey-1;
+		}
+	}
 	input[type="text"],
 	input[type="email"],
 	input[type="search"],
@@ -62,6 +88,24 @@ textarea {
 		font-family: $brand-heading-font;
 		font-size: 1.4rem;
 		@include transition(bottom 0.06s);
+	}
+	input:-webkit-autofill {
+		color: $mid-grey-1 !important;
+		-webkit-box-shadow: 0 0 0px 1000px $panel-grey inset;
+		-webkit-text-fill-color: $mid-grey-1 !important;
+	  background-color: $panel-grey !important;
+	  .forms--mid-theme & {
+	  	color: #81879d !important;
+		  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+		  -webkit-text-fill-color: #81879d !important;
+	  	background-color: #ffffff !important;
+	  }
+	  .forms--dark-theme & {
+	  	color: #81879d !important;
+		  -webkit-box-shadow: 0 0 0px 1000px #333338 inset;
+		  -webkit-text-fill-color: #81879d !important;
+	  	background-color: #333338 !important;
+	  }
 	}
 	&.is-closed {
 		label {
@@ -81,6 +125,12 @@ textarea {
 }
 .form-field.form-field--disabled {
 	background-color: #f7f7f9;
+	.forms--dark-theme & {
+		background-color: #2d2d31;
+		label {
+			color: $mid-grey-1;
+		}
+	}
 	label {
 		color: $light-grey-2;
 	}
@@ -89,6 +139,84 @@ textarea {
 	border: 1px solid #d23753;
 	input:focus + label, label {
 		color: #d23753;
+	}
+}
+.calendar-container {
+	position: relative;
+	overflow: visible;
+	font-size: 0;
+}
+.date-select-container {
+	position: relative;
+	width: percentage(145/320);	
+	display: inline-block;
+	overflow: visible;
+	vertical-align: middle;
+	@include breakpoint($tablet) {
+		width: 100%;
+	}
+	@include breakpoint($desktop) {
+		width: percentage(145/320);	
+	}
+}
+.date-select-to-indicator {
+	@extend %ref-icon;
+	position: relative;
+	width: percentage(30/320);
+	height: 26px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	&:after {
+		@extend %icon-font;
+		content: "l";
+		font-size: 18px;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		margin-left: -9px;
+		color: #828a91;
+	}
+	@include breakpoint($tablet) {
+		width: 100%;
+		height: 24px;
+		&:after {
+			content: "j";
+		}
+	}
+	@include breakpoint($desktop) {
+		width: percentage(30/320);
+		height: 26px;
+		&:after {
+			content: "l";
+		}
+	}
+}
+.form-field.form-field--date-select {
+	position: relative;
+	overflow: visible;
+	width: 100%;
+	input[type="text"] {
+		position: relative;
+		bottom: 0;
+		width: 100%;
+	}
+	span {
+		@extend .ref-icon-after;
+		position: absolute;
+		top: calc(50% - 9px);
+		right: 12px;
+		&:after {
+			content: "u";
+			font-size: 17px;
+			color: $reflection-purple;
+			@include transition(color 0.1s);
+		}
+	}
+	input[type="text"]:focus + span:after,
+	input[type="text"].is-focused + span:after {
+		color: $reflection-green;
+		@include transition(color 0.1s);
 	}
 }
 input:required {
@@ -107,6 +235,12 @@ input:invalid {
 	padding: 8px 9px 0 14px;
 	&.form-field--select-disabled {
 		background-color: #f7f7f9;
+		.forms--dark-theme {
+			background-color: #2d2d31;
+			label {
+				color: $mid-grey-1;
+			}
+		}
 		span, li {
 			color: #c4c7d0;
 			background-color: #f7f7f9;
@@ -140,6 +274,13 @@ input:invalid {
 		padding-top: 3px;
 		z-index: 10;
 		background: $panel-grey;
+		.forms--mid-theme & {
+			background-color: #ffffff;
+		}
+		.forms--dark-theme & {
+			color: lighten(#5b5b68, 10%);
+			background-color: #333338;
+		}
 		&:after {
 			position: absolute;
 			top: 2px;
@@ -149,7 +290,10 @@ input:invalid {
 			@include transition(transform $base-transition-speed-off);
 		}
 		&.is-activated {
-			color: #363a47;
+			color: $mid-grey-1;
+			.forms--dark-theme & {
+				color: $light-grey-1;
+			}
 		}
 	}
 	ul {
@@ -165,15 +309,24 @@ input:invalid {
 		overflow: visible;
 		&:hover {
 			color: darken($reflection-purple, 10%);
+			.forms--dark-theme & {
+				color: lighten($reflection-purple, 10%);
+			}
 		}
 		&.is-selected {
 			font-weight: 600;
 			color: #363a47;
+			.forms--dark-theme & {
+				color: $reflection-white;
+			}
 		}
 		&.pre-selected {
 			position: relative;
 			padding-right: 6rem;
 			color: $light-grey-2;
+			&:hover {
+				color: $light-grey-2;
+			}
 			&:after {
 				content: 'Selected';
 				position: absolute;
@@ -244,6 +397,13 @@ input:invalid {
 		font-weight: 400;
 	}
 }
+.form-field--checkbox-list--inline,
+.form-field--radio-list--inline {
+	li {
+		margin-right: 20px;
+		display: inline-block;
+	}
+}
 label.checkboxLabel,
 label.checkboxLabelDisabled,
 label.radioButtonLabel,
@@ -271,20 +431,35 @@ label.radioButtonLabel {
 	background-color: #f2f2f5;
 	overflow: visible;
 	//@include transition(background-color 0.2s);
+	.forms--mid-theme & {
+		background-color: #ffffff;
+	}
+	.forms--dark-theme & {
+		background-color: #333338;
+	}
 	&:hover {
 		background-color: $divider-grey;
 		//@include transition(background-color 0.3s);
+		.forms--mid-theme & {
+			background-color: darken(#ffffff, 10%);
+		}
+		.forms--dark-theme & {
+			background-color: lighten(#333338, 10%);
+		}
 	}
 	&:active {
 		border-top: 2px solid #bfc3c5;
 		background-color: $divider-grey;
+		.forms--dark-theme & {
+			border-top: 2px solid #333338;
+		}
 	}
 }
 label.checkboxLabel {
 	&:after {
 		opacity: 0;
 		position: absolute;
-		top: 0;
+		top: 1px;
 		left: 0;
 		width: 18px;
 		height: 18px;
@@ -298,8 +473,9 @@ label.checkboxLabel {
 		line-height: 1;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		font-size: 18px;
+		font-size: 15px;
 		color: $light-grey-2;
+		text-align: center;
 		@include transition(color 0.2s);
 		.no-opacity & {
 			display: none;
@@ -347,6 +523,9 @@ label.checkboxLabelVisible,
 label.radioButtonLabelVisible {
 	color: #363a47;
 	cursor: pointer;
+	.forms--dark-theme & {
+		color: $light-grey-1;
+	}
 	.reflection-select & {
 		color: $reflection-purple;
 		@include transition(color $base-transition-speed-off);
@@ -366,4 +545,269 @@ label.radioButtonLabelVisibleDisabled {
 .form-field--radio-list + .form-field--checkbox-list,
 .form-field--checkbox-list + .form-field--radio-list {
 	margin-top: 0;
-} 
+}
+.forms--mid-theme {
+	background-color: $panel-grey;
+}
+.forms--dark-theme {
+	background-color: $dark-grey-1;
+}
+
+// Date Selector
+.dateBoxPopup {
+	position: absolute;
+	top: 4.2rem;
+	left: 0;
+	width: 100%;
+	z-index: 990;
+	opacity: 0;
+	visibility: hidden;
+	border-radius: 0 0 4px 4px;
+	background-color: $panel-grey;
+	@include transition(opacity 0.1s, visibility 0.1s 0.1s);
+	.forms--dark-theme & {
+		background-color: #333338;
+	}
+	@include breakpoint($tablet) {
+		top: 11.4rem;
+	}
+	@include breakpoint($desktop) {
+		top: 4.2rem;
+	}
+	tbody, tr {
+		width: 100%;
+	}
+	&.is-showing {
+		opacity: 1;
+		visibility: visible;
+		@include transition(opacity 0.1s);
+	}
+}
+.gwt-DatePicker {
+	width: 100%;
+	tr {
+		width: 100%;
+	}
+}
+.single-date-selector-container {
+	text-align: center;
+}
+.datePickerMonthSelector {
+	background-color: $divider-grey;
+	.form-field--checkbox-list {
+		width: auto;
+		margin: 0 auto;
+		display: inline-block;
+		li {
+			margin: 0;
+			label.checkboxLabel {
+				z-index: 2;
+				&:hover {
+					background-color: $light-grey-2;
+					.forms--dark-theme & {
+						border-top-color: #333338;
+						background-color: lighten(#333338, 10%);
+					}
+				}
+				&:active {
+					border-top-color: $mid-grey-2;
+				}
+			}
+			input:checked + label.checkboxLabel {
+				&:hover {
+					background-color: $reflection-green;
+				}
+				&:active {
+					border-top-color: #169f7f;
+				}
+			}
+			label.checkboxLabelVisible {
+				position: relative;
+				padding-left: 16px;
+				z-index: 0;
+				font-size: 12px;
+				.forms--dark-theme & {
+					color: $reflection-white;
+				}
+			}
+		}
+	}
+	.forms--dark-theme & {
+		background-color: #5b5b68;
+	}
+}
+.datePickerDays {
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 16px;
+	margin-bottom: 15px;
+	text-align: center;
+	background-color: $panel-grey;
+	.forms--dark-theme & {
+		background-color: #333338;
+	}
+	td {
+		font-family: $brand-heading-font;
+		font-size: 13px;
+		font-weight: 600;
+		color: $dark-grey-2;
+		text-align: center;
+		border-left: 1px solid $divider-grey;
+		border-top: 1px solid $divider-grey;
+		&:first-child {
+			border-left: 0;
+		}
+		.forms--dark-theme & {
+			color: $reflection-white;
+			border-color: #29292c;
+		}
+		> div {
+			padding-top: 12px;
+			padding-bottom: 14px;
+			box-sizing: border-box;
+			outline: none;
+			cursor: pointer;
+			&:active, &:hover {
+				color: $reflection-white;
+				background-color: $light-grey-1;
+				.forms--dark-theme & {
+					background-color: #5b5b68;
+				}
+			}
+			&:active {
+				padding-bottom: 12px;
+				color: $reflection-white;
+				border-top: 2px solid #5a5e6e;
+				.forms--dark-theme & {
+					border-top: 2px solid #404049;
+				}
+			}
+		}
+		> div.datePickerDayIsValue {
+			color: $reflection-white;
+			background-color: $reflection-green;
+			&:hover, &:active {
+				padding-bottom: 14px;
+				border-top: 0;
+				background-color: $reflection-green;
+			}
+		}
+		> div.datePickerDayIsToday {
+			background-color: $reflection-white;
+			.forms--dark-theme & {
+				color: #727686;
+				background-color: #29292c;
+			}
+			&:hover, &:active {
+				padding-bottom: 14px;
+				border-top: 0;
+				color: $dark-grey-2;
+				background-color: $reflection-white;
+				.forms--dark-theme & {
+					color: #727686;
+					background-color: #29292c;
+				}
+			}
+		}
+		.datePickerDayIsFiller {
+			color: $light-grey-2;
+			.forms--dark-theme & {
+				color: #5b5b68;
+			}
+		}
+		.datePickerDayIsDisabled {
+			color: $light-grey-2;
+			font-style: italic;
+			cursor: not-allowed;
+			.forms--dark-theme & {
+				color: #5b5b68;
+			}
+			&:hover, &:active {
+				padding-bottom: 14px;
+				border-top: 0;
+				color: $light-grey-2;
+				background-color: $panel-grey;
+			}
+		}
+	}
+	tr:first-child td {
+		border-top: 0;
+	}
+}
+.datePickerDays .datePickerWeekdayLabel,
+.datePickerDays .datePickerWeekendLabel {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: $light-grey-1;
+	.forms--dark-theme & {
+		color: $light-grey-1;
+	}
+}
+.datePickerPreviousButton,
+.datePickerNextButton {
+	cursor: hand;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 0px 4px;
+	outline: none;
+	.has-single-option & {
+		position: relative;
+  	top: 5px;
+	}
+}
+.datePickerMonth {
+	padding-top: 18px;
+	padding-bottom: 19px;
+	font-family: $brand-body-font;
+	font-size: 14px;
+	font-weight: 700;
+	text-align: center;
+	text-transform: uppercase;
+	color: $dark-grey-2;
+	.has-single-option & {
+		padding-bottom: 10px;
+	}
+	.forms--dark-theme & {
+		color: $reflection-white;
+	}
+}
+.datePickerPreviousButton,
+.datePickerNextButton {
+	@extend %ref-icon;
+	margin-top: -2px;
+	padding: 0 13px;
+	&:after {
+		@extend %icon-font;
+		font-size: 18px;
+		position: relative;
+		color: #828a91;
+		.forms--dark-theme & {
+			color: #c4c7d0;
+		}
+	}
+	&:hover {
+		&:after {
+			color: darken(#828a91, 10%);
+			.forms--dark-theme & {
+				color: lighten(#c4c7d0, 10%);
+			}
+		}
+	}
+	&:active {
+		margin-top: 0;
+	}
+}
+.datePickerPreviousButton:after {
+	content: "k";
+}
+.datePickerNextButton:after {
+	content: "l";
+}
+.datePickerPreviousButton .html-face,
+.datePickerNextButton .html-face {
+	display: none
+}
+.calendar-container + .form-field--checkbox-list,
+.calendar-container + .form-field--radio-list {
+	margin-top: 0.8rem;
+}

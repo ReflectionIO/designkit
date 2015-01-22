@@ -1,4 +1,4 @@
-/* APPLICATION JAVASCRIPT
+// APPLICATION JAVASCRIPT
 // Use prototypal inheritance to set functions relevant to the page to encapsulate functions (page objects below)
 // Use functions as variables to modularise and encapsulate component functionality in application.js - which contains reusable components JS for the application
 // Keep design kit only JS in this file, and resusable application JS in application.js
@@ -227,5 +227,19 @@
 			$(this).parents('.js-inline-form-field-error-demo').removeClass('form-field--error');
 			$(this).siblings('label').html('Hint Label Text:');
 		});
+
+		$('.form-field--date-select input').on("click", function(){
+			$this = $(this);
+			$popup = $this.parents('.date-select-container').siblings('.dateBoxPopup');
+			if($popup.hasClass('is-showing')) {
+				$popup.removeClass('is-showing');
+			}
+			else {
+				$popup.addClass('is-showing');
+			}
+		});
 	};
 /* END PAGE OBJECTS FOR TEMPLATES */
+
+
+
