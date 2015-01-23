@@ -185,6 +185,7 @@
 
 		// Components
 		new Tabs();
+		new FormFieldSelect();
 
 		// Functionality just for this template, and not reusable
 		this.templateFunctions();
