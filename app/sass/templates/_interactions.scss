@@ -2,6 +2,10 @@
 	0% { top: 3px; }
 	33%, 100% { top: calc(100% - 35px); }
 }
+@keyframes easeoutdemo-ie {
+	0% { top: 3px; }
+	33%, 100% { top: 100%; }
+}
 
 .easing-section {
 	position: relative;
@@ -21,6 +25,9 @@
 	right: 0;
 	bottom: 0px;
 	height: 100%;
+	.ie8, .ie9 {
+		display: none;
+	}
 }
 .easing-representation {
 	position: relative;
@@ -40,9 +47,15 @@
 	animation: easeoutdemo 3s infinite;
 	animation-delay: 2s;
 	animation-timing-function: cubic-bezier(.01,.04,.29,.99); // http://cubic-bezier.com/#.01,.04,.29,.99
+	.is-ie & {
+		animation: easeoutdemo-ie 3s infinite;
+	}
 }
 .easing-representation__slider--ease-in {
 	animation-timing-function: cubic-bezier(.03,.08,.79,-0.15); // http://cubic-bezier.com/#.03,.08,.79,-0.15
+	.is-ie & {
+		animation-timing-function: cubic-bezier(.03,.08,.79,-0.15);
+	}
 }
 .grid__column--one-third {
 	h4 {

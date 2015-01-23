@@ -2078,13 +2078,29 @@ textarea, .global-header .link-open-search, html, body {
     top: calc(100% - 35px);
   }
 }
-/* line 6, ../sass/templates/_interactions.scss */
+@-webkit-keyframes easeoutdemo-ie {
+  0% {
+    top: 3px;
+  }
+  33%, 100% {
+    top: 100%;
+  }
+}
+@keyframes easeoutdemo-ie {
+  0% {
+    top: 3px;
+  }
+  33%, 100% {
+    top: 100%;
+  }
+}
+/* line 10, ../sass/templates/_interactions.scss */
 .easing-section {
   position: relative;
   margin-bottom: 4rem;
 }
 
-/* line 10, ../sass/templates/_interactions.scss */
+/* line 14, ../sass/templates/_interactions.scss */
 .easing-figure-container {
   display: inline;
   float: left;
@@ -2094,20 +2110,20 @@ textarea, .global-header .link-open-search, html, body {
   padding: 0px 60px 0px 4%;
 }
 @media (min-width: 720px) {
-  /* line 10, ../sass/templates/_interactions.scss */
+  /* line 14, ../sass/templates/_interactions.scss */
   .easing-figure-container {
     width: 83.33333%;
     padding: 0 4%;
   }
 }
 @media (min-width: 720px) {
-  /* line 10, ../sass/templates/_interactions.scss */
+  /* line 14, ../sass/templates/_interactions.scss */
   .easing-figure-container {
     padding: 0px 60px 0px 4%;
   }
 }
 
-/* line 18, ../sass/templates/_interactions.scss */
+/* line 22, ../sass/templates/_interactions.scss */
 .easing-represenation-container {
   position: absolute;
   top: 0;
@@ -2115,8 +2131,12 @@ textarea, .global-header .link-open-search, html, body {
   bottom: 0px;
   height: 100%;
 }
+/* line 28, ../sass/templates/_interactions.scss */
+.easing-represenation-container .ie8, .easing-represenation-container .ie9 {
+  display: none;
+}
 
-/* line 25, ../sass/templates/_interactions.scss */
+/* line 32, ../sass/templates/_interactions.scss */
 .easing-representation {
   position: relative;
   height: 100%;
@@ -2125,7 +2145,7 @@ textarea, .global-header .link-open-search, html, body {
   background-color: #f2f2f5;
 }
 
-/* line 32, ../sass/templates/_interactions.scss */
+/* line 39, ../sass/templates/_interactions.scss */
 .easing-representation__slider {
   position: absolute;
   top: 3px;
@@ -2141,31 +2161,41 @@ textarea, .global-header .link-open-search, html, body {
   -webkit-animation-timing-function: cubic-bezier(0.01, 0.04, 0.29, 0.99);
           animation-timing-function: cubic-bezier(0.01, 0.04, 0.29, 0.99);
 }
+/* line 50, ../sass/templates/_interactions.scss */
+.is-ie .easing-representation__slider {
+  -webkit-animation: easeoutdemo-ie 3s infinite;
+          animation: easeoutdemo-ie 3s infinite;
+}
 
-/* line 44, ../sass/templates/_interactions.scss */
+/* line 54, ../sass/templates/_interactions.scss */
 .easing-representation__slider--ease-in {
   -webkit-animation-timing-function: cubic-bezier(0.03, 0.08, 0.79, -0.15);
           animation-timing-function: cubic-bezier(0.03, 0.08, 0.79, -0.15);
 }
+/* line 56, ../sass/templates/_interactions.scss */
+.is-ie .easing-representation__slider--ease-in {
+  -webkit-animation-timing-function: cubic-bezier(0.03, 0.08, 0.79, -0.15);
+          animation-timing-function: cubic-bezier(0.03, 0.08, 0.79, -0.15);
+}
 
-/* line 48, ../sass/templates/_interactions.scss */
+/* line 61, ../sass/templates/_interactions.scss */
 .grid__column--one-third h4 {
   margin-bottom: 1.9em;
 }
-/* line 51, ../sass/templates/_interactions.scss */
+/* line 64, ../sass/templates/_interactions.scss */
 .grid__column--one-third button {
   margin-bottom: 3rem;
   float: left;
   clear: both;
 }
 
-/* line 57, ../sass/templates/_interactions.scss */
+/* line 70, ../sass/templates/_interactions.scss */
 .interactions-page .grid__column--one-third .main-navigation {
   padding-top: 0;
   padding-bottom: 0;
   margin-bottom: 3rem;
 }
-/* line 61, ../sass/templates/_interactions.scss */
+/* line 74, ../sass/templates/_interactions.scss */
 .interactions-page .grid__column--one-third .main-navigation > ul > li {
   margin-bottom: 0;
 }
