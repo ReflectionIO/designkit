@@ -52,13 +52,16 @@ textarea {
 		background-color: #ffffff;
 	}	
 	label {
+		padding-top: 0.25rem;
 		padding-bottom: 27px;
 		display: block;
 		font-family: $brand-heading-font;
 		font-size: 1.19rem;
 		font-weight: 600;
 		color: $light-grey-1;
-		@include transition(padding 0.06s);
+		.no-touch & {
+			@include transition(font-size 0.06s, padding 0.06s);
+		}
 	}
 	input:focus + label {
 		color: $reflection-purple;
@@ -87,7 +90,9 @@ textarea {
 		bottom: 10px;
 		font-family: $brand-heading-font;
 		font-size: 1.4rem;
-		@include transition(bottom 0.06s);
+		.no-touch & {
+			@include transition(bottom 0.06s);
+		}
 	}
 	input:-webkit-autofill {
 		color: $mid-grey-1 !important;
@@ -115,11 +120,15 @@ textarea {
 			font-size: 1.4rem;
 			color: $mid-grey-1;
 			font-weight: 400;
-			@include transition(padding 0.06s);
+			.no-touch & {
+				@include transition(font-size 0.06s, padding 0.06s);
+			}
 		}
 		input {
 			bottom: 6px;
-			@include transition(bottom 0.06s);
+			.no-touch & {
+				@include transition(bottom 0.06s);
+			}
 		}
 	}
 }
@@ -210,13 +219,11 @@ textarea {
 			content: "u";
 			font-size: 17px;
 			color: $reflection-purple;
-			@include transition(color 0.1s);
 		}
 	}
 	input[type="text"]:focus + span:after,
 	input[type="text"].is-focused + span:after {
 		color: $reflection-green;
-		@include transition(color 0.1s);
 	}
 }
 input:required {
@@ -302,7 +309,7 @@ input:invalid {
 		@include transition(margin-top 0.16s ease-in);
 	}
 	li {
-		margin-bottom: 1.4rem;
+		margin-bottom: 1.8rem;
 		padding-left: 1.6rem;
 		line-height: 1.2;
 		color: $reflection-purple;
@@ -312,6 +319,9 @@ input:invalid {
 			.forms--dark-theme & {
 				color: lighten($reflection-purple, 10%);
 			}
+		}
+		.no-touch & {
+			margin-bottom: 1.4rem;
 		}
 		&.is-selected {
 			font-weight: 600;
@@ -384,8 +394,8 @@ input:invalid {
 	}
 	input[type=checkbox],
 	input[type=radio] {
-		position: relative;
-		left: -999em;
+		position: absolute;
+		left: -10000px;
 		margin: 0;
 		padding: 0;
 		display: inline-block;
@@ -459,7 +469,7 @@ label.checkboxLabel {
 	&:after {
 		opacity: 0;
 		position: absolute;
-		top: 1px;
+		top: 2px;
 		left: 0;
 		width: 18px;
 		height: 18px;
@@ -508,6 +518,16 @@ input[type="radio"]:checked + label.radioButtonLabel {
 		border-top: 2px solid #169f7f;
 	}
 }
+.forms--dark-theme input[type="checkbox"]:checked + label.checkboxLabel {
+	background-color: #333338;
+	&:active {
+		border-top: 2px solid $dark-grey-1;
+		background-color: #333338;
+	}
+	&:after {
+		color: #1BC79F;
+	}
+}
 input[type="checkbox"]:checked + label.checkboxLabel {
 	@include transition(background-color 0.3s);
 }
@@ -515,9 +535,10 @@ label.checkboxLabelVisible,
 label.checkboxLabelVisibleDisabled,
 label.radioButtonLabelVisible,
 label.radioButtonLabelVisibleDisabled {
-	padding-left: 19px;
+	padding-left: 31px;
 	font-family: $brand-heading-font;
 	font-size: 1.3rem;
+	text-align: left;
 }
 label.checkboxLabelVisible,
 label.radioButtonLabelVisible {
@@ -568,6 +589,9 @@ label.radioButtonLabelVisibleDisabled {
 	.forms--dark-theme & {
 		background-color: #333338;
 	}
+	.forms--mid-theme & {
+		background-color: #fff;
+	}
 	@include breakpoint($tablet) {
 		top: 11.4rem;
 	}
@@ -616,14 +640,21 @@ label.radioButtonLabelVisibleDisabled {
 			input:checked + label.checkboxLabel {
 				&:hover {
 					background-color: $reflection-green;
+					.forms--dark-theme & {
+						background-color: #333338;
+					}
 				}
 				&:active {
 					border-top-color: #169f7f;
+					.forms--dark-theme & {
+						border-top: 2px solid $dark-grey-1;
+						background-color: #333338;
+					}
 				}
 			}
 			label.checkboxLabelVisible {
 				position: relative;
-				padding-left: 16px;
+				padding-left: 30px;
 				z-index: 0;
 				font-size: 12px;
 				.forms--dark-theme & {
@@ -631,6 +662,9 @@ label.radioButtonLabelVisibleDisabled {
 				}
 			}
 		}
+	}
+	.forms--mid-theme & {
+		background-color: #e8e7f1;
 	}
 	.forms--dark-theme & {
 		background-color: #5b5b68;
@@ -643,6 +677,9 @@ label.radioButtonLabelVisibleDisabled {
 	margin-bottom: 15px;
 	text-align: center;
 	background-color: $panel-grey;
+	.forms--mid-theme & {
+		background-color: #fff;
+	}
 	.forms--dark-theme & {
 		background-color: #333338;
 	}
@@ -694,6 +731,9 @@ label.radioButtonLabelVisibleDisabled {
 		}
 		> div.datePickerDayIsToday {
 			background-color: $reflection-white;
+			.forms--mid-theme & {
+				background-color: #f2f2f5;
+			}
 			.forms--dark-theme & {
 				color: #727686;
 				background-color: #29292c;
@@ -703,6 +743,9 @@ label.radioButtonLabelVisibleDisabled {
 				border-top: 0;
 				color: $dark-grey-2;
 				background-color: $reflection-white;
+				.forms--mid-theme & {
+					background-color: #f2f2f5;
+				}
 				.forms--dark-theme & {
 					color: #727686;
 					background-color: #29292c;
@@ -714,11 +757,19 @@ label.radioButtonLabelVisibleDisabled {
 			.forms--dark-theme & {
 				color: #5b5b68;
 			}
+			&:hover {
+				.forms--dark-theme & {
+					color: $reflection-white;
+				}
+			}
 		}
 		.datePickerDayIsDisabled {
 			color: $light-grey-2;
 			font-style: italic;
 			cursor: not-allowed;
+			.forms--mid-theme & {
+				color: $light-grey-2;
+			}
 			.forms--dark-theme & {
 				color: #5b5b68;
 			}
@@ -727,6 +778,16 @@ label.radioButtonLabelVisibleDisabled {
 				border-top: 0;
 				color: $light-grey-2;
 				background-color: $panel-grey;
+				.forms--mid-theme & {
+					color: $light-grey-2;
+					border-top: 0;
+					background-color: #fff;
+				}
+				.forms--dark-theme & {
+					color: #5b5b68;
+					border-top: 0;
+					background-color: #333338;
+				}
 			}
 		}
 	}
