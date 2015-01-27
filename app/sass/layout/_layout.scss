@@ -11,21 +11,13 @@ $base-margin-bottom: 4rem;
 	width: 100%;
 	min-height: 100vh;
 	overflow: visible;
-	@include transition(transform 0.15s ease-in, filter 0.18s);
+	@include transition(filter 0.18s);
 	&.is-blurred-heavy {
 		filter: blur(0.8px);
 		@include transition(filter 0.5s);
 		.ie8 &, .ie9 & {
 			filter: none;
 		}
-	}
-	.panel-left-open & {
-		@include transform(translateX(220px));
-		@include transition(transform 0.15s ease-out);
-		overflow: visible;
-		@include breakpoint($laptop, true) {
-			@include transform(translateX(0));
-		}		
 	}
 }
 .l-main {
@@ -34,19 +26,28 @@ $base-margin-bottom: 4rem;
 	display: inline-block;
 	float: right;
 	vertical-align: top;
-	@include transition(width 0.15s ease-in);
-	// SHOW THE GRID
-	// min-height: 100vh;
-	// @include column-grid-background(12, 39, 18, 0, #e9efef, #f1f5f5, true);
+	@include transition(transform 0.15s ease-in, width 0.15s ease-in);
 	@include breakpoint($phablet, true) {
 		padding-top: 62px;
 	}
 	.panel-left-open & {
 		width: 100%;
-		@include transition(width 0.15s ease-out);
+		@include transform(translateX(220px));
+		@include transition(transform 0.15s ease-out, width 0.15s ease-out);
+		overflow: visible;
 		@include breakpoint($laptop, true) {
 			width: calc(100% - 220px);
+			@include transform(translateX(0));
 			@include transition(width 0.15s ease-out);
+		}		
+	}
+}
+.is-chrome,
+.is-opera {
+	.l-main {
+		@include transition(none);
+		.panel-left-open & {
+			@include transition(none);
 		}
 	}
 }

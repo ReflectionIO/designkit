@@ -175,8 +175,8 @@ input::-ms-clear {
   width: 100%;
   min-height: 100vh;
   overflow: visible;
-  -webkit-transition: -webkit-transform 0.15s ease-in, -webkit-filter 0.18s, -webkit-transform 0.15s ease-in, filter 0.18s;
-  transition: transform 0.15s ease-in, filter 0.18s;
+  -webkit-transition: -webkit-filter 0.18s, filter 0.18s;
+  transition: filter 0.18s;
 }
 /* line 15, ../sass/layout/_layout.scss */
 .l-page-container.is-blurred-heavy {
@@ -190,53 +190,56 @@ input::-ms-clear {
   -webkit-filter: none;
           filter: none;
 }
-/* line 22, ../sass/layout/_layout.scss */
-.panel-left-open .l-page-container {
-  -ms-transform: translateX(220px);
-  -webkit-transform: translateX(220px);
-  transform: translateX(220px);
-  -webkit-transition: -webkit-transform 0.15s ease-out;
-  transition: transform 0.15s ease-out;
-  overflow: visible;
-}
-@media (min-width: 960px) {
-  /* line 22, ../sass/layout/_layout.scss */
-  .panel-left-open .l-page-container {
-    -ms-transform: translateX(0);
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
 
-/* line 31, ../sass/layout/_layout.scss */
+/* line 23, ../sass/layout/_layout.scss */
 .l-main {
   width: 100%;
   padding-top: 42px;
   display: inline-block;
   float: right;
   vertical-align: top;
-  -webkit-transition: width 0.15s ease-in;
-  transition: width 0.15s ease-in;
+  -webkit-transition: -webkit-transform 0.15s ease-in, width 0.15s ease-in;
+  transition: transform 0.15s ease-in, width 0.15s ease-in;
 }
 @media (min-width: 480px) {
-  /* line 31, ../sass/layout/_layout.scss */
+  /* line 23, ../sass/layout/_layout.scss */
   .l-main {
     padding-top: 62px;
   }
 }
-/* line 44, ../sass/layout/_layout.scss */
+/* line 33, ../sass/layout/_layout.scss */
 .panel-left-open .l-main {
   width: 100%;
-  -webkit-transition: width 0.15s ease-out;
-  transition: width 0.15s ease-out;
+  -ms-transform: translateX(220px);
+  -webkit-transform: translateX(220px);
+  transform: translateX(220px);
+  -webkit-transition: -webkit-transform 0.15s ease-out, width 0.15s ease-out;
+  transition: transform 0.15s ease-out, width 0.15s ease-out;
+  overflow: visible;
 }
 @media (min-width: 960px) {
-  /* line 44, ../sass/layout/_layout.scss */
+  /* line 33, ../sass/layout/_layout.scss */
   .panel-left-open .l-main {
     width: calc(100% - 220px);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
     -webkit-transition: width 0.15s ease-out;
     transition: width 0.15s ease-out;
   }
+}
+
+/* line 47, ../sass/layout/_layout.scss */
+.is-chrome .l-main,
+.is-opera .l-main {
+  -webkit-transition: none;
+  transition: none;
+}
+/* line 49, ../sass/layout/_layout.scss */
+.panel-left-open .is-chrome .l-main, .panel-left-open
+.is-opera .l-main {
+  -webkit-transition: none;
+  transition: none;
 }
 
 /* Grid variables */
@@ -2020,12 +2023,32 @@ textarea, .global-header .link-open-search, html, body {
 .grid__row--demo {
   margin-bottom: 5px;
 }
-/* line 54, ../sass/templates/_grid.scss */
-.grid__row--demo:last-child {
+
+/* line 56, ../sass/templates/_grid.scss */
+.grid-demo-container .grid__row--demo {
+  display: none;
+}
+/* line 58, ../sass/templates/_grid.scss */
+.grid-demo-container .grid__row--demo:first-child {
+  margin-bottom: 4rem;
+  display: block;
+}
+@media (min-width: 720px) {
+  /* line 56, ../sass/templates/_grid.scss */
+  .grid-demo-container .grid__row--demo {
+    display: block;
+  }
+  /* line 64, ../sass/templates/_grid.scss */
+  .grid-demo-container .grid__row--demo:first-child {
+    margin-bottom: 5px;
+  }
+}
+/* line 69, ../sass/templates/_grid.scss */
+.grid-demo-container .grid__row--demo:last-child {
   margin-bottom: 4rem;
 }
 
-/* line 58, ../sass/templates/_grid.scss */
+/* line 73, ../sass/templates/_grid.scss */
 .grid-demo-overlay {
   position: absolute;
   top: 0;
@@ -2038,23 +2061,23 @@ textarea, .global-header .link-open-search, html, body {
   opacity: 1;
   box-sizing: border-box;
 }
-/* line 68, ../sass/templates/_grid.scss */
+/* line 83, ../sass/templates/_grid.scss */
 .grid-demo-overlay .grid__row {
-  height: 100%;
+  height: 95%;
 }
 
-/* line 72, ../sass/templates/_grid.scss */
+/* line 87, ../sass/templates/_grid.scss */
 .grid-demo-overlay__column {
   height: 100%;
   background-color: #9b1b1b;
 }
 
-/* line 76, ../sass/templates/_grid.scss */
+/* line 91, ../sass/templates/_grid.scss */
 .grid-demo-overlay__column:nth-child(odd) {
   background-color: #d82a2a;
 }
 
-/* line 79, ../sass/templates/_grid.scss */
+/* line 94, ../sass/templates/_grid.scss */
 .grid-demo-overlay__content {
   width: 100%;
   height: 100%;
@@ -4479,6 +4502,19 @@ label.radioButtonLabelVisibleDisabled {
   z-index: 100;
 }
 
+/* line 44, ../sass/components/_panel-left.scss */
+.is-chrome .panel-left,
+.is-opera .panel-left {
+  -webkit-transition: none;
+  transition: none;
+}
+/* line 46, ../sass/components/_panel-left.scss */
+.panel-left-open .is-chrome .panel-left, .panel-left-open
+.is-opera .panel-left {
+  -webkit-transition: none;
+  transition: none;
+}
+
 /* line 4, ../sass/components/_panel-right.scss */
 .panel-right-container {
   position: absolute;
@@ -4518,6 +4554,9 @@ label.radioButtonLabelVisibleDisabled {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   visibility: hidden;
+}
+/* line 36, ../sass/components/_panel-right.scss */
+.no-touch .panel-right__overlay {
   -moz-transition: opacity 0.18s, visibility 0.01s 0.27s;
   -o-transition: opacity 0.18s, visibility 0.01s 0.27s;
   -webkit-transition: opacity 0.18s, visibility 0.01s;
@@ -4525,20 +4564,23 @@ label.radioButtonLabelVisibleDisabled {
   -webkit-transition: opacity 0.18s, visibility 0.01s 0.27s;
           transition: opacity 0.18s, visibility 0.01s 0.27s;
 }
-/* line 37, ../sass/components/_panel-right.scss */
+/* line 39, ../sass/components/_panel-right.scss */
 .is-showing .panel-right__overlay {
   visibility: visible;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
+}
+/* line 42, ../sass/components/_panel-right.scss */
+.no-touch .is-showing .panel-right__overlay {
   -webkit-transition: opacity 0.27s;
   transition: opacity 0.27s;
 }
-/* line 42, ../sass/components/_panel-right.scss */
+/* line 46, ../sass/components/_panel-right.scss */
 .no-js .panel-right__overlay {
   display: none;
 }
 
-/* line 46, ../sass/components/_panel-right.scss */
+/* line 50, ../sass/components/_panel-right.scss */
 .panel-right,
 .no-js .panel-right {
   position: fixed;
@@ -4552,13 +4594,21 @@ label.radioButtonLabelVisibleDisabled {
   font-size: 10px;
   background-color: #29292c;
   overflow: auto;
+}
+/* line 63, ../sass/components/_panel-right.scss */
+.no-touch .panel-right, .no-touch
+.no-js .panel-right {
   -webkit-transition: right 0.18s ease-in;
   transition: right 0.18s ease-in;
 }
-/* line 60, ../sass/components/_panel-right.scss */
+/* line 66, ../sass/components/_panel-right.scss */
 .is-showing .panel-right, .is-showing
 .no-js .panel-right {
   right: 0;
+}
+/* line 68, ../sass/components/_panel-right.scss */
+.no-touch .is-showing .panel-right, .no-touch .is-showing
+.no-js .panel-right {
   -moz-transition: right 0.12s ease-out 0.12s;
   -o-transition: right 0.12s ease-out 0.12s;
   -webkit-transition: right 0.12s ease-out;
@@ -4566,74 +4616,79 @@ label.radioButtonLabelVisibleDisabled {
   -webkit-transition: right 0.12s ease-out 0.12s;
           transition: right 0.12s ease-out 0.12s;
 }
-/* line 64, ../sass/components/_panel-right.scss */
+/* line 72, ../sass/components/_panel-right.scss */
 .panel-right .reflection-form,
 .no-js .panel-right .reflection-form {
   padding: 36px 26px 39px 28px;
   font-family: "Open Sans", sans-serif;
 }
-/* line 70, ../sass/components/_panel-right.scss */
+/* line 77, ../sass/components/_panel-right.scss */
+.panel-right .form-field label,
+.no-js .panel-right .form-field label {
+  font-size: 11.9px;
+}
+/* line 79, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .form-field label, .is-animating-out
 .no-js .panel-right .form-field label {
   text-shadow: -4px 0px 1px rgba(252, 253, 253, 0.7);
 }
-/* line 73, ../sass/components/_panel-right.scss */
+/* line 82, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .form-field label, .is-animating-in
 .no-js .panel-right .form-field label {
   text-shadow: 4px 0px 1px rgba(252, 253, 253, 0.7);
 }
-/* line 77, ../sass/components/_panel-right.scss */
+/* line 86, ../sass/components/_panel-right.scss */
 .panel-right .form-field input,
 .no-js .panel-right .form-field input {
+  font-size: 14px;
   color: #81879d;
 }
-/* line 79, ../sass/components/_panel-right.scss */
+/* line 89, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .form-field input, .is-animating-out
 .no-js .panel-right .form-field input {
   text-shadow: -4px 0px 1px rgba(129, 135, 157, 0.7);
 }
-/* line 82, ../sass/components/_panel-right.scss */
+/* line 92, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .form-field input, .is-animating-in
 .no-js .panel-right .form-field input {
   text-shadow: 4px 0px 1px rgba(129, 135, 157, 0.7);
 }
-/* line 86, ../sass/components/_panel-right.scss */
+/* line 96, ../sass/components/_panel-right.scss */
 .panel-right .form-field + .form-link,
 .no-js .panel-right .form-field + .form-link {
   margin-top: 14px;
 }
-/* line 90, ../sass/components/_panel-right.scss */
+/* line 100, ../sass/components/_panel-right.scss */
 .panel-right .form-field.is-closed label,
 .no-js .panel-right .form-field.is-closed label {
   font-size: 14px;
-  font-size: 1.4em;
 }
-/* line 92, ../sass/components/_panel-right.scss */
+/* line 102, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .form-field.is-closed label, .is-animating-out
 .no-js .panel-right .form-field.is-closed label {
   text-shadow: -4px 0px 1px rgba(129, 135, 157, 0.7);
 }
-/* line 95, ../sass/components/_panel-right.scss */
+/* line 105, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .form-field.is-closed label, .is-animating-in
 .no-js .panel-right .form-field.is-closed label {
   text-shadow: 4px 0px 1px rgba(129, 135, 157, 0.7);
 }
-/* line 101, ../sass/components/_panel-right.scss */
+/* line 111, ../sass/components/_panel-right.scss */
 .panel-right .checkboxLabelVisible,
 .no-js .panel-right .checkboxLabelVisible {
   font-size: 13px;
 }
-/* line 105, ../sass/components/_panel-right.scss */
+/* line 115, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right input:-webkit-autofill, .is-animating-out
 .no-js .panel-right input:-webkit-autofill {
   text-shadow: -4px 0px 1px rgba(129, 135, 157, 0.7);
 }
-/* line 108, ../sass/components/_panel-right.scss */
+/* line 118, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right input:-webkit-autofill, .is-animating-in
 .no-js .panel-right input:-webkit-autofill {
   text-shadow: 4px 0px 1px rgba(129, 135, 157, 0.7);
 }
-/* line 112, ../sass/components/_panel-right.scss */
+/* line 122, ../sass/components/_panel-right.scss */
 .panel-right .form-link,
 .no-js .panel-right .form-link {
   font-size: 13px;
@@ -4643,125 +4698,125 @@ label.radioButtonLabelVisibleDisabled {
   font-weight: 600;
   color: #6d69c5;
 }
-/* line 118, ../sass/components/_panel-right.scss */
+/* line 128, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .form-link, .is-animating-out
 .no-js .panel-right .form-link {
   text-shadow: -4px 0px 1px rgba(109, 105, 197, 0.7);
 }
-/* line 121, ../sass/components/_panel-right.scss */
+/* line 131, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .form-link, .is-animating-in
 .no-js .panel-right .form-link {
   text-shadow: 4px 0px 1px rgba(109, 105, 197, 0.7);
 }
-/* line 124, ../sass/components/_panel-right.scss */
+/* line 134, ../sass/components/_panel-right.scss */
 .panel-right .form-link:hover,
 .no-js .panel-right .form-link:hover {
   color: #918ed3;
 }
 @media (min-width: 480px) {
-  /* line 46, ../sass/components/_panel-right.scss */
+  /* line 50, ../sass/components/_panel-right.scss */
   .panel-right,
   .no-js .panel-right {
     padding-top: 62px;
   }
 }
-/* line 132, ../sass/components/_panel-right.scss */
+/* line 142, ../sass/components/_panel-right.scss */
 .panel-right .form-field--checkbox label,
 .no-js .panel-right .form-field--checkbox label {
   font-size: 13px;
   font-size: 1.3em;
 }
-/* line 134, ../sass/components/_panel-right.scss */
+/* line 144, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .form-field--checkbox label, .is-animating-out
 .no-js .panel-right .form-field--checkbox label {
   text-shadow: -4px 0px 1px rgba(114, 118, 134, 0.7);
 }
-/* line 137, ../sass/components/_panel-right.scss */
+/* line 147, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .form-field--checkbox label, .is-animating-in
 .no-js .panel-right .form-field--checkbox label {
   text-shadow: 4px 0px 1px rgba(114, 118, 134, 0.7);
 }
-/* line 142, ../sass/components/_panel-right.scss */
+/* line 152, ../sass/components/_panel-right.scss */
 .panel-right .ref-button--full-width,
 .no-js .panel-right .ref-button--full-width {
   margin-top: 11px;
 }
-/* line 144, ../sass/components/_panel-right.scss */
+/* line 154, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .ref-button--full-width, .is-animating-out
 .no-js .panel-right .ref-button--full-width {
   text-shadow: -4px 0px 1px rgba(252, 253, 253, 0.7);
   box-shadow: -4px 0px 1px rgba(109, 105, 197, 0.7);
 }
-/* line 148, ../sass/components/_panel-right.scss */
+/* line 158, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .ref-button--full-width, .is-animating-in
 .no-js .panel-right .ref-button--full-width {
   text-shadow: 4px 0px 1px rgba(252, 253, 253, 0.7);
   box-shadow: -4px 0px 1px rgba(109, 105, 197, 0.7);
 }
-/* line 153, ../sass/components/_panel-right.scss */
+/* line 163, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container,
 .no-js .panel-right .blockquote-container {
   width: 100%;
   padding: 29px 26px 38px 28px;
   border-top: 1px solid #161617;
 }
-/* line 157, ../sass/components/_panel-right.scss */
+/* line 167, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container blockquote,
 .no-js .panel-right .blockquote-container blockquote {
   margin-bottom: 0;
 }
-/* line 159, ../sass/components/_panel-right.scss */
+/* line 169, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container blockquote:before,
 .no-js .panel-right .blockquote-container blockquote:before {
   color: #36363a;
 }
-/* line 161, ../sass/components/_panel-right.scss */
+/* line 171, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .blockquote-container blockquote:before, .is-animating-out
 .no-js .panel-right .blockquote-container blockquote:before {
   text-shadow: -4px 0px 1px rgba(54, 54, 58, 0.7);
 }
-/* line 164, ../sass/components/_panel-right.scss */
+/* line 174, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .blockquote-container blockquote:before, .is-animating-in
 .no-js .panel-right .blockquote-container blockquote:before {
   text-shadow: 4px 0px 1px rgba(54, 54, 58, 0.7);
 }
-/* line 169, ../sass/components/_panel-right.scss */
+/* line 179, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .blockquote-container blockquote p, .is-animating-out
 .no-js .panel-right .blockquote-container blockquote p {
   text-shadow: -4px 0px 1px rgba(91, 91, 104, 0.7);
 }
-/* line 172, ../sass/components/_panel-right.scss */
+/* line 182, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .blockquote-container blockquote p, .is-animating-in
 .no-js .panel-right .blockquote-container blockquote p {
   text-shadow: 4px 0px 1px rgba(91, 91, 104, 0.7);
 }
-/* line 177, ../sass/components/_panel-right.scss */
+/* line 187, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .blockquote-container blockquote cite, .is-animating-out
 .no-js .panel-right .blockquote-container blockquote cite {
   text-shadow: -4px 0px 1px rgba(114, 118, 134, 0.7);
 }
-/* line 180, ../sass/components/_panel-right.scss */
+/* line 190, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .blockquote-container blockquote cite, .is-animating-in
 .no-js .panel-right .blockquote-container blockquote cite {
   text-shadow: 4px 0px 1px rgba(114, 118, 134, 0.7);
 }
-/* line 183, ../sass/components/_panel-right.scss */
+/* line 193, ../sass/components/_panel-right.scss */
 .panel-right .blockquote-container blockquote cite span,
 .no-js .panel-right .blockquote-container blockquote cite span {
   color: #fcfdfd;
 }
-/* line 185, ../sass/components/_panel-right.scss */
+/* line 195, ../sass/components/_panel-right.scss */
 .is-animating-out .panel-right .blockquote-container blockquote cite span, .is-animating-out
 .no-js .panel-right .blockquote-container blockquote cite span {
   text-shadow: -4px 0px 1px rgba(252, 253, 253, 0.7);
 }
-/* line 188, ../sass/components/_panel-right.scss */
+/* line 198, ../sass/components/_panel-right.scss */
 .is-animating-in .panel-right .blockquote-container blockquote cite span, .is-animating-in
 .no-js .panel-right .blockquote-container blockquote cite span {
   text-shadow: 4px 0px 1px rgba(252, 253, 253, 0.7);
 }
 
-/* line 196, ../sass/components/_panel-right.scss */
+/* line 206, ../sass/components/_panel-right.scss */
 .no-js .panel-right {
   right: 0;
 }
