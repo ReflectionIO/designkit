@@ -349,16 +349,48 @@
 		$('.tabs__content--is-showing *').css("opacity", 1);
 
 		$('.js-tab-select').on("click", function(e){
+			console.log('click');
   		e.preventDefault();
   		var thisParent = $(this).parents(".tabs-container");
   		thisParent.find('.is-active').removeClass('is-active');
-  		$(this).parent('.tabs__tab').addClass('is-active');
-  		var contentId = $(this).attr("href");
+  		$(this).addClass('is-active');
+  		var contentId = $(this).find('.tabs__link').attr("href");
   		$(contentId).parents('.tabs__content-container').find('.tabs__content--is-showing').removeClass('tabs__content--is-showing');
   		$(contentId).addClass('tabs__content--is-showing');
   		$(contentId + ' *').css("opacity", 0);
   		$(contentId + ' *').animate({opacity: 1}, 200);
   	});
+
+  	if($(window).width() < 720) {
+  		// wait for LHS panel to move in before calculating height with setTimout
+  		setTimeout(function(){
+  			$('.collapsible-content').each(function(){
+  				if(!$(this).parents('.tabs__content--is-showing').length) { 
+	  				contentHeight = $(this).height();
+	  				$(this).css('margin-top', -contentHeight);
+	  			}
+	  		});
+	  		$('.collapsible-trigger').click(function(){
+	  			if($(this).parents('.tabs__content--is-showing').length) {
+	  				$this = $(this);
+	  				$this.parents('.tabs__content--is-showing').removeClass('tabs__content--is-showing');
+	  				contentHeight = $this.next('.collapsible-content').height();
+	  				$this.next('.collapsible-content').css('margin-top', -contentHeight);
+	  			} else {
+	  				$(this).parents('.tabs__content-container').find('.tabs__content--is-showing').removeClass('tabs__content--is-showing');
+		  			$(this).parents('.tabs__content').addClass('tabs__content--is-showing');
+		  			$('.collapsible-content').each(function(){
+			  			if(!$(this).parents('.tabs__content--is-showing').length) { 
+			  				contentHeight = $(this).height();
+			  				$(this).css('margin-top', -contentHeight);
+			  			} else {
+			  				$(this).css('margin-top', 0);
+			  			}
+		  			});
+	  			}
+	  		});
+  		}, 500);
+  	}
 	};
 
 
