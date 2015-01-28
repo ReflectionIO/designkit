@@ -1,6 +1,6 @@
 .tabs-container {
 	display: none;
-	@include breakpoint($tablet) {
+	@include breakpoint($tablet, true) {
 		width: 100%;
 		display: block;
 		li {
@@ -83,14 +83,14 @@
 		max-width: 80%;
 		display: inline-block;
 		text-align: left;
-		@include breakpoint($tablet) {
+		@include breakpoint($tablet, true) {
 				width: auto;
 		}
 		.tabs-container--large-tabs & {
 			width: 80%;
 			font-size: 1.6rem;
 			margin-bottom: 10px;
-			@include breakpoint($tablet) {
+			@include breakpoint($tablet, true) {
 				width: auto;
 				max-width: 80%;
 			}
@@ -116,10 +116,20 @@
 			@include breakpoint($tablet) {
 				font-size: 3.2rem;
 			}
-			@include breakpoint($laptop) {
+			@include breakpoint($laptop, true) {
+				font-size: 38px; // ie8
 				font-size: 3.8rem;
 			}
 		}
+	}
+}
+.is-ie .tabs__link {
+	&:active {
+		position: relative;
+		top: 4px;
+	}
+	span, span:before, &:before {
+		pointer-events: none;
 	}
 }
 .tab-border {
@@ -222,7 +232,7 @@
 		}
 	}
 }
-@include breakpoint($tablet) {
+@include breakpoint($tablet, true) {
 	.collapsible-trigger {
 		display: none;
 	}

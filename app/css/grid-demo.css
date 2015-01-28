@@ -2202,11 +2202,11 @@ textarea, .global-header .link-open-search, html, body {
 }
 
 /* line 61, ../sass/templates/_interactions.scss */
-.grid__column--one-third h4 {
+.interactions-page .grid__column--one-third h4 {
   margin-bottom: 1.9em;
 }
 /* line 64, ../sass/templates/_interactions.scss */
-.grid__column--one-third button {
+.interactions-page .grid__column--one-third button {
   margin-bottom: 3rem;
   float: left;
   clear: both;
@@ -5289,16 +5289,27 @@ input[type="search"].search__input-search {
 @media (min-width: 960px) {
   /* line 112, ../sass/components/_tabs.scss */
   .tabs-container--large-tabs .tabs__link span:before {
+    font-size: 38px;
     font-size: 3.8rem;
   }
 }
 
-/* line 125, ../sass/components/_tabs.scss */
+/* line 127, ../sass/components/_tabs.scss */
+.is-ie .tabs__link:active {
+  position: relative;
+  top: 4px;
+}
+/* line 131, ../sass/components/_tabs.scss */
+.is-ie .tabs__link span, .is-ie .tabs__link span:before, .is-ie .tabs__link:before {
+  pointer-events: none;
+}
+
+/* line 135, ../sass/components/_tabs.scss */
 .tab-border {
   width: 100%;
   height: 3px;
 }
-/* line 128, ../sass/components/_tabs.scss */
+/* line 138, ../sass/components/_tabs.scss */
 .tab-border span {
   width: 0%;
   height: 3px;
@@ -5307,7 +5318,7 @@ input[type="search"].search__input-search {
   -webkit-transition: width 0.1s ease-out;
   transition: width 0.1s ease-out;
 }
-/* line 136, ../sass/components/_tabs.scss */
+/* line 146, ../sass/components/_tabs.scss */
 .is-active .tab-border span {
   width: 100%;
   -moz-transition: width 0.1s ease-in 0.1s;
@@ -5317,34 +5328,34 @@ input[type="search"].search__input-search {
   -webkit-transition: width 0.1s ease-in 0.1s;
           transition: width 0.1s ease-in 0.1s;
 }
-/* line 142, ../sass/components/_tabs.scss */
+/* line 152, ../sass/components/_tabs.scss */
 .tabs__tab:first-child .tab-border span {
   float: right;
 }
 
-/* line 147, ../sass/components/_tabs.scss */
+/* line 157, ../sass/components/_tabs.scss */
 .tabs__content-container {
   width: 100%;
   margin-bottom: 4rem;
 }
 
-/* line 151, ../sass/components/_tabs.scss */
+/* line 161, ../sass/components/_tabs.scss */
 .tabs__content {
   display: block;
   padding: 0;
 }
 @media (min-width: 720px) {
-  /* line 151, ../sass/components/_tabs.scss */
+  /* line 161, ../sass/components/_tabs.scss */
   .tabs__content {
     display: none;
     background-color: #f2f2f5;
   }
-  /* line 157, ../sass/components/_tabs.scss */
+  /* line 167, ../sass/components/_tabs.scss */
   .tabs__content * {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
   }
-  /* line 159, ../sass/components/_tabs.scss */
+  /* line 169, ../sass/components/_tabs.scss */
   .no-js .tabs__content * {
     filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
     opacity: 1;
@@ -5352,7 +5363,7 @@ input[type="search"].search__input-search {
 }
 
 @media screen and (max-width: 720px) {
-  /* line 166, ../sass/components/_tabs.scss */
+  /* line 176, ../sass/components/_tabs.scss */
   .collapsible-trigger {
     position: relative;
     width: 100%;
@@ -5369,7 +5380,7 @@ input[type="search"].search__input-search {
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
   }
-  /* line 180, ../sass/components/_tabs.scss */
+  /* line 190, ../sass/components/_tabs.scss */
   .collapsible-trigger b {
     line-height: 1.6;
     text-transform: none;
@@ -5379,46 +5390,46 @@ input[type="search"].search__input-search {
     font-size: 1.3rem;
     padding-top: 4px;
   }
-  /* line 189, ../sass/components/_tabs.scss */
+  /* line 199, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger {
     color: #29292c;
   }
-  /* line 191, ../sass/components/_tabs.scss */
+  /* line 201, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger:before {
     color: #29292c;
   }
-  /* line 194, ../sass/components/_tabs.scss */
+  /* line 204, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger:hover {
     color: #29292c;
   }
-  /* line 198, ../sass/components/_tabs.scss */
+  /* line 208, ../sass/components/_tabs.scss */
   .collapsible-trigger:hover {
     color: #4b46b5;
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
   }
-  /* line 203, ../sass/components/_tabs.scss */
+  /* line 213, ../sass/components/_tabs.scss */
   .collapsible-trigger:active span, .collapsible-trigger:active:before {
     position: relative;
     top: 4px;
   }
-  /* line 208, ../sass/components/_tabs.scss */
+  /* line 218, ../sass/components/_tabs.scss */
   .collapsible-trigger:before, .collapsible-trigger span {
     vertical-align: middle;
   }
-  /* line 211, ../sass/components/_tabs.scss */
+  /* line 221, ../sass/components/_tabs.scss */
   .collapsible-trigger span {
     padding-left: 10px;
   }
 
-  /* line 215, ../sass/components/_tabs.scss */
+  /* line 225, ../sass/components/_tabs.scss */
   .collapsible-content {
     margin-top: 0;
     padding-bottom: 3rem;
     -webkit-transition: margin-top 0.3s;
     transition: margin-top 0.3s;
   }
-  /* line 219, ../sass/components/_tabs.scss */
+  /* line 229, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-content {
     margin-top: 0;
     -webkit-transition: margin-top 0.3s;
@@ -5426,12 +5437,12 @@ input[type="search"].search__input-search {
   }
 }
 @media (min-width: 720px) {
-  /* line 226, ../sass/components/_tabs.scss */
+  /* line 236, ../sass/components/_tabs.scss */
   .collapsible-trigger {
     display: none;
   }
 }
-/* line 230, ../sass/components/_tabs.scss */
+/* line 240, ../sass/components/_tabs.scss */
 .tabs__content.tabs__content--is-showing {
   display: block;
 }

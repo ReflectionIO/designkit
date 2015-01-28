@@ -1774,11 +1774,11 @@ textarea, .global-header .link-open-search, html, body {
 }
 
 /* line 61, ../sass/templates/_interactions.scss */
-.grid__column--one-third h4 {
+.interactions-page .grid__column--one-third h4 {
   margin-bottom: 1.9em;
 }
 /* line 64, ../sass/templates/_interactions.scss */
-.grid__column--one-third button {
+.interactions-page .grid__column--one-third button {
   margin-bottom: 3rem;
   float: left;
   clear: both;
@@ -1793,6 +1793,11 @@ textarea, .global-header .link-open-search, html, body {
 /* line 74, ../sass/templates/_interactions.scss */
 .interactions-page .grid__column--one-third .main-navigation > ul > li {
   margin-bottom: 0;
+}
+
+/* line 3, ../sass/templates/_tabs.scss */
+.tabs-template .tabs__content {
+  padding: 4% 5% 5%;
 }
 
 /* line 1, ../sass/templates/_typography.scss */
@@ -4433,6 +4438,16 @@ input[type="search"].search__input-search {
 /* line 1, ../sass/components/_tabs.scss */
 .tabs-container {
   display: none;
+  width: 100%;
+  display: block;
+}
+/* line 6, ../sass/components/_tabs.scss */
+.tabs-container li {
+  height: 7.2rem;
+}
+/* line 8, ../sass/components/_tabs.scss */
+.tabs-container--large-tabs .tabs-container li {
+  height: 13.7rem;
 }
 
 /* line 14, ../sass/components/_tabs.scss */
@@ -4523,12 +4538,15 @@ input[type="search"].search__input-search {
   max-width: 80%;
   display: inline-block;
   text-align: left;
+  width: auto;
 }
 /* line 89, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__link span > span {
   width: 80%;
   font-size: 1.6rem;
   margin-bottom: 10px;
+  width: auto;
+  max-width: 80%;
 }
 /* line 99, ../sass/components/_tabs.scss */
 .tabs__link span b {
@@ -4552,14 +4570,26 @@ input[type="search"].search__input-search {
   font-size: 2.9rem;
   margin-right: 0.5em;
   vertical-align: top;
+  font-size: 38px;
+  font-size: 3.8rem;
 }
 
-/* line 125, ../sass/components/_tabs.scss */
+/* line 127, ../sass/components/_tabs.scss */
+.is-ie .tabs__link:active {
+  position: relative;
+  top: 4px;
+}
+/* line 131, ../sass/components/_tabs.scss */
+.is-ie .tabs__link span, .is-ie .tabs__link span:before, .is-ie .tabs__link:before {
+  pointer-events: none;
+}
+
+/* line 135, ../sass/components/_tabs.scss */
 .tab-border {
   width: 100%;
   height: 3px;
 }
-/* line 128, ../sass/components/_tabs.scss */
+/* line 138, ../sass/components/_tabs.scss */
 .tab-border span {
   width: 0%;
   height: 3px;
@@ -4568,7 +4598,7 @@ input[type="search"].search__input-search {
   -webkit-transition: width 0.1s ease-out;
   transition: width 0.1s ease-out;
 }
-/* line 136, ../sass/components/_tabs.scss */
+/* line 146, ../sass/components/_tabs.scss */
 .is-active .tab-border span {
   width: 100%;
   -moz-transition: width 0.1s ease-in 0.1s;
@@ -4578,25 +4608,25 @@ input[type="search"].search__input-search {
   -webkit-transition: width 0.1s ease-in 0.1s;
           transition: width 0.1s ease-in 0.1s;
 }
-/* line 142, ../sass/components/_tabs.scss */
+/* line 152, ../sass/components/_tabs.scss */
 .tabs__tab:first-child .tab-border span {
   float: right;
 }
 
-/* line 147, ../sass/components/_tabs.scss */
+/* line 157, ../sass/components/_tabs.scss */
 .tabs__content-container {
   width: 100%;
   margin-bottom: 4rem;
 }
 
-/* line 151, ../sass/components/_tabs.scss */
+/* line 161, ../sass/components/_tabs.scss */
 .tabs__content {
   display: block;
   padding: 0;
 }
 
 @media screen and (max-width: 720px) {
-  /* line 166, ../sass/components/_tabs.scss */
+  /* line 176, ../sass/components/_tabs.scss */
   .collapsible-trigger {
     position: relative;
     width: 100%;
@@ -4613,7 +4643,7 @@ input[type="search"].search__input-search {
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
   }
-  /* line 180, ../sass/components/_tabs.scss */
+  /* line 190, ../sass/components/_tabs.scss */
   .collapsible-trigger b {
     line-height: 1.6;
     text-transform: none;
@@ -4623,53 +4653,58 @@ input[type="search"].search__input-search {
     font-size: 1.3rem;
     padding-top: 4px;
   }
-  /* line 189, ../sass/components/_tabs.scss */
+  /* line 199, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger {
     color: #29292c;
   }
-  /* line 191, ../sass/components/_tabs.scss */
+  /* line 201, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger:before {
     color: #29292c;
   }
-  /* line 194, ../sass/components/_tabs.scss */
+  /* line 204, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger:hover {
     color: #29292c;
   }
-  /* line 198, ../sass/components/_tabs.scss */
+  /* line 208, ../sass/components/_tabs.scss */
   .collapsible-trigger:hover {
     color: #4b46b5;
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
   }
-  /* line 203, ../sass/components/_tabs.scss */
+  /* line 213, ../sass/components/_tabs.scss */
   .collapsible-trigger:active span, .collapsible-trigger:active:before {
     position: relative;
     top: 4px;
   }
-  /* line 208, ../sass/components/_tabs.scss */
+  /* line 218, ../sass/components/_tabs.scss */
   .collapsible-trigger:before, .collapsible-trigger span {
     vertical-align: middle;
   }
-  /* line 211, ../sass/components/_tabs.scss */
+  /* line 221, ../sass/components/_tabs.scss */
   .collapsible-trigger span {
     padding-left: 10px;
   }
 
-  /* line 215, ../sass/components/_tabs.scss */
+  /* line 225, ../sass/components/_tabs.scss */
   .collapsible-content {
     margin-top: 0;
     padding-bottom: 3rem;
     -webkit-transition: margin-top 0.3s;
     transition: margin-top 0.3s;
   }
-  /* line 219, ../sass/components/_tabs.scss */
+  /* line 229, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-content {
     margin-top: 0;
     -webkit-transition: margin-top 0.3s;
     transition: margin-top 0.3s;
   }
 }
-/* line 230, ../sass/components/_tabs.scss */
+/* line 236, ../sass/components/_tabs.scss */
+.collapsible-trigger {
+  display: none;
+}
+
+/* line 240, ../sass/components/_tabs.scss */
 .tabs__content.tabs__content--is-showing {
   display: block;
 }
@@ -4946,13 +4981,47 @@ ul.content-list--minor li {
   overflow: visible;
 }
 
-/* Design Kit Templates */
-/* line 80, ../sass/reflection-main-ie8.scss */
-.grid-demo-layer-top {
-  padding-bottom: 4em;
+/* line 77, ../sass/reflection-main-ie8.scss */
+.ref-button--cta-large, .ref-button--cta-large--wide,
+.ref-button--cta-large--wide,
+.ref-button--function-large,
+.ref-button--function-large--wide,
+.ref-button--function-large--wide {
+  font-size: 16px;
 }
 
-/* line 84, ../sass/reflection-main-ie8.scss */
+/* Tabs */
+/* line 85, ../sass/reflection-main-ie8.scss */
+.ie8 .tabs__content * {
+  display: none;
+}
+
+/* line 88, ../sass/reflection-main-ie8.scss */
+.ie8 .tabs__content.tabs__content--is-showing * {
+  display: block;
+}
+
+/* Design Kit Templates */
+/* line 94, ../sass/reflection-main-ie8.scss */
+.grid-demo-layer-top {
+  padding-bottom: 40px;
+}
+
+/* line 98, ../sass/reflection-main-ie8.scss */
 .dk-component-row .colour-box {
   margin-bottom: 0;
+}
+
+/* line 103, ../sass/reflection-main-ie8.scss */
+.interactions-page .grid__column--one-third h4 {
+  margin-bottom: 19px;
+}
+/* line 106, ../sass/reflection-main-ie8.scss */
+.interactions-page .grid__column--one-third button {
+  margin-bottom: 30px;
+}
+
+/* line 110, ../sass/reflection-main-ie8.scss */
+.interactions-page .grid__column--one-third .main-navigation {
+  margin-bottom: 30px;
 }

@@ -379,10 +379,13 @@
 
 
 	var Tabs = function() {
-		$('.tabs__content--is-showing *').css("opacity", 1);
+		var isIE8 = $('.ie8').length;
+		console.log(isIE8);
+		if(!isIE8) {
+			$('.tabs__content--is-showing *').css("opacity", 1);
+		}
 
 		$('.js-tab-select').on("click", function(e){
-			console.log('click');
   		e.preventDefault();
   		var thisParent = $(this).parents(".tabs-container");
   		thisParent.find('.is-active').removeClass('is-active');
@@ -390,8 +393,10 @@
   		var contentId = $(this).find('.tabs__link').attr("href");
   		$(contentId).parents('.tabs__content-container').find('.tabs__content--is-showing').removeClass('tabs__content--is-showing');
   		$(contentId).addClass('tabs__content--is-showing');
-  		$(contentId + ' *').css("opacity", 0);
-  		$(contentId + ' *').animate({opacity: 1}, 200);
+  		if(!isIE8) {
+	  		$(contentId + ' *').css("opacity", 0);
+	  		$(contentId + ' *').animate({opacity: 1}, 200);
+	  	}
   	});
 
   	if($(window).width() < 720) {
@@ -422,7 +427,6 @@
 		  			});
 		  			setTimeout(function(){
 		  				var currentContentTop = $this.offset().top;
-		  				console.log(currentContentTop);
 		  				$('html,body').animate({
 			          scrollTop: currentContentTop - 70
 			        }, 310);
