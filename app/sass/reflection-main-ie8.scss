@@ -35,11 +35,37 @@ $breakpoint-no-query-fallbacks : true;
 	position: inherit !important;
 }
 
-/* Blockquote */
-blockquote{
+/* Search overlay */
+.search__form {
+	.button-cancel {
+		height: auto;
+		width: auto;
+		padding: 0;
+		display: inline-block;
+		&:before {
+			display: none;
+		}
+		span {
+			text-transform: uppercase;
+			font-size: 14px;
+			font-weight: bold;
+			color: #b5b8c5;
+			text-indent: 0;
+		}
+	}
+}
+/* Typography */
+blockquote {
 	padding-top: 50px;
 	&:before {
 		top: 0;
+	}
+}
+ul.content-list,
+ul.content-list--featured,
+ul.content-list--minor {
+	li {
+		background: url(../images/bg-bullet-nr.png) no-repeat left 0.6em;
 	}
 }
 
@@ -48,9 +74,39 @@ blockquote{
 .ref-button--link-large {
 	overflow: visible;
 }
+.ref-button--cta-large,
+.ref-button--cta-large--wide,
+.ref-button--function-large,
+.ref-button--function-large--wide {
+	font-size: 16px;
+}
+
+/* Tabs */
+.ie8 .tabs__content * {
+	display: none;
+}
+.ie8 .tabs__content.tabs__content--is-showing * {
+	display: block;
+}
 
 /* Design Kit Templates */
 // Grid
 .grid-demo-layer-top {
-	padding-bottom: 4em;
+	padding-bottom: 40px;
+}
+// Colours
+.dk-component-row .colour-box {
+	margin-bottom: 0;
+}
+// Interactions
+.interactions-page .grid__column--one-third {
+	h4 {
+		margin-bottom: 19px;
+	}
+	button {
+		margin-bottom: 30px;
+	}
+}
+.interactions-page .grid__column--one-third .main-navigation {
+	margin-bottom: 30px;
 }

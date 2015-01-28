@@ -54,40 +54,16 @@
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->
 
+	<div id="js-appendScriptsContainer"></div>
+
 	<script src="js/designkit-global-templates.js"></script>
+  <script src="js/application.js"></script>
+  <script src="js/designkit-app.js"></script>
   <script>
-  	(function($) {
+  	function initScripts() {
+  		new HomePage();
+  	}
 
-	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
-			var htmlDesignKitBanner = templateDesignKitBanner({ bannerImage: "images/banner-icon-typography.png", bannerImageAlt: "Tt", sectionTitle: "Design Assets", componentTitle: "Component Title", Intro: "Component Introduction" });
-			$("#js-component-import--design-kit-banner").html(htmlDesignKitBanner);
-			
-		})(jQuery);
-
-		function loadScripts() {
-		  loadComponentScripts();
-		}
-
-		function loadComponentScripts() {
-			// load custom scroll bars for everything but IE9/10
-			if (/*@cc_on!@*/true) {
-				var script = document.createElement('script');
-			  script.type = 'text/javascript';
-			  script.src = 'js/vendor/jquery.mCustomScrollbar.concat.min.js';
-		  	document.body.appendChild(script);
-			}
-
-			var script = document.createElement('script');
-		  script.type = 'text/javascript';
-		  script.src = 'js/nav-structure.js';
-	  	document.body.appendChild(script);
-
-	  	var script = document.createElement('script');
-		  script.type = 'text/javascript';
-		  script.src = 'js/search-global.js';
-	  	document.body.appendChild(script);
-	  }
-
-		window.onload = loadScripts;
+  	window.onready = initScripts();
   </script>
 </body>

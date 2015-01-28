@@ -16,13 +16,12 @@
 	@include breakpoint($phablet, true) {
 		padding-top: 62px;
 	}
-	&.is-blurred {
-		filter: blur(0.3px);
-		@include transition(filter 0.5s);
-	}
 	&.is-blurred-heavy {
 		filter: blur(0.8px);
 		@include transition(filter 0.5s);
+		.ie8 &, .ie9 & {
+			filter: none;
+		}
 	}
 	.panel-left-open & {
 		@include breakpoint($laptop, true) {
@@ -39,4 +38,13 @@
 }
 #mCSB_1_scrollbar_vertical {
 	z-index: 100;
+}
+.is-chrome,
+.is-opera {
+	.panel-left {
+		@include transition(none);
+		.panel-left-open & {
+			@include transition(none);
+		}
+	}
 }

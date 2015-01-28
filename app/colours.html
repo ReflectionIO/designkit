@@ -244,50 +244,17 @@
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->
 
+  <div id="js-appendScriptsContainer"></div>
+
 	<script src="js/designkit-global-templates.js"></script>
+  <script src="js/application.js"></script>
+  <script src="js/designkit-app.js"></script>
   <script>
-  	(function($) {
+  	function initScripts() {
+  		new ColoursPage();
+  	}
 
-	   	var templateDesignKitBanner = Handlebars.templates['designKitBanner'];
-			var htmlDesignKitBanner = templateDesignKitBanner({ bannerImage: "images/banner-icon-palette.png", bannerImageAlt: "Art palette icon", sectionTitle: "Design Assets", componentTitle: "Colours", Intro: "Our colour palette is designed to exude authority and trustworthiness whilst also making content easy to consume and interact with. Our colour accents are a clear identifier in our industry but also denote function as well as our brand values and personality." });
-			$("#js-component-import--design-kit-banner").html(htmlDesignKitBanner);
-		
-		})(jQuery);
-
-		function loadScripts() {
-		  loadComponentScripts();
-		}
-
-		function loadComponentScripts() {
-			// load custom scroll bars for everything but IE9/10
-			if (/*@cc_on!@*/true) {
-				var script = document.createElement('script');
-			  script.type = 'text/javascript';
-			  script.src = 'js/vendor/jquery.mCustomScrollbar.concat.min.js';
-		  	document.body.appendChild(script);
-			}
-			
-			var script = document.createElement('script');
-		  script.type = 'text/javascript';
-		  script.src = 'js/nav-structure.js';
-	  	document.body.appendChild(script);
-
-	  	var script = document.createElement('script');
-		  script.type = 'text/javascript';
-		  script.src = 'js/search-global.js';
-	  	document.body.appendChild(script);
-
-			// open menu current
-	  	var thisPageLink = $('#js-component-import--panel-left').find('a[href="colours.html"]');
-	  	thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
-
-	  	$('.colour-link').on("click", function(e){
-	  		e.preventDefault();
-	  		$(this).find("input").select();
-	  	});
-	  }
-
-		window.onload = loadScripts;
+  	window.onready = initScripts();
   </script>
 
 </body>
