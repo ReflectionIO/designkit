@@ -15,10 +15,9 @@
 		this.initBrowserPulling();
 		new LeftPanelAndHamburger();
 		new FormInteractions();
-		new RightPanel();
+		new AccountContainer();
+		new SearchContainer();
 		this.customScrollbars();
-		new SearchOverlay();
-		this.searchOverlaySetMainContentWidthForIE();
 	};
 
 	Page.prototype.setIEClass = function() {
@@ -103,16 +102,6 @@
 	  });
 	};
 
-	Page.prototype.searchOverlaySetMainContentWidthForIE = function() {
-		if(instance.searchOpenLink.length) {
-			instance.searchOpenLink.click(function(e){
-				instance.setMainContentWidthForIE();
-			});
-			instance.searchCancelLink.click(function(e){
-				instance.setMainContentWidthForIE();
-			});
-		}
-	};
 
 /* COMPONENT OBJECTS */
 	var LeftPanelAndHamburger = function() {
@@ -241,31 +230,31 @@
 	};
 
 
-	var RightPanel = function() {
+	var AccountContainer = function() {
 		$('.actions-group').on("click", function() {
 			if(!$('.actions-group__content').is(':visible')) {
-				$('.panel-right-container').toggleClass('is-showing');
+				$('.js-account-container').toggleClass('is-showing');
 				$('.actions-group').toggleClass('is-on');
 				$('body').toggleClass('no-scroll');
 			}
 		});
 		$('.js-link-log-in').on("click", function(e) {
 			e.preventDefault();
-			if($('.panel-right-container').hasClass('is-showing')) {
-				$('.panel-right-container').removeClass('is-showing');
+			if($('.js-account-container').hasClass('is-showing')) {
+				$('.js-account-container').removeClass('is-showing');
 				if($('.no-touch').length) {
-					$('.panel-right-container').addClass('is-animating-out');
+					$('.js-account-container').addClass('is-animating-out');
 					window.setTimeout(function(){
-						$('.panel-right-container').removeClass('is-animating-out');
+						$('.js-account-container').removeClass('is-animating-out');
 					}, 180);
 				}
 			}
 			else {
-				$('.panel-right-container').addClass('is-showing');
+				$('.js-account-container').addClass('is-showing');
 				if($('.no-touch').length) {
-					$('.panel-right-container').addClass('is-animating-in');
+					$('.js-account-container').addClass('is-animating-in');
 					window.setTimeout(function(){
-						$('.panel-right-container').removeClass('is-animating-in');
+						$('.js-account-container').removeClass('is-animating-in');
 					}, 240);
 				}
 			}
@@ -282,35 +271,44 @@
 	};
 
 
-	var SearchOverlay = function() {
+	var SearchContainer = function() {
 		var pInstance = this;
 		instance.searchOpenLink = $('.js-open-search');
-		instance.searchCancelLink = $('.js-close-search');
 		if(instance.searchOpenLink.length) {
 			instance.searchOpenLink.click(function(e){
 				e.preventDefault();
+				$(this).toggleClass('is-selected');
 				pInstance.toggleSearchView();
-			});
-			instance.searchCancelLink.click(function(e){
-				e.preventDefault();
-				pInstance.toggleSearchView();
-				$('.js-get-items').blur();
 			});
 		}
 
 		this.initSearch();
 	};
 
-	SearchOverlay.prototype.toggleSearchView = function() {
-		$('.search-overlay').toggleClass('is-showing');
-		$('.search-container').toggleClass('is-showing');
-		$('.l-page-container').toggleClass('is-blurred-heavy');
-		$('.panel-left').toggleClass('is-blurred-heavy');
-		$('html').toggleClass('no-scroll');
+	SearchContainer.prototype.toggleSearchView = function() {
+		if($('.js-search-container').hasClass('is-showing')) {
+			$('.js-search-container').removeClass('is-showing');
+			if($('.no-touch').length) {
+				$('.js-search-container').addClass('is-animating-out');
+				window.setTimeout(function(){
+					$('.js-search-container').removeClass('is-animating-out');
+				}, 180);
+			}
+		}
+		else {
+			$('.js-search-container').addClass('is-showing');
+			if($('.no-touch').length) {
+				$('.js-search-container').addClass('is-animating-in');
+				window.setTimeout(function(){
+					$('.js-search-container').removeClass('is-animating-in');
+				}, 240);
+			}
+		}
+		$('body').toggleClass('no-scroll');
 		$('.search__input-search').select();
 	};
 
-	SearchOverlay.prototype.initSearch = function() {
+	SearchContainer.prototype.initSearch = function() {
 		// get mock data from file - this will contain results when implemented so shouldn't need JS regex below
 		var data;
 		$.ajax({
@@ -467,78 +465,80 @@
 			});
 		});
 
-		$('.js-field--select').each(function() {
+		if(!$('.ie8').length) {
+			$('.js-field--select').each(function() {
 			var selectInput = $(this),
 					selectOptions = selectInput.find('option'),
 					optionsList = $('<ul>'),
 					refSelectContainer = $('<div>').addClass('reflection-select'),
 					refSelectDefault = $('<span>').addClass('ref-icon-after ref-icon-after--angle-down').text('Choose your option');
 			
-			selectOptions.each(function(){
-				$this = $(this);
-				if($this.attr('value')) {
-					var preSelectedClass = '';
-					if($this.data("previous")) {
-						preSelectedClass = 'pre-selected';
-					}
-					optionsList.append($('<li>').addClass(preSelectedClass).attr('data-value', $this.attr('value')).text($this.text()));
-				}
-				else {
-					refSelectDefault.text($this.text());
-				}
-			});
-
-			refSelectContainer.append(refSelectDefault).append(optionsList);
-			selectInput.parents('.form-field--select').append(refSelectContainer);
-
-			var listHeight = optionsList.innerHeight();
-			optionsList.css('margin-top', -listHeight);
-
-			function toggleDropDown() {
-				if(refSelectContainer.hasClass('is-open')) {
-					refSelectContainer.removeClass('is-open');
-					optionsList.css('margin-top', -listHeight);
-				}
-				else {
-					refSelectContainer.addClass('is-open');
-					optionsList.css('margin-top', "9px");
-				}
-			};
-
-			if(selectInput.parent('.form-field--select-disabled').length == 0) {
-				optionsList.find('li').on('click', function() {
-					if(!$(this).hasClass('pre-selected')) {
-						toggleDropDown();
-					}
-				});
-				refSelectDefault.on('click', function() {
-					toggleDropDown();
-				});
-			}
-
-			$(window).on("resize", function(){
-				listHeight = optionsList.innerHeight();
-				optionsList.css('margin-top', -listHeight);	
-			});
-
-			optionsList.find('li').on('click', function(){
-				if(!$(this).hasClass('pre-selected')) {
-					listItem = $(this);
-					optionsList.find('li').removeClass('is-selected');
-					listItem.addClass('is-selected');
-					refSelectDefault.text(listItem.text()).addClass('is-activated');
-
-					selectOptions.each(function() {
-						if($(this).val() == listItem.data("value")) {
-							$(this).attr("selected", "selected");
+				selectOptions.each(function(){
+					$this = $(this);
+					if($this.attr('value')) {
+						var preSelectedClass = '';
+						if($this.data("previous")) {
+							preSelectedClass = 'pre-selected';
 						}
-						else {
-							$(this).removeAttr("selected");	
+						optionsList.append($('<li>').addClass(preSelectedClass).attr('data-value', $this.attr('value')).text($this.text()));
+					}
+					else {
+						refSelectDefault.text($this.text());
+					}
+				});
+
+				refSelectContainer.append(refSelectDefault).append(optionsList);
+				selectInput.parents('.form-field--select').append(refSelectContainer);
+
+				var listHeight = optionsList.innerHeight();
+				optionsList.css('margin-top', -listHeight);
+
+				function toggleDropDown() {
+					if(refSelectContainer.hasClass('is-open')) {
+						refSelectContainer.removeClass('is-open');
+						optionsList.css('margin-top', -listHeight);
+					}
+					else {
+						refSelectContainer.addClass('is-open');
+						optionsList.css('margin-top', "9px");
+					}
+				};
+
+				if(selectInput.parent('.form-field--select-disabled').length == 0) {
+					optionsList.find('li').on('click', function() {
+						if(!$(this).hasClass('pre-selected')) {
+							toggleDropDown();
 						}
 					});
+					refSelectDefault.on('click', function() {
+						toggleDropDown();
+					});
 				}
+
+				$(window).on("resize", function(){
+					listHeight = optionsList.innerHeight();
+					optionsList.css('margin-top', -listHeight);	
+				});
+
+				optionsList.find('li').on('click', function(){
+					if(!$(this).hasClass('pre-selected')) {
+						listItem = $(this);
+						optionsList.find('li').removeClass('is-selected');
+						listItem.addClass('is-selected');
+						refSelectDefault.text(listItem.text()).addClass('is-activated');
+
+						selectOptions.each(function() {
+							if($(this).val() == listItem.data("value")) {
+								$(this).attr("selected", "selected");
+							}
+							else {
+								$(this).removeAttr("selected");	
+							}
+						});
+					}
+				});
 			});
-		});
+		}
 	};
 
 	FormFieldSelect.prototype.populateSelectedValues = function(listItems, selectedOptionsContainer) {

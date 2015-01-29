@@ -164,7 +164,7 @@ textarea {
 	@include breakpoint($tablet) {
 		width: 100%;
 	}
-	@include breakpoint($desktop) {
+	@include breakpoint($desktop, true) {
 		width: percentage(145/320);	
 	}
 }
@@ -193,7 +193,7 @@ textarea {
 			content: "j";
 		}
 	}
-	@include breakpoint($desktop) {
+	@include breakpoint($desktop, true) {
 		width: percentage(30/320);
 		height: 26px;
 		&:after {
@@ -213,6 +213,7 @@ textarea {
 	span {
 		@extend .ref-icon-after;
 		position: absolute;
+		top: 10px;
 		top: calc(50% - 9px);
 		right: 12px;
 		&:after {

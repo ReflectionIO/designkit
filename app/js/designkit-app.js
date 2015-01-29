@@ -146,7 +146,7 @@
 			sectionTitle: "Design Assets", 
 			componentTitle: "Typography", 
 			intro: "Below are the styling rules for sitewide typography. Our brand typefaces are clean, uncomplicated and easy to read at any size. Specific spacing rules to ensure legibility and UX integrity are detailed below alongside examples.",
-			pageUrl: "grids.html"
+			pageUrl: "typography.html"
 		}
 		new DesignKitPage(dkPageProperties);
 	};
