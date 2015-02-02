@@ -15,6 +15,7 @@
 		this.initBrowserPulling();
 		new LeftPanelAndHamburger();
 		new FormInteractions();
+		new PanelRightOverlay();
 		new AccountContainer();
 		new SearchContainer();
 		this.customScrollbars();
@@ -229,10 +230,28 @@
 		});
 	};
 
+	var PanelRightOverlay = function() {
+		$('.panel-right__overlay').on("click", function() {
+			if($('.js-account-container').hasClass('is-showing')) {
+				if(!$('.actions-group__content').is(':visible')) {
+					$('.actions-group').trigger("click");
+				}
+				else {
+					$('.js-link-log-in-container .js-link-log-in').trigger("click");
+				}
+			}
+			else if($('.js-search-container').hasClass('is-showing')) {
+				$('.js-open-search').click();
+			}
+		});
+	};
 
 	var AccountContainer = function() {
 		$('.actions-group').on("click", function() {
 			if(!$('.actions-group__content').is(':visible')) {
+				if($('.js-search-container').hasClass('is-showing')) {
+					$('.js-open-search').click();
+				}
 				$('.js-account-container').toggleClass('is-showing');
 				$('.actions-group').toggleClass('is-on');
 				$('body').toggleClass('no-scroll');
@@ -250,6 +269,9 @@
 				}
 			}
 			else {
+				if($('.js-search-container').hasClass('is-showing')) {
+					$('.js-open-search').click();
+				}
 				$('.js-account-container').addClass('is-showing');
 				if($('.no-touch').length) {
 					$('.js-account-container').addClass('is-animating-in');
@@ -260,16 +282,7 @@
 			}
 			$('body').toggleClass('no-scroll');
 		});
-		$('.panel-right__overlay').on("click", function() {
-			if(!$('.actions-group__content').is(':visible')) {
-				$('.actions-group').trigger("click");
-			}
-			else {
-				$('.js-link-log-in-container .js-link-log-in').trigger("click");
-			}
-		});
 	};
-
 
 	var SearchContainer = function() {
 		var pInstance = this;
@@ -296,7 +309,16 @@
 			}
 		}
 		else {
+			if($('.js-account-container').hasClass('is-showing')) {
+				if(!$('.actions-group__content').is(':visible')) {
+					$('.actions-group').trigger("click");
+				}
+				else {
+					$('.js-link-log-in-container .js-link-log-in').trigger("click");
+				}
+			}
 			$('.js-search-container').addClass('is-showing');
+			$('.search__form .js-get-items').select();
 			if($('.no-touch').length) {
 				$('.js-search-container').addClass('is-animating-in');
 				window.setTimeout(function(){
@@ -305,7 +327,6 @@
 			}
 		}
 		$('body').toggleClass('no-scroll');
-		$('.search__input-search').select();
 	};
 
 	SearchContainer.prototype.initSearch = function() {
@@ -321,14 +342,24 @@
     });
 		
 		var inputValue,
-				$appsList = $('.js-item-results--apps ul'),
-				$devList = $('.js-item-results--developers ul');
+				$appsContainer = $('.js-item-results--apps'),
+				$devListContainer = $('.js-item-results--developers'),
+				$noResultsContainer = $('.js-no-results'),
+				$appsList = $appsContainer.find('ul'),
+				$devList = $devListContainer.find('ul');
 
 		// on key up loop through object and search - for implentation, amend to call service to return results in json and display
 		$('.js-get-items').keyup(function(){
 			searchResultsApps = [];
 			searchResultsDevs = [];
 			inputValueCaseInsensitiveRegEx = new RegExp($(this).val(), "i");
+
+			var $searchButtonMobile = $('.panel-right .form-field .search-button-mobile');
+			if($(this).val().length > 0) {
+				$searchButtonMobile.addClass('is-highlighted');
+			} else {
+				$searchButtonMobile.removeClass('is-highlighted');
+			}
 
 			// if found add to result array
 			for(var i = 0; i < data.items.length; i++) {
@@ -338,6 +369,25 @@
 				if(data.items[i].creatorName.search(inputValueCaseInsensitiveRegEx) > -1) {
 					searchResultsDevs.push(data.items[i]);
 				}
+			}
+
+			// show and hide containers for nil results
+			if (searchResultsApps.length == 0) {			
+				$appsContainer.hide();
+			} else {
+				$appsContainer.show();
+				$noResultsContainer.hide();
+			}
+
+			if(searchResultsDevs.length == 0) { 
+				$devListContainer.hide();
+			} else {
+				$devListContainer.show();
+				$noResultsContainer.hide();
+			}
+
+			if(searchResultsApps.length == 0 && searchResultsDevs.length == 0) {
+				$noResultsContainer.show();
 			}
 			
 			// output results to screen
@@ -378,7 +428,6 @@
 
 	var Tabs = function() {
 		var isIE8 = $('.ie8').length;
-		console.log(isIE8);
 		if(!isIE8) {
 			$('.tabs__content--is-showing *').css("opacity", 1);
 		}
