@@ -525,11 +525,13 @@
 				selectOptions.each(function(){
 					$this = $(this);
 					if($this.attr('value')) {
-						var preSelectedClass = '';
+						var preSelectedClass = '',
+								selectedText = '';
 						if($this.data("previous")) {
 							preSelectedClass = 'pre-selected';
+							selectedText = $this.data("selectedtext");
 						}
-						optionsList.append($('<li>').addClass(preSelectedClass).attr('data-value', $this.attr('value')).text($this.text()));
+						optionsList.append($('<li>').addClass(preSelectedClass).attr('data-value', $this.attr('value')).attr('data-selectedtext', selectedText).text($this.text()));
 					}
 					else {
 						refSelectDefault.text($this.text());

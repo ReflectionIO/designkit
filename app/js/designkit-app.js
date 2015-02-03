@@ -219,18 +219,9 @@
 	};
 
 	FormsPage.prototype.templateFunctions = function() {
-		$('.js-inline-form-field-error-demo input').on("focus", function(e){
-			$(this).parents('.js-inline-form-field-error-demo').addClass('form-field--error');
-			$(this).siblings('label').html('Hint Label Text:<br />Error message lorem ipsum dolor amet');
-		});
-
-		$('.js-inline-form-field-error-demo input').on("blur", function(e){
-			$(this).parents('.js-inline-form-field-error-demo').removeClass('form-field--error');
-			$(this).siblings('label').html('Hint Label Text:');
-		});
-
 		$('.form-field--date-select input').on("click", function(){
 			$this = $(this);
+			$this.select();
 			$popup = $this.parents('.date-select-container').siblings('.dateBoxPopup');
 			if($popup.hasClass('is-showing')) {
 				$popup.removeClass('is-showing');

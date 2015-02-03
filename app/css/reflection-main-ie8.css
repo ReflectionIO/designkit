@@ -2520,7 +2520,7 @@ input:invalid {
 }
 /* line 347, ../sass/components/_form.scss */
 .reflection-select li.pre-selected:after {
-  content: 'Selected';
+  content: attr(data-selectedtext);
   position: absolute;
   top: 0.1rem;
   right: 5px;
@@ -2591,7 +2591,17 @@ input:invalid {
 .form-field--radio-list li {
   margin-left: 2.4%;
 }
-/* line 403, ../sass/components/_form.scss */
+/* line 401, ../sass/components/_form.scss */
+.touch .reflection-select .form-field--checkbox-list li, .touch .reflection-select
+.form-field--radio-list li {
+  margin-bottom: 1.7rem;
+}
+/* line 405, ../sass/components/_form.scss */
+.touch .form-field--checkbox-list li, .touch
+.form-field--radio-list li {
+  margin-bottom: 1.4rem;
+}
+/* line 409, ../sass/components/_form.scss */
 .form-field--checkbox-list input[type=checkbox],
 .form-field--checkbox-list input[type=radio],
 .form-field--radio-list input[type=checkbox],
@@ -2602,7 +2612,7 @@ input:invalid {
   padding: 0;
   display: inline-block;
 }
-/* line 411, ../sass/components/_form.scss */
+/* line 417, ../sass/components/_form.scss */
 .form-field--checkbox-list label,
 .form-field--radio-list label {
   padding-top: 1px;
@@ -2611,14 +2621,14 @@ input:invalid {
   font-weight: 400;
 }
 
-/* line 420, ../sass/components/_form.scss */
+/* line 426, ../sass/components/_form.scss */
 .form-field--checkbox-list--inline li,
 .form-field--radio-list--inline li {
   margin-right: 20px;
   display: inline-block;
 }
 
-/* line 425, ../sass/components/_form.scss */
+/* line 431, ../sass/components/_form.scss */
 label.checkboxLabel,
 label.checkboxLabelDisabled,
 label.radioButtonLabel,
@@ -2638,56 +2648,56 @@ label.radioButtonLabelDisabled {
   text-decoration: none;
 }
 
-/* line 443, ../sass/components/_form.scss */
+/* line 449, ../sass/components/_form.scss */
 label.radioButtonLabel,
 label.radioButtonLabelDisabled {
   border-radius: 9px;
 }
 
-/* line 447, ../sass/components/_form.scss */
+/* line 453, ../sass/components/_form.scss */
 label.checkboxLabel,
 label.radioButtonLabel {
   background-color: #f2f2f5;
   overflow: visible;
 }
-/* line 452, ../sass/components/_form.scss */
+/* line 458, ../sass/components/_form.scss */
 .forms--mid-theme label.checkboxLabel, .forms--mid-theme
 label.radioButtonLabel {
   background-color: #ffffff;
 }
-/* line 455, ../sass/components/_form.scss */
+/* line 461, ../sass/components/_form.scss */
 .forms--dark-theme label.checkboxLabel, .forms--dark-theme
 label.radioButtonLabel {
   background-color: #333338;
 }
-/* line 458, ../sass/components/_form.scss */
+/* line 464, ../sass/components/_form.scss */
 label.checkboxLabel:hover,
 label.radioButtonLabel:hover {
   background-color: #e1e5e8;
 }
-/* line 461, ../sass/components/_form.scss */
+/* line 467, ../sass/components/_form.scss */
 .forms--mid-theme label.checkboxLabel:hover, .forms--mid-theme
 label.radioButtonLabel:hover {
   background-color: #e6e6e6;
 }
-/* line 464, ../sass/components/_form.scss */
+/* line 470, ../sass/components/_form.scss */
 .forms--dark-theme label.checkboxLabel:hover, .forms--dark-theme
 label.radioButtonLabel:hover {
   background-color: #4b4b53;
 }
-/* line 468, ../sass/components/_form.scss */
+/* line 474, ../sass/components/_form.scss */
 label.checkboxLabel:active,
 label.radioButtonLabel:active {
   border-top: 2px solid #bfc3c5;
   background-color: #e1e5e8;
 }
-/* line 471, ../sass/components/_form.scss */
+/* line 477, ../sass/components/_form.scss */
 .forms--dark-theme label.checkboxLabel:active, .forms--dark-theme
 label.radioButtonLabel:active {
   border-top: 2px solid #333338;
 }
 
-/* line 477, ../sass/components/_form.scss */
+/* line 483, ../sass/components/_form.scss */
 label.checkboxLabel:after {
   opacity: 0;
   position: absolute;
@@ -2711,32 +2721,32 @@ label.checkboxLabel:after {
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
 }
-/* line 498, ../sass/components/_form.scss */
+/* line 504, ../sass/components/_form.scss */
 .no-opacity label.checkboxLabel:after {
   display: none;
 }
-/* line 502, ../sass/components/_form.scss */
+/* line 508, ../sass/components/_form.scss */
 .reflection-select label.checkboxLabel {
   background-color: #fcfdfd;
 }
-/* line 504, ../sass/components/_form.scss */
+/* line 510, ../sass/components/_form.scss */
 .reflection-select label.checkboxLabel:hover {
   background-color: #e1e5e8;
 }
 
-/* line 509, ../sass/components/_form.scss */
+/* line 515, ../sass/components/_form.scss */
 label.checkboxLabelDisabled,
 label.radioButtonLabelDisabled {
   background-color: #f7f7f9;
   overflow: visible;
 }
 
-/* line 514, ../sass/components/_form.scss */
+/* line 520, ../sass/components/_form.scss */
 input[type="checkbox"]:checked + label.checkboxLabel,
 input[type="radio"]:checked + label.radioButtonLabel {
   background-color: #1bc79f;
 }
-/* line 517, ../sass/components/_form.scss */
+/* line 523, ../sass/components/_form.scss */
 input[type="checkbox"]:checked + label.checkboxLabel:after,
 input[type="radio"]:checked + label.radioButtonLabel:after {
   opacity: 1;
@@ -2744,38 +2754,38 @@ input[type="radio"]:checked + label.radioButtonLabel:after {
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
-/* line 521, ../sass/components/_form.scss */
+/* line 527, ../sass/components/_form.scss */
 .no-opacity input[type="checkbox"]:checked + label.checkboxLabel:after, .no-opacity
 input[type="radio"]:checked + label.radioButtonLabel:after {
   display: block;
 }
-/* line 525, ../sass/components/_form.scss */
+/* line 531, ../sass/components/_form.scss */
 input[type="checkbox"]:checked + label.checkboxLabel:active,
 input[type="radio"]:checked + label.radioButtonLabel:active {
   border-top: 2px solid #169f7f;
 }
 
-/* line 529, ../sass/components/_form.scss */
+/* line 535, ../sass/components/_form.scss */
 .forms--dark-theme input[type="checkbox"]:checked + label.checkboxLabel {
   background-color: #333338;
 }
-/* line 531, ../sass/components/_form.scss */
+/* line 537, ../sass/components/_form.scss */
 .forms--dark-theme input[type="checkbox"]:checked + label.checkboxLabel:active {
   border-top: 2px solid #29292c;
   background-color: #333338;
 }
-/* line 535, ../sass/components/_form.scss */
+/* line 541, ../sass/components/_form.scss */
 .forms--dark-theme input[type="checkbox"]:checked + label.checkboxLabel:after {
   color: #1BC79F;
 }
 
-/* line 539, ../sass/components/_form.scss */
+/* line 545, ../sass/components/_form.scss */
 input[type="checkbox"]:checked + label.checkboxLabel {
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
 
-/* line 542, ../sass/components/_form.scss */
+/* line 548, ../sass/components/_form.scss */
 label.checkboxLabelVisible,
 label.checkboxLabelVisibleDisabled,
 label.radioButtonLabelVisible,
@@ -2786,25 +2796,25 @@ label.radioButtonLabelVisibleDisabled {
   text-align: left;
 }
 
-/* line 551, ../sass/components/_form.scss */
+/* line 557, ../sass/components/_form.scss */
 label.checkboxLabelVisible,
 label.radioButtonLabelVisible {
   color: #363a47;
   cursor: pointer;
 }
-/* line 555, ../sass/components/_form.scss */
+/* line 561, ../sass/components/_form.scss */
 .forms--dark-theme label.checkboxLabelVisible, .forms--dark-theme
 label.radioButtonLabelVisible {
   color: #81879d;
 }
-/* line 558, ../sass/components/_form.scss */
+/* line 564, ../sass/components/_form.scss */
 .reflection-select label.checkboxLabelVisible, .reflection-select
 label.radioButtonLabelVisible {
   color: #6d69c5;
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
 }
-/* line 561, ../sass/components/_form.scss */
+/* line 567, ../sass/components/_form.scss */
 .reflection-select label.checkboxLabelVisible:hover, .reflection-select
 label.radioButtonLabelVisible:hover {
   color: #363a47;
@@ -2812,34 +2822,34 @@ label.radioButtonLabelVisible:hover {
   transition: color 0.3s;
 }
 
-/* line 567, ../sass/components/_form.scss */
+/* line 573, ../sass/components/_form.scss */
 .reflection-select input:checked + label + label.checkboxLabelVisible {
   color: #363a47;
 }
 
-/* line 570, ../sass/components/_form.scss */
+/* line 576, ../sass/components/_form.scss */
 label.checkboxLabelVisibleDisabled,
 label.radioButtonLabelVisibleDisabled {
   color: #c4c7d0;
 }
 
-/* line 574, ../sass/components/_form.scss */
+/* line 580, ../sass/components/_form.scss */
 .form-field--radio-list + .form-field--checkbox-list,
 .form-field--checkbox-list + .form-field--radio-list {
   margin-top: 0;
 }
 
-/* line 578, ../sass/components/_form.scss */
+/* line 584, ../sass/components/_form.scss */
 .forms--mid-theme {
   background-color: #f2f2f5;
 }
 
-/* line 581, ../sass/components/_form.scss */
+/* line 587, ../sass/components/_form.scss */
 .forms--dark-theme {
   background-color: #29292c;
 }
 
-/* line 586, ../sass/components/_form.scss */
+/* line 592, ../sass/components/_form.scss */
 .dateBoxPopup {
   position: absolute;
   top: 4.2rem;
@@ -2857,19 +2867,19 @@ label.radioButtonLabelVisibleDisabled {
   -webkit-transition: opacity 0.1s, visibility 0.1s 0.1s;
           transition: opacity 0.1s, visibility 0.1s 0.1s;
 }
-/* line 597, ../sass/components/_form.scss */
+/* line 603, ../sass/components/_form.scss */
 .forms--dark-theme .dateBoxPopup {
   background-color: #333338;
 }
-/* line 600, ../sass/components/_form.scss */
+/* line 606, ../sass/components/_form.scss */
 .forms--mid-theme .dateBoxPopup {
   background-color: #fff;
 }
-/* line 609, ../sass/components/_form.scss */
+/* line 615, ../sass/components/_form.scss */
 .dateBoxPopup tbody, .dateBoxPopup tr {
   width: 100%;
 }
-/* line 612, ../sass/components/_form.scss */
+/* line 618, ../sass/components/_form.scss */
 .dateBoxPopup.is-showing {
   opacity: 1;
   visibility: visible;
@@ -2877,89 +2887,89 @@ label.radioButtonLabelVisibleDisabled {
   transition: opacity 0.1s;
 }
 
-/* line 618, ../sass/components/_form.scss */
+/* line 624, ../sass/components/_form.scss */
 .gwt-DatePicker {
   width: 100%;
 }
-/* line 620, ../sass/components/_form.scss */
+/* line 626, ../sass/components/_form.scss */
 .gwt-DatePicker tr {
   width: 100%;
 }
 
-/* line 624, ../sass/components/_form.scss */
+/* line 630, ../sass/components/_form.scss */
 .single-date-selector-container {
   text-align: center;
 }
 
-/* line 627, ../sass/components/_form.scss */
+/* line 633, ../sass/components/_form.scss */
 .datePickerMonthSelector {
   background-color: #e1e5e8;
 }
-/* line 629, ../sass/components/_form.scss */
+/* line 635, ../sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list {
   width: auto;
   margin: 0 auto;
   display: inline-block;
 }
-/* line 633, ../sass/components/_form.scss */
+/* line 639, ../sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li {
   margin: 0;
 }
-/* line 635, ../sass/components/_form.scss */
+/* line 641, ../sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabel {
   z-index: 2;
 }
-/* line 637, ../sass/components/_form.scss */
+/* line 643, ../sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabel:hover {
   background-color: #c4c7d0;
 }
-/* line 639, ../sass/components/_form.scss */
+/* line 645, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabel:hover {
   border-top-color: #333338;
   background-color: #4b4b53;
 }
-/* line 644, ../sass/components/_form.scss */
+/* line 650, ../sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabel:active {
   border-top-color: #727686;
 }
-/* line 649, ../sass/components/_form.scss */
+/* line 655, ../sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li input:checked + label.checkboxLabel:hover {
   background-color: #1bc79f;
 }
-/* line 651, ../sass/components/_form.scss */
+/* line 657, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector .form-field--checkbox-list li input:checked + label.checkboxLabel:hover {
   background-color: #333338;
 }
-/* line 655, ../sass/components/_form.scss */
+/* line 661, ../sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li input:checked + label.checkboxLabel:active {
   border-top-color: #169f7f;
 }
-/* line 657, ../sass/components/_form.scss */
+/* line 663, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector .form-field--checkbox-list li input:checked + label.checkboxLabel:active {
   border-top: 2px solid #29292c;
   background-color: #333338;
 }
-/* line 663, ../sass/components/_form.scss */
+/* line 669, ../sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabelVisible {
   position: relative;
   padding-left: 30px;
   z-index: 0;
   font-size: 12px;
 }
-/* line 668, ../sass/components/_form.scss */
+/* line 674, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabelVisible {
   color: #fcfdfd;
 }
-/* line 674, ../sass/components/_form.scss */
+/* line 680, ../sass/components/_form.scss */
 .forms--mid-theme .datePickerMonthSelector {
   background-color: #e8e7f1;
 }
-/* line 677, ../sass/components/_form.scss */
+/* line 683, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector {
   background-color: #5b5b68;
 }
 
-/* line 681, ../sass/components/_form.scss */
+/* line 687, ../sass/components/_form.scss */
 .datePickerDays {
   width: 90%;
   margin-left: 5%;
@@ -2968,15 +2978,15 @@ label.radioButtonLabelVisibleDisabled {
   text-align: center;
   background-color: #f2f2f5;
 }
-/* line 688, ../sass/components/_form.scss */
+/* line 694, ../sass/components/_form.scss */
 .forms--mid-theme .datePickerDays {
   background-color: #fff;
 }
-/* line 691, ../sass/components/_form.scss */
+/* line 697, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays {
   background-color: #333338;
 }
-/* line 694, ../sass/components/_form.scss */
+/* line 700, ../sass/components/_form.scss */
 .datePickerDays td {
   font-family: "Open Sans", sans-serif;
   font-size: 13px;
@@ -2986,16 +2996,16 @@ label.radioButtonLabelVisibleDisabled {
   border-left: 1px solid #e1e5e8;
   border-top: 1px solid #e1e5e8;
 }
-/* line 702, ../sass/components/_form.scss */
+/* line 708, ../sass/components/_form.scss */
 .datePickerDays td:first-child {
   border-left: 0;
 }
-/* line 705, ../sass/components/_form.scss */
+/* line 711, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td {
   color: #fcfdfd;
   border-color: #29292c;
 }
-/* line 709, ../sass/components/_form.scss */
+/* line 715, ../sass/components/_form.scss */
 .datePickerDays td > div {
   padding-top: 12px;
   padding-bottom: 14px;
@@ -3003,129 +3013,129 @@ label.radioButtonLabelVisibleDisabled {
   outline: none;
   cursor: pointer;
 }
-/* line 715, ../sass/components/_form.scss */
+/* line 721, ../sass/components/_form.scss */
 .datePickerDays td > div:active, .datePickerDays td > div:hover {
   color: #fcfdfd;
   background-color: #81879d;
 }
-/* line 718, ../sass/components/_form.scss */
+/* line 724, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td > div:active, .forms--dark-theme .datePickerDays td > div:hover {
   background-color: #5b5b68;
 }
-/* line 722, ../sass/components/_form.scss */
+/* line 728, ../sass/components/_form.scss */
 .datePickerDays td > div:active {
   padding-bottom: 12px;
   color: #fcfdfd;
   border-top: 2px solid #5a5e6e;
 }
-/* line 726, ../sass/components/_form.scss */
+/* line 732, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td > div:active {
   border-top: 2px solid #404049;
 }
-/* line 731, ../sass/components/_form.scss */
+/* line 737, ../sass/components/_form.scss */
 .datePickerDays td > div.datePickerDayIsValue {
   color: #fcfdfd;
   background-color: #1bc79f;
 }
-/* line 734, ../sass/components/_form.scss */
+/* line 740, ../sass/components/_form.scss */
 .datePickerDays td > div.datePickerDayIsValue:hover, .datePickerDays td > div.datePickerDayIsValue:active {
   padding-bottom: 14px;
   border-top: 0;
   background-color: #1bc79f;
 }
-/* line 740, ../sass/components/_form.scss */
+/* line 746, ../sass/components/_form.scss */
 .datePickerDays td > div.datePickerDayIsToday {
   background-color: #fcfdfd;
 }
-/* line 742, ../sass/components/_form.scss */
+/* line 748, ../sass/components/_form.scss */
 .forms--mid-theme .datePickerDays td > div.datePickerDayIsToday {
   background-color: #f2f2f5;
 }
-/* line 745, ../sass/components/_form.scss */
+/* line 751, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td > div.datePickerDayIsToday {
   color: #727686;
   background-color: #29292c;
 }
-/* line 749, ../sass/components/_form.scss */
+/* line 755, ../sass/components/_form.scss */
 .datePickerDays td > div.datePickerDayIsToday:hover, .datePickerDays td > div.datePickerDayIsToday:active {
   padding-bottom: 14px;
   border-top: 0;
   color: #363a47;
   background-color: #fcfdfd;
 }
-/* line 754, ../sass/components/_form.scss */
+/* line 760, ../sass/components/_form.scss */
 .forms--mid-theme .datePickerDays td > div.datePickerDayIsToday:hover, .forms--mid-theme .datePickerDays td > div.datePickerDayIsToday:active {
   background-color: #f2f2f5;
 }
-/* line 757, ../sass/components/_form.scss */
+/* line 763, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td > div.datePickerDayIsToday:hover, .forms--dark-theme .datePickerDays td > div.datePickerDayIsToday:active {
   color: #727686;
   background-color: #29292c;
 }
-/* line 763, ../sass/components/_form.scss */
+/* line 769, ../sass/components/_form.scss */
 .datePickerDays td .datePickerDayIsFiller {
   color: #c4c7d0;
 }
-/* line 765, ../sass/components/_form.scss */
+/* line 771, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td .datePickerDayIsFiller {
   color: #5b5b68;
 }
-/* line 769, ../sass/components/_form.scss */
+/* line 775, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td .datePickerDayIsFiller:hover {
   color: #fcfdfd;
 }
-/* line 774, ../sass/components/_form.scss */
+/* line 780, ../sass/components/_form.scss */
 .datePickerDays td .datePickerDayIsDisabled {
   color: #c4c7d0;
   font-style: italic;
   cursor: not-allowed;
 }
-/* line 778, ../sass/components/_form.scss */
+/* line 784, ../sass/components/_form.scss */
 .forms--mid-theme .datePickerDays td .datePickerDayIsDisabled {
   color: #c4c7d0;
 }
-/* line 781, ../sass/components/_form.scss */
+/* line 787, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td .datePickerDayIsDisabled {
   color: #5b5b68;
 }
-/* line 784, ../sass/components/_form.scss */
+/* line 790, ../sass/components/_form.scss */
 .datePickerDays td .datePickerDayIsDisabled:hover, .datePickerDays td .datePickerDayIsDisabled:active {
   padding-bottom: 14px;
   border-top: 0;
   color: #c4c7d0;
   background-color: #f2f2f5;
 }
-/* line 789, ../sass/components/_form.scss */
+/* line 795, ../sass/components/_form.scss */
 .forms--mid-theme .datePickerDays td .datePickerDayIsDisabled:hover, .forms--mid-theme .datePickerDays td .datePickerDayIsDisabled:active {
   color: #c4c7d0;
   border-top: 0;
   background-color: #fff;
 }
-/* line 794, ../sass/components/_form.scss */
+/* line 800, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td .datePickerDayIsDisabled:hover, .forms--dark-theme .datePickerDays td .datePickerDayIsDisabled:active {
   color: #5b5b68;
   border-top: 0;
   background-color: #333338;
 }
-/* line 802, ../sass/components/_form.scss */
+/* line 808, ../sass/components/_form.scss */
 .datePickerDays tr:first-child td {
   border-top: 0;
 }
 
-/* line 806, ../sass/components/_form.scss */
+/* line 812, ../sass/components/_form.scss */
 .datePickerDays .datePickerWeekdayLabel,
 .datePickerDays .datePickerWeekendLabel {
   padding-top: 10px;
   padding-bottom: 10px;
   color: #81879d;
 }
-/* line 811, ../sass/components/_form.scss */
+/* line 817, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerDays .datePickerWeekdayLabel, .forms--dark-theme
 .datePickerDays .datePickerWeekendLabel {
   color: #81879d;
 }
 
-/* line 815, ../sass/components/_form.scss */
+/* line 821, ../sass/components/_form.scss */
 .datePickerPreviousButton,
 .datePickerNextButton {
   cursor: hand;
@@ -3134,14 +3144,14 @@ label.radioButtonLabelVisibleDisabled {
   padding: 0px 4px;
   outline: none;
 }
-/* line 822, ../sass/components/_form.scss */
+/* line 828, ../sass/components/_form.scss */
 .has-single-option .datePickerPreviousButton, .has-single-option
 .datePickerNextButton {
   position: relative;
   top: 5px;
 }
 
-/* line 827, ../sass/components/_form.scss */
+/* line 833, ../sass/components/_form.scss */
 .datePickerMonth {
   padding-top: 18px;
   padding-bottom: 19px;
@@ -3152,66 +3162,66 @@ label.radioButtonLabelVisibleDisabled {
   text-transform: uppercase;
   color: #363a47;
 }
-/* line 836, ../sass/components/_form.scss */
+/* line 842, ../sass/components/_form.scss */
 .has-single-option .datePickerMonth {
   padding-bottom: 10px;
 }
-/* line 839, ../sass/components/_form.scss */
+/* line 845, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerMonth {
   color: #fcfdfd;
 }
 
-/* line 843, ../sass/components/_form.scss */
+/* line 849, ../sass/components/_form.scss */
 .datePickerPreviousButton,
 .datePickerNextButton {
   margin-top: -2px;
   padding: 0 13px;
 }
-/* line 848, ../sass/components/_form.scss */
+/* line 854, ../sass/components/_form.scss */
 .datePickerPreviousButton:after,
 .datePickerNextButton:after {
   font-size: 18px;
   position: relative;
   color: #828a91;
 }
-/* line 853, ../sass/components/_form.scss */
+/* line 859, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerPreviousButton:after, .forms--dark-theme
 .datePickerNextButton:after {
   color: #c4c7d0;
 }
-/* line 858, ../sass/components/_form.scss */
+/* line 864, ../sass/components/_form.scss */
 .datePickerPreviousButton:hover:after,
 .datePickerNextButton:hover:after {
   color: #697077;
 }
-/* line 860, ../sass/components/_form.scss */
+/* line 866, ../sass/components/_form.scss */
 .forms--dark-theme .datePickerPreviousButton:hover:after, .forms--dark-theme
 .datePickerNextButton:hover:after {
   color: #e0e2e7;
 }
-/* line 865, ../sass/components/_form.scss */
+/* line 871, ../sass/components/_form.scss */
 .datePickerPreviousButton:active,
 .datePickerNextButton:active {
   margin-top: 0;
 }
 
-/* line 869, ../sass/components/_form.scss */
+/* line 875, ../sass/components/_form.scss */
 .datePickerPreviousButton:after {
   content: "k";
 }
 
-/* line 872, ../sass/components/_form.scss */
+/* line 878, ../sass/components/_form.scss */
 .datePickerNextButton:after {
   content: "l";
 }
 
-/* line 875, ../sass/components/_form.scss */
+/* line 881, ../sass/components/_form.scss */
 .datePickerPreviousButton .html-face,
 .datePickerNextButton .html-face {
   display: none;
 }
 
-/* line 879, ../sass/components/_form.scss */
+/* line 885, ../sass/components/_form.scss */
 .calendar-container + .form-field--checkbox-list,
 .calendar-container + .form-field--radio-list {
   margin-top: 0.8rem;
@@ -4306,10 +4316,14 @@ label.radioButtonLabelVisibleDisabled {
 /* line 73, ../sass/components/_search-global.scss */
 .search__results-section li {
   margin-bottom: 7px;
+  display: block;
   overflow: visible;
+}
+/* line 77, ../sass/components/_search-global.scss */
+.no-touch .search__results-section li {
   margin-bottom: 1px;
 }
-/* line 79, ../sass/components/_search-global.scss */
+/* line 80, ../sass/components/_search-global.scss */
 .search__results-section li img {
   position: absolute;
   top: 2px;
@@ -4318,7 +4332,7 @@ label.radioButtonLabelVisibleDisabled {
   margin-right: 16px;
   vertical-align: top;
 }
-/* line 87, ../sass/components/_search-global.scss */
+/* line 88, ../sass/components/_search-global.scss */
 .search__results-section li span {
   position: relative;
   top: 0;
@@ -4331,12 +4345,12 @@ label.radioButtonLabelVisibleDisabled {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 99, ../sass/components/_search-global.scss */
+/* line 100, ../sass/components/_search-global.scss */
 .search__results-section.search__results-section--developers span {
   padding-left: 0;
 }
 
-/* line 104, ../sass/components/_search-global.scss */
+/* line 105, ../sass/components/_search-global.scss */
 .search-results-none-container {
   margin-top: -9px;
   display: none;
@@ -4344,7 +4358,7 @@ label.radioButtonLabelVisibleDisabled {
   font-family: "Open Sans", sans-serif;
   color: #5b5b68;
 }
-/* line 110, ../sass/components/_search-global.scss */
+/* line 111, ../sass/components/_search-global.scss */
 .search-results-none-container .svg-unhappy {
   width: 23px;
   height: 23px;
@@ -4352,11 +4366,11 @@ label.radioButtonLabelVisibleDisabled {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 116, ../sass/components/_search-global.scss */
+/* line 117, ../sass/components/_search-global.scss */
 .search-results-none-container .svg-unhappy path {
   fill: #44444d;
 }
-/* line 120, ../sass/components/_search-global.scss */
+/* line 121, ../sass/components/_search-global.scss */
 .search-results-none-container span {
   padding-top: 1px;
   vertical-align: middle;
