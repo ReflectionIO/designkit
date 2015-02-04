@@ -1,0 +1,73 @@
+.account-access-page {
+	.vertical-centre-above-phablet {
+		max-width: 1220px;
+		@include breakpoint($desktop-wide) {
+			max-width: 1402px;
+		}
+		@include breakpoint($desktop-wide) {
+			max-width: 1700px;
+		}
+	}
+}
+.full-screen-intro {
+	width: 100%;
+	@include breakpoint($tablet) {
+		position: relative;
+		top: -80px;
+		width: percentage(510/1220);
+		margin-right: percentage(101/1220);
+	}
+	@include breakpoint($desktop) {
+		width: 46%;
+	}
+	h1 {
+		margin-bottom: 0.55em;
+		color: white;
+	}
+	p {
+		color: $purple-pale;
+	}
+}
+.account-form-container {
+	width: 100%;
+	text-align: left;
+	@include breakpoint($tablet) {
+		position: relative;
+		top: -84px;
+		width: percentage(407/1220);	
+		background-color: #f2f2f5;
+	}
+	.tabs__tab {
+		background-color: #5f5bb4;
+		a {
+			color: $reflection-white;
+		}
+		a:hover {
+			color: darken($reflection-white, 15%);
+		}
+		&.is-active {
+			a {
+				color: #363a47;
+			}
+			a:hover {
+				color: #363a47;
+			}
+		}
+	}
+	.tabs__content {
+		padding: 30px 30px;
+	}
+	.tabs__content-container {
+		margin-bottom: 1rem;
+	}
+}
+.apply-success {
+	p {
+		margin-bottom: 3.8rem;
+		padding-left: 18px;
+		padding-right: 18px;
+		font-size: 1.4rem;
+		text-align: center;
+		color: #5b5d61;
+	}
+}

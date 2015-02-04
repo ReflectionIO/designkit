@@ -2,7 +2,7 @@
 $phablet: 480px;
 $tablet: 720px;
 $laptop: 960px;
-$desktop: 1240px;
+$desktop: 1280px;
 $desktop-wide: 1600px;
 
 $base-margin-bottom: 4rem;
@@ -53,5 +53,12 @@ $base-margin-bottom: 4rem;
 		.panel-left-open & {
 			@include transition(none);
 		}
+	}
+}
+.l-full-screen-section {
+	height: calc(100vh - 42px);
+	background-color: $reflection-purple;
+	@include breakpoint($phablet, true) {
+		height: calc(100vh - 62px);
 	}
 }
