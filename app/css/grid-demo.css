@@ -151,13 +151,13 @@ li {
 /* line 12, ../sass/base/_reset.scss */
 a {
   outline: none;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+  -webkit-transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
 }
 /* line 15, ../sass/base/_reset.scss */
 a:hover {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
 }
 
 /* line 19, ../sass/base/_reset.scss */
@@ -1316,103 +1316,334 @@ textarea, .global-header .link-open-search, html, body {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* line 2, ../sass/templates/_account-access.scss */
+/* line 1, ../sass/templates/_account-access.scss */
+.account-access-page {
+  background-color: #6d69c5;
+}
+/* line 3, ../sass/templates/_account-access.scss */
 .account-access-page .vertical-centre-above-phablet {
   max-width: 1220px;
 }
 @media (min-width: 1600px) {
-  /* line 2, ../sass/templates/_account-access.scss */
+  /* line 3, ../sass/templates/_account-access.scss */
   .account-access-page .vertical-centre-above-phablet {
     max-width: 1402px;
   }
 }
 @media (min-width: 1600px) {
-  /* line 2, ../sass/templates/_account-access.scss */
+  /* line 3, ../sass/templates/_account-access.scss */
   .account-access-page .vertical-centre-above-phablet {
     max-width: 1700px;
   }
 }
 
-/* line 12, ../sass/templates/_account-access.scss */
-.full-screen-intro {
-  width: 100%;
+/* line 13, ../sass/templates/_account-access.scss */
+.account-access-content {
+  padding-top: 4.6rem;
+  padding-bottom: 3rem;
+  overflow: visible;
 }
 @media (min-width: 720px) {
-  /* line 12, ../sass/templates/_account-access.scss */
+  /* line 13, ../sass/templates/_account-access.scss */
+  .account-access-content {
+    padding-top: 7.5rem;
+  }
+}
+
+/* line 21, ../sass/templates/_account-access.scss */
+.full-screen-intro {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 1rem;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  overflow: visible;
+}
+@media (min-width: 720px) {
+  /* line 21, ../sass/templates/_account-access.scss */
   .full-screen-intro {
     position: relative;
-    top: -80px;
+    padding-top: 20px;
+    width: 40%;
+    margin-right: 6%;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 960px) {
+  /* line 21, ../sass/templates/_account-access.scss */
+  .full-screen-intro {
     width: 41.80328%;
     margin-right: 8.27869%;
   }
 }
 @media (min-width: 1280px) {
-  /* line 12, ../sass/templates/_account-access.scss */
+  /* line 21, ../sass/templates/_account-access.scss */
   .full-screen-intro {
     width: 46%;
   }
 }
-/* line 23, ../sass/templates/_account-access.scss */
+/* line 43, ../sass/templates/_account-access.scss */
 .full-screen-intro h1 {
   margin-bottom: 0.55em;
   color: white;
+  font-size: 2.6em;
 }
-/* line 27, ../sass/templates/_account-access.scss */
+@media (min-width: 480px) {
+  /* line 43, ../sass/templates/_account-access.scss */
+  .full-screen-intro h1 {
+    font-size: 3.3em;
+  }
+}
+@media (min-width: 960px) {
+  /* line 43, ../sass/templates/_account-access.scss */
+  .full-screen-intro h1 {
+    font-size: 3.9em;
+  }
+}
+/* line 54, ../sass/templates/_account-access.scss */
+.full-screen-intro .p-style--featured {
+  font-size: 1.6rem;
+}
+@media (min-width: 960px) {
+  /* line 54, ../sass/templates/_account-access.scss */
+  .full-screen-intro .p-style--featured {
+    font-size: 1.8em;
+  }
+}
+/* line 60, ../sass/templates/_account-access.scss */
 .full-screen-intro p {
   color: #c3c6f6;
 }
 
-/* line 31, ../sass/templates/_account-access.scss */
+/* line 64, ../sass/templates/_account-access.scss */
 .account-form-container {
   width: 100%;
+  max-width: 500px;
+  display: inline-block;
+  vertical-align: top;
+  overflow: visible;
   text-align: left;
 }
 @media (min-width: 720px) {
-  /* line 31, ../sass/templates/_account-access.scss */
+  /* line 64, ../sass/templates/_account-access.scss */
   .account-form-container {
     position: relative;
-    top: -84px;
-    width: 33.36066%;
+    top: 0px;
+    width: 49%;
     background-color: #f2f2f5;
   }
 }
-/* line 40, ../sass/templates/_account-access.scss */
+@media (min-width: 960px) {
+  /* line 64, ../sass/templates/_account-access.scss */
+  .account-form-container {
+    width: 33.36066%;
+  }
+}
+/* line 80, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab {
   background-color: #5f5bb4;
 }
-/* line 42, ../sass/templates/_account-access.scss */
+/* line 82, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab a {
   color: #fcfdfd;
 }
-/* line 45, ../sass/templates/_account-access.scss */
+/* line 85, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab a:hover {
   color: #cedede;
 }
-/* line 49, ../sass/templates/_account-access.scss */
+/* line 89, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab.is-active a {
   color: #363a47;
 }
-/* line 52, ../sass/templates/_account-access.scss */
+/* line 92, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab.is-active a:hover {
   color: #363a47;
 }
-/* line 57, ../sass/templates/_account-access.scss */
-.account-form-container .tabs__content {
-  padding: 30px 30px;
+/* line 97, ../sass/templates/_account-access.scss */
+.account-form-container .js-rotate-content {
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+  -webkit-transition: -webkit-transform 0.15s;
+  transition: transform 0.15s;
 }
-/* line 60, ../sass/templates/_account-access.scss */
+/* line 101, ../sass/templates/_account-access.scss */
+.account-form-container .will-show .js-rotate-content {
+  -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+}
+/* line 104, ../sass/templates/_account-access.scss */
+.account-form-container .tabs__content--is-showing .js-rotate-content {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+  -webkit-transition: -webkit-transform 0.15s;
+  -webkit-transition-delay: 0.15s;
+  -webkit-transition: -webkit-transform 0.15s 0.15s;
+          transition: transform 0.15s 0.15s;
+}
+/* line 108, ../sass/templates/_account-access.scss */
+.account-form-container .tabs__content {
+  position: relative;
+  width: 100%;
+  padding: 30px 19px;
+  display: block;
+  visibility: hidden;
+}
+@media (min-width: 480px) {
+  /* line 108, ../sass/templates/_account-access.scss */
+  .account-form-container .tabs__content {
+    padding: 30px 30px;
+  }
+}
+/* line 118, ../sass/templates/_account-access.scss */
+.account-form-container .js-fade-content {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+}
+/* line 122, ../sass/templates/_account-access.scss */
+.account-form-container .tabs__content--is-showing .js-fade-content {
+  opacity: 1;
+  -moz-transition: opacity 0.15s 0.15s;
+  -o-transition: opacity 0.15s 0.15s;
+  -webkit-transition: opacity 0.15s;
+  -webkit-transition-delay: 0.15s;
+  -webkit-transition: opacity 0.15s 0.15s;
+          transition: opacity 0.15s 0.15s;
+}
+/* line 126, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__content-container {
+  position: relative;
   margin-bottom: 1rem;
+  overflow: visible;
 }
 
-/* line 65, ../sass/templates/_account-access.scss */
-.apply-success p {
+/* line 132, ../sass/templates/_account-access.scss */
+.email-send-success {
+  position: absolute;
+  visibility: hidden;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 136, ../sass/templates/_account-access.scss */
+.email-send-success.is-showing {
+  visibility: visible;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+/* line 141, ../sass/templates/_account-access.scss */
+.email-send-success p {
   margin-bottom: 3.8rem;
   padding-left: 18px;
   padding-right: 18px;
   font-size: 1.4rem;
   text-align: center;
   color: #5b5d61;
+}
+
+/* line 150, ../sass/templates/_account-access.scss */
+.illustration-container {
+  margin-top: 0.5rem;
+  margin-bottom: 2.7rem;
+  text-align: center;
+}
+
+/* line 155, ../sass/templates/_account-access.scss */
+.no-touch .account-access-page .list-partners,
+.touch .account-access-page .list-partners {
+  display: none;
+  position: relative;
+  bottom: 0;
+  margin-top: 0;
+  padding-top: 0.5rem;
+  width: 120%;
+  margin-left: -10%;
+  overflow: visible;
+}
+/* line 165, ../sass/templates/_account-access.scss */
+.no-touch .account-access-page .list-partners h2,
+.touch .account-access-page .list-partners h2 {
+  margin-top: 0.8rem;
+  margin-bottom: 1.7rem;
+}
+/* line 169, ../sass/templates/_account-access.scss */
+.no-touch .account-access-page .list-partners img,
+.touch .account-access-page .list-partners img {
+  max-width: 130px;
+  padding-bottom: 0;
+}
+@media (min-width: 480px) {
+  /* line 155, ../sass/templates/_account-access.scss */
+  .no-touch .account-access-page .list-partners,
+  .touch .account-access-page .list-partners {
+    display: block;
+  }
+  /* line 175, ../sass/templates/_account-access.scss */
+  .no-touch .account-access-page .list-partners li:last-child,
+  .touch .account-access-page .list-partners li:last-child {
+    display: none;
+  }
+}
+@media (min-width: 720px) {
+  /* line 155, ../sass/templates/_account-access.scss */
+  .no-touch .account-access-page .list-partners,
+  .touch .account-access-page .list-partners {
+    padding-top: 3rem;
+  }
+  /* line 180, ../sass/templates/_account-access.scss */
+  .no-touch .account-access-page .list-partners ul,
+  .touch .account-access-page .list-partners ul {
+    display: block;
+  }
+  /* line 184, ../sass/templates/_account-access.scss */
+  .no-touch .account-access-page .list-partners li,
+  .touch .account-access-page .list-partners li {
+    width: 50%;
+    float: left;
+  }
+  /* line 188, ../sass/templates/_account-access.scss */
+  .no-touch .account-access-page .list-partners li:last-child,
+  .touch .account-access-page .list-partners li:last-child {
+    display: inline-block;
+  }
+}
+@media (min-width: 960px) {
+  /* line 193, ../sass/templates/_account-access.scss */
+  .no-touch .account-access-page .list-partners ul,
+  .touch .account-access-page .list-partners ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  /* line 203, ../sass/templates/_account-access.scss */
+  .no-touch .account-access-page .list-partners li,
+  .touch .account-access-page .list-partners li {
+    width: auto;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-flex-grow: 1;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
 }
 
 /* line 1, ../sass/templates/_buttons.scss */
@@ -5442,27 +5673,48 @@ label.radioButtonLabelVisibleDisabled {
   display: inline-block;
 }
 
-/* line 1, ../sass/components/_tabs.scss */
-.tabs-container {
-  display: none;
-}
 @media (min-width: 720px) {
   /* line 1, ../sass/components/_tabs.scss */
   .tabs-container {
     width: 100%;
     display: block;
   }
-  /* line 6, ../sass/components/_tabs.scss */
+  /* line 5, ../sass/components/_tabs.scss */
   .tabs-container li {
     height: 7.2rem;
   }
-  /* line 8, ../sass/components/_tabs.scss */
+  /* line 7, ../sass/components/_tabs.scss */
   .tabs-container--large-tabs .tabs-container li {
     height: 13.7rem;
   }
 }
+/* line 12, ../sass/components/_tabs.scss */
+.tabs-container .tabs__tab.grid__column--one-half {
+  display: inline;
+  float: left;
+  width: 50%;
+  padding: 0 2%;
+}
+@media (min-width: 720px) {
+  /* line 12, ../sass/components/_tabs.scss */
+  .tabs-container .tabs__tab.grid__column--one-half {
+    width: 50%;
+    padding: 0 2%;
+  }
+}
 
-/* line 14, ../sass/components/_tabs.scss */
+/* line 16, ../sass/components/_tabs.scss */
+.default-tabs-transition .tabs-container {
+  display: none;
+}
+@media (min-width: 720px) {
+  /* line 16, ../sass/components/_tabs.scss */
+  .default-tabs-transition .tabs-container {
+    display: block;
+  }
+}
+
+/* line 22, ../sass/components/_tabs.scss */
 .tabs__tab {
   position: relative;
   height: 7.2rem;
@@ -5470,13 +5722,13 @@ label.radioButtonLabelVisibleDisabled {
   text-align: center;
   cursor: pointer;
 }
-/* line 20, ../sass/components/_tabs.scss */
+/* line 28, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__tab {
   width: 50%;
   padding: 0;
   margin: 0;
 }
-/* line 25, ../sass/components/_tabs.scss */
+/* line 33, ../sass/components/_tabs.scss */
 .tabs__tab .tab-animate-active {
   position: absolute;
   bottom: 0;
@@ -5488,23 +5740,26 @@ label.radioButtonLabelVisibleDisabled {
   -webkit-transition: height 0.3s;
   transition: height 0.3s;
 }
-/* line 36, ../sass/components/_tabs.scss */
+/* line 44, ../sass/components/_tabs.scss */
 .tabs__tab.is-active .tab-animate-active {
   height: 100%;
   -webkit-transition: height 0.3s;
   transition: height 0.3s;
 }
-/* line 41, ../sass/components/_tabs.scss */
+/* line 49, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__tab {
   height: 13.7rem;
 }
 
-/* line 45, ../sass/components/_tabs.scss */
+/* line 53, ../sass/components/_tabs.scss */
 .tabs__link {
   position: relative;
   width: 100%;
   height: 100%;
+  padding-left: 2%;
+  padding-right: 2%;
   display: block;
+  box-sizing: border-box;
   z-index: 1;
   font-size: 1.39rem;
   font-weight: 700;
@@ -5514,37 +5769,38 @@ label.radioButtonLabelVisibleDisabled {
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-/* line 58, ../sass/components/_tabs.scss */
+/* line 69, ../sass/components/_tabs.scss */
 .tabs__link:hover {
   color: #3c3890;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-/* line 63, ../sass/components/_tabs.scss */
+/* line 74, ../sass/components/_tabs.scss */
 .tabs__tab:active .tabs__link > span {
   margin-top: 6px;
 }
-/* line 67, ../sass/components/_tabs.scss */
+/* line 78, ../sass/components/_tabs.scss */
 .is-active .tabs__link {
   color: #363a47;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-/* line 70, ../sass/components/_tabs.scss */
+/* line 81, ../sass/components/_tabs.scss */
 .is-active .tabs__link:hover {
   color: #363a47;
 }
-/* line 74, ../sass/components/_tabs.scss */
+/* line 85, ../sass/components/_tabs.scss */
 .tabs__link > span {
   width: 100%;
+  line-height: 1.4;
   -webkit-transition: margin-top 0.1s;
   transition: margin-top 0.1s;
 }
-/* line 78, ../sass/components/_tabs.scss */
+/* line 90, ../sass/components/_tabs.scss */
 .tabs__link span span, .tabs__link span:before {
   vertical-align: middle;
 }
-/* line 81, ../sass/components/_tabs.scss */
+/* line 93, ../sass/components/_tabs.scss */
 .tabs__link span > span {
   width: 80%;
   max-width: 80%;
@@ -5552,76 +5808,76 @@ label.radioButtonLabelVisibleDisabled {
   text-align: left;
 }
 @media (min-width: 720px) {
-  /* line 81, ../sass/components/_tabs.scss */
+  /* line 93, ../sass/components/_tabs.scss */
   .tabs__link span > span {
     width: auto;
   }
 }
-/* line 89, ../sass/components/_tabs.scss */
+/* line 101, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__link span > span {
   width: 80%;
   font-size: 1.6rem;
   margin-bottom: 10px;
 }
 @media (min-width: 720px) {
-  /* line 89, ../sass/components/_tabs.scss */
+  /* line 101, ../sass/components/_tabs.scss */
   .tabs-container--large-tabs .tabs__link span > span {
     width: auto;
     max-width: 80%;
   }
 }
-/* line 99, ../sass/components/_tabs.scss */
+/* line 111, ../sass/components/_tabs.scss */
 .tabs__link span b {
   padding-top: 10px;
   display: inline-block;
   line-height: 1.6;
 }
-/* line 103, ../sass/components/_tabs.scss */
+/* line 115, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__link span b {
   font-size: 1.4rem;
   text-transform: none;
   font-weight: 400;
 }
-/* line 109, ../sass/components/_tabs.scss */
+/* line 121, ../sass/components/_tabs.scss */
 .tabs__link span:before {
   margin-right: 0.6em;
   font-size: 2.2rem;
 }
-/* line 112, ../sass/components/_tabs.scss */
+/* line 124, ../sass/components/_tabs.scss */
 .tabs-container--large-tabs .tabs__link span:before {
   font-size: 2.9rem;
   margin-right: 0.5em;
   vertical-align: top;
 }
 @media (min-width: 720px) {
-  /* line 112, ../sass/components/_tabs.scss */
+  /* line 124, ../sass/components/_tabs.scss */
   .tabs-container--large-tabs .tabs__link span:before {
     font-size: 3.2rem;
   }
 }
 @media (min-width: 960px) {
-  /* line 112, ../sass/components/_tabs.scss */
+  /* line 124, ../sass/components/_tabs.scss */
   .tabs-container--large-tabs .tabs__link span:before {
     font-size: 3.8rem;
   }
 }
 
-/* line 126, ../sass/components/_tabs.scss */
+/* line 138, ../sass/components/_tabs.scss */
 .is-ie .tabs__link:active {
   position: relative;
   top: 4px;
 }
-/* line 130, ../sass/components/_tabs.scss */
+/* line 142, ../sass/components/_tabs.scss */
 .is-ie .tabs__link span, .is-ie .tabs__link span:before, .is-ie .tabs__link:before {
   pointer-events: none;
 }
 
-/* line 134, ../sass/components/_tabs.scss */
+/* line 146, ../sass/components/_tabs.scss */
 .tab-border {
   width: 100%;
   height: 3px;
 }
-/* line 137, ../sass/components/_tabs.scss */
+/* line 149, ../sass/components/_tabs.scss */
 .tab-border span {
   width: 0%;
   height: 3px;
@@ -5630,7 +5886,7 @@ label.radioButtonLabelVisibleDisabled {
   -webkit-transition: width 0.1s ease-out;
   transition: width 0.1s ease-out;
 }
-/* line 145, ../sass/components/_tabs.scss */
+/* line 157, ../sass/components/_tabs.scss */
 .is-active .tab-border span {
   width: 100%;
   -moz-transition: width 0.1s ease-in 0.1s;
@@ -5640,42 +5896,48 @@ label.radioButtonLabelVisibleDisabled {
   -webkit-transition: width 0.1s ease-in 0.1s;
           transition: width 0.1s ease-in 0.1s;
 }
-/* line 151, ../sass/components/_tabs.scss */
+/* line 163, ../sass/components/_tabs.scss */
 .tabs__tab:first-child .tab-border span {
   float: right;
 }
 
-/* line 156, ../sass/components/_tabs.scss */
+/* line 168, ../sass/components/_tabs.scss */
 .tabs__content-container {
   width: 100%;
   margin-bottom: 4rem;
 }
 
-/* line 160, ../sass/components/_tabs.scss */
+/* line 172, ../sass/components/_tabs.scss */
 .tabs__content {
   display: block;
   padding: 0;
+  background-color: #f2f2f5;
 }
 @media (min-width: 720px) {
-  /* line 160, ../sass/components/_tabs.scss */
+  /* line 172, ../sass/components/_tabs.scss */
   .tabs__content {
     display: none;
-    background-color: #f2f2f5;
   }
-  /* line 166, ../sass/components/_tabs.scss */
-  .tabs__content * {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-    opacity: 0;
-  }
-  /* line 168, ../sass/components/_tabs.scss */
-  .no-js .tabs__content * {
+  /* line 178, ../sass/components/_tabs.scss */
+  .no-js .tabs__content {
     filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
     opacity: 1;
   }
 }
 
+/* line 183, ../sass/components/_tabs.scss */
+.default-tabs-transition .tabs__content {
+  background-color: transparent;
+}
+@media (min-width: 720px) {
+  /* line 183, ../sass/components/_tabs.scss */
+  .default-tabs-transition .tabs__content {
+    background-color: #f2f2f5;
+  }
+}
+
 @media screen and (max-width: 720px) {
-  /* line 175, ../sass/components/_tabs.scss */
+  /* line 190, ../sass/components/_tabs.scss */
   .collapsible-trigger {
     position: relative;
     width: 100%;
@@ -5692,7 +5954,7 @@ label.radioButtonLabelVisibleDisabled {
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
   }
-  /* line 189, ../sass/components/_tabs.scss */
+  /* line 204, ../sass/components/_tabs.scss */
   .collapsible-trigger b {
     line-height: 1.6;
     text-transform: none;
@@ -5702,46 +5964,46 @@ label.radioButtonLabelVisibleDisabled {
     font-size: 1.3rem;
     padding-top: 4px;
   }
-  /* line 198, ../sass/components/_tabs.scss */
+  /* line 213, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger {
     color: #29292c;
   }
-  /* line 200, ../sass/components/_tabs.scss */
+  /* line 215, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger:before {
     color: #29292c;
   }
-  /* line 203, ../sass/components/_tabs.scss */
+  /* line 218, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger:hover {
     color: #29292c;
   }
-  /* line 207, ../sass/components/_tabs.scss */
+  /* line 222, ../sass/components/_tabs.scss */
   .collapsible-trigger:hover {
     color: #4b46b5;
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
   }
-  /* line 212, ../sass/components/_tabs.scss */
+  /* line 227, ../sass/components/_tabs.scss */
   .collapsible-trigger:active span, .collapsible-trigger:active:before {
     position: relative;
     top: 4px;
   }
-  /* line 217, ../sass/components/_tabs.scss */
+  /* line 232, ../sass/components/_tabs.scss */
   .collapsible-trigger:before, .collapsible-trigger span {
     vertical-align: middle;
   }
-  /* line 220, ../sass/components/_tabs.scss */
+  /* line 235, ../sass/components/_tabs.scss */
   .collapsible-trigger span {
     padding-left: 10px;
   }
 
-  /* line 224, ../sass/components/_tabs.scss */
+  /* line 239, ../sass/components/_tabs.scss */
   .collapsible-content {
     margin-top: 0;
     padding-bottom: 3rem;
     -webkit-transition: margin-top 0.3s;
     transition: margin-top 0.3s;
   }
-  /* line 228, ../sass/components/_tabs.scss */
+  /* line 243, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-content {
     margin-top: 0;
     -webkit-transition: margin-top 0.3s;
@@ -5749,12 +6011,12 @@ label.radioButtonLabelVisibleDisabled {
   }
 }
 @media (min-width: 720px) {
-  /* line 235, ../sass/components/_tabs.scss */
+  /* line 250, ../sass/components/_tabs.scss */
   .collapsible-trigger {
     display: none;
   }
 }
-/* line 239, ../sass/components/_tabs.scss */
+/* line 254, ../sass/components/_tabs.scss */
 .tabs__content.tabs__content--is-showing {
   display: block;
 }

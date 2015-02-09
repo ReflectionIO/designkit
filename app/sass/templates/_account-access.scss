@@ -1,4 +1,5 @@
 .account-access-page {
+	background-color: $reflection-purple;
 	.vertical-centre-above-phablet {
 		max-width: 1220px;
 		@include breakpoint($desktop-wide) {
@@ -9,11 +10,30 @@
 		}
 	}
 }
+.account-access-content {
+	padding-top: 4.6rem;
+	padding-bottom: 3rem;
+	overflow: visible;
+	@include breakpoint($tablet) {
+		padding-top: 7.5rem;
+	}
+}
 .full-screen-intro {
 	width: 100%;
+	max-width: 800px;
+	margin-bottom: 1rem;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	overflow: visible;
 	@include breakpoint($tablet) {
 		position: relative;
-		top: -80px;
+		padding-top: 20px;
+		width: 40%;
+		margin-right: 6%;
+		margin-bottom: 0;
+	}
+	@include breakpoint($laptop) {
 		width: percentage(510/1220);
 		margin-right: percentage(101/1220);
 	}
@@ -23,6 +43,19 @@
 	h1 {
 		margin-bottom: 0.55em;
 		color: white;
+		font-size: 2.6em;
+		@include breakpoint($phablet) {
+			font-size: 3.3em;
+		}
+		@include breakpoint($laptop) {
+			font-size: 3.9em;
+		}
+	}
+	.p-style--featured {
+		font-size: 1.6rem;
+		@include breakpoint($laptop) {
+			font-size: 1.8em;
+		}
 	}
 	p {
 		color: $purple-pale;
@@ -30,12 +63,19 @@
 }
 .account-form-container {
 	width: 100%;
+	max-width: 500px;
+	display: inline-block;
+	vertical-align: top;
+	overflow: visible;
 	text-align: left;
 	@include breakpoint($tablet) {
 		position: relative;
-		top: -84px;
-		width: percentage(407/1220);	
+		top: 0px;
+		width: 49%;
 		background-color: #f2f2f5;
+	}
+	@include breakpoint($laptop) {
+		width: percentage(407/1220);	
 	}
 	.tabs__tab {
 		background-color: #5f5bb4;
@@ -54,14 +94,50 @@
 			}
 		}
 	}
+	.js-rotate-content {
+		transform: rotateX(90deg);
+		@include transition(transform 0.15s);
+	}
+	.will-show .js-rotate-content {
+		transform: rotateX(-90deg);
+	}
+	.tabs__content--is-showing .js-rotate-content {
+		transform: rotateX(0deg);
+		@include transition(transform 0.15s 0.15s);
+	}
 	.tabs__content {
-		padding: 30px 30px;
+		position: relative;
+		width: 100%;
+		padding: 30px 19px;
+		display: block;
+		visibility: hidden;
+		@include breakpoint($phablet) {
+			padding: 30px 30px;
+		}
+	}
+	.js-fade-content {
+		opacity: 0;
+		@include transition(opacity 0.15s);
+	}
+	.tabs__content--is-showing .js-fade-content {
+		opacity: 1;
+		@include transition(opacity 0.15s 0.15s);
 	}
 	.tabs__content-container {
+		position: relative;
 		margin-bottom: 1rem;
+		overflow: visible;
 	}
 }
-.apply-success {
+.email-send-success {
+	position: absolute;
+	visibility: hidden;
+	@include opacity(0);
+	&.is-showing {
+		visibility: visible;
+		@include opacity(1);
+		@include transition(opacity 0.3s);
+	}
 	p {
 		margin-bottom: 3.8rem;
 		padding-left: 18px;
@@ -69,5 +145,66 @@
 		font-size: 1.4rem;
 		text-align: center;
 		color: #5b5d61;
+	}
+}
+.illustration-container {
+	margin-top: 0.5rem;
+	margin-bottom: 2.7rem;
+	text-align: center;
+}
+.no-touch .account-access-page .list-partners,
+.touch .account-access-page .list-partners {
+	display: none;
+	position: relative;
+	bottom: 0;
+	margin-top: 0;
+	padding-top: 0.5rem;
+	width: 120%;
+	margin-left: -10%;
+	overflow: visible;
+	h2 {
+		margin-top: 0.8rem;
+		margin-bottom: 1.7rem;
+	}
+	img {
+		max-width: 130px;
+		padding-bottom: 0;
+	}
+	@include breakpoint($phablet) {
+		display: block;
+		li:last-child {
+			display: none;
+		}
+	}
+	@include breakpoint($tablet) {
+		ul {
+			display: block;
+		}
+		padding-top: 3rem;
+		li {
+			width: 50%;
+			float: left;
+		}
+		li:last-child {
+			display: inline-block;
+		}
+	}
+	@include breakpoint($laptop) {
+		ul {
+			display: -webkit-box;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: -webkit-flex;
+		  display: flex;
+		  flex-direction: row;
+		  justify-content: center;
+		  align-items: center;
+		}
+		li {
+			width: auto;
+			justify-content: center;
+			-webkit-flex-grow: 1;
+			flex-grow: 1;
+		}
 	}
 }

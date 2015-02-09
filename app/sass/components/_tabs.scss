@@ -1,5 +1,4 @@
 .tabs-container {
-	display: none;
 	@include breakpoint($tablet, true) {
 		width: 100%;
 		display: block;
@@ -10,6 +9,15 @@
 			}
 		}
 	}
+	.tabs__tab.grid__column--one-half {
+		@include column(6);
+	}
+}
+.default-tabs-transition .tabs-container {
+		display: none;
+		@include breakpoint($tablet, true) {
+			display: block;
+		}
 }
 .tabs__tab {
 	position: relative;
@@ -47,7 +55,10 @@
 	position: relative;
 	width: 100%;
 	height: 100%;
+	padding-left: 2%;
+	padding-right: 2%;	
 	display: block;
+	box-sizing: border-box;
 	z-index: 1;
 	font-size: 1.39rem;
 	font-weight: 700;
@@ -73,6 +84,7 @@
 	}
 	> span {
 		width: 100%;
+		line-height: 1.4;
 		@include transition(margin-top 0.1s);
 	}
 	span span, span:before {
@@ -160,15 +172,18 @@
 .tabs__content {
 	display: block;
 	padding: 0;
+	background-color: $panel-grey;
 	@include breakpoint($tablet) {
 		display: none;
-		background-color: $panel-grey;
-		* {
-			@include opacity(0);
-			.no-js & {
-				@include opacity(1);
-			}
+		.no-js & {
+			@include opacity(1);
 		}
+	}
+}
+.default-tabs-transition .tabs__content {
+	background-color: transparent;
+	@include breakpoint($tablet) {
+		background-color: $panel-grey;
 	}
 }
 @media screen and (max-width: $tablet) {

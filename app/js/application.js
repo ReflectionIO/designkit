@@ -432,18 +432,19 @@
 	var Tabs = function() {
 		var isIE8 = $('.ie8').length;
 		if(!isIE8) {
-			$('.tabs__content--is-showing *').css("opacity", 1);
+			$('.default-tabs-transition .tabs__content-area').css("opacity", 1);
 		}
 
 		$('.js-tab-select').on("click", function(e){
   		e.preventDefault();
-  		var thisParent = $(this).parents(".tabs-container");
+  		var $this = $(this);
+  		var thisParent = $this.parents(".tabs-container");
   		thisParent.find('.is-active').removeClass('is-active');
-  		$(this).addClass('is-active');
-  		var contentId = $(this).find('.tabs__link').attr("href");
+  		$this.addClass('is-active');
+  		var contentId = $this.find('.tabs__link').attr("href");
   		$(contentId).parents('.tabs__content-container').find('.tabs__content--is-showing').removeClass('tabs__content--is-showing');
   		$(contentId).addClass('tabs__content--is-showing');
-  		if(!isIE8) {
+  		if(!isIE8 && $(contentId).parents('.tabs__content-container').hasClass('default-tabs-transition')) {
 	  		$(contentId + ' *').css("opacity", 0);
 	  		$(contentId + ' *').animate({opacity: 1}, 200);
 	  	}
