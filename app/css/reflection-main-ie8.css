@@ -1067,23 +1067,168 @@ textarea, .global-header .link-open-search, html, body {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* line 1, ../sass/templates/_account-access.scss */
+@-webkit-keyframes mail-send {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  15% {
+    -webkit-transform: translate(8px, 3px);
+            transform: translate(8px, 3px);
+  }
+  100% {
+    -webkit-transform: translate(-36px, -13px);
+            transform: translate(-36px, -13px);
+  }
+}
+
+@keyframes mail-send {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  15% {
+    -webkit-transform: translate(8px, 3px);
+            transform: translate(8px, 3px);
+  }
+  100% {
+    -webkit-transform: translate(-36px, -13px);
+            transform: translate(-36px, -13px);
+  }
+}
+@-webkit-keyframes mail-deliver {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  15% {
+    -webkit-transform: translateX(-4px);
+            transform: translateX(-4px);
+  }
+  100% {
+    -webkit-transform: translateX(47px);
+            transform: translateX(47px);
+  }
+}
+@keyframes mail-deliver {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  15% {
+    -webkit-transform: translateX(-4px);
+            transform: translateX(-4px);
+  }
+  100% {
+    -webkit-transform: translateX(47px);
+            transform: translateX(47px);
+  }
+}
+@-webkit-keyframes van-shake {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  12.5% {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+  25% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  37.5% {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+  50% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  62.5% {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+  75% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  87.5% {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+@keyframes van-shake {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  12.5% {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+  25% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  37.5% {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+  50% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  62.5% {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+  75% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  87.5% {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+/* line 22, ../sass/templates/_account-access.scss */
 .account-access-page {
   background-color: #6d69c5;
 }
-/* line 3, ../sass/templates/_account-access.scss */
+/* line 24, ../sass/templates/_account-access.scss */
 .account-access-page .vertical-centre-above-phablet {
   max-width: 1220px;
 }
 
-/* line 13, ../sass/templates/_account-access.scss */
+/* line 34, ../sass/templates/_account-access.scss */
 .account-access-content {
   padding-top: 4.6rem;
   padding-bottom: 3rem;
   overflow: visible;
 }
+@media screen and (min-width: 960px) and (min-height: 780px) {
+  /* line 34, ../sass/templates/_account-access.scss */
+  .account-access-content {
+    padding-top: 12rem;
+  }
+}
+@media screen and (min-width: 960px) and (min-height: 960px) {
+  /* line 34, ../sass/templates/_account-access.scss */
+  .account-access-content {
+    padding-top: 18rem;
+  }
+}
 
-/* line 21, ../sass/templates/_account-access.scss */
+/* line 48, ../sass/templates/_account-access.scss */
 .full-screen-intro {
   width: 100%;
   max-width: 800px;
@@ -1093,72 +1238,79 @@ textarea, .global-header .link-open-search, html, body {
   text-align: center;
   overflow: visible;
 }
-/* line 43, ../sass/templates/_account-access.scss */
+/* line 70, ../sass/templates/_account-access.scss */
 .full-screen-intro h1 {
   margin-bottom: 0.55em;
   color: white;
   font-size: 2.6em;
 }
-/* line 54, ../sass/templates/_account-access.scss */
+/* line 81, ../sass/templates/_account-access.scss */
 .full-screen-intro .p-style--featured {
   font-size: 1.6rem;
 }
-/* line 60, ../sass/templates/_account-access.scss */
+/* line 87, ../sass/templates/_account-access.scss */
 .full-screen-intro p {
   color: #c3c6f6;
 }
 
-/* line 64, ../sass/templates/_account-access.scss */
+/* line 91, ../sass/templates/_account-access.scss */
 .account-form-container {
   width: 100%;
-  max-width: 500px;
+  max-width: 450px;
   display: inline-block;
   vertical-align: top;
   overflow: visible;
   text-align: left;
 }
-/* line 80, ../sass/templates/_account-access.scss */
+/* line 107, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab {
   background-color: #5f5bb4;
 }
-/* line 82, ../sass/templates/_account-access.scss */
+/* line 109, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab a {
   color: #fcfdfd;
 }
-/* line 85, ../sass/templates/_account-access.scss */
+/* line 112, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab a:hover {
   color: #cedede;
 }
-/* line 89, ../sass/templates/_account-access.scss */
+/* line 116, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab.is-active a {
   color: #363a47;
 }
-/* line 92, ../sass/templates/_account-access.scss */
+/* line 119, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__tab.is-active a:hover {
   color: #363a47;
 }
-/* line 97, ../sass/templates/_account-access.scss */
-.account-form-container .js-rotate-content {
+/* line 124, ../sass/templates/_account-access.scss */
+.account-form-container .js-rotate-content,
+.account-form-container .tabs__content--is-showing.tabs__content--is-submitted .js-rotate-content:not(.maintain-after-submit),
+.account-form-container .tabs__content--is-showing .form--password-reset .js-rotate-content,
+.account-form-container .tabs__content--is-showing.show-reset-password-form .form--login .js-rotate-content,
+.account-form-container .tabs__content--is-showing.tabs__content--is-submitted.show-reset-password-form .js-rotate-content:not(.maintain-after-submit) {
   -webkit-transform: rotateX(90deg);
           transform: rotateX(90deg);
   -webkit-transition: -webkit-transform 0.15s;
   transition: transform 0.15s;
 }
-/* line 101, ../sass/templates/_account-access.scss */
-.account-form-container .will-show .js-rotate-content {
+/* line 132, ../sass/templates/_account-access.scss */
+.account-form-container .will-show .js-rotate-content,
+.account-form-container .tabs__content--is-showing.show-reset-password-form.will-show .form--login .js-rotate-content {
   -webkit-transform: rotateX(-90deg);
           transform: rotateX(-90deg);
 }
-/* line 104, ../sass/templates/_account-access.scss */
-.account-form-container .tabs__content--is-showing .js-rotate-content {
+/* line 136, ../sass/templates/_account-access.scss */
+.account-form-container .tabs__content--is-showing .js-rotate-content,
+.account-form-container .tabs__content--is-showing .form--login .js-rotate-content,
+.account-form-container .tabs__content--is-showing.show-reset-password-form .form--password-reset .js-rotate-content {
   -webkit-transform: rotateX(0deg);
           transform: rotateX(0deg);
-  -webkit-transition: -webkit-transform 0.15s;
-  -webkit-transition-delay: 0.15s;
-  -webkit-transition: -webkit-transform 0.15s 0.15s;
-          transition: transform 0.15s 0.15s;
+  -webkit-transition: -webkit-transform 0.15s, background-color 0.3s;
+  -webkit-transition-delay: 0.15s, 0s;
+  -webkit-transition: -webkit-transform 0.15s 0.15s, background-color 0.3s;
+          transition: transform 0.15s 0.15s, background-color 0.3s;
 }
-/* line 108, ../sass/templates/_account-access.scss */
+/* line 142, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__content {
   position: relative;
   width: 100%;
@@ -1166,14 +1318,26 @@ textarea, .global-header .link-open-search, html, body {
   display: block;
   visibility: hidden;
 }
-/* line 118, ../sass/templates/_account-access.scss */
-.account-form-container .js-fade-content {
+/* line 151, ../sass/templates/_account-access.scss */
+.account-form-container .tabs__content .form--password-reset {
+  position: absolute;
+  left: 0;
+  visibility: hidden;
+}
+/* line 157, ../sass/templates/_account-access.scss */
+.account-form-container .js-fade-content,
+.account-form-container .tabs__content--is-showing.tabs__content--is-submitted .js-fade-content:not(.maintain-after-submit),
+.account-form-container .tabs__content--is-showing .form--password-reset .js-fade-content,
+.account-form-container .tabs__content--is-showing.show-reset-password-form .form--login .js-fade-content,
+.account-form-container .tabs__content--is-showing.tabs__content--is-submitted.show-reset-password-form .js-fade-content:not(.maintain-after-submit) {
   opacity: 0;
   -webkit-transition: opacity 0.15s;
   transition: opacity 0.15s;
 }
-/* line 122, ../sass/templates/_account-access.scss */
-.account-form-container .tabs__content--is-showing .js-fade-content {
+/* line 165, ../sass/templates/_account-access.scss */
+.account-form-container .tabs__content--is-showing .js-fade-content,
+.account-form-container .tabs__content--is-showing .form--login .js-fade-content,
+.account-form-container .tabs__content--is-showing.show-reset-password-form .form--password-reset .js-fade-content {
   opacity: 1;
   -moz-transition: opacity 0.15s 0.15s;
   -o-transition: opacity 0.15s 0.15s;
@@ -1182,30 +1346,48 @@ textarea, .global-header .link-open-search, html, body {
   -webkit-transition: opacity 0.15s 0.15s;
           transition: opacity 0.15s 0.15s;
 }
-/* line 126, ../sass/templates/_account-access.scss */
+/* line 171, ../sass/templates/_account-access.scss */
 .account-form-container .tabs__content-container {
   position: relative;
   margin-bottom: 1rem;
-  overflow: visible;
+}
+/* line 176, ../sass/templates/_account-access.scss */
+.account-form-container form p {
+  font-size: 1.4rem;
+  text-align: center;
+}
+/* line 181, ../sass/templates/_account-access.scss */
+.account-form-container form.form--password-reset p {
+  margin-top: 1.5rem;
+  margin-bottom: 8.5rem;
 }
 
-/* line 132, ../sass/templates/_account-access.scss */
-.email-send-success {
+/* line 188, ../sass/templates/_account-access.scss */
+.form-submitted-success {
   position: absolute;
+  top: 30px;
+  left: 0px;
+  padding-left: 19px;
+  padding-right: 19px;
   visibility: hidden;
+  text-align: center;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 136, ../sass/templates/_account-access.scss */
-.email-send-success.is-showing {
+/* line 201, ../sass/templates/_account-access.scss */
+.form-submitted-success.is-showing {
   visibility: visible;
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
+  -moz-transition: opacity 0.3s 0.3s;
+  -o-transition: opacity 0.3s 0.3s;
   -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
+  -webkit-transition-delay: 0.3s;
+  -webkit-transition: opacity 0.3s 0.3s;
+          transition: opacity 0.3s 0.3s;
 }
-/* line 141, ../sass/templates/_account-access.scss */
-.email-send-success p {
+/* line 206, ../sass/templates/_account-access.scss */
+.form-submitted-success p {
   margin-bottom: 3.8rem;
   padding-left: 18px;
   padding-right: 18px;
@@ -1213,19 +1395,103 @@ textarea, .global-header .link-open-search, html, body {
   text-align: center;
   color: #5b5d61;
 }
-
-/* line 150, ../sass/templates/_account-access.scss */
-.illustration-container {
+/* line 214, ../sass/templates/_account-access.scss */
+.form-submitted-success .illustration-container {
   margin-top: 0.5rem;
   margin-bottom: 2.7rem;
   text-align: center;
+  overflow: visible;
+}
+/* line 220, ../sass/templates/_account-access.scss */
+.form-submitted-success .email-post-animation {
+  position: relative;
+  left: 28px;
+  top: 4px;
+  max-width: 189px;
+  overflow: visible;
+}
+/* line 228, ../sass/templates/_account-access.scss */
+.tabs__content--is-submitted .form-submitted-success .email-success-envelope {
+  -webkit-animation: mail-send 0.6s 0.8s forwards;
+          animation: mail-send 0.6s 0.8s forwards;
+}
+/* line 232, ../sass/templates/_account-access.scss */
+.form-submitted-success .email-success-handle {
+  -webkit-transform: rotateZ(-74deg);
+          transform: rotateZ(-74deg);
+  -webkit-transform-origin: 22px 25px 0px;
+      -ms-transform-origin: 22px 25px 0px;
+          transform-origin: 22px 25px 0px;
+}
+/* line 235, ../sass/templates/_account-access.scss */
+.tabs__content--is-submitted .form-submitted-success .email-success-handle {
+  -webkit-transform: rotateZ(0deg);
+          transform: rotateZ(0deg);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition-delay: 1.3s;
+  -webkit-transition: -webkit-transform 0.2s 1.3s;
+          transition: transform 0.2s 1.3s;
+}
+/* line 240, ../sass/templates/_account-access.scss */
+.form-submitted-success .email-delivery-animation {
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  max-width: 226px;
+  overflow: visible;
+}
+/* line 246, ../sass/templates/_account-access.scss */
+.tabs__content--is-submitted .form-submitted-success .email-delivery-animation {
+  -ms-transform: translateX(300px);
+  -webkit-transform: translateX(300px);
+  transform: translateX(300px);
+  -webkit-transition: -webkit-transform 0.4s ease-in;
+  -webkit-transition-delay: 1.9s;
+  -webkit-transition: -webkit-transform 0.4s ease-in 1.9s;
+          transition: transform 0.4s ease-in 1.9s;
+}
+/* line 252, ../sass/templates/_account-access.scss */
+.tabs__content--is-submitted .form-submitted-success .email-delivery-animation--email {
+  -webkit-animation: mail-deliver 0.7s 0.8s forwards;
+          animation: mail-deliver 0.7s 0.8s forwards;
+}
+/* line 257, ../sass/templates/_account-access.scss */
+.tabs__content--is-submitted .form-submitted-success .email-delivery-animation--van-body {
+  -webkit-animation: van-shake 0.6s 1.5s;
+          animation: van-shake 0.6s 1.5s;
+}
+/* line 261, ../sass/templates/_account-access.scss */
+.form-submitted-success .success-tick {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin-left: -29px;
+  width: 61px;
+  -ms-transform: scale(0.7);
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 269, ../sass/templates/_account-access.scss */
+.tabs__content--is-submitted .form-submitted-success .success-tick {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
+  -webkit-transition-delay: 2.2s, 2.2s;
+  -webkit-transition: opacity 0.4s 2.2s, -webkit-transform 0.4s 2.2s;
+          transition: opacity 0.4s 2.2s, transform 0.4s 2.2s;
 }
 
-/* line 155, ../sass/templates/_account-access.scss */
+/* line 276, ../sass/templates/_account-access.scss */
 .no-touch .account-access-page .list-partners,
 .touch .account-access-page .list-partners {
   display: none;
   position: relative;
+  left: 0;
   bottom: 0;
   margin-top: 0;
   padding-top: 0.5rem;
@@ -1233,13 +1499,13 @@ textarea, .global-header .link-open-search, html, body {
   margin-left: -10%;
   overflow: visible;
 }
-/* line 165, ../sass/templates/_account-access.scss */
+/* line 287, ../sass/templates/_account-access.scss */
 .no-touch .account-access-page .list-partners h2,
 .touch .account-access-page .list-partners h2 {
   margin-top: 0.8rem;
   margin-bottom: 1.7rem;
 }
-/* line 169, ../sass/templates/_account-access.scss */
+/* line 291, ../sass/templates/_account-access.scss */
 .no-touch .account-access-page .list-partners img,
 .touch .account-access-page .list-partners img {
   max-width: 130px;

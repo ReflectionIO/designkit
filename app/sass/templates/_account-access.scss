@@ -1,3 +1,24 @@
+@keyframes mail-send {
+	0% { transform: translate(0,0); }
+	15% { transform: translate(8px, 3px); }
+	100% { transform: translate(-36px, -13px); }
+}
+@keyframes mail-deliver {
+	0% { transform: translateX(0); }
+	15% { transform: translateX(-4px); }
+	100% { transform: translateX(47px); }
+}
+@keyframes van-shake {
+	0% { transform: translateY(0px); }
+	12.5% { transform: translateY(1px); }
+	25% { transform: translateY(0px); }
+	37.5% { transform: translateY(1px); }
+	50% { transform: translateY(0px); }
+	62.5% { transform: translateY(1px); }
+	75% { transform: translateY(0px); }
+	87.5% { transform: translateY(1px); }
+	100% { transform: translateY(0px); }
+}
 .account-access-page {
 	background-color: $reflection-purple;
 	.vertical-centre-above-phablet {
@@ -16,6 +37,12 @@
 	overflow: visible;
 	@include breakpoint($tablet) {
 		padding-top: 7.5rem;
+	}
+	@media screen and (min-width: $laptop) and (min-height: 780px) {
+		padding-top: 12rem;
+	}
+	@media screen and (min-width: $laptop) and (min-height: 960px) {
+		padding-top: 18rem;
 	}
 }
 .full-screen-intro {
@@ -63,7 +90,7 @@
 }
 .account-form-container {
 	width: 100%;
-	max-width: 500px;
+	max-width: 450px;
 	display: inline-block;
 	vertical-align: top;
 	overflow: visible;
@@ -94,16 +121,23 @@
 			}
 		}
 	}
-	.js-rotate-content {
+	.js-rotate-content,
+	.tabs__content--is-showing.tabs__content--is-submitted .js-rotate-content:not(.maintain-after-submit),
+	.tabs__content--is-showing .form--password-reset .js-rotate-content,
+	.tabs__content--is-showing.show-reset-password-form .form--login .js-rotate-content,
+	.tabs__content--is-showing.tabs__content--is-submitted.show-reset-password-form .js-rotate-content:not(.maintain-after-submit) {
 		transform: rotateX(90deg);
 		@include transition(transform 0.15s);
 	}
-	.will-show .js-rotate-content {
+	.will-show .js-rotate-content,
+	.tabs__content--is-showing.show-reset-password-form.will-show .form--login .js-rotate-content {
 		transform: rotateX(-90deg);
 	}
-	.tabs__content--is-showing .js-rotate-content {
+	.tabs__content--is-showing .js-rotate-content,
+	.tabs__content--is-showing .form--login .js-rotate-content,
+	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-rotate-content {
 		transform: rotateX(0deg);
-		@include transition(transform 0.15s 0.15s);
+		@include transition(transform 0.15s 0.15s, background-color $base-transition-speed-on);
 	}
 	.tabs__content {
 		position: relative;
@@ -114,29 +148,60 @@
 		@include breakpoint($phablet) {
 			padding: 30px 30px;
 		}
+		.form--password-reset {
+			position: absolute;
+			left: 0;
+			visibility: hidden;
+		}
 	}
-	.js-fade-content {
+	.js-fade-content,
+	.tabs__content--is-showing.tabs__content--is-submitted .js-fade-content:not(.maintain-after-submit),
+	.tabs__content--is-showing .form--password-reset .js-fade-content,
+	.tabs__content--is-showing.show-reset-password-form .form--login .js-fade-content,
+	.tabs__content--is-showing.tabs__content--is-submitted.show-reset-password-form .js-fade-content:not(.maintain-after-submit) {
 		opacity: 0;
 		@include transition(opacity 0.15s);
 	}
-	.tabs__content--is-showing .js-fade-content {
+	.tabs__content--is-showing .js-fade-content,
+	.tabs__content--is-showing .form--login .js-fade-content,
+	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-fade-content {
 		opacity: 1;
 		@include transition(opacity 0.15s 0.15s);
 	}
 	.tabs__content-container {
 		position: relative;
 		margin-bottom: 1rem;
-		overflow: visible;
+	}
+	form {
+		p {
+			font-size: 1.4rem;
+			text-align: center;
+		}
+		&.form--password-reset {
+			p {
+				margin-top: 1.5rem;
+				margin-bottom: 8.5rem;
+			}
+		}
 	}
 }
-.email-send-success {
+.form-submitted-success {
 	position: absolute;
+	top: 30px;
+	left: 0px;
+	padding-left: 19px;
+	padding-right: 19px;
 	visibility: hidden;
+	text-align: center;
 	@include opacity(0);
+	@include breakpoint($phablet) {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
 	&.is-showing {
 		visibility: visible;
 		@include opacity(1);
-		@include transition(opacity 0.3s);
+		@include transition(opacity 0.3s 0.3s);
 	}
 	p {
 		margin-bottom: 3.8rem;
@@ -146,16 +211,73 @@
 		text-align: center;
 		color: #5b5d61;
 	}
-}
-.illustration-container {
-	margin-top: 0.5rem;
-	margin-bottom: 2.7rem;
-	text-align: center;
+	.illustration-container {
+		margin-top: 0.5rem;
+		margin-bottom: 2.7rem;
+		text-align: center;
+		overflow: visible;
+	}
+	.email-post-animation {
+		position: relative;
+		left: 28px;
+		top: 4px;
+		max-width: 189px;
+		overflow: visible;
+	}
+	.email-success-envelope {
+		.tabs__content--is-submitted & {
+			animation: mail-send 0.6s 0.8s forwards;
+		}
+	}
+	.email-success-handle {
+		transform: rotateZ(-74deg);
+		transform-origin: 22px 25px 0px;
+		.tabs__content--is-submitted & {
+			transform: rotateZ(0deg);
+			@include transition(transform 0.2s 1.3s);
+		}
+	}
+	.email-delivery-animation {
+		position: relative;
+		margin-top: 15px;
+		margin-bottom: 25px;
+		max-width: 226px;
+		overflow: visible;
+		.tabs__content--is-submitted & {
+			@include transform(translateX(300px));
+			@include transition(transform 0.4s 1.9s ease-in);
+		}
+	}
+	.email-delivery-animation--email {
+		.tabs__content--is-submitted & {
+			animation: mail-deliver 0.7s 0.8s forwards;
+		}
+	}
+	.email-delivery-animation--van-body {
+		.tabs__content--is-submitted & {
+			animation: van-shake 0.6s 1.5s;
+		}		
+	}
+	.success-tick {
+		position: absolute;
+		top: 30px;
+		left: 50%;
+		margin-left: -29px;
+		width: 61px;
+		@include transform(scale(0.7));
+		@include opacity(0);
+		.tabs__content--is-submitted & {
+			@include opacity(1);
+			@include transform(scale(1));
+			@include transition(opacity 0.4s 2.2s, transform 0.4s 2.2s);
+		}
+	}
 }
 .no-touch .account-access-page .list-partners,
 .touch .account-access-page .list-partners {
 	display: none;
 	position: relative;
+	left: 0;
 	bottom: 0;
 	margin-top: 0;
 	padding-top: 0.5rem;
