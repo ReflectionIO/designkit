@@ -1,3 +1,5 @@
+@import "compass/css3/box-shadow";
+
 @keyframes mail-send {
 	0% { transform: translate(0,0); }
 	15% { transform: translate(8px, 3px); }
@@ -47,25 +49,22 @@
 }
 .full-screen-intro {
 	width: 100%;
-	max-width: 800px;
+	max-width: 600px;
 	margin-bottom: 1rem;
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
 	overflow: visible;
-	@include breakpoint($tablet) {
-		position: relative;
-		padding-top: 20px;
-		width: 40%;
-		margin-right: 6%;
-		margin-bottom: 0;
-	}
 	@include breakpoint($laptop) {
-		width: percentage(510/1220);
-		margin-right: percentage(101/1220);
-	}
-	@include breakpoint($desktop) {
+		position: relative;
 		width: 46%;
+		margin-right: percentage(101/1220);
+		margin-bottom: 0;
+		padding-top: 20px;
+	}
+	@include breakpoint($desktop-wide) {
+		max-width: 800px;
+		margin-right: 6%;
 	}
 	h1 {
 		margin-bottom: 0.55em;
@@ -95,14 +94,18 @@
 	vertical-align: top;
 	overflow: visible;
 	text-align: left;
-	@include breakpoint($tablet) {
+	background-color: #f2f2f5;
+	@include breakpoint($laptop) {
 		position: relative;
 		top: 0px;
-		width: 49%;
-		background-color: #f2f2f5;
+		width: percentage(407/1220);
 	}
-	@include breakpoint($laptop) {
-		width: percentage(407/1220);	
+	.create-password-form-is-showing &,
+	.connect-account-is-showing & {
+		padding: 30px 19px;
+		@include breakpoint($phablet) {
+			padding: 30px 30px;
+		}
 	}
 	.tabs__tab {
 		background-color: #5f5bb4;
@@ -130,12 +133,15 @@
 		@include transition(transform 0.15s);
 	}
 	.will-show .js-rotate-content,
-	.tabs__content--is-showing.show-reset-password-form.will-show .form--login .js-rotate-content {
+	.tabs__content--is-showing.show-reset-password-form.will-show .form--login .js-rotate-content,
+	.connect-account-is-showing & .connect-account-content.will-show .js-rotate-content {
 		transform: rotateX(-90deg);
 	}
 	.tabs__content--is-showing .js-rotate-content,
 	.tabs__content--is-showing .form--login .js-rotate-content,
-	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-rotate-content {
+	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-rotate-content,
+	.create-password-form-is-showing & .create-password-content .js-rotate-content,
+	.connect-account-is-showing & .connect-account-content .js-rotate-content  {
 		transform: rotateX(0deg);
 		@include transition(transform 0.15s 0.15s, background-color $base-transition-speed-on);
 	}
@@ -164,7 +170,9 @@
 	}
 	.tabs__content--is-showing .js-fade-content,
 	.tabs__content--is-showing .form--login .js-fade-content,
-	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-fade-content {
+	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-fade-content,
+	.create-password-form-is-showing & .create-password-content .js-fade-content,
+	.connect-account-is-showing & .connect-account-content .js-fade-content {
 		opacity: 1;
 		@include transition(opacity 0.15s 0.15s);
 	}
@@ -182,6 +190,14 @@
 				margin-top: 1.5rem;
 				margin-bottom: 8.5rem;
 			}
+		}
+	}
+	.account-form-heading {
+		text-align: center;
+		margin-bottom: 2.7rem;
+		font-size: 1.4rem;
+		@include breakpoint($tablet) {
+			font-size: 1.6rem;
 		}
 	}
 }
@@ -311,7 +327,7 @@
 			display: inline-block;
 		}
 	}
-	@include breakpoint($laptop) {
+	@include breakpoint($desktop) {
 		ul {
 			display: -webkit-box;
 		  display: -moz-box;
@@ -327,6 +343,139 @@
 			justify-content: center;
 			-webkit-flex-grow: 1;
 			flex-grow: 1;
+		}
+	}
+}
+.apply-content {
+	position: absolute;
+	visibility: hidden;
+	overflow: visible;
+	@include opacity(0);
+	@include breakpoint($laptop) {
+		@include transition(opacity 0.6s);
+	}
+	.apply-form-is-showing & {
+		position: relative;
+		visibility: visible;
+		@include opacity(1);
+		@include transition(opacity 0.6s);
+	}
+}
+.login-content {
+	position: absolute;
+	visibility: hidden;
+	text-align: left;
+	overflow: visible;
+	@include opacity(0);
+	.login-form-is-showing & {
+		position: relative;
+		visibility: visible;
+		@include opacity(1);
+		@include transition(opacity 0.6s);
+	}
+	.blockquote--reset-password,
+	.blockquote--login {
+		margin-top: 0;
+		margin-bottom: 3em;
+	}
+	.blockquote--large {
+		margin-left: -5px;
+		p {
+			font-size: 2.2rem;
+			font-weight: 700;
+			line-height: 1.45;
+		}
+	}
+	.blockquote--reset-password {
+		position: absolute;
+		visibility: hidden;
+		@include opacity(0);
+		@include breakpoint($tablet) {
+			margin-top: 72px;
+		}
+		.reset-password-form-is-showing & {
+			position: relative;
+			visibility: visible;
+			@include opacity(1);
+			@include transition(opacity 0.6s);
+		}
+	}
+	.blockquote--login {
+		position: relative;
+		visibility: visible;
+		@include transition(opacity 0.6s);
+		@include breakpoint($tablet) {
+			margin-top: 47px;
+		}
+		.reset-password-form-is-showing & {
+			position: absolute;
+			visibility: hidden;
+			@include opacity(1);
+			@include transition(opacity 0.6s);
+		}
+	}
+}
+.create-password-main-content,
+.connect-account-main-content {
+	position: absolute;
+	visibility: hidden;
+	overflow: visible;
+	@include opacity(0);
+	@include transition(opacity 0.6s);
+}
+.create-password-form-is-showing .create-password-main-content,
+.connect-account-is-showing .connect-account-main-content {
+	position: relative;
+	visibility: visible;
+	@include opacity(1);
+	@include transition(opacity 0.6s);
+}
+.account-connect-animation {
+	position: relative;	
+	width: 100%;
+	height: 93px;
+	margin-top: 3.1rem;
+	margin-bottom: 4rem;
+	display: block;
+	.cord {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		div {
+			width: 100%;
+			height: 6px;
+			margin-top: 43px;
+			background-color: #474492;
+		}
+	}
+	.plugs {
+		position: absolute;
+		top: 0;
+		left: percentage(200/1280);
+		width: 346px;
+		height: 93px;
+		overflow: hidden;
+		background-color: $reflection-purple;
+	}
+	.plug-left, .plug-right {
+		position: absolute;
+		height: 93px;
+	}
+	.plug-left {
+		left: -417px;
+	}
+	&.plugs-connected .plug-left {
+		left: -298px;
+		@include transition(left 0.3s ease-out);
+	}
+	.plug-right {
+		right: -68px;
+	}
+	&.plugs-connected .plug-logo {
+		path {
+			fill: #fff;
+			@include transition(fill 0.3s 0.3s ease-out)
 		}
 	}
 }

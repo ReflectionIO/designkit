@@ -8,15 +8,33 @@ var htmlGlobalHeader = templateGlobalHeader({});
 $("#js-component-import--global-header").html(htmlGlobalHeader);
 
 var AccountAccess = function() {
+	instance = this;
 	// App Components
 	new FormInteractions();
 	new Tabs();
 
 	// Functionality for this template set
+	this.pageLoad();
 	this.mockSubmitApply();
 	this.customTabTransition();
 	this.resetPasswordForm();
 	this.mockSubmitPasswordReset();
+};
+
+AccountAccess.prototype.pageLoad = function() {
+	var urlHash = window.location.hash;	
+	if(urlHash == '#login') {
+		$('body').addClass('login-form-is-showing');
+		$('a[href=#tab-content-login]').parents('.tabs__tab').addClass('is-active');
+		$('#tab-content-login').addClass('tabs__content--is-showing');
+	} else {
+		$('body').addClass('apply-form-is-showing');
+		$('a[href=#tab-content-apply]').parents('.tabs__tab').addClass('is-active');
+		$('#tab-content-apply').addClass('tabs__content--is-showing');
+	}
+	if($(window).width() <= 350) {
+		$('.login-content .blockquote--large').removeClass('blockquote--large');
+	}
 };
 
 AccountAccess.prototype.mockSubmitApply = function() {
@@ -34,25 +52,49 @@ AccountAccess.prototype.customTabTransition = function() {
 	$('.account-form-container .tabs__content--is-showing').css({"visibility":"visible","position":"relative"});
 			
 	$('.account-form-container .js-tab-select').on("click", function(e){
-		var contentId = $(this).find('.tabs__link').attr("href");
+		var $this = $(this);
+		var contentId = $this.find('.tabs__link').attr("href");
 		$(contentId).addClass('will-show');
+		var $body = $('body');
+		if($body.hasClass('apply-form-is-showing')) {
+			$body.removeClass('apply-form-is-showing').addClass('login-form-is-showing');
+		} else {
+			$body.removeClass('login-form-is-showing').addClass('apply-form-is-showing');
+		}
 		setTimeout(function(){
 			$('.account-form-container .tabs__content:not(.tabs__content--is-showing)').css({"visibility":"hidden","position":"absolute"});
 			$('.account-form-container .tabs__content--is-showing').css({"visibility":"visible","position":"relative"});
 			$(contentId).removeClass('will-show');
 		}, 150);
+
+		if($(window).width() <= 720) {
+			instance.scrollToFormContainerTop();
+		}
 	});
 };
+
+AccountAccess.prototype.scrollToFormContainerTop = function() {
+	setTimeout(function(){
+		var formContentTop = $('.account-form-container').offset().top;
+		$('html,body').animate({
+      scrollTop: formContentTop - 70
+    }, 310);
+	}, 300);
+}
 
 AccountAccess.prototype.resetPasswordForm = function() {
 	$('.js-mock-show-reset-password').on("click", function(e){
 		e.preventDefault();
 		var $currentTab = $(this).parents('.tabs__content--is-showing').addClass('show-reset-password-form').addClass('will-show');
+		$('body').addClass('reset-password-form-is-showing');
 		setTimeout(function(){
 			$('.tabs__content--is-showing .form--login').css({"visibility":"hidden","position":"absolute"});
 			$('.tabs__content--is-showing .form--password-reset').css({"visibility":"visible","position":"relative"});
 			$currentTab.removeClass('will-show');
 		}, 150);
+		if($(window).width() <= 720) {
+			instance.scrollToFormContainerTop();
+		}
 	});
 };
 
@@ -62,5 +104,42 @@ AccountAccess.prototype.mockSubmitPasswordReset = function() {
 		var $this = $(this);
 		$this.attr('value', 'Email is on the way').addClass('ref-button--success');
 		$this.parents('.tabs__content--is-showing').addClass('tabs__content--is-submitted').find('.form-submitted-success').addClass('is-showing');
+	});
+};
+
+var AccountSetup = function() {
+	instance = this;
+	// App Components
+	new FormInteractions();
+
+	// Functionality for this template set
+	this.pageLoad();
+	this.mockSubmitContinue();
+	this.mockLinkAccount();
+};
+
+AccountSetup.prototype.pageLoad = function() {
+	$('.connect-account-content').css({"visibility":"hidden","position":"absolute"});
+	$('.create-password-content').css({"visibility":"visible","position":"relative"});
+};
+
+AccountSetup.prototype.mockSubmitContinue = function() {
+	$('.js-mock-continue').on("click", function(e){
+		e.preventDefault();
+		$('body').removeClass('create-password-form-is-showing').addClass('connect-account-is-showing');
+		var $connectAccountContainer = $('.connect-account-content');
+		//$connectAccountContainer.addClass('will-show');
+		setTimeout(function(){
+			$('.create-password-content').css({"visibility":"hidden","position":"absolute"});
+			$connectAccountContainer.css({"visibility":"visible","position":"relative"});
+			//$connectAccountContainer.removeClass('will-show');
+		}, 150);
+	});
+};
+
+AccountSetup.prototype.mockLinkAccount = function() {
+	$('.js-mock-link-account').on("click", function(e) {
+		e.preventDefault();
+		$('.account-connect-animation').addClass('plugs-connected');
 	});
 };
