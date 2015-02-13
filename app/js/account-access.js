@@ -140,6 +140,9 @@ AccountSetup.prototype.mockSubmitContinue = function() {
 AccountSetup.prototype.mockLinkAccount = function() {
 	$('.js-mock-link-account').on("click", function(e) {
 		e.preventDefault();
+		$('body').addClass('form-submitted-success-complete');
+		$(this).attr('value', 'Account Linked!').addClass('ref-button--success');
 		$('.account-connect-animation').addClass('plugs-connected');
+		$('.form-submitted-success').addClass('is-showing');
 	});
 };

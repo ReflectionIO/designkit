@@ -37,6 +37,7 @@
 	padding-top: 4.6rem;
 	padding-bottom: 3rem;
 	overflow: visible;
+	z-index: 5;
 	@include breakpoint($tablet) {
 		padding-top: 7.5rem;
 	}
@@ -88,6 +89,7 @@
 	}
 }
 .account-form-container {
+	position: relative;
 	width: 100%;
 	max-width: 450px;
 	display: inline-block;
@@ -125,6 +127,7 @@
 		}
 	}
 	.js-rotate-content,
+	.form-submitted-success-complete.connect-account-is-showing & .js-rotate-content:not(.maintain-after-submit),
 	.tabs__content--is-showing.tabs__content--is-submitted .js-rotate-content:not(.maintain-after-submit),
 	.tabs__content--is-showing .form--password-reset .js-rotate-content,
 	.tabs__content--is-showing.show-reset-password-form .form--login .js-rotate-content,
@@ -161,6 +164,7 @@
 		}
 	}
 	.js-fade-content,
+	.form-submitted-success-complete.connect-account-is-showing & .js-fade-content:not(.maintain-after-submit)
 	.tabs__content--is-showing.tabs__content--is-submitted .js-fade-content:not(.maintain-after-submit),
 	.tabs__content--is-showing .form--password-reset .js-fade-content,
 	.tabs__content--is-showing.show-reset-password-form .form--login .js-fade-content,
@@ -287,6 +291,29 @@
 			@include transform(scale(1));
 			@include transition(opacity 0.4s 2.2s, transform 0.4s 2.2s);
 		}
+		.form-submitted-success-complete & {
+			@include opacity(1);
+			@include transform(scale(1));
+			@include transition(opacity 0.4s 0.4s, transform 0.4s 0.4s);
+		}
+	}
+	.account-setup-content-wrapper & {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 297px;
+		.success-tick {
+			top: 12.6rem;
+		}
+		p {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			margin-bottom: 1rem;
+			font-size: 1.6rem;
+			font-weight: 700;
+		}
 	}
 }
 .no-touch .account-access-page .list-partners,
@@ -319,13 +346,6 @@
 			display: block;
 		}
 		padding-top: 3rem;
-		li {
-			width: 50%;
-			float: left;
-		}
-		li:last-child {
-			display: inline-block;
-		}
 	}
 	@include breakpoint($desktop) {
 		ul {
@@ -344,6 +364,18 @@
 			-webkit-flex-grow: 1;
 			flex-grow: 1;
 		}
+		li:last-child {
+			display: inline-block;
+		}
+	}
+}
+.no-touch .account-setup-content-wrapper .list-partners,
+.touch .account-setup-content-wrapper .list-partners {
+	@include breakpoint($phablet) {
+		display: none;
+	}
+	@include breakpoint($laptop) {
+		display: block;
 	}
 }
 .apply-content {
@@ -426,17 +458,52 @@
 .create-password-form-is-showing .create-password-main-content,
 .connect-account-is-showing .connect-account-main-content {
 	position: relative;
+	margin-bottom: 2rem;
 	visibility: visible;
 	@include opacity(1);
 	@include transition(opacity 0.6s);
 }
+@keyframes glowPulse {
+	0% { @include opacity(1); }
+	50% { @include opacity(0); }
+	100% { @include opacity(1); }
+}
+.account-setup-content-wrapper {
+	position: relative;
+	overflow: visible;
+	min-height: 93vh;
+	@include breakpoint($laptop) {
+		min-height: 76vh;
+	}
+}
 .account-connect-animation {
-	position: relative;	
+	position: absolute;
+	display: none;
+	left: 0;	
 	width: 100%;
 	height: 93px;
 	margin-top: 3.1rem;
 	margin-bottom: 4rem;
-	display: block;
+	z-index: 0;
+	@include opacity(0);
+	@include breakpoint($tablet) {
+		top: 685px;
+		display: block;
+	}
+	@include breakpoint($laptop) {
+		top: 35.6rem;
+		display: block;
+	}
+	@media screen and (min-width: $laptop) and (min-height: 780px) {
+		top: 39.6rem;
+	}
+	@media screen and (min-width: $laptop) and (min-height: 960px) {
+		top: 44.6rem;
+	}
+	.connect-account-is-showing & {
+		@include opacity(1);
+		@include transition(opacity 0.6s 0.3s);
+	}
 	.cord {
 		position: absolute;
 		top: 0;
@@ -452,11 +519,14 @@
 	.plugs {
 		position: absolute;
 		top: 0;
-		left: percentage(200/1280);
+		left: calc(50% - 173px);
 		width: 346px;
 		height: 93px;
 		overflow: hidden;
 		background-color: $reflection-purple;
+		@include breakpoint($laptop) {
+			left: calc(50% - 439px);
+		}
 	}
 	.plug-left, .plug-right {
 		position: absolute;
@@ -466,16 +536,33 @@
 		left: -417px;
 	}
 	&.plugs-connected .plug-left {
-		left: -298px;
-		@include transition(left 0.3s ease-out);
+		left: -293px;
+		@include transition(left 0.3s 0.7s ease-out);
 	}
 	.plug-right {
 		right: -68px;
 	}
-	&.plugs-connected .plug-logo {
-		path {
-			fill: #fff;
-			@include transition(fill 0.3s 0.3s ease-out)
+	.plug-logo path {
+		fill: #474492;
+	}
+	&.plugs-connected {
+		.plug-logo {
+			path {
+				fill: #fff;
+				@include transition(fill 0.3s 1.1s ease-out);
+			}
 		}
+		.plug-logo-glow,
+		.plug-logo-container .plug-logo-part-glow {
+			opacity: 1;
+			@include transition(opacity 0.5s 1.4s ease-out);
+		}
+		.plug-logo-part-glow {
+			animation: glowPulse 1s 1.9s ease infinite;
+		}
+	}
+	.plug-logo-glow,
+	.plug-logo-container .plug-logo-part-glow {
+		opacity: 0;
 	}
 }
