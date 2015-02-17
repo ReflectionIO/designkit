@@ -8,9 +8,7 @@
 // Page object
 	var Page = function() {
 		instance = this;
-		this.setIEClass();
-		this.setChromeClass();
-		this.setOperaClass();
+		new BrowserDetection();
 		this.setMainContentWidthForIE();
 		this.initBrowserPulling();
 		new LeftPanelAndHamburger();
@@ -19,47 +17,6 @@
 		new AccountContainer();
 		new SearchContainer();
 		this.customScrollbars();
-	};
-
-	Page.prototype.setIEClass = function() {
-		this.ieVersion = this.detectIE();
-		if(this.ieVersion) {
-			$('body').addClass('is-ie ie' + this.ieVersion);
-		}
-	};
-
-	Page.prototype.setChromeClass = function() {
-		var isChrome = !!window.chrome && !!window.chrome.webstore;
-		if(isChrome) {
-			$('html').addClass('is-chrome');
-		}
-	};
-
-	Page.prototype.setOperaClass = function() {
-		var isOpera = !!window.opera || /opera|opr/i.test(navigator.userAgent);
-		if(isOpera) {
-			$('html').addClass('is-opera');
-		}
-	};
-
-	Page.prototype.detectIE = function() {
-	  var ua = window.navigator.userAgent;
-	  var msie = ua.indexOf('MSIE ');
-	  var trident = ua.indexOf('Trident/');
-
-	  if (msie > 0) {
-	      // IE 10 or older => return version number
-	      return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-	  }
-
-	  if (trident > 0) {
-	      // IE 11 (or newer) => return version number
-	      var rv = ua.indexOf('rv:');
-	      return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-	  }
-
-	  // other browser
-	  return false;
 	};
 
 	Page.prototype.customScrollbars = function() {
@@ -101,6 +58,55 @@
 		$(window).resize(function () {
 			instance.setMainContentWidthForIE();
 	  });
+	};
+
+
+// object for browser detection related functionality
+	var BrowserDetection = function() {
+		this.setIEClass();
+		this.setChromeClass();
+		this.setOperaClass();
+	}
+
+	BrowserDetection.prototype.setIEClass = function() {
+		this.ieVersion = this.detectIE();
+		if(this.ieVersion) {
+			$('body').addClass('is-ie ie' + this.ieVersion);
+		}
+	};
+
+	BrowserDetection.prototype.setChromeClass = function() {
+		var isChrome = !!window.chrome && !!window.chrome.webstore;
+		if(isChrome) {
+			$('html').addClass('is-chrome');
+		}
+	};
+
+	BrowserDetection.prototype.setOperaClass = function() {
+		var isOpera = !!window.opera || /opera|opr/i.test(navigator.userAgent);
+		if(isOpera) {
+			$('html').addClass('is-opera');
+		}
+	};
+
+	BrowserDetection.prototype.detectIE = function() {
+	  var ua = window.navigator.userAgent;
+	  var msie = ua.indexOf('MSIE ');
+	  var trident = ua.indexOf('Trident/');
+
+	  if (msie > 0) {
+	      // IE 10 or older => return version number
+	      return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+	  }
+
+	  if (trident > 0) {
+	      // IE 11 (or newer) => return version number
+	      var rv = ua.indexOf('rv:');
+	      return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+	  }
+
+	  // other browser
+	  return false;
 	};
 
 
@@ -213,20 +219,45 @@
 
 
 	var FormInteractions = function() {
-		$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text]').each(function(){
-			var $this = $(this);
-			var $thisParent = $this.parent('.form-field');
-			if(!$(this).val().length) {
-				$thisParent.addClass('is-closed');
-			}
-			$this.on("focus", function(){
-				$thisParent.removeClass('is-closed');
-			});
-			$this.on("blur", function(){
-				if(!$this.val().length) {
+		setTimeout(function(){
+			$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text]').each(function(){
+				var $this = $(this);
+				var $thisParent = $this.parent('.form-field');
+				console.log($(this).val());
+				if(!$(this).val().length || $(this).val().length == 0) {
+					console.log("true");
 					$thisParent.addClass('is-closed');
 				}
+				$this.on("focus", function(){
+					$thisParent.removeClass('is-closed');
+				});
+				$this.on("blur", function(){
+					if(!$this.val().length) {
+						$thisParent.addClass('is-closed');
+					}
+				});
 			});
+		}, 100); // fixes bug in IE11 for prepopulated data
+
+		$('.js-mock-password-entry').on("keyup", function(){
+			var $this = $(this),
+				$passwordIndicatorContainer = $this.siblings('label').find('.password-strength-indicator-container'),
+				$passwordIndicatorDescription = $passwordIndicatorContainer.find('.password-strength-description'),
+				$passwordIndicator = $passwordIndicatorContainer.find('.password-strength-indicator span'),
+				currentValueLength = $this.val().length;
+			if(currentValueLength > 0 && currentValueLength <= 3) {
+				$passwordIndicatorDescription.text('Pathetic');
+				$passwordIndicator.removeAttr("class").addClass('is-pathetic');
+			} else if(currentValueLength > 3 && currentValueLength <= 7) {
+				$passwordIndicatorDescription.text('Ok');
+				$passwordIndicator.removeAttr("class").addClass('is-ok');
+			} else if(currentValueLength > 7 && currentValueLength <= 11) {
+				$passwordIndicatorDescription.text('Strongish');
+				$passwordIndicator.removeAttr("class").addClass('is-strong');
+			} else if(currentValueLength > 11) {
+				$passwordIndicatorDescription.text('Impressive');
+				$passwordIndicator.removeAttr("class").addClass('is-impressive');
+			}
 		});
 	};
 

@@ -10,6 +10,7 @@ $("#js-component-import--global-header").html(htmlGlobalHeader);
 var AccountAccess = function() {
 	instance = this;
 	// App Components
+	new BrowserDetection();
 	new FormInteractions();
 	new Tabs();
 
@@ -56,9 +57,9 @@ AccountAccess.prototype.customTabTransition = function() {
 		var contentId = $this.find('.tabs__link').attr("href");
 		$(contentId).addClass('will-show');
 		var $body = $('body');
-		if($body.hasClass('apply-form-is-showing')) {
+		if($body.hasClass('apply-form-is-showing') && contentId == '#tab-content-login') {
 			$body.removeClass('apply-form-is-showing').addClass('login-form-is-showing');
-		} else {
+		} else if (contentId == '#tab-content-apply') {
 			$body.removeClass('login-form-is-showing').addClass('apply-form-is-showing');
 		}
 		setTimeout(function(){
@@ -110,6 +111,7 @@ AccountAccess.prototype.mockSubmitPasswordReset = function() {
 var AccountSetup = function() {
 	instance = this;
 	// App Components
+	new BrowserDetection();
 	new FormInteractions();
 
 	// Functionality for this template set
@@ -144,5 +146,12 @@ AccountSetup.prototype.mockLinkAccount = function() {
 		$(this).attr('value', 'Account Linked!').addClass('ref-button--success');
 		$('.account-connect-animation').addClass('plugs-connected');
 		$('.form-submitted-success').addClass('is-showing');
+	});
+	$('.js-mock-link-another-account').on("click", function(e){
+		e.preventDefault();
+		$(this).parents('.form-submitted-success').removeClass('is-showing');
+		$('.account-connect-animation').removeClass('plugs-connected');
+		$('.js-mock-link-account').attr('value', 'Link this Account').removeClass('ref-button--success');
+		$('.form-submitted-success-complete').removeClass('form-submitted-success-complete');
 	});
 };

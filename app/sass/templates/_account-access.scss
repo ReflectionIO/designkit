@@ -134,19 +134,27 @@
 	.tabs__content--is-showing.tabs__content--is-submitted.show-reset-password-form .js-rotate-content:not(.maintain-after-submit) {
 		transform: rotateX(90deg);
 		@include transition(transform 0.15s);
+		.ie9 & {
+			visibility: hidden;
+		}
 	}
 	.will-show .js-rotate-content,
 	.tabs__content--is-showing.show-reset-password-form.will-show .form--login .js-rotate-content,
 	.connect-account-is-showing & .connect-account-content.will-show .js-rotate-content {
 		transform: rotateX(-90deg);
+		.ie9 & {
+			visibility: hidden;
+		}
 	}
 	.tabs__content--is-showing .js-rotate-content,
 	.tabs__content--is-showing .form--login .js-rotate-content,
 	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-rotate-content,
 	.create-password-form-is-showing & .create-password-content .js-rotate-content,
-	.connect-account-is-showing & .connect-account-content .js-rotate-content  {
+	.create-password-form-is-showing.ie9 & .create-password-content .js-rotate-content,
+	.connect-account-is-showing & .connect-account-content .js-rotate-content {
 		transform: rotateX(0deg);
 		@include transition(transform 0.15s 0.15s, background-color $base-transition-speed-on);
+		visibility: visible;
 	}
 	.tabs__content {
 		position: relative;
@@ -164,21 +172,26 @@
 		}
 	}
 	.js-fade-content,
-	.form-submitted-success-complete.connect-account-is-showing & .js-fade-content:not(.maintain-after-submit)
+	.form-submitted-success-complete.connect-account-is-showing & .js-fade-content:not(.maintain-after-submit),
 	.tabs__content--is-showing.tabs__content--is-submitted .js-fade-content:not(.maintain-after-submit),
 	.tabs__content--is-showing .form--password-reset .js-fade-content,
 	.tabs__content--is-showing.show-reset-password-form .form--login .js-fade-content,
 	.tabs__content--is-showing.tabs__content--is-submitted.show-reset-password-form .js-fade-content:not(.maintain-after-submit) {
 		opacity: 0;
 		@include transition(opacity 0.15s);
+		.ie9 & {
+			visibility: hidden;
+		}
 	}
 	.tabs__content--is-showing .js-fade-content,
 	.tabs__content--is-showing .form--login .js-fade-content,
 	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-fade-content,
 	.create-password-form-is-showing & .create-password-content .js-fade-content,
-	.connect-account-is-showing & .connect-account-content .js-fade-content {
+	.connect-account-is-showing & .connect-account-content .js-fade-content,
+	.create-password-form-is-showing.ie9 & .create-password-content .js-fade-content {
 		opacity: 1;
 		@include transition(opacity 0.15s 0.15s);
+		visibility: visible;
 	}
 	.tabs__content-container {
 		position: relative;
@@ -204,6 +217,10 @@
 			font-size: 1.6rem;
 		}
 	}
+}
+.form-submitted-success-complete.connect-account-is-showing.ie9 .account-form-container .js-fade-content:not(.maintain-after-submit),
+.form-submitted-success-complete.connect-account-is-showing.ie9 .account-form-container .js-rotate-content:not(.maintain-after-submit) {
+	visibility: hidden;
 }
 .form-submitted-success {
 	position: absolute;
@@ -241,8 +258,10 @@
 		position: relative;
 		left: 28px;
 		top: 4px;
-		max-width: 189px;
+		width: 189px;
+		height: 118px;
 		overflow: visible;
+		padding-left: 50px;
 	}
 	.email-success-envelope {
 		.tabs__content--is-submitted & {
@@ -261,11 +280,15 @@
 		position: relative;
 		margin-top: 15px;
 		margin-bottom: 25px;
-		max-width: 226px;
+		width: 226px;
+		height: 81px;
 		overflow: visible;
 		.tabs__content--is-submitted & {
 			@include transform(translateX(300px));
 			@include transition(transform 0.4s 1.7s ease-in);
+		}
+		.is-ie & {
+			visibility: hidden;
 		}
 	}
 	.email-delivery-animation--email {
@@ -276,7 +299,7 @@
 	.email-delivery-animation--van-body {
 		.tabs__content--is-submitted & {
 			animation: van-shake 0.6s 1.3s;
-		}		
+		}
 	}
 	.success-tick {
 		position: absolute;
@@ -284,12 +307,16 @@
 		left: 50%;
 		margin-left: -29px;
 		width: 61px;
+		height: 54px;
 		@include transform(scale(0.7));
 		@include opacity(0);
 		.tabs__content--is-submitted & {
 			@include opacity(1);
 			@include transform(scale(1));
 			@include transition(opacity 0.4s 2.2s, transform 0.4s 2.2s);
+			.is-ie & {
+				@include transition(opacity 0.4s 0.3s, transform 0.4s 0.3s);
+			}
 		}
 		.form-submitted-success-complete & {
 			@include opacity(1);
@@ -382,7 +409,7 @@
 	position: absolute;
 	visibility: hidden;
 	overflow: visible;
-	@include opacity(0);
+	@include opacity(0);	
 	@include breakpoint($laptop) {
 		@include transition(opacity 0.6s);
 	}
@@ -398,7 +425,7 @@
 	visibility: hidden;
 	text-align: left;
 	overflow: visible;
-	@include opacity(0);
+	@include opacity(0);	
 	.login-form-is-showing & {
 		position: relative;
 		visibility: visible;
@@ -512,7 +539,7 @@
 		div {
 			width: 100%;
 			height: 6px;
-			margin-top: 43px;
+			margin-top: 42px;
 			background-color: #474492;
 		}
 	}
@@ -532,8 +559,14 @@
 		position: absolute;
 		height: 93px;
 	}
+	.plug-right {
+		width: 189px;
+		top: -1px;
+	}
 	.plug-left {
 		left: -417px;
+		width: 563px;
+		@include transition(left 0.3s ease-out);
 	}
 	&.plugs-connected .plug-left {
 		left: -293px;
