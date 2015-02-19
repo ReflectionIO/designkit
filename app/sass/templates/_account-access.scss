@@ -35,10 +35,11 @@
 }
 .account-access-content {
 	padding-top: 4.6rem;
+	padding-bottom: 30px;
 	padding-bottom: 3rem;
 	overflow: visible;
 	z-index: 5;
-	@include breakpoint($tablet) {
+	@include breakpoint($tablet, true) {
 		padding-top: 7.5rem;
 	}
 	@media screen and (min-width: $laptop) and (min-height: 780px) {
@@ -56,7 +57,7 @@
 	vertical-align: top;
 	text-align: center;
 	overflow: visible;
-	@include breakpoint($laptop) {
+	@include breakpoint($laptop, true) {
 		position: relative;
 		width: 46%;
 		margin-right: percentage(101/1220);
@@ -74,13 +75,13 @@
 		@include breakpoint($phablet) {
 			font-size: 3.3em;
 		}
-		@include breakpoint($laptop) {
+		@include breakpoint($laptop, true) {
 			font-size: 3.9em;
 		}
 	}
 	.p-style--featured {
 		font-size: 1.6rem;
-		@include breakpoint($laptop) {
+		@include breakpoint($laptop, true) {
 			font-size: 1.8em;
 		}
 	}
@@ -97,7 +98,7 @@
 	overflow: visible;
 	text-align: left;
 	background-color: #f2f2f5;
-	@include breakpoint($laptop) {
+	@include breakpoint($laptop, true) {
 		position: relative;
 		top: 0px;
 		width: percentage(407/1220);
@@ -105,7 +106,7 @@
 	.create-password-form-is-showing &,
 	.connect-account-is-showing & {
 		padding: 30px 19px;
-		@include breakpoint($phablet) {
+		@include breakpoint($phablet, true) {
 			padding: 30px 30px;
 		}
 	}
@@ -162,7 +163,7 @@
 		padding: 30px 19px;
 		display: block;
 		visibility: hidden;
-		@include breakpoint($phablet) {
+		@include breakpoint($phablet, true) {
 			padding: 30px 30px;
 		}
 		.form--password-reset {
@@ -213,7 +214,7 @@
 		text-align: center;
 		margin-bottom: 2.7rem;
 		font-size: 1.4rem;
-		@include breakpoint($tablet) {
+		@include breakpoint($tablet, true) {
 			font-size: 1.6rem;
 		}
 	}
@@ -231,7 +232,7 @@
 	visibility: hidden;
 	text-align: center;
 	@include opacity(0);
-	@include breakpoint($phablet) {
+	@include breakpoint($phablet, true) {
 		padding-left: 30px;
 		padding-right: 30px;
 	}
@@ -256,7 +257,7 @@
 	}
 	.email-post-animation {
 		position: relative;
-		left: 28px;
+		left: 0;
 		top: 4px;
 		width: 189px;
 		height: 118px;
@@ -368,13 +369,13 @@
 			display: none;
 		}
 	}
-	@include breakpoint($tablet) {
+	@include breakpoint($tablet, true) {
 		ul {
 			display: block;
 		}
 		padding-top: 3rem;
 	}
-	@include breakpoint($desktop) {
+	@include breakpoint($desktop, true) {
 		ul {
 			display: -webkit-box;
 		  display: -moz-box;
@@ -401,7 +402,7 @@
 	@include breakpoint($phablet) {
 		display: none;
 	}
-	@include breakpoint($laptop) {
+	@include breakpoint($laptop, true) {
 		display: block;
 	}
 }
@@ -410,7 +411,7 @@
 	visibility: hidden;
 	overflow: visible;
 	@include opacity(0);	
-	@include breakpoint($laptop) {
+	@include breakpoint($laptop, true) {
 		@include transition(opacity 0.6s);
 	}
 	.apply-form-is-showing & {
@@ -449,7 +450,7 @@
 		position: absolute;
 		visibility: hidden;
 		@include opacity(0);
-		@include breakpoint($tablet) {
+		@include breakpoint($tablet, true) {
 			margin-top: 72px;
 		}
 		.reset-password-form-is-showing & {
@@ -463,7 +464,7 @@
 		position: relative;
 		visibility: visible;
 		@include transition(opacity 0.6s);
-		@include breakpoint($tablet) {
+		@include breakpoint($tablet, true) {
 			margin-top: 47px;
 		}
 		.reset-password-form-is-showing & {
@@ -499,7 +500,7 @@
 	position: relative;
 	overflow: visible;
 	min-height: 93vh;
-	@include breakpoint($laptop) {
+	@include breakpoint($laptop, true) {
 		min-height: 76vh;
 	}
 }
@@ -517,7 +518,7 @@
 		top: 685px;
 		display: block;
 	}
-	@include breakpoint($laptop) {
+	@include breakpoint($laptop, true) {
 		top: 35.6rem;
 		display: block;
 	}
@@ -551,7 +552,7 @@
 		height: 93px;
 		overflow: hidden;
 		background-color: $reflection-purple;
-		@include breakpoint($laptop) {
+		@include breakpoint($laptop, true) {
 			left: calc(50% - 439px);
 		}
 	}

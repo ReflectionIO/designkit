@@ -223,9 +223,7 @@
 			$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text]').each(function(){
 				var $this = $(this);
 				var $thisParent = $this.parent('.form-field');
-				console.log($(this).val());
 				if(!$(this).val().length || $(this).val().length == 0) {
-					console.log("true");
 					$thisParent.addClass('is-closed');
 				}
 				$this.on("focus", function(){

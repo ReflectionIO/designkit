@@ -12,7 +12,7 @@ $legacy-support-for-ie8 : true;
 $breakpoint-no-queries  : true;
 $breakpoint-no-query-fallbacks : true;
 
-@import "base/base-designkit";
+@import "base/base";
 
 /* Left panel */
 .panel-left-open .panel-left {
@@ -237,4 +237,99 @@ label.radioButtonLabelVisibleDisabled {
 }
 .interactions-page .grid__column--one-third .main-navigation {
 	margin-bottom: 30px;
+}
+
+// Account pages
+.account-access-page {
+	height: 1000px;
+}
+.account-access-content {
+	position: relative;
+	top: 75px;
+}
+.account-connect-animation {
+	display: none;
+}
+
+/* Site Templates */
+// Apply and Login, Account Setup
+// Transition between forms
+.account-access-page {
+	.tabs__content--is-showing .js-rotate-content,
+	.tabs__content--is-showing .form--login .js-rotate-content,
+	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-rotate-content,
+	.create-password-form-is-showing .account-form-container .create-password-content .js-rotate-content,
+	.connect-account-is-showing .account-form-container .connect-account-content .js-rotate-content {
+		display: block;
+	}
+	.js-rotate-content,
+	.form-submitted-success-complete.connect-account-is-showing .account-form-container .js-rotate-content:not(.maintain-after-submit),
+	.tabs__content--is-showing.tabs__content--is-submitted .js-rotate-content:not(.maintain-after-submit),
+	.tabs__content--is-showing .form--password-reset .js-rotate-content,
+	.tabs__content--is-showing.show-reset-password-form .form--login .js-rotate-content,
+	.tabs__content--is-showing.tabs__content--is-submitted.show-reset-password-form .js-rotate-content:not(.maintain-after-submit) {
+		display: none;
+	}
+	.will-show .js-rotate-content,
+	.tabs__content--is-showing.show-reset-password-form.will-show .form--login .js-rotate-content,
+	.connect-account-is-showing .account-form-container .connect-account-content.will-show .js-rotate-content {
+		display: none;
+	}
+	.js-fade-content,
+	.form-submitted-success-complete.connect-account-is-showing .account-form-container .js-fade-content:not(.maintain-after-submit),
+	.tabs__content--is-showing.tabs__content--is-submitted .js-fade-content:not(.maintain-after-submit),
+	.tabs__content--is-showing .form--password-reset .js-fade-content,
+	.tabs__content--is-showing.show-reset-password-form .form--login .js-fade-content,
+	.tabs__content--is-showing.tabs__content--is-submitted.show-reset-password-form .js-fade-content:not(.maintain-after-submit) {
+		display: none;
+	}
+	.tabs__content--is-showing .js-fade-content,
+	.tabs__content--is-showing .form--login .js-fade-content,
+	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-fade-content,
+	.create-password-form-is-showing .account-form-container .create-password-content .js-fade-content,
+	.connect-account-is-showing .account-form-container .connect-account-content .js-fade-content {
+		display: block;
+	}
+	.form-submitted-success.is-showing {
+		position: relative;
+		padding: 20px 0 30px;
+	}
+	.tabs__content--is-showing.tabs__content--is-submitted .js-fade-content,
+	.tabs__content--is-showing.tabs__content--is-submitted .js-rotate-content {
+		display: none;
+	}
+}
+.login-content {
+	display: none;
+	.login-form-is-showing & {
+		display: block;
+	}
+}
+.apply-content {
+	display: none;
+	.apply-form-is-showing & {
+		display: block;
+	}
+}
+.account-form-container .tabs__content .form--password-reset {
+	display: none;
+}
+.account-access-page .tabs__content form {
+	padding-bottom: 20px;
+}
+.account-access-page .tabs-container li {
+	padding-bottom: 25px !important;
+	padding-top: 15px !important;
+}
+.account-setup-content-wrapper {
+	min-height: 760px;
+}
+.account-setup-content-wrapper .form-submitted-success {
+	height: 80px;
+	svg {
+		display: none;
+	}
+}
+.account-form-container {
+	padding-bottom: 100px;
 }
