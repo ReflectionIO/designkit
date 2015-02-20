@@ -223,17 +223,19 @@
 			$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text]').each(function(){
 				var $this = $(this);
 				var $thisParent = $this.parent('.form-field');
-				if(!$(this).val().length || $(this).val().length == 0) {
-					$thisParent.addClass('is-closed');
-				}
-				$this.on("focus", function(){
-					$thisParent.removeClass('is-closed');
-				});
-				$this.on("blur", function(){
-					if(!$this.val().length) {
+				if(!$thisParent.hasClass('form-field--error')) {
+					if(!$(this).val().length || $(this).val().length == 0) {
 						$thisParent.addClass('is-closed');
 					}
-				});
+					$this.on("focus", function(){
+						$thisParent.removeClass('is-closed');
+					});
+					$this.on("blur", function(){
+						if(!$this.val().length) {
+							$thisParent.addClass('is-closed');
+						}
+					});
+				}
 			});
 		}, 100); // fixes bug in IE11 for prepopulated data
 
