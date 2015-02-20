@@ -291,6 +291,12 @@
 		});
 		$('.js-link-log-in').on("click", function(e) {
 			e.preventDefault();
+			var $this = $(this);
+			if($this.hasClass('is-selected')) {
+				$this.removeClass('is-selected');
+			} else {
+				$this.addClass('is-selected');
+			}
 			if($('.js-account-container').hasClass('is-showing')) {
 				$('.js-account-container').removeClass('is-showing');
 				$('html, body').removeClass('no-scroll');
