@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection, Leaderboard</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<!--[if (gte IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main.css" />
+	<!--<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main-ie8.css" />
+	<![endif]-->
+ 	<!--[if !lt IE 9]><!-->
+		<script src="js/vendor/picturefill.2.2.0.min.js" async></script>
+	<!-- <![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+</head>
+<body class="panel-left-open">
+	<!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+
+		<div id="main" class="l-main" role="main">
+			<div class="grid-container page-leaderboard">
+				<div class="grid__column grid__column--one-half">
+					<h1 class="heading-style--heading-three">App Leaderboard</h1>
+				</div>
+				<div class="grid__column page-functions">
+					<form class="inline-search-form">
+						<div class="search-field-no-label">
+		        	<input type="text" autocomplete="off" name="search" placeholder="Find an app" />
+			      	<input class="ref-button search-button-mobile is-highlighted" type="submit" value="a" />
+				    </div>
+					</form>
+					<button class="ref-button--function-small"><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>
+				</div>
+				<ul class="tabs-container default-tabs-transition">
+					<li class="grid__column grid__column--one-quarter tabs__tab is-active js-tab-select">
+						<div class="tab-animate-active"></div>
+						<a href="#tab-content-one" class="tabs__link">
+							<span class="ref-icon-before ref-icon-before--cog"><span>Overview / All</span></span>
+						</a>
+					</li>
+					<li class="grid__column grid__column--one-quarter tabs__tab js-tab-select">
+						<div class="tab-animate-active"></div>
+						<a href="#tab-content-two" class="tabs__link">
+							<span class="ref-icon-before ref-icon-before--leaderboard"><span>Top Free</span></span>
+						</a>
+					</li>
+					<li class="grid__column grid__column--one-quarter tabs__tab js-tab-select">
+						<div class="tab-animate-active"></div>
+						<a href="#tab-content-three" class="tabs__link">
+							<span class="ref-icon-before ref-icon-before--my-data"><span>Top Paid</span></span>
+						</a>
+					</li>
+					<li class="grid__column grid__column--one-quarter tabs__tab js-tab-select">
+						<div class="tab-animate-active"></div>
+						<a href="#tab-content-four" class="tabs__link">
+							<span class="ref-icon-before ref-icon-before--info"><span>Top Grossing</span></span>
+						</a>
+					</li>
+				</ul>
+				<div class="grid__column grid__column--full-width filters-container">
+					<form class="forms--mid-theme">
+						<div class="form-field form-field--select">						
+							<select class="js-field--select">
+						    <option value="" disabled selected>Country</option>
+						    <option value="a1">Japan</option>
+						    <option value="a2">United States</option>
+						    <option value="a3">China</option>
+						    <option value="a4">Germany</option>
+						    <option value="a5">France</option>
+						    <option value="a6" selected>United Kingdom</option>
+						    <option value="a7">Italy</option>
+							</select>
+						</div>
+						<div class="form-field form-field--select">						
+							<select class="js-field--select">
+						    <option value="" disabled selected>App Store</option>
+						    <option value="b1">iPad Store</option>
+						    <option value="b2" selected>iPhone Store</option>
+							</select>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/jquery-ui.custom.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+ 	<script src="js/templates/templates.js"></script>
+	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js/application-global-modules-logged-in.js"></script>
+  <script src="js/application.js"></script>
+  <script>
+  	function initScripts() {
+  		new LeaderboardPage();
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>

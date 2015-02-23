@@ -41,7 +41,8 @@ textarea {
 	-moz-appearance: none;
 	@extend %font-smoothing; 
 }
-.form-field {
+.form-field,
+.search-field-no-label {
 	position: relative;
 	width: 100%;
 	margin-bottom: 12px;
@@ -165,6 +166,22 @@ textarea {
 	}
 	+ .form-link {
 		margin-top: 14px;
+	}
+}
+.search-field-no-label {
+	padding: 8px 14px 10px 13px;
+	input[type=text] {
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+	input[type=submit] {
+		position: absolute;
+		top: 9px;
+		right: 3px;
+		background-color: transparent;
+		@extend %icon-font;
+		font-size: 22px;
 	}
 }
 .input-hint {
@@ -349,7 +366,10 @@ input:invalid {
 		margin-bottom: 0px;
 		padding-bottom: 12px;
 		padding-top: 3px;
+		padding-right: 15px;
+		display: block;
 		z-index: 10;
+		@include ellipses();
 		background: $panel-grey;
 		.forms--mid-theme & {
 			background-color: #ffffff;
