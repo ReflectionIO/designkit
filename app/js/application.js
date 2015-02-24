@@ -157,13 +157,11 @@
 			$clickedItem = $(this);
 			if(!$(this).hasClass("js-is-collapsible")) {
 				if($clickedItem.parents('.js-main-navigation').length > 0) {
-					console.log('is main nav');
 					siteNavTopLevelItems.removeClass('is-selected');
 					$clickedItem.addClass('is-selected');
 					$('.js-main-navigation > ul > li.js-is-collapsible.is-open > a').trigger("click");
 				} else {
 					if($clickedItem.parents('.js-account-navigation').length > 0) {
-						console.log('is account nav');
 						accountNavTopLevelItems.removeClass('is-selected');
 						$clickedItem.addClass('is-selected');
 						$('.js-account-navigation > ul > li.js-is-collapsible.is-open > a').trigger("click");
