@@ -573,7 +573,15 @@
 					optionsList = $('<ul>'),
 					refSelectContainer = $('<div>').addClass('reflection-select'),
 					refSelectDefault = $('<span>').addClass('ref-icon-after ref-icon-after--angle-down').text('Choose your option');
-			
+					if(selectInput.hasClass('reflection-select--filter')) {
+						optionsList.append($('<a>').addClass('close-popup').text('K').on("click", function(e){
+							e.preventDefault();
+							$('.reflection-select').removeClass('is-open');
+							$('.form-field--select').removeClass('is-open');
+						}));
+						refSelectContainer.addClass('reflection-select--filter');
+						optionsList.append($('<span>').text($(selectOptions[0]).text()));
+					}
 				selectOptions.each(function(){
 					$this = $(this);
 					if($this.attr('value')) {
@@ -594,15 +602,21 @@
 				selectInput.parents('.form-field--select').append(refSelectContainer);
 
 				var listHeight = optionsList.innerHeight();
-				optionsList.css('margin-top', -listHeight);
+				if(!selectInput.hasClass('reflection-select--filter')) {
+					optionsList.css('margin-top', -listHeight);
+				}				
 
 				function toggleDropDown() {
 					if(refSelectContainer.hasClass('is-open')) {
 						refSelectContainer.removeClass('is-open');
+						refSelectContainer.parents('.form-field--select').removeClass('is-open');
 						optionsList.css('margin-top', -listHeight);
 					}
 					else {
+						$('.reflection-select').removeClass('is-open');
+						$('.form-field--select').removeClass('is-open');
 						refSelectContainer.addClass('is-open');
+						refSelectContainer.parents('.form-field--select').addClass('is-open');
 						optionsList.css('margin-top', "9px");
 					}
 				};
@@ -638,6 +652,10 @@
 								$(this).removeAttr("selected");	
 							}
 						});
+
+						if(selectInput.hasClass('reflection-select--filter')) {
+							$('.reflection-select').removeClass('is-open');
+						}
 					}
 				});
 			});
