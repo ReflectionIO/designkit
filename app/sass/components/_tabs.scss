@@ -142,9 +142,17 @@
 		vertical-align: middle;
 		path {
 			fill: $reflection-purple;
+			@include transition(fill $base-transition-speed-off);
 			.is-active & {
 				fill: #81879d;
+				@include transition(fill $base-transition-speed-on);
 			}
+		}
+	}
+	&:hover {
+		path {
+			fill: darken($reflection-purple, 10%);
+			@include transition(fill $base-transition-speed-on);
 		}
 	}
 }
