@@ -1,5 +1,6 @@
 .page-leaderboard {
 	padding-top: 34px;
+	padding-bottom: 66px;
 	overflow: visible;
 	.page-functions {
 		width: 50%;
@@ -7,15 +8,21 @@
 		display: inline-block;
 		button {
 			margin-right: percentage(15/500);
-			padding: 0.55em 0.89em 0.5em 0.93em;
 			float: right;
-			span:before {
-				font-size: 2rem;
-				position: relative;
-				margin-right: 0.9rem;
-				vertical-align: middle;
-				color: $light-grey-1;
-			}
+		}
+	}
+	.page-function-button {
+		padding: 0.65em 0.89em 0.4em 0.93em;
+		span:before {			
+			position: relative;
+			top: -1px;
+			margin-right: 0.9rem;
+			vertical-align: middle;
+			font-size: 20px;			
+			color: $light-grey-1;
+		}
+		&:active {
+			padding-bottom: 0.25em;
 		}
 	}
 	.inline-search-form {
@@ -39,9 +46,11 @@
 	}
 }
 .table-data {
+	width: 100%;
+	table-layout: fixed;
 	th {
-		padding-top: 2.4rem;
-		padding-bottom: 1.5rem;
+		padding-top: 2.1rem;
+		padding-bottom: 1.4rem;
 		font-size: 1.4rem;
 		font-family: $brand-heading-font;
 		font-weight: 600;
@@ -69,7 +78,7 @@
 	}
 	.MHXTE6C-i-a {
 		padding-top: 12px;
-		padding-bottom: 12px;
+		padding-bottom: 6px;
 		vertical-align: middle;
 	}
 	.img-rounded {
@@ -91,14 +100,18 @@
 	}
 	.MHXTE6C-r-a {
 		width: calc(100% - 100px);
+		padding-top: 4px;
 		display: inline-block;
+		white-space: nowrap;
 		a {
-			margin-bottom: 0.8rem;
+			margin-bottom: 0.6rem;
 			display: block;
-			font-size: 1.8rem;
+			font-size: 1.6rem;
 			font-weight: 700;
 			line-height: 1.1;
 			color: $reflection-purple;
+			text-overflow: ellipsis;
+			overflow: hidden;
 			&:hover {
 				color: darken($reflection-purple, 10%);
 			}
@@ -145,6 +158,10 @@
 	}
 }
 .table-app-group {
+	.MHXTE6C-i-a {
+		padding-top: 0.9rem;
+		padding-bottom: 0.6rem;
+	}
 	width: 100%;
 	.rank-column {
 		width: percentage(102/1000);

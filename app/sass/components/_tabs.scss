@@ -1,9 +1,10 @@
 .tabs-container {
 	@include breakpoint($tablet, true) {
 		width: 100%;
+		max-width: 1400px;
 		display: block;
 		li {
-		height: 7.2rem;
+		height: 7rem;
 			.tabs-container--large-tabs & {
 				height: 13.7rem;
 			}
@@ -21,7 +22,7 @@
 }
 .tabs__tab {
 	position: relative;
-	height: 7.2rem;
+	height: 7rem;
 	background-color: $reflection-white;
 	text-align: center;
 	cursor: pointer;
@@ -135,10 +136,16 @@
 		}
 	}
 	span svg {
-		width: 30px;
-		height: 30px;
-		margin-right: 0.6em;
+		width: 28px;
+		height: 28px;
+		margin-right: 0.9em;
 		vertical-align: middle;
+		path {
+			fill: $reflection-purple;
+			.is-active & {
+				fill: #81879d;
+			}
+		}
 	}
 }
 .is-ie .tabs__link {

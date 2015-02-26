@@ -680,6 +680,27 @@
 		}
 	};
 
+
+	var BackToTop = function() {
+		if($('.MHXTE6C-ob-c').length > 0) {
+			$('.MHXTE6C-ob-c').on("click", function(e){
+				e.preventDefault();
+				$('html, body').animate({ scrollTop: 0 }, 300, 'swing');
+			});
+		}
+
+		$(window).scroll(function(){
+			var scrollTop = $(window).scrollTop();
+			var windowHeight = $('body').height();
+			if(scrollTop > windowHeight / 3) {
+				$('.MHXTE6C-ob-c').addClass('is-showing');
+			}
+			else {
+				$('.MHXTE6C-ob-c').removeClass('is-showing');
+			}
+		});
+	};
+
 /* END COMPONENT OBJECTS */
 
 
@@ -694,4 +715,5 @@
 
 		// Components
 		new FormFieldSelect();
+		new BackToTop();
 	}
