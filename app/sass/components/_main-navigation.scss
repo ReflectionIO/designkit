@@ -8,6 +8,29 @@ $blur-opacity: 0.5;
 	background-color: $dark-grey-1;
 	a {
 		@include transition(all $base-transition-speed-off, text-shadow 0.3s);
+		svg {
+			width: 19px;
+			height: 19px;
+			vertical-align: middle;
+			path {
+				fill: $mid-grey-1;
+				@include transition(fill $base-transition-speed-off);
+			}
+		}
+		span {
+			display: inline-block;
+			vertical-align: middle;
+			padding-left: 20px;
+		}
+		&:hover {
+			svg path {
+				fill: #ffffff;
+				@include transition(fill $base-transition-speed-on);
+			}
+		}
+	}
+	li.is-selected a svg path {
+		fill: #ffffff;
 	}
 	> ul {
 		> li {
@@ -18,7 +41,7 @@ $blur-opacity: 0.5;
 			> a {				
 				float: left;
 				width: 100%;
-				padding-left: 62px;
+				padding-left: 28px;
 				text-transform: uppercase;
 				background-color: $dark-grey-1;
 			}
@@ -90,8 +113,8 @@ $blur-opacity: 0.5;
 					@include transition(color 0.2s);
 				}
 				&.is-open {
-					&:after {			
-						color: #81879d;
+					&:after {
+						color: #7e79e2;
 						@include transition(color 0.33s);
 						.is-animating-out & {
 							text-shadow: 4px 0px 1px rgba(109,105,197, $blur-opacity);
@@ -185,7 +208,7 @@ $blur-opacity: 0.5;
 	}
 	a {
 		position: relative;
-		padding: 18px 0px 18px 29px;
+		padding: 14px 0px 14px 29px;
 		display: block;
 		z-index: 10;
 		color: #767683;

@@ -3,8 +3,9 @@
 	overflow: hidden; 
 }
 .hidden-text {
+	display: inline-block;
 	text-align: left;
-	text-indent: -999em;
+	text-indent: -999em;	
 }
 .centre-content-container {
 	width: 100%;
@@ -13,7 +14,19 @@
 .vertical-centre-content {
 	@extend %vertical-centre-content;
 }
+@include breakpoint($tablet) {
+	.vertical-centre-above-phablet {
+		@include vertical-centre-content;
+	}
+}
+.horizontal-centre-content {
+	margin: 0 auto;
+	text-align: center;
+}
 .overflow-visible {
 	position: relative;
 	overflow: visible;
+}
+.clear-both {
+	clear: both;
 }

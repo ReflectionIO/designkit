@@ -26,52 +26,70 @@
 		}
 	}
 	.ref-button--cta-small--wide {
-		margin-top: 14px;
-		margin-right: 20px;
-		vertical-align: top;
-		font-size: 13px;
+		display: none;
+		@include breakpoint($tablet) {
+			margin-top: 13px;
+			margin-right: 20px;
+			display: inline-block;
+			vertical-align: top;
+			font-size: 13px;
+		}
 	}
 	.search-link-container {
-		padding-top: 10px;
-		margin-right: 0;
+		height: 42px;
+		width: 58px;
+		padding: 0;
+		margin: 0;
 		display: inline-block;
 		vertical-align: top;
-		@include breakpoint($phablet, true) {			
-			padding-top: 21px;
-			margin-right: 6px;
+		background-color: #282b36;
+		@include breakpoint($phablet) {
+			width: 62px;
+			height: 62px;
+			border-left: 1px solid #1e2027;
 		}
 		@include breakpoint($tablet, true) {
-			margin-right: 23px;
+			width: 77px;
 		}
 	}
 	.link-open-search {
-		font-family: $brand-heading-font;
-		font-size: 0;
-		font-weight: 400;
-		letter-spacing: -0.2px;
-		color: $light-grey-1;
+		display: block;
+		text-align: center;
 		border: none;
+		background-color: #363a47;
 		@extend %font-smoothing;
 		outline: none;
-		@include breakpoint($tablet, true) {
-			font-size: 14px;
-		}
-		&:hover {
-			color: lighten($light-grey-1, 20%);
-		}
 		&:before {
 			position: relative;
 			top: -1px;
-			margin-right: 14px;
 			font-size: 22px;
-			line-height: 21px;
+			line-height: 42px;
 			color: $mid-grey-2;
 			vertical-align: top;
+			@include transition(color $base-transition-speed-off);
+			@include breakpoint($phablet) {
+				line-height: 62px;
+			}
+		}
+		&:hover {
+			background-color: #323643;
+			&:before {
+				color: #fff;
+				@include transition(color $base-transition-speed-on);
+			}
+		}
+		&:active {
+			position: relative;
+			top: 2px;
+		}
+		&.is-selected {
+			&:before {
+				color: #fff;
+			}
 		}
 		span {
-			padding-top: 2px;
-			display: inline-block;
-			vertical-align: top;
+			text-align: left;
+			text-indent: -999em;
 		}
 	}
 	.actions-group-container {
@@ -192,8 +210,11 @@
 	background-color: $dark-grey-2;
 	@include box-sizing(border-box);
 	&:hover, &:active {
-		color: white;
+		color: $reflection-white;
 		background: #323643;
+	}
+	&.is-selected {
+		color: $reflection-white;
 	}
 	&:active {
 		top: 2px;

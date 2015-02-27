@@ -1,6 +1,6 @@
 .form-demo {
 	width: 100%;
-	@include breakpoint($tablet) {
+	@include breakpoint($tablet, true) {
 		@include column(5);
 	}	
 }
@@ -11,8 +11,9 @@
 	form {
 		padding: 0 5%;
 	}
-}
-.form-demo.forms--dark-theme {
-	clear: both;
-	margin-bottom: 300px;
+	.ie8 & {
+		padding-top: 30px;
+		padding-bottom: 30px;
+		margin-bottom: 40px;
+	}
 }

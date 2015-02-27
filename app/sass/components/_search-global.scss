@@ -1,191 +1,84 @@
-.search-overlay {
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	z-index: 1000;
-	background-color: #000;
-	@include opacity(0);
-	visibility: hidden;
-	@include transition(opacity 0.18s, visibility 0.01s 0.27s);
-	&.is-showing {
-		visibility: visible;
-		@include opacity(0.6);
-		@include transition(opacity 0.27s);
-	}
-	.no-js & {
-		display: none;
-	}
-}
 .search-container {
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	z-index: 1001;
-	text-align: center;
-	@include opacity(0);
-	visibility: hidden;
-	@include transition(opacity 0.18s, visibility 0.01s 0.27s);
-	&.is-showing {
-		overflow: auto;
-		visibility: visible;
-		@include opacity(1);
-		@include transition(opacity 0.2s 0.15s);
+	padding: 78px 28px 40px;
+	@include breakpoint($phablet) {
+		padding-top: 98px;
 	}
-	.no-js & {
-		display: none;
+	.ref-button--full-width {
+	display: none;
+		@include breakpoint($tablet) {
+			display: block;
+		}
 	}
 }
 .search__form {
-	margin-top: 69px;
-	margin-bottom: 31px;
-	@include breakpoint($phablet) {
-		margin-top: 85px;
-	}
+	padding-bottom: 20px;
 	@include breakpoint($tablet) {
-		margin-top: 140px;
-		margin-left: 36px;
-	}
-	@include breakpoint($laptop, true) {
-		margin-top: 221px;
-		margin-left: -48px;
-	}
-	.button-cancel {
-		position: relative;
-		top: 10px;
-		width: 30px;
-		height: 30px;
-		margin-left: 10px;
-		display: inline-block;
-		background-color: transparent;
-		&:before {
-			font-size: 22px;
-			color: #b5b8c5;
-			@include transition(color $base-transition-speed-off);
-		}
-		&:hover {
-			&:before {
-				color: lighten(#b5b8c5, 20%);
-				@include transition(color $base-transition-speed-on);
-			}
-		}
-		&:active {
-			margin-top: 2px;
-		}
-		span {
-			display: inline-block;
-			text-align: left;
-			text-indent: -999em;
-		}
-		@include breakpoint($tablet, true) {
-			height: 22px;
-			top: 12px;
-			&:before {
-				font-size: 30px;
-			}
-		}
+		padding-bottom: 30px;
 	}
 }
-.search__label-search {
-	position: relative;
-	top: 8px;
-	width: 37px;
-	height: 37px;
-	margin: 0px auto 20px;
-	display: block;
-	line-height: 37px;
-	vertical-align: top;
-	@include breakpoint($tablet, true) {
-		display: inline-block;
-		margin: 0;
+.panel-right .form-field .search-button-mobile {
+	position: absolute;
+	top: 30px;
+	right: 13px;
+	width: 23px;
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	@extend %icon-font;
+	font-size: 22px;
+	@include transition(color $base-transition-speed-off);
+	@include breakpoint($tablet) {
+		display: none;
 	}
-	&:before {
-		position: absolute;
-		left: 0;
-		top: 0;
-		display: inline-block;
-		font-size: 37px;
-		color: #b5b8c5;	
-	}
-	span {
-		display: inline-block;
-		@extend .hidden-text;
-	}
-}
-input[type="search"].search__input-search {
-	width: 249px;
-	margin-left: 13px;
-	padding-bottom: 8px;
-	padding-right: 4px;
-	display: inline-block;
-	vertical-align: top;
-	overflow: visible;
-	@extend .open-sans-semi;
-	font-size: 24px;
-	line-height: 1.5;
-	letter-spacing: -0.5px;
-	color: white;
-	border-bottom: 1px solid #fff;
-	@include breakpoint($tablet, true) {
-		width: 398px;
-		font-size: 31px;
+	&.is-highlighted {
+		color: $reflection-purple;
+		@include transition(color $base-transition-speed-on);
 	}
 }
 .search__results-container {
-	width: 292px;
-	margin: -1px auto 0;
+	width: 100%;
 	overflow: visible;
-	@include breakpoint($tablet) {
-		width: 432px;
-	}
-	@include breakpoint($laptop, true) {
-		width: 444px;
-	}
 }
 .search__results-section {
 	position: relative;
 	min-height: 18px;
-	margin-bottom: 22px;
-	overflow: visible;
+	margin-bottom: 24px;
+	overflow: auto;
 	text-align: left;
 	h2 {
 		width: 100px;
-		margin-left: 35px;
-		font-size: 15.9px;
-		color: #b6b9c6;
-		@include breakpoint($laptop, true) {
-			position: absolute;
-			top: 0;
-			left: -118px;
-			margin-left: 0;
-			text-align: right;
-		}
+		margin-bottom: 1.3rem;
+		font-size: 14px;
+		color: $reflection-white;
 	}
 	ul {
-		max-height: 153px;
+		max-height: 156px;
 		overflow: auto;
+		@include breakpoint($tablet) {
+			max-height: 152px;
+		}
 		a {
+			position: relative;
 			display: block;
 			font-family: $brand-heading-font;
 			font-size: 15.9px;
 			line-height: 1.3;
-			color: #fff;
+			color: $light-grey-1;
+			cursor: pointer;
 			&:hover {
-				color: darken(#ffffff, 20%);
+				color: #fff;
 			}
 		}
 	}
 	li {
-		margin-bottom: 5px;
+		margin-bottom: 7px;
+		display: block;
 		overflow: visible;
-		@include breakpoint($laptop, true) {
-			margin-bottom: 4px;
+		.no-touch & {
+			margin-bottom: 1px;
 		}
 		img {
-			position: relative;
+			position: absolute;
 			top: 2px;
 			width: 19px;
 			height: 18px;
@@ -194,20 +87,39 @@ input[type="search"].search__input-search {
 		}
 		span {
 			position: relative;
-			top: 2px;
-			width: 234px;
-			padding-bottom: 2px;
-			display: inline-block;
-			line-height: 1;
+			top: 0;
+			width: 100%;
+			padding: 0 0 0 34px;
+			display: inline-block;			
+			box-sizing: border-box;
+			line-height: 1.3;
 			@include ellipses();
-			@include breakpoint($tablet, true) {
-				width: 390px;
-			}
 		}
 	}
 	&.search__results-section--developers {
-		a {
-			padding-left: 35px;
+		span {
+			padding-left: 0;
 		}
+	}
+}
+.search-results-none-container {
+	margin-top: -9px;
+	display: none;
+	font-size: 14px;
+	font-family: $brand-heading-font;
+	color: $mid-grey-1;
+	.svg-unhappy {
+		width: 23px;
+		height: 23px;
+		margin-right: 9px;
+		display: inline-block;
+		vertical-align: middle;
+		path {
+			fill: #44444d;
+		}
+	}
+	span {
+		padding-top: 1px;
+		vertical-align: middle;
 	}
 }
