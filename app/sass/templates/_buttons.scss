@@ -1,6 +1,5 @@
 .button-example-container {
 	@include column(8,8);
-	margin-bottom: 1em;
 	margin-bottom: 1rem;
 	overflow: visible;
 	@include breakpoint($phablet, true) {
@@ -8,7 +7,6 @@
 	}
 	button {
 		margin-right: 20px;
-		margin-bottom: 2em;
 		margin-bottom: 2rem;
 		float: left;
 	}
@@ -53,8 +51,9 @@
 		border: 1px solid #dadee1;
 		border-radius: 20px;
 		opacity: 0;
+		visibility: hidden;
 		cursor: pointer;
-		@include transition(color $base-transition-speed-off, background-color $base-transition-speed-off, opacity $base-transition-speed-off);
+		@include transition(color $base-transition-speed-off, background-color $base-transition-speed-off, opacity $base-transition-speed-off, visibility 0.1s $base-transition-speed-off);
 		.ref-icon-before--angle-up {
 			width: 38px;
 			padding-top: 4px;
