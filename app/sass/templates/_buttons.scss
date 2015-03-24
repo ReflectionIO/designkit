@@ -53,7 +53,7 @@
 		opacity: 0;
 		visibility: hidden;
 		cursor: pointer;
-		@include transition(color $base-transition-speed-off, background-color $base-transition-speed-off, opacity $base-transition-speed-off, visibility 0.1s $base-transition-speed-off);
+		transition: color $base-transition-speed-off, background-color $base-transition-speed-off, opacity $base-transition-speed-off, visibility 0.1s $base-transition-speed-off;
 		.ref-icon-before--angle-up {
 			width: 38px;
 			padding-top: 4px;
@@ -66,11 +66,11 @@
 		&.is-showing {
 			visibility: visible;
 			opacity: 1;
-			@include transition(opacity $base-transition-speed-on);
+			transition: opacity $base-transition-speed-on;
 			&:hover {
 				background-color: darken(#f3f3f6, 10%);
 				color: darken($reflection-purple, 10%);
-				@include transition(color $base-transition-speed-on, background-color $base-transition-speed-on);
+				transition: color $base-transition-speed-on, background-color $base-transition-speed-on;
 			}
 		}
 	}
