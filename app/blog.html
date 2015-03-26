@@ -29,6 +29,9 @@
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
 			<div class="grid-container page-blog">
+
+				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e" async="async"></script>
+
 				<div class="components-row-with-border filters-container">
 					<form>
 						<div class="grid__column grid__column--one-twelfth">
@@ -55,7 +58,7 @@
 								</select>
 							</div>
 							<div class="search-field-no-label">
-			        	<input type="text" autocomplete="off" name="search" placeholder="Find.." />
+			        	<input type="text" autocomplete="off" name="search" placeholder="Search blog.." />
 				      	<input class="ref-button search-button-mobile is-highlighted" type="submit" value="a" />
 					    </div>
 						</div>
@@ -71,6 +74,7 @@
 								<img src="images/placeholder-gustaf.jpg" alt="Gustaf Leksell"/>
 								<p>In 13 easy steps ;)</p>
 								<p class="more-link"><a href="blog-article.html">Read more</a></p>
+								<div class="addthis_sharing_toolbox"></div>
 							</article>
 						</li>
 						<li>
@@ -79,20 +83,21 @@
 								<p class="blog-article--info"><strong>Posted in</strong> <a href="#">Statistics</a> by <span>Gustaf Leksell</span> <span>10 mins ago</span></p>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius nulla pellentesque bibendum semper. Pellentesque ullamcorper dictum dictum. Sed tincidunt ut nulla in pharetra. Curabitur id neque id urna viverra tempus. Aliquam nec sapien purus. Aenean sodales semper suscipit. Nunc vitae felis tincidunt, tincidunt felis nec, laoreet sem. Nullam urna ante, varius nec dui et, tempus molestie justo. Duis tempor turpis a risus euismod convallis vel sit amet magna. Fusce ultricies cursus nulla ut bibendum.</p>
 								<p class="more-link"><a href="blog-article.html">Read more</a></p>
+								<div class="addthis_sharing_toolbox"></div>
 							</article>
 						</li>
 					</ul>
 					<div class="pagination">
+						<a href="#" class="pages-link">Older</a>
 						<ul>
-							<li><a href="#">Older Posts</a></li>
 							<li><a href="#">7</a></li>
-							<li><a href="#">8</a></li>
+							<li class="is-current"><a href="#">8</a></li>
 							<li><a href="#">9</a></li>
 							<li><a href="#">10</a></li>
 							<li><a href="#">11</a></li>
 							<li><a href="#">12</a></li>
-							<li><a href="#">Newer Posts</a></li>
 						</ul>
+						<a href="#" class="pages-link">Newer</a>
 					</div>
 				</div>
 			</div>
@@ -118,6 +123,10 @@
   <script>
   	function initScripts() {
   		new BlogPage();
+
+  		$('.pagination a').on("click", function(e) {
+  			e.preventDefault();
+  		});
   	}
 
   	window.onready = initScripts();
