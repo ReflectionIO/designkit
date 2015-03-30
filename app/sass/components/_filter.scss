@@ -82,3 +82,226 @@
 		}
 	}
 }
+
+/* Switch */
+.filter-switch {
+	> span {
+		margin-right: 11px;
+		display: inline-block;
+		float: left;
+		color: $light-grey-1;
+		font-family: $brand-heading-font;
+		font-size: 1.4rem;
+	}
+	&.filter-switch--small {
+		> span {
+			margin-right: 8px;
+			font-size: 1.3rem;
+		}
+	}
+}
+@mixin can-toggle-branding(
+  $can-toggle-off-color: #f2f2f5, 
+  $can-toggle-on-color: #1bc79f,
+  $can-toggle-inactive-text: transparent,
+  $can-toggle-transition: cubic-bezier(0,1,0.5,1)
+) {
+		input[type="checkbox"] {
+		  &[disabled] ~ label {
+		    color: rgba($can-toggle-off-color, 0.5);
+		  }
+		  &:focus ~ label {
+		    .can-toggle__switch {
+		      background-color: $can-toggle-off-color;
+		    }
+		  }
+		  &:hover ~label { color: transparent; }
+		  &:checked {
+		    ~ label {
+		      .can-toggle__switch {
+		        background-color: $can-toggle-on-color;
+		      }
+		    }
+			}
+		}
+		label {
+		  .can-toggle__label-text { flex: 1; }
+		  .can-toggle__switch {
+		    background: $can-toggle-off-color;
+		    &:before {
+		    	color: transparent;
+		    }
+		    &:after {
+		      -webkit-transition: -webkit-transform 0.3s $can-toggle-transition;
+		      transition: transform 0.3s $can-toggle-transition;
+		      color: transparent; 
+		    }
+		  }
+		}
+	}
+
+@mixin can-toggle-appearance 
+( 
+  $can-toggle-width: 46px,
+  $can-toggle-height: 24px,
+  $can-toggle-border-radius: 24px,
+  $can-toggle-offset: 0,
+  $can-toggle-label-font-size: 10px,
+  $can-toggle-switch-font-size: 10px,
+  $can-toggle-shadow: none
+){
+ 	$can-toggle-switch-width: $can-toggle-width/2;
+	  input[type="checkbox"] {
+	    &:checked {
+	      ~ label {
+	        .can-toggle__switch {
+	          &:after { transform: translate3d($can-toggle-width - ($can-toggle-switch-width + $can-toggle-offset),0,0); }  
+	        }
+	      }
+	    }
+	  }
+	  label {
+	    font-size: $can-toggle-label-font-size; 
+	    .can-toggle__switch {
+	      height: $can-toggle-height;
+	      flex: 0 0 $can-toggle-width;
+	      border-radius: $can-toggle-border-radius;
+	      &:before {
+	        left: $can-toggle-width/2;
+	        font-size: $can-toggle-switch-font-size; 
+	        line-height: $can-toggle-height;
+	        width: $can-toggle-width/2;
+	        padding: 0 12px;
+	      }
+	      &:after {
+	        top: $can-toggle-offset; left: $can-toggle-offset;
+	        border-radius: $can-toggle-border-radius/2;
+	        width: $can-toggle-switch-width - $can-toggle-offset; 
+	        line-height: $can-toggle-height - ($can-toggle-offset*2);
+	        font-size: $can-toggle-switch-font-size;
+	      }
+	      &:hover {
+	        &:after { box-shadow: $can-toggle-shadow; }
+	      }
+	    } 
+	  }
+	}
+
+.can-toggle {	
+  position: relative;
+  *, *:before, *:after { box-sizing: border-box; }
+  //overflow: hidden;
+  float: left;
+  display: block;
+  input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    top: 0; left: 0;
+    &[disabled] ~ label {
+      pointer-events: none;
+      .can-toggle__switch { opacity: 0.4; }
+    }
+    &:checked {
+      ~ label {
+        .can-toggle__switch {
+        	border: 1px solid #1bc79f;
+          &:before {
+            content: attr(data-unchecked);
+            left: 0;
+            background: url(../images/icon-switch-on-x2.png) no-repeat 6px 6px / 12px 10px;
+          }
+          &:after {
+            content: attr(data-checked);
+          }  
+        }
+      }
+      &:focus, &:hover {
+        ~ label {
+        } 
+      }
+    }
+  }
+  &.can-toggle--size-small input:checked ~ label .can-toggle__switch:before {
+  	 background: url(../images/icon-switch-on-x2.png) no-repeat 3px 4px / 9px 7px;
+  }
+  label {
+    user-select: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+    .can-toggle__label-text {
+      flex: 1;
+      padding-left: 32px;
+    }
+    .can-toggle__switch {
+      position: relative;
+      box-sizing: content-box;
+      overflow: visible;
+      border: 1px solid #d6d9e0;
+      cursor: pointer;
+      &:before {
+        content: attr(data-checked);
+        position: absolute;
+        top: 0;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      &:after {
+        content: attr(data-unchecked);
+        position: absolute;
+        z-index: 5;
+        text-transform: uppercase;
+        text-align: center;
+        background: white;
+        transform: translate3d(0,0,0);
+      }
+    }
+  }
+  
+  // Default values for .can-toggle class
+  @include can-toggle-branding; 
+  @include can-toggle-appearance; 
+  
+  // Create toggles of different sizes by overriding the can-toggle-appearance mixin defaults
+  &.can-toggle--size-small {
+  	width: 32px;
+  	@include can-toggle-branding
+    (
+      #f2f2f5,  // Off state color
+      #1bc79f,  // On state color
+      transparent,  // Off state text color
+      cubic-bezier(0.860, 0.000, 0.070, 1.000)  // Transition timing function
+    );
+    @include can-toggle-appearance
+    (
+      30px, // Toggle width
+      15px,  // Toggle height
+      15px,   // Toggle border radius
+      0px,   // Offset (distance btw switch and box)
+      10px,  // Label font size
+      10px,  // Switch font size
+      none // Switch shadow on hover/focus
+    ); 
+  }
+  &.can-toggle--size-large {
+  	width: 46px;
+    @include can-toggle-branding
+    (
+      #f2f2f5,  // Off state color
+      #1bc79f,  // On state color
+      transparent,  // Off state text color
+      cubic-bezier(0.860, 0.000, 0.070, 1.000)  // Transition timing function
+    );
+    @include can-toggle-appearance
+    (
+      44px, // Toggle width
+      22px,  // Toggle height
+      22px,   // Toggle border radius
+      0px,   // Offset (distance btw switch and box)
+      10px,  // Label font size
+      10px,  // Switch font size
+      none // Switch shadow on hover/focus
+    ); 
+  }
+}
