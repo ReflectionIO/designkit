@@ -5,6 +5,7 @@
 }
 .page-app {
 	padding-top: 23px;
+	padding-bottom: 66px;
 	overflow: visible;
 	.app-icon {
 		margin-right: 2.6%;
@@ -40,6 +41,9 @@
 		font-size: 1.4rem;
 		color: #28292c;
 	}
+	.filter-container {
+		padding-bottom: 0;
+	}
 }
 .app-user-functions-container {
 	width: 14.5rem;
@@ -73,9 +77,113 @@
 }
 .filters-group-graph-options {
 	padding-top: 1.3rem;
+	display: block;
+	text-align: center;
 	.filter-switch--small {
+		margin-right: 17px;
+		margin-bottom: 9px;
+		display: inline-block;
 		> span {
 			color: $dark-grey-2;
+		}
+	}
+}
+.graph-container {
+	clear: both;
+}
+.data-display-container {
+	margin-top: 45px;
+}
+.data-display-header {
+	position: relative;
+	overflow: visible;
+	border-bottom: 1px solid $divider-grey;
+	padding-bottom: 2px;
+	button {
+		position: absolute;
+		right: 0px;
+		top: calc(100% + 11px);
+	}
+}
+.data-display-header--component {
+	width: 33.2%;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 0;
+}
+.data-heading {
+	margin: 0;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 2rem;
+}
+.app-icon-small {
+	width: 34px;
+	height: 34px;
+	margin-right: 15px;
+}
+.data-summary-container {
+	padding-top: 7px;
+}
+.revenue-date-range {
+	margin-right: 5%;
+	display: inline-block;
+	font-size: 1.4rem;
+	color: $light-grey-1;
+}
+.revenue-summary-value {
+	display: inline-block;
+	font-family: $brand-heading-font;
+	font-weight: 600;
+	font-size: 2rem;
+	color: $dark-grey-1;
+	.data-summary-container:last-child & {
+		color: #727686;
+	}
+}
+.table-revenue {
+	width: 100%;
+	tbody {
+		tr {
+			border-bottom: 1px solid #fcfdfd;
+			&:nth-child(odd) {
+				background-color: $panel-grey;
+			}
+		}
+	}
+	th {
+		padding: 28px 0px 14px 2%;
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		font-size: 1.4rem;
+		color: #28292c;
+	}
+	.date-value,
+	.revenue-value,
+	.revenue-percentage {
+		padding-left: percentage(20/1000);
+		font-size: 1.5rem;
+		color: $dark-grey-2;
+	}
+	.revenue-percentage {
+		font-size: 0;
+		span {
+			width: percentage(70/500);
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 1.5rem;
+			color: $dark-grey-2;
+		}
+		.data-bar {
+			height: 44px;
+			width: percentage(430/500);
+			display: inline-block;
+			vertical-align: middle;
+			div {
+				height: 44px;
+				display: inline-block;
+				background-color: #dedeef;
+			}
 		}
 	}
 }
