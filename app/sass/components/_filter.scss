@@ -82,6 +82,69 @@
 		}
 	}
 }
+/* Toggle */
+.filter-toggle {
+	display: inline-block;
+	font-size: 0;
+	.toggle {
+		display: inline-block;
+		text-align: center;
+		&:first-child {
+			label {
+				border-left: 1px solid #dadee1;
+				border-radius: 4px 0 0 4px;
+			}
+		}
+		&:last-child {
+			label {
+				border-radius: 0 4px 4px 0;
+			}
+		}
+	}
+	label {
+		width: 42px;
+		height: 38px;
+		padding-top: 8px;
+		box-sizing: border-box;
+		display: inline-block;
+		z-index: 1;
+		border-top: 1px solid #dadee1;
+		border-right: 1px solid #dadee1;
+		border-bottom: 1px solid #dadee1;
+		background-color: #f7f7fa;
+		cursor: pointer;
+		&:active {
+			border-top: 2px solid #dadee1;
+		}
+		svg {
+			width: 20px;
+			height: 20px;
+			pointer-events: none;
+			path {
+				fill: $light-grey-1;
+			}
+		}
+		&.toggle-calendar {
+			svg {
+				width: 18px;
+				height: 19px;
+			}
+		}
+	}
+	input {
+		position: absolute;
+		z-index: -1;
+	}
+	input:checked {
+		~ label {
+			border-top: 2px solid #dadee1;
+			background-color: #ededf1;
+			svg path {
+				fill: $reflection-purple;
+			}
+		}
+	}
+}
 
 /* Switch */
 .filter-switch {

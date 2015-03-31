@@ -7,6 +7,10 @@
 	padding-top: 23px;
 	padding-bottom: 66px;
 	overflow: visible;
+	.tabs__link span svg {
+		width: 26px;
+		height: 26px;
+	}
 	.app-icon {
 		margin-right: 2.6%;
 		display: inline-block;
@@ -51,6 +55,9 @@
 	margin-right: 2%;
 	float: right;
 	text-align: right;
+	.can-toggle {
+		float: right;
+	}
 	.filter-switch {
 		margin-bottom: 1.5rem;
 		> span {
@@ -76,12 +83,14 @@
 	}
 }
 .filters-group-graph-options {
-	padding-top: 1.3rem;
+	width: 100%;
+	padding-top: 1.2rem;
+	padding-left: 1.4%;
 	display: block;
-	text-align: center;
+	text-align: left;
 	.filter-switch--small {
-		margin-right: 17px;
-		margin-bottom: 9px;
+		margin-right: 2rem;
+		margin-bottom: 0.9rem;
 		display: inline-block;
 		> span {
 			color: $dark-grey-2;
@@ -137,7 +146,7 @@
 	font-weight: 600;
 	font-size: 2rem;
 	color: $dark-grey-1;
-	.data-summary-container:last-child & {
+	.data-summary-container-synced & {
 		color: #727686;
 	}
 }
@@ -185,5 +194,12 @@
 				background-color: #dedeef;
 			}
 		}
+	}
+}
+.can-be-sorted {
+	cursor: pointer;
+	&:active {
+		position: relative;
+		top: 2px;
 	}
 }
