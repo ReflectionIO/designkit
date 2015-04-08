@@ -1,0 +1,20 @@
+.accordion-content {
+	li:nth-child(odd) {
+		background-color: $panel-grey;
+	}
+}
+.accordion-switch {
+	@extend .ref-icon-after;
+	&:after {
+		content: "m";
+		display: inline-block;
+		font-size: 23px;
+		color: $light-grey-1;
+	}
+	.is-closed & {
+		&:after {
+			@include transform(rotate(180deg));
+			@include transition(transform 0.2s);
+		}
+	}
+}
