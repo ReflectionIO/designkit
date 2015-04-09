@@ -15,6 +15,9 @@
 			}
 		}
 	}
+	.pagination {
+		padding-bottom: 0;
+	}
 	.accordion-switch {
 		position: relative;
 		width: 100%;
@@ -99,7 +102,10 @@
 .logged-in-section-main__column-one {
 	width: 100%;
 	max-width: percentage(637/1280);
-	margin-top: -8vh;
+	margin-top: -9vh;
+	@include breakpoint($desktop-wide) {
+		margin-right: 1.1%;
+	}
 	img {
 		float: right;
 	}
@@ -117,7 +123,34 @@
 	}
 }
 .logged-in-section-content {
+	max-width: 1600px;
+	margin: 0 auto;
 	padding-top: 4.4rem;
+	.site-article {
+		.addthis_sharing_toolbox {
+			position: relative;
+		  bottom: 0;
+		  display: inline-block;
+		}
+		.more-link + .addthis_sharing_toolbox {
+		  position: absolute;
+			right: 0px;
+			bottom: 0.4rem;
+		}
+	}
+	@include breakpoint($desktop) {
+		.site-article {
+			.more-link {
+				margin-right: 2rem;
+			}
+			.more-link + .addthis_sharing_toolbox,
+			.addthis_sharing_toolbox {
+			  position: relative;
+			  bottom: 0;
+			  display: inline-block;
+			}
+		}
+	}
 }
 .accordion-bottom-with-divider {
 	padding-bottom: 30px;

@@ -691,6 +691,21 @@
 		});
 	};
 
+	var ReadMore = function() {
+		$('.more-content').hide();
+		$('.js-more-link').on("click", function(e){
+			e.preventDefault();
+			var $this = $(this), $thisLink = $this.find('a');
+			$this.prev('.more-content').slideToggle(150);
+			if($thisLink.text() == "Read more") {
+				$thisLink.text("Read less");
+			}
+			else {
+				$thisLink.text("Read more");
+			}
+		});
+	};
+
 /* END COMPONENT OBJECTS */
 
 
