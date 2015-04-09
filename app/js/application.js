@@ -664,6 +664,33 @@
 		});
 	};
 
+
+	var Accordion = function() {
+		$('.accordion').each(function(){
+			$this = $(this);
+			$this.find('> ul > li').addClass('is-closed');
+			$this.find('.accordion-content').each(function(){
+				$contentContainer = $(this);
+				var accordionHeight = $contentContainer.innerHeight();
+				$contentContainer.css('margin-top', -accordionHeight);
+			});
+			$this.find('.accordion-switch').on("click", function(){
+				var accordionSwitch = $(this), accordionSwitchParent = accordionSwitch.parent('li');
+				if(!accordionSwitch.hasClass('no-accordion-content')) {
+					if(accordionSwitchParent.hasClass('is-closed')) {
+						accordionSwitchParent.removeClass('is-closed');
+						accordionSwitch.next('.accordion-content').css('margin-top', "0");
+					}
+					else {
+						var accordionContent = accordionSwitch.next('.accordion-content');
+						accordionSwitchParent.addClass('is-closed');
+						accordionContent.css('margin-top', -accordionContent.innerHeight());
+					}
+				}				
+			});
+		});
+	};
+
 /* END COMPONENT OBJECTS */
 
 

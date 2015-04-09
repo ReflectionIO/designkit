@@ -4,17 +4,31 @@
 	}
 }
 .page-logged-in-landing {
+	.feature-complete {
+		.accordion-switch {
+			background-image: none;
+			&:before {
+				content: "t";
+			}
+			span {
+				color: $dark-grey-2;
+			}
+		}
+	}
 	.accordion-switch {
 		position: relative;
 		width: 100%;
-		padding: 1.1rem percentage(79/459) 1rem percentage(74/459);
-		display: inline-block;
-		font-size: 1.5rem;
+		padding: 1.2rem percentage(79/459) 1.2rem percentage(74/459);
+		margin: 0;
+		display: block;
+		font-size: 1.4rem;
 		font-weight: 600;
 		color: $dark-grey-2;
 		@extend .ref-icon-before;
+		background: $reflection-white url(../images/bg-bullet.png) no-repeat 17px 1.8rem;
+		background-size: 10px auto;
 		&:before {
-			content: "t";
+			content: "";
 			position: absolute;
 			top: 0.8rem;
 			left: 14px;
@@ -23,7 +37,7 @@
 		}
 		&:after {
 			position: absolute;
-			top: 0.8rem;
+			top: 1.1rem;
 			right: 14px;
 		}
 		span {
@@ -32,13 +46,15 @@
 			float: right;
 			font-size: 1.3rem;
 			font-weight: 400;
-		}		
+			color: $reflection-red;
+		}
 	}
-	.accordion-content {
+	.accordion {
 		.content-list--minor {
 			padding-right: percentage(79/459);
 			padding-left: percentage(76/459);
 			overflow: visible;
+			font-size: 1.39em;
 			li {
 				background-size: 10px auto;
 			}
@@ -66,6 +82,10 @@
 				font-size: 17px;
 				color: $reflection-green;
 			}
+		}
+		.accordion-content {
+			padding-top: 0.4rem;
+			padding-bottom: 1.6rem;
 		}
 	}
 }
@@ -98,4 +118,9 @@
 }
 .logged-in-section-content {
 	padding-top: 4.4rem;
+}
+.accordion-bottom-with-divider {
+	padding-bottom: 30px;
+	margin-bottom: 4rem;
+	border-bottom: 1px solid $divider-grey;
 }

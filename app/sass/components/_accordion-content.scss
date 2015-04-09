@@ -1,20 +1,42 @@
-.accordion-content {
-	li:nth-child(odd) {
+.accordion {
+	> ul > li:nth-child(odd) {
 		background-color: $panel-grey;
+		.accordion-switch {
+			background-color: $panel-grey;
+		}
 	}
 }
 .accordion-switch {
 	@extend .ref-icon-after;
+	z-index: 1;
+	background-color: $reflection-white;
+	cursor: pointer;	
 	&:after {
 		content: "m";
 		display: inline-block;
 		font-size: 23px;
+		line-height: 23px;
 		color: $light-grey-1;
+		@include transition(transform 0.2s);
 	}
-	.is-closed & {
+	.is-closed & {		
 		&:after {
 			@include transform(rotate(180deg));
 			@include transition(transform 0.2s);
 		}
 	}
+	&.no-accordion-content {
+		margin: 0;
+		cursor: default;
+		&:after {
+			content: '';
+		}
+		&:first-child:last-child {
+			margin: 0;
+		}
+	}
+}
+.accordion-content {
+	z-index: 0;
+	transition: margin-top 0.2s;
 }
