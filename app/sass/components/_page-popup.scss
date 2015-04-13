@@ -1,0 +1,45 @@
+.page-overlay {
+	position: fixed;
+	top: 0;
+	right: 0;	
+	bottom: 0;
+	left: 0;	
+	width: 100%;
+	height: 100%;
+	display: none;
+	text-align: center;
+	background: rgba(41,41,43,0.7);
+	z-index: 10000;	
+}
+.page-popup {
+	position: relative;
+	display: block;
+	@extend %vertical-centre-content;
+}
+.popup-content {
+	position: relative;
+}
+.popup-close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	font-size: 0;
+	span{
+		&:after {
+			font-size: 1.8rem;
+			color: $light-grey-2;
+			transition: color 0.1s;	
+		}
+		&:hover {
+			&:after {
+				color: darken($light-grey-2, 7%);
+				transition: color 0.2s;
+			}				
+		}
+		&:active {
+			&:after {
+				top: 2px;
+			}
+		}
+	}
+}
