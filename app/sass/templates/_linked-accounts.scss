@@ -78,6 +78,18 @@
 		padding: 0.6rem 2.2% 4.3rem;
 	}
 }
+.table-data.table-linked-accounts--disabled {
+	th {
+		color: #dedede;
+		cursor: default;
+		&:active {
+			top: 0;
+		}
+		svg path {
+			fill: #dedede;
+		}
+	}
+}
 .popup-content--link-account {
 	width: 100%;
 	max-width: 407px;
@@ -87,4 +99,36 @@
 .popup-content--link-account__heading {
 	margin-bottom: 1.7em;
 	text-align: center;
+}
+@-webkit-keyframes glow {
+	0% { fill: #9F9FA9; }
+	50% { fill: #dddddd; }
+	100% { fill: #9F9FA9; }
+}
+@keyframes glow {
+	0% { fill: #9F9FA9; }
+	50% { fill: #dddddd; }
+	100% { fill: #9F9FA9; }
+}
+.no-linked-accounts-container {
+	text-align: center;
+	.grid__column {
+		margin: 6.8rem auto;
+		display: inline-block;
+		float: none;
+		text-align: center;
+	}
+	svg {
+		width: 100%;
+		.warning-sign {
+			fill: #9F9FA9;
+			animation: glow 2s ease infinite;
+		}
+	}
+	p {
+		font-size: 1.4rem;
+	}
+	button {
+		max-width: 203px;
+	}
 }

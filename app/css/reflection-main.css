@@ -4057,7 +4057,21 @@ table.table-data > tbody > tr:nth-child(even) > td {
   padding: 0.6rem 2.2% 4.3rem;
 }
 
-/* line 81, ../sass/templates/_linked-accounts.scss */
+/* line 82, ../sass/templates/_linked-accounts.scss */
+.table-data.table-linked-accounts--disabled th {
+  color: #dedede;
+  cursor: default;
+}
+/* line 85, ../sass/templates/_linked-accounts.scss */
+.table-data.table-linked-accounts--disabled th:active {
+  top: 0;
+}
+/* line 88, ../sass/templates/_linked-accounts.scss */
+.table-data.table-linked-accounts--disabled th svg path {
+  fill: #dedede;
+}
+
+/* line 93, ../sass/templates/_linked-accounts.scss */
 .popup-content--link-account {
   width: 100%;
   max-width: 407px;
@@ -4065,10 +4079,62 @@ table.table-data > tbody > tr:nth-child(even) > td {
   padding: 34px 30px 40px;
 }
 
-/* line 87, ../sass/templates/_linked-accounts.scss */
+/* line 99, ../sass/templates/_linked-accounts.scss */
 .popup-content--link-account__heading {
   margin-bottom: 1.7em;
   text-align: center;
+}
+
+@-webkit-keyframes glow {
+  0% {
+    fill: #9F9FA9;
+  }
+  50% {
+    fill: #dddddd;
+  }
+  100% {
+    fill: #9F9FA9;
+  }
+}
+@keyframes glow {
+  0% {
+    fill: #9F9FA9;
+  }
+  50% {
+    fill: #dddddd;
+  }
+  100% {
+    fill: #9F9FA9;
+  }
+}
+/* line 113, ../sass/templates/_linked-accounts.scss */
+.no-linked-accounts-container {
+  text-align: center;
+}
+/* line 115, ../sass/templates/_linked-accounts.scss */
+.no-linked-accounts-container .grid__column {
+  margin: 6.8rem auto;
+  display: inline-block;
+  float: none;
+  text-align: center;
+}
+/* line 121, ../sass/templates/_linked-accounts.scss */
+.no-linked-accounts-container svg {
+  width: 100%;
+}
+/* line 123, ../sass/templates/_linked-accounts.scss */
+.no-linked-accounts-container svg .warning-sign {
+  fill: #9F9FA9;
+  -webkit-animation: glow 2s ease infinite;
+          animation: glow 2s ease infinite;
+}
+/* line 128, ../sass/templates/_linked-accounts.scss */
+.no-linked-accounts-container p {
+  font-size: 1.4rem;
+}
+/* line 131, ../sass/templates/_linked-accounts.scss */
+.no-linked-accounts-container button {
+  max-width: 203px;
 }
 
 /* line 5, ../sass/templates/_logged-in-landing.scss */
@@ -4320,47 +4386,50 @@ table.table-data > tbody > tr:nth-child(even) > td {
 /* line 13, ../sass/templates/_my-account.scss */
 .page-my-account .filters-container {
   position: relative;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
 }
-/* line 15, ../sass/templates/_my-account.scss */
+/* line 17, ../sass/templates/_my-account.scss */
 .page-my-account .filters-container p {
   margin-bottom: 1rem;
+  padding-top: 0.6rem;
   color: #5b5d61;
   font-size: 1.4rem;
 }
-/* line 20, ../sass/templates/_my-account.scss */
+/* line 23, ../sass/templates/_my-account.scss */
 .page-my-account .filters-container .ref-button--cta-small, .page-my-account .filters-container .ref-button--cta-small--wide, .page-my-account .filters-container .ref-button--cta-large, .page-my-account .filters-container .ref-button--cta-large--wide, .page-my-account .filters-container .ref-button--full-width {
   position: absolute;
-  top: 1.1rem;
+  top: 1.2rem;
   right: 2rem;
 }
-/* line 26, ../sass/templates/_my-account.scss */
+/* line 29, ../sass/templates/_my-account.scss */
 .page-my-account .default-tabs-transition .tabs__content {
   background-color: transparent;
 }
 
-/* line 31, ../sass/templates/_my-account.scss */
+/* line 34, ../sass/templates/_my-account.scss */
 .account-settings-section.page-section.page-section--with-border {
   padding-bottom: 2rem;
 }
-/* line 34, ../sass/templates/_my-account.scss */
+/* line 37, ../sass/templates/_my-account.scss */
 .account-settings-section .grid__column {
   padding-bottom: 4rem;
 }
-/* line 37, ../sass/templates/_my-account.scss */
+/* line 40, ../sass/templates/_my-account.scss */
 .account-settings-section p {
   font-size: 1.4rem;
 }
-/* line 40, ../sass/templates/_my-account.scss */
+/* line 43, ../sass/templates/_my-account.scss */
 .account-settings-section table {
   margin-bottom: 4rem;
   font-size: 1.4rem;
 }
-/* line 43, ../sass/templates/_my-account.scss */
+/* line 46, ../sass/templates/_my-account.scss */
 .account-settings-section table td {
   padding: 9px;
   text-align: center;
 }
-/* line 46, ../sass/templates/_my-account.scss */
+/* line 49, ../sass/templates/_my-account.scss */
 .account-settings-section table td button {
   margin-bottom: 1px;
   font-size: 1.3rem;
