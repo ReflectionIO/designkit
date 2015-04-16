@@ -78,11 +78,13 @@ li {
 }
 
 /* line 11, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content, .tabs__link {
+.vertical-centre-content, .tabs__link,
+.tabs-to-dropdown-container {
   height: 100%;
 }
 /* line 13, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content:before, .tabs__link:before {
+.vertical-centre-content:before, .tabs__link:before,
+.tabs-to-dropdown-container:before {
   content: '';
   display: inline-block;
   width: 0;
@@ -92,7 +94,8 @@ li {
   /* Adjusts for spacing */
 }
 /* line 21, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content > *, .tabs__link > * {
+.vertical-centre-content > *, .tabs__link > *,
+.tabs-to-dropdown-container > * {
   display: inline-block;
   vertical-align: middle;
 }
@@ -1457,11 +1460,13 @@ li {
 }
 
 /* line 11, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content, .tabs__link {
+.vertical-centre-content, .tabs__link,
+.tabs-to-dropdown-container {
   height: 100%;
 }
 /* line 13, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content:before, .tabs__link:before {
+.vertical-centre-content:before, .tabs__link:before,
+.tabs-to-dropdown-container:before {
   content: '';
   display: inline-block;
   width: 0;
@@ -1471,7 +1476,8 @@ li {
   /* Adjusts for spacing */
 }
 /* line 21, ../sass/helpers/_placeholders.scss */
-.vertical-centre-content > *, .tabs__link > * {
+.vertical-centre-content > *, .tabs__link > *,
+.tabs-to-dropdown-container > * {
   display: inline-block;
   vertical-align: middle;
 }
@@ -4768,7 +4774,8 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 }
 
 /* line 54, ../sass/components/_tabs.scss */
-.tabs__link {
+.tabs__link,
+.tabs-to-dropdown-container {
   position: relative;
   width: 100%;
   height: 100%;
@@ -4785,140 +4792,199 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   -webkit-transition: color 0.3s;
           transition: color 0.3s;
 }
-/* line 70, ../sass/components/_tabs.scss */
-.tabs__link:hover {
+/* line 71, ../sass/components/_tabs.scss */
+.tabs__link:hover,
+.tabs-to-dropdown-container:hover {
   color: #3c3890;
   -webkit-transition: color 0.3s;
           transition: color 0.3s;
 }
-/* line 75, ../sass/components/_tabs.scss */
-.tabs__tab:active .tabs__link > span {
+/* line 76, ../sass/components/_tabs.scss */
+.tabs__tab:active .tabs__link > span, .tabs__tab:active
+.tabs-to-dropdown-container > span {
   margin-top: 6px;
 }
-/* line 79, ../sass/components/_tabs.scss */
-.is-active .tabs__link {
+/* line 80, ../sass/components/_tabs.scss */
+.is-active .tabs__link, .is-active
+.tabs-to-dropdown-container {
   color: #363a47;
   -webkit-transition: color 0.3s;
           transition: color 0.3s;
 }
-/* line 82, ../sass/components/_tabs.scss */
-.is-active .tabs__link:hover {
+/* line 83, ../sass/components/_tabs.scss */
+.is-active .tabs__link:hover, .is-active
+.tabs-to-dropdown-container:hover {
   color: #363a47;
 }
-/* line 86, ../sass/components/_tabs.scss */
-.tabs__link > span {
+/* line 87, ../sass/components/_tabs.scss */
+.tabs__link > span,
+.tabs-to-dropdown-container > span {
   width: 100%;
   line-height: 1.4;
   -webkit-transition: margin-top 0.1s;
           transition: margin-top 0.1s;
 }
-/* line 91, ../sass/components/_tabs.scss */
-.tabs__link span span, .tabs__link span:before {
+/* line 92, ../sass/components/_tabs.scss */
+.tabs__link span span, .tabs__link span:before,
+.tabs-to-dropdown-container span span,
+.tabs-to-dropdown-container span:before {
   vertical-align: middle;
 }
-/* line 94, ../sass/components/_tabs.scss */
-.tabs__link span > span {
-  width: 80%;
-  max-width: 80%;
+/* line 95, ../sass/components/_tabs.scss */
+.tabs__link span > span,
+.tabs-to-dropdown-container span > span {
+  width: 75%;
+  max-width: 75%;
+  padding-top: 0.3rem;
   display: inline-block;
+  float: left;
   text-align: left;
 }
 @media (min-width: 720px) {
-  /* line 94, ../sass/components/_tabs.scss */
-  .tabs__link span > span {
+  /* line 95, ../sass/components/_tabs.scss */
+  .tabs__link span > span,
+  .tabs-to-dropdown-container span > span {
     width: auto;
   }
 }
-/* line 102, ../sass/components/_tabs.scss */
-.tabs-container--large-tabs .tabs__link span > span {
+/* line 105, ../sass/components/_tabs.scss */
+.tabs-container--large-tabs .tabs__link span > span, .tabs-container--large-tabs
+.tabs-to-dropdown-container span > span {
   width: 80%;
   font-size: 1.6rem;
   margin-bottom: 10px;
 }
 @media (min-width: 720px) {
-  /* line 102, ../sass/components/_tabs.scss */
-  .tabs-container--large-tabs .tabs__link span > span {
+  /* line 105, ../sass/components/_tabs.scss */
+  .tabs-container--large-tabs .tabs__link span > span, .tabs-container--large-tabs
+  .tabs-to-dropdown-container span > span {
     width: auto;
     max-width: 80%;
   }
 }
-/* line 112, ../sass/components/_tabs.scss */
-.tabs__link span b {
+/* line 115, ../sass/components/_tabs.scss */
+.tabs__link span b,
+.tabs-to-dropdown-container span b {
   padding-top: 10px;
   display: inline-block;
   line-height: 1.6;
 }
-/* line 116, ../sass/components/_tabs.scss */
-.tabs-container--large-tabs .tabs__link span b {
+/* line 119, ../sass/components/_tabs.scss */
+.tabs-container--large-tabs .tabs__link span b, .tabs-container--large-tabs
+.tabs-to-dropdown-container span b {
   font-size: 1.4rem;
   text-transform: none;
   font-weight: 400;
 }
-/* line 122, ../sass/components/_tabs.scss */
-.tabs__link span:before {
+/* line 125, ../sass/components/_tabs.scss */
+.tabs__link span:before,
+.tabs-to-dropdown-container span:before {
   margin-right: 0.6em;
   font-size: 2.2rem;
 }
-/* line 125, ../sass/components/_tabs.scss */
-.tabs-container--large-tabs .tabs__link span:before {
+/* line 128, ../sass/components/_tabs.scss */
+.tabs-container--large-tabs .tabs__link span:before, .tabs-container--large-tabs
+.tabs-to-dropdown-container span:before {
   font-size: 2.9rem;
   margin-right: 0.5em;
   vertical-align: top;
 }
 @media (min-width: 720px) {
-  /* line 125, ../sass/components/_tabs.scss */
-  .tabs-container--large-tabs .tabs__link span:before {
+  /* line 128, ../sass/components/_tabs.scss */
+  .tabs-container--large-tabs .tabs__link span:before, .tabs-container--large-tabs
+  .tabs-to-dropdown-container span:before {
     font-size: 3.2rem;
   }
 }
 @media (min-width: 960px) {
-  /* line 125, ../sass/components/_tabs.scss */
-  .tabs-container--large-tabs .tabs__link span:before {
+  /* line 128, ../sass/components/_tabs.scss */
+  .tabs-container--large-tabs .tabs__link span:before, .tabs-container--large-tabs
+  .tabs-to-dropdown-container span:before {
     font-size: 3.8rem;
   }
 }
-/* line 137, ../sass/components/_tabs.scss */
-.tabs__link span svg {
-  width: 28px;
+/* line 140, ../sass/components/_tabs.scss */
+.tabs__link span svg,
+.tabs-to-dropdown-container span svg {
+  width: 15%;
+  max-width: 28px;
   height: 28px;
-  margin-right: 0.9em;
+  margin-right: 9%;
+  display: inline-block;
+  float: left;
   vertical-align: middle;
 }
-/* line 142, ../sass/components/_tabs.scss */
-.tabs__link span svg path {
+/* line 148, ../sass/components/_tabs.scss */
+.tabs__link span svg path,
+.tabs-to-dropdown-container span svg path {
   fill: #6d69c5;
   -webkit-transition: fill 0.2s;
           transition: fill 0.2s;
 }
-/* line 145, ../sass/components/_tabs.scss */
-.is-active .tabs__link span svg path {
+/* line 151, ../sass/components/_tabs.scss */
+.is-active .tabs__link span svg path, .is-active
+.tabs-to-dropdown-container span svg path {
   fill: #5b5b68;
   -webkit-transition: fill 0.3s;
           transition: fill 0.3s;
 }
-/* line 152, ../sass/components/_tabs.scss */
-.tabs__link:hover path {
+/* line 158, ../sass/components/_tabs.scss */
+.tabs__link:hover path,
+.tabs-to-dropdown-container:hover path {
   fill: #4b46b5;
   -webkit-transition: fill 0.3s;
           transition: fill 0.3s;
 }
 
-/* line 159, ../sass/components/_tabs.scss */
+/* line 164, ../sass/components/_tabs.scss */
+.tabs-to-dropdown-container {
+  padding: 2rem 0 0;
+}
+/* line 166, ../sass/components/_tabs.scss */
+.tabs-to-dropdown-container > span {
+  padding: 20px 2%;
+  display: block;
+  float: left;
+  box-sizing: border-box;
+  border-bottom: 1px solid #c4c7d0;
+  cursor: pointer;
+}
+/* line 173, ../sass/components/_tabs.scss */
+.tabs-to-dropdown-container > span:after {
+  position: absolute;
+  right: 4%;
+  -webkit-transition: -webkit-transform 0.2s;
+          transition: transform 0.2s;
+}
+/* line 179, ../sass/components/_tabs.scss */
+.tabs-to-dropdown-container > span.is-open:after {
+  -webkit-transform: rotate(179.5deg);
+      -ms-transform: rotate(179.5deg);
+          transform: rotate(179.5deg);
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s;
+}
+/* line 185, ../sass/components/_tabs.scss */
+.tabs-to-dropdown-container .tabs-to-dropdown {
+  width: 100%;
+}
+
+/* line 190, ../sass/components/_tabs.scss */
 .is-ie .tabs__link:active {
   position: relative;
   top: 4px;
 }
-/* line 163, ../sass/components/_tabs.scss */
+/* line 194, ../sass/components/_tabs.scss */
 .is-ie .tabs__link span, .is-ie .tabs__link span:before, .is-ie .tabs__link:before {
   pointer-events: none;
 }
 
-/* line 167, ../sass/components/_tabs.scss */
+/* line 198, ../sass/components/_tabs.scss */
 .tab-border {
   width: 100%;
   height: 3px;
 }
-/* line 170, ../sass/components/_tabs.scss */
+/* line 201, ../sass/components/_tabs.scss */
 .tab-border span {
   width: 0%;
   height: 3px;
@@ -4927,54 +4993,54 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   -webkit-transition: width 0.2s ease-out;
           transition: width 0.2s ease-out;
 }
-/* line 178, ../sass/components/_tabs.scss */
+/* line 209, ../sass/components/_tabs.scss */
 .is-active .tab-border span {
   width: 100%;
   -webkit-transition: width 0.2s 0.2s ease-in;
           transition: width 0.2s 0.2s ease-in;
 }
-/* line 184, ../sass/components/_tabs.scss */
+/* line 215, ../sass/components/_tabs.scss */
 .tabs__tab:first-child .tab-border span {
   float: right;
 }
 
-/* line 189, ../sass/components/_tabs.scss */
+/* line 220, ../sass/components/_tabs.scss */
 .tabs__content-container {
   width: 100%;
   margin-bottom: 4rem;
 }
 
-/* line 193, ../sass/components/_tabs.scss */
+/* line 224, ../sass/components/_tabs.scss */
 .tabs__content {
   display: block;
   padding: 0;
   background-color: #f2f2f5;
 }
 @media (min-width: 720px) {
-  /* line 193, ../sass/components/_tabs.scss */
+  /* line 224, ../sass/components/_tabs.scss */
   .tabs__content {
     display: none;
   }
-  /* line 199, ../sass/components/_tabs.scss */
+  /* line 230, ../sass/components/_tabs.scss */
   .no-js .tabs__content {
     filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
     opacity: 1;
   }
 }
 
-/* line 204, ../sass/components/_tabs.scss */
+/* line 235, ../sass/components/_tabs.scss */
 .default-tabs-transition .tabs__content {
   background-color: transparent;
 }
 @media (min-width: 720px) {
-  /* line 204, ../sass/components/_tabs.scss */
+  /* line 235, ../sass/components/_tabs.scss */
   .default-tabs-transition .tabs__content {
     background-color: #f2f2f5;
   }
 }
 
 @media screen and (max-width: 720px) {
-  /* line 211, ../sass/components/_tabs.scss */
+  /* line 242, ../sass/components/_tabs.scss */
   .collapsible-trigger {
     position: relative;
     width: 100%;
@@ -4991,7 +5057,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
     -webkit-transition: color 0.3s;
             transition: color 0.3s;
   }
-  /* line 225, ../sass/components/_tabs.scss */
+  /* line 256, ../sass/components/_tabs.scss */
   .collapsible-trigger b {
     line-height: 1.6;
     text-transform: none;
@@ -5001,46 +5067,46 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
     font-size: 1.3rem;
     padding-top: 4px;
   }
-  /* line 234, ../sass/components/_tabs.scss */
+  /* line 265, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger {
     color: #29292c;
   }
-  /* line 236, ../sass/components/_tabs.scss */
+  /* line 267, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger:before {
     color: #29292c;
   }
-  /* line 239, ../sass/components/_tabs.scss */
+  /* line 270, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-trigger:hover {
     color: #29292c;
   }
-  /* line 243, ../sass/components/_tabs.scss */
+  /* line 274, ../sass/components/_tabs.scss */
   .collapsible-trigger:hover {
     color: #4b46b5;
     -webkit-transition: color 0.3s;
             transition: color 0.3s;
   }
-  /* line 248, ../sass/components/_tabs.scss */
+  /* line 279, ../sass/components/_tabs.scss */
   .collapsible-trigger:active span, .collapsible-trigger:active:before {
     position: relative;
     top: 4px;
   }
-  /* line 253, ../sass/components/_tabs.scss */
+  /* line 284, ../sass/components/_tabs.scss */
   .collapsible-trigger:before, .collapsible-trigger span {
     vertical-align: middle;
   }
-  /* line 256, ../sass/components/_tabs.scss */
+  /* line 287, ../sass/components/_tabs.scss */
   .collapsible-trigger span {
     padding-left: 10px;
   }
 
-  /* line 260, ../sass/components/_tabs.scss */
+  /* line 291, ../sass/components/_tabs.scss */
   .collapsible-content {
     margin-top: 0;
     padding-bottom: 3rem;
     -webkit-transition: margin-top 0.3s;
             transition: margin-top 0.3s;
   }
-  /* line 264, ../sass/components/_tabs.scss */
+  /* line 295, ../sass/components/_tabs.scss */
   .tabs__content--is-showing .collapsible-content {
     margin-top: 0;
     -webkit-transition: margin-top 0.3s;
@@ -5048,13 +5114,31 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   }
 }
 @media (min-width: 720px) {
-  /* line 271, ../sass/components/_tabs.scss */
+  /* line 302, ../sass/components/_tabs.scss */
   .collapsible-trigger {
     display: none;
   }
 }
-/* line 275, ../sass/components/_tabs.scss */
+/* line 306, ../sass/components/_tabs.scss */
 .tabs__content.tabs__content--is-showing {
+  display: block;
+}
+
+/* line 312, ../sass/components/_tabs.scss */
+.tabs-to-dropdown-container .selected-tab {
+  display: inline-block;
+}
+/* line 316, ../sass/components/_tabs.scss */
+.tabs-to-dropdown-container .tabs-to-dropdown li {
+  padding: 0px;
+}
+
+/* line 322, ../sass/components/_tabs.scss */
+.tabs-to-dropdown--content .tabs__content {
+  display: none;
+}
+/* line 324, ../sass/components/_tabs.scss */
+.tabs-to-dropdown--content .tabs__content.tabs__content--is-showing {
   display: block;
 }
 

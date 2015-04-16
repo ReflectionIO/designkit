@@ -7,13 +7,59 @@
 		margin-bottom: 1.88rem;
 	}	
 	.filters-container {
+		padding: 0.9rem 3% 0.5rem;
+		margin-bottom: 1rem;
+		@include breakpoint($tablet) {
+			padding: 1.4rem 2% 1.4rem;
+		}
+		form > div {
+			&:nth-child(even) {
+				float: right;
+				text-align: left;
+				@include breakpoint($tablet) {
+					float: none;
+				}
+			}
+		}
 		.form-field:not(.form-field--date-select),
 		.calendar-container {
-			width: percentage(160/1000);
-			margin-right: percentage(10/1000);
-			margin-bottom: 0;
+			width: 48%;
+			@include breakpoint($tablet) {
+				width: 20%;				
+				margin-right: percentage(10/1000);
+				margin-bottom: 0;
+			}
+			@include breakpoint($desktop) {
+				width: percentage(160/1000);
+			}
 		}
-	}	
+	}
+	div.table-wrapper {
+		border-right: 0;
+	}
+	div.table-wrapper div.scrollable {
+		margin-left: 17%;
+	}
+	.pinned {
+		width: 17%;
+		text-align: center;
+		border-left: none;
+		border-right: 1px solid $light-grey-2;
+	}
+	.scrollable {
+		.table-data .MHXTE6C-i-a,
+		.table-data .table-data {
+			height: 87px;
+			max-width: 250px;
+		}
+	}
+	@media screen and (max-width: $tablet) {
+		.reflection-select.reflection-select--filter ul {
+			position: fixed;
+			top: 57px;
+			left: calc(50% - 153px);
+		}
+	}
 }
 .table-overall {
 	width: 100%;

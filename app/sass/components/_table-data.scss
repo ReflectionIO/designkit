@@ -1,6 +1,10 @@
 .table-data {
 	width: 100%;
 	table-layout: fixed;
+	.pinned &,
+	.scrollable & {
+		table-layout: auto;
+	}
 	th {
 		padding-top: 2.1rem;
 		padding-bottom: 1.4rem;
@@ -16,6 +20,11 @@
 	.MHXTE6C-i-f,
 	.th-first {
 		padding-left: percentage(20/1000);
+		.pinned & {
+			padding-left: 0;
+			padding-right: 0;
+			text-align: center;
+		}
 	}
 	.MHXTE6C-i-c,
 	.table-cell-odd-row {
@@ -80,6 +89,11 @@
 		font-size: 1.6rem;
 		color: #363a47;
 		vertical-align: middle;
+		.pinned & {
+			padding-left: 0;
+			padding-right: 0;
+			text-align: center;
+		}
 	}
 	.ref-icon-before--check {
 		color: $reflection-green;

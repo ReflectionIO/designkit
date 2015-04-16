@@ -51,7 +51,8 @@
 		height: 13.7rem;
 	}
 }
-.tabs__link {	
+.tabs__link,
+.tabs-to-dropdown-container {	
 	@extend %vertical-centre-content;
 	position: relative;
 	width: 100%;
@@ -92,9 +93,11 @@
 		vertical-align: middle;
 	}
 	span > span {
-		width: 80%;
-		max-width: 80%;
+		width: 75%;
+		max-width: 75%;
+		padding-top: 0.3rem;
 		display: inline-block;
+		float: left;
 		text-align: left;
 		@include breakpoint($tablet, true) {
 				width: auto;
@@ -135,9 +138,12 @@
 		}
 	}
 	span svg {
-		width: 28px;
+		width: 15%;
+		max-width: 28px;
 		height: 28px;
-		margin-right: 0.9em;
+		margin-right: 9%;
+		display: inline-block;
+		float: left;
 		vertical-align: middle;
 		path {
 			fill: $reflection-purple;
@@ -153,6 +159,31 @@
 			fill: darken($reflection-purple, 10%);
 			transition: fill $base-transition-speed-on;
 		}
+	}
+}
+.tabs-to-dropdown-container {
+	padding: 2rem 0 0;
+	> span {
+		padding: 20px 2%;
+		display: block;
+		float: left;
+		box-sizing: border-box;
+		border-bottom: 1px solid $light-grey-2;
+		cursor: pointer;
+		&:after {
+			position: absolute;
+			right: 4%;
+			transition: transform 0.2s;
+		}
+		&.is-open {
+			&:after {
+				transform: rotate(179.5deg);
+				transition: transform 0.3s;
+			}
+		}
+	}
+	.tabs-to-dropdown {
+		width: 100%;
 	}
 }
 .is-ie .tabs__link {
@@ -274,4 +305,24 @@
 }
 .tabs__content.tabs__content--is-showing {
 	display: block;
+}
+
+// Tabs to drop down for mobile
+.tabs-to-dropdown-container {
+	.selected-tab {
+		display: inline-block;
+	}
+	.tabs-to-dropdown{
+		li {
+			padding: 0px;
+		}
+	}
+}
+.tabs-to-dropdown--content {
+	.tabs__content {
+		display: none;
+		&.tabs__content--is-showing {
+			display: block;
+		}
+	}
 }

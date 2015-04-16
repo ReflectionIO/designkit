@@ -16,6 +16,7 @@
 		<script src="js/vendor/picturefill.2.2.0.min.js" async></script>
 	<!-- <![endif]-->
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+	<link type="text/css" media="screen" rel="stylesheet" href="css/responsive-tables.css" />	
 </head>
 <body class="panel-left-open">
 	<!--[if (lt IE 9)]>
@@ -43,7 +44,7 @@
 					</form>
 					<button class="ref-button--function-small page-function-button with-icon"><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>
 				</div>
-				<ul class="tabs-container default-tabs-transition">
+				<ul class="tabs-container default-tabs-transition tabs-to-dropdown">
 					<li class="grid__column grid__column--one-quarter tabs__tab is-active js-tab-select">
 						<div class="tab-animate-active"></div>
 						<a href="#tab-content-overall" class="tabs__link">
@@ -146,11 +147,11 @@
 					</form>
 				</div>
 
-				<ul class="tabs__content-container default-tabs-transition">
+				<ul class="tabs__content-container default-tabs-transition tabs-to-dropdown--content">
 						<li id="tab-content-overall" class="tabs__content tabs__content--is-showing">
 							<article class="tabs__content-area">
 								<div class="grid__row">
-									<table class="table-data table-overall">
+									<table class="table-data table-overall responsive">
 										<thead>
 											<tr __gwt_header_row="0">
 												<th colspan="1" class="MHXTE6C-i-h MHXTE6C-i-f th-first" __gwt_column="column-gwt-uid-710" __gwt_header="header-gwt-uid-711">Rank</th>
@@ -213,7 +214,7 @@
 						<li id="tab-content-free" class="tabs__content">
 							<article class="tabs__content-area">
 								<div class="grid__row">
-									<table class="table-data table-app-group">
+									<table class="table-data table-app-group responsive">
 									<thead>
 										<tr __gwt_header_row="0">
 											<th colspan="1" class="MHXTE6C-i-h MHXTE6C-i-f th-first" __gwt_column="column-gwt-uid-445" __gwt_header="header-gwt-uid-446">Rank</th>
@@ -242,7 +243,7 @@
 						<li id="tab-content-paid" class="tabs__content">
 							<article class="tabs__content-area">
 								<div class="grid__row">
-									<table class="table-data table-app-group">
+									<table class="table-data table-app-group responsive">
 									<thead>
 										<tr __gwt_header_row="0">
 											<th colspan="1" class="MHXTE6C-i-h MHXTE6C-i-f th-first" __gwt_column="column-gwt-uid-445" __gwt_header="header-gwt-uid-446">Rank</th>
@@ -268,7 +269,7 @@
 						<li id="tab-content-grossing" class="tabs__content">
 							<article class="tabs__content-area">
 								<div class="grid__row">
-									<table class="table-data table-app-group">
+									<table class="table-data table-app-group responsive">
 									<thead>
 										<tr __gwt_header_row="0">
 											<th colspan="1" class="MHXTE6C-i-h MHXTE6C-i-f th-first" __gwt_column="column-gwt-uid-445" __gwt_header="header-gwt-uid-446">Rank</th>
@@ -293,7 +294,7 @@
 						</article>
 					</li>				
 				</ul>
-				<button class="ref-button--function-small page-function-button"><span class="ref-icon-before ref-icon-before--my-apps">View all Apps</span></button>
+				<button class="ref-button--function-small page-function-button with-icon"><span class="ref-icon-before ref-icon-before--my-apps">View all Apps</span></button>
 			</div>			
 		</div>
 		<div class="MHXTE6C-ob-a">
@@ -309,9 +310,11 @@
  	<script src="js/vendor/handlebars-v2.0.0.js"></script>
  	<script src="js/templates/templates.js"></script>
 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	<script type="text/javascript" src="js/vendor/responsive-tables.js"></script>
 	<!--[if IE 9]>
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->
+
 
 	<div id="js-appendScriptsContainer"></div>
 
@@ -320,6 +323,7 @@
   <script>
   	function initScripts() {
   		new LeaderboardPage();
+  		new TabsToMobileDropDown();
 
   		// mock calendar open - for template only, should be handled by GWT
   		$('.form-field--date-select input').on("click", function(){
