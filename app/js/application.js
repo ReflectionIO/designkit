@@ -773,6 +773,14 @@
 			$('.default-tabs-transition .tabs__content-area').css("opacity", 1);
 		}
 	};
+
+
+	var RevealContent = function() {
+		$('.js-reveal-element').on("click", function(e){
+			e.preventDefault();
+			$(this).next('.reveal-element').slideToggle(150);
+		});
+	};
 /* END COMPONENT OBJECTS */
 
 /* PAGE OBJECTS FOR TEMPLATES */
@@ -789,11 +797,21 @@
 		new BackToTop();
 	}
 
-// LeaderboardPage object
+// BlogPage object
 	var BlogPage = function() {
 		new Page();
 
 		// Components
 		new FormFieldSelect();
 		new BackToTop();
+	}
+
+// LeaderboardPage object
+	var AppPage = function() {
+		new Page();
+
+		// Components
+		new TabsToMobileDropDown();
+		new FormFieldSelect();
+		new RevealContent();
 	}

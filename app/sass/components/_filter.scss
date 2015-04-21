@@ -1,8 +1,11 @@
 .filters-container {
-	padding-top: 1.4rem;
+	padding-top: 1rem;
 	padding-bottom: 1.4rem;
 	background-color: $panel-grey;
 	overflow: visible;
+	@include breakpoint($tablet) {
+		padding-top: 1.4rem;
+	}
 	form {
 		overflow: visible;
 	}
@@ -21,10 +24,10 @@
 	overflow: visible;
 	transition: background-color $base-transition-speed-off;
 	ul {
-		margin-top: 0 !important;
-		position: absolute;
-		top: 4.9rem;
-		left: 0;
+		position: fixed;
+		top: 57px;
+		left: calc(50% - 153px);
+		margin-top: 0 !important;		
 		width: 307px;
 		max-height: 32.2rem;
 		padding-top: 1.6rem;
@@ -36,6 +39,11 @@
 		opacity: 0;
 		visibility: hidden;
 		@include box-shadow(4px 4px 8px rgba(0, 0, 0, 0.1), 1px -3px 6px rgba(0, 0, 0, 0.05), -3px 0px 6px rgba(0, 0, 0, 0.1));
+		@include breakpoint($tablet) {
+			position: absolute;
+			top: 4.9rem;
+			left: 0;
+		}
 		span {
 			margin-bottom: 0.4rem;
 			padding-left: 1.6rem;

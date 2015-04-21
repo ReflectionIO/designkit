@@ -16,6 +16,7 @@
 		<script src="js/vendor/picturefill.2.2.0.min.js" async></script>
 	<!-- <![endif]-->
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+	<link type="text/css" media="screen" rel="stylesheet" href="css/responsive-tables.css" />	
 </head>
 <body class="panel-left-open">
 	<!--[if (lt IE 9)]>
@@ -33,13 +34,18 @@
 			<div class="grid-container page-app">
 				<header class="page-app__header">
 					<img src="images/placeholder-app-icon.png" alt="Monument Valley app icon" class="app-icon" />
-					<h1 class="heading-style--heading-three app-title">Monument Valley</h1>
-					<h2 class="app-creator">By <a href="#">Ustwo</a></h2>
-					<span class="app-price">&pound; 2.99 + IAP</span>
+					<div class="app-details">
+						<h1 class="heading-style--heading-three app-title">Monument Valley</h1>
+						
+							<h2 class="app-creator">By <a href="#">Ustwo</a></h2>
+							<span class="app-price">&pound; 2.99 + IAP</span>
+						
+					</div>
 				</header>
 				<div class="app-user-functions-container">
-					<form>
-						<div class="filter-switch">
+					<a href="#" class="show-hide-link js-reveal-element">More...</a>
+					<form class="reveal-element">
+						<div class="filter-switch">							
 							<span>Follow <span>(10.3k)</span></span>
 							<div class="can-toggle can-toggle--size-large">
 							  <input id="e" type="checkbox">
@@ -51,7 +57,7 @@
 						<a href="#">View in Appstore</a>
 					</form>
 				</div>
-				<ul class="tabs-container default-tabs-transition">
+				<ul class="tabs-container default-tabs-transition tabs-to-dropdown">
 					<li class="grid__column grid__column--one-quarter tabs__tab is-active js-tab-select">
 						<div class="tab-animate-active"></div>
 						<a href="#tab-content-overall" class="tabs__link">
@@ -99,155 +105,156 @@
 				</ul>
 				<div class="grid__column grid__column--full-width filters-container filter-container--app">
 					<form class="forms--mid-theme">
-						<div class="filters-group-time">
-							<div class="calendar-container">
-									<div class="date-select-container">
-										<div class="form-field form-field--date-select form-field--date-select--no-icon">
-											<input type="text" name="date-single" id="date-single" value="01 Jan 2015" />
-										</div>
+						<div class="calendar-container">
+								<div class="date-select-container">
+									<div class="form-field form-field--date-select form-field--date-select--no-icon">
+										<input type="text" name="date-single" id="date-single" value="01 Jan 2015" />
 									</div>
-									<div class="date-select-to-indicator"></div>
-									<div class="date-select-container">
-										<div class="form-field form-field--date-select form-field--date-select--no-icon">
-											<input type="text" name="date-single-to" id="date-single-to" value="26 Feb 2015" />
-										</div>
+								</div>
+								<div class="date-select-to-indicator"></div>
+								<div class="date-select-container">
+									<div class="form-field form-field--date-select form-field--date-select--no-icon">
+										<input type="text" name="date-single-to" id="date-single-to" value="26 Feb 2015" />
 									</div>
+								</div>
+						</div>
+						<button class="ref-button--cta-small refresh-button" disabled><span class="ref-icon-before ref-icon-before--refresh">Refresh</span></button>
+						<span class="or-text">or</span>
+						<div class="form-field form-field--select time-period-select">						
+							<select class="js-field--select reflection-select--filter">
+						    <option value="" disabled selected>Over Time</option>
+						    <option value="time1">1 Week</option>
+						    <option value="time2">2 Weeks</option>
+						    <option value="time3">4 Weeks</option>
+						    <option value="time4">6 Weeks</option>
+						    <option value="time5">8 Weeks</option>
+							</select>
+						</div>
+
+						<div class="filter-toggle">
+							<div class="toggle">
+								<input type="radio" id="calendar" name="radiogroupname" checked />
+								<label for="calendar" class="toggle-calendar">
+									<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M30.3,5.2c-0.5-0.4-1-0.7-1.6-0.7h-2.3V2.8c0-0.8-0.3-1.4-0.8-2C25,0.3,24.3,0,23.5,0h-1.2
+c-0.8,0-1.5,0.3-2,0.8c-0.6,0.6-0.8,1.2-0.8,2v1.7h-6.9V2.8c0-0.8-0.3-1.4-0.8-2C11.1,0.3,10.4,0,9.6,0H8.5C7.7,0,7,0.3,6.4,0.8
+c-0.6,0.6-0.8,1.2-0.8,2v1.7H3.3c-0.6,0-1.2,0.2-1.6,0.7C1.2,5.7,1,6.2,1,6.8v22.6c0,0.6,0.2,1.1,0.7,1.6c0.5,0.4,1,0.7,1.6,0.7
+h25.4c0.6,0,1.2-0.2,1.6-0.7c0.5-0.4,0.7-1,0.7-1.6V6.8C31,6.2,30.8,5.7,30.3,5.2z M8.5,29.4H3.3v-5.1h5.2V29.4z M8.5,23.2H3.3v-5.7
+h5.2V23.2z M8.5,16.4H3.3v-5.1h5.2V16.4z M8.1,8.3C8,8.2,7.9,8.1,7.9,7.9V2.8c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2h1.2
+c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v5.1c0,0.2-0.1,0.3-0.2,0.4C9.9,8.4,9.8,8.5,9.6,8.5H8.5C8.3,8.5,8.2,8.4,8.1,8.3z
+ M15.4,29.4H9.6v-5.1h5.8V29.4z M15.4,23.2H9.6v-5.7h5.8V23.2z M15.4,16.4H9.6v-5.1h5.8V16.4z M22.4,29.4h-5.8v-5.1h5.8V29.4z
+ M22.4,23.2h-5.8v-5.7h5.8V23.2z M22.4,16.4h-5.8v-5.1h5.8V16.4z M21.9,8.3c-0.1-0.1-0.2-0.2-0.2-0.4V2.8c0-0.2,0.1-0.3,0.2-0.4
+c0.1-0.1,0.2-0.2,0.4-0.2h1.2c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v5.1c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.2,0.2-0.4,0.2
+h-1.2C22.2,8.5,22.1,8.4,21.9,8.3z M28.7,29.4h-5.2v-5.1h5.2V29.4z M28.7,23.2h-5.2v-5.7h5.2V23.2z M28.7,16.4h-5.2v-5.1h5.2V16.4z"/></svg>
+								</label>
 							</div>
-							<button class="ref-button--cta-small refresh-button" disabled><span class="ref-icon-before ref-icon-before--refresh">Refresh</span></button>
-							<span class="or-text">or</span>
-							<div class="form-field form-field--select">						
-								<select class="js-field--select reflection-select--filter">
-							    <option value="" disabled selected>Over Time</option>
-							    <option value="time1">1 Week</option>
-							    <option value="time2">2 Weeks</option>
-							    <option value="time3">4 Weeks</option>
-							    <option value="time4">6 Weeks</option>
-							    <option value="time5">8 Weeks</option>
-								</select>
+							<div class="toggle">
+								<input type="radio" id="map" name="radiogroupname" />
+								<label for="map">
+									<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M16,0C7.2,0,0,7.2,0,16c0,8.8,7.2,16,16,16s16-7.2,16-16C32,7.2,24.8,0,16,0z M1.5,16
+c0-2.9,0.9-5.6,2.3-7.8c0.1,0.1,0.2,0,0.3,0.1c0,0.2,0,0.5,0,0.7c-0.2,0.9,0.4,1.8,1.2,1.9c0.1,0.5-0.2,0.6,0.3,1.3
+c0,0.1,0,0.3,0.1,0.4c0.1,0.1,0.3,0.2,0.5,0.3c0.5,0.3,0.4,0.9,0.2,1.4s-0.6,0.8-0.8,1.3c-0.3,0.8-0.3,1.8,0.3,2.4
+c0.2,0.3,0.5,0.9,0.8,1s0.4,0.3,0.5,0.6c0.1,0.5,0.3,0.8,0.3,1.3c0,0.4-0.2,1.1-0.2,1.5c0,0.4,0.2,0.3,0.1,0.5
+c0,0.2-0.1,0.1-0.2,0.4c-0.1,0.6,0,1.7,0.1,2.1c0.2,1.5,1.1,2.7,2,2.6c0.3-0.7-0.4-1.5-0.1-2.2c0.1-0.3,0.3-0.5,0.5-0.7
+c1-0.8,1.8-1.5,2.4-2.5c0.1-0.1,0.2-0.4,0.3-0.5c0.1-0.1,0.3-0.1,0.5-0.1c0.7-0.1,1.1-0.5,1.4-1.1c0.3-0.6,0.3-1.1,0.9-1.7
+c0.1-0.1,0.2-0.5,0.3-0.6c0.3-0.5-0.1-1.2-0.6-1.5c-0.5-0.3-1-0.4-1.4-0.7c-0.6-0.4-0.6-1-1-1.5c-0.4-0.5-1.1-0.9-1.7-1.2
+c-0.7-0.4-0.7-0.7-1.9-1.2c-0.1-0.1-0.5-0.1-0.6,0c-0.1,0-0.2,0.2-0.4,0.3c-0.4,0.4-1.3,0.2-1.5-0.4c-0.1-0.3,0-0.5,0-0.7
+c-0.1-0.3-0.1-0.7-0.4-0.6c-0.1-0.4,0.6-0.1,0.6-0.7c0.1-0.5-0.3-0.1-0.8-0.4C5.4,9.8,5.4,9,5.6,8.7c0.2-0.6,0.3-0.3,0.6-0.5
+C6.6,7.8,7.4,7.5,8,7.8C8.4,8.1,8.4,9,8.6,9.1C8.8,9.3,9,9,9,8.8c0-0.2-0.1-0.6,0-0.8c0.1-0.1,0.2-0.2,0.3-0.3
+c1.1-0.8,2.4-1.3,3.7-1.4c0.1,0,0.4,0,0.5-0.1c0.2-0.2,0.1-0.5,0.4-0.5c0.2,0,0.4,0.3,0.7,0.3c0.3,0.1,0.6-0.4,0.6-0.7
+c0-0.3-0.1-0.7,0-1c0.1-0.1,0.1-0.3,0.1-0.4c0-0.1-0.1-0.1-0.2-0.1c-0.2-0.1-0.3-0.5-0.7-0.4c-0.4,0.2-0.7,0.2-1.1,0.4
+c-0.3,0.2-0.5,0.5-1,0.6c-0.2-0.4,0-0.9,0.3-1.2C13.1,3,13.5,3,13.9,3c0.2,0,0.4-0.1,0.6,0c0.1,0,0.3,0.2,0.4,0.2
+c0.3,0.2,0.6,0,0.8-0.3s0.4-0.5,0.2-0.8C16,1.9,16.2,2,16.3,2.2c0.1,0.2-0.1,0.4-0.2,0.6c-0.4,1,0.4,2,0.8,1.9
+c0.5-0.1,0.9-1.2,1.5-1.4c0.2-0.1,0.4-0.1,0.5-0.2c0.2-0.2,0.2-0.4,0.3-0.7c0.1-0.2,0.4-0.3,0.7-0.4c1.4,0.4,2.6,1,3.8,1.7
+c0,0,0,0,0,0c-0.1,0-0.2,0-0.3,0c-0.7-0.1-0.9,0.5-0.7,1.2c0.2,0.5,0.6,0.8,1.1,1c0.2,0.1,0.6,0.1,0.7,0.3c0,0.1-0.1,0.3-0.1,0.3
+c0.1,0.5-0.1,0.8-0.5,1.1c-0.4,0.3-1.1,0.2-1.4,0.5c-0.3,0.3,0.2,1.2,0.6,1.5c0.4,0.4,1.2,0.3,1.5-0.1c0.2-0.3,0-0.6,0.1-0.8
+c0.6,0.1,0.9,0.3,1.1,0.8c0,0.1,0.2,0.1,0.3,0.1c0.3,0.1,0.4-0.3,0.5-0.1c0,0.2,0.1,0.3,0.2,0.4c0.2,0.1,0.2-0.1,0.4,0
+c0.2,0.1,0.3,0.5,0.6,0.5s0.6,0,0.8,0.2c0.1,0.2,0.2,0.4,0.1,0.6c-0.1,0.2-0.9,0.1-1.4-0.1s-0.6-0.5-1.1-0.8c-0.8-0.4-2.4-0.3-3.6,0
+c-0.9,0.3-1.1,0.6-1.7,1.3c-0.1,0.1-0.2,0.5-0.3,0.7c-0.1,0.2-0.1,0.4-0.1,0.6c-0.2,1-0.7,2.3-0.2,3.1c0.2,0.4,0.6,0.6,1,0.8
+c0.5,0.4,0.8,0.7,1.3,0.8c0.4,0.1,1,0,1.3,0c0.5,0,1,0.1,1.5,0.4c-0.3,0.7-0.4,1.9-0.3,2.3c0,0.3,0.2,0.4,0.2,0.7
+c0.2,1.1-1.6,1.8-1.2,2.9c0.1,0.2,0.2,0.5,0.2,0.8c0,0.9-0.7,1.3-0.8,2c-0.1,0.4,0,0.6,0,1c0,0.2,0,0.3-0.1,0.5
+c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
+								</label>
 							</div>
 						</div>
 
-						<div class="filters-group-other">
-							<div class="form-field form-field--select">						
-								<select class="js-field--select reflection-select--filter">
-							    <option value="" disabled selected>Country</option>
-							    <option value="a0">All Countries</option>
-							    <option value="a1">Japan</option>
-							    <option value="a2">United States</option>
-							    <option value="a3">China</option>
-							    <option value="a4">Germany</option>
-							    <option value="a5">France</option>
-							    <option value="a6">United Kingdom</option>
-							    <option value="a7">Italy</option>
-								</select>
-							</div>
-							<div class="form-field form-field--select">						
-								<select class="js-field--select reflection-select--filter">
-							    <option value="" disabled selected>App Store</option>
-							    <option value="b0">All Stores</option>
-							    <option value="b1">iPad Store</option>
-							    <option value="b2">iPhone Store</option>
-								</select>
-							</div>
-							<div class="filter-toggle">
-								<div class="toggle">
-									<input type="radio" id="calendar" name="radiogroupname" checked />
-									<label for="calendar" class="toggle-calendar">
-										<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M30.3,5.2c-0.5-0.4-1-0.7-1.6-0.7h-2.3V2.8c0-0.8-0.3-1.4-0.8-2C25,0.3,24.3,0,23.5,0h-1.2
-	c-0.8,0-1.5,0.3-2,0.8c-0.6,0.6-0.8,1.2-0.8,2v1.7h-6.9V2.8c0-0.8-0.3-1.4-0.8-2C11.1,0.3,10.4,0,9.6,0H8.5C7.7,0,7,0.3,6.4,0.8
-	c-0.6,0.6-0.8,1.2-0.8,2v1.7H3.3c-0.6,0-1.2,0.2-1.6,0.7C1.2,5.7,1,6.2,1,6.8v22.6c0,0.6,0.2,1.1,0.7,1.6c0.5,0.4,1,0.7,1.6,0.7
-	h25.4c0.6,0,1.2-0.2,1.6-0.7c0.5-0.4,0.7-1,0.7-1.6V6.8C31,6.2,30.8,5.7,30.3,5.2z M8.5,29.4H3.3v-5.1h5.2V29.4z M8.5,23.2H3.3v-5.7
-	h5.2V23.2z M8.5,16.4H3.3v-5.1h5.2V16.4z M8.1,8.3C8,8.2,7.9,8.1,7.9,7.9V2.8c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2h1.2
-	c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v5.1c0,0.2-0.1,0.3-0.2,0.4C9.9,8.4,9.8,8.5,9.6,8.5H8.5C8.3,8.5,8.2,8.4,8.1,8.3z
-	 M15.4,29.4H9.6v-5.1h5.8V29.4z M15.4,23.2H9.6v-5.7h5.8V23.2z M15.4,16.4H9.6v-5.1h5.8V16.4z M22.4,29.4h-5.8v-5.1h5.8V29.4z
-	 M22.4,23.2h-5.8v-5.7h5.8V23.2z M22.4,16.4h-5.8v-5.1h5.8V16.4z M21.9,8.3c-0.1-0.1-0.2-0.2-0.2-0.4V2.8c0-0.2,0.1-0.3,0.2-0.4
-	c0.1-0.1,0.2-0.2,0.4-0.2h1.2c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v5.1c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.2,0.2-0.4,0.2
-	h-1.2C22.2,8.5,22.1,8.4,21.9,8.3z M28.7,29.4h-5.2v-5.1h5.2V29.4z M28.7,23.2h-5.2v-5.7h5.2V23.2z M28.7,16.4h-5.2v-5.1h5.2V16.4z"/></svg>
-									</label>
-								</div>
-								<div class="toggle">
-									<input type="radio" id="map" name="radiogroupname" />
-									<label for="map">
-										<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M16,0C7.2,0,0,7.2,0,16c0,8.8,7.2,16,16,16s16-7.2,16-16C32,7.2,24.8,0,16,0z M1.5,16
-	c0-2.9,0.9-5.6,2.3-7.8c0.1,0.1,0.2,0,0.3,0.1c0,0.2,0,0.5,0,0.7c-0.2,0.9,0.4,1.8,1.2,1.9c0.1,0.5-0.2,0.6,0.3,1.3
-	c0,0.1,0,0.3,0.1,0.4c0.1,0.1,0.3,0.2,0.5,0.3c0.5,0.3,0.4,0.9,0.2,1.4s-0.6,0.8-0.8,1.3c-0.3,0.8-0.3,1.8,0.3,2.4
-	c0.2,0.3,0.5,0.9,0.8,1s0.4,0.3,0.5,0.6c0.1,0.5,0.3,0.8,0.3,1.3c0,0.4-0.2,1.1-0.2,1.5c0,0.4,0.2,0.3,0.1,0.5
-	c0,0.2-0.1,0.1-0.2,0.4c-0.1,0.6,0,1.7,0.1,2.1c0.2,1.5,1.1,2.7,2,2.6c0.3-0.7-0.4-1.5-0.1-2.2c0.1-0.3,0.3-0.5,0.5-0.7
-	c1-0.8,1.8-1.5,2.4-2.5c0.1-0.1,0.2-0.4,0.3-0.5c0.1-0.1,0.3-0.1,0.5-0.1c0.7-0.1,1.1-0.5,1.4-1.1c0.3-0.6,0.3-1.1,0.9-1.7
-	c0.1-0.1,0.2-0.5,0.3-0.6c0.3-0.5-0.1-1.2-0.6-1.5c-0.5-0.3-1-0.4-1.4-0.7c-0.6-0.4-0.6-1-1-1.5c-0.4-0.5-1.1-0.9-1.7-1.2
-	c-0.7-0.4-0.7-0.7-1.9-1.2c-0.1-0.1-0.5-0.1-0.6,0c-0.1,0-0.2,0.2-0.4,0.3c-0.4,0.4-1.3,0.2-1.5-0.4c-0.1-0.3,0-0.5,0-0.7
-	c-0.1-0.3-0.1-0.7-0.4-0.6c-0.1-0.4,0.6-0.1,0.6-0.7c0.1-0.5-0.3-0.1-0.8-0.4C5.4,9.8,5.4,9,5.6,8.7c0.2-0.6,0.3-0.3,0.6-0.5
-	C6.6,7.8,7.4,7.5,8,7.8C8.4,8.1,8.4,9,8.6,9.1C8.8,9.3,9,9,9,8.8c0-0.2-0.1-0.6,0-0.8c0.1-0.1,0.2-0.2,0.3-0.3
-	c1.1-0.8,2.4-1.3,3.7-1.4c0.1,0,0.4,0,0.5-0.1c0.2-0.2,0.1-0.5,0.4-0.5c0.2,0,0.4,0.3,0.7,0.3c0.3,0.1,0.6-0.4,0.6-0.7
-	c0-0.3-0.1-0.7,0-1c0.1-0.1,0.1-0.3,0.1-0.4c0-0.1-0.1-0.1-0.2-0.1c-0.2-0.1-0.3-0.5-0.7-0.4c-0.4,0.2-0.7,0.2-1.1,0.4
-	c-0.3,0.2-0.5,0.5-1,0.6c-0.2-0.4,0-0.9,0.3-1.2C13.1,3,13.5,3,13.9,3c0.2,0,0.4-0.1,0.6,0c0.1,0,0.3,0.2,0.4,0.2
-	c0.3,0.2,0.6,0,0.8-0.3s0.4-0.5,0.2-0.8C16,1.9,16.2,2,16.3,2.2c0.1,0.2-0.1,0.4-0.2,0.6c-0.4,1,0.4,2,0.8,1.9
-	c0.5-0.1,0.9-1.2,1.5-1.4c0.2-0.1,0.4-0.1,0.5-0.2c0.2-0.2,0.2-0.4,0.3-0.7c0.1-0.2,0.4-0.3,0.7-0.4c1.4,0.4,2.6,1,3.8,1.7
-	c0,0,0,0,0,0c-0.1,0-0.2,0-0.3,0c-0.7-0.1-0.9,0.5-0.7,1.2c0.2,0.5,0.6,0.8,1.1,1c0.2,0.1,0.6,0.1,0.7,0.3c0,0.1-0.1,0.3-0.1,0.3
-	c0.1,0.5-0.1,0.8-0.5,1.1c-0.4,0.3-1.1,0.2-1.4,0.5c-0.3,0.3,0.2,1.2,0.6,1.5c0.4,0.4,1.2,0.3,1.5-0.1c0.2-0.3,0-0.6,0.1-0.8
-	c0.6,0.1,0.9,0.3,1.1,0.8c0,0.1,0.2,0.1,0.3,0.1c0.3,0.1,0.4-0.3,0.5-0.1c0,0.2,0.1,0.3,0.2,0.4c0.2,0.1,0.2-0.1,0.4,0
-	c0.2,0.1,0.3,0.5,0.6,0.5s0.6,0,0.8,0.2c0.1,0.2,0.2,0.4,0.1,0.6c-0.1,0.2-0.9,0.1-1.4-0.1s-0.6-0.5-1.1-0.8c-0.8-0.4-2.4-0.3-3.6,0
-	c-0.9,0.3-1.1,0.6-1.7,1.3c-0.1,0.1-0.2,0.5-0.3,0.7c-0.1,0.2-0.1,0.4-0.1,0.6c-0.2,1-0.7,2.3-0.2,3.1c0.2,0.4,0.6,0.6,1,0.8
-	c0.5,0.4,0.8,0.7,1.3,0.8c0.4,0.1,1,0,1.3,0c0.5,0,1,0.1,1.5,0.4c-0.3,0.7-0.4,1.9-0.3,2.3c0,0.3,0.2,0.4,0.2,0.7
-	c0.2,1.1-1.6,1.8-1.2,2.9c0.1,0.2,0.2,0.5,0.2,0.8c0,0.9-0.7,1.3-0.8,2c-0.1,0.4,0,0.6,0,1c0,0.2,0,0.3-0.1,0.5
-	c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
-									</label>
-								</div>
-							</div>
+						<div class="form-field form-field--select store-select">						
+							<select class="js-field--select reflection-select--filter">
+						    <option value="" disabled selected>App Store</option>
+						    <option value="b0">All Stores</option>
+						    <option value="b1">iPad Store</option>
+						    <option value="b2">iPhone Store</option>
+							</select>
 						</div>
+						<div class="form-field form-field--select country-select">						
+							<select class="js-field--select reflection-select--filter">
+						    <option value="" disabled selected>Country</option>
+						    <option value="a0">All Countries</option>
+						    <option value="a1">Japan</option>
+						    <option value="a2">United States</option>
+						    <option value="a3">China</option>
+						    <option value="a4">Germany</option>
+						    <option value="a5">France</option>
+						    <option value="a6">United Kingdom</option>
+						    <option value="a7">Italy</option>
+							</select>
+						</div>
+						
 						<div class="filters-group-graph-options">
-							<div class="filter-switch filter-switch--small">
-								<span>Accuracy</span>
-								<div class="can-toggle can-toggle--size-small">
-								  <input id="accuracy" type="checkbox">
-								  <label for="accuracy">
-								    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-								  </label>
+							<a href="#" class="show-hide-link ref-icon-after ref-icon-after--angle-down js-reveal-element">Show / Hide Options</a>
+							<div class="reveal-element">
+								<div class="filter-switch filter-switch--small">
+									<span>Accuracy</span>
+									<div class="can-toggle can-toggle--size-small">
+									  <input id="accuracy" type="checkbox">
+									  <label for="accuracy">
+									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+									  </label>
+									</div>
 								</div>
-							</div>
-							<div class="filter-switch filter-switch--small">
-								<span>Events</span>
-								<div class="can-toggle can-toggle--size-small">
-								  <input id="events" type="checkbox">
-								  <label for="events">
-								    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-								  </label>
+								<div class="filter-switch filter-switch--small">
+									<span>Events</span>
+									<div class="can-toggle can-toggle--size-small">
+									  <input id="events" type="checkbox">
+									  <label for="events">
+									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+									  </label>
+									</div>
 								</div>
-							</div>
-							<div class="filter-switch filter-switch--small">
-								<span>Overlay Downloads</span>
-								<div class="can-toggle can-toggle--size-small">
-								  <input id="overlaydownloads" type="checkbox">
-								  <label for="overlaydownloads">
-								    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-								  </label>
+								<div class="filter-switch filter-switch--small">
+									<span>Overlay Downloads</span>
+									<div class="can-toggle can-toggle--size-small">
+									  <input id="overlaydownloads" type="checkbox">
+									  <label for="overlaydownloads">
+									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+									  </label>
+									</div>
 								</div>
-							</div>
-							<div class="filter-switch filter-switch--small">
-								<span>Cumulative Chart</span>
-								<div class="can-toggle can-toggle--size-small">
-								  <input id="cumulative" type="checkbox">
-								  <label for="cumulative">
-								    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-								  </label>
+								<div class="filter-switch filter-switch--small">
+									<span>Cumulative Chart</span>
+									<div class="can-toggle can-toggle--size-small">
+									  <input id="cumulative" type="checkbox">
+									  <label for="cumulative">
+									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+									  </label>
+									</div>
 								</div>
-							</div>
-							<div class="filter-switch filter-switch--small">
-								<span>1M Moving Average</span>
-								<div class="can-toggle can-toggle--size-small">
-								  <input id="average" type="checkbox">
-								  <label for="average">
-								    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-								  </label>
+								<div class="filter-switch filter-switch--small">
+									<span>1M Moving Average</span>
+									<div class="can-toggle can-toggle--size-small">
+									  <input id="average" type="checkbox">
+									  <label for="average">
+									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+									  </label>
+									</div>
 								</div>
-							</div>
-							<div class="filter-switch filter-switch--small">
-								<span>Overlay Apps (0/5)</span>
-								<div class="can-toggle can-toggle--size-small">
-								  <input id="overlayapps" type="checkbox">
-								  <label for="overlayapps">
-								    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-								  </label>
+								<div class="filter-switch filter-switch--small">
+									<span>Overlay Apps (0/5)</span>
+									<div class="can-toggle can-toggle--size-small">
+									  <input id="overlayapps" type="checkbox">
+									  <label for="overlayapps">
+									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+									  </label>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -270,7 +277,7 @@
 						</div>
 						<button class="ref-button--function-small with-icon page-function-button"><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>
 					</header>
-					<table class="table-revenue">
+					<table class="table-revenue responsive">
 						<thead>
 							<th class="can-be-sorted is-ascending">Date <svg version=1.1 x=0px y=0px viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space=preserve class="sort-svg"><path class=ascending d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1
 	C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"/><path class=descending d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2
@@ -289,7 +296,7 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<td class="date-value">Mon 6 Mar 2014</td>
+								<td class="date-value">Mon 06/03/14</td>
 								<td class="revenue-value">&pound;11,529,654</td>
 								<td class="revenue-percentage">
 									<span>28%</span>
@@ -299,7 +306,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Tue 7 Mar 2014</td>
+								<td class="date-value">Tue 07/03/14</td>
 								<td class="revenue-value">&pound;4,385,021</td>
 								<td class="revenue-percentage">
 									<span>10%</span>
@@ -309,7 +316,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Wed 8 Mar 2014</td>
+								<td class="date-value">Wed 08/03/14</td>
 								<td class="revenue-value">&pound;6,772,912</td>
 								<td class="revenue-percentage">
 									<span>9%</span>
@@ -319,7 +326,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Thu 9 Mar 2014</td>
+								<td class="date-value">Thu 09/03/14</td>
 								<td class="revenue-value">&pound;4,385,021</td>
 								<td class="revenue-percentage">
 									<span>6%</span>
@@ -329,7 +336,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Fri 10 Mar 2014</td>
+								<td class="date-value">Fri 10/03/14</td>
 								<td class="revenue-value">&pound;6,772,912</td>
 								<td class="revenue-percentage">
 									<span>9%</span>
@@ -339,7 +346,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Sat 11 Mar 2014</td>
+								<td class="date-value">Sat 11/03/14</td>
 								<td class="revenue-value">&pound;1,342,021</td>
 								<td class="revenue-percentage">
 									<span>1%</span>
@@ -349,7 +356,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Sun 12 Mar 2014</td>
+								<td class="date-value">Sun 12/03/14</td>
 								<td class="revenue-value">&pound;2,123,232</td>
 								<td class="revenue-percentage">
 									<span>2%</span>
@@ -359,7 +366,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Mon 13 Mar 2014</td>
+								<td class="date-value">Mon 13/03/14</td>
 								<td class="revenue-value">&pound;0</td>
 								<td class="revenue-percentage">
 									<span>0%</span>
@@ -369,7 +376,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Tue 14 Mar 2014</td>
+								<td class="date-value">Tue 14/03/14</td>
 								<td class="revenue-value">&pound;200,000</td>
 								<td class="revenue-percentage">
 									<span>0.2%</span>
@@ -379,7 +386,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Tue 14 Mar 2014</td>
+								<td class="date-value">Tue 14/03/14</td>
 								<td class="revenue-value">&pound;2,000,000</td>
 								<td class="revenue-percentage">
 									<span>2%</span>
@@ -389,7 +396,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Wed 15 Mar 2014</td>
+								<td class="date-value">Tue 14/03/14</td>
 								<td class="revenue-value">&pound;10,544,836</td>
 								<td class="revenue-percentage">
 									<span>25%</span>
@@ -399,7 +406,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="date-value">Thu 16 Mar 2014</td>
+								<td class="date-value">Tue 14/03/14</td>
 								<td class="revenue-value">&pound;7,945,126</td>
 								<td class="revenue-percentage">
 									<span>14%</span>
@@ -423,6 +430,7 @@
  	<script src="js/vendor/handlebars-v2.0.0.js"></script>
  	<script src="js/templates/templates.js"></script>
 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	<script type="text/javascript" src="js/vendor/responsive-tables.js"></script>
 	<!--[if IE 9]>
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->
@@ -433,13 +441,9 @@
   <script src="js/application.js"></script>
   <script>
   	function initScripts() {
-  		new BlogPage();
+  		new AppPage();  		
 
   		// FRONT END DEMO JS ONLY FROM THIS POINT
-  		$('.pagination a').on("click", function(e) {
-  			e.preventDefault();
-  		});
-
   		$('.can-be-sorted').on("click", function() {
   			var $this = $(this), siblingSortCells = $this.siblings('.can-be-sorted');
   			if($this.hasClass('is-descending')) {
