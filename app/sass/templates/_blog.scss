@@ -1,8 +1,16 @@
 .page-blog {
 	padding-top: 34px;
 	padding-bottom: 66px;
+	.blog-content-container {
+		@media screen and (min-width: $tablet) and (max-width: $laptop) {
+			width: 75%;
+		}
+	}
 	.breadcrumb-container {
-		padding: 0;
+		padding: 0px 2%;
+		@include breakpoint($tablet) {
+			padding: 0;
+		}		
 	}
 	.search-field-no-label {
 		padding: 7px 14px 9px 13px;
@@ -14,7 +22,7 @@
 			color: #81879D;
 		}
 	}
-	.filters-container {		
+	.filters-container {
 		width: 100%;
 		padding-top: 0;
 		padding-bottom: 0.1rem;
@@ -30,9 +38,14 @@
 			float: right;
 			font-size: 0;
 			> div {
-				width: 46%;
-				margin-left: 4%;
+				width: 48%;
 				display: inline-block;
+				&:last-child {
+					float: right;
+				}
+				@include breakpoint($tablet) {
+					width: 48%;
+				}
 			}
 		}
 		.reflection-select {
@@ -40,6 +53,27 @@
 				background-color: transparent;
 			}
 		}
+		.grid__column--five-columns {
+			width: 100%;
+			@include breakpoint($tablet) {
+				width: 60%;
+			}
+			@include breakpoint($laptop) {
+				width: 41.6667%;
+			}
+		}	
+	}
+	.components-row-with-border {
+		margin-bottom: 2rem;
+		@include breakpoint($tablet) {
+			margin-bottom: 4rem;
+		}
+	}
+	.heading-container {
+		width: 8.2rem;
+		padding: 0 0 0 2%;
+		display: inline-block;
+		float: left;
 	}
 	.addthis_sharing_toolbox {
 		position: absolute;
@@ -83,4 +117,7 @@
 		height: 123px;
 		resize: none;
 	}
+}
+.blog-search-container {
+	float: right;
 }

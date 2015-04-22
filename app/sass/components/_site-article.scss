@@ -47,6 +47,16 @@
 	}
 	.comments-link {
 		float: right;
+		@media screen and (max-width: $tablet) {
+			float: left;
+			clear: both;
+			display: block;
+			width: 100%;
+			padding: 0px;
+			a {
+				padding: 0;
+			}
+		}
 	}
 	img {
 		max-width: 100%;
@@ -74,6 +84,12 @@
 		}
 	}
 	.addthis_sharing_toolbox {
-		bottom: 2.7rem;
+		position: relative;
+		margin-top: 20px;
+		@include breakpoint($tablet) {
+			position: absolute;
+			bottom: 2.7rem;
+			margin-top: 0;
+		}		
 	}
 }
