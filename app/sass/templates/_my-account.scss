@@ -12,28 +12,42 @@
 	}
 	.filters-container {
 		position: relative;
-		padding-top: 1.2rem;
-		padding-bottom: 1.2rem;
+		padding: 1.2rem 15px;
+		@include breakpoint($tablet) {
+			padding: 1.2rem 2%;
+		}
 		p {
 			margin-bottom: 1rem;
-			padding-top: 0.6rem;
 			color: #5b5d61;
 			font-size: 1.4rem;
+			@include breakpoint($tablet) {
+				padding-top: 0.6rem;
+			}
 		}
 		.ref-button--cta-small {
-			position: absolute;
-			top: 1.2rem;
-			right: 2rem;
+			position: relative;
+			left: 0px;
+			top: 0;
+			margin: 10px 0;
+			@include breakpoint($tablet) {
+				position: absolute;
+				top: 1.2rem;
+				right: 2rem;
+				left: inherit;
+				margin: 0;
+			}			
 		}
 	}
 	.default-tabs-transition .tabs__content {
 		background-color: transparent;
 	}
+	.tabs-to-dropdown-container {
+		@media screen and (max-width: $tablet) {
+			padding: 1rem 0 0 0;
+		}
+	}
 }
 .account-settings-section {
-	&.page-section.page-section--with-border {
-		padding-bottom: 2rem;
-	}
 	.grid__column {
 		padding-bottom: 4rem;
 	}

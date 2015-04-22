@@ -791,8 +791,7 @@
 
 		// Components
 		new Tabs();
-
-		// Components
+		new TabsToMobileDropDown();
 		new FormFieldSelect();
 		new BackToTop();
 	}
@@ -814,4 +813,12 @@
 		new TabsToMobileDropDown();
 		new FormFieldSelect();
 		new RevealContent();
+	}
+
+	var AccountSettingsPage = function() {
+		new Page();
+
+		// Components
+		new Tabs();
+		new TabsToMobileDropDown();
 	}
