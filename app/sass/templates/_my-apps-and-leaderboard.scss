@@ -1,7 +1,7 @@
 .page-functions {
 	width: 100%;
 	float: right;
-	display: inline-block;
+	display: none;
 	@include breakpoint($tablet) {
 		width: 50%;
 		float: none;
@@ -69,8 +69,15 @@
 		width: 17%;
 		text-align: center;
 		border-left: none;
-		border-right: 1px solid $light-grey-2;
-		box-shadow: 4px 0px 4px rgba(0,0,0,0.1);
+		overflow: visible;
+		border-right: 0;
+		table {
+			overflow: visible;
+		}
+		tbody {
+			border-right: 1px solid #CFD2DD;
+			box-shadow: 4px 0px 4px rgba(0,0,0,0.12);
+		}		
 	}
 	.scrollable {
 		.table-data .MHXTE6C-i-a,

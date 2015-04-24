@@ -778,7 +778,17 @@
 	var RevealContent = function() {
 		$('.js-reveal-element').on("click", function(e){
 			e.preventDefault();
-			$(this).next('.reveal-element').slideToggle(150);
+			var $this = $(this),
+			openText = $this.data('open-text'),
+			closedText = $this.data('closed-text');
+			$this.toggleClass('is-open');
+			$this.next('.reveal-element').slideToggle(150);
+			if($this.text() == closedText) {
+				$this.text($this.data('open-text'));
+			}
+			else {
+				$this.text($this.data('closed-text'));
+			}			
 		});
 	};
 /* END COMPONENT OBJECTS */

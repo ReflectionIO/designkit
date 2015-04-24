@@ -89,8 +89,13 @@
 	}
 	.pinned {
 		width: 34%;
+		border-right: 0;
 		border-left: 0;
-		box-shadow: 4px 0px 4px rgba(0,0,0,0.1);
+		overflow: visible;
+		tbody {
+			border-right: 1px solid #CFD2DD;
+			box-shadow: 4px 0px 4px rgba(0,0,0,0.1);
+		}		
 	}
 	div.table-wrapper {
 		border-right: 0;
@@ -101,7 +106,7 @@
 	@media screen and (max-width: $tablet) {
 		.filter-container--app .filter-toggle {
 			width: 48%;
-			margin-bottom: 0.4rem;
+			margin-bottom: 1.1rem;
 			float: left;
 			.toggle {
 				width: 50%;
@@ -186,19 +191,19 @@
 	display: block;
 	clear: both;
 	text-align: center;
+	overflow: visible;
 	transition: height 0.3s, padding-top 0.3s;
 	@include breakpoint($tablet) {
-		padding-top: 1.3rem;
+		padding-top: 0;
 		text-align: left;		
 	}
 	.filter-switch--small {
 		width: 100%;
 		margin-right: 2rem;
-		margin-bottom: 0.6rem;
+		margin-top: 1.1rem;
 		display: inline-block;
 		@include breakpoint($tablet) {
 			width: auto;
-			margin-bottom: 0.9rem;
 		}
 		> span {
 			float: none;
@@ -210,8 +215,10 @@
 		}
 	}
 	.show-hide-link {
-		padding-bottom: 1.5rem;
+		position: relative;
+		padding-top: 0.3rem;
 		display: block;
+		z-index: 10;
 		@extend .text-link;
 		font-size: 1.3rem;
 		font-weight: 600;
@@ -219,9 +226,27 @@
 			display: none;				
 		}
 		&:after {
-			top: 0.4rem;
-			padding-left: 0.3rem;
+			position: absolute;
+			top: 0.2rem;
+			padding-left: 0.6rem;
+			padding-right: 0.6rem;
 			font-size: 1.7rem;
+			@include transform(rotate(0));
+			transition: transform $base-transition-speed-off;
+		}
+		&.is-open {
+			&:after {
+				@include transform(rotate(179.5deg));
+				transition: transform $base-transition-speed-on;
+			}
+		}
+	}
+	.reveal-element {
+		position: relative;
+		margin-top: 0.5rem;
+		z-index: 0;
+		@include breakpoint($tablet) {
+			margin-top: 0;
 		}
 	}
 	.can-toggle {
@@ -230,9 +255,6 @@
 		@include breakpoint($tablet) {
 			float: left;
 		}
-	}
-	.reveal-element {
-		margin-top: 4px;
 	}
 }
 .graph-container {
@@ -244,17 +266,22 @@
 .data-display-header {
 	position: relative;
 	padding-bottom: 12px;
-	margin-bottom: 5.5rem;	
-	overflow: visible;
+	margin-bottom: 1.3rem;	
+	overflow: hidden;
 	border-bottom: 1px solid $divider-grey;
 	@include breakpoint($desktop) {
 		margin-bottom: 5px;
 		padding-bottom: 2px;
 	}
 	button {
-		position: absolute;
-		right: 0px;
-		top: calc(100% + 11px);
+		display: none;
+		@include breakpoint($tablet) {
+			position: relative;
+			top: 0;
+			right: 0px;
+			float: right;
+			display: inline-block;
+		}		
 	}
 }
 .data-display-header--component {
@@ -264,7 +291,6 @@
 	font-size: 0;
 	@include breakpoint($tablet) {
 		width: 33%;
-		padding-right: 10px;
 	}
 }
 .data-heading {
@@ -272,6 +298,17 @@
 	display: inline-block;
 	vertical-align: top;
 	font-size: 2rem;
+	line-height: 1.2;	
+	@include breakpoint($tablet) {
+		max-width: 100px;
+	}
+	@include breakpoint($laptop) {
+		margin-top: -0.5rem;
+	}
+	@media screen and (min-width: 1140px) {
+		max-width: none;
+		margin-top: 0;
+	}
 }
 .app-icon-small {
 	width: 34px;
@@ -279,23 +316,26 @@
 	margin-right: 15px;
 }
 .data-summary-container {
+	width: 100%;	
+	margin-top: 0.4rem;
 	padding-top: 0;
-	text-align: right;
-	@include breakpoint($tablet) {		
+	text-align: center;
+	@include breakpoint($tablet) {
+		width: 28%;
+		margin-top: 0;
 		padding-bottom: 17px;
+		float: right;
 		text-align: left;
-	}
-	@include breakpoint($desktop) {
-		padding-top: 7px;
 	}
 }
 .revenue-date-range {
 	margin-right: 5%;
 	padding: 0 0 8px;
-	display: inline-block;
+	display: inline-block;	
 	font-size: 1.3rem;
 	color: $light-grey-1;
 	@include breakpoint($tablet) {
+		float: left;
 		display: block;
 		font-size: 1.4rem;
 	}
@@ -305,19 +345,24 @@
 	}
 }
 .revenue-summary-value {
-	display: inline-block;
+	display: inline-block;	
 	font-family: $brand-heading-font;
 	font-weight: 600;
 	font-size: 1.6rem;	
 	color: $dark-grey-1;
 	@include breakpoint($tablet) {
 		font-size: 2rem;
+		float: left;	
+		clear: both;
 		display: block;
 	}
 	@include breakpoint($desktop) {		
 		display: inline-block;
 	}
-	.data-summary-container-synced & {
+	@include breakpoint($desktop-wide) {
+		clear: none;
+	}
+	.data-summary-container-synced & {		
 		color: #727686;
 	}
 }
@@ -385,22 +430,33 @@
 	.revenue-percentage {
 		font-size: 0;
 		span {
-			width: percentage(70/500);
+			width: 18%;
 			display: inline-block;
 			vertical-align: middle;
 			font-size: 1.2rem;
 			color: $dark-grey-2;
 			@include breakpoint($tablet) {
+				width: percentage(70/500);
 				font-size: 1.5rem;
+			}
+			@include breakpoint($desktop-wide) {
+				width: 10%;
 			}
 		}
 		.data-bar {
 			height: 44px;
-			width: percentage(430/500);
+			width: 82%;
 			display: inline-block;
 			vertical-align: middle;
+			@include breakpoint($tablet) {
+				width: percentage(430/500);
+			}
+			@include breakpoint($desktop-wide) {
+				width: 90%;
+			}
 			div {
 				height: 44px;
+				width: percentage(430/500);
 				display: inline-block;
 				background-color: #dedeef;
 			}
@@ -412,5 +468,26 @@
 	&:active {
 		position: relative;
 		top: 2px;
+	}
+}
+.total-revenue-title {
+	width: 100%;
+	@include breakpoint($tablet) {
+		width: 22%;
+	}	
+}
+.data-summary-container-synced {
+	width: 100%;
+	text-align: center;
+	@include breakpoint($tablet) {
+		width: 30%;
+		float: right;
+		text-align: left;
+	}
+}
+.download-button--mobile {
+	float: right;
+	@include breakpoint($tablet) {
+		display: none;
 	}
 }

@@ -88,13 +88,32 @@ $local-breakpoint-vertical: 680px;
 			padding-bottom: 1.6rem;
 		}
 	}
+	.list-partners {
+		order: 3;
+	}
+	.list-partners li {
+		@media screen and (max-width: $phablet) {
+			width: 47%;
+		}
+	}
 }
 .logged-in-section-main {
 	position: relative;
 	width: 100%;
 	height: auto;
-	padding-top: 85px;	
+	padding-top: 40px;		
 	background-color: $reflection-purple;
+	@media screen and (max-width: $tablet) {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		text-align: center;
+	}
+	@include breakpoint($tablet) {
+		padding-top: 85px;
+		text-align: left;
+	}
 	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: $local-breakpoint-vertical) {
 		height: calc(100vh - 62px);
 		padding-top: 0;
@@ -113,10 +132,16 @@ $local-breakpoint-vertical: 680px;
 	}
 }
 .logged-in-section-main__column-one {
-	width: 100%;
-	max-width: percentage(637/1280);
+	width: 100%;	
 	display: inline-block;
 	vertical-align: middle;
+	order: 2;
+	@include breakpoint($phablet) {
+		max-width: 90%;
+	}
+	@include breakpoint($tablet) {
+		max-width: percentage(637/1280);
+	}
 	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: $local-breakpoint-vertical) {
 		margin-top: -16vh;
 	}
@@ -126,34 +151,61 @@ $local-breakpoint-vertical: 680px;
 	@include breakpoint($desktop-wide) {
 		margin-right: 1.1%;
 	}
-	img {
+	img {		
+		width: 134%;
 		float: right;
-		@media screen and (max-height: 800px) {
+		@include breakpoint($phablet) {
+			width: 100%;
+		}
+		@include breakpoint($tablet) {
+			width: auto;
+		}
+		@media screen and (max-height: 800px) {			
 			max-width: 650px;
 		}	
 	}	
 }
 .logged-in-section-main__column-two {
-	width: percentage(505/1280);
-	margin-top: 0;
+	width: 85%;
+	margin: 0 auto 40px;
 	display: inline-block;
 	vertical-align: middle;
+	order: 1;
+	@include breakpoint($phablet) {
+		width: 70%;
+	}
+	@include breakpoint($tablet) {
+		width: percentage(505/1280);
+		margin-top: 0;
+	}
 	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: $local-breakpoint-vertical) {
 		margin-top: -18.5vh;
 	}
 	.page-title {
 		margin-bottom: 0.54em;
 		color: $reflection-white;
+		@media screen and (min-width: $phablet) and (max-width: $tablet) {
+			font-size: 3.7em;
+		}
 	}
 	p {
-		font-size: 1.8rem;
+		font-size: 1.6rem;		
 		color: $purple-pale;
+		@include breakpoint($phablet) {
+			font-size: 1.8rem;
+		}
 	}
 }
 .logged-in-section-content {
 	max-width: 1600px;
 	margin: 0 auto;
 	padding-top: 4.4rem;
+	@media screen and (max-width: $tablet) {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
 	.site-article {
 		.addthis_sharing_toolbox {
 			position: relative;
@@ -167,6 +219,23 @@ $local-breakpoint-vertical: 680px;
 		}
 		.more-link a:visited, a:focus {
 		  color: $reflection-purple;
+		}
+	}
+	.grid__column--seven-columns {
+		order: 2;
+		@media screen and (min-width: $tablet) and (max-width: $laptop) {
+			width: 50%;
+		}
+	}
+	.grid__column--five-columns {
+		@media screen and (max-width: $tablet) {
+			order: 1;
+			margin-bottom: 4rem;
+			padding-bottom: 4rem;
+			border-bottom: 1px solid #E1E5E8;
+		}
+		@media screen and (min-width: $tablet) and (max-width: $laptop) {
+			width: 50%;
 		}
 	}
 	@include breakpoint($desktop) {
