@@ -159,9 +159,16 @@ $local-breakpoint-vertical: 680px;
 		}
 		@include breakpoint($tablet) {
 			width: auto;
+			max-width: 767px;
 		}
-		@media screen and (max-height: 800px) {			
-			max-width: 650px;
+		@include breakpoint($desktop) {
+			max-width: 900px;
+		}
+		@media screen and (min-width: $desktop-wide) and (min-height: 1000px) {
+			max-width: 1150px;
+		}
+		@media screen and (max-height: 900px) {			
+			max-width: 700px;
 		}	
 	}	
 }

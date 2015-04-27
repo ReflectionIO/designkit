@@ -499,13 +499,31 @@ input:invalid {
 			}
 		}
 	}
-	&.is-open {
+	.is-open & {
 		span:after {
 			@include transform(rotate(179.5deg));
 			transition: transform $base-transition-speed-on;
 		}
 		ul {
+			z-index: 5000;
 			transition: margin-top 0.2s ease-out;
+		}		
+	}		
+}
+.form-field--select {
+	.page-overlay {
+		opacity: 0;
+		display: block;
+		pointer-events: none;
+	}
+	&.is-open {
+		.page-overlay {
+			display: block;
+			z-index: 5000;
+			opacity: 1;
+			background: rgba(41, 41, 43, 0.3);
+			pointer-events: auto;
+			transition: opacity 0.2s;
 		}
 	}
 }
