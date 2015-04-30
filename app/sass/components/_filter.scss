@@ -35,7 +35,6 @@
 		max-height: 32.2rem;
 		padding-top: 1.6rem;
 		display: block;
-		overflow: auto;
 		z-index: 1000;
 		background-color: #fff;
 		border-radius: 3px;
@@ -48,15 +47,26 @@
 			left: 0;
 		}
 		span {
-			margin-bottom: 0.4rem;
-			padding-left: 1.6rem;
+			margin-bottom: 1.8rem;
+			margin-left: 12px;
+			margin-right: 11px;
+			padding-left: 10px;
+			padding-bottom: 15px;
 			display: block;
 			z-index: 0;
 			font-family: $brand-heading-font;
 			font-weight: 600;
 			line-height: 1.2;
-			color: $mid-grey-2;
+			color: $dark-grey-1;
+			border-bottom: 1px solid #e1e5e8;
 		}
+		.list-container {
+			height: 245px;
+			overflow: auto;
+		}
+	}
+	li {		
+		padding-left: 3rem;
 	}
 	&.is-open {
 		ul {
@@ -72,8 +82,8 @@
 	}
 	.close-popup {
 		position: absolute;
-		top: 11px;
-		right: 9px;
+		top: 17px;
+		right: 12px;
 		font-size: 1.7rem;
 		@extend %icon-font;
 		z-index: 10;
@@ -311,7 +321,10 @@
   label {
     user-select: none;
     position: relative;
-    display: flex;
+    display: -webkit-box;
+		  /* @alternate */ display: -ms-flexbox;
+		  /* @alternate */ display: -webkit-flex;
+		  /* @alternate */ display: flex;
     align-items: center;
     overflow: visible;
     .can-toggle__label-text {

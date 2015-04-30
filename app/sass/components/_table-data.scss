@@ -1,12 +1,17 @@
-.table-data {
+table.table-data {
 	width: 100%;
 	table-layout: fixed;
+	.is-safari & {
+		table-layout: auto;
+		width:auto;
+	}
 	.pinned &,
 	.scrollable & {
 		table-layout: auto;
 	}
 	th {
 		padding-top: 2.1rem;
+		padding-right: 10px;
 		padding-bottom: 1.4rem;
 		font-size: 1.3rem;
 		font-family: $brand-heading-font;
@@ -71,6 +76,15 @@
 		padding-top: 9px;
 		display: inline-block;
 		white-space: nowrap;
+		.is-safari & {
+			max-width: 200px;
+			@include breakpoint($desktop) {
+				max-width: 400px;
+			}
+			@include breakpoint($desktop-wide) {
+				max-width: none;
+			}
+		}		
 		a {
 			margin-bottom: 0.6rem;
 			display: block;

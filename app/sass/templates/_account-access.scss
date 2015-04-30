@@ -352,8 +352,8 @@
 		}
 	}
 }
-.no-touch .account-access-page .list-partners,
-.touch .account-access-page .list-partners {
+.no-touch .account-access-page .account-access-content .list-partners,
+.touch .account-access-page .account-access-content .list-partners {
 	display: none;
 	position: relative;
 	left: 0;
@@ -411,6 +411,9 @@
 	}
 	@include breakpoint($laptop, true) {
 		display: block;
+	}
+	li {
+		width: 49%;
 	}
 }
 .apply-content {
@@ -511,6 +514,12 @@
 		min-height: 76vh;
 	}
 }
+.create-password-main-content {
+	.img-reset {
+		width: 80%;
+		max-width: 174px;
+	}
+}
 .account-connect-animation {
 	position: absolute;
 	display: none;
@@ -605,5 +614,80 @@
 	.plug-logo-glow,
 	.plug-logo-container .plug-logo-part-glow {
 		opacity: 0;
+	}
+}
+.page-reset-password {
+	.account-access-content {
+		padding-top: 0;
+		@include breakpoint($tablet) {
+			padding-top: 50px;
+		}
+		@include breakpoint($laptop) {
+			padding-top: 11rem;
+		}
+		@media screen and (min-width: $laptop) and (max-height: 800px) {
+			padding-top: 6rem;
+		}
+	}
+	&.account-setup-content-wrapper {
+		@include breakpoint($tablet) {
+			height: calc(100vh - 62px);
+		}		
+	}
+	.full-screen-intro {
+		padding-top: 0;
+		p {
+			@media screen and (max-width: $laptop) {
+				max-width: 400px;
+				margin: 0 auto;
+			}
+		}
+	}
+	.img-reset {
+		display: none;
+		width: 80%;
+		max-width: 122px;
+		@include breakpoint($tablet) {
+			display: inline-block;
+			max-width: 85px;
+		}
+		@include breakpoint($laptop) {
+			max-width: 122px;
+		}
+		@media screen and (max-height: 800px) {
+			max-width: 85px;	
+		}
+		.form-submitted-success-complete & {
+			.hook {
+				transform: translateY(17px);
+				@include transition(transform 0.5s 0.8s);
+			}
+		}
+	}
+	.form-submitted-success {
+		.success-tick {
+			top: 10.2rem;
+		}
+		p {
+			position: relative;
+			margin-top: 180px;
+			@include breakpoint($desktop) {
+				margin-top: 195px;
+			}
+			@include breakpoint($desktop-wide) {
+				margin-top: 210px;
+			}
+		}
+	}
+	.connect-account-content .ref-button--full-width {
+		margin-top: 4.5rem;
+	}
+	.list-partners {
+		@media screen and (max-width: $laptop) {
+			display: none;
+		}
+	}
+	.account-form-container {
+		margin-bottom: 50px;
 	}
 }

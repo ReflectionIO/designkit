@@ -42,13 +42,23 @@
 }
 .table-overall {
 	width: 100%;
+	td {
+		.is-safari & {
+			width: 30%;
+		}
+	}
 	.MHXTE6C-i-a,
 	.table-data {
 		vertical-align: top;
 	}
 	.MHXTE6C-i-d,
-	.table-data-first {
+	.table-data-first {		
 		vertical-align: middle;
+		.is-safari & {
+			@include breakpoint($tablet) {
+				width: 90px;
+			}
+		}
 	}
 }
 .table-app-group {
