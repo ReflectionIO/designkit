@@ -249,7 +249,7 @@
 
 	var FormInteractions = function() {
 		setTimeout(function(){
-			$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text]').each(function(){
+			$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text], .form-field textarea').each(function(){
 				var $this = $(this);
 				var $thisParent = $this.parent('.form-field');
 				if(!$thisParent.hasClass('form-field--error')) {
