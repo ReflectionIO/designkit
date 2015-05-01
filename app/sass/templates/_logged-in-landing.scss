@@ -119,7 +119,7 @@ $local-breakpoint-vertical: 680px;
 	}
 	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: $local-breakpoint-vertical) {
 		height: calc(100vh - 62px);
-		padding-top: 0;
+		padding-top: 0;		
 	  &:before {
 	    content: '';
 	    display: inline-block;
@@ -132,6 +132,13 @@ $local-breakpoint-vertical: 680px;
 	    display: inline-block;
 	    vertical-align: middle;
 	  }
+	  .is-safari & {
+			height: 100vh;
+			margin-top: -62px;
+			&:before {
+				height: 100vh;
+			}
+		}
 	}
 }
 .logged-in-section-main__column-one {

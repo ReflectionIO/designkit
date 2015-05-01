@@ -42,27 +42,37 @@
 }
 .table-overall {
 	width: 100%;
+	.is-safari & {
+		table-layout: auto;
+		width: auto;
+	}
 	&.table-data th {
 		padding-left: 0;
 		padding-right: 0;
+		.is-safari & {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
 	}
 	&.table-data td {
 		padding-left: 0;
 		padding-right: 0;
 		.is-safari & {
 			width: 30%;
+			padding-left: 10px;
+			padding-right: 10px;
 		}
 	}
 	.MHXTE6C-i-a,
 	.table-data {
 		vertical-align: top;
 	}
-	.MHXTE6C-i-d,
-	.table-data-first {		
+	td.MHXTE6C-i-d,
+	td.table-data-first {		
 		vertical-align: middle;
 		.is-safari & {
 			@include breakpoint($tablet) {
-				width: 90px;
+				width: 80px;
 			}
 		}
 	}
@@ -86,6 +96,9 @@
 	&.table-data td {
 		padding-left: 0;
 		padding-right: 0;
+		&.table-data-first {
+			width: 80px;
+		}
 	}
 	.MHXTE6C-i-a,
 	.table-data {
