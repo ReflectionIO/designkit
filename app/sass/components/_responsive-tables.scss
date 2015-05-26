@@ -15,7 +15,7 @@
 ----------------------------------------- */
 
 /* Mobile */
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 719px) {
 	
 	table td, table th { padding-left: 10px; padding-right: 10px; text-align: left; }
 	
@@ -26,12 +26,20 @@
 	.pinned table th, .pinned table td { white-space: nowrap; }
 	.pinned td:last-child { border-bottom: 0; }
 	
-	div.table-wrapper { position: relative; margin-bottom: 20px; overflow: hidden; border-right: 1px solid #ccc; }
-	div.table-wrapper div.scrollable { margin-left: 35%; }
-	div.table-wrapper div.scrollable { overflow: scroll; overflow-y: hidden; }	
+	.table-wrapper { position: relative; margin-bottom: 20px; overflow: hidden; border-right: 1px solid #ccc; }
+	.table-wrapper .scrollable { margin-left: 35%; }
+	.table-wrapper .scrollable { overflow: scroll; overflow-y: hidden; }	
 	
 	table.responsive td, table.responsive th { position: relative; white-space: nowrap; overflow: hidden; }
 	table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { display: none; }
 	
-	
+}
+
+@include breakpoint($tablet) {
+	.table-wrapper .pinned {
+		display: none;
+	}
+	.table-wrapper .scrollable {
+		margin-left: 0;
+	}
 }

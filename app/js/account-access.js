@@ -174,6 +174,7 @@ AccountSetup.prototype.mockLinkAccount = function() {
 };
 
 var ResetPasswordPage = function() {
+	new BrowserDetection();
 	new FormInteractions();
 
 	// JS for reset password button

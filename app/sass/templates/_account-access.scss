@@ -70,12 +70,12 @@
 	h1 {
 		margin-bottom: 0.55em;
 		color: white;
-		font-size: 2.6em;
+		font-size: 2.8em;
 		@include breakpoint($phablet) {
-			font-size: 3.3em;
+			font-size: 3.5em;
 		}
 		@include breakpoint($laptop, true) {
-			font-size: 3.9em;
+			font-size: 4.1em;
 		}
 	}
 	.p-style--featured {
@@ -161,7 +161,6 @@
 		width: 100%;
 		padding: 30px 19px;
 		display: block;
-		visibility: hidden;
 		@include breakpoint($phablet, true) {
 			padding: 30px 30px;
 		}
@@ -212,17 +211,9 @@
 	.account-form-heading {
 		text-align: center;
 		margin-bottom: 2.7rem;
-		font-size: 1.4rem;
+		font-size: 1.8rem;
 		@include breakpoint($tablet, true) {
-			font-size: 1.6rem;
-		}
-	}
-	.ref-button--full-width:disabled {
-		background-color: $reflection-green;
-		cursor: default;
-		&:hover {
-			background-color: $reflection-green;
-			cursor: default;
+			font-size: 1.8rem;
 		}
 	}
 }
@@ -354,15 +345,18 @@
 }
 .no-touch .account-access-page .account-access-content .list-partners,
 .touch .account-access-page .account-access-content .list-partners {
-	display: none;
 	position: relative;
 	left: 0;
 	bottom: 0;
 	margin-top: 0;
 	padding-top: 0.5rem;
 	width: 120%;
+	display: none;
 	margin-left: -10%;
 	overflow: visible;
+	@include breakpoint($tablet, true) {
+		display: inline-block;
+	}
 	h2 {
 		margin-top: 0.8rem;
 		margin-bottom: 1.7rem;
@@ -371,16 +365,14 @@
 		max-width: 130px;
 		padding-bottom: 0;
 	}
-	@include breakpoint($phablet) {
-		display: block;
-		li:last-child {
-			display: none;
+	li {
+		display: none;
+		@include breakpoint($tablet, true) {
+			display: inline-block;
+			width: 23%;
 		}
 	}
 	@include breakpoint($tablet, true) {
-		ul {
-			display: block;
-		}
 		padding-top: 3rem;
 	}
 	@include breakpoint($desktop, true) {
@@ -435,13 +427,17 @@
 	position: absolute;
 	visibility: hidden;
 	text-align: left;
+	display: none;
 	overflow: visible;
-	@include opacity(0);	
+	@include opacity(0);
 	.login-form-is-showing & {
 		position: relative;
 		visibility: visible;
 		@include opacity(1);
 		transition: opacity 0.6s;
+		@include breakpoint($phablet) {
+			display: block;
+		}
 	}
 	.blockquote--reset-password,
 	.blockquote--login {
@@ -500,6 +496,9 @@
 	visibility: visible;
 	@include opacity(1);
 	transition: opacity 0.6s;
+	p {
+		margin: 0 auto;
+	}
 }
 @keyframes glowPulse {
 	0% { @include opacity(1); }
@@ -517,7 +516,7 @@
 .create-password-main-content {
 	.img-reset {
 		width: 80%;
-		max-width: 174px;
+		max-width: 174px;		
 	}
 }
 .account-connect-animation {
@@ -624,14 +623,20 @@
 		}
 		@include breakpoint($laptop) {
 			padding-top: 11rem;
-		}
+		}		
 		@media screen and (min-width: $laptop) and (max-height: 800px) {
 			padding-top: 6rem;
+		}
+		@media screen and (min-width: $laptop) and (max-height: 700px) {
+			padding-top: 10rem;
 		}
 	}
 	&.account-setup-content-wrapper {
 		@include breakpoint($tablet) {
 			height: calc(100vh - 62px);
+			.is-safari & {
+				height: 100vh;
+			}
 		}		
 	}
 	.full-screen-intro {
@@ -655,12 +660,13 @@
 			max-width: 122px;
 		}
 		@media screen and (max-height: 800px) {
-			max-width: 85px;	
+			max-width: 85px;
 		}
 		.form-submitted-success-complete & {
 			.hook {
 				transform: translateY(17px);
-				@include transition(transform 0.5s 0.8s);
+				-webkit-transition: -webkit-transform 0.5s 0.8s;
+         transition: transform 0.5s 0.8s;
 			}
 		}
 	}
@@ -686,8 +692,25 @@
 		@media screen and (max-width: $laptop) {
 			display: none;
 		}
+		@media screen and (max-height: 700px) {
+			.touch &,
+			.no-touch & {
+				display: none;
+			}			
+		}
+		.ie10 &,
+		.ie9 & {
+			display: none;
+		}
 	}
 	.account-form-container {
 		margin-bottom: 50px;
 	}
+}
+.is-safari .page-reset-password .img-reset {
+	@include breakpoint($tablet) {
+		height: 150px;
+  	margin: 0 auto;
+  	display: block;
+	}  
 }

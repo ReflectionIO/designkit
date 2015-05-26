@@ -1,12 +1,28 @@
 // Base styling
 .ref-button {
 	@extend %button-base-style;
+	&.ref-button--success:disabled {
+		background-color: $reflection-green;
+		cursor: default;
+		&:hover {
+			background-color: $reflection-green;
+			cursor: default;
+		}
+	}
+	&.ref-button--error:disabled {
+		background-color: $error-red;
+		cursor: default;
+		&:hover {
+			background-color: $error-red;
+			cursor: default;
+		}
+	}
 }
 
 // Reusable size buttons
 .ref-button--cta-small {
 	@extend .ref-button;
-	padding: 0.75em 1.5em 0.9em 1.45em;
+	padding: 0.74em 0.923077em 0.81em;
 	font-family: $brand-heading-font;
 	font-weight: 600;
 	color: $reflection-white;
@@ -17,33 +33,34 @@
 	}
 	&:active {
 		border-top: 2px solid #b2334a;
-		padding-bottom: calc(0.9em - 2px);
+		padding-bottom: calc(0.81em - 2px);
 		transition: border 0s;
 	}
 	&:disabled {
+		cursor: default;
 		background-color: #dedede;
 		&:hover {
 			background-color: #dedede;
 		}
 		&:active {
 			border-top: none;
-			padding-bottom: 0.9em;
+			padding-bottom: 0.84em;
 		}
 	}
 }
 .ref-button--cta-small--wide {
 	@extend .ref-button--cta-small;
-	padding: 0.75em 2.3em 0.9em 2.25em;
+	padding: 0.74em 2.3em 0.81em 2.25em;
 }
 .ref-button--cta-large {
 	@extend .ref-button--cta-small;
 	@include breakpoint($tablet) {
-		padding: 1.15em 1.8em 1.2em 1.85em;
-		@include font-size(16px);
+		padding: 0.95em 1.8em 1em 1.85em;
+		font-size: 1.8em;
 		border-radius: 0.25em;
 		&:active {
 			border-top: 3px solid #b2334a;
-			padding-bottom: calc(1.2em - 3px);
+			padding-bottom: calc(1em - 3px);
 		}
 		&:disabled {
 			&:active {
@@ -58,12 +75,12 @@
 	padding-right: 2.3em;
 	padding-left: 2.35em;
 	@include breakpoint($tablet) {
-		padding: 1.15em 2.3em 1.2em 2.35em;
+		padding: 0.95em 2.3em 1em 2.35em;
 	}
 }
 .ref-button--function-small {
 	@extend .ref-button;
-	padding: 0.75em 1.5em 0.85em 1.45em;
+	padding: 0.75em 0.92307692307692em 0.85em 0.92307692307692em;
 	font-family: $brand-heading-font;
 	font-weight: 600;
 	color: $reflection-purple;
@@ -80,6 +97,7 @@
 		transition: border 0s;
 	}
 	&:disabled {
+		cursor: default;
 		color: $light-grey-2;
 		background-color: #fafafa;
 		&:hover {
@@ -114,14 +132,15 @@
 .ref-button--function-large {
 	@extend .ref-button--function-small;
 	@include breakpoint($tablet) {
-		padding: 1.1em 1.85em 1.2em 1.85em;
-		@include font-size(16px);
+		padding: 0.95em 1.85em 1em 1.85em;
+		font-size: 1.8em;
 		&:active {
-			padding-bottom: calc(1.2em - 2px);
+			padding-bottom: calc(1em - 2px);
 		}
 		&:disabled {
+			cursor: default;
 			&:active {
-				padding-bottom: 1.2em;
+				padding-bottom: 1em;
 			}
 		}
 	}
@@ -131,30 +150,32 @@
 	padding-left: 2.45em;
 	padding-right: 2.55em;
 	@include breakpoint($tablet) {
-		padding: 1.1em 2.55em 1.2em 2.45em;
+		padding: 0.95em 2.55em 1em 2.45em;
 	}
 }
 .ref-button--full-width {
 	@extend .ref-button--cta-small;
 	width: 100%;
+	max-width: 300px;
 	margin-top: 1.6rem;
-	padding: 1.15em 0.5em;
-	@include font-size(16px);
+	padding: 0.95em 0.5em 1em;
+	font-size: 18px;
 	&:active {
 		border-top: 3px solid #b2334a;
-		padding-bottom: calc(1.15em - 3px);
+		padding-bottom: calc(1em - 3px);
 	}
 	&:disabled {
+		cursor: default;
 		&:active {
 			border-top: 0;
-			padding-bottom: 1.15em;
+			padding-bottom: 1em;
 		}
 	}
 	&.ref-button--success,
 	&.ref-button--error,
 	&.ref-button--is-loading {
 		&:active {
-			padding-bottom: 1.15em;
+			padding-bottom: 1em;
 		}
 	}
 }
@@ -218,6 +239,7 @@
 	}
 	&:disabled {
 		color: #c4c7d0;
+		cursor: default;
 		&:hover, &:active {
 			top: 0;
 			color: #c4c7d0;
@@ -229,7 +251,7 @@
 }
 .ref-button--link-large {
 	@extend .ref-button--link;
-	font-size: 1.6rem;
+	font-size: 1.8em;
 	span {
 		&:before {
 			position: absolute;

@@ -1,6 +1,9 @@
 .page-blog {
-	padding-top: 34px;
+	padding-top: 20px;
 	padding-bottom: 66px;
+	@include breakpoint($tablet) {
+		padding-top: 34px;
+	}
 	.blog-content-container {
 		@media screen and (min-width: $tablet) and (max-width: $laptop) {
 			width: 75%;
@@ -13,9 +16,10 @@
 		}		
 	}
 	.search-field-no-label {
-		padding: 7px 14px 9px 13px;
+		padding: 7px 14px 9px 13px;		
 		input[type="text"] {
-			font-size: 1.4rem;
+			font-size: 1.5rem;
+			overflow: visible;
 		}
 		input[type="submit"] {
 			font-size: 1.75rem;
@@ -61,7 +65,12 @@
 			@include breakpoint($laptop) {
 				width: 41.6667%;
 			}
-		}	
+		}
+		@media screen and (max-width: $tablet) {
+			.page-title {
+				font-size: 2.2em;	
+			}		
+		}
 	}
 	.components-row-with-border {
 		margin-bottom: 2rem;
@@ -74,6 +83,9 @@
 		padding: 0 0 0 2%;
 		display: inline-block;
 		float: left;
+		@include breakpoint($desktop-wide) {
+			width: 8.5rem;
+		}
 	}
 	.addthis_sharing_toolbox {
 		position: absolute;
@@ -87,7 +99,7 @@
 	display: block;
 	float: none;
 	@include breakpoint($desktop) {
-		max-width: 750px;
+		max-width: 850px;
 	}
 }
 .blog-tags {

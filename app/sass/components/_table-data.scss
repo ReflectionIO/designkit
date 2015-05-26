@@ -8,13 +8,17 @@ table.table-data {
 	.pinned &,
 	.scrollable & {
 		table-layout: auto;
+		@include breakpoint($tablet) {
+			table-layout: fixed;
+			.is-safari & {
+				table-layout: auto;
+				width: 100%;
+			}
+		}
 	}
 	th {
-		padding-top: 2.1rem;
-		padding-right: 10px;
-		padding-bottom: 1.4rem;
-		padding-left: 10px;
-		font-size: 1.3rem;
+		padding: 1.3rem 10px 1.1rem;
+		font-size: 1.5rem;
 		font-family: $brand-heading-font;
 		font-weight: 600;
 		color: $dark-grey-1;
@@ -22,11 +26,11 @@ table.table-data {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		@include breakpoint($tablet) {
-			font-size: 1.4rem;
+			padding-top: 0.8rem 10px 1.4rem;
+			font-size: 1.6rem;
 		}
 	}
 	td {
-		vertical-align: middle;
 		font-size: 1.2rem;
 		color: #363A47;
 		vertical-align: middle;
@@ -76,6 +80,8 @@ table.table-data {
 		display: block;
 		font-size: 1.3rem;
 		color: $light-grey-1;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 	.icon-dollar,
 	.ref-icon-before--revenue,

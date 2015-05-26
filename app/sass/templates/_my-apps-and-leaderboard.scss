@@ -31,7 +31,7 @@
 	.search-field-no-label {
 		input[type=text] {
 			max-width: calc(100% - 17px);
-			font-size: 1.3rem;
+			font-size: 1.5rem;
 			&:active + input[type=submit] {
 				color: $reflection-purple;
 			}
@@ -59,15 +59,26 @@
 // shared styles
 .page-my-apps,
 .page-leaderboard {
-	div.table-wrapper {
+	.table-wrapper {
 		border-right: 0;
 	}
-	div.table-wrapper div.scrollable {
+	.table-wrapper .scrollable {
 		margin-left: 17%;
 		.is-safari & {
 			margin-left: 50px;
 		}		
 	}
+	@include breakpoint($tablet) {
+		.table-wrapper .pinned {
+			display: none;
+		}
+		.table-wrapper .scrollable {
+			margin-left: 0;
+			.is-safari & {
+				margin-left: 0;
+			}	
+		}
+}
 	.pinned {
 		width: 17%;
 		text-align: center;
@@ -88,22 +99,13 @@
 			}
 		}
 		tbody {
-			border-right: 1px solid #CFD2DD;
-			box-shadow: 4px 0px 4px rgba(0,0,0,0.12);
+			border: 0;
 		}		
 	}
 	.scrollable {
 		.table-data .MHXTE6C-i-a,
 		.table-data .table-data {
 			max-width: 250px;
-		}
-		.table-overall .MHXTE6C-i-a,
-		.table-overall .table-data {
-			height: 87px;
-		}
-		.table-app-group .MHXTE6C-i-a,
-		.table-app-group .table-data {
-			height: 60px;
 		}
 	}
 }

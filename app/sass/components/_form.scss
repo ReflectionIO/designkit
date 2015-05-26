@@ -56,7 +56,7 @@ textarea {
 		padding-bottom: 27px;
 		display: block;
 		font-family: $brand-heading-font;
-		font-size: 1.19rem;
+		font-size: 1.29rem;
 		font-weight: 600;
 		color: $light-grey-1;
 		.no-touch & {
@@ -93,7 +93,7 @@ textarea {
 		bottom: 10px;
 		width: calc(100% - 28px);
 		font-family: $brand-heading-font;
-		font-size: 1.4rem;
+		font-size: 1.5rem;
 		.no-touch & {
 			transition: bottom 0.06s;
 		}
@@ -128,7 +128,7 @@ textarea {
 			padding-top: 2px;
 			padding-bottom: 1px;
 			font-family: $brand-heading-font;
-			font-size: 1.4rem;
+			font-size: 1.5rem;
 			color: $mid-grey-1;
 			font-weight: 400;
 			.no-touch & {
@@ -146,13 +146,16 @@ textarea {
 		position: absolute;
 		top: 0.9rem;
 		right: 0.9rem;
-		font-size: 1.15rem;
+		font-size: 1.25rem;
 		font-weight: 700;
-		color: $reflection-purple;
+		color: #c4c7d0;
+		.forms--dark-theme & {
+			color: #81879D;
+		}
 		&:hover {
-			color: darken($reflection-purple, 10%);
+			color: $reflection-green;
 			.forms--dark-theme & {
-				color: lighten($reflection-purple, 10%);
+				color: $reflection-green;
 			}
 		}
 		&:after {
@@ -199,6 +202,23 @@ textarea {
 }
 .form-field--date-select {
 	padding: 8px 32px 8px 14px;
+	.ie10 & {
+		padding: 0;
+		input {
+			padding: 8px 32px 10px 14px;
+		}
+		span {
+			padding-top: 1px;
+		}
+	}
+	&.form-field--date-select--no-icon {
+		.ie10 & {
+			padding: 0;
+			input {
+				padding: 8px 32px 10px 14px;
+			}
+		}
+	}
 }
 .form-field--date-select--no-icon {
 	padding-right: 13px;
@@ -222,11 +242,11 @@ textarea {
 .input-hint {
 	padding-top: 0.2rem;
 	display: block;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	color: $light-grey-1;
 	.is-closed & {
 		display: none;
-		font-size: 1.2rem;
+		font-size: 1.3rem;
 	}
 }
 .form-link {
@@ -367,6 +387,7 @@ input:invalid {
 }
 .form-field--select {
 	padding: 8px 9px 0 14px;
+	overflow: visible;
 	&.form-field--select-disabled {
 		background-color: #f7f7f9;
 		.forms--dark-theme & {
@@ -410,7 +431,7 @@ input:invalid {
 	span, li {
 		display: block;
 		font-family: $brand-heading-font;
-		font-size: 1.4rem;
+		font-size: 1.5rem;
 		color: $light-grey-1;
 		cursor: pointer;
 		transition: color $base-transition-speed-off;
@@ -480,10 +501,7 @@ input:invalid {
 		}
 		&.is-selected {
 			font-weight: 600;
-			color: #363a47;
-			.forms--dark-theme & {
-				color: $reflection-white;
-			}
+			color: $reflection-green;
 		}
 		&.pre-selected {
 			position: relative;
@@ -497,7 +515,7 @@ input:invalid {
 				position: absolute;
 				top: 0.1rem;
 				right: 5px;
-				font-size: 1.19rem;
+				font-size: 1.29rem;
 				color: $reflection-green;
 			}
 			&:before {
@@ -520,13 +538,14 @@ input:invalid {
 			z-index: 5000;
 			transition: margin-top 0.2s ease-out;
 		}		
-	}		
+	}	
 }
 .form-field--select {
 	.page-overlay {
 		opacity: 0;
 		display: block;
 		pointer-events: none;
+		z-index: -1;
 	}
 	&.is-open {
 		.page-overlay {
@@ -535,11 +554,18 @@ input:invalid {
 			opacity: 1;
 			background: rgba(41, 41, 43, 0.3);
 			pointer-events: auto;
-			transition: opacity 0.2s;
-			.is-safari & {
-				display: none;
-			}
+			transition: opacity 0.2s;			
 		}
+	}
+}
+.is-safari .panel-left-open {
+	.form-field--select.is-open {
+		.page-overlay {
+			display: none;
+		}
+	}
+	.reflection-select.reflection-select--filter ul {
+		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 1px -3px 6px rgba(0, 0, 0, 0.05), -3px 0px 6px rgba(0, 0, 0, 0.1);
 	}
 }
 .form-field--checkbox-list,
@@ -668,7 +694,7 @@ input:invalid {
 		line-height: 1;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		font-size: 15px;
+		font-size: 14px;
 		color: $light-grey-2;
 		text-align: center;
 		transition: color 0.2s;
@@ -727,7 +753,7 @@ input[type="checkbox"]:checked + .checkboxLabel {
 .radioButtonLabelVisibleDisabled {
 	padding-left: 31px;
 	font-family: $brand-heading-font;
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 	text-align: left;
 }
 .checkboxLabelVisible,
@@ -738,7 +764,7 @@ input[type="checkbox"]:checked + .checkboxLabel {
 		color: $light-grey-1;
 	}
 	.reflection-select & {
-		font-size: 1.3rem;
+		font-size: 1.5rem;
 		color: $reflection-purple;
 		transition: color $base-transition-speed-off;
 		&:hover {
@@ -1056,7 +1082,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	margin-top: 0.4rem;
 	margin-bottom: 0.3rem;
 	left: 0;
-	font-size: 1.15rem;
+	font-size: 1.25rem;
 	.is-closed & {
 		display: none;
 	}
@@ -1109,7 +1135,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	}
 }
 .password-strength-description {
-	font-size: 1.04rem;
+	font-size: 1.24rem;
 	color: $light-grey-1;
 }
 .general-error-message {
@@ -1118,7 +1144,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	text-align: center;
 	p {
 		margin: 0;
-		font-size: 1.2rem;
+		font-size: 1.3rem;
 		font-weight: 700;
 		color: #ff496a;
 	}

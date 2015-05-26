@@ -3,14 +3,28 @@
 	margin-bottom: 3px;
 	display: inline-block;
 	@include breakpoint($tablet) {
-		width: percentage(750/1000);
+		width: percentage(730/1000);
 		margin-bottom: 2.5rem;
+	}
+	@include breakpoint($laptop) {
+		width: percentage(750/1000);
+	}
+	.is-safari & {
+		@media screen and (max-width: $tablet) {
+			margin-bottom: 12px;
+		}
 	}
 }
 .page-app {
 	padding-top: 23px;
 	padding-bottom: 66px;
 	overflow: visible;
+	.filters-container {
+		padding: 0.9rem 3% 0.5rem;
+		@include breakpoint($tablet) {
+			padding: 1.4rem 2% 1.4rem;
+		}
+	}
 	.tabs-to-dropdown-container {
 		padding-top: 0.8rem;
 		@include breakpoint($tablet) {
@@ -29,12 +43,15 @@
 		vertical-align: top;
 		@include breakpoint($tablet) {
 			max-width: 68px;
+			margin-right: 20px;
+		}
+		@include breakpoint($laptop) {
 			margin-right: 30px;
 		}
 	}
 	.app-details {
 		width: calc(100% - 65px);
-		margin-top: 5px;		
+		margin-top: -0.5rem;
 		display: inline-block;
 		@include breakpoint($tablet) {
 			width: calc(100% - 102px);
@@ -46,10 +63,10 @@
 		margin-right: 10px;
 		display: inline-block;
 		vertical-align: middle;
-		font-size: 2.1rem;		
+		font-size: 2.3rem;		
 		@include breakpoint($tablet) {
 			margin-right: 15px;
-			font-size: 2.5rem;
+			font-size: 2.7rem;
 		}
 	}
 	.app-creator-price {
@@ -58,10 +75,10 @@
 	.app-creator {	
 		margin-right: 12px;
 		margin-bottom: 5px;
-		padding-top: 2px;
+		padding-top: 0.2rem;
 		display: inline-block;
 		vertical-align: middle;
-		font-size: 1.6rem;
+		font-size: 1.8rem;
 		a {
 			color: $reflection-purple;
 			&:hover {
@@ -70,16 +87,43 @@
 		}
 	}
 	.app-price {
-		padding-top: 5px;
+		padding-top: 0.4rem;
 		margin-bottom: 5px;
 		display: inline-block;
 		vertical-align: middle;
 		font-family: $brand-heading-font;
-		font-size: 1.4rem;
+		font-size: 1.6rem;
 		color: #28292c;
 	}
 	.filter-container--app {
 		padding-bottom: 0;
+		.date-selection-filter-container {
+			position: relative;
+			width: 48%;			
+			display: inline-block;
+			margin-right: 0;
+  		float: right;
+			overflow: visible;
+			.time-period-select {
+				width: 100%;
+			}
+			@include breakpoint($tablet) {
+				width: 20%;
+				margin-right: 1%;
+				float: none;
+			}
+			@include breakpoint($laptop) {
+				position: absolute;
+				width: 77.6%;
+				margin-right: 0;
+				.time-period-select {
+					width: 20%;
+				}
+			}
+			@include breakpoint($desktop) {
+				width: 78.4%;
+			}
+		}
 	}
 	.reveal-element {
 		display: none;
@@ -123,16 +167,27 @@
 			clear: left;
 		}
 	}
+	.reflection-select.reflection-select--filter.reflection-select--right ul {
+		@media screen and (max-width: $tablet) {
+			left: calc(50% - 153px);
+			right: auto;
+		}
+		@media screen and (min-width: $tablet) and (max-width: $laptop) {
+			left: 0;
+			right: auto;
+		}
+	}
 }
 .app-user-functions-container {
 	width: 100%;
 	margin-top: -5px;
+	margin-bottom: 0.5rem;
 	padding-left: 57px;
 	float: left;
 	text-align: left;
 	@include breakpoint($tablet) {
-		width: 14.5rem;
-		margin-right: 2%;
+		width: 15.5rem;
+		margin-bottom: 0;
 		padding-top: 6px;
 		padding-left: 0;		
 		float: right;
@@ -142,6 +197,7 @@
 		float: left;
 		@include breakpoint($tablet) {
 			float: right;
+			display: inline-block;
 		}
 	}
 	.filter-switch {
@@ -153,16 +209,16 @@
 			padding-top: 3px;
 			color: $light-grey-1;
 			font-family: $brand-heading-font;
-			font-size: 1.4rem;
+			font-size: 1.6rem;
 			span {
 				padding-left: 5px;
 				display: inline-block;
-				font-size: 1.2rem;
+				font-size: 1.4rem;
 			}
 		}
 	}
 	a {
-		font-size: 1.3rem;
+		font-size: 1.5rem;
 		font-family: $brand-heading-font;
 		font-weight: 600;
 		color: $reflection-purple;
@@ -266,7 +322,6 @@
 .data-display-header {
 	position: relative;
 	padding-bottom: 12px;
-	margin-bottom: 1.3rem;	
 	overflow: hidden;
 	border-bottom: 1px solid $divider-grey;
 	@include breakpoint($desktop) {
@@ -297,7 +352,7 @@
 	margin: 0;
 	display: inline-block;
 	vertical-align: top;
-	font-size: 2rem;
+	font-size: 2.2rem;
 	line-height: 1.2;	
 	@include breakpoint($tablet) {
 		max-width: 100px;
@@ -330,14 +385,14 @@
 }
 .revenue-date-range {
 	margin-right: 5%;
-	padding: 0 0 8px;
+	padding: 0 0 10px;
 	display: inline-block;	
-	font-size: 1.3rem;
+	font-size: 1.4rem;
 	color: $light-grey-1;
 	@include breakpoint($tablet) {
 		float: left;
 		display: block;
-		font-size: 1.4rem;
+		font-size: 1.6rem;
 	}
 	@include breakpoint($desktop) {
 		padding-top: 0.4rem;
@@ -348,19 +403,16 @@
 	display: inline-block;	
 	font-family: $brand-heading-font;
 	font-weight: 600;
-	font-size: 1.6rem;	
+	font-size: 1.8rem;	
 	color: $dark-grey-1;
 	@include breakpoint($tablet) {
-		font-size: 2rem;
+		font-size: 2.2rem;
 		float: left;	
 		clear: both;
 		display: block;
 	}
 	@include breakpoint($desktop) {		
 		display: inline-block;
-	}
-	@include breakpoint($desktop-wide) {
-		clear: none;
 	}
 	.data-summary-container-synced & {		
 		color: #727686;
@@ -384,12 +436,10 @@
 		}
 	}
 	th {
-		padding-top: 10px;		
-		padding-bottom: 10px;
-		padding-right: 20px;
+		padding: 1.3rem 20px 1.1rem 0;
 		font-family: $brand-heading-font;
 		font-weight: 600;
-		font-size: 1.3rem;		
+		font-size: 1.5rem;		
 		color: #28292c;
 		background-color: transparent;
 		&:first-child {
@@ -401,12 +451,8 @@
 		.scrollable & {
 			padding-left: 4%;
 		}
-		@include breakpoint($tablet) {			
-			padding-bottom: 11px;
-			font-size: 1.4rem;
-		}
-		@include breakpoint($desktop) {
-			padding-top: 28px;
+		@include breakpoint($tablet) {
+			font-size: 1.6rem;
 		}
 	}
 	.date-value,

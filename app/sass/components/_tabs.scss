@@ -1,3 +1,6 @@
+.tabs {
+	width: 100%;
+}
 .tabs-container {
 	@include breakpoint($tablet, true) {
 		width: 100%;
@@ -69,12 +72,38 @@
 	text-transform: uppercase;
 	transition: color $base-transition-speed-on;
 	&:hover {
-		color: darken($reflection-purple, 20%);
-		transition: color $base-transition-speed-on;
+		span {
+			color: darken($reflection-purple, 20%);
+			transition: color $base-transition-speed-on;
+		}
+		path {
+			fill: darken($reflection-purple, 10%);
+			transition: fill $base-transition-speed-on;
+			.is-disabled & {
+				fill: $light-grey-2;
+			}
+		}
+		.is-disabled & {
+			span {
+				color: $light-grey-2;
+			}
+		}
 	}
 	.tabs__tab:active & {
 		> span {
 			margin-top: 6px;
+		}
+	}
+	.tabs__tab.is-disabled:active & {
+		cursor: default;
+		> span {
+			margin-top: 0;
+		}
+	}
+	.tabs__tab.is-disabled & {
+		cursor: default;
+		> span {
+			color: $light-grey-2;
 		}
 	}
 	.is-active & {
@@ -157,14 +186,9 @@
 				fill: $mid-grey-1;
 				transition: fill $base-transition-speed-on;
 			}
-		}
-	}
-}
-.tabs__link {
-	&:hover {
-		path {
-			fill: darken($reflection-purple, 10%);
-			transition: fill $base-transition-speed-on;
+			.is-disabled & {
+				fill: $light-grey-2;
+			}
 		}
 	}
 }
@@ -349,12 +373,17 @@
 	.selected-tab {
 		display: inline-block;
 	}
-	.tabs-to-dropdown{
+	.tabs-to-dropdown {
+		li {
+			padding: 0px;
+		}
 		span {
 			color: $reflection-purple;
 		}
-		li {
-			padding: 0px;
+		.is-disabled {
+			span {
+				color: $light-grey-2;
+			}			
 		}
 	}
 }

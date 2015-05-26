@@ -40,13 +40,6 @@ $local-breakpoint-vertical: 680px;
   		bottom: 50px;
   	}
   }
-  @include breakpoint($desktop-wide) {
-  	.no-touch & {
-  		left: 50%;
-			max-width: 1650px;
-			margin-left: -825px;	
-  	}		
-  }
   h2 {
   	display: block;
   	width: 100%;
@@ -112,13 +105,13 @@ $local-breakpoint-vertical: 680px;
 			padding-bottom: 28px;
 		}
 		@include breakpoint($desktop) {
-			max-width: 140px;
+			max-width: 130px;
 		}
 		@media screen and (min-width: $local-breakpoint-desktop) and (min-height: $local-breakpoint-vertical) {
   		max-width: 120px;
   	}
   	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: 800px) {
-  		max-width: 140px;
+  		max-width: 130px;
   	}
   	@media screen and (min-width: $local-breakpoint-wide) and (min-height: 800px) {
   		max-width: 160px;
@@ -129,8 +122,12 @@ $local-breakpoint-vertical: 680px;
 	.list-partners ul {
 		width: 100%;
 		display: block;
-		li {
+		li {			
 			display: inline-block;
+			max-width: 140px;
+			@include breakpoint($desktop) {
+				max-width: inherit;
+			}
 		}
 	}
 }

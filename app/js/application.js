@@ -203,7 +203,7 @@
 
 		if($(window).width() <= 960) {
 			$('.js-hamburger-button').removeClass('is-selected');
-			$('body').removeClass('panel-left-open');
+			$('body, html').removeClass('panel-left-open');
 		}
 
 		// hide panel on content click/tap
@@ -219,7 +219,7 @@
 		$('.js-hamburger-button').on("click", function(){
 			$(this).toggleClass('is-selected');
 			if($('body').hasClass('panel-left-open')) {
-				$('body').removeClass('panel-left-open');
+				$('body, html').removeClass('panel-left-open');
 				if(!$('body').hasClass('landing-page')) {
 					instance.setMainContentWidthForIE();
 				}				
@@ -231,7 +231,7 @@
 					}, 140);
 				}
 			} else {
-				$('body').toggleClass('panel-left-open');
+				$('body, html').toggleClass('panel-left-open');
 				if(!$('body').hasClass('landing-page')) {
 					instance.setMainContentWidthForIE();
 				}
@@ -458,6 +458,7 @@
 			$('.default-tabs-transition .tabs__content-area').css("opacity", 1);
 		}
 
+		$('.js-tab-select').unbind("click");
 		$('.js-tab-select').on("click", function(e){
   		e.preventDefault();
   		var $this = $(this);
@@ -549,6 +550,8 @@
 					refSelectContainer = $('<div>').addClass('reflection-select'),
 					refSelectDefault = $('<span>').addClass('ref-icon-after ref-icon-after--angle-down').text('Choose your option'),
 					isFilter = selectInput.hasClass('reflection-select--filter'),
+					isCentered = selectInput.hasClass('reflection-select--center'),
+					isRightAligned = selectInput.hasClass('reflection-select--right'),
 					listContainer = $("<div>").addClass("list-container");
 					if(isFilter) {
 						optionsList.append($('<a>').addClass('close-popup').text('K').on("click", function(e){
@@ -561,6 +564,12 @@
 						}));
 						refSelectContainer.addClass('reflection-select--filter');
 						optionsList.append($('<span>').text($(selectOptions[0]).text())).append(listContainer);
+					}
+					if(isCentered) {
+						refSelectContainer.addClass('reflection-select--center');
+					}
+					if(isRightAligned) {
+						refSelectContainer.addClass('reflection-select--right');
 					}
 				selectOptions.each(function(){
 					$this = $(this);
@@ -694,6 +703,14 @@
 
 
 	var Accordion = function() {
+		that = this;
+		this.calculateAccordionHeights();
+		$(window).on("resize", function() {			
+			that.calculateAccordionHeights();
+		});		
+	};
+
+	Accordion.prototype.calculateAccordionHeights = function() {
 		$('.accordion').each(function(){
 			$this = $(this);
 			$this.find('> ul > li').addClass('is-closed');
@@ -702,6 +719,7 @@
 				var accordionHeight = $contentContainer.innerHeight();
 				$contentContainer.css('margin-top', -accordionHeight);
 			});
+			$this.find('.accordion-switch').unbind("click");
 			$this.find('.accordion-switch').on("click", function(){
 				var accordionSwitch = $(this), accordionSwitchParent = accordionSwitch.parent('li');
 				if(!accordionSwitch.hasClass('no-accordion-content')) {
@@ -736,7 +754,8 @@
 
 	var TabsToMobileDropDown = function() {
 		var instance = this;
-		this.switched = false;
+		this.switchedFromLarge = false;
+		this.switchedFromSmall = false;
   	$(window).load(instance.updateTabs());
   	$(window).on("redraw",function(){
   		instance.switched = false;
@@ -749,16 +768,18 @@
 
   TabsToMobileDropDown.prototype.updateTabs = function() {
   	var instance = this;
-    if (($(window).width() < 720) && !instance.switched) {
-      instance.switched = true;
+    if (($(window).width() < 720) && !instance.switchedFromLarge) {
+      instance.switchedFromLarge = true;
+      instance.switchedFromSmall = false;
       $(".tabs-to-dropdown").each(function(i, element) {
         instance.turnTabsToDropDown($(element));
       });
     }
-    else if (instance.switched && ($(window).width() > 720)) {
-      instance.switched = true;
-      $("table.responsive").each(function(i, element) {
-        instance.unsplitTable($(element));
+    else if (!instance.switchedFromSmall && ($(window).width() > 720)) {
+      instance.switchedFromSmall = true;
+      instance.switchedFromLarge = false;
+      $(".tabs-to-dropdown").each(function(i, element) {
+        instance.unsplitTabsToMobileDropDown($(element));
       });
     }
   };
@@ -770,8 +791,7 @@
 			$this = $(this);
 			activeElement.html($this.find('span').html()).addClass('ref-icon-after ref-icon-after--angle-down');
 		});
-		$container = $('<div>').addClass('tabs-to-dropdown-container');
-		original.wrap($container);
+		$container = original.parent('div').addClass('tabs-to-dropdown-container');
 		original.hide();
 		activeElement.insertBefore(original);
 
@@ -792,6 +812,11 @@
 		}
 	};
 
+	TabsToMobileDropDown.prototype.unsplitTabsToMobileDropDown = function(element) {
+		$('.tabs-to-dropdown-container').find('ul.tabs-to-dropdown').css("display", "block");
+		$('.tabs-to-dropdown-container').removeClass('tabs-to-dropdown-container').find('> span').remove();
+		new Tabs();
+	}
 
 	var RevealContent = function() {
 		$('.js-reveal-element').on("click", function(e){
@@ -809,6 +834,32 @@
 			}			
 		});
 	};
+
+	var ResponsiveTable = function() {
+		$('.table-wrapper').each(function(){
+			$this = $(this);
+			var tr = $this.find('.scrollable table.responsive tr'),
+        tr_copy = $this.find('.pinned table tr'),
+        heights = [];
+
+		    tr.each(function (index) {
+		      var self = $(this),
+		          tx = self.find('th, td');
+
+		      tx.each(function () {
+		        var height = $(this).innerHeight();
+		        heights[index] = heights[index] || 0;
+		        if (height > heights[index]) heights[index] = height;
+		      });
+
+		    });
+
+		    tr_copy.each(function (index) {
+		    	console.log(heights[index]);
+		      $(this).height(heights[index]);
+		    });
+		});
+	}
 /* END COMPONENT OBJECTS */
 
 /* PAGE OBJECTS FOR TEMPLATES */
@@ -822,6 +873,11 @@
 		new TabsToMobileDropDown();
 		new FormFieldSelect();
 		new BackToTop();
+		new ResponsiveTable();
+
+		$(window).on("resize", function(){
+			new ResponsiveTable();
+		});
 	}
 
 // BlogPage object
@@ -838,6 +894,7 @@
 		new Page();
 
 		// Components
+		new Tabs();
 		new TabsToMobileDropDown();
 		new FormFieldSelect();
 		new RevealContent();

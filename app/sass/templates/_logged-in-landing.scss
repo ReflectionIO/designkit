@@ -18,11 +18,12 @@ $local-breakpoint-vertical: 680px;
 	.accordion-switch {
 		position: relative;
 		width: 100%;
-		padding: 1.2rem percentage(79/459) 1.2rem percentage(74/459);
+		padding: 1rem 40% 1.2rem 5rem;
 		margin: 0;
 		display: block;
-		font-size: 1.4rem;
+		font-size: 1.6rem;
 		font-weight: 600;
+		line-height: 1.2;
 		color: $dark-grey-2;
 		@extend .ref-icon-before;
 		background: $reflection-white url(../images/bg-bullet.png) no-repeat 17px 1.8rem;
@@ -40,19 +41,30 @@ $local-breakpoint-vertical: 680px;
 			top: 1.1rem;
 			right: 14px;
 		}
-		span {
-			padding-top: 0.2rem;
+		> span {
+			position: absolute;
+			right: 4.5rem;
+			top: 1.2rem;
 			display: inline-block;
 			float: right;
-			font-size: 1.3rem;
+			font-size: 1.4rem;
 			font-weight: 400;
-			color: $reflection-red;
+			color: $light-grey-1;
+			span {
+				padding-left: 4px;
+				@media screen and (max-width: 959px) {
+					display: none;
+				}
+			}
+		}
+		@include breakpoint($desktop) {
+			padding-left: 11%;
 		}
 	}
 	.accordion {
 		.content-list--minor {
-			padding-right: percentage(79/459);
-			padding-left: percentage(76/459);
+			padding-right: 4.3rem;
+			padding-left: 5rem;
 			overflow: visible;
 			font-size: 1.39em;
 			li {
@@ -63,7 +75,7 @@ $local-breakpoint-vertical: 680px;
 				display: inline-block;
 				float: right;
 				font-size: 1.2rem;
-				color: $reflection-red;
+				color: $light-grey-1;
 			}
 		}
 		.list-item-complete {
@@ -88,12 +100,32 @@ $local-breakpoint-vertical: 680px;
 			padding-bottom: 1.6rem;
 		}
 	}
+	.accordion-static {
+		.accordion-switch > span {
+			right: 2rem;
+			@include breakpoint($tablet) {
+				right: 4.5rem;
+			}
+		}
+	}
 	.list-partners {
 		order: 3;
 	}
 	.list-partners li {
-		@media screen and (max-width: $phablet) {
+		@media screen and (max-width: 481px) {
 			width: 47%;
+		}
+		@media screen and (max-width: 959px) {
+			&:nth-child(7), &:last-child {
+				display: none;
+			}
+		}
+		.panel-left-open & {
+			@media screen and (max-width: 1599px) {
+				img {
+					max-width: 96%;
+				}
+			}
 		}
 	}
 }
@@ -103,7 +135,7 @@ $local-breakpoint-vertical: 680px;
 	height: auto;
 	padding-top: 40px;		
 	background-color: $reflection-purple;
-	@media screen and (max-width: $tablet) {
+	@media screen and (max-width: 959px) {
 		display: -webkit-box;
 	  /* @alternate */ display: -ms-flexbox;
 	  /* @alternate */ display: -webkit-flex;
@@ -113,7 +145,7 @@ $local-breakpoint-vertical: 680px;
 		justify-content: space-around;
 		text-align: center;
 	}
-	@include breakpoint($tablet) {
+	@include breakpoint($laptop) {
 		padding-top: 85px;
 		text-align: left;
 	}
@@ -145,11 +177,11 @@ $local-breakpoint-vertical: 680px;
 	width: 100%;	
 	display: inline-block;
 	vertical-align: middle;
-	order: 2;
+	order: 2;	
 	@include breakpoint($phablet) {
 		max-width: 90%;
 	}
-	@include breakpoint($tablet) {
+	@include breakpoint($laptop) {
 		max-width: percentage(637/1280);
 	}
 	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: $local-breakpoint-vertical) {
@@ -163,24 +195,30 @@ $local-breakpoint-vertical: 680px;
 	}
 	img {		
 		width: 134%;
-		float: right;
 		@include breakpoint($phablet) {
 			width: 100%;
 		}
-		@include breakpoint($tablet) {
+		@include breakpoint($laptop) {
 			width: auto;
 			max-width: 767px;
+			float: right;
 		}
 		@include breakpoint($desktop) {
-			max-width: 900px;
+			max-width: 900px;			
 		}
 		@media screen and (min-width: $desktop-wide) and (min-height: 1000px) {
-			max-width: 1150px;
+			max-width: 1000px;
 		}
 		@media screen and (max-height: 900px) {			
 			max-width: 700px;
 		}	
-	}	
+	}
+	.no-flexbox & {
+		margin-bottom: 30px;
+		@include breakpoint($laptop) {
+			margin-bottom: 0;
+		}
+	}
 }
 .logged-in-section-main__column-two {
 	width: 85%;
@@ -191,7 +229,7 @@ $local-breakpoint-vertical: 680px;
 	@include breakpoint($phablet) {
 		width: 70%;
 	}
-	@include breakpoint($tablet) {
+	@include breakpoint($laptop) {
 		width: percentage(505/1280);
 		margin-top: 0;
 	}
@@ -201,7 +239,7 @@ $local-breakpoint-vertical: 680px;
 	.page-title {
 		margin-bottom: 0.54em;
 		color: $reflection-white;
-		@media screen and (min-width: $phablet) and (max-width: $tablet) {
+		@media screen and (min-width: $phablet) and (max-width: 959px) {
 			font-size: 3.7em;
 		}
 	}
@@ -217,7 +255,7 @@ $local-breakpoint-vertical: 680px;
 	max-width: 1600px;
 	margin: 0 auto;
 	padding-top: 4.4rem;
-	@media screen and (max-width: $tablet) {
+	@media screen and (max-width: 721px) {
 		display: -webkit-box;
 		  /* @alternate */ display: -ms-flexbox;
 		  /* @alternate */ display: -webkit-flex;
@@ -243,19 +281,29 @@ $local-breakpoint-vertical: 680px;
 	}
 	.grid__column--seven-columns {
 		order: 2;
-		@media screen and (min-width: $tablet) and (max-width: $laptop) {
+		@media screen and (min-width: $tablet) and (max-width: 959px) {
 			width: 50%;
+		}
+		.panel-left-open & {
+			@media screen and (min-width: $laptop) and (max-width: 1279px) {
+				width: 50%;
+			}
 		}
 	}
 	.grid__column--five-columns {
-		@media screen and (max-width: $tablet) {
+		margin-bottom: 3rem;
+		@media screen and (max-width: 721px) {
 			order: 1;
-			margin-bottom: 4rem;
 			padding-bottom: 4rem;
 			border-bottom: 1px solid #E1E5E8;
 		}
-		@media screen and (min-width: $tablet) and (max-width: $laptop) {
+		@media screen and (min-width: $tablet) and (max-width: 959px) {
 			width: 50%;
+		}
+		.panel-left-open & {
+			@media screen and (min-width: $laptop) and (max-width: 1279px) {
+				width: 50%;
+			}
 		}
 	}
 	@include breakpoint($desktop) {
@@ -271,9 +319,19 @@ $local-breakpoint-vertical: 680px;
 			}
 		}
 	}
+	.no-flexbox & {
+		.grid__column--seven-columns {
+			@media screen and (max-width: 959px) {				
+				border-bottom: 1px solid $divider-grey;
+			}
+		}
+	}
 }
 .accordion-bottom-with-divider {
-	padding-bottom: 30px;
-	margin-bottom: 4rem;
+	padding-bottom: 4rem;
+	margin-bottom: 3rem;
 	border-bottom: 1px solid $divider-grey;
+}
+.hiring-title {
+	margin-top: 3rem;
 }

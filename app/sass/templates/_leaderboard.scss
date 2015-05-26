@@ -19,6 +19,9 @@
 					float: none;
 				}
 			}
+			&:nth-child(2) {
+				margin-bottom: 0;
+			}
 		}
 		.form-field:not(.form-field--date-select),
 		.calendar-container {
@@ -39,6 +42,15 @@
 			float: none;
 		}
 	}
+	@media screen and (max-width: $tablet) {
+		.page-title {
+			font-size: 2.2em;	
+		}		
+	}
+}
+.table-overall.table-data .MHXTE6C-i-a {
+	padding-top: 0px;
+	padding-bottom: 4px;
 }
 .table-overall {
 	width: 100%;
@@ -47,16 +59,24 @@
 		width: auto;
 	}
 	&.table-data th {
-		padding-left: 0;
-		padding-right: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		@include breakpoint($laptop) {
+			padding-left: 0;
+			padding-right: 0;
+		}
 		.is-safari & {
 			padding-left: 10px;
 			padding-right: 10px;
 		}
 	}
 	&.table-data td {
-		padding-left: 0;
-		padding-right: 0;
+			padding-left: 10px;
+			padding-right: 10px;
+		@include breakpoint($laptop) {
+			padding-left: 0;
+			padding-right: 0;
+		}
 		.is-safari & {
 			width: 30%;
 			padding-left: 10px;
@@ -79,23 +99,39 @@
 }
 .table-my-apps {
 	&.table-data th {
-		padding-left: 0;
-		padding-right: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		@include breakpoint($laptop) {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 	&.table-data td {
-		padding-left: 0;
-		padding-right: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		@include breakpoint($laptop) {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 }
 .table-app-group {
 	width: 100%;
 	&.table-data th {
-		padding-left: 0;
-		padding-right: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		@include breakpoint($laptop) {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 	&.table-data td {
-		padding-left: 0;
-		padding-right: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		@include breakpoint($laptop) {
+			padding-left: 0;
+			padding-right: 0;
+		}
 		&.table-data-first {
 			width: 80px;
 		}
@@ -106,12 +142,18 @@
 		padding-bottom: 0.6rem;
 	}
 }
-table.table-data>tbody>tr:nth-child(odd)>td {
+table.table-data>tbody>tr:nth-child(odd) {
 	background-color: #eff2f5;
+	>td {
+		background-color: #eff2f5;
+	}
 }
 
-table.table-data>tbody>tr:nth-child(even)>td {
+table.table-data>tbody>tr:nth-child(even) {
 	background-color: #ffffff;
+	>td {
+		background-color: #ffffff;
+	}
 }
 @media screen and (max-width: $tablet) {
 	.page-leaderboard .scrollable .table-data .MHXTE6C-i-a:nth-child(2),
