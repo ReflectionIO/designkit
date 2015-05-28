@@ -1,3 +1,18 @@
+form {
+	text-align: center;
+	fieldset {
+		text-align: center;
+	}
+	* {
+		text-align: left;
+	}
+	input[type=submit],
+	button {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;		
+	}
+}
 .form-field a,
 .form-field--checkbox-list,
 .form-field--radio-list {
@@ -610,10 +625,18 @@ input:invalid {
 		display: inline-block;
 	}
 	label {
-		padding-top: 1px;
+		padding-top: -1px;
 		padding-bottom: 0;
 		display: inline-block;
 		font-weight: 400;
+	}
+	.checkboxLabelVisible {
+		line-height: 1.4;
+		.reflection-select & {
+			position: relative;
+			top: -1px;
+			padding-top: 0;
+		}
 	}
 }
 .form-field--checkbox-list + input[type="submit"],
@@ -644,6 +667,10 @@ input:invalid {
 	@include box-sizing(border-box);
 	line-height: 1;
 	text-decoration: none;
+	.is-error-message-showing & {
+		top: inherit;
+		bottom: 0.4rem;
+	}
 }
 .radioButtonLabel,
 .radioButtonLabelDisabled {
@@ -676,6 +703,15 @@ input:invalid {
 		}
 	}
 }
+input[type="checkbox"]:disabled + .checkboxLabel:active,
+input[type="radio"]:disabled + .radioButtonLabel:active,
+input[type="checkbox"]:disabled:checked + .checkboxLabel:active,
+input[type="radio"]:disabled:checked + .radioButtonLabel:active {
+	border-top: 0;
+	.forms--dark-theme & {
+		border-top: 0;
+	}
+}
 .checkboxLabel {
 	&:after {
 		opacity: 0;
@@ -703,6 +739,7 @@ input:invalid {
 		}
 	}
 	.reflection-select & {
+		font-size: 0;
 		text-align: left;
 		text-indent: -999em;
 		background-color: $reflection-white;
@@ -718,6 +755,15 @@ input[type="radio"]:disabled + .radioButtonLabel {
   .forms--dark-theme & {
   	background-color: #2D2D31;
   }
+}
+input[type="radio"]:disabled:checked + .radioButtonLabel {
+	.forms--dark-theme & {
+  	background-color: $reflection-green;
+  }
+}
+input[type="checkbox"]:checked:disabled + .checkboxLabel,
+input[type="radio"]:checked:disabled + .radioButtonLabel {
+	opacity: 0.5;
 }
 input[type="checkbox"]:checked + .checkboxLabel,
 input[type="radio"]:checked + .radioButtonLabel {
@@ -820,6 +866,12 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	width: 100%;
 	tr {
 		width: 100%;
+	}
+	* {
+		text-align: center;
+		form & {
+			text-align: center;
+		}
 	}
 }
 .single-date-selector-container {
@@ -1142,10 +1194,21 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	padding: 1rem 0 0;
 	display: block;
 	text-align: center;
-	p {
+	p, span {
 		margin: 0;
 		font-size: 1.3rem;
 		font-weight: 700;
 		color: #ff496a;
 	}
+}
+.block-error-message,
+.block-error-message:last-child {
+	width: 100%;
+	margin-bottom: 0.8rem;
+	display: inline-block;
+	float: left;
+	font-size: 1.3rem;
+	font-weight: 700;
+	line-height: 1.3;
+	color: #ff496a;
 }

@@ -533,7 +533,7 @@
 					else {
 						$this.addClass('is-open');
 						optionsList.css('margin-top', "9px");
-					}				
+					}	
 				});
 			}
 
@@ -563,7 +563,8 @@
 							}							
 						}));
 						refSelectContainer.addClass('reflection-select--filter');
-						optionsList.append($('<span>').text($(selectOptions[0]).text())).append(listContainer);
+						var selectTitle = (selectInput.data("title")) ? selectInput.data("title") : $(selectOptions[0]).text();
+						optionsList.append($('<span>').text(selectTitle)).append(listContainer);
 					}
 					if(isCentered) {
 						refSelectContainer.addClass('reflection-select--center');
@@ -611,6 +612,9 @@
 						refSelectContainer.addClass('is-open');
 						refSelectContainer.parents('.form-field--select').addClass('is-open');
 						optionsList.css('margin-top', "9px");
+						if($('.touch').length) {
+							refSelectContainer.siblings('.js-field--select').focus();
+						}
 					}
 					if($(window).width() < 720) {
 						if(refSelectContainer.hasClass('reflection-select--filter') && refSelectContainer.hasClass('is-open')) {
@@ -658,8 +662,14 @@
 						}
 					}
 				});
+
+				$(this).siblings('.page-overlay').on("click", function() {
+					toggleDropDown();
+				});
 			});
 		}
+
+
 	};
 
 	FormFieldSelect.prototype.populateSelectedValues = function(listItems, selectedOptionsContainer) {
@@ -680,7 +690,6 @@
 		}
 	};
 
-
 	var BackToTop = function() {
 		if($('.MHXTE6C-ob-c').length > 0) {
 			$('.MHXTE6C-ob-c').on("click", function(e){
@@ -692,7 +701,7 @@
 		$(window).scroll(function(){
 			var scrollTop = $(window).scrollTop();
 			var windowHeight = $('body').height();
-			if(scrollTop > windowHeight / 3) {
+			if(scrollTop > 500) {
 				$('.MHXTE6C-ob-c').addClass('is-showing');
 			}
 			else {
@@ -855,7 +864,6 @@
 		    });
 
 		    tr_copy.each(function (index) {
-		    	console.log(heights[index]);
 		      $(this).height(heights[index]);
 		    });
 		});

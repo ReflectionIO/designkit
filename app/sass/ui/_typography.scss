@@ -95,6 +95,9 @@ $code-font: Courier, sans-serif;
 .ref-icon-before--linkedin:before {
 	content: "p";
 }
+.ref-icon-before--google-plus:before {
+	content: "S";
+}
 .ref-icon-before--cancel:before {
 	content: "s";
 }
@@ -115,6 +118,9 @@ $code-font: Courier, sans-serif;
 }
 .ref-icon-before--refresh:before {
 	content: "O";
+}
+.ref-icon-before--apple:before {
+	content: "R";
 }
 .ref-icon-after--angle-up:after {
 	content: "m";
@@ -405,6 +411,9 @@ p {
 		li {
 			padding-left: 0;
 			background: none;
+			&:before {
+				display: none;
+			}
 		}
 	}
 }
@@ -474,13 +483,15 @@ ul.content-list,
 ul.content-list--featured,
 ul.content-list--minor {
 	li {
-		background: url(../images/bg-bullet.png) no-repeat left 0.6em;
-		background-size: 10px auto;
-	}
-}
-ul.content-list--minor {
-	li {
-		background-size: 8px auto;
+		position: relative;
+		&:before {
+    	content: "\2022";
+    	position: absolute;
+			left: 0.1rem;
+    	font-family: $brand-body-font;
+    	font-size: 1.6rem;
+    	color: $reflection-purple;
+  	}
 	}
 }
 blockquote {

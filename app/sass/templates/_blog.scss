@@ -83,14 +83,27 @@
 		padding: 0 0 0 2%;
 		display: inline-block;
 		float: left;
+		overflow: visible;
 		@include breakpoint($desktop-wide) {
 			width: 8.5rem;
 		}
 	}
-	.addthis_sharing_toolbox {
-		position: absolute;
-		right: 0px;
-		bottom: 0.4rem;
+	.sharing-container {
+		  position: relative;		  
+		  display: block;
+		  margin-top: 20px;
+		  a:first-child {
+		  	margin-left: 0;
+		  }
+		  @include breakpoint($tablet) {
+		  	position: absolute;
+				right: 0px;
+				bottom: 2.2rem;
+				margin-top: 0;
+				a:first-child {
+			  	margin-left: 5;
+			  }
+		  }
 	}
 }
 .blog-content-container {

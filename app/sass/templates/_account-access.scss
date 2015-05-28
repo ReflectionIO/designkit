@@ -34,12 +34,11 @@
 	}
 }
 .account-access-content {
-	padding-top: 4.6rem;
 	padding-bottom: 3rem;
 	overflow: visible;
 	z-index: 5;
 	@include breakpoint($tablet) {
-		padding-top: 7.5rem;
+		padding-top: 3.5rem;
 	}
 	@media screen and (min-width: $laptop) and (min-height: 780px) {
 		padding-top: 12rem;
@@ -51,6 +50,7 @@
 .full-screen-intro {
 	width: 100%;
 	max-width: 600px;
+	padding-top: 20px;
 	margin-bottom: 1rem;
 	display: inline-block;
 	vertical-align: top;
@@ -60,8 +60,7 @@
 		position: relative;
 		width: 46%;
 		margin-right: percentage(101/1220);
-		margin-bottom: 0;
-		padding-top: 20px;
+		margin-bottom: 0;		
 	}
 	@include breakpoint($desktop-wide) {
 		max-width: 800px;
@@ -329,6 +328,7 @@
 		top: 0;
 		width: 100%;
 		height: 297px;
+		overflow: visible;
 		.success-tick {
 			top: 12.6rem;
 		}
@@ -340,6 +340,16 @@
 			margin-bottom: 1rem;
 			font-size: 1.6rem;
 			font-weight: 700;
+			@include breakpoint($desktop) {
+				margin-bottom: 0;
+			}
+			@include breakpoint($desktop-wide) {
+				bottom: -1.7rem;
+			}
+			a {
+				padding: 2.3rem 0px 0px 0rem;
+				display: block;
+			}
 		}
 	}
 }
@@ -489,6 +499,11 @@
 	@include opacity(0);
 	transition: opacity 0.6s;
 }
+.connect-account-main-content {
+	h1:first-child {
+		margin-top: 3rem;
+	}
+}
 .create-password-form-is-showing .create-password-main-content,
 .connect-account-is-showing .connect-account-main-content {
 	position: relative;
@@ -512,11 +527,29 @@
 	@include breakpoint($laptop, true) {
 		min-height: 76vh;
 	}
+	.full-screen-intro {
+		padding-top: 0;
+	}
 }
 .create-password-main-content {
-	.img-reset {
+	.svg-create-password {
+		display: none;
 		width: 80%;
-		max-width: 174px;		
+		max-width: 333px;
+		@include breakpoint($tablet) {
+			display: inline-block;
+			max-width: 270px;
+		}
+		@include breakpoint($laptop) {
+			max-width: 333px;
+		}
+		@media screen and (max-height: 800px) {
+			max-width: 270px;
+		}
+	}
+	h1,
+	.heading-style--heading-one {
+		margin-top: 3.6rem;
 	}
 }
 .account-connect-animation {
@@ -640,7 +673,6 @@
 		}		
 	}
 	.full-screen-intro {
-		padding-top: 0;
 		p {
 			@media screen and (max-width: $laptop) {
 				max-width: 400px;
@@ -679,9 +711,6 @@
 			margin-top: 180px;
 			@include breakpoint($desktop) {
 				margin-top: 195px;
-			}
-			@include breakpoint($desktop-wide) {
-				margin-top: 210px;
 			}
 		}
 	}

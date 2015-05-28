@@ -49,7 +49,7 @@
 	}
 }
 .table-overall.table-data .MHXTE6C-i-a {
-	padding-top: 0px;
+	padding-top: 1px;
 	padding-bottom: 4px;
 }
 .table-overall {
@@ -70,29 +70,32 @@
 			padding-right: 10px;
 		}
 	}
-	&.table-data td {
+	&.table-data {
+		td {
 			padding-left: 10px;
 			padding-right: 10px;
-		@include breakpoint($laptop) {
-			padding-left: 0;
-			padding-right: 0;
+			vertical-align: top;
+			@include breakpoint($laptop) {
+				padding-left: 0;
+				padding-right: 0;
+			}
+			.is-safari & {
+				width: 30%;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
 		}
-		.is-safari & {
-			width: 30%;
-			padding-left: 10px;
-			padding-right: 10px;
+		.MHXTE6C-i-a,
+		.table-data {
+			vertical-align: top;
 		}
-	}
-	.MHXTE6C-i-a,
-	.table-data {
-		vertical-align: top;
-	}
-	td.MHXTE6C-i-d,
-	td.table-data-first {		
-		vertical-align: middle;
-		.is-safari & {
-			@include breakpoint($tablet) {
-				width: 80px;
+		.MHXTE6C-i-d,
+		.table-data-first {		
+			vertical-align: middle;
+			.is-safari & {
+				@include breakpoint($tablet) {
+					width: 80px;
+				}
 			}
 		}
 	}

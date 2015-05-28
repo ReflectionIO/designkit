@@ -65,7 +65,7 @@
 		&:disabled {
 			&:active {
 				border-top: 0;
-				padding-bottom: 1.2em;
+				padding-bottom: 1em;
 			}
 		}
 	}
@@ -91,7 +91,8 @@
 		color: #46438b;
 		background-color: #f2f2f5;
 	}
-	&:active {
+	&:active, 
+	&.is-pressed {
 		border-top: 3px solid #d9d9dc;
 		padding-bottom: calc(0.85em - 2px);
 		transition: border 0s;
@@ -109,10 +110,10 @@
 			padding-bottom: 0.85em;
 		}
 	}
-	&.with-icon {
-		padding: 0.65em 0.89em 0.4em 0.93em;
+	&.ref-button--function-small--with-icon {
+		padding: 0.75em 0.923077em 0.55em;
 		&:active {
-			padding-bottom: 0.25em;
+			padding-bottom: calc(0.55em - 2px);
 		}
 		span:before {
 			position: relative;
@@ -120,8 +121,16 @@
 			margin-right: 0.9rem;
 			vertical-align: middle;
 			display: inline-block;
-			font-size: 20px;
+			font-size: 2rem;
 			color: #81879D;
+		}
+		&:disabled {
+			span:before {
+				color: #C4C7D0;
+			}
+			&:active {
+				padding-bottom: 0.55em;
+			}
 		}
 	}
 }
@@ -179,6 +188,19 @@
 		}
 	}
 }
+.ref-button--full-width--with-icon {
+	span {
+		position: relative;
+		top: -0.1em;
+		padding-left: 3.1rem;
+		&.ref-icon-before:before {
+			position: absolute;
+			top: 1px;
+			left: 0;
+			font-size: 2rem;
+		}
+	}
+}
 .ref-button--warning {
 	background-color: $reflection-red;
 	&:hover {
@@ -186,19 +208,6 @@
 	}
 	&:active {
 		border-top-color: darken($error-red, 10%);
-	}
-}
-.ref-button--with-icon {
-	span {
-		position: relative;
-		top: -0.1em;
-		padding-left: 3.5rem;
-		&.ref-icon-before:before {
-			position: absolute;
-			top: 1px;
-			left: 0;
-			font-size: 2.2rem;
-		}
 	}
 }
 .ref-button--link {
