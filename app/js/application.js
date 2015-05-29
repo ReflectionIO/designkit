@@ -14,6 +14,7 @@
 		new LeftPanelAndHamburger();
 		new FormInteractions();
 		new PanelRightOverlay();
+		new PanelRightMisplacedPassword();
 		new AccountContainer();
 		new SearchContainer();
 		this.customScrollbars();
@@ -285,6 +286,28 @@
 			$('html, body').removeClass('no-scroll');
 		});
 	};
+
+	var PanelRightMisplacedPassword = function() {
+		$('.panel-right .js-mock-show-reset-password').on("click", function(e){
+			$('.panel-right').addClass('show-reset-password-form').addClass('will-show');
+			setTimeout(function(){
+				$('.panel-right .form--login').css({"visibility":"hidden","position":"absolute"});
+				$('.panel-right .form--password-reset').css({"visibility":"visible","position":"relative"});
+				$('.panel-right').removeClass('will-show');
+				if($('.ie8').length > 0) {
+					$('.panel-right .form--login').css("display","none");
+					$('.panel-right .form--password-reset').css("display","block");
+				}
+			}, 150);
+		});
+
+		$('.panel-right .js-mock-send-reset-password').on("click", function(e){
+			e.preventDefault();
+			var $this = $(this);
+			$this.attr('value', 'Email is on the way').addClass('ref-button--success');
+			$('.panel-right').addClass('reset-password-is-submitted').find('.form-submitted-success').addClass('is-showing');
+		});
+	}
 
 	var AccountContainer = function() {
 		$('.actions-group').on("click", function() {
