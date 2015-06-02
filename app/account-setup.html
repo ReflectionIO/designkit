@@ -5,6 +5,9 @@
 	<title>Reflection Account Setup</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!--[if (gte IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main.css" />
+	<!--<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
 		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main-ie8.css" />
@@ -12,9 +15,15 @@
  	<!--[if !lt IE 9]><!-->
 		<script src="js/vendor/picturefill.2.2.0.min.js" async></script>
 	<!-- <![endif]-->
-	<!--[if (gte IE 9)|(IEMobile)|(!IE)]><!-->
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/account-access.css" />
-	<!--<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+	<script>
+	  WebFont.load({
+	    google: {
+	      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+	    }
+	  });
+	</script>
 </head>
 <body class="account-access-page create-password-form-is-showing">
 	<!--[if (lt IE 9)]>
@@ -24,6 +33,8 @@
   <![endif]-->
 
   <header id="js-component-import--global-header" class="global-header"></header>
+
+  <div id="js-component-import--panel-left" class="panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
   
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
@@ -209,22 +220,6 @@
 						<form class="forms--mid-theme">
 							<fieldset class="create-password-content">
 								<h2 class="heading-style--heading-five account-form-heading js-fade-content">Create your password to get started</h2>
-								<div class="form-field form-field--disabled js-rotate-content">						
-									<input type="text" name="apply-firstname" id="apply-firstname" autocomplete="off" disabled value="Martin" />
-									<label for="apply-firstname">First Name</label>
-								</div>
-								<div class="form-field form-field--disabled js-rotate-content">						
-									<input type="text" name="apply-lastname" id="apply-lastname" autocomplete="off" disabled value="Ollivere" />
-									<label for="apply-lastname">Last Name</label>
-								</div>
-								<div class="form-field form-field--disabled js-rotate-content">						
-									<input type="text" name="apply-company" id="apply-company" autocomplete="off" disabled value="Reflection" />
-									<label for="apply-company">Your Company</label>
-								</div>	
-								<div class="form-field form-field--disabled js-rotate-content">						
-									<input type="email" name="apply-email" id="apply-email" autocomplete="off" disabled value="martin@reflection.io" />
-									<label for="apply-email">Email</label>
-								</div>
 								<div class="form-field js-rotate-content">						
 									<input type="password" name="create-password" id="create-password" autocomplete="off" class="js-mock-password-entry" />
 									<label for="create-password">
@@ -293,9 +288,14 @@
 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
 	<script src="js/application.js"></script>
 	<script src="js/account-access.js"></script>
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+	<div id="js-appendScriptsContainer"></div>
   <script>
   	function initScripts() {
   		new AccountSetup();
+  		new Page();
   	}
 
   	window.onready = initScripts();

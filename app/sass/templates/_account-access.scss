@@ -37,8 +37,25 @@
 	padding-bottom: 3rem;
 	overflow: visible;
 	z-index: 5;
-	@include breakpoint($tablet) {
+	@include breakpoint($phablet) {
 		padding-top: 3.5rem;
+	}
+	@include breakpoint($laptop) {
+		padding-top: 8.5rem;
+	}
+	@media screen and (max-width: $laptop-plus) {
+		.panel-left-open & {
+			padding-top: 4.5rem;
+		}
+		.panel-left-open.login-form-is-showing & {
+			padding-top: 2rem;
+		}
+		.panel-left-open.reset-password-form-is-showing & {
+			padding-top: 0;
+		}
+		.panel-left-open.reset-password-form-is-showing.apply-form-is-showing & {
+			padding-top: 4.5rem;
+		}
 	}
 	@media screen and (min-width: $laptop) and (min-height: 780px) {
 		padding-top: 12rem;
@@ -56,11 +73,24 @@
 	vertical-align: top;
 	text-align: center;
 	overflow: visible;
-	@include breakpoint($laptop, true) {
+	@include breakpoint($laptop) {
 		position: relative;
 		width: 46%;
 		margin-right: percentage(101/1220);
-		margin-bottom: 0;		
+		margin-bottom: 0;
+	}
+	@media screen and (max-width: $laptop-plus) {
+		.panel-left-open & {
+			width: 100%;
+			max-width: 600px;
+			padding-top: 20px;
+			margin-bottom: 1rem;
+			margin-right: 0;
+			display: inline-block;
+			vertical-align: top;
+			text-align: center;
+			overflow: visible;
+		}
 	}
 	@include breakpoint($desktop-wide) {
 		max-width: 800px;
@@ -128,10 +158,24 @@
 	overflow: visible;
 	text-align: left;
 	background-color: #f2f2f5;
-	@include breakpoint($laptop, true) {
+	@include breakpoint($laptop) {
 		position: relative;
 		top: 0px;
 		width: percentage(407/1220);
+	}
+	@media screen and (max-width: $laptop-plus) {
+		.panel-left-open & {
+			position: relative;
+			width: 100%;
+			max-width: 450px;
+			margin-top: 30px;
+			margin-bottom: 10rem;
+			display: inline-block;
+			vertical-align: top;
+			overflow: visible;
+			text-align: left;
+			background-color: #f2f2f5;
+		}
 	}
 	.create-password-form-is-showing &,
 	.connect-account-is-showing & {
@@ -184,7 +228,7 @@
 	.create-password-form-is-showing.ie9 & .create-password-content .js-rotate-content,
 	.connect-account-is-showing & .connect-account-content .js-rotate-content {
 		transform: rotateX(0deg);
-		transition: transform 0.15s 0.15s, background-color $base-transition-speed-on;
+		transition: transform 0.15s 0.15s, background-color $base-transition-speed-on, margin-top 0.3s;
 		visibility: visible;
 	}
 	.tabs__content {
@@ -245,6 +289,17 @@
 		font-size: 1.8rem;
 		@include breakpoint($tablet, true) {
 			font-size: 1.8rem;
+		}
+	}
+	.tabs__content--is-submitted {
+		input[type="submit"] {
+			margin-top: 3rem;
+			transition: margin-top 0.3s;
+		}
+		&#tab-content-apply {
+			input[type="submit"] {
+				margin-top: 6rem;
+			}
 		}
 	}
 }
@@ -366,26 +421,51 @@
 		height: 297px;
 		overflow: visible;
 		.success-tick {
-			top: 12.6rem;
+			top: 10.2rem;
 		}
 		p {
-			position: absolute;
+			position: relative;
 			left: 0;
-			bottom: 0;
+			margin-top: 16rem;
 			width: 100%;
-			margin-bottom: 1rem;
 			font-size: 1.6rem;
 			font-weight: 700;
-			@include breakpoint($desktop) {
-				margin-bottom: 0;
-			}
 			@include breakpoint($desktop-wide) {
-				bottom: -1.7rem;
+				
 			}
 			a {
 				padding: 2.3rem 0px 0px 0rem;
 				display: block;
 			}
+		}
+		.connect-account-content input[type="submit"] {			
+			transition: margin-top 0.3s;
+			&.ref-button--success {
+				margin-top: 6rem;
+			}
+		}
+	}
+}
+.form-submitted-success-complete {
+	.account-setup-content-wrapper {
+		.connect-account-content input[type="submit"] {			
+			transition: margin-top 0.3s;
+			&.ref-button--success {
+				margin-top: 3rem;
+				@include breakpoint($desktop-wide) {
+					margin-top: 6rem;
+				}
+			}
+		}
+		&.page-reset-password {
+			.connect-account-content input[type="submit"] {			
+			&.ref-button--success {
+				margin-top: 6rem;
+				@include breakpoint($desktop-wide) {
+					margin-top: 6rem;
+				}
+			}
+		}
 		}
 	}
 }
@@ -575,13 +655,16 @@
 		@include breakpoint($tablet) {
 			display: inline-block;
 			max-width: 270px;
-		}
-		@include breakpoint($laptop) {
+		}		
+		@media screen and (min-width: $laptop) and (min-height: 780px) {
 			max-width: 333px;
 		}
 		@media screen and (max-height: 800px) {
 			max-width: 270px;
 		}
+		@include breakpoint($laptop) {
+			max-width: 235px;
+		}	
 	}
 	h1,
 	.heading-style--heading-one {
@@ -602,9 +685,14 @@
 		top: 685px;
 		display: block;
 	}
-	@include breakpoint($laptop, true) {
+	@include breakpoint($laptop) {
 		top: 35.6rem;
 		display: block;
+	}
+	@media screen and (max-width: $laptop-plus) {
+		.panel-left-open & {
+			display: none;
+		}
 	}
 	@media screen and (min-width: $laptop) and (min-height: 780px) {
 		top: 39.6rem;
@@ -694,7 +782,7 @@
 			padding-top: 11rem;
 		}		
 		@media screen and (min-width: $laptop) and (max-height: 800px) {
-			padding-top: 6rem;
+			padding-top: 8rem;
 		}
 		@media screen and (min-width: $laptop) and (max-height: 700px) {
 			padding-top: 10rem;
@@ -744,9 +832,9 @@
 		}
 		p {
 			position: relative;
-			margin-top: 180px;
-			@include breakpoint($desktop) {
-				margin-top: 195px;
+			margin-top: 16rem;
+			@include breakpoint($desktop-wide) {
+				margin-top: 14rem;
 			}
 		}
 	}
@@ -756,6 +844,11 @@
 	.list-partners {
 		@media screen and (max-width: $laptop) {
 			display: none;
+		}
+		@media screen and (max-width: $laptop-plus) {
+			.panel-left-open & {
+				display: none;
+			}
 		}
 		@media screen and (max-height: 700px) {
 			.touch &,
