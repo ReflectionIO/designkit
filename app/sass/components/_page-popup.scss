@@ -1,5 +1,6 @@
 .page-overlay,
-.page-overlay--confirm {
+.page-overlay--confirm,
+.page-overlay--download {
 	position: fixed;
 	top: 0;
 	right: 0;	
@@ -20,7 +21,14 @@
 }
 .popup-content {
 	position: relative;
+	opacity: 0;
 	text-align: center;
+	transform: scale(0.8);
+	&.is-showing {
+		opacity: 1;
+		transform: scale(1);
+		transition: transform 0.15s, opacity 0.15s;
+	}
 	input, label {
 		text-align: left;
 	}
