@@ -979,6 +979,9 @@
 				var topPosition = $this.offset().top;
 				var leftPosition = $this.offset().left;
 				var tooltipContainer = $('<div>').addClass("whats-this-tooltip-popup");
+				if($this.hasClass('whats-this-tooltip--dark')) {
+					tooltipContainer.addClass("whats-this-tooltip--dark");
+				}
 				var tooltip = $('<div>').addClass("whats-this-tooltip");
 				tooltip.append($('<h2>').text("What's This?"));
 				tooltip.append($('<p>').text($this.data("whatsthis")));

@@ -11,6 +11,9 @@
 	font-size: 1.4rem;
 	line-height: 1.4;
 	color: $reflection-white;
+	@include breakpoint($desktop-wide) {
+		max-width: 263px;
+	}
 	&:after {
 		content: ' ';
 		position: absolute;
@@ -36,7 +39,12 @@
 	display: inline-block;
 	vertical-align: middle;	
 	@extend .ref-icon-after;
-	@extend .ref-icon-after--question;	
+	@extend .ref-icon-after--question;
+	&.is-open {
+		&:after {
+			color: $reflection-green;
+		}
+	}
 	&:after {
 		position: relative;
 		top: 2px;
@@ -51,9 +59,10 @@
 		}
 	}
 	span {
+		width: 0;
 		display: inline-block;
 		text-align: left;
-		text-indent: -999em;
+		text-indent: -999em;		
 	}
 }
 .whats-this-tooltip,
@@ -65,6 +74,9 @@
 	overflow: visible;
 	color: $reflection-white;
 	background-color: $reflection-purple;
+	.whats-this-tooltip--dark & {
+		background-color: #5854AE;
+	}
 	h2 {
 		max-width: 200px;
 		font-size: 18px;
@@ -112,6 +124,9 @@
 			border-left: 10px solid transparent;
 			border-right: 10px solid transparent;
 			border-bottom: 10px solid $reflection-purple;
+			.whats-this-tooltip--dark & {
+				border-bottom: 10px solid #5854AE;
+			}
 		}
 	}
 	&.position-tooltip-left {
@@ -138,6 +153,9 @@
 				border-left: 10px solid $reflection-purple;
 				border-top: 10px solid transparent;
 				border-bottom: 10px solid transparent;
+				.whats-this-tooltip--dark & {
+					border-left: 10px solid #5854AE;
+				}
 			}
 		}
 	}
@@ -164,6 +182,9 @@
 				border-right: 10px solid $reflection-purple;
 				border-top: 10px solid transparent;
 				border-bottom: 10px solid transparent;
+				.whats-this-tooltip--dark & {
+					border-right: 10px solid #5854AE;
+				}
 			}
 		}
 	}
@@ -191,6 +212,9 @@
 				border-right: 10px solid transparent;
 				border-top: 10px solid $reflection-purple;
 				border-bottom: 0;
+				.whats-this-tooltip--dark & {
+					border-top: 10px solid #5854AE;
+				}
 			}
 		}
 	}

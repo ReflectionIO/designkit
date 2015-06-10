@@ -112,7 +112,7 @@
 							<form class="forms--mid-theme">
 								<div class="whats-this-tooltip-example">
 									<span>Viewing estimated data</span>
-									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis="As this is your own app you can view your actual sales data rather than the estimated data that everyone else sees."><span>What's this?</span></a>
+									<a href="#" class="whats-this-tooltip-icon whats-this-tooltip--dark js-whats-this-tooltip" data-whatsthis="As this is your own app you can view your actual sales data rather than the estimated data that everyone else sees."><span>What's this?</span></a>
 								</div>
 								<div class="form-field">
 									<input type="email" name="email" id="email" autocomplete="off" />
@@ -123,7 +123,7 @@
 									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-left" data-whatsthis="As this is your own app you can view your actual sales data rather than the estimated data that everyone else sees."><span>What's this?</span></a>
 									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-right" data-whatsthis="As this is your own app you can view your actual sales data rather than the estimated data that everyone else sees."><span>What's this?</span></a>
 									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis="As this is your own app you can view your actual sales data rather than the estimated data that everyone else sees."><span>What's this?</span></a>
-									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-top" data-whatsthis="As this is your own app you can view your actual sales data rather than the estimated data that everyone else sees."><span>What's this?</span></a>
+									<a href="#" class="whats-this-tooltip-icon whats-this-tooltip--dark js-whats-this-tooltip position-tooltip-top" data-whatsthis="As this is your own app you can view your actual sales data rather than the estimated data that everyone else sees."><span>What's this?</span></a>
 								</div>
 							</form>
 						</div>
@@ -162,7 +162,7 @@
 					<div class="grid__column grid__column--one-half">
 						<h2 class="heading-style--heading-three">Alert Toast</h2>
 						<p>Alert toasts pop up from the bottom right corner of the screen every time a notification is sent to the user. They contain a summary title and when clicked link to the notifications page where the full alert can be read and acted upon if necessary. They appear for a few seconds and then disappear unless they require urgent attention in which case they remain in position until clicked or closed.</p>
-						<p>Alert toasts appear in conjunction with a small alert bubble in the 'My Account' button in the site header. The bubble indicates how many unread alerts the user has remains visible until there are no more unread notifications.</p>
+						<p>Alert toasts appear in conjunction with a small alert bubble in the 'My Account' button in the site header. The bubble indicates how many unread alerts the user has and remains visible until there are no more unread notifications.</p>
 					</div>
 					<div class="grid__row-container grid__column  grid__column--one-half">			
 						<div class="loading-button-example-container">
@@ -231,24 +231,6 @@
 		</div>
 	</div>
 
-	<div class="popup-toast-container js-popup-toast-container">
-		<div class="popup-toast">
-			<h2>You Have a New Follower!</h2>
-			<p>King just started following 'Feeding Time With Zookeeper Ken'</p>
-			<p><a href="#">Read more</a></p>
-			<img alt="Bulb icon" src="images/icon-bulb.png">
-		</div>
-	</div>
-
-	<div class="popup-toast-container js-popup-toast-alert-container">
-		<div class="popup-toast popup-toast--alert">
-			<h2>Your Account Password Was Changed</h2>
-			<p>You need to take action straight away</p>
-			<p><a href="#">Read more</a></p>
-			<img alt="Bulb icon" src="images/icon-warning.png">
-		</div>
-	</div>
-
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/jquery-ui.custom.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script>
@@ -269,6 +251,8 @@
   	}
 
   	// DK demo JS
+
+  	// Lightbox
   	$('.js-demo-popup').on("click", function(e){
   		e.preventDefault();
 			$('.page-overlay').fadeIn(200);
@@ -302,30 +286,46 @@
 			$('.page-overlay--confirm').removelass("is-showing");
 		});
 
+		$('.page-popup').on("click", function(e){
+			if(!$(e.target).parents('.popup-content').length && !($(e.target).is($('.popup-content')))) {
+				$('.page-overlay, .page-overlay--download, .page-overlay--confirm').fadeOut(100);
+				$('.page-overlay .popup-content, .page-overlay--download .popup-content, .page-overlay--confirm .popup-content').removeClass("is-showing");
+			}
+		});
+
+		// Alert Toast
 		$('.js-demo-toast-standard').on("click", function(){
-			var popupHeight = $('.js-popup-toast-container .popup-toast').innerHeight();
-			$('.js-popup-toast-container').css("z-index", 10000);
-			$('.js-popup-toast-container').css("top", "calc(100% - " + popupHeight + "px)");
+
+			var popupToastContainer = $("<div>").addClass("popup-toast-container js-popup-toast-container");
+			var popupToast = $("<div>").addClass("popup-toast").html('<h2>You Have a New Follower!</h2><p>King just started following Feeding Time With Zookeeper Ken</p><p><a href="#">Read more</a></p><img alt="Bulb icon" src="images/icon-bulb.png">');
+			popupToastContainer.append(popupToast);
+			$('body').append(popupToastContainer);
+
+			var popupHeight = popupToast.innerHeight();
+			popupToastContainer.css("z-index", 10000);
+			popupToastContainer.css("top", "calc(100% - " + popupHeight + "px)");
 			setTimeout(function(){
-				$('.js-popup-toast-container .popup-toast').addClass("is-read");
+				popupToast.addClass("is-read");
 				setTimeout(function(){
-					$('.js-popup-toast-container').removeAttr("style");
-					$('.js-popup-toast-container .popup-toast').removeClass("is-read");
+					popupToastContainer.removeAttr("style");
+					popupToast.removeClass("is-read");
+					setTimeout(function(){
+						popupToastContainer.remove();
+					}, 500);
 				}, 1000);
 			}, 3000);
 		});
 
 		$('.js-demo-toast-alert').on("click", function(){
-			var popupHeight = $('.popup-toast--alert').innerHeight();
-			$('.js-popup-toast-alert-container').css("z-index", 10000);
-			$('.js-popup-toast-alert-container').css("top", "calc(100% - " + popupHeight + "px)");
-			setTimeout(function(){
-				$('.popup-toast--alert').addClass("is-read");
-				setTimeout(function(){
-					$('.js-popup-toast-alert-container').removeAttr("style");
-					$('.popup-toast--alert').removeClass("is-read");
-				}, 1000);
-			}, 3000);
+
+			var popupToastContainer = $("<div>").addClass("popup-toast-container js-popup-toast-alert-container");
+			var popupToast = $("<div>").addClass("popup-toast popup-toast--alert").html('<h2>Your Account Password Was Changed</h2><p>You need to take action straight away</p><p><a href="#">Read more</a></p><img alt="Bulb icon" src="images/icon-warning.png">');
+			popupToastContainer.append(popupToast);
+			$('body').append(popupToastContainer);
+
+			var popupHeight = popupToast.innerHeight();
+			popupToastContainer.css("z-index", 10000);
+			popupToastContainer.css("top", "calc(100% - " + popupHeight + "px)");
 		});
 
   	window.onready = initScripts();
