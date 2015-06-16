@@ -488,5 +488,22 @@ var SubmitButtonWithFeedback = function() {
 		new FormFieldSelect();
 		new ToolTip();
 	};
+
+// ChartsPage object
+	var ChartsPage = function() {
+		new Page();
+		var dkPageProperties = {
+			bannerImage: "images/banner-icon-grids.png",
+			bannerImageAlt: "Button icon", 
+			sectionTitle: "Charts", 
+			componentTitle: "Highcharts Demos", 
+			intro: "",
+			pageUrl: "highcharts.html"
+		}
+		new DesignKitPage(dkPageProperties);
+
+		// Components
+		
+	};
 /* END PAGE OBJECTS FOR TEMPLATES */
 
