@@ -87,9 +87,23 @@ $local-breakpoint-vertical: 680px;
 			width: auto;
 			justify-content: center;
 			-webkit-flex-grow: 1;
+			-ms-flex-grow: 1;
 			flex-grow: 1;
 			&:last-child {
 				display: inline-block;
+			}
+			.ie10 & {
+				width: 20%;
+			}
+		}
+		@include breakpoint($desktop) {
+			.ie10 & {
+				width: 17%;
+			}
+		}
+		@include breakpoint($desktop-wide) {
+			.ie10 & {
+				width: 12%;
 			}
 		}
 	}
@@ -103,6 +117,9 @@ $local-breakpoint-vertical: 680px;
 		@include breakpoint($tablet) {
 			max-width: 96%;
 			padding-bottom: 28px;
+			.ie10 & {
+				max-width: 126px;
+			}
 		}
 		@include breakpoint($desktop) {
 			max-width: 130px;

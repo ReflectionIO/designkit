@@ -129,8 +129,14 @@
           },
           events: {
             load: function() {
+                var countIndex = 0;
                 $('#container .highcharts-series path:nth-child(1)').each(function() {
-                  $(this).css("opacity", 0);
+                  if (countIndex > -1) { // testing
+                    $(this).css("opacity", 0);
+                  } else {
+                    $(this).css("opacity", "0.2");
+                  }
+                  countIndex++;
                 });
                 var counter = 0,
                     pathCoords = [];
@@ -145,7 +151,6 @@
                       el.node.pathSegList[x].y = 454;
                     }
 
-                  console.log($('#series' + counter));
                   counter++;
                 });
 
@@ -299,7 +304,7 @@
               },
               mouseOut: function () {
                 setTimeout(function(){
-                  $('.highcharts-series path:nth-child(2)').each(function(){
+                  $('#container .highcharts-series path:nth-child(2)').each(function(){
                     if($(this).attr("stroke-width") == 2) {
                       $(this).css("opacity", 0.2);
                     }
@@ -378,7 +383,7 @@
               },
               mouseOver: function () {
                 setTimeout(function(){
-                  $('.highcharts-series path:nth-child(2)').each(function(){
+                  $('#container .highcharts-series path:nth-child(2)').each(function(){
                   if($(this).attr("stroke-width") == 3) {
                     $(this).css("opacity", 1);
                   }
@@ -387,7 +392,7 @@
               },
               mouseOut: function () {
                 setTimeout(function(){
-                  $('.highcharts-series path:nth-child(2)').each(function(){
+                  $('#container .highcharts-series path:nth-child(2)').each(function(){
                     if($(this).attr("stroke-width") == 2) {
                       $(this).css("opacity", 0.2);
                     }
@@ -466,7 +471,7 @@
               },
               mouseOver: function () {
                 setTimeout(function(){
-                  $('.highcharts-series path:nth-child(2)').each(function(){
+                  $('#container .highcharts-series path:nth-child(2)').each(function(){
                   if($(this).attr("stroke-width") == 3) {
                     $(this).css("opacity", 1);
                   }
@@ -475,7 +480,7 @@
               },
               mouseOut: function () {
                 setTimeout(function(){
-                  $('.highcharts-series path:nth-child(2)').each(function(){
+                  $('#container .highcharts-series path:nth-child(2)').each(function(){
                     if($(this).attr("stroke-width") == 2) {
                       $(this).css("opacity", 0.2);
                     }

@@ -144,7 +144,7 @@
 	.reveal-element {
 		display: none;
 		@include breakpoint($tablet) {
-			display: inline-block;
+			display: inline-block;	
 		}
 	}
 	.pinned {
@@ -240,6 +240,7 @@
 		}
 	}
 	a {
+		display: block;
 		font-size: 1.5rem;
 		font-family: $brand-heading-font;
 		font-weight: 600;
@@ -280,8 +281,10 @@
 		margin-right: 2rem;
 		margin-top: 1.1rem;
 		display: inline-block;
+		text-align: center;
 		@include breakpoint($tablet) {
 			width: auto;
+			text-align: left;
 		}
 		> span {
 			float: none;
@@ -300,6 +303,7 @@
 		@extend .text-link;
 		font-size: 1.3rem;
 		font-weight: 600;
+		text-align: center;
 		@include breakpoint($tablet) {
 			display: none;				
 		}
@@ -456,6 +460,9 @@
 	.pinned &,
 	.scrollable & {
 		table-layout: auto;
+		@include breakpoint($tablet) {
+			table-layout: fixed;
+		}
 	}
 	tbody {
 		tr {
@@ -481,6 +488,9 @@
 		}
 		.scrollable & {
 			padding-left: 4%;
+			@include breakpoint($tablet) {
+				padding-left: 2%;
+			}
 		}
 		@include breakpoint($tablet) {
 			font-size: 1.6rem;
@@ -566,5 +576,11 @@
 	float: right;
 	@include breakpoint($tablet) {
 		display: none;
+	}
+}
+@media screen and (max-width: $tablet) {
+	.pinned .table-revenue tr,
+	.scrollable .table-revenue tr {
+		height: 45px;
 	}
 }

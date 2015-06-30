@@ -235,7 +235,7 @@ h1, .heading-style--heading-one {
 	@extend .heading-style;
 	margin-top: 3rem;	
 	margin-bottom: 0.65em;
-	font-size: 2.7em;
+	font-size: 2.7rem;
 	line-height: 1.2em;
 	&:first-child:last-child {
 		margin-bottom: 0.68em;
@@ -254,7 +254,7 @@ h2, .heading-style--heading-two {
 	@extend .heading-style;
 	margin-top: 3rem;
 	margin-bottom: 0.6em;
-	font-size: 2.5em;
+	font-size: 2.5rem;
 	line-height: 1.3em;
 	&:first-child:last-child {
 		margin-bottom: 0.68em;
@@ -273,11 +273,11 @@ h3, .heading-style--heading-three {
 	@extend .heading-style;
 	margin-top: 3rem;
 	margin-bottom: 0.68em;
-	font-size: 2.3em;
+	font-size: 2.3rem;
 	line-height: 1.3em;
 	@include breakpoint($tablet) {
 		margin-top: 4rem;
-		font-size: 2.7em;
+		font-size: 2.7rem;
 	}
 	&:first-child:last-child {
 		margin-bottom: 0.68em;
@@ -287,11 +287,11 @@ h4, .heading-style--heading-four {
 	@extend .heading-style;
 	margin-top: 3rem;
 	margin-bottom: 0.8em;
-	font-size: 2.1em;
+	font-size: 2.1rem;
 	line-height: 1.4em;
 	@include breakpoint($tablet) {
 		margin-top: 4rem;
-		font-size: 2.2em;
+		font-size: 2.2rem;
 	}
 	&:first-child:last-child {
 		margin-bottom: 0.8em;
@@ -301,11 +301,11 @@ h5, .heading-style--heading-five {
 	@extend .heading-style;
 	margin-top: 3rem;
 	margin-bottom: 0.7em;
-	font-size: 1.9em;
+	font-size: 1.9rem;
 	line-height: 1.35em;	
 	@include breakpoint($tablet) {
 		margin-top: 4rem;
-		font-size: 1.8em;
+		font-size: 1.8rem;
 	}
 	&:first-child:last-child {
 		margin-bottom: 0.7em;
@@ -315,11 +315,11 @@ h6, .heading-style--heading-six {
 	@extend .heading-style;
 	margin-top: 3rem;
 	margin-bottom: 0.7em;
-	font-size: 1.7em;	
+	font-size: 1.7rem;	
 	line-height: 1.35em;
 	@include breakpoint($tablet) {
 		margin-top: 4rem;
-		font-size: 1.6em;
+		font-size: 1.6rem;
 	}
 	&:first-child:last-child {
 		margin-bottom: 0.7em;
@@ -328,7 +328,7 @@ h6, .heading-style--heading-six {
 p {
 	max-width: 650px;
 	margin-bottom: 1.2em;
-	@include font-size(16px);
+	font-size: 1.6rem;
 	line-height: 1.5625em;
 	color: $mid-grey-1;
 	@include breakpoint($desktop) {
@@ -376,9 +376,6 @@ p {
 		margin-bottom: 0;
 	}
 }
-.content-list-item {
-	color: $mid-grey-1;
-}
 .content-list {
 	margin-top: 1.8em;
 	margin-bottom: 1.875em;
@@ -391,7 +388,6 @@ p {
 		max-width: 650px;
 		margin-bottom: 0.62em;
 		padding-left: 31px;
-		@extend .content-list-item;
 		&:last-child {
 			margin-bottom: 0;
 		}
@@ -427,7 +423,7 @@ h6 + .content-list {
 }
 .content-list--featured {
 	margin-bottom: 1.5em;
-	@include font-size(20px);
+	font-size: 2rem;
 	line-height: 1.3em;
 	&:last-child {
 		margin-bottom: 0;
@@ -435,12 +431,11 @@ h6 + .content-list {
 	li {
 		margin-bottom: 0.5em;
 		padding-left: 31px;
-		@extend .content-list-item;
 	}
 }
 .content-list--minor {
 	margin-bottom: 2.14285714285714em;
-	@include font-size(14px);
+	font-size: 1.4rem;
 	line-height: 1.42857142857143em;
 	&:last-child {
 		margin-bottom: 0;
@@ -448,7 +443,6 @@ h6 + .content-list {
 	li {
 		margin-bottom: 0.44em;
 		padding-left: 26px;
-		@extend .content-list-item;
 	}
 }
 ol.content-list,
@@ -457,14 +451,36 @@ ol.content-list--featured {
 	counter-reset: ordered-counter;
 	li {
 		position: relative;
+		padding-left: 60px;
+		color: $mid-grey-1;
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-family: $brand-heading-font;
+			font-weight: 600;
+			color: $dark-grey-1;
+			content: counter(ordered-counter);
+			counter-increment: ordered-counter;
+			.page-terms & {
+				content: counter(ordered-counter) ".0";
+			}
+		}
+		ol {
+			counter-reset: ordered-sub-counter;
+			li:before {
+				font-family: $brand-heading-font;
+				font-weight: 600;
+				content: counter(ordered-counter) "." counter(ordered-sub-counter);
+				counter-increment: ordered-sub-counter;
+				.page-terms & {
+					content: counter(ordered-counter) "." counter(ordered-sub-counter);
+				}
+			}
+		}
 	}
-	li:before {
-		position: absolute;
-		top: 0;
-		left: 0;
-		content: counter(ordered-counter);
-		counter-increment: ordered-counter;
-		color: $light-grey-2;
+	p {
+		color: $mid-grey-1;
 	}
 }
 ol.content-list,

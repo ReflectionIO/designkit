@@ -3,6 +3,7 @@ $local-breakpoint-vertical: 680px;
 .page-logged-in-landing {
 	.feature-complete {
 		.accordion-switch {
+			color: $dark-grey-2;
 			background-image: none;
 			&:before {
 				content: "t";
@@ -24,10 +25,8 @@ $local-breakpoint-vertical: 680px;
 		font-size: 1.6rem;
 		font-weight: 600;
 		line-height: 1.2;
-		color: $dark-grey-2;
-		@extend .ref-icon-before;
-		background: $reflection-white url(../images/bg-bullet.png) no-repeat 17px 1.8rem;
-		background-size: 10px auto;
+		color: #727686;
+		@extend .ref-icon-before;		
 		&:before {
 			content: "";
 			position: absolute;
@@ -71,6 +70,11 @@ $local-breakpoint-vertical: 680px;
 				&:before {
 					color: $light-grey-2;
 				}
+				&.list-item-complete {
+					&:before {
+						color: $reflection-green;
+					}
+				}
 			}
 			span {
 				padding-right: 0.5rem;
@@ -95,6 +99,7 @@ $local-breakpoint-vertical: 680px;
 				left: -0.3rem;
 				font-size: 17px;
 				color: $reflection-green;
+
 			}
 		}
 		.accordion-content {
@@ -123,9 +128,16 @@ $local-breakpoint-vertical: 680px;
 			}
 		}
 		.panel-left-open & {
-			@media screen and (max-width: 1599px) {
+			@media screen and (min-width: 720px) and (max-width: 1599px) {
 				img {
 					max-width: 96%;
+				}
+			}
+		}
+		.panel-left-open & {
+			@media screen and (min-width: 720px) and (max-width: 1599px) {
+				img {
+					max-width: 136px;
 				}
 			}
 		}
@@ -241,6 +253,9 @@ $local-breakpoint-vertical: 680px;
 	.page-title {
 		margin-bottom: 0.54em;
 		color: $reflection-white;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 		@media screen and (min-width: $phablet) and (max-width: 959px) {
 			font-size: 3.7em;
 		}
@@ -279,6 +294,9 @@ $local-breakpoint-vertical: 680px;
 		}
 		.more-link a:visited, a:focus {
 		  color: $reflection-purple;
+		}
+		img {
+			margin-bottom: 0.5em;
 		}
 	}
 	.grid__column--seven-columns {
