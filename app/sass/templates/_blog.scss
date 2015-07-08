@@ -1,9 +1,6 @@
 .page-blog {
 	padding-top: 20px;
 	padding-bottom: 66px;
-	@include breakpoint($tablet) {
-		padding-top: 34px;
-	}
 	.blog-content-container {
 		@media screen and (min-width: $tablet) and (max-width: $laptop) {
 			width: 75%;
@@ -67,9 +64,16 @@
 			}
 		}
 		@media screen and (max-width: $tablet) {
-			.page-title {
-				font-size: 2.2em;	
-			}		
+			.page-title,
+			.page-title:last-child {
+				font-size: 2.2em;
+			}
+		}
+		@media screen and (min-width: $tablet) {
+			.page-title,
+			.page-title:last-child {
+				margin-bottom: 0.78em;
+			}
 		}
 	}
 	.components-row-with-border {
@@ -80,7 +84,7 @@
 	}
 	.heading-container {
 		width: 8.2rem;
-		padding: 0 0 0 2%;
+		padding: 0;
 		display: inline-block;
 		float: left;
 		overflow: visible;

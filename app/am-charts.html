@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Design Kit - Graphs</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="css/designkit.css" />
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main-ie8.css" />
+	<![endif]-->
+ 	<!--[if !lt IE 9]><!-->
+		<script src="js/vendor/picturefill.2.3.1.min.js" async></script>
+	<!-- <![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script src="js/vendor/snap.svg.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+<script src="js/vendor/amcharts/amcharts.js" type="text/javascript"></script>
+<script src="js/vendor/amcharts/serial.js" type="text/javascript"></script>
+<style>
+  .amcharts-graph-stroke {
+    cursor: pointer;
+  }
+  .amcharts-graph-fill {
+    pointer-events: none;
+  }
+</style>
+</head>
+<body class="panel-left-open">
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+  <header id="js-component-import--global-header" class="global-header"></header>
+
+  <div id="js-component-import--panel-left" class="panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+
+		<div id="main" class="l-main" role="main">
+			
+			<div id="js-component-import--design-kit-banner" class="banner banner--component"></div>
+
+			<div class="grid-container dk-components-container">
+				<div class="grid__row dk-component-row">
+					<h2 class="heading-style--heading-four">App, Overlay Other Apps</h2>
+					<div id="container-app-overlay" style="width:100%; height:500px;"></div>
+				</div>
+				<div class="grid__row dk-component-row">
+					<h2 class="heading-style--heading-four">App Revenue for selected Country</h2>
+					<div id="container-revenue" style="width:100%; height:500px;"></div>
+				</div>
+				<div class="grid__row dk-component-row">
+					<h2 class="heading-style--heading-four">App Revenue, Revenue Sources</h2>
+					<div id="container-revenue-split" style="width:100%; height:500px;"></div>
+				</div>
+				<div class="grid__row dk-component-row">
+					<h2 class="heading-style--heading-four">App Revenue, overlay downloads</h2>
+					<div class="grid__column grid__column--full-width filters-container filter-container--app">
+						<div class="filters-group-graph-options">
+							<a href="#" class="show-hide-link ref-icon-after ref-icon-after--angle-down">Show / Hide Options</a>
+							<div class="reveal-element">
+								<div class="filter-switch filter-switch--small">
+									<span>Overlay Downloads</span>
+									<div class="can-toggle can-toggle--size-small">
+									  <input id="js-overlay-downloads" type="checkbox">
+									  <label for="js-overlay-downloads">
+									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+									  </label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="container-revenue-overlay-downloads" style="width:100%; height:500px;"></div>
+				</div>
+        <div class="grid__row dk-component-row">
+          <h2 class="heading-style--heading-four">App Revenue, Revenue Sources</h2>
+          <div id="container-countries-categories" style="width:100%; height:500px;"></div>
+        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+	
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/jquery-ui.custom.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+ 	<script src="js/templates/templates.js"></script>
+	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js/designkit-global-templates.js"></script>
+  <script src="js/application.js"></script>
+  <script src="js/designkit-app.js"></script>
+  <script>
+      new AMChartsPage();
+
+      var chartrevenue;
+      var chartRevenueData = [];
+
+      // generate some random data, quite different range
+      function generateRevenueChartData() {
+        // current date
+        var firstDate = new Date();
+        // now set 1000 minutes back
+        firstDate.setDate(firstDate.getDate() - 500);
+
+        // and generate 1000 data items
+        for (var i = 0; i < 30; i++) {
+          var newDate = new Date(firstDate);
+          // each time we add one minute
+          newDate.setDate(newDate.getDate() + i);
+          // some random number
+          var revenue = Math.round(Math.random() * 40) + 10;
+          // add data item to the array
+          chartRevenueData.push({
+              date: newDate,
+              revenue: revenue
+          });
+        }
+      }
+
+      AmCharts.ready(function () {
+          // first we generate some random data
+          generateRevenueChartData();
+
+          // SERIAL CHART
+          chartrevenue = new AmCharts.AmSerialChart();
+
+          chartrevenue.dataProvider = chartRevenueData;
+          chartrevenue.categoryField = "date";
+
+          // data updated event will be fired when chart is first displayed,
+          // also when data will be updated. We'll use it to set some
+          // initial zoom
+          //chartrevenue.addListener("dataUpdated", zoomChart);
+
+          // Chart styles
+          chartrevenue.addClassNames = true;
+          chartrevenue.color = "#81879d";
+          chartrevenue.fontFamily = "Lato";
+          chartrevenue.fontSize = 13;
+          chartrevenue.marginLeft = 0;
+
+          // CURSOR
+          var chartCursor = new AmCharts.ChartCursor();
+          chartCursor.cursorAlpha = 0.5;
+          chartCursor.cursorPosition = "mouse";
+          chartCursor.categoryBalloonDateFormat = "YYYY";
+          chartCursor.bulletsEnabled = true;
+          chartCursor.bulletSize = 6;
+          chartrevenue.addChartCursor(chartCursor);
+          
+          // AXES
+          // Category
+          var categoryAxis = chartrevenue.categoryAxis;
+          categoryAxis.parseDates = true; // in order char to understand dates, we should set parseDates to true
+          categoryAxis.minPeriod = "DD"; // as we have data with minute interval, we have to set "mm" here.
+          categoryAxis.gridAlpha = 0;
+          categoryAxis.axisColor = "#e1e5e8";
+
+          // Value
+          var valueAxis = new AmCharts.ValueAxis();
+          valueAxis.gridAlpha = 0.07;
+          valueAxis.title = "Revenue";
+          valueAxis.axisColor = "#e1e5e8";
+          valueAxis.axisAlpha = 0;
+          valueAxis.inside = true;
+          valueAxis.offset = 0;
+          valueAxis.showFirstLabel = true;
+          valueAxis.showLastLabel = true;
+          chartrevenue.addValueAxis(valueAxis);
+          chartrevenue.balloon = {
+            "adjustBorderColor": true,
+            "animationDuration": 0,
+            "color": "#000000",
+            "cornerRadius": 5,
+            "fillColor": "#FFFFFF"
+          };
+          chartrevenue.creditsPosition = "bottom-right";
+
+          // GRAPH
+          var graph = new AmCharts.AmGraph();
+          graph.type = "line"; // try to change it to "column"
+          graph.title = "United Kingdom";
+          graph.valueField = "revenue";
+          graph.lineAlpha = 1;
+          graph.lineColor = "#6d69c5";
+          graph.lineThickness = 3;
+          graph.fillAlphas = 0.3; // setting fillAlphas to > 0 value makes it area graph
+          graph.fontSize = 13;
+          graph.balloonFunction = function(g) {
+            //console.log(g);
+            return '<div style="font-size: 16px;">' + g.graph.title + '</div><div style="font-size: 14px;">' + g.category + '</div><div><span style="font-size: 14px;">£' + g.values.value + '</span></div><div class="top-five-section"><h5>Top 5 Countries</h5><div><b>£18</b>: <span>USA</span></div><div><b style="color: #1bc79f">£' + g.values.value + '</b>: <span style="color: #1bc79f">' + g.graph.title + '</span></div></div><div><b>£120</b>: <span>Germany</span></div><div><b>£53</b>: <span>Italy</span></div><div><b>£21</b>: <span>China</span></div>';
+          };
+          graph.bullet = "round";
+          graph.bulletAlpha = 0;
+          graph.bulletSize = 6;
+          graph.bulletBorderColor = "#81879d";
+          graph.bulletBorderThickness = 10;
+          graph.bulletBorderAlpha = 0;
+
+          chartrevenue.addGraph(graph);
+
+          // CURSOR
+          var chartCursor = new AmCharts.ChartCursor();
+          chartCursor.cursorPosition = "mouse";
+          chartCursor.categoryBalloonDateFormat = "DD MMMM";
+          chartrevenue.addChartCursor(chartCursor);
+
+          // SCROLLBAR
+          var chartScrollbar = new AmCharts.ChartScrollbar();
+
+          chartrevenue.addChartScrollbar(chartScrollbar);
+
+          // WRITE
+          chartrevenue.write("container-revenue");
+      });      
+
+      // this method is called when chart is first inited as we listen for "dataUpdated" event
+      function zoomChart() {
+          // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
+          chartrevenue.zoomToIndexes(chartRevenueData.length - 40, chartRevenueData.length - 1);
+      }
+
+      var chartApps;
+      var chartAppsData = [
+          {
+              "year": 1930,
+              "zookeeper": 1,
+              "deltav": 5,
+              "candycrush": 3
+          },
+          {
+              "year": 1934,
+              "zookeeper": 1,
+              "deltav": 2,
+              "candycrush": 6
+          },
+          {
+              "year": 1938,
+              "zookeeper": 2,
+              "deltav": 3,
+              "candycrush": 1
+          },
+          {
+              "year": 1950,
+              "zookeeper": 3,
+              "deltav": 4,
+              "candycrush": 1
+          },
+          {
+              "year": 1954,
+              "zookeeper": 5,
+              "deltav": 1,
+              "candycrush": 2
+          },
+          {
+              "year": 1958,
+              "zookeeper": 3,
+              "deltav": 2,
+              "ucandycrushk": 1
+          },
+          {
+              "year": 1962,
+              "zookeeper": 1,
+              "deltav": 2,
+              "candycrush": 3
+          },
+          {
+              "year": 1966,
+              "zookeeper": 2,
+              "deltav": 1,
+              "candycrush": 5
+          },
+          {
+              "year": 1970,
+              "zookeeper": 3,
+              "deltav": 5,
+              "candycrush": 2
+          },
+          {
+              "year": 1974,
+              "zookeeper": 4,
+              "deltav": 3,
+              "candycrush": 6
+          },
+          {
+              "year": 1978,
+              "zookeeper": 1,
+              "deltav": 2,
+              "candycrush": 4
+          }
+      ];
+
+      initChartInteraction = function() {
+        console.log('initChartInteraction');
+        $('.amcharts-graph-line').on("click", function(){
+          var $this = $(this);
+          $this.find('.amcharts-graph-stroke').animate({'opacity': 1}, 300);
+          $this.find('.amcharts-graph-fill').animate({'opacity': 1}, 300).css("pointer-events", "none");
+          $this.siblings('.amcharts-graph-line').find('.amcharts-graph-stroke').animate({'opacity': 0.3}, 300);
+          $this.siblings('.amcharts-graph-line').find('.amcharts-graph-fill').animate({'opacity': 0}, 300).css("pointer-events", "none");;
+        });
+      }
+
+      AmCharts.ready(function () {
+          // SERIAL CHART
+          chartApps = new AmCharts.AmSerialChart();
+          chartApps.dataProvider = chartAppsData;
+          chartApps.categoryField = "year";
+          chartApps.startDuration = 0.5;
+          chartApps.balloon.color = "#000000";
+
+          // Chart styles
+          chartApps.addClassNames = true;
+          chartApps.color = "#81879d";
+          chartApps.fontFamily = "Lato";
+          chartApps.fontSize = 13;
+          chartApps.marginLeft = 0;
+
+          // AXES
+          // category
+          var categoryAxis = chartApps.categoryAxis;
+          categoryAxis.fillAlpha = 1;
+          categoryAxis.fillColor = "#FAFAFA";
+          categoryAxis.gridAlpha = 0;
+          categoryAxis.axisAlpha = 0;
+          categoryAxis.gridPosition = "start";
+          categoryAxis.position = "bottom";
+
+          // value
+          var valueAxis = new AmCharts.ValueAxis();
+          valueAxis.title = "Rank";
+          valueAxis.axisAlpha = 0;
+          valueAxis.minimum = 1;
+          valueAxis.maximum = 6;
+          valueAxis.integersOnly = true;
+          valueAxis.gridCount = 10;
+          valueAxis.reversed = false; // this line makes the value axis reversed
+          chartApps.addValueAxis(valueAxis);
+
+          // GRAPHS
+          // Italy graph
+          var graph = new AmCharts.AmGraph();
+          graph.title = "Zoo Keeper Ken";
+          graph.valueField = "zookeeper";
+          graph.balloonText = "[[category]]: [[value]]";
+          graph.lineAlpha = 1;
+          graph.bullet = "none";
+          graph.lineColor = "#ffb449";
+          graph.lineThickness = 3;
+          graph.fillAlphas = 0.5;
+          chartApps.addGraph(graph);
+
+          // Germany graph
+          var graph = new AmCharts.AmGraph();
+          graph.title = "Delta V Racing";
+          graph.valueField = "deltav";
+          graph.balloonText = "[[category]]: [[value]]";
+          graph.bullet = "none";
+          graph.lineColor = "#6d69c5";
+          graph.lineThickness = 3;
+          graph.fillAlphas = 0.5;
+          chartApps.addGraph(graph);
+
+          // United Kingdom graph
+          var graph = new AmCharts.AmGraph();
+          graph.title = "Candy Crush Saga";
+          graph.valueField = "candycrush";
+          graph.balloonText = "[[category]]: [[value]]";
+          graph.bullet = "none";
+          graph.lineColor = "#ff496a";
+          graph.lineThickness = 3;
+          graph.fillAlphas = 0.5;
+          chartApps.addGraph(graph);
+
+          // CURSOR
+          var chartCursor = new AmCharts.ChartCursor();
+          chartCursor.cursorPosition = "mouse";
+          chartCursor.zoomable = false;
+          chartCursor.cursorAlpha = 0;
+          chartApps.addChartCursor(chartCursor);
+
+          // LEGEND
+          var legend = new AmCharts.AmLegend();
+          legend.useGraphSettings = true;
+          chartApps.addLegend(legend);
+
+          // WRITE
+          chartApps.write("container-app-overlay");
+
+          initChartInteraction();
+      });
+    </script>
+</body>

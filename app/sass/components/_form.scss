@@ -222,10 +222,13 @@ textarea {
 }
 .form-field--date-select {
 	padding: 8px 32px 8px 14px;
+	.ie11 & {
+		padding-bottom: 7px;
+	}
 	.ie10 & {
 		padding: 0;
-		input {
-			padding: 8px 32px 10px 14px;
+		input[type=text] {
+			padding: 10px 32px 10px 14px !important;
 		}
 		span {
 			padding-top: 1px;
@@ -235,7 +238,7 @@ textarea {
 		.ie10 & {
 			padding: 0;
 			input {
-				padding: 8px 32px 10px 14px;
+				padding: 10px 32px 10px 14px !important;
 			}
 		}
 	}
@@ -378,6 +381,10 @@ textarea {
 		width: 100%;
 		padding-top: 2px;
 		padding-bottom: 2px;
+		.is-safari &,
+		.touch.is-chrome & {
+			padding-bottom: 1px;
+		}
 	}
 	span {
 		@extend .ref-icon-after;
