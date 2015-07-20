@@ -646,6 +646,63 @@ input::-ms-clear {
   float: right;
 }
 
+@-webkit-keyframes spinweb {
+  100% {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+@-webkit-keyframes hamsterrun {
+  100% {
+    background-position: -392px 0;
+  }
+}
+@keyframes hamsterrun {
+  100% {
+    background-position: -392px 0;
+  }
+}
+/* line 15, ../sass/ui/_animation.scss */
+.hamster-wheel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -65px;
+  width: 131px;
+  height: 131px;
+}
+/* line 22, ../sass/ui/_animation.scss */
+.hamster-wheel img {
+  animation: spin 1s linear 0s infinite;
+  -webkit-animation: spinweb 1s linear 0s infinite;
+}
+
+/* line 27, ../sass/ui/_animation.scss */
+.animation-hamster {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -65px;
+  width: 130px;
+  height: 131px;
+  background-image: url("../images/sprite-hamsters.png");
+  background-size: 392px 131px;
+  background-position: 0 0;
+  -webkit-animation: hamsterrun 0.2s infinite steps(3);
+  animation: hamsterrun 0.2s infinite steps(3);
+}
+
 /* Global */
 /* line 1, ../sass/ui/_icons.scss */
 .ref-icon-before, .page-logged-in-landing .accordion-switch, .page-logged-in-landing .accordion .list-item-complete, .ref-icon-after, .main-navigation > ul ul li.has-child, .accordion-switch {

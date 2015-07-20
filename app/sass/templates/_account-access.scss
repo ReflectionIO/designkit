@@ -202,6 +202,8 @@
 		}
 	}
 	.js-rotate-content,
+	.form-submitted-loading.connect-account-is-showing & .js-rotate-content:not(.maintain-after-submit),
+	.form-submitted-success-complete.form-submitted-loading.connect-account-is-showing & .ref-button--is-loading.js-rotate-content,
 	.form-submitted-success-complete.connect-account-is-showing & .js-rotate-content:not(.maintain-after-submit),
 	.tabs__content--is-showing.tabs__content--is-submitted .js-rotate-content:not(.maintain-after-submit),
 	.tabs__content--is-showing .form--password-reset .js-rotate-content,
@@ -226,7 +228,8 @@
 	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-rotate-content,
 	.create-password-form-is-showing & .create-password-content .js-rotate-content,
 	.create-password-form-is-showing.ie9 & .create-password-content .js-rotate-content,
-	.connect-account-is-showing & .connect-account-content .js-rotate-content {
+	.connect-account-is-showing & .connect-account-content .js-rotate-content,
+	.form-submitted-loading.connect-account-is-showing & .ref-button--is-loading.js-rotate-content {
 		transform: rotateX(0deg);
 		transition: transform 0.15s 0.15s, background-color $base-transition-speed-on, margin-top 0.3s;
 		visibility: visible;
@@ -423,18 +426,22 @@
 		.success-tick {
 			top: 10.2rem;
 		}
+		h2 {
+			margin-top: 19.4rem;
+			margin-bottom: 0.3rem;
+			width: 100%;
+			font-family: $brand-body-font;
+			font-size: 1.6rem;
+			font-weight: 700;
+		}
 		p {
 			position: relative;
-			left: 0;
-			margin-top: 16rem;
+			left: 0;			
 			width: 100%;
 			font-size: 1.6rem;
 			font-weight: 700;
-			@include breakpoint($desktop-wide) {
-				
-			}
 			a {
-				padding: 2.3rem 0px 0px 0rem;
+				padding: 0.9rem 0px 0px 0rem;
 				display: block;
 			}
 		}
@@ -876,4 +883,36 @@
   	margin: 0 auto;
   	display: block;
 	}  
+}
+.linked-account-loading-state {
+	position: absolute;
+	top: 5.7rem;
+	opacity: 0;
+	transition: opacity 0.2s;
+	.form-submitted-loading & {
+		opacity: 1;
+		transition: opacity 0.4s 0.3s;
+	}
+	.form-submitted-success-complete & {
+		opacity: 0;
+		transition: opacity 0.2s;
+	}
+	p {
+		margin-top: 16rem;
+		line-height: 1.6;
+	}
+}
+.connect-account-content {
+	input[type="submit"].ref-button--is-loading,
+	button.ref-button--is-loading {
+		margin-top: 5.6rem;
+		margin-bottom: 0.7rem;
+		transition: margin-top 0.3s;
+		@include breakpoint($tablet) {
+			margin-top: 4.6rem;
+		}
+		@include breakpoint($desktop-wide) {
+			margin-top: 6.6rem;
+		}
+	}
 }
