@@ -691,11 +691,12 @@ input::-ms-clear {
 }
 /* line 22, ../sass/ui/_animation.scss */
 .hamster-wheel img {
+  width: 100%;
   animation: spin 1s linear 0s infinite;
   -webkit-animation: spinweb 1s linear 0s infinite;
 }
 
-/* line 27, ../sass/ui/_animation.scss */
+/* line 28, ../sass/ui/_animation.scss */
 .animation-hamster {
   position: absolute;
   top: 0;
@@ -3077,26 +3078,27 @@ textarea, .global-header .link-open-search, html, body {
   opacity: 0;
   -webkit-transition: opacity 0.2s;
           transition: opacity 0.2s;
+  pointer-events: none;
 }
-/* line 892, ../sass/templates/_account-access.scss */
+/* line 893, ../sass/templates/_account-access.scss */
 .form-submitted-loading .linked-account-loading-state {
   opacity: 1;
   -webkit-transition: opacity 0.4s 0.3s;
           transition: opacity 0.4s 0.3s;
 }
-/* line 896, ../sass/templates/_account-access.scss */
+/* line 897, ../sass/templates/_account-access.scss */
 .form-submitted-success-complete .linked-account-loading-state {
   opacity: 0;
   -webkit-transition: opacity 0.2s;
           transition: opacity 0.2s;
 }
-/* line 900, ../sass/templates/_account-access.scss */
+/* line 901, ../sass/templates/_account-access.scss */
 .linked-account-loading-state p {
   margin-top: 16rem;
   line-height: 1.6;
 }
 
-/* line 906, ../sass/templates/_account-access.scss */
+/* line 907, ../sass/templates/_account-access.scss */
 .connect-account-content input[type="submit"].ref-button--is-loading,
 .connect-account-content button.ref-button--is-loading {
   margin-top: 5.6rem;
@@ -3105,14 +3107,14 @@ textarea, .global-header .link-open-search, html, body {
           transition: margin-top 0.3s;
 }
 @media (min-width: 720px) {
-  /* line 906, ../sass/templates/_account-access.scss */
+  /* line 907, ../sass/templates/_account-access.scss */
   .connect-account-content input[type="submit"].ref-button--is-loading,
   .connect-account-content button.ref-button--is-loading {
     margin-top: 4.6rem;
   }
 }
 @media (min-width: 1600px) {
-  /* line 906, ../sass/templates/_account-access.scss */
+  /* line 907, ../sass/templates/_account-access.scss */
   .connect-account-content input[type="submit"].ref-button--is-loading,
   .connect-account-content button.ref-button--is-loading {
     margin-top: 6.6rem;
@@ -5884,6 +5886,52 @@ table.table-linked-accounts .update-linked-accounts-container .ref-button--link:
 .popup-content--delete-account .buttons-container .ref-button--cta-small, .popup-content--delete-account .buttons-container .ref-button--cta-small--wide, .popup-content--delete-account .buttons-container .ref-button--cta-large, .popup-content--delete-account .buttons-container .ref-button--cta-large--wide, .popup-content--delete-account .buttons-container .ref-button--full-width {
   position: relative;
   top: 1px;
+}
+
+/* line 253, ../sass/templates/_linked-accounts.scss */
+.popup-content .linked-account-loading-state {
+  top: 8rem;
+  left: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+/* line 258, ../sass/templates/_linked-accounts.scss */
+.popup-content .linked-account-loading-state p {
+  font-size: 14px;
+}
+
+/* line 262, ../sass/templates/_linked-accounts.scss */
+.form-submitted-loading .js-rotate-content:not(.maintain-after-submit),
+.form-submitted-success-complete .js-rotate-content:not(.maintain-after-submit),
+.form-submitted-success-complete .ref-button--is-loading.js-rotate-content {
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+  -webkit-transition: -webkit-transform 0.15s;
+          transition: transform 0.15s;
+}
+/* line 267, ../sass/templates/_linked-accounts.scss */
+.ie9 .form-submitted-loading .js-rotate-content:not(.maintain-after-submit), .ie9
+.form-submitted-success-complete .js-rotate-content:not(.maintain-after-submit), .ie9
+.form-submitted-success-complete .ref-button--is-loading.js-rotate-content {
+  visibility: hidden;
+}
+
+/* line 271, ../sass/templates/_linked-accounts.scss */
+.form-submitted-loading .ref-button--is-loading.js-rotate-content,
+.form-submitted-loading .ref-button--success.js-rotate-content {
+  margin-top: 6rem;
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+  -webkit-transition: -webkit-transform 0.15s 0.15s, background-color 0.3s, margin-top 0.3s;
+          transition: transform 0.15s 0.15s, background-color 0.3s, margin-top 0.3s;
+  visibility: visible;
+}
+@media (min-width: 720px) {
+  /* line 271, ../sass/templates/_linked-accounts.scss */
+  .form-submitted-loading .ref-button--is-loading.js-rotate-content,
+  .form-submitted-loading .ref-button--success.js-rotate-content {
+    margin-top: 5rem;
+  }
 }
 
 /* line 5, ../sass/templates/_logged-in-landing.scss */

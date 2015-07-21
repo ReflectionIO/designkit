@@ -250,3 +250,31 @@ table.table-linked-accounts {
 		}
 	}
 }
+.popup-content .linked-account-loading-state {
+	top: 8rem;
+	left: 0;
+	padding-left: 30px;
+	padding-right: 30px;
+	p {
+		font-size: 14px;
+	}
+}
+.form-submitted-loading .js-rotate-content:not(.maintain-after-submit),
+.form-submitted-success-complete .js-rotate-content:not(.maintain-after-submit),
+.form-submitted-success-complete .ref-button--is-loading.js-rotate-content {
+	transform: rotateX(90deg);
+	transition: transform 0.15s;
+	.ie9 & {
+		visibility: hidden;
+	}
+}
+.form-submitted-loading .ref-button--is-loading.js-rotate-content,
+.form-submitted-loading .ref-button--success.js-rotate-content {
+	margin-top: 6rem;
+	transform: rotateX(0deg);
+	transition: transform 0.15s 0.15s, background-color $base-transition-speed-on, margin-top 0.3s;
+	visibility: visible;
+	@include breakpoint($tablet) {
+		margin-top: 5rem;
+	}
+}
