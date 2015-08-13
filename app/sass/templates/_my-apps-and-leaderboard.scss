@@ -48,55 +48,37 @@
 	.table-wrapper {
 		border-right: 0;
 	}
-	.table-wrapper .scrollable {
-		margin-left: 17%;
-		.is-safari & {
-			margin-left: 50px;
-		}		
+	.table-data {
+		@media only screen and (max-width: $mobile-max-width) {
+			th:first-child {
+				font-size: 0;
+			}
+			td:first-child {			
+				padding-right: 3px;
+				padding-left: 8px;
+				text-align: center;
+				font-size: 12px;
+			}
+		}
 	}
 	@include breakpoint($tablet) {
-		.table-wrapper .pinned {
-			display: none;
-		}
 		.table-wrapper .scrollable {
 			margin-left: 0;
 			.is-safari & {
 				margin-left: 0;
 			}	
 		}
-}
-	.pinned {
-		width: 17%;
-		text-align: center;
-		border-left: none;
-		overflow: visible;
-		border-right: 0;
-		.is-safari & {
-			width: 50px;
-		}
-		table {
-			width: 100%;
-			overflow: visible;
-			-webkit-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
-			td {
-				width: 100%;
-				.is-safari & {
-					width: 50px;
-				}
-			}
-		}
-		tbody {
-			border: 0;
-			box-shadow: 2px 3px 5px rgba(0,0,0,0.2);
-			.is-chrome & {
-				box-shadow: none;
-			}
-		}		
 	}
 	.scrollable {
 		.table-data .MHXTE6C-i-a,
 		.table-data .table-data {
-			max-width: 250px;
+			max-width: 110px;
+		}
+	}
+	table.table-data .img-rounded {
+		display: none;
+		@include breakpoint($tablet) {
+			display: inline-block;
 		}
 	}
 }

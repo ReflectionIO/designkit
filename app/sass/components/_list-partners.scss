@@ -135,16 +135,26 @@ $local-breakpoint-vertical: 680px;
   	}  	
 	}
 }
-.no-flexbox {
+.no-flexbox,
+.ie9 {
 	.list-partners ul {
 		width: 100%;
 		display: block;
 		li {			
 			display: inline-block;
-			max-width: 140px;
-			@include breakpoint($desktop) {
-				max-width: inherit;
+			max-width: 100px;
+			&:last-child {
+				display: none;
+				@include breakpoint($desktop-wide) {
+					display: inline-block;
+				}
 			}
+			@include breakpoint($desktop) {
+				max-width: 130px;
+			}
+			img {
+				max-width: 100%;
+			}			
 		}
 	}
 }

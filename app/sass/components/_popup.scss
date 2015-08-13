@@ -1,3 +1,4 @@
+$text-grey: $divider-grey;
 .tooltip {
 	position: absolute;
 	max-width: 163px;
@@ -5,12 +6,15 @@
 	display: inline-block;
 	overflow: visible;
 	z-index: 1000;
-	background-color: $reflection-purple;
-	font-family: $brand-heading-font;
-	font-weight: 600;
-	font-size: 1.4rem;
+	background-color: $light-grey-1;
+	font-family: $brand-body-font;
+	font-weight: 400;
+	font-size: 13px;
 	line-height: 1.4;
-	color: $reflection-white;
+	color: #fcfdfd;
+	@include breakpoint($laptop) {
+		max-width: 190px;
+	}
 	@include breakpoint($desktop-wide) {
 		max-width: 263px;
 	}
@@ -23,7 +27,13 @@
 		height: 0; 
 		border-left: 10px solid transparent;
 		border-right: 10px solid transparent;
-		border-top: 10px solid $reflection-purple;
+		border-top: 10px solid $light-grey-1;
+	}
+	&.tooltip-right {
+		text-align: center;
+		&:after {
+			left: calc(100% - 29px);
+		}
 	}
 }
 .whats-this-tooltip-popup {
@@ -32,10 +42,11 @@
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	position: absolute;
-	z-index: 10000;
+	z-index: 20000;
 	overflow: visible;
 }
-.whats-this-tooltip-icon {
+.whats-this-tooltip-icon,
+.whats-this-tooltip-icon-static  {
 	display: inline-block;
 	vertical-align: middle;	
 	@extend .ref-icon-after;
@@ -62,21 +73,29 @@
 		width: 0;
 		display: inline-block;
 		text-align: left;
-		text-indent: -999em;		
+		text-indent: -999em;
+	}
+}
+.whats-this-tooltip-icon-static {
+	&:after {
+		color: #c4c7d0;
+	}
+	&:hover {
+		&:after {
+			color: #c4c7d0;
+		}
 	}
 }
 .whats-this-tooltip,
-.popup-toast {
+.popup-toast,
+.loading-message-box {
 	position: absolute;
 	width: 280px;
 	padding: 23px 30px 15px;
 	display: inline-block;
 	overflow: visible;
-	color: $reflection-white;
-	background-color: $reflection-purple;
-	.whats-this-tooltip--dark & {
-		background-color: #5854AE;
-	}
+	color: $text-grey;
+	background-color: $light-grey-1;
 	h2 {
 		max-width: 200px;
 		font-size: 18px;
@@ -85,13 +104,21 @@
 	p {
 		font-size: 14px;
 		line-height: 1.7;
-		color: #c3c6f6;
+		color: $text-grey;
+		a {
+			font-weight: 700;
+			color: #fff;
+			&:hover {
+				color: darken(#ffffff, 10%);
+			}
+		}
 	}
 	img {
 		position: absolute;
 		top: -9px;
 		right: 20px;
 		width: 36px;
+		height: 53px;
 	}
 }
 .whats-this-tooltip {
@@ -123,10 +150,7 @@
 			height: 0;
 			border-left: 10px solid transparent;
 			border-right: 10px solid transparent;
-			border-bottom: 10px solid $reflection-purple;
-			.whats-this-tooltip--dark & {
-				border-bottom: 10px solid #5854AE;
-			}
+			border-bottom: 10px solid $light-grey-1;
 		}
 	}
 	&.position-tooltip-left {
@@ -150,12 +174,9 @@
 				top: calc(50% - 10px);
 				right: -20px;
 				left: auto;
-				border-left: 10px solid $reflection-purple;
+				border-left: 10px solid $light-grey-1;
 				border-top: 10px solid transparent;
 				border-bottom: 10px solid transparent;
-				.whats-this-tooltip--dark & {
-					border-left: 10px solid #5854AE;
-				}
 			}
 		}
 	}
@@ -179,7 +200,7 @@
 			@include breakpoint($tablet) {
 				top: calc(50% - 10px);
 				left: -20px;
-				border-right: 10px solid $reflection-purple;
+				border-right: 10px solid $light-grey-1;
 				border-top: 10px solid transparent;
 				border-bottom: 10px solid transparent;
 				.whats-this-tooltip--dark & {
@@ -210,16 +231,14 @@
 				bottom: -10px;
 				border-left: 10px solid transparent;
 				border-right: 10px solid transparent;
-				border-top: 10px solid $reflection-purple;
+				border-top: 10px solid $light-grey-1;
 				border-bottom: 0;
-				.whats-this-tooltip--dark & {
-					border-top: 10px solid #5854AE;
-				}
 			}
 		}
 	}
 }
-.popup-toast-container {
+.popup-toast-container,
+.loading-message-box-container {
 	-webkit-perspective: 1300px;
 	perspective: 1300px;
 	-webkit-transform-style: preserve-3d;
@@ -236,7 +255,36 @@
 		left: auto;
 	}
 }
-.popup-toast {
+.loading-message-box-container {
+	top: auto;
+	bottom: 59px;
+	right: 0;
+	left: auto;
+	width: 279px;
+	.loading-message-box {
+		cursor: pointer;
+		-ms-transform-origin: right center;
+		-webkit-transform-origin: right center;
+		transform-origin: right center;
+		-ms-transform: rotateX(0deg) rotateY(-96deg);
+	  -webkit-transform: rotateX(0deg) rotateY(-96deg);
+		transform: rotateX(0deg) rotateY(-96deg);
+		-webkit-transition: transform 0.3s ease-in;
+		transition: transform 0.3s ease-in;
+		&.is-open {
+			-ms-transform-origin: right center;
+		  -webkit-transform-origin: right center;
+			transform-origin: right center;
+			-ms-transform: rotateX(0deg) rotateY(0deg);
+	    -webkit-transform: rotateX(0deg) rotateY(0deg);
+			transform: rotateX(0deg) rotateY(0deg);
+			-webkit-transition: transform 0.3s ease-out;
+			transition: transform 0.3s ease-out;
+		}
+	}
+}
+.popup-toast,
+.loading-message-box {
 	position: relative;
 	width: 100%;
 	transform: rotateX(0deg);	
@@ -269,6 +317,7 @@
 		}
 		img {
 			width: 45px;
+			height: 38px;
 		}
 	}
 }

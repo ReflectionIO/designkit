@@ -27,6 +27,8 @@
 		width: 100%;
 		padding-top: 0;
 		padding-bottom: 0.1rem;
+		padding-left: 2%;
+		padding-right: 2%;
 		float: left;
 		background-color: transparent;
 		h1 {
@@ -109,6 +111,9 @@
 			  }
 		  }
 	}
+	> button {
+		margin-top: 4rem;
+	}
 }
 .blog-content-container {
 	margin-left: auto;
@@ -117,6 +122,16 @@
 	float: none;
 	@include breakpoint($desktop) {
 		max-width: 850px;
+	}
+	&.grid__column--two-thirds {
+		@include breakpoint($tablet) {
+			width: 80%;
+			max-width: 650px;
+		}
+		@include breakpoint($desktop) {
+			width: 66.67%;
+			max-width: 850px;
+		}
 	}
 }
 .blog-tags {

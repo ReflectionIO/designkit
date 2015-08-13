@@ -130,6 +130,7 @@
 	  var ua = window.navigator.userAgent;
 	  var msie = ua.indexOf('MSIE ');
 	  var trident = ua.indexOf('Trident/');
+	  var edge = ua.indexOf('Edge/');
 
 	  if (msie > 0) {
 	      // IE 10 or older => return version number
@@ -140,6 +141,10 @@
 	      // IE 11 (or newer) => return version number
 	      var rv = ua.indexOf('rv:');
 	      return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+	  }
+
+	  if (edge > 0) {
+	  	return "edge";
 	  }
 
 	  // other browser
@@ -247,10 +252,7 @@
 		$('.js-hamburger-button').on("click", function(){
 			$(this).toggleClass('is-selected');
 			if($('body').hasClass('panel-left-open')) {
-				$('body, html').removeClass('panel-left-open');
-				if(!$('body').hasClass('landing-page')) {
-					instance.setMainContentWidthForIE();
-				}				
+				$('body, html').removeClass('panel-left-open');			
 				if(!$('html.is-chrome').length && !$('html.is-opera').length) {
 					$('.panel-left').addClass('is-animating-out');
 					$('.l-main').addClass('is-animating-out');
@@ -260,9 +262,6 @@
 				}
 			} else {
 				$('body, html').toggleClass('panel-left-open');
-				if(!$('body').hasClass('landing-page')) {
-					instance.setMainContentWidthForIE();
-				}
 				if(!$('html.is-chrome').length && !$('html.is-opera').length) {
 					$('.panel-left').addClass('is-animating-in');
 					$('.l-main').addClass('is-animating-in');
@@ -519,14 +518,14 @@
 			$('.default-tabs-transition .tabs__content-area').css("opacity", 1);
 		}
 
-		$('.js-tab-select').unbind("click");
-		$('.js-tab-select').on("click", function(e){
+		$('.js-tab-select').unbind("mouseup");
+		$('.js-tab-select').on("mouseup", function(e){
   		e.preventDefault();
   		var $this = $(this);
   		var thisParent = $this.parents(".tabs-container");
   		thisParent.find('.is-active').removeClass('is-active');
   		$this.addClass('is-active');
-  		var contentId = $this.find('.tabs__link').attr("href");
+  		var contentId = $this.find('.tabs__link').data("content");
   		$(contentId).parents('.tabs__content-container').find('.tabs__content--is-showing').removeClass('tabs__content--is-showing');
   		$(contentId).addClass('tabs__content--is-showing');
   		if(!isIE8 && $(contentId).parents('.tabs__content-container').hasClass('default-tabs-transition')) {
@@ -573,8 +572,8 @@
   	}
 	};
 
-
 	var FormFieldSelect = function() {
+		// List of checkboxes drop down
 		var pInstance = this;
 		$('.reflection-select').each(function(){
 			var $this = $(this),
@@ -603,36 +602,37 @@
 			});
 		});
 
+		// List of select options drop down
 		if(!$('.ie8').length) {
 			$('.js-field--select').each(function() {
-			var selectInput = $(this),
-					selectOptions = selectInput.find('option'),
-					optionsList = $('<ul>'),
-					refSelectContainer = $('<div>').addClass('reflection-select'),
-					refSelectDefault = $('<span>').addClass('ref-icon-after ref-icon-after--angle-down').text('Choose your option'),
-					isFilter = selectInput.hasClass('reflection-select--filter'),
-					isCentered = selectInput.hasClass('reflection-select--center'),
-					isRightAligned = selectInput.hasClass('reflection-select--right'),
-					listContainer = $("<div>").addClass("list-container");
-					if(isFilter) {
-						optionsList.append($('<a>').addClass('close-popup').text('K').on("click", function(e){
-							e.preventDefault();
-							$('.reflection-select').removeClass('is-open');
-							$('.form-field--select').removeClass('is-open');
-							if($(window).width() < 720) {
-								$('html.touch body, html.touch').removeClass('no-scroll');
-							}							
-						}));
-						refSelectContainer.addClass('reflection-select--filter');
-						var selectTitle = (selectInput.data("title")) ? selectInput.data("title") : $(selectOptions[0]).text();
-						optionsList.append($('<span>').text(selectTitle)).append(listContainer);
-					}
-					if(isCentered) {
-						refSelectContainer.addClass('reflection-select--center');
-					}
-					if(isRightAligned) {
-						refSelectContainer.addClass('reflection-select--right');
-					}
+				var selectInput = $(this),
+				selectOptions = selectInput.find('option'),
+				optionsList = $('<ul>'),
+				refSelectContainer = $('<div>').addClass('reflection-select'),
+				refSelectDefault = $('<span>').addClass('ref-icon-after ref-icon-after--angle-down').text('Choose your option'),
+				isFilter = selectInput.hasClass('reflection-select--filter'),
+				isCentered = selectInput.hasClass('reflection-select--center'),
+				isRightAligned = selectInput.hasClass('reflection-select--right'),
+				listContainer = $("<div>").addClass("list-container");
+				if(isFilter) {
+					optionsList.append($('<a>').addClass('close-popup').text('K').on("click", function(e){
+						e.preventDefault();
+						$('.reflection-select').removeClass('is-open');
+						$('.form-field--select').removeClass('is-open');
+						if($(window).width() < 720) {
+							$('html.touch body, html.touch').removeClass('no-scroll');
+						}							
+					}));
+					refSelectContainer.addClass('reflection-select--filter');
+					var selectTitle = (selectInput.data("title")) ? selectInput.data("title") : $(selectOptions[0]).text();
+					optionsList.append($('<span>').text(selectTitle)).append(listContainer);
+				}
+				if(isCentered) {
+					refSelectContainer.addClass('reflection-select--center');
+				}
+				if(isRightAligned) {
+					refSelectContainer.addClass('reflection-select--right');
+				}
 				selectOptions.each(function(){
 					$this = $(this);
 					if($this.attr('value')) {
@@ -661,39 +661,32 @@
 					optionsList.css('margin-top', -listHeight);
 				}				
 
-				function toggleDropDown() {
-					if(refSelectContainer.hasClass('is-open')) {
-						refSelectContainer.removeClass('is-open');
-						refSelectContainer.parents('.form-field--select').removeClass('is-open');
-						optionsList.css('margin-top', -listHeight);
-					}
-					else {
-						$('.reflection-select').removeClass('is-open');
-						$('.form-field--select').removeClass('is-open');
-						refSelectContainer.addClass('is-open');
-						refSelectContainer.parents('.form-field--select').addClass('is-open');
-						optionsList.css('margin-top', "9px");
-						if($('.touch').length) {
-							refSelectContainer.siblings('.js-field--select').focus();
-						}
-					}
-					if($(window).width() < 720) {
-						if(refSelectContainer.hasClass('reflection-select--filter') && refSelectContainer.hasClass('is-open')) {
-							$('html.touch body, html.touch').addClass('no-scroll');
-						} else {
-							$('html.touch body, html.touch').removeClass('no-scroll');
-						}
-					}
-				};
-
 				if(selectInput.parent('.form-field--select-disabled').length == 0) {
 					optionsList.find('li').on('click', function() {
 						if(!$(this).hasClass('pre-selected')) {
-							toggleDropDown();
+							listItem = $(this);
+							optionsList.find('li').removeClass('is-selected');
+							listItem.addClass('is-selected');
+							refSelectDefault.text(listItem.text()).addClass('is-activated');
+
+							selectOptions.each(function() {
+								if($(this).val() == listItem.data("value")) {
+									$(this).attr("selected", "selected");
+								}
+								else {
+									$(this).removeAttr("selected");	
+								}
+							});
+
+							if(selectInput.hasClass('reflection-select--filter')) {
+								$('.reflection-select').removeClass('is-open');
+							}
+							toggleDropDown(refSelectContainer, optionsList, listHeight);
 						}
 					});
+					
 					refSelectDefault.on('click', function() {
-						toggleDropDown();
+						toggleDropDown(refSelectContainer, optionsList, listHeight);
 					});
 				}
 
@@ -702,35 +695,36 @@
 					optionsList.css('margin-top', -listHeight);	
 				});
 
-				optionsList.find('li').on('click', function(){
-					if(!$(this).hasClass('pre-selected')) {
-						listItem = $(this);
-						optionsList.find('li').removeClass('is-selected');
-						listItem.addClass('is-selected');
-						refSelectDefault.text(listItem.text()).addClass('is-activated');
-
-						selectOptions.each(function() {
-							if($(this).val() == listItem.data("value")) {
-								$(this).attr("selected", "selected");
-							}
-							else {
-								$(this).removeAttr("selected");	
-							}
-						});
-
-						if(selectInput.hasClass('reflection-select--filter')) {
-							$('.reflection-select').removeClass('is-open');
-						}
-					}
-				});
-
 				$(this).siblings('.page-overlay').on("click", function() {
-					toggleDropDown();
+					toggleDropDown(refSelectContainer, optionsList, listHeight);
 				});
 			});
 		}
+	};
 
-
+	function toggleDropDown(refSelectContainer, optionsList, listHeight) {
+		if(refSelectContainer.hasClass('is-open')) {
+			refSelectContainer.removeClass('is-open');
+			refSelectContainer.parents('.form-field--select').removeClass('is-open');
+			optionsList.css('margin-top', -listHeight);
+		}
+		else {
+			$('.reflection-select').removeClass('is-open');
+			$('.form-field--select').removeClass('is-open');
+			refSelectContainer.addClass('is-open');
+			refSelectContainer.parents('.form-field--select').addClass('is-open');
+			optionsList.css('margin-top', "9px");
+			if($('.touch').length) {
+				refSelectContainer.siblings('.js-field--select').focus();
+			}
+		}
+		if($(window).width() < 720) {
+			if(refSelectContainer.hasClass('reflection-select--filter') && refSelectContainer.hasClass('is-open')) {
+				$('html.touch body, html.touch').addClass('no-scroll');
+			} else {
+				$('html.touch body, html.touch').removeClass('no-scroll');
+			}
+		}
 	};
 
 	FormFieldSelect.prototype.populateSelectedValues = function(listItems, selectedOptionsContainer) {
@@ -909,16 +903,27 @@
 		if($('.no-touch').length) {
 			$('.js-tooltip').each(function(){
 				var $this = $(this);
-				var tooltipText = $(this).data("tooltip");
-				var tooltip = $('<div>').addClass("tooltip").text(tooltipText);
-				var topPosition = $this.offset().top;
-				var leftPosition = $this.offset().left;
-				var componentHeight = $this.innerHeight();
+				var tooltip;
 				$this.on("mouseenter", function(){
+					var tooltipText = $(this).data("tooltip");
+					tooltip = $('<div>').addClass("tooltip").text(tooltipText);			
 					$('body').append(tooltip);
+					var topPosition = $this.offset().top;
+					var leftPosition = $this.offset().left;
 					var tooltipHeight = tooltip.innerHeight();
-					tooltip.hide()
-					tooltip.css({"top": topPosition - tooltipHeight - 20, "left": leftPosition});
+					var componentHeight = $this.innerHeight();						
+					tooltip.hide();
+					if($this.hasClass('js-tooltip--right')) {
+						var tooltipWidth = tooltip.innerWidth();
+						var componentWidth = $this.innerWidth();	
+						if($this.hasClass('js-tooltip--right--no-pointer-padding')) {
+							leftPosition = (leftPosition + componentWidth - tooltipWidth) + 10;
+						} else {
+							leftPosition = leftPosition + componentWidth - tooltipWidth;
+						}
+						tooltip.addClass("tooltip-right");
+					}
+					tooltip.css({"top": topPosition - tooltipHeight - 20, "left": leftPosition});				
 					setTimeout(function(){
 						tooltip.fadeIn(200);
 					}, 800);
@@ -942,7 +947,7 @@
 				}
 				var tooltip = $('<div>').addClass("whats-this-tooltip");
 				tooltip.append($('<h2>').text("What's This?"));
-				tooltip.append($('<p>').text($this.data("whatsthis")));
+				tooltip.append($('<p>').html($this.data("whatsthis")));
 				tooltip.append($('<img>').attr("src", "images/icon-bulb.png").attr("alt", "Bulb icon"));
 				tooltipContainer.append(tooltip);
 				$('body').append(tooltipContainer);
@@ -974,8 +979,86 @@
 						tooltipContainer.remove();
 						$this.removeClass('is-open');
 					}
-				});
+				});				
+			} else {
+				$('.whats-this-tooltip-popup').remove();
+				$this.removeClass('is-open');
 			}
+		});
+		
+		$(window).on("resize", function(){
+			$('.whats-this-tooltip-popup').remove();
+			$('.js-whats-this-tooltip.is-open').removeClass('is-open');
+		});
+	}
+
+	var LoadingMessageBoxMessages = [{
+		message: "<h2>Did you know...</h2><p>The app market is currently worth $40.5 Billion annually (2015)</p><img alt=\"Bulb icon\" src=\"images/icon-bulb.png\">"
+	},
+	{
+		message: "<h2>Did you know...</h2><p>There are currently 5.5 Million developers making apps (2015)</p><img alt=\"Bulb icon\" src=\"images/icon-bulb.png\">"
+	},
+	{
+		message: "<h2>Did you know...</h2><p>More than 3.7 Million apps are available across all stores today (2015)</p><img alt=\"Bulb icon\" src=\"images/icon-bulb.png\">"
+	},
+	{
+		message: "<h2>Did you know...</h2><p>Over 2000 apps are released every day (2015)</p><img alt=\"Bulb icon\" src=\"images/icon-bulb.png\">"
+	},
+	{
+		message: "<h2>Did you know...</h2><p>52% of app developers make less than $1,000 per month (2015)</p><img alt=\"Bulb icon\" src=\"images/icon-bulb.png\">"
+	},
+	{
+		message: "<h2>Did you know...</h2><p>17% of app developers make absolutely nothing :( (2015)</p><img alt=\"Bulb icon\" src=\"images/icon-bulb.png\">"
+	},
+	{
+		message: "<h2>Did you know...</h2><p>Mobile games revenue ($30.3 Billion) eclipsed console games ($26.4 Billion) for first time in 2015</p><img alt=\"Bulb icon\" src=\"images/icon-bulb.png\">"
+	},
+	{
+		message: "<h2>Did you know...</h2><p>Only 5% of developers make over $500,000 a month (2015)</p><img alt=\"Bulb icon\" src=\"images/icon-bulb.png\">"
+	},
+	{
+		message: "<h2>Did you know...</h2><p>Only 10% of developers make over $100,000 a month (2015)</p><img alt=\"Bulb icon\" src=\"images/icon-bulb.png\">"
+	}];
+
+	var LoadingMessageBox = function() {
+		var popupToastContainer = $("<div>").addClass("loading-message-box-container");
+		var firstMessageObject = LoadingMessageBoxMessages[0];
+		var popupToast = $("<div>").addClass("loading-message-box").html(firstMessageObject.message);
+		LoadingMessageBoxMessages.shift();
+		LoadingMessageBoxMessages.push(firstMessageObject);
+		popupToastContainer.append(popupToast);
+		$('body').append(popupToastContainer);
+		popupToastContainer.css("z-index", 900);
+		setTimeout(function(){
+			popupToast.addClass("is-open");
+		}, 500);
+		
+		setTimeout(function(){
+			popupToast.removeClass("is-open");
+			setTimeout(function(){
+				popupToastContainer.remove();
+			}, 1000);
+		}, 5000);
+
+		popupToastContainer.on("click", function(){
+			popupToast.removeClass("is-open");
+		});
+	}
+
+	var StickyTableHead = function() {
+		$('.sticky-table-head:visible').each(function(){
+			console.log("StickyTableHead");
+			var $this = $(this);
+			var headerHeight = $('.global-header').innerHeight();
+			var dataTableTopPosition = $this.siblings('table').offset().top - headerHeight;
+			
+			$(window).on("scroll", function(){
+				if($(window).scrollTop() >= dataTableTopPosition) {
+					$this.css({"visibility": "visible", "opacity": 1});
+				} else {
+					$this.css({"visibility": "hidden", "opacity": 0});
+				}
+			});
 		});
 	}
 /* END COMPONENT OBJECTS */
@@ -991,6 +1074,11 @@
 		new TabsToMobileDropDown();
 		new FormFieldSelect();
 		new BackToTop();
+		new StickyTableHead();
+
+		$('.js-tab-select').on("mouseup", function(e){
+			new StickyTableHead();
+		});
 	}
 
 // BlogPage object

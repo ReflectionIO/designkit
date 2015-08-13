@@ -261,6 +261,12 @@ $local-breakpoint-vertical: 680px;
 		@media screen and (min-width: $phablet) and (max-width: 959px) {
 			font-size: 3.7em;
 		}
+		.ie9 & {
+			margin-top: 30px;
+			@include breakpoint($desktop) {
+				margin-top: 0;
+			}
+		}
 	}
 	p {
 		font-size: 1.6rem;		
@@ -274,7 +280,7 @@ $local-breakpoint-vertical: 680px;
 	max-width: 1600px;
 	margin: 0 auto;
 	padding-top: 4.4rem;
-	@media screen and (max-width: 719px) {
+	@media screen and (max-width: $mobile-max-width) {
 		display: -webkit-box;
 		  /* @alternate */ display: -ms-flexbox;
 		  /* @alternate */ display: -webkit-flex;
@@ -314,7 +320,7 @@ $local-breakpoint-vertical: 680px;
 	}
 	.grid__column--five-columns {
 		margin-bottom: 3rem;
-		@media screen and (max-width: 719px) {
+		@media screen and (max-width: $mobile-max-width) {
 			order: 1;
 			padding-bottom: 4rem;
 			border-bottom: 1px solid #E1E5E8;

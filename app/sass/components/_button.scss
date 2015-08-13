@@ -2,18 +2,18 @@
 .ref-button {
 	@extend %button-base-style;
 	&.ref-button--success:disabled {
-		background-color: $reflection-green;
+		background-color: transparent;
 		cursor: default;
 		&:hover {
-			background-color: $reflection-green;
+			background-color: transparent;
 			cursor: default;
 		}
 	}
 	&.ref-button--error:disabled {
-		background-color: $error-red;
+		background-color: $error-colour-dark;
 		cursor: default;
 		&:hover {
-			background-color: $error-red;
+			background-color: $error-colour-dark;
 			cursor: default;
 		}
 	}
@@ -204,10 +204,10 @@
 .ref-button--warning {
 	background-color: $reflection-red;
 	&:hover {
-		background-color: $error-red;
+		background-color: $error-colour-dark;
 	}
 	&:active {
-		border-top-color: darken($error-red, 10%);
+		border-top-color: darken($error-colour-dark, 10%);
 	}
 }
 .ref-button--link {
@@ -293,23 +293,25 @@
 		border: none;
 	}
 }
-.ref-button--success {
-	background-color: $reflection-green;
+.ref-button--success,
+.ref-button--success:disabled {
+	color: $dark-grey-1;
+	background-color: transparent;
 	cursor: default;
 	transition: background-color 0s;
 	&:active, &:hover {
 		top: 0;
 		border: none;
-		background-color: $reflection-green;
+		background-color: transparent;
 	}
 }
 .ref-button--error {
-	background-color: $error-red;
+	background-color: $error-colour-dark;
 	cursor: default;
 	transition: background-color 0s;
 	&:active, &:hover {
 		top: 0;
 		border: none;
-		background-color: $error-red;
+		background-color: $error-colour-dark;
 	}
 }
