@@ -2,6 +2,12 @@
 	padding-top: 20px;
 	padding-bottom: 66px;
 	overflow: visible;
+	.page-functions {
+		display: inline-block;
+		.filter-toggle {
+			float: right;
+		}
+	}
 	.filters-container {
 		padding: 0.9rem 3% 1.2rem;
 		margin-bottom: 0;
@@ -48,6 +54,82 @@
 			padding-top: 0;
 			margin-bottom: 0.78em;
 			font-size: 2.1rem;
+		}
+	}
+}
+.page-leaderboard.leaderboard-compact-view {
+	table.table-data {
+		.MHXTE6C-i-d,
+		.table-data-first {
+			font-size: 14px;
+		}
+		.MHXTE6C-r-a, 
+		.MHXTE6C-I-a, 
+		.app-details {
+			padding-top: 9px;
+			width: 100%;
+			max-width: 600px;
+			@include breakpoint($laptop) {
+				width: calc(100% - 30px);
+			}
+			a {
+				width: 72%;
+				font-size: 15px;
+				@include breakpoint($desktop-wide) {
+					width: 100%;
+				}
+			}
+		}
+		.img-rounded {
+			display: none;
+			width: 20px;
+			margin-right: 10px;
+			margin-top: 10px;
+			border-radius: 4px;
+		}
+		.ref-icon-before--revenue, 
+		.ref-icon-before--cloud {
+			top: -1px;
+		}
+		&.table-app-group {
+			.MHXTE6C-r-a, 
+			.MHXTE6C-I-a, 
+			.app-details {
+				padding-top: 7px;
+				padding-bottom: 5px;
+				a {
+					width: 56%;
+					padding-right: 4%;
+					margin-bottom: 0px;
+					display: inline-block;
+					vertical-align: middle;
+				}
+				.text-muted {
+					width: 40%;
+					margin-bottom: 0px;
+					vertical-align: middle;
+				}
+			}
+			.MHXTE6C-i-a,
+			.table-data {
+				font-size: 13px;
+				@include breakpoint($desktop) {
+					font-size: 15px;
+				}
+			}
+		}
+	}
+	.text-muted {
+		width: 50%;
+		margin-bottom: 5px;
+		display: inline-block;
+		vertical-align: top;
+		+ span {
+			width: 45%;
+			margin-bottom: 0px;
+			display: inline-block;
+			vertical-align: top;
+			text-align: right;
 		}
 	}
 }
