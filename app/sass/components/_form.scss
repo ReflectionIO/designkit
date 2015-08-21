@@ -334,6 +334,9 @@ textarea {
 		}
 	}
 }
+.form-field.form-field--alert {
+	border: 1px solid $reflection-green !important;
+}
 .calendar-container {
 	position: relative;
 	margin-bottom: 1.2rem;
@@ -476,7 +479,8 @@ input:invalid {
 		}
 	}
 }
-.reflection-select {
+.reflection-select,
+.form-field--country-select {
 	span, li {
 		display: block;
 		font-family: $brand-heading-font;
@@ -522,6 +526,8 @@ input:invalid {
 			}
 		}
 	}
+}
+.reflection-select {
 	ul {
 		margin-top: 0.8rem;
 		padding-bottom: 1.4rem;
@@ -589,7 +595,8 @@ input:invalid {
 		}		
 	}	
 }
-.form-field--select {
+.form-field--select,
+.form-field--country-select {
 	.page-overlay {
 		opacity: 0;
 		display: block;
@@ -668,6 +675,15 @@ input:invalid {
 		.checkboxLabel,
 		.radioButtonLabel {
 			border: 1px solid $error-colour-dark;
+		}
+	}
+	&.form-field--alert {
+		overflow: visible;
+		input[type=checkbox],
+		input[type=radio],
+		.checkboxLabel,
+		.radioButtonLabel {
+			border: 1px solid $reflection-green;
 		}
 	}
 	label {

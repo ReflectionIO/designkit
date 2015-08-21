@@ -572,6 +572,221 @@
   	}
 	};
 
+	var MockFormSelectMultipleWithSearch = function() {
+		$('.js-field--country-select').each(function(){
+			new FormSelectMultipleWithSearch($(this));
+		});
+	}
+
+	var FormSelectMultipleWithSearch = function($element) {
+		var instance = this,
+				inputValue;
+
+		instance.$moduleContainer = $element;
+		instance.$currentSelectedItemsContainer = instance.$moduleContainer.find('.js-country-select--container');
+		instance.$resultsContainer = instance.$moduleContainer.find('.js-suggested-results-container'),
+		instance.$noResultsContainer = instance.$moduleContainer.find('.js-no-results'),
+		instance.$appsList = instance.$resultsContainer.find('ul');
+
+		$.ajax({
+        url: "js/search-countries.json",
+        async: true,
+        dataType: "json",
+        success: function (items){
+          instance.mockData = items;
+        }
+    });
+
+		instance.$moduleContainer.find('.js-country-search-form-field').each(function(){
+			instance.initFormField($(this));
+		});
+
+		instance.initPopupDisplay();
+		instance.initAddAnotherButton();
+	}
+
+	FormSelectMultipleWithSearch.prototype.initPopupDisplay = function() {
+		var instance = this;
+		if(!instance.$moduleContainer.hasClass('.form-field--select-disabled')) {
+			instance.$moduleContainer.find('.selected-value').on('click', function() {
+				if(instance.$moduleContainer.hasClass('is-open')) {
+					instance.$moduleContainer.removeClass('is-open');
+				}
+				else {
+					instance.$moduleContainer.addClass('is-open');
+				}
+			});
+			instance.$moduleContainer.find(".close-popup, .page-overlay").on("click", function(e){
+				e.preventDefault();
+				instance.$moduleContainer.removeClass('is-open');
+				if($(window).width() < 720) {
+					$('html.touch body, html.touch').removeClass('no-scroll');
+				}
+			});
+		}
+	}	
+
+	FormSelectMultipleWithSearch.prototype.initFormField = function($element) {
+		var instance = this;
+
+		var $thisFormField = $element,
+				$thisInputBox = $thisFormField.find('input[type=text]');
+
+		$thisFormField.find('.remove-form-field').on("click", function(){
+			var allFormFields = instance.$currentSelectedItemsContainer.find('.form-field'),
+			$firstFormField = instance.$currentSelectedItemsContainer.find('.form-field:first-child');
+			if(allFormFields.length > 1) {
+				var allFieldsHaveAcceptedValue = true;
+				if($thisFormField.is($firstFormField)) { // If first form field remove clicked, make sure another form field is available and has an accepted value
+					allFormFields.each(function(){
+						if(!$(this).hasClass("js-has-accepted-value")) {
+							allFieldsHaveAcceptedValue = false;
+						}
+					});
+					if(allFieldsHaveAcceptedValue) {
+						$thisFormField.remove();
+					}	
+				} else {
+					$thisFormField.remove(); // not the first form field so can be removed regardless of whether it has content or not
+				}
+			}			
+		});
+
+		$thisFormField.currentSelectedValue = $thisInputBox.val();
+		$thisFormField.currentFlag = $thisFormField.find('svg');
+		// on key up loop through object and search - for implementation, amend to call service to return results in json and display
+		$thisInputBox.keyup(function(e){			
+			var currentInput = $(this);
+			var searchResultsApps = [];
+			var inputValueCaseInsensitiveRegEx = new RegExp($(this).val(), "i");
+
+			if(e.key == "Enter") {
+				if(currentInput.val().length > 0) {
+					instance.$appsList.find('li:first-child a').trigger("click");			
+				}
+			} else {
+				$thisFormField.currentFlag.hide()
+				$thisFormField.removeClass("js-has-accepted-value");
+
+				if(currentInput.val().length == 0) {
+					$thisFormField.find('svg').hide();
+				}
+
+				if($thisFormField.hasClass("form-field--alert")) {
+					$thisFormField.removeClass("form-field--alert");
+				}
+				// if found add to result array
+				for(var i = 0; i < instance.mockData.items.length; i++) {
+					if(instance.mockData.items[i].name.search(inputValueCaseInsensitiveRegEx) > -1) {
+						searchResultsApps.push(instance.mockData.items[i]);
+					}
+				}
+
+				// show and hide containers for nil results
+				if (searchResultsApps.length == 0) {			
+					instance.$resultsContainer.hide();
+				} else {
+					instance.$resultsContainer.show();
+					instance.$noResultsContainer.hide();
+				}
+
+				if(searchResultsApps.length == 0) {
+					instance.$noResultsContainer.show();
+				}
+				
+				// output results to screen
+				instance.$appsList.empty();
+				for(var i = 0; i < searchResultsApps.length; i++) {
+
+					// see if chosen country is already selected
+					var resultId = searchResultsApps[i].id,
+							countryAlreadySelected = false,
+							countryAlreadySelectedFormField;
+
+					instance.$currentSelectedItemsContainer.find('.form-field').each(function(){
+						if($(this).attr("data-id") == resultId) {
+							countryAlreadySelected = true;
+						}
+					});
+
+					// FRI - you solved the not allowing same country
+					// NEXT - after country added, if you press enter, flag disappears, svg removed
+
+					var newLink = $('<a>').html(searchResultsApps[i].flag)
+																.append($('<span>').text(searchResultsApps[i].name).attr("data-id", searchResultsApps[i].id))
+																.on("click", function(){ // on click add value to currently edited input
+																	var selectedSpan = $(this).find('span'),
+																			selectedId = selectedSpan.data("id");
+
+																	if(!$(this).hasClass("is-selected")) {
+																		$thisFormField.attr("data-id", selectedId);
+																		$thisFormField.find('svg').remove();
+																		currentInput.val(selectedSpan.text());
+																		$thisFormField.append($(this).find('svg'));
+																		$thisFormField.addClass("js-has-accepted-value js-country-search-form-field");
+																		instance.$resultsContainer.hide();
+																		$thisFormField.currentSelectedValue = $thisInputBox.val();
+																		$thisFormField.currentFlag = $thisFormField.find('svg');
+																		$thisFormField.id = selectedId;
+																	}
+																});
+
+					if(countryAlreadySelected) {
+						newLink.addClass("is-selected");
+					}
+
+					instance.$appsList.append($('<li>').append(newLink));					
+				}
+			}
+
+		});
+
+		$thisInputBox.blur(function(){
+			setTimeout(function(){
+				if(!$thisFormField.hasClass("js-has-accepted-value") && $thisFormField.currentSelectedValue != 0 && $thisInputBox.val().length == 0) { // add previous value before false edit
+					$thisInputBox.val($thisFormField.currentSelectedValue);
+					$thisFormField.currentFlag.show();
+					$thisFormField.addClass("js-has-accepted-value");
+					instance.$resultsContainer.hide();
+					instance.$noResultsContainer.hide();
+					console.log("revert to original value")
+				}
+			}, 100);
+		});
+	}
+
+	FormSelectMultipleWithSearch.prototype.initAddAnotherButton = function () {
+		var instance = this;
+		instance.$moduleContainer.find('.btn-add-another-country').on("click", function(e){
+			e.preventDefault();
+			var currentSelectedItems = instance.$currentSelectedItemsContainer.find('.form-field'),
+			allInputsHaveValues = true,
+			$emptyInput;
+
+			currentSelectedItems.each(function(){
+				if(!$(this).hasClass("js-has-accepted-value")) {
+					allInputsHaveValues = false;
+					$emptyInput = $(this).find('input');
+				}
+			});
+
+			if(allInputsHaveValues) {
+				// add another input select option
+				var newInput = $('<input>').attr("type", "text").attr("id", "country" + currentSelectedItems.length).attr("name", "country" + currentSelectedItems.length).attr("autocomplete", "off");
+				var newFormField = $('<div>').addClass("form-field is-closed")						
+							.append(newInput)
+							.append($('<label>').attr("for", "country" + currentSelectedItems.length).text("Add Another Country"));
+				var newRemoveButton = $('<a>').addClass("remove-form-field")
+																			.text("K");
+																			
+				newFormField.append(newRemoveButton);					
+				instance.$currentSelectedItemsContainer.append(newFormField);
+				instance.initFormField(newFormField);
+			}
+		});
+	}
+
+
 	var FormFieldSelect = function() {
 		// List of checkboxes drop down
 		var pInstance = this;
@@ -609,7 +824,7 @@
 				selectOptions = selectInput.find('option'),
 				optionsList = $('<ul>'),
 				refSelectContainer = $('<div>').addClass('reflection-select'),
-				refSelectDefault = $('<span>').addClass('ref-icon-after ref-icon-after--angle-down').text('Choose your option'),
+				refSelectDefault = $('<span>').addClass('selected-value').text('Choose your option'),
 				isFilter = selectInput.hasClass('reflection-select--filter'),
 				isCentered = selectInput.hasClass('reflection-select--center'),
 				isRightAligned = selectInput.hasClass('reflection-select--right'),
@@ -700,6 +915,24 @@
 				});
 			});
 		}
+	};	
+
+	FormFieldSelect.prototype.populateSelectedValues = function(listItems, selectedOptionsContainer) {
+		var selectedValues = '';
+		listItems.each(function(){
+			var $this = $(this);
+			if($this.find('input:checked').length > 0) {
+				selectedValues += $this.find('.checkboxLabelVisible').text() + ', ';
+			}
+		});
+
+		if(selectedValues.length > 0) {
+			selectedValues = selectedValues.substring(0, selectedValues.length - 2);
+			selectedOptionsContainer.text(selectedValues);
+		}
+		else {
+			selectedOptionsContainer.text('Choose your option(s)');
+		}
 	};
 
 	function toggleDropDown(refSelectContainer, optionsList, listHeight) {
@@ -724,24 +957,6 @@
 			} else {
 				$('html.touch body, html.touch').removeClass('no-scroll');
 			}
-		}
-	};
-
-	FormFieldSelect.prototype.populateSelectedValues = function(listItems, selectedOptionsContainer) {
-		var selectedValues = '';
-		listItems.each(function(){
-			var $this = $(this);
-			if($this.find('input:checked').length > 0) {
-				selectedValues += $this.find('.checkboxLabelVisible').text() + ', ';
-			}
-		});
-
-		if(selectedValues.length > 0) {
-			selectedValues = selectedValues.substring(0, selectedValues.length - 2);
-			selectedOptionsContainer.text(selectedValues);
-		}
-		else {
-			selectedOptionsContainer.text('Choose your option(s)');
 		}
 	};
 
@@ -1047,7 +1262,6 @@
 
 	var StickyTableHead = function() {
 		$('.sticky-table-head:visible').each(function(){
-			console.log("StickyTableHead");
 			var $this = $(this);
 			var headerHeight = $('.global-header').innerHeight();
 			var dataTableTopPosition = $this.siblings('table').offset().top - headerHeight;
@@ -1075,9 +1289,31 @@
 		new FormFieldSelect();
 		new BackToTop();
 		new StickyTableHead();
+		new MockFormSelectMultipleWithSearch();
 
 		$('.js-tab-select').on("mouseup", function(e){
 			new StickyTableHead();
+		});
+
+		if($('.toggle-view-state #compact-view').attr("checked") !== undefined) {
+			$(".page-leaderboard").addClass("compact-view");
+		}
+
+		$('.toggle-view-state input').on("click", function(){
+			$(".page-leaderboard").removeClass("list-view compact-view");
+			$(".page-leaderboard").addClass($(this).attr("id"));
+		});
+
+		var resetFiltersButton = $('.js-reset-filters');
+
+		resetFiltersButton.on("click", function(e){
+			e.preventDefault();
+			$(this).parents("form").find("select").each(function(){
+				var popupList = $(this).siblings(".reflection-select").find("ul");
+				popupList.find("li:first-child").trigger("click");
+				popupList.find(".close-popup").trigger("click");
+			});
+			$(this).attr("disabled", "disabled");
 		});
 	}
 

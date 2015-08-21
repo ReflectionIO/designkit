@@ -1,49 +1,114 @@
 .page-leaderboard {
 	padding-top: 20px;
-	padding-bottom: 66px;
+	padding-bottom: 66px;	
 	overflow: visible;
+	background-color: $reflection-white;
 	.page-functions {
+		margin-top: -5rem;
 		display: inline-block;
+		@include breakpoint($tablet) {
+			margin-top: -7px;
+		}
+		@include breakpoint($laptop) {
+			margin-top: 0;
+		}
 		.filter-toggle {
 			float: right;
-		}
+		}		
 	}
 	.filters-container {
-		padding: 0.9rem 3% 1.2rem;
+		padding: 0.9rem 3% 0.4rem;
 		margin-bottom: 0;
 		@include breakpoint($tablet) {
-			padding: 1.4rem 2% 1.4rem;
+			padding: 1.4rem 2% 0.4rem;
 		}
-		form > div {
-			&:nth-child(even) {
-				float: right;
-				text-align: left;
-				@include breakpoint($tablet) {
-					float: none;
+		.ref-button--function-small {			
+			padding: 10px 14px 10px 14px;
+			line-height: 1.1;
+			&:active {
+				padding-bottom: 8px;
+			}
+			.is-chrome & {
+				padding: 11px 14px 11px 14px;
+				&:active {
+					padding-bottom: 9px;
 				}
 			}
-			&:nth-child(2) {
-				margin-bottom: 0;
+			@include breakpoint($tablet) {
+				margin-right: 1%;
 			}
 		}
 		.form-field:not(.form-field--date-select),
 		.calendar-container {
 			width: 48%;
+			margin-bottom: 1rem;
 			@include breakpoint($tablet) {
-				width: 20%;				
+				width: auto;				
 				margin-right: percentage(10/1000);
-				margin-bottom: 0;
 			}
 			@include breakpoint($desktop) {
-				width: percentage(160/1000);
+				width: auto;
+			}
+		}
+		.form-field--country-select .form-field {
+			width: 100%;
+		}
+		.filter-group {
+			width: 100%;
+			display: inline-block;
+			float: left;
+			overflow: visible;
+			> * {
+				&:nth-child(even) {
+					float: right;
+					text-align: left;
+					@include breakpoint($tablet) {
+						float: none;
+					}
+				}
+				&:nth-child(2) {
+					margin-bottom: 0;
+				}	
+			}
+			button {
+				margin-bottom: 1rem;
+				padding: 10px 10px;			
+    		display: inline-block;
+    		vertical-align: middle;
+    		clear: none;
+    		font-size: 13px;
+    		font-weight: 400;
+    		.is-chrome & {
+				padding: 11px 10px;
+					&:active {
+						padding-bottom: 9px;
+					}
+				}
+				@include breakpoint($desktop-wide) {
+					font-size: 14px;
+				}
+			}
+			&.is-open {
+				height: auto;
+				transition: height 0.2s;
+			}
+			@include breakpoint($tablet) {
+				width: calc(100% - 100px);
+			}
+		}
+		.filter-toggles {
+			width: 100px;
+			display: inline-block;
+			float: right;
+			button {
+				margin-right: 1rem;
+				float: right;
 			}
 		}
 	}
 	.filter-toggle {
 		float: right;
-		@include breakpoint($tablet) {
-			float: none;
-		}
+		margin-bottom: 1rem;
 	}
 	.cellTableLoading tr {
 		height: 74px;
@@ -57,7 +122,8 @@
 		}
 	}
 }
-.page-leaderboard.leaderboard-compact-view {
+.page-leaderboard.compact-view {
+	transition: 0.3s all;
 	table.table-data {
 		.MHXTE6C-i-d,
 		.table-data-first {
@@ -66,7 +132,7 @@
 		.MHXTE6C-r-a, 
 		.MHXTE6C-I-a, 
 		.app-details {
-			padding-top: 9px;
+	    padding-top: 9px;		
 			width: 100%;
 			max-width: 600px;
 			@include breakpoint($laptop) {
@@ -95,19 +161,29 @@
 			.MHXTE6C-r-a, 
 			.MHXTE6C-I-a, 
 			.app-details {
-				padding-top: 7px;
-				padding-bottom: 5px;
+				padding-top: 4px;
+	    	padding-bottom: 2px;
+	    	@include breakpoint($tablet) {
+					padding-top: 7px;
+					padding-bottom: 5px;
+				}
 				a {
-					width: 56%;
+					width: 100%;
 					padding-right: 4%;
 					margin-bottom: 0px;
 					display: inline-block;
 					vertical-align: middle;
+					@include breakpoint($tablet) {
+						width: 56%;
+					}
 				}
 				.text-muted {
-					width: 40%;
+					width: 100%;
 					margin-bottom: 0px;
 					vertical-align: middle;
+					@include breakpoint($tablet) {
+						width: 40%;
+					}
 				}
 			}
 			.MHXTE6C-i-a,
@@ -120,16 +196,25 @@
 		}
 	}
 	.text-muted {
-		width: 50%;
+		width: 100%;
 		margin-bottom: 5px;
-		display: inline-block;
+		display: block;
 		vertical-align: top;
-		+ span {
-			width: 45%;
-			margin-bottom: 0px;
+		@include breakpoint($tablet) {
+			width: 50%;
 			display: inline-block;
+		}
+		+ span {
+			width: 100%;
+			margin-bottom: 0px;
+			padding-top: 3px;
+			display: block;
 			vertical-align: top;
 			text-align: right;
+			@include breakpoint($tablet) {
+				width: 45%;
+				display: inline-block;
+			}
 		}
 	}
 }
@@ -213,15 +298,22 @@
 	}
 }
 @media screen and (max-width: $tablet) {
-	.page-leaderboard .scrollable .table-data .MHXTE6C-i-a:nth-child(2),
-	.page-leaderboard .scrollable .table-data .table-data:nth-child(2),
-	.page-leaderboard .scrollable table.responsive th:nth-child(2) {
-		padding-left: 3%;
-	}
-	.scrollable .table-overall tbody tr {
-		height: 82px;
-	}
-	.scrollable .table-app-group tbody tr {
-		height: 65px;
+	.page-leaderboard {
+		.scrollable .table-data .MHXTE6C-i-a:nth-child(2),
+		.scrollable .table-data .table-data:nth-child(2),
+		.scrollable table.responsive th:nth-child(2) {
+			padding-left: 3%;
+		}
+		.scrollable .table-overall tbody tr {
+			height: 82px;
+		}
+		.scrollable .table-app-group tbody tr {
+			height: 65px;
+		}
+		&.compact-view {
+			.scrollable .table-app-group tbody tr {
+				height: auto;
+			}			
+		}
 	}
 }

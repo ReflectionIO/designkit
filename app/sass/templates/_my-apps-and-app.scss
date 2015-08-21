@@ -1,5 +1,5 @@
-.filter-container--my-apps,
-.filter-container--app {
+.filters-container.filter-container--my-apps,
+.filters-container.filter-container--app {
 	&.filters-container {
 		.calendar-container {
 			display: none;
@@ -96,29 +96,18 @@
 		}
 	}
 	.or-text + .form-field {
-		width: 48%;
+		width: 100%;		
 		margin-right: 1%;
-		@include breakpoint($tablet) {
-			width: 20%;
-		}
-		@include breakpoint($laptop) {
-			width: 13%;
+		@include breakpoint($tablet) {			
+			width: auto;
 		}
 	}
 	.form-field {
 		width: 48%;		
 		text-align: left;
 		@include breakpoint($tablet) {
-			width: 20%;
+			width: auto;
 			margin-right: 1%;
-		}
-		@include breakpoint($laptop) {
-			width: 16.4%;
-		}
-		@media screen and (min-width: $laptop) and (max-width: $desktop) {
-			.panel-left-open & {
-				width: 15.2%;
-			}
 		}
 		&.store-select,
     &.category-select,

@@ -108,11 +108,11 @@
 			}			
 		}
 	}
-	.filter-container--app {
+	.filters-container.filter-container--app {
 		padding-bottom: 0;
 		.date-selection-filter-container {
 			position: relative;
-			width: 48%;			
+			width: 48%;
 			display: inline-block;
 			margin-right: 0;
   		float: right;
@@ -121,29 +121,20 @@
 				width: 100%;
 			}
 			@include breakpoint($tablet) {
-				width: 20%;
+				width: auto;
 				margin-right: 1%;
 				float: none;
+				.time-period-select {
+					width: auto;
+				}
 			}
 			@include breakpoint($laptop) {
 				position: absolute;
 				width: 77.6%;
 				margin-right: 0;
-				.time-period-select {
-					width: 20%;
-					.panel-left-open & {
-						width: 12.3%;
-					}
-				}
 			}
 			@include breakpoint($desktop) {
 				width: 78.4%;
-				.time-period-select {
-					width: 19.2%;
-					.panel-left-open & {
-						width: 19.2%;
-					}
-				}
 			}
 		}
 	}
@@ -166,7 +157,7 @@
 		max-width: 142px;
 	}
 	@media screen and (max-width: $tablet) {
-		.filter-container--app .filter-toggle {
+		.filters-container.filter-container--app .filter-toggle {
 			width: 48%;
 			margin-bottom: 1.1rem;
 			float: left;
