@@ -142,11 +142,11 @@
 }
 .form-field--country-select {
 	.country-select--popup {
-		max-height: auto;
-		padding: 12px 21px;
+		max-height: inherit;
+		padding: 12px 21px 24px;
 		overflow: visible;
 		.close-popup {
-			top: 10px;
+			top: 12px;
 			right: 10px;
 			font-size: 16px;
 		}
@@ -162,9 +162,11 @@
 	.btn-add-another-country {
 		width: 100%;
 		padding: 10px 0;
+		margin-bottom: 9px;
 		font-size: 12px;
 		text-align: center;
 		color: $reflection-purple;
+		outline: none;
 		border: 1px dashed #c4c7d0;
 		border-radius: 3px;
 		background-color: transparent;
@@ -181,6 +183,11 @@
 }
 .form-field.form-field--country-select {
 	padding-bottom: 0;
+	.county-select--container {
+		position: relative;
+		overflow: visible;
+		z-index: 10;
+	}
 	.form-field {
 		width: 100%;
 		margin-bottom: 0px;
@@ -212,10 +219,11 @@
 	}
 	.suggested-results-container,
 	.no-results-container {
-		position: relative;
-		top: -61px;
-		padding: 10px 4px;
+		position: absolute;
+		top: 100%;
+		width: 265px;
 		display: none;
+		z-index: 100;
 		border-top: 1px solid $divider-grey;
 		background-color: $panel-grey;
 		li {
@@ -228,7 +236,13 @@
 			vertical-align: middle;
 		}
 		a.is-selected {
-			color: $reflection-green;
+			cursor: default;
+			svg {
+				opacity: 0.2;
+			}
+			span {
+				color: $light-grey-2;
+			}
 		}
 		span {
 			width: calc(100% - 46px);
@@ -242,7 +256,61 @@
 			font-weight: 400;
 			color: $light-grey-1;
 			border: 0;
-			background-color: transparent;			
+			background-color: transparent;
+		}
+	}
+	.suggested-results-container {
+		padding: 10px 5px;
+	}
+	.no-results-container {
+		padding: 12px 5px 13px 13px;
+		svg {
+			width: 17px;
+			height: 16px;
+			path {
+				fill: $light-grey-1;
+			}			
+		}
+		span {
+			padding-left: 12px;
+		}
+	}
+	.multiple-select__number-selected {		
+		padding: 0 0 12px;
+		margin: 0;
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 16px;
+		font-family: $brand-heading-font;
+		font-weight: 400;
+		color: $mid-grey-2;
+		cursor: default;
+	}
+	.multiple-select__remove-all-selected {
+		padding-top: 4px;
+		display: inline-block;
+		float: right;
+		vertical-align: middle;
+		font-size: 14px;
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		color: $reflection-purple;
+		cursor: pointer;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+		&.is-disabled {
+			color: #e1e5e8;
+			&:hover {
+				color: #e1e5e8;
+			}
+		}
+	}
+	.btn-apply {		
+		width: 100%;
+		display: block;
+		&:disabled {
+			background-color: #e2e1f3;
 		}
 	}
 }
