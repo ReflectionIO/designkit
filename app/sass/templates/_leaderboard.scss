@@ -35,7 +35,7 @@
 				}
 			}
 			@include breakpoint($tablet) {
-				margin-right: 1%;
+				margin-right: 10px;
 			}
 		}
 		.form-field:not(.form-field--date-select),
@@ -44,7 +44,7 @@
 			margin-bottom: 1rem;
 			@include breakpoint($tablet) {
 				width: auto;				
-				margin-right: percentage(10/1000);
+				margin-right: 10px;
 			}
 			@include breakpoint($desktop) {
 				width: auto;
@@ -113,6 +113,62 @@
 	.cellTableLoading tr {
 		height: 74px;
 	}
+	table.table-data {
+		.MHXTE6C-r-a {
+			a {
+				width: 72%;
+				font-size: 15px;
+				@include breakpoint($desktop-wide) {
+					width: 100%;
+				}
+			}
+		}
+		.text-muted {
+			width: 100%;
+			margin-bottom: 5px;
+			display: block;
+			vertical-align: top;
+			@include breakpoint($laptop) {
+				width: 50%;
+				display: inline-block;
+				.panel-left-open & {
+					width: 100%;
+				}
+			}
+			@include breakpoint($desktop) {
+				.panel-left-open & {
+					width: 50%;
+					display: inline-block;
+				}
+			}
+			+ span {
+				width: 100%;
+				margin-bottom: 0px;
+				display: block;
+				vertical-align: top;				
+				@include breakpoint($laptop) {
+					width: 45%;
+					margin-top: -1px;
+					display: inline-block;
+					text-align: right;
+					.panel-left-open & {
+						width: 100%;
+						margin-bottom: 0px;
+						display: block;
+						text-align: left;
+					}
+				}
+				@include breakpoint($desktop) {
+					.panel-left-open & {
+						width: 45%;
+						margin-top: -1px;
+						display: inline-block;
+						text-align: right;
+					}
+				}
+			}
+		}
+	}
 	@media screen and (min-width: $tablet) {
 		.page-title,
 		.page-title:last-child {
@@ -137,14 +193,7 @@
 			max-width: 600px;
 			@include breakpoint($laptop) {
 				width: calc(100% - 30px);
-			}
-			a {
-				width: 72%;
-				font-size: 15px;
-				@include breakpoint($desktop-wide) {
-					width: 100%;
-				}
-			}
+			}	
 		}
 		.img-rounded {
 			display: none;
@@ -194,26 +243,9 @@
 				}
 			}
 		}
-	}
-	.text-muted {
-		width: 100%;
-		margin-bottom: 5px;
-		display: block;
-		vertical-align: top;
-		@include breakpoint($tablet) {
-			width: 50%;
-			display: inline-block;
-		}
-		+ span {
-			width: 100%;
-			margin-bottom: 0px;
-			padding-top: 3px;
-			display: block;
-			vertical-align: top;
-			text-align: right;
-			@include breakpoint($tablet) {
-				width: 45%;
-				display: inline-block;
+		.text-muted {
+			+ span {
+				margin-top: 0px;
 			}
 		}
 	}

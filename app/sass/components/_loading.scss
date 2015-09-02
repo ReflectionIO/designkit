@@ -1,3 +1,7 @@
+@keyframes backgroundMoveRightToLeft {
+	0% { background-position: 0 0; }
+	100% { background-position: -190px 0; }
+}
 .page-loading {
 	position: fixed;
 	left: 0;
@@ -139,5 +143,45 @@ svg.loading-ellipsis {
 	}
 	.dot-3 {
 		animation: flash-three 1.2s infinite ease-in-out;
+	}
+}
+.graph-container {
+	position: relative;
+}
+.graph-loading-indicator {
+	position: absolute;
+	top: 40%;
+	left: calc(50% - 50px);
+	width: 58px;
+	height: 58px;
+	display: inline-block;
+	opacity: 0;
+	border-radius: 29px;
+	background-color: #6f6cbe;
+	/* @alternate */ background: repeating-linear-gradient(
+		-45deg,
+		#9592e1,
+		#9592e1 25%,
+		#7a76ca 25%,
+		#7a76ca 50%,
+		#9592e1 50%
+	) top left;
+	background-size: 19px 19px;
+	-webkit-transform: rotate(-17deg) scale(0.1);
+	transform: scale(0.1);
+	animation: backgroundMoveRightToLeft 3.5s linear infinite;
+	&.is-loading-success {
+		background: $reflection-green;
+		background-size: inherit;
+		animation: none;
+		-webkit-transition: 0.2s background, 0.3s -webkit-transform, 0.4s opacity;
+		transition: 0.2s background, 0.3s transform, 0.4s opacity;
+	}
+	.is-loading & {
+		opacity: 1;
+		-webkit-transform: rotate(-17deg) scale(1);
+		transform: scale(1);
+		-webkit-transition: 0.3s -webkit-transform, 0.1s opacity;
+		transition: 0.3s transform, 0.1s opacity;
 	}
 }
