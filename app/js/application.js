@@ -345,6 +345,18 @@
 			$this.attr('value', 'Email is on the way').addClass('ref-button--success');
 			$('.panel-right').addClass('reset-password-is-submitted').find('.form-submitted-success').addClass('is-showing');
 		});
+
+		$('.panel-right .js-link-to-login').on("click", function(e){
+			e.preventDefault();
+			$('.panel-right').removeClass('show-reset-password-form').removeClass('reset-password-is-submitted').find('.form-submitted-success').removeClass('is-showing')
+			$('.panel-right .form--login').css({"visibility":"visible","position":"relative"});
+			$('.panel-right .form--password-reset').css({"visibility":"hidden","position":"absolute"});
+			$('.panel-right .js-mock-send-reset-password').removeClass('ref-button--success').attr('value', 'Send password reset email');
+			if($('.ie8').length > 0) {
+				$('.panel-right .form--login').css("display","block");
+				$('.panel-right .form--password-reset').css("display","none");
+			}
+		});
 	}
 
 	var AccountContainer = function() {

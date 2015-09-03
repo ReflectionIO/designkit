@@ -38,6 +38,7 @@ $blur-opacity: 0.7;
 		}
 		p {
 			margin-top: -9px;
+			margin-bottom: 0;
 			font-size: 1.4em;
 			color: $light-grey-1;
 		}
@@ -93,6 +94,9 @@ $blur-opacity: 0.7;
 	.reflection-form {
 		padding: 36px 26px 39px 28px;
 		font-family: $brand-heading-font;
+	}
+	.form--password-reset {
+		min-height: 310px;
 	}
 	.form-field {
 		label {
@@ -178,11 +182,28 @@ $blur-opacity: 0.7;
 			box-shadow: -4px 0px 1px rgba(109,105,197, $blur-opacity);
 		}
 	}
+	.back-link-text {
+		position: relative;
+		top: 20px;
+		padding: 0;
+		font-size: 14px;
+		font-weight: 600;
+		text-align: center;
+		a {
+			color: $reflection-purple;
+			&:hover {
+				color: lighten($reflection-purple, 10%);
+			}
+		}
+	}
+	&.reset-password-is-submitted .back-link-text.back-link-text--form {
+		display: none;
+	}
 	.blockquote-container {
 		width: 100%;
 		padding: 29px 26px 38px 28px;
 		border-top: 1px solid #161617;
-		blockquote {			
+		blockquote {
 			margin-top: 0;
 			margin-bottom: 0;
 			padding-top: 42px;
