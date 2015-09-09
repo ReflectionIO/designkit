@@ -560,6 +560,7 @@
 	  			if($this.parents('.tabs__content--is-showing').length) {
 	  				$this.parents('.tabs__content--is-showing').removeClass('tabs__content--is-showing');
 	  				contentHeight = $this.next('.collapsible-content').height();
+	  				console.log("contentHeight = " + contentHeight);
 	  				$this.next('.collapsible-content').css('margin-top', -contentHeight);
 	  			} else {
 	  				$this.parents('.tabs__content-container').find('.tabs__content--is-showing').removeClass('tabs__content--is-showing');
