@@ -5,8 +5,14 @@
 			font-size: 2.2rem;
 			max-width: 670px;
 			@include breakpoint($tablet) {
+				max-width: 600px;
+				font-size: 3.3rem;
+			}
+			@include breakpoint($laptop) {
+				max-width: 700px;
+			}
+			@include breakpoint($desktop-wide) {
 				max-width: 800px;
-				font-size: 2.5rem;
 			}
 		}
 	}
@@ -127,7 +133,7 @@
 	ul {
 		width: 100%;
 		margin: 0 auto;
-		max-width: 1600px;
+		max-width: 1400px;
 		@include breakpoint($phablet) {
 			text-align: center;
 		}
@@ -143,11 +149,15 @@
 		}
 	}
 	li {
-		width: 50%;
+		width: 48%;
 		margin-bottom: 4rem;
 		display: inline-block;
 		vertical-align: middle;
 		text-align: center;
+		svg {
+			width: 100%;
+			max-width: 170px;
+		}
 		@include breakpoint($phablet) {
 			width: 33%;
 		}
