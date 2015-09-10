@@ -263,17 +263,24 @@
 	margin-bottom: 2rem;
 	display: inline-block;
 	vertical-align: top;
-	@include breakpoint($laptop) {
+	@include breakpoint($phablet) {
 		width: percentage(243/626);
 		max-width: 243px;
 		margin-bottom: 0;
 	}
 }
-.brand-assets-content {
-	width: 100%;
-	@include breakpoint($laptop) {
-		width: percentage(320/626);
-		display: inline-block;
-		vertical-align: top;
-	}	
+.brand-assets-container {
+	text-align: center;
+	@include breakpoint($phablet) {
+		text-align: left;
+	}
+	.brand-assets-content {
+		width: 100%;
+		text-align: left;
+		@include breakpoint($phablet) {
+			width: percentage(320/626);
+			display: inline-block;
+			vertical-align: top;
+		}	
+	}
 }
