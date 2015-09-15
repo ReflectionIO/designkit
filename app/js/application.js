@@ -949,7 +949,7 @@
 			optionsList.css('margin-top', -optionsList.height());
 			pInstance.populateSelectedValues(listItems, selectedOptionsContainer);
 
-			if($this.parent('.form-field--select-disabled').length == 0) {
+			if($this.parent('.form-field--select-disabled').length == 0 && $this.parent('.form-field--select-restricted').length == 0) {
 				selectedOptionsContainer.on('click', function() {
 					if($this.hasClass('is-open')) {
 						$this.removeClass('is-open');
@@ -1026,7 +1026,7 @@
 					optionsList.css('margin-top', -listHeight);
 				}				
 
-				if(selectInput.parent('.form-field--select-disabled').length == 0) {
+				if(selectInput.parent('.form-field--select-disabled').length == 0 && selectInput.parent('.form-field--select-restricted').length == 0) {
 					optionsList.find('li').on('click', function() {
 						if(!$(this).hasClass('pre-selected')) {
 							listItem = $(this);

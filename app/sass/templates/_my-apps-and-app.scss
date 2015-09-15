@@ -38,15 +38,16 @@
 		}
 	}
 	.refresh-button {
-		padding: 7px 7px;
-		margin: 0 1% 0 0;
+		margin: 0 1% 1rem 0;		
 		display: none;
-		vertical-align: top;
-		.ie11 & {
-			padding: 12px 10px 6px;
-		}	
-		.ie10 & {
-			padding: 12px 10px 6px;
+		.is-firefox & {
+			padding: 1rem 1rem 0.7rem;
+			&:disabled:active {
+				padding-bottom: 0.7rem;
+			}
+			&:active {
+				padding-bottom: calc(0.7rem - 2px);
+			}
 		}
 		@include breakpoint($laptop) {
 			display: inline-block;
@@ -55,21 +56,15 @@
 			.panel-left-open & {
 				margin-right: 0.7%;
 			}
-		}
-		&:disabled:active {
-			padding-bottom: 7px;
-		}
-		span {
-			font-size: 0;
-			&:before {
-				margin: 0;
-				font-size: 1.85rem;
-				line-height: 1;
-				color: #fff;
+		}		
+		.ie11 & {
+			padding: 1rem 1rem 0.9rem;
+			&:disabled:active {
+				padding-bottom: 0.9rem;
 			}
-		}
-		&:active {
-			padding-bottom: 5px;
+			&:active {
+				padding-bottom: 0.8rem;
+			}
 		}
 	}
 	.or-text {

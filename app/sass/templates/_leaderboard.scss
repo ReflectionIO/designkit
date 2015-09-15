@@ -18,8 +18,28 @@
 			margin-bottom: 0;
 		}		
 	}
+	.refresh-button {
+		margin: 0 1% 0 0;
+		.is-firefox & {
+			padding: 1rem 1rem 0.7rem;
+			&:disabled:active {
+				padding-bottom: 0.7rem;
+			}
+			&:active {
+				padding-bottom: calc(0.7rem - 2px);
+			}
+		}
+		.ie11 & {
+			&:disabled:active {
+				padding-bottom: 0.8rem;
+			}
+			&:active {
+				padding-bottom: 0.7rem;
+			}
+		}
+	}	
 	.filters-container {
-		padding: 0.9rem 3% 0.4rem;
+		padding: 0.9rem 3% 0.7rem;
 		margin-bottom: 0;
 		@include breakpoint($tablet) {
 			padding: 1.4rem 2% 0.4rem;
