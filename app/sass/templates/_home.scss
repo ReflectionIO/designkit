@@ -1,4 +1,33 @@
-.page-home {	
+.page-home {
+	.page-banner {
+		height: 425px;
+		margin-bottom: 0;
+		@media screen and (max-width: $desktop-wide - 1) {
+			h2 {
+				max-width: 550px;
+			}
+		}		
+		@include breakpoint($tablet) {
+			height: 536px;
+			> div {
+				top: 0;
+			}
+		}
+		@include breakpoint($laptop) {
+			h1 {
+				font-size: 14px;
+			}
+			h2 {
+					font-size: 41px;
+			}
+			p {
+				font-size: 18px;
+			}
+		}
+		@include breakpoint($desktop-wide) {
+			height: 625px;
+		}		
+	}
 	.tabs li:first-child {
 		margin-left: 25%;	
 	}
@@ -15,7 +44,7 @@
 		}
 	}
 }
-.page-home.page-leaderboard {
+.page-home .page-leaderboard {
 	padding-bottom: 0;
 	@media screen and (max-width: $mobile-max-width) {
 		.filters-container {
@@ -25,97 +54,33 @@
 			margin-bottom: 0;
 		}
 	}
-}
-.home-welcome-container {
-	padding-top: 40px;	
-	padding-bottom: 25px;
-	background-color: $reflection-purple;
-	> div.grid__column {
-		float: none;
-		display: inline-block;
-		vertical-align: middle;
-		text-align: center;
-	}
-	@include breakpoint($tablet) {
-		padding-top: 9.5rem;
-		padding-bottom: 17.5rem;
-		> div.grid__column {
-			text-align: left;
-		}
-	}
-}
-.home-welcome__text {
-	position: relative;
-	left: 3%;
-	padding-right: 7%;
-	h1 {
-		font-size: 2.5rem;
-		color: $reflection-white;
+	.home-leaderboard-title-container {
+		position: relative;	
 		@include breakpoint($tablet) {
-			font-size: 3.3rem;
-		}		
-	}
-	p {
-		font-size: 1.6rem;
-		margin-bottom: 3rem;		
-		color: #c3c6f6;
-		@include breakpoint($tablet) {
-			font-size: 1.8rem;
-		}
-	}
-	.home-welcome__call-to-action {
-		position: relative;
-		padding-right: 30px;
-		font-size: 1.8rem;		
-		font-family: $source-sans-pro;
-		font-weight: 600;
-		color : $reflection-white;
-		&:after {
-			content: "l";
 			position: absolute;
-			top: calc(50% - 11px);
-			right: 0;
-			font-size: 23px;
-			color: $purple-pale;
-			transition: color 0.2s;
-		}
-		@extend .ref-icon-after;
-		&:hover {
-			color : darken($reflection-white, 15%);
-			&:after {
-				color : darken($purple-pale, 10%);
-				transition: color 0.3s;
+			.page-title {
+				padding-top: 1.3rem;
+				margin-bottom: 0;		
 			}
 		}
-		@include breakpoint($tablet) {
-			font-size: 2.2rem;
-			&:after {
-				top: calc(50% - 14px);
-				font-size: 27px;
+		@include breakpoint($laptop) {
+			.page-title {
+				padding-top: 0.9rem;
+				font-size: 2.7rem;				
+				.panel-left-open & {
+					padding-top: 1.3rem;
+					font-size: 2.3rem;					
+				}
 			}
 		}
-	}
-	@include breakpoint($desktop-wide) {
-		max-width: 750px;
-		padding-right: 0;
-	}
-}
-.home-welcome__image {
-	position: relative;
-	width: 100%;
-	max-width: 167px;
-	margin-left: -28px;
-	margin-bottom: 20px;
-	@include breakpoint($tablet) {		
-		left: 16%;
-		max-width: 82.8%;
-		margin-left: 0;
-		margin-bottom: 0;
-	}
-	@include breakpoint($desktop-wide) {
-		left: 0;
-		max-width: 300px;
-		float: right;
+		@include breakpoint($laptop-plus) {
+			.page-title {
+				.panel-left-open & {
+					padding-top: 0.9rem;
+					font-size: 2.7rem;
+				}
+			}
+		}
 	}
 }
 .read-only-date {
@@ -146,80 +111,5 @@
 				left: 0;
 			}
 		}
-	}
-}
-.home-title-container {
-	position: relative;
-	@include breakpoint($tablet) {
-		position: absolute;
-	}	
-}
-.panel-links {
-	font-size: 0;
-}
-.panel-link {
-	width: 100%;
-	display: inline-block;
-	float: left;
-	.panel-link__link {
-		position: relative;
-		height: 282px;		
-		display: block;
-		background-size: cover;
-		> span {
-			position: absolute;
-			bottom: 23px;
-			padding: 0 30px;
-			display: inline-block;
-			font-family: $source-sans-pro;
-			font-weight: 600;
-			font-size: 2.7rem;
-			line-height: 1.1;
-			color: #fff;
-			span {
-				position: relative;
-				@extend .ref-icon-after;
-				&:after {
-					content: "l";
-					position: relative;
-					top: 6px;
-					left: 5px;
-					font-size: 27px;
-					color: #fff;
-					transition: color 0.2s;
-				}		
-			}
-		}
-	}
-	.panel-link__description {
-		width: 100%;
-		height: 95px;
-	}
-	&:first-child {
-		.panel-link__link {
-			background-image: url(images/placeholder-home-panel.png);
-		}
-		.panel-link__description {
-			background-color: $reflection-red;
-		}
-	}
-	&:nth-child(2) {
-		.panel-link__link {
-			background-image: url(images/placeholder-home-panel.png);
-		}
-		.panel-link__description {
-			background-color: $reflection-green;
-		}
-	}
-	&:nth-child(3) {
-		.panel-link__link {
-			background-image: url(images/placeholder-home-panel.png);
-		}
-		.panel-link__description {
-			background-color: $reflection-purple;
-		}
-	}
-	@include breakpoint($tablet) {
-		width: calc(100%/3);
 	}
 }

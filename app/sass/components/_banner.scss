@@ -30,18 +30,37 @@
 	h2 {
 		max-width: 525px;
 		margin: 0 auto;
-		padding: 0 10%;
+		padding: 0px 5%;		
 		display: block;
 		font-size: 2.5rem;
 		font-family: $source-sans-pro;
 		font-weight: 700;
 		color: $reflection-white;
+		@include breakpoint($phablet) {
+			padding: 0 10%;
+		}
 		@include breakpoint($tablet) {
 			padding: 0;
 			font-size: 3.3rem;
 		}
 		@include breakpoint($desktop-wide) {
 			max-width: 625px;
+		}
+	}
+	p {
+		max-width: 550px;
+		margin: 20px auto 30px;
+		padding: 0px 5%;
+		font-size: 1.6rem;
+		color: $light-grey-2;
+		@include breakpoint($phablet) {
+			padding: 0 10%;
+		}
+		@include breakpoint($tablet) {
+			padding: 0;
+		}
+		@include breakpoint($desktop) {
+			max-width: 550px;
 		}
 	}
 }

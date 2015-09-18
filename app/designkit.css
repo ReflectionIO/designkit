@@ -745,7 +745,7 @@ input::-ms-clear {
 }
 /* Global */
 /* line 1, sass/ui/_icons.scss */
-.ref-icon-before, .page-logged-in-landing .accordion-switch, .page-logged-in-landing .accordion .list-item-complete, .main-navigation > ul ul li.has-child, .ref-icon-after, .home-welcome__text .home-welcome__call-to-action, .read-only-date span, .panel-link .panel-link__link > span span, .accordion-switch, .checklist li, .form-field .form-field-help,
+.ref-icon-before, .page-logged-in-landing .accordion-switch, .page-logged-in-landing .accordion .list-item-complete, .main-navigation > ul ul li.has-child, .ref-icon-after, .read-only-date span, .accordion-switch, .checklist li, .form-field .form-field-help,
 .search-field-no-label .form-field-help, .form-field.form-field--date-select span, .whats-this-tooltip-icon,
 .whats-this-tooltip-icon-static, .date-select-to-indicator, .datePickerPreviousButton,
 .datePickerNextButton {
@@ -762,7 +762,7 @@ input::-ms-clear {
 }
 
 /* line 18, sass/ui/_icons.scss */
-.ref-icon-after:after, .home-welcome__text .home-welcome__call-to-action:after, .read-only-date span:after, .panel-link .panel-link__link > span span:after, .accordion-switch:after, .checklist li:after, .form-field .form-field-help:after,
+.ref-icon-after:after, .read-only-date span:after, .accordion-switch:after, .checklist li:after, .form-field .form-field-help:after,
 .search-field-no-label .form-field-help:after, .form-field.form-field--date-select span:after, .whats-this-tooltip-icon:after,
 .whats-this-tooltip-icon-static:after {
   font-size: 22px;
@@ -810,7 +810,7 @@ input::-ms-clear {
 }
 /* Typography placeholders */
 /* line 22, sass/ui/_typography.scss */
-.ref-icon-before:before, .page-logged-in-landing .accordion-switch:before, .page-logged-in-landing .accordion .list-item-complete:before, .main-navigation > ul ul li.has-child:before, .ref-icon-after:after, .home-welcome__text .home-welcome__call-to-action:after, .read-only-date span:after, .panel-link .panel-link__link > span span:after, .accordion-switch:after, .checklist li:after, .form-field .form-field-help:after,
+.ref-icon-before:before, .page-logged-in-landing .accordion-switch:before, .page-logged-in-landing .accordion .list-item-complete:before, .main-navigation > ul ul li.has-child:before, .ref-icon-after:after, .read-only-date span:after, .accordion-switch:after, .checklist li:after, .form-field .form-field-help:after,
 .search-field-no-label .form-field-help:after, .form-field.form-field--date-select span:after, .whats-this-tooltip-icon:after,
 .whats-this-tooltip-icon-static:after, .reflection-select.reflection-select--filter .close-popup,
 .reflection-select.reflection-select--filter .remove-form-field,
@@ -5675,17 +5675,58 @@ textarea, .global-header .link-open-search, html, body {
 }
 
 /* line 2, sass/templates/_home.scss */
+.page-home .page-banner {
+  height: 425px;
+  margin-bottom: 0;
+}
+@media screen and (max-width: 1599px) {
+  /* line 6, sass/templates/_home.scss */
+  .page-home .page-banner h2 {
+    max-width: 550px;
+  }
+}
+@media (min-width: 720px) {
+  /* line 2, sass/templates/_home.scss */
+  .page-home .page-banner {
+    height: 536px;
+  }
+  /* line 12, sass/templates/_home.scss */
+  .page-home .page-banner > div {
+    top: 0;
+  }
+}
+@media (min-width: 960px) {
+  /* line 17, sass/templates/_home.scss */
+  .page-home .page-banner h1 {
+    font-size: 14px;
+  }
+  /* line 20, sass/templates/_home.scss */
+  .page-home .page-banner h2 {
+    font-size: 41px;
+  }
+  /* line 23, sass/templates/_home.scss */
+  .page-home .page-banner p {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1600px) {
+  /* line 2, sass/templates/_home.scss */
+  .page-home .page-banner {
+    height: 625px;
+  }
+}
+/* line 31, sass/templates/_home.scss */
 .page-home .tabs li:first-child {
   margin-left: 25%;
 }
-/* line 6, sass/templates/_home.scss */
+/* line 35, sass/templates/_home.scss */
 .page-home.page-leaderboard .page-title,
 .page-home.page-leaderboard .page-title:last-child {
   padding-top: 0;
   margin-bottom: 2rem;
 }
 @media (min-width: 720px) {
-  /* line 6, sass/templates/_home.scss */
+  /* line 35, sass/templates/_home.scss */
   .page-home.page-leaderboard .page-title,
   .page-home.page-leaderboard .page-title:last-child {
     padding-top: 1.2rem;
@@ -5694,151 +5735,56 @@ textarea, .global-header .link-open-search, html, body {
   }
 }
 
-/* line 18, sass/templates/_home.scss */
-.page-home.page-leaderboard {
+/* line 47, sass/templates/_home.scss */
+.page-home .page-leaderboard {
   padding-bottom: 0;
 }
 @media screen and (max-width: 719px) {
-  /* line 21, sass/templates/_home.scss */
-  .page-home.page-leaderboard .filters-container {
+  /* line 50, sass/templates/_home.scss */
+  .page-home .page-leaderboard .filters-container {
     padding-top: 0px;
   }
-  /* line 24, sass/templates/_home.scss */
-  .page-home.page-leaderboard .tabs__content-container {
+  /* line 53, sass/templates/_home.scss */
+  .page-home .page-leaderboard .tabs__content-container {
     margin-bottom: 0;
   }
 }
-
-/* line 29, sass/templates/_home.scss */
-.home-welcome-container {
-  padding-top: 40px;
-  padding-bottom: 25px;
-  background-color: #6d69c5;
-}
-/* line 33, sass/templates/_home.scss */
-.home-welcome-container > div.grid__column {
-  float: none;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-}
-@media (min-width: 720px) {
-  /* line 29, sass/templates/_home.scss */
-  .home-welcome-container {
-    padding-top: 9.5rem;
-    padding-bottom: 17.5rem;
-  }
-  /* line 42, sass/templates/_home.scss */
-  .home-welcome-container > div.grid__column {
-    text-align: left;
-  }
-}
-
-/* line 47, sass/templates/_home.scss */
-.home-welcome__text {
+/* line 57, sass/templates/_home.scss */
+.page-home .page-leaderboard .home-leaderboard-title-container {
   position: relative;
-  left: 3%;
-  padding-right: 7%;
-}
-/* line 51, sass/templates/_home.scss */
-.home-welcome__text h1 {
-  font-size: 2.5rem;
-  color: #fcfdfd;
 }
 @media (min-width: 720px) {
-  /* line 51, sass/templates/_home.scss */
-  .home-welcome__text h1 {
-    font-size: 3.3rem;
+  /* line 57, sass/templates/_home.scss */
+  .page-home .page-leaderboard .home-leaderboard-title-container {
+    position: absolute;
   }
-}
-/* line 58, sass/templates/_home.scss */
-.home-welcome__text p {
-  font-size: 1.6rem;
-  margin-bottom: 3rem;
-  color: #c3c6f6;
-}
-@media (min-width: 720px) {
-  /* line 58, sass/templates/_home.scss */
-  .home-welcome__text p {
-    font-size: 1.8rem;
-  }
-}
-/* line 66, sass/templates/_home.scss */
-.home-welcome__text .home-welcome__call-to-action {
-  position: relative;
-  padding-right: 30px;
-  font-size: 1.8rem;
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 600;
-  color: #fcfdfd;
-}
-/* line 73, sass/templates/_home.scss */
-.home-welcome__text .home-welcome__call-to-action:after {
-  content: "l";
-  position: absolute;
-  top: calc(50% - 11px);
-  right: 0;
-  font-size: 23px;
-  color: #c3c6f6;
-  -webkit-transition: color 0.2s;
-          transition: color 0.2s;
-}
-/* line 83, sass/templates/_home.scss */
-.home-welcome__text .home-welcome__call-to-action:hover {
-  color: #cedede;
-}
-/* line 85, sass/templates/_home.scss */
-.home-welcome__text .home-welcome__call-to-action:hover:after {
-  color: #979cef;
-  -webkit-transition: color 0.3s;
-          transition: color 0.3s;
-}
-@media (min-width: 720px) {
-  /* line 66, sass/templates/_home.scss */
-  .home-welcome__text .home-welcome__call-to-action {
-    font-size: 2.2rem;
-  }
-  /* line 92, sass/templates/_home.scss */
-  .home-welcome__text .home-welcome__call-to-action:after {
-    top: calc(50% - 14px);
-    font-size: 27px;
-  }
-}
-@media (min-width: 1600px) {
-  /* line 47, sass/templates/_home.scss */
-  .home-welcome__text {
-    max-width: 750px;
-    padding-right: 0;
-  }
-}
-
-/* line 103, sass/templates/_home.scss */
-.home-welcome__image {
-  position: relative;
-  width: 100%;
-  max-width: 167px;
-  margin-left: -28px;
-  margin-bottom: 20px;
-}
-@media (min-width: 720px) {
-  /* line 103, sass/templates/_home.scss */
-  .home-welcome__image {
-    left: 16%;
-    max-width: 82.8%;
-    margin-left: 0;
+  /* line 61, sass/templates/_home.scss */
+  .page-home .page-leaderboard .home-leaderboard-title-container .page-title {
+    padding-top: 1.3rem;
     margin-bottom: 0;
   }
 }
-@media (min-width: 1600px) {
-  /* line 103, sass/templates/_home.scss */
-  .home-welcome__image {
-    left: 0;
-    max-width: 300px;
-    float: right;
+@media (min-width: 960px) {
+  /* line 67, sass/templates/_home.scss */
+  .page-home .page-leaderboard .home-leaderboard-title-container .page-title {
+    padding-top: 0.9rem;
+    font-size: 2.7rem;
+  }
+  /* line 70, sass/templates/_home.scss */
+  .panel-left-open .page-home .page-leaderboard .home-leaderboard-title-container .page-title {
+    padding-top: 1.3rem;
+    font-size: 2.3rem;
+  }
+}
+@media (min-width: 1150px) {
+  /* line 78, sass/templates/_home.scss */
+  .panel-left-open .page-home .page-leaderboard .home-leaderboard-title-container .page-title {
+    padding-top: 0.9rem;
+    font-size: 2.7rem;
   }
 }
 
-/* line 121, sass/templates/_home.scss */
+/* line 86, sass/templates/_home.scss */
 .read-only-date {
   position: relative;
   width: 100%;
@@ -5848,11 +5794,11 @@ textarea, .global-header .link-open-search, html, body {
   font-weight: 600;
   font-size: 1.5rem;
 }
-/* line 129, sass/templates/_home.scss */
+/* line 94, sass/templates/_home.scss */
 .read-only-date span {
   z-index: 5;
 }
-/* line 132, sass/templates/_home.scss */
+/* line 97, sass/templates/_home.scss */
 .read-only-date span:after {
   content: "u";
   position: absolute;
@@ -5862,106 +5808,14 @@ textarea, .global-header .link-open-search, html, body {
   color: #81879d;
 }
 @media (min-width: 720px) {
-  /* line 121, sass/templates/_home.scss */
+  /* line 86, sass/templates/_home.scss */
   .read-only-date {
     width: auto;
     padding-left: 29px;
   }
-  /* line 145, sass/templates/_home.scss */
+  /* line 110, sass/templates/_home.scss */
   .read-only-date span:after {
     left: 0;
-  }
-}
-
-/* line 151, sass/templates/_home.scss */
-.home-title-container {
-  position: relative;
-}
-@media (min-width: 720px) {
-  /* line 151, sass/templates/_home.scss */
-  .home-title-container {
-    position: absolute;
-  }
-}
-
-/* line 157, sass/templates/_home.scss */
-.panel-links {
-  font-size: 0;
-}
-
-/* line 160, sass/templates/_home.scss */
-.panel-link {
-  width: 100%;
-  display: inline-block;
-  float: left;
-}
-/* line 164, sass/templates/_home.scss */
-.panel-link .panel-link__link {
-  position: relative;
-  height: 282px;
-  display: block;
-  background-size: cover;
-}
-/* line 169, sass/templates/_home.scss */
-.panel-link .panel-link__link > span {
-  position: absolute;
-  bottom: 23px;
-  padding: 0 30px;
-  display: inline-block;
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 600;
-  font-size: 2.7rem;
-  line-height: 1.1;
-  color: #fff;
-}
-/* line 179, sass/templates/_home.scss */
-.panel-link .panel-link__link > span span {
-  position: relative;
-}
-/* line 182, sass/templates/_home.scss */
-.panel-link .panel-link__link > span span:after {
-  content: "l";
-  position: relative;
-  top: 6px;
-  left: 5px;
-  font-size: 27px;
-  color: #fff;
-  -webkit-transition: color 0.2s;
-          transition: color 0.2s;
-}
-/* line 194, sass/templates/_home.scss */
-.panel-link .panel-link__description {
-  width: 100%;
-  height: 95px;
-}
-/* line 199, sass/templates/_home.scss */
-.panel-link:first-child .panel-link__link {
-  background-image: url(images/placeholder-home-panel.png);
-}
-/* line 202, sass/templates/_home.scss */
-.panel-link:first-child .panel-link__description {
-  background-color: #ff496a;
-}
-/* line 207, sass/templates/_home.scss */
-.panel-link:nth-child(2) .panel-link__link {
-  background-image: url(images/placeholder-home-panel.png);
-}
-/* line 210, sass/templates/_home.scss */
-.panel-link:nth-child(2) .panel-link__description {
-  background-color: #1bc79f;
-}
-/* line 215, sass/templates/_home.scss */
-.panel-link:nth-child(3) .panel-link__link {
-  background-image: url(images/placeholder-home-panel.png);
-}
-/* line 218, sass/templates/_home.scss */
-.panel-link:nth-child(3) .panel-link__description {
-  background-color: #6d69c5;
-}
-@media (min-width: 720px) {
-  /* line 160, sass/templates/_home.scss */
-  .panel-link {
-    width: calc(100%/3);
   }
 }
 
@@ -6789,7 +6643,7 @@ table.table-linked-accounts .linked-account-delete a {
   }
 }
 /* line 139, sass/templates/_linked-accounts.scss */
-table.table-linked-accounts .linked-account-delete .ref-icon-after:after, table.table-linked-accounts .linked-account-delete .home-welcome__text .home-welcome__call-to-action:after, .home-welcome__text table.table-linked-accounts .linked-account-delete .home-welcome__call-to-action:after, table.table-linked-accounts .linked-account-delete .read-only-date span:after, .read-only-date table.table-linked-accounts .linked-account-delete span:after, table.table-linked-accounts .linked-account-delete .panel-link .panel-link__link > span span:after, .panel-link .panel-link__link > span table.table-linked-accounts .linked-account-delete span:after, table.table-linked-accounts .linked-account-delete .accordion-switch:after, table.table-linked-accounts .linked-account-delete .checklist li:after, .checklist table.table-linked-accounts .linked-account-delete li:after, table.table-linked-accounts .linked-account-delete .form-field .form-field-help:after, .form-field table.table-linked-accounts .linked-account-delete .form-field-help:after,
+table.table-linked-accounts .linked-account-delete .ref-icon-after:after, table.table-linked-accounts .linked-account-delete .read-only-date span:after, .read-only-date table.table-linked-accounts .linked-account-delete span:after, table.table-linked-accounts .linked-account-delete .accordion-switch:after, table.table-linked-accounts .linked-account-delete .checklist li:after, .checklist table.table-linked-accounts .linked-account-delete li:after, table.table-linked-accounts .linked-account-delete .form-field .form-field-help:after, .form-field table.table-linked-accounts .linked-account-delete .form-field-help:after,
 table.table-linked-accounts .linked-account-delete .search-field-no-label .form-field-help:after,
 .search-field-no-label table.table-linked-accounts .linked-account-delete .form-field-help:after, table.table-linked-accounts .linked-account-delete .form-field.form-field--date-select span:after, .form-field.form-field--date-select table.table-linked-accounts .linked-account-delete span:after, table.table-linked-accounts .linked-account-delete .whats-this-tooltip-icon:after,
 table.table-linked-accounts .linked-account-delete .whats-this-tooltip-icon-static:after {
@@ -6801,7 +6655,7 @@ table.table-linked-accounts .linked-account-delete .whats-this-tooltip-icon-stat
           transition: color 0.1s;
 }
 /* line 147, sass/templates/_linked-accounts.scss */
-table.table-linked-accounts .linked-account-delete .ref-icon-after:hover:after, table.table-linked-accounts .linked-account-delete .home-welcome__text .home-welcome__call-to-action:hover:after, .home-welcome__text table.table-linked-accounts .linked-account-delete .home-welcome__call-to-action:hover:after, table.table-linked-accounts .linked-account-delete .read-only-date span:hover:after, .read-only-date table.table-linked-accounts .linked-account-delete span:hover:after, table.table-linked-accounts .linked-account-delete .panel-link .panel-link__link > span span:hover:after, .panel-link .panel-link__link > span table.table-linked-accounts .linked-account-delete span:hover:after, table.table-linked-accounts .linked-account-delete .accordion-switch:hover:after, table.table-linked-accounts .linked-account-delete .checklist li:hover:after, .checklist table.table-linked-accounts .linked-account-delete li:hover:after, table.table-linked-accounts .linked-account-delete .form-field .form-field-help:hover:after, .form-field table.table-linked-accounts .linked-account-delete .form-field-help:hover:after,
+table.table-linked-accounts .linked-account-delete .ref-icon-after:hover:after, table.table-linked-accounts .linked-account-delete .read-only-date span:hover:after, .read-only-date table.table-linked-accounts .linked-account-delete span:hover:after, table.table-linked-accounts .linked-account-delete .accordion-switch:hover:after, table.table-linked-accounts .linked-account-delete .checklist li:hover:after, .checklist table.table-linked-accounts .linked-account-delete li:hover:after, table.table-linked-accounts .linked-account-delete .form-field .form-field-help:hover:after, .form-field table.table-linked-accounts .linked-account-delete .form-field-help:hover:after,
 table.table-linked-accounts .linked-account-delete .search-field-no-label .form-field-help:hover:after,
 .search-field-no-label table.table-linked-accounts .linked-account-delete .form-field-help:hover:after, table.table-linked-accounts .linked-account-delete .form-field.form-field--date-select span:hover:after, .form-field.form-field--date-select table.table-linked-accounts .linked-account-delete span:hover:after, table.table-linked-accounts .linked-account-delete .whats-this-tooltip-icon:hover:after,
 table.table-linked-accounts .linked-account-delete .whats-this-tooltip-icon-static:hover:after {
@@ -6810,7 +6664,7 @@ table.table-linked-accounts .linked-account-delete .whats-this-tooltip-icon-stat
           transition: color 0.2s;
 }
 /* line 153, sass/templates/_linked-accounts.scss */
-table.table-linked-accounts .linked-account-delete .ref-icon-after:active:after, table.table-linked-accounts .linked-account-delete .home-welcome__text .home-welcome__call-to-action:active:after, .home-welcome__text table.table-linked-accounts .linked-account-delete .home-welcome__call-to-action:active:after, table.table-linked-accounts .linked-account-delete .read-only-date span:active:after, .read-only-date table.table-linked-accounts .linked-account-delete span:active:after, table.table-linked-accounts .linked-account-delete .panel-link .panel-link__link > span span:active:after, .panel-link .panel-link__link > span table.table-linked-accounts .linked-account-delete span:active:after, table.table-linked-accounts .linked-account-delete .accordion-switch:active:after, table.table-linked-accounts .linked-account-delete .checklist li:active:after, .checklist table.table-linked-accounts .linked-account-delete li:active:after, table.table-linked-accounts .linked-account-delete .form-field .form-field-help:active:after, .form-field table.table-linked-accounts .linked-account-delete .form-field-help:active:after,
+table.table-linked-accounts .linked-account-delete .ref-icon-after:active:after, table.table-linked-accounts .linked-account-delete .read-only-date span:active:after, .read-only-date table.table-linked-accounts .linked-account-delete span:active:after, table.table-linked-accounts .linked-account-delete .accordion-switch:active:after, table.table-linked-accounts .linked-account-delete .checklist li:active:after, .checklist table.table-linked-accounts .linked-account-delete li:active:after, table.table-linked-accounts .linked-account-delete .form-field .form-field-help:active:after, .form-field table.table-linked-accounts .linked-account-delete .form-field-help:active:after,
 table.table-linked-accounts .linked-account-delete .search-field-no-label .form-field-help:active:after,
 .search-field-no-label table.table-linked-accounts .linked-account-delete .form-field-help:active:after, table.table-linked-accounts .linked-account-delete .form-field.form-field--date-select span:active:after, .form-field.form-field--date-select table.table-linked-accounts .linked-account-delete span:active:after, table.table-linked-accounts .linked-account-delete .whats-this-tooltip-icon:active:after,
 table.table-linked-accounts .linked-account-delete .whats-this-tooltip-icon-static:active:after {
@@ -8823,22 +8677,23 @@ table.table-data.table-linked-accounts--disabled thead {
   /* line 120, sass/templates/_product.scss */
   .page-product .product-image-container--right svg {
     width: 80%;
+    margin-left: -4rem;
   }
 }
 @media (min-width: 1600px) {
-  /* line 125, sass/templates/_product.scss */
+  /* line 126, sass/templates/_product.scss */
   .page-product .product-image-container--right svg {
     max-width: 380px;
   }
 }
 
-/* line 131, sass/templates/_product.scss */
+/* line 132, sass/templates/_product.scss */
 .product-page--partners {
   padding-top: 4rem;
   padding-bottom: 6.6rem;
   text-align: center;
 }
-/* line 135, sass/templates/_product.scss */
+/* line 136, sass/templates/_product.scss */
 .product-page--partners h2 {
   max-width: 500px;
   margin: 0 auto 4rem;
@@ -8846,38 +8701,38 @@ table.table-data.table-linked-accounts--disabled thead {
   text-align: center;
 }
 @media (min-width: 720px) {
-  /* line 135, sass/templates/_product.scss */
+  /* line 136, sass/templates/_product.scss */
   .product-page--partners h2 {
     margin-top: 5rem;
     font-size: 2.1rem;
   }
 }
-/* line 144, sass/templates/_product.scss */
+/* line 145, sass/templates/_product.scss */
 .product-page--partners h2 a {
   color: #6d69c5;
 }
-/* line 146, sass/templates/_product.scss */
+/* line 147, sass/templates/_product.scss */
 .product-page--partners h2 a:hover {
   color: #4b46b5;
 }
-/* line 151, sass/templates/_product.scss */
+/* line 152, sass/templates/_product.scss */
 .product-page--partners .cta-button {
   margin-top: 1rem;
 }
-/* line 154, sass/templates/_product.scss */
+/* line 155, sass/templates/_product.scss */
 .product-page--partners ul {
   width: 100%;
   margin: 0 auto;
   max-width: 1400px;
 }
 @media (min-width: 480px) {
-  /* line 154, sass/templates/_product.scss */
+  /* line 155, sass/templates/_product.scss */
   .product-page--partners ul {
     text-align: center;
   }
 }
 @media (min-width: 720px) {
-  /* line 154, sass/templates/_product.scss */
+  /* line 155, sass/templates/_product.scss */
   .product-page--partners ul {
     margin-bottom: 3rem;
     display: -webkit-box;
@@ -8902,7 +8757,7 @@ table.table-data.table-linked-accounts--disabled thead {
             align-items: center;
   }
 }
-/* line 172, sass/templates/_product.scss */
+/* line 173, sass/templates/_product.scss */
 .product-page--partners li {
   width: 48%;
   margin-bottom: 4rem;
@@ -8910,19 +8765,19 @@ table.table-data.table-linked-accounts--disabled thead {
   vertical-align: middle;
   text-align: center;
 }
-/* line 178, sass/templates/_product.scss */
+/* line 179, sass/templates/_product.scss */
 .product-page--partners li svg {
   width: 89%;
   max-width: 170px;
 }
 @media (min-width: 480px) {
-  /* line 172, sass/templates/_product.scss */
+  /* line 173, sass/templates/_product.scss */
   .product-page--partners li {
     width: 33%;
   }
 }
 @media (min-width: 720px) {
-  /* line 172, sass/templates/_product.scss */
+  /* line 173, sass/templates/_product.scss */
   .product-page--partners li {
     width: auto;
     margin-bottom: 0;
@@ -8936,13 +8791,13 @@ table.table-data.table-linked-accounts--disabled thead {
         -ms-flex-positive: 1;
             flex-grow: 1;
   }
-  /* line 192, sass/templates/_product.scss */
+  /* line 193, sass/templates/_product.scss */
   .ie10 .product-page--partners li {
     width: 20%;
   }
 }
 
-/* line 198, sass/templates/_product.scss */
+/* line 199, sass/templates/_product.scss */
 .product-page__quotes {
   height: auto;
   padding-top: 43px;
@@ -8951,68 +8806,68 @@ table.table-data.table-linked-accounts--disabled thead {
   background-size: cover;
 }
 @media (min-width: 720px) {
-  /* line 198, sass/templates/_product.scss */
+  /* line 199, sass/templates/_product.scss */
   .product-page__quotes {
     height: 374px;
     padding-bottom: 0;
   }
 }
-/* line 208, sass/templates/_product.scss */
+/* line 209, sass/templates/_product.scss */
 .product-page__quotes .grid__column {
   margin-bottom: 20px;
   text-align: center;
 }
 @media (min-width: 720px) {
-  /* line 208, sass/templates/_product.scss */
+  /* line 209, sass/templates/_product.scss */
   .product-page__quotes .grid__column {
     margin-bottom: 0;
   }
 }
-/* line 215, sass/templates/_product.scss */
+/* line 216, sass/templates/_product.scss */
 .product-page__quotes blockquote {
   padding-top: 0;
   margin-top: 4px;
   text-align: left;
 }
-/* line 219, sass/templates/_product.scss */
+/* line 220, sass/templates/_product.scss */
 .product-page__quotes blockquote:before {
   display: none;
 }
-/* line 222, sass/templates/_product.scss */
+/* line 223, sass/templates/_product.scss */
 .product-page__quotes blockquote p {
   font-size: 16px;
   color: #fcfdfd;
 }
 @media (min-width: 1150px) {
-  /* line 222, sass/templates/_product.scss */
+  /* line 223, sass/templates/_product.scss */
   .product-page__quotes blockquote p {
     font-size: 18px;
   }
 }
-/* line 229, sass/templates/_product.scss */
+/* line 230, sass/templates/_product.scss */
 .product-page__quotes blockquote cite {
   font-size: 14px;
   color: #969cb2;
 }
 @media (min-width: 1150px) {
-  /* line 229, sass/templates/_product.scss */
+  /* line 230, sass/templates/_product.scss */
   .product-page__quotes blockquote cite {
     font-size: 16px;
   }
 }
-/* line 235, sass/templates/_product.scss */
+/* line 236, sass/templates/_product.scss */
 .product-page__quotes blockquote cite span {
   font-size: 16px;
   color: #ffffff;
 }
 @media (min-width: 1150px) {
-  /* line 235, sass/templates/_product.scss */
+  /* line 236, sass/templates/_product.scss */
   .product-page__quotes blockquote cite span {
     font-size: 18px;
   }
 }
 
-/* line 245, sass/templates/_product.scss */
+/* line 246, sass/templates/_product.scss */
 .product-page__quotes__logo-container {
   height: 70px;
   overflow: hidden;
@@ -9722,12 +9577,18 @@ table.table-data.table-linked-accounts--disabled thead {
 .page-banner h2 {
   max-width: 525px;
   margin: 0 auto;
-  padding: 0 10%;
+  padding: 0px 5%;
   display: block;
   font-size: 2.5rem;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
   color: #fcfdfd;
+}
+@media (min-width: 480px) {
+  /* line 30, sass/components/_banner.scss */
+  .page-banner h2 {
+    padding: 0 10%;
+  }
 }
 @media (min-width: 720px) {
   /* line 30, sass/components/_banner.scss */
@@ -9740,6 +9601,32 @@ table.table-data.table-linked-accounts--disabled thead {
   /* line 30, sass/components/_banner.scss */
   .page-banner h2 {
     max-width: 625px;
+  }
+}
+/* line 50, sass/components/_banner.scss */
+.page-banner p {
+  max-width: 550px;
+  margin: 20px auto 30px;
+  padding: 0px 5%;
+  font-size: 1.6rem;
+  color: #c4c7d0;
+}
+@media (min-width: 480px) {
+  /* line 50, sass/components/_banner.scss */
+  .page-banner p {
+    padding: 0 10%;
+  }
+}
+@media (min-width: 720px) {
+  /* line 50, sass/components/_banner.scss */
+  .page-banner p {
+    padding: 0;
+  }
+}
+@media (min-width: 1280px) {
+  /* line 50, sass/components/_banner.scss */
+  .page-banner p {
+    max-width: 550px;
   }
 }
 
