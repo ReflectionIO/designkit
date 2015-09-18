@@ -23,20 +23,16 @@
 			padding-top: 10rem;
 			padding-bottom: 10rem;
 		}		
-		&:nth-child(even) {
+		&:nth-child(odd) {
 			background-color: #f2f2f5;
 		}
-		&.product-section--featured {
-			background-color: $reflection-purple;
-			h2 {
-				color: $reflection-white;
-			}
-			p {
-				color: $purple-pale;
-				a {
-					color: #fff;
-				}
-			}
+		&.product-section--message {
+			padding-top: 4rem;
+			padding-bottom: 4rem;
+			@include breakpoint($tablet) {
+				padding-top: 14.8rem;
+				padding-bottom: 23.2rem;
+			}	
 		}
 	}
 	.product-section--content {
@@ -99,12 +95,20 @@
 			max-width: 430px;
 			margin-left: 5%;
 		}
+		svg {
+			width: 70%;			
+			max-width: 325px;
+			margin: 0 auto 0 15%;
+		}
 		@include breakpoint($phablet) {
 			margin: 0 auto;			
 			text-align: center;
 			img {
 				margin: 0;
 				float: none;
+			}
+			svg {
+				margin-left: auto;
 			}
 		}
 		@include breakpoint($tablet) {
@@ -113,6 +117,14 @@
 			img {
 				max-width: inherit;
 			}
+			svg {
+				width: 80%;				
+			}
+		}
+		@include breakpoint($desktop-wide) {
+			svg {
+				max-width: 380px;
+			}			
 		}
 	}
 }
@@ -120,12 +132,21 @@
 	padding-top: 4rem;
 	padding-bottom: 6.6rem;
 	text-align: center;
-	@include breakpoint($tablet) {
-		padding-top: 5rem;
-	}
 	h2 {
-		margin-bottom: 4rem;
+		max-width: 500px;
+		margin: 0 auto 4rem;
+		font-size: 1.8rem;
 		text-align: center;
+		@include breakpoint($tablet) {
+			margin-top: 5rem;
+			font-size: 2.1rem;
+		}
+		a {
+			color: $reflection-purple;
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+		}
 	}
 	.cta-button {
 		margin-top: 1rem;
@@ -138,7 +159,7 @@
 			text-align: center;
 		}
 		@include breakpoint($tablet) {
-			margin-bottom: 4.6rem;
+			margin-bottom: 3rem;
 			display: -webkit-box;
 		  /* @alternate */ display: -ms-flexbox;
 		  /* @alternate */ display: -webkit-flex;
@@ -155,7 +176,7 @@
 		vertical-align: middle;
 		text-align: center;
 		svg {
-			width: 100%;
+			width: 89%;
 			max-width: 170px;
 		}
 		@include breakpoint($phablet) {
@@ -173,4 +194,55 @@
 			}
 		}
 	}
+}
+.product-page__quotes {	
+	height: auto;
+	padding-top: 43px;
+	padding-bottom: 30px;
+	background-image: url(images/product-quotes-background.jpg);
+	background-size: cover;
+	@include breakpoint($tablet) {
+		height: 374px;
+		padding-bottom: 0;
+	}		
+	.grid__column {
+		margin-bottom: 20px;
+		text-align: center;
+		@include breakpoint($tablet) {
+			margin-bottom: 0;
+		}
+	}
+	blockquote {
+		padding-top: 0;
+		margin-top: 4px;
+		text-align: left;
+		&:before {
+			display: none;
+		}
+		p {
+			font-size: 16px;			
+			color: $reflection-white;
+			@include breakpoint($laptop-plus) {
+				font-size: 18px;
+			}
+		}
+		cite {
+			font-size: 14px;
+			color: #969cb2;
+			@include breakpoint($laptop-plus) {
+				font-size: 16px;
+			}
+			span {
+				font-size: 16px;
+				color: #ffffff;
+				@include breakpoint($laptop-plus) {
+				font-size: 18px;
+			}
+			}
+		}
+	}
+}
+.product-page__quotes__logo-container {
+	height: 70px;
+	overflow: hidden;
 }

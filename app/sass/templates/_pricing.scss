@@ -30,18 +30,6 @@
 			}
 		}
 	}
-	.pricing-option {
-		position: relative;
-		max-width: 334px;
-		margin: 2rem auto 0;
-		padding-bottom: 2.5rem;
-		text-align: center;
-		border-radius: 6px;
-		background-color: #363a47;
-		@include breakpoint($tablet) {
-			margin-top: 0;
-		}
-	}
 	.page-pricing__head {
 		.page-title {
 			margin-bottom: 1rem;
@@ -66,6 +54,37 @@
 			}
 		}
 	}
+	.two-columns {
+		max-width: 1200px;
+		margin: 2rem auto;
+		padding-top: 3rem;
+		border-top: 1px solid #e1e5e8;
+		.heading-style--heading-four:not(:first-child) {
+			margin-top: 3rem;
+		}
+		@include breakpoint($tablet) {
+			-webkit-column-count: 2;
+	    -moz-column-count: 2;
+	    column-count: 2;
+	    -webkit-column-gap: 4rem;
+	    -moz-column-gap: 4rem;
+	    column-gap: 4rem;
+		}		
+	}
+}
+.pricing-options {
+	.pricing-option {
+		position: relative;
+		max-width: 334px;
+		margin: 2rem auto 0;
+		padding-bottom: 2.5rem;
+		text-align: center;
+		border-radius: 6px;
+		background-color: #363a47;
+		@include breakpoint($tablet) {
+			margin-top: 0;
+		}
+	}	
 	.pricing-option--header {
 		height: 261px;
 		padding: 30px percentage(38/295);
@@ -196,6 +215,20 @@
 			}
 		}
 	}
+	.pricing-option--current {
+		background-color: #999ba2;
+		.pricing-details {
+			li {
+				border-bottom: 1px solid #929394;
+			}
+		}
+		.ref-button--positive {
+			background-color: #8be2ce;
+			&:hover, &:active {
+				background-color: #8be2ce;
+			}
+		}
+	}
 	.pricing-option--standard {
 		.pricing-option--header {
 			background-color: $reflection-green;
@@ -207,9 +240,17 @@
 		.per-month {
 			color: #bffff0;
 		}
+		&.pricing-option--current {
+			.pricing-option--header {
+				background-color: #8be2ce;
+			}
+		}
 	}
 	.pricing-option--premium {
 		padding-bottom: 2rem;
+		.page-my-account & {
+			padding-bottom: 4.5rem;
+		}
 		.pricing-option--header {
 			background-color: $reflection-purple;
 		}
@@ -219,6 +260,11 @@
 		}
 		.per-month {
 			color: #c3c6f6;
+		}		
+		&.pricing-option--current {			
+			.pricing-option--header {
+				background-color: #afabf0;
+			}
 		}
 	}
 	.trial-label {
@@ -270,6 +316,14 @@
 		.per-month {
 			color: #ffe3e8;
 		}
+		.pricing-sign-up-button {
+			display: inline-block;
+			text-align: center;
+			color: #847fef;
+			&:hover {
+				color: #9b97ee;
+			}
+		}
 	}
 	.pricing-access-info {
 		position: relative;
@@ -319,24 +373,15 @@
 				}
 			}
 		}
-	}
-	.two-columns {
-		max-width: 1200px;
-		margin: 2rem auto;
-		padding-top: 3rem;
-		border-top: 1px solid #e1e5e8;
-		.heading-style--heading-four:not(:first-child) {
-			margin-top: 3rem;
+		&.pricing-access-info--highlighted {
+			&:after {
+				border-bottom: 16px solid $reflection-red;
+			}
+			div {
+				background-color: $reflection-red;
+			}
 		}
-		@include breakpoint($tablet) {
-			-webkit-column-count: 2;
-	    -moz-column-count: 2;
-	    column-count: 2;
-	    -webkit-column-gap: 4rem;
-	    -moz-column-gap: 4rem;
-	    column-gap: 4rem;
-		}		
-	}
+	}	
 }
 .is-submitted {
 	.register-form-container {
