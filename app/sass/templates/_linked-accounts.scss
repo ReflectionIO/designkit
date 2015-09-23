@@ -1,4 +1,24 @@
+.page-my-account.page-linked-accounts {
+	@include breakpoint($tablet) {
+		padding-top: 33px;
+	}
+	.page-title {
+		margin-bottom: 0.6rem;
+	}
+}
+.delete-account-link {
+	svg {
+		width: 16px;
+	}	
+}	
+.linked-account-intro-container {
+	margin-bottom: 1.1rem;
+	p {
+		font-size: 1.4rem;
+	}	
+}
 table.table-linked-accounts {
+	margin-bottom: 3rem;
 	.table-column--account-name {
 		width: 130px;
 		@include breakpoint($tablet) {
@@ -24,11 +44,15 @@ table.table-linked-accounts {
 	.table-column--delete-account {
 		width: 0;
 		@include breakpoint($laptop) {
-			width: 10.5%;
+			width: 5.5%;
 		}
 	}	
 	&.table-data th {
+		padding-bottom: 20px;
 		background-color: transparent;
+	}
+	&.table-data td {
+		padding: 8px 10px;
 	}
 	th:first-child {
 		padding-left: 2.2%;
@@ -44,11 +68,10 @@ table.table-linked-accounts {
 			background-color: $panel-grey;
 		}
 	}
-	.linked-account-name {
+	&.table-data td.linked-account-name {
 		width: 130px;
-		padding: 2.3rem 0px 2.57rem 2.4%;
-		font-size: 1.3rem;		
-		font-weight: 700;
+		padding-left: 2.57rem;
+		font-size: 1.3rem;
 		line-height: 1.2;
 		color: $dark-grey-2;
 		@include breakpoint($phablet) {
@@ -108,7 +131,7 @@ table.table-linked-accounts {
 		font-size: 1.3rem;
 		color: #363a47;
 		@include breakpoint($tablet) {
-			font-size: 1.5rem;
+			font-size: 1.4rem;
 		}
 		div {
 			overflow: visible;
@@ -156,8 +179,8 @@ table.table-linked-accounts {
 			}
 		}
 	}
-	.update-linked-accounts-container {
-		padding: 0.6rem 2.2% 4.3rem;
+	&.table-data td.update-linked-accounts-container {
+		padding: 1.1rem 2.2% 2rem;
 		* {
 			max-width: 300px;
 			@include breakpoint($tablet) {
@@ -209,44 +232,38 @@ table.table-linked-accounts {
 		margin-left: 0;
 	}
 }
-.popup-content--link-account,
-.popup-content--delete-account {
-	width: 100%;
+.popup-content.popup-content--link-account {	
 	text-align: left;
-	padding: 22px 30px 30px;
-	background-color: #F2F2F5;
+}
+.popup-content.popup-content--delete-account {
+	max-width: 37rem;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
 }
 .popup-content--account__heading {
 	margin-bottom: 1.3em;
 	text-align: center;
 }
 .popup-content--delete-account {
-	.buttons-container {
-		text-align: center;
-		button:first-child {
-			margin-bottom: 20px;
-			margin-right: 5px;
-			margin-left: 5px;
-			vertical-align: top;
-			width: 170px;
-			@include breakpoint($tablet) {
-				width: auto;
-				margin-bottom: 15px;
-			}			
-		}
-		button:last-child {
-			width: 170px;
-			margin-right: 5px;
-			margin-left: 5px;
-			clear: both;
-			@include breakpoint($tablet) {
-				width: auto;
-				clear: none;
-			}
-		}
-		.ref-button--cta-small {
-			position: relative;
-			top: 1px;
+	button:first-child {
+		margin-bottom: 0;
+		margin-right: 5px;
+		margin-left: 5px;
+		vertical-align: top;
+		width: 170px;
+		@include breakpoint($tablet) {
+			width: auto;
+		}			
+	}
+	button:last-child {
+		width: 170px;
+		margin-right: 5px;
+		margin-left: 5px;
+		clear: both;
+		@include breakpoint($tablet) {
+			width: auto;
+			clear: none;
 		}
 	}
 }

@@ -38,8 +38,8 @@
 		}
 	}
 	.refresh-button {
-		margin: 0 1% 1rem 0;		
-		display: none;
+		margin: 0 1% 0 0;
+		display: inline-block;
 		.is-firefox & {
 			padding: 1rem 1rem 0.7rem;
 			&:disabled:active {
@@ -48,9 +48,6 @@
 			&:active {
 				padding-bottom: calc(0.7rem - 2px);
 			}
-		}
-		@include breakpoint($laptop) {
-			display: inline-block;
 		}
 		@media screen and (min-width: $laptop) and (max-width: $desktop) {
 			.panel-left-open & {
@@ -91,10 +88,10 @@
 		}
 	}
 	.or-text + .form-field {
-		width: 100%;		
-		margin-right: 1%;
+		width: 100%;				
 		@include breakpoint($tablet) {			
 			width: auto;
+			margin-right: 1%;
 		}
 	}
 	.form-field {
@@ -103,13 +100,6 @@
 		@include breakpoint($tablet) {
 			width: auto;
 			margin-right: 1%;
-		}
-		&.store-select,
-    &.category-select,
-		&.country-select {
-			@include breakpoint($laptop) {
-				float: right;
-			}
 		}
 	}
 	.category-select {
