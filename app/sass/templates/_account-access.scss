@@ -110,6 +110,12 @@
 	}
 	p {
 		color: $purple-pale;
+		a {
+			color: $reflection-white;
+			&:hover {
+				color: darken($reflection-white, 10%);
+			}
+		}
 	}
 }
 .panel-right.show-reset-password-form.will-show .form--password-reset .js-rotate-content {
@@ -172,7 +178,6 @@
 			background-color: #f2f2f5;
 		}
 	}
-	.create-password-form-is-showing &,
 	.connect-account-is-showing & {
 		padding: 30px 19px;
 		@include breakpoint($phablet, true) {
@@ -221,8 +226,6 @@
 	.tabs__content--is-showing .js-rotate-content,
 	.tabs__content--is-showing .form--login .js-rotate-content,
 	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-rotate-content,
-	.create-password-form-is-showing & .create-password-content .js-rotate-content,
-	.create-password-form-is-showing.ie9 & .create-password-content .js-rotate-content,
 	.connect-account-is-showing & .connect-account-content .js-rotate-content,
 	.form-submitted-loading.connect-account-is-showing & .ref-button--is-loading.js-rotate-content {
 		transform: rotateX(0deg);
@@ -258,9 +261,7 @@
 	.tabs__content--is-showing .js-fade-content,
 	.tabs__content--is-showing .form--login .js-fade-content,
 	.tabs__content--is-showing.show-reset-password-form .form--password-reset .js-fade-content,
-	.create-password-form-is-showing & .create-password-content .js-fade-content,
-	.connect-account-is-showing & .connect-account-content .js-fade-content,
-	.create-password-form-is-showing.ie9 & .create-password-content .js-fade-content {
+	.connect-account-is-showing & .connect-account-content .js-fade-content {
 		opacity: 1;
 		transition: opacity 0.15s 0.15s;
 		visibility: visible;
@@ -334,86 +335,6 @@
 		text-align: center;
 		color: #5b5d61;
 	}
-	.illustration-container {
-		margin-top: 0.5rem;
-		margin-bottom: 2.7rem;
-		text-align: center;
-		overflow: visible;
-	}
-	.email-post-animation {
-		position: relative;
-		left: 0;
-		top: 4px;
-		width: 189px;
-		height: 118px;
-		overflow: visible;
-		margin-left: 58px;
-	}
-	.email-success-envelope {
-		.tabs__content--is-submitted & {
-			animation: mail-send 0.6s 0.8s forwards;
-		}
-	}
-	.email-success-handle {
-		transform: rotateZ(-74deg);
-		transform-origin: 22px 25px 0px;
-		.tabs__content--is-submitted & {
-			transform: rotateZ(0deg);
-			transition: transform 0.2s 1.3s;
-		}
-	}
-	.email-delivery-animation {
-		position: relative;
-		margin-top: 15px;
-		margin-bottom: 25px;
-		width: 226px;
-		height: 81px;
-		overflow: visible;
-		.tabs__content--is-submitted &,
-		.reset-password-is-submitted & {
-			@include transform(translateX(300px));
-			transition: transform 0.4s 1.7s ease-in;
-		}
-		.is-ie & {
-			visibility: hidden;
-		}
-	}
-	.email-delivery-animation--email {
-		.tabs__content--is-submitted &,
-		.reset-password-is-submitted & {
-			animation: mail-deliver 0.6s 0.8s forwards;
-		}
-	}
-	.email-delivery-animation--van-body {
-		.tabs__content--is-submitted &,
-		.reset-password-is-submitted & {
-			animation: van-shake 0.6s 1.3s;
-		}
-	}
-	.success-tick {
-		position: absolute;
-		top: 30px;
-		left: 50%;
-		margin-left: -29px;
-		width: 61px;
-		height: 54px;
-		@include transform(scale(0.7));
-		@include opacity(0);
-		.tabs__content--is-submitted &,
-		.reset-password-is-submitted & {
-			@include opacity(1);
-			@include transform(scale(1));
-			transition: opacity 0.4s 2.2s, transform 0.4s 2.2s;
-			.is-ie & {
-				transition: opacity 0.4s 0.3s, transform 0.4s 0.3s;
-			}
-		}
-		.form-submitted-success-complete & {
-			@include opacity(1);
-			@include transform(scale(1));
-			transition: opacity 0.4s 0.4s, transform 0.4s 0.4s;
-		}
-	}
 	.account-setup-content-wrapper & {
 		position: absolute;
 		top: 0;
@@ -463,13 +384,13 @@
 		}
 		&.page-reset-password {
 			.connect-account-content input[type="submit"] {			
-			&.ref-button--success {
-				margin-top: 6rem;
-				@include breakpoint($desktop-wide) {
+				&.ref-button--success {
 					margin-top: 6rem;
+					@include breakpoint($desktop-wide) {
+						margin-top: 6rem;
+					}
 				}
 			}
-		}
 		}
 	}
 }
@@ -610,7 +531,6 @@
 		}
 	}
 }
-.create-password-main-content,
 .connect-account-main-content,
 .connect-account-is-showing.form-submitted-success-complete .connect-account-main-content,
 .connect-account-submitted {
@@ -626,7 +546,6 @@
 		margin-top: 3rem;
 	}
 }
-.create-password-form-is-showing .create-password-main-content,
 .connect-account-is-showing .connect-account-main-content,
 .connect-account-is-showing.form-submitted-success-complete .connect-account-submitted,
 .connect-account-is-showing.form-submitted-success-complete .page-reset-password .connect-account-main-content {
@@ -653,30 +572,6 @@
 	}
 	.full-screen-intro {
 		padding-top: 0;
-	}
-}
-.create-password-main-content {
-	.svg-create-password {
-		display: none;
-		width: 80%;
-		max-width: 333px;
-		@include breakpoint($tablet) {
-			display: inline-block;
-			max-width: 270px;
-		}		
-		@media screen and (min-width: $laptop) and (min-height: 780px) {
-			max-width: 333px;
-		}
-		@media screen and (max-height: 800px) {
-			max-width: 270px;
-		}
-		@include breakpoint($laptop) {
-			max-width: 235px;
-		}	
-	}
-	h1,
-	.heading-style--heading-one {
-		margin-top: 3.6rem;
 	}
 }
 .account-connect-animation {
@@ -882,10 +777,14 @@
 }
 .linked-account-loading-state {
 	position: absolute;
-	top: 5.7rem;
+	top: 9rem;
+	left: 0;
 	opacity: 0;
 	transition: opacity 0.2s;
 	pointer-events: none;
+	.account-form-container & {
+		padding: 30px;
+	}
 	.form-submitted-loading & {
 		opacity: 1;
 		transition: opacity 0.4s 0.3s;
@@ -895,7 +794,7 @@
 		transition: opacity 0.2s;
 	}
 	p {
-		margin-top: 16rem;
+		margin-top: 13rem;
 		padding-left: 1rem;
 		padding-right: 1rem;
 		line-height: 1.6;

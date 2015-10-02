@@ -18,20 +18,35 @@
 	}
 	.product-section {
 		padding-top: 4rem;
-		padding-bottom: 4rem;
+		padding-bottom: 3rem;
 		@include breakpoint($tablet) {
-			padding-top: 10rem;
-			padding-bottom: 10rem;
+			padding-top: 6rem;
+    	padding-bottom: 0;
 		}		
-		&:nth-child(odd) {
-			background-color: #f2f2f5;
+		&:nth-child(odd) {			
+			background-color: #363a47;
+			@include breakpoint($tablet) {
+				padding-bottom: 4rem;
+			}
+			h2 {
+				color: $reflection-white;				
+			}
+			p {
+				color: $light-grey-1;
+			}
+			@include breakpoint($tablet) {
+				padding-top: 3.5rem;
+				.product-text-content--left {
+					padding-top: 65px;
+				}
+			}
 		}
 		&.product-section--message {
 			padding-top: 4rem;
 			padding-bottom: 4rem;
 			@include breakpoint($tablet) {
-				padding-top: 14.8rem;
-				padding-bottom: 23.2rem;
+				padding-top: 5rem;
+    		padding-bottom: 12rem;
 			}	
 		}
 	}
@@ -39,54 +54,26 @@
 		max-width: 1400px;
 		margin: 0px auto;
 	}
-	.product-image-container--left,
 	.product-image-container--right,
-	.product-text-content--left,
-	.product-text-content--right {
+	.product-text-content--left {
 		display: inline-block;
 		float: left;
-		vertical-align: top;
 	}	
-	.product-text-content--left,
-	.product-text-content--right {
+	.product-text-content--left {
 		width: 100%;
 		padding: 30px 5% 0;
 		.content-list {
 			color: #5b5d61;
 		}
 		@include breakpoint($tablet) {		
-			width: percentage(390/1060);
-			padding: 20px 0 0;
-		}		
-	}
-	.product-text-content--left {
-		@include breakpoint($tablet) {
-			margin-right: percentage(25/1060);
+			width: percentage(460/1060);
+			padding-top: 45px;
+			padding-right: 8rem;
+			padding-left: 0;
 			float: right;
 		}
-	}
-	.product-image-container--left {
-		width: 100%;
-		img {			
-			max-width: 430px;
-			margin-right: 5%;
-			float: right;
-		}
-		@include breakpoint($phablet) {
-			margin: 0 auto;			
-			text-align: center;
-			img {
-				margin: 0;
-				float: none;
-			}
-		}
-		@include breakpoint($tablet) {
-			width: percentage(566/1060);			
-			margin-right: percentage(25/1060);
-			img {
-				max-width: inherit;
-				float: right;
-			}
+		@include breakpoint($laptop-plus) {
+			padding-right: 12rem;
 		}
 	}
 	.product-image-container--right {
@@ -96,9 +83,12 @@
 			margin-left: 5%;
 		}
 		svg {
-			width: 70%;			
-			max-width: 325px;
-			margin: 0 auto 0 15%;
+			width: 100%;	
+			max-width: 188px;
+			margin: 0 auto;
+		}
+		.content-list {
+			text-align: left;
 		}
 		@include breakpoint($phablet) {
 			margin: 0 auto;			
@@ -112,23 +102,39 @@
 			}
 		}
 		@include breakpoint($tablet) {
-			width: percentage(576/1060);
+			width: percentage(530/1060);
 			float: right;
 			img {
 				max-width: inherit;
 			}
-			svg {
-				width: 80%;
-				margin-left: -4rem;	
-			}
 		}
 		@include breakpoint($desktop-wide) {
 			svg {
-				max-width: 380px;
+				max-width: 300px;
 			}			
+		}
+		&.has-content {
+			padding-right: percentage(45/1060);
+			text-align: center;
+			.content-list {
+				padding-left: 5%;
+				li:before {
+					font-size: 1.1rem;
+				}
+			}
+			@include breakpoint($tablet) {
+				padding-left: 0;
+			}
+			h2 {
+				margin-top: 2rem;
+				margin-bottom: 1.2em;
+			}
 		}
 	}
 }
+.product-section--message .product-text-content--left {
+	padding-right: 8rem;
+}	
 .product-page--partners {
 	padding-top: 4rem;
 	padding-bottom: 6.6rem;
@@ -198,33 +204,41 @@
 }
 .product-page__quotes {	
 	height: auto;
-	padding-top: 43px;
+	padding-top: 34px;
 	padding-bottom: 30px;
+	text-align: center;
 	background-image: url(images/product-quotes-background.jpg);
 	background-size: cover;
 	@include breakpoint($tablet) {
-		height: 374px;
+		height: 350px;
 		padding-bottom: 0;
 	}		
 	.grid__column {
-		margin-bottom: 20px;
+		padding: 0;
+		margin: 0 auto 20px;
+		display: inline-block;
+		float: none;
 		text-align: center;
 		@include breakpoint($tablet) {
 			margin-bottom: 0;
 		}
 	}
 	blockquote {
+		max-width: 700px;
 		padding-top: 0;
+    margin-left: auto;
+    margin-right: auto;		
 		margin-top: 4px;
 		text-align: left;
 		&:before {
 			display: none;
 		}
 		p {
+			margin-bottom: 1.3em;
 			font-size: 16px;			
 			color: $reflection-white;
 			@include breakpoint($laptop-plus) {
-				font-size: 18px;
+				font-size: 22px;
 			}
 		}
 		cite {
@@ -235,30 +249,19 @@
 			}
 			span {
 				font-size: 16px;
-				color: #ffffff;
+				line-height: 1.3;
+				color: #ffffff;				
 				@include breakpoint($laptop-plus) {
 				font-size: 18px;
 			}
 			}
 		}
 	}
+	svg {
+		width: 235px;
+	}
 }
 .product-page__quotes__logo-container {
-	height: 70px;
+	height: 73px;
 	overflow: hidden;
-}
-.product-page__quotes__logo-container--mag {
-	svg {
-		width: 64px;
-	}
-}
-.product-page__quotes__logo-container--nordeus {
-	svg {
-		width: 186px;
-	}
-}
-.product-page__quotes__logo-container--miniclip {
-	svg {
-		width: 186px;
-	}
 }

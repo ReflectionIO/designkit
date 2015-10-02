@@ -140,7 +140,7 @@
 .page-overlay--standard {
 	.popup-content {
 		padding-top: 33px;
-		padding-bottom: 20px;
+		padding-bottom: 40px;
 	}
 	.buttons-container {
 		padding-bottom: 2.9rem;
@@ -152,5 +152,23 @@
 	}
 	h3 {
 		text-align: center;
+	}
+}
+.page-overlay--standard,
+.page-overlay--register {
+	&.is-submitted {
+		.popup-content {
+			height: 500px;
+			transition: height 0.3s 0.3s;
+		}
+	}
+}
+.sign-up-info-content {
+	position: absolute;
+	opacity: 0;	
+	.register-is-second-step & {
+		position: relative;
+		z-index: 10;
+		opacity: 1;
 	}
 }

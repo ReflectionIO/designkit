@@ -4,19 +4,30 @@
 	overflow: visible;
 	background-color: $reflection-white;
 	.page-functions {
-		margin-top: -5rem;
-		display: none;
-		// display: inline-block;
+		padding-bottom: 0.5rem;
+		display: inline-block;
+		overflow: visible;
 		@include breakpoint($tablet) {
+			padding-bottom: 0;
 			margin-top: -7px;
 		}
 		@include breakpoint($laptop) {
 			margin-top: 0;
 		}
-		.filter-toggle {
-			float: right;
-			margin-bottom: 0;
+		.filter-toggle {			
+			margin-bottom: 0;			
+			float: left;
+			@include breakpoint($tablet) {
+				margin-left: percentage(15/500);
+				float: right;
+			}
 		}		
+	}
+	.button-container {
+		position: relative;
+		display: inline-block;
+		float: right;
+		overflow: visible;
 	}
 	.refresh-button {
 		margin: 0 1% 0 0;
@@ -156,14 +167,16 @@
 			margin-bottom: 5px;
 			display: block;
 			vertical-align: top;
-			@include breakpoint($laptop) {
-				width: 50%;
-				display: inline-block;
+			@include breakpoint($tablet) {
 				.panel-left-open & {
 					width: 100%;
 				}
 			}
-			@include breakpoint($desktop) {
+			@include breakpoint($laptop) {
+				width: 50%;
+				display: inline-block;				
+			}
+			@include breakpoint($laptop-plus) {
 				.panel-left-open & {
 					width: 50%;
 					display: inline-block;
@@ -173,20 +186,22 @@
 				width: 100%;
 				margin-bottom: 0px;
 				display: block;
-				vertical-align: top;				
-				@include breakpoint($laptop) {
-					width: 45%;
-					margin-top: -1px;
-					display: inline-block;
-					text-align: right;
+				vertical-align: top;
+				@include breakpoint($tablet) {
 					.panel-left-open & {
 						width: 100%;
 						margin-bottom: 0px;
 						display: block;
 						text-align: left;
 					}
+				}			
+				@include breakpoint($laptop) {
+					width: 45%;
+					margin-top: -1px;
+					display: inline-block;
+					text-align: right;
 				}
-				@include breakpoint($desktop) {
+				@include breakpoint($laptop-plus) {
 					.panel-left-open & {
 						width: 45%;
 						margin-top: -1px;
@@ -197,11 +212,16 @@
 			}
 		}
 	}
+	th .whats-this-tooltip-icon-static {
+		position: relative;
+		top: -2px;
+		left: 5px;
+	}
 	@media screen and (min-width: $tablet) {
 		.page-title,
 		.page-title:last-child {
-			padding-top: 0;
-			margin-bottom: 0.78em;
+			padding-top: 4px;
+			margin-bottom: 0;
 			font-size: 2.1rem;
 		}
 	}
@@ -271,11 +291,29 @@
 				}
 			}			
 		}
-		.text-muted {
-			+ span {
-				margin-top: 0px;
+		.text-muted {			
+			@include breakpoint($tablet) {
+				width: 50%;
+				display: inline-block;
+				.panel-left-open & {
+					width: 50%;
+					display: inline-block;
+				}
 			}
-		}
+			+ span {				
+				@include breakpoint($tablet) {
+					margin-top: 0px;
+					width: 45%;
+					display: inline-block;
+					text-align: right;
+					.panel-left-open & {
+						width: 45%;
+						display: inline-block;
+						text-align: right;
+					}
+				}
+			}
+		}	
 	}
 }
 .table-overall.table-data .MHXTE6C-i-a {

@@ -16,7 +16,6 @@ var AccountAccess = function() {
 
 	// Functionality for this template set
 	this.pageLoad();
-	this.mockSubmitApply();
 	this.customTabTransition();
 	this.resetPasswordForm();
 	this.mockSubmitPasswordReset();
@@ -36,16 +35,6 @@ AccountAccess.prototype.pageLoad = function() {
 	if($(window).width() <= 350) {
 		$('.login-content .blockquote--large').removeClass('blockquote--large');
 	}
-};
-
-AccountAccess.prototype.mockSubmitApply = function() {
-	// Apply button click success
-	$('.account-access-page .js-mock-send').on("click", function(e){
-		e.preventDefault();
-		var $this = $(this);
-		$this.attr('value', 'Application Sent!').addClass('ref-button--success');
-		$this.parents('.tabs__content--is-showing').addClass('tabs__content--is-submitted').find('.form-submitted-success').addClass('is-showing');
-	});
 };
 
 AccountAccess.prototype.customTabTransition = function() {
@@ -113,9 +102,15 @@ AccountAccess.prototype.resetPasswordForm = function() {
 AccountAccess.prototype.mockSubmitPasswordReset = function() {
 	$('.account-access-page .js-mock-send-reset-password').on("click", function(e){
 		e.preventDefault();
-		var $this = $(this);
-		$this.attr('value', 'Email is on the way').addClass('ref-button--success');
-		$this.parents('.tabs__content--is-showing').addClass('tabs__content--is-submitted').find('.form-submitted-success').addClass('is-showing');
+		var $this = $(this);		
+		if(!$this.hasClass("ref-button--success") && !$this.hasClass("ref-button--positive")) {
+			console.log('ello');
+			$this.attr('value', 'Email is on the way').addClass('ref-button--positive');
+			$this.parents('.tabs__content--is-showing').addClass('tabs__content--is-submitted').find('.form-submitted-success').addClass('is-showing');
+			setTimeout(function(){
+				$this.addClass('ref-button--success').removeClass('ref-button--positive');
+			}, 2000);
+		}		
 	});
 };
 
@@ -126,35 +121,8 @@ var AccountSetup = function() {
 	new FormInteractions();
 
 	// Functionality for this template set
-	this.pageLoad();
-	this.mockSubmitContinue();
 	this.mockLinkAccount();
-};
-
-AccountSetup.prototype.pageLoad = function() {
-	$('.connect-account-content').css({"visibility":"hidden","position":"absolute"});
-	$('.create-password-content').css({"visibility":"visible","position":"relative"});
-	if($('.ie8').length > 0) {
-		$('.connect-account-content').css("display","none");
-		$('.create-password-content').css("display","block");
-	}
-};
-
-AccountSetup.prototype.mockSubmitContinue = function() {
-	$('.js-mock-continue').on("click", function(e){
-		e.preventDefault();
-		$('body').removeClass('create-password-form-is-showing').addClass('connect-account-is-showing');
-		var $connectAccountContainer = $('.connect-account-content');
-		setTimeout(function(){
-			$('.create-password-content').css({"visibility":"hidden","position":"absolute"});
-			$connectAccountContainer.css({"visibility":"visible","position":"relative"});
-			if($('.ie8').length > 0) {
-				$('.create-password-content').css("display","none");
-				$connectAccountContainer.css("display","block");
-			}
-		}, 150);
-	});
-};
+}
 
 AccountSetup.prototype.mockLinkAccount = function() {
 	$('.js-mock-link-account').on("click", function(e) {

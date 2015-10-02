@@ -7,8 +7,29 @@
 		float: none;
 	}
 	button {
-		margin-right: percentage(15/500);
+		position: relative;
+		padding: 1.05rem 0.923077em 1.15rem;
+		line-height: 12px;
 		float: right;
+		.is-chrome & {
+			line-height: 14px;
+		}
+		&:active, 
+		&.is-pressed {
+			padding-bottom: calc(1.15rem - 2px);
+		}
+		&:disabled {
+			padding-bottom: 1.15rem;
+			&:active {
+				padding-bottom: 1.15rem;
+			}
+		}
+		&.ref-button--is-loading, &.ref-button--positive {
+			&:active, 
+			&.is-pressed {
+				padding-bottom: 1.15rem;
+			}
+		}
 	}
 	.inline-search-form {
 		width: 45%;		

@@ -56,7 +56,7 @@
 	}
 	.two-columns {
 		max-width: 1200px;
-		margin: 2rem auto;
+		margin: 2rem auto 3rem;
 		padding-top: 3rem;
 		border-top: 1px solid #e1e5e8;
 		.heading-style--heading-four:not(:first-child) {
@@ -70,6 +70,9 @@
 	    -moz-column-gap: 4rem;
 	    column-gap: 4rem;
 		}		
+	}
+	.subscriptions-footer-container p {
+		font-size: 1.8rem;
 	}
 }
 .pricing-options {
@@ -86,29 +89,57 @@
 		}
 	}	
 	.pricing-option--header {
-		height: 261px;
-		padding: 30px percentage(38/295);
+		position: relative;
+		height: 227px;
+		padding: 30px 5%;
 		text-align: center;
 		p {
-			font-size: 14px;
-			color: #fcfdfd;	
+			position: absolute;
+			bottom: 15px;
+			width: 90%;
+			font-size: 15px;
+			line-height: 1.5;
+			color: #fcfdfd;
+			text-align: center;			
+			&:before {
+				top: 6px;
+				margin-right: 8px;
+				color: #25f9c8;
+			}
 		}
 		@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
 			height: 223px;
-			padding: 20px 7.5%;
+			padding: 20px 5%;
 			p {
+				bottom: 15px;
 				font-size: 13px;
 			}
 		}
-		@media screen and (min-width: $laptop) and (max-width: $laptop-plus - 1) {
+		@media screen and (min-width: $laptop) and (max-width: $laptop-plus - 1) {			
 			.panel-left-open & {
 				height: 223px;
-				padding: 20px 7.5%;
+				padding: 20px 5%;
 				p {
+					bottom: 15px;		
 					font-size: 13px;
 				}
 			}
 		}
+		@include breakpoint($laptop) {
+			p {
+				bottom: 21px;
+			}
+		}
+	}
+	.pricing-option--business {
+		.pricing-option--header {
+			p:before {
+				top: 8px;
+				margin-right: 3px;
+				font-size: 26px;
+				color: #d43451;
+			}
+		}		
 	}
 	.pricing-name {
 		margin-bottom: 0.9rem;
@@ -144,6 +175,10 @@
 			}
 		}
 	}
+	.package-for {
+		font-size: 14px;
+		color: $reflection-white;
+	}
 	.pricing-price {
 		font-size: 70px;
 		font-family: $brand-body-font;
@@ -154,6 +189,20 @@
 			.panel-left-open & {
 				font-size: 47px
 			}
+		}
+	}
+	.pricing-option--standard {
+		.pricing-price {
+			padding-top: 2px;
+			padding-bottom: 3px;
+			font-size: 50px;
+		}
+	}
+	.pricing-option--business {
+		.pricing-price {
+			padding-top: 6px;
+			padding-bottom: 4px;
+			font-size: 30px;
 		}
 	}
 	.per-month {
@@ -171,7 +220,7 @@
 			}
 		}
 	}
-	.pricing-details {		
+	.pricing-details {
 		li {
 			padding: 1.4rem 2rem 1.8rem;
 			font-size: 16px;
@@ -206,6 +255,7 @@
 	.pricing-sign-up-button {
 		width: calc(100% - 4rem);
 		margin-top: 2rem;
+		font-size: 16px;
 		@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
 			font-size: 14px;
 		}
@@ -340,15 +390,15 @@
 			height: 0; 
 			border-left: 20px solid transparent;
 			border-right: 20px solid transparent;
-			border-bottom: 16px solid #81879d;
+			border-bottom: 16px solid $mid-grey-2;
 		}
 		div {
 			position: relative;
 			width: 100%;
-			padding: 2rem 2rem 2.2rem;
+			padding: 1.5rem 2rem 2.5rem;
 			text-align: center;
 			border-radius: 0 0 6px 6px;
-			background-color: #81879d;
+			background-color: $mid-grey-2;
 			@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
 				padding: 2rem 1.5rem 2.2rem;
 			}
@@ -361,8 +411,7 @@
 		p {
 			margin-top: -3px;
 			font-size: 14px;
-			font-weight: 700;
-			color: #fcfdfd;
+			color: #f2f2f5;
 			@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
 				font-size: 13px;
 			}
@@ -382,7 +431,8 @@
 		}
 	}	
 }
-.is-submitted {
+.is-submitted,
+.register-is-second-step {
 	.register-form-container {
 		.js-rotate-content {
 			transform: rotateX(90deg);
@@ -399,7 +449,10 @@
 			}
 		}
 	}
+}
+.is-submitted {
 	.form-submitted-success {
+    z-index: 10;
 		visibility: visible;
 		opacity: 1;
 		transition: opacity 0.2s 0.2s;
@@ -411,6 +464,83 @@
 .form-submitted-success {
 	.illustration-container {
 		margin-top: 3.5rem;
+		margin-bottom: 2.7rem;
+		text-align: center;
+		overflow: visible;
+	}
+	.email-post-animation {
+		position: relative;
+		left: 0;
+		top: 4px;
+		width: 189px;
+		height: 118px;
+		overflow: visible;
+		margin-left: 58px;
+	}
+	.email-success-envelope {
+		.tabs__content--is-submitted & {
+			animation: mail-send 0.6s 0.8s forwards;
+		}
+	}
+	.email-success-handle {
+		transform: rotateZ(-74deg);
+		transform-origin: 22px 25px 0px;
+		.tabs__content--is-submitted & {
+			transform: rotateZ(0deg);
+			transition: transform 0.2s 1.3s;
+		}
+	}
+	.email-delivery-animation {
+		position: relative;
+		margin-top: 15px;
+		margin-bottom: 25px;
+		width: 226px;
+		height: 81px;
+		overflow: visible;
+		.tabs__content--is-submitted &,
+		.reset-password-is-submitted & {
+			@include transform(translateX(300px));
+			transition: transform 0.4s 1.7s ease-in;
+		}
+		.is-ie & {
+			visibility: hidden;
+		}
+	}
+	.email-delivery-animation--email {
+		.tabs__content--is-submitted &,
+		.reset-password-is-submitted & {
+			animation: mail-deliver 0.6s 0.8s forwards;
+		}
+	}
+	.email-delivery-animation--van-body {
+		.tabs__content--is-submitted &,
+		.reset-password-is-submitted & {
+			animation: van-shake 0.6s 1.3s;
+		}
+	}
+	.success-tick {
+		position: absolute;
+		top: 30px;
+		left: 50%;
+		margin-left: -29px;
+		width: 61px;
+		height: 54px;
+		@include transform(scale(0.7));
+		@include opacity(0);
+		.tabs__content--is-submitted &,
+		.reset-password-is-submitted & {
+			@include opacity(1);
+			@include transform(scale(1));
+			transition: opacity 0.4s 2.2s, transform 0.4s 2.2s;
+			.is-ie & {
+				transition: opacity 0.4s 0.3s, transform 0.4s 0.3s;
+			}
+		}
+		.form-submitted-success-complete & {
+			@include opacity(1);
+			@include transform(scale(1));
+			transition: opacity 0.4s 0.4s, transform 0.4s 0.4s;
+		}
 	}
 	.email-success-handle {
 		transform: rotateZ(-74deg);
@@ -420,4 +550,17 @@
 			transition: transform 0.2s 1.1s;
 		}
 	}
+}
+.register-form-container {	
+	&.is-showing {
+		position: relative;
+  	opacity: 1;
+  	transition: opacity 0.3s;
+  }
+  .register-is-second-step & {
+  	position: absolute;
+		top: 0;
+		left: 0;  
+  	opacity: 0;  	
+  }
 }

@@ -80,7 +80,7 @@
 }
 .ref-button--function-small {
 	@extend .ref-button;
-	padding: 0.75em 0.92307692307692em 0.85em 0.92307692307692em;
+	padding: 0.65em 0.92307692307692em 0.65em 0.92307692307692em;
 	font-family: $brand-heading-font;
 	font-weight: 600;
 	color: $reflection-purple;
@@ -94,7 +94,7 @@
 	&:active, 
 	&.is-pressed {
 		border-top: 3px solid #d9d9dc;
-		padding-bottom: calc(0.85em - 2px);
+		padding-bottom: calc(0.65em - 2px);
 		transition: border 0s;
 	}
 	&:disabled {
@@ -107,7 +107,26 @@
 		}
 		&:active {
 			border-top: 1px solid #dadee1;
-			padding-bottom: 0.85em;
+			padding-bottom: 0.65em;
+		}
+	}
+	&.ref-button--is-loading, &.ref-button--positive {
+		color: $reflection-white;
+		&:hover,
+		&:active {
+			color: $reflection-white;
+		}
+		&:active, 
+		&.is-pressed {
+			padding-bottom: 0.65em;			
+		}
+		&:hover,
+		&:active,
+		&:active, 
+		&.is-pressed {
+			transition: none;
+			border: 1px solid #dadee1;
+			border-radius: 0.30769230769231em; // 4px;
 		}
 	}
 	&.ref-button--function-small--with-icon {
@@ -136,7 +155,7 @@
 }
 .ref-button--function-small--wide {
 	@extend .ref-button--function-small;
-	padding: 0.75em 2.3em 0.85em 2.25em;
+	padding: 0.65em 2.3em 0.65em 2.25em;
 }
 .ref-button--function-large {
 	@extend .ref-button--function-small;
