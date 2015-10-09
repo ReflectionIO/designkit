@@ -8,19 +8,121 @@
 	ul + p {
 		margin-top: 2rem;
 	}
+	.content-list--minor {
+		padding-right: 4.3rem;
+		padding-left: 5rem;
+		overflow: visible;
+		font-size: 1.39em;
+		li {
+			&:before {
+				color: $light-grey-2;
+			}
+			&.list-item-complete {
+				&:before {
+					color: $reflection-green;
+				}
+			}
+		}
+		span {
+			padding-right: 0.5rem;
+			display: inline-block;
+			float: right;
+			font-size: 1.2rem;
+			color: $light-grey-1;
+		}
+	}
+	.list-item-complete {
+		position: relative;
+		padding-left: 26px;
+		font-weight: 700;
+		line-height: 1.3;
+		background: none;
+		overflow: visible;
+		@extend .ref-icon-before;			
+		&:before {
+			content: "t";
+			position: absolute;
+			top: 0.1rem;
+			left: -0.3rem;
+			font-size: 17px;
+			color: $reflection-green;
+
+		}
+	}
+}
+.feature-complete {
+	.accordion-switch {
+		color: $dark-grey-2;
+		background-image: none;
+		&:before {
+			content: "t";
+		}
+		span {
+			color: $dark-grey-2;
+		}
+	}
 }
 .accordion-switch {
-	@extend .ref-icon-after;
+	position: relative;
+	width: 100%;
+	padding: 1rem 40% 1.2rem 5rem;
+	margin: 0;
+	display: block;
+	font-size: 1.6rem;
+	font-family: $brand-body-font;
+	font-weight: 400;
+	line-height: 1.2;
+	color: #5a5a68;
 	z-index: 1;
 	background-color: $reflection-white;
-	cursor: pointer;	
+	cursor: pointer;
+	@extend .ref-icon-before;	
+	@extend .ref-icon-after;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0.8rem;
+		left: 14px;
+		font-size: 2.3rem;
+		color: $reflection-green;
+	}
 	&:after {
 		content: "m";
+		position: absolute;
+		top: 1.1rem;
+		right: 14px;
 		display: inline-block;
 		font-size: 23px;
 		line-height: 23px;
 		color: $light-grey-1;
 		@include transition(transform 0.2s);
+	}
+	em {
+		font-weight: 700;
+		color: $dark-grey-1;
+	}
+	> span {
+		position: absolute;
+		right: 4.5rem;
+		top: 1.2rem;
+		display: inline-block;
+		float: right;
+		font-size: 1.4rem;
+		font-weight: 400;
+		color: $light-grey-1;
+		span {
+			padding-left: 4px;
+			@media screen and (max-width: 959px) {
+				display: none;
+			}
+		}
+	}
+	.accordion-static & {
+		padding: 1.4rem 1.5rem 1.6rem 5rem;
+		line-height: 1.5;
+		&:before {
+			top: 1.5rem;
+		}
 	}
 	.is-closed & {		
 		&:after {
@@ -38,8 +140,13 @@
 			margin: 0;
 		}
 	}
+	@include breakpoint($desktop) {
+		padding-left: 11%;
+	}
 }
 .accordion-content {
+	padding-top: 0.4rem;
+	padding-bottom: 1.6rem;
 	z-index: 0;
 	transition: margin-top 0.2s;
 }
@@ -51,4 +158,9 @@
 			color: $reflection-purple--hover;
 		}
 	}
+}
+.accordion-bottom-with-divider {
+	padding-bottom: 4rem;
+	margin-bottom: 3rem;
+	border-bottom: 1px solid $divider-grey;
 }

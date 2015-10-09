@@ -1,119 +1,13 @@
 $local-breakpoint-desktop: 980px;
 $local-breakpoint-vertical: 680px;
-.page-logged-in-landing {
-	.feature-complete {
-		.accordion-switch {
-			color: $dark-grey-2;
-			background-image: none;
-			&:before {
-				content: "t";
-			}
-			span {
-				color: $dark-grey-2;
-			}
+.page-logged-in-landing {	
+	.page-section > .grid__column {
+		@media screen and (max-width: $mobile-max-width) {
+			padding-bottom: 3rem;
 		}
 	}
 	.pagination {
 		padding-bottom: 0;
-	}
-	.accordion-switch {
-		position: relative;
-		width: 100%;
-		padding: 1rem 40% 1.2rem 5rem;
-		margin: 0;
-		display: block;
-		font-size: 1.6rem;
-		font-weight: 600;
-		line-height: 1.2;
-		color: #727686;
-		@extend .ref-icon-before;		
-		&:before {
-			content: "";
-			position: absolute;
-			top: 0.8rem;
-			left: 14px;
-			font-size: 24px;
-			color: $reflection-green;
-		}
-		&:after {
-			position: absolute;
-			top: 1.1rem;
-			right: 14px;
-		}
-		> span {
-			position: absolute;
-			right: 4.5rem;
-			top: 1.2rem;
-			display: inline-block;
-			float: right;
-			font-size: 1.4rem;
-			font-weight: 400;
-			color: $light-grey-1;
-			span {
-				padding-left: 4px;
-				@media screen and (max-width: 959px) {
-					display: none;
-				}
-			}
-		}
-		@include breakpoint($desktop) {
-			padding-left: 11%;
-		}
-	}
-	.accordion {
-		.content-list--minor {
-			padding-right: 4.3rem;
-			padding-left: 5rem;
-			overflow: visible;
-			font-size: 1.39em;
-			li {
-				&:before {
-					color: $light-grey-2;
-				}
-				&.list-item-complete {
-					&:before {
-						color: $reflection-green;
-					}
-				}
-			}
-			span {
-				padding-right: 0.5rem;
-				display: inline-block;
-				float: right;
-				font-size: 1.2rem;
-				color: $light-grey-1;
-			}
-		}
-		.list-item-complete {
-			position: relative;
-			padding-left: 26px;
-			font-weight: 700;
-			line-height: 1.3;
-			background: none;
-			overflow: visible;
-			@extend .ref-icon-before;			
-			&:before {
-				content: "t";
-				position: absolute;
-				top: 0.1rem;
-				left: -0.3rem;
-				font-size: 17px;
-				color: $reflection-green;
-
-			}
-		}
-		.accordion-content {
-			padding-top: 0.4rem;
-			padding-bottom: 1.6rem;
-		}
-	}
-	.accordion-static {
-		.accordion-switch > span {
-			right: 2rem;
-			@include breakpoint($tablet) {
-				right: 4.5rem;
-			}
-		}
 	}
 	.list-partners {
 		order: 3;
@@ -143,6 +37,10 @@ $local-breakpoint-vertical: 680px;
 				}
 			}			
 		}
+	}
+	.page-banner.page-banner--larger {
+		height: 389px;
+		margin-bottom: 0px;
 	}
 }
 .logged-in-section-main {
@@ -189,98 +87,12 @@ $local-breakpoint-vertical: 680px;
 		}
 	}
 }
-.logged-in-section-main__column-one {
-	width: 100%;	
-	display: inline-block;
-	vertical-align: middle;
-	order: 2;	
-	@include breakpoint($phablet) {
-		max-width: 90%;
-	}
-	@include breakpoint($laptop) {
-		max-width: percentage(637/1280);
-	}
-	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: $local-breakpoint-vertical) {
-		margin-top: -16vh;
-	}
-	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: 800px) {
-		margin-top: -15.5vh;
-	}
-	@include breakpoint($desktop-wide) {
-		margin-right: 1.1%;
-	}
-	img {		
-		width: 134%;
-		@include breakpoint($phablet) {
-			width: 100%;
-		}
-		@include breakpoint($laptop) {
-			width: auto;
-			max-width: 767px;
-			float: right;
-		}
-		@include breakpoint($desktop) {
-			max-width: 900px;			
-		}
-		@media screen and (min-width: $desktop-wide) and (min-height: 1000px) {
-			max-width: 1000px;
-		}
-		@media screen and (max-height: 900px) {			
-			max-width: 700px;
-		}	
-	}
-	.no-flexbox & {
-		margin-bottom: 30px;
-		@include breakpoint($laptop) {
-			margin-bottom: 0;
-		}
-	}
-}
-.logged-in-section-main__column-two {
-	width: 85%;
-	margin: 0 auto 40px;
-	display: inline-block;
-	vertical-align: middle;
-	order: 1;
-	@include breakpoint($phablet) {
-		width: 70%;
-	}
-	@include breakpoint($laptop) {
-		width: percentage(505/1280);
-		margin-top: 0;
-	}
-	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: $local-breakpoint-vertical) {
-		margin-top: -18.5vh;
-	}
-	.page-title {
-		margin-bottom: 0.54em;
-		color: $reflection-white;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		@media screen and (min-width: $phablet) and (max-width: 959px) {
-			font-size: 3.7em;
-		}
-		.ie9 & {
-			margin-top: 30px;
-			@include breakpoint($desktop) {
-				margin-top: 0;
-			}
-		}
-	}
-	p {
-		font-size: 1.6rem;		
-		color: $purple-pale;
-		@include breakpoint($phablet) {
-			font-size: 1.8rem;
-		}
-	}
-}
 .logged-in-section-content {
 	max-width: 1600px;
-	margin: 0 auto;
+	margin: 0 auto;	
 	padding-top: 4.4rem;
 	@media screen and (max-width: $mobile-max-width) {
+		padding-top: 3rem;
 		display: -webkit-box;
 		  /* @alternate */ display: -ms-flexbox;
 		  /* @alternate */ display: -webkit-flex;
@@ -307,31 +119,14 @@ $local-breakpoint-vertical: 680px;
 			margin-bottom: 0.5em;
 		}
 	}
-	.grid__column--seven-columns {
-		order: 2;
-		@media screen and (min-width: $tablet) and (max-width: 959px) {
-			width: 50%;
-		}
-		.panel-left-open & {
-			@media screen and (min-width: $laptop) and (max-width: 1279px) {
-				width: 50%;
-			}
-		}
+	.grid__column--two-thirds {
+		order: 1;
 	}
-	.grid__column--five-columns {
+	.grid__column--one-third {
 		margin-bottom: 3rem;
 		@media screen and (max-width: $mobile-max-width) {
-			order: 1;
+			order: 2;
 			padding-bottom: 4rem;
-			border-bottom: 1px solid #E1E5E8;
-		}
-		@media screen and (min-width: $tablet) and (max-width: 959px) {
-			width: 50%;
-		}
-		.panel-left-open & {
-			@media screen and (min-width: $laptop) and (max-width: 1279px) {
-				width: 50%;
-			}
 		}
 	}
 	@include breakpoint($desktop) {
@@ -355,11 +150,133 @@ $local-breakpoint-vertical: 680px;
 		}
 	}
 }
-.accordion-bottom-with-divider {
-	padding-bottom: 4rem;
-	margin-bottom: 3rem;
-	border-bottom: 1px solid $divider-grey;
-}
 .hiring-title {
 	margin-top: 3rem;
+}
+.latest-system-stats {
+	> div {
+		overflow: visible;
+	}
+	h2 {
+		margin-bottom: 1.3rem;
+	}
+	svg {
+		position: relative;
+		top: 4px;
+		width: 24px;
+	}
+	span {
+		font-family: $brand-heading-font;		
+		font-size: 2rem;
+		font-weight: 600;
+		&:last-child {
+			font-size: 1.6rem;
+			font-weight: 400;
+		}
+	}
+	svg, span {
+		margin-right: 1.2rem;
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	.content-list {
+		padding-left: 2px;
+		margin-top: 1.4rem;
+		font-size: 1.4rem;
+		li {
+			margin-bottom: 0.3rem;
+			font-size: 1.3rem;
+		}
+	}
+}
+.latest-system-stats,
+.features-and-tools,
+.new-members,
+.hiring {
+	padding-bottom: 2.5rem;
+	margin-bottom: 2.1rem;
+	border-bottom: 1px solid $divider-grey;
+}
+.hiring {
+	border-bottom: 0;
+}
+.features-and-tools {
+	h2 {
+		margin-bottom: 0.3em;
+	}
+	.content-list--minor {
+		margin-bottom: 1.8rem;
+		list-style-type: none;
+		li {
+			margin-bottom: 0.74em;
+			padding-left: 2.6rem;
+		}
+	}
+	ul.content-list--minor .ref-icon-before--wrench,
+	ul.content-list--minor .ref-icon-before--check {
+		&:before {
+			@extend %icon-font;
+			top: 3px;
+			font-size: 1.7rem;
+		}
+	}
+	ul.content-list--minor .ref-icon-before--wrench {
+		color: #727686;
+		&:before {
+			content: "U";			
+			color: #c4c7d0;
+		}
+	}
+	ul.content-list--minor .ref-icon-before--check {
+		color: #363a47;
+		font-weight: 700;
+		&:before {
+			content: "t";
+			color: $reflection-green;
+		}
+	}
+	a {
+		color: $reflection-purple;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+	}
+}
+.features-key {
+	padding-bottom: 1.5rem;
+	margin-bottom: 0.9em;
+	border-bottom: 1px solid #e1e5e8;
+	span {
+		margin-right: 1rem;
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 1.2rem;
+		color: #363a47;
+		&:before {
+			top: 4px;
+			margin-right: 0.7rem;
+			font-size: 1.7rem;
+		}
+	}
+	.ref-icon-before--check:before {
+		color: $reflection-green;
+	}
+	.ref-icon-before--wrench:before {
+		color: #c4c7d0;
+	}	
+}
+.new-members {
+	padding-bottom: 0.6rem;
+}
+.members-list {
+	font-size: 0;
+	li {
+		width: 50%;
+		padding: 0rem 0px 0.6rem;
+		margin: 0;		
+		display: inline-block;
+		float: left;
+		vertical-align: middle;
+		text-align: center;						
+	}
 }

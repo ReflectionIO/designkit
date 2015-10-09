@@ -1,0 +1,70 @@
+.partners-grid-container {
+	background-color: $panel-grey;
+}
+.partners-grid {
+	padding-top: 5.1rem;
+	padding-bottom: 8.6rem;
+	text-align: center;
+	h2 {
+		max-width: 500px;
+		margin: 0 auto 4rem;
+		font-size: 1.8rem;
+		text-align: center;
+		@include breakpoint($tablet) {
+			margin-top: 5rem;
+			font-size: 2.1rem;
+		}
+		a {
+			color: $reflection-purple;
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+		}
+	}
+	.cta-button {
+		margin-top: 1rem;
+	}
+	ul {
+		width: 100%;
+		margin: 0 auto;
+		max-width: 1400px;
+		@include breakpoint($phablet) {
+			text-align: center;
+		}
+		@include breakpoint($tablet) {
+			margin-bottom: 3rem;
+			display: -webkit-box;
+		  /* @alternate */ display: -ms-flexbox;
+		  /* @alternate */ display: -webkit-flex;
+		  /* @alternate */ display: flex;
+		  flex-direction: row;
+		  justify-content: center;
+		  align-items: center;
+		}
+	}
+	li {
+		width: 48%;
+		margin-bottom: 4rem;
+		display: inline-block;
+		vertical-align: middle;
+		text-align: center;
+		svg {
+			width: 89%;
+			max-width: 170px;
+		}
+		@include breakpoint($phablet) {
+			width: 33%;
+		}
+		@include breakpoint($tablet) {
+			width: auto;
+			margin-bottom: 0;
+			justify-content: center;
+			-webkit-flex-grow: 1;
+			-ms-flex-grow: 1;
+			flex-grow: 1;
+			.ie10 & {
+				width: 20%;
+			}
+		}
+	}
+}

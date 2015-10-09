@@ -23,10 +23,10 @@
 			padding-top: 6rem;
     	padding-bottom: 0;
 		}		
-		&:nth-child(odd) {			
+		&.product-section--second-section {			
 			background-color: #363a47;
 			@include breakpoint($tablet) {
-				padding-bottom: 4rem;
+				padding-bottom: 0;
 			}
 			h2 {
 				color: $reflection-white;				
@@ -40,19 +40,12 @@
 					padding-top: 65px;
 				}
 			}
-		}
-		&.product-section--message {
-			padding-top: 4rem;
-			padding-bottom: 4rem;
-			@include breakpoint($tablet) {
-				padding-top: 5rem;
-    		padding-bottom: 12rem;
-			}	
-		}
+		}		
 	}
 	.product-section--content {
 		max-width: 1400px;
 		margin: 0px auto;
+		overflow: visible;
 	}
 	.product-image-container--right,
 	.product-text-content--left {
@@ -65,6 +58,16 @@
 		.content-list {
 			color: #5b5d61;
 		}
+		svg {
+			width: 100%;	
+			max-width: 167px;
+			margin: 0 auto;
+		}
+		@include breakpoint($phablet) {
+			svg {
+				margin-left: auto;
+			}
+		}
 		@include breakpoint($tablet) {		
 			width: percentage(460/1060);
 			padding-top: 45px;
@@ -75,131 +78,67 @@
 		@include breakpoint($laptop-plus) {
 			padding-right: 12rem;
 		}
+		@include breakpoint($desktop-wide) {
+			svg {
+				max-width: 300px;
+			}			
+		}
 	}
 	.product-image-container--right {
 		width: 100%;
+		overflow: visible;
 		img {
 			max-width: 430px;
 			margin-left: 5%;
-		}
-		svg {
-			width: 100%;	
-			max-width: 188px;
-			margin: 0 auto;
-		}
-		.content-list {
-			text-align: left;
-		}
+			float: left;
+		}		
 		@include breakpoint($phablet) {
 			margin: 0 auto;			
-			text-align: center;
 			img {
-				margin: 0;
+				margin: 0 auto;
 				float: none;
-			}
-			svg {
-				margin-left: auto;
-			}
+			}			
 		}
 		@include breakpoint($tablet) {
 			width: percentage(530/1060);
 			float: right;
 			img {
 				max-width: inherit;
+				float: left;
 			}
-		}
-		@include breakpoint($desktop-wide) {
-			svg {
-				max-width: 300px;
-			}			
-		}
+		}		
 		&.has-content {
-			padding-right: percentage(45/1060);
-			text-align: center;
-			.content-list {
-				padding-left: 5%;
-				li:before {
-					font-size: 1.1rem;
-				}
-			}
-			@include breakpoint($tablet) {
-				padding-left: 0;
-			}
+			padding-top: 1.5rem;
+			padding-right: 0;
+			padding-left: 0;
 			h2 {
 				margin-top: 2rem;
-				margin-bottom: 1.2em;
+				margin-bottom: 1em;
 			}
 		}
 	}
 }
-.product-section--message .product-text-content--left {
-	padding-right: 8rem;
-}	
-.product-page--partners {
-	padding-top: 4rem;
-	padding-bottom: 6.6rem;
+.product-section.product-section--message {
+	padding-top: 0;
+	padding-bottom: 4rem;
+	@include breakpoint($tablet) {
+		padding-top: 5rem;
+		padding-bottom: 9.4rem;
+		display: block;
+		.product-text-content--left {
+			width: 44%;
+			padding-right: 5.5rem;
+		}
+	}
+}
+.product-text-content--left.help-us-help-you {
+	padding-top: 0;
 	text-align: center;
 	h2 {
-		max-width: 500px;
-		margin: 0 auto 4rem;
-		font-size: 1.8rem;
-		text-align: center;
-		@include breakpoint($tablet) {
-			margin-top: 5rem;
-			font-size: 2.1rem;
-		}
-		a {
-			color: $reflection-purple;
-			&:hover {
-				color: $reflection-purple--hover;
-			}
-		}
+		margin-top: 1.6rem;
 	}
-	.cta-button {
-		margin-top: 1rem;
-	}
-	ul {
-		width: 100%;
-		margin: 0 auto;
-		max-width: 1400px;
-		@include breakpoint($phablet) {
-			text-align: center;
-		}
-		@include breakpoint($tablet) {
-			margin-bottom: 3rem;
-			display: -webkit-box;
-		  /* @alternate */ display: -ms-flexbox;
-		  /* @alternate */ display: -webkit-flex;
-		  /* @alternate */ display: flex;
-		  flex-direction: row;
-		  justify-content: center;
-		  align-items: center;
-		}
-	}
-	li {
-		width: 48%;
-		margin-bottom: 4rem;
-		display: inline-block;
-		vertical-align: middle;
-		text-align: center;
-		svg {
-			width: 89%;
-			max-width: 170px;
-		}
-		@include breakpoint($phablet) {
-			width: 33%;
-		}
-		@include breakpoint($tablet) {
-			width: auto;
-			margin-bottom: 0;
-			justify-content: center;
-			-webkit-flex-grow: 1;
-			-ms-flex-grow: 1;
-			flex-grow: 1;
-			.ie10 & {
-				width: 20%;
-			}
-		}
+	p {
+		text-align: left;
 	}
 }
 .product-page__quotes {	
@@ -258,7 +197,7 @@
 		}
 	}
 	svg {
-		width: 235px;
+		width: 242px;
 	}
 }
 .product-page__quotes__logo-container {

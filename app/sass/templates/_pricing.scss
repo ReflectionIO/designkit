@@ -80,27 +80,35 @@
 		position: relative;
 		max-width: 334px;
 		margin: 2rem auto 0;
-		padding-bottom: 2.5rem;
+		padding-bottom: 3rem;
 		text-align: center;
 		border-radius: 6px;
 		background-color: #363a47;
 		@include breakpoint($tablet) {
 			margin-top: 0;
 		}
-	}	
+	}
+	.pricing-option--with-footer {
+		padding-bottom: 4.5rem;
+	}
 	.pricing-option--header {
 		position: relative;
-		height: 227px;
-		padding: 30px 5%;
+		height: 258px;
+		padding: 22px 5% 0;
 		text-align: center;
 		p {
 			position: absolute;
-			bottom: 15px;
-			width: 90%;
+			left: 0;
+			bottom: 0px;
+			width: 100%;
+			padding-top: 7px;
+			padding-bottom: 13px;
 			font-size: 15px;
+			font-weight: 700;
 			line-height: 1.5;
 			color: #fcfdfd;
-			text-align: center;			
+			text-align: center;	
+			background-color: #1aa182;	
 			&:before {
 				top: 6px;
 				margin-right: 8px;
@@ -111,38 +119,60 @@
 			height: 223px;
 			padding: 20px 5%;
 			p {
-				bottom: 15px;
 				font-size: 13px;
 			}
 		}
 		@media screen and (min-width: $laptop) and (max-width: $laptop-plus - 1) {			
 			.panel-left-open & {
-				height: 223px;
+				height: 258px;
 				padding: 20px 5%;
 				p {
-					bottom: 15px;		
 					font-size: 13px;
 				}
 			}
 		}
-		@include breakpoint($laptop) {
+	}
+	.pricing-option--standard {
+		.pricing-price {
+			padding-top: 2px;
+			padding-bottom: 3px;
+			font-size: 50px;
+		}
+	}
+	.pricing-option--premium {
+		.pricing-option--header {
 			p {
-				bottom: 21px;
+				background-color: #5955a5;
+				&:before {
+					color: #a19df3;
+				}
 			}
+		}
+		.pricing-price-container {
+			margin-bottom: 0;
 		}
 	}
 	.pricing-option--business {
 		.pricing-option--header {
-			p:before {
-				top: 8px;
-				margin-right: 3px;
-				font-size: 26px;
-				color: #d43451;
+			p {
+				padding-top: 3px;
+				background-color: #d43451;
+				&:before {
+					top: 8px;
+					margin-right: 3px;
+					font-size: 26px;
+					color: #ff7680;
+				}
 			}
-		}		
+		}
+		.pricing-price {
+			padding-top: 15px;
+			padding-bottom: 9px;
+			font-size: 30px;
+		}
 	}
 	.pricing-name {
-		margin-bottom: 0.9rem;
+		margin-bottom: 13px;
 		font-size: 22px;
 		color: #fff;
 		@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
@@ -155,7 +185,7 @@
 		}
 	}
 	.pricing-price-container {
-		margin-bottom: 1rem;
+		margin-bottom: 16px;
 	}
 	.pricing-sup,
 	.pricing-price {
@@ -182,31 +212,21 @@
 	.pricing-price {
 		font-size: 70px;
 		font-family: $brand-body-font;
-		@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
-			font-size: 47px
-		}
-		@media screen and (min-width: $laptop) and (max-width: $laptop-plus - 1) {
-			.panel-left-open & {
+	}
+	.pricing-option--premium {
+		.pricing-price {
+			@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
 				font-size: 47px
+			}
+			@media screen and (min-width: $laptop) and (max-width: $laptop-plus - 1) {
+				.panel-left-open & {
+					font-size: 47px
+				}
 			}
 		}
 	}
-	.pricing-option--standard {
-		.pricing-price {
-			padding-top: 2px;
-			padding-bottom: 3px;
-			font-size: 50px;
-		}
-	}
-	.pricing-option--business {
-		.pricing-price {
-			padding-top: 6px;
-			padding-bottom: 4px;
-			font-size: 30px;
-		}
-	}
 	.per-month {
-		margin-bottom: 1.5rem;
+		margin-bottom: 9px;
 		display: block;
 		font-size: 12px;
 		font-weight: 700;
@@ -265,20 +285,6 @@
 			}
 		}
 	}
-	.pricing-option--current {
-		background-color: #999ba2;
-		.pricing-details {
-			li {
-				border-bottom: 1px solid #929394;
-			}
-		}
-		.ref-button--positive {
-			background-color: #8be2ce;
-			&:hover, &:active {
-				background-color: #8be2ce;
-			}
-		}
-	}
 	.pricing-option--standard {
 		.pricing-option--header {
 			background-color: $reflection-green;
@@ -290,17 +296,8 @@
 		.per-month {
 			color: #bffff0;
 		}
-		&.pricing-option--current {
-			.pricing-option--header {
-				background-color: #8be2ce;
-			}
-		}
 	}
 	.pricing-option--premium {
-		padding-bottom: 2rem;
-		.page-my-account & {
-			padding-bottom: 4.5rem;
-		}
 		.pricing-option--header {
 			background-color: $reflection-purple;
 		}
@@ -310,22 +307,22 @@
 		}
 		.per-month {
 			color: #c3c6f6;
-		}		
-		&.pricing-option--current {			
-			.pricing-option--header {
-				background-color: #afabf0;
-			}
 		}
 	}
 	.trial-label {
-		margin: 2.9rem 0 1.8rem;
+		position: relative;
+		padding: 0 10% 0 30%;
+		margin: 2.9rem 0 0;
 		display: block;
 		font-size: 15px;
 		font-weight: 700;
+		line-height: 1.3;
 		color: #fcfdfd;
+		text-align: left;
 		text-transform: uppercase;
 		@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
 			font-size: 12px;
+			line-height: 1.4;
 		}
 		@media screen and (min-width: $laptop) and (max-width: $laptop-plus - 1) {
 			.panel-left-open & {
@@ -333,29 +330,20 @@
 			}
 		}
 		svg {
-			position: relative;
-			top: -9px;
-			margin-right: 12px;
-			display: inline-block;
+			position: absolute;
+			top: 4px;
+			left: 15%;
 			width: 33px;
-			vertical-align: top;
-			@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
-				top: -6px;
-				width: 27px;
-				margin-right: 8px;
+			@media screen and (min-width: $tablet) and (max-width: $laptop-plus - 1) {
+				width: 25px;
 			}
-			@media screen and (min-width: $laptop) and (max-width: $laptop-plus - 1) {
-				.panel-left-open & {
-					top: -6px;
-					width: 27px;
-					margin-right: 8px;
-				}
-			}
+		}
+		em {
+			color: $reflection-red;
 		}
 	}
 	.pricing-option--business {
 		margin-top: 0;
-		padding-bottom: 4.5rem;
 		.pricing-option--header {
 			background-color: $reflection-red;
 		}
@@ -563,4 +551,19 @@
 		left: 0;  
   	opacity: 0;  	
   }
+}
+.current-subscription-text {
+	padding-top: 2rem;
+	font-weight: 700;
+	color: $reflection-white;
+	@media screen and (min-width: $laptop) and (max-width: $laptop-plus - 1) {
+		.panel-left-open & {
+			font-size: 1.4rem;
+		}
+	}
+	&:before {
+		top: 6px;
+		margin-right: 0.7rem;
+		color: #1BC79F;
+	}
 }
