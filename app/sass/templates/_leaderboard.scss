@@ -144,22 +144,30 @@
 		margin-bottom: 1rem;
 	}
 	.cellTableLoading tr {
-		height: 74px;
+		height: 60px;
+		td {
+			padding: 0;
+		}
+		.img-rounded {
+			margin-top: 2px;
+		}
 	}
 	table.table-data {
 		.MHXTE6C-r-a {
 			overflow: visible;
-			a {
+			a,
+			.leaderboard-app-name {
 				width: 72%;
 				font-size: 15px;
 				@include breakpoint($desktop-wide) {
 					width: 100%;
 				}
-				&.sign-up-link {
-					width: 100%;
-					font-size: 12px;
-					font-weight: 400;
-				}
+			}
+			a.sign-up-link {
+				width: 100%;
+				margin-bottom: 0;
+				font-size: 12px;
+				font-weight: 400;
 			}
 		}
 		.text-muted {
@@ -197,14 +205,12 @@
 				}			
 				@include breakpoint($laptop) {
 					width: 45%;
-					margin-top: -1px;
 					display: inline-block;
 					text-align: right;
 				}
 				@include breakpoint($laptop-plus) {
 					.panel-left-open & {
 						width: 45%;
-						margin-top: -1px;
 						display: inline-block;
 						text-align: right;
 					}
@@ -214,8 +220,11 @@
 	}
 	th .whats-this-tooltip-icon-static {
 		position: relative;
-		top: -2px;
+		top: -3px;
 		left: 5px;
+		height: 1px;
+		overflow: visible;
+		vertical-align: top;
 	}
 	@media screen and (min-width: $tablet) {
 		.page-title,
@@ -229,6 +238,11 @@
 .page-leaderboard.compact-view {
 	transition: 0.3s all;
 	table.table-data {
+		.MHXTE6C-i-a,
+		.table-data {
+			padding-top: 2px;
+			padding-bottom: 4px;
+		}
 		.MHXTE6C-i-d,
 		.table-data-first {
 			font-size: 14px;
@@ -236,12 +250,22 @@
 		.MHXTE6C-r-a, 
 		.MHXTE6C-I-a, 
 		.app-details {
-	    padding-top: 9px;		
+	    padding-top: 6px;		
 			width: 100%;
 			max-width: 600px;
 			@include breakpoint($laptop) {
 				width: calc(100% - 30px);
 			}	
+		}
+		.MHXTE6C-r-a {
+			a,
+			.leaderboard-app-name {
+				font-size: 14px;
+			}
+			a.sign-up-link {
+				margin-bottom: 0;
+				font-size: 12px;
+			}
 		}
 		.img-rounded {
 			display: none;
@@ -264,7 +288,8 @@
 					padding-top: 7px;
 					padding-bottom: 5px;
 				}
-				a {
+				a,
+				.leaderboard-app-name {
 					width: 100%;
 					padding-right: 4%;
 					margin-bottom: 0px;
@@ -315,10 +340,6 @@
 			}
 		}	
 	}
-}
-.table-overall.table-data .MHXTE6C-i-a {
-	padding-top: 1px;
-	padding-bottom: 4px;
 }
 .table-overall {
 	width: 100%;	

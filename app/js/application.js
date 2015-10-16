@@ -1313,7 +1313,7 @@
 					tooltip.css({"top": topPosition - tooltipHeight - 20, "left": leftPosition});				
 					setTimeout(function(){
 						tooltip.fadeIn(200);
-					}, 800);
+					}, 400);
 				});
 				$this.on("mouseleave", function(){
 					tooltip.remove();

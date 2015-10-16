@@ -144,7 +144,8 @@
 
           var $axisLabel = $(this.chart.container).find('.highcharts-axis-label'),
               leftOffset = 29,
-              axisLabelYPos = arguments[1][0].series.chart.containerHeight - arguments[1][0].series.xAxis.bottom,
+              axisLabelYPos = $("#" + arguments[1][0].series.chart.container.id + "").height() - arguments[1][0].series.xAxis.bottom,
+              //axisLabelYPos = arguments[1][0].series.chart.containerHeight - arguments[1][0].series.xAxis.bottom,
               axisLabelXPos = arguments[1][0].plotX - leftOffset,
               timeStampString = arguments[1][0].x + "",
               timeStampString = timeStampString.substring(0,10),
@@ -379,7 +380,7 @@
         	area: {
             trackByArea: false,
         		tooltip: {
-        			followPointer: false
+        			followPointer: true
         		},
         		states: {
         			hover: {
