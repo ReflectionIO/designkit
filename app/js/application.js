@@ -1282,38 +1282,19 @@
 	};
 
 	var ToolTip = function() {
-		if($('.no-touch').length) {
-			$('.js-tooltip').each(function(){
-				var $this = $(this);
-				var tooltip;
+		var instance = this;
+		$('body').on("click", function(e){ // remove touch tooltips on body click
+			if($('.tooltip').length) {			
+				$('.tooltip').remove();
+			}
+		});
+
+		$('.js-tooltip').each(function(){
+			var $this = $(this);
+			var tooltip;
+			if($('html.no-touch').length) {
 				$this.on("mouseenter", function(){
-					var tooltipText = $(this).data("tooltip");
-					tooltip = $('<div>').addClass("tooltip").append($('<div>').addClass("tooltip-text").text(tooltipText));
-					if($this.find('.icon-member--standard').length > 0) {
-						tooltip.prepend($('<span>').addClass("tooltip-feature tooltip-feature--standard").text("MEMBER FEATURE"));
-					} else if($this.find('.icon-member--pro').length > 0) {
-						tooltip.prepend($('<span>').addClass("tooltip-feature tooltip-feature--pro").text("PREMIUM FEATURE"));
-					}
-					$('body').append(tooltip);
-					var topPosition = $this.offset().top;
-					var leftPosition = $this.offset().left;
-					var tooltipHeight = tooltip.innerHeight();
-					var componentHeight = $this.innerHeight();						
-					tooltip.hide();
-					if($this.hasClass('js-tooltip--right')) {
-						var tooltipWidth = tooltip.innerWidth();
-						var componentWidth = $this.innerWidth();	
-						if($this.hasClass('js-tooltip--right--no-pointer-padding')) {
-							leftPosition = (leftPosition + componentWidth - tooltipWidth) + 10;
-						} else {
-							leftPosition = leftPosition + componentWidth - tooltipWidth;
-						}
-						tooltip.addClass("tooltip-right");
-					}
-					tooltip.css({"top": topPosition - tooltipHeight - 20, "left": leftPosition});				
-					setTimeout(function(){
-						tooltip.fadeIn(200);
-					}, 400);
+					tooltip = instance.generateTooltip($this);
 				});
 				$this.on("mouseleave", function(){
 					tooltip.remove();
@@ -1321,8 +1302,21 @@
 				$this.on("click", function(){
 					tooltip.remove();
 				});
-			});
-		}
+			} else if($('html.touch').length) {
+				$this.on("click", function(e){
+					e.preventDefault();
+					if($this.hasClass("js-tooltip-generated")) {
+						tooltip.remove();
+						$this.removeClass("js-tooltip-generated");
+					} else {						
+						$this.addClass("js-tooltip-generated");
+						setTimeout(function() { 
+							tooltip = instance.generateTooltip($this);
+						}, 100);
+					}					
+				});
+			}
+		});
 
 		$('.js-whats-this-tooltip').on("click", function(e){
 			e.preventDefault();
@@ -1380,6 +1374,40 @@
 			$('.whats-this-tooltip-popup').remove();
 			$('.js-whats-this-tooltip.is-open').removeClass('is-open');
 		});
+	}
+
+	ToolTip.prototype.generateTooltip = function($tooltipParent) {
+		var $this = $tooltipParent,
+				tooltipText = $tooltipParent.data("tooltip");
+
+		var tooltip = $('<div>').addClass("tooltip").append($('<div>').addClass("tooltip-text").text(tooltipText));
+		if($this.find('.icon-member--standard').length > 0) {
+			tooltip.prepend($('<span>').addClass("tooltip-feature tooltip-feature--standard").text("MEMBER FEATURE"));
+		} else if($this.find('.icon-member--pro').length > 0) {
+			tooltip.prepend($('<span>').addClass("tooltip-feature tooltip-feature--pro").text("PREMIUM FEATURE"));
+		}
+		$('body').append(tooltip);
+		var topPosition = $this.offset().top;
+		var leftPosition = $this.offset().left;
+		var tooltipHeight = tooltip.innerHeight();
+		var componentHeight = $this.innerHeight();						
+		tooltip.hide();
+		if($this.hasClass('js-tooltip--right')) {
+			var tooltipWidth = tooltip.innerWidth();
+			var componentWidth = $this.innerWidth();	
+			if($this.hasClass('js-tooltip--right--no-pointer-padding')) {
+				leftPosition = (leftPosition + componentWidth - tooltipWidth) + 10;
+			} else {
+				leftPosition = leftPosition + componentWidth - tooltipWidth;
+			}
+			tooltip.addClass("tooltip-right");
+		}
+		tooltip.css({"top": topPosition - tooltipHeight - 20, "left": leftPosition});				
+		setTimeout(function(){
+			tooltip.fadeIn(200);
+		}, 400);
+
+		return tooltip;
 	}
 
 	var LoadingMessageBoxMessages = [{
@@ -1548,6 +1576,7 @@
 	}
 
 	var FAQSet = function($faqContainer) {
+		$faqContainer.removeClass("faqs-list-container--fixed");
 		$faqContainer.find('li a').each(function(){
 			var $thisLink = $(this);
 			$thisLink.on("click", function(e){
@@ -1563,21 +1592,24 @@
 		
 		var pageTopBarHeight = $('.global-header').innerHeight();
 		var faqContainerTopPosition = $faqContainer.offset().top - pageTopBarHeight;
+		var $window = $(window);
 
-		$(window).on("scroll", function(){
-			if($(window).innerWidth() > 719) {
+		if($("body").hasClass("no-touch")) {
+			$window.on("scroll", function(){
+				if($window.innerWidth() > 719 && $window.innerHeight() > 799) {
 
-				if($(window).scrollTop() >= faqContainerTopPosition) {
-					if(!$faqContainer.hasClass("faqs-list-container--fixed")) {
-						$faqContainer.addClass("faqs-list-container--fixed");
-					}
-				} else {					
-					if($faqContainer.hasClass("faqs-list-container--fixed")) {
-						$faqContainer.removeClass("faqs-list-container--fixed");
+					if($(window).scrollTop() >= faqContainerTopPosition) {
+						if(!$faqContainer.hasClass("faqs-list-container--fixed")) {
+							$faqContainer.addClass("faqs-list-container--fixed");
+						}
+					} else {					
+						if($faqContainer.hasClass("faqs-list-container--fixed")) {
+							$faqContainer.removeClass("faqs-list-container--fixed");
+						}
 					}
 				}
-			}
-		});
+			});
+		}		
 	}
 /* END COMPONENT OBJECTS */
 
