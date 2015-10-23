@@ -118,7 +118,13 @@
       }, 200);
     }
 
+    Date.prototype.addHours= function(h){
+      this.setHours(this.getHours()+h);
+      return this;
+    }
+
   	function initScripts() {
+
       mockGraphLoading();
 
   		new ChartsPage();
@@ -149,16 +155,17 @@
               axisLabelXPos = arguments[1][0].plotX - leftOffset,
               timeStampString = arguments[1][0].x + "",
               timeStampString = timeStampString.substring(0,10),
-              xAxisDate = new Date(timeStampString*1000),
+              xAxisDate = new Date(timeStampString*1000).addHours(12),
               formattedDate = xAxisDate.getDate() + " " + monthNames[xAxisDate.getMonth()];
 
+              // console.log(xAxisDate);
           if($axisLabel.length > 0) {            
 
             var labelYPos = axisLabelYPos + 28,
                 labelXPos = axisLabelXPos + 5;
 
             $axisLabel.attr("transform", "translate(" + labelXPos + "," + labelYPos + ")");
-            $axisLabel.find("text").html(formattedDate);
+            $axisLabel.find("text").text(formattedDate);
 
           } else {
             this.chart.renderer.label(formattedDate, axisLabelXPos+5, axisLabelYPos + 28, 'callout', 0, 0, false, true, "axis-label")

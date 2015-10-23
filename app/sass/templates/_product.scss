@@ -18,11 +18,10 @@
 		}
 	}
 	.product-section {
-		padding-top: 4rem;
-		padding-bottom: 3rem;
+		padding-top: 3rem;
+		padding-bottom: 0;
 		@include breakpoint($tablet) {
 			padding-top: 6rem;
-    	padding-bottom: 0;
 		}		
 		&.product-section--second-section {			
 			background-color: #363a47;
@@ -47,6 +46,19 @@
 		max-width: 1400px;
 		margin: 0px auto;
 		overflow: visible;
+		@media screen and (max-width: $mobile-max-width) {			
+		  display: -webkit-box;
+		  /* @alternate */ display: -ms-flexbox;
+		  /* @alternate */ display: -webkit-flex;
+		  /* @alternate */ display: flex;
+		  -webkit-flex-direction: column-reverse;
+		  /* @alternate */ -ms-flex-direction: column-reverse;
+		  /* @alternate */ flex-direction: column-reverse;
+		}
+		@include breakpoint(1800px) {
+			position: relative;
+			left: -7%;
+		}
 	}
 	.product-image-container--right,
 	.product-text-content--left {
@@ -56,6 +68,9 @@
 	.product-text-content--left {
 		width: 100%;
 		padding: 30px 5% 0;
+		@media screen and (max-width: $mobile-max-width) {
+			padding: 0 5% 30px;
+		}
 		.content-list {
 			color: #5b5d61;
 		}
@@ -89,16 +104,24 @@
 		width: 100%;
 		overflow: visible;
 		img {
+			position: relative;
+			left: 5%;
+			width: 90%;
 			max-width: 430px;
-			margin-left: 5%;
 			float: left;
-		}		
+
+		}
+		@media screen and (max-width: $mobile-max-width) {
+			float: none;
+			text-align: center;
+		}
 		@include breakpoint($phablet) {
-			margin: 0 auto;			
 			img {
-				margin: 0 auto;
-				float: none;
-			}			
+				position: relative;
+				left: 50%;				
+				width: auto;
+				margin-left: -215px;
+			}
 		}
 		@include breakpoint($tablet) {
 			width: percentage(530/1060);
@@ -106,15 +129,23 @@
 			img {
 				max-width: inherit;
 				float: left;
+				left: 0;
+				margin-left: 0;
 			}
 		}		
 		&.has-content {
-			padding-top: 1.5rem;
+			padding-top: 0;
 			padding-right: 0;
 			padding-left: 0;
 			h2 {
 				margin-top: 2rem;
 				margin-bottom: 1em;
+			}
+			@media screen and (max-width: $mobile-max-width) {
+				padding-top: 1.5rem;
+				h2 {
+					margin-top: 0;
+				}
 			}
 		}
 	}
@@ -123,8 +154,8 @@
 	padding-top: 0;
 	padding-bottom: 4rem;
 	@include breakpoint($tablet) {
-		padding-top: 5rem;
-		padding-bottom: 9.4rem;
+		padding-top: 8rem;
+		padding-bottom: 12rem;
 		display: block;
 		.product-text-content--left {
 			width: 44%;
@@ -135,6 +166,9 @@
 .product-text-content--left.help-us-help-you {
 	padding-top: 0;
 	text-align: center;
+	@media screen and (max-width: $mobile-max-width) {
+		padding-top: 40px;
+	}
 	h2 {
 		margin-top: 1.6rem;
 	}

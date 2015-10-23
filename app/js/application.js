@@ -1283,7 +1283,7 @@
 
 	var ToolTip = function() {
 		var instance = this;
-		$('body').on("click", function(e){ // remove touch tooltips on body click
+		$('.touch body').on("click", function(e){ // remove all tooltips on body touch
 			if($('.tooltip').length) {			
 				$('.tooltip').remove();
 			}
@@ -1294,7 +1294,7 @@
 			var tooltip;
 			if($('html.no-touch').length) {
 				$this.on("mouseenter", function(){
-					tooltip = instance.generateTooltip($this);
+					tooltip = instance.generateTooltip($this, false);
 				});
 				$this.on("mouseleave", function(){
 					tooltip.remove();
@@ -1304,15 +1304,17 @@
 				});
 			} else if($('html.touch').length) {
 				$this.on("click", function(e){
-					e.preventDefault();
+					if($this.attr("href") != undefined) {
+						e.preventDefault();
+					}
 					if($this.hasClass("js-tooltip-generated")) {
 						tooltip.remove();
 						$this.removeClass("js-tooltip-generated");
 					} else {						
 						$this.addClass("js-tooltip-generated");
 						setTimeout(function() { 
-							tooltip = instance.generateTooltip($this);
-						}, 100);
+							tooltip = instance.generateTooltip($this, true);
+						}, 50); // delay to avoid all tooltip removal on body touch
 					}					
 				});
 			}
@@ -1376,7 +1378,7 @@
 		});
 	}
 
-	ToolTip.prototype.generateTooltip = function($tooltipParent) {
+	ToolTip.prototype.generateTooltip = function($tooltipParent, isTouchTooltip) {
 		var $this = $tooltipParent,
 				tooltipText = $tooltipParent.data("tooltip");
 
@@ -1402,10 +1404,14 @@
 			}
 			tooltip.addClass("tooltip-right");
 		}
-		tooltip.css({"top": topPosition - tooltipHeight - 20, "left": leftPosition});				
-		setTimeout(function(){
-			tooltip.fadeIn(200);
-		}, 400);
+		tooltip.css({"top": topPosition - tooltipHeight - 20, "left": leftPosition});
+		if(isTouchTooltip) {
+			tooltip.show();
+		} else {
+			setTimeout(function(){
+				tooltip.fadeIn(100);
+			}, 400);
+		}
 
 		return tooltip;
 	}

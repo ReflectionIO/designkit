@@ -10,9 +10,14 @@
 	}
 }
 .home-leaderboard-button-container {
-	margin-bottom: 3rem;
+	margin-top: 0rem;
+	margin-bottom: 3rem;	
 	overflow: visible;
 	text-align: center;
+	@include breakpoint($tablet) {
+		margin-top: 2rem;
+		margin-bottom: 4rem;
+	}
 }
 .page-home .page-leaderboard {
 	padding-bottom: 0;
@@ -94,15 +99,14 @@
 		padding-bottom: 8.2rem;
 	}	
 }
-.why-reflection-container {
-	/* padding-top: 2rem; */
+.why-reflection-container {	
 	padding-top: 4rem;
-	padding-bottom: 1rem;
+	padding-bottom: 3rem;	
 	text-align: center;
 	background-color: #f2f2f5;
 	@include breakpoint($tablet) {
 		padding-top: 7rem;
-		padding-bottom: 7rem;
+		padding-bottom: 4rem;
 	}
 	p {
 		margin: 0 auto;
@@ -145,6 +149,9 @@
 	@include breakpoint($tablet) {
 		padding-top: 5.5rem;
 	}
+	@include breakpoint($tablet) {
+		margin-bottom: 6rem;
+	}
 	h2 {
 		margin-top: 2rem;
 		text-align: center;
@@ -161,24 +168,63 @@
 	@include breakpoint($tablet) {
 		height: 140px;
 	}
+	@include breakpoint($desktop-wide) {
+		height: 148px;
+	}
 }
 .why-reflection-item__illustration-container--price {
 	svg {
-		left: calc(50% - 58px);
-		width: 116px;
-	}	
+		left: calc(50% - 54px);
+		width: 108px;
+	}
+	@include breakpoint($laptop-mid) {
+		svg {
+			left: calc(50% - 58px);
+			width: 116px;
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		svg {
+			left: calc(50% - 70px);
+			width: 140px;
+		}		
+	}
 }
 .why-reflection-item__illustration-container--help {
 	svg {
-		left: calc(50% - 94px);
-		width: 188px;
-	}	
+		left: calc(50% - 85px);
+		width: 170px;
+	}
+	@include breakpoint($laptop-mid) {
+		svg {
+			left: calc(50% - 94px);
+			width: 188px;
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		svg {
+			left: calc(50% - 116px);
+			width: 232px;
+		}
+	}
 }
 .why-reflection-item__illustration-container--use {
 	svg {
-		left: calc(50% - 72px);
-		width: 145px;
-	}	
+		left: calc(50% - 65px);
+		width: 130px;
+	}
+	@include breakpoint($laptop-mid) {
+		svg {
+			left: calc(50% - 72px);
+			width: 145px;
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		svg {
+			left: calc(50% - 90px);
+			width: 180px;
+		}
+	}
 }
 .why-reflection-button-container {
 	margin-top: 1rem;
@@ -192,9 +238,12 @@
 		padding-top: 0.7rem;
 		display: block;
 		font-family: $brand-body-font;
-		font-size: 1.8rem;
+		font-size: 1.6rem;
 		font-weight: 400;
 		color: #5a5a68;
+		@include breakpoint($tablet) {
+			font-size: 1.8rem;
+		}
 	}
 }
 .home-apply-button {

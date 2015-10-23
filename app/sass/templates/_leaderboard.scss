@@ -45,7 +45,7 @@
 				padding-bottom: 0.8rem;
 			}
 			&:active {
-				padding-bottom: 0.7rem;
+				padding-bottom: calc(0.8rem - 2px);
 			}
 		}
 	}	
@@ -157,11 +157,8 @@
 			overflow: visible;
 			a,
 			.leaderboard-app-name {
-				width: 72%;
+				width: 100%;
 				font-size: 15px;
-				@include breakpoint($desktop-wide) {
-					width: 100%;
-				}
 			}
 			a.sign-up-link {
 				width: 100%;
@@ -214,6 +211,16 @@
 						display: inline-block;
 						text-align: right;
 					}
+				}
+			}
+		}
+	}
+	table.table-data.table-overall {
+		@include breakpoint($laptop-plus) {
+			.MHXTE6C-r-a {
+				a,
+				.leaderboard-app-name {
+					width: 75%;
 				}
 			}
 		}
