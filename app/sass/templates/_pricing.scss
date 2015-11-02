@@ -32,11 +32,12 @@
 	}
 	.page-pricing__head {
 		.page-title {
-			margin-bottom: 1rem;
+			margin-bottom: 1rem;			
 			@include breakpoint($tablet) {
 				width: 40%;
 				margin-bottom: 0.9em;
 				display: inline-block;
+				float: left;
 			}
 		}
 		p {			
@@ -166,9 +167,13 @@
 			}
 		}
 		.pricing-price {
-			padding-top: 15px;
-			padding-bottom: 9px;
+			padding-top: 0;
+			padding-bottom: 0;
 			font-size: 30px;
+			@include breakpoint($laptop) {
+				padding-top: 15px;
+				padding-bottom: 9px;
+			}
 		}
 	}
 	.pricing-name {
@@ -544,11 +549,14 @@
 		}
 	}
 }
-.register-form-container {	
+.register-form-container {
+	@media screen and (max-height: 700px) {
+		margin-bottom: 2rem;
+  }	
 	&.is-showing {
-		position: relative;
+		position: relative;		
   	opacity: 1;
-  	transition: opacity 0.3s;
+  	transition: opacity 0.3s;  	
   }
   .register-is-second-step & {
   	position: absolute;

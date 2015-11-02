@@ -13,6 +13,7 @@
 	background-color: $dark-grey-2;
 	outline: none;
 	cursor: pointer;
+	pointer-events: auto;
 	transition: top 0.3s, background-color $base-transition-speed-off;
 	@include breakpoint($phablet, true) {
 		width: 58px;
@@ -42,20 +43,22 @@
 			width: 78px;			
 		}
 	}
-	&:hover {
+	.no-touch & {
+		&:hover {
 		background-color: #323643;
 		transition: background-color $base-transition-speed-on, color $base-transition-speed-on;
 		&:before {
 			color: #83899c;
 			transition: background-color $base-transition-speed-on, color $base-transition-speed-on;
+			}
 		}
-	}
-	&:active {
-		top: 2px;
-		background-color: #323643;
-		transition: background-color $base-transition-speed-on;
-		&:before {
-			color: #83899c;
+		&:active {
+			top: 2px;
+			background-color: #323643;
+			transition: background-color $base-transition-speed-on;
+			&:before {
+				color: #83899c;
+			}
 		}
 	}
 	&.is-selected {
