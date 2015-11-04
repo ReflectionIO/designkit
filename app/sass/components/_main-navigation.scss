@@ -29,16 +29,18 @@ $blur-opacity: 0.5;
 			vertical-align: middle;
 			padding-left: 12px;
 		}
-		&:hover {
-			svg path, svg polygon {
-				fill: $light-grey-2;
-				transition: fill $base-transition-speed-on;
-			}
-			svg.icon--my-apps {
-				path {
-					fill: none;
-					stroke: $light-grey-2;
-					transition: stroke $base-transition-speed-on;
+		.no-touch & {
+			&:hover {
+				svg path, svg polygon {
+					fill: $light-grey-2;
+					transition: fill $base-transition-speed-on;
+				}
+				svg.icon--my-apps {
+					path {
+						fill: none;
+						stroke: $light-grey-2;
+						transition: stroke $base-transition-speed-on;
+					}
 				}
 			}
 		}
@@ -66,12 +68,14 @@ $blur-opacity: 0.5;
 				padding-left: 28px;
 				text-transform: uppercase;
 				background-color: $dark-grey-1;
-				&:hover {
-					background-color: #252527;
-				}
-				&:active {
-					padding-bottom: 12px;
-					border-top: 2px solid #1e1e1f;			
+				.no-touch & {
+					&:hover {
+						background-color: #252527;
+					}
+					&:active {
+						padding-bottom: 12px;
+						border-top: 2px solid #1e1e1f;			
+					}
 				}
 			}
 			&.is-selected {
@@ -84,8 +88,10 @@ $blur-opacity: 0.5;
 					.is-animating-in & {
 						text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
 					}
-					&:hover {
-						color: $white-navigation;						
+					.no-touch & {
+						&:hover {
+							color: $white-navigation;						
+						}
 					}
 				}
 			}
@@ -128,8 +134,10 @@ $blur-opacity: 0.5;
 					.is-animating-in & {
 						text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
 					}
-					&:hover {
-						color: $white-navigation;
+					.no-touch & {
+						&:hover {
+							color: $white-navigation;
+						}
 					}
 				}
 			}
@@ -177,8 +185,10 @@ $blur-opacity: 0.5;
 				.is-animating-in & {
 					text-shadow: -4px 0px 1px rgba(129,135,157, $blur-opacity);
 				}
-				&:hover {
-					color: $grey-hover;
+				.no-touch & {
+					&:hover {
+						color: $grey-hover;
+					}
 				}
 			}
 			ul {
@@ -234,8 +244,10 @@ $blur-opacity: 0.5;
 				.is-animating-in & {
 					text-shadow: -4px 0px 1px rgba(225,229,232, $blur-opacity);
 				}
-				&:hover {
-					color: #e1e5e8;
+				.no-touch & {
+					&:hover {
+						color: #e1e5e8;
+					}
 				}
 			}
 		}
@@ -256,8 +268,10 @@ $blur-opacity: 0.5;
 				.is-animating-in & {
 					text-shadow: -4px 0px 1px rgba(225,229,232, $blur-opacity);
 				}
-				&:hover {
-					color: #e1e5e8;
+				.no-touch & {
+					&:hover {
+						color: #e1e5e8;
+					}
 				}
 			}
 		}
@@ -275,9 +289,11 @@ $blur-opacity: 0.5;
 		}
 		.is-animating-in & {
 			text-shadow: -4px 0px 1px rgba(118,118,131, $blur-opacity);
-		}		
-		&:hover {
-			color: $light-grey-2;
+		}
+		.no-touch & {
+			&:hover {
+				color: $light-grey-2;
+			}
 		}
 	}
 }

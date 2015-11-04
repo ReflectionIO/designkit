@@ -77,16 +77,18 @@
 				line-height: 62px;
 			}
 		}
-		&:hover {
-			background-color: #323643;
-			&:before {
-				color: #fff;
-				transition: color $base-transition-speed-on;
+		.no-touch & {
+			&:hover {
+				background-color: #323643;
+				&:before {
+					color: #fff;
+					transition: color $base-transition-speed-on;
+				}
 			}
-		}
-		&:active {
-			position: relative;
-			top: 2px;
+			&:active {
+				position: relative;
+				top: 2px;
+			}
 		}
 		&.is-selected {
 			&:before {
@@ -177,15 +179,13 @@
 @media screen and (max-width: $tablet) {
 	.global-header .actions-group {
 		cursor: pointer;
-		&:hover, &:active {
+		&:active {
+			position: relative;
+			top: 2px;
 			background-color: #323643;
 			&:before {
 				color: #83899c;
 			}
-		}
-		&:active {
-			position: relative;
-			top: 2px;
 		}
 		&.is-selected:before {
 			color: $light-grey-2;
@@ -215,16 +215,18 @@
 	color: $light-grey-1;
 	background-color: $dark-grey-2;
 	@include box-sizing(border-box);
-	&:hover, &:active {
-		color: $reflection-white;
-		background: #323643;
-	}
+	.no-touch & {
+		&:hover, &:active {
+			color: $reflection-white;
+			background: #323643;
+		}
+		&:active {
+			top: 2px;
+		}
+	}	
 	&.is-selected {
 		color: $reflection-white;
-	}
-	&:active {
-		top: 2px;
-	}
+	}	
 	@include breakpoint($tablet, true) {
 		border-left: 1px solid #1e2027;
 	}

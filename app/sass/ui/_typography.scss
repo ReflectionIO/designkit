@@ -8,12 +8,12 @@ $code-font: Courier, sans-serif;
 
 /* Font declarations */
 @font-face {
-  font-family: "reflection-icons";
-  src:url("fonts/fontastic/reflection-icons.eot");
-  src:url("fonts/fontastic/reflection-icons.eot?#iefix") format("embedded-opentype"),
-    url("fonts/fontastic/reflection-icons.woff") format("woff"),
-    url("fonts/fontastic/reflection-icons.ttf") format("truetype"),
-    url("fonts/fontastic/reflection-icons.svg#reflection-icons") format("svg");
+  font-family: "reflection-icons-1";
+  src:url("fonts/fontastic/reflection-icons-1.eot");
+  src:url("fonts/fontastic/reflection-icons-1.eot?#iefix") format("embedded-opentype"),
+    url("fonts/fontastic/reflection-icons-1.woff") format("woff"),
+    url("fonts/fontastic/reflection-icons-1.ttf") format("truetype"),
+    url("fonts/fontastic/reflection-icons-1.svg#reflection-icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -21,7 +21,7 @@ $code-font: Courier, sans-serif;
 /* Typography placeholders */
 %icon-font {
 	speak: none;
-	font-family: "reflection-icons";
+	font-family: "reflection-icons-1";
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
@@ -157,6 +157,9 @@ $code-font: Courier, sans-serif;
 }
 .ref-icon-after--question:after {
 	content: "F";
+}
+.ref-icon-after--info:after {
+	content: "J";
 }
 .ref-icon-after--close:after {
 	content: "K";
@@ -352,6 +355,21 @@ p {
 	a {
 		text-decoration: none;
 		color: $reflection-purple;
+		.no-touch & {
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+			&:active {
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+}
+.text-link {
+	text-decoration: none;
+	color: $reflection-purple;
+	.no-touch & {
 		&:hover {
 			color: $reflection-purple--hover;
 		}
@@ -359,17 +377,6 @@ p {
 			position: relative;
 			top: 2px;
 		}
-	}
-}
-.text-link {
-	text-decoration: none;
-	color: $reflection-purple;
-	&:hover {
-		color: $reflection-purple--hover;
-	}
-	&:active {
-		position: relative;
-		top: 2px;
 	}
 }
 .p-style--minor {
@@ -410,13 +417,15 @@ p {
 		a {
 			text-decoration: none;
 			color: $reflection-purple;
-			&:hover {
-				color: $reflection-purple--hover;
-			}
-			&:active {
-				position: relative;
-				top: 2px;
-			}
+			.no-touch & {
+				&:hover {
+					color: $reflection-purple--hover;
+				}
+				&:active {
+					position: relative;
+					top: 2px;
+				}
+			}			
 		}
 	}
 	&.content-list--no-bullets {
@@ -624,8 +633,10 @@ figcaption {
 .warning-text {
 	color: $reflection-red !important;
 }
-a.warning-text:hover {	
-	color: $error-red !important;
+a.warning-text:hover {
+	.no-touch & {
+		color: $error-red !important;
+	}
 }
 img.image-full-width {
 	width: 100%;
