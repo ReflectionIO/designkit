@@ -173,7 +173,7 @@
 			collapsibleList.css("margin-top", -collapsibleList.height());
 		});
 
-		$('.js-main-nav > ul > li ul li.js-is-collapsible a').on("click", function(e){
+		$('.js-main-nav > ul > li ul li.js-is-collapsible > a').on("click", function(e){
 			e.preventDefault();
 			var collapsibleContainer = $(this).parent('.js-is-collapsible');
 			var collapsibleList = $(this).next('ul');
@@ -187,14 +187,16 @@
 			}
 		});
 
-		window.setTimeout(function() {
-			topLevelNavItems.each(function(){
-				if($(this).hasClass('is-selected')) {
-					$(this).children("a").trigger("click");
-					$(this).find("li.is-selected.js-is-collapsible > a").trigger("click");
-				}
-			});
-		}, 100);
+		if($(window).width() < 960) {
+			window.setTimeout(function() {
+				topLevelNavItems.each(function(){
+					if($(this).hasClass('is-selected')) {
+						$(this).children("a").trigger("click");
+						$(this).find("li.is-selected.js-is-collapsible > a").trigger("click");
+					}
+				});
+			}, 100);
+		}
 
 		var topLevelNavItems = $('.js-main-nav > ul > li'),
 			siteNavTopLevelItems = $('.js-main-navigation > ul > li'),
@@ -204,13 +206,9 @@
 			$clickedItem = $(this);
 			if(!$(this).hasClass("js-is-collapsible")) {
 				if($clickedItem.parents('.js-main-navigation').length > 0) {
-					siteNavTopLevelItems.removeClass('is-selected');
-					$clickedItem.addClass('is-selected');
 					$('.js-main-navigation > ul > li.js-is-collapsible.is-open > a').trigger("click");
 				} else {
 					if($clickedItem.parents('.js-account-navigation').length > 0) {
-						accountNavTopLevelItems.removeClass('is-selected');
-						$clickedItem.addClass('is-selected');
 						$('.js-account-navigation > ul > li.js-is-collapsible.is-open > a').trigger("click");
 					}
 				}
@@ -224,15 +222,21 @@
 			if(collapsibleContainer.hasClass('is-open')) {
 				collapsibleList.css("margin-top", -collapsibleList.height());
 				collapsibleContainer.removeClass('is-open');
-				collapsibleContainer.removeClass('is-selected');
 			}
 			else {
 				collapsibleList.css("margin-top", 0);
 				collapsibleContainer.addClass('is-open');
-				collapsibleContainer.addClass('is-selected');
-				collapsibleContainer.siblings().removeClass('is-selected');
 			}
 		});
+
+		if($(".no-touch").length != undefined && $(window).width() >= 960) {
+			$(".js-panel-left").on("mouseleave", function(){
+				$('.js-is-collapsible.is-open > a').trigger("click");
+			});
+			$(".js-panel-left").on("mouseenter", function(){
+				$('.js-is-collapsible.is-selected > a').trigger("click");
+			});
+		}
 
 		if($(window).width() <= 960) {
 			$('.js-hamburger-button').removeClass('is-selected');
