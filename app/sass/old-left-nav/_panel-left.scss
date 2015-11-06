@@ -1,0 +1,47 @@
+.panel-left {
+	position: fixed;
+	top: 0;
+	width: 200px;
+	height: 100vh;
+	padding-top: 42px;
+	left: -200px;
+	display: inline-block;
+	z-index: 10;
+	float: left;
+	overflow: auto;
+	font-size: 10px;
+	vertical-align: top;
+	background-color: $dark-grey-1;	
+	transition: left 0.15s ease-in, transform 0.15s ease-in, filter 0.27s;
+	@include breakpoint($phablet, true) {
+		padding-top: 62px;
+	}
+	&.is-blurred-heavy {
+		filter: blur(0.8px);
+		transition: filter 0.5s;
+		.ie8 &, .ie9 & {
+			filter: none;
+		}
+	}
+	.panel-left-open & {
+		left: 0px;
+		transition: left 0.15s ease-out;
+	}
+	.touch.is-chrome {
+		min-height: 768px;
+		height: calc(100vh + 100px);
+	}
+}
+#mCSB_1_scrollbar_vertical {
+	z-index: 100;
+}
+.is-chrome,
+.is-opera,
+.is-ie {
+	.panel-left {
+		transition: none;
+		.panel-left-open & {
+			transition: none;
+		}
+	}
+}

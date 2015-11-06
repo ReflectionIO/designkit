@@ -251,20 +251,16 @@ table.table-data.sticky-table-head {
 		top: 62px;
 		width: calc(100% - 40px);
 	}
-	@include breakpoint($tablet, true) {
-		width: calc(100% - 60px);
+	@include breakpoint($tablet) {
+		width: calc(100% - 44px);
 	}
-	.panel-left-open & {
-		@include breakpoint($laptop, true) {
-			width: calc(100% - 260px);
-			transition: width 0.15s ease-out;
-		}	
-	}	
+	@include breakpoint($laptop) {
+		width: calc(100% - 104px);
+	}
 }
 .is-chrome,
 .is-opera {
-	table.table-data.sticky-table-head,
-	.panel-left-open table.table-data.sticky-table-head {
+	table.table-data.sticky-table-head {
 		transition: none;
 	}
 }
@@ -272,12 +268,7 @@ table.table-data.sticky-table-head {
 	@media screen and (max-width: $mobile-max-width) {
 		display: none;
 	}
-	@include breakpoint($tablet, true) {
-		width: calc(100% - 60px);
+	@include breakpoint($tablet) {
+		width: calc(100% - 44px);
 	}	
-}
-.is-safari .panel-left-open table.table-data.sticky-table-head {
-	@include breakpoint($laptop, true) {
-		width: calc(100% - 280px);
-	}
 }

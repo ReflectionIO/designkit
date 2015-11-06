@@ -238,13 +238,8 @@
 			});
 		}
 
-		if($(window).width() <= 960) {
-			$('.js-hamburger-button').removeClass('is-selected');
-			$('body, html').removeClass('panel-left-open');
-		}
-
 		// hide panel on content click/tap
-		if($('html.touch').length && $(window).width() < 940) {
+		if($('html.touch').length) {
 			$('.l-main').on("click", function() {
 				if($('.panel-left-open').length) {
 					$('.js-hamburger-button').trigger("click");
