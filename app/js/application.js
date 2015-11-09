@@ -187,7 +187,7 @@
 			}
 		});
 
-		if($(window).width() < 960) {
+		if($(".touch").length > 0) {
 			window.setTimeout(function() {
 				topLevelNavItems.each(function(){
 					if($(this).hasClass('is-selected')) {
@@ -229,7 +229,7 @@
 			}
 		});
 
-		if($(".no-touch").length != undefined && $(window).width() >= 960) {
+		if($(".no-touch").length > 0 && $(window).width() >= 960) {
 			$(".js-panel-left").on("mouseleave", function(){
 				$('.js-is-collapsible.is-open > a').trigger("click");
 			});
