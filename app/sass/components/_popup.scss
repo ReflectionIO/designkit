@@ -1,0 +1,349 @@
+$text-grey: $divider-grey;
+.tooltip {
+	position: absolute;
+	max-width: 163px;
+	display: inline-block;
+	overflow: visible;
+	z-index: 1000;
+	background-color: $light-grey-1;	
+	@include breakpoint($laptop) {
+		max-width: 190px;
+	}
+	@include breakpoint($desktop-wide) {
+		max-width: 263px;
+	}
+	&:after {
+		content: ' ';
+		position: absolute;
+		bottom: -10px;	
+		left: 9px;
+		width: 0; 
+		height: 0; 
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 10px solid $light-grey-1;
+	}
+	&.tooltip-right {
+		text-align: center;
+		&:after {
+			left: calc(100% - 29px);
+		}
+	}
+	.tooltip-text {
+		padding: 7px 15px 9px;
+		display: block;
+		font-family: $brand-body-font;
+		font-weight: 400;
+		font-size: 13px;
+		line-height: 1.4;
+		color: #fcfdfd;
+	}
+	.tooltip-feature {
+		display: block;
+		font-size: 9px;
+		font-weight: bold;
+		letter-spacing: 0.4px;
+		text-transform: uppercase;
+		text-align: center;
+		color: #fcfdfd;
+		background-color: $reflection-green;
+	}
+	.tooltip-feature--pro {
+		background-color: $reflection-purple;
+	}
+}
+.tooltip--info {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	@extend .ref-icon-after;
+	@extend .ref-icon-after--info;
+	&:after {
+		position: relative;
+		top: 2px;
+		font-size: 18px;
+		color: $light-grey-2;
+		transition: color 0.2s;
+	}
+	span {
+		width: 0;
+		display: inline-block;
+		text-align: left;
+		text-indent: -999em;
+	}
+}
+.whats-this-tooltip-popup {
+	-webkit-perspective: 1300px;
+	perspective: 1300px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	position: absolute;
+	z-index: 20000;
+	overflow: visible;
+}
+.whats-this-tooltip-icon {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	@extend .ref-icon-after;
+	@extend .ref-icon-after--question;
+	&.is-open {
+		&:after {
+			color: $reflection-green;
+		}
+	}
+	&:after {
+		position: relative;
+		top: 2px;
+		font-size: 18px;
+		color: $light-grey-2;
+		transition: color 0.2s;
+	}
+	&:hover {
+		&:after {
+			color: $reflection-green;
+			transition: color 0.2s;
+		}
+	}
+	span {
+		width: 0;
+		display: inline-block;
+		text-align: left;
+		text-indent: -999em;
+	}
+}
+.whats-this-tooltip,
+.popup-toast,
+.loading-message-box {
+	position: absolute;
+	width: 280px;
+	padding: 23px 30px 15px;
+	display: inline-block;
+	overflow: visible;
+	color: $text-grey;
+	background-color: $light-grey-1;
+	h2 {
+		max-width: 200px;
+		font-size: 18px;
+		color: $reflection-white;
+	}
+	p {
+		font-size: 14px;
+		line-height: 1.7;
+		color: $text-grey;
+		a {
+			font-weight: 700;
+			color: #fff;
+			&:hover {
+				color: darken(#ffffff, 10%);
+			}
+		}
+	}
+	img {
+		position: absolute;
+		top: -9px;
+		right: 20px;
+		width: 36px;
+		height: 53px;
+	}
+}
+.whats-this-tooltip {
+	position: relative;
+	top: 0;
+	left: 0;
+	-ms-transform: rotateX(86deg);
+	-webkit-transform: rotateX(86deg);
+	transform: rotateX(86deg);
+	-ms-transform-origin: center top;
+	-webkit-transform-origin: center top;
+	transform-origin: center top;
+	&.is-open {
+		-ms-transform-origin: center top;
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+		-ms-transform: rotateX(0deg);
+		-webkit-transform: rotateX(0deg);
+		transform: rotateX(0deg);
+		transition: transform 0.18s ease-out;
+	}
+	&:after {
+		@include breakpoint($tablet) {
+			content: ' ';
+			position: absolute;
+			top: -10px;
+			left: calc(50% - 10px);
+			width: 0; 
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-bottom: 10px solid $light-grey-1;
+		}
+	}
+	&.position-tooltip-left {
+		-ms-transform-origin: right center;
+		-webkit-transform-origin: right center;
+		transform-origin: right center;
+		-ms-transform: rotateX(0deg) rotateY(-96deg);
+	  -webkit-transform: rotateX(0deg) rotateY(-96deg);
+		transform: rotateX(0deg) rotateY(-96deg);
+		&.is-open {
+			-ms-transform-origin: right center;
+		  -webkit-transform-origin: right center;
+			transform-origin: right center;
+			-ms-transform: rotateX(0deg) rotateY(0deg);
+	    -webkit-transform: rotateX(0deg) rotateY(0deg);
+			transform: rotateX(0deg) rotateY(0deg);
+			transition: transform 0.18s ease-out;
+		}
+		&:after {
+			@include breakpoint($tablet) {
+				top: calc(50% - 10px);
+				right: -20px;
+				left: auto;
+				border-left: 10px solid $light-grey-1;
+				border-top: 10px solid transparent;
+				border-bottom: 10px solid transparent;
+			}
+		}
+	}
+	&.position-tooltip-right {
+		-ms-transform-origin: left center;
+		-webkit-transform-origin: left center;
+		transform-origin: left center;
+		-ms-transform: rotateX(0deg) rotateY(96deg);
+	  -webkit-transform: rotateX(0deg) rotateY(96deg);
+		transform: rotateX(0deg) rotateY(96deg);
+		&.is-open {
+			-ms-transform-origin: left center;
+		  -webkit-transform-origin: left center;
+			transform-origin: left center;
+			-ms-transform: rotateX(0deg) rotateY(0deg);
+	    -webkit-transform: rotateX(0deg) rotateY(0deg);
+			transform: rotateX(0deg) rotateY(0deg);
+			transition: transform 0.18s ease-out;
+		}
+		&:after {
+			@include breakpoint($tablet) {
+				top: calc(50% - 10px);
+				left: -20px;
+				border-right: 10px solid $light-grey-1;
+				border-top: 10px solid transparent;
+				border-bottom: 10px solid transparent;
+				.whats-this-tooltip--dark & {
+					border-right: 10px solid #5854AE;
+				}
+			}
+		}
+	}
+	&.position-tooltip-top {
+		-ms-transform-origin: center bottom;
+		-webkit-transform-origin: center bottom;
+		transform-origin: center bottom;
+		-ms-transform: rotateX(-86deg);
+	  -webkit-transform: rotateX(-86deg);
+		transform: rotateX(-86deg);
+		&.is-open {
+			-ms-transform-origin: center bottom;
+		  -webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			-ms-transform: rotateX(0deg);
+	    -webkit-transform: rotateX(0deg);
+			transform: rotateX(0deg);
+			transition: transform 0.18s ease-out;
+		}
+		&:after {
+			@include breakpoint($tablet) {
+				top: auto;
+				bottom: -10px;
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+				border-top: 10px solid $light-grey-1;
+				border-bottom: 0;
+			}
+		}
+	}
+}
+.popup-toast-container,
+.loading-message-box-container {
+	-webkit-perspective: 1300px;
+	perspective: 1300px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	position: fixed;
+	top: calc(100% + 10px);
+	left: calc(50% - 154px);
+	width: 308px;
+	z-index: -1;
+	overflow: visible;
+	transition: top 0.3s;
+	@include breakpoint($tablet) {
+		right: 30px;
+		left: auto;
+	}
+}
+.loading-message-box-container {
+	top: auto;
+	bottom: 59px;
+	right: 0;
+	left: auto;
+	width: 279px;
+	.loading-message-box {
+		cursor: pointer;
+		-ms-transform-origin: right center;
+		-webkit-transform-origin: right center;
+		transform-origin: right center;
+		-ms-transform: rotateX(0deg) rotateY(-96deg);
+	  -webkit-transform: rotateX(0deg) rotateY(-96deg);
+		transform: rotateX(0deg) rotateY(-96deg);
+		-webkit-transition: transform 0.3s ease-in;
+		transition: transform 0.3s ease-in;
+		&.is-open {
+			-ms-transform-origin: right center;
+		  -webkit-transform-origin: right center;
+			transform-origin: right center;
+			-ms-transform: rotateX(0deg) rotateY(0deg);
+	    -webkit-transform: rotateX(0deg) rotateY(0deg);
+			transform: rotateX(0deg) rotateY(0deg);
+			-webkit-transition: transform 0.3s ease-out;
+			transition: transform 0.3s ease-out;
+		}
+	}
+}
+.popup-toast,
+.loading-message-box {
+	position: relative;
+	width: 100%;
+	transform: rotateX(0deg);	
+	&.is-read {
+		-ms-transform-origin: center bottom;
+		-webkit-transform-origin: center bottom;
+		transform-origin: center bottom;
+		-ms-transform: rotateX(95deg);
+	  -webkit-transform: rotateX(95deg);
+		transform: rotateX(95deg);
+		transition: transform 0.35s ease-in;
+	}
+	a {
+		font-weight: 700;
+		color: #c3c6f6;
+		&:hover {
+			color: lighten(#c3c6f6, 10%);
+		}
+	}
+	&.popup-toast--alert {
+		background-color: $reflection-red;
+		p {
+			color: #ffe3e8;
+		}
+		a {
+			color: #ffe3e8;
+			&:hover {
+				color: darken(#ffe3e8, 10%);
+			}
+		}
+		img {
+			width: 45px;
+			height: 38px;
+		}
+	}
+}

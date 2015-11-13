@@ -1,0 +1,137 @@
+.highcharts-container > .highcharts-tooltip,
+.highcharts-axis-labels.highcharts-xaxis-labels,
+.highcharts-axis-labels.highcharts-yaxis-labels {
+	overflow: visible;
+}
+.highcharts-series {
+	opacity: 1;
+	transition: opacity 0.3s;
+	stroke {
+		cursor: pointer;
+	}
+	&.is-transparent {
+		opacity: 0;
+		transition: opacity 0s;
+	}
+	&.is-transparent-fade {
+		opacity: 0;
+		transition: opacity 0.2s;
+	}
+}
+.highcharts-series.selected-series {
+	path {
+		stroke-opacity: 1;
+	}
+}
+.highcharts-series path:nth-child(1) {
+	pointer-events: none;
+}
+.chart-watermark {
+	position: absolute;
+	right: 26px;
+	bottom: 68px;
+	width: 100px;
+	height: 16px;
+	z-index: 100;
+}
+.highcharts-axis-labels,
+.highcharts-grid path {
+	opacity: 0;	
+	.is-animated & {
+		opacity: 1;
+		transition: opacity 1s;
+	}
+}
+.custom-tooltip {
+	position: relative;
+	padding: 5px 10px 5px 33px;
+	margin-bottom: 5px;
+	font-family: $brand-heading-font;
+	font-size: 15px;
+	font-weight: 600;
+	color: #fcfdfd;
+	border-radius: 3px;
+	opacity: 0.8;
+	img {
+		position: absolute;
+		top: 7px;
+		left: 7px;
+	}
+	.icon-revenue {
+		top: 10px;
+		width: 19px;
+		height: 11px;
+	}
+	.icon-downloads {
+		width: 17px;
+		height: 17px;
+	}
+	.icon-rank {
+		top: 8px;
+		width: 17px;
+		height: 13px;
+	}
+}
+.highcharts-axis-label {
+	&:after {
+		content: ' ';
+		position: absolute;
+		top: -10px;
+		left: calc(50% - 10px);
+		width: 0; 
+		height: 0;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 10px solid $light-grey-1;
+	}
+}
+$translateYHeightLaunch: -420px;
+$translateYHeightFlag: -443px;
+@keyframes launch {
+	0% { transform: translateY(0px); }
+	100% { transform: translateY($translateYHeightLaunch); }
+}
+@keyframes launch-hover {
+	0% { transform: translateY($translateYHeightLaunch) translateX(0px); }
+	25% { transform: translateY($translateYHeightLaunch) translateX(1px); }
+	50% { transform: translateY($translateYHeightLaunch) translateX(0px); }
+	75% { transform: translateY($translateYHeightLaunch) translateX(-1px); }
+	100% { transform: translateY($translateYHeightLaunch) translateX(0px); }
+}
+@keyframes hoist {
+	0% { transform: translateY(0px); }
+	20% { transform: translateY($translateYHeightFlag/3); }
+	40% { transform: translateY($translateYHeightFlag/3); }
+	60% { transform: translateY($translateYHeightFlag/3 * 2); }
+	80% { transform: translateY($translateYHeightFlag/3 * 2); }
+	100% { transform: translateY($translateYHeightFlag); }
+}
+@keyframes flag-hover {
+	0% { transform: translateY($translateYHeightFlag) translateX(0px); }
+	25% { transform: translateY($translateYHeightFlag) translateX(1px); }
+	50% { transform: translateY($translateYHeightFlag) translateX(0px); }
+	75% { transform: translateY($translateYHeightFlag) translateX(-1px); }
+	100% { transform: translateY($translateYHeightFlag) translateX(0px); }
+}
+.event-icon--launch {
+	cursor: pointer;
+	animation: vibrate 0.2s 6, launch 0.8s 1.2s ease-in forwards;
+	&.animation-complete {
+		animation: none;
+		transform: translateY($translateYHeightLaunch);
+		&:hover {
+			animation: launch-hover 0.2s infinite forwards;
+		}
+	}	
+}
+.event-icon--flag {
+	cursor: pointer;
+	animation: hoist 2s forwards;
+	&.animation-complete {
+		animation: none;
+		transform: translateY($translateYHeightFlag);
+		&:hover {
+			animation: flag-hover 0.4s infinite forwards;
+		}
+	}	
+}

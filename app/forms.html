@@ -5,27 +5,33 @@
 	<title>Reflection Design Kit - Form Elements</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" media="screen, projection" type="text/css" href="css/designkit.css" />
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="designkit.css" />
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main-ie8.css" />
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
 	<![endif]-->
  	<!--[if !lt IE 9]><!-->
-		<script src="js/vendor/picturefill.2.2.0.min.js" async></script>
+		<script src="js/vendor/picturefill.2.3.1.min.js" async></script>
 	<!-- <![endif]-->
-	<!--[if (gte IE 9)|(IEMobile)|(!IE)]><!-->
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main.css" />
-	<!--<![endif]-->
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
-</head>
-<body class="panel-left-open">
-	<!--[if lt IE 8]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
   <![endif]-->
 
   <header id="js-component-import--global-header" class="global-header"></header>
   
-	<div id="js-component-import--panel-left" class="panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
 
 	<div class="l-page-container">
 
@@ -52,7 +58,7 @@
 						<h3 class="heading-style--heading-six">Inline Error</h3>
 						<div class="form-field form-field--error js-inline-form-field-error-demo">
 							<input type="email" name="emailtest2" id="emailtest2" autocomplete="off" />
-							<label for="emailtest2">Hint Label Text <span>Error message example</span></label>
+							<label for="emailtest2">Hint Label Text <span>Error message example <a href="#">with a link</a></span></label>
 						</div>
 						<h3 class="heading-style--heading-six">Hint inputs (focus to view)</h3>
 						<div class="form-field">
@@ -68,34 +74,38 @@
 					</div>
 					<div class="grid__column grid__column--two-thirds">
 						<div class="code-box">
-							<code>
-								// Disabled<br />
-								&lt;div class="form-field form-field--disabled"&gt;<br />		
-									&lt;input type="text" name="text" id="text" autocomplete="off" disabled/&gt;<br />
-									&lt;label for="email">Hint Label Text&lt;/label&gt;<br />
-								&lt;/div><br /><br />
-								// Active<br />
-								&lt;div class="form-field"&gt;<br />
-									&lt;input type="email" name="email" id="email" autocomplete="off" /&gt;<br />
-									&lt;label for="email">Hint Label Text&lt;/label&gt;<br />
-								&lt;/div&gt;<br /><br />
-								// Inline Error<br />
-								&lt;div class="form-field form-field--error"&gt;
-									&lt;input type="email" name="email2" id="email2" autocomplete="off" /&gt;
-									&lt;label for="email2">Hint Label Text:&lt;/label&gt;
-								&lt;/div&gt;<br /><br />
-								// Hint inputs<br />
-								&lt;div class="form-field"&gt;<br />
-									&lt;input type="email" name="emailtest3" id="emailtest3" autocomplete="off" /&gt;<br />
-									&lt;label for="emailtest3">Hint Label Text &lt;span class="input-hint"&gt;Caps Lock is on, just so you know&lt;/span&gt;&lt;/label&gt;<br />
-								&lt;/div&gt;<br /><br />
-								// Input information<br />
-								&lt;div class="form-field"&gt;<br />
-									&lt;input type="email" name="emailtest4" id="emailtest4" autocomplete="off" /&gt;<br />
-									&lt;label for="emailtest4">Hint Label Text &lt;span class="input-hint"&gt;Caps Lock is on, just so you know&lt;/span&gt;&lt;/label&gt;<br />
-									&lt;a href="#" target="_blank" class="form-field-help ref-icon-after ref-icon-after--question"&gt;&lt;span&gt;What's this?&lt;/span&gt;&lt;/a&gt;<br />
+							<pre><code class="language-markup">
+								/* Disabled */
+								&lt;div class="form-field form-field--disabled"&gt;
+								&nbsp;&lt;input type="text" name="text" id="text" autocomplete="off" disabled/&gt;
+								&nbsp;&lt;label for="email">Hint Label Text&lt;/label&gt;
+								&lt;/div>
+
+								/* Active */
+								&lt;div class="form-field"&gt;
+								&nbsp;&lt;input type="email" name="email" id="email" autocomplete="off" /&gt;
+								&nbsp;&lt;label for="email">Hint Label Text&lt;/label&gt;
 								&lt;/div&gt;
-							</code>
+
+								/* Inline Error */
+								&lt;div class="form-field form-field--error"&gt;
+								&nbsp;&lt;input type="email" name="email2" id="email2" autocomplete="off" /&gt;
+								&nbsp;&lt;label for="email2">Hint Label Text:&lt;/label&gt;
+								&lt;/div&gt;
+
+								/* Hint inputs */
+								&lt;div class="form-field"&gt;
+								&nbsp;&lt;input type="email" name="emailtest3" id="emailtest3" autocomplete="off" /&gt;<br />
+								&nbsp;&lt;label for="emailtest3">Hint Label Text &lt;span class="input-hint"&gt;Caps Lock is on, just so you know&lt;/span&gt;&lt;/label&gt;
+								&lt;/div&gt;
+
+								/* Input information */
+								&lt;div class="form-field"&gt;
+								&nbsp;&lt;input type="email" name="emailtest4" id="emailtest4" autocomplete="off" /&gt;
+								&nbsp;&lt;label for="emailtest4">Hint Label Text &lt;span class="input-hint"&gt;Caps Lock is on, just so you know&lt;/span&gt;&lt;/label&gt;
+								&nbsp;&lt;a href="#" target="_blank" class="form-field-help ref-icon-after ref-icon-after--question"&gt;&lt;span&gt;What's this?&lt;/span&gt;&lt;/a&gt;
+								&lt;/div&gt;
+							</code></pre>
 						</div>
 						<h3 class="heading-style--heading-four">The Code</h3>
 						<p>Form inputs should be enclosed inside an element with class "form-field" for styled inputs. Omit the "form-field" containing element for a default input with no styling.</p>
@@ -108,7 +118,7 @@
 				<div class="grid__row dk-component-row">
 					<div class="grid__column grid__column--one-third">
 						<h3 class="heading-style--heading-six">Disabled</h3>
-						<div class="form-field form-field--select form-field--select-disabled">						
+						<div class="form-field form-field--select form-field--select-disabled">
 							<select class="js-field--select" disabled>
 							    <option value="" disabled selected>Choose your option</option>
 							    <option value="s1">Option 1</option>
@@ -128,26 +138,27 @@
 					</div>
 					<div class="grid__column grid__column--two-thirds">
 						<div class="code-box">
-							<code>
-								// Disabled<br />
-								&lt;div class="form-field form-field--select form-field--select-disabled"&gt;<br />			
-								&nbsp;&lt;select class="js-field--select" disabled&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="s1">Option 1&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="s2">Option 2&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="s3">Option 3&lt;/option&gt;<br />
-								&nbsp;&lt;/select&gt;<br />
-								&lt;/div&gt;<br /><br />
-								// Active<br />
-								&lt;div class="form-field form-field--select"&gt;<br />			
-								&nbsp;&lt;select class="js-field--select"&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="a1">Option 1&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="a2">Option 2&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="a3">Option 3&lt;/option&gt;<br />
-								&nbsp;&lt;/select&gt;<br />
-								&lt;/div&gt;<br /><br />
-							</code>
+							<pre><code class="language-markup">
+								/* Disabled */
+								&lt;div class="form-field form-field--select form-field--select-disabled"&gt;
+								&nbsp;&lt;select class="js-field--select" disabled&gt;
+								&nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="s1">Option 1&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="s2">Option 2&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="s3">Option 3&lt;/option&gt;
+								&nbsp;&lt;/select&gt;
+								&lt;/div&gt;
+
+								/* Active */
+								&lt;div class="form-field form-field--select"&gt;	
+								&nbsp;&lt;select class="js-field--select"&gt;
+								&nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="a1">Option 1&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="a2">Option 2&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="a3">Option 3&lt;/option&gt;
+								&nbsp;&lt;/select&gt;
+								&lt;/div&gt;
+							</code></pre>
 						</div>
 					</div>
 				</div>
@@ -211,26 +222,27 @@
 					</div>
 					<div class="grid__column grid__column--two-thirds">
 						<div class="code-box">
-							<code>
-								// Disabled<br />
-								&lt;div class="form-field form-field--select form-field--select-disabled"&gt;<br />			
-								&nbsp;&lt;select class="js-field--select" disabled&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="s1">Option 1&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="s2">Option 2&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="s3">Option 3&lt;/option&gt;<br />
-								&nbsp;&lt;/select&gt;<br />
-								&lt;/div&gt;<br /><br />
-								// Active<br />
-								&lt;div class="form-field form-field--select"&gt;<br />			
-								&nbsp;&lt;select class="js-field--select"&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="a1">Option 1&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="a2">Option 2&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="a3">Option 3&lt;/option&gt;<br />
-								&nbsp;&lt;/select&gt;<br />
-								&lt;/div&gt;<br /><br />
-							</code>
+							<pre><code class="language-markup">
+								/* Disabled */
+								&lt;div class="form-field form-field--select form-field--select-disabled"&gt;	
+								&nbsp;&lt;select class="js-field--select" disabled&gt;
+								&nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="s1">Option 1&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="s2">Option 2&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="s3">Option 3&lt;/option&gt;
+								&nbsp;&lt;/select&gt;
+								&lt;/div&gt;
+
+								/* Active */
+								&lt;div class="form-field form-field--select"&gt;
+								&nbsp;&lt;select class="js-field--select"&gt;
+								&nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="a1">Option 1&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="a2">Option 2&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="a3">Option 3&lt;/option&gt;
+								&nbsp;&lt;/select&gt;
+								&lt;/div&gt;
+							</code></pre>
 						</div>
 					</div>
 				</div>
@@ -261,26 +273,27 @@
 					</div>
 					<div class="grid__column grid__column--two-thirds">
 						<div class="code-box">
-							<code>
-								// Disabled<br />
-								&lt;div class="form-field form-field--select form-field--select-disabled"&gt;<br />			
-								&nbsp;&lt;select class="js-field--select" disabled&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="s1">Option 1&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="s2">Option 2&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="s3">Option 3&lt;/option&gt;<br />
-								&nbsp;&lt;/select&gt;<br />
-								&lt;/div&gt;<br /><br />
-								// Active<br />
-								&lt;div class="form-field form-field--select"&gt;<br />			
-								&nbsp;&lt;select class="js-field--select"&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="a1">Option 1&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="a2">Option 2&lt;/option&gt;<br />
-								    &nbsp;&nbsp;&lt;option value="a3">Option 3&lt;/option&gt;<br />
-								&nbsp;&lt;/select&gt;<br />
-								&lt;/div&gt;<br /><br />
-							</code>
+							<pre><code class="language-markup">
+								/* Disabled */
+								&lt;div class="form-field form-field--select form-field--select-disabled"&gt;
+								&nbsp;&lt;select class="js-field--select" disabled&gt;
+								&nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="s1">Option 1&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="s2">Option 2&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="s3">Option 3&lt;/option&gt;
+								&nbsp;&lt;/select&gt;
+								&lt;/div&gt;
+
+								/* Active */
+								&lt;div class="form-field form-field--select"&gt;
+								&nbsp;&lt;select class="js-field--select"&gt;
+								&nbsp;&nbsp;&lt;option value="" disabled selected>Choose your option&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="a1">Option 1&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="a2">Option 2&lt;/option&gt;
+								&nbsp;&nbsp;&lt;option value="a3">Option 3&lt;/option&gt;
+								&nbsp;&lt;/select&gt;
+								&lt;/div&gt;
+							</code></pre>
 						</div>
 					</div>
 				</div>
@@ -295,7 +308,12 @@
 							<ul>
 								<li>
 									<input type="checkbox" name="checkboxOneDisabled" id="checkboxOneDisabled" disabled />
-									<label for="checkboxOneDisabled" class="checkboxLabelDisabled">Check box option disabled</label>
+									<label for="checkboxOneDisabled" class="checkboxLabel checkboxLabelDisabled">Check box option disabled</label>
+									<label for="checkboxOneDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Check box option disabled</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxOneDisabled" id="checkboxOneDisabled" disabled checked />
+									<label for="checkboxOneDisabled" class="checkboxLabel checkboxLabelDisabled">Check box option disabled</label>
 									<label for="checkboxOneDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Check box option disabled</label>
 								</li>
 							</ul>
@@ -304,7 +322,7 @@
 						<div class="form-field--checkbox-list">
 							<ul>
 								<li>
-									<input type="checkbox" name="checkboxOne" id="checkboxOne" />
+									<input type="checkbox" name="checkboxOne" id="checkboxOne" checked/>
 									<label for="checkboxOne" class="checkboxLabel">Option 1</label>
 									<label for="checkboxOne" class="checkboxLabelVisible">Option 1</label>
 								</li>
@@ -320,25 +338,47 @@
 								</li>
 							</ul>
 						</div>
+						<h3 class="heading-style--heading-six">Error</h3>
+						<div class="form-field--checkbox-list form-field--error">
+							<p class="form-field--list__error-message">You still need to select from the options below</p>
+							<ul>
+								<li>
+									<input type="checkbox" name="checkboxOneError" id="checkboxOneError" />
+									<label for="checkboxOneError" class="checkboxLabel">Option 1</label>
+									<label for="checkboxOneError" class="checkboxLabelVisible">Option 1</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxTwoError" id="checkboxTwoError" />
+									<label for="checkboxTwoError" class="checkboxLabel">Option 2</label>
+									<label for="checkboxTwoError" class="checkboxLabelVisible">Option 2</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxThreeError" id="checkboxThreeError" />
+									<label for="checkboxThreeError" class="checkboxLabel">Option 3</label>
+									<label for="checkboxThreeError" class="checkboxLabelVisible">Option 3</label>
+								</li>
+							</ul>
+						</div>
 					</div>
 					<div class="grid__column grid__column--two-thirds">
 						<div class="code-box">
-							<code>
-								// Disabled<br />
-								&lt;div class="form-field--checkbox-list"&gt;<br />
-									&nbsp;&lt;ul&gt;<br />
-										&nbsp;&nbsp;&lt;li&gt;<br />
-											&nbsp;&nbsp;&nbsp;&lt;input type="checkbox" name="checkboxOneDisabled" id="checkboxOneDisabled" disabled /&gt;<br />
-											&nbsp;&nbsp;&nbsp;&lt;label for="checkboxOneDisabled" class="checkboxLabelDisabled">Option 1&lt;/label&gt;<br />
-											&nbsp;&nbsp;&nbsp;&lt;label for="checkboxOneDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Option 1&lt;/label&gt;<br />
-										&nbsp;&nbsp;&lt;/li&gt;<br />
-									&nbsp;&lt;/ul&gt;<br />
-								&lt;/div&gt;<br /><br />
-								// Active - within the structure above<br />
-								&lt;input type="checkbox" name="checkboxOne" id="checkboxOne" /&gt;<br />
-								&lt;label for="checkboxOne" class="checkboxLabel">Option 1&lt;/label&gt;<br />
-								&lt;label for="checkboxOne" class="checkboxLabelVisible">Option 1&lt;/label&gt;<br />
-							</code>
+							<pre><code class="language-markup">
+								/* Disabled */
+								&lt;div class="form-field--checkbox-list"&gt;
+									&nbsp;&lt;ul&gt;
+										&nbsp;&nbsp;&lt;li&gt;
+											&nbsp;&nbsp;&nbsp;&lt;input type="checkbox" name="checkboxOneDisabled" id="checkboxOneDisabled" disabled /&gt;
+											&nbsp;&nbsp;&nbsp;&lt;label for="checkboxOneDisabled" class="checkboxLabel checkboxLabelDisabled">Option 1&lt;/label&gt;
+											&nbsp;&nbsp;&nbsp;&lt;label for="checkboxOneDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Option 1&lt;/label&gt;
+										&nbsp;&nbsp;&lt;/li&gt;
+									&nbsp;&lt;/ul&gt;
+								&lt;/div&gt;
+
+								/* Active - within the structure above */
+								&lt;input type="checkbox" name="checkboxOne" id="checkboxOne" /&gt;
+								&lt;label for="checkboxOne" class="checkboxLabel">Option 1&lt;/label&gt;
+								&lt;label for="checkboxOne" class="checkboxLabelVisible">Option 1&lt;/label&gt;
+							</code></pre>
 						</div>
 					</div>
 				</div>
@@ -354,12 +394,12 @@
 							<ul>
 								<li>
 									<input type="radio" name="radioButtonsDisabled" id="radioButtonOneDisabled" disabled />
-									<label for="radioButtonOneDisabled" class="radioButtonLabelDisabled">Yes</label>
+									<label for="radioButtonOneDisabled" class="radioButtonLabel radioButtonLabelDisabled">Yes</label>
 									<label for="radioButtonOneDisabled" class="radioButtonLabelVisibleDisabled">Yes</label>
 								</li>
 								<li>
 									<input type="radio" name="radioButtonsDisabled" id="radioButtonYesDisabled" disabled />
-									<label for="radioButtonYesDisabled" class="radioButtonLabelDisabled">No</label>
+									<label for="radioButtonYesDisabled" class="radioButtonLabel radioButtonLabelDisabled">No</label>
 									<label for="radioButtonYesDisabled" class="radioButtonLabelVisibleDisabled">No</label>
 								</li>
 							</ul>
@@ -384,25 +424,47 @@
 								</li>
 							</ul>
 						</div>
+						<h3 class="heading-style--heading-six">Error</h3>
+						<div class="form-field--radio-list form-field--error">
+							<p class="form-field--list__error-message">You still need to select an option below</p>
+							<ul>
+								<li>
+									<input type="radio" name="radioButtons" id="radioButtonOneError" />
+									<label for="radioButtonOneError" class="radioButtonLabel">Option 1</label>
+									<label for="radioButtonOneError" class="radioButtonLabelVisible">Option 1</label>
+								</li>
+								<li>
+									<input type="radio" name="radioButtons" id="radioButtonTwoError" />
+									<label for="radioButtonTwoError" class="radioButtonLabel">Option 2</label>
+									<label for="radioButtonTwoError" class="radioButtonLabelVisible">Option 2</label>
+								</li>
+								<li>
+									<input type="radio" name="radioButtons" id="radioButtonThreeError" />
+									<label for="radioButtonThreeError" class="radioButtonLabel">Option 3</label>
+									<label for="radioButtonThreeError" class="radioButtonLabelVisible">Option 3</label>
+								</li>
+							</ul>
+						</div>
 					</div>
 					<div class="grid__column grid__column--two-thirds">
 						<div class="code-box">
-							<code>
-								// Disabled and Inline<br />
-								&lt;div class="form-field--radio-list form-field--radio-list--inline"&gt;<br />
-									&nbsp;&lt;ul&gt;<br />
-										&nbsp;&nbsp;&lt;li&gt;<br />
-											&nbsp;&nbsp;&nbsp;&lt;input type="radio" name="radioButtonsDisabled" id="radioButtonOneDisabled" disabled /&gt;<br />
-											&nbsp;&nbsp;&nbsp;&lt;label for="radioButtonOneDisabled" class="radioButtonLabelDisabled">Lorem ipsum dolor amet elict&lt;/label&gt;<br />
-											&nbsp;&nbsp;&nbsp;&lt;label for="radioButtonOneDisabled" class="radioButtonLabelVisibleDisabled&gt;Lorem ipsum dolor amet elict&lt;/label&gt;<br />
-										&nbsp;&nbsp;&lt;/li&gt;<br />
-									&nbsp;&lt;/ul&gt;<br />
-								&lt;/div&gt;<br /><br />
-								// Active - within the structure above<br />
-								&lt;input type="radio" name="radioButtons" id="radioButtonOne" /&gt;<br />
-								&lt;label for="radioButtonOne" class="radioButtonLabel">Lorem ipsum dolor amet elict&lt;/label&gt;<br />
-								&lt;label for="radioButtonOne" class="radioButtonLabelVisible&gt;Lorem ipsum dolor amet elict&lt;/label&gt;<br />
-							</code>
+							<pre><code class="language-markup">
+								/* Disabled and Inline */
+								&lt;div class="form-field--radio-list form-field--radio-list--inline"&gt;
+								&nbsp;&lt;ul&gt;
+								&nbsp;&nbsp;&lt;li&gt;
+								&nbsp;&nbsp;&nbsp;&lt;input type="radio" name="radioButtonsDisabled" id="radioButtonOneDisabled" disabled /&gt;
+								&nbsp;&nbsp;&nbsp;&lt;label for="radioButtonOneDisabled" class="radioButtonLabelDisabled">Lorem ipsum dolor amet elict&lt;/label&gt;
+								&nbsp;&nbsp;&nbsp;&lt;label for="radioButtonOneDisabled" class="radioButtonLabelVisibleDisabled"&gt;Lorem ipsum dolor amet elict&lt;/label&gt;
+								&nbsp;&nbsp;&lt;/li&gt;
+								&nbsp;&lt;/ul&gt;
+								&lt;/div&gt;
+
+								/* Active - within the structure above */
+								&lt;input type="radio" name="radioButtons" id="radioButtonOne" /&gt;
+								&lt;label for="radioButtonOne" class="radioButtonLabel">Lorem ipsum dolor amet elict&lt;/label&gt;
+								&lt;label for="radioButtonOne" class="radioButtonLabelVisible"&gt;Lorem ipsum dolor amet elict&lt;/label&gt;
+							</code></pre>
 						</div>
 					</div>
 				</div>
@@ -416,14 +478,14 @@
 							<div class="calendar-container">
 								<div class="date-select-container">
 									<div class="form-field form-field--date-select">
-										<input type="text" name="date-single" id="date-single" value="From Date" />
+										<input type="text" name="date-single" id="date-single" value="From Date" readonly="true" />
 										<span></span>
 									</div>
 								</div>
 								<div class="date-select-to-indicator"></div>
 								<div class="date-select-container">
 									<div class="form-field form-field--date-select">
-										<input type="text" name="date-single-to" id="date-single-to" value="To Date" />
+										<input type="text" name="date-single-to" id="date-single-to" value="To Date" readonly="true" />
 										<span></span>
 									</div>
 								</div>
@@ -451,26 +513,27 @@
 
 					<div class="grid__column grid__column--two-thirds">
 						<div class="code-box">
-							<code>
-								&lt;form class="overflow-visible"&gt;<br />
-									&lt;div class="calendar-container"&gt;<br />
-										&lt;div class="date-select-container"&gt;<br />
-											&lt;div class="form-field form-field--date-select"&gt;<br />
-												&lt;input type="text" name="date-single" id="date-single" value="From Date" /&gt;<br />
-												&lt;span>&lt;/span&gt;<br />
-											&lt;/div&gt;<br />
-										&lt;/div&gt;<br />
-										&lt;div class="date-select-to-indicator">&lt;/div&gt;<br />
-										&lt;div class="date-select-container"&gt;<br />
-											&lt;div class="form-field form-field--date-select"&gt;<br />
-												&lt;input type="text" name="date-single-to" id="date-single-to" value="To Date" /&gt;<br />
-												&lt;span>&lt;/span&gt;<br />
-											&lt;/div&gt;<br />
-										&lt;/div&gt;<br /><br />
-										// date popup widget from GWT here<br />
-										&lt;div class="dateBoxPopup" ... etc
-									</form>
-							</code>
+							<pre><code class="language-markup">
+								&lt;form class="overflow-visible"&gt;
+								&nbsp;&lt;div class="calendar-container"&gt;
+								&nbsp;&nbsp;&lt;div class="date-select-container"&gt;
+								&nbsp;&nbsp;&nbsp;&lt;div class="form-field form-field--date-select"&gt;
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" name="date-single" id="date-single" value="From Date" /&gt;
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;span>&lt;/span&gt;
+								&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+								&nbsp;&nbsp;&lt;/div&gt;
+								&nbsp;&nbsp;&lt;div class="date-select-to-indicator">&lt;/div&gt;
+								&nbsp;&nbsp;&lt;div class="date-select-container"&gt;
+								&nbsp;&nbsp;&nbsp;&lt;div class="form-field form-field--date-select"&gt;
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" name="date-single-to" id="date-single-to" value="To Date" /&gt;
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;span>&lt;/span&gt;
+								&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+								&nbsp;&nbsp;&lt;/div&gt;
+
+								// date popup widget from GWT here
+								&lt;div class="dateBoxPopup" ... etc
+								&lt;/form&gt;
+							</code></pre>
 						</div>
 					</div>
 				</div>
@@ -510,6 +573,14 @@
 							    <option value="googleplay">Google Play</option>
 							</select>
 						</div>
+						<div class="form-field form-field--select form-field--select-disabled">						
+							<select class="js-field--select" disabled>
+						    <option value="" disabled selected>Disabled Select</option>
+						    <option value="ds1">Option 1</option>
+						    <option value="ds2">Option 2</option>
+						    <option value="ds3">Option 3</option>
+							</select>
+						</div>
 						<div class="form-field--radio-list form-field--radio-list--inline">
 							<ul>
 								<li>
@@ -521,6 +592,16 @@
 									<input type="radio" name="radioButtonsBool" id="radioButtonNo" />
 									<label for="radioButtonNo" class="radioButtonLabel">No</label>
 									<label for="radioButtonNo" class="radioButtonLabelVisible">No</label>
+								</li>
+								<li>
+									<input type="radio" name="radioButtonDisabledExampleB" id="radioButtonDisabledExampleB" disabled />
+									<label for="radioButtonDisabledExampleB" class="radioButtonLabel radioButtonLabelDisabled">Disabled</label>
+									<label for="radioButtonDisabledExampleB" class="radioButtonLabelVisible radioButtonLabelVisibleDisabled">Disabled</label>
+								</li>
+								<li>
+									<input type="radio" name="radioButtonDisabledExampleB" id="radioButtonDisabledExampleB" disabled checked/>
+									<label for="radioButtonDisabledExampleB" class="radioButtonLabel radioButtonLabelDisabled">Disabled checked</label>
+									<label for="radioButtonDisabledExampleB" class="radioButtonLabelVisible radioButtonLabelVisibleDisabled">Disabled checked</label>
 								</li>
 							</ul>
 						</div>
@@ -544,10 +625,20 @@
 						</div>
 						<div class="form-field--checkbox-list">
 							<ul>
-								<li>
+								<li class="is-error-message-showing">
 									<input type="checkbox" name="checkboxTerms" id="checkboxTerms" />
 									<label for="checkboxTerms" class="checkboxLabel">Lorem ipsum dolor amet elict</label>
-									<label for="checkboxTerms" class="checkboxLabelVisible">I agree with the <a href="#">terms and conditions</a></label>
+									<label for="checkboxTerms" class="checkboxLabelVisible"><span class="block-error-message">Error message lorem ipsum dolor amet elict</span> I agree with the <a href="#">terms and conditions</a></label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxDefaultDisabled" id="checkboxDefaultDisabled" disabled />
+									<label for="checkboxDefaultDisabled" class="checkboxLabel checkboxLabelDisabled">Check box option disabled</label>
+									<label for="checkboxDefaultDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Check box option disabled</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxDefaultDisabled" id="checkboxDefaultDisabled" disabled checked/>
+									<label for="checkboxDefaultDisabled" class="checkboxLabel checkboxLabelDisabled">Check box option disabled checked</label>
+									<label for="checkboxDefaultDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Check box option disabled checked</label>
 								</li>
 							</ul>
 						</div>
@@ -558,7 +649,7 @@
 				<div class="grid__column form-demo grid__column--push-one forms--mid-theme overflow-visible">
 					<form class="overflow-visible">
 						<h3 class="heading-style--heading-six">Mid background</h3>
-						<div class="form-field form-field--disabled">						
+						<div class="form-field form-field--disabled">
 							<input type="text" name="text" id="textmid" autocomplete="off" disabled/>
 							<label for="textmid">Deactivated</label>
 						</div>
@@ -584,6 +675,14 @@
 							    <option value="googleplaymid">Google Play</option>
 							</select>
 						</div>
+						<div class="form-field form-field--select form-field--select-disabled">						
+							<select class="js-field--select" disabled>
+						    <option value="" disabled selected>Disabled Select</option>
+						    <option value="ds11">Option 1</option>
+						    <option value="ds12">Option 2</option>
+						    <option value="ds13">Option 3</option>
+							</select>
+						</div>
 						<div class="form-field--radio-list form-field--radio-list--inline">
 							<ul>
 								<li>
@@ -591,10 +690,22 @@
 									<label for="radioButtonYesMid" class="radioButtonLabel">Yes</label>
 									<label for="radioButtonYesMid" class="radioButtonLabelVisible">Yes</label>
 								</li>
-								<li>
+								<li class="is-error-message-showing">
 									<input type="radio" name="radioButtonsBoolMid" id="radioButtonNoMid" />
 									<label for="radioButtonNoMid" class="radioButtonLabel">No</label>
-									<label for="radioButtonNoMid" class="radioButtonLabelVisible">No</label>
+									<label for="radioButtonNoMid" class="radioButtonLabelVisible">
+										<span class="block-error-message">Error message lorem ipsum dolor amet elict</span>
+										No</label>
+								</li>
+								<li>
+									<input type="radio" name="radioButtonDisabledExampleBMid" id="radioButtonDisabledExampleBMid" disabled />
+									<label for="radioButtonDisabledExampleBMid" class="radioButtonLabel radioButtonLabelDisabled">Disabled</label>
+									<label for="radioButtonDisabledExampleBMid" class="radioButtonLabelVisible radioButtonLabelVisibleDisabled">Disabled</label>
+								</li>
+								<li>
+									<input type="radio" name="radioButtonDisabledExampleBMid" id="radioButtonDisabledExampleBMid" disabled checked/>
+									<label for="radioButtonDisabledExampleBMid" class="radioButtonLabel radioButtonLabelDisabled">Disabled checked</label>
+									<label for="radioButtonDisabledExampleBMid" class="radioButtonLabelVisible radioButtonLabelVisibleDisabled">Disabled checked</label>
 								</li>
 							</ul>
 						</div>
@@ -622,6 +733,16 @@
 									<input type="checkbox" name="checkboxTermsMid" id="checkboxTermsMid" />
 									<label for="checkboxTermsMid" class="checkboxLabel">Lorem ipsum dolor amet elict</label>
 									<label for="checkboxTermsMid" class="checkboxLabelVisible">I agree with the <a href="#">terms and conditions</a></label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxMidDisabled" id="checkboxMidDisabled" disabled />
+									<label for="checkboxMidDisabled" class="checkboxLabel checkboxLabelDisabled">Check box option disabled</label>
+									<label for="checkboxMidDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Check box option disabled</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxMidDisabled" id="checkboxMidDisabled" disabled checked/>
+									<label for="checkboxMidDisabled" class="checkboxLabel checkboxLabelDisabled">Check box option disabled checked</label>
+									<label for="checkboxMidDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Check box option disabled checked</label>
 								</li>
 							</ul>
 						</div>
@@ -658,17 +779,35 @@
 							    <option value="googleplaydark">Google Play</option>
 							</select>
 						</div>
+						<div class="form-field form-field--select form-field--select-disabled">						
+							<select class="js-field--select" disabled>
+						    <option value="" disabled selected>Disabled Select</option>
+						    <option value="ds21">Option 1</option>
+						    <option value="ds22">Option 2</option>
+						    <option value="ds23">Option 3</option>
+							</select>
+						</div>					
 						<div class="form-field--radio-list">
 							<ul>
-								<li>
-									<input type="radio" name="radioButtonsBoolDark" id="radioButtonYesDark" checked />
+								<li class="is-error-message-showing">
+									<input type="radio" name="radioButtonsBoolDark" id="radioButtonYesDark"/>
 									<label for="radioButtonYesDark" class="radioButtonLabel">Yes</label>
-									<label for="radioButtonYesDark" class="radioButtonLabelVisible">Yes</label>
+									<label for="radioButtonYesDark" class="radioButtonLabelVisible"><span class="block-error-message">Error message lorem ipsum dolor amet elict</span> Yes</label>
 								</li>
 								<li>
-									<input type="radio" name="radioButtonsBoolDark" id="radioButtonNoDark" />
+									<input type="radio" name="radioButtonsBoolDark" id="radioButtonNoDark"/>
 									<label for="radioButtonNoDark" class="radioButtonLabel">No</label>
 									<label for="radioButtonNoDark" class="radioButtonLabelVisible">No</label>
+								</li>
+								<li>
+									<input type="radio" name="radioButtonDisabledExampleBDark" id="radioButtonDisabledExampleBDark" disabled/>
+									<label for="radioButtonDisabledExampleBDark" class="radioButtonLabel radioButtonLabelDisabled">Disabled</label>
+									<label for="radioButtonDisabledExampleBDark" class="radioButtonLabelVisible radioButtonLabelVisibleDisabled">Disabled</label>
+								</li>
+								<li>
+									<input type="radio" name="radioButtonDisabledExampleBDark2" id="radioButtonDisabledExampleBDark2" disabled checked/>
+									<label for="radioButtonDisabledExampleBDark2" class="radioButtonLabel radioButtonLabelDisabled">Disabled Checked</label>
+									<label for="radioButtonDisabledExampleBDark2" class="radioButtonLabelVisible radioButtonLabelVisibleDisabled">Disabled Checked</label>
 								</li>
 							</ul>
 						</div>
@@ -696,6 +835,16 @@
 									<input type="checkbox" name="checkboxTermsDark" id="checkboxTermsDark" />
 									<label for="checkboxTermsDark" class="checkboxLabel">Lorem ipsum dolor amet elict</label>
 									<label for="checkboxTermsDark" class="checkboxLabelVisible">I agree with the <a href="#">terms and conditions</a></label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxDarkDisabled" id="checkboxDarkDisabled" disabled/>
+									<label for="checkboxDarkDisabled" class="checkboxLabel checkboxLabelDisabled">Check box option disabled</label>
+									<label for="checkboxDarkDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Check box option disabled</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxDarkDisabled" id="checkboxDarkDisabled" disabled checked/>
+									<label for="checkboxDarkDisabled" class="checkboxLabel checkboxLabelDisabled">Check box option disabled checked</label>
+									<label for="checkboxDarkDisabled" class="checkboxLabelVisible checkboxLabelVisibleDisabled">Check box option disabled checked</label>
 								</li>
 							</ul>
 						</div>
@@ -739,8 +888,7 @@
 					</form>
 				</div>
 			</div>
-		</div>
-	</div>
+			</div></div><div class="grid-container" id="js-component-import--global-footer"></div>
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
@@ -749,7 +897,7 @@
  	<script src="js/vendor/jquery-ui.custom.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script>
  	<script src="js/templates/templates.js"></script>
-	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	 
 	<!--[if IE 9]>
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->

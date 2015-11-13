@@ -1,0 +1,32 @@
+$blur-opacity: 0.5;
+
+.main-footer-links {
+	margin-bottom: 30px;
+	li {
+		display: block;
+		a {
+			padding: 5.3px 0px 6px 30px;
+			display: block;
+			@include font-size(13px);
+			line-height: 1.5;
+			color: #727686;
+			.is-animating-out & {
+				text-shadow: 4px 0px 1px rgba(118,118,131, $blur-opacity);
+			}
+			.is-animating-in & {
+				text-shadow: -4px 0px 1px rgba(118,118,131, $blur-opacity);
+			}
+			&:hover {
+				color: #bec2d2;
+			}
+		}
+		&.is-selected {
+			a {
+				color: $reflection-white;
+				&:hover {
+					color: $reflection-white;
+				}
+			}
+		}
+	}
+}

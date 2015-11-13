@@ -1,8 +1,32 @@
 @import "helpers/placeholders";
 @import "ui/interaction";
+@import "layout/layout";
+@import "ui/typography";
 
 * {
 	text-decoration: none;
+}
+/* Global base styles */
+html, body
+{
+	position: relative;
+	overflow-x: hidden;
+	@extend .lato;
+	font-size: 10px;
+	line-height: 1.5rem;
+	color: $dark-grey-1;
+	background-color: $reflection-white;
+	@extend %font-smoothing;
+	@include breakpoint($desktop) {
+		font-size: 11px;
+	}
+	@include breakpoint($desktop-wide) {
+		font-size: 12px;
+	}
+}
+html.no-scroll,
+body.no-scroll {
+	overflow: hidden;
 }
 #{elements-of-type(block)},
 li {
@@ -11,9 +35,9 @@ li {
 }
 a {
 	outline: none;
-	@include transition(border-color $base-transition-speed-off, background-color $base-transition-speed-off, color $base-transition-speed-off);
+	transition: border-color $base-transition-speed-off, background-color $base-transition-speed-off, color $base-transition-speed-off;
 	&:hover {
-		@include transition(border-color $base-transition-speed-on, background-color $base-transition-speed-on, color $base-transition-speed-on);
+		transition: border-color $base-transition-speed-on, background-color $base-transition-speed-on, color $base-transition-speed-on;
 	}
 }
 .touch * {

@@ -1,0 +1,559 @@
+.page-app__header {
+	width: 100%;
+	margin-bottom: 3px;
+	display: inline-block;
+	@include breakpoint($tablet) {
+		width: percentage(730/1000);
+		margin-bottom: 1.1rem;
+	}
+	@include breakpoint($laptop) {
+		width: percentage(750/1000);
+	}
+	.is-safari & {
+		@media screen and (max-width: $tablet) {
+			margin-bottom: 12px;
+		}
+	}
+}
+.page-app {
+	padding-top: 20px;
+	padding-bottom: 66px;
+	overflow: visible;
+	.filters-container {
+		padding: 0.9rem 3% 0.5rem;
+		@include breakpoint($tablet) {
+			padding: 1.4rem 2% 1.4rem;
+		}
+	}
+	.tabs-to-dropdown-container {
+		padding-top: 0.8rem;
+		@include breakpoint($tablet) {
+			padding-top: 2rem;
+		}
+	}
+	.tabs__link span svg {
+		width: 15%;
+		max-width: 26px;
+	}
+	.app-icon-container {
+		width: 42px;
+		height: 42px;
+		margin-right: 12px;
+		display: inline-block;
+		vertical-align: top;
+		background-color: #f1f1f6;
+		border-radius: 8px;
+		@include breakpoint($tablet) {
+			width: 68px;
+			height: 68px;
+			margin-right: 20px;
+			border-radius: 13px;
+		}
+		@include breakpoint($laptop) {
+			margin-right: 30px;
+		}
+	}
+	.app-icon {
+		width: 100%;
+	}
+	.app-details {
+		width: calc(100% - 65px);
+		margin-top: -0.5rem;
+		display: inline-block;
+		@include breakpoint($tablet) {
+			width: calc(100% - 102px);
+			margin-top: 15px;
+		}
+	}
+	.app-title {		
+		margin-bottom: 3px;
+		margin-right: 10px;
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 2.3rem;		
+		@include breakpoint($tablet) {
+			margin-right: 15px;
+			font-size: 2.7rem;
+		}
+	}
+	.app-creator-price {
+		display: inline-block;
+	}
+	.app-creator {	
+		margin-right: 12px;
+		margin-bottom: 0;
+		padding-top: 0.1rem;	
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 1.8rem;		
+		a {
+			color: $reflection-purple;
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+		}
+	}
+	.app-price {
+		margin-bottom: 0;
+		padding-top: 0.2rem;
+		display: inline-block;
+		vertical-align: middle;
+		font-family: $brand-heading-font;
+		font-size: 1.6rem;
+		line-height: 1.3;
+		color: #28292c;
+		@include breakpoint($desktop-wide) {
+			.is-firefox & {
+				padding-top: 0.4rem;
+			}			
+		}
+	}
+	.filters-container.filter-container--app {
+		padding-bottom: 0;
+	}
+	.reveal-element {
+		display: none;
+		@include breakpoint($tablet) {
+			display: inline-block;	
+		}
+	}
+	div.table-wrapper {
+		border-right: 0;
+		div.scrollable {
+			margin-left: 34%;
+			@include breakpoint($tablet) {
+				margin-left: 0;
+			}
+		}
+	}
+	.svg-warning-laptop {
+		max-width: 142px;
+	}
+	@media screen and (max-width: $tablet) {
+		.filters-container.filter-container--app .filter-toggle {
+			width: 48%;
+			margin-bottom: 1.1rem;
+			float: right;
+			.toggle {
+				width: 50%;
+				label {
+					width: 100%;
+				}
+			}
+		}
+		.filter-container--app .or-text + .time-period-select {
+			margin-right: 0;
+			float: right;
+		}
+		.filter-container--app .store-select {
+			clear: left;
+		}
+	}
+	.reflection-select.reflection-select--filter.reflection-select--right ul {
+		@media screen and (max-width: $tablet) {
+			left: calc(50% - 153px);
+			right: auto;
+		}
+		@media screen and (min-width: $tablet) and (max-width: $laptop) {
+			left: 0;
+			right: auto;
+		}
+	}
+}
+.app-user-functions-container {
+	width: 100%;
+	margin-top: -5px;
+	margin-bottom: 0.5rem;
+	padding-left: 57px;
+	float: left;
+	text-align: left;
+	@include breakpoint($tablet) {
+		width: 15.5rem;
+		margin-bottom: 0;
+		padding-top: 3.1rem;
+		padding-left: 0;		
+		float: right;
+		text-align: right;
+	}
+	.can-toggle {
+		float: left;
+		@include breakpoint($tablet) {
+			float: right;
+			display: inline-block;
+		}
+	}
+	.filter-switch {
+		margin-bottom: 1rem;
+		@include breakpoint($tablet) {
+			margin-bottom: 1.5rem;
+		}		
+		> span {
+			padding-top: 3px;
+			color: $light-grey-1;
+			font-family: $brand-heading-font;
+			font-size: 1.6rem;
+			span {
+				padding-left: 5px;
+				display: inline-block;
+				font-size: 1.4rem;
+			}
+		}
+	}
+	a {
+		display: block;
+		font-size: 1.5rem;
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		text-align: left;
+		@include breakpoint($tablet) {
+			text-align: right;
+		}		
+		color: $reflection-purple;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+	}
+	.show-hide-link {		
+		position: relative;
+		margin-bottom: 1.7rem;
+		display: block;
+		z-index: 10;
+		background-color: #FCFDFD;
+		@include breakpoint($tablet) {
+			display: none;				
+		}
+	}
+	.reveal-element {
+		margin-bottom: 1rem;
+	}
+}
+.filters-group-graph-options {
+	width: 100%;
+	padding-top: 0.4rem;
+	padding-left: 1.4%;
+	display: block;
+	clear: both;
+	text-align: center;
+	overflow: visible;
+	transition: height 0.3s, padding-top 0.3s;
+	@include breakpoint($tablet) {
+		padding-top: 5px;
+		text-align: left;		
+	}
+	.filter-switch--small {
+		width: 100%;
+		margin-right: 0.8rem;
+		margin-top: 1.1rem;
+		display: inline-block;
+		text-align: center;
+		@include breakpoint($tablet) {
+			width: auto;
+			text-align: left;
+		}
+		> span {
+			float: none;
+			vertical-align: top;
+			color: $dark-grey-2;
+			@include breakpoint($tablet) {
+				float: left;
+			}
+		}
+	}
+	.show-hide-link {
+		position: relative;
+		padding-top: 0.3rem;
+		display: block;
+		z-index: 10;
+		@extend .text-link;
+		font-size: 1.3rem;
+		font-weight: 600;
+		text-align: center;
+		@include breakpoint($tablet) {
+			display: none;				
+		}
+		&:after {
+			position: absolute;
+			top: 0.2rem;
+			padding-left: 0.6rem;
+			padding-right: 0.6rem;
+			font-size: 1.7rem;
+			@include transform(rotate(0));
+			transition: transform $base-transition-speed-off;
+		}
+		&.is-open {
+			&:after {
+				@include transform(rotate(179.5deg));
+				transition: transform $base-transition-speed-on;
+			}
+		}
+	}
+	.reveal-element {
+		position: relative;
+		margin-top: 0.5rem;
+		z-index: 0;
+		@include breakpoint($tablet) {
+			margin-top: 0;
+		}
+	}
+	.can-toggle {
+		float: none;
+		display: inline-block;
+		@include breakpoint($tablet) {
+			float: left;
+		}
+	}
+}
+.graph-container {
+	clear: both;
+	background-color: #F2F2F5;
+}
+.graph-container--with-events {
+	padding-top: 10px;
+}
+.data-display-container {
+	margin-top: 45px;
+}
+.data-display-header {
+	position: relative;
+	padding-bottom: 12px;
+	overflow: hidden;
+	border-bottom: 1px solid $divider-grey;
+	@include breakpoint($desktop) {
+		margin-bottom: 5px;
+		padding-bottom: 2px;
+	}
+	button {
+		display: none;
+		@include breakpoint($tablet) {
+			position: relative;
+			top: 0;
+			right: 0px;
+			float: right;
+			display: inline-block;
+		}		
+	}
+}
+.data-display-header--component {
+	width: 100%;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 0;
+	@include breakpoint($tablet) {
+		width: 33%;
+	}
+}
+.data-heading {
+	margin: 0;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 2.2rem;
+	line-height: 1.2;	
+	@include breakpoint($tablet) {
+		max-width: 100px;
+	}
+	@include breakpoint($laptop) {
+		margin-top: -0.5rem;
+	}
+	@media screen and (min-width: 1140px) {
+		max-width: none;
+		margin-top: 0;
+	}
+}
+.app-icon-small-container {
+		width: 34px;
+		height: 34px;
+		margin-right: 15px;
+		display: inline-block;
+		vertical-align: top;
+		background-color: #f1f1f6;
+		border-radius: 7px;
+	}
+.app-icon-small {
+	width: 100%;
+	margin-right: 15px;
+}
+.data-summary-container {
+	width: 100%;	
+	margin-top: 0.4rem;
+	padding-top: 0;
+	text-align: center;
+	@include breakpoint($tablet) {
+		width: 28%;
+		margin-top: 0;
+		padding-bottom: 17px;
+		float: right;
+		text-align: left;
+	}
+}
+.revenue-date-range {
+	margin-right: 5%;
+	padding: 0 0 10px;
+	display: inline-block;	
+	font-size: 1.4rem;
+	color: $light-grey-1;
+	line-height: 1.2;
+	@include breakpoint($tablet) {
+		float: left;
+		display: block;
+		font-size: 1.6rem;
+	}
+	@include breakpoint($desktop) {
+		padding-top: 0.4rem;
+		display: inline-block;
+	}
+}
+.revenue-summary-value {
+	display: inline-block;	
+	font-family: $brand-heading-font;
+	font-weight: 600;
+	font-size: 1.8rem;	
+	color: $dark-grey-1;
+	@include breakpoint($tablet) {
+		font-size: 2.2rem;
+		float: left;	
+		clear: both;
+		display: block;
+	}
+	@include breakpoint($desktop) {		
+		display: inline-block;
+	}
+	.data-summary-container-synced & {		
+		color: #727686;
+	}
+}
+.table-revenue {
+	width: 100%;
+	margin-bottom: 3rem;
+	background-color: #fcfdfd;
+	table-layout: fixed;
+	&.responsive {
+		margin-bottom: 3rem;
+	}
+	.scrollable & {
+		table-layout: auto;
+		@include breakpoint($tablet) {
+			table-layout: fixed;
+		}
+	}
+	tbody {
+		tr {
+			border-bottom: 1px solid #fcfdfd;
+			background-color: transparent;
+			&:nth-child(odd) {
+				background-color: $panel-grey;
+			}
+		}
+	}
+	.cellTableLoading tr {
+		height: 40px;
+		@include breakpoint($tablet) {
+			height: 45px;
+		}
+	}
+	th {
+		padding: 1.3rem 20px 1.1rem 10px;
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		font-size: 1.5rem;		
+		color: #28292c;
+		background-color: transparent;
+		&:first-child {
+			padding-left: 10px;
+			@include breakpoint($tablet) {
+				padding-left: 2%;
+			}
+		}	
+		@include breakpoint($tablet) {
+			padding-left: 0;
+			font-size: 1.6rem;
+		}
+	}
+	.date-value,
+	.revenue-value,
+	.revenue-percentage {
+		font-size: 1.2rem;
+		color: $dark-grey-2;
+		@include breakpoint($tablet) {
+			padding-left: 0;
+			font-size: 1.5rem;
+		}
+	}
+	.date-value {
+		width: 100%;
+		padding-left: 10px;
+		height: 40px;
+		@include breakpoint($tablet) {
+			height: auto;
+			padding-left: percentage(20/1000);
+		}
+	}
+	.revenue-percentage {
+		font-size: 0;
+		span {
+			width: 18%;
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 1.2rem;
+			color: $dark-grey-2;
+			@include breakpoint($tablet) {
+				width: percentage(70/500);
+				font-size: 1.5rem;
+			}
+			@include breakpoint($desktop-wide) {
+				width: 10%;
+			}
+		}
+		.data-bar {
+			height: 44px;
+			width: 82%;
+			display: none;
+			vertical-align: middle;
+			@include breakpoint($tablet) {
+				width: percentage(430/500);
+				display: inline-block;
+			}
+			@include breakpoint($desktop-wide) {
+				width: 90%;
+			}
+			div {
+				height: 44px;
+				width: percentage(430/500);
+				display: inline-block;
+				background-color: #dedeef;
+			}
+		}
+	}
+}
+.can-be-sorted {
+	cursor: pointer;
+	&:active {
+		position: relative;
+		top: 2px;
+	}
+}
+.total-revenue-title {
+	width: 100%;
+	@include breakpoint($tablet) {
+		width: 22%;
+	}	
+}
+.data-summary-container-synced {
+	width: 100%;
+	text-align: center;
+	@include breakpoint($tablet) {
+		width: 30%;
+		float: right;
+		text-align: left;
+	}
+}
+.download-button--mobile {
+	float: right;
+	@include breakpoint($tablet) {
+		display: none;
+	}
+}
+@media screen and (max-width: $tablet) {
+	.scrollable .table-revenue tr {
+		height: 45px;
+	}
+}

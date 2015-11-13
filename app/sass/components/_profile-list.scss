@@ -1,0 +1,149 @@
+.profile-list {	
+	width: 100%;
+	padding-bottom: 4rem;
+	float: left;
+	@include breakpoint($tablet) {
+		float: none;
+		padding-bottom: 0;
+	}
+	li {
+		position: relative;
+		width: 100%;
+		padding-top: 3rem;		
+		padding-bottom: 0.6rem;
+		float: left;
+		text-align: center;
+		@include breakpoint($tablet) {
+			padding-top: 2.9rem;
+		}
+		@include breakpoint($desktop) {
+			padding-top: 3.8rem;
+		}
+		img {
+			max-width: 120px;
+			margin-bottom: 1.1rem;
+			@include breakpoint($desktop) {
+				max-width: 140px;
+			}
+			@include breakpoint($desktop-wide) {
+				max-width: 190px;
+			}
+		}
+		h2 {
+			margin: 0 0 0.2rem;
+			font-size: 2.2rem;
+			a {
+				color: $reflection-purple;
+				&:hover {
+					color: $reflection-purple--hover;
+				}
+			}
+		}
+		h3 {
+			font-size: 1.6rem;
+			color: #727686;
+		}
+		.profile-text {
+			position: absolute;
+			top: 0px;
+			width: 100%;
+			padding: 0.8rem percentage(20/250) 1.9rem percentage(25/250);
+			opacity: 0;
+			background-color: #f2f2f5;
+			p {
+				margin-bottom: 1em;
+				font-size: 14px;
+				text-align: left;
+				color: #5b5d61;
+			}
+			a {
+				font-size: 14px;
+				color: $reflection-purple;
+				&:hover {
+					color: $reflection-purple--hover;
+				}
+			}
+		}
+		.profile-title {
+			position: relative;
+			z-index: 2;
+			background-color: #f2f2f5;
+		}
+		@include breakpoint($phablet) {
+			width: 50%;
+		}
+		@include breakpoint($tablet) {
+			width: 33.3%;
+		}
+		@include breakpoint($laptop) {
+			width: 25%;
+		}
+		@include breakpoint($laptop-mid) {
+			width: 25%;
+		}
+		&.is-active {
+			position: relative;
+			z-index: 100;
+			overflow: visible;
+			h2 a {
+				color: #29292c;
+			}
+			.profile-text {
+				top: 100%;
+				opacity: 1;
+				transition: top 0.2s, opacity 0.15s;
+			}
+		}
+		&.is-closing {
+			z-index: 90;
+			.profile-text {
+				opacity: 0;
+				transition: opacity 0.15s;
+			}
+		}
+	}
+}
+.profile-list__mobile-heading {
+	padding: 1.5rem 2% 1.5rem;
+	margin-bottom: 0px;
+	clear: both;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-size: 13px;
+	color: $reflection-purple;
+	letter-spacing: 0.6px;
+	font-family: $brand-body-font;
+	background-color: $reflection-white;
+	svg, span {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	svg {
+		margin-right: 10px;
+		max-width: 20px;
+		path {
+			fill: $reflection-purple;
+		}		
+	}
+	&:hover {
+		color: $reflection-purple--hover;
+		svg path {
+			fill: $reflection-purple--hover;
+		}
+	}
+	@include breakpoint($tablet) {
+		display: none;
+	}
+	&.is-open {
+		color: #363a47;
+		svg path {
+			fill: #363a47;
+		}
+		&:hover {
+			color: #363a47;
+			svg path {
+				fill: #363a47;
+			}
+		}
+	}
+}

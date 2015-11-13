@@ -1,10 +1,13 @@
+.tabs {
+	width: 100%;
+}
 .tabs-container {
 	@include breakpoint($tablet, true) {
 		width: 100%;
 		max-width: 1400px;
 		display: block;
 		li {
-		height: 7rem;
+		height: 6.2rem;
 			.tabs-container--large-tabs & {
 				height: 13.7rem;
 			}
@@ -14,7 +17,7 @@
 		@include column(6);
 	}
 }
-.default-tabs-transition .tabs-container {
+.default-tabs-transition.tabs-container {
 		display: none;
 		@include breakpoint($tablet, true) {
 			display: block;
@@ -39,19 +42,26 @@
 		height: 0;
 		z-index: 0;
 		background-color: $panel-grey;
-		@include transition(height $base-transition-speed-on);
+		transition: height $base-transition-speed-on;
 	}
 	&.is-active {
 		.tab-animate-active {
 			height: 100%;
-			@include transition(height $base-transition-speed-on);
+			transition: height $base-transition-speed-on;
 		}
 	}
 	.tabs-container--large-tabs & {
 		height: 13.7rem;
 	}
 }
-.tabs__link {	
+.tabs__link span span {
+	position: relative;
+	.icon-member {
+		right: -15px;
+	}
+}
+.tabs__link,
+.tabs-to-dropdown-container {	
 	@extend %vertical-centre-content;
 	position: relative;
 	width: 100%;
@@ -61,42 +71,95 @@
 	display: block;
 	box-sizing: border-box;
 	z-index: 1;
-	font-size: 13.9px;
 	font-size: 1.39rem;
 	font-weight: 700;
 	letter-spacing: 0.6px;
 	color: $reflection-purple;
 	text-transform: uppercase;
-	@include transition(color $base-transition-speed-on);
-	&:hover {
-		color: darken($reflection-purple, 20%);
-		@include transition(color $base-transition-speed-on);
+	transition: color $base-transition-speed-on;
+	.no-touch & {
+		&:hover {
+			span {
+				color: darken($reflection-purple, 20%);
+				transition: color $base-transition-speed-on;
+			}
+			path {
+				fill: darken($reflection-purple, 10%);
+				transition: fill $base-transition-speed-on;
+				.is-disabled & {
+					fill: $light-grey-2;
+				}
+			}
+			.is-disabled & {
+				span {
+					color: $light-grey-2;
+				}			
+			}
+		}
 	}
-	.tabs__tab:active & {
+	.no-touch .is-active &,
+	.touch .is-active & {
+		&:hover {
+			span {
+				color: $dark-grey-2;
+			}
+			svg path {
+				fill: $mid-grey-1;
+			}
+		}
+	}
+	.no-touch .tabs__tab:active & {
 		> span {
 			margin-top: 6px;
 		}
 	}
+	.no-touch .tabs__tab.is-disabled:active & {
+		cursor: default;
+		> span {
+			margin-top: 0;
+		}
+	}
+	.tabs__tab.is-disabled & {
+		cursor: default;
+		> span {
+			color: $light-grey-2;
+		}
+		.text-small {
+			padding-top: 0;
+			min-width: 100%;
+			display: block;
+			clear: both;
+			text-transform: none;
+			font-size: 1.2rem;
+			letter-spacing: 0.3px;	
+		}
+	}
 	.is-active & {
-		color: $dark-grey-2;
-		@include transition(color $base-transition-speed-on);
-		&:hover {
+		span {
 			color: $dark-grey-2;
+			transition: color $base-transition-speed-on;
+			&:hover {
+				color: $dark-grey-2;
+			}
 		}
 	}
 	> span {
 		width: 100%;
 		line-height: 1.4;
-		@include transition(margin-top 0.1s);
+		color: $reflection-purple;
+		transition: margin-top 0.1s;
 	}
 	span span, span:before {
 		vertical-align: middle;
 	}
 	span > span {
-		width: 80%;
-		max-width: 80%;
+		width: 75%;
+		max-width: 75%;
+		padding-top: 0.3rem;
 		display: inline-block;
+		line-height: 1.3;
 		text-align: left;
+		white-space: no-wrap;
 		@include breakpoint($tablet, true) {
 				width: auto;
 		}
@@ -136,27 +199,79 @@
 		}
 	}
 	span svg {
-		width: 28px;
+		width: 15%;
+		max-width: 28px;
 		height: 28px;
-		margin-right: 0.9em;
+		margin-right: 5%;
+		display: inline-block;
 		vertical-align: middle;
+		@include breakpoint($tablet) {
+			margin-right: 7%;
+		}
 		path {
 			fill: $reflection-purple;
-			@include transition(fill $base-transition-speed-off);
+			transition: fill $base-transition-speed-off;
 			.is-active & {
 				fill: $mid-grey-1;
-				@include transition(fill $base-transition-speed-on);
+				transition: fill $base-transition-speed-on;
+			}
+			.is-disabled & {
+				fill: $light-grey-2;
 			}
 		}
 	}
-	&:hover {
-		path {
-			fill: darken($reflection-purple, 10%);
-			@include transition(fill $base-transition-speed-on);
+}
+.tabs-to-dropdown-container {
+	padding: 0;
+	> span {
+		padding: 12px 6% 13px;
+		display: block;
+		float: left;		
+		box-sizing: border-box;
+		color: $dark-grey-2;
+		background-color: #f2f2f5;
+		cursor: pointer;
+		&:after {
+			position: absolute;
+			right: 4%;
+			transition: transform 0.2s;
+		}
+		&.is-open {
+			&:after {
+				transform: rotate(179.5deg);
+				transition: transform 0.3s;
+			}
+		}
+		svg path {
+			fill: $dark-grey-2;
 		}
 	}
+	.tabs__link > span {
+		text-align: left;
+	}
+	.tabs-to-dropdown {
+		width: 100%;
+	}
+	li.is-active {
+		display: none;
+	}
+	.tabs__tab {
+		height: 5.2rem;
+	}
+	.tabs__link {
+		padding-left: 6%;
+		padding-right: 2%;
+		@include breakpoint($tablet) {
+			padding-left: 2%;
+			padding-right: 2%;
+		}		
+	}
+	span svg {
+		width: 24px;
+		height: 24px;
+	}
 }
-.is-ie .tabs__link {
+.no-touch .is-ie .tabs__link {
 	&:active {
 		position: relative;
 		top: 4px;
@@ -173,12 +288,12 @@
 		height: 3px;
 		display: block;
 		background-color: $panel-grey;
-		@include transition(width 0.2s ease-out);
+		transition: width 0.2s ease-out;
 	}
-	.is-active & {
+	.no-touch .is-active & {
 		span {
 			width: 100%;
-			@include transition(width 0.2s 0.2s ease-in);
+			transition: width 0.2s 0.2s ease-in;
 		}
 	}
 	.tabs__tab:first-child & {
@@ -222,7 +337,7 @@
 		text-transform: uppercase;
 		background-color: $reflection-white;
 		cursor: pointer;
-		@include transition(color $base-transition-speed-on);
+		transition: color $base-transition-speed-on;
 		b {
 			line-height: 1.6;
 			text-transform: none;
@@ -237,19 +352,6 @@
 			&:before {
 				color: $dark-grey-1;
 			}
-			&:hover {
-				color: $dark-grey-1;
-			}
-		}
-		&:hover {
-			color: darken($reflection-purple, 10%);
-			@include transition(color $base-transition-speed-on);
-		}
-		&:active {
-			span, &:before {
-				position: relative;
-				top: 4px;
-			}
 		}
 		&:before, span {
 			vertical-align: middle;
@@ -261,10 +363,10 @@
 	.collapsible-content {
 		margin-top: 0;
 		padding-bottom: 3rem;
-		@include transition(margin-top 0.3s);
+		transition: margin-top 0.3s;
 		.tabs__content--is-showing & {
 			margin-top: 0;
-			@include transition(margin-top 0.3s);
+			transition: margin-top 0.3s;
 		}
 	}
 }
@@ -275,4 +377,32 @@
 }
 .tabs__content.tabs__content--is-showing {
 	display: block;
+}
+
+// Tabs to drop down for mobile
+.tabs-to-dropdown-container {
+	.selected-tab {
+		display: inline-block;
+	}
+	.tabs-to-dropdown {
+		li {
+			padding: 0px;
+		}
+		span {
+			color: $reflection-purple;
+		}
+		.is-disabled {
+			span {
+				color: $light-grey-2;
+			}			
+		}
+	}
+}
+.tabs-to-dropdown--content {
+	.tabs__content {
+		display: none;
+		&.tabs__content--is-showing {
+			display: block;
+		}
+	}
 }

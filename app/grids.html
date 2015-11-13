@@ -5,27 +5,33 @@
 	<title>Reflection Design Kit - Grid &amp; Breakpoints</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" media="screen, projection" type="text/css" href="css/designkit.css" />
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="designkit.css" />
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main-ie8.css" />
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
 	<![endif]-->
  	<!--[if !lt IE 9]><!-->
-		<script src="js/vendor/picturefill.2.2.0.min.js" async></script>
+		<script src="js/vendor/picturefill.2.3.1.min.js" async></script>
 	<!-- <![endif]-->
-	<!--[if (gte IE 9)|(IEMobile)|(!IE)]><!-->
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main.css" />
-	<!--<![endif]-->
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
-</head>
-<body class="panel-left-open">
-	<!--[if lt IE 8]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
   <![endif]-->
 
   <header id="js-component-import--global-header" class="global-header"></header>
 
-	<div id="js-component-import--panel-left" class="panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
 
 	<div class="l-page-container">
 
@@ -172,28 +178,29 @@
 					</div>
 					<div class="grid__column grid__column--one-half">
 						<div class="code-box code-box-tall">
-							<code>
-								/* Structure of a grid based layout */<br />
-								&lt;div class="grid-container"&gt;<br />
-								&nbsp;&lt;div class="grid__row"&gt;<br />
-								&nbsp;&nbsp;&lt;div class="grid__column grid__column--one-third&gt;<br />
-								&nbsp;&nbsp;&nbsp;Column content<br />
-								&nbsp;&nbsp;&lt;/div&gt;<br />
-								&nbsp;&nbsp;&lt;div class="grid__column grid__column--two-thirds&gt;<br />
-								&nbsp;&nbsp;&nbsp;Column content<br />
-								&nbsp;&nbsp;&lt;/div&gt;<br />
-								&nbsp;&lt;/div&gt;<br />
-								&lt;/div&gt;<br /><br />
-								/* Classes available for column widths */<br />
-								.grid__column--one-twelfth<br />
-								.grid__column--one-sixth<br />
-								.grid__column--one-quarter<br />
-								.grid__column--one-third<br />
-								.grid__column--one-half<br />
-								.grid__column--two-thirds<br />
-								.grid__column--three-quarters<br />
+							<pre><code class="language-markup">
+								/* Structure of a grid based layout */
+								&lt;div class="grid-container"&gt;
+								&nbsp;&lt;div class="grid__row"&gt;
+								&nbsp;&nbsp;&lt;div class="grid__column grid__column--one-third"&gt;
+								&nbsp;&nbsp;&nbsp;Column content
+								&nbsp;&nbsp;&lt;/div&gt;
+								&nbsp;&nbsp;&lt;div class="grid__column grid__column--two-thirds"&gt;
+								&nbsp;&nbsp;&nbsp;Column content
+								&nbsp;&nbsp;&lt;/div&gt;
+								&nbsp;&lt;/div&gt;
+								&lt;/div&gt;
+
+								/* Classes available for column widths */
+								.grid__column--one-twelfth
+								.grid__column--one-sixth
+								.grid__column--one-quarter
+								.grid__column--one-third
+								.grid__column--one-half
+								.grid__column--two-thirds
+								.grid__column--three-quarters
 								.grid__column--full-width
-							</code>
+							</code></pre>
 						</div>
 					</div>
 				</div>
@@ -204,12 +211,13 @@
 					</div>
 					<div class="grid__column grid__column--one-half">
 						<div class="code-box">
-							<code>
-								@include column(9);<br /><br />
-								/* Columns within a nested grid */
-								// Creating a three column width column within a nested grid, where the nested grid container is 9 columns wide */
+							<pre><code class="language-css">
+								@include column(9);
+								/* Columns within a nested grid
+								Creating a three column width column within a nested grid,
+								where the nested grid container is 9 columns wide */
 								@include column(3,9)
-							</code>
+							</code></pre>
 						</div>
 					</div>
 				</div>
@@ -222,18 +230,18 @@
 					</div>
 					<div class="grid__column grid__column--one-half">
 						<div class="code-box code-box-tall">
-							<code>
-								&lt;div class="grid-container"&gt;<br />
-								&nbsp;&lt;div class="grid__row-container grid__column--two-thirds"&gt;<br />
-         				&nbsp;&nbsp;&lt;ul class="grid__row"&gt;<br />
-								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;<br />
-								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;<br />
-								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;<br />
-								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;<br />
-								&nbsp;&nbsp;&lt;/ul&gt;<br />
-								&nbsp;&lt;/div&gt;<br />
-      					&nbsp;&lt;div class="grid__column grid__column--one-third">Sidebar&lt;/div&gt;
-							</code>
+							<pre><code class="language-markup">
+								&lt;div class="grid-container"&gt;
+								&nbsp;&lt;div class="grid__row-container grid__column--two-thirds"&gt;
+								&nbsp;&nbsp;&lt;ul class="grid__row"&gt;
+								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;
+								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;
+								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;
+								&nbsp;&nbsp;&nbsp;&lt;li>Blog article&lt;/li&gt;
+								&nbsp;&nbsp;&lt;/ul&gt;
+								&nbsp;&lt;/div&gt;
+								&nbsp;&lt;div class="grid__column grid__column--one-third">Sidebar&lt;/div&gt;
+							</code></pre>
 						</div>
 					</div>
 				</div>
@@ -251,28 +259,28 @@
 					</div>
 					<div class="grid__column grid__column--one-half">
 						<div class="code-box code-box-tall">
-							<code>
+							<pre><code class="language-css">
 								/* Breakpoint mixin example */
-								.global-header {<br />
-								&nbsp;height: 42px;<br />
-								&nbsp;@include breakpoint($phablet, true) {<br />
-								&nbsp;&nbsp;height: 62px;<br />
-								&nbsp;}<br />
-								}<br /><br />
+								.global-header {
+								&nbsp;height: 42px;
+								&nbsp;@include breakpoint($phablet, true) {
+								&nbsp;&nbsp;height: 62px;
+								&nbsp;}
+								}
+
 								/* Breakpoint variables */<br />
 								$phablet: 480px;<br />
 								$tablet: 720px;<br />
 								$laptop: 960px;<br />
 								$desktop: 1240px;<br />
 								$desktop-wide: 1600px;<br />
-							</code>
+							</code></pre>
 						</div>
 					</div>
 
 				</div>
 			</div>
-		</div>
-	</div>
+			</div></div><div class="grid-container" id="js-component-import--global-footer"></div>
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
@@ -281,7 +289,7 @@
  	<script src="js/vendor/jquery-ui.custom.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script>
  	<script src="js/templates/templates.js"></script>
-	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	 
 	<!--[if IE 9]>
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->

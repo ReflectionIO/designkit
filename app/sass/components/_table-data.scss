@@ -1,76 +1,147 @@
-.table-data {
+table.table-data {
 	width: 100%;
+	transition: 0.3s all;
 	table-layout: fixed;
-	th {
-		padding-top: 2.1rem;
-		padding-bottom: 1.4rem;
-		font-size: 1.4rem;
-		font-family: $brand-heading-font;
-		font-weight: 600;
-		color: $dark-grey-1;
-		background-color: $reflection-white;
+	.is-safari & {
+		table-layout: auto;
+		width: 100%;
 	}
-	td {
-		vertical-align: middle;
-	}
-	.MHXTE6C-i-f {
-		padding-left: percentage(20/1000);
-	}
-	.MHXTE6C-i-c {
-		background-color: #f2f2f5;
-	}
-	.MHXTE6C-i-s {
-		background-color: $reflection-white;
-	}
-	.MHXTE6C-i-a {
-		padding-top: 5px;
-		padding-bottom: 6px;
-		vertical-align: middle;
-		font-size: 1.5rem;
-		color: #363A47;
-	}
-	.img-rounded {
-		margin-right: 18px;
-		padding-top: 6px;
-		width: 46px;
-		vertical-align: top;
-	}
-	.text-muted {
-		margin-bottom: 0.6rem;
-		display: block;
-		font-size: 1.3rem;
-		color: $light-grey-1;
-	}
-	.icon-dollar,
-	.ref-icon-before--revenue {
-		font-size: 1.2rem;
-		font-weight: 700;
-		color: #363a47;
-	}
-	.MHXTE6C-r-a,
-	.MHXTE6C-I-a {
-		width: calc(100% - 100px);
-		padding-top: 9px;
-		display: inline-block;
-		white-space: nowrap;
-		a {
-			margin-bottom: 0.6rem;
-			display: block;
-			font-size: 1.6rem;
-			font-weight: 700;
-			line-height: 1.2;
-			color: $reflection-purple;
-			text-overflow: ellipsis;
-			overflow: hidden;
-			&:hover {
-				color: darken($reflection-purple, 10%);
+	.scrollable & {
+		table-layout: auto;
+		@include breakpoint($tablet) {
+			table-layout: fixed;
+			.is-safari & {
+				table-layout: auto;
+				width: 100%;
 			}
 		}
 	}
-	.MHXTE6C-i-d {
+	th {
+		padding: 13px 10px 11px;
+		font-size: 14px;
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		color: $dark-grey-1;
+		background-color: $reflection-white;		
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@include breakpoint($tablet) {
+			font-size: 1.6rem;
+		}
+	}
+	td {
+		font-size: 12px;
+		color: #363A47;
+		vertical-align: middle;
+		padding: 10px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	a {
+		color: $reflection-purple;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+	}
+	.MHXTE6C-i-f,
+	.th-first {
+		padding-left: percentage(20/1000);
+	}
+	.MHXTE6C-i-c,
+	.table-cell-odd-row {
+		background-color: #f2f2f5;
+	}
+	.MHXTE6C-i-s,
+	.table-cell-even-row {
+		background-color: $reflection-white;
+	}
+	.MHXTE6C-i-a,
+	.table-data {
+		padding-top: 1px;
+		padding-bottom: 6px;
+		vertical-align: middle;
+		font-size: 13px;
+		color: #363A47;
+		@include breakpoint($tablet) {
+			font-size: 15px;
+		}
+	}
+	.img-rounded {
+		margin-right: 18px;
+		margin-top: 6px;
+		width: 46px;
+		vertical-align: top;
+		border-radius: 7px;
+	}
+	.text-muted {
+		margin-bottom: 6px;
+		display: block;
+		font-size: 13px;
+		color: $light-grey-1;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		@include breakpoint($desktop) {
+			margin-bottom: 4px;
+		}
+		@include breakpoint($desktop-wide) {
+			margin-bottom: 2px;
+		}
+	}
+	.icon-dollar,
+	.ref-icon-before--revenue,
+	.ref-icon-before--cloud {
+		font-size: 12px;
+		font-weight: 700;
+		color: #363a47;
+		&:before {
+			vertical-align: top !important;
+		}
+	}
+	.MHXTE6C-r-a,
+	.MHXTE6C-I-a,
+	.app-details {
+		width: 100%;
+		padding-top: 9px;
+		display: inline-block;
+		white-space: nowrap;
+		@include breakpoint($tablet) {
+			width: calc(100% - 85px);
+		}
+		.is-safari & {
+			max-width: 200px;
+			@include breakpoint($desktop) {
+				max-width: 400px;
+			}
+			@include breakpoint($desktop-wide) {
+				max-width: none;
+			}
+		}		
+		a,
+		.leaderboard-app-name {
+			margin-bottom: 6px;
+			display: block;
+			font-size: 14px;
+			font-weight: 700;
+			line-height: 1.2;
+			color: $dark-grey-2;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			@include breakpoint($tablet) {
+				font-size: 16px;
+			}
+		}
+		a {
+			color: $reflection-purple;
+			&:hover {
+				color: darken($reflection-purple, 10%);
+			}			
+		}
+	}
+	.MHXTE6C-i-d,
+	.table-data-first {
 		padding: 0;
 		padding-left: percentage(20/1000);
-		font-size: 1.6rem;
+		font-size: 16px;
 		color: #363a47;
 		vertical-align: middle;
 	}
@@ -86,13 +157,118 @@
 			font-size: 19px;
 		}
 	}
-	.ref-icon-before--revenue {
+	.ref-icon-before--revenue,
+	.ref-icon-before--cloud {
+		position: relative;
+		padding-left: 26px;
+		padding-bottom: 5px;
+		display: inline-block;
+		line-height: 1;
 		&:before {
-			position: relative;
-			top: -0.1rem;
-			margin-right: 1.1rem;
-			font-size: 1.9rem;
+			position: absolute;
+			top: -1px;
+			left: 0;
+			margin-right: 11px;
+			font-size: 17px;
 			vertical-align: middle;
 		}
 	}
+	.ref-icon-before--cloud {
+		padding-left: 23px;
+		&:before {
+			top: -2px;
+		}
+	}
+}
+.cellTableLoading {
+	gwt-sprite: 'cellTableLoading';
+	padding: 0;
+	background: none;
+	text-align: center;
+	table {
+		.is-safari & {
+			table-layout: fixed;
+		}		
+	}
+	.compact-view & {
+		tr td {
+			padding: 10px;
+		}
+	}
+}
+.column-hidden--mobile,
+svg.loading-ellipsis-hidden--mobile {
+	@media only screen and (max-width: $mobile-max-width) {
+		display: none;
+	}
+}
+table.table-data>tbody>tr:nth-child(odd),
+.cellTableLoading table>tbody>tr:nth-child(odd) {
+	background-color: #F2F2F5;
+	>td {
+		background-color: #F2F2F5;
+	}
+}
+table.table-data>tbody>tr:nth-child(even),
+.cellTableLoading table>tbody>tr:nth-child(even) {
+	background-color: $reflection-white;
+	>td {
+		background-color: $reflection-white;
+	}
+}
+.cellTableLoading {
+	td {
+		vertical-align: middle !important;
+		&:first-child {
+			padding-left: 2% !important;
+		}
+	}
+}
+table.table-data .cellTableLoading .img-rounded {
+	vertical-align: middle;
+}	
+.table-body--loading {
+	> tr > td {
+		padding: 0 !important;
+	}
+}
+table.table-data.sticky-table-head {
+	position: fixed;
+	top: 42px;
+	width: calc(100% - 20px);
+	z-index: 10;
+	visibility: hidden;
+	opacity: 0;	
+	transition: width 0.15s ease-in;
+	thead {
+		background: $reflection-white;
+	}
+	tbody {
+		visibility: hidden;
+		opacity: 0;
+	}
+	@include breakpoint($phablet) {
+		top: 62px;
+		width: calc(100% - 40px);
+	}
+	@include breakpoint($tablet) {
+		width: calc(100% - 44px);
+	}
+	@include breakpoint($laptop) {
+		width: calc(100% - 104px);
+	}
+}
+.is-chrome,
+.is-opera {
+	table.table-data.sticky-table-head {
+		transition: none;
+	}
+}
+.is-safari table.table-data.sticky-table-head {
+	@media screen and (max-width: $mobile-max-width) {
+		display: none;
+	}
+	@include breakpoint($tablet) {
+		width: calc(100% - 44px);
+	}	
 }

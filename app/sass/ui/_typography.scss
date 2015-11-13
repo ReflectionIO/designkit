@@ -2,18 +2,18 @@
 
 /* Typography variables */
 $brand-body-font: 'Lato', sans-serif;
-$brand-heading-font: 'Open Sans', sans-serif;
+$brand-heading-font: 'Source Sans Pro', sans-serif;
 $source-sans-pro: 'Source Sans Pro', sans-serif;
 $code-font: Courier, sans-serif;
 
 /* Font declarations */
 @font-face {
-  font-family: "reflection-icons";
-  src:url("../fonts/fontastic/reflection-icons.eot");
-  src:url("../fonts/fontastic/reflection-icons.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/fontastic/reflection-icons.woff") format("woff"),
-    url("../fonts/fontastic/reflection-icons.ttf") format("truetype"),
-    url("../fonts/fontastic/reflection-icons.svg#reflection-icons") format("svg");
+  font-family: "reflection-icons-1";
+  src:url("fonts/fontastic/reflection-icons-1.eot");
+  src:url("fonts/fontastic/reflection-icons-1.eot?#iefix") format("embedded-opentype"),
+    url("fonts/fontastic/reflection-icons-1.woff") format("woff"),
+    url("fonts/fontastic/reflection-icons-1.ttf") format("truetype"),
+    url("fonts/fontastic/reflection-icons-1.svg#reflection-icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -21,7 +21,7 @@ $code-font: Courier, sans-serif;
 /* Typography placeholders */
 %icon-font {
 	speak: none;
-	font-family: "reflection-icons";
+	font-family: "reflection-icons-1";
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
@@ -95,11 +95,17 @@ $code-font: Courier, sans-serif;
 .ref-icon-before--linkedin:before {
 	content: "p";
 }
+.ref-icon-before--google-plus:before {
+	content: "S";
+}
+.ref-icon-before--plus:before {
+	content: "T";
+}
 .ref-icon-before--cancel:before {
 	content: "s";
 }
 .ref-icon-before--cloud:before {
-	content: "J";
+	content: "f";
 }
 .ref-icon-before--minus:before {
 	content: "L";
@@ -115,6 +121,9 @@ $code-font: Courier, sans-serif;
 }
 .ref-icon-before--refresh:before {
 	content: "O";
+}
+.ref-icon-before--apple:before {
+	content: "R";
 }
 .ref-icon-after--angle-up:after {
 	content: "m";
@@ -134,6 +143,9 @@ $code-font: Courier, sans-serif;
 .ref-icon-after--dot:after {
 	content: "r";
 }
+.ref-icon-before--dot:before {
+	content: "r";
+}
 .ref-icon-before--check:before {
 	content: "t";
 }
@@ -146,8 +158,20 @@ $code-font: Courier, sans-serif;
 .ref-icon-after--question:after {
 	content: "F";
 }
+.ref-icon-after--info:after {
+	content: "J";
+}
 .ref-icon-after--close:after {
 	content: "K";
+}
+.ref-icon-before--location:before {
+	content: "Q";
+}
+.ref-icon-before--mail:before {
+	content: "P";
+}
+.ref-icon-before--wrench:before {
+	content: "U";
 }
 
 /* Base typography */
@@ -218,40 +242,43 @@ h5 + .heading-style--heading-six,
 .heading-style--heading-five + h6 {
 	margin-top: 0;
 }
+.small-text {
+	font-size: 1.2rem;
+}
 // Set up classes for reusable font sizes as per design kit
 h1, .heading-style--heading-one {
 	@extend .heading-style;
-	margin-top: 1.48em; // 37px
-	margin-bottom: 0.68em;
-	@include font-size(29px);
-	line-height: 1.4em;
+	margin-top: 3rem;	
+	margin-bottom: 0.65em;
+	font-size: 2.7rem;
+	line-height: 1.2em;
 	&:first-child:last-child {
 		margin-bottom: 0.68em;
 	}
-	@include breakpoint($phablet) {
-		margin-top: 0.94871794871795em; // 37px
-		margin-bottom: 0.43589743589744em;
-		@include font-size(39px);
-		line-height: 1.3333333em;
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		margin-bottom: 0.65em;
+		@include font-size(41px);
+		line-height: 1.2em;
 		&:first-child:last-child {
 			margin-bottom: 0.43589743589744em;
 		}
-	}		
+	}
 }
 h2, .heading-style--heading-two {
 	@extend .heading-style;
-	margin-top: 1.48em; // 37px
-	margin-bottom: 0.68em;
-	@include font-size(27px);
-	line-height: 1.4em;
+	margin-top: 3rem;
+	margin-bottom: 0.6em;
+	font-size: 2.5rem;
+	line-height: 1.3em;
 	&:first-child:last-child {
 		margin-bottom: 0.68em;
 	}
-	@include breakpoint($phablet) {
-		margin-top: 1.19354838709677em; // 37px
-		margin-bottom: 0.54838709677419em;
-		@include font-size(31px);
-		line-height: 1.35483870967742em;
+	@include breakpoint($tablet) {		
+		margin-top: 4rem;
+		margin-bottom: 0.6em;
+		@include font-size(33px);
+		line-height: 1.3em;
 		&:first-child:last-child {
 			margin-bottom: 0.54838709677419em;
 		}
@@ -259,61 +286,92 @@ h2, .heading-style--heading-two {
 }
 h3, .heading-style--heading-three {
 	@extend .heading-style;
-	margin-top: 1.48em; // 37px
+	margin-top: 3rem;
 	margin-bottom: 0.68em;
-	@include font-size(25px);
-	line-height: 1.4em;
+	font-size: 2.3rem;
+	line-height: 1.3em;
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		font-size: 2.7rem;
+	}
 	&:first-child:last-child {
 		margin-bottom: 0.68em;
 	}
 }
 h4, .heading-style--heading-four {
 	@extend .heading-style;
-	margin-top: 1.85em; // 37px
-	margin-bottom: 0.75em;
-	@include font-size(20px);
-	line-height: 1.5em;
+	margin-top: 3rem;
+	margin-bottom: 0.8em;
+	font-size: 2.1rem;
+	line-height: 1.4em;
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		font-size: 2.2rem;
+	}
 	&:first-child:last-child {
-		margin-bottom: 0.75em;
+		margin-bottom: 0.8em;
 	}
 }
 h5, .heading-style--heading-five {
 	@extend .heading-style;
-	margin-top: 2.3125em; // 37px
-	margin-bottom: 1em;
-	@include font-size(16px);
-	line-height: 1.5em;	
+	margin-top: 3rem;
+	margin-bottom: 0.7em;
+	font-size: 1.9rem;
+	line-height: 1.35em;	
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		font-size: 1.8rem;
+	}
 	&:first-child:last-child {
-		margin-bottom: 1em;
+		margin-bottom: 0.7em;
 	}
 }
 h6, .heading-style--heading-six {
 	@extend .heading-style;
-	margin-top: 2.64285714285714em; // 37px
-	margin-bottom: 1em;
-	@include font-size(14px);
-	line-height: 1.57142857142857em;
+	margin-top: 3rem;
+	margin-bottom: 0.7em;
+	font-size: 1.7rem;	
+	line-height: 1.35em;
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		font-size: 1.6rem;
+	}
 	&:first-child:last-child {
-		margin-bottom: 1em;
+		margin-bottom: 0.7em;
 	}
 }
 p {
 	max-width: 650px;
-	margin-bottom: 1.875em; // 30px
-	@include font-size(16px);
+	margin-bottom: 1.2em;
+	font-size: 1.6rem;
 	line-height: 1.5625em;
 	color: $mid-grey-1;
 	@include breakpoint($desktop) {
 		max-width: 680px;
 	}
 	@include breakpoint($desktop-wide) {
-		max-width: 750px;
+		max-width: 850px;
 	}
 	a {
 		text-decoration: none;
-		color: #6d69c5;
+		color: $reflection-purple;
+		.no-touch & {
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+			&:active {
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+}
+.text-link {
+	text-decoration: none;
+	color: $reflection-purple;
+	.no-touch & {
 		&:hover {
-			color: darken(#6d69c5, 10%);
+			color: $reflection-purple--hover;
 		}
 		&:active {
 			position: relative;
@@ -322,7 +380,7 @@ p {
 	}
 }
 .p-style--minor {
-	margin-bottom: 1.5em; // 21px
+	margin-bottom: 1.5em;
 	@include font-size(14px);
 	line-height: 1.64285714285714em;
 	&:last-child {
@@ -337,13 +395,11 @@ p {
 		margin-bottom: 0;
 	}
 }
-.content-list-item {
-	color: $mid-grey-1;
-}
 .content-list {
-	margin-bottom: 1.875em; // 30px
+	margin-top: 1.8em;
+	margin-bottom: 1.875em;
 	@include font-size(16px);
-	line-height: 1.375em; // 22px
+	line-height: 1.375em;
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -351,33 +407,68 @@ p {
 		max-width: 650px;
 		margin-bottom: 0.62em;
 		padding-left: 31px;
-		@extend .content-list-item;
+		color: $mid-grey-1;
+		@include breakpoint($desktop) {
+			max-width: 850px;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+		a {
+			text-decoration: none;
+			color: $reflection-purple;
+			.no-touch & {
+				&:hover {
+					color: $reflection-purple--hover;
+				}
+				&:active {
+					position: relative;
+					top: 2px;
+				}
+			}			
+		}
+	}
+	&.content-list--no-bullets {
+		li {
+			padding-left: 0;
+			background: none;
+			&:before {
+				display: none;
+			}
+		}
 	}
 }
+h1 + .content-list,
+h2 + .content-list,
+h3 + .content-list,
+h4 + .content-list,
+h5 + .content-list,
+h6 + .content-list {
+	margin-top: 0;
+}
 .content-list--featured {
-	margin-bottom: 1.5em; // 30px
-	@include font-size(20px);
-	line-height: 1.3em; // 26px
+	margin-bottom: 1.5em;
+	font-size: 2rem;
+	line-height: 1.3em;
 	&:last-child {
 		margin-bottom: 0;
 	}
 	li {
 		margin-bottom: 0.5em;
 		padding-left: 31px;
-		@extend .content-list-item;
 	}
 }
 .content-list--minor {
-	margin-bottom: 2.14285714285714em; // 30px
-	@include font-size(14px);
-	line-height: 1.42857142857143em; // 20px
+	margin-bottom: 2.14285714285714em;
+	font-size: 1.4rem;
+	line-height: 1.42857142857143em;
 	&:last-child {
 		margin-bottom: 0;
 	}
 	li {
 		margin-bottom: 0.44em;
 		padding-left: 26px;
-		@extend .content-list-item;
+		color: $mid-grey-1;
 	}
 }
 ol.content-list,
@@ -386,14 +477,38 @@ ol.content-list--featured {
 	counter-reset: ordered-counter;
 	li {
 		position: relative;
+		padding-left: 5rem;
+		@include breakpoint($tablet) {
+			padding-left: 6rem;
+		}
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-family: $brand-heading-font;
+			font-weight: 600;
+			color: $dark-grey-1;
+			content: counter(ordered-counter);
+			counter-increment: ordered-counter;
+			.page-terms & {
+				content: counter(ordered-counter) ".0";
+			}
+		}
+		ol {
+			counter-reset: ordered-sub-counter;
+			li:before {
+				font-family: $brand-heading-font;
+				font-weight: 600;
+				content: counter(ordered-counter) "." counter(ordered-sub-counter);
+				counter-increment: ordered-sub-counter;
+				.page-terms & {
+					content: counter(ordered-counter) "." counter(ordered-sub-counter);
+				}
+			}
+		}
 	}
-	li:before {
-		position: absolute;
-		top: 0;
-		left: 0;
-		content: counter(ordered-counter);
-		counter-increment: ordered-counter;
-		color: $light-grey-2;
+	p {
+		color: $mid-grey-1;
 	}
 }
 ol.content-list,
@@ -412,13 +527,15 @@ ul.content-list,
 ul.content-list--featured,
 ul.content-list--minor {
 	li {
-		background: url(../images/bg-bullet.png) no-repeat left 0.6em;
-		background-size: 10px auto;
-	}
-}
-ul.content-list--minor {
-	li {
-		background-size: 8px auto;
+		position: relative;
+		&:before {
+    	content: "\2022";
+    	position: absolute;
+			left: 0.1rem;
+    	font-family: $brand-body-font;
+    	font-size: 1.6rem;
+    	color: $reflection-purple;
+  	}
 	}
 }
 blockquote {
@@ -427,7 +544,8 @@ blockquote {
 	font-family: $brand-heading-font;
 	font-weight: 600;
 	color: $mid-grey-2;
-	margin-bottom: 5em;
+	margin-bottom: 3em;
+	margin-top: 3rem;
 	@extend %font-smoothing;
 	&:before {
 		position: absolute;
@@ -441,11 +559,11 @@ blockquote {
 		color: #e8e7f1;
 	}
 	p {
-		margin-bottom: 1.5em;
+		margin-bottom: 1em;
 		font-family: $brand-heading-font;
 		font-weight: 600;
-		line-height: 1.7;
-		@include font-size(14px);
+		line-height: 1.45;
+		@include font-size(16px);
 		color: $mid-grey-1;
 	}	
 	cite {
@@ -457,7 +575,7 @@ blockquote {
 			margin-bottom: 4px;
 			display: block;
 			font-family: $brand-heading-font;
-			font-size: 1.4rem;
+			font-size: 1.6rem;
 			font-weight: 600;
 			color: $dark-grey-1;
 		}
@@ -483,9 +601,10 @@ strong {
 }
 .blockquote--large {
 	padding-top: 0;
-	padding-left: 65px;
+	padding-left: 65px;	
+	margin-top: 3.4rem;
+	margin-bottom: 3.5rem;
 	font-size: 1.1em;
-	margin-bottom: 4.54545454545455em;
 	p {
 		margin-bottom: 1.2em;
 		font-size: 1.6em;
@@ -498,7 +617,27 @@ strong {
 	cite {
 		font-size: 1.4rem;
 		span {
-			font-size: 1.6rem;
+			font-size: 1.8rem;
 		}
 	}
+}
+figcaption {
+	margin-top: 1.2rem;
+	margin-bottom: 1.9em;
+	padding: 0 3%;
+	font-size: 1.4em;
+	line-height: 1.5625em;	
+	display: block;
+	color: #81869e;
+}
+.warning-text {
+	color: $reflection-red !important;
+}
+a.warning-text:hover {
+	.no-touch & {
+		color: $error-red !important;
+	}
+}
+img.image-full-width {
+	width: 100%;
 }
