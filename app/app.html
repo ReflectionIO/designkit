@@ -248,8 +248,8 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 								</div>
 								<div class="filter-switch filter-switch--small">									
 									<div class="can-toggle can-toggle--size-small">
-									  <input id="overlaydownloads" type="checkbox">
-									  <label for="overlaydownloads" class="js-overlay-downloads">
+									  <input id="checkbox--overlay-downloads" type="checkbox">
+									  <label for="checkbox--overlay-downloads">
 									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
 									  </label>
 									</div>
@@ -275,8 +275,8 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 								</div>
 								<div class="filter-switch filter-switch--small">									
 									<div class="can-toggle can-toggle--size-small">
-									  <input id="overlayapps" type="checkbox">
-									  <label for="overlayapps">
+									  <input id="checkbox--overlay-apps" type="checkbox">
+									  <label for="checkbox--overlay-apps">
 									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
 									  </label>
 									</div>
@@ -572,6 +572,45 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	        .add();
 
 	      });
+
+				H.wrap(H.Series.prototype, 'hide', function (proceed) {
+
+				  // Before the show function
+				  var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent-fade");
+				  var instance = this;
+				  // Now apply the original function with the original arguments, 
+				  // which are sliced off this function's arguments
+				  setTimeout(function() {
+				  	proceed.apply(instance, Array.prototype.slice.call(arguments, 1));
+				  	par.attr("class", "highcharts-series");
+				  }, 200);				  
+
+				});
+
+				H.wrap(H.Series.prototype, 'show', function (proceed) {
+
+				  // Before the show function
+
+				  // Now apply the original function with the original arguments, 
+				  // which are sliced off this function's arguments
+				  proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+
+				  // after show()
+				  var currentPath = this.graph.d;
+				  var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent");
+				  setTimeout(function() {
+				  	var el = Snap('#series2');
+            var numberOfItems = el.node.pathSegList.numberOfItems;
+            for(var x=0; x < numberOfItems; x++) {
+              el.node.pathSegList[x].y = 454;
+            }
+				  	par.attr("class", "highcharts-series");
+				  	setTimeout(function() {
+				  		el.animate({ d: currentPath }, 800, mina.elastic);
+				  	}, 400);
+				  }, 100);
+
+				});
 	    }(Highcharts));
 
 	    Highcharts.setOptions({
@@ -609,7 +648,8 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 					marginTop: 0,
 					backgroundColor: '#fcfdfd',
 					plotBackgroundColor: '#f1f1f6',
-		   		type: 'area',        
+		   		type: 'area',
+		   		animation: false,
 		   		style: {
             fontFamily: 'Lato, sans-serif'
           },
@@ -748,6 +788,22 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
           labels: {
             align: 'right',
             style: {
+              color: '#2ecaa7',
+              fontSize: "13px"
+            }
+          },
+          title: {
+            text: null
+          },
+          opposite: true
+        }, {
+          offset: -80,
+          showFirstLabel: false,
+          showLastLabel: false,
+          gridLineColor: '#e1e5e8',
+          labels: {
+            align: 'right',
+            style: {
               color: '#ff496a',
               fontSize: "13px"
             }
@@ -798,8 +854,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
         				},
         				lineWidthPlus: 1
         			}
-        		},
-        		animation : false
+        		}        		
         	},
           series: {
             events: {
@@ -807,7 +862,8 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
                 
               }              
             },
-            cursor: 'pointer'
+            cursor: 'pointer',
+            animation: false
           },
       	},
         series:          
@@ -870,33 +926,33 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
                 }
               }
             }
-          },
-          {
-            yAxis: 1,
-            name: "Downloads",
-            id : 'downloads',
-            data: [19.9, 41.5, 51.4, 57.2, 70.0, 60.0, 62.6, 55.5, 40.4, 45.1, 40.6, 30.4, 12.9, 10.5, 40.4, 50.2, 45.0, 60.0, 70.0, 60.0, 65.6, 80.4, 90.2, 80.0, 75.5, 70.4],
-            pointStart: Date.UTC(2015, 2, 1),
-            pointInterval: 24 * 3600 * 1000, // one day
-            fillOpacity: 0,
-            color: '#ff496a',
-            lineWidth: 2,
-            lineWidthPlus: 0,
-            lineColor: '#ff496a',
-            dashStyle: 'dash',
-            marker: {
-              enabled: false,
-              states: {
-                hover: {
-                  enabled: true,
-                  fillColor: '#ff496a',
-                  lineWidth: 0,
-                  lineWidthPlus: 0,
-                  radius: 4,
-                  radiusPlus: 0,
-                }
-              }
-            }
+          }, {
+          	yAxis: 2,
+		        name: "Downloads",
+		        id : 'downloads',
+		        data: [19.9, 41.5, 51.4, 57.2, 70.0, 60.0, 62.6, 55.5, 40.4, 45.1, 40.6, 30.4, 12.9, 10.5, 40.4, 50.2, 45.0, 60.0, 70.0, 60.0, 65.6, 80.4, 90.2, 80.0, 75.5, 70.4],
+		        pointStart: Date.UTC(2015, 2, 1),
+		        pointInterval: 24 * 3600 * 1000, // one day
+		        fillOpacity: 0,
+		        color: '#ff496a',
+		        lineWidth: 2,
+		        lineWidthPlus: 0,
+		        lineColor: '#ff496a',
+		        dashStyle: 'dash',
+		        marker: {
+		          enabled: false,
+		          states: {
+		            hover: {
+		              enabled: true,
+		              fillColor: '#ff496a',
+		              lineWidth: 0,
+		              lineWidthPlus: 0,
+		              radius: 4,
+		              radiusPlus: 0,
+		            }
+		          }
+		     		},
+		     		visible: ($('#checkbox--overlay-downloads:checked').length > 0),
           }
         ],
         tooltip: {
@@ -935,7 +991,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
         }
 	    });
 			
-			// events[] to hold the event objects, which consist of an icon, line and tooltip content and tooltip colour
+			// Events[] to hold the event objects, which consist of an icon, line and tooltip content and tooltip colour
 			var events = [];
 
 			if($('#checkbox--show-events:checked').length > 0) {
@@ -950,6 +1006,12 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 						for (var e = 0; e < events.length; e++) {
 							$(events[e].icon.element).show(200);
 							$(events[e].line.element).show(200);
+							if(events[e].area) {
+								$(events[e].area.element).show(200);
+							}
+							if(events[e].label) {
+								$(events[e].label.element).show(200);
+							}
 						}
 					}
 				} else {
@@ -957,12 +1019,47 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 						for (var e = 0; e < events.length; e++) {
 							$(events[e].icon.element).hide(200);
 							$(events[e].line.element).hide(200);
+							if(events[e].area) {
+								$(events[e].area.element).hide(200);
+							}
+							if(events[e].label) {
+								$(events[e].label.element).hide(200);
+							}
 						}
 					}
 				}
 			});
 
+			// Events - Fix for window width change
+			$(window).on("resize", function(){
+				if(events.length > 0) {
+					// redraw events
+					for (var e = 0; e < events.length; e++) {
+						events[e].icon.destroy();
+						events[e].line.destroy();
+						if(events[e].area) {
+							events[e].area.destroy();
+						}
+						if(events[e].label) {
+							events[e].label.destroy();
+						}
+					}
+					events = [];
+					setTimeout(function(){
+						if(events.length == 0) {
+							if($('#checkbox--show-events:checked').length > 0) {
+								addEventsToGraph();
+							}
+						}
+					}, 1500);
+				}
+			});
+
+			// Add events to the graph function
 			function addEventsToGraph() {
+
+				var numberOfChartItems = chart.series[0].data.length - 1;
+			  var chartWidth = $(chart.container).width();
 
 	      events.push({
 	      	icon: chart.renderer.image('images/icon-launch.png', chart.series[0].data[2].plotX - 10, chart.chartHeight - 80, 20, 49)
@@ -973,9 +1070,22 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 		            .add(),
 		      line: chart.renderer.path(['M', chart.series[0].data[2].plotX, chart.chartHeight - 45, 'L', chart.series[0].data[2].plotX, 0])
 		            .attr({
-		                'stroke-width': 1,
-		                stroke: '#81879d',
-		                zIndex: 9
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 9
+		            })
+		            .add(),
+		       label: chart.renderer.text('<span>LAUNCHED</span>', chart.series[0].data[2].plotX + 18, 439)
+		            .attr({
+		            	rotation: -90,
+		            	zIndex: 9
+		            })
+		            .css({
+	                color: '#81879d',
+	                fontSize: '11px',
+	                fontFamily: 'Lato',
+      		        fontWeight: 'bold',
+      		        pointerEvents: 'none'
 		            })
 		            .add()
 	      },{
@@ -987,20 +1097,43 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 		            .add(),
 		      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight - 45, 'L', chart.series[0].data[8].plotX, 00])
 		            .attr({
-		                'stroke-width': 1,
-		                stroke: '#81879d',
-		                zIndex: 10
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 10
+		            })
+		            .add(),
+		      label: chart.renderer.text('<span>FEATURED</span>', chart.series[0].data[8].plotX + 18, 439)
+		            .attr({
+		            	rotation: -90,
+		            	zIndex: 9
+		            })
+		            .css({
+	                color: '#81879d',
+	                fontSize: '11px',
+	                fontFamily: 'Lato',
+	                fontWeight: 'bold',
+	                pointerEvents: 'none'
+		            })
+		            .add(),
+		      area: chart.renderer.rect(chart.series[0].data[8].plotX, 0, ((chartWidth / numberOfChartItems) * 4), 455, 0)
+		            .attr({
+	                'stroke-width': 0,
+	                fill: 'rgba(129, 135, 157, 0.1)',
+	                zIndex: 5
+		            })
+		            .css({
+		            	pointerEvents: 'none'
 		            })
 		            .add()
 	      });
 
-				// add tooltip data
+				// Events - Add tooltip data
 				$(events[0].icon.element).data("tooltip", "App Launch, 3 Mar 2015");				
 				$(events[0].icon.element).data("datapoint", 2);
 				$(events[0].icon.element).data("tooltipcolour", "#FFFFFF");
 				$(events[0].icon.element).data("tooltipfill", "rgba(109, 105, 197, 0.8)");
 
-				$(events[1].icon.element).data("tooltip", "1.1 Update, 9 Mar 2015");
+				$(events[1].icon.element).data("tooltip", "Featured Games, 9 Mar 2015");
 				$(events[1].icon.element).data("datapoint", 8);
 				$(events[1].icon.element).data("tooltipcolour", "#FFFFFF");
 				$(events[1].icon.element).data("tooltipfill", "rgba(27,199,159, 0.8)");
@@ -1010,7 +1143,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	      		var currentCSSClass = $(events[e].icon.element).attr("class");
 	        	$(events[e].icon.element).attr("class", "animation-complete " + currentCSSClass);
 	        }
-	      }, 1900);
+	      }, 2000);
 
 	      var eventTooltip;
 	      for (var e = 0; e < events.length; e++) {
@@ -1033,10 +1166,45 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	        $(events[e].icon.element).on("mouseout", function(){
 	        	$(chart.container).find(".custom-tooltip").fadeIn(100);
 	        	eventTooltip.destroy();
-	        });
+	        });	        
 	      }
 			}
-    }  	
+
+			// Overlay Downloads
+
+			$('#checkbox--overlay-downloads').change(function(){
+				if($(this).is(":checked")) {
+					chart.series[2].show();
+				} else {
+					chart.series[2].hide();
+				}
+			});
+
+			// Add another series
+	    var anotherSeries;
+	        
+	    if($('#checkbox--overlay-apps:checked').length > 0) {
+					addAnotherSeries();
+				}
+
+				$('#checkbox--overlay-apps').change(function(){
+					if($(this).is(":checked")) {
+						if(anotherSeries == undefined) {
+							addAnotherSeries();
+						} else {
+							chart.series[anotherSeries.index].show();
+						}
+					} else {
+						chart.series[anotherSeries.index].hide();
+					}
+	  	});
+
+			function addAnotherSeries() {
+				anotherSeries = chart.addSeries({
+	    		
+	      });
+			}
+    }
 
   	window.onready = initScripts();
   </script>

@@ -4,8 +4,18 @@
 	overflow: visible;
 }
 .highcharts-series {
+	opacity: 1;
+	transition: opacity 0.3s;
 	stroke {
 		cursor: pointer;
+	}
+	&.is-transparent {
+		opacity: 0;
+		transition: opacity 0s;
+	}
+	&.is-transparent-fade {
+		opacity: 0;
+		transition: opacity 0.2s;
 	}
 }
 .highcharts-series.selected-series {
@@ -105,7 +115,7 @@ $translateYHeightFlag: -443px;
 }
 .event-icon--launch {
 	cursor: pointer;
-	animation: vibrate 0.2s 6, launch 0.7s 1.2s ease-in forwards;
+	animation: vibrate 0.2s 6, launch 0.8s 1.2s ease-in forwards;
 	&.animation-complete {
 		animation: none;
 		transform: translateY($translateYHeightLaunch);
@@ -116,7 +126,7 @@ $translateYHeightFlag: -443px;
 }
 .event-icon--flag {
 	cursor: pointer;
-	animation: hoist 1.9s forwards;
+	animation: hoist 2s forwards;
 	&.animation-complete {
 		animation: none;
 		transform: translateY($translateYHeightFlag);
