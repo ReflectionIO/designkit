@@ -1729,6 +1729,16 @@ input::-ms-clear {
             transform: translate(-36px, -13px);
   }
 }
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 /* Global */
 /* line 1, sass/ui/_icons.scss */
 .ref-icon-before, .accordion .list-item-complete, .accordion-switch, .main-navigation > ul ul li.has-child, .ref-icon-after, .read-only-date span, .checklist li, .form-field .form-field-help,
@@ -12185,6 +12195,11 @@ table.table-data.table-linked-accounts--disabled thead {
   height: 16px;
   display: inline-block;
 }
+/* line 308, sass/components/_button.scss */
+.refresh-button.is-loading svg {
+  -webkit-animation: spin 0.6s linear infinite;
+          animation: spin 0.6s linear infinite;
+}
 
 @-webkit-keyframes backgroundMove {
   0% {
@@ -12203,7 +12218,7 @@ table.table-data.table-linked-accounts--disabled thead {
     background-position: 470px 0;
   }
 }
-/* line 314, sass/components/_button.scss */
+/* line 319, sass/components/_button.scss */
 .ref-button--is-loading {
   background-color: #ff4969;
   /* @alternate */
@@ -12214,13 +12229,13 @@ table.table-data.table-linked-accounts--disabled thead {
           animation: backgroundMove 5s linear infinite;
   cursor: default;
 }
-/* line 327, sass/components/_button.scss */
+/* line 332, sass/components/_button.scss */
 .ref-button--is-loading:active {
   top: 0;
   border: none;
 }
 
-/* line 332, sass/components/_button.scss */
+/* line 337, sass/components/_button.scss */
 .ref-button--success,
 .ref-button--success:disabled {
   color: #29292c;
@@ -12229,7 +12244,7 @@ table.table-data.table-linked-accounts--disabled thead {
   -webkit-transition: background-color 0s;
           transition: background-color 0s;
 }
-/* line 338, sass/components/_button.scss */
+/* line 343, sass/components/_button.scss */
 .ref-button--success:active, .ref-button--success:hover,
 .ref-button--success:disabled:active,
 .ref-button--success:disabled:hover {
@@ -12238,7 +12253,7 @@ table.table-data.table-linked-accounts--disabled thead {
   background-color: transparent;
 }
 
-/* line 344, sass/components/_button.scss */
+/* line 349, sass/components/_button.scss */
 .ref-button--positive,
 .ref-button--positive:disabled {
   background-color: #1bc79f;
@@ -12246,7 +12261,7 @@ table.table-data.table-linked-accounts--disabled thead {
   -webkit-transition: background-color 0s;
           transition: background-color 0s;
 }
-/* line 349, sass/components/_button.scss */
+/* line 354, sass/components/_button.scss */
 .ref-button--positive:active, .ref-button--positive:hover,
 .ref-button--positive:disabled:active,
 .ref-button--positive:disabled:hover {
@@ -12255,14 +12270,14 @@ table.table-data.table-linked-accounts--disabled thead {
   background-color: #1bc79f;
 }
 
-/* line 355, sass/components/_button.scss */
+/* line 360, sass/components/_button.scss */
 .ref-button--error {
   background-color: #e37f26;
   cursor: default;
   -webkit-transition: background-color 0s;
           transition: background-color 0s;
 }
-/* line 359, sass/components/_button.scss */
+/* line 364, sass/components/_button.scss */
 .ref-button--error:active, .ref-button--error:hover {
   top: 0;
   border: none;
