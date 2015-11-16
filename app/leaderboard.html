@@ -506,6 +506,14 @@
 				$('.page-overlay--standard .popup-content').removeClass("is-showing");
 			});
 
+			// popup overlay click to close
+			$('.page-popup').on("click", function(e){
+				if(!$(e.target).parents('.popup-content').length && !($(e.target).is($('.popup-content')))) {
+					$('.page-overlay').fadeOut(100);
+					$('.page-overlay .popup-content').removeClass("is-showing");
+				}
+			});
+
 			// mock menu select
 			var thisPageLink = $('#js-component-import--panel-left').find('a[href="leaderboard.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");

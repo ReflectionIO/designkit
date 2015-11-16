@@ -1594,6 +1594,8 @@
 				var pageTopBarHeight = $('.global-header').innerHeight(),
 						anchorId = $(this).attr("href"),
 						scrollTopOfTheAnchor = $(anchorId).offset().top;
+						$('.article-list--article .is-focus').removeClass("is-focus");
+						$(anchorId).addClass("is-focus");
 				$('html, body').animate({ scrollTop: scrollTopOfTheAnchor - pageTopBarHeight - 20}, 300, 'swing');
 			});
 		});
