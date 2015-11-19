@@ -37,7 +37,7 @@
 		  });
 	</script>
 </head>
-<body>
+<body id="body">
 	<header class="reflection-header">
 		<div class="reflection-header__logo-container">
 			<svg version=1.1 x=0px y=0px viewBox="0 0 911.5 195.6" enable-background="new 0 0 911.5 195.6" xml:space=preserve><path fill-rule=evenodd clip-rule=evenodd fill=#6D69C5 d="M9.6,0h127.5c5.3,0,9.6,4.3,9.6,9.6v1.7c0,5.3-4.3,9.6-9.6,9.6H9.6
@@ -105,8 +105,8 @@
 	</header>
 	<article class="reflection-article">
 		<header class="reflection-article__header">
-			<h2>Games Category</h2>
-			<h3>26 Oct 2015 to 01 Nov 2015</h3>
+			<h2>UK Games Category</h2>
+			<h3>26 Oct to 01 Nov 2015, Week 44</h3>
 		</header>
 		<table class="reflection-table-data" ng-controller="DataController as dataList">
 			<thead>
@@ -119,10 +119,10 @@
 				</tr>
 			</thead>
 			<colgroup>
-				<col style="width: 14%;">
-				<col style="width: 14%;">
-				<col style="width: 15%;">
-				<col style="width: 35%;">
+				<col style="width: 13%;">
+				<col style="width: 12%;">
+				<col style="width: 12%;">
+				<col style="width: 37%;">
 				<col style="width: 30%;">				
 			</colgroup>
 			<tbody>
@@ -142,5 +142,18 @@
 			</tbody>
 		</table>
 	</article>
+	<script>
+		var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+    var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+    var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+    var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+    var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+    if ((is_chrome)&&(is_safari)) {is_safari=false;}
+    if ((is_chrome)&&(is_opera)) {is_chrome=false;}
+
+    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+    	document.getElementById('body').classList.add('is-safari');
+    }
+	</script>
 </body>
 </html>

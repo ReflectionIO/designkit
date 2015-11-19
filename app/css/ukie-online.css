@@ -135,6 +135,9 @@ caption, th, td {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.is-safari .reflection-table-data {
+	table-layout: auto;
+}
 .reflection-table-data th {
 	padding: 13px 10px 11px 0;
 	font-size: 1.6rem;
@@ -166,14 +169,23 @@ caption, th, td {
 td.table-data__this-period {
 	font-weight: 700;
 }
+.is-safari td.table-data__this-period {
+	width: 12%;
+}
 td.table-data__change span {
 	font-size: 1.4rem;
-	font-weight: 400;
+	font-weight: 700;
+}
+.is-safari td.table-data__change {
+	width: 12%;
 }
 td.table-data__app-title {
 	font-size: 1.5rem;
 	font-weight: 700;
 	color: #363a47;
+}
+.is-safari td.table-data__app-title {
+	width: 37%;
 }
 td.table-data__app-title img,
 td.table-data__app-title .title-container {
@@ -183,8 +195,11 @@ td.table-data__app-title .title-container {
 td.table-data__app-title .title-container {
 	width: calc(100% - 75px);
 	overflow: hidden;
-	white-space: nowrap;
+	white-space: nowrap;	
 	text-overflow: ellipsis;
+}
+.is-safari .table-data__app-title .title-container {
+	white-space: normal;
 }
 td.table-data__app-title .title-container span {			
   overflow: hidden;
@@ -197,7 +212,10 @@ td.table-data__app-title img {
 }
 td.table-data__app-developer {
 	color: #81879d;
-	font-size: 1.4rem;
+	font-size: 1.4rem;	
+}
+.is-safari td.table-data__app-developer {
+	width: 30%;
 }
 td.table-data__app-developer div {
 	width: 100%;
