@@ -591,7 +591,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 
 				H.wrap(H.Series.prototype, 'hide', function (proceed) {
 
-				  // Before the show function
+				  // Before the hide function
 				  var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent-fade");
 				  var instance = this;
 				  // Now apply the original function with the original arguments, 
@@ -619,7 +619,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
             var numberOfItems = el.node.pathSegList.numberOfItems;
             for(var x=0; x < numberOfItems; x++) {
               el.node.pathSegList[x].y = 454;
-            }
+            }            
 				  	par.attr("class", "highcharts-series");
 				  	setTimeout(function() {
 				  		el.animate({ d: currentPath }, 800, mina.elastic);
@@ -906,7 +906,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
                           isCurrentlyHighlighted = true
                           that.chart.series[i].update({
                             lineWidth: 2
-                          });                      
+                          });           
                           var counterTwo = 0;
                           $('#container .highcharts-series').each(function(){
                             if(counterTwo == count) {
@@ -935,6 +935,15 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
                     $(this).siblings("path").css("opacity", "0.1");
                     $(this).siblings("path").animate({ "opacity": 1 }, 250);
                   }
+                });
+
+                // read the graph line id's after this.udpate
+                var counter = 0;
+
+                $('#container .highcharts-series path:nth-child(2)').each(function(){
+                  $(this).attr("id", "series" + counter);
+                  $(this).parent('.highcharts-series').find('path:first-child').attr("id", "series" + counter + "fill");
+                  counter++;
                 });
               },
               // mouseOver: function () {
@@ -1058,8 +1067,9 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
             var instance = this;
             var s = "";
             $.each(instance.points, function (index, value) {
-                var chartSeries = value.series.chart.series[index];
-                var imgString = "";                
+                var chartSeries = value.series;
+                var imgString = "";
+                
                 if(chartSeries.name == "Revenue") {
                   imgString = "<img src=images/icon-chart-revenue.png alt='Revenue icon' class=icon-revenue /> &pound;";
                 } else if (chartSeries.name == "Downloads") {
@@ -1264,17 +1274,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	        	eventTooltip.destroy();
 	        });	        
 	      }
-			}
-
-			// Overlay Downloads
-
-			$('#checkbox--overlay-downloads').change(function(){
-				if($(this).is(":checked")) {
-					chart.series[2].show();
-				} else {
-					chart.series[2].hide();
-				}
-			});
+			}			
 
 			// Overlay Revenue
 
@@ -1282,9 +1282,83 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 				if($(this).is(":checked")) {
 					chart.series[1].show();
 				} else {
-					chart.series[1].hide();
+					if($('#series1').attr("stroke-width") == 2.1) {
+						handleHideGraphLine()
+					}
+					setTimeout(function(){
+						chart.series[1].hide();
+					}, 200);
 				}
 			});
+
+
+			// Overlay Downloads
+
+			$('#checkbox--overlay-downloads').change(function(){
+				if($(this).is(":checked")) {
+					chart.series[2].show();
+				} else {
+					if($('#series2').attr("stroke-width") == 2.1) {
+						handleHideGraphLine()
+					}
+					setTimeout(function(){
+						chart.series[2].hide();
+					}, 200);
+				}
+			});
+
+			function handleHideGraphLine() {
+				for(var i = 0; i < chart.series.length; i++) {
+          if(i !== 0) {
+            var count = 0;
+            var isCurrentlyHighlighted = false;
+            $('#container .highcharts-series').each(function(){
+              if(count == i) {
+                var thisFillPath = $(this).find('path:nth-child(2)');                        
+                if(thisFillPath.attr("stroke-width") == 2.1) {
+                  isCurrentlyHighlighted = true
+                  chart.series[i].update({
+                    lineWidth: 2
+                  });           
+                  var counterTwo = 0;
+                  $('#container .highcharts-series').each(function(){
+                    if(counterTwo == count) {
+                      thisFillPath = $(this).find('path:nth-child(2)');
+                    }
+                    counterTwo++;
+                  });                          
+                  thisFillPath.css("opacity", "1");
+                  thisFillPath.animate({ "opacity": 0.4 }, 250);
+                  thisFillPath.siblings("path").css("opacity", "1");
+                  thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+                }
+              }
+              count++;
+            });
+          }
+        };
+
+        chart.series[0].update({
+          lineWidth: 2.1
+        });
+
+        $('#container .highcharts-series path:nth-child(2)').each(function(){
+          if($(this).attr("stroke-width") == 2.1) {
+            $(this).css("opacity", "1");
+            $(this).siblings("path").css("opacity", "0.1");
+            $(this).siblings("path").animate({ "opacity": 1 }, 250);
+          }
+        });
+
+        // read the graph line id's after this.udpate
+        var counter = 0;
+
+        $('#container .highcharts-series path:nth-child(2)').each(function(){
+          $(this).attr("id", "series" + counter);
+          $(this).parent('.highcharts-series').find('path:first-child').attr("id", "series" + counter + "fill");
+          counter++;
+        });
+			}
 
 			// Add another series
 	    var anotherSeries;
