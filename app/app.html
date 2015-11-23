@@ -684,11 +684,19 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
                 var countIndex = 0;
                 var graphPointAnimationDelay = 20;
                 $('#container .highcharts-series path:nth-child(1)').each(function() {
-                  // if (countIndex > -1) { // testing
-                  //   $(this).css("opacity", "0.2");
-                  // } else {
-                  //   $(this).css("opacity", "0.2");
-                  // }
+                  if (countIndex > 0) {                  	
+                    $(this).attr("style", "opacity: 0.1");
+                  }
+                  countIndex++;
+                });
+
+                countIndex = 0;
+                $('#container .highcharts-series path:nth-child(2)').each(function() {
+                  if (countIndex > 0) {                  	
+                    $(this).attr("style", "opacity: 0.5");
+                  } else {
+                    $(this).attr("style", "opacity: 1");
+                  }
                   countIndex++;
                 });
 
@@ -878,15 +886,75 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
         					fill: 'rgba(27,199,159,0.18)',
         					size: 13
         				},
-        				lineWidthPlus: 1
+        				lineWidthPlus: 0
         			}
         		}        		
         	},
           series: {
             events: {
-              click: function (event) {
-                
-              }              
+              click: function() {
+                var that = this;
+
+                for(var i = 0; i < this.chart.series.length; i++) {
+                  if(i !== that.index) {
+                    var count = 0;
+                    var isCurrentlyHighlighted = false;
+                    $('#container .highcharts-series').each(function(){
+                      if(count == i) {
+                        var thisFillPath = $(this).find('path:nth-child(2)');                        
+                        if(thisFillPath.attr("stroke-width") == 2.1) {
+                          isCurrentlyHighlighted = true
+                          that.chart.series[i].update({
+                            lineWidth: 2
+                          });                      
+                          var counterTwo = 0;
+                          $('#container .highcharts-series').each(function(){
+                            if(counterTwo == count) {
+                              thisFillPath = $(this).find('path:nth-child(2)');
+                            }
+                            counterTwo++;
+                          });                          
+                          thisFillPath.css("opacity", "1");
+                          thisFillPath.animate({ "opacity": 0.4 }, 250);
+                          thisFillPath.siblings("path").css("opacity", "1");
+                          thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+                        }
+                      }
+                      count++;
+                    });
+                  }
+                };
+
+                this.update({
+                  lineWidth: 2.1
+                });
+
+                $('#container .highcharts-series path:nth-child(2)').each(function(){
+                  if($(this).attr("stroke-width") == 2.1) {
+                    $(this).css("opacity", "1");
+                    $(this).siblings("path").css("opacity", "0.1");
+                    $(this).siblings("path").animate({ "opacity": 1 }, 250);
+                  }
+                });
+              },
+              // mouseOver: function () {
+              //   setTimeout(function(){
+              //     $('#container .highcharts-series path:nth-child(2)').each(function(){
+              //       if($(this).attr("stroke-width") == 3) {
+              //         $(this).css("opacity", 1);
+              //       }
+              //     });
+              //   },10);
+              // },
+              // mouseOut: function () {
+              //   setTimeout(function(){
+              //     $('#container .highcharts-series path:nth-child(2)').each(function(){
+              //       if($(this).attr("stroke-width") == 2) {
+              //         $(this).css("opacity", 0.5);
+              //       }
+              //     });
+              //   },10);
+              // }
             },
             cursor: 'pointer',
             animation: false
@@ -902,7 +970,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
             pointInterval: 24 * 3600 * 1000, // one day
             fillOpacity: 0,
             color: '#2ecaa7',
-            lineWidth: 2,
+            lineWidth: 2.1, // set on load for current graph line to be active graph line for series click event
             lineWidthPlus: 0,
             lineColor: '#2ecaa7',
             marker: {
@@ -930,7 +998,9 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
             pointInterval: 24 * 3600 * 1000, // one day
             color: '#6d69c5',
 						lineWidth: 2,
+						lineWidthPlus: 0,
 						lineColor: '#6d69c5',
+						fillOpacity: 1,
             fillColor: {
               linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
               stops: [
