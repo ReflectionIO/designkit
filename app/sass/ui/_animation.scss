@@ -47,19 +47,3 @@
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
 }
-$fold-up-time: 0.5s;
-.table-linked-accounts tbody {
-	perspective: 5000px;
-	transform-style: preserve-3d;	
-	tr {
-		position: relative;
-		top: 0;		
-		transform: rotateX(0deg);
-		transform-origin: 0px 0px 0px;
-		transition: transform $fold-up-time ease-in, top $fold-up-time ease-in;
-		&.fold-up {
-			transform: rotateX(-90deg);
-			transition: transform $fold-up-time ease-in, top $fold-up-time ease-in;
-		}
-	}
-}
