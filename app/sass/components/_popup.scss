@@ -52,6 +52,26 @@ $text-grey: $divider-grey;
 		background-color: $reflection-purple;
 	}
 }
+.tooltip--info {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	@extend .ref-icon-after;
+	@extend .ref-icon-after--info;
+	&:after {
+		position: relative;
+		top: 2px;
+		font-size: 18px;
+		color: $light-grey-2;
+		transition: color 0.2s;
+	}
+	span {
+		width: 0;
+		display: inline-block;
+		text-align: left;
+		text-indent: -999em;
+	}
+}
 .whats-this-tooltip-popup {
 	-webkit-perspective: 1300px;
 	perspective: 1300px;
@@ -61,8 +81,7 @@ $text-grey: $divider-grey;
 	z-index: 20000;
 	overflow: visible;
 }
-.whats-this-tooltip-icon,
-.whats-this-tooltip-icon-static  {
+.whats-this-tooltip-icon {
 	display: inline-block;
 	vertical-align: middle;
 	cursor: pointer;
@@ -77,27 +96,20 @@ $text-grey: $divider-grey;
 		position: relative;
 		top: 2px;
 		font-size: 18px;
-		color: #a19eea;
+		color: $light-grey-2;
 		transition: color 0.2s;
-	}	
-	span {
-		width: 0;
-		display: inline-block;
-		text-align: left;
-		text-indent: -999em;
 	}
-}
-.whats-this-tooltip-icon {
 	&:hover {
 		&:after {
 			color: $reflection-green;
 			transition: color 0.2s;
 		}
 	}
-}
-.whats-this-tooltip-icon-static {
-	&:after {
-		color: #c4c7d0;
+	span {
+		width: 0;
+		display: inline-block;
+		text-align: left;
+		text-indent: -999em;
 	}
 }
 .whats-this-tooltip,
