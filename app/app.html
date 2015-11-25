@@ -1170,7 +1170,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	      events.push({
 	      	icon: chart.renderer.image('images/icon-launch.png', chart.series[0].data[2].plotX - 10, chart.chartHeight - 80, 20, 49)
 		            .attr({
-		              zIndex: 10
+		              zIndex: 15
 		            })
 		            .addClass("event-icon--launch")
 		            .add(),
@@ -1195,6 +1195,44 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 		            })		      	
 		            .add(),
 		    	plotX: chart.series[0].data[2].plotX,
+	      },{
+	      	icon: chart.renderer.image('images/icon-flag-green.png', chart.series[0].data[2].plotX, chart.chartHeight - 57, 18, 12)
+		            .attr({
+		              zIndex: 9
+		            })
+		            .addClass("event-icon--flag")
+		            .add(),
+		      line: chart.renderer.path(['M', chart.series[0].data[2].plotX, chart.chartHeight - 45, 'L', chart.series[0].data[2].plotX, 00])
+		            .attr({
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 10
+		            })
+		            .add(),
+		      label: chart.renderer.text('<span>FEATURED</span>', chart.series[0].data[2].plotX + 18, 439)
+		            .attr({
+		            	rotation: -90,
+		            	zIndex: 9
+		            })
+		            .css({
+	                color: '#81879d',
+	                fontSize: '11px',
+	                fontFamily: 'Lato',
+	                fontWeight: 'bold',
+	                pointerEvents: 'none'
+		            })
+		            .add(),
+		      area: chart.renderer.rect(chart.series[0].data[2].plotX, 0, ((chartWidth / numberOfChartItems) * 4), 455, 0)
+		            .attr({
+	                'stroke-width': 0,
+	                fill: 'rgba(129, 135, 157, 0.1)',
+	                zIndex: 5
+		            })
+		            .css({
+		            	pointerEvents: 'none'
+		            })
+		            .add(),
+					plotX: chart.series[0].data[2].plotX,
 	      },{
 	      	icon: chart.renderer.image('images/icon-flag-green.png', chart.series[0].data[8].plotX, chart.chartHeight - 57, 18, 12)
 		            .attr({
@@ -1233,34 +1271,34 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 		            })
 		            .add(),
 					plotX: chart.series[0].data[8].plotX,
-	      },{
-	      	icon: chart.renderer.image('images/icon-flag-yellow.png', chart.series[0].data[8].plotX, chart.chartHeight - 57, 18, 12)
-		            .attr({
-		              zIndex: 9
-		            })
-		            .addClass("event-icon--flag")
-		            .add(),
-		      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight - 45, 'L', chart.series[0].data[8].plotX, 00])
-		            .attr({
-	                'stroke-width': 1,
-	                stroke: '#81879d',
-	                zIndex: 10
-		            })
-		            .add(),
-		      label: chart.renderer.text('<span>APP UPDATE</span>', chart.series[0].data[8].plotX + 18, 439)
-		            .attr({
-		            	rotation: -90,
-		            	zIndex: 9
-		            })
-		            .css({
-	                color: '#81879d',
-	                fontSize: '11px',
-	                fontFamily: 'Lato',
-	                fontWeight: 'bold',
-	                pointerEvents: 'none'
-		            })
-		            .add(),
-					plotX: chart.series[0].data[8].plotX,
+	    //   },{
+	    //   	icon: chart.renderer.image('images/icon-flag-yellow.png', chart.series[0].data[8].plotX, chart.chartHeight - 57, 18, 12)
+		   //          .attr({
+		   //            zIndex: 9
+		   //          })
+		   //          .addClass("event-icon--flag")
+		   //          .add(),
+		   //    line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight - 45, 'L', chart.series[0].data[8].plotX, 00])
+		   //          .attr({
+	    //             'stroke-width': 1,
+	    //             stroke: '#81879d',
+	    //             zIndex: 10
+		   //          })
+		   //          .add(),
+		   //    label: chart.renderer.text('<span>APP UPDATE</span>', chart.series[0].data[8].plotX + 18, 439)
+		   //          .attr({
+		   //          	rotation: -90,
+		   //          	zIndex: 9
+		   //          })
+		   //          .css({
+	    //             color: '#81879d',
+	    //             fontSize: '11px',
+	    //             fontFamily: 'Lato',
+	    //             fontWeight: 'bold',
+	    //             pointerEvents: 'none'
+		   //          })
+		   //          .add(),
+					// plotX: chart.series[0].data[8].plotX,
 				});
 
 				// Events - Add tooltip data
@@ -1269,16 +1307,24 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 				$(events[0].icon.element).data("tooltipcolour", "#FFFFFF");
 				$(events[0].icon.element).data("tooltipfill", "rgba(109, 105, 197, 0.8)");
 
-				$(events[1].icon.element).data("tooltip", "Featured Games, 9 Mar 2015");
-				$(events[1].icon.element).data("datapoint", 8);
+				$(events[1].icon.element).data("tooltip", "Featured Games, 3 Mar 2015");
+				$(events[1].icon.element).data("datapoint", 2);
 				$(events[1].icon.element).data("tooltipcolour", "#FFFFFF");
 				$(events[1].icon.element).data("tooltipfill", "rgba(27,199,159, 0.8)");
 
 				$(events[2].icon.element).data("tooltip", "Featured Games, 9 Mar 2015");
 				$(events[2].icon.element).data("datapoint", 8);
-				$(events[2].icon.element).data("tooltipcolour", "#444444");
-				$(events[2].icon.element).data("tooltipfill", "rgba(255,180,73, 0.8)");
+				$(events[2].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(events[2].icon.element).data("tooltipfill", "rgba(27,199,159, 0.8)");
 
+				// $(events[3].icon.element).data("tooltip", "Featured Games, 9 Mar 2015");
+				// $(events[3].icon.element).data("datapoint", 8);
+				// $(events[3].icon.element).data("tooltipcolour", "#444444");
+				// $(events[3].icon.element).data("tooltipfill", "rgba(255,180,73, 0.8)");
+
+
+				// position the launch event icons
+				// animation is by CSS
 				setTimeout(function(){ 
 	      	for (var e = 0; e < events.length; e++) {	      		
 	      		var currentCSSClass = $(events[e].icon.element).attr("class");
@@ -1288,11 +1334,16 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	        }
         }, 2000);
 
+				// position the flag event icons
+				// animation is by JS
         setTimeout(function(){ 
 	      	for (var e = 0; e < events.length; e++) {
 	      		var currentCSSClass = $(events[e].icon.element).attr("class");
 	      		if(currentCSSClass == " event-icon--flag") {
 	      			var thisPlotX = events[e].plotX, counter = 0;
+
+	      			// see if there are previos events on this date and add to counter if so
+	      			// this helps calculate the icon spacing
 		      		if(e > 0) {
 		      			for (var x = e-1; x > 0; x--) {
 		      				if(events[x].plotX == thisPlotX) {
@@ -1300,12 +1351,28 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 		      				}
 		      			}
 		      		}
-		      		var topPos = -443 + (17 * counter);
+
+		      		// see if there is a launch event on this date
+		      		// because following flags will need extra top space
+		      		var thereIsALaunchEventsOnThisDate = false;
+		      		for (var a = 0; a < events.length; a++) {
+		      			if(events[a].plotX == thisPlotX && $(events[a].icon.element).attr("class") == " event-icon--launch") {
+	      					thereIsALaunchEventsOnThisDate = true;
+	      				}
+		      		}
+		      		var extraSpacing = 0;
+		      		if(thereIsALaunchEventsOnThisDate) {
+		      			extraSpacing = 60;
+		      		}
+		      		var topPos = -443 + (17 * counter) + extraSpacing;
+
+		      		// position the event icon
 	      			$(events[e].icon.element).attr("style", "transform: translateY(" + topPos+ "px)");
 	      		}
 	        }
         }, 100);
-
+				
+				// create tooltip on event hover
 	      var eventTooltip;
 	      for (var e = 0; e < events.length; e++) {
 	      	$(events[e].icon.element).on("mouseenter", function(){
@@ -1329,10 +1396,68 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	        	eventTooltip.destroy();
 	        });	        
 	      }
+
+	      // if there are more than one events on one date, fix the event label
+
+	      	// find which plotX has more than one event and add to plotXDuplicates[]
+	      var plotXDuplicates = [];
+	      for (var e = 0; e < events.length; e++) {
+	      	var thisPlotX = events[e].plotX;
+	      	for (var a = e+1; a < events.length; a++) {
+	      		if(events[a].plotX == thisPlotX) {
+	      			var alreadyExists = false;
+	      			if(plotXDuplicates.length > 0) {	      				
+		      			for (var x = 0; x < plotXDuplicates.length; x++) {
+		      				if(plotXDuplicates[x] == thisPlotX) {
+		      					alreadyExists = true;
+		      				}
+		      			}
+	      			}
+	      			if(!alreadyExists) {
+	      				plotXDuplicates.push(events[a].plotX);
+	      			}	      			
+	      		}
+	      	}
+	      }
+
+	      	// iterate plotXDuplicates and remove labels
+	      var eventIndexesForDuplicateEventDate = [],
+	      	counterOfDuplicates = [];
+	      for(var p = 0; p < plotXDuplicates.length; p++) {
+	      	var counter = 0;
+	      	for (var e = 0; e < events.length; e++) {
+		      	if(plotXDuplicates[p] == events[e].plotX) {
+		      		$(events[e].label.element).attr("style", "display: none;");
+		      		eventIndexesForDuplicateEventDate.push(e);
+		      		counter++;
+		      	}
+		      }
+		      counterOfDuplicates.push(counter);
+	      }
+
+	      	// add new labels for plotXDuplicates
+	      for(var p = 0; p < plotXDuplicates.length; p++) {
+	      	// render new label and assign to the first event object with date duplicate
+	      	// this means it will still be destoyed on window change
+	      	events[eventIndexesForDuplicateEventDate[p]].label = chart.renderer.text('<span>' + counterOfDuplicates[p] + ' EVENTS</span>', plotXDuplicates[p] + 18, 439)
+	          .attr({
+	          	rotation: -90,
+	          	zIndex: 9
+	          })
+	          .css({
+	            color: '#81879d',
+	            fontSize: '11px',
+	            fontFamily: 'Lato',
+	            fontWeight: 'bold',
+	            pointerEvents: 'none'
+	          })
+	          .add()
+	      }
+
+	      // create tooltips on event label hover
 			}
 
 			// Overlay Revenue
-
 			$('#checkbox--overlay-revenue').change(function(){
 				if($(this).is(":checked")) {
 					chart.series[1].show();
@@ -1348,7 +1473,6 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 
 
 			// Overlay Downloads
-
 			$('#checkbox--overlay-downloads').change(function(){
 				if($(this).is(":checked")) {
 					chart.series[2].show();
