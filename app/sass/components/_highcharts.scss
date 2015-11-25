@@ -98,21 +98,6 @@ $translateYHeightFlag: -443px;
 	75% { transform: translateY($translateYHeightLaunch) translateX(-1px); }
 	100% { transform: translateY($translateYHeightLaunch) translateX(0px); }
 }
-@keyframes hoist {
-	0% { transform: translateY(0px); }
-	20% { transform: translateY($translateYHeightFlag/3); }
-	40% { transform: translateY($translateYHeightFlag/3); }
-	60% { transform: translateY($translateYHeightFlag/3 * 2); }
-	80% { transform: translateY($translateYHeightFlag/3 * 2); }
-	100% { transform: translateY($translateYHeightFlag); }
-}
-@keyframes flag-hover {
-	0% { transform: translateY($translateYHeightFlag) translateX(0px); }
-	25% { transform: translateY($translateYHeightFlag) translateX(1px); }
-	50% { transform: translateY($translateYHeightFlag) translateX(0px); }
-	75% { transform: translateY($translateYHeightFlag) translateX(-1px); }
-	100% { transform: translateY($translateYHeightFlag) translateX(0px); }
-}
 .event-icon--launch {
 	cursor: pointer;
 	animation: vibrate 0.2s 6, launch 0.8s 1.2s ease-in forwards;
@@ -125,13 +110,6 @@ $translateYHeightFlag: -443px;
 	}	
 }
 .event-icon--flag {
-	cursor: pointer;
-	animation: hoist 2s forwards;
-	&.animation-complete {
-		animation: none;
-		transform: translateY($translateYHeightFlag);
-		&:hover {
-			animation: flag-hover 0.4s infinite forwards;
-		}
-	}	
+	transform: translateY(0);
+	transition: transform 1.9s ease-in;
 }

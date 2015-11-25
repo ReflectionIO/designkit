@@ -1181,7 +1181,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	                zIndex: 9
 		            })
 		            .add(),
-		       label: chart.renderer.text('<span>LAUNCHED</span>', chart.series[0].data[2].plotX + 18, 439)
+		      label: chart.renderer.text('<span>LAUNCHED</span>', chart.series[0].data[2].plotX + 18, 439)
 		            .attr({
 		            	rotation: -90,
 		            	zIndex: 9
@@ -1192,8 +1192,9 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	                fontFamily: 'Lato',
       		        fontWeight: 'bold',
       		        pointerEvents: 'none'
-		            })
-		            .add()
+		            })		      	
+		            .add(),
+		    	plotX: chart.series[0].data[2].plotX,
 	      },{
 	      	icon: chart.renderer.image('images/icon-flag-green.png', chart.series[0].data[8].plotX, chart.chartHeight - 57, 18, 12)
 		            .attr({
@@ -1230,8 +1231,37 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 		            .css({
 		            	pointerEvents: 'none'
 		            })
-		            .add()
-	      });
+		            .add(),
+					plotX: chart.series[0].data[8].plotX,
+	      },{
+	      	icon: chart.renderer.image('images/icon-flag-yellow.png', chart.series[0].data[8].plotX, chart.chartHeight - 57, 18, 12)
+		            .attr({
+		              zIndex: 9
+		            })
+		            .addClass("event-icon--flag")
+		            .add(),
+		      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight - 45, 'L', chart.series[0].data[8].plotX, 00])
+		            .attr({
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 10
+		            })
+		            .add(),
+		      label: chart.renderer.text('<span>APP UPDATE</span>', chart.series[0].data[8].plotX + 18, 439)
+		            .attr({
+		            	rotation: -90,
+		            	zIndex: 9
+		            })
+		            .css({
+	                color: '#81879d',
+	                fontSize: '11px',
+	                fontFamily: 'Lato',
+	                fontWeight: 'bold',
+	                pointerEvents: 'none'
+		            })
+		            .add(),
+					plotX: chart.series[0].data[8].plotX,
+				});
 
 				// Events - Add tooltip data
 				$(events[0].icon.element).data("tooltip", "App Launch, 3 Mar 2015");				
@@ -1244,12 +1274,37 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 				$(events[1].icon.element).data("tooltipcolour", "#FFFFFF");
 				$(events[1].icon.element).data("tooltipfill", "rgba(27,199,159, 0.8)");
 
-	      setTimeout(function(){
+				$(events[2].icon.element).data("tooltip", "Featured Games, 9 Mar 2015");
+				$(events[2].icon.element).data("datapoint", 8);
+				$(events[2].icon.element).data("tooltipcolour", "#444444");
+				$(events[2].icon.element).data("tooltipfill", "rgba(255,180,73, 0.8)");
+
+				setTimeout(function(){ 
+	      	for (var e = 0; e < events.length; e++) {	      		
+	      		var currentCSSClass = $(events[e].icon.element).attr("class");
+	      		if(currentCSSClass == " event-icon--launch") {	      	
+	      			$(events[e].icon.element).attr("class", "animation-complete " + currentCSSClass);      			
+	      		}
+	        }
+        }, 2000);
+
+        setTimeout(function(){ 
 	      	for (var e = 0; e < events.length; e++) {
 	      		var currentCSSClass = $(events[e].icon.element).attr("class");
-	        	$(events[e].icon.element).attr("class", "animation-complete " + currentCSSClass);
+	      		if(currentCSSClass == " event-icon--flag") {
+	      			var thisPlotX = events[e].plotX, counter = 0;
+		      		if(e > 0) {
+		      			for (var x = e-1; x > 0; x--) {
+		      				if(events[x].plotX == thisPlotX) {
+		      					counter++;
+		      				}
+		      			}
+		      		}
+		      		var topPos = -443 + (17 * counter);
+	      			$(events[e].icon.element).attr("style", "transform: translateY(" + topPos+ "px)");
+	      		}
 	        }
-	      }, 2000);
+        }, 100);
 
 	      var eventTooltip;
 	      for (var e = 0; e < events.length; e++) {
@@ -1274,7 +1329,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	        	eventTooltip.destroy();
 	        });	        
 	      }
-			}			
+			}
 
 			// Overlay Revenue
 
