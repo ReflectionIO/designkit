@@ -589,6 +589,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 
 
 	        // add event labels
+	        	// destroy any existing labels
 	        var thisPlotX = arguments[1][0].plotX,
 	        		eventTooltip;
 
@@ -596,16 +597,19 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	        			for (var t = 0; t < this.chart.eventTooltips.length; t++) {
 	        				this.chart.eventTooltips[t].destroy();
 	        			}
-	        			this.chart.eventTooltips = [];
-	        		} else {
-	        			this.chart.eventTooltips = [];
 	        		}
+	        		this.chart.eventTooltips = [];
 
-	        	// destroy any previos event labels	        
-
-
+	        	// remove existing animating CSS class for icons
+	        $(".event-icon--launch.is-animating").each(function() {
+	        	$(this).attr("class", "animation-complete event-icon--launch");
+	        });
+	        $(".event-icon--flag.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--flag");
+	        });
+	        
 	        	// create tooltip on event hover
-	        	var eventsCounter = 0,
+        	var eventsCounter = 0,
 	        			previousEventPlotX;
 		      for (var e = 0; e < this.chart.events.length; e++) {
 		      	if(this.chart.events[e].plotX == thisPlotX) {
@@ -635,6 +639,10 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 		            .add();
 
 		         	this.chart.eventTooltips.push(eventTooltip);
+
+		         	// add event icon animate CSS class
+		         	var currentCSSClass = $(this.chart.events[e].icon.element).attr("class");
+	      			$(this.chart.events[e].icon.element).attr("class", "is-animating " + currentCSSClass);
 		        }
 		      }
 
@@ -1148,7 +1156,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
         }
 	    });
 			
-			// Events[] to hold the event objects, which consist of an icon, line and tooltip content and tooltip colour
+			// chart.events[] to hold the event objects, which consist of an icon, line and tooltip content and tooltip colour
 			chart.events = [];
 
 			if($('#checkbox--show-events:checked').length > 0) {
@@ -1197,7 +1205,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 						if(chart.events[e].area) {
 							chart.events[e].area.destroy();
 						}
-						if(chart.events[e].label) {
+						if(chart.events[e].label.element) {
 							chart.events[e].label.destroy();
 						}
 					}
@@ -1412,33 +1420,8 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	        }
         }, 100);
 				
-				// create tooltip on event hover
-	      var eventTooltip;
-	      for (var e = 0; e < chart.events.length; e++) {
-	      	$(chart.events[e].icon.element).on("mouseenter", function(){
-	        	$(chart.container).find(".custom-tooltip").fadeOut(100);
-
-	        	eventTooltip = chart.renderer.label($(this).data("tooltip"), chart.series[0].data[$(this).data("datapoint")].plotX, 53, 'callout')
-	            .css({
-	                color: $(this).data("tooltipcolour")
-	            })
-	            .attr({
-	                fill: $(this).data("tooltipfill"),
-	                padding: 7,
-	                r: 5,
-	                zIndex: 6
-	            })
-	            .add();
-	        });
-
-	        $(chart.events[e].icon.element).on("mouseout", function(){
-	        	$(chart.container).find(".custom-tooltip").fadeIn(100);
-	        	eventTooltip.destroy();
-	        });
-	      }
 
 	      // if there are more than one events on one date, fix the event label
-
 	      	// find which plotX has more than one event and add to plotXDuplicates[]
 	      var plotXDuplicates = [];
 	      for (var e = 0; e < chart.events.length; e++) {
@@ -1467,7 +1450,7 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	      	var counter = 0;
 	      	for (var e = 0; e < chart.events.length; e++) {
 		      	if(plotXDuplicates[p] == chart.events[e].plotX) {
-		      		$(chart.events[e].label.element).attr("style", "display: none;");
+		      		chart.events[e].label.destroy();
 		      		eventIndexesForDuplicateEventDate.push(e);
 		      		counter++;
 		      	}
@@ -1493,8 +1476,6 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	          })
 	          .add()
 	      }
-
-	      // create tooltips on event label hover
 			}
 
 			// Overlay Revenue
