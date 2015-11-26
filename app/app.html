@@ -610,7 +610,8 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 	        
 	        	// create tooltip on event hover
         	var eventsCounter = 0,
-	        			previousEventPlotX;
+	        			previousEventPlotX,
+	        			animating = false;
 		      for (var e = 0; e < this.chart.events.length; e++) {
 		      	if(this.chart.events[e].plotX == thisPlotX) {
 		      		// check if previous event plotX = this plotX to calculate label spacing
@@ -643,9 +644,22 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 		         	// add event icon animate CSS class
 		         	var currentCSSClass = $(this.chart.events[e].icon.element).attr("class");
 	      			$(this.chart.events[e].icon.element).attr("class", "is-animating " + currentCSSClass);
+	      			this.chart.events[e].flag = Snap(this.chart.events[e].icon.element);
+	      			var thisFlag = this.chart.events[e].flag;
+	      			
+	      			animating = true;
+	      			thisFlag.animateSquash = function() {
+      					thisFlag.animate({width: 15}, 100, function(){
+      						thisFlag.animate({width: 18}, 100, function() {
+      							if(animating) {
+      								thisFlag.animateSquash();
+      							}      							
+      						});
+      					});
+	      			}
+	      			thisFlag.animateSquash();
 		        }
 		      }
-
 	      });
 
 				H.wrap(H.Series.prototype, 'hide', function (proceed) {
