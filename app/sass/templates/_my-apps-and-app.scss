@@ -1,0 +1,138 @@
+.filters-container.filter-container--my-apps,
+.filters-container.filter-container--app {
+	&.filters-container {
+		.calendar-container {
+			display: none;
+			@include breakpoint($laptop) {
+				width: 62%;
+				margin-right: 0;
+				display: inline-block;
+			}		
+		}
+	}
+	.time-period-select-component {
+		width: 100%;
+		overflow: visible;
+		@include breakpoint($tablet) {
+			width: auto;
+			margin-right: 0.8%;
+			display: inline-block;
+		}
+		@include breakpoint($laptop) {
+			width: 40.5%;		
+			margin-right: 0;
+		}	
+	}
+	.date-select-container {
+		position: relative;
+		width: 43.6%;
+		display: inline-block;
+		overflow: visible;
+		vertical-align: middle;
+	}
+	.date-select-to-indicator {
+		position: relative;
+		width: 10.6%;
+		height: 22px;
+		display: inline-block;
+		vertical-align: middle;
+		text-align: center;
+		&:after {
+	    content: "l";
+		}
+	}
+	.form-field--select {
+		width: 25%;
+	}
+	.form-field.form-field--date-select {
+		width: 100%;
+		.panel-left-open & {
+			width: 100%;
+		}
+	}
+	.refresh-button {
+		margin: 0 1% 0 0;
+		display: inline-block;
+		.is-firefox & {
+			padding: 1rem 1rem 0.7rem;
+			&:disabled:active {
+				padding-bottom: 0.7rem;
+			}
+			&:active {
+				padding-bottom: calc(0.7rem - 2px);
+			}
+		}
+		@media screen and (min-width: $laptop) and (max-width: $desktop) {
+			.panel-left-open & {
+				margin-right: 0.7%;
+			}
+		}		
+		.ie11 & {
+			padding: 1rem 1rem 0.9rem;
+			&:disabled:active {
+				padding-bottom: 0.9rem;
+			}
+			&:active {
+				padding-bottom: 0.8rem;
+			}
+		}
+	}
+	.or-text {
+		width: 3.8%;
+		margin-right: 1.4%;
+		padding-top: 11px;
+		display: none;
+		font-size: 1.4rem;
+		font-family: $brand-heading-font;
+		color: $mid-grey-2;
+		text-align: center;
+		vertical-align: top;
+		@include breakpoint($laptop) {
+			display: inline-block;
+		}
+	}
+	.text--disabled {
+		color: #C4C7D0;
+		&:after, &:before {
+			color: #C4C7D0;
+		}
+	}
+	.or-text + .form-field {
+		width: 100%;		
+		@include breakpoint($tablet) {
+			width: auto;
+		}
+		@include breakpoint($laptop) {
+			width: 29%;			
+			margin-right: 1%;
+		}
+	}
+	.form-field {
+		width: 48%;		
+		text-align: left;
+		@include breakpoint($tablet) {
+			width: auto;
+			margin-right: 1%;
+		}
+	}
+	.category-select {
+		@include breakpoint($laptop) {
+			margin-right: 0;
+		}
+	}
+	.filter-toggle {
+		float: right;
+	}
+}
+@media screen and (max-width: $tablet) {
+	.time-period-select,
+	.store-select {
+    float: left;
+    text-align: left;
+	}
+	.category-select,
+	.country-select {
+    float: right;
+    text-align: left;
+	}
+}

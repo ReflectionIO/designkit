@@ -1,0 +1,301 @@
+.page-my-account.page-linked-accounts {
+	@include breakpoint($tablet) {
+		padding-top: 33px;
+	}
+	.page-title {
+		margin-bottom: 0.6rem;
+	}
+}
+.delete-account-link {
+	svg {
+		width: 16px;
+	}	
+}	
+.linked-account-intro-container {
+	margin-bottom: 1.1rem;
+	p {
+		font-size: 1.4rem;
+	}	
+}
+table.table-linked-accounts {
+	margin-bottom: 3rem;
+	.table-column--account-name {
+		width: 130px;
+		@include breakpoint($tablet) {
+			width: 33.3%
+		}
+	}
+	.table-column--store {
+		@include breakpoint($tablet) {
+			width: 31.3%;
+		}
+	}
+	.table-column--date-added {
+		width: 0;
+		@include breakpoint($phablet) {
+			width: 24.4%;
+		}
+	}
+	.table-column--edit-account {
+		@include breakpoint($tablet) {
+			width: 10.5%;
+		}
+	}
+	.table-column--delete-account {
+		width: 0;
+		@include breakpoint($laptop) {
+			width: 5.5%;
+		}
+	}	
+	&.table-data th {
+		padding-bottom: 20px;
+		background-color: transparent;
+	}
+	&.table-data td {
+		padding: 8px 10px;
+	}
+	th:first-child {
+		padding-left: 2.2%;
+	}
+	&.table-data tr > td {
+		.page-my-account & {
+			background-color: #fcfdfd;
+		}
+	}
+	&.table-data tr:nth-child(4n+1) > td,
+	&.table-data tr:nth-child(4n+1) + tr > td {
+		.page-my-account & {
+			background-color: $panel-grey;
+		}
+	}
+	&.table-data td.linked-account-name {
+		width: 130px;
+		padding-left: 2.57rem;
+		font-size: 1.3rem;
+		line-height: 1.2;
+		color: $dark-grey-2;
+		@include breakpoint($phablet) {
+			width: auto;
+		}
+		@include breakpoint($tablet) {			
+			padding-left: 2.2%;
+			font-size: 1.5rem;
+		}
+		&.is-open {
+			color: #29292c;
+		}
+		div {
+			width: 130px;
+			overflow: hidden;
+			white-space: no-wrap;
+			text-overflow: ellipsis;	
+			@include breakpoint($phablet) {
+				width: auto;
+			}
+		}
+	}
+	.linked-account-store {
+		font-size: 1.3rem;		
+		color: #363a47;
+		@include breakpoint($tablet) {
+			font-size: 1.5rem;
+		}
+		div {
+			overflow: visible;
+		}
+		.ref-icon-before {
+			&:before {
+				display: none;
+				top: -0.3rem;
+				padding-right: 1.2rem;
+				vertical-align: middle;
+				font-size: 2.3rem;
+				color: #b9babe;
+				@include breakpoint($tablet) {
+					display: inline-block;
+				}
+			}			
+		}
+	}
+	@media screen and (max-width: $phablet) {
+		.table-heading--date-added,
+		.linked-account-date {			
+			font-size: 0;
+			* {
+				display: none;
+				font-size: 0;
+			}
+		}
+	}
+	.linked-account-date {
+		font-size: 1.3rem;
+		color: #363a47;
+		@include breakpoint($tablet) {
+			font-size: 1.4rem;
+		}
+		div {
+			overflow: visible;
+		}
+	}
+	.linked-account-edit {
+		text-align: right;
+		div {
+			overflow: visible;
+		}
+		.ref-button--function-small {
+			position: relative;
+			padding-left: 1.1em;
+			padding-right: 1.1em;
+			z-index: 10;
+		}
+	}
+	.linked-account-delete {
+		a {
+			text-align: center;
+		}
+		@media screen and (max-width: $laptop) {
+			div {
+				display: none;
+			}
+		}	
+		.ref-icon-after {
+			&:after {
+				position: relative;
+				top: 3px;
+				font-size: 1.8rem;
+				color: $light-grey-2;
+				transition: color 0.1s;	
+			}
+			&:hover {
+				&:after {
+					color: darken($light-grey-2, 7%);
+					transition: color 0.2s;
+				}				
+			}
+			&:active {
+				&:after {
+					top: 5px;
+				}				
+			}
+		}
+	}
+	&.table-data td.update-linked-accounts-container {
+		padding: 1.1rem 2.2% 2rem;
+		* {
+			max-width: 300px;
+			@include breakpoint($tablet) {
+				max-width: 340px;
+			}
+		}
+		.ref-button--link {
+			margin: 2rem auto 0;
+			color: $reflection-red;
+			font-size: 1.6rem;
+			&:hover {
+				color: $error-red;
+			}
+		}
+		h2 {
+			@media screen and (max-width: $tablet) {
+				font-size: 1.4em;
+			}			
+		}
+	}
+	.ie10 &,
+	.ie9 & {
+		table-layout: auto;
+		colgroup {
+			display: none;
+		}
+	}
+}
+.table-data.table-linked-accounts--disabled {
+	th {
+		color: #dedede;
+		cursor: default;
+		&:active {
+			top: 0;
+		}
+		svg path {
+			fill: #dedede;
+		}
+	}
+	@media screen and (max-width: $tablet) {
+		display: none;
+		.scrollable & {
+			display: block;
+		}
+	}
+}
+.table-wrapper.table-disabled {
+	.scrollable {
+		margin-left: 0;
+	}
+}
+.popup-content.popup-content--link-account {	
+	text-align: left;
+}
+.popup-content.popup-content--delete-account {
+	max-width: 37rem;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+}
+.popup-content--account__heading {
+	margin-bottom: 1.3em;
+	text-align: center;
+}
+.popup-content--delete-account {
+	button:first-child {
+		margin-bottom: 0;
+		margin-right: 5px;
+		margin-left: 5px;
+		vertical-align: top;
+		width: 170px;
+		@include breakpoint($tablet) {
+			width: auto;
+		}			
+	}
+	button:last-child {
+		width: 170px;
+		margin-right: 5px;
+		margin-left: 5px;
+		clear: both;
+		@include breakpoint($tablet) {
+			width: auto;
+			clear: none;
+		}
+	}
+}
+.popup-content .linked-account-loading-state {
+	top: 6rem;
+	left: 0px;	
+	p {
+		padding-left: 0;
+		padding-right: 0;
+		margin-top: 16rem;
+		font-size: 14px;
+		text-align: center;
+	}
+}
+.form-submitted-loading .js-rotate-content:not(.maintain-after-submit),
+.form-submitted-success-complete .js-rotate-content:not(.maintain-after-submit),
+.form-submitted-success-complete .ref-button--is-loading.js-rotate-content {
+	transform: rotateX(90deg);
+	transition: transform 0.15s;
+}
+.form-submitted-loading .ref-button--is-loading.js-rotate-content,
+.form-submitted-loading .ref-button--success.js-rotate-content {
+	margin-top: 6rem;
+	transform: rotateX(0deg);
+	transition: transform 0.15s 0.15s, background-color $base-transition-speed-on, margin-top 0.3s;
+	visibility: visible;
+	@include breakpoint($tablet) {
+		margin-top: 5rem;
+	}
+}
+.form-submitted-loading.ie9 .js-rotate-content:not(.maintain-after-submit),
+.form-submitted-success-complete.ie9 .js-rotate-content:not(.maintain-after-submit),
+.form-submitted-success-complete.ie9 .ref-button--is-loading.js-rotate-content {
+	visibility: hidden;
+}

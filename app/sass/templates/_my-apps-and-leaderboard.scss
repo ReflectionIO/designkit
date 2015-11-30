@@ -1,0 +1,105 @@
+.page-functions {
+	width: 100%;
+	float: right;
+	display: none;
+	@include breakpoint($tablet) {
+		width: 50%;
+		float: none;
+	}
+	button {
+		position: relative;
+		padding: 1.05rem 0.923077em 1.15rem;
+		line-height: 12px;
+		float: right;
+		.is-chrome & {
+			line-height: 14px;
+		}
+		&:active, 
+		&.is-pressed {
+			padding-bottom: calc(1.15rem - 2px);
+		}
+		&:disabled {
+			padding-bottom: 1.15rem;
+			&:active {
+				padding-bottom: 1.15rem;
+			}
+		}
+		&.ref-button--is-loading, &.ref-button--positive {
+			&:active, 
+			&.is-pressed {
+				padding-bottom: 1.15rem;
+			}
+		}
+	}
+	.inline-search-form {
+		width: 45%;		
+		float: right;
+		display: inline-block;		
+		vertical-align: top;
+		@include breakpoint($tablet) {
+			width: 45%;
+		}
+		@include breakpoint($desktop) {
+			width: percentage(167/500);
+		}
+		.search-field-no-label {
+			margin-bottom: 0;
+			@include breakpoint($tablet) {
+				margin-bottom: 1.2rem;
+			}	
+		}
+	}
+	.search-field-no-label {
+		input[type=text] {
+			max-width: calc(100% - 17px);
+			font-size: 1.5rem;
+			&:active + input[type=submit] {
+				color: $reflection-purple;
+			}
+		}
+		input[type=submit] {
+			font-size: 1.75rem;
+			color: $light-grey-1;
+		}
+	}
+}
+// shared styles
+.page-my-apps,
+.page-leaderboard {
+	.table-wrapper {
+		border-right: 0;
+	}
+	.table-data {
+		@media only screen and (max-width: $mobile-max-width) {
+			th:first-child {
+				font-size: 0;
+			}
+			td:first-child {			
+				padding-right: 3px;
+				padding-left: 8px;
+				text-align: center;
+				font-size: 12px;
+			}
+		}
+	}
+	@include breakpoint($tablet) {
+		.table-wrapper .scrollable {
+			margin-left: 0;
+			.is-safari & {
+				margin-left: 0;
+			}	
+		}
+	}
+	.scrollable {
+		.table-data .MHXTE6C-i-a,
+		.table-data .table-data {
+			max-width: 110px;
+		}
+	}
+	table.table-data .img-rounded {
+		display: none;
+		@include breakpoint($tablet) {
+			display: inline-block;
+		}
+	}
+}

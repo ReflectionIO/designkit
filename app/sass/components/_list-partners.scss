@@ -40,13 +40,6 @@ $local-breakpoint-vertical: 680px;
   		bottom: 50px;
   	}
   }
-  @include breakpoint($desktop-wide) {
-  	.no-touch & {
-  		left: 50%;
-			max-width: 1650px;
-			margin-left: -825px;	
-  	}		
-  }
   h2 {
   	display: block;
   	width: 100%;
@@ -71,10 +64,9 @@ $local-breakpoint-vertical: 680px;
 		}
 		@include breakpoint($tablet) {
 			display: -webkit-box;
-		  display: -moz-box;
-		  display: -ms-flexbox;
-		  display: -webkit-flex;
-		  display: flex;
+		  /* @alternate */ display: -ms-flexbox;
+		  /* @alternate */ display: -webkit-flex;
+		  /* @alternate */ display: flex;
 		  flex-direction: row;
 		  justify-content: center;
 		  align-items: center;
@@ -95,9 +87,23 @@ $local-breakpoint-vertical: 680px;
 			width: auto;
 			justify-content: center;
 			-webkit-flex-grow: 1;
+			-ms-flex-grow: 1;
 			flex-grow: 1;
 			&:last-child {
 				display: inline-block;
+			}
+			.ie10 & {
+				width: 20%;
+			}
+		}
+		@include breakpoint($desktop) {
+			.ie10 & {
+				width: 17%;
+			}
+		}
+		@include breakpoint($desktop-wide) {
+			.ie10 & {
+				width: 12%;
 			}
 		}
 	}
@@ -111,27 +117,44 @@ $local-breakpoint-vertical: 680px;
 		@include breakpoint($tablet) {
 			max-width: 96%;
 			padding-bottom: 28px;
+			.ie10 & {
+				max-width: 126px;
+			}
 		}
 		@include breakpoint($desktop) {
-			max-width: 140px;
+			max-width: 130px;
 		}
 		@media screen and (min-width: $local-breakpoint-desktop) and (min-height: $local-breakpoint-vertical) {
   		max-width: 120px;
   	}
   	@media screen and (min-width: $local-breakpoint-desktop) and (min-height: 800px) {
-  		max-width: 140px;
+  		max-width: 130px;
   	}
   	@media screen and (min-width: $local-breakpoint-wide) and (min-height: 800px) {
   		max-width: 160px;
   	}  	
 	}
 }
-.no-flexbox {
+.no-flexbox,
+.ie9 {
 	.list-partners ul {
 		width: 100%;
 		display: block;
-		li {
+		li {			
 			display: inline-block;
+			max-width: 100px;
+			&:last-child {
+				display: none;
+				@include breakpoint($desktop-wide) {
+					display: inline-block;
+				}
+			}
+			@include breakpoint($desktop) {
+				max-width: 130px;
+			}
+			img {
+				max-width: 100%;
+			}			
 		}
 	}
 }

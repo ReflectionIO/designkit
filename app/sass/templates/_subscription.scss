@@ -1,0 +1,87 @@
+.icon-member {
+	position: absolute;
+	top: 0;
+	right: 0;
+	overflow: visible;
+	img {
+		position: relative;
+		top: -4px;
+		left: 4px;
+		max-width: 14px;		
+	}
+}
+.manage-subscription-message {
+	max-width: inherit;	
+	svg, span, a {
+		display: inline-block;
+		vertical-align: top;
+	}
+	svg {
+		display: none;
+		@include breakpoint($tablet) {
+			display: inline-block;
+			.is-safari & {
+				display: block;
+				float: left;
+			}
+		}
+		width: 26px;
+		height: 26px;
+		margin-right: 1.7rem;
+	}
+	span {
+		margin-bottom: 9px;
+		@include breakpoint($tablet) {
+			margin-bottom: 0;
+		}
+	}
+	span, a {
+		padding-top: 2px;
+	}
+	a {		
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		&:last-child {
+			float: right;
+		}
+		@include breakpoint($tablet) {
+			padding-left: 2rem;
+			float: right;
+		}
+	}
+}
+.page-my-account {
+	.pricing-options {
+		margin: 0 auto;
+		max-width: 1200px;
+		@include breakpoint($tablet) {
+			padding-top: 3rem;
+		}
+		@media screen and (min-width: $tablet) and (max-width: $laptop - 1) {
+			.grid__column--one-third {
+				padding: 0px 0.9%;
+			}
+		}
+		@media screen and (min-width: $laptop) and (max-width: $laptop-plus - 1) {
+			.panel-left-open & {
+				.grid__column--one-third {
+					padding: 0px 0.9%;
+				}
+			}
+		}
+	}
+	.pricing-option--premium.pricing-option--current {
+		padding-bottom: 2.5rem;
+	}
+}
+.subscriptions-footer-container {
+	margin-top: 2rem;
+	p {
+		max-width: inherit;
+		font-size: 1.6rem;
+		text-align: center;
+		@include breakpoint($desktop) {
+			font-size: 1.8rem;
+		}
+	}
+}

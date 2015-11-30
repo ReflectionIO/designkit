@@ -1,0 +1,101 @@
+.page-about {
+	.page-banner {
+		margin-bottom: 4rem;
+		background-image: url(images/About_Header.jpg);
+		h2 {
+    	max-width: 700px;
+    }
+    @include breakpoint($tablet) {
+    	margin-bottom: 6rem;
+    }
+  }
+	.tabs-container {
+		margin: 0 auto;
+	}
+	.tabs__content-container {
+		margin-bottom: 3rem;		
+		padding-bottom: 0;
+		float: left;
+		overflow: visible;		
+		@include breakpoint($tablet) {
+			margin-bottom: 5.3rem;
+			padding-bottom: 4rem;
+			background-color: #f2f2f5;
+		}
+		* {
+			overflow: visible;
+		}
+		> li {			
+			position: relative;
+			width: 100%;
+			float: left;
+			z-index: 10;
+			border-bottom: 1px solid $divider-grey;
+			@include breakpoint($tablet) {
+				border-bottom: none;
+			}
+			@include breakpoint($desktop-wide) {
+				position: relative;
+				left: 50%;
+				width: 1300px;
+				margin-left: -650px;
+			}
+		}
+	}
+	.collapsible-trigger {
+		background-color: transparent;
+	}
+	.reveal-content {
+		width: 100%;
+		float: left;
+		background-color: #f2f2f5;
+		@include breakpoint($tablet) {
+			float: none;
+		}
+	}
+	.svg-bubble {
+		max-width: 23px;
+	}
+	.svg-cog {
+		max-width: 24px;
+	}
+}
+.page-about--title {
+	margin-bottom: 0.7em;
+	text-align: center;
+}
+.about-main-content {
+	padding-bottom: 6rem;	
+	text-align: center;
+	@include breakpoint($tablet) {
+		padding-bottom: 10rem;
+	}
+}
+.page-about--intro {
+	max-width: 730px;
+	margin: 0 auto;
+	display: inline-block;
+	float: none;
+	line-height: 1.6;
+	text-align: left;
+}
+.page-about-foot-content__svg-container {
+	margin-bottom: 3rem;
+	text-align: center;
+	svg {
+		max-width: 220px;
+		max-height: 180px;
+	}
+	@include breakpoint($tablet) {
+		margin-bottom: 8rem;
+		svg {
+			margin-right: 16%;
+			float: right;
+		}
+	}
+}
+.page-about-foot-content__text {
+	max-width: 800px;
+	margin-bottom: 8rem;
+	padding-right: percentage(60/1000);
+}

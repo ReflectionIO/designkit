@@ -5,23 +5,40 @@
 	<title>Reflection Account Setup</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="ie9-one.css" />
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="ie9-two.css" />
+	<![endif]-->	
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main-ie8.css" />
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
 	<![endif]-->
  	<!--[if !lt IE 9]><!-->
-		<script src="js/vendor/picturefill.2.2.0.min.js" async></script>
+		<script src="js/vendor/picturefill.2.3.1.min.js" async></script>
 	<!-- <![endif]-->
-	<!--[if (gte IE 9)|(IEMobile)|(!IE)]><!-->
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/account-access.css" />
-	<!--<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+	<script>
+	  WebFont.load({
+	    google: {
+	      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+	    }
+	  });
+	</script>
 </head>
-<body class="account-access-page create-password-form-is-showing">
-	<!--[if lt IE 8]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<body class="account-access-page connect-account-is-showing">
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
   <![endif]-->
 
   <header id="js-component-import--global-header" class="global-header"></header>
+
+  <div id="js-component-import--panel-left" class="panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
   
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
@@ -120,72 +137,27 @@
 				</div>
 				<section class="grid-container horizontal-centre-content account-access-content">
 					<div class="full-screen-intro">
-						<div class="create-password-main-content">
-							<h1>Welcome to Reflection Jan!</h1>
-							<p class="p-style--featured">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius tempor incididunt ut labore et dolore lorem magna aliqua. 
-	Ut enim ad minim veniam, quis nostrud exercitat ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</p>
-							<div class="list-partners">
-								<h2>Some of the partners you're joining</h2>
-								<ul>
-									<li><img src="images/Partner_Soundcloud@2x.png" alt="Soundcloud logo" /></li>
-									<li><img src="images/Partner_Sega@2x.png" alt="Sega logo" /></li>
-									<li><img src="images/Partner_Wooga@2x.png" alt="Wooga logo" /></li>
-									<li><img src="images/Partner_TocaBoca@2x.png" alt="Toca Boca logo" /></li>					
-								</ul>
-							</div>
-						</div>
 						<div class="connect-account-main-content">
-							<h1>Your New Source of Free App Intelligence</h1>
-							<p class="p-style--featured">All you need to do now is link your iTunes Connect account(s) so that Reflection can import your all-important data.</p>
+							<h1>You're Mere Moments Away</h1>
+							<p class="p-style--featured">Simply link your iTunes Connect account(s) here and then you're ready to get started with Reflection</p>
+						</div>
+						<div class="connect-account-submitted">
+							<h1>You're Ready to Go!</h1>
+							<p class="p-style--featured">Your Reflection account is now ready to use. You can view your own apps in the <a href="my-apps.html">My Data</a> section or browse and compare others in the <a href="leaderboard.html">Leaderboard</a>. If you have any questions or issues please contact us at <a href="mailto:support@reflection.io">support@reflection.io</a>, we’re here to help</p>
 						</div>
 					</div>
 					<div class="account-form-container">
 						<form class="forms--mid-theme">
-							<fieldset class="create-password-content">
-								<h2 class="heading-style--heading-five account-form-heading js-fade-content">Create your password to get started</h2>
-								<div class="form-field form-field--disabled js-rotate-content">						
-									<input type="text" name="apply-firstname" id="apply-firstname" autocomplete="off" disabled />
-									<label for="apply-firstname">First Name</label>
-								</div>
-								<div class="form-field form-field--disabled js-rotate-content">						
-									<input type="text" name="apply-lastname" id="apply-lastname" autocomplete="off" disabled />
-									<label for="apply-lastname">Last Name</label>
-								</div>
-								<div class="form-field form-field--disabled js-rotate-content">						
-									<input type="text" name="apply-company" id="apply-company" autocomplete="off" disabled />
-									<label for="apply-company">Your Company</label>
-								</div>	
-								<div class="form-field form-field--disabled js-rotate-content">						
-									<input type="email" name="apply-email" id="apply-email" autocomplete="off" disabled />
-									<label for="apply-email">Email</label>
-								</div>
-								<div class="form-field js-rotate-content">						
-									<input type="password" name="create-password" id="create-password" autocomplete="off" class="js-mock-password-entry" />
-									<label for="create-password">
-										Create Password
-										<div class="password-strength-indicator-container">
-											<span class="password-strength-description">Strength</span>
-											<div class="password-strength-indicator"><span></span></div>
-										</div>
-									</label>
-								</div>
-								<div class="form-field js-rotate-content">						
-									<input type="password" name="confirm-password" id="confirm-password" autocomplete="off" />
-									<label for="confirm-password">Confirm Password</label>
-								</div>
-								<div class="form-field--checkbox-list js-fade-content">
-									<ul>
-										<li>
-											<input type="checkbox" name="login-remember" id="login-remember" />
-											<label for="login-remember" class="checkboxLabel">I agree with the terms and conditions</label>
-											<label for="login-remember" class="checkboxLabelVisible">I agree with the <a href="#">terms and conditions</a></label>
-										</li>
-									</ul>
-								</div>
-								<input type="submit" class="ref-button--full-width js-mock-continue js-rotate-content" value="Continue" />
-							</fieldset>
 							<fieldset class="connect-account-content">
-									<h2 class="heading-style--heading-five account-form-heading maintain-after-submit js-fade-content">Link your iTunes Connect Account</h2>
+									<h2 class="heading-style--heading-five account-form-heading maintain-after-submit js-fade-content">Link Your iTunes Connect Account</h2>
+									<div class="linked-account-loading-state">
+										<div class="hamster-wheel">
+											<img src="images/hamster-wheel.png" alt="hamster wheel" />
+										</div>
+										<div class="animation-hamster">
+										</div>
+										<p>Linking may take up to 5 minutes but most likely less, we’ll send you an email as soon as it's done.</p>
+									</div>
 									<div class="form-field js-rotate-content">
 										<input type="text" name="account-username" id="account-username" autocomplete="off" required />
 										<label for="account-username">Account Username</label>
@@ -199,7 +171,7 @@
 										<label for="account-vendor-id">Vendor ID</label>
 										<a href="#" target="_blank" class="form-field-help ref-icon-after ref-icon-after--question"><span>What's this?</span></a>
 									</div>
-									<input type="submit" class="ref-button--full-width maintain-after-submit js-mock-link-account js-rotate-content" value="Link this Account" />
+									<input type="submit" class="ref-button--full-width js-mock-link-account js-rotate-content" value="Link this Account" />
 							</fieldset>
 						</form>
 						<div class="form-submitted-success">
@@ -209,7 +181,11 @@
 									c-0.2-0.3-0.5-0.4-0.8-0.5c-0.3,0-0.7,0-0.9,0.2l-8.6,6.5c-0.6,0.4-0.7,1.2-0.2,1.7l19.4,25.5c0.2,0.3,0.6,0.5,1,0.5c0,0,0,0,0,0
 									c0.4,0,0.7-0.2,0.9-0.4L60.7,9.2C61.2,8.7,61.1,7.9,60.6,7.4z"/>
 								</svg>
-								<p><a href="#" class="js-mock-link-another-account">Link another account</a></p>
+								<h2>Account Linked!</h2>
+								<p>									
+									<a href="#" class="js-mock-link-another-account">Link Another Account</a>
+									<a href="logged-in-landing.html">Continue</a>
+								</p>
 						</div>
 					</div>
 				</section>
@@ -224,9 +200,14 @@
 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
 	<script src="js/application.js"></script>
 	<script src="js/account-access.js"></script>
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+	<div id="js-appendScriptsContainer"></div>
   <script>
   	function initScripts() {
   		new AccountSetup();
+  		new Page();
   	}
 
   	window.onready = initScripts();

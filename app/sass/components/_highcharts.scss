@@ -1,0 +1,102 @@
+.highcharts-container > .highcharts-tooltip,
+.highcharts-axis-labels.highcharts-xaxis-labels,
+.highcharts-axis-labels.highcharts-yaxis-labels {
+	overflow: visible;
+}
+.highcharts-series {
+	stroke {
+		cursor: pointer;
+	}
+}
+.highcharts-series.selected-series {
+	path {
+		stroke-opacity: 1;
+	}
+}
+.highcharts-series path:nth-child(1) {
+	pointer-events: none;
+}
+// .highcharts-tooltip {
+// 	display: inline-block;
+// 	overflow: visible;
+// 	font-family: 'Lato', sans-seif;
+// 	-webkit-box-shadow: 2px 4px 1px 0px rgba(0,0,0,0.24);
+// 	-moz-box-shadow: 2px 4px 1px 0px rgba(0,0,0,0.24);
+// 	box-shadow: 2px 4px 1px 0px rgba(0,0,0,0.24);
+// 	background: rgba(255,255,255,0.4);
+// 	h2 {
+// 		font-size: 14px;
+// 	}
+// 	h3 {
+// 		font-size: 14px;
+// 	}
+// 	h4 {
+// 		font-size: 16px;
+// 	}
+// 	h5 {
+// 		font-size: 14px;
+// 	}
+// 	.top-five-section {
+// 		padding-top: 5px;
+// 		border-top: 1px solid #e1e5e8;
+// 	}
+// }
+.chart-watermark {
+	position: absolute;
+	right: 26px;
+	bottom: 68px;
+	width: 100px;
+	height: 16px;
+	z-index: 100;
+}
+// .highcharts-axis-labels,
+// .highcharts-grid path {
+// 	opacity: 0;	
+// 	.is-animated & {
+// 		opacity: 1;
+// 		transition: opacity 1s;
+// 	}
+// }
+.custom-tooltip {
+	position: relative;
+	padding: 5px 10px 5px 33px;
+	margin-bottom: 5px;
+	font-family: $brand-heading-font;
+	font-size: 15px;
+	font-weight: 600;
+	color: #fcfdfd;
+	border-radius: 3px;
+	opacity: 0.8;
+	img {
+		position: absolute;
+		top: 7px;
+		left: 7px;
+	}
+	.icon-revenue {
+		top: 10px;
+		width: 19px;
+		height: 11px;
+	}
+	.icon-downloads {
+		width: 17px;
+		height: 17px;
+	}
+	.icon-rank {
+		top: 8px;
+		width: 17px;
+		height: 13px;
+	}
+}
+.highcharts-axis-label {
+	&:after {
+		content: ' ';
+		position: absolute;
+		top: -10px;
+		left: calc(50% - 10px);
+		width: 0; 
+		height: 0;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 10px solid $light-grey-1;
+	}
+}

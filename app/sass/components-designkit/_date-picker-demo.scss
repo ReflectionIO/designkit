@@ -1,0 +1,38 @@
+.dateBoxPopup {
+	position: absolute;
+	top: 4.2rem;
+	left: 0;
+	width: 100%;
+	z-index: 990;
+	opacity: 0;
+	visibility: hidden;
+	border-radius: 0 0 4px 4px;
+	background-color: $panel-grey;
+	transition: opacity 0.1s, visibility 0.1s 0.1s;
+	.forms--dark-theme & {
+		background-color: #333338;
+	}
+	.forms--mid-theme & {
+		background-color: #fff;
+	}
+	@include breakpoint($tablet) {
+		top: 11.4rem;
+	}
+	@include breakpoint($desktop, true) {
+		top: 4.2rem;
+	}
+	tbody, tr {
+		width: 100%;
+	}
+	&.is-showing {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity 0.1s;
+	}
+}
+.gwt-DatePicker {
+	width: 100%;
+	tr {
+		width: 100%;
+	}
+}

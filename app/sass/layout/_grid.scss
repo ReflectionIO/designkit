@@ -21,7 +21,6 @@ $show-column-grid-backgrounds: true;
 }
 
 @mixin grid-col-clearfix() {
-	*zoom:1;
 	&:before,
 	&:after {
 	    content:"";
@@ -121,6 +120,13 @@ $show-column-grid-backgrounds: true;
 	}
 }
 
+.grid__column--seven-columns {
+	@include column(12);
+	@include breakpoint($tablet, true) {
+		@include column(7);
+	}
+}
+
 .grid__column--two-thirds {
 	@include column(12);
 	@include breakpoint($tablet, true) {
@@ -152,4 +158,12 @@ $show-column-grid-backgrounds: true;
 	@include breakpoint($tablet, true) {
 		@include push(1);
 	}	
+}
+.grid__column--push-two {
+	@include breakpoint($tablet, true) {
+		@include push(2);
+	}	
+}
+.grid__column--right {
+	float: right;
 }

@@ -5,24 +5,29 @@
 	<title>Reflection Design Kit - Buttons</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" media="screen, projection" type="text/css" href="css/designkit.css" />
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="designkit.css" />
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main-ie8.css" />
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
 	<![endif]-->
  	<!--[if !lt IE 9]><!-->
-		<script src="js/vendor/picturefill.2.2.0.min.js" async></script>
+		<script src="js/vendor/picturefill.2.3.1.min.js" async></script>
 	<!-- <![endif]-->
-	<!--[if (gte IE 9)|(IEMobile)|(!IE)]><!-->
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="css/reflection-main.css" />
-	<!--<![endif]-->
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
-</head>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script></head>
 <body class="panel-left-open">
-	<!--[if lt IE 8]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
   <![endif]-->
-
   <header id="js-component-import--global-header" class="global-header"></header>
 
   <div id="js-component-import--panel-left" class="panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
@@ -53,14 +58,15 @@
 						</div>
 						<div class="grid__column button-example-code-container">
 							<div class="code-box">
-								<code>
-									// Disabled<br />
-									&lt;button class="ref-button--cta-small" disabled&gt;Lorem&lt;/button&gt;<br />
-									&lt;button class="ref-button--cta-small--wide" disabled&gt;Lorem&lt;/button&gt;<br /><br />
-									// Active<br />
-									&lt;button class="ref-button--cta-small"&gt;Lorem&lt;/button&gt;<br />
+								<pre><code class="language-markup">
+									// Disabled
+									&lt;button class="ref-button--cta-small" disabled&gt;Lorem&lt;/button&gt;
+									&lt;button class="ref-button--cta-small--wide" disabled&gt;Lorem&lt;/button&gt;
+
+									// Active
+									&lt;button class="ref-button--cta-small"&gt;Lorem&lt;/button&gt;
 									&lt;button class="ref-button--cta-small--wide"&gt;Lorem&lt;/button&gt;
-								</code>
+								</code></pre>
 							</div>
 						</div>
 					</div>
@@ -85,14 +91,49 @@
 						</div>
 						<div class="grid__column button-example-code-container">
 							<div class="code-box">
-								<code>
-									// Disabled<br />
-									&lt;button class="ref-button--function-small" disabled&gt;Lorem&lt;/button&gt;<br />
-									&lt;button class="ref-button--function-small--wide" disabled&gt;Lorem&lt;/button&gt;<br /><br />
-									// Active<br />
-									&lt;button class="ref-button--function-small"&gt;Lorem&lt;/button&gt;<br />
+								<pre><code class="language-markup">
+									// Disabled
+									&lt;button class="ref-button--function-small" disabled&gt;Lorem&lt;/button&gt;
+									&lt;button class="ref-button--function-small--wide" disabled&gt;Lorem&lt;/button&gt;
+
+									// Active
+									&lt;button class="ref-button--function-small"&gt;Lorem&lt;/button&gt;
 									&lt;button class="ref-button--function-small--wide"&gt;Lorem&lt;/button&gt;
-								</code>
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="grid__row dk-component-row">
+					<div class="grid__column grid__column--one-third">
+						<h2 class="heading-style--heading-three">Secondary Button With Icon</h2>
+						<p></p>
+					</div>
+					<div class="grid__row-container grid__column grid__column--two-thirds">
+						<div class="button-example-container">
+							<h2 class="heading-style--heading-six">Disabled</h2>
+							<button class="ref-button--function-small ref-button--function-small--with-icon" disabled><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>
+							<button class="ref-button--function-small ref-button--function-small--with-icon" disabled><span class="ref-icon-before ref-icon-before--my-apps">View all Apps</span></button>
+						</div>
+						<div class="button-example-container">
+							<h2 class="heading-style--heading-six">Active</h2>
+							<button class="ref-button--function-small ref-button--function-small--with-icon"><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>
+							<button class="ref-button--function-small ref-button--function-small--with-icon"><span class="ref-icon-before ref-icon-before--my-apps">View all Apps</span></button>
+						</div>
+						<div class="grid__column button-example-code-container">
+							<div class="code-box">
+								<pre><code class="language-markup">
+									// Disabled
+									&lt;button class="ref-button--function-small ref-button--function-small--with-icon" disabled&gt;
+									  &lt;span class="ref-icon-before ref-icon-before--cloud"&gt;Download&lt;/span&gt;
+									&lt;/button&gt;
+
+									// Active
+									&lt;button class="ref-button--function-small ref-button--function-small--with-icon"&gt;
+									  &lt;span class="ref-icon-before ref-icon-before--cloud"&gt;Download&lt;/span&gt;
+									&lt;/button&gt;
+								</code></pre>
 							</div>
 						</div>
 					</div>
@@ -117,14 +158,15 @@
 						</div>
 						<div class="grid__column button-example-code-container">
 							<div class="code-box">
-								<code>
-									// Disabled<br />
-									&lt;button class="ref-button--cta-large" disabled&gt;Lorem&lt;/button&gt;<br />
-									&lt;button class="ref-button--cta-large--wide" disabled&gt;Lorem&lt;/button&gt;<br /><br />
-									// Active<br />
-									&lt;button class="ref-button--cta-large"&gt;Lorem&lt;/button&gt;<br />
+								<pre><code class="language-markup">
+									// Disabled
+									&lt;button class="ref-button--cta-large" disabled&gt;Lorem&lt;/button&gt;
+									&lt;button class="ref-button--cta-large--wide" disabled&gt;Lorem&lt;/button&gt;
+
+									// Active
+									&lt;button class="ref-button--cta-large"&gt;Lorem&lt;/button&gt;
 									&lt;button class="ref-button--cta-large--wide"&gt;Lorem&lt;/button&gt;
-								</code>
+								</code></pre>
 							</div>
 						</div>
 					</div>
@@ -149,14 +191,15 @@
 						</div>
 						<div class="grid__column button-example-code-container">
 							<div class="code-box">
-								<code>
-									// Disabled<br />
-									&lt;button class="ref-button--function-large" disabled&gt;Lorem&lt;/button&gt;<br />
-									&lt;button class="ref-button--function-large--wide" disabled&gt;Lorem&lt;/button&gt;<br /><br />
-									// Active<br />
-									&lt;button class="ref-button--function-large"&gt;Lorem&lt;/button&gt;<br />
+								<pre><code class="language-markup">
+									// Disabled
+									&lt;button class="ref-button--function-large" disabled&gt;Lorem&lt;/button&gt;
+									&lt;button class="ref-button--function-large--wide" disabled&gt;Lorem&lt;/button&gt;
+
+									// Active
+									&lt;button class="ref-button--function-large"&gt;Lorem&lt;/button&gt;
 									&lt;button class="ref-button--function-large--wide"&gt;Lorem&lt;/button&gt;
-								</code>
+								</code></pre>
 							</div>
 						</div>
 					</div>
@@ -182,44 +225,51 @@
 						</div>
 						<div class="button-example-container--full-width">
 							<div>
-								<button class="ref-button--full-width ref-button--with-icon"><span class="ref-icon-before ref-icon-before--leaderboard">Lorem</span></button>
+								<button class="ref-button--full-width ref-button--full-width--with-icon"><span class="ref-icon-before ref-icon-before--leaderboard">Lorem</span></button>
 							</div>
 							<h2 class="heading-style--heading-six">Button with Icon</h2>
 						</div>
 						<div class="button-example-container--full-width">
 							<div>
-								<input type="submit" class="ref-button--full-width ref-button--is-loading" value="Loading..." />
+								<input type="submit" class="ref-button--full-width ref-button--is-loading" value="Loading..." disabled />
 							</div>
 							<h2 class="heading-style--heading-six">Loading State</h2>
 						</div>
 						<div class="button-example-container--full-width">
 							<div>
-								<input type="submit" class="ref-button--full-width ref-button--success" value="Success!" />
+								<input type="submit" class="ref-button--full-width ref-button--success" value="Success!" disabled />
 							</div>
 							<h2 class="heading-style--heading-six">Success State</h2>
 						</div>
 						<div class="button-example-container--full-width">
 							<div>
-								<input type="submit" class="ref-button--full-width ref-button--error" value="Oops, something went wrong" />
+								<input type="submit" class="ref-button--full-width ref-button--error" value="Oops, something went wrong" disabled />
 							</div>
 							<h2 class="heading-style--heading-six">Error State</h2>
 						</div>
 						<div class="grid__column button-example-code-container">
-							<div class="code-box code-box-tall">
-								<code>
-									// Submit Button<br />
-									&lt;input type="submit" class="ref-button--full-width" value="Submit" /&gt;<br /><br />
-									// Loading State<br />
-									&lt;input type="submit" class="ref-button--full-width ref-button--is-loading" value="Loading..." /&gt;<br /><br />
-									// Success State<br />
-									&lt;input type="submit" class="ref-button--full-width ref-button--success" value="Success!" /&gt;<br /><br />
-									// Error State<br />
-									&lt;input type="submit" class="ref-button--full-width ref-button--error" value="Oops, something went wrong" /&gt;<br /><br />
-									// Button with Icon<br />
-									&lt;button class="ref-button--full-width ref-button--with-icon"&gt;<br />
+							<div class="code-box">
+								<pre><code class="language-markup">
+									/* All input[type=submit] elements can be replaced with &lt;button&gt; 
+									elements using the same CSS classes below */
+
+									// Submit Button
+									&lt;input type="submit" class="ref-button--full-width" value="Submit" /&gt;
+
+									// Loading State
+									&lt;input type="submit" class="ref-button--full-width ref-button--is-loading" value="Loading..." /&gt;
+
+									// Success State
+									&lt;input type="submit" class="ref-button--full-width ref-button--success" value="Success!" /&gt;
+
+									// Error State
+									&lt;input type="submit" class="ref-button--full-width ref-button--error" value="Oops, something went wrong" /&gt;
+
+									// Button with Icon
+									&lt;button class="ref-button--full-width ref-button--full-width--with-icon"&gt;<br />
 									&nbsp;&lt;span class="ref-icon-before ref-icon-before--leaderboard"&gt;Lorem&lt;/span&gt;<br />
 									&lt;/button&gt;
-								</code>
+								</code></pre>
 							</div>
 						</div>
 					</div>
@@ -247,27 +297,33 @@
 							<button class="ref-button--link-large"><span class="ref-icon-before ref-icon-before--leaderboard">Lorem ipsum dolor</span></button>
 						</div>
 						<div class="grid__column button-example-code-container">
-							<div class="code-box code-box-tall">
-								<code>
-									// Disabled<br />
-									&lt;button class="ref-button--link" disabled&gt;Lorem ipsum dolor&lt;/button&gt;<br />
-									&lt;button class="ref-button--link-large" disabled&gt;Lorem ipsum dolor&lt;/button&gt;<br />
-									&lt;button class="ref-button--link" disabled&gt;<br />
-									&nbsp;&lt;span class="ref-icon-before ref-icon-before--leaderboard"&gt;Lorem ipsum dolor&lt;/span&gt;<br />
-									&lt;/button&gt;<br />
-									&lt;button class="ref-button--link-large" disabled&gt;<br />
-									&nbsp;&lt;span class="ref-icon-before ref-icon-before--leaderboard"&gt;Lorem ipsum dolor&lt;/span&gt;<br />
-									&lt;/button&gt;<br /><br />
-									// Active<br />
-									&lt;button class="ref-button--link"&gt;Lorem ipsum dolor&lt;/button&gt;<br />
-									&lt;button class="ref-button--link-large"&gt;Lorem ipsum dolor&lt;/button&gt;<br />
-									&lt;button class="ref-button--link"&gt;<br />
-									&nbsp;&lt;span class="ref-icon-before ref-icon-before--leaderboard"&gt;Lorem ipsum dolor&lt;/span&gt;<br />
-									&lt;/button&gt;<br />
-									&lt;button class="ref-button--link-large"&gt;<br />
-									&nbsp;&lt;span class="ref-icon-before ref-icon-before--leaderboard"&gt;Lorem ipsum dolor&lt;/span&gt;<br />
+							<div class="code-box">
+								<pre><code class="language-markup">
+									// Disabled
+									&lt;button class="ref-button--link" disabled&gt;Lorem ipsum dolor&lt;/button&gt;
+
+									&lt;button class="ref-button--link-large" disabled&gt;Lorem ipsum dolor&lt;/button&gt;
+									&lt;button class="ref-button--link" disabled&gt;
+									  &lt;span class="ref-icon-before ref-icon-before--leaderboard"&gt;Lorem ipsum dolor&lt;/span&gt;
 									&lt;/button&gt;
-								</code>
+
+									&lt;button class="ref-button--link-large" disabled&gt;
+									  &lt;span class="ref-icon-before ref-icon-before--leaderboard"&gt;Lorem ipsum dolor&lt;/span&gt;
+									&lt;/button&gt;
+
+									// Active
+									&lt;button class="ref-button--link"&gt;Lorem ipsum dolor&lt;/button&gt;
+
+									&lt;button class="ref-button--link-large"&gt;Lorem ipsum dolor&lt;/button&gt;
+
+									&lt;button class="ref-button--link"&gt;
+									  &lt;span class="ref-icon-before ref-icon-before--leaderboard"&gt;Lorem ipsum dolor&lt;/span&gt;
+									&lt;/button&gt;
+
+									&lt;button class="ref-button--link-large"&gt;
+									  &lt;span class="ref-icon-before ref-icon-before--leaderboard"&gt;Lorem ipsum dolor&lt;/span&gt;
+									&lt;/button&gt;
+								</code></pre>
 							</div>
 						</div>
 					</div>

@@ -1,0 +1,55 @@
+.page-faqs {
+	padding-bottom: 20rem;
+	.page-banner {
+		background-image: url(images/FAQs_Header.jpg);
+		h2 {
+			max-width: 725px;			
+		}
+	}
+	.faqs-list-container {
+		padding-bottom: 3rem;
+		margin-bottom: 3rem;
+		border-bottom: 1px solid #E1E5E8;
+	}
+	@include breakpoint($tablet) {
+		padding-bottom: 30rem;
+		.grid-container {
+			max-width: 1250px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.grid__column--two-thirds {
+			float: right;
+		}
+		.faqs-list-container {
+			padding-bottom: 0;
+			margin-bottom: 0;
+			border-bottom: none;
+			.is-active {
+				color: $light-grey-1;
+			}
+		}
+		.link-back-to-top {
+			text-align: right;
+			display: none;
+		}
+	}
+	@include breakpoint($desktop) {
+		.page-banner {
+			h2 {
+				max-width: 825px;
+			}
+		}
+	}
+	@media screen and (min-height: 800px) and (min-width: $tablet) {
+		.faqs-list-container--fixed {
+			position: fixed;
+			top: 80px;
+			width: 28%;
+			max-width: 350px;
+			.panel-left-open & {
+				width: 22%;				
+			}
+		}
+	}
+}

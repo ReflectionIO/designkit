@@ -1,0 +1,194 @@
+@keyframes backgroundMoveRightToLeft {
+	0% { background-position: 0 0; }
+	100% { background-position: -190px 0; }
+}
+.page-loading {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	z-index: 1000;
+	opacity: 0.9;
+	background-color: #6f6cbe;
+	/* @alternate */ background: repeating-linear-gradient(
+		-45deg,
+		#7773ce,
+		#7773ce 25%,
+		#6d69c5 25%,
+		#6d69c5 50%,
+		#7773ce 50%
+	) top left;
+	background-size: 47px 47px;
+	animation: backgroundMove 5s linear infinite;
+	transition: height 0.2s;
+	span {
+		position: relative;
+		padding: 13px 30px 0 0;
+		display: inline-block;
+		z-index: 2;
+		float: right;
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 1;
+		color: $reflection-white;
+	}
+	&.is-closing,
+	&.is-opening {
+		height: 0;
+		transition: height 0.2s;
+	}
+	&.is-complete {
+		background: $reflection-green;
+		animation: none;
+		.loading-progress {
+			background: $reflection-green;
+		}
+	}
+	&.is-complete--error {
+		background: $reflection-red;
+		animation: none;
+		.loading-progress {
+			background: $reflection-red;
+		}
+	}
+	&.page-loading--determinate {
+		background: #6d69c5;
+		animation: none;
+		&.is-closing,
+		&.is-opening {
+			height: 0;
+			transition: height 0.2s;
+		}
+	}
+	.loading-progress {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 0;
+		height: 40px;
+		z-index: 1;
+		float: left;		
+		background: #5451a6;
+		transition: width 0.4s;
+	}
+	&.component-loading {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 30px;
+		transition: height 0.2s;
+		&.is-closing,
+		&.is-opening {
+			height: 0;
+			transition: height 0.2s;
+		}
+		span {
+			padding-top: 8px;
+		}
+		.loading-progress {
+			height: 30px;
+		}
+	}
+}
+.ref-button--loading-determinate {
+	position: relative;
+	&.ref-button--is-loading,
+	&.ref-button--is-loading:disabled {
+		background: #ff4969;
+		animation: none;
+	}
+	.loading-progress {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 0;
+		background-color: #e23755;
+		border-radius: 5px 5px;
+		transition: width 0.4s
+	}
+	.loading-button-text {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		z-index: 2;
+	}
+}
+@keyframes flash {
+	0% { opacity: 1; }
+	25% { opacity: 0.3; }
+	50% { opacity: 1; }
+	100% { opacity: 1; }
+}
+@keyframes flash-two {
+	0% { opacity: 1; }
+	25% { opacity: 1; }
+	50% { opacity: 0.3; }
+	75% { opacity: 1; }
+	100% { opacity: 1; }
+}
+@keyframes flash-three {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	75% { opacity: 0.3; }
+	100% { opacity: 1; }
+}
+svg.loading-ellipsis {
+	width: 22px;
+	height: 10px;
+	padding: 0.2rem;
+	display: inline-block;
+	vertical-align: middle;
+	.dot-1 {
+		animation: flash 1.2s infinite ease-in-out;
+	}
+	.dot-2 {
+		animation: flash-two 1.2s infinite ease-in-out;  
+	}
+	.dot-3 {
+		animation: flash-three 1.2s infinite ease-in-out;
+	}
+}
+.graph-container {
+	position: relative;
+}
+.graph-loading-indicator {
+	position: absolute;
+	top: 40%;
+	left: calc(50% - 29px);
+	width: 58px;
+	height: 58px;
+	display: inline-block;
+	opacity: 0;
+	border-radius: 29px;
+	background-color: #6f6cbe;
+	/* @alternate */ background: repeating-linear-gradient(
+		-45deg,
+		#9592e1,
+		#9592e1 25%,
+		#7a76ca 25%,
+		#7a76ca 50%,
+		#9592e1 50%
+	) top left;
+	background-size: 19px 19px;
+	-webkit-transform: rotate(-17deg) scale(0.1);
+	transform: scale(0.1);
+	animation: backgroundMoveRightToLeft 3.5s linear infinite;
+	&.is-loading-success {
+		background: $reflection-green;
+		background-size: inherit;
+		animation: none;
+		-webkit-transition: 0.2s background, 0.3s -webkit-transform, 0.4s opacity;
+		transition: 0.2s background, 0.3s transform, 0.4s opacity;
+	}
+	.is-loading & {
+		opacity: 1;
+		-webkit-transform: rotate(-17deg) scale(1);
+		transform: scale(1);
+		-webkit-transition: 0.3s -webkit-transform, 0.1s opacity;
+		transition: 0.3s transform, 0.1s opacity;
+	}
+}

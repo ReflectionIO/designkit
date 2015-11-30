@@ -4,46 +4,75 @@ $blur-opacity: 0.5;
 
 .main-navigation {
 	width: 100%;
-	padding: 27px 0 23px;
+	padding: 0 0 20px;
 	background-color: $dark-grey-1;
 	a {
-		@include transition(all $base-transition-speed-off, text-shadow 0.3s);
+		transition: background-color $base-transition-speed-off, color $base-transition-speed-off, text-shadow 0.3s;
 		svg {
 			width: 19px;
 			height: 19px;
 			vertical-align: middle;
-			path {
+			path, polygon {
 				fill: $mid-grey-1;
-				@include transition(fill $base-transition-speed-off);
+				transition: fill $base-transition-speed-off;
+			}
+		}
+		svg.icon--my-apps {
+			path {
+				fill: none;
+				stroke: $mid-grey-1;
 			}
 		}
 		span {
+			position: relative;
 			display: inline-block;
 			vertical-align: middle;
-			padding-left: 20px;
+			padding-left: 12px;
 		}
 		&:hover {
-			svg path {
-				fill: #ffffff;
-				@include transition(fill $base-transition-speed-on);
+			svg path, svg polygon {
+				fill: $light-grey-2;
+				transition: fill $base-transition-speed-on;
+			}
+			svg.icon--my-apps {
+				path {
+					fill: none;
+					stroke: $light-grey-2;
+					transition: stroke $base-transition-speed-on;
+				}
 			}
 		}
 	}
-	li.is-selected a svg path {
-		fill: #ffffff;
+	li.is-selected a svg {
+		path, polygon {
+			fill: $white-navigation;
+		}
+	}
+	li.is-selected a svg.icon--my-apps {
+		path {
+			fill: none;
+			stroke: $white-navigation;
+		}
 	}
 	> ul {
 		> li {
-			margin-bottom: 4px;
 			@include font-size(12px);
 			line-height: 1.5;
-			font-weight: 700;			
+			font-weight: 700;
+			border-bottom: 1px solid #161617;
 			> a {				
 				float: left;
 				width: 100%;
 				padding-left: 28px;
 				text-transform: uppercase;
 				background-color: $dark-grey-1;
+				&:hover {
+					background-color: #252527;
+				}
+				&:active {
+					padding-bottom: 12px;
+					border-top: 2px solid #1e1e1f;			
+				}
 			}
 			&.is-selected {
 				> a {
@@ -56,14 +85,14 @@ $blur-opacity: 0.5;
 						text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
 					}
 					&:hover {
-						color: $white-navigation;
+						color: $white-navigation;						
 					}
 				}
 			}
 			> ul {
 				display: block;
 				z-index: 0;
-				@include transition(margin-top 0.16s ease-in);
+				transition: margin-top 0.16s ease-in;
 			}
 			&.is-open {
 				background-color: $dark-grey-2;
@@ -71,9 +100,14 @@ $blur-opacity: 0.5;
 					position: relative;
 					margin-top: 0;
 					z-index: 0;
-					@include transition(margin-top 0.2s ease-out);
+					transition: margin-top 0.2s ease-out;
 				}
 			}
+		}
+	}
+	&.main-navigation--account {
+		ul li:first-child {
+			border-top: 1px solid #161617;
 		}
 	}
 	> ul ul {
@@ -100,22 +134,25 @@ $blur-opacity: 0.5;
 				}
 			}
 			&.has-child {
-				@extend .ref-icon-after;
-				@extend .ref-icon-after--dot;
+				@extend .ref-icon-before;
+				@extend .ref-icon-before--dot;
 				line-height: 1.5;
-				&:after {
+				&:before {
 					position: absolute;
-					right: 9px;
-					top: 5px;
-					z-index: 10;
+					top: 4px;
+					left: 9px;					
 					font-size: 12px;
+					z-index: 100;
 					color: #53586c;
-					@include transition(color 0.2s);
+					transition: color 0.2s;
 				}
 				&.is-open {
-					&:after {
+					a {
+						color: #81879d;
+					}	
+					&:before {
 						color: #7e79e2;
-						@include transition(color 0.33s);
+						transition: color 0.33s;
 						.is-animating-out & {
 							text-shadow: 4px 0px 1px rgba(109,105,197, $blur-opacity);
 						}
@@ -123,11 +160,17 @@ $blur-opacity: 0.5;
 							text-shadow: -4px 0px 1px rgba(109,105,197, $blur-opacity);
 						}
 					}
+					&.is-selected {
+						a {
+							color: #e1e5e8;
+						}						
+					}
 				}
 			}
 			a {
 				padding: 0 38px 15px 29px;
 				color: $light-grey-1;
+				font-weight: 400;
 				.is-animating-out & {
 					text-shadow: 4px 0px 1px rgba(129,135,157, $blur-opacity);
 				}
@@ -141,9 +184,18 @@ $blur-opacity: 0.5;
 			ul {
 				background-color: #2e313b;
 				display: block;
-				@include transition(margin-top 0.16s ease-in);
-				a {
-					padding-left: 38px;
+				transition: margin-top 0.16s ease-in;
+				li.is-selected {
+					a {
+						color: #e1e5e8;
+					}
+				}
+				li a {
+					padding-left: 35px;
+					padding-bottom: 15px;
+				}
+				li:last-child a {
+					padding-bottom: 20px;
 				}
 			}
 		}
@@ -155,7 +207,11 @@ $blur-opacity: 0.5;
 		> li:first-child {
 			margin-top: 22px;
 		}
-		> li:last-child a {
+		> li:last-child a,
+		> li:last-child li a {
+			padding-bottom: 15px;
+		}
+		> li:last-child li:last-child a {
 			padding-bottom: 20px;
 		}
 		li.is-open {
@@ -168,7 +224,7 @@ $blur-opacity: 0.5;
 				padding-top: 14px;
 				display: block;
 				z-index: 0;
-				@include transition(margin-top 0.2s ease-out);
+				transition: margin-top 0.2s ease-out;
 			}
 			> a {
 				color: #e1e5e8;
@@ -186,7 +242,7 @@ $blur-opacity: 0.5;
 	}
 	ul ul ul {
 		li:first-child {
-				margin-top: 8px;
+			margin-top: 8px;
 		}
 		li:last-child a {
 			padding-bottom: 24px;
@@ -208,25 +264,20 @@ $blur-opacity: 0.5;
 	}
 	a {
 		position: relative;
-		padding: 14px 0px 14px 29px;
+		padding: 15px 0px 14px 29px;
+		letter-spacing: 0.4px;
 		display: block;
 		z-index: 10;
-		color: #767683;
+		color: #727686;
 		@include box-sizing(border-box);
 		.is-animating-out & {
 			text-shadow: 4px 0px 1px rgba(118,118,131, $blur-opacity);
 		}
 		.is-animating-in & {
 			text-shadow: -4px 0px 1px rgba(118,118,131, $blur-opacity);
-		}
+		}		
 		&:hover {
-			color: #c6c6d4;
+			color: $light-grey-2;
 		}
-	}
-	.ref-icon-before:before {
-		position: absolute;
-		left: 30px;
-		top: 15px;
-		font-size: 18px;
 	}
 }

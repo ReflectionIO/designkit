@@ -27,28 +27,9 @@ $legacy-support-for-ie8 : false !default;
 /* Components */
 @import "../components/*";
 
-/* Global base styles */
-html, body
-{
-	position: relative;
-	overflow-x: hidden;
-	@extend .lato;
-	font-size: 10px;
-	line-height: 1.5rem;
-	color: $dark-grey-1;
-	background-color: $reflection-white;
-	@extend %font-smoothing;
-	@include breakpoint($desktop) {
-		font-size: 11px;
-	}
-	@include breakpoint($desktop-wide) {
-		font-size: 12px;
-	}
-}
-html.no-scroll,
-body.no-scroll {
-	overflow: hidden;
-}
+/* Browser fixes */
+@import "../support/*";
+
 p.browserupgrade {
 	width: 100%;
 	padding: 20px;
