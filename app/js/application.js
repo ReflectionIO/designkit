@@ -529,7 +529,7 @@
 		if(!isIE8) {
 			$('.default-tabs-transition .tabs__content-area').css("opacity", 1);
 		}
-
+		
 		$('.js-tab-select').unbind("mouseup");
 		$('.js-tab-select').on("mouseup", function(e){
   		e.preventDefault();

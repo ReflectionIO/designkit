@@ -71,7 +71,7 @@
 				</div>
 				<div class="tabs">
 					<ul class="tabs-container default-tabs-transition tabs-to-dropdown">
-						<li class="grid__column grid__column--one-quarter tabs__tab is-active js-tab-select">
+						<li class="grid__column grid__column--one-quarter tabs__tab js-tab-select">
 							<div class="tab-animate-active"></div>
 							<a href="#tab-content-overall" class="tabs__link">
 								<span>
@@ -105,16 +105,16 @@
 						</li>
 						<li class="grid__column grid__column--one-quarter tabs__tab js-tab-select">
 							<div class="tab-animate-active"></div>
-							<a href="#tab-content-paid" class="tabs__link">
+							<a data-content="#tab-content-rank" class="tabs__link">
 								<span>
 									<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M23,12V4H9v6H0v18h32V12H23z M11,6h10v7.3l0,0V26H11V12.3l0,0V6z M2,12h8v14H2V12z M30,26h-8V14h8
 		V26z"/></svg>
 									<span>Rank</span></span>
 							</a>
 						</li>
-						<li class="grid__column grid__column--one-quarter tabs__tab js-tab-select">
+						<li class="grid__column grid__column--one-quarter tabs__tab is-active js-tab-select">
 							<div class="tab-animate-active"></div>
-							<a href="#tab-content-grossing" class="tabs__link">
+							<a data-content="#tab-content-details" class="tabs__link">
 								<span>
 									<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M4,10c0,1.1-0.9,2-2,2s-2-0.9-2-2s0.9-2,2-2S4,8.9,4,10z M32,9H7v2h25V9z M2,14
 		c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S3.1,14,2,14z M32,15H7v2h25V15z M2,20c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S3.1,20,2,20z
@@ -123,346 +123,375 @@
 							</a>
 						</li>
 					</ul>
-				</div>
-				<div class="grid__column grid__column--full-width filters-container filter-container--app">
-					<form class="forms--mid-theme">
-						<div class="time-period-select-component">
-							<div class="calendar-container">
-									<div class="date-select-container">
-										<div class="form-field form-field--date-select form-field--date-select--no-icon">
-											<input type="text" name="date-single" id="date-single" value="01 Jan 2015" />
+				</div>				
+				<ul class="tabs__content-container default-tabs-transition tabs-to-dropdown--content">
+					<li id="tab-content-rank" class="tabs__content">
+						<div class="grid__column grid__column--full-width filters-container filter-container--app">
+							<form class="forms--mid-theme">
+								<div class="time-period-select-component">
+									<div class="calendar-container">
+											<div class="date-select-container">
+												<div class="form-field form-field--date-select form-field--date-select--no-icon">
+													<input type="text" name="date-single" id="date-single" value="01 Jan 2015" />
+												</div>
+											</div>
+											<div class="date-select-to-indicator"></div>
+											<div class="date-select-container">
+												<div class="form-field form-field--date-select form-field--date-select--no-icon">
+													<input type="text" name="date-single-to" id="date-single-to" value="26 Feb 2015" />
+												</div>
+											</div>
+									</div>
+									<span class="or-text">or</span>
+									<div class="form-field form-field--select time-period-select form-field--select--filter">
+										<div class="page-overlay"></div>		
+										<select class="js-field--select reflection-select--filter">
+									    <option value="" disabled selected>Time Period</option>
+									    <option value="time1">1 Week</option>
+									    <option value="time2">2 Weeks</option>
+									    <option value="time3">4 Weeks</option>
+									    <option value="time4">6 Weeks</option>
+									    <option value="time5">8 Weeks</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-field form-field--select store-select form-field--select--filter js-tooltip" data-tooltip="Select a App Store">
+									<div class="page-overlay"></div>
+									<select class="js-field--select reflection-select--filter reflection-select--right">
+								    <option value="" disabled selected>App Store</option>
+								    <option value="b0">All Stores</option>
+								    <option value="b1">iPad Store</option>
+								    <option value="b2">iPhone Store</option>
+									</select>
+								</div>
+								<div class="form-field form-field--select country-select form-field--select--filter">
+									<div class="page-overlay"></div>			
+									<select class="js-field--select reflection-select--filter">
+								    <option value="" disabled selected>Country</option>
+								    <option value="a0">All Countries</option>
+								    <option value="a1">Japan</option>
+								    <option value="a2">United States</option>
+								    <option value="a3">China</option>
+								    <option value="a4">Germany</option>
+								    <option value="a5">France</option>
+								    <option value="a6">United Kingdom</option>
+								    <option value="a7">Italy</option>
+									</select>
+								</div>
+								<button class="ref-button--cta-small refresh-button">
+									<svg class="svg-refresh" version="1.1" x="0px" y="0px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+										<path fill="#FCFDFD" d="M2.1,9h-2H0v5l1.5-1.4C2.9,14.7,5.3,16,8,16c4.1,0,7.4-3.1,7.9-7h-2c-0.5,2.8-2.9,5-5.9,5
+		c-2.1,0-4-1.1-5-2.7L5.4,9H2.1z M14.6,3.4L16,2v5h-0.1h-2H13h-2l2.1-2.1C12.1,3.2,10.2,2,8,2C5,2,2.6,4.2,2.1,7h-2
+		C0.6,3.1,3.9,0,8,0C10.7,0,13.1,1.4,14.6,3.4z"/>
+									</svg>
+								</button>
+
+								<div class="filter-toggle">
+									<div class="toggle">
+										<input type="radio" id="calendar" name="radiogroupname" checked />
+										<label for="calendar" class="toggle-calendar">
+											<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M30.3,5.2c-0.5-0.4-1-0.7-1.6-0.7h-2.3V2.8c0-0.8-0.3-1.4-0.8-2C25,0.3,24.3,0,23.5,0h-1.2
+		c-0.8,0-1.5,0.3-2,0.8c-0.6,0.6-0.8,1.2-0.8,2v1.7h-6.9V2.8c0-0.8-0.3-1.4-0.8-2C11.1,0.3,10.4,0,9.6,0H8.5C7.7,0,7,0.3,6.4,0.8
+		c-0.6,0.6-0.8,1.2-0.8,2v1.7H3.3c-0.6,0-1.2,0.2-1.6,0.7C1.2,5.7,1,6.2,1,6.8v22.6c0,0.6,0.2,1.1,0.7,1.6c0.5,0.4,1,0.7,1.6,0.7
+		h25.4c0.6,0,1.2-0.2,1.6-0.7c0.5-0.4,0.7-1,0.7-1.6V6.8C31,6.2,30.8,5.7,30.3,5.2z M8.5,29.4H3.3v-5.1h5.2V29.4z M8.5,23.2H3.3v-5.7
+		h5.2V23.2z M8.5,16.4H3.3v-5.1h5.2V16.4z M8.1,8.3C8,8.2,7.9,8.1,7.9,7.9V2.8c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2h1.2
+		c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v5.1c0,0.2-0.1,0.3-0.2,0.4C9.9,8.4,9.8,8.5,9.6,8.5H8.5C8.3,8.5,8.2,8.4,8.1,8.3z
+		 M15.4,29.4H9.6v-5.1h5.8V29.4z M15.4,23.2H9.6v-5.7h5.8V23.2z M15.4,16.4H9.6v-5.1h5.8V16.4z M22.4,29.4h-5.8v-5.1h5.8V29.4z
+		 M22.4,23.2h-5.8v-5.7h5.8V23.2z M22.4,16.4h-5.8v-5.1h5.8V16.4z M21.9,8.3c-0.1-0.1-0.2-0.2-0.2-0.4V2.8c0-0.2,0.1-0.3,0.2-0.4
+		c0.1-0.1,0.2-0.2,0.4-0.2h1.2c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v5.1c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.2,0.2-0.4,0.2
+		h-1.2C22.2,8.5,22.1,8.4,21.9,8.3z M28.7,29.4h-5.2v-5.1h5.2V29.4z M28.7,23.2h-5.2v-5.7h5.2V23.2z M28.7,16.4h-5.2v-5.1h5.2V16.4z"/></svg>
+											<img src="images/blank-image.png" alt="" />
+										</label>
+									</div>
+									<div class="toggle">
+										<input type="radio" id="map" name="radiogroupname" />
+										<label for="map">
+											<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M16,0C7.2,0,0,7.2,0,16c0,8.8,7.2,16,16,16s16-7.2,16-16C32,7.2,24.8,0,16,0z M1.5,16
+		c0-2.9,0.9-5.6,2.3-7.8c0.1,0.1,0.2,0,0.3,0.1c0,0.2,0,0.5,0,0.7c-0.2,0.9,0.4,1.8,1.2,1.9c0.1,0.5-0.2,0.6,0.3,1.3
+		c0,0.1,0,0.3,0.1,0.4c0.1,0.1,0.3,0.2,0.5,0.3c0.5,0.3,0.4,0.9,0.2,1.4s-0.6,0.8-0.8,1.3c-0.3,0.8-0.3,1.8,0.3,2.4
+		c0.2,0.3,0.5,0.9,0.8,1s0.4,0.3,0.5,0.6c0.1,0.5,0.3,0.8,0.3,1.3c0,0.4-0.2,1.1-0.2,1.5c0,0.4,0.2,0.3,0.1,0.5
+		c0,0.2-0.1,0.1-0.2,0.4c-0.1,0.6,0,1.7,0.1,2.1c0.2,1.5,1.1,2.7,2,2.6c0.3-0.7-0.4-1.5-0.1-2.2c0.1-0.3,0.3-0.5,0.5-0.7
+		c1-0.8,1.8-1.5,2.4-2.5c0.1-0.1,0.2-0.4,0.3-0.5c0.1-0.1,0.3-0.1,0.5-0.1c0.7-0.1,1.1-0.5,1.4-1.1c0.3-0.6,0.3-1.1,0.9-1.7
+		c0.1-0.1,0.2-0.5,0.3-0.6c0.3-0.5-0.1-1.2-0.6-1.5c-0.5-0.3-1-0.4-1.4-0.7c-0.6-0.4-0.6-1-1-1.5c-0.4-0.5-1.1-0.9-1.7-1.2
+		c-0.7-0.4-0.7-0.7-1.9-1.2c-0.1-0.1-0.5-0.1-0.6,0c-0.1,0-0.2,0.2-0.4,0.3c-0.4,0.4-1.3,0.2-1.5-0.4c-0.1-0.3,0-0.5,0-0.7
+		c-0.1-0.3-0.1-0.7-0.4-0.6c-0.1-0.4,0.6-0.1,0.6-0.7c0.1-0.5-0.3-0.1-0.8-0.4C5.4,9.8,5.4,9,5.6,8.7c0.2-0.6,0.3-0.3,0.6-0.5
+		C6.6,7.8,7.4,7.5,8,7.8C8.4,8.1,8.4,9,8.6,9.1C8.8,9.3,9,9,9,8.8c0-0.2-0.1-0.6,0-0.8c0.1-0.1,0.2-0.2,0.3-0.3
+		c1.1-0.8,2.4-1.3,3.7-1.4c0.1,0,0.4,0,0.5-0.1c0.2-0.2,0.1-0.5,0.4-0.5c0.2,0,0.4,0.3,0.7,0.3c0.3,0.1,0.6-0.4,0.6-0.7
+		c0-0.3-0.1-0.7,0-1c0.1-0.1,0.1-0.3,0.1-0.4c0-0.1-0.1-0.1-0.2-0.1c-0.2-0.1-0.3-0.5-0.7-0.4c-0.4,0.2-0.7,0.2-1.1,0.4
+		c-0.3,0.2-0.5,0.5-1,0.6c-0.2-0.4,0-0.9,0.3-1.2C13.1,3,13.5,3,13.9,3c0.2,0,0.4-0.1,0.6,0c0.1,0,0.3,0.2,0.4,0.2
+		c0.3,0.2,0.6,0,0.8-0.3s0.4-0.5,0.2-0.8C16,1.9,16.2,2,16.3,2.2c0.1,0.2-0.1,0.4-0.2,0.6c-0.4,1,0.4,2,0.8,1.9
+		c0.5-0.1,0.9-1.2,1.5-1.4c0.2-0.1,0.4-0.1,0.5-0.2c0.2-0.2,0.2-0.4,0.3-0.7c0.1-0.2,0.4-0.3,0.7-0.4c1.4,0.4,2.6,1,3.8,1.7
+		c0,0,0,0,0,0c-0.1,0-0.2,0-0.3,0c-0.7-0.1-0.9,0.5-0.7,1.2c0.2,0.5,0.6,0.8,1.1,1c0.2,0.1,0.6,0.1,0.7,0.3c0,0.1-0.1,0.3-0.1,0.3
+		c0.1,0.5-0.1,0.8-0.5,1.1c-0.4,0.3-1.1,0.2-1.4,0.5c-0.3,0.3,0.2,1.2,0.6,1.5c0.4,0.4,1.2,0.3,1.5-0.1c0.2-0.3,0-0.6,0.1-0.8
+		c0.6,0.1,0.9,0.3,1.1,0.8c0,0.1,0.2,0.1,0.3,0.1c0.3,0.1,0.4-0.3,0.5-0.1c0,0.2,0.1,0.3,0.2,0.4c0.2,0.1,0.2-0.1,0.4,0
+		c0.2,0.1,0.3,0.5,0.6,0.5s0.6,0,0.8,0.2c0.1,0.2,0.2,0.4,0.1,0.6c-0.1,0.2-0.9,0.1-1.4-0.1s-0.6-0.5-1.1-0.8c-0.8-0.4-2.4-0.3-3.6,0
+		c-0.9,0.3-1.1,0.6-1.7,1.3c-0.1,0.1-0.2,0.5-0.3,0.7c-0.1,0.2-0.1,0.4-0.1,0.6c-0.2,1-0.7,2.3-0.2,3.1c0.2,0.4,0.6,0.6,1,0.8
+		c0.5,0.4,0.8,0.7,1.3,0.8c0.4,0.1,1,0,1.3,0c0.5,0,1,0.1,1.5,0.4c-0.3,0.7-0.4,1.9-0.3,2.3c0,0.3,0.2,0.4,0.2,0.7
+		c0.2,1.1-1.6,1.8-1.2,2.9c0.1,0.2,0.2,0.5,0.2,0.8c0,0.9-0.7,1.3-0.8,2c-0.1,0.4,0,0.6,0,1c0,0.2,0,0.3-0.1,0.5
+		c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
+											<img src="images/blank-image.png" alt="" />
+										</label>
+									</div>
+								</div>
+								
+								<div class="filters-group-graph-options">
+									<a href="#" class="show-hide-link ref-icon-after ref-icon-after--angle-down js-reveal-element">Show / Hide Options</a>
+									<div class="reveal-element">
+										<div class="filter-switch filter-switch--small">									
+											<div class="can-toggle can-toggle--size-small">
+											  <input id="events" type="checkbox">
+											  <label for="events">
+											    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+											  </label>
+											</div>
+											<span>Events</span>
+										</div>
+										<div class="filter-switch filter-switch--small">									
+											<div class="can-toggle can-toggle--size-small">
+											  <input id="overlaydownloads" type="checkbox">
+											  <label for="overlaydownloads" class="js-overlay-downloads">
+											    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+											  </label>
+											</div>
+											<span>Overlay Downloads</span>
+										</div>
+										<div class="filter-switch filter-switch--small">									
+											<div class="can-toggle can-toggle--size-small">
+											  <input id="cumulative" type="checkbox">
+											  <label for="cumulative">
+											    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+											  </label>
+											</div>
+											<span>Cumulative Chart</span>
+										</div>
+										<div class="filter-switch filter-switch--small">									
+											<div class="can-toggle can-toggle--size-small">
+											  <input id="average" type="checkbox">
+											  <label for="average">
+											    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+											  </label>
+											</div>
+											<span>1M Moving Average</span>
+										</div>
+										<div class="filter-switch filter-switch--small">									
+											<div class="can-toggle can-toggle--size-small">
+											  <input id="overlayapps" type="checkbox">
+											  <label for="overlayapps">
+											    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
+											  </label>
+											</div>
+											<span>Overlay Apps (0/5)</span>
 										</div>
 									</div>
-									<div class="date-select-to-indicator"></div>
-									<div class="date-select-container">
-										<div class="form-field form-field--date-select form-field--date-select--no-icon">
-											<input type="text" name="date-single-to" id="date-single-to" value="26 Feb 2015" />
-										</div>
-									</div>
-							</div>
-							<span class="or-text">or</span>
-							<div class="form-field form-field--select time-period-select form-field--select--filter">
-								<div class="page-overlay"></div>		
-								<select class="js-field--select reflection-select--filter">
-							    <option value="" disabled selected>Time Period</option>
-							    <option value="time1">1 Week</option>
-							    <option value="time2">2 Weeks</option>
-							    <option value="time3">4 Weeks</option>
-							    <option value="time4">6 Weeks</option>
-							    <option value="time5">8 Weeks</option>
-								</select>
-							</div>
+								</div>
+							</form>
 						</div>
+						<div class="graph-container">
+							<div id="container" style="width:100%; height:505px;" class="highcharts-container">
+		          </div>
+							<div class="graph-loading-indicator">
+		          </div>
+		          <div class="graph-loading-line">
+		          	<div class="animated-line"></div>
+		          </div>
+						</div>
+						<section class="data-display-container">
+							<header class="data-display-header">
+								<div class="data-display-header--component total-revenue-title">
+									<div class="app-icon-small-container">
+										<img src="images/placeholder-app-icon.png" alt="Monument Valley app icon" class="app-icon-small" />
+									</div>
+									<h2 class="heading-style heading-style--heading-four data-heading">Total Revenue</h2>
+								</div>
+								<button class="ref-button--function-small ref-button--function-small--with-icon"><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>						
+								<div class="data-display-header--component data-summary-container data-summary-container-synced">
+									<span class="revenue-date-range">Since First Synced (1 Feb 2014)</span>
+									<span class="revenue-summary-value">&pound;9,291,005</span>
+								</div>
+								<div class="data-display-header--component data-summary-container">
+									<span class="revenue-date-range">16 Mar 2014 - 16 Apr 2014</span>
+									<span class="revenue-summary-value">&pound;8,428,173</span>
+								</div>
+							</header>
+							<table class="table-revenue responsive">
+								<thead>
+									<th class="can-be-sorted is-ascending">Date <svg version=1.1 x=0px y=0px viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space=preserve class="sort-svg"><path class=ascending d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1
+			C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"/><path class=descending d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2
+			C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"/></svg></th>
+									<th class="can-be-sorted">Revenue <span class="hidden-for-mobile">Generated</span> <svg version=1.1 x=0px y=0px viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space=preserve class="sort-svg"><path class=ascending d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1
+			C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"/><path class=descending d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2
+			C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"/></svg></th>
+									<th class="can-be-sorted">% <span class="hidden-for-mobile">of</span> Total <span class="hidden-for-mobile">Revenue</span> for Period <svg version=1.1 x=0px y=0px viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space=preserve class="sort-svg"><path class=ascending d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1
+			C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"/><path class=descending d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2
+			C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"/></svg></th>
+								</thead>
+								<colgroup>
+									<col style="width: 25%">
+									<col style="width: 25%">
+									<col style="width: 50%">
+								</colgroup>
+								<tbody>
+									<tr>
+										<td class="date-value">Mon 06/03/14</td>
+										<td class="revenue-value">&pound;11,529,654</td>
+										<td class="revenue-percentage">
+											<span>28%</span>
+											<div class="data-bar">
+												<div style="width: 28%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Tue 07/03/14</td>
+										<td class="revenue-value">&pound;4,385,021</td>
+										<td class="revenue-percentage">
+											<span>10%</span>
+											<div class="data-bar">
+												<div style="width: 10%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Wed 08/03/14</td>
+										<td class="revenue-value">&pound;6,772,912</td>
+										<td class="revenue-percentage">
+											<span>9%</span>
+											<div class="data-bar">
+												<div style="width: 9%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Thu 09/03/14</td>
+										<td class="revenue-value">&pound;4,385,021</td>
+										<td class="revenue-percentage">
+											<span>6%</span>
+											<div class="data-bar">
+												<div style="width: 6%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Fri 10/03/14</td>
+										<td class="revenue-value">&pound;6,772,912</td>
+										<td class="revenue-percentage">
+											<span>9%</span>
+											<div class="data-bar">
+												<div style="width: 9%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Sat 11/03/14</td>
+										<td class="revenue-value">&pound;1,342,021</td>
+										<td class="revenue-percentage">
+											<span>1%</span>
+											<div class="data-bar">
+												<div style="width: 1%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Sun 12/03/14</td>
+										<td class="revenue-value">&pound;2,123,232</td>
+										<td class="revenue-percentage">
+											<span>2%</span>
+											<div class="data-bar">
+												<div style="width: 2%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Mon 13/03/14</td>
+										<td class="revenue-value">&pound;0</td>
+										<td class="revenue-percentage">
+											<span>0%</span>
+											<div class="data-bar">
+												<div style="width: 0%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Tue 14/03/14</td>
+										<td class="revenue-value">&pound;200,000</td>
+										<td class="revenue-percentage">
+											<span>0.2%</span>
+											<div class="data-bar">
+												<div style="width: 0.2%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Tue 14/03/14</td>
+										<td class="revenue-value">&pound;2,000,000</td>
+										<td class="revenue-percentage">
+											<span>2%</span>
+											<div class="data-bar">
+												<div style="width: 2%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Tue 14/03/14</td>
+										<td class="revenue-value">&pound;10,544,836</td>
+										<td class="revenue-percentage">
+											<span>25%</span>
+											<div class="data-bar">
+												<div style="width: 25%"></div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="date-value">Tue 14/03/14</td>
+										<td class="revenue-value">&pound;7,945,126</td>
+										<td class="revenue-percentage">
+											<span>14%</span>
+											<div class="data-bar">
+												<div style="width: 14%"></div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+								<tbody class="table-body--loading"><tr><td colspan="3" align="center"><div><div aria-hidden="true" style="width: 100%; height: 100%; padding: 0px; margin: 0px; display: none;"><div aria-hidden="true" style="width: 100%; height: 100%; display: none;"></div></div><div style="width: 100%; height: 100%; padding: 0px; margin: 0px;"><div class="cellTableLoading" style="width: 100%; height: 100%;"><div><table style="width: 100%">
 
-						<div class="form-field form-field--select store-select form-field--select--filter js-tooltip" data-tooltip="Select a App Store">
-							<div class="page-overlay"></div>
-							<select class="js-field--select reflection-select--filter reflection-select--right">
-						    <option value="" disabled selected>App Store</option>
-						    <option value="b0">All Stores</option>
-						    <option value="b1">iPad Store</option>
-						    <option value="b2">iPhone Store</option>
-							</select>
-						</div>
-						<div class="form-field form-field--select country-select form-field--select--filter">
-							<div class="page-overlay"></div>			
-							<select class="js-field--select reflection-select--filter">
-						    <option value="" disabled selected>Country</option>
-						    <option value="a0">All Countries</option>
-						    <option value="a1">Japan</option>
-						    <option value="a2">United States</option>
-						    <option value="a3">China</option>
-						    <option value="a4">Germany</option>
-						    <option value="a5">France</option>
-						    <option value="a6">United Kingdom</option>
-						    <option value="a7">Italy</option>
-							</select>
-						</div>
-						<button class="ref-button--cta-small refresh-button">
-							<svg class="svg-refresh" version="1.1" x="0px" y="0px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-								<path fill="#FCFDFD" d="M2.1,9h-2H0v5l1.5-1.4C2.9,14.7,5.3,16,8,16c4.1,0,7.4-3.1,7.9-7h-2c-0.5,2.8-2.9,5-5.9,5
-c-2.1,0-4-1.1-5-2.7L5.4,9H2.1z M14.6,3.4L16,2v5h-0.1h-2H13h-2l2.1-2.1C12.1,3.2,10.2,2,8,2C5,2,2.6,4.2,2.1,7h-2
-C0.6,3.1,3.9,0,8,0C10.7,0,13.1,1.4,14.6,3.4z"/>
-							</svg>
-						</button>
+									<colgroup>
+										<col style="width: 25%">
+										<col style="width: 25%">
+										<col style="width: 50%">
+									</colgroup>
 
-						<div class="filter-toggle">
-							<div class="toggle">
-								<input type="radio" id="calendar" name="radiogroupname" checked />
-								<label for="calendar" class="toggle-calendar">
-									<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M30.3,5.2c-0.5-0.4-1-0.7-1.6-0.7h-2.3V2.8c0-0.8-0.3-1.4-0.8-2C25,0.3,24.3,0,23.5,0h-1.2
-c-0.8,0-1.5,0.3-2,0.8c-0.6,0.6-0.8,1.2-0.8,2v1.7h-6.9V2.8c0-0.8-0.3-1.4-0.8-2C11.1,0.3,10.4,0,9.6,0H8.5C7.7,0,7,0.3,6.4,0.8
-c-0.6,0.6-0.8,1.2-0.8,2v1.7H3.3c-0.6,0-1.2,0.2-1.6,0.7C1.2,5.7,1,6.2,1,6.8v22.6c0,0.6,0.2,1.1,0.7,1.6c0.5,0.4,1,0.7,1.6,0.7
-h25.4c0.6,0,1.2-0.2,1.6-0.7c0.5-0.4,0.7-1,0.7-1.6V6.8C31,6.2,30.8,5.7,30.3,5.2z M8.5,29.4H3.3v-5.1h5.2V29.4z M8.5,23.2H3.3v-5.7
-h5.2V23.2z M8.5,16.4H3.3v-5.1h5.2V16.4z M8.1,8.3C8,8.2,7.9,8.1,7.9,7.9V2.8c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2h1.2
-c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v5.1c0,0.2-0.1,0.3-0.2,0.4C9.9,8.4,9.8,8.5,9.6,8.5H8.5C8.3,8.5,8.2,8.4,8.1,8.3z
- M15.4,29.4H9.6v-5.1h5.8V29.4z M15.4,23.2H9.6v-5.7h5.8V23.2z M15.4,16.4H9.6v-5.1h5.8V16.4z M22.4,29.4h-5.8v-5.1h5.8V29.4z
- M22.4,23.2h-5.8v-5.7h5.8V23.2z M22.4,16.4h-5.8v-5.1h5.8V16.4z M21.9,8.3c-0.1-0.1-0.2-0.2-0.2-0.4V2.8c0-0.2,0.1-0.3,0.2-0.4
-c0.1-0.1,0.2-0.2,0.4-0.2h1.2c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v5.1c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.2,0.2-0.4,0.2
-h-1.2C22.2,8.5,22.1,8.4,21.9,8.3z M28.7,29.4h-5.2v-5.1h5.2V29.4z M28.7,23.2h-5.2v-5.7h5.2V23.2z M28.7,16.4h-5.2v-5.1h5.2V16.4z"/></svg>
-									<img src="images/blank-image.png" alt="" />
-								</label>
+									<tbody><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr></tbody></table></div></div></div></div></td></tr></tbody>
+							</table>
+							<button class="ref-button--function-small ref-button--function-small--with-icon download-button--mobile"><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>
+						</section>
+					</li>
+					<li id="tab-content-details" class="tabs__content tabs__content--is-showing">
+						<div class="app-images">
+							<ul class="app-image-list">
+							</ul>
+						</div>
+						<article class="grid__column grid__column--two-thirds site-article-full">
+							<h2 class="heading-style--heading-three">Description</h2>
+							<p class="js-app-description"><p>
+						</article>
+						<aside class="grid__row-container grid__column--one-third aside-definition-list">
+							<div class="grid__column">
+								<h2 class="heading-style--heading-four">Details</h2>
+								<dl>
+									<dt>Price</dt>
+									<dd class="js-dd-price"></dd>
+									<dt>Founders</dt>
+									<dd><a href="about.html">Gustaf Leksell</a><br /><a href="about.html">Chi Dire</a></dd>
+									<dt>Address</dt>
+									<dd>40-44 Newman St<br />London, W1T 1QD</dd>
+									<dt>Company Registration Number</dt>
+									<dd>xxxxxxx</dd>
+								</dl>
 							</div>
-							<div class="toggle">
-								<input type="radio" id="map" name="radiogroupname" />
-								<label for="map">
-									<svg version=1.1 x=0px y=0px viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space=preserve><path d="M16,0C7.2,0,0,7.2,0,16c0,8.8,7.2,16,16,16s16-7.2,16-16C32,7.2,24.8,0,16,0z M1.5,16
-c0-2.9,0.9-5.6,2.3-7.8c0.1,0.1,0.2,0,0.3,0.1c0,0.2,0,0.5,0,0.7c-0.2,0.9,0.4,1.8,1.2,1.9c0.1,0.5-0.2,0.6,0.3,1.3
-c0,0.1,0,0.3,0.1,0.4c0.1,0.1,0.3,0.2,0.5,0.3c0.5,0.3,0.4,0.9,0.2,1.4s-0.6,0.8-0.8,1.3c-0.3,0.8-0.3,1.8,0.3,2.4
-c0.2,0.3,0.5,0.9,0.8,1s0.4,0.3,0.5,0.6c0.1,0.5,0.3,0.8,0.3,1.3c0,0.4-0.2,1.1-0.2,1.5c0,0.4,0.2,0.3,0.1,0.5
-c0,0.2-0.1,0.1-0.2,0.4c-0.1,0.6,0,1.7,0.1,2.1c0.2,1.5,1.1,2.7,2,2.6c0.3-0.7-0.4-1.5-0.1-2.2c0.1-0.3,0.3-0.5,0.5-0.7
-c1-0.8,1.8-1.5,2.4-2.5c0.1-0.1,0.2-0.4,0.3-0.5c0.1-0.1,0.3-0.1,0.5-0.1c0.7-0.1,1.1-0.5,1.4-1.1c0.3-0.6,0.3-1.1,0.9-1.7
-c0.1-0.1,0.2-0.5,0.3-0.6c0.3-0.5-0.1-1.2-0.6-1.5c-0.5-0.3-1-0.4-1.4-0.7c-0.6-0.4-0.6-1-1-1.5c-0.4-0.5-1.1-0.9-1.7-1.2
-c-0.7-0.4-0.7-0.7-1.9-1.2c-0.1-0.1-0.5-0.1-0.6,0c-0.1,0-0.2,0.2-0.4,0.3c-0.4,0.4-1.3,0.2-1.5-0.4c-0.1-0.3,0-0.5,0-0.7
-c-0.1-0.3-0.1-0.7-0.4-0.6c-0.1-0.4,0.6-0.1,0.6-0.7c0.1-0.5-0.3-0.1-0.8-0.4C5.4,9.8,5.4,9,5.6,8.7c0.2-0.6,0.3-0.3,0.6-0.5
-C6.6,7.8,7.4,7.5,8,7.8C8.4,8.1,8.4,9,8.6,9.1C8.8,9.3,9,9,9,8.8c0-0.2-0.1-0.6,0-0.8c0.1-0.1,0.2-0.2,0.3-0.3
-c1.1-0.8,2.4-1.3,3.7-1.4c0.1,0,0.4,0,0.5-0.1c0.2-0.2,0.1-0.5,0.4-0.5c0.2,0,0.4,0.3,0.7,0.3c0.3,0.1,0.6-0.4,0.6-0.7
-c0-0.3-0.1-0.7,0-1c0.1-0.1,0.1-0.3,0.1-0.4c0-0.1-0.1-0.1-0.2-0.1c-0.2-0.1-0.3-0.5-0.7-0.4c-0.4,0.2-0.7,0.2-1.1,0.4
-c-0.3,0.2-0.5,0.5-1,0.6c-0.2-0.4,0-0.9,0.3-1.2C13.1,3,13.5,3,13.9,3c0.2,0,0.4-0.1,0.6,0c0.1,0,0.3,0.2,0.4,0.2
-c0.3,0.2,0.6,0,0.8-0.3s0.4-0.5,0.2-0.8C16,1.9,16.2,2,16.3,2.2c0.1,0.2-0.1,0.4-0.2,0.6c-0.4,1,0.4,2,0.8,1.9
-c0.5-0.1,0.9-1.2,1.5-1.4c0.2-0.1,0.4-0.1,0.5-0.2c0.2-0.2,0.2-0.4,0.3-0.7c0.1-0.2,0.4-0.3,0.7-0.4c1.4,0.4,2.6,1,3.8,1.7
-c0,0,0,0,0,0c-0.1,0-0.2,0-0.3,0c-0.7-0.1-0.9,0.5-0.7,1.2c0.2,0.5,0.6,0.8,1.1,1c0.2,0.1,0.6,0.1,0.7,0.3c0,0.1-0.1,0.3-0.1,0.3
-c0.1,0.5-0.1,0.8-0.5,1.1c-0.4,0.3-1.1,0.2-1.4,0.5c-0.3,0.3,0.2,1.2,0.6,1.5c0.4,0.4,1.2,0.3,1.5-0.1c0.2-0.3,0-0.6,0.1-0.8
-c0.6,0.1,0.9,0.3,1.1,0.8c0,0.1,0.2,0.1,0.3,0.1c0.3,0.1,0.4-0.3,0.5-0.1c0,0.2,0.1,0.3,0.2,0.4c0.2,0.1,0.2-0.1,0.4,0
-c0.2,0.1,0.3,0.5,0.6,0.5s0.6,0,0.8,0.2c0.1,0.2,0.2,0.4,0.1,0.6c-0.1,0.2-0.9,0.1-1.4-0.1s-0.6-0.5-1.1-0.8c-0.8-0.4-2.4-0.3-3.6,0
-c-0.9,0.3-1.1,0.6-1.7,1.3c-0.1,0.1-0.2,0.5-0.3,0.7c-0.1,0.2-0.1,0.4-0.1,0.6c-0.2,1-0.7,2.3-0.2,3.1c0.2,0.4,0.6,0.6,1,0.8
-c0.5,0.4,0.8,0.7,1.3,0.8c0.4,0.1,1,0,1.3,0c0.5,0,1,0.1,1.5,0.4c-0.3,0.7-0.4,1.9-0.3,2.3c0,0.3,0.2,0.4,0.2,0.7
-c0.2,1.1-1.6,1.8-1.2,2.9c0.1,0.2,0.2,0.5,0.2,0.8c0,0.9-0.7,1.3-0.8,2c-0.1,0.4,0,0.6,0,1c0,0.2,0,0.3-0.1,0.5
-c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
-									<img src="images/blank-image.png" alt="" />
-								</label>
-							</div>
-						</div>
-						
-						<div class="filters-group-graph-options">
-							<a href="#" class="show-hide-link ref-icon-after ref-icon-after--angle-down js-reveal-element">Show / Hide Options</a>
-							<div class="reveal-element">
-								<div class="filter-switch filter-switch--small">									
-									<div class="can-toggle can-toggle--size-small">
-									  <input id="events" type="checkbox">
-									  <label for="events">
-									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-									  </label>
-									</div>
-									<span>Events</span>
-								</div>
-								<div class="filter-switch filter-switch--small">									
-									<div class="can-toggle can-toggle--size-small">
-									  <input id="overlaydownloads" type="checkbox">
-									  <label for="overlaydownloads" class="js-overlay-downloads">
-									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-									  </label>
-									</div>
-									<span>Overlay Downloads</span>
-								</div>
-								<div class="filter-switch filter-switch--small">									
-									<div class="can-toggle can-toggle--size-small">
-									  <input id="cumulative" type="checkbox">
-									  <label for="cumulative">
-									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-									  </label>
-									</div>
-									<span>Cumulative Chart</span>
-								</div>
-								<div class="filter-switch filter-switch--small">									
-									<div class="can-toggle can-toggle--size-small">
-									  <input id="average" type="checkbox">
-									  <label for="average">
-									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-									  </label>
-									</div>
-									<span>1M Moving Average</span>
-								</div>
-								<div class="filter-switch filter-switch--small">									
-									<div class="can-toggle can-toggle--size-small">
-									  <input id="overlayapps" type="checkbox">
-									  <label for="overlayapps">
-									    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-									  </label>
-									</div>
-									<span>Overlay Apps (0/5)</span>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="graph-container">
-					<div id="container" style="width:100%; height:505px;" class="highcharts-container">
-          </div>
-					<div class="graph-loading-indicator">
-          </div>
-          <div class="graph-loading-line">
-          	<div class="animated-line"></div>
-          </div>
-				</div>
-				<section class="data-display-container">
-					<header class="data-display-header">
-						<div class="data-display-header--component total-revenue-title">
-							<div class="app-icon-small-container">
-								<img src="images/placeholder-app-icon.png" alt="Monument Valley app icon" class="app-icon-small" />
-							</div>
-							<h2 class="heading-style heading-style--heading-four data-heading">Total Revenue</h2>
-						</div>
-						<button class="ref-button--function-small ref-button--function-small--with-icon"><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>						
-						<div class="data-display-header--component data-summary-container data-summary-container-synced">
-							<span class="revenue-date-range">Since First Synced (1 Feb 2014)</span>
-							<span class="revenue-summary-value">&pound;9,291,005</span>
-						</div>
-						<div class="data-display-header--component data-summary-container">
-							<span class="revenue-date-range">16 Mar 2014 - 16 Apr 2014</span>
-							<span class="revenue-summary-value">&pound;8,428,173</span>
-						</div>
-					</header>
-					<table class="table-revenue responsive">
-						<thead>
-							<th class="can-be-sorted is-ascending">Date <svg version=1.1 x=0px y=0px viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space=preserve class="sort-svg"><path class=ascending d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1
-	C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"/><path class=descending d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2
-	C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"/></svg></th>
-							<th class="can-be-sorted">Revenue <span class="hidden-for-mobile">Generated</span> <svg version=1.1 x=0px y=0px viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space=preserve class="sort-svg"><path class=ascending d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1
-	C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"/><path class=descending d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2
-	C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"/></svg></th>
-							<th class="can-be-sorted">% <span class="hidden-for-mobile">of</span> Total <span class="hidden-for-mobile">Revenue</span> for Period <svg version=1.1 x=0px y=0px viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space=preserve class="sort-svg"><path class=ascending d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1
-	C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"/><path class=descending d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2
-	C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"/></svg></th>
-						</thead>
-						<colgroup>
-							<col style="width: 25%">
-							<col style="width: 25%">
-							<col style="width: 50%">
-						</colgroup>
-						<tbody>
-							<tr>
-								<td class="date-value">Mon 06/03/14</td>
-								<td class="revenue-value">&pound;11,529,654</td>
-								<td class="revenue-percentage">
-									<span>28%</span>
-									<div class="data-bar">
-										<div style="width: 28%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Tue 07/03/14</td>
-								<td class="revenue-value">&pound;4,385,021</td>
-								<td class="revenue-percentage">
-									<span>10%</span>
-									<div class="data-bar">
-										<div style="width: 10%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Wed 08/03/14</td>
-								<td class="revenue-value">&pound;6,772,912</td>
-								<td class="revenue-percentage">
-									<span>9%</span>
-									<div class="data-bar">
-										<div style="width: 9%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Thu 09/03/14</td>
-								<td class="revenue-value">&pound;4,385,021</td>
-								<td class="revenue-percentage">
-									<span>6%</span>
-									<div class="data-bar">
-										<div style="width: 6%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Fri 10/03/14</td>
-								<td class="revenue-value">&pound;6,772,912</td>
-								<td class="revenue-percentage">
-									<span>9%</span>
-									<div class="data-bar">
-										<div style="width: 9%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Sat 11/03/14</td>
-								<td class="revenue-value">&pound;1,342,021</td>
-								<td class="revenue-percentage">
-									<span>1%</span>
-									<div class="data-bar">
-										<div style="width: 1%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Sun 12/03/14</td>
-								<td class="revenue-value">&pound;2,123,232</td>
-								<td class="revenue-percentage">
-									<span>2%</span>
-									<div class="data-bar">
-										<div style="width: 2%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Mon 13/03/14</td>
-								<td class="revenue-value">&pound;0</td>
-								<td class="revenue-percentage">
-									<span>0%</span>
-									<div class="data-bar">
-										<div style="width: 0%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Tue 14/03/14</td>
-								<td class="revenue-value">&pound;200,000</td>
-								<td class="revenue-percentage">
-									<span>0.2%</span>
-									<div class="data-bar">
-										<div style="width: 0.2%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Tue 14/03/14</td>
-								<td class="revenue-value">&pound;2,000,000</td>
-								<td class="revenue-percentage">
-									<span>2%</span>
-									<div class="data-bar">
-										<div style="width: 2%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Tue 14/03/14</td>
-								<td class="revenue-value">&pound;10,544,836</td>
-								<td class="revenue-percentage">
-									<span>25%</span>
-									<div class="data-bar">
-										<div style="width: 25%"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="date-value">Tue 14/03/14</td>
-								<td class="revenue-value">&pound;7,945,126</td>
-								<td class="revenue-percentage">
-									<span>14%</span>
-									<div class="data-bar">
-										<div style="width: 14%"></div>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-						<tbody class="table-body--loading"><tr><td colspan="3" align="center"><div><div aria-hidden="true" style="width: 100%; height: 100%; padding: 0px; margin: 0px; display: none;"><div aria-hidden="true" style="width: 100%; height: 100%; display: none;"></div></div><div style="width: 100%; height: 100%; padding: 0px; margin: 0px;"><div class="cellTableLoading" style="width: 100%; height: 100%;"><div><table style="width: 100%">
-
-							<colgroup>
-								<col style="width: 25%">
-								<col style="width: 25%">
-								<col style="width: 50%">
-							</colgroup>
-
-							<tbody><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr><tr><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td><td><svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"></circle><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"></circle><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"></circle></svg></td></tr></tbody></table></div></div></div></div></td></tr></tbody>
-					</table>
-					<button class="ref-button--function-small ref-button--function-small--with-icon download-button--mobile"><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>
-				</section>
+						</aside>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -964,9 +993,41 @@ c-2.2,1.4-4.9,2.3-7.8,2.3C8,30.5,1.5,24,1.5,16z"/></svg>
 
   		// Highcharts
   		mockGraphLoading();
-  		mockOverlayDownloads();	
+  		mockOverlayDownloads();
+  	}
+
+  	function handledata(data) {
+  		console.log(data);
+  		if(data.results && data.results.length > 0) {
+  			if(data.results[0].screenshotUrls) {
+
+  				// set app-image-list width
+  				var isLandscape = false, imageWidth = 340; // (320 + 20 margin)
+  				if(data.results[0].screenshotUrls[0].indexOf("320x320") > 0) {
+  					imageWidth = 588;
+  					isLandscape = true;
+  				}
+  				$('.app-image-list').width(data.results[0].screenshotUrls.length * imageWidth);
+
+  				for(var s = 0; s < data.results[0].screenshotUrls.length; s++) {
+  					//change the image size
+  					var srcString = data.results[0].screenshotUrls[s];
+  					var imageCSSClass = "image-portrait";
+  					if(isLandscape) {
+  						srcString = srcString.replace("320x320", "640x640");
+  						imageCSSClass = "image-landscape";
+  					}
+  					$('.app-image-list').append($('<img>').attr("src", srcString).addClass(imageCSSClass));
+  				}
+
+  				$('.js-app-description').text(data.results[0].description);
+  			}
+  		}
   	}
 
   	window.onready = initScripts();
+
   </script>
+  <script src="https://itunes.apple.com/gb/lookup?id=728293409&callback=handledata" defer></script>
+  <!-- Delta V 429903190, Arach 999971868, MValley 728293409 Pako 903183877 Smashy Road 1020119327-->
 </body>
