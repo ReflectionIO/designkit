@@ -450,18 +450,10 @@
 		}
 	};
 
-	SearchContainer.prototype.initSearch = function() {
-		// get mock data from file - this will contain results when implemented so shouldn't need JS regex below
-		var data;
-		$.ajax({
-        url: "js/search-data.json",
-        async: true,
-        dataType: "json",
-        success: function (items){
-          data = items;
-        }
-    });
-		
+	function handleappsearch(data) {
+		console.log("handleappsearch");
+		console.log(data);
+
 		var inputValue,
 				$appsContainer = $('.js-item-results--apps'),
 				$devListContainer = $('.js-item-results--developers'),
@@ -469,57 +461,66 @@
 				$appsList = $appsContainer.find('ul'),
 				$devList = $devListContainer.find('ul');
 
+		var searchResultsApps = [],
+				searchResultsDevs = [];
+
+		var inputValueCaseInsensitiveRegEx = new RegExp($('.js-get-items').val(), "i");
+
+		// if found add to result array
+		for(var i = 0; i < data.results.length; i++) {
+			if(data.results[i].trackCensoredName.search(inputValueCaseInsensitiveRegEx) > -1) {
+				searchResultsApps.push(data.results[i]);
+			}
+			// Search Developers
+			// if(data.results[i].creatorName.search(inputValueCaseInsensitiveRegEx) > -1) {
+			// 	searchResultsDevs.push(data.results[i]);
+			// }
+		}
+
+		// show and hide containers for nil results
+		if (searchResultsApps.length == 0) {			
+			$appsContainer.hide();
+		} else {
+			$appsContainer.show();
+			$noResultsContainer.hide();
+		}
+
+		if(searchResultsDevs.length == 0) { 
+			$devListContainer.hide();
+		} else {
+			$devListContainer.show();
+			$noResultsContainer.hide();
+		}
+
+		if(searchResultsApps.length == 0 && searchResultsDevs.length == 0) {
+			$noResultsContainer.show();
+		}
+		
+		// output results to screen
+		$appsList.empty();
+		for(var i = 0; i < searchResultsApps.length; i++) {
+			$appsList.append($('<li>').append($('<a>').attr("href", "app.html?id=" + searchResultsApps[i].trackId).append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + "")).append($('<span>').text(searchResultsApps[i].trackCensoredName))));
+		}
+
+		$devList.empty();
+		for(var i = 0; i < searchResultsDevs.length; i++) {
+			$devList.append($('<li>').append($('<a>').append($('<span>').text(searchResultsDevs[i].creatorName))));
+		}
+	}
+
+	SearchContainer.prototype.initSearch = function() {
+		
 		// on key up loop through object and search - for implentation, amend to call service to return results in json and display
 		$('.js-get-items').keyup(function(){
-			searchResultsApps = [];
-			searchResultsDevs = [];
-			inputValueCaseInsensitiveRegEx = new RegExp($(this).val(), "i");
+			console.log($(this).val());
+			$('#scriptsearch').remove();
+	    $('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + $(this).val() + "&media=software&limit=10&callback=handleappsearch"));
 
 			var $searchButtonMobile = $('.panel-right .form-field .search-button-mobile');
 			if($(this).val().length > 0) {
 				$searchButtonMobile.addClass('is-highlighted');
 			} else {
 				$searchButtonMobile.removeClass('is-highlighted');
-			}
-
-			// if found add to result array
-			for(var i = 0; i < data.items.length; i++) {
-				if(data.items[i].name.search(inputValueCaseInsensitiveRegEx) > -1) {
-					searchResultsApps.push(data.items[i]);
-				}
-				if(data.items[i].creatorName.search(inputValueCaseInsensitiveRegEx) > -1) {
-					searchResultsDevs.push(data.items[i]);
-				}
-			}
-
-			// show and hide containers for nil results
-			if (searchResultsApps.length == 0) {			
-				$appsContainer.hide();
-			} else {
-				$appsContainer.show();
-				$noResultsContainer.hide();
-			}
-
-			if(searchResultsDevs.length == 0) { 
-				$devListContainer.hide();
-			} else {
-				$devListContainer.show();
-				$noResultsContainer.hide();
-			}
-
-			if(searchResultsApps.length == 0 && searchResultsDevs.length == 0) {
-				$noResultsContainer.show();
-			}
-			
-			// output results to screen
-			$appsList.empty();
-			for(var i = 0; i < searchResultsApps.length; i++) {
-				$appsList.append($('<li>').append($('<a>').append($('<img>').attr("src", "" + searchResultsApps[i].smallImage + "")).append($('<span>').text(searchResultsApps[i].name))));
-			}
-
-			$devList.empty();
-			for(var i = 0; i < searchResultsDevs.length; i++) {
-				$devList.append($('<li>').append($('<a>').append($('<span>').text(searchResultsDevs[i].creatorName))));
 			}
 		});
 	};
