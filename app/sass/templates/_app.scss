@@ -165,6 +165,10 @@
 	}
 	.site-article-full {
 		padding-right: 5rem;
+		border-bottom: 0;
+	}
+	.aside-definition-list dl span {
+		padding-left: 5px;
 	}
 }
 .app-user-functions-container {
@@ -561,20 +565,32 @@
 		height: 45px;
 	}
 }
-.app-images {
-	width: auto;
-	padding: 20px 0 20px 20px;
+.app-images-container {
+	width: 100%;
+	padding: 20px 20px 0 20px;
 	margin-bottom: 3rem;
-	display: block;
-	overflow: scroll;
+	overflow: hidden;
 	background-color: #f1f1f6;
 }
+.app-images {
+	width: auto;		
+	display: block;
+	overflow: scroll;	
+}
 .app-image-list {
+	padding-bottom: 20px;
 	overflow: scroll;
+	li {
+		display: inline-block;
+		float: left;
+	}
 	img {		
 		margin-right: 20px;
 		display: inline-block;
 		float: left;
+	}
+	li:last-child img {
+		margin-right: 0;
 	}
 	.image-portrait {
 		width: 320px;
@@ -582,4 +598,45 @@
 	.image-landscape {
 		width: 568px;
 	}
+}
+.supported-devices {
+	margin-top: -0.1rem;
+	font-size: 1.4rem;
+	line-height: 1.7;
+	color: $mid-grey-2;
+}
+.aside-definition-list dl + .app-details-link {
+	margin-top: 2.2rem;
+}
+.app-details-link {
+	width: 100%;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+	display: inline-block;
+	vertical-align: top;
+	clear: both;
+	font-family: $brand-heading-font;
+	font-size: 1.6rem;
+	line-height: 1.4;
+	color: $dark-grey-1;
+}
+.ratings-container,
+.ratings-full {
+	height: 15px;
+	background-size: 105px 15px;
+	background-repeat: no-repeat;
+}
+.ratings-container {
+	position: relative;
+	width: 105px;
+	margin-bottom: 4px;
+	margin-top: 5px;
+	background-image: url(images/rating-stars-grey@2x.png);
+}
+.ratings-full {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	background-image: url(images/rating-stars-green@2x.png);
 }

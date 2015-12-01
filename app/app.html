@@ -44,28 +44,19 @@
 			<div class="grid-container page-app">
 				<header class="page-app__header">
 					<div class="app-icon-container">
-						<img src="images/placeholder-app-icon.png" alt="Monument Valley app icon" class="app-icon" />
+						<img src="images/leaderboard-app-icon-placeholder.png" alt="" class="app-icon js-app-icon" />
 					</div>
 					<div class="app-details">
-						<h1 class="heading-style--heading-three app-title">Monument Valley</h1>
+						<h1 class="heading-style--heading-three app-title js-app-title"></h1>
 						
-							<h2 class="app-creator">By <a href="#">Ustwo</a></h2>
-							<span class="app-price">&pound; 2.99 + IAP</span>
-							<svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"/><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"/><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"/></svg>
+							<h2 class="app-creator">By <a href="#" class="js-app-developer"></a></h2>
+							<span class="app-price js-dd-price"></span>
+							<!-- <svg class="loading-ellipsis" version="1.1" x="0px" y="0px" viewBox="0 0 24.2 6.6" enable-background="new 0 0 24.2 6.6" xml:space="preserve"><circle class="dot-2" fill="#E7E7EA" cx="12.1" cy="3.4" r="3.2"/><circle class="dot-1" fill="#E7E7EA" cx="3.2" cy="3.2" r="3.2"/><circle class="dot-3" fill="#E7E7EA" cx="21" cy="3.2" r="3.2"/></svg> -->
 					</div>
 				</header>
 				<div class="app-user-functions-container">
 					<a href="#" class="show-hide-link js-reveal-element" data-closed-text="Less..." data-open-text="More...">More...</a>
 					<form class="reveal-element">
-						<div class="filter-switch">							
-							<span>Follow</span>
-							<div class="can-toggle can-toggle--size-large">
-							  <input id="e" type="checkbox">
-							  <label for="e">
-							    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-							  </label>
-							</div>
-						</div>
 						<a href="#">View in Appstore</a>
 					</form>
 				</div>
@@ -467,9 +458,11 @@
 						</section>
 					</li>
 					<li id="tab-content-details" class="tabs__content tabs__content--is-showing">
-						<div class="app-images">
-							<ul class="app-image-list">
-							</ul>
+						<div class="app-images-container">
+							<div class="app-images">
+								<ul class="app-image-list">
+								</ul>
+							</div>
 						</div>
 						<article class="grid__column grid__column--two-thirds site-article-full">
 							<h2 class="heading-style--heading-three">Description</h2>
@@ -481,13 +474,34 @@
 								<dl>
 									<dt>Price</dt>
 									<dd class="js-dd-price"></dd>
-									<dt>Founders</dt>
-									<dd><a href="about.html">Gustaf Leksell</a><br /><a href="about.html">Chi Dire</a></dd>
-									<dt>Address</dt>
-									<dd>40-44 Newman St<br />London, W1T 1QD</dd>
-									<dt>Company Registration Number</dt>
-									<dd>xxxxxxx</dd>
+									<dt>Category</dt>
+									<dd class="js-dd-category"></dd>
+									<dt>Size</dt>
+									<dd class="js-dd-size"></dd>
+									<dt>Languages</dt>
+									<dd class="js-dd-languages"></dd>
+									<dt>Stores</dt>
+									<dd>iPhone, iPad</dd>
+									<dt>Rated</dt>
+									<dd class="js-dd-rated"></dd>
+									<dt>Version</dt>
+									<dd class="js-dd-version"></dd>
+									<dt>Release Date</dt>
+									<dd class="js-dd-release-date"></dd>									
 								</dl>
+								<p class="app-details-link js-developers-site"></p>
+								<p class="app-details-link js-view-app-store"></p>
+								<p class="app-details-link js-more-apps"></p>
+								<h2 class="heading-style--heading-four">Customer Ratings</h2>
+								<dl>
+									<dt>Current version</dt>
+									<dd class="js-dd-rating-current"></dd>
+									<dt>All versions</dt>
+									<dd class="js-dd-rating-all"></dd>
+								</dl>
+								<h2 class="heading-style--heading-four">Compatibility</h2>
+								<p class="supported-devices">Supported Devices: <span class="js-dd-devices"></span>
+								</p>
 							</div>
 						</aside>
 					</li>
@@ -972,6 +986,18 @@
   	function initScripts() {
   		new AppPage();  		
 
+  		// Load data
+  		var searchString = window.location.search;
+  		if (searchString.length > 0) {
+  			var searchId = searchString.substr(searchString.indexOf("=") + 1, searchString.length);
+  			$('body').append($("<script>").attr("src", "https://itunes.apple.com/gb/lookup?id=" + searchId + "&callback=handledata"));
+  		} else {
+  			$('body').append($("<script>").attr("src", "https://itunes.apple.com/gb/lookup?id=728293409&callback=handledata"));
+  		}
+
+  		// test ids
+  		// Delta V 429903190 Arach 999971868 MValley 728293409 Pako 903183877 Smashy Road 1020119327
+
   		// Mock JS
   		$('.can-be-sorted').on("click", function() {
   			var $this = $(this), siblingSortCells = $this.siblings('.can-be-sorted');
@@ -1007,7 +1033,7 @@
   					imageWidth = 588;
   					isLandscape = true;
   				}
-  				$('.app-image-list').width(data.results[0].screenshotUrls.length * imageWidth);
+  				$('.app-image-list').width((data.results[0].screenshotUrls.length * imageWidth) - 20);
 
   				for(var s = 0; s < data.results[0].screenshotUrls.length; s++) {
   					//change the image size
@@ -1017,17 +1043,83 @@
   						srcString = srcString.replace("320x320", "640x640");
   						imageCSSClass = "image-landscape";
   					}
-  					$('.app-image-list').append($('<img>').attr("src", srcString).addClass(imageCSSClass));
+  					$('.app-image-list').append($('<li>').append($('<img>').attr("src", srcString).addClass(imageCSSClass)));
   				}
 
-  				$('.js-app-description').text(data.results[0].description);
+  				$('.js-app-description').html(data.results[0].description);
+  				$('.js-dd-price').text(data.results[0].formattedPrice);
+  				var genres = "";
+  				for(var g = 0; g < data.results[0].genres.length; g++) {
+  					genres += data.results[0].genres[g] + ", ";
+  				}
+  				genres = genres.substr(0, genres.length - 2);
+  				$('.js-dd-category').text(genres);
+
+  				var languages = "";
+  				for(var l = 0; l < data.results[0].languageCodesISO2A.length; l++) {
+  					languages += data.results[0].languageCodesISO2A[l] + ", ";
+  				}
+  				languages = languages.substr(0, languages.length - 2);
+  				$('.js-dd-languages').text(languages);
+
+  				$('.js-dd-size').text(parseInt(data.results[0].fileSizeBytes / 1000000) + " MB");
+  				$('.js-dd-rated').text(data.results[0].contentAdvisoryRating);
+  				$('.js-dd-version').text(data.results[0].version);
+
+  				var dateString = "",
+  						releaseDate = new Date(data.results[0].releaseDate);
+
+  				dateString = releaseDate.getDay() + "/" + (releaseDate.getMonth()+1) + "/" + releaseDate.getFullYear();
+  				$('.js-dd-release-date').text(dateString);
+  				if(data.results[0].averageUserRatingForCurrentVersion) {
+  					var ratingAsPercentage = (data.results[0].averageUserRatingForCurrentVersion / 5) * 100;
+  					var htmlString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
+  					$('.js-dd-rating-current').html(htmlString + data.results[0].averageUserRatingForCurrentVersion + " <span>(" + data.results[0].userRatingCountForCurrentVersion + " Ratings)</span>");
+  				} else {
+  					$('.js-dd-rating-current').html('<div class="ratings-container"></div><span>No ratings</span>');
+  				}
+  				if(data.results[0].averageUserRating) {
+  					var ratingAsPercentage = (data.results[0].averageUserRating / 5) * 100;
+  					var htmlString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
+  					$('.js-dd-rating-all').html(htmlString + data.results[0].averageUserRating + " <span>(" + data.results[0].userRatingCount + " Ratings)</span>");
+  				} else {
+  					$('.js-dd-rating-all').html('<div class="ratings-container"></div><span>No ratings</span>');
+  				}
+
+  				var devices = "";
+  				for(var d = 0; d < data.results[0].supportedDevices.length; d++) {
+  					devices += data.results[0].supportedDevices[d] + ", ";
+  				}
+  				devices = devices.substr(0, devices.length - 2);
+  				$('.js-dd-devices').text(devices);
+
+  				if(data.results[0].sellerUrl) {
+  					$('.js-developers-site').append($('<a>').attr("href", data.results[0].sellerUrl).attr("target", "_blank").text("Developer's site"));
+  				} else {
+  					$('.js-developers-site').remove();
+  				}
+
+  				if(data.results[0].trackViewUrl) {
+  					$('.js-view-app-store').append($('<a>').attr("href", data.results[0].trackViewUrl).attr("target", "_blank").text("View in the App Store"));
+  				} else {
+  					$('.js-view-app-store').remove();
+  				}
+
+  				if(data.results[0].artistViewUrl) {
+  					$('.js-more-apps').append($('<a>').attr("href", data.results[0].artistViewUrl).attr("target", "_blank").text("More Apps by this Developer"));
+  				} else {
+  					$('.js-more-apps').remove();
+  				}
+
+  				// icon, title, developer
+  				$('.js-app-icon').attr("src", data.results[0].artworkUrl100);
+  				$('.js-app-title').text(data.results[0].trackName);
+  				$('.js-app-developer').text(data.results[0].sellerName);
   			}
   		}
   	}
 
   	window.onready = initScripts();
 
-  </script>
-  <script src="https://itunes.apple.com/gb/lookup?id=728293409&callback=handledata" defer></script>
-  <!-- Delta V 429903190, Arach 999971868, MValley 728293409 Pako 903183877 Smashy Road 1020119327-->
+  </script>  
 </body>
