@@ -451,9 +451,6 @@
 	};
 
 	function handleappsearch(data) {
-		console.log("handleappsearch");
-		console.log(data);
-
 		var inputValue,
 				$appsContainer = $('.js-item-results--apps'),
 				$devListContainer = $('.js-item-results--developers'),
@@ -512,7 +509,7 @@
 		
 		// on key up loop through object and search - for implentation, amend to call service to return results in json and display
 		$('.js-get-items').keyup(function(){
-			console.log($(this).val());
+			
 			$('#scriptsearch').remove();
 	    $('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + $(this).val() + "&media=software&limit=10&callback=handleappsearch"));
 

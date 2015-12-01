@@ -464,10 +464,16 @@
 								</ul>
 							</div>
 						</div>
-						<article class="grid__column grid__column--two-thirds site-article-full">
-							<h2 class="heading-style--heading-three">Description</h2>
-							<p class="js-app-description"><p>
-						</article>
+						<div class="grid__column grid__column--two-thirds">
+							<article class="site-article-full">
+								<h2 class="heading-style--heading-three">Description</h2>
+								<p class="js-app-description"><p>
+							</article>
+							<aside class="more-by-this-developer">
+								<h2 class="heading-style--heading-three">Other Apps By This Developer</h2>
+								<ul></ul>
+							</aside>
+						</div>
 						<aside class="grid__row-container grid__column--one-third aside-definition-list">
 							<div class="grid__column">
 								<h2 class="heading-style--heading-four">Details</h2>
@@ -539,7 +545,6 @@
 
   		var chartMarginBottom = 35;
       var chartHeight = $('.highcharts-container').innerHeight() - chartMarginBottom - 1;
-      console.log(chartHeight);
 
   		var chart = new Highcharts.Chart({
 				chart: {
@@ -915,7 +920,6 @@
 
   	function mockOverlayDownloads() {
   		$('.js-overlay-downloads').on("click", function () {
-  			console.log('.js-overlay-downloads');
   			var chartMarginBottom = 35;
   			var chartHeight = $('.highcharts-container').innerHeight() - chartMarginBottom - 1;
         var chart = $('#container').highcharts();
@@ -1022,6 +1026,24 @@
   		mockOverlayDownloads();
   	}
 
+  	function handlemoreappssearch(data) {
+  		var sellerName = $('.js-app-developer').text();
+
+  		var refinedResults = [];
+  		for(var i = 0; i < data.results.length; i++) {
+				if(data.results[i].sellerName.search(sellerName) > -1) {
+					refinedResults.push(data.results[i]);
+				}
+			}
+			if(refinedResults.length > 0) {
+				var moreAppsList = $('.more-by-this-developer ul');
+				for(var i = 0; i < refinedResults.length; i++) {
+					moreAppsList.append($('<li>').append($('<img>').attr("src", refinedResults[i].artworkUrl100)).append($('<a>').text(refinedResults[i].trackName + refinedResults[i].sellerName)));
+				}
+				$('.more-by-this-developer').fadeIn(300);
+			}
+  	}
+
   	function handledata(data) {
   		if(data.results && data.results.length > 0) {
   			if(data.results[0].screenshotUrls) {
@@ -1114,6 +1136,9 @@
   				$('.js-app-icon').attr("src", data.results[0].artworkUrl100);
   				$('.js-app-title').text(data.results[0].trackName);
   				$('.js-app-developer').text(data.results[0].sellerName);
+
+  				// search more apps by this developer
+  				$('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + data.results[0].sellerName + "&media=software&limit=12&callback=handlemoreappssearch"));
   			}
   		}
   	}
