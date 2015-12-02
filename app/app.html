@@ -469,7 +469,11 @@
 								<h2 class="heading-style--heading-three">Description</h2>
 								<p class="js-app-description"><p>
 							</article>
-							<aside class="more-by-this-developer">
+							<aside class="customer-reviews js-customer-reviews">
+								<h2 class="heading-style--heading-three">Customer Reviews</h2>
+								<ul></ul>
+							</aside>
+							<aside class="more-by-this-developer js-more-by-this-developer">
 								<h2 class="heading-style--heading-three">Other Apps By This Developer</h2>
 								<ul></ul>
 							</aside>
@@ -1036,12 +1040,45 @@
 				}
 			}
 			if(refinedResults.length > 0) {
-				var moreAppsList = $('.more-by-this-developer ul');
+				var moreAppsListContainer = $('.js-more-by-this-developer ul');
 				for(var i = 0; i < refinedResults.length; i++) {
-					moreAppsList.append($('<li>').append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).append($('<img>').attr("src", refinedResults[i].artworkUrl100))).append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).text(refinedResults[i].trackName + refinedResults[i].sellerName)));
+					moreAppsListContainer.append($('<li>').append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).append($('<img>').attr("src", refinedResults[i].artworkUrl100))).append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).text(refinedResults[i].trackName + refinedResults[i].sellerName)));
 				}
-				$('.more-by-this-developer').fadeIn(300);
+				$('.js-more-by-this-developer').fadeIn(300);
 			}
+  	}
+
+  	function handlereviews(data) {
+  		console.log(data);
+  		if(data.feed.entry.length > 0) {
+  			var customerReviewsListContainer = $('.js-customer-reviews ul');
+  			for(var e = 1; e < data.feed.entry.length; e++) { // first item is not a review
+
+  				var ratingAsPercentage = (parseInt(data.feed.entry[e]["im:rating"].label) / 5) * 100;
+  					var ratingsString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
+  				if(e == 4) {
+  					customerReviewsListContainer = $('<div>').addClass("more-reviews-container js-more-reviews-container");
+  					$('.js-customer-reviews ul').append(customerReviewsListContainer);
+  				}
+  				customerReviewsListContainer.append($('<li>')
+  																								.append($('<article>').addClass("customer-review")
+  																														.append(ratingsString)
+  																														.append($('<h3>').addClass("customer-review__title").text(data.feed.entry[e].title.label))
+  																														.append($('<p>').addClass("customer-review__content").text(data.feed.entry[e].content.label))
+  																						));
+  			}
+  			if(data.feed.entry.length > 3) {
+  				$('.js-customer-reviews').append($('<button>')
+  																							.addClass("ref-button--function-small")
+  																							.text("View More")
+  																							.on("click", function(){
+  																								$('.js-more-reviews-container').fadeIn();
+  																								$(this).remove();
+  																							})
+  																					);
+  			}
+  			$('.js-customer-reviews').fadeIn(300);
+  		}
   	}
 
   	function handledata(data) {
@@ -1139,6 +1176,9 @@
 
   				// search more apps by this developer
   				$('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + data.results[0].sellerName + "&media=software&limit=12&callback=handlemoreappssearch"));
+
+  				// get customer reviews for this app
+  				$('body').append($("<script>").attr("id", "scriptreviews").attr("src", "http://itunes.apple.com/gb/rss/customerreviews/id=" + data.results[0].trackId + "/json?callback=handlereviews"));
   			}
   		}
   	}
