@@ -1038,7 +1038,7 @@
 			if(refinedResults.length > 0) {
 				var moreAppsList = $('.more-by-this-developer ul');
 				for(var i = 0; i < refinedResults.length; i++) {
-					moreAppsList.append($('<li>').append($('<img>').attr("src", refinedResults[i].artworkUrl100)).append($('<a>').text(refinedResults[i].trackName + refinedResults[i].sellerName)));
+					moreAppsList.append($('<li>').append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).append($('<img>').attr("src", refinedResults[i].artworkUrl100))).append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).text(refinedResults[i].trackName + refinedResults[i].sellerName)));
 				}
 				$('.more-by-this-developer').fadeIn(300);
 			}
