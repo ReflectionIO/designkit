@@ -622,13 +622,16 @@
 	color: $dark-grey-1;
 }
 .more-by-this-developer,
-.customer-reviews {
+.reviews-and-ratings {
 	padding-right: 3rem;	
 	display: none;	
 	h2 {
-		padding-top: 3rem;		
-		border-top: 1px solid rgb(225, 229, 232);
+		padding-top: 3rem;
 	}
+}
+.more-by-this-developer h2,
+.reviews-and-ratings > h2 {
+	border-top: 1px solid #e1e5e8;
 }
 .more-by-this-developer {
 	h2 {
@@ -669,8 +672,10 @@
 		}
 	}
 }
-.customer-reviews {
-	margin-bottom: 2rem;
+.reviews-and-ratings {
+	position: relative;
+	margin-bottom: 3rem;
+	display: block;
 	h2 {
 		margin-bottom: 2rem;
 	}
@@ -680,11 +685,46 @@
 		vertical-align: middle;
 	}
 	button {
-		margin-bottom: 2rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+	.country-selector {
+		position: absolute;
+		top: 3.3rem;
+		right: 3rem;
+		width: 200px;
 	}
 }
+.average-ratings-container {
+	margin-bottom: 1rem;
+	h3, div, span {
+		margin: 0;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	h3 {
+		padding-right: 10px;
+		font-size: 1.8rem;
+	}
+	span {		
+		position: relative;
+		top: 2px;
+		padding-right: 10px;
+		font-family: $brand-heading-font;
+		font-size: 1.6rem;
+		line-height: 1.5;
+	}
+	.ratings-container {
+		position: relative;
+		top: 2px;
+	}
+}
+.customer-reviews {
+	display: none;
+	padding-top: 2rem;
+}
 .customer-review {
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 }
 .customer-review__title {
 	margin: 1px 0 0;
@@ -694,7 +734,7 @@
 	color: #29292c;
 }
 .customer-review__content {
-	margin-top: 13px;
+	margin-top: 7px;
 	font-size: 1.4rem;	
 	line-height: 1.7;
 	color: #5b5d61;

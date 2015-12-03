@@ -1009,6 +1009,9 @@
 							listContainer.append($('<li>').addClass(preSelectedClass).attr('data-value', $this.attr('value')).attr('data-selectedtext', selectedText).text($this.text()));
 						} else {
 							optionsList.append($('<li>').addClass(preSelectedClass).attr('data-value', $this.attr('value')).attr('data-selectedtext', selectedText).text($this.text()));
+						}
+						if($this.attr("selected")) {
+							refSelectDefault.text($this.text());
 						}						
 					}
 					else {
@@ -1084,12 +1087,15 @@
 	};
 
 	function toggleDropDown(refSelectContainer, optionsList, listHeight) {
-		if(refSelectContainer.hasClass('is-open')) {
+		console.log(refSelectContainer);
+		if($(refSelectContainer).hasClass('is-open')) {
+			console.log("is-open");
 			refSelectContainer.removeClass('is-open');
 			refSelectContainer.parents('.form-field--select').removeClass('is-open');
 			optionsList.css('margin-top', -listHeight);
 		}
 		else {
+			console.log("is closed")
 			$('.reflection-select').removeClass('is-open');
 			$('.form-field--select').removeClass('is-open');
 			refSelectContainer.addClass('is-open');

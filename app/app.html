@@ -28,7 +28,7 @@
     }
   });
 </script></head>
-<body class="panel-left-open">
+<body>
 	<!--[if (lt IE 9)]>
       <div class="window-warning">
   			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
@@ -469,9 +469,35 @@
 								<h2 class="heading-style--heading-three">Description</h2>
 								<p class="js-app-description"><p>
 							</article>
-							<aside class="customer-reviews js-customer-reviews">
-								<h2 class="heading-style--heading-three">Customer Reviews</h2>
-								<ul></ul>
+							<aside class="reviews-and-ratings">								
+								<h2 class="heading-style--heading-three">Average Ratings</h2>
+								<div class="form-field form-field--select country-selector form-field--select--filter">
+									<div class="page-overlay"></div>
+									<select class="js-field--select reflection-select--filter reflection-select--right">
+								    <option value="" disabled>Filter by Country</option>
+								    <option value="gb" selected>United Kingdom</option>
+								    <option value="fr">France</option>
+								    <option value="de">Germany</option>
+								    <option value="it">Italy</option>
+								    <option value="ca">Canada</option>
+								    <option value="se">Sweden</option>
+								    <option value="us">USA</option>
+								    <option value="jp">Japan</option>
+								    <option value="pl">Poland</option>
+										<option value="kz">Kazakhstan</option>
+									</select>
+								</div>
+								<div class="average-ratings-container">
+									<h3>Current version</h3>
+									<div class="js-dd-rating-current"></div>
+								</div>
+								<div class="average-ratings-container">
+									<h3>All versions</h3>
+									<div class="js-dd-rating-all"></div>
+								</div>
+								<div class="customer-reviews js-customer-reviews">
+									<ul></ul>
+								</div>
 							</aside>
 							<aside class="more-by-this-developer js-more-by-this-developer">
 								<h2 class="heading-style--heading-three">Other Apps By This Developer</h2>
@@ -502,13 +528,6 @@
 								<p class="app-details-link js-developers-site"></p>
 								<p class="app-details-link js-view-app-store"></p>
 								<p class="app-details-link js-more-apps"></p>
-								<h2 class="heading-style--heading-four">Average Ratings</h2>
-								<dl>
-									<dt>Current version</dt>
-									<dd class="js-dd-rating-current"></dd>
-									<dt>All versions</dt>
-									<dd class="js-dd-rating-all"></dd>
-								</dl>
 								<h2 class="heading-style--heading-four">Compatibility</h2>
 								<p class="supported-devices">Supported Devices: <span class="js-dd-devices"></span>
 								</p>
@@ -998,9 +1017,9 @@
   		var searchString = window.location.search;
   		if (searchString.length > 0) {
   			var searchId = searchString.substr(searchString.indexOf("=") + 1, searchString.length);
-  			$('body').append($("<script>").attr("src", "https://itunes.apple.com/gb/lookup?id=" + searchId + "&callback=handledata"));
+  			$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=" + searchId + "&callback=handledata"));
   		} else {
-  			$('body').append($("<script>").attr("src", "https://itunes.apple.com/gb/lookup?id=728293409&callback=handledata"));
+  			$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=728293409&callback=handledata"));
   		}
 
   		// test ids
@@ -1048,36 +1067,57 @@
 			}
   	}
 
+  	function handleAverageRatings(data) {
+  		if(data.results[0].averageUserRatingForCurrentVersion) {
+				var ratingAsPercentage = (data.results[0].averageUserRatingForCurrentVersion / 5) * 100;
+				var htmlString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
+				$('.js-dd-rating-current').html("<span>" + data.results[0].userRatingCountForCurrentVersion + " Ratings</span>" + htmlString);
+			} else {
+				$('.js-dd-rating-current').html('<div class="ratings-container"></div><span>No ratings</span>');
+			}
+			if(data.results[0].averageUserRating) {
+				var ratingAsPercentage = (data.results[0].averageUserRating / 5) * 100;
+				var htmlString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
+				$('.js-dd-rating-all').html("<span>" + data.results[0].userRatingCount + " Ratings</span>" + htmlString);
+			} else {
+				$('.js-dd-rating-all').html('<div class="ratings-container"></div><span>No ratings</span>');
+			}
+  	}
+
   	function handlereviews(data) {
   		console.log(data);
   		if(data.feed.entry.length > 0) {
   			var customerReviewsListContainer = $('.js-customer-reviews ul');
-  			for(var e = 1; e < data.feed.entry.length; e++) { // first item is not a review
+  			customerReviewsListContainer.fadeOut(200, function(){
+  				customerReviewsListContainer.empty();
+  				for(var e = 1; e <= 11; e++) { // first item is not a review
 
-  				var ratingAsPercentage = (parseInt(data.feed.entry[e]["im:rating"].label) / 5) * 100;
-  					var ratingsString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
-  				if(e == 4) {
-  					customerReviewsListContainer = $('<div>').addClass("more-reviews-container js-more-reviews-container");
-  					$('.js-customer-reviews ul').append(customerReviewsListContainer);
-  				}
-  				customerReviewsListContainer.append($('<li>')
-  																								.append($('<article>').addClass("customer-review")
-  																														.append(ratingsString)
-  																														.append($('<h3>').addClass("customer-review__title").text(data.feed.entry[e].title.label))
-  																														.append($('<p>').addClass("customer-review__content").text(data.feed.entry[e].content.label))
-  																						));
-  			}
-  			if(data.feed.entry.length > 3) {
-  				$('.js-customer-reviews').append($('<button>')
-  																							.addClass("ref-button--function-small")
-  																							.text("View More")
-  																							.on("click", function(){
-  																								$('.js-more-reviews-container').fadeIn();
-  																								$(this).remove();
-  																							})
-  																					);
-  			}
-  			$('.js-customer-reviews').fadeIn(300);
+	  				var ratingAsPercentage = (parseInt(data.feed.entry[e]["im:rating"].label) / 5) * 100;
+	  					var ratingsString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
+	  				if(e == 4) {
+	  					customerReviewsListContainer = $('<div>').addClass("more-reviews-container js-more-reviews-container");
+	  					$('.js-customer-reviews ul').append(customerReviewsListContainer);
+	  				}
+	  				customerReviewsListContainer.append($('<li>')
+	  																								.append($('<article>').addClass("customer-review")
+	  																														.append(ratingsString)
+	  																														.append($('<h3>').addClass("customer-review__title").text(data.feed.entry[e].title.label))
+	  																														.append($('<p>').addClass("customer-review__content").text(data.feed.entry[e].content.label))
+	  																						));
+	  			}
+	  			if(data.feed.entry.length > 3) {
+	  				$('.js-customer-reviews ul').append($('<button>')
+	  																							.addClass("ref-button--function-small")
+	  																							.text("View More")
+	  																							.on("click", function(){
+	  																								$('.js-more-reviews-container').fadeIn();
+	  																								$(this).remove();
+	  																							})
+	  																					);
+	  			}
+	  			$('.js-customer-reviews').fadeIn(300);
+  			});
+  			customerReviewsListContainer.fadeIn(300);
   		}
   	}
 
@@ -1103,83 +1143,82 @@
   					}
   					$('.app-image-list').append($('<li>').append($('<img>').attr("src", srcString).addClass(imageCSSClass)));
   				}
-
-  				$('.js-app-description').html(data.results[0].description);
-  				$('.js-dd-price').text(data.results[0].formattedPrice);
-  				var genres = "";
-  				for(var g = 0; g < data.results[0].genres.length; g++) {
-  					genres += data.results[0].genres[g] + ", ";
-  				}
-  				genres = genres.substr(0, genres.length - 2);
-  				$('.js-dd-category').text(genres);
-
-  				var languages = "";
-  				for(var l = 0; l < data.results[0].languageCodesISO2A.length; l++) {
-  					languages += data.results[0].languageCodesISO2A[l] + ", ";
-  				}
-  				languages = languages.substr(0, languages.length - 2);
-  				$('.js-dd-languages').text(languages);
-
-  				$('.js-dd-size').text(parseInt(data.results[0].fileSizeBytes / 1000000) + " MB");
-  				$('.js-dd-rated').text(data.results[0].contentAdvisoryRating);
-  				$('.js-dd-version').text(data.results[0].version);
-
-  				var dateString = "",
-  						releaseDate = new Date(data.results[0].releaseDate);
-
-  				dateString = releaseDate.getDay() + "/" + (releaseDate.getMonth()+1) + "/" + releaseDate.getFullYear();
-  				$('.js-dd-release-date').text(dateString);
-  				if(data.results[0].averageUserRatingForCurrentVersion) {
-  					var ratingAsPercentage = (data.results[0].averageUserRatingForCurrentVersion / 5) * 100;
-  					var htmlString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
-  					$('.js-dd-rating-current').html(htmlString + data.results[0].averageUserRatingForCurrentVersion + " <span>(" + data.results[0].userRatingCountForCurrentVersion + " Ratings)</span>");
-  				} else {
-  					$('.js-dd-rating-current').html('<div class="ratings-container"></div><span>No ratings</span>');
-  				}
-  				if(data.results[0].averageUserRating) {
-  					var ratingAsPercentage = (data.results[0].averageUserRating / 5) * 100;
-  					var htmlString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
-  					$('.js-dd-rating-all').html(htmlString + data.results[0].averageUserRating + " <span>(" + data.results[0].userRatingCount + " Ratings)</span>");
-  				} else {
-  					$('.js-dd-rating-all').html('<div class="ratings-container"></div><span>No ratings</span>');
-  				}
-
-  				var devices = "";
-  				for(var d = 0; d < data.results[0].supportedDevices.length; d++) {
-  					devices += data.results[0].supportedDevices[d] + ", ";
-  				}
-  				devices = devices.substr(0, devices.length - 2);
-  				$('.js-dd-devices').text(devices);
-
-  				if(data.results[0].sellerUrl) {
-  					$('.js-developers-site').append($('<a>').attr("href", data.results[0].sellerUrl).attr("target", "_blank").text("Developer's site"));
-  				} else {
-  					$('.js-developers-site').remove();
-  				}
-
-  				if(data.results[0].trackViewUrl) {
-  					$('.js-view-app-store').append($('<a>').attr("href", data.results[0].trackViewUrl).attr("target", "_blank").text("View in the App Store"));
-  				} else {
-  					$('.js-view-app-store').remove();
-  				}
-
-  				if(data.results[0].artistViewUrl) {
-  					$('.js-more-apps').append($('<a>').attr("href", data.results[0].artistViewUrl).attr("target", "_blank").text("More Apps by this Developer"));
-  				} else {
-  					$('.js-more-apps').remove();
-  				}
-
-  				// icon, title, developer
-  				$('.js-app-icon').attr("src", data.results[0].artworkUrl100);
-  				$('.js-app-title').text(data.results[0].trackName);
-  				$('.js-app-developer').text(data.results[0].sellerName);
-
-  				// search more apps by this developer
-  				$('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + data.results[0].sellerName + "&media=software&limit=12&callback=handlemoreappssearch"));
-
-  				// get customer reviews for this app
-  				$('body').append($("<script>").attr("id", "scriptreviews").attr("src", "http://itunes.apple.com/gb/rss/customerreviews/id=" + data.results[0].trackId + "/json?callback=handlereviews"));
   			}
+
+				$('.js-app-description').html(data.results[0].description);
+				$('.js-dd-price').text(data.results[0].formattedPrice);
+				var genres = "";
+				for(var g = 0; g < data.results[0].genres.length; g++) {
+					genres += data.results[0].genres[g] + ", ";
+				}
+				genres = genres.substr(0, genres.length - 2);
+				$('.js-dd-category').text(genres);
+
+				var languages = "";
+				for(var l = 0; l < data.results[0].languageCodesISO2A.length; l++) {
+					languages += data.results[0].languageCodesISO2A[l] + ", ";
+				}
+				languages = languages.substr(0, languages.length - 2);
+				$('.js-dd-languages').text(languages);
+
+				$('.js-dd-size').text(parseInt(data.results[0].fileSizeBytes / 1000000) + " MB");
+				$('.js-dd-rated').text(data.results[0].contentAdvisoryRating);
+				$('.js-dd-version').text(data.results[0].version);
+
+				var dateString = "",
+						releaseDate = new Date(data.results[0].releaseDate);
+
+				dateString = releaseDate.getDay() + "/" + (releaseDate.getMonth()+1) + "/" + releaseDate.getFullYear();
+				$('.js-dd-release-date').text(dateString);				
+
+				var devices = "";
+				for(var d = 0; d < data.results[0].supportedDevices.length; d++) {
+					devices += data.results[0].supportedDevices[d] + ", ";
+				}
+				devices = devices.substr(0, devices.length - 2);
+				$('.js-dd-devices').text(devices);
+
+				if(data.results[0].sellerUrl) {
+					$('.js-developers-site').append($('<a>').attr("href", data.results[0].sellerUrl).attr("target", "_blank").text("Developer's site"));
+				} else {
+					$('.js-developers-site').remove();
+				}
+
+				if(data.results[0].trackViewUrl) {
+					$('.js-view-app-store').append($('<a>').attr("href", data.results[0].trackViewUrl).attr("target", "_blank").text("View in the App Store"));
+				} else {
+					$('.js-view-app-store').remove();
+				}
+
+				if(data.results[0].artistViewUrl) {
+					$('.js-more-apps').append($('<a>').attr("href", data.results[0].artistViewUrl).attr("target", "_blank").text("More Apps by this Developer"));
+				} else {
+					$('.js-more-apps').remove();
+				}
+
+				// icon, title, developer
+				$('.js-app-icon').attr("src", data.results[0].artworkUrl100);
+				$('.js-app-title').text(data.results[0].trackName);
+				$('.js-app-developer').text(data.results[0].sellerName);
+
+				// search more apps by this developer
+				$('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + data.results[0].sellerName + "&media=software&limit=12&callback=handlemoreappssearch"));
+
+				// get customer reviews for this app
+				$('body').append($("<script>").attr("id", "scriptreviews").attr("src", "http://itunes.apple.com/gb/rss/customerreviews/id=" + data.results[0].trackId + "/json?callback=handlereviews"));
+
+				// set country filter
+				$('.country-selector li').on("click", function(){
+					var val = $(this).data("value");
+					console.log(val);
+					$('#scriptreviews').remove();
+					$('body').append($("<script>").attr("id", "scriptreviews").attr("src", "http://itunes.apple.com/" + val + "/rss/customerreviews/id=728293409/json?callback=handlereviews"));
+
+					$('#get-app-details').remove();
+					$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/" + val + "/lookup?id=728293409&callback=handleAverageRatings"));
+				});
+
+				handleAverageRatings(data);
   		}
   	}
 
