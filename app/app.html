@@ -464,14 +464,18 @@
 								</ul>
 							</div>
 						</div>
-						<div class="grid__column grid__column--two-thirds">
+						<div class="grid__column grid__column--two-thirds app-main-details">
 							<article class="site-article-full">
 								<h2 class="heading-style--heading-three">Description</h2>
 								<p class="js-app-description"><p>
+								<div class="release-notes-container js-release-notes-container">
+									<h3 class="heading-style--heading-four">What's New in Version <span class="js-dd-version"></span></h3>
+									<p><span class="js-release-notes"></span></p>
+								</div>
 							</article>
 							<aside class="reviews-and-ratings">								
 								<h2 class="heading-style--heading-three">Average Ratings</h2>
-								<div class="form-field form-field--select country-selector form-field--select--filter">
+								<div class="form-field form-field--select country-selector form-field--select--filter js-country-selector">
 									<div class="page-overlay"></div>
 									<select class="js-field--select reflection-select--filter reflection-select--right">
 								    <option value="" disabled>Filter by Country</option>
@@ -502,6 +506,7 @@
 							<aside class="more-by-this-developer js-more-by-this-developer">
 								<h2 class="heading-style--heading-three">Other Apps By This Developer</h2>
 								<ul></ul>
+								<p class="more-apps-listed js-more-apps-listed"></p>
 							</aside>
 						</div>
 						<aside class="grid__row-container grid__column--one-third aside-definition-list">
@@ -523,7 +528,11 @@
 									<dt>Version</dt>
 									<dd class="js-dd-version"></dd>
 									<dt>Release Date</dt>
-									<dd class="js-dd-release-date"></dd>									
+									<dd class="js-dd-release-date"></dd>
+									<dt>Universal App</dt>
+									<dd class="js-dd-universal">No</dd>
+									<dt>Game Center</dt>
+									<dd class="js-dd-gc">No</dd>
 								</dl>
 								<p class="app-details-link js-developers-site"></p>
 								<p class="app-details-link js-view-app-store"></p>
@@ -1061,8 +1070,13 @@
 			if(refinedResults.length > 0) {
 				var moreAppsListContainer = $('.js-more-by-this-developer ul');
 				for(var i = 0; i < refinedResults.length; i++) {
-					moreAppsListContainer.append($('<li>').append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).append($('<img>').attr("src", refinedResults[i].artworkUrl100))).append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).text(refinedResults[i].trackName + refinedResults[i].sellerName)));
+					if(i != 16) { // don't show 17th result (if > 16 then link to developer in app store shown)
+						moreAppsListContainer.append($('<li>').append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).append($('<img>').attr("src", refinedResults[i].artworkUrl100))).append($('<a>').attr("href", "app.html?id=" + refinedResults[i].trackId).text(refinedResults[i].trackName + refinedResults[i].sellerName)));
+					}
 				}
+				if(refinedResults.length > 16) { // if > 16 then link to developer in app store shown
+					$('.js-more-apps-listed').append($('<a>').attr("href", refinedResults[0].artistViewUrl).attr("target", "_blank").text("See all apps by this developer")).show();
+				}				
 				$('.js-more-by-this-developer').fadeIn(300);
 			}
   	}
@@ -1085,41 +1099,64 @@
   	}
 
   	function handlereviews(data) {
-  		console.log(data);
-  		if(data.feed.entry.length > 0) {
-  			var customerReviewsListContainer = $('.js-customer-reviews ul');
-  			customerReviewsListContainer.fadeOut(200, function(){
-  				customerReviewsListContainer.empty();
-  				for(var e = 1; e <= 11; e++) { // first item is not a review
+  		if(data.feed.entry) {
+  			if(data.feed.entry.length > 0) {
+	  			var customerReviewsListContainer = $('.js-customer-reviews ul');
+	  			customerReviewsListContainer.fadeOut(200, function(){
+	  				customerReviewsListContainer.empty();
+	  				for(var e = 1; e <= 11 && e < data.feed.entry.length; e++) { // first item is not a review
 
-	  				var ratingAsPercentage = (parseInt(data.feed.entry[e]["im:rating"].label) / 5) * 100;
-	  					var ratingsString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
-	  				if(e == 4) {
-	  					customerReviewsListContainer = $('<div>').addClass("more-reviews-container js-more-reviews-container");
-	  					$('.js-customer-reviews ul').append(customerReviewsListContainer);
-	  				}
-	  				customerReviewsListContainer.append($('<li>')
-	  																								.append($('<article>').addClass("customer-review")
-	  																														.append(ratingsString)
-	  																														.append($('<h3>').addClass("customer-review__title").text(data.feed.entry[e].title.label))
-	  																														.append($('<p>').addClass("customer-review__content").text(data.feed.entry[e].content.label))
-	  																						));
-	  			}
-	  			if(data.feed.entry.length > 3) {
-	  				$('.js-customer-reviews ul').append($('<button>')
-	  																							.addClass("ref-button--function-small")
-	  																							.text("View More")
-	  																							.on("click", function(){
-	  																								$('.js-more-reviews-container').fadeIn();
-	  																								$(this).remove();
-	  																							})
-	  																					);
-	  			}
-	  			$('.js-customer-reviews').fadeIn(300);
-  			});
-  			customerReviewsListContainer.fadeIn(300);
+		  				var ratingAsPercentage = (parseInt(data.feed.entry[e]["im:rating"].label) / 5) * 100;
+		  					var ratingsString = '<div class="ratings-container"><div class="ratings-full" style="width:' + ratingAsPercentage + '%"></div></div>';
+		  				if(e == 4) {
+		  					customerReviewsListContainer = $('<div>').addClass("more-reviews-container js-more-reviews-container");
+		  					$('.js-customer-reviews ul').append(customerReviewsListContainer);
+		  				}
+		  				customerReviewsListContainer.append($('<li>')
+		  																								.append($('<article>').addClass("customer-review")
+		  																														.append(ratingsString)
+		  																														.append($('<h3>').addClass("customer-review__title").text(data.feed.entry[e].title.label))
+		  																														.append($('<p>').addClass("customer-review__content").text(data.feed.entry[e].content.label))
+		  																						));
+		  			}
+		  			if(data.feed.entry.length > 3) {
+		  				$('.js-customer-reviews ul').append($('<button>')
+		  																							.addClass("ref-button--function-small")
+		  																							.text("View More")
+		  																							.on("click", function(){
+		  																								$('.js-more-reviews-container').fadeIn();
+		  																								$(this).remove();
+		  																							})
+		  																					);
+		  			}
+		  			$('.js-customer-reviews').fadeIn(300);
+	  			});
+	  			customerReviewsListContainer.fadeIn(300);
+	  		}
+  		} else {
+  			$('.js-customer-reviews ul').fadeOut(200);
   		}
   	}
+
+  	function htmlForTextWithEmbeddedNewlines(text) {
+	    var htmls = [];
+	    var lines = text.split(/\n/);
+
+	    var tmpDiv = jQuery(document.createElement('div'));
+	    for (var i = 0 ; i < lines.length ; i++) {
+	        htmls.push(tmpDiv.text(lines[i]).html());
+	    }
+	    return htmls.join("</span><span>");
+		}
+
+		function urlify(text) {
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+	    return text.replace(urlRegex, function(url) {
+	        return '<a href="' + url + '">' + url + '</a>';
+	    })
+	    // or alternatively
+	    // return text.replace(urlRegex, '<a href="$1">$1</a>')
+	}
 
   	function handledata(data) {
   		if(data.results && data.results.length > 0) {
@@ -1127,9 +1164,15 @@
 
   				// set app-image-list width
   				var isLandscape = false, imageWidth = 340; // (320 + 20 margin)
+  				if($(window).width() < 720) {
+  					imageWidth = 180;
+  				}
   				if(data.results[0].screenshotUrls[0].indexOf("320x320") > 0) {
   					imageWidth = 588;
   					isLandscape = true;
+  					if($(window).width() < 720) {
+	  					imageWidth = 340;
+	  				}
   				}
   				$('.app-image-list').width((data.results[0].screenshotUrls.length * imageWidth) - 20);
 
@@ -1145,7 +1188,16 @@
   				}
   			}
 
-				$('.js-app-description').html(data.results[0].description);
+  			var appDescription = htmlForTextWithEmbeddedNewlines(data.results[0].description);
+  			appDescription = urlify(appDescription);
+				$('.js-app-description').html(appDescription);
+
+				if(data.results[0].releaseNotes) {
+					var releaseNotesText = htmlForTextWithEmbeddedNewlines(data.results[0].releaseNotes);
+					$('.js-release-notes').html(releaseNotesText);
+					$('.js-release-notes-container').fadeIn(300);
+				}
+
 				$('.js-dd-price').text(data.results[0].formattedPrice);
 				var genres = "";
 				for(var g = 0; g < data.results[0].genres.length; g++) {
@@ -1167,8 +1219,8 @@
 
 				var dateString = "",
 						releaseDate = new Date(data.results[0].releaseDate);
-
-				dateString = releaseDate.getDay() + "/" + (releaseDate.getMonth()+1) + "/" + releaseDate.getFullYear();
+				console.log(releaseDate);
+				dateString = releaseDate.getDate() + "/" + (releaseDate.getMonth()+1) + "/" + releaseDate.getFullYear();
 				$('.js-dd-release-date').text(dateString);				
 
 				var devices = "";
@@ -1177,6 +1229,18 @@
 				}
 				devices = devices.substr(0, devices.length - 2);
 				$('.js-dd-devices').text(devices);
+
+				console.log(data);
+				if(data.results[0].features.length > 0) {
+					for(var f = 0; f < data.results[0].features.length; f++) {
+						if(data.results[0].features[f] == "iosUniversal") {
+							$('.js-dd-universal').text("Yes");
+						}
+						if(data.results[0].features[f] == "gameCenter") {
+							$('.js-dd-gc').text("Yes");
+						}
+					}
+				}
 
 				if(data.results[0].sellerUrl) {
 					$('.js-developers-site').append($('<a>').attr("href", data.results[0].sellerUrl).attr("target", "_blank").text("Developer's site"));
@@ -1202,20 +1266,20 @@
 				$('.js-app-developer').text(data.results[0].sellerName);
 
 				// search more apps by this developer
-				$('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + data.results[0].sellerName + "&media=software&limit=12&callback=handlemoreappssearch"));
+				$('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + data.results[0].sellerName + "&media=software&limit=17&callback=handlemoreappssearch"));
 
 				// get customer reviews for this app
 				$('body').append($("<script>").attr("id", "scriptreviews").attr("src", "http://itunes.apple.com/gb/rss/customerreviews/id=" + data.results[0].trackId + "/json?callback=handlereviews"));
 
 				// set country filter
-				$('.country-selector li').on("click", function(){
-					var val = $(this).data("value");
-					console.log(val);
+				$('.js-country-selector').data("appid", data.results[0].trackId);
+				$('.js-country-selector li').on("click", function(){
+					var val = $(this).data("value"), appid = $('.js-country-selector').data("appid");
 					$('#scriptreviews').remove();
-					$('body').append($("<script>").attr("id", "scriptreviews").attr("src", "http://itunes.apple.com/" + val + "/rss/customerreviews/id=728293409/json?callback=handlereviews"));
+					$('body').append($("<script>").attr("id", "scriptreviews").attr("src", "http://itunes.apple.com/" + val + "/rss/customerreviews/id=" + appid + "/json?callback=handlereviews"));
 
 					$('#get-app-details').remove();
-					$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/" + val + "/lookup?id=728293409&callback=handleAverageRatings"));
+					$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/" + val + "/lookup?id=" + appid + "&callback=handleAverageRatings"));
 				});
 
 				handleAverageRatings(data);

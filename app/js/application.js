@@ -1025,7 +1025,7 @@
 				var listHeight = optionsList.innerHeight();
 				if(!selectInput.hasClass('reflection-select--filter')) {
 					optionsList.css('margin-top', -listHeight);
-				}				
+				}
 
 				if(selectInput.parent('.form-field--select-disabled').length == 0 && selectInput.parent('.form-field--select-restricted').length == 0) {
 					optionsList.find('li').on('click', function() {
@@ -1047,7 +1047,11 @@
 							if(selectInput.hasClass('reflection-select--filter')) {
 								$('.reflection-select').removeClass('is-open');
 							}
-							toggleDropDown(refSelectContainer, optionsList, listHeight);
+							if(isFilter) {
+								optionsList.find('.close-popup').trigger("click");
+							} else {
+								toggleDropDown(refSelectContainer, optionsList, listHeight);
+							}							
 						}
 					});
 					
@@ -1087,15 +1091,12 @@
 	};
 
 	function toggleDropDown(refSelectContainer, optionsList, listHeight) {
-		console.log(refSelectContainer);
-		if($(refSelectContainer).hasClass('is-open')) {
-			console.log("is-open");
+		if(refSelectContainer.hasClass('is-open')) {
 			refSelectContainer.removeClass('is-open');
 			refSelectContainer.parents('.form-field--select').removeClass('is-open');
 			optionsList.css('margin-top', -listHeight);
 		}
 		else {
-			console.log("is closed")
 			$('.reflection-select').removeClass('is-open');
 			$('.form-field--select').removeClass('is-open');
 			refSelectContainer.addClass('is-open');
