@@ -566,6 +566,7 @@
   <script src="js/application.js"></script>
   <script src="js/vendor/snap.svg.js"></script>
   <script src="js/vendor/highcharts-custom.js"></script>
+  <script src="js/language-codes.js"></script>
 
   <script>
 
@@ -1208,7 +1209,11 @@
 
 				var languages = "";
 				for(var l = 0; l < data.results[0].languageCodesISO2A.length; l++) {
-					languages += data.results[0].languageCodesISO2A[l] + ", ";
+					for(var c = 0; c < refLangCodes.length; c++) {
+						if(refLangCodes[c].alpha2 == data.results[0].languageCodesISO2A[l].toLowerCase()) {
+							languages += refLangCodes[c].English + ", ";
+						}
+					}
 				}
 				languages = languages.substr(0, languages.length - 2);
 				$('.js-dd-languages').text(languages);
@@ -1219,7 +1224,6 @@
 
 				var dateString = "",
 						releaseDate = new Date(data.results[0].releaseDate);
-				console.log(releaseDate);
 				dateString = releaseDate.getDate() + "/" + (releaseDate.getMonth()+1) + "/" + releaseDate.getFullYear();
 				$('.js-dd-release-date').text(dateString);				
 
@@ -1230,7 +1234,6 @@
 				devices = devices.substr(0, devices.length - 2);
 				$('.js-dd-devices').text(devices);
 
-				console.log(data);
 				if(data.results[0].features.length > 0) {
 					for(var f = 0; f < data.results[0].features.length; f++) {
 						if(data.results[0].features[f] == "iosUniversal") {
