@@ -1060,11 +1060,11 @@
   	}
 
   	function handlemoreappssearch(data) {
-  		var sellerName = $('.js-app-developer').text();
+  		var artistName = $('.js-app-developer').text();
 
   		var refinedResults = [];
   		for(var i = 0; i < data.results.length; i++) {
-				if(data.results[i].sellerName.search(sellerName) > -1) {
+				if(data.results[i].artistName.search(artistName) > -1) {
 					refinedResults.push(data.results[i]);
 				}
 			}
@@ -1266,10 +1266,10 @@
 				// icon, title, developer
 				$('.js-app-icon').attr("src", data.results[0].artworkUrl100);
 				$('.js-app-title').text(data.results[0].trackName);
-				$('.js-app-developer').text(data.results[0].sellerName);
+				$('.js-app-developer').text(data.results[0].artistName);
 
 				// search more apps by this developer
-				$('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + data.results[0].sellerName + "&media=software&limit=17&callback=handlemoreappssearch"));
+				$('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + data.results[0].artistName + "&media=software&limit=17&callback=handlemoreappssearch"));
 
 				// get customer reviews for this app
 				$('body').append($("<script>").attr("id", "scriptreviews").attr("src", "http://itunes.apple.com/gb/rss/customerreviews/id=" + data.results[0].trackId + "/json?callback=handlereviews"));
