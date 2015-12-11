@@ -1624,6 +1624,31 @@
 			});
 		}		
 	}
+
+	var datePopup = function($dateInput) {
+		$dateInput.on("click", function(){
+			$this = $(this);
+			$this.select();
+			$popup = $dateInput.parents('.date-select-container').siblings('.dateBoxPopup');
+			if($popup.hasClass('is-showing')) {
+				$popup.removeClass('is-showing');
+			}
+			else {
+				$popup.addClass('is-showing');
+			}
+		});
+
+		$('body').on("click", function(e){ // close date popup on click
+			if($(e.target).hasClass("datePickerDay") && !$(e.target).hasClass("datePickerDayIsDisabled") || $(e.target).hasClass("js-selected-date-trigger") || (!$(e.target).parents(".date-select-container").length > 0 && !$(e.target).parents(".dateBoxPopup").length > 0)) {
+				$('.dateBoxPopup').removeClass('is-showing');
+				$('.js-datepicker-range .hidden-calendar-container').css({"top": 0, "opacity": 0});
+			}
+		});
+
+		$('.js-datepicker-range .form-field--date-select').on("click", function(){
+			$('.js-datepicker-range .hidden-calendar-container').animate({"top": "310px", "opacity": 1}, 300);
+		});
+	}
 /* END COMPONENT OBJECTS */
 
 /* PAGE OBJECTS FOR TEMPLATES */
@@ -1640,6 +1665,9 @@
 		new StickyTableHead();
 		new MockFormSelectMultipleWithSearch();
 		new ToolTip();
+		$('.js-form-field--date-select').each(function(){
+			new datePopup($(this));
+		});
 
 		$('.js-tab-select').on("mouseup", function(e){
 			new StickyTableHead();

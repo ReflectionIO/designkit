@@ -15025,18 +15025,21 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 .dateBoxPopup {
   position: absolute;
   width: 300px;
+  padding-top: 5px;
   z-index: 990;
-  border-radius: 0 0 4px 4px;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 5px;
   background-color: #f2f2f5;
   -webkit-transition: opacity 0.1s, visibility 0.1s 0.1s;
           transition: opacity 0.1s, visibility 0.1s 0.1s;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 1px -3px 6px rgba(0, 0, 0, 0.05), -3px 0px 6px rgba(0, 0, 0, 0.1);
 }
-/* line 914, sass/components/_form.scss */
+/* line 917, sass/components/_form.scss */
 .forms--dark-theme .dateBoxPopup {
   background-color: #333338;
 }
-/* line 917, sass/components/_form.scss */
+/* line 920, sass/components/_form.scss */
 .forms--mid-theme .dateBoxPopup {
   background-color: #fff;
 }
@@ -15046,9 +15049,16 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
     width: 320px;
   }
 }
-/* line 923, sass/components/_form.scss */
+/* line 926, sass/components/_form.scss */
 .dateBoxPopup tbody, .dateBoxPopup tr {
   width: 100%;
+}
+/* line 929, sass/components/_form.scss */
+.dateBoxPopup.is-showing {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.2s;
+          transition: opacity 0.2s;
 }
 @media screen and (max-width: 719px) {
   /* line 906, sass/components/_form.scss */
@@ -15057,103 +15067,171 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
     margin-left: -150px !important;
   }
 }
+/* line 938, sass/components/_form.scss */
+.dateBoxPopup .popupContent,
+.dateBoxPopup .tabs__content-container,
+.dateBoxPopup .tabs-container li,
+.dateBoxPopup .tabs__content,
+.dateBoxPopup .tabs__content-area {
+  overflow: visible;
+}
+/* line 945, sass/components/_form.scss */
+.dateBoxPopup .tabs__content-container {
+  margin-bottom: 0;
+}
+/* line 948, sass/components/_form.scss */
+.dateBoxPopup .tabs-container {
+  padding-left: 6px;
+}
+/* line 950, sass/components/_form.scss */
+.dateBoxPopup .tabs-container li {
+  padding: 5px 5px 10px;
+  height: auto;
+  display: inline-block;
+}
+/* line 956, sass/components/_form.scss */
+.dateBoxPopup .tabs__content-area {
+  position: relative;
+  padding-bottom: 7px;
+}
+/* line 960, sass/components/_form.scss */
+.dateBoxPopup .date-range-list__options {
+  position: relative;
+  z-index: 10;
+  background-color: #f2f2f5;
+}
+/* line 964, sass/components/_form.scss */
+.dateBoxPopup .date-range-list__options * {
+  z-index: 10;
+}
+/* line 969, sass/components/_form.scss */
+.dateBoxPopup .date-range-list ul {
+  border-bottom: 1px solid #e1e5e8;
+}
+/* line 972, sass/components/_form.scss */
+.dateBoxPopup .date-range-list a {
+  padding: 10px 5%;
+  display: block;
+  font-size: 1.4rem;
+}
+/* line 977, sass/components/_form.scss */
+.dateBoxPopup .date-range-list h2 {
+  padding: 10px 5%;
+  margin-top: 5px;
+  display: block;
+  font-size: 1.8rem;
+}
+/* line 983, sass/components/_form.scss */
+.dateBoxPopup .date-range-list .form-field--date-select {
+  width: 42.5%;
+  margin-left: 5%;
+}
+/* line 988, sass/components/_form.scss */
+.dateBoxPopup .hidden-calendar-container {
+  position: absolute;
+  top: 315px;
+  left: 0px;
+  width: 100%;
+  z-index: 0;
+  background-color: #f2f2f5;
+}
 
-/* line 931, sass/components/_form.scss */
+/* line 997, sass/components/_form.scss */
 .gwt-DatePicker {
   width: 100%;
 }
-/* line 933, sass/components/_form.scss */
+/* line 999, sass/components/_form.scss */
 .gwt-DatePicker tr {
   width: 100%;
 }
-/* line 936, sass/components/_form.scss */
+/* line 1002, sass/components/_form.scss */
 .gwt-DatePicker * {
   text-align: center;
 }
-/* line 938, sass/components/_form.scss */
+/* line 1004, sass/components/_form.scss */
 form .gwt-DatePicker * {
   text-align: center;
 }
-/* line 942, sass/components/_form.scss */
+/* line 1008, sass/components/_form.scss */
 .gwt-DatePicker td {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 947, sass/components/_form.scss */
+/* line 1013, sass/components/_form.scss */
 .single-date-selector-container {
   text-align: center;
 }
 
-/* line 950, sass/components/_form.scss */
+/* line 1016, sass/components/_form.scss */
 .datePickerMonthSelector {
   background-color: #e1e5e8;
 }
-/* line 952, sass/components/_form.scss */
+/* line 1018, sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list {
   width: auto;
   margin: 0 auto;
   display: inline-block;
 }
-/* line 956, sass/components/_form.scss */
+/* line 1022, sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li {
   margin: 0;
 }
-/* line 958, sass/components/_form.scss */
+/* line 1024, sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabel {
   z-index: 2;
 }
-/* line 960, sass/components/_form.scss */
+/* line 1026, sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabel:hover {
   background-color: #c4c7d0;
 }
-/* line 962, sass/components/_form.scss */
+/* line 1028, sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabel:hover {
   border-top-color: #333338;
   background-color: #4b4b53;
 }
-/* line 967, sass/components/_form.scss */
+/* line 1033, sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabel:active {
   border-top-color: #727686;
 }
-/* line 972, sass/components/_form.scss */
+/* line 1038, sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li input:checked + label.checkboxLabel:hover {
   background-color: #1bc79f;
 }
-/* line 974, sass/components/_form.scss */
+/* line 1040, sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector .form-field--checkbox-list li input:checked + label.checkboxLabel:hover {
   background-color: #333338;
 }
-/* line 978, sass/components/_form.scss */
+/* line 1044, sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li input:checked + label.checkboxLabel:active {
   border-top-color: #169f7f;
 }
-/* line 980, sass/components/_form.scss */
+/* line 1046, sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector .form-field--checkbox-list li input:checked + label.checkboxLabel:active {
   border-top: 2px solid #29292c;
   background-color: #333338;
 }
-/* line 986, sass/components/_form.scss */
+/* line 1052, sass/components/_form.scss */
 .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabelVisible {
   position: relative;
   padding-left: 30px;
   z-index: 0;
   font-size: 12px;
 }
-/* line 991, sass/components/_form.scss */
+/* line 1057, sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector .form-field--checkbox-list li label.checkboxLabelVisible {
   color: #fcfdfd;
 }
-/* line 997, sass/components/_form.scss */
+/* line 1063, sass/components/_form.scss */
 .forms--mid-theme .datePickerMonthSelector {
   background-color: #e8e7f1;
 }
-/* line 1000, sass/components/_form.scss */
+/* line 1066, sass/components/_form.scss */
 .forms--dark-theme .datePickerMonthSelector {
   background-color: #5b5b68;
 }
 
-/* line 1004, sass/components/_form.scss */
+/* line 1070, sass/components/_form.scss */
 .datePickerDays {
   width: 90%;
   margin-left: 5%;
@@ -15162,15 +15240,15 @@ form .gwt-DatePicker * {
   text-align: center;
   background-color: #f2f2f5;
 }
-/* line 1011, sass/components/_form.scss */
+/* line 1077, sass/components/_form.scss */
 .forms--mid-theme .datePickerDays {
   background-color: #fff;
 }
-/* line 1014, sass/components/_form.scss */
+/* line 1080, sass/components/_form.scss */
 .forms--dark-theme .datePickerDays {
   background-color: #333338;
 }
-/* line 1017, sass/components/_form.scss */
+/* line 1083, sass/components/_form.scss */
 .datePickerDays td {
   padding-left: 0;
   padding-right: 0;
@@ -15182,16 +15260,16 @@ form .gwt-DatePicker * {
   border-left: 1px solid #e1e5e8;
   border-top: 1px solid #e1e5e8;
 }
-/* line 1027, sass/components/_form.scss */
+/* line 1093, sass/components/_form.scss */
 .datePickerDays td:first-child {
   border-left: 0;
 }
-/* line 1030, sass/components/_form.scss */
+/* line 1096, sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td {
   color: #fcfdfd;
   border-color: #29292c;
 }
-/* line 1034, sass/components/_form.scss */
+/* line 1100, sass/components/_form.scss */
 .datePickerDays td > div {
   padding-top: 12px;
   padding-bottom: 14px;
@@ -15199,102 +15277,102 @@ form .gwt-DatePicker * {
   outline: none;
   cursor: pointer;
 }
-/* line 1041, sass/components/_form.scss */
+/* line 1107, sass/components/_form.scss */
 .no-touch .datePickerDays td > div:active, .no-touch .datePickerDays td > div:hover {
   color: #fcfdfd;
   background-color: #81879d;
 }
-/* line 1045, sass/components/_form.scss */
+/* line 1111, sass/components/_form.scss */
 .no-touch .forms--dark-theme .datePickerDays td > div:active, .no-touch .forms--dark-theme .datePickerDays td > div:hover {
   background-color: #5b5b68;
 }
-/* line 1049, sass/components/_form.scss */
+/* line 1115, sass/components/_form.scss */
 .datePickerDays td > div:active {
   padding-bottom: 12px;
   color: #fcfdfd;
   background-color: #81879d;
   border-top: 2px solid #5a5e6e;
 }
-/* line 1054, sass/components/_form.scss */
+/* line 1120, sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td > div:active {
   border-top: 2px solid #404049;
   background-color: #5b5b68;
 }
-/* line 1060, sass/components/_form.scss */
+/* line 1126, sass/components/_form.scss */
 .datePickerDays td > div.datePickerDayIsValue {
   color: #fcfdfd;
   background-color: #1bc79f;
 }
-/* line 1064, sass/components/_form.scss */
+/* line 1130, sass/components/_form.scss */
 .no-touch .datePickerDays td > div.datePickerDayIsValue:hover, .no-touch .datePickerDays td > div.datePickerDayIsValue:active {
   padding-bottom: 14px;
   border-top: 0;
   background-color: #1bc79f;
 }
-/* line 1071, sass/components/_form.scss */
+/* line 1137, sass/components/_form.scss */
 .datePickerDays td .datePickerDayIsFiller {
   color: #c4c7d0;
 }
-/* line 1073, sass/components/_form.scss */
+/* line 1139, sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td .datePickerDayIsFiller {
   color: #5b5b68;
 }
-/* line 1077, sass/components/_form.scss */
+/* line 1143, sass/components/_form.scss */
 .no-touch .forms--dark-theme .datePickerDays td .datePickerDayIsFiller:hover {
   color: #fcfdfd;
 }
-/* line 1082, sass/components/_form.scss */
+/* line 1148, sass/components/_form.scss */
 .datePickerDays td .datePickerDayIsDisabled {
   color: #c4c7d0;
   font-style: italic;
   cursor: not-allowed;
 }
-/* line 1086, sass/components/_form.scss */
+/* line 1152, sass/components/_form.scss */
 .forms--mid-theme .datePickerDays td .datePickerDayIsDisabled {
   color: #c4c7d0;
 }
-/* line 1089, sass/components/_form.scss */
+/* line 1155, sass/components/_form.scss */
 .forms--dark-theme .datePickerDays td .datePickerDayIsDisabled {
   color: #5b5b68;
 }
-/* line 1093, sass/components/_form.scss */
+/* line 1159, sass/components/_form.scss */
 .no-touch .datePickerDays td .datePickerDayIsDisabled:hover, .touch .datePickerDays td .datePickerDayIsDisabled:hover, .no-touch .datePickerDays td .datePickerDayIsDisabled:active, .touch .datePickerDays td .datePickerDayIsDisabled:active {
   padding-bottom: 14px;
   border-top: 0;
   color: #c4c7d0;
   background-color: #f2f2f5;
 }
-/* line 1099, sass/components/_form.scss */
+/* line 1165, sass/components/_form.scss */
 .no-touch .forms--mid-theme .datePickerDays td .datePickerDayIsDisabled:hover, .touch .forms--mid-theme .datePickerDays td .datePickerDayIsDisabled:hover, .no-touch .forms--mid-theme .datePickerDays td .datePickerDayIsDisabled:active, .touch .forms--mid-theme .datePickerDays td .datePickerDayIsDisabled:active {
   color: #c4c7d0;
   border-top: 0;
   background-color: #fff;
 }
-/* line 1105, sass/components/_form.scss */
+/* line 1171, sass/components/_form.scss */
 .no-touch .forms--dark-theme .datePickerDays td .datePickerDayIsDisabled:hover, .touch .forms--dark-theme .datePickerDays td .datePickerDayIsDisabled:hover, .no-touch .forms--dark-theme .datePickerDays td .datePickerDayIsDisabled:active, .touch .forms--dark-theme .datePickerDays td .datePickerDayIsDisabled:active {
   color: #5b5b68;
   border-top: 0;
   background-color: #333338;
 }
-/* line 1114, sass/components/_form.scss */
+/* line 1180, sass/components/_form.scss */
 .datePickerDays tr:first-child td {
   border-top: 0;
 }
 
-/* line 1118, sass/components/_form.scss */
+/* line 1184, sass/components/_form.scss */
 .datePickerDays .datePickerWeekdayLabel,
 .datePickerDays .datePickerWeekendLabel {
   padding-top: 10px;
   padding-bottom: 10px;
   color: #81879d;
 }
-/* line 1123, sass/components/_form.scss */
+/* line 1189, sass/components/_form.scss */
 .forms--dark-theme .datePickerDays .datePickerWeekdayLabel, .forms--dark-theme
 .datePickerDays .datePickerWeekendLabel {
   color: #81879d;
 }
 
-/* line 1127, sass/components/_form.scss */
+/* line 1193, sass/components/_form.scss */
 .datePickerPreviousButton,
 .datePickerNextButton {
   cursor: pointer;
@@ -15302,14 +15380,14 @@ form .gwt-DatePicker * {
   padding: 0px 4px;
   outline: none;
 }
-/* line 1133, sass/components/_form.scss */
+/* line 1199, sass/components/_form.scss */
 .has-single-option .datePickerPreviousButton, .has-single-option
 .datePickerNextButton {
   position: relative;
   top: 5px;
 }
 
-/* line 1138, sass/components/_form.scss */
+/* line 1204, sass/components/_form.scss */
 .datePickerMonth {
   padding-top: 18px;
   padding-bottom: 19px;
@@ -15320,66 +15398,66 @@ form .gwt-DatePicker * {
   text-transform: uppercase;
   color: #363a47;
 }
-/* line 1147, sass/components/_form.scss */
+/* line 1213, sass/components/_form.scss */
 .has-single-option .datePickerMonth {
   padding-bottom: 10px;
 }
-/* line 1150, sass/components/_form.scss */
+/* line 1216, sass/components/_form.scss */
 .forms--dark-theme .datePickerMonth {
   color: #fcfdfd;
 }
 
-/* line 1154, sass/components/_form.scss */
+/* line 1220, sass/components/_form.scss */
 .datePickerPreviousButton,
 .datePickerNextButton {
   margin-top: -2px;
   padding: 0 13px;
 }
-/* line 1159, sass/components/_form.scss */
+/* line 1225, sass/components/_form.scss */
 .datePickerPreviousButton:after,
 .datePickerNextButton:after {
   font-size: 18px;
   position: relative;
   color: #828a91;
 }
-/* line 1164, sass/components/_form.scss */
+/* line 1230, sass/components/_form.scss */
 .forms--dark-theme .datePickerPreviousButton:after, .forms--dark-theme
 .datePickerNextButton:after {
   color: #c4c7d0;
 }
-/* line 1169, sass/components/_form.scss */
+/* line 1235, sass/components/_form.scss */
 .datePickerPreviousButton:hover:after,
 .datePickerNextButton:hover:after {
   color: #697077;
 }
-/* line 1171, sass/components/_form.scss */
+/* line 1237, sass/components/_form.scss */
 .forms--dark-theme .datePickerPreviousButton:hover:after, .forms--dark-theme
 .datePickerNextButton:hover:after {
   color: #e0e2e7;
 }
-/* line 1176, sass/components/_form.scss */
+/* line 1242, sass/components/_form.scss */
 .datePickerPreviousButton:active,
 .datePickerNextButton:active {
   margin-top: 0;
 }
 
-/* line 1180, sass/components/_form.scss */
+/* line 1246, sass/components/_form.scss */
 .datePickerPreviousButton:after {
   content: "k";
 }
 
-/* line 1183, sass/components/_form.scss */
+/* line 1249, sass/components/_form.scss */
 .datePickerNextButton:after {
   content: "l";
 }
 
-/* line 1186, sass/components/_form.scss */
+/* line 1252, sass/components/_form.scss */
 .datePickerPreviousButton .html-face,
 .datePickerNextButton .html-face {
   display: none;
 }
 
-/* line 1190, sass/components/_form.scss */
+/* line 1256, sass/components/_form.scss */
 .password-strength-indicator-container {
   position: relative;
   margin-top: 0.4rem;
@@ -15387,12 +15465,12 @@ form .gwt-DatePicker * {
   left: 0;
   font-size: 1.25rem;
 }
-/* line 1196, sass/components/_form.scss */
+/* line 1262, sass/components/_form.scss */
 .is-closed .password-strength-indicator-container {
   display: none;
 }
 
-/* line 1200, sass/components/_form.scss */
+/* line 1266, sass/components/_form.scss */
 .password-strength-indicator,
 .password-strength-description {
   display: inline-block;
@@ -15400,7 +15478,7 @@ form .gwt-DatePicker * {
   vertical-align: top;
 }
 
-/* line 1206, sass/components/_form.scss */
+/* line 1272, sass/components/_form.scss */
 .password-strength-indicator {
   position: relative;
   width: 97px;
@@ -15410,15 +15488,15 @@ form .gwt-DatePicker * {
   border-radius: 3px;
   background-color: #e1e5e8;
 }
-/* line 1214, sass/components/_form.scss */
+/* line 1280, sass/components/_form.scss */
 .forms--mid-theme .password-strength-indicator {
   background-color: #f2f2f5;
 }
-/* line 1217, sass/components/_form.scss */
+/* line 1283, sass/components/_form.scss */
 .forms--dark-theme .password-strength-indicator {
   background-color: #29292c;
 }
-/* line 1220, sass/components/_form.scss */
+/* line 1286, sass/components/_form.scss */
 .password-strength-indicator span {
   position: absolute;
   top: 0;
@@ -15430,40 +15508,40 @@ form .gwt-DatePicker * {
   -webkit-transition: background-color 0.3s ease-out, width 0.3s ease-out;
           transition: background-color 0.3s ease-out, width 0.3s ease-out;
 }
-/* line 1229, sass/components/_form.scss */
+/* line 1295, sass/components/_form.scss */
 .password-strength-indicator span.is-pathetic {
   width: 25%;
   background-color: #d5855e;
 }
-/* line 1233, sass/components/_form.scss */
+/* line 1299, sass/components/_form.scss */
 .password-strength-indicator span.is-ok {
   width: 50%;
   background-color: #e7b94b;
 }
-/* line 1237, sass/components/_form.scss */
+/* line 1303, sass/components/_form.scss */
 .password-strength-indicator span.is-strong {
   width: 75%;
   background-color: #d0eb53;
 }
-/* line 1241, sass/components/_form.scss */
+/* line 1307, sass/components/_form.scss */
 .password-strength-indicator span.is-impressive {
   width: 100%;
   background-color: #68d656;
 }
 
-/* line 1247, sass/components/_form.scss */
+/* line 1313, sass/components/_form.scss */
 .password-strength-description {
   font-size: 1.24rem;
   color: #81879d;
 }
 
-/* line 1251, sass/components/_form.scss */
+/* line 1317, sass/components/_form.scss */
 .general-error-message {
   padding: 1rem 0 0;
   display: block;
   text-align: center;
 }
-/* line 1255, sass/components/_form.scss */
+/* line 1321, sass/components/_form.scss */
 .general-error-message p, .general-error-message span {
   margin: 0;
   font-family: "Source Sans Pro", sans-serif;
@@ -15473,7 +15551,7 @@ form .gwt-DatePicker * {
   text-align: center;
 }
 
-/* line 1264, sass/components/_form.scss */
+/* line 1330, sass/components/_form.scss */
 .block-error-message,
 .block-error-message:last-child {
   width: 100%;
@@ -15486,7 +15564,7 @@ form .gwt-DatePicker * {
   color: #d07423;
 }
 
-/* line 1275, sass/components/_form.scss */
+/* line 1341, sass/components/_form.scss */
 .form-field--list__error-message {
   width: 100%;
   margin-bottom: 1.2rem;

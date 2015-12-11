@@ -906,8 +906,11 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 .dateBoxPopup {
 	position: absolute;
 	width: 300px;
+	padding-top: 5px;
 	z-index: 990;
-	border-radius: 0 0 4px 4px;
+	opacity: 0;
+	visibility: hidden;
+	border-radius: 5px;
 	background-color: $panel-grey;
 	transition: opacity 0.1s, visibility 0.1s 0.1s;
 	@include box-shadow(4px 4px 8px rgba(0, 0, 0, 0.1), 1px -3px 6px rgba(0, 0, 0, 0.05), -3px 0px 6px rgba(0, 0, 0, 0.1));
@@ -923,10 +926,73 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	tbody, tr {
 		width: 100%;
 	}
+	&.is-showing {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity 0.2s;
+	}
 	@media screen and (max-width: $mobile-max-width) {
 		left: 50% !important;
 		margin-left: -150px !important;
 	}
+	.popupContent,
+	.tabs__content-container,
+	.tabs-container li,
+	.tabs__content,
+	.tabs__content-area {
+		overflow: visible;
+	}
+	.tabs__content-container {
+		margin-bottom: 0;		
+	}
+	.tabs-container {
+		padding-left: 6px;
+		li {
+			padding: 5px 5px 10px;
+	    height: auto;
+	    display: inline-block;
+	  }
+  }
+  .tabs__content-area {
+  	position: relative;
+  	padding-bottom: 7px;
+  }
+  .date-range-list__options {
+  	position: relative;
+  	z-index: 10;
+  	background-color: $panel-grey;
+  	* {
+  		z-index: 10;
+  	}
+  }
+  .date-range-list {
+  	ul {
+  		border-bottom: 1px solid $divider-grey;
+  	}
+  	a {
+  		padding: 10px 5%;
+  		display: block;
+  		font-size: 1.4rem;
+  	}
+  	h2 {  		
+  		padding: 10px 5%;
+  		margin-top: 5px;
+  		display: block;
+  		font-size: 1.8rem;
+  	}
+  	.form-field--date-select {
+  		width: 42.5%;
+  		margin-left: 5%;
+  	}
+  }
+  .hidden-calendar-container {
+  	position: absolute;
+		top: 315px;
+		left: 0px;
+		width: 100%;
+		z-index: 0;
+		background-color: $panel-grey;
+  }
 }
 .gwt-DatePicker {
 	width: 100%;
