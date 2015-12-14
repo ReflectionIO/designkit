@@ -130,7 +130,7 @@ table.table-data {
 				font-size: 16px;
 			}
 		}
-		a {
+		a, a.leaderboard-app-name {
 			color: $reflection-purple;
 			&:hover {
 				color: darken($reflection-purple, 10%);
@@ -239,13 +239,14 @@ table.table-data.sticky-table-head {
 	z-index: 10;
 	visibility: hidden;
 	opacity: 0;	
+	pointer-events: none;
 	transition: width 0.15s ease-in;
 	thead {
 		background: $reflection-white;
 	}
 	tbody {
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0;		
 	}
 	@include breakpoint($phablet) {
 		top: 62px;
@@ -259,7 +260,10 @@ table.table-data.sticky-table-head {
 			width: calc(100% - 260px);
 			transition: width 0.15s ease-out;
 		}	
-	}	
+	}
+	.tooltip--info {
+		display: none;
+	}
 }
 .is-chrome,
 .is-opera {

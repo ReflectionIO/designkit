@@ -62,10 +62,30 @@ table.table-linked-accounts {
 			background-color: #fcfdfd;
 		}
 	}
+	&.table-data tr.linked-account-pending-container > td {
+		.page-my-account & {
+			background-color: #f1f0f8;
+			color: $light-grey-1;
+		}	
+	}
 	&.table-data tr:nth-child(4n+1) > td,
 	&.table-data tr:nth-child(4n+1) + tr > td {
 		.page-my-account & {
 			background-color: $panel-grey;
+		}
+	}
+	&.table-data tr.linked-account-pending-container:nth-child(4n+1) > td,
+	&.table-data tr:nth-child(4n+1) + tr.linked-account-pending-container > td {
+		.page-my-account & {
+			padding-top: 15px;
+			padding-bottom: 15px;
+			background-color: #f1f0f8;
+		}
+		&.linked-account-store {
+			.page-my-account & {
+				padding-top: 16px;
+				padding-bottom: 14px;
+			}
 		}
 	}
 	&.table-data td.linked-account-name {
@@ -286,16 +306,26 @@ table.table-linked-accounts {
 }
 .form-submitted-loading .ref-button--is-loading.js-rotate-content,
 .form-submitted-loading .ref-button--success.js-rotate-content {
-	margin-top: 6rem;
+	margin-top: 11rem;
 	transform: rotateX(0deg);
 	transition: transform 0.15s 0.15s, background-color $base-transition-speed-on, margin-top 0.3s;
 	visibility: visible;
 	@include breakpoint($tablet) {
-		margin-top: 5rem;
+		margin-top: 11rem;
 	}
 }
 .form-submitted-loading.ie9 .js-rotate-content:not(.maintain-after-submit),
 .form-submitted-success-complete.ie9 .js-rotate-content:not(.maintain-after-submit),
 .form-submitted-success-complete.ie9 .ref-button--is-loading.js-rotate-content {
 	visibility: hidden;
+}
+.linked-account-pending-container {
+	.whats-this-tooltip-icon,
+	.whats-this-tooltip-icon + span {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.whats-this-tooltip-icon {
+		margin-right: 4px;
+	}
 }
