@@ -905,8 +905,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 // Date Selector
 .dateBoxPopup {
 	position: absolute;
-	width: 300px;
-	padding-top: 5px;
+	width: 300px;	
 	z-index: 990;
 	opacity: 0;
 	visibility: hidden;
@@ -922,6 +921,9 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	}
 	@include breakpoint($tablet) {
 		width: 320px;
+	}
+	.popupContent {
+		padding-top: 7px;
 	}
 	tbody, tr {
 		width: 100%;
@@ -992,6 +994,53 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 		width: 100%;
 		z-index: 0;
 		background-color: $panel-grey;
+  }
+  .date-week-selector {
+  	table.datePickerDays {
+  		tr:not(:first-child):hover td,
+  		tr:not(:first-child) td:hover,
+  		tr:not(:first-child) td div:hover {
+	  		background-color: darken($panel-grey, 10%);
+	  	}
+  	}
+  }
+  .date-month-selector {
+  	table:not(.gwt-DatePicker):not(.datePickerMonthSelector) {
+  		td:hover {
+	  		background-color: darken($panel-grey, 10%);
+	  	}
+  	}
+  	td {
+  		text-align: center;
+  	}
+  }
+  .date-quarter-selector {
+  	table:not(.gwt-DatePicker):not(.datePickerMonthSelector) {
+  		tr:hover {
+	  		background-color: darken($panel-grey, 10%);
+	  	}
+  	}
+  }
+  .date-month-selector,
+  .date-quarter-selector {
+  	table {
+  		width: 100%;
+  		font-size: 12px;
+  		table-layout: fixed;
+  	}
+  	.datePickerMonthSelector {
+  		margin-bottom: 10px;
+  	}
+	  .datePickerDay {
+  		height: 30px;
+  		width: 100%;
+  		padding-top: 10px;
+  		display: block;
+  		text-align: center;
+  	}
+  }
+  #datepicker-year.date-month-selector tr .datePickerDay {
+  	padding-top: 20px;
   }
 }
 .gwt-DatePicker {
