@@ -57,19 +57,6 @@
 		    	}
 		    	return null;
 		    }
-
-		    dataList.formatAppName = function(x) {
-		    	if(this.data[x].Name != null) {
-		    		var strippedName = this.data[x].Name;
-		    		if(strippedName.length > 24) {
-		    			strippedName = strippedName.substring(0,24) + "...";
-		    		}
-		    		return strippedName;
-		    	} else {
-		    		return "N/A";
-		    	}
-		    	return "N/A";
-		    }
 		  });
 	</script>
 </head>
@@ -115,7 +102,7 @@
 					<td class="table-data__app-title">
 						<img src="{{dataItem.icon_url}}" alt="App logo" />
 						<div class="title-container">
-							<span>{{dataList.formatAppName($index)}}</span>
+							<span>{{dataItem.Name}}</span>
 						</div>
 					</td>
 					<td class="table-data__app-developer"><div><span>{{dataItem.Developer}}</span></div></td>
