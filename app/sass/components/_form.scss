@@ -962,6 +962,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   .date-range-list__options {
   	position: relative;
   	z-index: 10;
+  	text-align: center;
   	background-color: $panel-grey;
   	* {
   		z-index: 10;
@@ -986,23 +987,18 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   		width: 42.5%;
   		margin-left: 5%;
   	}
+  	button {
+  		margin: 10px auto;
+  		font-size: 1.4rem;
+  	}
   }
   .hidden-calendar-container {
   	position: absolute;
-		top: 315px;
-		left: 0px;
+		bottom: 0;
+		left: 0;
 		width: 100%;
 		z-index: 0;
 		background-color: $panel-grey;
-  }
-  .date-week-selector {
-  	table.datePickerDays {
-  		tr:not(:first-child):hover td,
-  		tr:not(:first-child) td:hover,
-  		tr:not(:first-child) td div:hover {
-	  		background-color: darken($panel-grey, 10%);
-	  	}
-  	}
   }
   .date-month-selector {
   	table:not(.gwt-DatePicker):not(.datePickerMonthSelector) {
@@ -1026,7 +1022,6 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   	table {
   		width: 100%;
   		font-size: 12px;
-  		table-layout: fixed;
   	}
   	.datePickerMonthSelector {
   		margin-bottom: 10px;
@@ -1039,8 +1034,18 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   		text-align: center;
   	}
   }
-  #datepicker-year.date-month-selector tr .datePickerDay {
-  	padding-top: 20px;
+  .date-quarter-selector ul,
+  .date-year-selector ul {
+  	padding: 5px 0 6px;
+  	font-size: 1.4rem;
+  	li {
+  		width: 100%;
+  		padding: 10px 0 12px;
+  		a {
+  			display: block;
+  			text-align: center;
+  		}
+  	}
   }
 }
 .gwt-DatePicker {
