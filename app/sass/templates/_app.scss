@@ -16,9 +16,21 @@
 	}
 }
 .page-app {
+	max-width: 1600px;
 	padding-top: 20px;
 	padding-bottom: 66px;
+	margin: 0 auto;
 	overflow: visible;
+	.default-tabs-transition .tabs__content,
+	.tabs__content {
+		background-color: $reflection-white;
+	}
+	#tab-content-details {
+		@media screen and (max-width: 720px) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 	.filters-container {
 		padding: 0.9rem 3% 0.5rem;
 		@include breakpoint($tablet) {
@@ -65,7 +77,7 @@
 			margin-top: 15px;
 		}
 	}
-	.app-title {		
+	.app-title {
 		margin-bottom: 3px;
 		margin-right: 10px;
 		display: inline-block;
@@ -158,6 +170,28 @@
 			left: 0;
 			right: auto;
 		}
+	}
+	.site-article-full {
+		padding-right: 5rem;
+		margin-bottom: 0;
+		border-bottom: 0;
+		span {
+			margin-bottom: 1.2em;
+			display: block;
+		}
+		h3 span {
+			margin-bottom: 0;
+			display: inline-block;
+		}
+		p:nth-of-type(1) {
+			margin-bottom: 0;
+		}
+		p:nth-of-type(2) {
+			display: none;
+		}
+	}
+	.aside-definition-list dl span {
+		padding-left: 5px;
 	}
 }
 .app-user-functions-container {
@@ -553,4 +587,239 @@
 	.scrollable .table-revenue tr {
 		height: 45px;
 	}
+}
+.app-images-container {
+	@media screen and (max-width: 720px) {
+		display: flex;
+		flex-direction: column;
+		order: 1;
+	}
+	width: 100%;
+	padding: 20px 20px 0 20px;
+	margin-bottom: 3rem;
+	overflow: hidden;
+	background-color: #f1f1f6;
+}
+.app-images {
+	width: auto;		
+	display: block;
+	overflow: scroll;	
+}
+.app-image-list {
+	padding-bottom: 20px;
+	overflow: scroll;
+	li {
+		display: inline-block;
+		float: left;
+	}
+	img {		
+		margin-right: 20px;
+		display: inline-block;
+		float: left;
+	}
+	li:last-child img {
+		margin-right: 0;
+	}
+	.image-portrait {
+		width: 160px;
+		@include breakpoint($tablet) {
+			width: 320px;
+		}		
+	}
+	.image-landscape {
+		width: 320px;
+		@include breakpoint($tablet) {
+			width: 568px;
+		}
+	}
+}
+.supported-devices {
+	margin-top: -0.1rem;
+	font-size: 1.4rem;
+	line-height: 1.7;
+	color: $mid-grey-2;
+}
+.app-main-details {
+	@media screen and (max-width: 720px) {
+		padding: 0;
+		flex-direction: column;
+		order: 3;
+		display: flex;
+		p {
+			font-size: 1.4rem;
+		}
+	}
+}
+.aside-definition-list {
+	@media screen and (max-width: 720px) {
+		margin-bottom: 3rem;
+		flex-direction: column;
+		order: 2;
+		display: flex;
+	}
+}
+.aside-definition-list dl + .app-details-link {
+	margin-top: 2.2rem;
+}
+.app-details-link {
+	width: 100%;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+	display: inline-block;
+	vertical-align: top;
+	clear: both;
+	font-family: $brand-heading-font;
+	font-size: 1.4rem;
+	line-height: 1.8;
+	color: $dark-grey-1;
+	@include breakpoint($tablet) {
+		font-size: 1.6rem;
+		line-height: 1.4;
+	}
+}
+.more-by-this-developer,
+.reviews-and-ratings {
+	padding-right: 3rem;	
+	display: none;	
+	h2 {
+		padding-top: 3rem;
+	}
+}
+.more-by-this-developer h2,
+.reviews-and-ratings > h2 {
+	border-top: 1px solid #e1e5e8;
+}
+.more-by-this-developer {
+	h2 {
+		margin-bottom: 3.7rem;
+	}
+	li {
+		width: 50%;
+		margin-bottom: 4rem;
+		display: inline-block;
+		text-align: center;
+		vertical-align: top;
+		overflow: hidden;
+		white-space: nowrap;
+		@include breakpoint($phablet) {
+			width: 33%;
+		}		
+		@include breakpoint($tablet) {
+			width: 25%;
+		}		
+		a {
+			width: 80%;
+			margin: 0 auto;
+			display: block;
+			font-size: 1.6rem;
+			line-height: 1.2;
+			font-family: $brand-heading-font;
+			font-weight: 600;
+			color: $reflection-purple;
+			text-align: text;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			&:hover {
+				color: $reflection-purple--hover;
+				+ a {
+					color: $reflection-purple--hover;
+				}
+			}
+		}
+	}
+	img {
+		width: 68px;
+		height: 68px;
+		margin-bottom: 6px;
+		border-radius: 10px;
+	}	
+}
+.more-apps-listed {
+	margin-top: 2rem;
+}
+.reviews-and-ratings {
+	position: relative;
+	margin-bottom: 3rem;
+	display: block;
+	overflow: visible;
+	h2 {
+		margin-bottom: 2rem;
+	}
+	.ratings-container {
+		margin-right: 10px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	button {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+	.country-selector {
+		width: 200px;
+		margin-bottom: 2rem;
+		@include breakpoint($tablet) {
+			position: absolute;
+			top: 3.3rem;
+			right: 3rem;			
+			margin-bottom: 0;
+		}
+	}
+}
+.average-ratings-container {
+	margin-bottom: 2rem;
+	@include breakpoint($tablet) {
+		margin-bottom: 1rem;
+	}
+	h3, div, span {
+		margin: 0;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	h3 {
+		padding-right: 10px;
+		display: block;
+		font-size: 1.8rem;
+		@include breakpoint($tablet) {
+			display: inline-block;
+		}
+	}
+	span {		
+		position: relative;
+		top: 2px;
+		padding-right: 10px;
+		font-family: $brand-heading-font;
+		font-size: 1.6rem;
+		line-height: 1.5;
+	}
+	.ratings-container {
+		position: relative;
+		top: 2px;
+	}
+}
+.customer-reviews {
+	display: none;
+	padding-top: 2rem;
+}
+.customer-review {
+	margin-bottom: 2rem;
+}
+.customer-review__title {
+	margin: 1px 0 0;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1.8rem;
+	color: #29292c;
+}
+.customer-review__content {
+	margin-top: 7px;
+	font-size: 1.4rem;	
+	line-height: 1.7;
+	color: #5b5d61;
+}
+.more-reviews-container {
+	display: none;
+}
+.release-notes-container {
+	margin-top: 2rem;
+	display: none;
 }
