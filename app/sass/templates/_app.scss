@@ -6,12 +6,13 @@
 		width: 75%;
 	}
 }
-.page-app--top {
-	padding-top: 9px;
-}	
-.page-app {	
+.page-app {
+	max-width: 1600px;
+	padding-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
 	overflow: visible;
-	&.default-tabs-transition .tabs__content,
+	.default-tabs-transition .tabs__content,
 	.tabs__content {
 		background-color: $reflection-white;
 	}
@@ -36,7 +37,7 @@
 	.tabs__link span svg {
 		width: 15%;
 		max-width: 26px;
-	}
+	}	
 	.app-icon-container {
 		width: 46px;
 		height: 46px;
@@ -583,6 +584,13 @@
 	margin-bottom: 3rem;
 	overflow: hidden;
 	background-color: #f1f1f6;
+}
+.app-details-content-container {
+	@media screen and (max-width: 720px) {
+		display: flex;
+		flex-direction: column;
+		order: 2;
+	}
 }
 .app-images {
 	width: auto;		
