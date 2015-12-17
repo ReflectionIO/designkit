@@ -188,7 +188,7 @@ public final class demo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("    }\n");
       out.write("</script>\n");
-      out.write("</head>\n");
+      out.write(" <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>\n");
       out.write("<body>\n");
       out.write("\t<div id=\"top\">\n");
       out.write("\t\t<a href=\"http://www.highcharts.com\" title=\"Highcharts Home Page\"\n");

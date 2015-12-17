@@ -356,6 +356,21 @@ p {
 	a {
 		text-decoration: none;
 		color: $reflection-purple;
+		.no-touch & {
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+			&:active {
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+}
+.text-link {
+	text-decoration: none;
+	color: $reflection-purple;
+	.no-touch & {
 		&:hover {
 			color: $reflection-purple--hover;
 		}
@@ -363,17 +378,6 @@ p {
 			position: relative;
 			top: 2px;
 		}
-	}
-}
-.text-link {
-	text-decoration: none;
-	color: $reflection-purple;
-	&:hover {
-		color: $reflection-purple--hover;
-	}
-	&:active {
-		position: relative;
-		top: 2px;
 	}
 }
 .p-style--minor {
@@ -414,13 +418,15 @@ p {
 		a {
 			text-decoration: none;
 			color: $reflection-purple;
-			&:hover {
-				color: $reflection-purple--hover;
-			}
-			&:active {
-				position: relative;
-				top: 2px;
-			}
+			.no-touch & {
+				&:hover {
+					color: $reflection-purple--hover;
+				}
+				&:active {
+					position: relative;
+					top: 2px;
+				}
+			}			
 		}
 	}
 	&.content-list--no-bullets {
@@ -628,8 +634,10 @@ figcaption {
 .warning-text {
 	color: $reflection-red !important;
 }
-a.warning-text:hover {	
-	color: $error-red !important;
+a.warning-text:hover {
+	.no-touch & {
+		color: $error-red !important;
+	}
 }
 img.image-full-width {
 	width: 100%;

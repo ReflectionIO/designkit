@@ -50,7 +50,7 @@ public final class error_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("<title>Highcharts export server</title>\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css/demo.css\" />\n");
-      out.write("</head>\n");
+      out.write(" <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>\n");
       out.write("<body>\n");
       out.write("\t<div id=\"top\">\n");
       out.write("        <a href=\"http://www.highcharts.com\" title=\"Highcharts Home Page\"\n");
