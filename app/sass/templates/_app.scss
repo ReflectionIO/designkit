@@ -163,8 +163,11 @@
 			display: none;
 		}
 	}
-	.aside-definition-list dl span {
-		padding-left: 5px;
+	.aside-definition-list dl {
+		margin-bottom: 2.2rem;
+		span {
+			padding-left: 5px;
+		}
 	}
 }
 .app-user-functions-container {
@@ -595,11 +598,11 @@
 .app-images {
 	width: auto;		
 	display: block;
-	overflow: scroll;	
+	overflow-x: auto;
 }
 .app-image-list {
 	padding-bottom: 20px;
-	overflow: scroll;
+	overflow: hidden;
 	li {
 		display: inline-block;
 		float: left;
@@ -642,15 +645,13 @@
 	}
 }
 .aside-definition-list {
+	margin-bottom: 4rem;
 	@media screen and (max-width: 720px) {
 		margin-bottom: 3rem;
 		flex-direction: column;
 		order: 2;
 		display: flex;
 	}
-}
-.aside-definition-list dl + .app-details-link {
-	margin-top: 2.2rem;
 }
 .app-details-link {
 	width: 100%;
@@ -681,6 +682,7 @@
 	border-top: 1px solid #e1e5e8;
 }
 .more-by-this-developer {
+	padding-bottom: 4rem;
 	h2 {
 		margin-bottom: 3.7rem;
 	}
@@ -688,6 +690,7 @@
 		width: 50%;
 		margin-bottom: 4rem;
 		display: inline-block;
+		float: left;
 		text-align: center;
 		vertical-align: top;
 		overflow: hidden;
@@ -745,7 +748,7 @@
 		margin-top: 1rem;
 		margin-bottom: 1rem;
 	}
-	.country-selector {
+	.form-field--select {
 		width: 200px;
 		margin-bottom: 2rem;
 		@include breakpoint($tablet) {
