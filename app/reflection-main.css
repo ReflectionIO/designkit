@@ -6578,6 +6578,65 @@ textarea, .global-header .link-open-search {
   height: 100vh;
 }
 
+/* line 1, sass/templates/_developer.scss */
+.developer-page-title {
+  margin-right: 1rem;
+}
+
+/* line 4, sass/templates/_developer.scss */
+.developer-page-title,
+.developer-number-of-apps {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 9, sass/templates/_developer.scss */
+.developer-number-of-apps,
+.developer-number-of-apps.heading-style--heading-four {
+  margin: 0px 0px 1.8rem;
+}
+
+/* line 13, sass/templates/_developer.scss */
+.developer-app-details-column {
+  width: 30%;
+}
+@media (min-width: 1280px) {
+  /* line 13, sass/templates/_developer.scss */
+  .developer-app-details-column {
+    width: 27%;
+  }
+}
+
+/* line 19, sass/templates/_developer.scss */
+.developer-app-release-date-column {
+  width: 16%;
+}
+
+/* line 22, sass/templates/_developer.scss */
+.developer-app-version-release-date-column {
+  width: 16%;
+}
+
+/* line 25, sass/templates/_developer.scss */
+.developer-app-price-column {
+  width: 10%;
+}
+
+/* line 28, sass/templates/_developer.scss */
+.developer-app-downloads-column {
+  width: 12%;
+}
+
+/* line 31, sass/templates/_developer.scss */
+.developer-app-revenue-column {
+  width: 12%;
+}
+
+/* line 34, sass/templates/_developer.scss */
+.developer-app-iap-column {
+  width: 6%;
+}
+
 /* line 1, sass/templates/_faqs.scss */
 .page-faqs {
   padding-bottom: 4rem;
@@ -18729,16 +18788,17 @@ svg.loading-ellipsis .dot-3 {
 
 /* line 13, sass/components/_search-global.scss */
 .search__form {
+  position: relative;
   padding-bottom: 20px;
 }
 @media (min-width: 720px) {
   /* line 13, sass/components/_search-global.scss */
   .search__form {
-    padding-bottom: 30px;
+    padding-bottom: 10px;
   }
 }
 
-/* line 19, sass/components/_search-global.scss */
+/* line 20, sass/components/_search-global.scss */
 .panel-right .form-field .search-button-mobile {
   position: absolute;
   top: 30px;
@@ -18752,58 +18812,68 @@ svg.loading-ellipsis .dot-3 {
           transition: color 0.2s;
 }
 @media (min-width: 720px) {
-  /* line 19, sass/components/_search-global.scss */
+  /* line 20, sass/components/_search-global.scss */
   .panel-right .form-field .search-button-mobile {
     display: none;
   }
 }
-/* line 33, sass/components/_search-global.scss */
+/* line 34, sass/components/_search-global.scss */
 .panel-right .form-field .search-button-mobile.is-highlighted {
   color: #6d69c5;
   -webkit-transition: color 0.3s;
           transition: color 0.3s;
 }
 
-/* line 38, sass/components/_search-global.scss */
+/* line 39, sass/components/_search-global.scss */
 .panel-right .search-button {
   width: 100%;
 }
 
-/* line 41, sass/components/_search-global.scss */
+/* line 42, sass/components/_search-global.scss */
+.panel-right .loading-spinner--search-apps {
+  position: absolute;
+  bottom: 9px;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+}
+
+/* line 49, sass/components/_search-global.scss */
 .search__results-container {
+  position: relative;
   width: 100%;
   overflow: visible;
 }
 
-/* line 45, sass/components/_search-global.scss */
+/* line 54, sass/components/_search-global.scss */
 .search__results-section {
   position: relative;
   min-height: 18px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   display: none;
   overflow: auto;
   text-align: left;
 }
-/* line 52, sass/components/_search-global.scss */
+/* line 61, sass/components/_search-global.scss */
 .search__results-section h2 {
   width: 100px;
   margin-bottom: 1.3rem;
   font-size: 14px;
   color: #fcfdfd;
 }
-/* line 58, sass/components/_search-global.scss */
+/* line 67, sass/components/_search-global.scss */
 .search__results-section ul {
   max-height: 156px;
   overflow: auto;
 }
 @media (min-width: 720px) {
-  /* line 58, sass/components/_search-global.scss */
+  /* line 67, sass/components/_search-global.scss */
   .search__results-section ul {
     max-height: none;
     overflow: none;
   }
 }
-/* line 65, sass/components/_search-global.scss */
+/* line 74, sass/components/_search-global.scss */
 .search__results-section ul a {
   position: relative;
   display: block;
@@ -18813,21 +18883,21 @@ svg.loading-ellipsis .dot-3 {
   color: #81879d;
   cursor: pointer;
 }
-/* line 73, sass/components/_search-global.scss */
+/* line 82, sass/components/_search-global.scss */
 .search__results-section ul a:hover {
   color: #fff;
 }
-/* line 78, sass/components/_search-global.scss */
+/* line 87, sass/components/_search-global.scss */
 .search__results-section li {
   margin-bottom: 7px;
   display: block;
   overflow: visible;
 }
-/* line 82, sass/components/_search-global.scss */
+/* line 91, sass/components/_search-global.scss */
 .no-touch .search__results-section li {
   margin-bottom: 1px;
 }
-/* line 85, sass/components/_search-global.scss */
+/* line 94, sass/components/_search-global.scss */
 .search__results-section li img {
   position: absolute;
   top: 2px;
@@ -18836,7 +18906,7 @@ svg.loading-ellipsis .dot-3 {
   margin-right: 16px;
   vertical-align: top;
 }
-/* line 93, sass/components/_search-global.scss */
+/* line 102, sass/components/_search-global.scss */
 .search__results-section li span {
   position: relative;
   top: 0;
@@ -18849,16 +18919,16 @@ svg.loading-ellipsis .dot-3 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 104, sass/components/_search-global.scss */
+/* line 113, sass/components/_search-global.scss */
 .search__results-section.search__results-section--developers {
   display: none;
 }
-/* line 106, sass/components/_search-global.scss */
+/* line 115, sass/components/_search-global.scss */
 .search__results-section.search__results-section--developers span {
   padding-left: 0;
 }
 
-/* line 111, sass/components/_search-global.scss */
+/* line 120, sass/components/_search-global.scss */
 .search-results-none-container {
   margin-top: -9px;
   display: none;
@@ -18866,7 +18936,7 @@ svg.loading-ellipsis .dot-3 {
   font-family: "Source Sans Pro", sans-serif;
   color: #5b5b68;
 }
-/* line 117, sass/components/_search-global.scss */
+/* line 126, sass/components/_search-global.scss */
 .search-results-none-container .svg-unhappy {
   width: 23px;
   height: 23px;
@@ -18874,11 +18944,11 @@ svg.loading-ellipsis .dot-3 {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 123, sass/components/_search-global.scss */
+/* line 132, sass/components/_search-global.scss */
 .search-results-none-container .svg-unhappy path {
   fill: #44444d;
 }
-/* line 127, sass/components/_search-global.scss */
+/* line 136, sass/components/_search-global.scss */
 .search-results-none-container span {
   padding-top: 1px;
   vertical-align: middle;
