@@ -13,7 +13,7 @@
  	<!--[if !lt IE 9]><!-->
 		<script src="js/vendor/picturefill.2.3.1.min.js" async></script>
 	<!-- <![endif]-->
-	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />	
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
 <script>
   WebFont.load({
@@ -25,7 +25,8 @@
 
 <script src="js/vendor/jquery-1.11.1.min.js"></script>
 <script src="//d3js.org/d3.v3.min.js"></script>
-
+<script type="text/javascript" src="js/vendor/jquery.tipsy.js"></script>
+<link rel="stylesheet" href="css/tipsy.css" />
 </head>
 
 <style>
@@ -52,8 +53,9 @@
 	}
 
 	rect {
-	  fill: none;
+	  fill: #7d79d4;
 	  stroke: #fff;
+	  transition: fill 1s;
 	}
 
 	rect.parent,
@@ -74,13 +76,33 @@
 	  cursor: pointer;
 	}
 
+	.children text,
+	.depth text {
+		fill: white;
+		font-size: 18px;
+		font-family: 'Source Sans Pro', sans-serif;
+	}
+
 	.children rect.parent {
 	  fill: #bbb;
-	  fill-opacity: .5;
+	  fill-opacity: .7;
 	}
 
 	.children:hover rect.child {
 	  fill: #bbb;
+	}
+
+	.app-revenue-one {
+		fill: #6d69c5;
+	}
+	.app-revenue-two {
+		fill: #525286;
+	}
+	.app-revenue-three {
+		fill: #414360;
+	}
+	.app-revenue-four {
+		fill: #3e415a;
 	}
 
 </style>
@@ -101,7 +123,12 @@
 
 			<div class="grid-container data-vis-container">
 
-				<div id="chart"></div>
+				<div id="chart">
+					<!-- <form>
+						<label><input type="radio" name="mode" value="size" checked=""> Size</label>
+						<label><input type="radio" name="mode" value="count"> Count</label>
+					</form> -->
+				</div>
 
 					<script>
 
@@ -147,11 +174,15 @@
 						    .attr("y", 6 - margin.top)
 						    .attr("dy", ".75em");
 
+						var colours = ["#6d69c5", "#6a67bf", "#6864b9", "#6562b2", "#6260ac", "#5f5da5", "#5d5b9f", "#5a5999", "#575693", "#54548c", "#525286", "#4f4f80", "#4c4d79", "#494a73", "#444667", "#444667", "#414360", "#3e415a", "#3c3f54", "#393c4d", "#363a47"];
+						var baseFillColour = "#6d69c5";
+
 						d3.json("js/category-revenue-data.json", function(root) {
+						  console.log(root);
 						  initialize(root);
 						  accumulate(root);
 						  layout(root);
-						  display(root);
+						  display(root);						  
 
 						  function initialize(root) {
 						    root.x = root.y = 0;
@@ -217,15 +248,21 @@
 						        .call(rect);
 
 						    g.append("rect")
-						        .attr("class", "parent")
+						        .attr("class", "parent")						        
 						        .call(rect)
 						      .append("title")
 						        .text(function(d) { return formatNumber(d.value); });
 
 						    g.append("text")
 						        .attr("dy", ".75em")
-						        .text(function(d) { return d.name; })
+						        .text(function(d) { return d.name + " £" + d.value; })
 						        .call(text);
+						    
+					    	g.append("image")
+					    	.attr("xlink:href", function(d) { return d.image; })
+					    	.attr("height", "20")
+					    	.attr("width", "20")
+					    	.call(image);
 
 						    function transition(d) {
 						      if (transitioning || !d) return;
@@ -253,6 +290,8 @@
 						      t2.selectAll("text").call(text).style("fill-opacity", 1);
 						      t1.selectAll("rect").call(rect);
 						      t2.selectAll("rect").call(rect);
+						      t1.selectAll("image").call(image);
+						      t2.selectAll("image").call(image);
 
 						      // Remove the old node when the transition is finished.
 						      t1.remove().each("end", function() {
@@ -260,6 +299,24 @@
 						        transitioning = false;
 						      });
 						    }
+
+						    $('svg g.depth g').tipsy = null;
+						    $('.tipsy').remove();
+
+						    $('svg g.depth g').tipsy({
+					        gravity: 's', 
+					        html: true, 
+					        title: function() {
+					          var d = this.__data__;
+					          if(d != null && d.value != null) {
+					          	return '<span>Revenue:' + d.value + '</span>';
+					          }
+					          return '';
+					        }
+					      });
+
+					      setTimeout(function() {
+					      	svg.selectAll("g.depth g").style("fill", function(d, i) { $(this).find("rect").attr("style", "fill: " + colours[i]).attr("data-index", i); return colours[i]; }); }, 1000);
 
 						    return g;
 						  }
@@ -269,11 +326,17 @@
 						        .attr("y", function(d) { return y(d.y) + 6; });
 						  }
 
-						  function rect(rect) {
+						  function image(image) {
+						    image.attr("x", function(d) { return x(d.x) + 6; })
+						        .attr("y", function(d) { return y(d.y) + 16; });
+						  }
+
+						  function rect(rect) {						  	
 						    rect.attr("x", function(d) { return x(d.x); })
 						        .attr("y", function(d) { return y(d.y); })
 						        .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
-						        .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); });
+						        .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
+						        .style("fill", function(d) { return baseFillColour; });
 						  }
 
 						  function name(d) {
@@ -281,6 +344,24 @@
 						        ? name(d.parent) + "." + d.name
 						        : d.name;
 						  }
+
+						  d3.selectAll("input").on("change", function change() {
+
+						  });
+
+						  $('svg g.depth g').tipsy({
+				        gravity: 's',
+				        html: true, 
+				        title: function() {
+				          var d = this.__data__;
+				          if(d != null && d.value != null) {
+				          	return '<span>Revenue:' + d.value + '</span>';
+				          }
+				          return '';
+				        }
+				      });
+
+						  // svg.selectAll("g.depth g").style("fill", function(d, i) { $(this).find("rect").attr("style", "fill: " + colours[i]); return colours[i]; });
 						});
 
 					</script>
