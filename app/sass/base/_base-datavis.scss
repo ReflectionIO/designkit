@@ -15,18 +15,74 @@
 html {
 	background-color: #29292c;
 }
-
+.header {
+	width: 1280px;
+	height: 54px;
+	margin: 80px auto 0;
+	background-color: #29292c;
+}
+.data-vis-title-container {
+	padding-left: 19px;
+	float: left;
+	display: inline-block;
+}
+.reflection-logo {
+	width: 20px;
+	height: 22px;
+	margin-top: 15px;
+	margin-right: 17px;
+	display: inline-block;
+	vertical-align: middle;
+}
 .data-vis-container {
-	margin-top: 20px;
 	text-align: center;
 }
-
+.data-vis-title,
+.data-vis-date,
+.total-revenue-container h3,
+.total-revenue-container span {
+	display: inline-block;
+	vertical-align: top;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 17px;
+	font-weight: 600;	
+}
+.data-vis-title {
+	margin-top: 17px;
+	margin-right: 7px;
+	font-weight: 600;
+	color: #fcfdfd;
+}
+.data-vis-date {
+	margin-top: 18px;
+	font-weight: 400;
+	color: #81879d;
+}
+.total-revenue-container {
+	padding-right: 20px;
+	display: inline-block;
+	vertical-align: middle;
+	float: right;
+	h3 {
+		margin-top: 19px;
+		margin-right: 9px;
+		font-size: 15px;
+		font-weight: 400;
+		color: #81879d;		
+	}
+	span {
+		margin-top: 15px;
+		font-size: 20px;
+		font-weight: 400;
+		color: #fcfdfd;
+	}
+}
 #chart {
-  width: 1280;
+  width: 1280px;
   height: 800px;
   margin: 0 auto 300px;
   display: inline-block;
-  background: #ddd;
+  background: #29292c;
 }
 
 text {
@@ -34,9 +90,14 @@ text {
 }
 
 .grandparent text {
-  font-weight: bold;
+	fill: white;
+	font-weight: 400;
+	font-size: 14px;
+	font-family: 'Source Sans Pro', sans-serif;
 }
-
+g.depth g:not(.children):hover rect.child {
+	fill: #1bc79f !important;
+}
 rect {
   fill: #6d69c5;
   stroke: #363a47;
@@ -48,13 +109,18 @@ rect.parent,
   stroke-width: 2px;
   stroke: #363a47;
 }
-
+rect.parent {
+	stroke-width: 1px;
+}
+.children > rect.parent {
+	stroke-width: 2px;
+}
 .grandparent rect {
-  fill: orange;
+  fill: #3c856d;
 }
 
 .grandparent:hover rect {
-  fill: #ee9700;
+  fill: darken(#3c856d, 5%);
 }
 
 g.children:hover rect.child {
@@ -94,8 +160,8 @@ rect.parent {
 }
 
 .tt-image {
-	width: 80px;
-	height: 80px;
+	width: 70px;
+	height: 70px;
 	margin-bottom: 12px;
 	border-radius: 10px;
 }

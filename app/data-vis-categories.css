@@ -74,32 +74,114 @@ html {
   background-color: #29292c;
 }
 
-/* line 19, sass/base/_base-datavis.scss */
-.data-vis-container {
-  margin-top: 20px;
-  text-align: center;
+/* line 18, sass/base/_base-datavis.scss */
+.header {
+  width: 1280px;
+  height: 54px;
+  margin: 80px auto 0;
+  background-color: #29292c;
 }
 
 /* line 24, sass/base/_base-datavis.scss */
+.data-vis-title-container {
+  padding-left: 19px;
+  float: left;
+  display: inline-block;
+}
+
+/* line 29, sass/base/_base-datavis.scss */
+.reflection-logo {
+  width: 20px;
+  height: 22px;
+  margin-top: 15px;
+  margin-right: 17px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 37, sass/base/_base-datavis.scss */
+.data-vis-container {
+  text-align: center;
+}
+
+/* line 40, sass/base/_base-datavis.scss */
+.data-vis-title,
+.data-vis-date,
+.total-revenue-container h3,
+.total-revenue-container span {
+  display: inline-block;
+  vertical-align: top;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* line 50, sass/base/_base-datavis.scss */
+.data-vis-title {
+  margin-top: 17px;
+  margin-right: 7px;
+  font-weight: 600;
+  color: #fcfdfd;
+}
+
+/* line 56, sass/base/_base-datavis.scss */
+.data-vis-date {
+  margin-top: 18px;
+  font-weight: 400;
+  color: #81879d;
+}
+
+/* line 61, sass/base/_base-datavis.scss */
+.total-revenue-container {
+  padding-right: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  float: right;
+}
+/* line 66, sass/base/_base-datavis.scss */
+.total-revenue-container h3 {
+  margin-top: 19px;
+  margin-right: 9px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #81879d;
+}
+/* line 73, sass/base/_base-datavis.scss */
+.total-revenue-container span {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #fcfdfd;
+}
+
+/* line 80, sass/base/_base-datavis.scss */
 #chart {
-  width: 1280;
+  width: 1280px;
   height: 800px;
   margin: 0 auto 300px;
   display: inline-block;
-  background: #ddd;
+  background: #29292c;
 }
 
-/* line 32, sass/base/_base-datavis.scss */
+/* line 88, sass/base/_base-datavis.scss */
 text {
   pointer-events: none;
 }
 
-/* line 36, sass/base/_base-datavis.scss */
+/* line 92, sass/base/_base-datavis.scss */
 .grandparent text {
-  font-weight: bold;
+  fill: white;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* line 40, sass/base/_base-datavis.scss */
+/* line 98, sass/base/_base-datavis.scss */
+g.depth g:not(.children):hover rect.child {
+  fill: #1bc79f !important;
+}
+
+/* line 101, sass/base/_base-datavis.scss */
 rect {
   fill: #6d69c5;
   stroke: #363a47;
@@ -107,42 +189,52 @@ rect {
           transition: fill 0.2s, stroke 0.2s;
 }
 
-/* line 46, sass/base/_base-datavis.scss */
+/* line 107, sass/base/_base-datavis.scss */
 rect.parent,
 .grandparent rect {
   stroke-width: 2px;
   stroke: #363a47;
 }
 
-/* line 52, sass/base/_base-datavis.scss */
+/* line 112, sass/base/_base-datavis.scss */
+rect.parent {
+  stroke-width: 1px;
+}
+
+/* line 115, sass/base/_base-datavis.scss */
+.children > rect.parent {
+  stroke-width: 2px;
+}
+
+/* line 118, sass/base/_base-datavis.scss */
 .grandparent rect {
-  fill: orange;
+  fill: #3c856d;
 }
 
-/* line 56, sass/base/_base-datavis.scss */
+/* line 122, sass/base/_base-datavis.scss */
 .grandparent:hover rect {
-  fill: #ee9700;
+  fill: #34735f;
 }
 
-/* line 60, sass/base/_base-datavis.scss */
+/* line 126, sass/base/_base-datavis.scss */
 g.children:hover rect.child {
   fill: #1bc79f !important;
   stroke: #159d7d !important;
   fill-opacity: 1;
 }
 
-/* line 65, sass/base/_base-datavis.scss */
+/* line 131, sass/base/_base-datavis.scss */
 rect.child {
   cursor: pointer;
 }
 
-/* line 68, sass/base/_base-datavis.scss */
+/* line 134, sass/base/_base-datavis.scss */
 .children rect.parent,
 .grandparent rect {
   cursor: pointer;
 }
 
-/* line 73, sass/base/_base-datavis.scss */
+/* line 139, sass/base/_base-datavis.scss */
 .children text,
 .depth text {
   fill: white;
@@ -151,39 +243,39 @@ rect.child {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* line 81, sass/base/_base-datavis.scss */
+/* line 147, sass/base/_base-datavis.scss */
 text.text-title {
   font-weight: 600;
 }
 
-/* line 85, sass/base/_base-datavis.scss */
+/* line 151, sass/base/_base-datavis.scss */
 rect.parent {
   /*fill: #bbb; */
   fill-opacity: 0;
   pointer-events: none;
 }
 
-/* line 91, sass/base/_base-datavis.scss */
+/* line 157, sass/base/_base-datavis.scss */
 .children:hover rect.child {
   /*fill: #bbb;*/
   cursor: pointer;
 }
 
-/* line 96, sass/base/_base-datavis.scss */
+/* line 162, sass/base/_base-datavis.scss */
 .tt-image {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   margin-bottom: 12px;
   border-radius: 10px;
 }
 
-/* line 102, sass/base/_base-datavis.scss */
+/* line 168, sass/base/_base-datavis.scss */
 h2.tt-category-title {
   font-size: 18px;
   margin-bottom: 8px;
 }
 
-/* line 106, sass/base/_base-datavis.scss */
+/* line 172, sass/base/_base-datavis.scss */
 h3.tt-category-value {
   font-size: 14px;
   line-height: 1.2;

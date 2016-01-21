@@ -25,6 +25,17 @@
 
 <div class="grid-container data-vis-container">
 
+	<header class="header">
+		<div class="data-vis-title-container">
+			<img src="images/data-vis-logo.png" alt="Reflection logo" class="reflection-logo" />
+			<h1 class="data-vis-title">UK Appstore Top 200 Revenue by Category</h1>
+			<h2 class="data-vis-date">1st - 12th Jan 2016</h2>
+		</div>
+		<div class="total-revenue-container">
+			<h3>Total Revenue:</h3>
+			<span>£10,000,000</span>
+		</div>
+	</header>
 	<div id="chart">
 		<!-- <form>
 			<label><input type="radio" name="mode" value="size" checked=""> Size</label>
@@ -36,10 +47,10 @@
 
 <script>
 
-	var margin = {top: 20, right: 0, bottom: 0, left: 0},
+	var margin = {top: 35, right: 0, bottom: 0, left: 0},
 	    width = 1280,
 	    height = 800 - margin.top - margin.bottom,
-	    formatNumber = d3.format(","),
+	    formatNumber = d3.format(",.0f"),
 	    transitioning;
 
 	var x = d3.scale.linear()
@@ -74,8 +85,8 @@
 	    .attr("height", margin.top);
 
 	grandparent.append("text")
-	    .attr("x", 6)
-	    .attr("y", 6 - margin.top)
+	    .attr("x", 19)
+	    .attr("y",11 - margin.top)
 	    .attr("dy", ".75em");
 
 	var colours = ["#6d69c5", "#6a67bf", "#6864b9", "#6562b2", "#6260ac", "#5f5da5", "#5d5b9f", "#5a5999", "#575693", "#54548c", "#525286", "#4f4f80", "#4c4d79", "#494a73", "#444667", "#444667", "#414360", "#3e415a", "#3c3f54", "#393c4d", "#363a47"];
@@ -162,7 +173,17 @@
 
 	    g.append("text")
 	        .attr("dy", "20px")
-	        .text(function(d, i) { if(d.area > 0.02)  { return d.name; } else return ""; })
+	        .text(function(d, i) { 
+	        	if(d.area > 0.02)  { 
+		        	if(d.name.length > 20) { 
+		        		return d.name.substring(0, 20) + "..." ;
+		        	} else {
+		        		return d.name;
+		        	}
+		        } else {
+		        		return "";
+		        }
+		      })
 	        .attr("class", "text-title")
 	        .call(text);
 
@@ -308,7 +329,7 @@
 
 	  function name(d) {
 	    return d.parent
-	        ? name(d.parent) + " > " + d.name
+	        ? name(d.parent) + " | " + d.name
 	        : d.name;
 	  }
 
