@@ -19,12 +19,6 @@ $blur-opacity: 0.5;
 				transition: fill $base-transition-speed-off;
 			}
 		}
-		svg.icon--my-apps {
-			path {
-				fill: none;
-				stroke: $mid-grey-1;
-			}
-		}
 		span {
 			position: relative;
 			display: inline-block;
@@ -48,31 +42,37 @@ $blur-opacity: 0.5;
 	}
 	.no-touch & {
 		li:hover {
-			svg path, svg polygon {
+			> svg path, > svg polygon {
 				fill: $light-grey-2;
 				transition: fill $base-transition-speed-on;
-			}
-			svg.icon--my-apps {
-				path {
-					fill: none;
-					stroke: $light-grey-2;
-					transition: stroke $base-transition-speed-on;
-				}
 			}
 		}
 	}
 	li.is-selected {
-		a svg,
-		&:hover a svg {
+		> a > svg,
+		&:hover > a > svg {
 			path, polygon {
 				fill: $white-navigation;
 			}
 		}
-		a svg.icon--my-apps,
-		&:hover a svg.icon--my-apps {
-			path {
-				fill: none;
-				stroke: $white-navigation;
+		li {
+			a svg {
+				path, polygon {
+					fill: $mid-grey-1;
+				}
+			}
+			&:hover a svg {
+				path, polygon {
+					fill: #bec2d2;
+				}
+			}
+		}
+		li.is-selected {
+			a svg,
+			&:hover a svg {
+				path, polygon {
+					fill: $white-navigation;
+				}
 			}
 		}
 	}
@@ -223,7 +223,7 @@ $blur-opacity: 0.5;
 				}
 			}
 			a {
-				padding: 0px 20px 15px 58px;
+				padding: 0px 20px 15px;
 				color: $light-grey-1;
 				font-weight: 400;
 				.is-animating-out & {
@@ -237,7 +237,9 @@ $blur-opacity: 0.5;
 						color: $grey-hover;
 					}
 					@include breakpoint($laptop) {
-						opacity: 0;
+						span {
+							opacity: 0;
+						}						
 					}
 				}
 				.no-touch .panel-left:hover & {
