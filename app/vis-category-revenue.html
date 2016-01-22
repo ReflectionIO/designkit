@@ -29,11 +29,11 @@
 		<div class="data-vis-title-container">
 			<img src="images/data-vis-logo.png" alt="Reflection logo" class="reflection-logo" />
 			<h1 class="data-vis-title">UK Appstore Top 200 Revenue by Category</h1>
-			<h2 class="data-vis-date">1st - 12th Jan 2016</h2>
+			<h2 class="data-vis-date">4th - 10th Jan 2016</h2>
 		</div>
 		<div class="total-revenue-container">
 			<h3>Total Revenue:</h3>
-			<span>£10,000,000</span>
+			<span class="js-total-revenue"></span>
 		</div>
 	</header>
 	<div id="chart">
@@ -367,6 +367,25 @@
 	    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
 	  
 	}
+
+	function aggregateAllValues(dataSource) {
+		var data = dataSource;
+		var aggregate = 0;
+		$.getJSON(dataSource, function( data ) {
+		  for(var i = 0; i < data.children.length; i++) {
+		  	//console.log(data.children[i].children);
+		  	for(var j = 0; j < data.children[i].children.length; j++) {
+		  		aggregate += data.children[i].children[j].value;
+		  	}
+		  }
+
+			if(aggregate > 0) {
+				$('.js-total-revenue').text("£" + formatNumber(aggregate/100));
+			}
+		});
+	}
+
+	aggregateAllValues("js/category-revenue-data.json");
 </script>
 
 </body>
