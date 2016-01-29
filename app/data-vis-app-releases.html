@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="http://extra.amcharts.com/support/css3/ameffects.css">
 <style>
   .amcharts-graph-stroke {
-    cursor: pointer;
+    stroke-width: 2 !important;
   }
   .amcharts-graph-fill {
     pointer-events: none;    
@@ -98,73 +98,115 @@
 	<script src="js/designkit-global-templates.js"></script>
   <script src="js/application.js"></script>
   <script src="js/designkit-app.js"></script>
+  <script src="js/json/data-vis-release.js"></script>
+
   <script>
+      console.log(chartData);
       new DataVisAppReleasesPage();
-
-      var chartData1 = generateChartData();
-      var chartData2 = generateChartData();
-      var chartData3 = generateChartData();
-
-      function generateChartData() {
-          var chartData = [];
-          var firstDate = new Date("January 01, 2016 13:00:00");
-
-          for (var i = 0; i < 180; i++) {
-              // we create date objects here. In your data, you can have date strings
-              // and then set format of your dates using chart.dataDateFormat property,
-              // however when possible, use date objects, as this will speed up chart rendering.
-              var newDate = new Date(firstDate);
-              newDate.setDate(newDate.getDate() + i);
-
-              var value = Math.round(Math.random() * 10000);
-
-              chartData.push({
-                  date: newDate,
-                  value: value
-              });
-          }
-          return chartData;
-      }
 
       var chart = AmCharts.makeChart( "chartdiv", {
         type: "stock",
         "theme": "light",
+        "addClassNames": true,
         dataSets: [ {
-          title: "Candy Crush",
+          title: chartData[4].title,
           color: "#b0de09",
           fieldMappings: [ {
             fromField: "value",
             toField: "value"
           }],
-          dataProvider: chartData1,
+          dataProvider: chartData[4].data,
           categoryField: "date",
           // EVENTS
-          stockEvents: [ {
-            date: new Date( 2016, 0, 2 ),
-            type: "flag",
-            backgroundColor: "#85CDE6",
-            graph: "g1",
-            text: "App Launch",
-            showOnAxis: true,
-            description: "App release date"
-          }],
+          // stockEvents: [ {
+          //   date: new Date( 2016, 0, 2 ),
+          //   type: "flag",
+          //   backgroundColor: "#85CDE6",
+          //   graph: "g1",
+          //   text: "App Launch",
+          //   showOnAxis: true,
+          //   description: "App release date"
+          // }],
         }, {
-          title: "Angry Birds",
+          title: chartData[0].title,
           compared: true,
           fieldMappings: [ {
             fromField: "value",
             toField: "value"
           }],
-          dataProvider: chartData2,
+          dataProvider: chartData[0].data,
           categoryField: "date"
         }, {
-          title: "Clash of Clans",
+          title: chartData[1].title,
           compared: true,
           fieldMappings: [ {
             fromField: "value",
             toField: "value"
           }],
-          dataProvider: chartData3,
+          dataProvider: chartData[1].data,
+          categoryField: "date"
+        }, {
+          title: chartData[2].title,
+          compared: true,
+          fieldMappings: [ {
+            fromField: "value",
+            toField: "value"
+          }],
+          dataProvider: chartData[2].data,
+          categoryField: "date"
+        }, {
+          title: chartData[3].title,
+          compared: true,
+          fieldMappings: [ {
+            fromField: "value",
+            toField: "value"
+          }],
+          dataProvider: chartData[3].data,
+          categoryField: "date"
+        }, {
+          title: chartData[5].title,
+          compared: true,
+          fieldMappings: [ {
+            fromField: "value",
+            toField: "value"
+          }],
+          dataProvider: chartData[5].data,
+          categoryField: "date"
+        }, {
+          title: chartData[6].title,
+          compared: true,
+          fieldMappings: [ {
+            fromField: "value",
+            toField: "value"
+          }],
+          dataProvider: chartData[6].data,
+          categoryField: "date"
+        }, {
+          title: chartData[7].title,
+          compared: true,
+          fieldMappings: [ {
+            fromField: "value",
+            toField: "value"
+          }],
+          dataProvider: chartData[7].data,
+          categoryField: "date"
+        }, {
+          title: chartData[8].title,
+          compared: true,
+          fieldMappings: [ {
+            fromField: "value",
+            toField: "value"
+          }],
+          dataProvider: chartData[9].data,
+          categoryField: "date"
+        }, {
+          title: chartData[9].title,
+          compared: true,
+          fieldMappings: [ {
+            fromField: "value",
+            toField: "value"
+          }],
+          dataProvider: chartData[9].data,
           categoryField: "date"
         }],
 
@@ -183,7 +225,15 @@
             comparable: true,
             compareField : "value",
             balloonText: "[[title]]:<b>[[value]]</b>",
-            compareGraphBalloonText: "[[title]]:<b>[[value]]</b>"
+            compareGraphBalloonText: "[[title]]:<b>[[value]]</b>",
+            connect: false, // connect missing data points
+            // lineThickness: 2,
+            // stackable: true
+            periodValue: "Close", // can be set to average also
+            // pointPosition: "Start",
+            // precision: 1,
+            // recalculateValue: "Open"
+            showEventsOnComparedGraphs: true
           }],
 
           stockLegend: {
@@ -204,8 +254,8 @@
           //   var thisDate = new Date(v);
           //   var startDate = new Date("January 01, 2016 12:00:00");
           //   var millisecondsPerDay = 24 * 60 * 60 * 1000;
-          //   var numberOfDays = Math.ceil((thisDate - startDate) / millisecondsPerDay, 10);
-          //   if(!numberOfDays > 0) {
+          //   var numberOfDays = Math.ceil((thisDate - startDate) / millisecondsPerDay, 10) + 1;
+          //   if(numberOfDays < 1) {
           //     numberOfDays = 0
           //   }
           //   return numberOfDays;
@@ -217,11 +267,28 @@
           valueLineAlpha: 0.5
         },
 
-        categoryAxis: {
-          labelFunction: function(d,f,g) {
-            console.log("sdfsdf");
-            return "label";
-          }
+        categoryAxesSettings: {
+          markPeriodChange: true,
+          autoGridCount: true,
+          startOnAxis: true,
+          gridPosition: "start",
+          // dateFormats: [{
+          //     period: "DD",
+          //     format: "DD"
+          // }, {
+          //     period: "WW",
+          //     format: "WW"
+          // }, {
+          //     period: "MM",
+          //     format: "MM",
+          // }, {
+          //     period: "YYYY",
+          //     format: ""
+          // }],
+          position: "top",
+          parseDates: true,
+          equalSpacing: true,
+          gridCount: 50
         },
 
         periodSelector: {
@@ -237,7 +304,8 @@
           }, {
             period: "MM",
             count: 3,
-            label: "3 months"
+            label: "3 months",
+            selected: true
           }, {
             period: "MAX",
             label: "MAX"
