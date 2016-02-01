@@ -105,7 +105,7 @@
 							</span>
 						</a>
 					</li>
-					<li class="grid__column grid__column--one-quarter tabs__tab is-active js-tab-select">
+					<li class="grid__column grid__column--one-quarter tabs__tab js-tab-select">
 						<div class="tab-animate-active"></div>
 						<a data-content="#tab-content-rank" class="tabs__link">
 							<span>
@@ -114,7 +114,7 @@
 								<span>Rank</span></span>
 						</a>
 					</li>
-					<li class="grid__column grid__column--one-quarter tabs__tab js-tab-select">
+					<li class="grid__column grid__column--one-quarter tabs__tab is-active js-tab-select">
 						<div class="tab-animate-active"></div>
 						<a data-content="#tab-content-details" class="tabs__link">
 							<span>
@@ -127,7 +127,7 @@
 				</ul>
 			</div>
 				<ul class="tabs__content-container default-tabs-transition tabs-to-dropdown--content">
-					<li id="tab-content-rank" class="tabs__content tabs__content--is-showing">
+					<li id="tab-content-rank" class="tabs__content">
 						<div class="grid__column grid__column--full-width filters-container filter-container--app">
 							<form class="forms--mid-theme">
 								<div class="time-period-select-component">
@@ -266,15 +266,6 @@
 											  </label>
 											</div>
 											<span>Overlay Revenue</span>
-										</div>
-										<div class="filter-switch filter-switch--small">									
-											<div class="can-toggle can-toggle--size-small">
-											  <input id="checkbox--overlay-chartboost" type="checkbox">
-											  <label for="checkbox--overlay-chartboost">
-											    <div class="can-toggle__switch" data-checked="Y" data-unchecked="N"></div>
-											  </label>
-											</div>
-											<span>Overlay Chartboost</span>
 										</div>
 										<div class="filter-switch filter-switch--small">									
 											<div class="can-toggle can-toggle--size-small">
@@ -490,7 +481,7 @@
 				</section>
 			</div>
 					</li>
-					<li id="tab-content-details" class="tabs__content">						
+					<li id="tab-content-details" class="tabs__content tabs__content--is-showing">						
 						<div class="app-images-container">
 							<div class="app-images">
 								<ul class="app-image-list">
@@ -1023,22 +1014,6 @@
             text: null
           },
           opposite: true
-        }, {
-          offset: -130,
-          showFirstLabel: false,
-          showLastLabel: false,
-          gridLineColor: '#e1e5e8',
-          labels: {
-            align: 'right',
-            style: {
-              color: '#ff496a',
-              fontSize: "13px"
-            }
-          },
-          title: {
-            text: null
-          },
-          opposite: true
         }],
         xAxis: {
         	startOnTick: false,
@@ -1167,8 +1142,8 @@
            	yAxis: 0,
             name: "Rank",
             id : 'rank',
-            data: [29.9, 31.5, 61.4, 77.2, 80.0, 90.0, 100.6, 90.5, 80.4, 75.1, 70.6, 60.4, 40.9, 30.5, 20.4, 10.2, 65.0, 80.0, 90.0, 100.0, 75.6, 100.4, 110.2, 120.0, 105.5, 90.4, 80.0, 70.0, 60.0, 50.0],
-            pointStart: Date.UTC(2016, 0, 1),
+            data: [29.9, 31.5, 61.4, 77.2, 80.0, 90.0, 100.6, 90.5, 80.4, 75.1, 70.6, 60.4, 40.9, 30.5, 20.4, 10.2, 65.0, 80.0, 90.0, 100.0, 75.6, 100.4, 110.2, 120.0, 105.5, 90.4],
+            pointStart: Date.UTC(2015, 2, 1),
             pointInterval: 24 * 3600 * 1000, // one day
             fillOpacity: 0,
             color: '#2ecaa7',
@@ -1193,10 +1168,10 @@
             yAxis: 1,
             id: 'revenue',
             name: "Revenue",
-            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 116.4, 194.1, 95.6, 54.4, 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 144.0, 176.0, 135.6, 106.4, 129.2, 144.0, 148.5, 116.4, 100.0, 107.0, 106.0, 105.0],
+            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 116.4, 194.1, 95.6, 54.4, 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 144.0, 176.0, 135.6, 106.4, 129.2, 144.0, 148.5, 116.4],
             events: {
             },
-            pointStart: Date.UTC(2016, 0, 1),
+            pointStart: Date.UTC(2015, 2, 1),
             pointInterval: 24 * 3600 * 1000, // one day
             color: '#6d69c5',
 						lineWidth: 2,
@@ -1228,8 +1203,8 @@
           	yAxis: 2,
 		        name: "Downloads",
 		        id : 'downloads',
-		        data: [19.9, 41.5, 51.4, 57.2, 70.0, 60.0, 62.6, 55.5, 40.4, 45.1, 40.6, 30.4, 12.9, 10.5, 40.4, 50.2, 45.0, 60.0, 70.0, 60.0, 65.6, 80.4, 90.2, 80.0, 75.5, 70.4, 40.0, 30.0, 25.0, 20.0],
-		        pointStart: Date.UTC(2016, 0, 1),
+		        data: [19.9, 41.5, 51.4, 57.2, 70.0, 60.0, 62.6, 55.5, 40.4, 45.1, 40.6, 30.4, 12.9, 10.5, 40.4, 50.2, 45.0, 60.0, 70.0, 60.0, 65.6, 80.4, 90.2, 80.0, 75.5, 70.4],
+		        pointStart: Date.UTC(2015, 2, 1),
 		        pointInterval: 24 * 3600 * 1000, // one day
 		        fillOpacity: 0,
 		        color: '#ff496a',
@@ -1269,10 +1244,6 @@
                   imgString = "<img src=images/icon-chart-downloads.png alt='Downloads icon' class=icon-downloads />";
                 } else if (chartSeries.name == "Rank") {
                   imgString = "<img src=images/icon-chart-rank.png alt='Rank icon' class=icon-rank />";
-                } else if(chartSeries.name == "Static Interstitial Impressions") {
-                	imgString = "Static Interstitial Impressions ";
-                } else if(chartSeries.name == "Rewarded Video Impressions") {
-                	imgString = "Rewarded Video Impressions ";
                 }
                 s += '<div class="custom-tooltip ' + chartSeries.name + '" style="background-color: ' + chartSeries.color + '">' + imgString + value.y + '</div>';
             });
@@ -1645,115 +1616,6 @@
 				}
 			});
 
-			// Overlay Chartboost
-			// User signature and user ID required from Chartboost admin
-
-			// UNCOMMENT TO USE AJAX CALL TO REAL DATA, NOT NEEDED FOR TESTING
-			// var userSignature = "697c8286cec615a5380da255fb68089cbdb0dc04",
-			// 		userId = "55a25d925b145305467c9d38";
-			// 		dateMin = "2016-01-01",
-			// 		dateMax = "2016-01-31",
-			// 		chartboostResult = null;
-
-			// if(!chartboostResult) {
-			// 	$.get( "https://analytics.chartboost.com/v3/metrics/campaign?dateMin=" + dateMin + "&dateMax=" + dateMax + "&userId=" + userId + "&userSignature=" + userSignature, function( data ) {
-			// 	  handleChartboost(data);
-			// 	});
-			// }
-
-			// This is an example of the data that comes back from the Chartboost API, commented above
-			var data = [{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-29","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":2,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":1.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-28","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-26","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":14,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":2,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.1428571492433548},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-24","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-22","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-20","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":7.0,"videoCompletedDelivered":1,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.014000000432133675,"cpcvEarned":14.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.5},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-16","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":1.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-15","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.5},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-14","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":7.0,"videoCompletedDelivered":1,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.007000000216066837,"cpcvEarned":7.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-14","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.5},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-13","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":0,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":1,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-11","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":6,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":9.625,"videoCompletedDelivered":5,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.057750001549720764,"cpcvEarned":11.550000190734863,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.1666666716337204},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-11","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":5,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":3,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.6000000238418579},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-10","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-09","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":5,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":7.699999809265137,"videoCompletedDelivered":5,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.03849999979138374,"cpcvEarned":7.699999809265137,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-09","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":3,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-08","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":12,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":8.458333969116211,"videoCompletedDelivered":12,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.101500004529953,"cpcvEarned":8.458333969116211,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-08","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":4,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-04","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":4,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.25},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-02","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-01","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0}];
-
-			// Call this on Chartboost API response
-			$('#checkbox--overlay-chartboost').change(function(){
-				handleChartboost(data);
-			});
-
-
-			function handleChartboost(data) {
-				console.log(data);
-				var seriesDataStatic = [];
-				var seriesDataVideo = [];
-				var chosenDateRangeMin = new Date("2016-01-01");
-				var chosenDateRange = 30;
-				for(var d = 0; d < chosenDateRange; d++) {
-					
-						var validStaticResultFound = false,
-								validVideoResultFound = false;
-								console.log("---");
-						for(var c = 0; c < data.length; c++) {
-							var datePoint = new Date(data[c].dt);
-							if(datePoint.getDate() == chosenDateRangeMin.getDate() + d) {
-								if(data[c].campaign.indexOf("Static Interstitial") > 0) {
-									seriesDataStatic.push(data[c].impressionsDelivered);
-									validStaticResultFound = true;
-								}
-								if(data[c].campaign.indexOf("Rewarded Video") > 0) {
-									seriesDataVideo.push(data[c].impressionsDelivered);
-									validVideoResultFound = true;
-								}
-							}
-						}
-						if(!validStaticResultFound) {
-							seriesDataStatic.push(0);
-						}
-						if(!validVideoResultFound) {
-							seriesDataVideo.push(0);
-						}
-
-				}
-
-				// {
-	    	//       	yAxis: 3,
-			  //       name: "Chartboost Impressions",
-			  //       id : 'downloads',
-			  //       data: [1, 2, 6, 3, 5, 6, 4, 3, 5, 2, 1, 1, 3, 10, 13, 22, 12, 6, 2, 1, 1, 2, 6, 3, 5, 6, 4, 3, 5, 2],
-			  //       pointStart: Date.UTC(2016, 0, 1),
-			  //       pointInterval: 24 * 3600 * 1000, // one day
-			  //       fillOpacity: 0,
-			  //       color: '#ff496a',
-			  //       lineWidth: 2,
-			  //       lineWidthPlus: 0,
-			  //       lineColor: '#ff496a',
-			  //       marker: {
-			  //         enabled: false,
-			  //         states: {
-			  //           hover: {
-			  //             enabled: true,
-			  //             fillColor: '#ff496a',
-			  //             lineWidth: 0,
-			  //             lineWidthPlus: 0,
-			  //             radius: 4,
-			  //             radiusPlus: 0,
-			  //           }
-			  //         }
-			  //    		},
-			  //    		visible: true // ($('#checkbox--overlay-downloads:checked').length > 0),
-	    	//       }
-
-				chart.addSeries({
-					yAxis: 3,
-          name: "Static Interstitial Impressions",
-          data: seriesDataStatic,
-          pointStart: Date.UTC(2016, 0, 1),
-          pointInterval: 24 * 3600 * 1000, // one day
-          id: 'chartbooststatic',
-          color: "#B20000",
-          fillOpacity: 0
-         });
-
-				chart.addSeries({
-					yAxis: 3,
-          name: "Rewarded Video Impressions",
-          data: seriesDataVideo,
-          pointStart: Date.UTC(2016, 0, 1),
-          pointInterval: 24 * 3600 * 1000, // one day
-          id: 'chartboostvideo',
-          color: "#0971B2",
-          fillOpacity: 0
-         });
-			}
-
 			function handleHideGraphLine() {
 				for(var i = 0; i < chart.series.length; i++) {
           if(i !== 0) {
@@ -1836,14 +1698,13 @@
 			// --------------------------------------------------------------------------
 			// APP DETAILS
 			// Load data
-			// UNCOMMENT FOR APP DETAILS
-  		// var searchString = window.location.search;
-  		// if (searchString.length > 0) {
-  		// 	var searchId = searchString.substr(searchString.indexOf("=") + 1, searchString.length);
-  		// 	$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=" + searchId + "&callback=handledata"));
-  		// } else {
-  		// 	$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=728293409&callback=handledata"));
-  		// }
+  		var searchString = window.location.search;
+  		if (searchString.length > 0) {
+  			var searchId = searchString.substr(searchString.indexOf("=") + 1, searchString.length);
+  			$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=" + searchId + "&callback=handledata"));
+  		} else {
+  			$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=728293409&callback=handledata"));
+  		}
 
   		// test ids
   		// Delta V 429903190 Arach 999971868 MValley 728293409 Pako 903183877 Smashy Road 1020119327
