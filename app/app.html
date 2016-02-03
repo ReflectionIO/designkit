@@ -603,6 +603,8 @@
   <script src="js/vendor/snap.svg.js"></script>
   <script src="js/vendor/highcharts-custom.js"></script>
   <script src="js/language-codes.js"></script>
+  <!-- <script src="js/polyfills/pathseg.js"></script> polyfill for Chrome, old SVG API pathSegList not supported -->
+  <script src="js/polyfills/path-data-polyfill.js"></script> <!-- new SVG API polyfill for getPathData() and setPathData() -->
 
   <script>
 
@@ -714,7 +716,7 @@
 	        	// create tooltip on event hover
         	var eventsCounter = 0,
 	        			previousEventPlotX;
-	        			window.animatingFlags = false;	        			
+	        			window.animatingFlags = false;       			
 		      for (var e = 0; e < this.chart.events.length; e++) {
 		      	if(this.chart.events[e].plotX == thisPlotX) {
 		      		// check if previous event plotX = this plotX to calculate label spacing
@@ -793,10 +795,12 @@
 				  var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent");
 				  setTimeout(function() {
 				  	var el = Snap('#' + graphId);
-            var numberOfItems = el.node.pathSegList.numberOfItems;
-            for(var x=0; x < numberOfItems; x++) {
-              el.node.pathSegList[x].y = 454;
-            }            
+            var pathList = el.node.getPathData();
+            var flatPath = "";
+            for(var x=0; x < pathList.length; x++) {
+              flatPath += pathList[x].type + " " + pathList[x].values[0] + " 454 ";
+            }
+            el.attr("d", flatPath);
 				  	par.attr("class", "highcharts-series");
 				  	setTimeout(function() {
 				  		el.animate({ d: currentPath }, 800, mina.elastic);
@@ -804,10 +808,12 @@
 
 				  	var elFill = Snap('#' + graphId + 'fill');
 				  	var currentPathFill = $('#' + graphId + 'fill').attr("d");
-            var numberOfItemsFill = elFill.node.pathSegList.numberOfItems;
-            for(var x=0; x < numberOfItemsFill; x++) {
-              elFill.node.pathSegList[x].y = 454;
+            var pathList = elFill.node.getPathData();
+            var flatFillPath = "";
+            for(var x=0; x < pathList.length; x++) {
+              flatFillPath += pathList[x].type + " " + pathList[x].values[0] + " 454 ";
             }
+            elFill.attr("d", flatFillPath);
 				  	setTimeout(function() {
 				  		elFill.animate({ d: currentPathFill }, 800, mina.elastic);
 				  	}, 400);
@@ -884,33 +890,40 @@
                 $('#container .highcharts-series path:nth-child(2)').each(function(){
                     $(this).attr("id", "series" + counter);
                     var initialCoordinates = [],
-                        initialFillCoordinates = [];
+                        initialFillCoordinates = [],
+                        flatPath = "",
+                        flatFillPath = "";
 
                     var el = Snap('#series' + counter);
-                    var numberOfItems = el.node.pathSegList.numberOfItems;
-                    for(var x=0; x < numberOfItems; x++) {
+                    var pathList = el.node.getPathData();
+
+                    for(var x=0; x < pathList.length; x++) {
                       initialCoordinates.push({
-                        pathSegTypeAsLetter: el.node.pathSegList[x].pathSegTypeAsLetter,
-                        x: el.node.pathSegList[x].x,
-                        y: el.node.pathSegList[x].y
+                        pathSegTypeAsLetter: pathList[x].type,
+                        x: pathList[x].values[0],
+                        y: pathList[x].values[1]
                       });
-                      el.node.pathSegList[x].y = 454;
+                      flatPath += pathList[x].type + " " + pathList[x].values[0] + " 454 ";
                     }
+
+                    el.attr("d", flatPath);
 
                     allLines.push(initialCoordinates);
 
-                    var fillSvg = $(this).parent('.highcharts-series').find('path:first-child').attr("id", "series" + counter + "fill");
 
+                    var fillSvg = $(this).parent('.highcharts-series').find('path:first-child').attr("id", "series" + counter + "fill");
                     var fillEl = Snap("#series" + counter + "fill");
-                    var numberOfItems = fillEl.node.pathSegList.numberOfItems;
-                    for(var x=0; x < numberOfItems; x++) {
+                    var pathList = fillEl.node.getPathData();
+                    for(var x=0; x < pathList.length; x++) {
                       initialFillCoordinates.push({
-                        pathSegTypeAsLetter: fillEl.node.pathSegList[x].pathSegTypeAsLetter,
-                        x: fillEl.node.pathSegList[x].x,
-                        y: fillEl.node.pathSegList[x].y
+                        pathSegTypeAsLetter: pathList[x].type,
+                        x: pathList[x].values[0],
+                        y: pathList[x].values[1]
                       })
-                      fillEl.node.pathSegList[x].y = 454;
+                      flatFillPath += pathList[x].type + " " + pathList[x].values[0] + " 454 ";
                     }
+
+                    fillEl.attr("d", flatFillPath);
 
                     allFills.push(initialFillCoordinates);
 
@@ -928,14 +941,14 @@
                     el = Snap('#series' + i + 'fill');
                   }
 
-                  var numberOfItems = el.node.pathSegList.numberOfItems;
+                  var numberOfItems = el.node.getPathData().length;
 
                   setPoint(0);
 
                   function setPoint(pointIndex) {
                     var newPath = "";
                     if(pointIndex < numberOfItems) {
-                      for(var x=0; x < numberOfItems; x++) {
+                      for(var x = 0; x < numberOfItems; x++) {
                         if(x <= pointIndex) {
                           newPath += pointsArray[i][x].pathSegTypeAsLetter + " " + pointsArray[i][x].x + " " + pointsArray[i][x].y + " ";
                         } else {
@@ -1270,9 +1283,9 @@
                 } else if (chartSeries.name == "Rank") {
                   imgString = "<img src=images/icon-chart-rank.png alt='Rank icon' class=icon-rank />";
                 } else if(chartSeries.name == "Static Interstitial Impressions") {
-                	imgString = "Static Interstitial Impressions ";
+                	imgString = "<img src=images/logo-chartboost-mini.png alt='Chartboost logo' class='tt-icon-chartboost' />Static Interstitial Impressions ";
                 } else if(chartSeries.name == "Rewarded Video Impressions") {
-                	imgString = "Rewarded Video Impressions ";
+                	imgString = "<img src=images/logo-chartboost-mini.png alt='Chartboost logo' class='tt-icon-chartboost' />Rewarded Video Impressions ";
                 }
                 s += '<div class="custom-tooltip ' + chartSeries.name + '" style="background-color: ' + chartSeries.color + '">' + imgString + value.y + '</div>';
             });
@@ -1680,7 +1693,7 @@
 					
 						var validStaticResultFound = false,
 								validVideoResultFound = false;
-								console.log("---");
+
 						for(var c = 0; c < data.length; c++) {
 							var datePoint = new Date(data[c].dt);
 							if(datePoint.getDate() == chosenDateRangeMin.getDate() + d) {
@@ -1702,34 +1715,6 @@
 						}
 
 				}
-
-				// {
-	    	//       	yAxis: 3,
-			  //       name: "Chartboost Impressions",
-			  //       id : 'downloads',
-			  //       data: [1, 2, 6, 3, 5, 6, 4, 3, 5, 2, 1, 1, 3, 10, 13, 22, 12, 6, 2, 1, 1, 2, 6, 3, 5, 6, 4, 3, 5, 2],
-			  //       pointStart: Date.UTC(2016, 0, 1),
-			  //       pointInterval: 24 * 3600 * 1000, // one day
-			  //       fillOpacity: 0,
-			  //       color: '#ff496a',
-			  //       lineWidth: 2,
-			  //       lineWidthPlus: 0,
-			  //       lineColor: '#ff496a',
-			  //       marker: {
-			  //         enabled: false,
-			  //         states: {
-			  //           hover: {
-			  //             enabled: true,
-			  //             fillColor: '#ff496a',
-			  //             lineWidth: 0,
-			  //             lineWidthPlus: 0,
-			  //             radius: 4,
-			  //             radiusPlus: 0,
-			  //           }
-			  //         }
-			  //    		},
-			  //    		visible: true // ($('#checkbox--overlay-downloads:checked').length > 0),
-	    	//       }
 
 				chart.addSeries({
 					yAxis: 3,
@@ -1836,14 +1821,13 @@
 			// --------------------------------------------------------------------------
 			// APP DETAILS
 			// Load data
-			// UNCOMMENT FOR APP DETAILS
-  		// var searchString = window.location.search;
-  		// if (searchString.length > 0) {
-  		// 	var searchId = searchString.substr(searchString.indexOf("=") + 1, searchString.length);
-  		// 	$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=" + searchId + "&callback=handledata"));
-  		// } else {
-  		// 	$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=728293409&callback=handledata"));
-  		// }
+  		var searchString = window.location.search;
+  		if (searchString.length > 0) {
+  			var searchId = searchString.substr(searchString.indexOf("=") + 1, searchString.length);
+  			$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=" + searchId + "&callback=handledata"));
+  		} else {
+  			$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=728293409&callback=handledata"));
+  		}
 
   		// test ids
   		// Delta V 429903190 Arach 999971868 MValley 728293409 Pako 903183877 Smashy Road 1020119327
