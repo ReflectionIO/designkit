@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection, App with Chartboost API calls</title>
+	<title>Reflection, App with Google Analytics API calls</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
@@ -27,7 +27,38 @@
       families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
     }
   });
-</script></head>
+</script>
+
+<style>
+	.Chartjs {
+	  font-size: .85em;
+	}
+
+	.Chartjs-figure {
+	  height: 250px;
+	}
+
+	.Chartjs-legend {
+	  list-style: none;
+	  margin: 0;
+	  padding: 1em 0 0;
+	  text-align: center;
+	}
+
+	.Chartjs-legend > li {
+	  display: inline-block;
+	  padding: .25em .5em
+	}
+
+	.Chartjs-legend > li > i {
+	  display: inline-block;
+	  height: 1em;
+	  margin-right: .5em;
+	  vertical-align: -.1em;
+	  width: 1em;
+	}
+</style>
+</head>
 <body>
 	<!--[if (lt IE 9)]>
       <div class="window-warning">
@@ -48,7 +79,7 @@
 						<img src="images/placeholder-logo-arach.jpg" alt="Arachnophobia app icon" class="app-icon" />
 					</div>
 					<div class="app-details">
-						<h1 class="heading-style--heading-three app-title">Chartboost API Data Callback</h1>
+						<h1 class="heading-style--heading-three app-title">Google Analytics Data Callback</h1>
 					</div>
 				</header>
 			</div>
@@ -90,7 +121,7 @@
 						<div class="tab-animate-active"></div>
 						<a data-content="#tab-content-rank" class="tabs__link">
 							<span>
-								<span>Chartboost</span></span>
+								<span>Google Analytics</span></span>
 						</a>
 					</li>
 					<li class="grid__column grid__column--one-quarter tabs__tab is-disabled">
@@ -107,34 +138,81 @@
 			</div>
 				<ul class="tabs__content-container default-tabs-transition tabs-to-dropdown--content">
 					<li id="tab-content-rank" class="tabs__content tabs__content--is-showing">
-						<div class="grid__column grid__column--full-width filters-container filter-container--app">
-							<form class="forms--mid-theme">
-								<div class="form-field" style="width: 20%">
-								 <input type="text" name="user-id" id="user-id" value="55a25d925b145305467c9d38" autocomplete="off" />
-								 <label for="user-id">User ID</label>
-								</div>
-								<div class="form-field" style="width: 30%">
-								 <input type="text" name="user-signature" id="user-signature" value="697c8286cec615a5380da255fb68089cbdb0dc04" autocomplete="off" />
-								 <label for="user-signature">User Signature</label>
-								</div>								
-								<button class="ref-button--cta-small refresh-button js-refresh">
-									<svg class="svg-refresh" version="1.1" x="0px" y="0px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-										<path fill="#FCFDFD" d="M2.1,9h-2H0v5l1.5-1.4C2.9,14.7,5.3,16,8,16c4.1,0,7.4-3.1,7.9-7h-2c-0.5,2.8-2.9,5-5.9,5
-			c-2.1,0-4-1.1-5-2.7L5.4,9H2.1z M14.6,3.4L16,2v5h-0.1h-2H13h-2l2.1-2.1C12.1,3.2,10.2,2,8,2C5,2,2.6,4.2,2.1,7h-2
-			C0.6,3.1,3.9,0,8,0C10.7,0,13.1,1.4,14.6,3.4z"/>
-									</svg>
-								</button>
-							</form>
+
+						<div class="grid__row" style="margin-top: 2rem; margin-bottom: 4rem;">
+							<div class="grid__column grid__column--full-width">
+								<h3>Basic Dashboard</h3>
+								<div id="embed-api-auth-container"></div>
+								<div id="chart-container"></div>
+								<div id="view-selector-container"></div>
+							</div>
 						</div>
 
-						<div class="graph-container graph-container--with-events">
-							<div id="container" style="width:100%; height:500px;" class="highcharts-container">
-			        </div>
-							<div class="graph-loading-indicator">
-			        </div>
-			        <div class="graph-loading-line">
-			        	<div class="animated-line"></div>
-			        </div>
+						<div class="grid__row" style="margin-top: 2rem; margin-bottom: 4rem;">
+							<div class="grid__column grid__column--one-half">
+								<h3>Interactive Chart, Sessions by Browser, Last 30 Days</h3>
+								<div id="view-selector-container-interactive"></div>
+								<div id="main-chart-container"></div>
+								<div id="breakdown-chart-container"></div>
+							</div>
+							<div class="grid__column grid__column--one-half">
+								<h3>Top Countries by Sessions, Last 30 days</h3>
+								<div id="chart-1-container"></div>
+								<div id="chart-2-container"></div>
+								<div id="view-selector-1-container"></div>
+								<div id="view-selector-2-container"></div>
+							</div>
+						</div>
+
+						<div class="grid__row" style="margin-top: 2rem; margin-bottom: 4rem;">
+							<div class="grid__column grid__column--full-width">
+								<h3>Custom Components (Date Range Selector)</h3>
+								<div id="view-selector-container-components"></div>
+							</div>
+							<div class="grid__column grid__column--one-half">																
+								<div id="data-chart-1-container"></div>
+								<div id="date-range-selector-1-container"></div>
+							</div>
+							<div class="grid__column grid__column--one-half">
+								<div id="data-chart-2-container"></div>
+								<div id="date-range-selector-2-container"></div>
+							</div>
+						</div>
+
+						<div class="grid__row" style="margin-top: 2rem; margin-bottom: 4rem;">
+							<div class="grid__column grid__column--full-width">
+								<h3>Data output on Chart.js</h3>
+								<h4 id="view-name"></h4>
+								<div id="view-selector-container-custom" style="margin-bottom: 2rem;"></div>								
+
+								<div class="Chartjs">
+					        <header class="Titles">
+					          <h4 class="Titles-main">Sessions this week vs last week</h5>
+					        </header>
+					        <figure class="Chartjs-figure" id="chart-1-container-custom">
+					        	<canvas width="984" height="250" style="width: 984px; height: 250px;"></canvas>
+					        </figure>
+					        <ol class="Chartjs-legend" id="legend-1-container-custom"></ol>
+					      </div>
+
+							<div>
+						</div>
+
+						<div class="grid__row" style="margin-top: 2rem; margin-bottom: 4rem;">
+							<div class="grid__column grid__column--full-width">
+								<h3>Data output on Highcharts</h3>
+								<h4 style="margin: 0;">Sessions this week vs last week</h4>
+								<h4 id="active-users-container-custom" style="margin: 0 0 1rem;"></h4>
+							</div>
+							<div class="graph-container graph-container--with-events">
+								<div id="container" style="width:100%; height:500px;" class="highcharts-container">
+				        </div>
+								<div class="graph-loading-indicator">
+				        </div>
+				        <div class="graph-loading-line">
+				        	<div class="animated-line"></div>
+				        </div>
+							</div>
 						</div>
 
 				<div class="grid-container">
@@ -144,16 +222,16 @@
 							<div class="app-icon-small-container">
 								<img src="images/placeholder-logo-arach.jpg" alt="Arachnophobia app icon" class="app-icon-small" />
 							</div>
-							<h2 class="heading-style heading-style--heading-four data-heading">Chartboost Data</h2>
+							<h2 class="heading-style heading-style--heading-four data-heading">Google Analytics Data</h2>
 						</div>
 						<button class="ref-button--function-small ref-button--function-small--with-icon"><span class="ref-icon-before ref-icon-before--cloud">Download</span></button>						
 						<div class="data-display-header--component data-summary-container data-summary-container-synced">
-							<span class="revenue-date-range">Since First Synced (1 Feb 2014)</span>
-							<span class="revenue-summary-value">&pound;9,291,005</span>
+							<span class="revenue-date-range">All Time</span>
+							<span class="revenue-summary-value">-</span>
 						</div>
 						<div class="data-display-header--component data-summary-container">
 							<span class="revenue-date-range">16 Mar 2014 - 16 Apr 2014</span>
-							<span class="revenue-summary-value">&pound;8,428,173</span>
+							<span class="revenue-summary-value">-</span>
 						</div>
 					</header>
 					<table class="table-revenue responsive">
@@ -221,6 +299,707 @@
   <script src="js/polyfills/path-data-polyfill.js"></script> <!-- new SVG API polyfill for getPathData() and setPathData() -->
 
   <script>
+	(function(w,d,s,g,js,fs){
+	  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+	  js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+	  js.src='https://apis.google.com/js/platform.js';
+	  fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+	}(window,document,'script'));
+	</script>
+
+	<!-- This demo uses the Chart.js graphing library and Moment.js to do date
+     formatting and manipulation. -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+
+	<!-- Include the DateRangeSelector component script. -->
+	<script src="js/embed-api/date-range-selector.js"></script>
+	<!-- Include the ViewSelector2 component script. -->
+	<script src="js/embed-api/view-selector2.js"></script>
+	<!-- Include the ActiveUsers component script. -->
+	<script src="js/embed-api/active-users.js"></script>
+
+	<script>
+		gapi.analytics.ready(function() {
+
+		  /**
+		   * Authorize the user immediately if the user has already granted access.
+		   * If no access has been created, render an authorize button inside the
+		   * element with the ID "embed-api-auth-container".
+		   */
+		  gapi.analytics.auth.authorize({
+		    container: 'embed-api-auth-container',
+		    clientid: '486144765626-sqhiataeg3ni5hjj668vcbj7vdcnk7md.apps.googleusercontent.com'
+		  });
+
+		  // client secret OBHAv_2IiMzGDfLsTZIXLf5r
+
+
+		  // BASIC DASHBOARD
+		  /**
+		   * Create a new ViewSelector instance to be rendered inside of an
+		   * element with the id "view-selector-container".
+		   */
+		  var viewSelector = new gapi.analytics.ViewSelector({
+		    container: 'view-selector-container'
+		  });
+
+		  // Render the view selector to the page.
+		  viewSelector.execute();
+
+
+		  /**
+		   * Create a new DataChart instance with the given query parameters
+		   * and Google chart options. It will be rendered inside an element
+		   * with the id "chart-container".
+		   */
+		  var dataChart = new gapi.analytics.googleCharts.DataChart({
+		    query: {
+		      metrics: 'ga:sessions',
+		      dimensions: 'ga:date',
+		      'start-date': '120daysAgo',
+		      'end-date': 'yesterday'
+		    },
+		    chart: {
+		      container: 'chart-container',
+		      type: 'LINE',
+		      options: {
+		        width: '100%'
+		      }
+		    }
+		  });
+
+
+		  /**
+		   * Render the dataChart on the page whenever a new view is selected.
+		   */
+		  viewSelector.on('change', function(ids) {
+		    dataChart.set({query: {ids: ids}}).execute();
+		  });
+
+
+		  // ================================================================
+
+		  // TOP COUNTRIES
+
+		  /**
+		   * Create a ViewSelector for the first view to be rendered inside of an
+		   * element with the id "view-selector-1-container".
+		   */
+		  var viewSelector1 = new gapi.analytics.ViewSelector({
+		    container: 'view-selector-1-container'
+		  });
+
+		  // Render selector to the page.
+		  viewSelector1.execute();
+
+		  /**
+		   * Create the first DataChart for top countries over the past 30 days.
+		   * It will be rendered inside an element with the id "chart-1-container".
+		   */
+		  var dataChart1 = new gapi.analytics.googleCharts.DataChart({
+		    query: {
+		      metrics: 'ga:sessions',
+		      dimensions: 'ga:country',
+		      'start-date': '30daysAgo',
+		      'end-date': 'yesterday',
+		      'max-results': 6,
+		      sort: '-ga:sessions'
+		    },
+		    chart: {
+		      container: 'chart-1-container',
+		      type: 'PIE',
+		      options: {
+		        width: '100%',
+		        pieHole: 4/9
+		      }
+		    }
+		  });
+
+		  /**
+		   * Update the first dataChart when the first view selecter is changed.
+		   */
+		  viewSelector1.on('change', function(ids) {
+		    dataChart1.set({query: {ids: ids}}).execute();
+		  });
+
+		  // ================================================================
+
+		  // INTERACTIVE CHART
+
+		  /**
+		   * Create a new ViewSelector instance to be rendered inside of an
+		   * element with the id "view-selector-container-interactive".
+		   */
+		  var viewSelector = new gapi.analytics.ViewSelector({
+		    container: 'view-selector-container-interactive'
+		  });
+
+		  // Render the view selector to the page.
+		  viewSelector.execute();
+
+		  /**
+		   * Create a table chart showing top browsers for users to interact with.
+		   * Clicking on a row in the table will update a second timeline chart with
+		   * data from the selected browser.
+		   */
+		  var mainChart = new gapi.analytics.googleCharts.DataChart({
+		    query: {
+		      'dimensions': 'ga:country',
+		      'metrics': 'ga:sessions',
+		      'start-date': '30daysAgo',
+		      'sort': '-ga:sessions',
+		      'max-results': '6'
+		    },
+		    chart: {
+		      type: 'TABLE',
+		      container: 'main-chart-container',
+		      options: {
+		        width: '100%'
+		      }
+		    }
+		  });
+
+
+		  /**
+		   * Create a timeline chart showing sessions over time for the browser the
+		   * user selected in the main chart.
+		   */
+		  var breakdownChart = new gapi.analytics.googleCharts.DataChart({
+		    query: {
+		      'dimensions': 'ga:date',
+		      'metrics': 'ga:sessions',
+		      'start-date': '30daysAgo',
+		      'end-date': 'yesterday'
+		    },
+		    chart: {
+		      type: 'LINE',
+		      container: 'breakdown-chart-container',
+		      options: {
+		        width: '100%'
+		      }
+		    }
+		  });
+
+
+		  /**
+		   * Store a refernce to the row click listener variable so it can be
+		   * removed later to prevent leaking memory when the chart instance is
+		   * replaced.
+		   */
+		  var mainChartRowClickListener;
+
+
+		  /**
+		   * Update both charts whenever the selected view changes.
+		   */
+		  viewSelector.on('change', function(ids) {
+		    var options = {query: {ids: ids}};
+
+		    // Clean up any event listeners registered on the main chart before
+		    // rendering a new one.
+		    if (mainChartRowClickListener) {
+		      google.visualization.events.removeListener(mainChartRowClickListener);
+		    }
+
+		    mainChart.set(options).execute();
+		    breakdownChart.set(options);
+
+		    // Only render the breakdown chart if a browser filter has been set.
+		    if (breakdownChart.get().query.filters) breakdownChart.execute();
+		  });
+
+
+		  /**
+		   * Each time the main chart is rendered, add an event listener to it so
+		   * that when the user clicks on a row, the line chart is updated with
+		   * the data from the browser in the clicked row.
+		   */
+		  mainChart.on('success', function(response) {
+
+		    var chart = response.chart;
+		    var dataTable = response.dataTable;
+
+		    // Store a reference to this listener so it can be cleaned up later.
+		    mainChartRowClickListener = google.visualization.events
+		        .addListener(chart, 'select', function(event) {
+
+		      // When you unselect a row, the "select" event still fires
+		      // but the selection is empty. Ignore that case.
+		      if (!chart.getSelection().length) return;
+
+		      var row =  chart.getSelection()[0].row;
+		      var browser =  dataTable.getValue(row, 0);
+		      var options = {
+		        query: {
+		          filters: 'ga:country==' + browser
+		        },
+		        chart: {
+		          options: {
+		            title: browser
+		          }
+		        }
+		      };
+
+		      breakdownChart.set(options).execute();
+		    });
+		  });
+
+		  // ================================================================
+
+		  // CUSTOM COMPONENTS
+
+					/**
+		   * Store a set of common DataChart config options since they're shared by
+		   * both of the charts we're about to make.
+		   */
+		  var commonConfig = {
+		    query: {
+		      metrics: 'ga:sessions',
+		      dimensions: 'ga:date'
+		    },
+		    chart: {
+		      type: 'LINE',
+		      options: {
+		        width: '100%'
+		      }
+		    }
+		  };
+
+
+		  /**
+		   * Query params representing the first chart's date range.
+		   */
+		  var dateRange1 = {
+		    'start-date': '14daysAgo',
+		    'end-date': '8daysAgo'
+		  };
+
+
+		  /**
+		   * Query params representing the second chart's date range.
+		   */
+		  var dateRange2 = {
+		    'start-date': '7daysAgo',
+		    'end-date': 'yesterday'
+		  };
+
+
+		  /**
+		   * Create a new ViewSelector2 instance to be rendered inside of an
+		   * element with the id "view-selector-container".
+		   */
+		  var viewSelector2 = new gapi.analytics.ext.ViewSelector2({
+		    container: 'view-selector-container-components',
+		  }).execute();
+
+
+		  /**
+		   * Create a new DateRangeSelector instance to be rendered inside of an
+		   * element with the id "date-range-selector-1-container", set its date range
+		   * and then render it to the page.
+		   */
+		  var dateRangeSelector1 = new gapi.analytics.ext.DateRangeSelector({
+		    container: 'date-range-selector-1-container'
+		  })
+		  .set(dateRange1)
+		  .execute();
+
+
+		  /**
+		   * Create a new DateRangeSelector instance to be rendered inside of an
+		   * element with the id "date-range-selector-2-container", set its date range
+		   * and then render it to the page.
+		   */
+		  var dateRangeSelector2 = new gapi.analytics.ext.DateRangeSelector({
+		    container: 'date-range-selector-2-container'
+		  })
+		  .set(dateRange2)
+		  .execute();
+
+
+		  /**
+		   * Create a new DataChart instance with the given query parameters
+		   * and Google chart options. It will be rendered inside an element
+		   * with the id "data-chart-1-container".
+		   */
+		  var dataChart1Custom = new gapi.analytics.googleCharts.DataChart(commonConfig)
+		      .set({query: dateRange1})
+		      .set({chart: {container: 'data-chart-1-container'}});
+
+
+		  /**
+		   * Create a new DataChart instance with the given query parameters
+		   * and Google chart options. It will be rendered inside an element
+		   * with the id "data-chart-2-container".
+		   */
+		  var dataChart2 = new gapi.analytics.googleCharts.DataChart(commonConfig)
+		      .set({query: dateRange2})
+		      .set({chart: {container: 'data-chart-2-container'}});
+
+
+		  /**
+		   * Register a handler to run whenever the user changes the view.
+		   * The handler will update both dataCharts as well as updating the title
+		   * of the dashboard.
+		   */
+		  viewSelector2.on('viewChange', function(data) {
+		    dataChart1Custom.set({query: {ids: data.ids}}).execute();
+		    dataChart2.set({query: {ids: data.ids}}).execute();
+
+		    var title = document.getElementById('view-name');
+		    title.innerHTML = data.property.name + ' (' + data.view.name + ')';
+		  });
+
+
+		  /**
+		   * Register a handler to run whenever the user changes the date range from
+		   * the first datepicker. The handler will update the first dataChart
+		   * instance as well as change the dashboard subtitle to reflect the range.
+		   */
+		  dateRangeSelector1.on('change', function(data) {
+		    dataChart1Custom.set({query: data}).execute();
+
+		    // Update the "from" dates text.
+		    var datefield = document.getElementById('from-dates');
+		    datefield.innerHTML = data['start-date'] + '&mdash;' + data['end-date'];
+		  });
+
+
+		  /**
+		   * Register a handler to run whenever the user changes the date range from
+		   * the second datepicker. The handler will update the second dataChart
+		   * instance as well as change the dashboard subtitle to reflect the range.
+		   */
+		  dateRangeSelector2.on('change', function(data) {
+		    dataChart2.set({query: data}).execute();
+
+		    // Update the "to" dates text.
+		    var datefield = document.getElementById('to-dates');
+		    datefield.innerHTML = data['start-date'] + '&mdash;' + data['end-date'];
+		  });
+
+			// ================================================================
+
+			// CONNECT WITH THIRD PARTY CHART
+
+		  /**
+		   * Create a new ActiveUsers instance to be rendered inside of an
+		   * element with the id "active-users-container" and poll for changes every
+		   * five seconds.
+		   */
+		  var activeUsers = new gapi.analytics.ext.ActiveUsers({
+		    container: 'active-users-container-custom',
+		    pollingInterval: 5
+		  });
+
+
+		  /**
+		   * Add CSS animation to visually show the when users come and go.
+		   */
+		  activeUsers.once('success', function() {
+		    var element = this.container.firstChild;
+		    var timeout;
+
+		    this.on('change', function(data) {
+		      var element = this.container.firstChild;
+		      var animationClass = data.delta > 0 ? 'is-increasing' : 'is-decreasing';
+		      element.className += (' ' + animationClass);
+
+		      clearTimeout(timeout);
+		      timeout = setTimeout(function() {
+		        element.className =
+		            element.className.replace(/ is-(increasing|decreasing)/g, '');
+		      }, 3000);
+		    });
+		  });
+
+		  /**
+		   * Create a new ViewSelector2 instance to be rendered inside of an
+		   * element with the id "view-selector-container".
+		   */
+		  var viewSelectorCustom = new gapi.analytics.ext.ViewSelector2({
+		    container: 'view-selector-container-custom',
+		  })
+		  .execute();
+
+		  /**
+		   * Update the activeUsers component, the Chartjs charts, and the dashboard
+		   * title whenever the user changes the view.
+		   */
+		  viewSelectorCustom.on('viewChange', function(data) {
+		    var title = document.getElementById('view-name');
+		    title.innerHTML = data.property.name + ' (' + data.view.name + ')';
+
+		    // Start tracking active users for this view.
+		    activeUsers.set(data).execute();
+
+		    // Render all the of charts for this view.
+		    renderWeekOverWeekChart(data.ids);
+		    // renderYearOverYearChart(data.ids);
+		    // renderTopBrowsersChart(data.ids);
+		    // renderTopCountriesChart(data.ids);
+		  });
+
+
+		  /**
+		   * Draw the a chart.js line chart with data from the specified view that
+		   * overlays session data for the current week over session data for the
+		   * previous week.
+		   */
+		  function renderWeekOverWeekChart(ids) {
+		    // Adjust `now` to experiment with different days, for testing only...
+		    var now = moment(); // .subtract(3, 'day');
+
+		    var thisWeek = query({
+		      'ids': ids,
+		      'dimensions': 'ga:date,ga:nthDay',
+		      'metrics': 'ga:sessions',
+		      'start-date': moment(now).subtract(1, 'day').day(0).format('YYYY-MM-DD'),
+		      'end-date': moment(now).format('YYYY-MM-DD')
+		    });
+
+		    var lastWeek = query({
+		      'ids': ids,
+		      'dimensions': 'ga:date,ga:nthDay',
+		      'metrics': 'ga:sessions',
+		      'start-date': moment(now).subtract(1, 'day').day(0).subtract(1, 'week')
+		          .format('YYYY-MM-DD'),
+		      'end-date': moment(now).subtract(1, 'day').day(6).subtract(1, 'week')
+		          .format('YYYY-MM-DD')
+		    });
+
+		    Promise.all([thisWeek, lastWeek]).then(function(results) {
+
+		      var data1 = results[0].rows.map(function(row) { return +row[2]; });
+		      var data2 = results[1].rows.map(function(row) { return +row[2]; });
+		      var labels = results[1].rows.map(function(row) { return +row[0]; });
+
+		      labels = labels.map(function(label) {
+		        return moment(label, 'YYYYMMDD').format('ddd');
+		      });
+
+		      var data = {
+		        labels : labels,
+		        datasets : [
+		          {
+		            label: 'Last Week',
+		            fillColor : 'rgba(220,220,220,0.5)',
+		            strokeColor : 'rgba(220,220,220,1)',
+		            pointColor : 'rgba(220,220,220,1)',
+		            pointStrokeColor : '#fff',
+		            data : data2
+		          },
+		          {
+		            label: 'This Week',
+		            fillColor : 'rgba(151,187,205,0.5)',
+		            strokeColor : 'rgba(151,187,205,1)',
+		            pointColor : 'rgba(151,187,205,1)',
+		            pointStrokeColor : '#fff',
+		            data : data1
+		          }
+		        ]
+		      };
+		      
+		      new Chart(makeCanvas('chart-1-container-custom')).Line(data);
+		      generateLegend('legend-1-container-custom', data.datasets);
+
+
+		      createHighchart(data1, data2);
+		    });
+		  }
+
+
+		  /**
+		   * Draw the a chart.js bar chart with data from the specified view that
+		   * overlays session data for the current year over session data for the
+		   * previous year, grouped by month.
+		   */
+		  function renderYearOverYearChart(ids) {
+
+		    // Adjust `now` to experiment with different days, for testing only...
+		    var now = moment(); // .subtract(3, 'day');
+
+		    var thisYear = query({
+		      'ids': ids,
+		      'dimensions': 'ga:month,ga:nthMonth',
+		      'metrics': 'ga:users',
+		      'start-date': moment(now).date(1).month(0).format('YYYY-MM-DD'),
+		      'end-date': moment(now).format('YYYY-MM-DD')
+		    });
+
+		    var lastYear = query({
+		      'ids': ids,
+		      'dimensions': 'ga:month,ga:nthMonth',
+		      'metrics': 'ga:users',
+		      'start-date': moment(now).subtract(1, 'year').date(1).month(0)
+		          .format('YYYY-MM-DD'),
+		      'end-date': moment(now).date(1).month(0).subtract(1, 'day')
+		          .format('YYYY-MM-DD')
+		    });
+
+		    Promise.all([thisYear, lastYear]).then(function(results) {
+		      var data1 = results[0].rows.map(function(row) { return +row[2]; });
+		      var data2 = results[1].rows.map(function(row) { return +row[2]; });
+		      var labels = ['Jan','Feb','Mar','Apr','May','Jun',
+		                    'Jul','Aug','Sep','Oct','Nov','Dec'];
+
+		      // Ensure the data arrays are at least as long as the labels array.
+		      // Chart.js bar charts don't (yet) accept sparse datasets.
+		      for (var i = 0, len = labels.length; i < len; i++) {
+		        if (data1[i] === undefined) data1[i] = null;
+		        if (data2[i] === undefined) data2[i] = null;
+		      }
+
+		      var data = {
+		        labels : labels,
+		        datasets : [
+		          {
+		            label: 'Last Year',
+		            fillColor : 'rgba(220,220,220,0.5)',
+		            strokeColor : 'rgba(220,220,220,1)',
+		            data : data2
+		          },
+		          {
+		            label: 'This Year',
+		            fillColor : 'rgba(151,187,205,0.5)',
+		            strokeColor : 'rgba(151,187,205,1)',
+		            data : data1
+		          }
+		        ]
+		      };
+
+		      new Chart(makeCanvas('chart-2-container-custom')).Bar(data);
+		      generateLegend('legend-2-container-custom', data.datasets);
+		    })
+		    .catch(function(err) {
+		      console.error(err.stack);
+		    });
+		  }
+
+
+		  /**
+		   * Draw the a chart.js doughnut chart with data from the specified view that
+		   * show the top 5 browsers over the past seven days.
+		   */
+		  function renderTopBrowsersChart(ids) {
+
+		    query({
+		      'ids': ids,
+		      'dimensions': 'ga:browser',
+		      'metrics': 'ga:pageviews',
+		      'sort': '-ga:pageviews',
+		      'max-results': 5
+		    })
+		    .then(function(response) {
+
+		      var data = [];
+		      var colors = ['#4D5360','#949FB1','#D4CCC5','#E2EAE9','#F7464A'];
+
+		      response.rows.forEach(function(row, i) {
+		        data.push({ value: +row[1], color: colors[i], label: row[0] });
+		      });
+
+		      new Chart(makeCanvas('chart-3-container-custom')).Doughnut(data);
+		      generateLegend('legend-3-container-custom', data);
+		    });
+		  }
+
+
+		  /**
+		   * Draw the a chart.js doughnut chart with data from the specified view that
+		   * compares sessions from mobile, desktop, and tablet over the past seven
+		   * days.
+		   */
+		  function renderTopCountriesChart(ids) {
+		    query({
+		      'ids': ids,
+		      'dimensions': 'ga:country',
+		      'metrics': 'ga:sessions',
+		      'sort': '-ga:sessions',
+		      'max-results': 5
+		    })
+		    .then(function(response) {
+
+		      var data = [];
+		      var colors = ['#4D5360','#949FB1','#D4CCC5','#E2EAE9','#F7464A'];
+
+		      response.rows.forEach(function(row, i) {
+		        data.push({
+		          label: row[0],
+		          value: +row[1],
+		          color: colors[i]
+		        });
+		      });
+
+		      new Chart(makeCanvas('chart-4-container-custom')).Doughnut(data);
+		      generateLegend('legend-4-container-custom', data);
+		    });
+		  }
+
+
+		  /**
+		   * Extend the Embed APIs `gapi.analytics.report.Data` component to
+		   * return a promise the is fulfilled with the value returned by the API.
+		   * @param {Object} params The request parameters.
+		   * @return {Promise} A promise.
+		   */
+		  function query(params) {
+		    return new Promise(function(resolve, reject) {
+		      var data = new gapi.analytics.report.Data({query: params});
+		      data.once('success', function(response) { resolve(response); })
+		          .once('error', function(response) { reject(response); })
+		          .execute();
+		    });
+		  }
+
+
+		  /**
+		   * Create a new canvas inside the specified element. Set it to be the width
+		   * and height of its container.
+		   * @param {string} id The id attribute of the element to host the canvas.
+		   * @return {RenderingContext} The 2D canvas context.
+		   */
+		  function makeCanvas(id) {
+		    var container = document.getElementById(id);
+		    var canvas = document.createElement('canvas');
+		    var ctx = canvas.getContext('2d');
+
+		    container.innerHTML = '';
+		    canvas.width = container.offsetWidth;
+		    canvas.height = container.offsetHeight;
+		    container.appendChild(canvas);
+
+		    return ctx;
+		  }
+
+
+		  /**
+		   * Create a visual legend inside the specified element based off of a
+		   * Chart.js dataset.
+		   * @param {string} id The id attribute of the element to host the legend.
+		   * @param {Array.<Object>} items A list of labels and colors for the legend.
+		   */
+		  function generateLegend(id, items) {
+		    var legend = document.getElementById(id);
+		    legend.innerHTML = items.map(function(item) {
+		      var color = item.color || item.fillColor;
+		      var label = item.label;
+		      return '<li><i style="background:' + color + '"></i>' + label + '</li>';
+		    }).join('');
+		  }
+
+
+		  // Set some global Chart.js defaults.
+		  Chart.defaults.global.animationSteps = 60;
+		  Chart.defaults.global.animationEasing = 'easeInOutQuart';
+		  Chart.defaults.global.responsive = true;
+		  Chart.defaults.global.maintainAspectRatio = false;
+		});
+	</script>
+
+
+  <script>
 
   	Date.prototype.addHours= function(h){
       this.setHours(this.getHours()+h);
@@ -229,25 +1008,6 @@
 
     function initScripts() {
   		new AppPage();
-
-  		// Mock JS
-  		$('.can-be-sorted').on("click", function() {
-  			var $this = $(this), siblingSortCells = $this.siblings('.can-be-sorted');
-  			if($this.hasClass('is-descending')) {
-  				$this.toggleClass('is-descending is-ascending');
-  			}
-  			else if($this.hasClass('is-ascending')) {
-  					$this.removeClass('is-ascending');
-  			}
-  			else {
-  				$this.addClass('is-descending');
-  			}
-  			siblingSortCells.removeClass('is-ascending is-descending');
-  		});
-
-  		$('.date-select-container input').on("focus", function(){
-  			$('.refresh-button').removeAttr("disabled");
-  		});
 
 	  	// Extending Highcharts
 	    (function (H) {
@@ -387,7 +1147,6 @@
 	    });
 
 	    setGraphLoading();
-	    loadDefaultGraph();
 	  }
 
 	  var chart = null; // global chart variable
@@ -400,74 +1159,7 @@
       $('.graph-container').addClass('is-loading');      
     }
 
-    function loadDefaultGraph() {
-    	setTimeout(function(){
-        var userSignature = "697c8286cec615a5380da255fb68089cbdb0dc04",
-						userId = "55a25d925b145305467c9d38";
-						// Use Mock Data for testing
-						// MOCK DATA
-						var data = [{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-29","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":2,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":1.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-28","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-26","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":14,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":2,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.1428571492433548},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-24","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-22","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-20","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":7.0,"videoCompletedDelivered":1,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.014000000432133675,"cpcvEarned":14.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.5},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-16","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":1.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-15","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.5},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-14","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":7.0,"videoCompletedDelivered":1,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.007000000216066837,"cpcvEarned":7.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-14","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.5},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-13","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":0,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":1,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-11","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":6,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":9.625,"videoCompletedDelivered":5,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.057750001549720764,"cpcvEarned":11.550000190734863,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.1666666716337204},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-11","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":5,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":3,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.6000000238418579},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-10","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-09","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":5,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":7.699999809265137,"videoCompletedDelivered":5,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.03849999979138374,"cpcvEarned":7.699999809265137,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-09","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":3,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"4","dt":"2016-01-08","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Rewarded Video","impressionsDelivered":12,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":8.458333969116211,"videoCompletedDelivered":12,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f9324e0d60253e336fe6cc","moneyEarned":0.101500004529953,"cpcvEarned":8.458333969116211,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-08","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":4,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-04","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":4,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":1,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.25},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-02","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":1,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0},{"installRateReceived":0.0,"adTypeId":"1","dt":"2016-01-01","campaignSubType":"user_acquisition","role":"publisher","ctrReceived":0.0,"campaign":"Arachnophobia Static Interstitial","impressionsDelivered":2,"cpcvSpent":0.0,"impressionsReceived":0,"creative":"","installReceived":0,"ecpmSpent":0.0,"moneySpent":0.0,"clicksDelivered":0,"campaignTarget":"","ecpmEarned":0.0,"videoCompletedDelivered":0,"clicksReceived":0,"videoCompletedReceived":0,"campaignId":"55f934110d60253e4443868f","moneyEarned":0.0,"cpcvEarned":0.0,"campaignType":"network","installDelivered":0,"installRateDelivered":0.0,"ctrDelivered":0.0}];
-
-        			handleChartboost(data);
-        			// callChartboostAPI(userId, userSignature); // USE THIS IF YOU WANT TO CALL THE API
-      }, 200);    	
-    }
-
-    $('.js-refresh').on("click", function(e) {
-			e.preventDefault();
-			setGraphLoading();
-			var userId = $('#user-id').val();
-			var userSignature = $('#user-signature').val();
-    	callChartboostAPI(userId, userSignature);
-    });
-
-    function callChartboostAPI(userId, userSignature) {
-
-    	// User signature and user ID required from Chartboost admin
-			// UNCOMMENT TO USE AJAX CALL TO REAL DATA, NOT NEEDED FOR TESTING
-			var dateMin = "2016-01-01",
-					dateMax = "2016-01-31";
-
-			// Call the Chartboost API
-			$.get( "https://analytics.chartboost.com/v3/metrics/campaign?dateMin=" + dateMin + "&dateMax=" + dateMax + "&userId=" + userId + "&userSignature=" + userSignature, function( data ) {
-					handleChartboost(data);
-			}).fail(function(e) {
-		    alert(e.statusText);
-		  });
-					
-    }
-
-    function handleChartboost(data) {
-			if(data.length > 0) {
-				data.reverse();
-				var earningsFromStatic = [];
-				var earningsFromVideo = [];					
-				var staticImpressions = [];
-				var videoImpressions = [];
-				for(var c = 0; c < data.length; c++) {
-						var dateSplit = data[c].dt.split("-");
-						if(data[c].campaign.indexOf("Static Interstitial") > 0) {
-							earningsFromStatic.push([Date.UTC(parseInt(dateSplit[0]), parseInt(dateSplit[1] - 1), parseInt(dateSplit[2])), data[c].moneyEarned]);
-							staticImpressions.push([Date.UTC(parseInt(dateSplit[0]), parseInt(dateSplit[1] - 1), parseInt(dateSplit[2])), data[c].impressionsDelivered]);
-						} else if(data[c].campaign.indexOf("Rewarded Video") > 0) {
-							earningsFromVideo.push([Date.UTC(parseInt(dateSplit[0]), parseInt(dateSplit[1] - 1), parseInt(dateSplit[2])), data[c].moneyEarned]);
-							videoImpressions.push([Date.UTC(parseInt(dateSplit[0]), parseInt(dateSplit[1] - 1), parseInt(dateSplit[2])), data[c].impressionsDelivered]);
-						}
-				}
-
-				setTimeout(function(){
-          $('.graph-loading-indicator').addClass('is-loading-success');
-          $('.graph-container').addClass('is-animated');
-          setTimeout(function(){
-            $('.graph-container').removeClass('is-loading');            
-            $('.graph-container .graph-loading-line').hide(); // For graph line animation only, not related to graph loading
-            generateChart(staticImpressions, earningsFromStatic, videoImpressions, earningsFromVideo);
-          }, 200)
-        }, 2000);
-			}
-		}
-
-    function generateChart(staticImpressions, earningsFromStatic, videoImpressions, earningsFromVideo) {
+    function createHighchart(data1, data2) {
 
     	// Generate Demo Chart
 			var chart = new Highcharts.Chart({
@@ -642,23 +1334,6 @@
             text: null
           },
           opposite: true
-        },
-        {
-          offset: -80,
-          showFirstLabel: false,
-          showLastLabel: false,
-          gridLineColor: '#e1e5e8',
-          labels: {
-            align: 'right',
-            style: {
-            	color: '#e98fec',
-              fontSize: "13px"
-            }
-          },
-          title: {
-            text: null
-          },
-          opposite: true
         }],
         xAxis: {
         	startOnTick: false,
@@ -668,8 +1343,7 @@
           minPadding: 0,
           type: 'datetime',
           dateTimeLabelFormats: { // don't display the dummy year
-              month: '%e. %b',
-              year: '%b'
+              day: '%e %b'
           },
           title: {
               text: 'Date'
@@ -684,7 +1358,7 @@
           	align: 'center',
             x: 0,
             y: 28,
-            step: 4,
+            step: 1,
             style: {
               color: '#81879d',
               fontSize: "13px"
@@ -763,24 +1437,6 @@
                   counter++;
                 });
               },
-              // mouseOver: function () {
-              //   setTimeout(function(){
-              //     $('#container .highcharts-series path:nth-child(2)').each(function(){
-              //       if($(this).attr("stroke-width") == 3) {
-              //         $(this).css("opacity", 1);
-              //       }
-              //     });
-              //   },10);
-              // },
-              // mouseOut: function () {
-              //   setTimeout(function(){
-              //     $('#container .highcharts-series path:nth-child(2)').each(function(){
-              //       if($(this).attr("stroke-width") == 2) {
-              //         $(this).css("opacity", 0.5);
-              //       }
-              //     });
-              //   },10);
-              // }
             },
             cursor: 'pointer',
             animation: false
@@ -789,18 +1445,20 @@
         series:
            [{
           	yAxis: 0,
-		        name: "Earnings from Static",
-		        id : 'earningsFromStatic',
-		        data: earningsFromStatic,
-		        fillOpacity: 0,
-		        lineWidth: 0,
+		        name: "Last Week",
+		        id : 'lastweek',
+		        data: data1,
+		        pointStart: Date.UTC(2016, 1, 1),
+            pointInterval: 24 * 3600 * 1000, // one day
+		        fillOpacity: 0.2,
+		        lineWidth: 2,
 		        lineWidthPlus: 0,
 		        marker: {
 		          enabled: true,
 		          states: {
 		            hover: {
 		              enabled: true,
-		              lineWidth: 0,
+		              lineWidth: 2,
 		              lineWidthPlus: 0,
 		              radius: 4,
 		              radiusPlus: 0,
@@ -811,18 +1469,20 @@
           },
           {
           	yAxis: 0,
-		        name: "Earnings from Video",
-		        id : 'earningsFromVideo',
-		        data: earningsFromVideo,
-		        fillOpacity: 0,
-		        lineWidth: 0,
+		        name: "This Week",
+		        id : 'thisweek',
+		        data: data2,
+		        pointStart: Date.UTC(2016, 1, 1),
+            pointInterval: 24 * 3600 * 1000, // one day
+		        fillOpacity: 0.2,
+		        lineWidth: 2,
 		        lineWidthPlus: 0,
 		        marker: {
 		          enabled: true,
 		          states: {
 		            hover: {
 		              enabled: true,
-		              lineWidth: 0,
+		              lineWidth: 2,
 		              lineWidthPlus: 0,
 		              radius: 4,
 		              radiusPlus: 0,
@@ -830,51 +1490,7 @@
 		          }
 		     		},
 		     		visible: true,
-          },
-          {
-          	yAxis: 1,
-		        name: "Static Interstitial Impressions",
-		        id : 'staticInterstitialImpressions',
-		        data: staticImpressions,
-		        fillOpacity: 0,
-		        lineWidth: 0,
-		        lineWidthPlus: 0,
-		        marker: {
-		          enabled: true,
-		          states: {
-		            hover: {
-		              enabled: true,
-		              lineWidth: 0,
-		              lineWidthPlus: 0,
-		              radius: 4,
-		              radiusPlus: 0,
-		            }
-		          }
-		     		},
-		     		visible: true,
-          }, {
-          	yAxis: 1,
-		        name: "Rewarded Video Impressions",
-		        id : 'rewardedVideoImpressions',
-		        data: videoImpressions,
-		        fillOpacity: 0,
-		        lineWidth: 0,
-		        lineWidthPlus: 0,
-		        marker: {
-		          enabled: true,
-		          states: {
-		            hover: {
-		              enabled: true,
-		              lineWidth: 0,
-		              lineWidthPlus: 0,
-		              radius: 4,
-		              radiusPlus: 0,
-		            }
-		          }
-		     		},
-		     		visible: true,
-          }
-        ],
+          }],
         tooltip: {
         	useHTML: true,
         	shared: true,
@@ -885,18 +1501,10 @@
                 var chartSeries = value.series;
                 var imgString = "";
                 
-                if(chartSeries.name == "Revenue") {
-                  imgString = "<img src=images/icon-chart-revenue.png alt='Revenue icon' class=icon-revenue /> &pound;";
-                } else if (chartSeries.name == "Downloads") {
-                  imgString = "<img src=images/icon-chart-downloads.png alt='Downloads icon' class=icon-downloads />";
-                } else if(chartSeries.name == "Earnings from Static") {
-                	imgString = "<img src=images/logo-chartboost-mini.png alt='Chartboost logo' class='tt-icon-chartboost' />Earnings From Static $";
-                } else if(chartSeries.name == "Earnings from Video") {
-                	imgString = "<img src=images/logo-chartboost-mini.png alt='Chartboost logo' class='tt-icon-chartboost' />Earnings From Video $";
-                } else if(chartSeries.name == "Static Interstitial Impressions") {
-                	imgString = "<img src=images/logo-chartboost-mini.png alt='Chartboost logo' class='tt-icon-chartboost' />Static Interstitial Impressions ";
-                } else if(chartSeries.name == "Rewarded Video Impressions") {
-                	imgString = "<img src=images/logo-chartboost-mini.png alt='Chartboost logo' class='tt-icon-chartboost' />Rewarded Video Impressions ";
+               	if(chartSeries.name == "Last Week") {
+                	imgString = "<img src=images/logo-ga-mini.png alt='GA logo' class='tt-icon-chartboost' />Sessions Last Week :";
+                } else if(chartSeries.name == "This Week") {
+                	imgString = "<img src=images/logo-ga-mini.png alt='GA logo' class='tt-icon-chartboost' />Sessions This Week :";
                 }
                 s += '<div class="custom-tooltip ' + chartSeries.name + '" style="background-color: ' + chartSeries.color + '">' + imgString + value.y + '</div>';
             });
