@@ -1,0 +1,142 @@
+.page-developer-leaderboard {
+	padding-top: 2rem;
+	padding-bottom: 3rem;
+	h1.heading-style--heading-three {
+		margin-bottom: 4rem !important;
+	}
+	.heading-style--heading-five {
+		margin-bottom: 2.5rem !important;
+	}
+	.heading-style--heading-six {
+		padding-top: 9px;
+		font-weight: 400;
+	}
+	.perc-heading,
+	.heading-style--heading-six span {
+		padding-top: 0.1rem;
+		float: right;
+		opacity: 0;		
+		font-size: 15px;
+		font-weight: 600;
+		color: $reflection-green;
+		transition: opacity 1s;
+	}
+	.grid__row,
+	.grid__row * {
+		overflow: visible;
+	}
+	.toggle-container {
+		padding-top: 1.7rem;
+		display: inline-block;
+		float: right;
+	}
+	.grid__column--developer,
+	.grid__column--revenue {
+		width: 50%;
+		display: inline-block;
+		float: left;
+	}
+	.grid__column--two-thirds {
+		padding-left: 1% !important;
+	}
+}
+.heading-information {
+	padding-top: 0.9rem;
+	display: inline-block;
+	span {
+		margin-right: 3rem;
+		font-size: 1.6rem;
+	}
+}
+.developer-apps-revenue-container {
+	width: 100%;
+	margin-bottom: 0.9rem;
+	font-size: 0;
+	transition: width 1s;
+	.developer-app-revenue {
+		position: relative;
+		height: 45px;
+		width: 0;
+		display: inline-block;
+		cursor: pointer;
+		transition: background-color 0.3s, width 1s;
+		&:hover {
+			transition: background-color 0.2s;
+		}
+		&:nth-child(1),
+		&:nth-child(n+7) {
+			background-color: $reflection-purple--hover;
+			&:hover {
+				background-color: darken($reflection-purple--hover, 5%);
+			}
+		}
+		&:nth-child(2),
+		&:nth-child(n+8) {
+			background-color: #6d69c5;
+			&:hover {
+				background-color: darken(#6d69c5, 5%);
+			}
+		}
+		&:nth-child(3),
+		&:nth-child(n+9) {
+			background-color: #1bc79f;
+			&:hover {
+				background-color: darken(#1bc79f, 10%);
+			}
+		}
+		&:nth-child(4),
+		&:nth-child(n+10) {
+			background-color: #ff496a;
+			&:hover {
+				background-color: darken(#ff496a, 10%);
+			}
+		}
+		&:nth-child(5),
+		&:nth-child(n+11) {
+			background-color: #d23753;
+			&:hover {
+				background-color: darken(#d23753, 10%);
+			}
+		}
+		&:nth-child(6),
+		&:nth-child(n+12) {
+			background-color: #d07423;
+			&:hover {
+				background-color: darken(#d07423, 10%);
+			}
+		}
+	}
+}
+.developer-leaderboard__app-details {
+	position: absolute;
+	bottom: 45px;
+	right: 0;
+	width: 200px;
+	padding-top: 15px;
+	display: none;
+	text-align: center;
+	background-color: $dark-grey-2;
+	img {
+		width: 32px;
+		height: 32px;
+		margin: 0 auto;
+		border-radius: 7px;
+	}
+	h2 {
+		margin-bottom: 1px;
+		font-size: 13px;
+		margin-top: 0;
+		text-align: center;
+		color: $reflection-white;
+	}
+	h3 {
+		margin-bottom: 10px;
+		font-size: 16px;
+		margin-top: 0;
+		text-align: center;
+		color: $reflection-white;
+	}
+	.developer-app-revenue:hover & {
+		display: block;
+	}
+}
