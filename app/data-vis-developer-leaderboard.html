@@ -64,7 +64,7 @@
 			<div class="grid-container page-developer-leaderboard" ng-controller="DataController as dataList">
 				<div class="grid__row grid__row--heading-row">
 					<div class="grid__column grid__row--heading-row__left">
-						<h1 class="heading-style--heading-three">Top Developers by Revenue <span>UK / iPhone / Games</span></h1>
+						<h1 class="heading-style--heading-three">Top Developers by Revenue <span>UK / Games</span></h1>
 						<h2>01 Feb 2016 - 08 Feb 2016</h2>
 					</div>
 					<div class="grid__column grid__row--heading-row__right">
@@ -85,7 +85,7 @@
 								</div>
 						</div>
 						<div class="total-container">
-							<h2 class="heading-style--heading-five">Total Revenue for Period: <span>{{dataList.dataListGrossingTotal | currency:"£":0}}</span></h2>
+							<h2 class="heading-style--heading-five">Total Revenue for Period: <span>{{dataList.dataListGrossingTotal/100 | currency:"£":0}}</span></h2>
 						</div>
 					</div>
 				</div>
@@ -101,7 +101,7 @@
 					</div>
 					<div class="app-breakdown-container">
 						<h2 class="heading-style--heading-six">% of Total for Period</h2>
-					</div>	
+					</div>
 				</div>
 
 				<div class="grid__row data-row" ng-repeat="dataItem in dataList.dataListGrossing">
@@ -112,7 +112,7 @@
 						<h2 class="heading-style--heading-six">{{dataItem.Developer}}</h2>
 					</div>
 					<div class="revenue-container">
-						<h2 class="heading-style--heading-six">{{dataItem.total | currency:"£":0}}</h2>
+						<h2 class="heading-style--heading-six">{{dataItem.total/100 | currency:"£":0}}</h2>
 					</div>
 					<div class="app-breakdown-container">
 						<div class="developer-apps-revenue-container" data-relativepercentage='{{dataList.getDeveloperPercentage($index) | number : 5}}'>
@@ -122,7 +122,7 @@
 									<div class="developer-leaderboard__app-details">
 										<img src='{{dataItem.icon_url[$index]}}' alt='{{appItem}}} logo' />
 										<h2>{{appItem}}</h2>
-										<h3>{{dataItem.app_totals[$index] | currency:"£":0}}</h3>
+										<h3>{{dataItem.app_totals[$index]/100 | currency:"£":0}}</h3>
 									</div>
 								</div>
 							</div>
