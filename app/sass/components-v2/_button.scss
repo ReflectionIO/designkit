@@ -1,0 +1,41 @@
+.ref-button {
+	padding: 0.63em 1.44em 0.82em;
+	display: inline-block;
+  font-size: 1.4rem;  
+  font-weight: 600;
+  font-family: $brand-heading-font;
+  line-height: 1.1;
+  color: $reflection-white;
+  text-shadow: none !important;
+  background-color: $reflection-red;
+  border: none;
+  border-radius: 0.35714285714285715em; // 5px
+  @include appearance(none);
+  outline: none;
+  cursor: pointer;
+  @extend %font-smoothing;
+  transition: background-color $base-transition-speed-off, color $base-transition-speed-off, border-color $base-transition-speed-off;
+  .no-touch & {
+  	&:hover {
+  		background-color: #e73e5c;
+    	transition: background-color $base-transition-speed-on, color $base-transition-speed-on, border-color $base-transition-speed-on;
+    }
+    &:active {
+			border-top: 2px solid #b2334a;
+			padding-bottom: calc(0.82em - 2px);
+			transition: border 0s;
+		}
+		&:disabled {
+			cursor: default;
+			background-color:  $reflection-red;
+			&:active {
+				border-top: 2px solid #96283c;
+				padding-bottom: calc(0.82em - 2px);
+				transition: border 0s;
+			}
+		}
+  }
+}
+.ref-button--cta-small {
+	@extend .ref-button;
+}
