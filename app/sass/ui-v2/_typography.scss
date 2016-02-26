@@ -1,0 +1,243 @@
+$brand-body-font: 'Lato', sans-serif;
+$brand-heading-font: 'Source Sans Pro', sans-serif;
+
+@font-face {
+  font-family: "reflection-icons-1";
+  src:url("fonts/fontastic/reflection-icons-1.eot");
+  src:url("fonts/fontastic/reflection-icons-1.eot?#iefix") format("embedded-opentype"),
+    url("fonts/fontastic/reflection-icons-1.woff") format("woff"),
+    url("fonts/fontastic/reflection-icons-1.ttf") format("truetype"),
+    url("fonts/fontastic/reflection-icons-1.svg#reflection-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+%icon-font {
+	vertical-align: top;
+	speak: none;
+	font-family: "reflection-icons-1";
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+[class^="reficon-"], [class*=" reficon-"] {
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+  fill: currentColor;
+}
+.ref-icon-before--search,
+.ref-icon-before--revenue,
+.ref-icon-before--download {
+	@extend .ref-icon-before;
+}
+.ref-icon-after--question {
+	@extend .ref-icon-after;
+}
+.ref-icon-before--search:before,
+.ref-icon-after--search:after {
+	content: "a";
+}
+.ref-icon-after--question:after {
+	content: "F";
+}
+.ref-icon-before--revenue:before {
+	content: "M";	
+}
+.ref-icon-before--download:before {
+	content: "f";
+}
+
+#{headings()}, p, li, a, blockquote, time, span, cite {
+	@extend %font-smoothing;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+#{headings()}, .heading-style {
+	font-family: $brand-heading-font;
+	font-weight: 600;
+	overflow: visible;	
+	line-height: 1;
+	color: $dark-grey-1;
+	&:first-child {
+		margin-top: 0;
+	}
+}
+h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
+h2 + h3, h2 + h4, h2 + h5, h2 + h6,
+h3 + h4, h3 + h5, h3 + h6,
+h4 + h5, h4 + h6,
+h5 + h6,
+.heading-style--heading-one + .heading-style--heading-two,
+.heading-style--heading-one + .heading-style--heading-three,
+.heading-style--heading-one + .heading-style--heading-four,
+.heading-style--heading-one + .heading-style--heading-five,
+.heading-style--heading-one + .heading-style--heading-six,
+.heading-style--heading-two + .heading-style--heading-three,
+.heading-style--heading-two + .heading-style--heading-four,
+.heading-style--heading-two + .heading-style--heading-five,
+.heading-style--heading-two + .heading-style--heading-six,
+.heading-style--heading-three + .heading-style--heading-four,
+.heading-style--heading-three + .heading-style--heading-five,
+.heading-style--heading-three + .heading-style--heading-six,
+.heading-style--heading-four + .heading-style--heading-five,
+.heading-style--heading-four + .heading-style--heading-six,
+.heading-style--heading-five + .heading-style--heading-six,
+h1 + .heading-style--heading-two,
+h1 + .heading-style--heading-three,
+h1 + .heading-style--heading-four,
+h1 + .heading-style--heading-five,
+h1 + .heading-style--heading-six,
+h2 + .heading-style--heading-three,
+h2 + .heading-style--heading-four,
+h2 + .heading-style--heading-five,
+h2 + .heading-style--heading-six,
+h3 + .heading-style--heading-four,
+h3 + .heading-style--heading-five,
+h3 + .heading-style--heading-six,
+h4 + .heading-style--heading-five,
+h4 + .heading-style--heading-six,
+h5 + .heading-style--heading-six,
+.heading-style--heading-one + h2,
+.heading-style--heading-one + h3,
+.heading-style--heading-one + h4,
+.heading-style--heading-one + h5,
+.heading-style--heading-one + h6,
+.heading-style--heading-two + h3,
+.heading-style--heading-two + h4,
+.heading-style--heading-two + h5,
+.heading-style--heading-two + h6,
+.heading-style--heading-three + h4,
+.heading-style--heading-three + h5,
+.heading-style--heading-three + h6,
+.heading-style--heading-four + h5,
+.heading-style--heading-four + h6,
+.heading-style--heading-five + h6 {
+	margin-top: 0;	
+}
+
+h1, .heading-style--heading-one {
+	@extend .heading-style;
+	margin-top: 3rem;	
+	margin-bottom: 0.65em;
+	font-size: 2.7rem;
+	line-height: 1.2em;
+	&:first-child:last-child {
+		margin-bottom: 0.68em;
+	}
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		margin-bottom: 0.65em;
+		@include font-size(41px);
+		line-height: 1.2em;
+		&:first-child:last-child {
+			margin-bottom: 0.43589743589744em;
+		}
+	}
+}
+h2, .heading-style--heading-two {
+	@extend .heading-style;
+	margin-top: 3rem;
+	margin-bottom: 0.6em;
+	font-size: 2.5rem;
+	line-height: 1.3em;
+	&:first-child:last-child {
+		margin-bottom: 0.68em;
+	}
+	@include breakpoint($tablet) {		
+		margin-top: 4rem;
+		margin-bottom: 0.6em;
+		@include font-size(33px);
+		line-height: 1.3em;
+		&:first-child:last-child {
+			margin-bottom: 0.54838709677419em;
+		}
+	}
+}
+h3, .heading-style--heading-three {
+	@extend .heading-style;
+	margin-top: 3rem;
+	margin-bottom: 0.68em;
+	font-size: 2.3rem;
+	line-height: 1.3em;
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		font-size: 2.8rem;
+	}
+	&:first-child:last-child {
+		margin-bottom: 0.68em;
+	}
+}
+h4, .heading-style--heading-four {
+	@extend .heading-style;
+	margin-top: 3rem;
+	margin-bottom: 0.8em;
+	font-size: 2.1rem;
+	line-height: 1.4em;
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		font-size: 2.2rem;
+	}
+	&:first-child:last-child {
+		margin-bottom: 0.8em;
+	}
+}
+h5, .heading-style--heading-five {
+	@extend .heading-style;
+	margin-top: 3rem;
+	margin-bottom: 0.7em;
+	font-size: 1.9rem;
+	line-height: 1.35em;	
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		font-size: 1.8rem;
+	}
+	&:first-child:last-child {
+		margin-bottom: 0.7em;
+	}
+}
+h6, .heading-style--heading-six {
+	@extend .heading-style;
+	margin-top: 3rem;
+	margin-bottom: 0.7em;
+	font-size: 1.7rem;	
+	line-height: 1.35em;
+	@include breakpoint($tablet) {
+		margin-top: 4rem;
+		font-size: 1.6rem;
+	}
+	&:first-child:last-child {
+		margin-bottom: 0.7em;
+	}
+}
+p {
+	max-width: 650px;
+	margin-bottom: 1.2em;
+	font-size: 1.6rem;
+	line-height: 1.5625em;
+	color: $mid-grey-1;
+	@include breakpoint($desktop) {
+		max-width: 680px;
+	}
+	@include breakpoint($desktop-wide) {
+		max-width: 850px;
+	}
+	a {
+		text-decoration: none;
+		color: $reflection-purple;
+		.no-touch & {
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+			&:active {
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+}
