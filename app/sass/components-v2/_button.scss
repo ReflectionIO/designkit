@@ -1,15 +1,38 @@
+[role="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+    -webkit-box-sizing: content-box;
+       -moz-box-sizing: content-box;
+            box-sizing: content-box;
+}
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+    background: none;
+    border: 0;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button; /* for input */
+    -webkit-user-select: none; /* for button */
+       -moz-user-select: none;
+        -ms-user-select: none;
+}
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
 .ref-button {
-	padding: 0.63em 1.44em 0.82em;
 	display: inline-block;
-  font-size: 1.4rem;  
+  vertical-align: top;
   font-weight: 600;
   font-family: $brand-heading-font;
-  line-height: 1.1;
-  color: $reflection-white;
+  line-height: 1.1;  
   text-shadow: none !important;
-  background-color: $reflection-red;
-  border: none;
-  border-radius: 0.35714285714285715em; // 5px
   @include appearance(none);
   outline: none;
   cursor: pointer;
@@ -17,25 +40,114 @@
   transition: background-color $base-transition-speed-off, color $base-transition-speed-off, border-color $base-transition-speed-off;
   .no-touch & {
   	&:hover {
-  		background-color: #e73e5c;
     	transition: background-color $base-transition-speed-on, color $base-transition-speed-on, border-color $base-transition-speed-on;
     }
     &:active {
-			border-top: 2px solid #b2334a;
-			padding-bottom: calc(0.82em - 2px);
 			transition: border 0s;
-		}
-		&:disabled {
-			cursor: default;
-			background-color:  $reflection-red;
-			&:active {
-				border-top: 2px solid #96283c;
-				padding-bottom: calc(0.82em - 2px);
-				transition: border 0s;
-			}
 		}
   }
 }
-.ref-button--cta-small {
+.ref-button--primary {  
+  color: $reflection-white;
+  border: none;
+  border-radius: 0.35714285714285715em;
+  background-color: $reflection-red;
+  .no-touch & {
+    &:hover {
+      background-color: #e73e5c;
+    }
+    &:active {
+      border-top: 2px solid #96283c;
+    }
+  }
+}
+.ref-button--primary--small {
 	@extend .ref-button;
+  @extend .ref-button--primary;
+  padding: 1rem 1.5rem 1.2rem 1.5rem;
+  font-size: 1.4rem;
+  letter-spacing: -0.01rem;
+  .no-touch & {
+    &:active {
+      padding-top: calc(1rem - 1px);  
+      padding-bottom: calc(1.2rem - 1px);
+    }
+  }
+}
+.ref-button--primary--medium {
+  @extend .ref-button;
+  @extend .ref-button--primary;
+  padding: 1.3rem 1.7rem 1.3rem 1.5rem;
+  font-size: 1.5rem;
+  letter-spacing: -0.01rem;
+  .no-touch & {
+    &:active {
+      padding-top: calc(1.3rem - 1px);
+      padding-bottom: calc(1.3rem - 1px);
+    }
+  }
+}
+.ref-button--primary--large {
+  @extend .ref-button;
+  @extend .ref-button--primary;
+  padding: 1.7rem 2rem 1.6rem 1.9rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.01rem;
+  .no-touch & {
+    &:active {
+      padding-top: calc(1.7rem - 1px);
+      padding-bottom: calc(1.6rem - 1px);
+    }
+  }
+}
+
+.ref-button--secondary {  
+  color: $reflection-purple;
+  border: 1px solid $light-grey-2;
+  border-radius: 0.35714285714285715em;
+  background-color: #f5f9f9;
+  .no-touch & {
+    &:hover {
+      background-color: #ebf2f2;
+    }
+    &:active {
+      border-top: 2px solid #c8cece;
+    }
+  }
+}
+.ref-button--secondary--small {
+  @extend .ref-button;
+  @extend .ref-button--secondary;
+  padding: calc(1rem - 1px) 1.4rem calc(1.2rem - 1px) 1.39rem;
+  font-size: 1.4rem;
+  letter-spacing: -0.01rem;
+  .no-touch & {
+    &:active {    
+      padding-bottom: calc(1.2rem - 2px);
+    }
+  }
+}
+.ref-button--secondary--medium {
+  @extend .ref-button;
+  @extend .ref-button--secondary;
+  padding: calc(1.3rem - 1px) 1.5rem calc(1.3rem - 1px) 1.39rem;
+  font-size: 1.5rem;
+  letter-spacing: -0.01rem;
+  .no-touch & {
+    &:active {    
+      padding-bottom: calc(1.3rem - 2px);
+    }
+  }
+}
+.ref-button--secondary--large {
+  @extend .ref-button;
+  @extend .ref-button--secondary;
+  padding: calc(1.6rem - 1px) 2rem calc(1.7rem - 1px) 2rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.01rem;
+  .no-touch & {
+    &:active {    
+      padding-bottom: calc(1.7rem - 2px);
+    }
+  }
 }
