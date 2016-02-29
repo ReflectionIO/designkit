@@ -1,37 +1,167 @@
+$table-gold: #ee9063;
+
 .ref-table {
 	width: 100%;
 	font-size: 1.3rem;
 	color: $dark-grey-1;
 	th {
-		padding-top: 1.5rem;
 		padding-top: 1.3rem;
+		padding-bottom: 1.2rem;
+		vertical-align: top;
 		font-family: $brand-heading-font;
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		color: $dark-grey-2;
 		a {
 			@extend .text-link;
+			font-weight: 600;
+		}
+	}
+	tbody {
+		tr:nth-child(odd) {
+			background-color: $panel-grey;
+		}
+		tr td {
+			padding-top: 5px;
+			padding-bottom: 5px;
 		}
 	}
 }
 .ref-table--apps {
+	margin-bottom: 4rem;
 	.column-row-selector {
-		width: percentage(77/873);
+		width: 9%;
 	}
 	.column-app-name {
-		width: percentage(241/873);
+		width: 26%;
 	}
 	.column-released {
-		width: percentage(82/873);
+		width: 11.5%;
 	}
 	.column-revenue {
-		width: percentage(86/873);
+		width: 11.5%;
 	}
 	.column-downloads {
-		width: percentage(163/873);
+		width: 18%;
 	}
 	.column-percentage-of-total {
-		width: percentage(224/873);
+		width: 24%;
 	}
+	.revenue-head-cell,
+	.downloads-head-cell {
+		font-size: 1.5rem;
+	}
+	.total-for-period-head-cell {
+		span {
+			display: inline-block;
+		}
+		span:first-child {
+			margin-bottom: 0.4rem;
+			display: block;
+			font-size: 1.4rem;
+		}
+		span:nth-child(2) {
+			color: $table-gold;
+			font-size: 1.3rem;
+		}
+		span:nth-child(3) {
+			margin-left: 1.7rem;
+			color: $reflection-purple;
+			font-size: 1.3rem;
+		}
+	}
+	.app-data-cell-app-details {
+		padding-top: 7px;
+		padding-bottom: 3px;
+	}	
+	.app-data-cell-released-date {
+		padding-top: 1.1rem;
+		vertical-align: top;		
+	}
+	.app-data-revenue,
+	.app-data-downloads {
+		text-align: right;
+	}
+	.app-data-revenue {
+		width: calc(100% - 3rem);
+	}
+	.app-data-downloads	{
+		width: percentage(85/157);
+		display: inline-block;
+		vertical-align: top;
+	}
+	.data-table__growth {
+		margin-top: 0.4rem;
+		display: block;
+		font-weight: 700;
+		font-size: 1.2rem;
+	}
+	.more-app-data {
+		position: absolute;
+		top: 0;
+		right: 8rem;
+		width: 150px;
+		padding: 7px;	
+		display: none;
+		z-index: 10;
+		text-align: center;
+		background-color: $panel-grey;
+		border-radius: 5px;
+		dt, dd {
+			display: block;
+		}
+		dd {
+			margin-bottom: 0.5rem;
+		}
+	}
+	.app-data-cell-more {
+		position: relative;
+		.more-data-link {
+			@extend .text-link;
+			margin-left: 9%;
+			vertical-align: top;
+			font-size: 1.2rem;
+		}
+		.more-data-link:hover + .more-app-data {
+			display: inline-block;
+		}
+	}
+	.data-table__value-bar {
+		> span {
+			width: 35px;
+			display: inline-block;
+			font-weight: bold;
+			font-size: 1.2rem;		
+			color: $reflection-purple;
+		}
+		div {
+			width: calc(100% - 53px);
+			height: 10px;
+			display: inline-block;
+			background-color: #e6e6eb;
+		}
+		div span {
+			height: 10px;
+			display: block;		
+			background-color: $reflection-purple;
+		}
+		&:first-child {
+			margin-bottom: 0.3rem;
+			> span {
+				color: $table-gold;
+			}
+			div span {
+				background-color: $table-gold;
+			}
+		}
+	}
+	.ratings-container,
+	.ratings-full {
+		background-size: 65px 10px;
+	}
+}
+.ref-table--apps,
+.ref-table--apps * {
+	overflow: visible;
 }
 .data-table__app-summary {
 	img {
@@ -40,7 +170,7 @@
 		border-radius: 8px;
 	}
 	> div {
-		width: calc(100% - 50px);
+		width: calc(100% - 57px);
 		display: inline-block;
 		vertical-align: top;
 		float: right;
@@ -48,9 +178,11 @@
 	}
 }
 .data-table__app-summary__app-name {
-	margin: 0;	
+	margin: 0;
+	padding-top: 2px;
+	padding-bottom: 3px;
 	font-family: $brand-body-font;
-	font-size: 1.4rem;
+	font-size: 1.39rem;	
 	a {
 		padding-bottom: 0.5rem;
 		@extend .text-link;
