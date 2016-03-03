@@ -1,10 +1,25 @@
 // V2 Components JS
 
+var PrimaryFilters = function() {
+	var instance = this;
+	$("html").on("click", function(e){
+		// close open filters on html click
+		if(!$(e.target).hasClass("js-dropdown-trigger")) {
+			instance.closeAllFilters();
+		}
+	});
+}
+
+PrimaryFilters.prototype.closeAllFilters = function() {
+	$('.primary-filter.is-open .form-field--select__dropdown').hide();
+	$('.primary-filter.is-open').removeClass("is-open");
+};
+
 var FormFieldSelect = function($domElement) {
 
 	var $thisSelectBox = $domElement,
 			$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
-			$currentValue = $("<span>");
+			$currentValue = $("<span>").addClass("ref-icon-after--angle-down js-dropdown-trigger");
 
 	$thisSelectBox.find('option').each(function(){
 		
@@ -17,6 +32,7 @@ var FormFieldSelect = function($domElement) {
 		}
 
 		$dropDownContainer.append($("<li>")
+																	.addClass("js-dropdown-option")
 																	.text($thisOption.text())
 																	.addClass(selectedClass)
 																	.on("click", function(){
@@ -24,14 +40,49 @@ var FormFieldSelect = function($domElement) {
 																		$thisOption.attr("selected", "selected");
 																		$currentValue.text($thisOption.text());
 																		$dropDownContainer.toggle();
+																		$thisSelectBox.parent("div").toggleClass("is-open");
+																		$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																		$(this).addClass("is-selected");
 																	})
 														);
 	});
 
 	$currentValue.on("click", function(){
-		$dropDownContainer.toggle();
+		var $parentDiv = $thisSelectBox.parent("div");
+		if(!$parentDiv.hasClass("is-open")) {
+			PrimaryFilters.prototype.closeAllFilters();
+		}
+		var parentWidth = $parentDiv.width();
+		var parentHeight = $parentDiv.height();
+		$dropDownContainer.css({top: $currentValue.offset().top + parentHeight + 5, left: $currentValue.offset().left, "min-width": parentWidth + "px"});
+		$dropDownContainer.toggle();	
+		$parentDiv.toggleClass("is-open");
 	});
 
 	$thisSelectBox.parent("div").append($currentValue)
 															.append($dropDownContainer);
-}
+};
+
+var FormInteractions = function() {
+	setTimeout(function(){
+		$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text], .form-field textarea').each(function(){
+			var $this = $(this);
+			var $thisParent = $this.parent('.form-field');
+			if(!$thisParent.hasClass('form-field--error')) {
+				if(!$(this).val().length || $(this).val().length == 0) {
+					$thisParent.addClass('is-closed');
+				}
+				$this.on("focus", function(){
+					$thisParent.removeClass('is-closed');
+				});
+				$this.on("blur", function(){
+					if(!$this.val().length) {
+						$thisParent.addClass('is-closed');
+					}
+				});
+			}
+		});
+	}, 100); // fixes bug in IE11 for prepopulated data
+};
+
+	
