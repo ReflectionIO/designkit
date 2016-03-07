@@ -26,25 +26,32 @@ var FormFieldSelect = function($domElement) {
 		var $thisOption = $(this),
 				selectedClass = "";
 
-		if($thisOption.is(":selected")) {
-			selectedClass = "is-selected";
-			$currentValue.text($thisOption.text());
-		}
+		if($thisOption.val() != "") {
 
-		$dropDownContainer.append($("<li>")
-																	.addClass("js-dropdown-option")
-																	.text($thisOption.text())
-																	.addClass(selectedClass)
-																	.on("click", function(){
-																		$thisSelectBox.find("option").removeAttr("selected");
-																		$thisOption.attr("selected", "selected");
-																		$currentValue.text($thisOption.text());
-																		$dropDownContainer.toggle();
-																		$thisSelectBox.parent("div").toggleClass("is-open");
-																		$dropDownContainer.find(".is-selected").removeClass("is-selected");
-																		$(this).addClass("is-selected");
-																	})
-														);
+			if($thisOption.is(":selected")) {
+				if($thisOption.val() != "") {
+					selectedClass = "is-selected";
+					$currentValue.text($thisOption.text());
+				}
+			}
+
+			$dropDownContainer.append($("<li>")
+																		.addClass("js-dropdown-option")
+																		.text($thisOption.text())
+																		.addClass(selectedClass)
+																		.on("click", function(){
+																			$thisSelectBox.find("option").removeAttr("selected");
+																			$thisOption.attr("selected", "selected");
+																			$currentValue.text($thisOption.text());
+																			$dropDownContainer.toggle();
+																			$thisSelectBox.parent("div").toggleClass("is-open");
+																			$thisSelectBox.parent("div").removeClass("nothing-selected");
+																			$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																			$(this).addClass("is-selected");
+																		})
+															);
+		}
+		
 	});
 
 	$currentValue.on("click", function(){
@@ -54,10 +61,14 @@ var FormFieldSelect = function($domElement) {
 		}
 		var parentWidth = $parentDiv.width();
 		var parentHeight = $parentDiv.height();
-		$dropDownContainer.css({top: $currentValue.offset().top + parentHeight + 5, left: $currentValue.offset().left, "min-width": parentWidth + "px"});
+		$dropDownContainer.css({"min-width": parentWidth + "px"});
 		$dropDownContainer.toggle();	
 		$parentDiv.toggleClass("is-open");
 	});
+
+	if($currentValue.text() == "") {
+		$thisSelectBox.parent("div").addClass("nothing-selected");
+	}
 
 	$thisSelectBox.parent("div").append($currentValue)
 															.append($dropDownContainer);
@@ -85,4 +96,3 @@ var FormInteractions = function() {
 	}, 100); // fixes bug in IE11 for prepopulated data
 };
 
-	

@@ -1,5 +1,6 @@
 .primary-filters-container {
-	font-size: 0;	
+	overflow: visible;
+	font-size: 0;
 	.primary-filter {
 		width: 20%;		
 		color: $dark-grey-1;
@@ -96,6 +97,60 @@
 		}
 	}
 }
+.form-filter {
+	width: auto;
+	span {
+		min-width: 101px;
+		padding: 23px 50px 11px 19px;
+		display: block;
+		font-family: $brand-heading-font;
+		font-size: 16px;
+		color: $dark-grey-1;
+		border: 1px solid $light-grey-2;
+		border-radius: 4px;
+		background-color: #f2f7f7;
+		cursor: pointer;
+		&:after {
+			position: absolute;
+	    right: 15px;
+	    top: 15px;
+	    color: #9fa1d5;
+	    font-size: 20px;
+	    letter-spacing: -0.01rem;
+		}
+	}
+	&.nothing-selected {
+		span {
+			padding: 23px 50px 27px 19px;
+		}		
+	}
+	&.is-open {
+		span {
+			border-radius: 4px 4px 0 0;
+			&:after {
+				top: 16px;
+    		right: 16px;
+				transform: rotate(180deg);
+			}
+		}
+	}
+	.form-field--select__dropdown {
+		max-height: 329px;
+		width: 100%;
+    min-width: 100% !important;
+    margin-top: -1px;
+    padding: 3px 10px 18px 25px;
+    overflow: auto;
+		border-top: 0;
+		border-radius: 0 0 4px 4px;
+		background-color: #f2f7f7;
+		li {
+			margin-bottom: 6px;
+			font-size: 15px;
+			cursor: pointer;
+		}
+	}
+}
 .secondary-filter--medium {
 	span {
 		padding: 11px 50px 14px 15px;
@@ -149,6 +204,7 @@
 .primary-filter,
 .secondary-filter {
 	display: inline-block;
+	overflow: visible;
 	vertical-align: top;
 	line-height: 1;
 	cursor: pointer;
