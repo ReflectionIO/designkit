@@ -96,3 +96,23 @@ var FormInteractions = function() {
 	}, 100); // fixes bug in IE11 for prepopulated data
 };
 
+
+var Tabs = function($domElement) {
+
+	var $tabsList = $domElement;
+	$tabsList.find("li").each(function(){
+		$(this).find("a").on("click", function(e){
+			e.preventDefault();
+			var $this = $(this),
+					associatedContentId = $this.attr("href");
+			$domElement.find('.is-active').removeClass("is-active");
+			$this.parent("li").addClass("is-active");
+
+			var associatedContentList = $(associatedContentId).parent(".js-tabs-content-list");
+			associatedContentList.find('.is-active').removeClass("is-active");
+			$(associatedContentId).addClass("is-active");
+		});
+	});
+
+};
+
