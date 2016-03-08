@@ -23,10 +23,19 @@ textarea {
 		border-radius: 0;
 		&:first-child {
 			margin-top: 0;
-			border-radius: 4px 4px 0 0;
+			.form-field--select__box {
+				border-radius: 4px 4px 0 0;
+			}			
 		}
 		&:last-child {
-			border-radius: 0 0 4px 4px;
+			.form-field--select__box {
+				border-radius: 0 0 4px 4px;
+			}
+			&.is-open {
+				.form-field--select__box {
+					border-radius: 0;
+				}
+			}
 		}
 	}
 	label {
@@ -47,6 +56,31 @@ textarea {
 			color: #727686;
 			font-weight: 400;
 		}
+	}
+	&.form-field--with-error {
+		label {
+			top: 25px;
+		}
+		.form-field--select__box {
+			border-color: $error-orange-border;
+			background-color: #fdf5ee;
+			z-index: 10;
+		}
+		.form-field-error-text {
+			position: absolute;
+			top: 7px;
+			left: 20px;		
+			display: block;
+		}
+		.form-field--select__dropdown {
+			border-color: $error-orange-border;
+			background-color: #fdf5ee;
+		}
+	}
+}
+.reflection-form .form-field + .form-filter {
+	.form-field--select__box {
+		border-radius: 0;
 	}
 }
 .form-field {
@@ -75,11 +109,6 @@ textarea {
 		border-color: $error-orange-border;
 		background-color: #fdf5ee;
 		z-index: 10;
-		span {
-			color: $error-orange-text;
-			font-size: 14px;
-			font-family: $brand-heading-font;
-		}
 	}
 	.no-touch & {
 		transition: padding 0.06s;
@@ -151,6 +180,11 @@ textarea {
 		}
 	}
 }
+.form-field-error-text {
+	color: $error-orange-text;
+	font-size: 14px;
+	font-family: $brand-heading-font;
+}
 .form-field--select {
 	position: relative;
 }
@@ -191,4 +225,233 @@ textarea {
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+
+// Checkbox and Radio buttons list
+.form-field--checkbox-list,
+.form-field--radio-list {
+	* {
+		overflow: visible;
+	}
+	position: relative;
+	width: 100%;
+	li {
+		position: relative;
+		margin-bottom: 0.5rem;
+		padding: 0;
+		font-size: 0;
+	}
+	input[type=checkbox],
+	input[type=radio] {
+		position: absolute;
+		left: -10000px;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+	}
+	label {
+		padding-top: -1px;
+		padding-bottom: 0;
+		display: inline-block;
+		font-weight: 400;
+	}
+}
+.form-field--checkbox-list--inline,
+.form-field--radio-list--inline {
+	li {
+		margin-right: 2rem;
+		margin-bottom: 0;
+		display: inline-block;
+	}
+}
+.checkboxLabel,
+.radioButtonLabel {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	display: inline-block;
+	font-size: 0px;
+	font-weight: 400;
+	cursor: pointer;
+	@include box-sizing(border-box);
+	line-height: 1;
+	text-decoration: none;
+	background-color: #dde0e2;
+	overflow: visible;
+	&:hover {
+		background-color: #c4c7d0;
+		transition: background-color $base-transition-speed-on;
+	}
+	&:active {
+		border-top: 2px solid #9d9fa6;
+	}
+}
+.radioButtonLabel {
+	border-radius: 9px;
+}
+.checkboxLabel {
+	border-radius: 3px;
+	&:after {		
+		position: absolute;
+		top: 2px;
+		left: 0;
+		width: 16px;
+		height: 16px;
+		content: "t";
+		speak: none;
+		font-family: $reflection-icons-name;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-size: 13px;
+		color: $light-grey-2;
+		text-align: center;
+		opacity: 0;
+		transition: color 0.2s;
+		.no-opacity & {
+			display: none;
+		}
+	}
+}
+.form-field--checkbox-list--medium {
+	li {
+		margin-bottom: 0.7rem;
+	}
+	.checkboxLabel {
+		width: 18px;
+		height: 18px;
+		&:after {
+			width: 18px;
+			height: 18px;
+			font-size: 14px;
+		}
+	}
+	.checkboxLabelVisible {
+		padding-left: calc(18px + 1.2rem);
+		font-size: 1.5rem;
+	}
+}
+.form-field--checkbox-list--large {
+	li {
+		margin-bottom: 0.9rem;
+	}
+	.checkboxLabel {
+		width: 20px;
+		height: 20px;
+		&:after {
+			width: 20px;
+			height: 20px;
+			font-size: 15px;
+		}
+	}
+	.checkboxLabelVisible {
+		padding-left: calc(20px + 1.5rem);
+		font-size: 1.6rem;
+	}
+}
+input[type="checkbox"]:disabled + .checkboxLabel,
+input[type="radio"]:disabled + .radioButtonLabel {
+	background-color: #f7f7f9;
+	overflow: visible;
+}
+input[type="checkbox"]:disabled + .checkboxLabel:active,
+input[type="radio"]:disabled + .radioButtonLabel:active,
+input[type="checkbox"]:disabled:checked + .checkboxLabel:active,
+input[type="radio"]:disabled:checked + .radioButtonLabel:active {
+	border-top: 0;
+}
+input[type="checkbox"]:checked:disabled + .checkboxLabel,
+input[type="radio"]:checked:disabled + .radioButtonLabel {
+	opacity: 0.5;
+}
+input[type="checkbox"]:checked + .checkboxLabel,
+input[type="radio"]:checked + .radioButtonLabel {
+	background-color: $reflection-green;
+	&:after {
+		opacity: 1;
+		color: #fcfdfd;
+		transition: opacity 0.3s;
+		.no-opacity & {
+			display: block;
+		}
+	}
+}
+input[type="checkbox"]:checked + .checkboxLabel {
+	transition: background-color 0.3s;
+}
+.checkboxLabelVisible,
+.radioButtonLabelVisible {
+	padding-left: calc(16px + 1rem);
+	font-family: $brand-heading-font;
+	font-size: 1.4rem;
+	color: $dark-grey-2;
+	text-align: left;
+	cursor: pointer;
+}
+input[type="checkbox"]:disabled + label + .checkboxLabelVisible,
+input[type="radio"]:disabled + label + .radioButtonLabelVisible {
+	color: #c4c7d0;
+}
+
+// Password strength indicator
+.password-strength-indicator-container {
+	position: absolute;
+	top: 5px;
+  right: 10px;
+	font-size: 1.25rem;
+	.is-closed & {
+		display: none;
+	}
+}
+.password-strength-indicator,
+.password-strength-description {
+	display: inline-block;
+	float: left;
+	vertical-align: top;
+}
+.password-strength-indicator {
+	position: relative;
+	width: 97px;
+	height: 6px;
+	margin-top: 6px;
+	margin-left: 8px;
+	border-radius: 3px;
+	background-color: #e1e5e8;
+	span {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: inline-block;
+		width: 0;
+		height: 6px;
+		background-color: $reflection-purple;
+		transition: background-color 0.3s ease-out, width 0.3s ease-out;
+		&.is-pathetic {
+			width: 25%;
+			background-color: #d5855e;
+		}
+		&.is-ok {
+			width: 50%;
+			background-color: #e7b94b;
+		}
+		&.is-strong {
+			width: 75%;
+			background-color: #d0eb53;
+		}
+		&.is-impressive {
+			width: 100%;
+			background-color: #68d656;
+		}
+	}
+}
+.password-strength-description {
+	font-size: 1.24rem;
+	color: $light-grey-1;
 }

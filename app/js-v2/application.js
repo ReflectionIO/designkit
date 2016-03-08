@@ -19,7 +19,7 @@ var FormFieldSelect = function($domElement) {
 
 	var $thisSelectBox = $domElement,
 			$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
-			$currentValue = $("<span>").addClass("ref-icon-after--angle-down js-dropdown-trigger");
+			$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
 
 	$thisSelectBox.find('option').each(function(){
 		
@@ -51,7 +51,7 @@ var FormFieldSelect = function($domElement) {
 																		})
 															);
 		}
-		
+
 	});
 
 	$currentValue.on("click", function(){
