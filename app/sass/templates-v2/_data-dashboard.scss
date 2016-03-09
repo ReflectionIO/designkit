@@ -1,17 +1,52 @@
 .page-data-dashboard {
+	padding-top: 2.3rem;
 	.page-title {
+    margin-left: -2px;
+    margin-right: 3.9rem;
+    padding-top: 0.1rem;
+    margin-bottom: 3rem;
 		display: inline-block;
 		vertical-align: top;
+		line-height: 1;
+    letter-spacing: -0.01em;
+	}
+	.page-header__page-toggle {
+		margin-right: 2rem;
 	}
 	.page-header__data-info-text {
+		padding-top: 17px;
 		display: inline-block;
 		vertical-align: top;
 		font-family: $brand-body-font;
-		font-size: 1.4rem;
-		color: #727686;
+		font-size: 1.2rem;
+		color: #5a5a68;
+		&:after {
+	    top: -3px;
+	    padding-left: 7px;
+	    font-size: 16px;
+	    color: $light-grey-2;
+		}
 	}
 	.page-header_action-button {
 		float: right;
+	}
+	.secondary-filters-container {
+		.secondary-filter {
+			.form-field--select__box {
+				min-width: auto;
+			}
+			&:nth-child(1),
+			&:nth-child(2) {
+				margin-right: 1rem;
+				.form-field--select__box {
+					min-width: 94px;
+				}	
+			}
+		}
+		.form-field--checkbox-list {
+			margin-left: 1rem;
+    	padding-top: 0.9rem;
+		}		
 	}
 	.toggle-container--chart-type {
 		float: right;
@@ -19,16 +54,16 @@
 	.chart-container {
 		width: 50%;
 		height: 416px;
-		padding-top: 18px;
+		padding-top: 12px;
 		margin-bottom: 2rem;
 		display: inline-block;
 		float: left;
 		background-color: #f1f5f7;
-		border-top: 1px solid $light-grey-2;
-		border-bottom: 1px solid $light-grey-2;
+		border-top: 1px solid $divider-grey;
+		border-bottom: 1px solid $divider-grey;
 	}
 	.chart-container:first-child {
-		border-right: 1px solid $light-grey-2;
+		border-right: 1px solid $divider-grey;
 	}
 	.chart-container__header {
 		padding-left: 20px;
@@ -40,7 +75,8 @@
 		display: inline-block;
 	}
 	.chart-summary {
-		padding-left: percentage(73/567);
+		padding-top: 6px;
+		padding-left: 18.9%;
 		display: inline-block;
 		vertical-align: top;
 	}
@@ -52,7 +88,7 @@
 	}
 	.total-for-period-title,
 	.growth-on-last-period-title {
-		padding-bottom: 0.9rem;
+		padding-bottom: 0.7rem;
 		display: block;
 		font-family: $brand-heading-font;
 		font-size: 1.4rem;

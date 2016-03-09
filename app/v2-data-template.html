@@ -38,18 +38,18 @@
 		<div id="main" class="l-main" role="main">
 			<div class="page-data-dashboard">
 				<div class="grid-container">
-					<h1 class="heading-style--heading-three page-title">My Apps</h1>
+					<h1 class="heading-style--heading-two page-title">My Apps</h1>
 					
-					<div class="toggle-container">
-						<div class="filter-toggle filter-toggle--with-text">
+					<div class="toggle-container page-header__page-toggle">
+						<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
 							<div class="toggle">
-								<input id="toggle--show-overview" name="radiogroupname" checked type="radio">
+								<input id="toggle--show-overview" name="overview-country" checked type="radio">
 								<label for="toggle--show-overview">
 									Overview
 								</label>
 							</div>
 							<div class="toggle">
-								<input id="toggle--show-country" name="radiogroupname" type="radio">
+								<input id="toggle--show-country" name="overview-country" type="radio">
 								<label for="toggle--show-country">
 									By Country
 								</label>
@@ -59,72 +59,115 @@
 
 					<span class="ref-icon-after--question page-header__data-info-text">All Actual Data</span>
 
-					<button class="ref-button--cta-small page-header_action-button">Download CSV</button>
+					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
 				</div>
 
 				<div class="grid__row">
 					<aside class="primary-filters-container">
-						<div class="primary-filter">All Store Accounts</div>
-						<div class="primary-filter">01/01/2016 - 01/02/2016</div>
-						<div class="primary-filter">All Countries</div>
-						<div class="primary-filter">All Categories</div>
-						<div class="primary-filter">All Devices</div>
+ 						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Store Accounts</option>
+						    <option value="ios">iOS</option>
+						    <option value="play">Google Play</option>
+						    <option value="amazon">Amazon App Store</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="jan" selected>01/01/16 - 01/02/16</option>
+						    <option value="feb">01/02/16 - 01/03/16</option>
+						    <option value="mar">01/03/16 - 01/04/16</option>
+						    <option value="apr">01/04/16 - 01/05/16</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Countries</option>
+						    <option value="uni">United Kingdom</option>
+						    <option value="fra">France</option>
+						    <option value="ger">Germany</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Categories</option>
+						    <option value="uni">Games</option>
+						    <option value="fra">Lifestyle</option>
+						    <option value="ger">Productivity</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Devices</option>
+						    <option value="ipa">iPad</option>
+						    <option value="iph">iPhone</option>
+							</select>
+						</div>
 					</aside>
 				</div>
 
 				<aside class="grid-container secondary-filters-container">
-					<div class="secondary-filter">All Revenue</div>
-					<div class="secondary-filter">Overlay Apps</div>
-
-					<div class="toggle-container">
-						<div class="filter-toggle filter-toggle--with-text">
-							<div class="toggle">
-								<input id="toggle--show-overview" name="chartfunctions" checked type="radio">
-								<label for="toggle--show-overview">
-									Events
-								</label>
-							</div>
-							<div class="toggle">
-								<input id="toggle--show-country" name="chartfunctions" type="radio">
-								<label for="toggle--show-country">
-									Revenue Split
-								</label>
-							</div>
-							<div class="toggle">
-								<input id="toggle--show-country" name="chartfunctions" type="radio">
-								<label for="toggle--show-country">
-									Cumulative
-								</label>
-							</div>
-							<div class="toggle">
-								<input id="toggle--show-country" name="chartfunctions" type="radio">
-								<label for="toggle--show-country">
-									Move (0/3)
-								</label>
-							</div>
-						</div>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="allrev" selected>All Revenue</option>
+					    <option value="pairev">Paid Revenue</option>
+					    <option value="iaprev">IAP Revenue</option>
+					    <option value="adrev">Ad Revenue</option>
+					    <option value="subrev">Subscription Revenue</option>
+						</select>
+					</div>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="overlayapps" selected>Overlay Apps (0)</option>
+					    <option value="candy">Candy Crush Saga</option>
+					    <option value="clash">Clash of Clans</option>
+					    <option value="soccerstars">Soccer Stars</option>
+					    <option value="eightball">8 Ball Pool</option>
+						</select>
 					</div>
 
-					<div class="toggle-container toggle-container--chart-type">
-						<div class="filter-toggle filter-toggle--with-text">
-							<div class="toggle">
-								<input id="toggle--show-overview" name="charttype" checked type="radio">
-								<label for="toggle--show-overview">
-									Line
-								</label>
-							</div>
-							<div class="toggle">
-								<input id="toggle--show-country" name="charttype" type="radio">
-								<label for="toggle--show-country">
-									Stacked
-								</label>
-							</div>
-							<div class="toggle">
-								<input id="toggle--show-country" name="charttype" type="radio">
-								<label for="toggle--show-country">
-									Bar
-								</label>
-							</div>
+					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+						<ul>
+							<li>
+								<input type="checkbox" name="checkboxOne" id="checkboxOne">
+								<label for="checkboxOne" class="checkboxLabel">Events</label>
+								<label for="checkboxOne" class="checkboxLabelVisible">Events</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxTwo" id="checkboxTwo">
+								<label for="checkboxTwo" class="checkboxLabel">Revenue Split</label>
+								<label for="checkboxTwo" class="checkboxLabelVisible">Revenue Split</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxThree" id="checkboxThree">
+								<label for="checkboxThree" class="checkboxLabel">Cumulative</label>
+								<label for="checkboxThree" class="checkboxLabelVisible">Cumulative</label>
+							</li>
+						</ul>
+					</div>
+
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="overlayapps" selected>More (0/3)</option>
+					    <option value="candy">Device Breakdown</option>
+					    <option value="clash">Re-downloads</option>
+					    <option value="soccerstars">Installed Updates</option>
+					    <option value="eightball">Revenue/Download Comparison</option>
+						</select>
+					</div>
+
+					<div class="filter-toggle filter-toggle--with-text filter-toggle--small toggle-container--chart-type">
+						<div class="toggle">
+							<input id="toggle--show-split-graph" name="splitgraph" checked type="radio">
+							<label for="toggle--show-split-graph">
+								Split Graph
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-one-graph" name="splitgraph" type="radio">
+							<label for="toggle--show-one-graph">
+								One Graph
+							</label>
 						</div>
 					</div>
 
@@ -133,15 +176,15 @@
 				<div class="grid__row">
 					<section class="chart-container">
 						<header class="chart-container__header">
-							<h2 class="chart-heading heading-style--heading-four">Revenue</h2>
+							<h2 class="chart-heading heading-style--heading-three">Revenue</h2>
 							<dl class="chart-summary">
 								<div class="total-for-period-container">
 									<dd class="total-for-period-title">Total for Period</dd>
 									<dt class="total-for-period">$10,428,173</dt>
 								</div>
 								<div class="growth-on-last-period-container">
-									<dd class="growth-on-last-period-title ref-icon-after--question">% Growth on Last Period</dd>
-									<dt class="growth-on-last-period positive-colour">+23%</dt>
+									<dd class="growth-on-last-period-title ref-icon-after--question">% Growth HERE</dd>
+									<dt class="growth-on-last-period positive-colour">+ 23%</dt>
 								</div>
 							</dl>
 						</header>
@@ -150,15 +193,15 @@
 					</section>
 					<section class="chart-container">
 						<header class="chart-container__header">
-							<h2 class="chart-heading heading-style--heading-four">Downloads</h2>
+							<h2 class="chart-heading heading-style--heading-three">Downloads</h2>
 							<dl class="chart-summary">
 								<div class="total-for-period-container">
 									<dd class="total-for-period-title">Total for Period</dd>
 									<dt class="total-for-period">$10,428,173</dt>
 								</div>
 								<div class="growth-on-last-period-container">
-									<dd class="growth-on-last-period-title ref-icon-after--question">% Growth on Last Period</dd>
-									<dt class="growth-on-last-period negative-colour">-1%</dt>
+									<dd class="growth-on-last-period-title ref-icon-after--question">% Growth</dd>
+									<dt class="growth-on-last-period negative-colour">- 1%</dt>
 								</div>
 							</dl>
 						</header>
@@ -607,11 +650,19 @@
 	<div id="js-appendScriptsContainer"></div>
 
 	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
-  <script src="js-v2/app-modules.js"></script>
+  <script src="js-v2/application.js"></script>
 
   <script>
   	function initScripts() {
   		new Page();
+  		new PrimaryFilters();
+  		new FormInteractions();
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  		$('.js-tabs').each(function() {
+  			new Tabs($(this));
+  		});
   	}
 
   	window.onready = initScripts();
