@@ -4,6 +4,7 @@
 }
 .filter-toggle {
 	display: inline-block;
+	float: left;
 	vertical-align: top;
 	font-size: 0;
 	.toggle {
@@ -23,6 +24,7 @@
 	}
 	label {
 		position: relative;
+		padding: 8px 10px;
 		box-sizing: border-box;
 		display: inline-block;
 		z-index: 1;
@@ -33,10 +35,18 @@
 		border-left: 1px solid $light-grey-2;
 		background-color: #f2f7f7;
 		cursor: pointer;
+		svg {
+			width: 18px;
+			height: 18px;
+			float: left;
+			path, polygon {
+				fill: $mid-grey-2;
+			}
+		}
 		&:hover {
 			color: #5a5a68;
 			background-color: #e1e5e8;
-		}
+		}		
 	}
 	input {
 		position: absolute;
@@ -48,6 +58,11 @@
 			color: $reflection-white;
 			border-color: #5551a4;
 			background-color: $reflection-purple;
+			svg {
+				path, polygon {
+					fill: $reflection-white;
+				}
+			}
 			&:after {
 				content: "";
 				position: absolute;
@@ -87,5 +102,38 @@
 			padding: 1.1rem 1.5rem 1.4rem 1.5rem;
 			font-size: 1.6rem;
 		}
+	}
+}
+.toggle-split-graph,
+.toggle-single-graph {
+	svg {
+		.chart-lines {
+			fill: $mid-grey-2;
+		}
+		.base-lines {
+			fill: #b2b5c0;
+		}
+	}
+	input:checked ~ label {
+		svg {
+			.chart-lines {
+				fill: $reflection-white;
+			}
+			.base-lines {
+				fill: #bfbdee;
+			}
+		}
+	}
+}
+.toggle-split-graph {
+	label svg {
+		width: 39px;
+		height: 18px;
+	}
+}
+.toggle-single-graph {
+	label svg {
+		width: 32px;
+		height: 18px;
 	}
 }

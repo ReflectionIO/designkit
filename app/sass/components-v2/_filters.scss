@@ -59,7 +59,7 @@
 	width: auto;
 	max-width: 100%;
 	.form-field--select__box {
-		min-width: 101px;
+		min-width: 85px;
 		padding: 10px 42px 10px 15px;    
 		display: block;
 		font-family: $brand-heading-font;
@@ -102,6 +102,49 @@
 		li {
 			margin-bottom: 5px;
 			font-size: 14px;
+			white-space: nowrap;
+		}
+	}
+}
+.form-field--search {
+	width: 176px;
+	padding: 8px 13px 8px 15px;    
+	display: inline-block;
+	border: 1px solid $light-grey-2;
+	border-radius: 3px;
+	background-color: #f2f7f7;
+	@include ellipses();
+	input {
+		width: calc(100% - 25px);
+		display: inline-block;
+		float: left;
+		font-family: $brand-heading-font;
+		font-size: 14px;
+		color: $dark-grey-1;
+	}
+	input::-webkit-input-placeholder,
+	input:-moz-placeholder,
+	input::-moz-placeholder,
+	input:-ms-input-placeholder {
+		font-family: $brand-heading-font;
+		font-size: 14px;
+		color: $light-grey-1;
+	}
+	&.secondary-filter {
+		cursor: default;
+	}
+	span {
+		position: absolute;
+		top: 0;
+		left: -999rem;
+	}
+	.ref-icon-after--search {
+		display: inline-block;
+		float: right;
+		&:after {
+			width: 14px;			
+			font-size: 18px;
+			color: $light-grey-1;
 		}
 	}
 }
@@ -231,8 +274,7 @@
 	float: left;
 	font-size: 0;
 	background-color: #f1f5f7;
-	.form-field--select__box,
-	.filter-toggle label {
+	.form-field--select__box {
 		background-color: $reflection-white;
 		&:hover {
 			background-color: $panel-grey;
