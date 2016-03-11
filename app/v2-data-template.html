@@ -185,14 +185,14 @@
 					<div class="filter-toggle toggle-container--chart-type">
 						<div class="toggle toggle-split-graph">
 							<input id="toggle--show-split-graph" name="splitgraph" checked type="radio">
-							<label for="toggle--show-split-graph">
+							<label for="toggle--show-split-graph" class="js-mock-show-split-chart">
 								<svg x=0px y=0px viewBox="0 0 39 18"enable-background="new 0 0 39 18"xml:space=preserve><g><path class=chart-lines d="M1,14.2l-1-0.6l3.2-4.9l3.5,1.6l3.5-6.4l4,1.8l3.4-3.8l0.9,0.8l-4,4.4l-3.7-1.7l-3.5,6.4
 		l-3.5-1.6L1,14.2z M38.7,10.3l-0.6-1l-3.5,2.2l-3.4-0.5l-3.4-4l-4-1.8l-3.2,3.7l0.9,0.8l2.6-3L27,8l3.6,4.1l4.3,0.6L38.7,10.3z"/><path class=base-lines d="M18.6,17H0v-1.2h18.6V17z M39,15.8H20.4V17H39V15.8z"/></g></svg>
 							</label>
 						</div>
 						<div class="toggle toggle-single-graph">
 							<input id="toggle--show-one-graph" name="splitgraph" type="radio">
-							<label for="toggle--show-one-graph">
+							<label for="toggle--show-one-graph" class="js-mock-show-single-chart">
 								<svg x=0px y=0px viewBox="0 0 32 18"enable-background="new 0 0 32 18"xml:space=preserve><g><polygon class=chart-lines fill=#727686 points="24.9,11.5 18.3,11 14.9,8.7 18.3,5.1 25.1,6.9 32,2.6 31.4,1.6 24.9,5.6 17.9,3.8 
 										13.9,8 12.1,6.9 5.5,5.2 0.1,8.7 0.7,9.7 5.7,6.4 11.6,8 13,8.9 11.7,10.3 5.5,8.7 0,13.5 0.8,14.3 5.8,10 12.1,11.6 14,9.6 
 										17.9,12.1 25.1,12.7 31.9,10.3 31.5,9.2 	"/><polyline class=base-lines fill=#B2B5C0 points="0.1,15.8 0.1,17 31.9,17 31.9,15.8 	"/></g></svg>
@@ -203,32 +203,91 @@
 				</aside>
 
 				<div class="grid__row">
-					<section class="chart-container">
-						<header class="chart-container__header">
-							<h2 class="chart-heading heading-style--heading-three">Revenue</h2>
-							<dl class="chart-summary">
-								<div class="total-for-period-container">
-									<dd class="total-for-period-title">Total for Period / % Growth</dd>
-									<dt class="total-for-period">$7,501,876 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
-								</div>
-							</dl>
-						</header>
-						<div class="chart" id="chart-revenue">
-						</div>
-					</section>
-					<section class="chart-container">
-						<header class="chart-container__header">
-							<h2 class="chart-heading heading-style--heading-three">Downloads</h2>
-							<dl class="chart-summary">
-								<div class="total-for-period-container">
-									<dd class="total-for-period-title">Total for Period / % Growth</dd>
-									<dt class="total-for-period">3,578,160 <span class="growth-on-last-period negative-colour"> - 100%</span></dt>
-								</div>
-							</dl>
-						</header>
-						<div class="chart" id="chart-downloads">
-						</div>
-					</section>
+					<ul class="tabs-content-list">
+						<li class="is-active" id="split-chart-container">
+							<section class="chart-container chart-container--split">
+								<header class="chart-container__header">
+									<h2 class="chart-heading heading-style--heading-three">Revenue</h2>
+									<dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Total for Period / % Growth</dd>
+											<dt class="total-for-period">$7,501,876 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
+										</div>
+									</dl>
+								</header>
+								<aside class="custom-chart-key">
+									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+										<ul>
+											<li class="revenue-key">
+												<input type="checkbox" name="showhiderevenue" id="showhiderevenue" class="js-toggle-total-series" data-chart-index="0" data-series-index="0" checked>
+												<label for="showhiderevenue" class="checkboxLabel">Total</label>
+												<label for="showhiderevenue" class="checkboxLabelVisible">Total</label>
+											</li>
+										</ul>
+									</div>
+								</aside>
+								<div class="chart" id="chart-revenue"></div>
+							</section>
+							<section class="chart-container chart-container--split">
+								<header class="chart-container__header">
+									<h2 class="chart-heading heading-style--heading-three">Downloads</h2>
+									<dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Total for Period / % Growth</dd>
+											<dt class="total-for-period">3,578,160 <span class="growth-on-last-period negative-colour"> - 100%</span></dt>
+										</div>
+									</dl>
+								</header>
+								<aside class="custom-chart-key">
+									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+										<ul>
+											<li class="downloads-key">
+												<input type="checkbox" name="showhidedownloads" id="showhidedownloads" class="js-toggle-total-series" data-chart-index="1" data-series-index="0" checked>
+												<label for="showhidedownloads" class="checkboxLabel">Total</label>
+												<label for="showhidedownloads" class="checkboxLabelVisible">Total</label>
+											</li>
+										</ul>
+									</div>
+								</aside>
+								<div class="chart" id="chart-downloads"></div>
+							</section>
+						</li>
+						<li id="single-chart-container">
+							<section class="chart-container chart-container--single">
+								<header class="chart-container__header">
+									<dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Revenue for Period / % Growth</dd>
+											<dt class="total-for-period">$7,501,876 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
+										</div>
+									</dl>
+									<dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Downloads for Period / % Growth</dd>
+											<dt class="total-for-period">3,578,160 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
+										</div>
+									</dl>
+								</header>
+								<aside class="custom-chart-key">
+									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+										<ul>
+											<li class="revenue-key">
+												<input type="checkbox" name="showhiderevenuesingle" id="showhiderevenuesingle" class="js-toggle-total-series" data-chart-index="2" data-series-index="0" checked>
+												<label for="showhiderevenuesingle" class="checkboxLabel">Revenue</label>
+												<label for="showhiderevenuesingle" class="checkboxLabelVisible">Revenue</label>
+											</li>
+											<li class="downloads-key">
+												<input type="checkbox" name="showhidedownloadssingle" id="showhidedownloadssingle" class="js-toggle-total-series" data-chart-index="2" data-series-index="1" checked>
+												<label for="showhidedownloadssingle" class="checkboxLabel">Downloads</label>
+												<label for="showhidedownloadssingle" class="checkboxLabelVisible">Downloads</label>
+											</li>
+										</ul>
+									</div>
+								</aside>
+								<div class="chart" id="chart-revenue-downloads"></div>
+							</section>
+						</li>
+					</ul>
 				</div>
 
 				<div class="grid-container">
@@ -281,7 +340,7 @@
 							<div class="form-field--checkbox-list form-field--checkbox-list--inline">
 								<ul>
 									<li>
-										<input type="checkbox" name="checkboxTotals" id="checkboxTotals">
+										<input type="checkbox" name="checkboxTotals" id="checkboxTotals" checked>
 										<label for="checkboxTotals" class="checkboxLabel">Totals</label>
 										<label for="checkboxTotals" class="checkboxLabelVisible">Totals</label>
 									</li>
@@ -995,7 +1054,14 @@
 	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
 
+  <script src="js/vendor/highcharts-custom.js"></script>
   <script>
+  	// Utility function
+		Date.prototype.addHours= function(h){
+      this.setHours(this.getHours()+h);
+      return this;
+    }
+
   	function initScripts() {
   		new Page();
   		new PrimaryFilters();
@@ -1021,6 +1087,658 @@
   		$('.js-whats-this-tooltip').each(function(){
   			new WhatsThisPopup($(this));
   		});
+
+			$('.js-mock-show-split-chart').on("click", function(){
+  			$('#split-chart-container').addClass("is-active");
+  			$('#single-chart-container').removeClass("is-active");
+  		});
+  		$('.js-mock-show-single-chart').on("click", function(){
+  			$('#split-chart-container').removeClass("is-active");
+  			$('#single-chart-container').addClass("is-active");
+  			if(pageCharts.length < 3) {
+  				generateChart('chart-revenue-downloads', "downloads", true);
+  			}
+  		});
+
+  		// HIGHCHARTS
+  		var monthNames = [
+        "Jan", "Feb", "Mar",
+        "Apr", "May", "Jun", "Jul",
+        "Aug", "Sep", "Oct",
+        "Nov", "Dec"
+      ];
+
+      var hasBeenSet = false,
+      		lastPoint;
+
+	    (function (H) {
+
+	      var customIconRect;
+	      H.wrap(H.Tooltip.prototype, 'refresh', function (proceed) {
+
+	        proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+
+	        if(this.chart.customIconRect !== undefined) {
+	          this.chart.customIconRect.destroy();
+	        }
+
+	        var $axisLabel = $(this.chart.container).find('.highcharts-axis-label'),
+	            leftOffset = 29,
+	            axisLabelYPos = $("#" + arguments[1][0].series.chart.container.id + "").height() - arguments[1][0].series.xAxis.bottom,
+	            //axisLabelYPos = arguments[1][0].series.chart.containerHeight - arguments[1][0].series.xAxis.bottom,
+	            axisLabelXPos = arguments[1][0].plotX - leftOffset,
+	            timeStampString = arguments[1][0].x + "",
+	            timeStampString = timeStampString.substring(0,10),
+	            xAxisDate = new Date(timeStampString*1000).addHours(12),
+	            formattedDate = xAxisDate.getDate() + " " + monthNames[xAxisDate.getMonth()];
+
+	        if($axisLabel.length > 0) {       
+
+	          var labelYPos = axisLabelYPos + 18,
+	              labelXPos = axisLabelXPos + 7;
+
+	          $axisLabel.attr("transform", "translate(" + labelXPos + "," + labelYPos + ")");
+	          $axisLabel.find("text").text(formattedDate);
+
+	        } else {
+	          this.chart.renderer.label(formattedDate, axisLabelXPos+7, axisLabelYPos + 18, 'callout', 0, 0, false, true, "axis-label")
+	          .css({
+	            color: '#fcfdfd',
+	            fontSize: '12px',
+	            fontFamily: 'Source Sans Pro',
+	            fontWeight: 600
+	          })
+	          .attr({
+	            zIndex: 100
+	          })
+	          .add();
+	        }
+
+	        this.chart.customIconRect = this.chart.renderer.image('images/axis-label-background.png', axisLabelXPos, axisLabelYPos + 4, 54, 20)
+	        .attr({
+	          zIndex: 99
+	        })
+	        .add();
+
+
+	        // MIRROR A SPLIT GRAPH HOVER
+	        if(pageCharts.length > 1) {
+	        	if(arguments[1][0].series.name == 'revenue') {
+	        		chartIndexToHover = 1;
+	        	} else if(arguments[1][0].series.name == 'downloads') {
+	        		chartIndexToHover = 0;
+	        	}
+	        	var pointIndex = arguments[1][0].index;
+	        	if(!hasBeenSet) {
+	        		hasBeenSet = true;
+	        		if(lastPoint) {
+	        			pageCharts[chartIndexToHover].series[0].data[lastPoint].setState();
+            		pageCharts[chartIndexToHover].tooltip.hide();	        			
+	        		}
+	        		lastPoint = pointIndex;
+							pageCharts[chartIndexToHover].series[0].data[pointIndex].setState('hover');
+	        		pageCharts[chartIndexToHover].tooltip.refresh([pageCharts[chartIndexToHover].series[0].points[pointIndex]]);
+		        		
+		        	setTimeout(function(){
+		        		hasBeenSet = false;
+		        	}, 10);
+		        }
+	        }
+
+
+	        // EVENTS
+	        	// destroy any existing labels
+	        var thisPlotX = arguments[1][0].plotX,
+	        		eventTooltip;
+
+	        		if(this.chart.eventTooltips) {
+	        			for (var t = 0; t < this.chart.eventTooltips.length; t++) {
+	        				this.chart.eventTooltips[t].destroy();
+	        			}
+	        		}
+	        		this.chart.eventTooltips = [];
+
+	        	// remove existing animating CSS class for icons
+	        $(".event-icon--launch.is-animating").each(function() {
+	        	$(this).attr("class", "animation-complete event-icon--launch");
+	        });
+	        $(".event-icon--flag.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--flag");
+	        });
+	        
+	        // create tooltip on event hover
+        	var eventsCounter = 0,
+	        			previousEventPlotX;
+	        			window.animatingFlags = false;
+
+	        if(this.chart.events) {
+	        	for (var e = 0; e < this.chart.events.length; e++) {
+			      	if(this.chart.events[e].plotX == thisPlotX) {
+			      		// check if previous event plotX = this plotX to calculate label spacing
+			      		if(previousEventPlotX) {
+			      			if(previousEventPlotX == this.chart.events[e].plotX) {
+			      				eventsCounter++;
+			      			} else {
+			      				eventsCounter = 0;
+			      			}
+			      		}
+			      		previousEventPlotX = this.chart.events[e].plotX;
+
+			      		var labelTopSpace = axisLabelYPos + 41 + (eventsCounter * 35);
+			      		var eventIcon = this.chart.events[e].icon.element;
+			        	eventTooltip = this.chart.renderer.label($(eventIcon).data("tooltip"), this.chart.series[0].data[$(eventIcon).data("datapoint")].plotX - 28, labelTopSpace, 'callout')
+			            .css({
+			                color: $(eventIcon).data("tooltipcolour")
+			            })
+			            .attr({
+			                fill: $(eventIcon).data("tooltipfill"),
+			                padding: 7,
+			                r: 5,
+			                zIndex: 6
+			            })
+			            .addClass("event-label")
+			            .add();
+
+			         	this.chart.eventTooltips.push(eventTooltip);
+
+			         	// add event icon animate CSS class - NOT COMPLETE
+			         	var currentCSSClass = $(this.chart.events[e].icon.element).attr("class");
+		      			$(this.chart.events[e].icon.element).attr("class", "is-animating " + currentCSSClass);
+		      			if(currentCSSClass.indexOf("event-icon--flag") > -1) {
+		      				this.chart.events[e].flag = null;
+		      				this.chart.events[e].flag = Snap(this.chart.events[e].icon.element);
+			      			var thisFlag = this.chart.events[e].flag;
+			      			window.animatingFlags = true;
+			      			animateSquash = function(flagToAnimate) {
+		      					flagToAnimate.animate({width: 15}, 100, function(){
+		      						flagToAnimate.animate({width: 18}, 100, function() {
+		      							if(window.animatingFlags) {
+		      								animateSquash(flagToAnimate);
+		      							}      							
+		      						});
+		      					});
+			      			}
+			      			animateSquash(Snap(this.chart.events[e].icon.element));
+		      			}
+			        }
+			      }
+	        }
+	      });
+
+				H.wrap(H.Series.prototype, 'hide', function (proceed) {
+
+				  // Before the hide function
+				  var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent-fade");
+				  var instance = this;
+				  // Now apply the original function with the original arguments, 
+				  // which are sliced off this function's arguments
+				  setTimeout(function() {
+				  	proceed.apply(instance, Array.prototype.slice.call(arguments, 1));
+				  	par.attr("class", "highcharts-series");
+				  }, 200);
+				});
+
+				H.wrap(H.Series.prototype, 'show', function (proceed) {
+
+				  // Before the show function
+				  var graphId = this.graph.element.id;
+				  // Now apply the original function with the original arguments, 
+				  // which are sliced off this function's arguments
+				  proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+
+				  // after show()
+				  // var currentPath = this.graph.d;
+				  // var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent");
+				  // setTimeout(function() {
+				  // 	var el = Snap('#' + graphId);
+      //       var pathList = el.node.getPathData();
+      //       var flatPath = "";
+      //       for(var x=0; x < pathList.length; x++) {
+      //         flatPath += pathList[x].type + " " + pathList[x].values[0] + " 454 ";
+      //       }
+      //       el.attr("d", flatPath);
+				  // 	par.attr("class", "highcharts-series");
+				  // 	setTimeout(function() {
+				  // 		el.animate({ d: currentPath }, 800, mina.elastic);
+				  // 	}, 400);
+
+				  // 	var elFill = Snap('#' + graphId + 'fill');
+				  // 	var currentPathFill = $('#' + graphId + 'fill').attr("d");
+      //       var pathList = elFill.node.getPathData();
+      //       var flatFillPath = "";
+      //       for(var x=0; x < pathList.length; x++) {
+      //         flatFillPath += pathList[x].type + " " + pathList[x].values[0] + " 454 ";
+      //       }
+      //       elFill.attr("d", flatFillPath);
+				  // 	setTimeout(function() {
+				  // 		elFill.animate({ d: currentPathFill }, 800, mina.elastic);
+				  // 	}, 400);
+				  // }, 100);
+
+				});
+	    }(Highcharts));
+
+	    Highcharts.setOptions({
+	        colors: ['#f5c943', '#6d69c5', '#a5c1d8', '#0fa1be', '#e18293']
+	    });
+
+
+	    pageCharts = [];
+
+	    function generateChart(containerId, dataType, isMergedChart) {
+
+	    	var seriesColour,
+	    			seriesGradient,
+	    			seriesData = [
+	    				[29.9, 31.5, 61.4, 77.2, 80.0, 90.0, 100.6, 90.5, 80.4, 75.1, 70.6, 60.4, 40.9, 30.5, 20.4, 10.2, 65.0, 80.0, 90.0, 100.0, 75.6, 100.4, 110.2, 120.0, 105.5, 90.4, 80.0, 70.0, 60.0, 50.0],
+							[1000, 945, 874, 890, 990, 1030, 1100, 1150, 1180, 2100, 1900, 1800, 1765, 1546, 1647, 1787, 1545, 1322, 1211, 1106, 1154, 1043, 988, 777, 890, 850, 830, 801, 767, 654]
+	    			],
+	    			seriesArray = [],
+	    			yAxesSettings; // Mock only
+
+	    	if(isMergedChart) { // Mock only
+	    		yAxesSettings = [{
+	          offset: -27,
+	          showFirstLabel: false,
+	          showLastLabel: true,
+	          gridLineWidth: 0,
+	          labels: {
+	          	align: 'left',
+	          	style: {
+	          		color: '#81879d',
+	          		fontSize: "12px"
+	          	}
+	          },
+	          title: {
+	          	text: null
+	          }            
+	        },
+	        {
+	          offset: -25,
+	          showFirstLabel: false,
+	          showLastLabel: true,
+	          gridLineWidth: 0,
+	          opposite: true,
+	          labels: {
+	          	align: 'right',
+	          	style: {
+	          		color: '#6d69c5',
+	          		fontSize: "12px"
+	          	}
+	          },
+	          title: {
+	          	text: null
+	          }            
+	        }];
+
+	    		seriesArray = [{
+	           	yAxis: 0,
+	            name: "revenue",
+	            id : "revenue",
+	            color: "#f5c943",
+	            data: seriesData[0],
+	            pointStart: Date.UTC(2016, 0, 1),
+	            pointInterval: 24 * 3600 * 1000, // one day
+	            lineColor: seriesColour,
+	            lineWidth: 3.1,
+	            lineWidthPlus: 0,
+	            fillOpacity: 1,
+	            fillColor: {
+	              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+	              stops: [[0, 'rgba(237,214,18,0.35)'],[1, 'rgba(247,235,131,0.35)']]
+	            },
+	            marker: {
+	              enabled: false,
+	              states: {
+	                hover: {
+	                  enabled: true,
+	                  lineWidth: 0,
+	                  lineWidthPlus: 0,
+	                  radius: 4,
+	                  radiusPlus: 0,
+	                }
+	              }
+	            }
+	          },
+	          {
+	           	yAxis: 1,
+	            name: "downloads",
+	            id : "downloads",
+	            color: "#6d69c5",
+	            data: seriesData[1],
+	            pointStart: Date.UTC(2016, 0, 1),
+	            pointInterval: 24 * 3600 * 1000, // one day
+	            lineColor: seriesColour,
+	            lineWidth: 3,
+	            lineWidthPlus: 0,	            
+	            // fillColor: {
+	            //   linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+	            //   stops: [[0, 'rgba(156,153,227,0.35)'],[1, 'rgba(196,211,225,0.35)']]
+	            // },
+	            fillOpacity: 0,
+	            marker: {
+	              enabled: false,
+	              states: {
+	                hover: {
+	                  enabled: true,
+	                  lineWidth: 0,
+	                  lineWidthPlus: 0,
+	                  radius: 4,
+	                  radiusPlus: 0,
+	                }
+	              }
+	            }
+	          }
+	        ];
+	    	} else {
+	    		yAxesSettings = [{
+	          offset: -27,
+	          showFirstLabel: false,
+	          showLastLabel: true,
+	          gridLineWidth: 0,
+	          labels: {
+	          	align: 'left',
+	          	style: {
+	          		color: '#81879d',
+	          		fontSize: "12px"
+	          	}
+	          },
+	          title: {
+	          	text: null
+	          }            
+	        }];
+
+	    		seriesArray = [{
+	           	yAxis: 0,
+	            name: dataType,
+	            id : dataType,
+	            color: (dataType == 'revenue') ? "#f5c943" : "#6d69c5",
+	            data: (dataType == 'revenue') ? seriesData[0] : seriesData[1],
+	            pointStart: Date.UTC(2016, 0, 1),
+	            pointInterval: 24 * 3600 * 1000, // one day
+	            lineColor: seriesColour,
+	            lineWidth: 3.1,
+	            lineWidthPlus: 0,
+	            fillOpacity: 1,
+	            fillColor: {
+	              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+	              stops: (dataType == 'revenue') ? [[0, 'rgba(237,214,18,0.35)'],[1, 'rgba(247,235,131,0.35)']] : [[0, 'rgba(156,153,227,0.35)'],[1, 'rgba(196,211,225,0.35)']]
+	            },
+	            marker: {
+	              enabled: false,
+	              states: {
+	                hover: {
+	                  enabled: true,
+	                  lineWidth: 0,
+	                  lineWidthPlus: 0,
+	                  radius: 4,
+	                  radiusPlus: 0,
+	                }
+	              }
+	            }
+	          }
+	        ];
+				}
+
+	    	// Generate Demo Chart
+				var chart = new Highcharts.Chart({
+					chart: {
+	          renderTo: containerId,
+						marginLeft: 0,
+						marginRight: 0,
+						marginBottom: 24,
+						marginTop: 0,
+						spacing: [0,0,0,0],
+						height: 285,
+						backgroundColor: '#fcfdfd',
+						plotBackgroundColor: '#f2f2f5',
+			   		type: 'area',
+			   		animation: false,
+			   		style: {
+	            fontFamily: 'Source Sans Pro'
+	          }
+				  },
+				  legend: {
+				  	enabled: false
+				  },
+				  title: {
+	            text: ''
+	        },
+	        yAxis: yAxesSettings,
+	        xAxis: {
+	        	startOnTick: false,
+	        	endOnTick: false,
+	        	showFirstLabel: false,
+	          maxPadding: 0,
+	          minPadding: 0,
+	          type: 'datetime',
+	          dateTimeLabelFormats: {
+	              day: '%e %b'
+	          },
+	          tickmarkPlacement: 'on',
+	          tickPixelInterval: 30,
+	          tickLength: 0,     
+	          labels: {
+	          	align: 'center',
+	            x: 0,
+	            y: 18,
+	            step: 4,
+	            style: {
+	              color: '#81879d',
+	              fontSize: "12px"
+	            }
+	          }
+	        },
+	        plotOptions: {
+	        	area: {
+	            trackByArea: false,
+	        		tooltip: {
+	        			followPointer: true
+	        		},
+	        		states: {
+	        			hover: {
+	        				halo: {
+	        					size: 0
+	        				},
+	        				lineWidthPlus: 0
+	        			}
+	        		}        		
+	        	},
+	          series: {
+	            events: {
+	              click: function() {
+	                var that = this;
+
+	                for(var i = 0; i < this.chart.series.length; i++) {
+	                  if(i !== that.index) {
+	                    var count = 0;
+	                    var isCurrentlyHighlighted = false;
+	                    $('#container .highcharts-series').each(function(){
+	                      if(count == i) {
+	                        var thisFillPath = $(this).find('path:nth-child(2)');                        
+	                        if(thisFillPath.attr("stroke-width") == 3.1) {
+	                          isCurrentlyHighlighted = true
+	                          that.chart.series[i].update({
+	                            lineWidth: 3
+	                          });           
+	                          var counterTwo = 0;
+	                          $('#container .highcharts-series').each(function(){
+	                            if(counterTwo == count) {
+	                              thisFillPath = $(this).find('path:nth-child(2)');
+	                            }
+	                            counterTwo++;
+	                          });                          
+	                          thisFillPath.css("opacity", "1");
+	                          thisFillPath.animate({ "opacity": 0.4 }, 250);
+	                          thisFillPath.siblings("path").css("opacity", "1");
+	                          thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+	                        }
+	                      }
+	                      count++;
+	                    });
+	                  }
+	                };
+
+	                this.update({
+	                  lineWidth: 3.1
+	                });
+
+	                $('#container .highcharts-series path:nth-child(2)').each(function(){
+	                  if($(this).attr("stroke-width") == 3.1) {
+	                    $(this).css("opacity", "1");
+	                    $(this).siblings("path").css("opacity", "0.1");
+	                    $(this).siblings("path").animate({ "opacity": 1 }, 250);
+	                  }
+	                });
+
+	                // read the graph line id's after this.udpate
+	                var counter = 0;
+
+	                $('#container .highcharts-series path:nth-child(2)').each(function(){
+	                  $(this).attr("id", "series" + counter);
+	                  $(this).parent('.highcharts-series').find('path:first-child').attr("id", "series" + counter + "fill");
+	                  counter++;
+	                });
+	              },
+	              // mouseOver: function () {
+	              //   setTimeout(function(){
+	              //     $('#container .highcharts-series path:nth-child(2)').each(function(){
+	              //       if($(this).attr("stroke-width") == 3) {
+	              //         $(this).css("opacity", 1);
+	              //       }
+	              //     });
+	              //   },10);
+	              // },
+	              // mouseOut: function () {
+	              //   setTimeout(function(){
+	              //     $('#container .highcharts-series path:nth-child(2)').each(function(){
+	              //       if($(this).attr("stroke-width") == 2) {
+	              //         $(this).css("opacity", 0.5);
+	              //       }
+	              //     });
+	              //   },10);
+	              // }
+	            },
+	            cursor: 'pointer',
+	            animation: false
+	          },
+	      	},
+	        series: seriesArray,
+	        tooltip: {
+	        	useHTML: true,
+	        	shared: true,
+	          formatter: function() {
+	            var instance = this;
+	            var s = "";            
+	            $.each(instance.points, function (index, value) {
+	                var chartSeries = value.series;
+	                var imgString = "";
+	                
+	                if(chartSeries.name == "revenue") {
+	                  imgString = "<img src=images/icon-chart-tooltip-revenue.png alt='Revenue icon' class=icon-revenue /> &pound;";
+	                } else if (chartSeries.name == "downloads") {
+	                  imgString = "<img src=images/icon-chart-tooltip-downloads.png alt='Downloads icon' class=icon-downloads />";
+	                }
+	                s += '<div class="custom-tooltip ' + chartSeries.name + '" style="background-color: ' + chartSeries.color + '">' + imgString + value.y + '</div>';
+	            });
+	            return s;
+	          },
+	        	backgroundColor: 'transparent',
+	          borderWidth: 0,
+	          borderColor: '#dae3ed',
+				    crosshairs: [{
+	            width: 0,
+	            color: '#9ea7c4'
+	          }],
+	          shadow: {
+	            color: 'rgba(0,0,0,0.24)',
+	            width: 0,
+	            offsetX: 1,
+	            offsetY: 1
+	        	},
+	        	snap: 25
+	        }
+		    });
+
+				// Hide/show series
+				$('.js-toggle-total-series').change(function(){
+					var $this = $(this);
+					var chartIndex = $this.data("chart-index");
+					var seriesIndex = $this.data("series-index");
+					if($(this).is(":checked")) {
+						pageCharts[chartIndex].series[seriesIndex].show();
+					} else {
+						// if($('#series1').attr("stroke-width") == 3.1) {
+						// 	handleHideGraphLine()
+						// }
+						setTimeout(function(){
+							pageCharts[chartIndex].series[seriesIndex].hide();
+						}, 200);
+					}
+				});
+
+				function handleHideGraphLine() {
+					for(var i = 0; i < chart.series.length; i++) {
+	          if(i !== 0) {
+	            var count = 0;
+	            var isCurrentlyHighlighted = false;
+	            $('#container .highcharts-series').each(function(){
+	              if(count == i) {
+	                var thisFillPath = $(this).find('path:nth-child(2)');                        
+	                if(thisFillPath.attr("stroke-width") == 3.1) {
+	                  isCurrentlyHighlighted = true
+	                  chart.series[i].update({
+	                    lineWidth: 3
+	                  });           
+	                  var counterTwo = 0;
+	                  $('#container .highcharts-series').each(function(){
+	                    if(counterTwo == count) {
+	                      thisFillPath = $(this).find('path:nth-child(2)');
+	                    }
+	                    counterTwo++;
+	                  });                          
+	                  thisFillPath.css("opacity", "1");
+	                  thisFillPath.animate({ "opacity": 0.4 }, 250);
+	                  thisFillPath.siblings("path").css("opacity", "1");
+	                  thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+	                }
+	              }
+	              count++;
+	            });
+	          }
+	        };
+
+	        chart.series[0].update({
+	          lineWidth: 3.1
+	        });
+
+	        $('#container .highcharts-series path:nth-child(2)').each(function(){
+	          if($(this).attr("stroke-width") == 3.1) {
+	            $(this).css("opacity", "1");
+	            $(this).siblings("path").css("opacity", "0.1");
+	            $(this).siblings("path").animate({ "opacity": 1 }, 250);
+	          }
+	        });
+
+	        // read the graph line id's after this.udpate
+	        var counter = 0;
+
+	        $('#container .highcharts-series path:nth-child(2)').each(function(){
+	          $(this).attr("id", "series" + counter);
+	          $(this).parent('.highcharts-series').find('path:first-child').attr("id", "series" + counter + "fill");
+	          counter++;
+	        });
+	      }
+
+	      pageCharts.push(chart);
+			}
+
+			setTimeout(function() {				
+				generateChart('chart-revenue', "revenue", false);
+				generateChart('chart-downloads', "downloads", false);
+				$('.chart-container').addClass('is-animated');
+			}, 500);
+
   	}
 
   	window.onready = initScripts();

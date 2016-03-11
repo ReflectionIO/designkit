@@ -52,15 +52,21 @@
 		float: right;
 	}
 	.chart-container {
-		width: 50%;
-		height: 416px;
+		position: relative;
+		width: 100%;
+		height: 393px;
 		padding-top: 12px;
-		margin-bottom: 2rem;
+		margin-bottom: 1.8rem;
 		display: inline-block;
 		float: left;
-		background-color: #f1f5f7;
+		background-color: $panel-grey;
 		border-top: 1px solid $divider-grey;
-		border-bottom: 1px solid $divider-grey;
+		&.chart-container--split {
+			width: 50%;
+		}
+		&.chart-container--single {
+			padding-top: 18px;
+		}
 	}
 	.chart-container:first-child {
 		border-right: 1px solid $divider-grey;
@@ -76,19 +82,14 @@
 		display: inline-block;
 	}
 	.chart-summary {
-		position: absolute;
-    top: 5px;
-    right: 0%;
 		display: inline-block;
 		vertical-align: top;
 	}
 	.total-for-period-container {
-		padding-right: 22px;
 		display: inline-block;
 		vertical-align: top;
 	}
 	.total-for-period-title {
-		padding-right: 1rem;
 		display: inline-block;
 		vertical-align: bottom;
 		font-family: $brand-heading-font;
@@ -106,8 +107,6 @@
 		font-size: 2rem;
 	}
 	.growth-on-last-period {
-		padding-left: 0.5rem;
-		padding-bottom: 1px;
 		display: inline-block;
 		font-size: 1.6rem;
 		font-weight: 700;
@@ -130,7 +129,58 @@
 			font-size: 18px;
 			color: $light-grey-2;
 		}
-	}	
+	}
+	.chart-container--split {
+		.chart-summary {
+			position: absolute;
+	    top: 5px;
+	    right: 0%;
+		}
+		.total-for-period-container {
+			padding-right: 22px;
+		}
+		.total-for-period-title {
+			padding-right: 1rem;
+		}
+		.growth-on-last-period {
+			padding-left: 0.5rem;
+			padding-bottom: 1px;
+		}
+	}
+	.chart-container--single {
+		.chart-summary {
+			position: relative;
+			margin-right: 42px;
+		}
+		.total-for-period-container {
+			vertical-align: top;
+		}
+		.total-for-period-title {
+			padding-right: 10px;
+			vertical-align: top;
+		}
+		.total-for-period {
+			margin-top: -2px;
+			vertical-align: top;
+		}
+		.growth-on-last-period {
+			padding-left: 5px;
+		}
+		.chart {
+			margin-top: 69px;
+		}
+	}
+	.chart {
+		height: 285px;
+		width: 100%;
+		margin-top: 61px;
+		overflow: visible;
+	}
+	.custom-chart-key {
+		position: absolute;
+		top: 58px;
+		left: 22px;
+	}
 }
 .data-table-section {
 	padding: 0 2% 0 0;
