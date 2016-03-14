@@ -36,24 +36,10 @@
 		padding-top: 3.5rem;
 	}
 	@include breakpoint($laptop) {
-		padding-top: 8.5rem;
+		padding-top: 5rem;
 	}
-	@media screen and (max-width: $laptop-plus) {
-		.panel-left-open & {
-			padding-top: 4.5rem;
-		}
-		.panel-left-open.login-form-is-showing & {
-			padding-top: 2rem;
-		}
-		.panel-left-open.reset-password-form-is-showing & {
-			padding-top: 0;
-		}
-		.panel-left-open.reset-password-form-is-showing.apply-form-is-showing & {
-			padding-top: 4.5rem;
-		}
-	}
-	@media screen and (min-width: $laptop) and (min-height: 780px) {
-		padding-top: 12rem;
+	@media screen and (min-width: $laptop) and (min-height: 740px) {
+		padding-top: 9rem;
 	}
 	@media screen and (min-width: $laptop) and (min-height: 960px) {
 		padding-top: 18rem;
@@ -71,25 +57,11 @@
 	@include breakpoint($laptop) {
 		position: relative;
 		width: 46%;
-		margin-right: percentage(101/1220);
+		margin-right: 7%;
 		margin-bottom: 0;
 	}
-	@media screen and (max-width: $laptop-plus) {
-		.panel-left-open & {
-			width: 100%;
-			max-width: 600px;
-			padding-top: 20px;
-			margin-bottom: 1rem;
-			margin-right: 0;
-			display: inline-block;
-			vertical-align: top;
-			text-align: center;
-			overflow: visible;
-		}
-	}
 	@include breakpoint($desktop-wide) {
-		max-width: 800px;
-		margin-right: 6%;
+		max-width: 800px;	
 	}
 	h1 {
 		margin-bottom: 0.55em;
@@ -98,13 +70,13 @@
 		@include breakpoint($phablet) {
 			font-size: 3.5em;
 		}
-		@include breakpoint($laptop, true) {
+		@include breakpoint($laptop) {
 			font-size: 4.1em;
 		}
 	}
 	.p-style--featured {
 		font-size: 1.6rem;
-		@include breakpoint($laptop, true) {
+		@include breakpoint($laptop) {
 			font-size: 1.8em;
 		}
 	}
@@ -154,32 +126,20 @@
 	position: relative;
 	width: 100%;
 	max-width: 450px;
+	margin-top: 30px;
 	display: inline-block;
 	vertical-align: top;
 	overflow: visible;
 	text-align: left;
-	background-color: #f2f2f5;
+	background-color: #f2f2f5;	
 	@include breakpoint($laptop) {
 		position: relative;
 		top: 0px;
-		width: 40%;
+		width: 38%;
+		margin-top: 0px;
 	}
 	@include breakpoint($desktop) {
 		width: percentage(407/1220);
-	}
-	@media screen and (max-width: $laptop-plus) {
-		.panel-left-open & {
-			position: relative;
-			width: 100%;
-			max-width: 450px;
-			margin-top: 30px;
-			margin-bottom: 10rem;
-			display: inline-block;
-			vertical-align: top;
-			overflow: visible;
-			text-align: left;
-			background-color: #f2f2f5;
-		}
 	}
 	.connect-account-is-showing & {
 		padding: 30px 19px;
@@ -412,56 +372,60 @@
 		}
 	}
 }
-.account-access-page .account-access-content .list-partners,
-.account-access-page .account-access-content .list-partners {
-	position: relative;
-	left: 0;
-	bottom: 0;
-	margin-top: 0;
-	padding-top: 0.5rem;
-	width: 120%;
-	display: none;
-	margin-left: -10%;
-	overflow: visible;
-	@include breakpoint($tablet, true) {
-		display: inline-block;
-	}
-	h2 {
-		margin-top: 0.8rem;
-		margin-bottom: 1.7rem;
-	}
-	img {
-		max-width: 130px;
-		padding-bottom: 0;
-	}
-	li {
+.account-access-page {
+	.account-access-content .list-partners {
+		position: relative;
+		left: 0;
+		bottom: 0;
+		margin-top: 0;
+		padding-top: 0.5rem;
+		width: 120%;
 		display: none;
-		@include breakpoint($tablet, true) {
+		margin-left: -10%;
+		overflow: visible;
+		@include breakpoint($laptop) {
 			display: inline-block;
-			width: 23%;
 		}
-	}
-	@include breakpoint($tablet, true) {
-		padding-top: 3rem;
-	}
-	@include breakpoint($desktop, true) {
-		ul {
-			display: -webkit-box;
-		  /* @alternate */ display: -ms-flexbox;
-		  /* @alternate */ display: -webkit-flex;
-		  /* @alternate */ display: flex;
-		  flex-direction: row;
-		  justify-content: center;
-		  align-items: center;
+		h2 {
+			margin-top: 0.8rem;
+			margin-bottom: 1.7rem;
+		}
+		img {
+			max-width: 110px;
+			padding-bottom: 0;
+			@include breakpoint($desktop-wide) {
+				max-width: 120px;
+			}
 		}
 		li {
-			width: auto;
-			justify-content: center;
-			-webkit-flex-grow: 1;
-			flex-grow: 1;
+			display: none;
+			@include breakpoint($tablet, true) {
+				display: inline-block;
+				width: 23%;
+			}
 		}
-		li:last-child {
-			display: inline-block;
+		@include breakpoint($tablet, true) {
+			padding-top: 3rem;
+		}
+		@include breakpoint($desktop, true) {
+			ul {
+				display: -webkit-box;
+			  /* @alternate */ display: -ms-flexbox;
+			  /* @alternate */ display: -webkit-flex;
+			  /* @alternate */ display: flex;
+			  flex-direction: row;
+			  justify-content: center;
+			  align-items: center;
+			}
+			li {
+				width: auto;
+				justify-content: center;
+				-webkit-flex-grow: 1;
+				flex-grow: 1;
+			}
+			li:last-child {
+				display: inline-block;
+			}
 		}
 	}
 }
@@ -609,11 +573,6 @@
 	@include breakpoint($laptop) {
 		top: 35.6rem;
 		display: block;
-	}
-	@media screen and (max-width: $laptop-plus) {
-		.panel-left-open & {
-			display: none;
-		}
 	}
 	@media screen and (min-width: $laptop) and (min-height: 780px) {
 		top: 39.6rem;
@@ -765,11 +724,6 @@
 	.list-partners {
 		@media screen and (max-width: $laptop) {
 			display: none;
-		}
-		@media screen and (max-width: $laptop-plus) {
-			.panel-left-open & {
-				display: none;
-			}
 		}
 		@media screen and (max-height: 700px) {
 			.touch &,

@@ -31,10 +31,12 @@
 	&:hover {
 		background-color: $reflection-red;
 	}
-	&:active {
-		border-top: 2px solid #b2334a;
-		padding-bottom: calc(0.81em - 2px);
-		transition: border 0s;
+	.no-touch & {
+		&:active {
+			border-top: 2px solid #b2334a;
+			padding-bottom: calc(0.81em - 2px);
+			transition: border 0s;
+		}
 	}
 	&:disabled {
 		cursor: default;
@@ -42,9 +44,11 @@
 		&:hover {
 			background-color: #dedede;
 		}
-		&:active {
-			border-top: none;
-			padding-bottom: 0.84em;
+		.no-touch & {
+			&:active {
+				border-top: none;
+				padding-bottom: 0.84em;
+			}
 		}
 	}
 }
@@ -58,14 +62,18 @@
 		padding: 0.95em 1.8em 1em 1.85em;
 		font-size: 1.8em;
 		border-radius: 0.25em;
-		&:active {
-			border-top: 3px solid #b2334a;
-			padding-bottom: calc(1em - 3px);
+		.no-touch & {
+			&:active {
+				border-top: 3px solid #b2334a;
+				padding-bottom: calc(1em - 3px);
+			}
 		}
 		&:disabled {
-			&:active {
-				border-top: 0;
-				padding-bottom: 1em;
+			.no-touch & {
+				&:active {
+					border-top: 0;
+					padding-bottom: 1em;
+				}
 			}
 		}
 	}
@@ -91,11 +99,13 @@
 		color: #46438b;
 		background-color: #f2f2f5;
 	}
-	&:active, 
-	&.is-pressed {
-		border-top: 3px solid #d9d9dc;
-		padding-bottom: calc(0.65em - 2px);
-		transition: border 0s;
+	.no-touch & {
+		&:active, 
+		&.is-pressed {
+			border-top: 3px solid #d9d9dc;
+			padding-bottom: calc(0.65em - 2px);
+			transition: border 0s;
+		}
 	}
 	&:disabled {
 		cursor: default;
@@ -105,9 +115,11 @@
 			color: $light-grey-2;
 			background-color: #fafafa;
 		}
-		&:active {
-			border-top: 1px solid #dadee1;
-			padding-bottom: 0.65em;
+		.no-touch & {
+			&:active {
+				border-top: 1px solid #dadee1;
+				padding-bottom: 0.65em;
+			}
 		}
 	}
 	&.ref-button--is-loading, &.ref-button--positive {
@@ -116,9 +128,11 @@
 		&:active {
 			color: $reflection-white;
 		}
-		&:active, 
-		&.is-pressed {
-			padding-bottom: 0.65em;			
+		.no-touch & {
+			&:active, 
+			&.is-pressed {
+				padding-bottom: 0.65em;			
+			}
 		}
 		&:hover,
 		&:active,
@@ -131,8 +145,10 @@
 	}
 	&.ref-button--function-small--with-icon {
 		padding: 0.75em 0.923077em 0.55em;
-		&:active {
-			padding-bottom: calc(0.55em - 2px);
+		.no-touch & {
+			&:active {
+				padding-bottom: calc(0.55em - 2px);
+			}
 		}
 		span:before {
 			position: relative;
@@ -147,8 +163,10 @@
 			span:before {
 				color: #C4C7D0;
 			}
-			&:active {
-				padding-bottom: 0.55em;
+			.no-touch & {
+				&:active {
+					padding-bottom: 0.55em;
+				}
 			}
 		}
 	}
@@ -162,13 +180,17 @@
 	@include breakpoint($tablet) {
 		padding: 0.95em 1.85em 1em 1.85em;
 		font-size: 1.8em;
-		&:active {
-			padding-bottom: calc(1em - 2px);
+		.no-touch & {
+			&:active {
+				padding-bottom: calc(1em - 2px);
+			}
 		}
 		&:disabled {
 			cursor: default;
-			&:active {
-				padding-bottom: 1em;
+			.no-touch & {
+				&:active {
+					padding-bottom: 1em;
+				}
 			}
 		}
 	}
@@ -188,23 +210,29 @@
 	margin-top: 0.5rem;
 	padding: 0.95em 0.5em 1em;
 	font-size: 18px;
-	&:active {
-		border-top: 3px solid #b2334a;
-		padding-bottom: calc(1em - 3px);
+	.no-touch & {
+		&:active {
+			border-top: 3px solid #b2334a;
+			padding-bottom: calc(1em - 3px);
+		}
 	}
 	&:disabled {
 		cursor: default;
-		&:active {
-			border-top: 0;
-			padding-bottom: 1em;
+		.no-touch & {
+			&:active {
+				border-top: 0;
+				padding-bottom: 1em;
+			}
 		}
 	}
 	&.ref-button--success,
 	&.ref-button--error,
 	&.ref-button--is-loading,
 	&.ref-button--positive {
-		&:active {
-			padding-bottom: 1em;
+		.no-touch & {
+			&:active {
+				padding-bottom: 1em;
+			}
 		}
 	}
 }
@@ -226,8 +254,10 @@
 	&:hover {
 		background-color: $error-colour-dark;
 	}
-	&:active {
-		border-top-color: darken($error-colour-dark, 10%);
+	.no-touch & {
+		&:active {
+			border-top-color: darken($error-colour-dark, 10%);
+		}
 	}
 }
 .ref-button--link {
@@ -261,10 +291,12 @@
 		color: #46438b;
 		transition: color $base-transition-speed-on;
 	}
-	&:active {
-		position: relative;
-		top: 2px;
-		outline: none;
+	.no-touch & {
+		&:active {
+			position: relative;
+			top: 2px;
+			outline: none;
+		}
 	}
 	&:disabled {
 		color: #c4c7d0;
@@ -293,11 +325,13 @@
 	padding: 1.1rem 1rem 0.8rem;
 	display: inline-block;
 	vertical-align: top;
-	&:disabled:active {
-		padding-bottom: 0.8rem;
-	}
-	&:active {
-		padding-bottom: calc(0.8rem - 2px);
+	.no-touch & {
+		&:disabled:active {
+			padding-bottom: 0.8rem;
+		}
+		&:active {
+			padding-bottom: calc(0.8rem - 2px);
+		}
 	}
 	.svg-refresh {
 		width: 16px;

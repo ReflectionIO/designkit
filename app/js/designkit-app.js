@@ -515,7 +515,9 @@ var SubmitButtonWithFeedback = function() {
 		new DesignKitPage(dkPageProperties);
 
 		// Components
-		
+		new FormFieldSelect();
+		new RevealContent();
+		new ToolTip();
 	};
 
 // ChartsPage object
@@ -528,6 +530,23 @@ var SubmitButtonWithFeedback = function() {
 			componentTitle: "AM Charts Demos", 
 			intro: "",
 			pageUrl: "am-charts.html"
+		}
+		new DesignKitPage(dkPageProperties);
+
+		// Components
+		
+	};
+
+// ChartsPage object
+	var DataVisAppReleasesPage = function() {
+		new Page();
+		var dkPageProperties = {
+			bannerImage: "images/banner-icon-grids.png",
+			bannerImageAlt: "Button icon", 
+			sectionTitle: "Charts", 
+			componentTitle: "App Launch Comparison", 
+			intro: "A comparison of app downloads over time from release date",
+			pageUrl: "data-vis-app-releases.html"
 		}
 		new DesignKitPage(dkPageProperties);
 

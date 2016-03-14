@@ -60,7 +60,8 @@ $reflection-icons-name: "reflection-icons-1";
 	font-weight: 700;
 }
 
-.ref-icon-before--search:before {
+.ref-icon-before--search:before,
+.ref-icon-after--search:after {
 	content: "a";
 }
 .ref-icon-before--cog:before {
@@ -241,7 +242,7 @@ h5 + .heading-style--heading-six,
 .heading-style--heading-four + h5,
 .heading-style--heading-four + h6,
 .heading-style--heading-five + h6 {
-	margin-top: 0;
+	margin-top: 0;	
 }
 .small-text {
 	font-size: 1.2rem;
@@ -356,6 +357,21 @@ p {
 	a {
 		text-decoration: none;
 		color: $reflection-purple;
+		.no-touch & {
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+			&:active {
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+}
+.text-link {
+	text-decoration: none;
+	color: $reflection-purple;
+	.no-touch & {
 		&:hover {
 			color: $reflection-purple--hover;
 		}
@@ -363,17 +379,6 @@ p {
 			position: relative;
 			top: 2px;
 		}
-	}
-}
-.text-link {
-	text-decoration: none;
-	color: $reflection-purple;
-	&:hover {
-		color: $reflection-purple--hover;
-	}
-	&:active {
-		position: relative;
-		top: 2px;
 	}
 }
 .p-style--minor {
@@ -414,13 +419,15 @@ p {
 		a {
 			text-decoration: none;
 			color: $reflection-purple;
-			&:hover {
-				color: $reflection-purple--hover;
-			}
-			&:active {
-				position: relative;
-				top: 2px;
-			}
+			.no-touch & {
+				&:hover {
+					color: $reflection-purple--hover;
+				}
+				&:active {
+					position: relative;
+					top: 2px;
+				}
+			}			
 		}
 	}
 	&.content-list--no-bullets {
@@ -628,8 +635,10 @@ figcaption {
 .warning-text {
 	color: $reflection-red !important;
 }
-a.warning-text:hover {	
-	color: $error-red !important;
+a.warning-text:hover {
+	.no-touch & {
+		color: $error-red !important;
+	}
 }
 img.image-full-width {
 	width: 100%;

@@ -1,0 +1,467 @@
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+textarea {
+	margin: 0;
+	padding: 0;
+	line-height: 1.2;
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
+	outline: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	@extend %font-smoothing;
+}
+.form-filter {
+	margin-bottom: 2rem;
+	.reflection-form & {
+		margin-top: -1px;
+		margin-bottom: 0;
+		border-radius: 0;
+		&:first-child {
+			margin-top: 0;
+			.form-field--select__box {
+				border-radius: 4px 4px 0 0;
+			}			
+		}
+		&:last-child {
+			.form-field--select__box {
+				border-radius: 0 0 4px 4px;
+			}
+			&.is-open {
+				.form-field--select__box {
+					border-radius: 0;
+				}
+			}
+		}
+	}
+	label {
+		position: absolute;
+    left: 20px;    
+    top: 7px;
+		display: block;
+		font-family: $brand-heading-font;
+		font-size: 12px;
+		color: #494490;
+		pointer-events: none;
+	}
+	&.nothing-selected {
+		label {
+			top: 16px;
+			font-family: $brand-heading-font;
+			font-size: 16px;
+			color: #727686;
+			font-weight: 400;
+		}
+	}
+	&.form-field--with-error {
+		label {
+			top: 25px;
+		}
+		.form-field--select__box {
+			border-color: $error-orange-border;
+			background-color: #fdf5ee;
+			z-index: 10;
+		}
+		.form-field-error-text {
+			position: absolute;
+			top: 7px;
+			left: 20px;		
+			display: block;
+		}
+		.form-field--select__dropdown {
+			border-color: $error-orange-border;
+			background-color: #fdf5ee;
+		}
+	}
+}
+.reflection-form .form-field + .form-filter {
+	.form-field--select__box {
+		border-radius: 0;
+	}
+}
+.form-field {
+	position: relative;
+	width: 100%;
+	padding: 6px 18px 29px;
+	margin-bottom: 2rem;
+	z-index: 1;
+	border: 1px solid $light-grey-2;
+	border-radius: 4px;
+	background-color: #f5f9f9;
+	.reflection-form & {
+		margin-top: -1px;
+		margin-bottom: 0;
+		border-radius: 0;
+		&:first-child {
+			margin-top: 0;
+			border-radius: 4px 4px 0 0;
+		}
+		&:last-child {
+			border-radius: 0 0 4px 4px;
+		}
+	}
+	&.form-field--with-error {
+		padding-bottom: 33px;
+		border-color: $error-orange-border;
+		background-color: #fdf5ee;
+		z-index: 10;
+	}
+	.no-touch & {
+		transition: padding 0.06s;
+	}
+	label {
+		display: block;
+		font-family: $brand-heading-font;
+		font-size: 12px;
+		color: #494490;
+		.no-touch & {
+			transition: font-size 0.06s;
+		}
+	}
+	input:focus + label,
+	textarea:focus + label {
+		color: #494490;
+	}
+	input, textarea {
+		display: block;
+		color: $mid-grey-1;
+	}
+	input[type="text"],
+	input[type="email"],
+	input[type="search"],
+	input[type="password"],
+	textarea {
+		position: absolute;
+		bottom: 9px;
+		width: calc(100% - 28px);
+		font-family: $brand-heading-font;
+		font-size: 16px;
+		color: $dark-grey-1;
+		.no-touch & {
+			transition: bottom 0.06s;
+		}
+	}
+	textarea {
+		position: relative;
+		width: 100%;
+		height: 123px;
+		padding: 5px 0;
+		resize: none;
+	}
+	input:-webkit-autofill {
+		color: $dark-grey-1;
+		-webkit-box-shadow: 0 0 0px 1000px #f5f9f9 inset;
+		-webkit-text-fill-color: $dark-grey-1;
+	  background-color: #f5f9f9;
+	}
+	&.is-closed {
+		padding: 15px 18px 20px;
+		.no-touch & {
+			transition: padding 0.06s;
+		}
+		label {
+			font-family: $brand-heading-font;
+			font-size: 16px;
+			color: #727686;
+			font-weight: 400;
+			.no-touch & {
+				transition: font-size 0.06s;
+			}
+		}
+		input, textarea {
+			bottom: 6px;
+			.no-touch & {
+				transition: bottom 0.06s;
+			}
+		}
+	}
+}
+.form-field-error-text {
+	color: $error-orange-text;
+	font-size: 14px;
+	font-family: $brand-heading-font;
+}
+.form-field--select {
+	position: relative;
+}
+.form-field--select select,
+.form-field--select__dropdown {
+	display: none;
+}
+.form-field--select__dropdown {
+	position: absolute;
+	margin-top: 5px;
+	padding: 15px 30px 18px 24px;
+	z-index: 2001;
+	font-family: $brand-heading-font;
+	font-size: 15px;
+	border: 1px solid $light-grey-2;
+	border-radius: 4px;
+	background-color: $reflection-white;
+	li {
+		margin-bottom: 6px;
+		color: $reflection-purple;
+		line-height: 1.5;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+		&.is-selected {
+			color: $light-grey-2;
+			&:hover {
+				color: $light-grey-2;
+			}
+		}
+	}
+	.form-filter & {
+		position: relative;
+		display: none;
+	}
+}
+.form-field--select select {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+// Checkbox and Radio buttons list
+.form-field--checkbox-list,
+.form-field--radio-list {
+	* {
+		overflow: visible;
+	}
+	position: relative;
+	width: 100%;
+	li {
+		position: relative;
+		margin-bottom: 0.5rem;
+		padding: 0;
+		font-size: 0;
+	}
+	input[type=checkbox],
+	input[type=radio] {
+		position: absolute;
+		left: -10000px;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+	}
+	label {
+		padding-top: -1px;
+		padding-bottom: 0;
+		display: inline-block;
+		font-weight: 400;
+	}
+}
+.form-field--checkbox-list--inline,
+.form-field--radio-list--inline {
+	width: auto;
+	display: inline-block;
+	li {
+		margin-right: 2rem;
+		margin-bottom: 0;
+		display: inline-block;
+	}
+}
+.form-field--checkbox--hide-label {
+	.checkboxLabelVisible {
+		text-align: left;
+    text-indent: -999em;
+	}
+}
+.checkboxLabel,
+.radioButtonLabel {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	display: inline-block;
+	font-size: 0px;
+	font-weight: 400;
+	cursor: pointer;
+	@include box-sizing(border-box);
+	line-height: 1;
+	text-decoration: none;
+	background-color: #dde0e2;
+	overflow: visible;
+	&:hover {
+		background-color: #c4c7d0;
+		transition: background-color $base-transition-speed-on;
+	}
+	&:active {
+		border-top: 2px solid #9d9fa6;
+	}
+}
+.radioButtonLabel {
+	border-radius: 9px;
+}
+.checkboxLabel {
+	border-radius: 3px;
+	&:after {		
+		position: absolute;
+		top: 3px;
+		left: 0;
+		width: 16px;
+		height: 16px;
+		content: "R";
+		speak: none;
+		font-family: $reflection-icons-name;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-size: 10px;
+		color: $light-grey-2;
+		text-align: center;
+		opacity: 0;
+		transition: color 0.2s;
+		.no-opacity & {
+			display: none;
+		}
+	}
+}
+.form-field--checkbox-list--medium {
+	li {
+		margin-bottom: 0.7rem;
+	}
+	.checkboxLabel {
+		width: 18px;
+		height: 18px;
+		&:after {
+			top: 4px;
+			width: 18px;
+			height: 18px;
+			font-size: 11px;
+		}
+	}
+	.checkboxLabelVisible {
+		padding-left: calc(18px + 1.2rem);
+		font-size: 1.5rem;
+	}
+}
+.form-field--checkbox-list--large {
+	li {
+		margin-bottom: 0.9rem;
+	}
+	.checkboxLabel {
+		width: 20px;
+		height: 20px;
+		&:after {
+			top: 4px;
+			width: 19px;
+			height: 20px;
+			font-size: 12.6px;
+		}
+	}
+	.checkboxLabelVisible {
+		padding-left: calc(20px + 1.5rem);
+		font-size: 1.6rem;
+	}
+}
+input[type="checkbox"]:disabled + .checkboxLabel,
+input[type="radio"]:disabled + .radioButtonLabel {
+	background-color: #f7f7f9;
+	overflow: visible;
+}
+input[type="checkbox"]:disabled + .checkboxLabel:active,
+input[type="radio"]:disabled + .radioButtonLabel:active,
+input[type="checkbox"]:disabled:checked + .checkboxLabel:active,
+input[type="radio"]:disabled:checked + .radioButtonLabel:active {
+	border-top: 0;
+}
+input[type="checkbox"]:checked:disabled + .checkboxLabel,
+input[type="radio"]:checked:disabled + .radioButtonLabel {
+	opacity: 0.5;
+}
+input[type="checkbox"]:checked + .checkboxLabel,
+input[type="radio"]:checked + .radioButtonLabel {
+	background-color: $reflection-green;
+	&:after {
+		opacity: 1;
+		color: #fcfdfd;
+		transition: opacity 0.3s;
+		.no-opacity & {
+			display: block;
+		}
+	}
+}
+input[type="checkbox"]:checked + .checkboxLabel {
+	transition: background-color 0.3s;
+}
+.checkboxLabelVisible,
+.radioButtonLabelVisible {
+	padding-left: calc(16px + 1rem);
+	font-family: $brand-heading-font;
+	font-size: 1.4rem;
+	color: $dark-grey-2;
+	text-align: left;
+	cursor: pointer;
+}
+input[type="checkbox"]:disabled + label + .checkboxLabelVisible,
+input[type="radio"]:disabled + label + .radioButtonLabelVisible {
+	color: #c4c7d0;
+}
+
+// Password strength indicator
+.password-strength-indicator-container {
+	position: absolute;
+	top: 5px;
+  right: 10px;
+	font-size: 1.25rem;
+	.is-closed & {
+		display: none;
+	}
+}
+.password-strength-indicator,
+.password-strength-description {
+	display: inline-block;
+	float: left;
+	vertical-align: top;
+}
+.password-strength-indicator {
+	position: relative;
+	width: 97px;
+	height: 6px;
+	margin-top: 6px;
+	margin-left: 8px;
+	border-radius: 3px;
+	background-color: #e1e5e8;
+	span {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: inline-block;
+		width: 0;
+		height: 6px;
+		background-color: $reflection-purple;
+		transition: background-color 0.3s ease-out, width 0.3s ease-out;
+		&.is-pathetic {
+			width: 25%;
+			background-color: #d5855e;
+		}
+		&.is-ok {
+			width: 50%;
+			background-color: #e7b94b;
+		}
+		&.is-strong {
+			width: 75%;
+			background-color: #d0eb53;
+		}
+		&.is-impressive {
+			width: 100%;
+			background-color: #68d656;
+		}
+	}
+}
+.password-strength-description {
+	font-size: 1.24rem;
+	color: $light-grey-1;
+}

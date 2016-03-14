@@ -2,10 +2,12 @@ $white-navigation: $reflection-white;
 $grey-hover: #bec2d2;
 $blur-opacity: 0.5;
 
-.main-navigation {
-	width: 100%;
+.main-navigation {	
 	padding: 0 0 20px;
 	background-color: $dark-grey-1;
+	.panel-left & {
+		width: 200px;
+	}
 	a {
 		transition: background-color $base-transition-speed-off, color $base-transition-speed-off, text-shadow 0.3s;
 		svg {
@@ -17,41 +19,61 @@ $blur-opacity: 0.5;
 				transition: fill $base-transition-speed-off;
 			}
 		}
-		svg.icon--my-apps {
-			path {
-				fill: none;
-				stroke: $mid-grey-1;
-			}
-		}
 		span {
 			position: relative;
 			display: inline-block;
 			vertical-align: middle;
-			padding-left: 12px;
+			padding-left: 16px;
+			transition: color $base-transition-speed-off;
 		}
-		&:hover {
-			svg path, svg polygon {
-				fill: $light-grey-2;
-				transition: fill $base-transition-speed-on;
+		@include breakpoint($laptop) {
+			.no-touch .panel-left & {
+				span {
+					opacity: 0;
+				}
 			}
-			svg.icon--my-apps {
-				path {
-					fill: none;
-					stroke: $light-grey-2;
-					transition: stroke $base-transition-speed-on;
+			.no-touch .panel-left:hover & {
+				span {
+					opacity: 1;
+					transition: color $base-transition-speed-on, opacity $base-transition-speed-on;
 				}
 			}
 		}
 	}
-	li.is-selected a svg {
-		path, polygon {
-			fill: $white-navigation;
+	.no-touch & {
+		li:hover {
+			> svg path, > svg polygon {
+				fill: $light-grey-2;
+				transition: fill $base-transition-speed-on;
+			}
 		}
 	}
-	li.is-selected a svg.icon--my-apps {
-		path {
-			fill: none;
-			stroke: $white-navigation;
+	li.is-selected {
+		> a > svg,
+		&:hover > a > svg {
+			path, polygon {
+				fill: $white-navigation;
+			}
+		}
+		li {
+			a svg {
+				path, polygon {
+					fill: $mid-grey-1;
+				}
+			}
+			&:hover a svg {
+				path, polygon {
+					fill: #bec2d2;
+				}
+			}
+		}
+		li.is-selected {
+			a svg,
+			&:hover a svg {
+				path, polygon {
+					fill: $white-navigation;
+				}
+			}
 		}
 	}
 	> ul {
@@ -60,19 +82,30 @@ $blur-opacity: 0.5;
 			line-height: 1.5;
 			font-weight: 700;
 			border-bottom: 1px solid #161617;
-			> a {				
-				float: left;
-				width: 100%;
-				padding-left: 28px;
-				text-transform: uppercase;
-				background-color: $dark-grey-1;
-				&:hover {
+			.no-touch & {
+				&:hover > a {
 					background-color: #252527;
+					span {
+						color: $white-navigation;
+						transition: color 0.3s;
+					}
 				}
-				&:active {
+				&.is-selected:hover {
+					> a {
+						background-color: $reflection-purple;
+					}
+				}
+				> a:active {
 					padding-bottom: 12px;
 					border-top: 2px solid #1e1e1f;			
 				}
+			}
+			> a {				
+				float: left;
+				width: 100%;
+				padding-left: 20px;
+				text-transform: uppercase;
+				background-color: $dark-grey-1;				
 			}
 			&.is-selected {
 				> a {
@@ -84,15 +117,35 @@ $blur-opacity: 0.5;
 					.is-animating-in & {
 						text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
 					}
-					&:hover {
-						color: $white-navigation;						
+					.no-touch & {
+						&:hover {
+							color: $white-navigation;
+							background-color: $reflection-purple;
+							svg path, svg polygon {
+								fill: $white-navigation;
+							}
+							svg.icon--my-apps {
+								path {
+									fill: none;
+									stroke: $white-navigation;
+								}
+							}
+						}
 					}
 				}
 			}
-			> ul {
+			> ul {				
 				display: block;
 				z-index: 0;
 				transition: margin-top 0.16s ease-in;
+				> li {
+					&:last-child {
+						margin-bottom: 6px;
+						&.is-open {
+							margin-bottom: 0;
+						}
+					}
+				}
 			}
 			&.is-open {
 				background-color: $dark-grey-2;
@@ -128,8 +181,10 @@ $blur-opacity: 0.5;
 					.is-animating-in & {
 						text-shadow: -4px 0px 1px rgba(252,253,253, $blur-opacity);
 					}
-					&:hover {
-						color: $white-navigation;
+					.no-touch & {
+						&:hover {
+							color: $white-navigation;
+						}
 					}
 				}
 			}
@@ -140,14 +195,14 @@ $blur-opacity: 0.5;
 				&:before {
 					position: absolute;
 					top: 4px;
-					left: 9px;					
+					left: 34px;
 					font-size: 12px;
 					z-index: 100;
 					color: #53586c;
 					transition: color 0.2s;
 				}
 				&.is-open {
-					a {
+					> a {
 						color: #81879d;
 					}	
 					&:before {
@@ -161,14 +216,14 @@ $blur-opacity: 0.5;
 						}
 					}
 					&.is-selected {
-						a {
+						> a {
 							color: #e1e5e8;
 						}						
 					}
 				}
 			}
 			a {
-				padding: 0 38px 15px 29px;
+				padding: 0px 20px 15px;
 				color: $light-grey-1;
 				font-weight: 400;
 				.is-animating-out & {
@@ -177,8 +232,19 @@ $blur-opacity: 0.5;
 				.is-animating-in & {
 					text-shadow: -4px 0px 1px rgba(129,135,157, $blur-opacity);
 				}
-				&:hover {
-					color: $grey-hover;
+				.no-touch & {
+					&:hover {
+						color: $grey-hover;
+					}
+					@include breakpoint($laptop) {
+						span {
+							opacity: 0;
+						}						
+					}
+				}
+				.no-touch .panel-left:hover & {
+					opacity: 1;
+					transition: color $base-transition-speed-on, opacity $base-transition-speed-on;
 				}
 			}
 			ul {
@@ -187,7 +253,7 @@ $blur-opacity: 0.5;
 				transition: margin-top 0.16s ease-in;
 				li.is-selected {
 					a {
-						color: #e1e5e8;
+						color: #FCFDFD;
 					}
 				}
 				li a {
@@ -234,8 +300,10 @@ $blur-opacity: 0.5;
 				.is-animating-in & {
 					text-shadow: -4px 0px 1px rgba(225,229,232, $blur-opacity);
 				}
-				&:hover {
-					color: #e1e5e8;
+				.no-touch & {
+					&:hover {
+						color: #e1e5e8;
+					}
 				}
 			}
 		}
@@ -256,8 +324,10 @@ $blur-opacity: 0.5;
 				.is-animating-in & {
 					text-shadow: -4px 0px 1px rgba(225,229,232, $blur-opacity);
 				}
-				&:hover {
-					color: #e1e5e8;
+				.no-touch & {
+					&:hover {
+						color: #e1e5e8;
+					}
 				}
 			}
 		}
@@ -275,9 +345,11 @@ $blur-opacity: 0.5;
 		}
 		.is-animating-in & {
 			text-shadow: -4px 0px 1px rgba(118,118,131, $blur-opacity);
-		}		
-		&:hover {
-			color: $light-grey-2;
+		}
+		.no-touch & {
+			&:hover {
+				color: $light-grey-2;
+			}
 		}
 	}
 }

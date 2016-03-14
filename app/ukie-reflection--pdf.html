@@ -23,7 +23,7 @@
 		    	if(this.data[x].LastWeek != null) {
 		    		return this.data[x].LastWeek;
 		    	} else {
-		    		return "N/A";
+		    		return "-";
 		    	}
 		    	return null;
 		    }
@@ -53,7 +53,7 @@
 		    		var change = parseInt(this.data[x].Change, 10);
 		    		return (change < 0) ? change * -1 : change;
 		    	} else {
-		    		return "N/A";
+		    		return "-";
 		    	}
 		    	return null;
 		    }
@@ -81,16 +81,18 @@
 					<th class="table-data__this-week">Last Period</th>
 					<th class="table-data__this-period">This Period</th>
 					<th class="table-data__change">Change</th>
-					<th class="table-data__app-title">Title</th>
-					<th class="table-data__app-developer">Developer</th> 					
+					<th class="table-data__app-icon">Title</th>
+					<th class="table-data__app-title"></th>
+					<th class="table-data__app-developer">Developer</th>	
 				</tr>
 			</thead>
 			<colgroup>
 				<col style="width: 11%;">
 				<col style="width: 11%;">
-				<col style="width: 10%;">
-				<col style="width: 37%;">
-				<col style="width: 30%;">
+				<col style="width: 11%;">
+				<col style="width: 4%;">
+				<col style="width: 35%;">
+				<col style="width: 25%;">
 			</colgroup>
 			<tbody>
 				<tr ng-repeat="dataItem in dataList.data">
@@ -99,8 +101,10 @@
 						{{dataItem.Rank}}
 					</td>
 					<td class="table-data__change"><span class={{dataList.getChangeCSSClass($index)}}>{{dataList.getChange($index)}}</span></td>
-					<td class="table-data__app-title">
+					<td class="table-data__app-icon">
 						<img src="{{dataItem.icon_url}}" alt="App logo" />
+					</td>
+					<td class="table-data__app-title">						
 						<div class="title-container">
 							<span>{{dataItem.Name}}</span>
 						</div>

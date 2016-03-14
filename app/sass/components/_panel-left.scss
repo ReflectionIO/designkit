@@ -35,13 +35,17 @@
 #mCSB_1_scrollbar_vertical {
 	z-index: 100;
 }
-.is-chrome,
-.is-opera,
-.is-ie {
-	.panel-left {
-		transition: none;
-		.panel-left-open & {
-			transition: none;
+.no-touch {
+	@include breakpoint($laptop) {
+		.panel-left {
+			left: 0;
+			width: 60px;
+			overflow: hidden;
+			transition: width 0.1s;
+			&:hover {
+				width: 200px;
+				transition: width 0.2s;
+			}
 		}
 	}
 }

@@ -12,14 +12,16 @@ $base-margin-bottom: 4rem;
 
 .l-page-container {
 	position: relative;
-	width: 100%;
-	min-height: 100vh;
+	width: 100%;	
 	z-index: 0;
 	overflow: visible;
 	transition: filter 0.18s;
 	.touch .no-scroll & {
 		overflow: hidden;
 		height: 100vh;
+	}
+	.account-access-page & {
+		min-height: 100vh;
 	}
 	&.is-blurred-heavy {
 		filter: blur(0.8px);
@@ -37,29 +39,25 @@ $base-margin-bottom: 4rem;
 	overflow: visible;
 	vertical-align: top;
 	transition: width 0.15s ease-in;
-	@include breakpoint($phablet, true) {
+	@include breakpoint($phablet) {
 		padding-top: 62px;
 	}
 	.panel-left-open & {
 		width: 100%;
-		overflow: visible;
-		@include breakpoint($laptop, true) {
-			width: calc(100% - 200px);
-			transition: width 0.15s ease-out;
-		}		
+		overflow: visible;	
 	}
-}
-.is-chrome,
-.is-opera {
-	.l-main,
-	.panel-left-open .l-main {
-		transition: none;
+	.no-touch &,
+	.no-touch .panel-left-open & {
+		@include breakpoint($laptop) {
+			width: calc(100% - 60px);
+			transition: width 0.15s ease-out;
+		}
 	}
 }
 .l-full-screen-section {
 	height: calc(100vh - 42px);
 	background-color: $reflection-purple;
-	@include breakpoint($phablet, true) {
+	@include breakpoint($phablet) {
 		height: calc(100vh - 62px);
 	}
 }
@@ -72,6 +70,9 @@ $base-margin-bottom: 4rem;
 	padding-bottom: 2.5rem;
 	margin-bottom: 2rem;
 	border-bottom: 1px solid #e1e1e1;
+	&:last-child {
+		border-bottom: 0;
+	}
 	@include breakpoint($tablet) {
 		padding-bottom: 2.5rem;
 	}

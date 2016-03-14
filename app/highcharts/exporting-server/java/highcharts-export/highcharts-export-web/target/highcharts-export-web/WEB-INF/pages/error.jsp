@@ -8,7 +8,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Highcharts export server</title>
 <link rel="stylesheet" type="text/css" href="resources/css/demo.css" />
-</head>
+ <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
 <body>
 	<div id="top">
         <a href="http://www.highcharts.com" title="Highcharts Home Page"

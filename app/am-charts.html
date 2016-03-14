@@ -5,7 +5,7 @@
 	<title>Reflection Design Kit - Graphs</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" media="screen, projection" type="text/css" href="designkit.css" /><link rel="stylesheet" media="print" type="text/css" href="reflection-main--print.css" />
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="designkit.css" />
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
 		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
@@ -50,8 +50,8 @@
     animation: am-pulsate-line 1s linear infinite;
   }
 </style>
-</head>
-<body class="panel-left-open">
+ <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<body>
 	<!--[if (lt IE 9)]>
       <div class="window-warning">
   			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
@@ -59,7 +59,7 @@
   <![endif]-->
   <header id="js-component-import--global-header" class="global-header"></header>
 
-  <div id="js-component-import--panel-left" class="panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+  <div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
 
 	<div class="l-page-container">
 
@@ -105,8 +105,7 @@
           <div id="container-countries-categories" style="width:100%; height:500px;"></div>
         </div>
 			</div>
-		</div>
-	</div>
+      </div></div><div class="grid-container" id="js-component-import--global-footer"></div>
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
@@ -115,7 +114,7 @@
  	<script src="js/vendor/jquery-ui.custom.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script>
  	<script src="js/templates/templates.js"></script>
-	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	 
 	<!--[if IE 9]>
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->
@@ -132,67 +131,67 @@
       var chartApps;
       var chartAppsData = [
           {
-              "year": 1930,
+              "date": 1930,
               "zookeeper": 4,
               "deltav": 5,
               "candycrush": 3
           },
           {
-              "year": 1934,
+              "date": 1934,
               "zookeeper": 6,
               "deltav": 2,
               "candycrush": 4
           },
           {
-              "year": 1938,
+              "date": 1938,
               "zookeeper": 2,
               "deltav": 3,
               "candycrush": 7
           },
           {
-              "year": 1950,
+              "date": 1950,
               "zookeeper": 3,
               "deltav": 4,
               "candycrush": 5
           },
           {
-              "year": 1954,
+              "date": 1954,
               "zookeeper": 5,
               "deltav": 1,
               "candycrush": 2
           },
           {
-              "year": 1958,
+              "date": 1958,
               "zookeeper": 3,
               "deltav": 2,
               "candycrush": 1
           },
           {
-              "year": 1962,
+              "date": 1962,
               "zookeeper": 6,
               "deltav": 2,
               "candycrush": 3
           },
           {
-              "year": 1966,
+              "date": 1966,
               "zookeeper": 7,
               "deltav": 1,
               "candycrush": 5
           },
           {
-              "year": 1970,
+              "date": 1970,
               "zookeeper": 3,
               "deltav": 5,
               "candycrush": 2
           },
           {
-              "year": 1974,
+              "date": 1974,
               "zookeeper": 4,
               "deltav": 3,
               "candycrush": 6
           },
           {
-              "year": 1978,
+              "date": 1978,
               "zookeeper": 3,
               "deltav": 2,
               "candycrush": 4
@@ -227,7 +226,7 @@
           // SERIAL CHART
           chartApps = new AmCharts.AmSerialChart();
           chartApps.dataProvider = chartAppsData;
-          chartApps.categoryField = "year";
+          chartApps.categoryField = "date";
           chartApps.startDuration = 0.5;
           chartApps.balloon.color = "#000000";
           chartApps.backgroundColor = "#f1f1f6";
@@ -1155,7 +1154,6 @@
       }
 
       function modifyAxis(e) {
-        console.log("modifyAxis");
         var axes = e.chart.categoryAxis;
 
         if ( axes ) {
@@ -1169,6 +1167,7 @@
       chartSplit.addListener("drawn",modifyAxis);
 
       chartSplit.addListener("changed", handleSplitCursorChanged);
+
 
       function handleSplitCursorChanged(e){
         if(e.mostCloseGraph && !preventInfinite) {
@@ -1195,6 +1194,89 @@
           },200);
         }       
       } 
+
+      var newData = [{
+          "year": 1994,
+          "truck": 987,
+      }, {
+          "year": 1995,
+          "truck": 789,
+      }, {
+          "year": 1996,
+          "truck": 567,
+      }, {
+          "year": 1997,
+          "truck": 1234,
+      }, {
+          "year": 1998,
+          "truck": 1234,
+      }, {
+          "year": 1999,
+          "truck": 1345,
+      }, {
+          "year": 2000,
+          "truck": 1456,
+      }, {
+          "year": 2001,
+          "truck": 1745,
+      }, {
+          "year": 2002,
+          "truck": 1374,
+      }, {
+          "year": 2003,
+          "truck": 1387,
+      }, {
+          "year": 2004,
+          "truck": 1454,
+      }, {
+          "year": 2005,
+          "truck": 1274,
+      }, {
+          "year": 2006,
+          "truck": 1324,
+      }, {
+          "year": 2007,
+          "truck": 1534,
+      }, {
+          "year": 2008,
+          "truck": 1345,
+      }, {
+          "year": 2009,
+          "truck": 1333,
+      }, {
+          "year": 2010,
+          "truck": 1234,
+      }, {
+          "year": 2011,
+          "truck": 1198,
+      }, {
+          "year": 2012,
+          "truck": 1102,
+      }];
+      
+      setTimeout(function(){ // simulate adding a line
+        // CREATE GRAPH INSTANCE
+        var graph = new AmCharts.AmGraph();
+
+        // SETTINGS
+        graph.title = "Trucks";
+        graph.valueField = "truck";
+        graph.categoryField = "year";
+        graph.hidden = false;
+        graph.balloonText = "[[title]]: [[value]]";
+
+        graph.type = "line";
+        graph.lineThickness = 2;
+        graph.fillAlphas = 0.1;
+        graph.lineAlpha = 1;
+        graph.dataProvider = newData;
+
+        // ATTACH TO CHART INSTANCE
+        console.log(chartSplit);
+        chartSplit.addGraph(graph);
+        
+        console.log("success", "Added graph " + chartSplit.graphs.length);
+      }, 2000);
 
 
 // GRAPH APP REVENUE, OVERLAY DOWNLOADS
@@ -1271,7 +1353,7 @@
       AmCharts.ready(function () {
           // SERIAL CHART
           chartAppsOverlay = new AmCharts.AmSerialChart();
-          chartAppsOverlay.dataProvider = chartAppsOverlayData;
+          // chartAppsOverlay.dataProvider = chartAppsOverlayData;
           chartAppsOverlay.categoryField = "year";
           chartAppsOverlay.startDuration = 0.5;
           chartAppsOverlay.balloon.color = "#000000";
@@ -1346,31 +1428,31 @@
 
           // GRAPHS
           // Rank graph
-          var graph = new AmCharts.AmGraph();
-          graph.title = "Rank";
-          graph.valueField = "zookeeper";
-          graph.balloonText = "[[category]]: [[value]]";
-          graph.lineAlpha = 1;
-          graph.bullet = "none";
-          graph.lineColor = "#6d69c5";
-          graph.lineThickness = 3;
-          graph.fillAlphas = 0.5;
-          graph.valueAxis = "a1";
-          chartAppsOverlay.addGraph(graph);
+          // var graph = new AmCharts.AmGraph();
+          // graph.title = "Rank";
+          // graph.valueField = "zookeeper";
+          // graph.balloonText = "[[category]]: [[value]]";
+          // graph.lineAlpha = 1;
+          // graph.bullet = "none";
+          // graph.lineColor = "#6d69c5";
+          // graph.lineThickness = 3;
+          // graph.fillAlphas = 0.5;
+          // graph.valueAxis = "a1";
+          // chartAppsOverlay.addGraph(graph);
 
-          // Downloads graph
-          var graph = new AmCharts.AmGraph();
-          graph.title = "Downloads";
-          graph.id = "downloads-graph";
-          graph.valueField = "deltav";
-          graph.balloonText = "[[category]]: [[value]]";
-          graph.bullet = "none";
-          graph.lineColor = "#ff496a";
-          graph.lineThickness = 3;
-          graph.fillAlphas = 0;
-          graph.valueAxis = "a2";
-          graph.hidden = true;
-          chartAppsOverlay.addGraph(graph);
+          // // Downloads graph
+          // var graph = new AmCharts.AmGraph();
+          // graph.title = "Downloads";
+          // graph.id = "downloads-graph";
+          // graph.valueField = "deltav";
+          // graph.balloonText = "[[category]]: [[value]]";
+          // graph.bullet = "none";
+          // graph.lineColor = "#ff496a";
+          // graph.lineThickness = 3;
+          // graph.fillAlphas = 0;
+          // graph.valueAxis = "a2";
+          // graph.hidden = true;
+          // chartAppsOverlay.addGraph(graph);
 
           // CURSOR
           var chartCursor = new AmCharts.ChartCursor();
@@ -1410,6 +1492,72 @@
 
           // WRITE
           chartAppsOverlay.write("container-revenue-overlay-downloads");
+
+
+          setTimeout(function(){
+            var newData = [
+                {
+                    "year": 1930,
+                    "candycrush": 3
+                },
+                {
+                    "year": 1934,
+                    "candycrush": 6
+                },
+                {
+                    "year": 1938,
+                    "candycrush": 1
+                },
+                {
+                    "year": 1950,
+                    "candycrush": 1
+                },
+                {
+                    "year": 1954,
+                    "candycrush": 2
+                },
+                {
+                    "year": 1958,
+                    "ucandycrushk": 1
+                },
+                {
+                    "year": 1962,
+                    "candycrush": 3
+                },
+                {
+                    "year": 1966,
+                    "candycrush": 5
+                },
+                {
+                    "year": 1970,
+                    "candycrush": 2
+                },
+                {
+                    "year": 1974,
+                    "candycrush": 6
+                },
+                {
+                    "year": 1978,
+                    "candycrush": 4
+                }
+            ];
+
+            var graph = new AmCharts.AmGraph();
+            graph.title = "New Graph";
+            graph.id = "new-graph";
+            graph.valueField = "candycrush";
+            graph.balloonText = "[[category]]: [[value]]";
+            graph.bullet = "none";
+            graph.lineColor = "#ff496a";
+            graph.lineThickness = 3;
+            graph.fillAlphas = 0;
+            graph.valueAxis = "a2";
+            graph.hidden = false;
+            graph.dataProvider = newData;
+            chartAppsOverlay.dataProvider = newData;
+            chartAppsOverlay.addGraph(graph);
+
+        }, 2000);
 
         $('.can-toggle').on("click", function(){
           if($(this).find("#js-overlay-downloads:checked").val()) {

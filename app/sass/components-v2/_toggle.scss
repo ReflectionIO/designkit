@@ -1,0 +1,139 @@
+.toggle-container {
+	display: inline-block;
+	vertical-align: top;
+}
+.filter-toggle {
+	display: inline-block;
+	float: left;
+	vertical-align: top;
+	font-size: 0;
+	.toggle {
+		display: inline-block;
+		text-align: center;
+		&:first-child {
+			label {
+				border-radius: 4px 0 0 4px;
+			}
+		}
+		&:last-child {
+			label {
+				border-right: 1px solid $light-grey-2;
+				border-radius: 0 4px 4px 0;
+			}
+		}
+	}
+	label {
+		position: relative;
+		padding: 8px 10px;
+		box-sizing: border-box;
+		display: inline-block;
+		z-index: 1;
+		vertical-align: top;
+		text-align: center;
+		border-top: 1px solid $light-grey-2;
+		border-bottom: 1px solid $light-grey-2;
+		border-left: 1px solid $light-grey-2;
+		background-color: #f2f7f7;
+		cursor: pointer;
+		svg {
+			width: 18px;
+			height: 18px;
+			float: left;
+			path, polygon {
+				fill: $mid-grey-2;
+			}
+		}
+		&:hover {
+			color: #5a5a68;
+			background-color: #e1e5e8;
+		}		
+	}
+	input {
+		position: absolute;
+		z-index: -1;
+	}
+	input:checked {
+		~ label {
+			position: relative;
+			color: $reflection-white;
+			border-color: #5551a4;
+			background-color: $reflection-purple;
+			svg {
+				path, polygon {
+					fill: $reflection-white;
+				}
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: block;
+				box-sizing: border-box;
+				border-right: 1px solid #5551a4;
+			}
+		}
+	}
+}
+.filter-toggle.filter-toggle--with-text {
+	label {
+		padding: 0.7rem 1rem 0.8rem 0.9rem;
+		width: auto;
+		font-family: $brand-heading-font;
+		font-size: 1.3rem;
+		color: $mid-grey-1;
+	}
+	&.filter-toggle--small {
+		label {
+			padding: 0.9rem 1.6rem 1rem 1.6rem;
+			font-size: 1.4rem;
+		}
+	}
+	&.filter-toggle--medium {
+		label {
+			padding: 1.1rem 1.5rem 1.4rem 1.5rem;
+			font-size: 1.5rem;
+		}
+	}
+	&.filter-toggle--large {
+		label {
+			padding: 1.1rem 1.5rem 1.4rem 1.5rem;
+			font-size: 1.6rem;
+		}
+	}
+}
+.toggle-split-graph,
+.toggle-single-graph {
+	svg {
+		.chart-lines {
+			fill: $mid-grey-2;
+		}
+		.base-lines {
+			fill: #b2b5c0;
+		}
+	}
+	input:checked ~ label {
+		svg {
+			.chart-lines {
+				fill: $reflection-white;
+			}
+			.base-lines {
+				fill: #bfbdee;
+			}
+		}
+	}
+}
+.toggle-split-graph {
+	label svg {
+		width: 39px;
+		height: 18px;
+	}
+}
+.toggle-single-graph {
+	label svg {
+		width: 32px;
+		height: 18px;
+	}
+}

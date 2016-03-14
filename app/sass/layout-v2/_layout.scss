@@ -1,0 +1,92 @@
+// Breakpoint variables
+$phablet: 480px;
+$tablet: 720px;
+$laptop: 960px;
+$laptop-mid: 1024px;
+$laptop-plus: 1150px;
+$desktop: 1280px;
+$desktop-wide: 1600px;
+$mobile-max-width: 719px;
+
+$base-margin-bottom: 4rem;
+
+.l-page-container {
+	position: relative;
+	width: 100%;	
+	z-index: 0;
+	overflow: visible;
+	transition: filter 0.18s;
+	.touch .no-scroll & {
+		overflow: hidden;
+		height: 100vh;
+	}
+	.account-access-page & {
+		min-height: 100vh;
+	}
+	&.is-blurred-heavy {
+		filter: blur(0.8px);
+		transition: filter 0.5s;
+		.ie8 &, .ie9 & {
+			filter: none;
+		}
+	}
+}
+.l-main {
+	width: 100%;
+	padding-top: 42px;
+	display: inline-block;
+	float: right;
+	overflow: visible;
+	vertical-align: top;
+	transition: width 0.15s ease-in;
+	@include breakpoint($phablet) {
+		padding-top: 50px;
+	}
+	.panel-left-open & {
+		width: 100%;
+		overflow: visible;	
+	}
+	.no-touch &,
+	.no-touch .panel-left-open & {
+		@include breakpoint($laptop) {
+			width: calc(100% - 61px);
+			transition: width 0.15s ease-out;
+		}
+	}
+}
+.l-full-screen-section {
+	height: calc(100vh - 42px);
+	background-color: $reflection-purple;
+	@include breakpoint($phablet) {
+		height: calc(100vh - 50px);
+	}
+}
+.components-row-with-border {
+	padding-bottom: 2rem;
+	margin-bottom: 4rem;
+	border-bottom: 1px solid $divider-grey;
+}
+.article-list--article {
+	padding-bottom: 2.5rem;
+	margin-bottom: 2rem;
+	border-bottom: 1px solid #e1e1e1;
+	&:last-child {
+		border-bottom: 0;
+	}
+	@include breakpoint($tablet) {
+		padding-bottom: 2.5rem;
+	}
+}
+.page-section {
+	width: 100%;
+	margin-bottom: 3rem;
+	> .grid__column {
+		padding-bottom: 4rem;
+	}
+	&.page-section--with-border {	
+		border-bottom: 1px solid #e1e5e8;		
+	}
+	&:first-child {
+		margin-top: 3rem;
+	}
+}

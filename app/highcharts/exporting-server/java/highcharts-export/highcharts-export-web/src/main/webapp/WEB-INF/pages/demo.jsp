@@ -139,7 +139,7 @@
 
     }
 </script>
-</head>
+ <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
 <body>
 	<div id="top">
 		<a href="http://www.highcharts.com" title="Highcharts Home Page"

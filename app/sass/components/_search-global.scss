@@ -11,41 +11,29 @@
 	}
 }
 .search__form {
+	position: relative;
 	padding-bottom: 20px;
 	@include breakpoint($tablet) {
-		padding-bottom: 30px;
+		padding-bottom: 10px;
 	}
 }
-.panel-right .form-field .search-button-mobile {
+.panel-right .loading-spinner--search-apps {
 	position: absolute;
-	top: 30px;
-	right: 13px;
-	width: 23px;
-	padding: 0;
-	margin: 0;
-	background-color: transparent;
-	@extend %icon-font;
-	font-size: 22px;
-	transition: color $base-transition-speed-off;
-	@include breakpoint($tablet) {
-		display: none;
-	}
-	&.is-highlighted {
-		color: $reflection-purple;
-		transition: color $base-transition-speed-on;
-	}
-}
-.panel-right .search-button {
-	width: 100%;
+	bottom: 9px;
+	right: 12px;
+	width: 18px;
+	height: 18px;
 }
 .search__results-container {
+	position: relative;
 	width: 100%;
 	overflow: visible;
 }
 .search__results-section {
 	position: relative;
 	min-height: 18px;
-	margin-bottom: 24px;
+	margin-bottom: 20px;
+	display: none;
 	overflow: auto;
 	text-align: left;
 	h2 {
@@ -58,7 +46,8 @@
 		max-height: 156px;
 		overflow: auto;
 		@include breakpoint($tablet) {
-			max-height: 152px;
+			max-height: none;
+			overflow: none;
 		}
 		a {
 			position: relative;
@@ -100,6 +89,7 @@
 		}
 	}
 	&.search__results-section--developers {
+		display: none;
 		span {
 			padding-left: 0;
 		}

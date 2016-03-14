@@ -15,7 +15,7 @@ if (typeof document !== 'undefined' && typeof window !== 'undefined') {
 else {
   // assume we're running under node.js when document/window are not present
   fabric.document = require("jsdom")
-    .jsdom("<!DOCTYPE html><html><head></head><body></body></html>");
+    .jsdom("<!DOCTYPE html><html><head> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head><body></body></html>");
 
   if (fabric.document.createWindow) {
     fabric.window = fabric.document.createWindow();

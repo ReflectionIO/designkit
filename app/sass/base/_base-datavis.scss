@@ -1,0 +1,175 @@
+
+// Add Compass' IE and vendor prefix support variables.
+// Docs at http://compass-style.org/reference/compass/support/
+@import "compass/support";
+// Docs at http://breakpoint-sass.com/
+@import "breakpoint";
+
+@import "compass/reset";
+
+// template
+* {
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html {
+	background-color: #29292c;
+}
+.header {
+	width: 1280px;
+	height: 54px;
+	margin: 80px auto 0;
+	background-color: #29292c;
+}
+.data-vis-title-container {
+	padding-left: 19px;
+	float: left;
+	display: inline-block;
+}
+.reflection-logo {
+	width: 20px;
+	height: 22px;
+	margin-top: 15px;
+	margin-right: 17px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.data-vis-container {
+	text-align: center;
+}
+.data-vis-title,
+.data-vis-date,
+.total-revenue-container h3,
+.total-revenue-container span {
+	display: inline-block;
+	vertical-align: top;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 17px;
+	font-weight: 600;	
+}
+.data-vis-title {
+	margin-top: 17px;
+	margin-right: 7px;
+	font-weight: 600;
+	color: #fcfdfd;
+}
+.data-vis-date {
+	margin-top: 18px;
+	font-weight: 400;
+	color: #81879d;
+}
+.total-revenue-container {
+	padding-right: 20px;
+	display: inline-block;
+	vertical-align: middle;
+	float: right;
+	h3 {
+		margin-top: 19px;
+		margin-right: 9px;
+		font-size: 15px;
+		font-weight: 400;
+		color: #81879d;		
+	}
+	span {
+		margin-top: 15px;
+		font-size: 20px;
+		font-weight: 400;
+		color: #fcfdfd;
+	}
+}
+#chart {
+  width: 1280px;
+  height: 800px;
+  margin: 0 auto 300px;
+  display: inline-block;
+  background: #29292c;
+}
+
+text {
+  pointer-events: none;
+}
+
+.grandparent text {
+	fill: white;
+	font-weight: 400;
+	font-size: 14px;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+g.depth g:not(.children):hover rect.child {
+	fill: #1bc79f !important;
+}
+rect {
+  fill: #6d69c5;
+  stroke: #363a47;
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+rect.parent,
+.grandparent rect {
+  stroke-width: 2px;
+  stroke: #363a47;
+}
+rect.parent {
+	stroke-width: 1px;
+}
+.children > rect.parent {
+	stroke-width: 2px;
+}
+.grandparent rect {
+  fill: #3c856d;
+}
+
+.grandparent:hover rect {
+  fill: darken(#3c856d, 5%);
+}
+
+g.children:hover rect.child {
+	fill: #1bc79f !important;
+	stroke: #159d7d !important;
+	fill-opacity: 1;
+}
+rect.child {
+	cursor: pointer;
+}
+.children rect.parent,
+.grandparent rect {
+  cursor: pointer;
+}
+
+.children text,
+.depth text {
+	fill: white;
+	font-weight: 400;
+	font-size: 18px;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+text.text-title {
+	font-weight: 600;
+}
+
+rect.parent {
+  /*fill: #bbb; */
+  fill-opacity: 0;
+  pointer-events: none;
+}
+
+.children:hover rect.child {
+  /*fill: #bbb;*/
+  cursor: pointer;
+}
+
+.tt-image {
+	width: 70px;
+	height: 70px;
+	margin-bottom: 12px;
+	border-radius: 10px;
+}
+h2.tt-category-title {
+	font-size: 18px;
+	margin-bottom: 8px;
+}
+h3.tt-category-value {
+	font-size: 14px;
+	line-height: 1.2;
+}

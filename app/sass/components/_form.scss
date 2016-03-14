@@ -905,9 +905,11 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 // Date Selector
 .dateBoxPopup {
 	position: absolute;
-	width: 300px;
+	width: 300px;	
 	z-index: 990;
-	border-radius: 0 0 4px 4px;
+	// opacity: 0; new dateBoxPopup should have this
+	visibility: hidden;
+	border-radius: 5px;
 	background-color: $panel-grey;
 	transition: opacity 0.1s, visibility 0.1s 0.1s;
 	@include box-shadow(4px 4px 8px rgba(0, 0, 0, 0.1), 1px -3px 6px rgba(0, 0, 0, 0.05), -3px 0px 6px rgba(0, 0, 0, 0.1));
@@ -920,13 +922,134 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	@include breakpoint($tablet) {
 		width: 320px;
 	}
+	.datebox-popup__content {
+		padding-top: 7px;
+	}
 	tbody, tr {
 		width: 100%;
+	}
+	&.is-showing {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity 0.2s;
 	}
 	@media screen and (max-width: $mobile-max-width) {
 		left: 50% !important;
 		margin-left: -150px !important;
 	}
+	.datebox-popup__content,
+	.tabs__content-container,
+	.tabs-container li,
+	.tabs__content,
+	.tabs__content-area {
+		overflow: visible;
+	}
+	.tabs__content-container {
+		margin-bottom: 0;		
+	}
+	.tabs-container {
+		position: relative;
+		padding-left: 6px;
+		z-index: 10;
+		background-color: $reflection-white;
+		li {
+			padding: 5px 5px 10px;
+	    height: auto;
+	    display: inline-block;
+	  }
+  }
+  .tabs__content-area {
+  	position: relative;
+  	padding-bottom: 7px;
+  }
+  .date-range-list__options {
+  	position: relative;
+  	z-index: 10;
+  	text-align: center;
+  	background-color: $panel-grey;
+  	* {
+  		z-index: 10;
+  	}
+  }
+  .date-range-list {
+  	ul {
+  		border-bottom: 1px solid $divider-grey;
+  	}
+  	a {
+  		padding: 10px 5%;
+  		display: block;
+  		font-size: 1.4rem;
+  	}
+  	h2 {  		
+  		padding: 10px 5%;
+  		margin-top: 5px;
+  		display: block;
+  		font-size: 1.8rem;
+  	}
+  	.form-field--date-select {
+  		width: 42.5%;
+  		margin-left: 5%;
+  	}
+  	button {
+  		margin: 10px auto;
+  		font-size: 1.4rem;
+  	}
+  }
+  .hidden-calendar-container {
+  	position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: 0;
+		background-color: $panel-grey;
+  }
+  .date-month-selector {
+  	table:not(.gwt-DatePicker):not(.datePickerMonthSelector) {
+  		td:hover {
+	  		background-color: darken($panel-grey, 10%);
+	  	}
+  	}
+  	td {
+  		text-align: center;
+  	}
+  }
+  .date-quarter-selector {
+  	table:not(.gwt-DatePicker):not(.datePickerMonthSelector) {
+  		tr:hover {
+	  		background-color: darken($panel-grey, 10%);
+	  	}
+  	}
+  }
+  .date-month-selector,
+  .date-quarter-selector {
+  	table {
+  		width: 100%;
+  		font-size: 12px;
+  	}
+  	.datePickerMonthSelector {
+  		margin-bottom: 10px;
+  	}
+	  .datePickerDay {
+  		height: 30px;
+  		width: 100%;
+  		padding-top: 10px;
+  		display: block;
+  		text-align: center;
+  	}
+  }
+  .date-quarter-selector ul,
+  .date-year-selector ul {
+  	padding: 5px 0 6px;
+  	font-size: 1.4rem;
+  	li {
+  		width: 100%;
+  		padding: 10px 0 12px;
+  		a {
+  			display: block;
+  			text-align: center;
+  		}
+  	}
+  }
 }
 .gwt-DatePicker {
 	width: 100%;
