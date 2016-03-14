@@ -11,6 +11,10 @@ var Page = function() {
 	}, 500);
 
 	new FormInteractions();
+	new PanelRightOverlay();
+	new PanelRightMisplacedPassword();
+	new AccountContainer();
+	new SearchContainer();
 	this.customScrollbars();
 };
 
@@ -187,22 +191,193 @@ var LeftPanelAndHamburger = function() {
 		$(this).toggleClass('is-selected');
 		if($('body').hasClass('panel-left-open')) {
 			$('body, html').removeClass('panel-left-open');			
-			if(!$('html.is-chrome').length && !$('html.is-opera').length) {
-				$('.panel-left').addClass('is-animating-out');
-				$('.l-main').addClass('is-animating-out');
-				window.setTimeout(function(){
-					$('.panel-left, .l-main').removeClass('is-animating-out'); // class for motion blur effect
-				}, 140);
-			}
 		} else {
 			$('body, html').toggleClass('panel-left-open');
-			if(!$('html.is-chrome').length && !$('html.is-opera').length) {
-				$('.panel-left').addClass('is-animating-in');
-				$('.l-main').addClass('is-animating-in');
-				window.setTimeout(function(){
-					$('.panel-left, .l-main').removeClass('is-animating-in'); // class for motion blur effect
-				}, 140);
+		}
+	});
+};
+
+var PanelRightOverlay = function() {
+		var instance = this;
+		$('body.ie10').on("click", function(e){
+			if($(e.target).find('.panel-right__overlay').length) {
+				instance.CloseRightPanel();
 			}
+		});
+		$('.panel-right__overlay').on("click", function() {
+			instance.CloseRightPanel();
+		});
+	};
+
+PanelRightOverlay.prototype.CloseRightPanel = function() {
+		if($('.js-account-container').hasClass('is-showing')) {
+			$('.js-link-log-in').trigger("click");
+		}
+		else if($('.js-search-container').hasClass('is-showing')) {
+			$('.js-open-search').click();
+		}
+		// $('html, body').removeClass('no-scroll');
+};
+
+var PanelRightMisplacedPassword = function() {
+	$('.panel-right .js-mock-show-reset-password').on("click", function(e){
+		$('.panel-right').addClass('show-reset-password-form').addClass('will-show');
+		setTimeout(function(){
+			$('.panel-right .form--login').css({"visibility":"hidden","position":"absolute"});
+			$('.panel-right .form--password-reset').css({"visibility":"visible","position":"relative"});
+			$('.panel-right').removeClass('will-show');
+			if($('.ie8').length > 0) {
+				$('.panel-right .form--login').css("display","none");
+				$('.panel-right .form--password-reset').css("display","block");
+			}
+		}, 150);
+	});
+
+	$('.panel-right .js-mock-send-reset-password').on("click", function(e){
+		e.preventDefault();
+		var $this = $(this);
+		$this.attr('value', 'Email is on the way').addClass('ref-button--success');
+		$('.panel-right').addClass('reset-password-is-submitted').find('.form-submitted-success').addClass('is-showing');
+	});
+
+	$('.panel-right .js-link-to-login').on("click", function(e){
+		e.preventDefault();
+		$('.panel-right').removeClass('show-reset-password-form').removeClass('reset-password-is-submitted').find('.form-submitted-success').removeClass('is-showing')
+		$('.panel-right .form--login').css({"visibility":"visible","position":"relative"});
+		$('.panel-right .form--password-reset').css({"visibility":"hidden","position":"absolute"});
+		$('.panel-right .js-mock-send-reset-password').removeClass('ref-button--success').attr('value', 'Send password reset email');
+		if($('.ie8').length > 0) {
+			$('.panel-right .form--login').css("display","block");
+			$('.panel-right .form--password-reset').css("display","none");
+		}
+	});
+}
+
+var AccountContainer = function() {
+	$('.js-link-log-in').on("click", function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		$this.toggleClass('is-selected');
+		if($('.js-account-container').hasClass('is-showing')) {
+			$('.js-account-container').removeClass('is-showing');
+			// $('html, body').removeClass('no-scroll');
+		}
+		else {
+			if($('.js-search-container').hasClass('is-showing')) {
+				$('.js-open-search').click();
+			}
+			$('.js-account-container').addClass('is-showing');
+			// $('html, body').addClass('no-scroll');
+		}
+	});
+};
+
+var SearchContainer = function() {
+	var pInstance = this;
+	instance.searchOpenLink = $('.js-open-search');
+	if(instance.searchOpenLink.length) {
+		instance.searchOpenLink.click(function(e){
+			e.preventDefault();
+			$(this).toggleClass('is-selected');
+			pInstance.toggleSearchView();
+		});
+	}
+
+	this.initSearch();
+};
+
+SearchContainer.prototype.toggleSearchView = function() {
+	if($('.js-search-container').hasClass('is-showing')) {
+		$('.js-search-container').removeClass('is-showing');
+		// $('html, body').removeClass('no-scroll');
+	}
+	else {
+		if($('.js-account-container').hasClass('is-showing')) {
+			$('.js-link-log-in').trigger("click");
+		}
+		$('.js-search-container').addClass('is-showing');
+		// $('html, body').addClass('no-scroll');
+		$('.search__form .js-get-items').select();
+	}
+};
+
+function handleappsearch(data) {
+	console.log(data);
+	var inputValue,
+			$appsContainer = $('.js-item-results--apps'),
+			$devListContainer = $('.js-item-results--developers'),
+			$noResultsContainer = $('.js-no-results'),
+			$appsList = $appsContainer.find('ul'),
+			$devList = $devListContainer.find('ul');
+
+	var searchResultsApps = [],
+			searchResultsDevs = [];
+
+	var inputValueCaseInsensitiveRegEx = new RegExp($('.js-get-items').val(), "i");
+
+	// if found add to result array
+	for(var i = 0; i < data.results.length; i++) {
+		if(data.results[i].trackCensoredName.search(inputValueCaseInsensitiveRegEx) > -1) {
+			searchResultsApps.push(data.results[i]);
+		}
+		// Search Developers
+		if(data.results[i].artistName.search(inputValueCaseInsensitiveRegEx) > -1) {
+			var previouslyAdded = false;
+			for(var b = 0; b < searchResultsDevs.length; b++) {
+				if(data.results[i].artistName == searchResultsDevs[b].artistName) {
+					previouslyAdded = true;
+				}
+			}
+			if(!previouslyAdded) {
+				searchResultsDevs.push(data.results[i]);
+			}
+		}
+	}
+
+	// show and hide containers for nil results
+	if (searchResultsApps.length == 0) {			
+		$appsContainer.hide();
+	} else {
+		$appsContainer.show();
+		$noResultsContainer.hide();
+	}
+
+	if(searchResultsDevs.length == 0) { 
+		$devListContainer.hide();
+	} else {
+		$devListContainer.show();
+		$noResultsContainer.hide();
+	}
+
+	if(searchResultsApps.length == 0 && searchResultsDevs.length == 0) {
+		$noResultsContainer.show();
+	}
+	
+	// output results to screen
+	$appsList.empty();
+	for(var i = 0; i < searchResultsApps.length; i++) {
+		$appsList.append($('<li>').append($('<a>').attr("href", "app.html?id=" + searchResultsApps[i].trackId).append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + "")).append($('<span>').text(searchResultsApps[i].trackCensoredName))));
+	}
+
+	$devList.empty();
+	for(var i = 0; i < searchResultsDevs.length; i++) {
+		$devList.append($('<li>').append($('<a>').append($('<span>').text(searchResultsDevs[i].artistName))));
+	}
+}
+
+SearchContainer.prototype.initSearch = function() {
+	
+	// on key up loop through object and search - for implentation, amend to call service to return results in json and display
+	$('.js-get-items').keyup(function(){
+		
+		$('#scriptsearch').remove();
+    $('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + $(this).val() + "&media=software&limit=10&callback=handleappsearch"));
+
+		var $searchButtonMobile = $('.panel-right .form-field .search-button-mobile');
+		if($(this).val().length > 0) {
+			$searchButtonMobile.addClass('is-highlighted');
+		} else {
+			$searchButtonMobile.removeClass('is-highlighted');
 		}
 	});
 };
@@ -460,7 +635,7 @@ var WhatsThisPopup = function($domElement) {
 					tooltip.addClass("position-tooltip-top");
 					tooltipContainer.css({"top": topPosition - 20 - tooltipHeight, "left": leftPosition - (tooltipWidth/2) + iconOffset});
 				} else {
-					tooltipContainer.css({"top": topPosition + 40, "left": leftPosition - (tooltipWidth/2) + 8});
+					tooltipContainer.css({"top": topPosition + 45, "left": leftPosition - (tooltipWidth/2) + 8});
 				}
 			} else {
 				tooltipContainer.css({"top": topPosition + 35, "left": "50%", "margin-left": -(tooltipWidth/2)});

@@ -7,6 +7,7 @@ $laptop-plus: 1150px;
 $desktop: 1280px;
 $desktop-wide: 1600px;
 $mobile-max-width: 719px;
+$leftnav-wide: 1360px;
 
 $base-margin-bottom: 4rem;
 
@@ -49,8 +50,11 @@ $base-margin-bottom: 4rem;
 	.no-touch &,
 	.no-touch .panel-left-open & {
 		@include breakpoint($laptop) {
-			width: calc(100% - 61px);
+			width: calc(100% - 60px);
 			transition: width 0.15s ease-out;
+		}
+		@include breakpoint($leftnav-wide) {
+			width: calc(100% - 200px);
 		}
 	}
 }

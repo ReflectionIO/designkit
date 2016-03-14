@@ -1,10 +1,10 @@
 .panel-left {
 	position: fixed;
 	top: 0;
-	width: 200px;
+	width: 241px;
 	height: 100vh;
 	padding-top: 42px;
-	left: -200px;
+	left: -241px;
 	display: inline-block;
 	z-index: 10;
 	float: left;
@@ -27,10 +27,6 @@
 		left: 0px;
 		transition: left 0.15s ease-out;
 	}
-	.touch.is-chrome {
-		min-height: 768px;
-		height: calc(100vh + 100px);
-	}
 }
 #mCSB_1_scrollbar_vertical {
 	z-index: 100;
@@ -39,12 +35,20 @@
 	@include breakpoint($laptop) {
 		.panel-left {
 			left: 0;
-			width: 61px;
+			width: 60px;
 			overflow: hidden;
 			transition: width 0.1s;
 			&:hover {
-				width: 200px;
+				width: 240px;
 				transition: width 0.2s;
+			}
+		}
+	}
+	@include breakpoint($leftnav-wide) {
+		.panel-left {
+			width: 200px;
+			&:hover {
+				width: 200px;
 			}
 		}
 	}

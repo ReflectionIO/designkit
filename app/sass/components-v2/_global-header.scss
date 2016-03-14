@@ -35,11 +35,12 @@ $headerLinkBackgroundHoverColour: #323643;
 			width: 100%;
 		}
 	}
-	.ref-button--cta-small {
+	.header__sign-up-button {
 		display: none;
 		@include breakpoint($tablet) {
 			margin-top: 7px;
 			margin-right: 26px;
+			padding: 10px 20px 11px;
 			display: inline-block;
 			float: right;
 			vertical-align: top;
@@ -47,7 +48,9 @@ $headerLinkBackgroundHoverColour: #323643;
 		}
 	}
 	.link-log-in-container,
-	.search-link-container {
+	.search-link-container,
+	.notifications-link-container,
+	.my-account-link-container {
 		height: 42px;
 		padding: 0;
 		margin: 0;
@@ -57,6 +60,12 @@ $headerLinkBackgroundHoverColour: #323643;
 		border-left: 1px solid #1e2027;
 		@include breakpoint($phablet) {
 			height: 50px;
+		}
+	}
+	.notifications-link-container,
+	.my-account-link-container {
+		&:hover {
+			background-color: #323643;
 		}
 	}
 	.link-log-in,
@@ -107,6 +116,26 @@ $headerLinkBackgroundHoverColour: #323643;
 			transition: color $base-transition-speed-off;
 			@include breakpoint($phablet) {
 				line-height: 50px;
+			}
+		}
+	}
+	.notifications-link,
+	.my-account-link {
+		width: 48px;
+		display: block;
+    text-align: center;
+		&:after {
+			font-size: 17px;
+			color: $light-grey-1;
+			line-height: 42px;
+			@include breakpoint($phablet) {
+				line-height: 50px;
+			}
+		}
+		&:active {
+			&:after {
+				position: relative;
+				top: 2px;
 			}
 		}
 	}

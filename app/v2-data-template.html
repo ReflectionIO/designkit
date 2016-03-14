@@ -1032,10 +1032,11 @@
 
 				</div>
 			</div>
-		</div>
-	</div>
 
-	<div class="grid-container" id="js-component-import--global-footer"></div>
+			<div class="grid-container" id="js-component-import--global-footer"></div>
+			
+		</div>
+	</div>	
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
@@ -1051,7 +1052,7 @@
 
 	<div id="js-appendScriptsContainer"></div>
 
-	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
 
   <script src="js/vendor/highcharts-custom.js"></script>
@@ -1063,6 +1064,10 @@
     }
 
   	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-data-template.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
   		new Page();
   		new PrimaryFilters();
   		new FormInteractions();
