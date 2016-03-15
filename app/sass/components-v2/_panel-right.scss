@@ -56,9 +56,15 @@ $blur-opacity: 0.7;
 	background-color: #29292b;
 	opacity: 0;
 	visibility: hidden;
+	.no-touch & {
+		transition: opacity 0.18s, visibility 0.01s 0.27s;
+	}
 	.is-showing & {
 		visibility: visible;
 		opacity: 0.5;
+		.no-touch & {
+			transition: opacity 0.27s;
+		}
 	}
 	.no-js & {
 		display: none;

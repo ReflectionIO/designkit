@@ -158,14 +158,14 @@ $navigation-purple: #47447c;
 				@include box-sizing(border-box);
 				span {
 					padding-left: 16px;
-					color: #949cb8;
+					color: #81879d;
 				}
 				svg {
 					width: 19px;
 					height: 19px;
 					vertical-align: middle;
 					path, polygon {
-						fill: $light-grey-1;
+						fill: #5a5a68;
 					}
 				}
 				@include breakpoint($laptop) {
@@ -190,7 +190,14 @@ $navigation-purple: #47447c;
 				}
 			}
 			.no-touch & {
-				&:hover > a,
+				&:hover > a {
+					span {
+						color: #949cb8;
+					}
+					svg path, svg polygon {
+						fill: #949cb8;
+					}
+				}
 				&.is-selected:hover > a {
 					span {
 						color: $reflection-white;
