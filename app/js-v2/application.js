@@ -14,7 +14,7 @@ var Page = function() {
 	new PanelRightOverlay();
 	new PanelRightMisplacedPassword();
 	new AccountContainer();
-	new SearchContainer();
+	new SearchContainer($('.js-search-text-container'));
 	this.customScrollbars();
 };
 
@@ -213,10 +213,11 @@ PanelRightOverlay.prototype.CloseRightPanel = function() {
 		if($('.js-account-container').hasClass('is-showing')) {
 			$('.js-link-log-in').trigger("click");
 		}
-		else if($('.js-search-container').hasClass('is-showing')) {
-			$('.js-open-search').click();
+		if($('.js-search-container').hasClass('is-showing')) {
+			$('.js-search-text-container input').val("");
+			$('.js-search-text-container').removeClass('is-open');
+			$('.js-search-container').removeClass('is-showing');
 		}
-		// $('html, body').removeClass('no-scroll');
 };
 
 var PanelRightMisplacedPassword = function() {
@@ -260,45 +261,32 @@ var AccountContainer = function() {
 		$this.toggleClass('is-selected');
 		if($('.js-account-container').hasClass('is-showing')) {
 			$('.js-account-container').removeClass('is-showing');
-			// $('html, body').removeClass('no-scroll');
-		}
-		else {
-			if($('.js-search-container').hasClass('is-showing')) {
-				$('.js-open-search').click();
-			}
-			$('.js-account-container').addClass('is-showing');
-			// $('html, body').addClass('no-scroll');
 		}
 	});
 };
 
-var SearchContainer = function() {
-	var pInstance = this;
-	instance.searchOpenLink = $('.js-open-search');
-	if(instance.searchOpenLink.length) {
-		instance.searchOpenLink.click(function(e){
-			e.preventDefault();
-			$(this).toggleClass('is-selected');
-			pInstance.toggleSearchView();
-		});
-	}
+var SearchContainer = function($domElement) {
+	
+	var $searchTextContainer = $domElement,
+			sInstance = this,
+			$searchInput = $searchTextContainer.find(".js-get-items");
+	$searchInput.on("focus", function() {		
+		sInstance.openSearch();
+	});
+	$searchTextContainer.find(".js-clear-search").on("click", function(){
+		$searchInput.val("");
+		$searchInput.focus();
+	});
 
 	this.initSearch();
 };
 
-SearchContainer.prototype.toggleSearchView = function() {
-	if($('.js-search-container').hasClass('is-showing')) {
-		$('.js-search-container').removeClass('is-showing');
-		// $('html, body').removeClass('no-scroll');
+SearchContainer.prototype.openSearch = function() {
+	if($('.js-account-container').hasClass('is-showing')) {
+		$('.js-link-log-in').trigger("click");
 	}
-	else {
-		if($('.js-account-container').hasClass('is-showing')) {
-			$('.js-link-log-in').trigger("click");
-		}
-		$('.js-search-container').addClass('is-showing');
-		// $('html, body').addClass('no-scroll');
-		$('.search__form .js-get-items').select();
-	}
+	$('.js-search-text-container').addClass('is-open');
+	$('.js-search-container').addClass('is-showing');
 };
 
 function handleappsearch(data) {
