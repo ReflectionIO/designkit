@@ -261,6 +261,13 @@ var AccountContainer = function() {
 		$this.toggleClass('is-selected');
 		if($('.js-account-container').hasClass('is-showing')) {
 			$('.js-account-container').removeClass('is-showing');
+		} else {
+			$('.js-account-container').addClass('is-showing');
+		}
+		if($('.js-search-container').hasClass('is-showing')) {
+			$('.js-search-text-container').removeClass('is-open');
+			$('.js-search-container').removeClass('is-showing');
+			$('.js-search-text-container input').val("");
 		}
 	});
 };
@@ -290,11 +297,11 @@ SearchContainer.prototype.openSearch = function() {
 };
 
 function handleappsearch(data) {
-	console.log(data);
 	var inputValue,
-			$appsContainer = $('.js-item-results--apps'),
-			$devListContainer = $('.js-item-results--developers'),
-			$noResultsContainer = $('.js-no-results'),
+			$appsContainer = $('.js-item-results--apps').show(),
+			$devListContainer = $('.js-item-results--developers').show(),
+			$noResultsContainerApps = $('.js-no-results--apps'),
+			$noResultsContainerPub = $('.js-no-results--publishers'),
 			$appsList = $appsContainer.find('ul'),
 			$devList = $devListContainer.find('ul');
 
@@ -324,32 +331,35 @@ function handleappsearch(data) {
 
 	// show and hide containers for nil results
 	if (searchResultsApps.length == 0) {			
-		$appsContainer.hide();
+		$noResultsContainerApps.show();
+		$appsList.hide();
 	} else {
-		$appsContainer.show();
-		$noResultsContainer.hide();
+		$noResultsContainerApps.hide();
+		$appsList.show();
 	}
 
-	if(searchResultsDevs.length == 0) { 
-		$devListContainer.hide();
+	if(searchResultsDevs.length == 0) {
+		$noResultsContainerPub.show();
+		$devList.hide();
 	} else {
-		$devListContainer.show();
-		$noResultsContainer.hide();
-	}
-
-	if(searchResultsApps.length == 0 && searchResultsDevs.length == 0) {
-		$noResultsContainer.show();
+		$noResultsContainerPub.hide();
+		$devList.show();
 	}
 	
 	// output results to screen
 	$appsList.empty();
-	for(var i = 0; i < searchResultsApps.length; i++) {
-		$appsList.append($('<li>').append($('<a>').attr("href", "app.html?id=" + searchResultsApps[i].trackId).append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + "")).append($('<span>').text(searchResultsApps[i].trackCensoredName))));
+	for(var i = 0; i < searchResultsApps.length && i < 5; i++) {
+		$appsList.append($('<li>').append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + ""))
+															.append($('<div>').addClass("search-result__text-container")
+																.append($('<a>').addClass("search-result__app-name").attr("href", "app.html?id=" + searchResultsApps[i].trackId).text(searchResultsApps[i].trackCensoredName))
+																.append($('<span>').addClass("search-result__publisher-name").text(searchResultsApps[i].artistName))
+															)
+										);
 	}
 
 	$devList.empty();
-	for(var i = 0; i < searchResultsDevs.length; i++) {
-		$devList.append($('<li>').append($('<a>').append($('<span>').text(searchResultsDevs[i].artistName))));
+	for(var i = 0; i < searchResultsDevs.length && i < 6; i++) {
+		$devList.append($('<li>').append($('<a>').attr("href", "#").addClass("search-results--developer__publisher-name").text(searchResultsDevs[i].artistName)));
 	}
 }
 
