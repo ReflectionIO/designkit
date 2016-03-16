@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Live App Charts</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			<div class="page-live-charts">
+				<header class="grid-container">
+					<h1 class="heading-style--heading-two page-title">Live App Charts</h1>
+					<div class="page-header__page-actions">
+						
+						<div class="filter-toggle toggle-container--view-type">
+							<div class="toggle">
+								<input id="toggle--show-full-view" name="viewtype" type="radio">
+								<label for="toggle--show-full-view">
+									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M16.9,16.9h-2.8h-0.6h-2.8h-0.6H7.3
+		H6.8H3.9H3.4H1.1v-4l2.5-3.8L7,10.7l3.4-6.2L14,6.1l2.9-3.2V16.9z"/></svg>
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-compact-view" name="viewtype" checked type="radio">
+								<label for="toggle--show-compact-view">
+									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M3.6,9.1L7,10.7l3.4-6.2L14,6.1l2.9-3.2v4
+		l-3,4.5l-3.2-1.1l-3.7,3.4L3.7,13l-2.6,1.4v-1.5L3.6,9.1z M14.1,16.9h-0.6h-2.8h-0.6H7.3H6.8H3.9H3.4H1.1V15l2.7-1.5l3.3,0.9
+		l3.7-3.4l3.3,1.1l2.8-4.2v9H14.1z"/></svg>
+								</label>
+							</div>
+						</div>
+
+						<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+
+						<div class="secondary-filter form-field--search">
+							<input type="text" placeholder="Find App in List" name="findapp" id="findapp">
+							<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+						</div>
+
+						<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+							<ul>
+								<li>
+									<input type="checkbox" name="checkboxOne" id="checkboxOne">
+									<label for="checkboxOne" class="checkboxLabel">Only New Entries</label>
+									<label for="checkboxOne" class="checkboxLabelVisible">Only New Entries</label>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</header>
+
+				<div class="grid__row">
+ 					<aside class="primary-filters-container">
+ 						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="allstores" selected>All Stores</option>
+						    <option value="iosiphone">iOS iPhone</option>
+						    <option value="iosipad">iOS iPad</option>
+						    <option value="play">Google Play</option>
+						    <option value="amazon">Amazon App Store</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="jan" selected>01/01/16 - 01/02/16</option>
+						    <option value="feb">01/02/16 - 01/03/16</option>
+						    <option value="mar">01/03/16 - 01/04/16</option>
+						    <option value="apr">01/04/16 - 01/05/16</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="allcountries" selected>All Countries</option>
+						    <option value="uni">United Kingdom</option>
+						    <option value="fra">France</option>
+						    <option value="ger">Germany</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="allcategories" selected>All Categories</option>
+						    <option value="uni">Games</option>
+						    <option value="fra">Lifestyle</option>
+						    <option value="ger">Productivity</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="allprices" selected>All Prices</option>
+						    <option value="free">Free</option>
+						    <option value="tier1">Tier 1</option>
+						    <option value="tier2">Tier 2</option>
+						    <option value="tier3">Tier 3</option>
+						    <option value="tier4">Tier 4</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="alliap" selected>All IAP Status</option>
+						    <option value="withiap">With IAP</option>
+						    <option value="noiap">No IAP</option>
+							</select>
+						</div>
+					</aside>
+ 				</div>
+
+ 				<div class="grid-container live-chart-container">
+ 					
+ 				</div>
+
+			</div>
+
+			<div class="grid-container" id="js-component-import--global-footer"></div>
+			
+		</div>
+	</div>	
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script>
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-live-charts.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+  		new Page();
+  		new PrimaryFilters();
+  		new FormInteractions();
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>
