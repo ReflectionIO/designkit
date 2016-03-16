@@ -113,7 +113,8 @@ h1, h2, h3, h4, h5, h6, p, li, a, blockquote, time, span, cite, html, body, .ref
 input[type="email"],
 input[type="search"],
 input[type="password"],
-textarea, .global-header .link-log-in, .global-header .search-link-container input[type=text] {
+textarea, .global-header .link-log-in, .global-header .search-link-container input[type=text], .panel-right .blockquote-container blockquote,
+.no-js .panel-right .blockquote-container blockquote {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -1323,7 +1324,8 @@ h1, h2, h3, h4, h5, h6, p, li, a, blockquote, time, span, cite, html, body, .ref
 input[type="email"],
 input[type="search"],
 input[type="password"],
-textarea, .global-header .link-log-in, .global-header .search-link-container input[type=text] {
+textarea, .global-header .link-log-in, .global-header .search-link-container input[type=text], .panel-right .blockquote-container blockquote,
+.no-js .panel-right .blockquote-container blockquote {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -3682,58 +3684,80 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 /* line 69, sass/components-v2/_panel-right.scss */
 .panel-right .blockquote-container,
 .no-js .panel-right .blockquote-container {
-  width: 100%;
-  padding: 29px 26px 38px 28px;
-  border-top: 1px solid #161617;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  padding: 0 28px 50px 28px;
+  opacity: 0;
 }
-/* line 73, sass/components-v2/_panel-right.scss */
+/* line 76, sass/components-v2/_panel-right.scss */
+.is-showing .panel-right .blockquote-container, .is-showing
+.no-js .panel-right .blockquote-container {
+  opacity: 1;
+  -webkit-transition: opacity 0.2s 0.2s;
+          transition: opacity 0.2s 0.2s;
+}
+/* line 80, sass/components-v2/_panel-right.scss */
 .panel-right .blockquote-container blockquote,
 .no-js .panel-right .blockquote-container blockquote {
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 42px;
+  color: #727686;
 }
-/* line 77, sass/components-v2/_panel-right.scss */
+/* line 86, sass/components-v2/_panel-right.scss */
 .panel-right .blockquote-container blockquote:before,
 .no-js .panel-right .blockquote-container blockquote:before {
-  height: 55px;
-  font-size: 80px;
-  color: #36363a;
+  content: "\201C";
+  position: absolute;
+  top: 25px;
+  left: 24px;
+  display: block;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 91px;
+  color: #363a47;
 }
-/* line 82, sass/components-v2/_panel-right.scss */
+/* line 96, sass/components-v2/_panel-right.scss */
 .panel-right .blockquote-container blockquote p,
 .no-js .panel-right .blockquote-container blockquote p {
+  margin-bottom: 23px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
   font-size: 16px;
+  line-height: 1.43;
+  color: #727686;
 }
-/* line 85, sass/components-v2/_panel-right.scss */
+/* line 104, sass/components-v2/_panel-right.scss */
 .panel-right .blockquote-container blockquote cite,
 .no-js .panel-right .blockquote-container blockquote cite {
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
 }
-/* line 87, sass/components-v2/_panel-right.scss */
+/* line 107, sass/components-v2/_panel-right.scss */
 .panel-right .blockquote-container blockquote cite span,
 .no-js .panel-right .blockquote-container blockquote cite span {
   font-size: 16px;
-  color: #fcfdfd;
+  color: #fefefe;
 }
 
-/* line 95, sass/components-v2/_panel-right.scss */
+/* line 115, sass/components-v2/_panel-right.scss */
 .panel-right.search-container {
   right: -319px;
   width: 319px;
   height: 630px;
   background-color: #fcfdfd;
 }
-/* line 100, sass/components-v2/_panel-right.scss */
+/* line 120, sass/components-v2/_panel-right.scss */
 .no-touch .panel-right.search-container {
   -webkit-transition: none;
           transition: none;
 }
-/* line 103, sass/components-v2/_panel-right.scss */
+/* line 123, sass/components-v2/_panel-right.scss */
 .is-showing .panel-right.search-container {
   right: 0;
 }
-/* line 105, sass/components-v2/_panel-right.scss */
+/* line 125, sass/components-v2/_panel-right.scss */
 .no-touch .is-showing .panel-right.search-container {
   -webkit-transition: none;
           transition: none;

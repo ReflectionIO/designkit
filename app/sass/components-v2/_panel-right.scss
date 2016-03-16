@@ -67,26 +67,46 @@
 		}
 	}
 	.blockquote-container {
-		width: 100%;
-		padding: 29px 26px 38px 28px;
-		border-top: 1px solid #161617;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    padding: 0 28px 50px 28px;
+    opacity: 0;
+    .is-showing & {
+    	opacity: 1;
+    	transition: opacity 0.2s 0.2s;
+    }
 		blockquote {
 			margin-top: 0;
 			margin-bottom: 0;
 			padding-top: 42px;
+			color: #727686;
+			@extend %font-smoothing;
 			&:before {
-				height: 55px;
-				font-size: 80px;
-				color: #36363a;
+				content: "\201C";
+				position: absolute;
+				top: 25px;
+    		left: 24px;
+				display: block;
+				font-family: $brand-heading-font;
+				font-size: 91px;
+				color: #363a47;
 			}
 			p {
+				margin-bottom: 23px;
+				font-family: $brand-heading-font;
+				font-weight: 600;
 				font-size: 16px;
+				line-height: 1.43;
+				color: #727686;
 			}
 			cite {
+				font-family: $brand-heading-font;
 				font-size: 14px;
 				span {
 					font-size: 16px;
-					color: $reflection-white;
+					color: #fefefe;
 				}
 			}
 		}
