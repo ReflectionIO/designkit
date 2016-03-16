@@ -27,10 +27,153 @@
 	}
 }
 .live-chart-container {
+	padding-left: 19px;
+  padding-right: 21px;
 	background-color: $panel-grey;
 }
-.live-chart-table {
-	td {
-
+.live-chart {
+	width: 100%;
+	col {
+		width: 33.333333333%;
 	}
+	th {		
+		padding: 13px 0 10px 17px;
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		font-size: 18px;
+		color: $dark-grey-2;
+		background-color: transparent;
+		svg {
+			width: 25px;
+			height: 24px;
+			margin-right: 13px;
+			display: inline-block;
+			vertical-align: top;
+			path {
+				fill: $mid-grey-2;
+			}
+		}
+		span {
+			padding-top: 3px;
+		  display: inline-block;
+		  vertical-align: top;
+		}
+	}
+	td {		
+		border: 1px solid $panel-grey;
+		background-color: $panel-grey;
+	}
+}
+.live-chart__cell {
+	width: 100%;
+	padding: 11px 15px 7px;
+	background-color: #fcfdfd;
+	border: 1px solid $panel-grey;
+}
+.live-chart__cell__app-icon {
+	width: 42px;
+	height: 42px;
+	padding-top: 1px;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 7px;
+}
+.live-chart__cell__app-details-container {
+	width: calc(100% - 56px);
+	display: inline-block;
+	float: right;
+	vertical-align: top;
+	font-size: 0;
+	.ratings-container {
+		width: 65px;
+		height: 10px;
+		margin-left: -1px;
+    margin-top: 4px;
+		display: inline-block;
+		vertical-align: top;		
+	}
+	.ratings-container,
+	.ratings-full {
+		background-size: 65px 10px;
+	}
+}
+.live-chart__cell__app-name {
+	width: calc(100% - 65px);
+	padding-bottom: 2px;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 13.6px;
+	font-weight: 700;
+	letter-spacing: 0.01em;
+	color: $reflection-purple;
+	&:hover {
+		color: $reflection-purple--hover;
+	}
+}
+.live-chart__cell__rank {
+	width: 65px;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 13.6px;
+	font-weight: 700;
+	color: $light-grey-1;
+	text-align: right;
+}
+.live-chart__cell__publisher-name {
+	width: 100%;
+	display: block;
+	font-size: 12px;
+	color: $reflection-purple;
+	&:hover {
+		color: $reflection-purple--hover;
+	}
+}
+.live-chart__cell__number-of-ratings,
+.live-chart__cell__app-price {	
+	display: inline-block;
+	vertical-align: top;
+	font-size: 12px;
+	color: $dark-grey-2;
+}
+.live-chart__cell__number-of-ratings {
+	padding-left: 5px;
+}
+.live-chart__cell__app-price {
+	padding-left: 8px;
+}
+.live-chart__cell__growth,
+.live-chart__cell__app-downloads-revenue {
+	display: inline-block;
+	float: right;
+	vertical-align: top;
+	font-size: 12px;
+	font-weight: 700;
+	color: $dark-grey-2;
+	&.positive-colour {
+		color: $reflection-green;
+	}
+	&.negative-colour {
+		color: $reflection-red;
+	}
+	span {
+		padding-top: 2px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	&:before {		
+		font-size: 18px;
+	}
+	&.ref-icon-before--download {
+		&:before {		
+			padding-right: 6px;
+		}
+	}
+	&.ref-icon-before--revenue {
+		&:before {		
+			padding-right: 7px;
+		}
+	}
+}
+.live-chart__cell__growth {
+	padding-left: 7px;
 }
