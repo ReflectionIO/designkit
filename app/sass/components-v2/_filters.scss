@@ -107,6 +107,7 @@
 	}
 }
 .form-field--search {
+	position: relative;
 	width: 176px;
 	padding: 8px 13px 8px 15px;    
 	display: inline-block;
@@ -147,6 +148,25 @@
 			color: $light-grey-1;
 		}
 	}
+	.clear-search {
+		position: absolute;
+    top: 9px;
+    right: 13px;
+    display: none;
+    font-size: 0;
+    &:after {
+			color: $light-grey-2;
+			font-size: 17.5px;
+		}
+  }
+  &.is-open {
+  	.clear-search {
+  		display: block;
+  	}
+  	.ref-icon-after--search:after {
+  		color: #f2f7f7;
+  	}
+  }
 }
 .form-filter {
 	width: auto;

@@ -421,7 +421,7 @@ var FormFieldSelect = function($domElement) {
 																		.addClass("js-dropdown-option")
 																		.text($thisOption.text())
 																		.addClass(selectedClass)
-																		.on("click", function(){
+																		.on("click", function() {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");
 																			$currentValue.text($thisOption.text());
@@ -476,6 +476,24 @@ var FormInteractions = function() {
 			}
 		});
 	}, 100); // fixes bug in IE11 for prepopulated data
+};
+
+var FormFieldSearch = function($domElement) {
+	var $thisContainer = $domElement,
+			$thisInput = $thisContainer.find("input");
+
+	$thisInput.on("focus", function(){
+		$thisContainer.addClass("is-open");
+	});
+	$thisInput.on("blur", function(){
+		if($thisInput.val().length == 0) {
+			$thisContainer.removeClass("is-open");
+		}		
+	});
+	$thisContainer.find(".js-clear-search").on("click", function(){
+		$thisContainer.removeClass("is-open");
+		$thisInput.val("");
+	});
 };
 
 
