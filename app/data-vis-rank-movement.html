@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Lab - Rank Movement</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+<script src="js/vendor/jquery-1.11.1.min.js"></script>
+
+	<script>
+	var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+	})(window.location.search.substr(1).split('&'));
+
+	(function(){
+
+			if(qs["id"]) {
+				if(qs["id"] == 0) {
+					$("head").append($("<script>").attr("src", "js/data-vis/rank-movement/iPhone_Grossing.json"));
+				} else if(qs["id"] == 1) {
+					$("head").append($("<script>").attr("src", "js/data-vis/rank-movement/iPhone_Paid.json"));
+				} else if(qs["id"] == 2) {
+					$("head").append($("<script>").attr("src", "js/data-vis/rank-movement/iPad_Free.json"));
+				} else if(qs["id"] == 3) {
+					$("head").append($("<script>").attr("src", "js/data-vis/rank-movement/iPad_Grossing.json"));
+				} else if(qs["id"] == 4) {
+					$("head").append($("<script>").attr("src", "js/data-vis/rank-movement/iPad_Paid.json"));
+				}
+			} else {
+				$("head").append($("<script>").attr("src", "js/data-vis/rank-movement/iPhone_Free.json"));
+			}
+	})();
+</script>
+<script src="js/vendor/angular.js"></script>
+<script>
+		// populate the data table
+		'use strict';
+
+		/* Controllers */
+
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function() {
+				var dataList = this;
+				dataList.data = jsonDataFromExternal;
+				dataList.highestMovementPositive = dataList.data[0].Change;
+				dataList.highestMovementNegative = dataList.data[dataList.data.length - 1].Change;
+				dataList.firstNegativeIndex = 0;
+				for (var i = 0; i < dataList.data.length; i++) {
+					if(dataList.data[i].Change < 0) {
+						dataList.firstNegativeIndex = i;
+						break;
+					}
+				}
+
+				dataList.calculateBarHeight = function(change) {
+					var barHeight = 0;
+					if(change > 0) {
+						barHeight = (change / dataList.highestMovementPositive) * 100;	
+					} else if(change < 0) {
+						barHeight = (change / dataList.highestMovementPositive) * -100;
+					}
+		    	return barHeight;
+		    }
+			});
+
+</script>
+</head>
+<body class="page-rank-movement">
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main" ng-controller="DataController as dataList">
+
+			<div class="grid-container" >
+				<div class="grid__row grid__row--heading-row">
+					<div class="grid__column grid__row--heading-row__right">
+						<div class="toggle-container">
+							<div class="filter-toggle filter-toggle--with-text">
+								<div class="toggle">
+									<input id="toggle--show-iphonefree" name="storetype" type="radio">
+									<label for="toggle--show-iphonefree" class="toggle--show-iphonefree">
+										iPhone Free
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-iphonegrossing" name="storetype" type="radio">
+									<label for="toggle--show-iphonegrossing" class="toggle--show-iphonegrossing">
+										iPhone Grossing
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-iphonepaid" name="storetype" type="radio">
+									<label for="toggle--show-iphonepaid" class="toggle--show-iphonepaid">
+										iPhone Paid
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ipadfree" name="storetype" type="radio">
+									<label for="toggle--show-ipadfree" class="toggle--show-ipadfree">
+										iPad Free
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ipadgrossing" name="storetype" type="radio">
+									<label for="toggle--show-ipadgrossing" class="toggle--show-ipadgrossing">
+										iPad Grossing
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ipadpaid" name="storetype" type="radio">
+									<label for="toggle--show-ipadpaid" class="toggle--show-ipadpaid">
+										iPad Paid
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="grid__column grid__row--heading-row__left">
+						<h1 class="heading-style--heading-three">Biggest Rank Movers <span>UK / Games</span> <span class="page-date">4th Mar - 11th Mar 2016</span></h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="rank-movement-chart">
+				<div class="axis-label">{{dataList.highestMovementPositive}}</div>
+				<div class="axis-label--half">{{dataList.highestMovementPositive / 2}}</div>
+				<div class="axis-label--zero">0</div>
+				<div class='rank-movement-chart__data-item {{dataItem.Change < 0 ? "is-negative" : "is-positive"}} {{$index < 25 ? "is-hover-left" : "is-hover-right"}}' ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.Change)}}%' ng-if="$index < dataList.firstNegativeIndex">
+					<div class="rank-movement-chart__data-item__position ref-icon-after--angle-up">
+						{{dataItem.Change}}
+					</div>
+					<div class="rank-movement-chart__data-item__icon">
+						<img src='{{dataItem.icon_url	}}' alt="App icon" />
+					</div>
+					<div class="rank-movement-chart__data-item__app-details">
+						<div>
+							<span class="rank-movement-chart__data-item__rank-title">Rank:</span>
+							<span class="rank-movement-chart__data-item__rank">{{dataItem.Rank}}</span>
+							<span class="rank-movement-chart__data-item__change ref-icon-before--up">
+								<span>{{dataItem.Change}}</span>
+							</span>
+							<!-- <span class="rank-movement-chart__data-item__is-new">NEW</span> -->
+						</div>
+						<img src='{{dataItem.icon_url}}' alt="App icon" class="rank-movement-chart__data-item__icon--large" />
+						<div class="rank-movement-chart__data-item__app-titles">
+							<h2 class="rank-movement-chart__data-item__app-name">{{dataItem.Name}}</h2>
+							<h3 class="rank-movement-chart__data-item__app-publisher">{{dataItem.Developer}}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="rank-movement-chart rank-movement-chart--negative">
+				<div class="axis-label">-{{dataList.highestMovementPositive}}</div>
+				<div class="axis-label--half">{{dataList.highestMovementPositive / 2}}</div>
+				<div class='rank-movement-chart__data-item {{dataItem.Change < 0 ? "is-negative" : "is-positive"}} {{$index > 75 ? "is-hover-left" : "is-hover-right"}}' ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.Change)}}%' ng-if="$index >= dataList.firstNegativeIndex">
+					<div class="rank-movement-chart__data-item__position ref-icon-before--angle-down">
+						{{dataItem.Change * -1}}
+					</div>
+					<div class="rank-movement-chart__data-item__icon">
+						<img src='{{dataItem.icon_url	}}' alt="App icon" />
+					</div>
+					<div class="rank-movement-chart__data-item__app-details">
+						<div>
+							<span class="rank-movement-chart__data-item__rank-title">Rank:</span>
+							<span class="rank-movement-chart__data-item__rank">{{dataItem.Rank}}</span>
+							<span class="rank-movement-chart__data-item__change ref-icon-before--down">
+								<span>{{dataItem.Change}}</span>
+							</span>
+							<!-- <span class="rank-movement-chart__data-item__is-new">NEW</span> -->
+						</div>
+						<img src='{{dataItem.icon_url}}' alt="App icon" class="rank-movement-chart__data-item__icon--large" />
+						<div class="rank-movement-chart__data-item__app-titles">
+							<h2 class="rank-movement-chart__data-item__app-name">{{dataItem.Name}}</h2>
+							<h3 class="rank-movement-chart__data-item__app-publisher">{{dataItem.Developer}}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 	
+
+  <script>
+		$(document).on("ready", function(){
+			$('.toggle--show-iphonefree').click(function(){
+				location.replace("data-vis-rank-movement.html");
+			});
+			$('.toggle--show-iphonegrossing').click(function(){
+				location.replace("data-vis-rank-movement.html?id=0");
+			});
+			$('.toggle--show-iphonepaid').click(function(){
+				location.replace("data-vis-rank-movement.html?id=1");
+			});
+			$('.toggle--show-ipadfree').click(function(){
+				location.replace("data-vis-rank-movement.html?id=2");
+			});
+			$('.toggle--show-ipadgrossing').click(function(){
+				location.replace("data-vis-rank-movement.html?id=3");
+			});
+			$('.toggle--show-ipadpaid').click(function(){
+				location.replace("data-vis-rank-movement.html?id=4");
+			});
+
+			if(qs["id"]) {
+				if(qs["id"] == 0) {
+					$('#toggle--show-iphonegrossing').attr("checked", "checked");
+				} else if(qs["id"] == 1) {
+					$("#toggle--show-iphonepaid").attr("checked", "checked");
+				} else if(qs["id"] == 2) {
+					$('#toggle--show-ipadfree').attr("checked", "checked");
+				} else if(qs["id"] == 3) {
+					$('#toggle--show-ipadgrossing').attr("checked", "checked");
+				} else if(qs["id"] == 4) {
+					$('#toggle--show-ipadpaid').attr("checked", "checked");
+				}
+			} else {
+				$('#toggle--show-iphonefree').attr("checked", "checked");
+			}
+
+			$('body').addClass("page-loaded");
+		});
+  </script>
+</body>
