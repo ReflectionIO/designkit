@@ -1,0 +1,129 @@
+.panel-right-container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	overflow: hidden;
+	z-index: -1;
+	-ms-pointer-events: none;
+	pointer-events: none;
+	&.is-showing {
+		overflow: auto;
+		overflow-x: hidden;
+		-ms-pointer-events: auto;
+		pointer-events: auto;
+		z-index: 500;
+	}
+	.no-csstransitions & {
+		display: none;
+		&.is-showing {
+			display: block;
+		}
+	}
+}	
+.panel-right__overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: #29292b;
+	opacity: 0;
+	visibility: hidden;
+	.no-touch & {
+		transition: opacity 0.18s, visibility 0.01s 0.27s;
+	}
+	.is-showing & {
+		visibility: visible;
+		opacity: 0.5;
+		.no-touch & {
+			transition: opacity 0.27s;
+		}
+	}
+	.no-js & {
+		display: none;
+	}
+}
+.panel-right,
+.no-js .panel-right {
+	position: fixed;
+	right: -300px;
+	top: 0;
+	width: 300px;
+	height: 100%;
+	padding-top: 69px;
+	display: block;
+	overflow: auto;
+	font-size: 10px;
+	background-color: $dark-grey-1;
+	.no-touch & {
+		transition: right 0.1s ease-in;
+	}	
+	.is-showing & {
+		right: 0;
+		.no-touch & {
+			transition: right 0.1s 0.1s ease-out;
+		}
+	}
+	.blockquote-container {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    padding: 0 28px 50px 28px;
+    opacity: 0;
+    .is-showing & {
+    	opacity: 1;
+    	transition: opacity 0.2s 0.2s;
+    }
+		blockquote {
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-top: 42px;
+			color: #727686;
+			@extend %font-smoothing;
+			&:before {
+				content: "\201C";
+				position: absolute;
+				top: 25px;
+    		left: 24px;
+				display: block;
+				font-family: $brand-heading-font;
+				font-size: 91px;
+				color: #363a47;
+			}
+			p {
+				margin-bottom: 23px;
+				font-family: $brand-heading-font;
+				font-weight: 600;
+				font-size: 16px;
+				line-height: 1.43;
+				color: #727686;
+			}
+			cite {
+				font-family: $brand-heading-font;
+				font-size: 14px;
+				span {
+					font-size: 16px;
+					color: #fefefe;
+				}
+			}
+		}
+	}
+}
+.panel-right.search-container {	
+	right: -319px;
+	width: 319px;
+	height: 630px;
+	background-color: #fcfdfd;
+	.no-touch & {
+		transition: none;
+	}
+	.is-showing & {
+		right: 0;
+		.no-touch & {
+			transition: none;
+		}
+	}
+}

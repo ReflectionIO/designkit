@@ -1,12 +1,12 @@
-var templateGlobalHeader = Handlebars.templates['globalHeader'];
+var templateGlobalHeader = Handlebars.templates['globalHeaderLoggedIn'];
 var htmlGlobalHeader = templateGlobalHeader({});
 $("#js-component-import--global-header").html(htmlGlobalHeader);
 
-var templateAppMenu = Handlebars.templates['appMenu'];
+var templateAppMenu = Handlebars.templates['appMenuLoggedIn'];
 var htmlAppMenu = templateAppMenu({});
 $("#js-component-import--panel-left").html(htmlAppMenu);
 
-var templateAccountContainer = Handlebars.templates['accountContainer'];
+var templateAccountContainer = Handlebars.templates['accountContainerLoggedIn'];
 var htmlPanelRight = templateAccountContainer({});
 $("#js-component-import--account-container").html(htmlPanelRight);
 

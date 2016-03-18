@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Live App Charts</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+<script src="js/vendor/angular.js"></script>
+<script src="js/mock-data/mockLiveAppChartApps.js"></script>
+<script>
+	// STATIC TEMPLATE ONLY - USING ANGULAR TO POPULATE THE DATA TABLE
+		'use strict';
+
+		/* Controllers */
+
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function() {
+				var dataList = this;
+				dataList.data = mockLiveAppChartApps;
+			});
+</script>
+</head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container" ng-controller="DataController as dataList"> <!-- ng-controller is static template only -->
+		<div id="main" class="l-main" role="main">
+			<div class="page-live-charts">
+				<header class="grid-container">
+					<h1 class="heading-style--heading-two page-title">Live App Charts</h1>
+					<div class="page-header__page-actions">
+						
+						<div class="filter-toggle toggle-container--view-type">
+							<div class="toggle">
+								<input id="toggle--show-full-view" name="viewtype" checked type="radio">
+								<label for="toggle--show-full-view" class="js-mock-show-full-view">
+									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M1,1h3v2H1V1z M6,3h11V1H6V3z M1,10h3V8H1V10z M6,10h11V8H6V10z M1,17h3v-2H1V17z M6,17h11v-2H6V17z"/></svg>
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-compact-view" name="viewtype" type="radio">
+								<label for="toggle--show-compact-view" class="js-mock-show-compact-view">
+									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M1,4h3v2H1V4z M6,6h11V4H6V6z M1,10h3V8H1V10z M6,10h11V8H6V10z M1,14h3v-2H1V14z M6,14h11v-2H6V14z"/></svg>
+								</label>
+							</div>
+						</div>
+
+						<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+
+						<div class="secondary-filter form-field--search js-form-field-search">
+							<input type="text" placeholder="Find App in List" name="findapp" id="findapp" class="js-mock-find-app">
+							<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+							<a href="#" class="clear-search ref-icon-after--close js-clear-search js-mock-clear-find-app">Clear</a>
+						</div>
+
+						<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+							<ul>
+								<li>
+									<input type="checkbox" name="checkboxOne" id="checkboxOne" class="js-mock-toggle-new">
+									<label for="checkboxOne" class="checkboxLabel">Only New Entries</label>
+									<label for="checkboxOne" class="checkboxLabelVisible">Only New Entries</label>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</header>
+
+					<aside class="primary-filters-container">
+						<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="allstores" selected>All Stores</option>
+					    <option value="iosiphone">iOS iPhone</option>
+					    <option value="iosipad">iOS iPad</option>
+					    <option value="play">Google Play</option>
+					    <option value="amazon">Amazon App Store</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="jan" selected>01/01/16 - 01/02/16</option>
+					    <option value="feb">01/02/16 - 01/03/16</option>
+					    <option value="mar">01/03/16 - 01/04/16</option>
+					    <option value="apr">01/04/16 - 01/05/16</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="allcountries" selected>All Countries</option>
+					    <option value="uni">United Kingdom</option>
+					    <option value="fra">France</option>
+					    <option value="ger">Germany</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="allcategories" selected>All Categories</option>
+					    <option value="uni">Games</option>
+					    <option value="fra">Lifestyle</option>
+					    <option value="ger">Productivity</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box js-mock-price-select-box">
+					    <option value="allprices" selected>All Prices</option>
+					    <option value="free">Free</option>
+					    <option value="tier1">$0.99</option>
+					    <option value="tier2">$1.49</option>
+					    <option value="tier3">$1.99</option>
+					    <option value="tier4">$2.49</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="alliap" selected>All IAP Status</option>
+					    <option value="withiap">With IAP</option>
+					    <option value="noiap">No IAP</option>
+						</select>
+					</div>
+				</aside>
+
+ 				<div class="live-chart-container">
+ 					<table class="live-chart js-live-chart">
+ 						<thead>
+ 							<tr>
+ 								<th>
+ 									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M1,1h3v2H1V1z M6,3h11V1H6V3z M1,10h3V8H1V10z M6,10h11V8H6V10z M1,17h3v-2H1V17z M6,17h11v-2H6V17z"/></svg>
+ 									<span>Paid</span>
+ 									<a href="#" class="live-chart__head-cell__clear-link js-mock-clear-search-results-link">Clear</a>
+ 								</th>
+ 								<th>
+ 									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M1,1h3v2H1V1z M6,3h11V1H6V3z M1,10h3V8H1V10z M6,10h11V8H6V10z M1,17h3v-2H1V17z M6,17h11v-2H6V17z"/></svg>
+ 									<span>Free</span>
+ 									<a href="#" class="live-chart__head-cell__clear-link js-mock-clear-search-results-link">Clear</a>
+ 								</th>
+ 								<th>
+ 									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M1,1h3v2H1V1z M6,3h11V1H6V3z M1,10h3V8H1V10z M6,10h11V8H6V10z M1,17h3v-2H1V17z M6,17h11v-2H6V17z"/></svg>
+ 									<span>Top Grossing</span>
+ 									<a href="#" class="live-chart__head-cell__clear-link js-mock-clear-search-results-link">Clear</a>
+ 								</th>
+ 							</tr>
+ 						</thead>
+ 						<colgroup>
+ 							<col>
+ 							<col>
+ 							<col>
+ 						</colgroup>
+ 						<tbody>
+ 							<tr ng-repeat="dataItem in dataList.data" class="js-mock-all-data">
+ 								<!-- CSS class if for static template only -->
+ 								<!-- ng-repeat is static template only for outputting table rows from JS data -->
+ 								<td data-price-tier="{{dataItem.appPrice1}}" data-is-new="{{dataItem.appNewDisplay1}}">
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="{{dataItem.appIcon1}}" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name">{{dataItem.appName1}}</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style="display: {{dataItem.appNewDisplay1}}">NEW</div>
+	 											<span class='{{dataItem.appPositionChange1 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style="display: {{dataItem.appPositionChangeDisplay1}}">{{dataItem.appPositionChange1}}</span>{{$index + 1}}</span>
+	 										<a href="#" class="live-chart__cell__publisher-name">{{dataItem.appPublisher1}}</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings1}}</span>
+	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice1}}</span>
+	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth1}}</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>{{dataItem.appRevDow1}}</span></span>
+ 										</div> 										
+ 									</div> 									
+ 								</td>
+ 								<td data-price-tier="{{dataItem.appPrice2}}" data-is-new="{{dataItem.appNewDisplay2}}">
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="{{dataItem.appIcon2}}" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name">{{dataItem.appName2}}</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style="display: {{dataItem.appNewDisplay2}}">NEW</div>
+	 											<span class='{{dataItem.appPositionChange2 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style="display: {{dataItem.appPositionChangeDisplay2}}">{{dataItem.appPositionChange2}}</span>{{$index + 1}}</span>
+	 										<a href="#" class="live-chart__cell__publisher-name">{{dataItem.appPublisher2}}</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings2}}</span>
+	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice2}}</span>
+	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth2}}</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>{{dataItem.appRevDow2}}</span></span>
+ 										</div> 										
+ 									</div> 	
+ 								</td>
+ 								<td data-price-tier="{{dataItem.appPrice3}}" data-is-new="{{dataItem.appNewDisplay3}}">
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="{{dataItem.appIcon3}}" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name">{{dataItem.appName3}}</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style="display: {{dataItem.appNewDisplay3}}">NEW</div>
+	 											<span class='{{dataItem.appPositionChange3 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style="display: {{dataItem.appPositionChangeDisplay3}}">{{dataItem.appPositionChange3}}</span>{{$index + 1}}</span>
+	 										<a href="#" class="live-chart__cell__publisher-name">{{dataItem.appPublisher3}}</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings3}}</span>
+	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice3}}</span>
+	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth3}}</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--revenue"><span>£{{dataItem.appRevDow3}}</span></span>
+ 										</div> 										
+ 									</div> 	
+ 								</td>
+ 							</tr>
+ 							<tr class="js-mock-search-results"> <!-- CSS class if for static template only -->
+ 								<td>
+ 									<div class="live-chart__cell__no-results">No Matching Apps in this Chart</div>
+ 								</td>
+ 								<td>
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/placeholder-app-icon-minecraft.png" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name">Minecraft: Pocket Edition</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class='ref-icon-after--down'>1</span>4</span>
+	 										<a href="#" class="live-chart__cell__publisher-name">Mojang</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">(3,234)</span>
+	 										<span class="live-chart__cell__app-price">Free</span>
+	 										<span class="live-chart__cell__growth positive-colour">+4%</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>156,038</span></span>
+ 										</div>
+ 									</div> 	
+ 								</td>
+ 								<td data-price-tier="{{dataItem.appPrice3}}" data-is-new="{{dataItem.appNewDisplay3}}">
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/placeholder-app-icon-minecraft.png" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name">Minecraft: Pocket Edition</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class='ref-icon-after--down'>1</span>4</span>
+	 										<a href="#" class="live-chart__cell__publisher-name">Mojang</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">(3,234)</span>
+	 										<span class="live-chart__cell__app-price">Free</span>
+	 										<span class="live-chart__cell__growth positive-colour">+4%</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>156,038</span></span>
+ 										</div>
+ 									</div>
+ 								</td>
+ 							</tr>
+ 						</tbody>
+ 					</table>
+
+ 					<a href="#" class="ref-button--secondary--medium live-chart__show-more-button">Show Next 100 Apps</a>
+ 				</div>
+
+			</div>
+
+			<div class="grid-container" id="js-component-import--global-footer"></div>
+			
+		</div>
+	</div>	
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script>
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-live-charts.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+  		new Page();
+  		new PrimaryFilters();
+  		new FormInteractions();
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  		$('.js-form-field-search').each(function(){
+  			new FormFieldSearch($(this));
+  		});
+
+  		// Mock JS for static template only
+  		$('.js-mock-show-full-view').on("click", function(){
+  			$('.live-chart').removeClass("live-chart--compact-view");
+  		});
+  		$('.js-mock-show-compact-view').on("click", function(){
+  			$('.live-chart').addClass("live-chart--compact-view");
+  		});
+
+  		$('.js-mock-toggle-new').on("change", function(){
+  			if($(this).is(':checked')) {
+  				$('.live-chart td').each(function(){
+  					var $this = $(this);
+  					if($this.data("is-new") !== "inline-block") {
+  						$this.addClass("live-chart__cell--disabled");
+  					}
+  				});
+  			} else {
+  				$('.live-chart__cell--disabled').removeClass("live-chart__cell--disabled");
+  			}
+  		});
+
+  		$('.js-dropdown-option').on("click", function(){
+	  			$('.live-chart__cell--disabled').removeClass("live-chart__cell--disabled");
+	  			var clickedText = $(this).text();
+	  			var selectedValue = "";
+	  			if(clickedText !== "All Prices") {
+	  				$(this).parents(".primary-filter").find("option").each(function(){
+	  				var thisText = $(this).text();
+	  				if(thisText == clickedText) {
+	  					selectedValue = thisText;
+	  				}
+	  			});
+	  			if(selectedValue) {
+	  				$('.live-chart td').each(function(){
+	  					var $this = $(this);
+	  					if($this.data("price-tier") !== selectedValue) {
+	  						$this.addClass("live-chart__cell--disabled");
+	  					}
+	  				});
+	  			}
+  			}
+  		});
+
+  		$('.js-mock-search-results').hide();
+  		$('.js-mock-find-app').keyup(function(){
+  			if($(this).val().length > 0) {
+  				$('.js-mock-search-results').show();
+  				$('.js-mock-all-data').hide();
+  				$('.js-live-chart').addClass("is-showing-search-results");
+  			}
+  		});
+
+  		$('.js-mock-clear-find-app').on("click", function(){
+  			$('.js-mock-search-results').hide();
+				$('.js-mock-all-data').show();
+				$('.js-live-chart').removeClass("is-showing-search-results");
+  		});
+
+  		$('.js-mock-clear-search-results-link').on("click", function(){
+  			$('.js-mock-clear-find-app').trigger("click");
+  		});
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>

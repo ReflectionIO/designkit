@@ -1,0 +1,258 @@
+$white-navigation: $reflection-white;
+$grey-hover: #bec2d2;
+$blur-opacity: 0.5;
+$navigation-purple: #47447c;
+
+.main-navigation {	
+	padding: 0 0 20px;
+	background-color: $dark-grey-1;
+	.panel-left & {
+		width: 240px;
+		@include breakpoint($leftnav-wide) {
+			width: 200px;
+		}
+	}
+	> ul {
+		> li {
+			font-size:  12px;
+			line-height: 1.5;
+			font-weight: 700;
+			border-bottom: 1px solid #161617;
+			> a {
+				position: relative;
+				padding: 16px 0px 15px 20px;
+				letter-spacing: 0.4px;
+				display: block;
+				z-index: 20;
+				float: left;
+				width: 100%;
+				text-transform: uppercase;
+				background-color: $dark-grey-1;	
+				@include box-sizing(border-box);
+				svg {
+					width: 19px;
+					height: 19px;
+					vertical-align: middle;
+					path, polygon {
+						fill: $light-grey-1;
+					}
+				}
+				span {
+					position: relative;
+					padding-left: 16px;
+					display: inline-block;
+					vertical-align: middle;
+					color: #727686;					
+				}
+				@include breakpoint($laptop) {
+					.no-touch .panel-left & {
+						span {
+							opacity: 0;
+						}
+					}
+					.no-touch .panel-left:hover & {
+						span {
+							opacity: 1;
+						}
+					}					
+				}
+				@include breakpoint($leftnav-wide) {
+					.no-touch .panel-left &,
+					.no-touch .panel-left:hover {
+						span {
+							opacity: 1;
+						}
+					}
+				}
+			}
+			.no-touch & {
+				&:hover > a {
+					background-color: #222224;
+					svg {
+						path, polygon {
+							fill: $light-grey-2;
+						}
+					}
+					span {
+						color: $light-grey-2;
+					}
+				}
+				&.is-selected:hover {
+					> a {
+						background-color: $navigation-purple;
+						span {
+							color: $reflection-white;
+						}
+						svg path, svg polygon {
+							fill: $reflection-white;
+						}
+					}
+				}
+			}			
+			> ul {
+				width: 100%;
+				float: left;
+				z-index: 0;
+				transition: margin-top 0.16s ease-in;
+			}
+			&.is-open {
+				background-color: #363a47;
+				> a {
+					background-color: #222224;
+					svg {
+						path, polygon {
+							fill: $light-grey-2;
+						}
+					}
+					span {
+						color: $light-grey-2;
+					}
+				}
+				> ul {
+					position: relative;
+					margin-top: 0;
+					display: block;
+					z-index: 0;
+					transition: margin-top 0.2s ease-out;
+				}
+			}
+			&.is-selected {
+				> a {
+					background-color: $navigation-purple;
+					span {
+						color: $reflection-white;
+					}
+					svg path, svg polygon {
+						fill: $reflection-white;
+					}
+				}
+			}
+		}
+	}
+	> ul > li > ul {
+    background-color: #363a47;
+		li {
+			position: relative;
+			width: 100%;
+			font-size: 13px;
+			font-weight: 400;
+			line-height: 1.5;
+			background-color: #363a47;
+			border-bottom: 0px;
+			&:first-child {
+				padding-top: 13px;
+			}
+			&:last-child {
+				padding-bottom: 12px;
+			}
+			a {
+				position: relative;
+				width: 100%;
+				padding: 8px 0px 7px 20px;
+				letter-spacing: 0.4px;
+				display: block;
+				z-index: 10;
+				float: left;				
+				color: $light-grey-1;
+				background-color: #363a47;
+				@include box-sizing(border-box);
+				span {
+					padding-left: 16px;
+					color: #81879d;
+				}
+				svg {
+					width: 19px;
+					height: 19px;
+					vertical-align: middle;
+					path, polygon {
+						fill: #5a5a68;
+					}
+				}
+				@include breakpoint($laptop) {
+					.no-touch .panel-left & {
+						span {
+							opacity: 0;
+						}
+					}
+					.no-touch .panel-left:hover & {
+						span {
+							opacity: 1;
+						}
+					}
+				}
+				@include breakpoint($leftnav-wide) {
+					.no-touch .panel-left &,
+					.no-touch .panel-left:hover {
+						span {
+							opacity: 1;
+						}
+					}
+				}
+			}
+			.no-touch & {
+				&:hover > a {
+					span {
+						color: #949cb8;
+					}
+					svg path, svg polygon {
+						fill: #949cb8;
+					}
+				}
+				&.is-selected:hover > a {
+					span {
+						color: $reflection-white;
+					}
+					svg path, svg polygon {
+						fill: $reflection-white;
+					}
+				}
+			}
+			&.is-selected {
+				a {
+						span {
+						color: $reflection-white;
+					}
+					svg path, svg polygon {
+						fill: $reflection-white;
+					}
+				}
+			}
+		}
+	}
+}
+.main-navigation.main-navigation--account {
+	> ul {
+		border-top: 1px solid $dark-grey-1;
+		> li {
+			&:first-child {
+				border-top: 1px solid #161617;
+			}
+			> a {
+				padding: 15px 0px 15px 27px;
+				span {
+					padding-left: 11px;
+					letter-spacing: 0.05em;
+				}
+				svg {
+			    width: 18px;
+    			height: 18px;
+					path, polygon {
+						fill: #5a5a68;
+					}
+				}
+			}
+			&.is-selected {
+				svg {
+					path, polygon {
+						fill: $reflection-white;
+					}
+				}
+			}
+			.no-touch & {
+				&:hover > a {
+
+				}
+			}
+		}
+	}
+}

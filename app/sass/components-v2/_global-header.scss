@@ -35,11 +35,12 @@ $headerLinkBackgroundHoverColour: #323643;
 			width: 100%;
 		}
 	}
-	.ref-button--cta-small {
+	.header__sign-up-button {
 		display: none;
 		@include breakpoint($tablet) {
 			margin-top: 7px;
 			margin-right: 26px;
+			padding: 10px 20px 11px;
 			display: inline-block;
 			float: right;
 			vertical-align: top;
@@ -47,7 +48,9 @@ $headerLinkBackgroundHoverColour: #323643;
 		}
 	}
 	.link-log-in-container,
-	.search-link-container {
+	.search-link-container,
+	.notifications-link-container,
+	.my-account-link-container {
 		height: 42px;
 		padding: 0;
 		margin: 0;
@@ -59,8 +62,13 @@ $headerLinkBackgroundHoverColour: #323643;
 			height: 50px;
 		}
 	}
-	.link-log-in,
-	.link-open-search {
+	.notifications-link-container,
+	.my-account-link-container {
+		&:hover {
+			background-color: #323643;
+		}
+	}
+	.link-log-in {
 		position: relative;
 		height: 42px;
 		display: block;
@@ -95,18 +103,86 @@ $headerLinkBackgroundHoverColour: #323643;
 	.link-log-in {
 		padding: 16px 15px 0 14px;
 	}
-	.link-open-search {
-		padding: 16px 56px 0 19px;
-		&:after {
+	.search-link-container {
+		position: relative;
+		input[type=text] {
+			width: 205px;
+			margin: 0;
+			padding: 0 20px 3px 19px;
+			box-sizing: border-box;
+			font-family: $brand-heading-font;
+			font-size: 14px;
+			color: $reflection-white;
+			line-height: 47px;
+			border: 0;
+			border-radius: 0;
+			background-color: transparent;
+			outline: none;
+			box-shadow: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			@extend %font-smoothing;
+		}
+		.search-stores-label {
 			position: absolute;
-			top: -1px;
-			right: 20px;
-			font-size: 18px;
-			line-height: 42px;
+		  top: 0;
+   		left: 19px;
+   		font-family: $brand-heading-font;
+			font-size: 14px;
 			color: $light-grey-1;
-			transition: color $base-transition-speed-off;
+			line-height: 47px;
+		}
+		.search-icon {
+			position: absolute;
+		  top: 15px;
+   		right: 21px;
+			&:after {
+				width: 14px;
+		    font-size: 18px;
+		    color: $light-grey-1;
+			}
+		}
+		.clear-search {
+			position: absolute;
+			top: 15px;
+    	right: 18px;
+			display: none;
+			&:after {
+				color: #727686;
+				font-size: 18px;
+			}
+		}
+		&.is-open {
+			input[type=text] {
+				width: 318px;
+				transition: width 0.2s;
+			}
+			.search-stores-label,
+			.search-icon {
+				display: none;
+			}
+			.clear-search {
+				display: block;
+			}
+		}
+	}
+	.notifications-link,
+	.my-account-link {
+		width: 48px;
+		display: block;
+    text-align: center;
+		&:after {
+			font-size: 17px;
+			color: $light-grey-1;
+			line-height: 42px;
 			@include breakpoint($phablet) {
 				line-height: 50px;
+			}
+		}
+		&:active {
+			&:after {
+				position: relative;
+				top: 2px;
 			}
 		}
 	}
