@@ -140,7 +140,7 @@
 						</div>
 					</div>
 					<div class="grid__column grid__row--heading-row__left">
-						<h1 class="heading-style--heading-three">Biggest Rank Movers <span>UK / Games</span> <span class="page-date">4th Mar - 11th Mar 2016</span></h1>
+						<h1 class="heading-style--heading-three">Biggest Rank Movers <span>UK / Games</span> <span class="page-date">29th Feb - 6th Mar 2016</span></h1>
 					</div>
 				</div>
 			</div>
@@ -149,7 +149,7 @@
 				<div class="axis-label">{{dataList.highestMovementPositive}}</div>
 				<div class="axis-label--half">{{dataList.highestMovementPositive / 2}}</div>
 				<div class="axis-label--zero">0</div>
-				<div class='rank-movement-chart__data-item {{dataItem.Change < 0 ? "is-negative" : "is-positive"}} {{$index < 25 ? "is-hover-left" : "is-hover-right"}}' ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.Change)}}%' ng-if="$index < dataList.firstNegativeIndex">
+				<div class='rank-movement-chart__data-item {{dataItem.Change < 0 ? "is-negative" : "is-positive"}} {{$index < 25 ? "is-hover-left" : "is-hover-right"}} {{dataItem.is_new == 1 ? "is-new" : ""}}' ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.Change)}}%' ng-if="$index < dataList.firstNegativeIndex">
 					<div class="rank-movement-chart__data-item__position ref-icon-after--angle-up">
 						{{dataItem.Change}}
 					</div>
@@ -163,7 +163,7 @@
 							<span class="rank-movement-chart__data-item__change ref-icon-before--up">
 								<span>{{dataItem.Change}}</span>
 							</span>
-							<!-- <span class="rank-movement-chart__data-item__is-new">NEW</span> -->
+							<span class="rank-movement-chart__data-item__is-new" ng-if="dataItem.is_new == 1">NEW</span>
 						</div>
 						<img src='{{dataItem.icon_url}}' alt="App icon" class="rank-movement-chart__data-item__icon--large" />
 						<div class="rank-movement-chart__data-item__app-titles">
@@ -190,7 +190,7 @@
 							<span class="rank-movement-chart__data-item__change ref-icon-before--down">
 								<span>{{dataItem.Change}}</span>
 							</span>
-							<!-- <span class="rank-movement-chart__data-item__is-new">NEW</span> -->
+							<span class="rank-movement-chart__data-item__is-new" ng-if="dataItem.is_new == 1">NEW</span>
 						</div>
 						<img src='{{dataItem.icon_url}}' alt="App icon" class="rank-movement-chart__data-item__icon--large" />
 						<div class="rank-movement-chart__data-item__app-titles">
