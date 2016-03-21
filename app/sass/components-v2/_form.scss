@@ -23,33 +23,37 @@ textarea {
 		border-radius: 0;
 		&:first-child {
 			margin-top: 0;
-			.form-field--select__box {
+			.form-field--select__box,
+			.form-field--select__dropdown {
 				border-radius: 4px 4px 0 0;
 			}			
 		}
 		&:last-child {
-			.form-field--select__box {
+			.form-field--select__box,
+			.form-field--select__dropdown {
 				border-radius: 0 0 4px 4px;
 			}
 			&.is-open {
-				.form-field--select__box {
-					border-radius: 0;
+				.form-field--select__box,
+				.form-field--select__dropdown {
+					border-radius: 0 0 4px 4px;
 				}
 			}
-		}
+		}		
 	}
-	label {
+	> label {
 		position: absolute;
     left: 20px;    
     top: 7px;
 		display: block;
+		z-index: 11;
 		font-family: $brand-heading-font;
 		font-size: 12px;
 		color: #494490;
 		pointer-events: none;
 	}
 	&.nothing-selected {
-		label {
+		> label {
 			top: 16px;
 			font-family: $brand-heading-font;
 			font-size: 16px;
@@ -58,7 +62,7 @@ textarea {
 		}
 	}
 	&.form-field--with-error {
-		label {
+		> label {
 			top: 25px;
 		}
 		.form-field--select__box {
@@ -71,6 +75,7 @@ textarea {
 			top: 7px;
 			left: 20px;		
 			display: block;
+			z-index: 11;
 		}
 		.form-field--select__dropdown {
 			border-color: $error-orange-border;
@@ -78,10 +83,30 @@ textarea {
 		}
 	}
 }
-.reflection-form .form-field + .form-filter {
-	.form-field--select__box {
+.reflection-form .form-field + .form-filter,
+.reflection-form .form-filter + .form-filter {
+	.form-field--select__box,
+	.form-field--select__dropdown {
 		border-radius: 0;
 	}
+	&.is-open {
+		.form-field--select__box,
+		.form-field--select__dropdown {
+			border-radius: 0;
+		}
+	}
+	&:last-child {
+		.form-field--select__box,
+		.form-field--select__dropdown {
+			border-radius: 0 0 4px 4px;
+		}
+	}
+}
+.form-field--checkbox-list.form-field--select__dropdown {
+	padding-left: 20px;
+}
+.form-field--select__box {
+	position: relative;
 }
 .form-field {
 	position: relative;
@@ -220,6 +245,14 @@ textarea {
 		position: relative;
 		display: none;
 	}
+	.primary-filter &,
+	.secondary-filter & {
+		&.form-field--checkbox-list {
+			padding-top: 40px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	}
 }
 .form-field--select select {
 	position: absolute;
@@ -235,6 +268,11 @@ textarea {
 	}
 	position: relative;
 	width: 100%;
+	.primary-filter &,
+	.secondary-filter & {
+		position: absolute;
+		width: auto;
+	}
 	li {
 		position: relative;
 		margin-bottom: 0.5rem;
@@ -295,6 +333,11 @@ textarea {
 	}
 	&:active {
 		border-top: 2px solid #9d9fa6;
+	}
+	.primary-filter &,
+	.secondary-filter &,
+	.form-filter & {
+		top: 3px;
 	}
 }
 .radioButtonLabel {
@@ -404,6 +447,18 @@ input[type="checkbox"]:checked + .checkboxLabel {
 	color: $dark-grey-2;
 	text-align: left;
 	cursor: pointer;
+	.primary-filter &,
+	.secondary-filter &,
+	.form-filter & {
+		font-size: 1.5rem;
+		color: $reflection-purple;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+	}
+	.form-filter & {
+		padding-left: calc(18px + 1rem);
+	}
 }
 input[type="checkbox"]:disabled + label + .checkboxLabelVisible,
 input[type="radio"]:disabled + label + .radioButtonLabelVisible {
@@ -464,4 +519,364 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 .password-strength-description {
 	font-size: 1.24rem;
 	color: $light-grey-1;
+}
+.dropdown-summary {
+	position: absolute;
+	width: 100%;
+	margin-top: -3px;
+	padding: 13px 20px 15px 20px;
+	display: none;
+	z-index: 2;
+	font-family: $brand-heading-font;
+	font-size: 1.3rem;
+	color: $mid-grey-1;
+	border-width: 0 1px 0 1px;
+	border-color: #c4c7d0;
+	border-style: solid;
+	background-color: #f2f7f7;
+	.is-open & {
+		display: block;
+	}
+	.form-filter & {
+		position: relative;
+	}
+	a {
+		float: right;
+		color: $reflection-purple;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+	}
+	.primary-filter &,
+	.secondary-filter & {
+		margin-top: 5px;
+		border-top: 1px solid #c4c7d0;
+		border-radius: 4px 4px 0 0;
+		background-color: #fcfdfd;
+		z-index: 2002;
+	}
+}
+
+// Filters
+.primary-filters-container {
+	width: 100%;  
+	display: table;
+	table-layout: fixed;
+	overflow: visible;
+	font-size: 0;
+	.primary-filter {
+		width: 20%;
+		max-width: 100%;
+		display: table-cell;
+		color: $dark-grey-1;
+		border-top: 1px solid $light-grey-2;
+		border-right: 1px solid $light-grey-2;
+		border-bottom: 1px solid $light-grey-2;		
+		&:last-child {
+			border-right: 0;
+		}
+		.form-field--select__box {
+			padding: 10px 43px 14px 22px;
+			display: block;
+			font-family: $brand-heading-font;
+			font-size: 16px;
+			cursor: pointer;
+			background-color: $reflection-white;
+			@include ellipses();
+			&:after {
+				position: absolute;
+		    right: 18px;
+		    top: 9px;
+		    color: #9fa1d5;
+		    font-size: 20px;
+		    letter-spacing: -0.01rem;
+			}
+			&:hover {
+				background-color: $panel-grey;
+			}
+		}
+		&.is-open {
+			border-top: 1px solid #5551a4;
+			border-right: 1px solid #5551a4;
+			border-bottom: 1px solid #5551a4;
+			.form-field--select__box {
+				padding-top: 11px;
+				padding-left: 21px;
+				padding-bottom: 12px;
+				border-top: 1px solid #524f94;
+				border-left: 1px solid #5551a4;
+				color: $reflection-white;
+				background-color: $reflection-purple;
+				&:after {
+					top: 12px;
+					transform: rotate(180deg);
+				}
+			}			
+		}
+	}
+}
+.secondary-filter {
+	width: auto;
+	max-width: 100%;
+	.form-field--select__box {
+		min-width: 85px;
+		padding: 10px 42px 10px 15px;    
+		display: block;
+		font-family: $brand-heading-font;
+		font-size: 14px;
+		color: $dark-grey-1;
+		border: 1px solid $light-grey-2;
+		border-radius: 3px;
+		background-color: #f2f7f7;
+		@include ellipses();
+		&:after {
+			position: absolute;
+	    right: 12px;
+	    top: 8px;
+	    color: #9fa1d5;
+	    font-size: 20px;
+	    letter-spacing: -0.01rem;
+		}
+		&:hover {
+			background-color: $panel-grey;
+		}
+	}
+	&.is-open {
+		.form-field--select__box {
+			padding-bottom: 9px;
+			border: 1px solid #5551a4;
+			border-top: 2px solid #524f94;
+			color: $reflection-white;
+			background-color: $reflection-purple;
+			&:after {
+				top: 10px;
+				right: 11px;    		
+				color: #c4c7d0;
+				transform: rotate(180deg);
+			}
+		}
+	}
+	.form-field--select__dropdown {
+		padding-top: 14px;
+		border-radius: 4px;
+		li {
+			margin-bottom: 5px;
+			font-size: 14px;
+			white-space: nowrap;
+		}
+	}
+}
+.form-field--search {
+	position: relative;
+	width: 176px;
+	padding: 8px 13px 8px 15px;    
+	display: inline-block;
+	border: 1px solid $light-grey-2;
+	border-radius: 3px;
+	background-color: #f2f7f7;
+	@include ellipses();
+	input {
+		width: calc(100% - 25px);
+		display: inline-block;
+		float: left;
+		font-family: $brand-heading-font;
+		font-size: 14px;
+		color: $dark-grey-1;
+	}
+	input::-webkit-input-placeholder,
+	input:-moz-placeholder,
+	input::-moz-placeholder,
+	input:-ms-input-placeholder {
+		font-family: $brand-heading-font;
+		font-size: 14px;
+		color: $light-grey-1;
+	}
+	&.secondary-filter {
+		cursor: default;
+	}
+	span {
+		position: absolute;
+		top: 0;
+		left: -999rem;
+	}
+	.ref-icon-after--search {
+		display: inline-block;
+		float: right;
+		&:after {
+			width: 14px;			
+			font-size: 18px;
+			color: $light-grey-1;
+		}
+	}
+	.clear-search {
+		position: absolute;
+    top: 9px;
+    right: 13px;
+    display: none;
+    font-size: 0;
+    &:after {
+			color: $light-grey-2;
+			font-size: 17.5px;
+		}
+  }
+  &.is-open {
+  	.clear-search {
+  		display: block;
+  	}
+  	.ref-icon-after--search:after {
+  		color: #f2f7f7;
+  	}
+  }
+}
+.form-filter {
+	width: auto;
+	max-width: 100%;
+	.form-field--select__box {
+		min-width: 101px;
+		padding: 23px 50px 11px 19px;
+		display: block;
+		font-family: $brand-heading-font;
+		font-size: 16px;
+		color: $dark-grey-1;
+		border: 1px solid $light-grey-2;
+		border-radius: 4px;
+		background-color: #f2f7f7;
+		cursor: pointer;
+		@include ellipses();
+		&:after {
+			position: absolute;
+	    right: 15px;
+	    top: 15px;
+	    color: #9fa1d5;
+	    font-size: 20px;
+	    letter-spacing: -0.01rem;
+		}
+	}
+	&.nothing-selected {
+		.form-field--select__box {
+			padding: 23px 50px 27px 19px;
+		}		
+	}
+	&.is-open {
+		.form-field--select__box {
+			border-radius: 4px 4px 0 0;
+			&:after {
+				top: 16px;
+    		right: 16px;
+				transform: rotate(180deg);
+			}
+		}
+	}
+	.form-field--select__dropdown {
+		max-height: 329px;
+		width: 100%;
+    min-width: 100% !important;
+    margin-top: -1px;
+    padding: 3px 10px 18px 25px;
+    overflow: auto;
+		border-top: 0;
+		border-radius: 0 0 4px 4px;
+		background-color: #f2f7f7;
+		li {
+			margin-bottom: 6px;
+			font-size: 15px;
+			cursor: pointer;
+		}
+	}
+}
+.secondary-filter--medium {
+	.form-field--select__box {
+		padding: 11px 50px 14px 15px;
+		font-size: 15px;
+		&:after {
+			top: 11px;
+		}
+	}
+	&.is-open {
+		.form-field--select__box {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			&:after {
+				top: 13px;
+			}
+		}
+	}
+	.form-field--select__dropdown {
+		li {
+			margin-bottom: 6px;
+    	font-size: 15px;
+		}
+	}
+}
+.secondary-filter--large {
+	.form-field--select__box {
+		min-width: 132px;
+		padding: 14px 40px 18px 15px;
+		font-size: 16px;
+		&:after {
+			top: 15px;
+		}
+	}
+	&.is-open {
+		.form-field--select__box {
+			padding-top: 15px;
+			padding-bottom: 16px;
+			&:after {
+				top: 17px;
+			}
+		}
+	}
+	.form-field--select__dropdown {
+		padding-left: 23px;
+		li {
+			margin-bottom: 6px;
+	    font-size: 15px;
+	  }
+	}
+}
+.secondary-filter--multi-select {
+	.form-field--select__box {
+		width: 170px;
+	}
+}
+.primary-filter,
+.secondary-filter {
+	position: relative;
+	display: inline-block;
+	overflow: visible;
+	vertical-align: top;
+	line-height: 1;
+	cursor: pointer;
+	.form-field--select__box {
+		&:after {
+			color: $light-grey-1;
+		}
+	}
+}
+.secondary-filters-container {
+	padding-top: 1.4rem;
+	padding-bottom: 0.6rem;
+	overflow: visible;
+	float: left;
+	font-size: 0;
+	background-color: #f1f5f7;
+	.form-field--select__box {
+		background-color: $reflection-white;
+		&:hover {
+			background-color: $panel-grey;
+		}
+	}
+	.secondary-filter.is-open {
+		.form-field--select__box:hover {
+			background-color: $reflection-purple;
+		}
+	}
+}
+.secondary-filter-label {
+	padding-top: 1.1rem;
+	padding-right: 5px;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 1.4rem;
+	color: $mid-grey-2;
 }

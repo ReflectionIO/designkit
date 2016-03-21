@@ -104,13 +104,38 @@
 						    <option value="apr">01/04/16 - 01/05/16</option>
 							</select>
 						</div>
-						<div class="primary-filter form-field--select">
-							<select class="js-select-box">
-						    <option value="all" selected>All Countries</option>
-						    <option value="uni">United Kingdom</option>
-						    <option value="fra">France</option>
-						    <option value="ger">Germany</option>
-							</select>
+						<div class="primary-filter js-multi-select-box" data-title="All Countries">
+							<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+							<div class="dropdown-summary">
+								<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+							</div>
+							<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">
+								<li>
+									<input type="checkbox" name="checkboxUKFaB" id="checkboxUKFaB" class="js-no-close-on-click" />
+									<label for="checkboxUKFaB" class="checkboxLabel js-no-close-on-click">United Kingdom</label>
+									<label for="checkboxUKFaB" class="checkboxLabelVisible js-no-close-on-click">United Kingdom</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxFraFaB" id="checkboxFraFaB" class="js-no-close-on-click" />
+									<label for="checkboxFraFaB" class="checkboxLabel js-no-close-on-click">France</label>
+									<label for="checkboxFraFaB" class="checkboxLabelVisible js-no-close-on-click">France</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxItaFaB" id="checkboxItaFaB" class="js-no-close-on-click" />
+									<label for="checkboxItaFaB" class="checkboxLabel js-no-close-on-click">Italy</label>
+									<label for="checkboxItaFaB" class="checkboxLabelVisible js-no-close-on-click">Italy</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxGeFaB" id="checkboxGeFaB" class="js-no-close-on-click" />
+									<label for="checkboxGeFaB" class="checkboxLabel js-no-close-on-click">Germany</label>
+									<label for="checkboxGeFaB" class="checkboxLabelVisible js-no-close-on-click">Germany</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxSpFaB" id="checkboxSpFaB" class="js-no-close-on-click" />
+									<label for="checkboxSpFaB" class="checkboxLabel js-no-close-on-click">Spain</label>
+									<label for="checkboxSpFaB" class="checkboxLabelVisible js-no-close-on-click">Spain</label>
+								</li>
+							</ul>
 						</div>
 						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
@@ -1087,6 +1112,9 @@
   		new FormInteractions();
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
+  		});
+  		$('.js-multi-select-box').each(function() {
+  			new FormFieldMultipleSelect($(this));
   		});
   		$('.js-tabs').each(function() {
   			new Tabs($(this));

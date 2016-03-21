@@ -386,7 +386,7 @@ var PrimaryFilters = function() {
 	var instance = this;
 	$("html").on("click", function(e){
 		// close open filters on html click
-		if(!$(e.target).hasClass("js-dropdown-trigger")) {
+		if(!$(e.target).hasClass("js-dropdown-trigger") && !$(e.target).hasClass("js-no-close-on-click")) {
 			instance.closeAllFilters();
 		}
 	});
@@ -455,6 +455,72 @@ var FormFieldSelect = function($domElement) {
 	$thisSelectBox.parent("div").append($currentValue)
 															.append($dropDownContainer);
 };
+
+
+var FormFieldMultipleSelect = function($domElement) {
+	var instance = this,
+			$thisContainer = $domElement,
+			$dropDownContainer = $thisContainer.find(".js-form-field--select__dropdown");
+			$currentValue = $thisContainer.find(".js-dropdown-trigger");
+
+			$thisContainer.find("li").on("click", function() {
+																	instance.setCurrentValue($thisContainer);
+																});
+
+			$currentValue.on("click", function(){
+				var parentWidth = $thisContainer.width();
+				var parentHeight = $thisContainer.height();
+				$dropDownContainer.css({"min-width": parentWidth + "px"});
+				$dropDownContainer.toggle();	
+				$thisContainer.toggleClass("is-open");
+			});
+
+			instance.setCurrentValue($thisContainer);
+
+			$thisContainer.find(".js-clear-all").on("click", function(e){
+				e.preventDefault();
+				$thisContainer.find("li input").each(function(){
+					$(this).removeAttr("checked");
+				});
+				instance.setCurrentValue($thisContainer);
+			});
+};
+
+FormFieldMultipleSelect.prototype.setCurrentValue = function($componentContainerElement) {
+	var $currentValue = $componentContainerElement.find(".js-dropdown-trigger"),
+			$numberSelected = $componentContainerElement.find(".js-number-selected"),
+			currentValueText = "",
+			numberChecked = 0;
+	
+	$componentContainerElement.find("input:checked").each(function(){
+		currentValueText += $(this).next("label").text() + ", ";
+		numberChecked++;
+	});
+	
+	if(currentValueText == "") {
+		if($componentContainerElement.hasClass("js-form-filter")) {
+			$componentContainerElement.addClass("nothing-selected");
+			$currentValue.text("");
+		} else {
+			$currentValue.text($componentContainerElement.data("title"));
+		}		
+	} else {
+		if($componentContainerElement.hasClass("js-form-filter")) {
+			$componentContainerElement.removeClass("nothing-selected");
+		}
+		currentValueText = currentValueText.substring(0, currentValueText.length - 2);
+		if(numberChecked > 1) {
+			$currentValue.text(numberChecked + " Selected (" + currentValueText + ")");
+		} else {
+			$currentValue.text(currentValueText);
+		}		
+	}
+
+	if($numberSelected) {
+		$numberSelected.text(numberChecked);
+	}
+};
+
 
 var FormInteractions = function() {
 	setTimeout(function(){
