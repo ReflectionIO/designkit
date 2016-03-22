@@ -382,19 +382,21 @@ SearchContainer.prototype.initSearch = function() {
 
 // V2 Components JS
 
-var PrimaryFilters = function() {
+var AllDropDowns = function() {
 	var instance = this;
 	$("html").on("click", function(e){
 		// close open filters on html click
-		if(!$(e.target).hasClass("js-dropdown-trigger") && !$(e.target).hasClass("js-no-close-on-click")) {
+		if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
 			instance.closeAllFilters();
 		}
 	});
 }
 
-PrimaryFilters.prototype.closeAllFilters = function() {
+AllDropDowns.prototype.closeAllFilters = function() {
 	$('.primary-filter.is-open .form-field--select__dropdown').hide();
 	$('.primary-filter.is-open').removeClass("is-open");
+	$('.secondary-filter.is-open .form-field--select__dropdown').hide();
+	$('.secondary-filter.is-open').removeClass("is-open");
 };
 
 var FormFieldSelect = function($domElement) {
@@ -417,7 +419,8 @@ var FormFieldSelect = function($domElement) {
 				}
 			}
 
-			$dropDownContainer.append($("<li>")
+			var $newListItem = $("<li>");
+			$dropDownContainer.append($newListItem
 																		.addClass("js-dropdown-option")
 																		.text($thisOption.text())
 																		.addClass(selectedClass)
@@ -432,20 +435,35 @@ var FormFieldSelect = function($domElement) {
 																			$(this).addClass("is-selected");
 																		})
 															);
+
+			if($thisOption.hasClass("js-parent-option")) {
+				$newListItem.addClass("form-field--select__dropdown__parent-option");
+			}
+
+			if($thisOption.hasClass("js-child-option")) {
+				$newListItem.addClass("form-field--select__dropdown__child-option");
+			}
 		}
 
 	});
 
 	$currentValue.on("click", function(){
 		var $parentDiv = $thisSelectBox.parent("div");
-		if(!$parentDiv.hasClass("is-open")) {
-			PrimaryFilters.prototype.closeAllFilters();
+		if($parentDiv.hasClass("is-open")) {
+			$dropDownContainer.toggle();	
+			$parentDiv.toggleClass("is-open");
+		} else {
+			setTimeout(function(){
+				if(!$parentDiv.hasClass("is-open")) {
+					AllDropDowns.prototype.closeAllFilters();
+				}
+				var parentWidth = $parentDiv.width();
+				var parentHeight = $parentDiv.height();
+				$dropDownContainer.css({"min-width": parentWidth + "px"});
+				$dropDownContainer.toggle();	
+				$parentDiv.toggleClass("is-open");
+			}, 50); // allow time for instance.closeAllFilters() to close other filters first
 		}
-		var parentWidth = $parentDiv.width();
-		var parentHeight = $parentDiv.height();
-		$dropDownContainer.css({"min-width": parentWidth + "px"});
-		$dropDownContainer.toggle();	
-		$parentDiv.toggleClass("is-open");
 	});
 
 	if($currentValue.text() == "") {
@@ -468,11 +486,18 @@ var FormFieldMultipleSelect = function($domElement) {
 																});
 
 			$currentValue.on("click", function(){
-				var parentWidth = $thisContainer.width();
-				var parentHeight = $thisContainer.height();
-				$dropDownContainer.css({"min-width": parentWidth + "px"});
-				$dropDownContainer.toggle();	
-				$thisContainer.toggleClass("is-open");
+				if($thisContainer.hasClass("is-open")) {
+					$dropDownContainer.toggle();	
+					$thisContainer.toggleClass("is-open");
+				} else {
+					setTimeout(function(){
+						var parentWidth = $thisContainer.width();
+						var parentHeight = $thisContainer.height();
+						$dropDownContainer.css({"min-width": parentWidth + "px"});
+						$dropDownContainer.toggle();	
+						$thisContainer.toggleClass("is-open");
+					}, 50); // allow time for instance.closeAllFilters() to close other filters first
+				}
 			});
 
 			instance.setCurrentValue($thisContainer);
@@ -490,7 +515,8 @@ FormFieldMultipleSelect.prototype.setCurrentValue = function($componentContainer
 	var $currentValue = $componentContainerElement.find(".js-dropdown-trigger"),
 			$numberSelected = $componentContainerElement.find(".js-number-selected"),
 			currentValueText = "",
-			numberChecked = 0;
+			numberChecked = 0,
+			titlePlural = $componentContainerElement.data("title-plural");
 	
 	$componentContainerElement.find("input:checked").each(function(){
 		currentValueText += $(this).next("label").text() + ", ";
@@ -510,7 +536,11 @@ FormFieldMultipleSelect.prototype.setCurrentValue = function($componentContainer
 		}
 		currentValueText = currentValueText.substring(0, currentValueText.length - 2);
 		if(numberChecked > 1) {
-			$currentValue.text(numberChecked + " Selected (" + currentValueText + ")");
+			if(titlePlural) {
+				$currentValue.text(numberChecked + " " + titlePlural + " (" + currentValueText + ")");
+			} else {
+				$currentValue.text(numberChecked + " Selected (" + currentValueText + ")");
+			}			
 		} else {
 			$currentValue.text(currentValueText);
 		}		

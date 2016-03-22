@@ -97,10 +97,15 @@
 	 					<aside class="primary-filters-container">
 	 						<div class="primary-filter form-field--select">
 								<select class="js-select-box">
-							    <option value="all" selected>All Store Accounts</option>
-							    <option value="ios">iOS</option>
-							    <option value="play">Google Play</option>
-							    <option value="amazon">Amazon App Store</option>
+							    <option value="all" selected>All Store &amp; Accounts</option>
+							    <option value="allIos" class="js-parent-option">All iOS Accounts</option>
+							    <option value="iosOne" class="js-child-option">iOS Account One</option>
+							    <option value="iosTwo" class="js-child-option">iOS Account Two</option>
+							    <option value="iosThree" class="js-child-option">iOS Account Three</option>
+							    <option value="allGoogle" class="js-parent-option">All Google Play Accounts</option>
+							    <option value="googleOne" class="js-child-option">Google Account One</option>
+							    <option value="googleTwo" class="js-child-option">Google Account Two</option>
+							    <option value="googleThree" class="js-child-option">Google Account Three</option>
 								</select>
 							</div>
 							<div class="primary-filter form-field--select">
@@ -111,7 +116,7 @@
 							    <option value="apr">01/04/16 - 01/05/16</option>
 								</select>
 							</div>
-							<div class="primary-filter js-multi-select-box" data-title="Select a Country">
+							<div class="primary-filter js-multi-select-box" data-title="Select a Country" data-title-plural="Countries">
 								<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
 								<div class="dropdown-summary">
 									<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
@@ -184,26 +189,26 @@
 								</select>
 							</div>
 
-							<div class="secondary-filter secondary-filter--large secondary-filter--multi-select js-multi-select-box" data-title="Select a Country">
+							<div class="secondary-filter secondary-filter--large secondary-filter--multi-select js-multi-select-box" data-title="Select a Country" data-title-plural="Countries">
 								<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
 								<div class="dropdown-summary">
 									<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
 								</div>
 								<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">
 									<li>
-										<input type="checkbox" name="checkboxUK" id="checkboxUK" checked/>
-										<label for="checkboxUK" class="checkboxLabel">United Kingdom</label>
-										<label for="checkboxUK" class="checkboxLabelVisible">United Kingdom</label>
+										<input type="checkbox" name="checkboxUK" id="checkboxUK" class="js-no-close-on-click" checked/>
+										<label for="checkboxUK" class="checkboxLabel js-no-close-on-click">United Kingdom</label>
+										<label for="checkboxUK" class="checkboxLabelVisible js-no-close-on-click">United Kingdom</label>
 									</li>
 									<li>
-										<input type="checkbox" name="checkboxFra" id="checkboxFra" />
-										<label for="checkboxFra" class="checkboxLabel">France</label>
-										<label for="checkboxFra" class="checkboxLabelVisible">France</label>
+										<input type="checkbox" name="checkboxFra" id="checkboxFra" class="js-no-close-on-click" />
+										<label for="checkboxFra" class="checkboxLabel js-no-close-on-click">France</label>
+										<label for="checkboxFra" class="checkboxLabelVisible js-no-close-on-click">France</label>
 									</li>
 									<li>
-										<input type="checkbox" name="checkboxIta" id="checkboxIta" />
-										<label for="checkboxIta" class="checkboxLabel">Italy</label>
-										<label for="checkboxIta" class="checkboxLabelVisible">Italy</label>
+										<input type="checkbox" name="checkboxIta" id="checkboxIta" class="js-no-close-on-click" />
+										<label for="checkboxIta" class="checkboxLabel js-no-close-on-click">Italy</label>
+										<label for="checkboxIta" class="checkboxLabelVisible js-no-close-on-click">Italy</label>
 									</li>
 								</ul>
 							</div>
@@ -254,7 +259,7 @@
 									<label for="countryselect">Country</label>
 								</div>
 
-								<div class="form-filter form-field--select js-multi-select-box js-form-filter" data-title="Select a Country">
+								<div class="form-filter form-field--select js-multi-select-box js-form-filter" data-title="Select a Country" data-title-plural="Countries">
 									<label for="">Country</label>
 									<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
 									<div class="dropdown-summary">
@@ -417,7 +422,7 @@
 									</select>
 									<label for="countryselect">Country</label>
 								</div>
-								<div class="form-filter form-field--select js-multi-select-box js-form-filter" data-title="Select a Country">
+								<div class="form-filter form-field--select js-multi-select-box js-form-filter" data-title="Select a Country" data-title-plural="Countries">
 									<label for="">Country</label>
 									<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
 									<div class="dropdown-summary">
@@ -1070,7 +1075,7 @@
 <script src="js-v2/application.js"></script>
 <script>
   	function initScripts() {
-  		new PrimaryFilters();
+  		new AllDropDowns();
   		new FormInteractions();
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
