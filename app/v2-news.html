@@ -71,7 +71,7 @@
 						    <option value="customRange">Custom Range</option>
 							</select>
 						</div>
-						<div class="primary-filter form-field--select">
+						<div class="primary-filter form-field--select js-form-field--select--with-notifications">
 							<select class="js-select-box">
 						    <option value="allNewsTypes" selected>All My News</option>
 						    <option value="myApps">My Apps</option>
@@ -95,12 +95,10 @@
 						    <option value="accountNotification">Reflection Announcements</option>
 							</select>
 						</div>
-						<div class="primary-filter form-field--select">
-							<select class="js-select-box">
-						    <option value="all" selected>All Devices</option>
-						    <option value="ipa">iPad</option>
-						    <option value="iph">iPhone</option>
-							</select>
+						<div class="primary-filter form-field--search js-form-field-search">
+							<input type="text" placeholder="Find News Item" name="findapp" id="findapp" class="js-mock-find-app">
+							<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+							<a href="#" class="clear-search ref-icon-after--close js-clear-search js-mock-clear-find-app">Clear</a>
 						</div>
 					</aside>
 				</div>
@@ -140,7 +138,7 @@
 									<h3 class="article-list__item__sub-title">By <a href="#">Episode Interactive</a></h3>
 									<h4 class="article-list__item__type-heading">App Launched</h4>
 									<span class="article-list__item__posted-date">2 days ago</span>
-									<p class="article-list__item__intro">App launched in 55 Countries</p>
+									<p class="article-list__item__intro">App launched in <span class="tooltip--article-list-content js-whats-this-tooltip" data-whatsthis-title="55 Countries" data-whatsthis="United Kingdom, Italy, France, Spain, Portugal, USA, Germany...">55 Countries</span></p>
 								</div>
 								<div class="article-list__item__actions-container">
 									<a href="#" class="article-list__item__bookmark-action js-mock-bookmark">
@@ -205,7 +203,6 @@
 										<svg x=0px y=0px viewBox="0 0 14 24"enable-background="new 0 0 14 24"xml:space=preserve><polygon fill=#5A5A68 points="0,0 0,24.1 7,19 14,24.1 14,0 "/></svg>
 									</a>
 									<a href="#" class="ref-button--secondary--small">Share</a>
-									<a href="#" class="ref-button--secondary--small">View on Chart</a>
 								</div>
 							</article>
 						</li>
@@ -224,14 +221,20 @@
 									<h2 class="article-list__item__title">Say Hello to the New Publisher Leaderboard</h2>
 									<h4 class="article-list__item__type-heading">From Reflection</h4>
 									<span class="article-list__item__posted-date">23/01/16</span>
-									<p class="article-list__item__intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
+									<p class="article-list__item__intro js-article-intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+									<p class="article-list__item__content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</p>
+									<p class="article-list__item__content"><a href="#" class="ref-button--primary--medium">
+				 						Find out More
+				 					</a></p>
 								</div>
 								<div class="article-list__item__actions-container">
 									<a href="#" class="article-list__item__bookmark-action js-mock-bookmark">
 										<svg x=0px y=0px viewBox="0 0 14 24"enable-background="new 0 0 14 24"xml:space=preserve><polygon fill=#5A5A68 points="0,0 0,24.1 7,19 14,24.1 14,0 "/></svg>
 									</a>
 									<a href="#" class="ref-button--secondary--small">Share</a>
-									<a href="#" class="ref-button--secondary--small">View on Chart</a>
+								</div>
+								<div class="article-list__item__image">
+									<img src="images/v2/placeholder-news-item.jpg" alt="App Screenshot" />
 								</div>
 							</article>
 						</li>
@@ -269,12 +272,43 @@
   		new Page();
   		new AllDropDowns();
   		new FormInteractions();
+  		
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});
 
-  		$('.js-mock-bookmark').on("click", function(){
+  		$('.js-form-field-search').each(function(){
+  			new FormFieldSearch($(this));
+  		});
+
+  		$('.js-article-intro').each(function(){
+  			new ArticleIntro($(this));
+  		});
+
+  		$('.js-mock-bookmark').on("click", function(e){
+  			e.preventDefault();
   			$(this).toggleClass("is-on");
+  		});
+
+  		$('.js-whats-this-tooltip').each(function(){
+  			new WhatsThisPopup($(this));
+  		});
+
+  		$('.js-form-field--select--with-notifications').each(function(){
+  			var $this = $(this),
+  					$currentValueContainer = $this.find(".js-dropdown-trigger"),
+  					numberOfNotifications = 6;
+
+  			var $notificationMarker = $("<span>").addClass("form-field-notification-number").text(numberOfNotifications);
+  			if(numberOfNotifications > 100) {
+  				$notificationMarker.addClass("is-large-number");
+  			}
+  			$this.append($notificationMarker);
+
+  			// add notification symbols to drop down items
+  			$this.find(".js-dropdown-option").each(function(){
+  				$(this).append($("<span>").addClass("form-field-notification-number").text("2"));
+  			});
   		});
   	}
   	window.onready = initScripts();

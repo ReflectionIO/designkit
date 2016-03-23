@@ -69,6 +69,10 @@
 			background-color: $reflection-purple;
 		}
 	}
+	> article {
+		position: relative;
+		overflow: visible;
+	}
 }
 .article-list__item__icons-container,
 .article-list__item__summary-container,
@@ -116,11 +120,12 @@
 	}
 }
 .article-list__item__summary-container {
-	width: calc(100% - 295px);
+	width: calc(100% - 61px);
 	overflow: visible;
 }
 .article-list__item__title,
 .article-list__item__title:first-child {	  
+		width: calc(100% - 240px);
 		margin-top: -5px;
     margin-bottom: 2px;
     font-size: 22px;
@@ -138,6 +143,7 @@
 	}
 }
 .article-list__item__sub-title {
+	width: calc(100% - 240px);
 	margin-bottom: 15px;
 	display: block;
 	font-family: $brand-body-font;
@@ -160,7 +166,7 @@
 	font-size: 1.8rem;
 	.article-list__item--reflection-acount & {
 		margin-right: 13px;
-		margin-bottom: 4px;
+		margin-bottom: 5px;
 		font-size: 1.6rem;
 	}
 }
@@ -174,17 +180,59 @@
 		padding-top: 3px;
 	}
 }
-.article-list__item__intro {
+.article-list__item__intro,
+.article-list__item__content,
+.article-list__item__open-close-link {
 	position: relative;
-	left: -1px;    
+	left: -1px;
+	margin-bottom: 0;
 	font-family: $brand-body-font;
 	font-size: 1.4rem;
 	color: $mid-grey-1;
-	line-height: 1.8;
+	line-height: 1.9;		
+}
+.article-list__item__intro {
+	.text-ellipses {
+		display: inline;
+		.is-open & {
+			display: none;
+		}
+	}
+	.is-hidden-text {
+		display: none;
+		.is-open & {
+			display: inline;
+		}
+	}
+}
+.article-list__item__content {
+	margin-top: 2.5rem;
+	display: none;
+	opacity: 0;
+	&:last-child {
+		margin-bottom: 1.7rem;
+	}
+	.ref-button--primary--medium {
+		&:hover {
+			color: $reflection-white;
+		}
+	}
+	.is-open & {
+		display: block;
+		opacity: 1;
+		transition: opacity 0.3s;
+	}
+}
+.article-list__item__open-close-link {
+	.is-open & {
+		margin-top: 1rem;
+	}
 }
 .article-list__item__actions-container {
-	width: 225px;
-	float: right;
+	position: absolute;
+  right: 0;
+  top: 0;
+  width: 225px;
 	text-align: right;
 	a {
 		margin-left: 10px;
@@ -207,5 +255,20 @@
 			fill: $reflection-green;
 			transition: fill 0.2s;
 		}	
+	}
+}
+.article-list__item__image {
+	margin: 2.1rem 0 -29px -20px;
+  overflow: visible;  
+	img {
+		width: calc(100% + 20px);
+	}
+}
+.tooltip--article-list-content {	
+	@extend .text-link;
+	cursor: pointer;
+	transition: border-color $base-transition-speed-off, background-color $base-transition-speed-off, color $base-transition-speed-off;
+	&:hover {
+		transition: border-color $base-transition-speed-on, background-color $base-transition-speed-on, color $base-transition-speed-on;
 	}
 }

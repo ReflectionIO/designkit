@@ -67,7 +67,7 @@ $headerLinkBackgroundHoverColour: #323643;
 		&:hover {
 			background-color: #323643;
 		}
-	}
+	}	
 	.link-log-in {
 		position: relative;
 		height: 42px;
@@ -185,6 +185,43 @@ $headerLinkBackgroundHoverColour: #323643;
 				top: 2px;
 			}
 		}
+	}
+	.has-notifications.notifications-link-container {
+		position: relative;
+		background-color: $reflection-red;
+		.notifications-link:after {
+			top: 6px;
+			color: $reflection-white;
+			display: inline-block;
+			transform-origin: top center;
+			-webkit-animation: bellring 6s infinite;
+			animation: bellring 6s infinite;			
+			.no-touch & {
+				&:hover {
+					color: $reflection-white;
+				}
+			}
+		}
+		.notifications-link:active {
+			&:after {
+				top: 8px;
+			}
+			+ .notifications-link-container__notifications-number {
+				top: 5px;
+			}
+		}
+	}
+	.notifications-link-container__notifications-number {
+		position: absolute;
+		top: 3px;
+		width: 100%;
+		margin: 0 auto;
+		display: block;
+		font-family: $brand-body-font;
+		font-weight: 700;
+		font-size: 12px;
+		color: $reflection-white;
+		text-align: center;
 	}
 }
 .global-header__actions {

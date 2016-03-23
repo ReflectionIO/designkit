@@ -228,6 +228,7 @@ textarea {
 	border-radius: 4px;
 	background-color: $reflection-white;
 	li {
+		position: relative;
 		margin-bottom: 6px;
 		color: $reflection-purple;
 		line-height: 1.5;
@@ -627,6 +628,26 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 				}
 			}			
 		}
+		&.form-field--search {
+			padding: 10px 18px 0 22px;
+			border-left: 0;
+			border-radius: 0;
+			background-color: $reflection-white;
+			&.is-open {
+				border-right: none;
+				border-color: $light-grey-2;
+				.clear-search {
+			    top: 11px;
+    			right: 16px;
+				}
+			}
+			.ref-icon-after--search {
+				margin-top: 1px;
+			}
+			input {
+				font-size: 16px;
+			}
+		}
 	}
 }
 .secondary-filter {
@@ -893,4 +914,46 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	vertical-align: top;
 	font-size: 1.4rem;
 	color: $mid-grey-2;
+}
+.form-field-notification-number {
+	position: absolute;
+	top: 8px;
+  right: 43px;
+	width: 22px;
+	height: 22px;
+	padding-top: 2px;	
+	display: inline-block;
+	box-sizing: border-box;
+	font-family: $brand-heading-font;
+	font-size: 16px;
+	font-weight: 700;
+	color: $reflection-white;	
+	text-align: center;
+	border-radius: 11px;
+	background-color: $reflection-red;
+	&.is-large-number {
+		width: auto;
+		padding-top: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 13px;
+	}
+	.is-open & {
+		top: 10px;
+	}
+	li & {
+		position: relative;
+		top: 0;
+    right: 0;
+		width: auto;
+		height: auto;
+		padding: 0 5px;
+    margin-left: 11px;
+    font-size: 12px;
+    line-height: 1.4;
+    border-radius: 8px;
+    .is-open & {
+			top: 0;
+		}
+	}
 }

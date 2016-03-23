@@ -394,9 +394,9 @@ var AllDropDowns = function() {
 
 AllDropDowns.prototype.closeAllFilters = function() {
 	$('.primary-filter.is-open .form-field--select__dropdown').hide();
-	$('.primary-filter.is-open').removeClass("is-open");
+	$('.primary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 	$('.secondary-filter.is-open .form-field--select__dropdown').hide();
-	$('.secondary-filter.is-open').removeClass("is-open");
+	$('.secondary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 };
 
 var FormFieldSelect = function($domElement) {
@@ -580,13 +580,16 @@ var FormFieldSearch = function($domElement) {
 
 	$thisInput.on("focus", function(){
 		$thisContainer.addClass("is-open");
+		console.log("focus");
 	});
 	$thisInput.on("blur", function(){
+		console.log("blur");
 		if($thisInput.val().length == 0) {
 			$thisContainer.removeClass("is-open");
 		}		
 	});
 	$thisContainer.find(".js-clear-search").on("click", function(){
+		console.log("clear");
 		$thisContainer.removeClass("is-open");
 		$thisInput.val("");
 	});
@@ -774,3 +777,33 @@ var WhatsThisPopup = function($domElement) {
 	});
 };
 
+var ArticleIntro = function($domElement) {
+	
+	var $this = $domElement,
+			$thisContainer = $domElement.parent("div"),
+			thisText = $domElement.text();
+			
+			if(thisText.length > 100) {
+				var stringBeginning = thisText.substring(0, 99);
+				var stringEnd = thisText.substring(100, thisText.length - 1);
+				var ellipsisSpan = $("<span>").addClass("text-ellipses").text("...");
+				var hiddenIntro = $("<span>").addClass("is-hidden-text").text(stringEnd);
+				$this.text(stringBeginning);
+				$this.append(ellipsisSpan);
+				$this.append(hiddenIntro);
+
+				var readMoreLink = $("<p>").addClass("article-list__item__open-close-link")
+																		.append($("<a>").attr("href", "#").text("Read More").on("click", function(e){
+																			e.preventDefault();
+																			var $this = $(this);
+																			$thisContainer.toggleClass("is-open");
+																			if($this.text() == "Read More") {
+																				$this.text("Close");
+																			} else {
+																				$this.text("Read More");
+																			}
+																		}))
+
+				$thisContainer.append(readMoreLink);
+			}
+}
