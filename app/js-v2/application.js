@@ -351,7 +351,7 @@ function handleappsearch(data) {
 	for(var i = 0; i < searchResultsApps.length && i < 5; i++) {
 		$appsList.append($('<li>').append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + ""))
 															.append($('<div>').addClass("search-result__text-container")
-																.append($('<a>').addClass("search-result__app-name").attr("href", "app.html?id=" + searchResultsApps[i].trackId).text(searchResultsApps[i].trackCensoredName))
+																.append($('<a>').addClass("search-result__app-name").attr("href", "v2-app.html?id=" + searchResultsApps[i].trackId).text(searchResultsApps[i].trackCensoredName))
 																.append($('<span>').addClass("search-result__publisher-name").text(searchResultsApps[i].artistName))
 															)
 										);
@@ -424,6 +424,7 @@ var FormFieldSelect = function($domElement) {
 																		.addClass("js-dropdown-option")
 																		.text($thisOption.text())
 																		.addClass(selectedClass)
+																		.attr('data-value', $thisOption.attr('value'))
 																		.on("click", function() {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");
@@ -777,20 +778,22 @@ var WhatsThisPopup = function($domElement) {
 	});
 };
 
-var ArticleIntro = function($domElement) {
+var ArticleIntro = function($domElement, charCount) {
 	
 	var $this = $domElement,
 			$thisContainer = $domElement.parent("div"),
-			thisText = $domElement.text();
+			thisText = $domElement.html();
 			
-			if(thisText.length > 100) {
-				var stringBeginning = thisText.substring(0, 99);
-				var stringEnd = thisText.substring(100, thisText.length - 1);
-				var ellipsisSpan = $("<span>").addClass("text-ellipses").text("...");
-				var hiddenIntro = $("<span>").addClass("is-hidden-text").text(stringEnd);
-				$this.text(stringBeginning);
-				$this.append(ellipsisSpan);
-				$this.append(hiddenIntro);
+			if(thisText.length > charCount || $this.next(".js-item-content-follows-intro").length > 0) {
+				if(thisText.length > charCount) {
+					var stringBeginning = thisText.substring(0, charCount-1);
+					var stringEnd = thisText.substring(charCount-1, thisText.length - 1);
+					var ellipsisSpan = $("<span>").addClass("text-ellipses").text("...");
+					var hiddenIntro = $("<span>").addClass("is-hidden-text").html(stringEnd);
+					$this.html(stringBeginning);
+					$this.append(ellipsisSpan);
+					$this.append(hiddenIntro);
+				}
 
 				var readMoreLink = $("<p>").addClass("article-list__item__open-close-link")
 																		.append($("<a>").attr("href", "#").text("Read More").on("click", function(e){
