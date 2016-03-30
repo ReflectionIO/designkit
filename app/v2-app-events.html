@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, App Events Page</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			
+			<div class="page-article-list page-app">
+				<div class="grid-container">
+
+					<div class="page-header__app-icon-container">
+						<img src="images/v2/placeholder-app-icon.jpg" alt="Clash Royale Icon" />
+					</div>
+
+					<div class="page-header__app-title-links">
+						<h1 class="heading-style--heading-three app-title">Clash Royale</h1>
+						<div class="toggle-container page-header__page-toggle">
+							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+								<div class="toggle">
+									<input id="toggle--show-downloads" name="app-info" type="radio">
+									<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
+										Revenue &amp; Downloads
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ranks" name="app-info" type="radio">
+									<label for="toggle--show-ranks">
+										Rank History
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ratings" name="app-info" type="radio">
+									<label for="toggle--show-ratings" onclick="location.replace('v2-app-ratings-info.html');">
+										Ratings &amp; Info
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-events" name="app-info" checked type="radio">
+									<label for="toggle--show-events" onclick="location.replace('v2-app-events.html');">
+										Events
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-header__app-info-and-actions">
+						<span class="page-header__app-price-details">Free + IAP</span>
+						<span class="page-header__publisher-name">By <a href="#">Supercell</a></span>
+						<div>
+							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button">Follow App</button>
+							<a href="#" class="page-header__link-to-appstore">View in Appstore</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="grid__row overflow-visible">
+					<aside class="primary-filters-container">
+ 						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="allTime" selected>All Time</option>
+						    <option value="lastWeek">Last Week</option>
+						    <option value="lastMonth">Last Month</option>
+						    <option value="lastThreeMonths">Last Three Months</option>
+						    <option value="lastSixMonths">Last Six Months</option>
+						    <option value="lastYear">Last Year</option>
+						    <option value="customRange">Custom Range</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="allTime" selected>All Event Types</option>
+						    <option value="launch">App Launch</option>
+						    <option value="update">App Update</option>
+						    <option value="price">App Price Change</option>
+						    <option value="featured">App Featured</option>
+						    <option value="account">Account Notification</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--search js-form-field-search">
+							<input type="text" placeholder="Find an Event" name="findapp" id="findapp" class="js-mock-find-app">
+							<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+							<a href="#" class="clear-search ref-icon-after--close js-clear-search js-mock-clear-find-app">Clear</a>
+						</div>
+					</aside>
+				</div>
+
+				<div class="grid-container article-list-container">
+					<ul class="article-list">
+						<li class="article-list__item">
+							<article>
+								<div class="article-list__item__icons-container">
+									<img src="images/v2/placeholder-app-icon.jpg" alt="App icon" class="article-list__item__type-icon" />
+									<span class="article-list__item__store ref-icon-after--apple">iOS</span>
+								</div>
+								<div class="article-list__item__summary-container">
+									<h2 class="article-list__item__title">App Update</h2>
+									<span class="article-list__item__posted-date">1 hour ago</span>
+									<p class="article-list__item__intro">Updated to version 2.2.41</p>
+								</div>
+								<div class="article-list__item__actions-container">
+									<a href="#" class="article-list__item__bookmark-action js-mock-bookmark">
+										<svg x=0px y=0px viewBox="0 0 14 24"enable-background="new 0 0 14 24"xml:space=preserve><polygon fill=#5A5A68 points="0,0 0,24.1 7,19 14,24.1 14,0 "/></svg>
+									</a>
+									<a href="#" class="ref-button--secondary--small">Share</a>
+									<a href="#" class="ref-button--secondary--small">View on Chart</a>
+								</div>
+							</article>
+						</li>
+						<li class="article-list__item">
+							<article>
+								<div class="article-list__item__icons-container">
+									<img src="images/v2/placeholder-app-icon.jpg" alt="App icon" class="article-list__item__type-icon" />
+									<span class="article-list__item__store ref-icon-after--play-store">iOS</span>
+								</div>
+								<div class="article-list__item__summary-container">
+									<h2 class="article-list__item__title">App Launched</h2>
+									<span class="article-list__item__posted-date">2 days ago</span>
+									<p class="article-list__item__intro">App launched in <span class="tooltip--article-list-content js-whats-this-tooltip" data-whatsthis-title="55 Countries" data-whatsthis="United Kingdom, Italy, France, Spain, Portugal, USA, Germany...">55 Countries</span></p>
+								</div>
+								<div class="article-list__item__actions-container">
+									<a href="#" class="article-list__item__bookmark-action js-mock-bookmark">
+										<svg x=0px y=0px viewBox="0 0 14 24"enable-background="new 0 0 14 24"xml:space=preserve><polygon fill=#5A5A68 points="0,0 0,24.1 7,19 14,24.1 14,0 "/></svg>
+									</a>
+									<a href="#" class="ref-button--secondary--small">Share</a>
+									<a href="#" class="ref-button--secondary--small">View on Chart</a>
+								</div>
+							</article>
+						</li>
+						<li class="article-list__item">
+							<article>
+								<div class="article-list__item__icons-container">
+									<img src="images/v2/placeholder-app-icon.jpg" alt="App icon" class="article-list__item__type-icon" />
+									<span class="article-list__item__store ref-icon-after--apple">iOS</span>
+								</div>
+								<div class="article-list__item__summary-container">
+									<h2 class="article-list__item__title">Price Changed</h2>
+									<span class="article-list__item__posted-date">5 days ago</span>
+									<p class="article-list__item__intro">Price changed from $0.99 to FREE</p>
+								</div>
+								<div class="article-list__item__actions-container">
+									<a href="#" class="article-list__item__bookmark-action js-mock-bookmark is-on">
+										<svg x=0px y=0px viewBox="0 0 14 24"enable-background="new 0 0 14 24"xml:space=preserve><polygon fill=#5A5A68 points="0,0 0,24.1 7,19 14,24.1 14,0 "/></svg>
+									</a>
+									<a href="#" class="ref-button--secondary--small">Share</a>
+									<a href="#" class="ref-button--secondary--small">View on Chart</a>
+								</div>
+							</article>
+						</li>
+						<li class="article-list__item">
+							<article>
+								<div class="article-list__item__icons-container">
+									<img src="images/v2/placeholder-app-icon.jpg" alt="App icon" class="article-list__item__type-icon" />
+									<span class="article-list__item__store ref-icon-after--apple">iOS</span>
+								</div>
+								<div class="article-list__item__summary-container">
+									<h2 class="article-list__item__title">App Update</h2>
+									<span class="article-list__item__posted-date">1 hour ago</span>
+									<p class="article-list__item__intro">Updated to version 2.2.41</p>
+								</div>
+								<div class="article-list__item__actions-container">
+									<a href="#" class="article-list__item__bookmark-action js-mock-bookmark">
+										<svg x=0px y=0px viewBox="0 0 14 24"enable-background="new 0 0 14 24"xml:space=preserve><polygon fill=#5A5A68 points="0,0 0,24.1 7,19 14,24.1 14,0 "/></svg>
+									</a>
+									<a href="#" class="ref-button--secondary--small">Share</a>
+									<a href="#" class="ref-button--secondary--small">View on Chart</a>
+								</div>
+							</article>
+						</li>
+						<li class="article-list__item">
+							<article>
+								<div class="article-list__item__icons-container">
+									<img src="images/v2/placeholder-app-icon.jpg" alt="App icon" class="article-list__item__type-icon" />
+									<span class="article-list__item__store ref-icon-after--play-store">iOS</span>
+								</div>
+								<div class="article-list__item__summary-container">
+									<h2 class="article-list__item__title">App Launched</h2>
+									<span class="article-list__item__posted-date">2 days ago</span>
+									<p class="article-list__item__intro">App launched in <span class="tooltip--article-list-content js-whats-this-tooltip" data-whatsthis-title="55 Countries" data-whatsthis="United Kingdom, Italy, France, Spain, Portugal, USA, Germany...">55 Countries</span></p>
+								</div>
+								<div class="article-list__item__actions-container">
+									<a href="#" class="article-list__item__bookmark-action js-mock-bookmark">
+										<svg x=0px y=0px viewBox="0 0 14 24"enable-background="new 0 0 14 24"xml:space=preserve><polygon fill=#5A5A68 points="0,0 0,24.1 7,19 14,24.1 14,0 "/></svg>
+									</a>
+									<a href="#" class="ref-button--secondary--small">Share</a>
+									<a href="#" class="ref-button--secondary--small">View on Chart</a>
+								</div>
+							</article>
+						</li>
+						<li class="article-list__item">
+							<article>
+								<div class="article-list__item__icons-container">
+									<img src="images/v2/placeholder-app-icon.jpg" alt="App icon" class="article-list__item__type-icon" />
+									<span class="article-list__item__store ref-icon-after--apple">iOS</span>
+								</div>
+								<div class="article-list__item__summary-container">
+									<h2 class="article-list__item__title">Price Changed</h2>
+									<span class="article-list__item__posted-date">5 days ago</span>
+									<p class="article-list__item__intro">Price changed from $0.99 to FREE</p>
+								</div>
+								<div class="article-list__item__actions-container">
+									<a href="#" class="article-list__item__bookmark-action js-mock-bookmark">
+										<svg x=0px y=0px viewBox="0 0 14 24"enable-background="new 0 0 14 24"xml:space=preserve><polygon fill=#5A5A68 points="0,0 0,24.1 7,19 14,24.1 14,0 "/></svg>
+									</a>
+									<a href="#" class="ref-button--secondary--small">Share</a>
+									<a href="#" class="ref-button--secondary--small">View on Chart</a>
+								</div>
+							</article>
+						</li>
+					</ul>
+				</div>
+			</div> <!-- end page-article-list -->
+
+			<div class="grid-container" id="js-component-import--global-footer"></div>
+		</div>
+	</div>	
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script>
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-news.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+  		new Page();
+  		new AllDropDowns();
+  		new FormInteractions();
+  		
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+
+  		$('.js-form-field-search').each(function(){
+  			new FormFieldSearch($(this));
+  		});
+
+  		$('.js-article-intro').each(function(){
+  			new ArticleIntro($(this), 100);
+  		});
+
+  		$('.js-mock-bookmark').on("click", function(e){
+  			e.preventDefault();
+  			$(this).toggleClass("is-on");
+  		});
+
+  		$('.js-whats-this-tooltip').each(function(){
+  			new WhatsThisPopup($(this));
+  		});
+
+  		$('.js-form-field--select--with-notifications').each(function(){
+  			var $this = $(this),
+  					$currentValueContainer = $this.find(".js-dropdown-trigger"),
+  					numberOfNotifications = 6;
+
+  			var $notificationMarker = $("<span>").addClass("form-field-notification-number").text(numberOfNotifications);
+  			if(numberOfNotifications > 100) {
+  				$notificationMarker.addClass("is-large-number");
+  			}
+  			$this.append($notificationMarker);
+
+  			// add notification symbols to drop down items
+  			$this.find(".js-dropdown-option").each(function(){
+  				$(this).append($("<span>").addClass("form-field-notification-number").text("2"));
+  			});
+  		});
+  	}
+  	window.onready = initScripts();
+  </script>
+</body>
