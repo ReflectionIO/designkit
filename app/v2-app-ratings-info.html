@@ -102,7 +102,7 @@
 							</div>
 							<div class="release-notes-container js-release-notes-container">
 								<h3 class="heading-style--heading-four">What's New in Version <span class="js-dd-version"></span></h3>
-								<p><span class="js-release-notes"></span></p>
+								<p class="page-app-ratings-info__release-notes js-release-notes"></p>
 							</div>
 						</article>
 						<aside class="reviews-and-ratings page-section page-section--with-border">
@@ -185,7 +185,7 @@
 							</div>
 						</aside>
 						<aside class="more-by-this-developer page-section js-more-by-this-developer">
-							<h2 class="heading-style--heading-three">Other Apps By This Developer</h2>
+							<h2 class="heading-style--heading-three">Other Apps By This Publisher</h2>
 							<ul></ul>
 							<p class="more-apps-listed js-more-apps-listed"></p>
 						</aside>
@@ -290,12 +290,10 @@
   	}
 
   	function handlemoreappssearch(data) {
-  		console.log(data);
   		var artistName = $('.js-app-developer').text();
 
   		var refinedResults = [];
   		for(var i = 0; i < data.results.length; i++) {
-  			console.log(data.results[i].artistName.search(artistName));
 				if(data.results[i].artistName.search(artistName) > -1) {
 					refinedResults.push(data.results[i]);
 				}
@@ -424,13 +422,14 @@
   			var appDescription = htmlForTextWithEmbeddedNewlines(data.results[0].description);
   			appDescription = urlify(appDescription);
 				$('.js-app-description').html(appDescription);
-				console.log(appDescription);
 				new ArticleIntro($('.js-app-description'), 500);
 
 				if(data.results[0].releaseNotes) {
 					var releaseNotesText = htmlForTextWithEmbeddedNewlines(data.results[0].releaseNotes);
+	  			releaseNotesText = urlify(appDescription);
 					$('.js-release-notes').html(releaseNotesText);
-					$('.js-release-notes-container').fadeIn(300);
+					$('.js-release-notes-container').show();
+					new ArticleIntro($('.js-release-notes'), 500);					
 				}
 
 				$('.js-dd-price').text(data.results[0].formattedPrice);
@@ -485,7 +484,7 @@
 				}
 
 				if(data.results[0].artistViewUrl) {
-					$('.js-more-apps').append($('<a>').attr("href", data.results[0].artistViewUrl).attr("target", "_blank").text("More Apps by this Developer"));
+					$('.js-more-apps').append($('<a>').attr("href", data.results[0].artistViewUrl).attr("target", "_blank").text("More Apps by this Publisher"));
 				} else {
 					$('.js-more-apps').remove();
 				}

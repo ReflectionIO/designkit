@@ -581,16 +581,13 @@ var FormFieldSearch = function($domElement) {
 
 	$thisInput.on("focus", function(){
 		$thisContainer.addClass("is-open");
-		console.log("focus");
 	});
 	$thisInput.on("blur", function(){
-		console.log("blur");
 		if($thisInput.val().length == 0) {
 			$thisContainer.removeClass("is-open");
 		}		
 	});
 	$thisContainer.find(".js-clear-search").on("click", function(){
-		console.log("clear");
 		$thisContainer.removeClass("is-open");
 		$thisInput.val("");
 	});
