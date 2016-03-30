@@ -351,7 +351,7 @@ function handleappsearch(data) {
 	for(var i = 0; i < searchResultsApps.length && i < 5; i++) {
 		$appsList.append($('<li>').append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + ""))
 															.append($('<div>').addClass("search-result__text-container")
-																.append($('<a>').addClass("search-result__app-name").attr("href", "app.html?id=" + searchResultsApps[i].trackId).text(searchResultsApps[i].trackCensoredName))
+																.append($('<a>').addClass("search-result__app-name").attr("href", "v2-app.html?id=" + searchResultsApps[i].trackId).text(searchResultsApps[i].trackCensoredName))
 																.append($('<span>').addClass("search-result__publisher-name").text(searchResultsApps[i].artistName))
 															)
 										);
@@ -382,19 +382,21 @@ SearchContainer.prototype.initSearch = function() {
 
 // V2 Components JS
 
-var PrimaryFilters = function() {
+var AllDropDowns = function() {
 	var instance = this;
 	$("html").on("click", function(e){
 		// close open filters on html click
-		if(!$(e.target).hasClass("js-dropdown-trigger")) {
+		if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
 			instance.closeAllFilters();
 		}
 	});
 }
 
-PrimaryFilters.prototype.closeAllFilters = function() {
+AllDropDowns.prototype.closeAllFilters = function() {
 	$('.primary-filter.is-open .form-field--select__dropdown').hide();
-	$('.primary-filter.is-open').removeClass("is-open");
+	$('.primary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
+	$('.secondary-filter.is-open .form-field--select__dropdown').hide();
+	$('.secondary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 };
 
 var FormFieldSelect = function($domElement) {
@@ -417,10 +419,12 @@ var FormFieldSelect = function($domElement) {
 				}
 			}
 
-			$dropDownContainer.append($("<li>")
+			var $newListItem = $("<li>");
+			$dropDownContainer.append($newListItem
 																		.addClass("js-dropdown-option")
 																		.text($thisOption.text())
 																		.addClass(selectedClass)
+																		.attr('data-value', $thisOption.attr('value'))
 																		.on("click", function() {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");
@@ -432,20 +436,35 @@ var FormFieldSelect = function($domElement) {
 																			$(this).addClass("is-selected");
 																		})
 															);
+
+			if($thisOption.hasClass("js-parent-option")) {
+				$newListItem.addClass("form-field--select__dropdown__parent-option");
+			}
+
+			if($thisOption.hasClass("js-child-option")) {
+				$newListItem.addClass("form-field--select__dropdown__child-option");
+			}
 		}
 
 	});
 
 	$currentValue.on("click", function(){
 		var $parentDiv = $thisSelectBox.parent("div");
-		if(!$parentDiv.hasClass("is-open")) {
-			PrimaryFilters.prototype.closeAllFilters();
+		if($parentDiv.hasClass("is-open")) {
+			$dropDownContainer.toggle();	
+			$parentDiv.toggleClass("is-open");
+		} else {
+			setTimeout(function(){
+				if(!$parentDiv.hasClass("is-open")) {
+					AllDropDowns.prototype.closeAllFilters();
+				}
+				var parentWidth = $parentDiv.width();
+				var parentHeight = $parentDiv.height();
+				$dropDownContainer.css({"min-width": parentWidth + "px"});
+				$dropDownContainer.toggle();	
+				$parentDiv.toggleClass("is-open");
+			}, 50); // allow time for instance.closeAllFilters() to close other filters first
 		}
-		var parentWidth = $parentDiv.width();
-		var parentHeight = $parentDiv.height();
-		$dropDownContainer.css({"min-width": parentWidth + "px"});
-		$dropDownContainer.toggle();	
-		$parentDiv.toggleClass("is-open");
 	});
 
 	if($currentValue.text() == "") {
@@ -455,6 +474,84 @@ var FormFieldSelect = function($domElement) {
 	$thisSelectBox.parent("div").append($currentValue)
 															.append($dropDownContainer);
 };
+
+
+var FormFieldMultipleSelect = function($domElement) {
+	var instance = this,
+			$thisContainer = $domElement,
+			$dropDownContainer = $thisContainer.find(".js-form-field--select__dropdown");
+			$currentValue = $thisContainer.find(".js-dropdown-trigger");
+
+			$thisContainer.find("li").on("click", function() {
+																	instance.setCurrentValue($thisContainer);
+																});
+
+			$currentValue.on("click", function(){
+				if($thisContainer.hasClass("is-open")) {
+					$dropDownContainer.toggle();	
+					$thisContainer.toggleClass("is-open");
+				} else {
+					setTimeout(function(){
+						var parentWidth = $thisContainer.width();
+						var parentHeight = $thisContainer.height();
+						$dropDownContainer.css({"min-width": parentWidth + "px"});
+						$dropDownContainer.toggle();	
+						$thisContainer.toggleClass("is-open");
+					}, 50); // allow time for instance.closeAllFilters() to close other filters first
+				}
+			});
+
+			instance.setCurrentValue($thisContainer);
+
+			$thisContainer.find(".js-clear-all").on("click", function(e){
+				e.preventDefault();
+				$thisContainer.find("li input").each(function(){
+					$(this).removeAttr("checked");
+				});
+				instance.setCurrentValue($thisContainer);
+			});
+};
+
+FormFieldMultipleSelect.prototype.setCurrentValue = function($componentContainerElement) {
+	var $currentValue = $componentContainerElement.find(".js-dropdown-trigger"),
+			$numberSelected = $componentContainerElement.find(".js-number-selected"),
+			currentValueText = "",
+			numberChecked = 0,
+			titlePlural = $componentContainerElement.data("title-plural");
+	
+	$componentContainerElement.find("input:checked").each(function(){
+		currentValueText += $(this).next("label").text() + ", ";
+		numberChecked++;
+	});
+	
+	if(currentValueText == "") {
+		if($componentContainerElement.hasClass("js-form-filter")) {
+			$componentContainerElement.addClass("nothing-selected");
+			$currentValue.text("");
+		} else {
+			$currentValue.text($componentContainerElement.data("title"));
+		}		
+	} else {
+		if($componentContainerElement.hasClass("js-form-filter")) {
+			$componentContainerElement.removeClass("nothing-selected");
+		}
+		currentValueText = currentValueText.substring(0, currentValueText.length - 2);
+		if(numberChecked > 1) {
+			if(titlePlural) {
+				$currentValue.text(numberChecked + " " + titlePlural + " (" + currentValueText + ")");
+			} else {
+				$currentValue.text(numberChecked + " Selected (" + currentValueText + ")");
+			}			
+		} else {
+			$currentValue.text(currentValueText);
+		}		
+	}
+
+	if($numberSelected) {
+		$numberSelected.text(numberChecked);
+	}
+};
+
 
 var FormInteractions = function() {
 	setTimeout(function(){
@@ -678,3 +775,35 @@ var WhatsThisPopup = function($domElement) {
 	});
 };
 
+var ArticleIntro = function($domElement, charCount) {
+	
+	var $this = $domElement,
+			$thisContainer = $domElement.parent("div"),
+			thisText = $domElement.html();
+			
+			if(thisText.length > charCount || $this.next(".js-item-content-follows-intro").length > 0) {
+				if(thisText.length > charCount) {
+					var stringBeginning = thisText.substring(0, charCount-1);
+					var stringEnd = thisText.substring(charCount-1, thisText.length - 1);
+					var ellipsisSpan = $("<span>").addClass("text-ellipses").text("...");
+					var hiddenIntro = $("<span>").addClass("is-hidden-text").html(stringEnd);
+					$this.html(stringBeginning);
+					$this.append(ellipsisSpan);
+					$this.append(hiddenIntro);
+				}
+
+				var readMoreLink = $("<p>").addClass("article-list__item__open-close-link")
+																		.append($("<a>").attr("href", "#").text("Read More").on("click", function(e){
+																			e.preventDefault();
+																			var $this = $(this);
+																			$thisContainer.toggleClass("is-open");
+																			if($this.text() == "Read More") {
+																				$this.text("Close");
+																			} else {
+																				$this.text("Read More");
+																			}
+																		}))
+
+				$thisContainer.append(readMoreLink);
+			}
+}

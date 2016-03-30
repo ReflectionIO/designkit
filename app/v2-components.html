@@ -97,10 +97,15 @@
 	 					<aside class="primary-filters-container">
 	 						<div class="primary-filter form-field--select">
 								<select class="js-select-box">
-							    <option value="all" selected>All Store Accounts</option>
-							    <option value="ios">iOS</option>
-							    <option value="play">Google Play</option>
-							    <option value="amazon">Amazon App Store</option>
+							    <option value="all" selected>All Store &amp; Accounts</option>
+							    <option value="allIos" class="js-parent-option">All iOS Accounts</option>
+							    <option value="iosOne" class="js-child-option">iOS Account One</option>
+							    <option value="iosTwo" class="js-child-option">iOS Account Two</option>
+							    <option value="iosThree" class="js-child-option">iOS Account Three</option>
+							    <option value="allGoogle" class="js-parent-option">All Google Play Accounts</option>
+							    <option value="googleOne" class="js-child-option">Google Account One</option>
+							    <option value="googleTwo" class="js-child-option">Google Account Two</option>
+							    <option value="googleThree" class="js-child-option">Google Account Three</option>
 								</select>
 							</div>
 							<div class="primary-filter form-field--select">
@@ -111,13 +116,28 @@
 							    <option value="apr">01/04/16 - 01/05/16</option>
 								</select>
 							</div>
-							<div class="primary-filter form-field--select">
-								<select class="js-select-box">
-							    <option value="all" selected>All Countries</option>
-							    <option value="uni">United Kingdom</option>
-							    <option value="fra">France</option>
-							    <option value="ger">Germany</option>
-								</select>
+							<div class="primary-filter js-multi-select-box" data-title="Select a Country" data-title-plural="Countries">
+								<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+								<div class="dropdown-summary">
+									<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+								</div>
+								<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">
+									<li>
+										<input type="checkbox" name="checkboxUKF" id="checkboxUKF" class="js-no-close-on-click" checked/>
+										<label for="checkboxUKF" class="checkboxLabel js-no-close-on-click">United Kingdom</label>
+										<label for="checkboxUKF" class="checkboxLabelVisible js-no-close-on-click">United Kingdom</label>
+									</li>
+									<li>
+										<input type="checkbox" name="checkboxFraF" id="checkboxFraF" class="js-no-close-on-click" />
+										<label for="checkboxFraF" class="checkboxLabel js-no-close-on-click">France</label>
+										<label for="checkboxFraF" class="checkboxLabelVisible js-no-close-on-click">France</label>
+									</li>
+									<li>
+										<input type="checkbox" name="checkboxItaF" id="checkboxItaF" class="js-no-close-on-click" />
+										<label for="checkboxItaF" class="checkboxLabel js-no-close-on-click">Italy</label>
+										<label for="checkboxItaF" class="checkboxLabelVisible js-no-close-on-click">Italy</label>
+									</li>
+								</ul>
 							</div>
 							<div class="primary-filter form-field--select">
 								<select class="js-select-box">
@@ -169,6 +189,30 @@
 								</select>
 							</div>
 
+							<div class="secondary-filter secondary-filter--large secondary-filter--multi-select js-multi-select-box" data-title="Select a Country" data-title-plural="Countries">
+								<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+								<div class="dropdown-summary">
+									<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+								</div>
+								<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">
+									<li>
+										<input type="checkbox" name="checkboxUK" id="checkboxUK" class="js-no-close-on-click" checked/>
+										<label for="checkboxUK" class="checkboxLabel js-no-close-on-click">United Kingdom</label>
+										<label for="checkboxUK" class="checkboxLabelVisible js-no-close-on-click">United Kingdom</label>
+									</li>
+									<li>
+										<input type="checkbox" name="checkboxFra" id="checkboxFra" class="js-no-close-on-click" />
+										<label for="checkboxFra" class="checkboxLabel js-no-close-on-click">France</label>
+										<label for="checkboxFra" class="checkboxLabelVisible js-no-close-on-click">France</label>
+									</li>
+									<li>
+										<input type="checkbox" name="checkboxIta" id="checkboxIta" class="js-no-close-on-click" />
+										<label for="checkboxIta" class="checkboxLabel js-no-close-on-click">Italy</label>
+										<label for="checkboxIta" class="checkboxLabelVisible js-no-close-on-click">Italy</label>
+									</li>
+								</ul>
+							</div>
+
 							<div class="secondary-filter form-field--search">
 								<input type="text" placeholder="Find App in List" name="findapp" id="findapp" />
 								<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
@@ -213,6 +257,91 @@
 								    <option value="nig">Nigeria</option>
 									</select>
 									<label for="countryselect">Country</label>
+								</div>
+
+								<div class="form-filter form-field--select js-multi-select-box js-form-filter" data-title="Select a Country" data-title-plural="Countries">
+									<label for="">Country</label>
+									<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+									<div class="dropdown-summary">
+										<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+									</div>
+									<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">										
+										<li>
+											<input type="checkbox" name="checkboxUKFaB" id="checkboxUKFaB" />
+											<label for="checkboxUKFaB" class="checkboxLabel">United Kingdom</label>
+											<label for="checkboxUKFaB" class="checkboxLabelVisible">United Kingdom</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxFraFaB" id="checkboxFraFaB" />
+											<label for="checkboxFraFaB" class="checkboxLabel">France</label>
+											<label for="checkboxFraFaB" class="checkboxLabelVisible">France</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxItaFaB" id="checkboxItaFaB" />
+											<label for="checkboxItaFaB" class="checkboxLabel">Italy</label>
+											<label for="checkboxItaFaB" class="checkboxLabelVisible">Italy</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxGeFaB" id="checkboxGeFaB" />
+											<label for="checkboxGeFaB" class="checkboxLabel">Germany</label>
+											<label for="checkboxGeFaB" class="checkboxLabelVisible">Germany</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxSpFaB" id="checkboxSpFaB" />
+											<label for="checkboxSpFaB" class="checkboxLabel">Spain</label>
+											<label for="checkboxSpFaB" class="checkboxLabelVisible">Spain</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxUKFa2B" id="checkboxUKFa2B" />
+											<label for="checkboxUKFa2B" class="checkboxLabel">United Kingdom</label>
+											<label for="checkboxUKFa2B" class="checkboxLabelVisible">United Kingdom</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxFraFa2B" id="checkboxFraFa2B" />
+											<label for="checkboxFraFa2B" class="checkboxLabel">France</label>
+											<label for="checkboxFraFa2B" class="checkboxLabelVisible">France</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxItaFa2" id="checkboxItaFa2B" />
+											<label for="checkboxItaFa2B" class="checkboxLabel">Italy</label>
+											<label for="checkboxItaFa2B" class="checkboxLabelVisible">Italy</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxGeFa2B" id="checkboxGeFa2B" />
+											<label for="checkboxGeFa2B" class="checkboxLabel">Germany</label>
+											<label for="checkboxGeFa2B" class="checkboxLabelVisible">Germany</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxSpFa2B" id="checkboxSpFa2B" />
+											<label for="checkboxSpFa2B" class="checkboxLabel">Spain</label>
+											<label for="checkboxSpFa2B" class="checkboxLabelVisible">Spain</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxUKFa3B" id="checkboxUKFa3B" />
+											<label for="checkboxUKFa3B" class="checkboxLabel">United Kingdom</label>
+											<label for="checkboxUKFa3B" class="checkboxLabelVisible">United Kingdom</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxFraFa2B" id="checkboxFraFa3B" />
+											<label for="checkboxFraFa3B" class="checkboxLabel">France</label>
+											<label for="checkboxFraFa3B" class="checkboxLabelVisible">France</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxItaFa3B" id="checkboxItaFa3B" />
+											<label for="checkboxItaFa3B" class="checkboxLabel">Italy</label>
+											<label for="checkboxItaFa3B" class="checkboxLabelVisible">Italy</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxGeFa3B" id="checkboxGeFa3B" />
+											<label for="checkboxGeFa3B" class="checkboxLabel">Germany</label>
+											<label for="checkboxGeFa3B" class="checkboxLabelVisible">Germany</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxSpFa3B" id="checkboxSpFa3B" />
+											<label for="checkboxSpFa3B" class="checkboxLabel">Spain</label>
+											<label for="checkboxSpFa3B" class="checkboxLabelVisible">Spain</label>
+										</li>
+									</ul>
 								</div>
 							</form>
 						</div>
@@ -292,6 +421,90 @@
 								    <option value="nig">Nigeria</option>
 									</select>
 									<label for="countryselect">Country</label>
+								</div>
+								<div class="form-filter form-field--select js-multi-select-box js-form-filter" data-title="Select a Country" data-title-plural="Countries">
+									<label for="">Country</label>
+									<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+									<div class="dropdown-summary">
+										<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+									</div>
+									<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">
+										<li>
+											<input type="checkbox" name="checkboxUKFa" id="checkboxUKFa" />
+											<label for="checkboxUKFa" class="checkboxLabel">United Kingdom</label>
+											<label for="checkboxUKFa" class="checkboxLabelVisible">United Kingdom</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxFraFa" id="checkboxFraFa" />
+											<label for="checkboxFraFa" class="checkboxLabel">France</label>
+											<label for="checkboxFraFa" class="checkboxLabelVisible">France</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxItaFa" id="checkboxItaFa" />
+											<label for="checkboxItaFa" class="checkboxLabel">Italy</label>
+											<label for="checkboxItaFa" class="checkboxLabelVisible">Italy</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxGeFa" id="checkboxGeFa" />
+											<label for="checkboxGeFa" class="checkboxLabel">Germany</label>
+											<label for="checkboxGeFa" class="checkboxLabelVisible">Germany</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxSpFa" id="checkboxSpFa" />
+											<label for="checkboxSpFa" class="checkboxLabel">Spain</label>
+											<label for="checkboxSpFa" class="checkboxLabelVisible">Spain</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxUKFa2" id="checkboxUKFa2" />
+											<label for="checkboxUKFa2" class="checkboxLabel">United Kingdom</label>
+											<label for="checkboxUKFa2" class="checkboxLabelVisible">United Kingdom</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxFraFa2" id="checkboxFraFa2" />
+											<label for="checkboxFraFa2" class="checkboxLabel">France</label>
+											<label for="checkboxFraFa2" class="checkboxLabelVisible">France</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxItaFa2" id="checkboxItaFa2" />
+											<label for="checkboxItaFa2" class="checkboxLabel">Italy</label>
+											<label for="checkboxItaFa2" class="checkboxLabelVisible">Italy</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxGeFa2" id="checkboxGeFa2" />
+											<label for="checkboxGeFa2" class="checkboxLabel">Germany</label>
+											<label for="checkboxGeFa2" class="checkboxLabelVisible">Germany</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxSpFa2" id="checkboxSpFa2" />
+											<label for="checkboxSpFa2" class="checkboxLabel">Spain</label>
+											<label for="checkboxSpFa2" class="checkboxLabelVisible">Spain</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxUKFa3" id="checkboxUKFa3" />
+											<label for="checkboxUKFa3" class="checkboxLabel">United Kingdom</label>
+											<label for="checkboxUKFa3" class="checkboxLabelVisible">United Kingdom</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxFraFa2" id="checkboxFraFa3" />
+											<label for="checkboxFraFa3" class="checkboxLabel">France</label>
+											<label for="checkboxFraFa3" class="checkboxLabelVisible">France</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxItaFa3" id="checkboxItaFa3" />
+											<label for="checkboxItaFa3" class="checkboxLabel">Italy</label>
+											<label for="checkboxItaFa3" class="checkboxLabelVisible">Italy</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxGeFa3" id="checkboxGeFa3" />
+											<label for="checkboxGeFa3" class="checkboxLabel">Germany</label>
+											<label for="checkboxGeFa3" class="checkboxLabelVisible">Germany</label>
+										</li>
+										<li>
+											<input type="checkbox" name="checkboxSpFa3" id="checkboxSpFa3" />
+											<label for="checkboxSpFa3" class="checkboxLabel">Spain</label>
+											<label for="checkboxSpFa3" class="checkboxLabelVisible">Spain</label>
+										</li>
+									</ul>
 								</div>
 								<div class="form-filter form-field--select form-field--with-error">
 									<select class="js-select-box" id="countryselect">
@@ -763,7 +976,7 @@
 	 						<h2 class="heading-style--heading-four dk-components-heading">Tooltips</h2>
 	 					</div>
 
-	 					<div class="grid__column--one-third">
+	 					<div class="grid__column--one-third overflow-visible">
 	 						<div class="secondary-filter secondary-filter--medium form-field--select js-tooltip" data-tooltip="All app store accounts that you’ve linked with Reflection">
 								<select class="js-select-box">
 							    <option value="all" selected>Tooltip Centred</option>
@@ -773,7 +986,7 @@
 								</select>
 							</div>
 	 					</div>
-	 					<div class="grid__column--one-third">
+	 					<div class="grid__column--one-third overflow-visible">
 	 						<div class="secondary-filter secondary-filter--medium form-field--select js-tooltip js-tooltip--left" data-tooltip="All app store accounts that you’ve linked with Reflection">
 								<select class="js-select-box">
 							    <option value="all" selected>Tooltip Left</option>
@@ -783,7 +996,7 @@
 								</select>
 							</div>
 	 					</div>
-	 					<div class="grid__column--one-third">
+	 					<div class="grid__column--one-third overflow-visible">
 	 						<div class="secondary-filter secondary-filter--medium form-field--select js-tooltip js-tooltip--right" data-tooltip="All app store accounts that you’ve linked with Reflection">
 								<select class="js-select-box">
 							    <option value="all" selected>Tooltip Right</option>
@@ -862,11 +1075,14 @@
 <script src="js-v2/application.js"></script>
 <script>
   	function initScripts() {
-  		new PrimaryFilters();
+  		new AllDropDowns();
   		new FormInteractions();
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});
+  		$('.js-multi-select-box').each(function() {
+  			new FormFieldMultipleSelect($(this));
+  		});  		
   		$('.js-tabs').each(function() {
   			new Tabs($(this));
   		});
