@@ -1,14 +1,18 @@
 .global-footer {
 	padding-top: 2.2rem;
 	padding-bottom: 4rem;	
-	width: 100%;
+	width: calc(100% - 60px);
 	margin-left: auto;	
 	margin-right: auto;
+	float: right;
 	font-family: $brand-heading-font;
 	font-weight: 400;
 	font-size: 1.6rem;
 	line-height: 1.3;
 	border-top: 1px solid $divider-grey;
+	@include breakpoint($leftnav-wide) {
+		width: calc(100% - 200px);
+	}
 	.no-border-top & {
 		border-top: 0;
 	}

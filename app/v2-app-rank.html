@@ -1,0 +1,1376 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, App Page</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			<div class="page-data-dashboard page-app page-app-rank-history">
+				<div class="grid-container">
+
+					<div class="page-header__app-icon-container">
+						<img src="images/v2/placeholder-app-icon.jpg" alt="Clash Royale Icon" />
+					</div>
+
+					<div class="page-header__app-title-links">
+						<h1 class="heading-style--heading-three app-title">Clash Royale</h1>
+						<div class="toggle-container page-header__page-toggle">
+							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+								<div class="toggle">
+									<input id="toggle--show-downloads" name="app-info" type="radio">
+									<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
+										Revenue &amp; Downloads
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ranks" name="app-info" checked type="radio">
+									<label for="toggle--show-ranks" onclick="location.replace('v2-app-rank.html');">
+										Rank History
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ratings" name="app-info" type="radio">
+									<label for="toggle--show-ratings" onclick="location.replace('v2-app-ratings-info.html');">
+										Ratings &amp; Info
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-events" name="app-info" type="radio">
+									<label for="toggle--show-events" onclick="location.replace('v2-app-events.html');">
+										Events
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-header__app-info-and-actions">
+						<span class="page-header__app-price-details">Free + IAP</span>
+						<span class="page-header__publisher-name">By <a href="#">Supercell</a></span>
+						<div>
+							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button">Follow App</button>
+							<a href="#" class="page-header__link-to-appstore">View in Appstore</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="grid__row overflow-visible">
+					<aside class="primary-filters-container">
+ 						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all">All Store Accounts</option>
+						    <option value="ios" selected>iOS</option>
+						    <option value="play">Google Play</option>
+						    <option value="amazon">Amazon App Store</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="jan" selected>01/01/16 - 01/02/16</option>
+						    <option value="feb">01/02/16 - 01/03/16</option>
+						    <option value="mar">01/03/16 - 01/04/16</option>
+						    <option value="apr">01/04/16 - 01/05/16</option>
+							</select>
+						</div>
+						<div class="primary-filter js-multi-select-box" data-title="All Countries">
+							<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+							<div class="dropdown-summary">
+								<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+							</div>
+							<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">
+								<li>
+									<input type="checkbox" name="checkboxUKFaB" id="checkboxUKFaB" class="js-no-close-on-click" />
+									<label for="checkboxUKFaB" class="checkboxLabel js-no-close-on-click">United Kingdom</label>
+									<label for="checkboxUKFaB" class="checkboxLabelVisible js-no-close-on-click">United Kingdom</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxFraFaB" id="checkboxFraFaB" class="js-no-close-on-click" />
+									<label for="checkboxFraFaB" class="checkboxLabel js-no-close-on-click">France</label>
+									<label for="checkboxFraFaB" class="checkboxLabelVisible js-no-close-on-click">France</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxItaFaB" id="checkboxItaFaB" class="js-no-close-on-click" />
+									<label for="checkboxItaFaB" class="checkboxLabel js-no-close-on-click">Italy</label>
+									<label for="checkboxItaFaB" class="checkboxLabelVisible js-no-close-on-click">Italy</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxGeFaB" id="checkboxGeFaB" checked class="js-no-close-on-click" />
+									<label for="checkboxGeFaB" class="checkboxLabel js-no-close-on-click">Germany</label>
+									<label for="checkboxGeFaB" class="checkboxLabelVisible js-no-close-on-click">Germany</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxSpFaB" id="checkboxSpFaB" class="js-no-close-on-click" />
+									<label for="checkboxSpFaB" class="checkboxLabel js-no-close-on-click">Spain</label>
+									<label for="checkboxSpFaB" class="checkboxLabelVisible js-no-close-on-click">Spain</label>
+								</li>
+							</ul>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Devices</option>
+						    <option value="ipa">iPad</option>
+						    <option value="iph">iPhone</option>
+							</select>
+						</div>
+					</aside>
+				</div>
+
+				<aside class="grid-container secondary-filters-container">
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="overlayapps" selected>Overlay Apps (0)</option>
+					    <option value="candy">Candy Crush Saga</option>
+					    <option value="clash">Clash of Clans</option>
+					    <option value="soccerstars">Soccer Stars</option>
+					    <option value="eightball">8 Ball Pool</option>
+						</select>
+					</div>
+
+					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+						<ul>
+							<li>
+								<input type="checkbox" name="checkboxOne" id="checkboxOne">
+								<label for="checkboxOne" class="checkboxLabel">Events</label>
+								<label for="checkboxOne" class="checkboxLabelVisible">Events</label>
+							</li>
+						</ul>
+					</div>
+
+					<div class="filter-toggle toggle-container--chart-type">
+						<div class="toggle">
+							<input id="toggle--show-line" name="graphtype" type="radio">
+							<label for="toggle--show-line">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M16.9,16.9h-2.8h-0.6h-2.8h-0.6H7.3
+	H6.8H3.9H3.4H1.1v-4l2.5-3.8L7,10.7l3.4-6.2L14,6.1l2.9-3.2V16.9z"/></svg>
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-stacked" name="graphtype" checked type="radio">
+							<label for="toggle--show-stacked">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M3.6,9.1L7,10.7l3.4-6.2L14,6.1l2.9-3.2v4
+	l-3,4.5l-3.2-1.1l-3.7,3.4L3.7,13l-2.6,1.4v-1.5L3.6,9.1z M14.1,16.9h-0.6h-2.8h-0.6H7.3H6.8H3.9H3.4H1.1V15l2.7-1.5l3.3,0.9
+	l3.7-3.4l3.3,1.1l2.8-4.2v9H14.1z"/></svg>
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-bar" name="graphtype" type="radio">
+							<label for="toggle--show-bar">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M11.2,0v5.6H5.6v3.9H0V18h18V0H11.2z M6.8,6.8h5.1v10.1H6.8V6.8z M1.1,10.7h5.1v6.2H1.1V10.7z
+	 M16.9,16.9h-4.5V1.1h4.5V16.9z"/></svg>
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-map" name="graphtype" type="radio">
+							<label for="toggle--show-map">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M9,0C9,0,9,0,9,0C8.9,0,8.9,0,8.9,0C8.7,0,8.6,0,8.4,0c-0.1,0-0.3,0-0.4,0c-0.1,0-0.2,0-0.3,0.1
+	C3.4,0.7,0,4.5,0,9c0,5,4,9,9,9s9-4,9-9C18,4,14,0,9,0z M15.5,6.3c-0.3-0.1-0.3-0.3-0.6-0.4c-0.5-0.2-1.4-0.2-2,0
+	c-0.5,0.2-0.6,0.3-1,0.7c-0.1,0.1-0.1,0.3-0.2,0.4c-0.1,0.1-0.1,0.2-0.1,0.3c-0.1,0.6-0.4,1.3-0.1,1.8c0.1,0.2,0.4,0.3,0.6,0.5
+	c0.3,0.2,0.4,0.4,0.8,0.5c0.2,0,0.5,0,0.7,0c0.3,0,0.6,0.1,0.8,0.2c-0.2,0.4-0.2,1.1-0.2,1.3c0,0.2,0.1,0.2,0.1,0.4
+	c0.1,0.6-0.9,1-0.7,1.6c0,0.1,0.1,0.3,0.1,0.4c0,0.5-0.4,0.7-0.5,1.1c0,0.2,0,0.4,0,0.6c0,0.1,0,0.2,0,0.3c-1.3,0.8-2.8,1.3-4.4,1.3
+	c-4.5,0-8.2-3.7-8.2-8.2c0-1.6,0.5-3.1,1.3-4.4c0,0,0.1,0,0.1,0.1c0,0.1,0,0.3,0,0.4C2.2,5.6,2.5,6.1,3,6.1c0,0.3-0.1,0.3,0.2,0.7
+	c0,0.1,0,0.2,0.1,0.2c0.1,0.1,0.2,0.1,0.3,0.1C3.7,7.4,3.7,7.8,3.6,8S3.2,8.5,3.1,8.8c-0.2,0.4-0.1,1,0.2,1.4
+	c0.1,0.1,0.3,0.5,0.5,0.6S4,10.8,4,11c0.1,0.3,0.1,0.5,0.2,0.7c0,0.2-0.1,0.6-0.1,0.8c0,0.2,0.1,0.2,0.1,0.3c0,0.1-0.1,0-0.1,0.2
+	c0,0.3,0,1,0.1,1.2c0.1,0.8,0.6,1.5,1.1,1.4c0.2-0.4-0.2-0.8-0.1-1.2c0.1-0.2,0.1-0.3,0.3-0.4c0.6-0.4,1-0.8,1.3-1.4
+	c0-0.1,0.1-0.3,0.2-0.3c0.1,0,0.2,0,0.3-0.1c0.4-0.1,0.6-0.3,0.8-0.6s0.2-0.6,0.5-1c0.1-0.1,0.1-0.3,0.2-0.3
+	c0.2-0.3-0.1-0.7-0.4-0.8S7.8,9.4,7.5,9.2C7.2,9,7.2,8.6,7,8.3C6.7,8,6.4,7.8,6,7.7C5.6,7.5,5.7,7.3,5,7C4.9,7,4.7,7,4.6,7
+	C4.5,7,4.5,7.1,4.4,7.1C4.2,7.4,3.7,7.2,3.6,6.9c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.4-0.2-0.4C3.3,5.9,3.7,6.1,3.7,5.8
+	c0-0.3-0.2-0.1-0.4-0.2C3,5.5,3.1,5.1,3.1,4.9c0.1-0.3,0.2-0.2,0.3-0.3c0.3-0.2,0.7-0.3,1-0.2c0.3,0.1,0.2,0.7,0.3,0.7
+	c0.1,0.1,0.3-0.1,0.3-0.2s0-0.3,0-0.4c0-0.1,0.1-0.1,0.2-0.2c0.6-0.4,1.3-0.7,2.1-0.8c0.1,0,0.2,0,0.3,0c0.1-0.1,0.1-0.3,0.2-0.3
+	c0.1,0,0.2,0.2,0.4,0.2C8.4,3.5,8.6,3.2,8.6,3c0-0.2-0.1-0.4,0-0.6c0-0.1,0.1-0.1,0.1-0.2c0,0-0.1-0.1-0.1-0.1
+	C8.4,2.1,8.4,1.9,8.1,1.9C7.9,2,7.7,2,7.5,2.2C7.3,2.3,7.2,2.4,7,2.5C6.8,2.3,7,2,7.2,1.8c0.2-0.1,0.4-0.1,0.7-0.2
+	c0.1,0,0.2,0,0.3,0c0.1,0,0.2,0.1,0.2,0.1c0.2,0.1,0.3,0,0.4-0.1C9,1.5,9.1,1.4,8.9,1.2c0-0.1,0.2-0.1,0.2,0s0,0.2-0.1,0.4
+	C8.8,2.2,9.3,2.7,9.5,2.7c0.3,0,0.5-0.6,0.9-0.8c0.1,0,0.2-0.1,0.3-0.1c0.1-0.1,0.1-0.2,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2
+	c0.8,0.2,1.5,0.5,2.1,1c0,0,0,0,0,0c0,0-0.1,0-0.2,0c-0.4-0.1-0.5,0.3-0.4,0.7c0.1,0.3,0.3,0.5,0.6,0.6c0.1,0,0.3,0.1,0.4,0.2
+	c0,0,0,0.2,0,0.2c0,0.3,0,0.5-0.3,0.6c-0.2,0.2-0.6,0.1-0.8,0.3c-0.2,0.2,0.1,0.6,0.4,0.8c0.2,0.2,0.7,0.2,0.9-0.1
+	C14.1,5.3,14,5.1,14,5c0.3,0,0.5,0.2,0.6,0.4c0,0,0.1,0.1,0.2,0.1c0.1,0,0.2-0.2,0.3-0.1c0,0.1,0,0.2,0.1,0.2s0.1-0.1,0.2,0
+	s0.2,0.3,0.3,0.3c0.1,0,0.3,0,0.4,0.1c0.1,0.1,0.1,0.2,0.1,0.3C16.3,6.4,15.8,6.4,15.5,6.3z"/></svg>
+							</label>
+						</div>
+					</div>
+
+				</aside>
+
+				<div class="grid__row">
+					<section class="chart-container chart-container--split">
+						<header class="chart-container__header">
+							<h2 class="chart-heading heading-style--heading-three">Grossing Rank</h2>
+							<dl class="chart-summary">
+								<div class="total-for-period-container">
+									<dd class="total-for-period-title">Average Overall Rank for Period</dd>
+									<dt class="total-for-period">4 <span class="growth-on-last-period positive-colour ref-icon-after--up">15</span></dt>
+								</div>
+							</dl>
+						</header>
+						<aside class="custom-chart-key">
+							<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+								<ul>
+									<li class="revenue-key">
+										<input type="checkbox" name="showhiderevenue" id="showhiderevenue" class="js-toggle-total-series" data-chart-index="0" data-series-index="0" checked>
+										<label for="showhiderevenue" class="checkboxLabel">Overall</label>
+										<label for="showhiderevenue" class="checkboxLabelVisible">Overall</label>
+									</li>
+								</ul>
+							</div>
+						</aside>
+						<div class="chart" id="chart-revenue"></div>
+					</section>
+					<section class="chart-container chart-container--split">
+						<header class="chart-container__header">
+							<h2 class="chart-heading heading-style--heading-three">Download Rank</h2>
+							<dl class="chart-summary">
+								<div class="total-for-period-container">
+									<dd class="total-for-period-title">Average Overall Rank for Period</dd>
+									<dt class="total-for-period">12 <span class="growth-on-last-period negative-colour ref-icon-after--down">3</span></dt>
+								</div>
+							</dl>
+						</header>
+						<aside class="custom-chart-key">
+							<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+								<ul>
+									<li class="downloads-key">
+										<input type="checkbox" name="showhidedownloads" id="showhidedownloads" class="js-toggle-total-series" data-chart-index="1" data-series-index="0" checked>
+										<label for="showhidedownloads" class="checkboxLabel">Overall</label>
+										<label for="showhidedownloads" class="checkboxLabelVisible">Overall</label>
+									</li>
+								</ul>
+							</div>
+						</aside>
+						<div class="chart" id="chart-downloads"></div>
+					</section>
+				</div>
+
+				<div class="grid-container">
+
+					<aside class="chart-key-full chart-key-full--country-category">
+						
+						<div class="chart-key-full__row chart-key-full__row--header">
+							<div class="chart-key-full__column">
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerOverall" id="checkboxAllCatOne">
+											<label for="checkboxAllCatOne" class="checkboxLabel"></label>
+											<label for="checkboxAllCatOne" class="checkboxLabelVisible"></label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatOne" id="checkboxAllCatTwo">
+											<label for="checkboxAllCatTwo" class="checkboxLabel"></label>
+											<label for="checkboxAllCatTwo" class="checkboxLabelVisible"></label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatTwo" id="checkboxAllCatThree">
+											<label for="checkboxAllCatThree" class="checkboxLabel"></label>
+											<label for="checkboxAllCatThree" class="checkboxLabelVisible"></label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatThree" id="checkboxAllCatFour">
+											<label for="checkboxAllCatFour" class="checkboxLabel"></label>
+											<label for="checkboxAllCatFour" class="checkboxLabelVisible"></label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatFour" id="checkboxAllCatFive">
+											<label for="checkboxAllCatFive" class="checkboxLabel"></label>
+											<label for="checkboxAllCatFive" class="checkboxLabelVisible"></label>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="chart-key-full__row is-selected">
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox-list--medium">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGer" id="checkboxGer" checked="" class="js-toggle-row-off">
+											<label for="checkboxGer" class="checkboxLabel">Germany</label>
+											<label for="checkboxGer" class="checkboxLabelVisible">
+												<img src="images/icon-flag-ger.png" alt="German flag" class="checkbox-label-img" />
+												<span>Germany</span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerOverall" id="checkboxGerOverall" class="js-toggle-total-series" data-chart-index="0" data-series-index="0" checked>
+											<label for="checkboxGerOverall" class="checkboxLabel">Overall Rank</label>
+											<label for="checkboxGerOverall" class="checkboxLabelVisible">Overall Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatOne" id="checkboxGerCatOne" checked="" class="js-toggle-total-series" data-chart-index="0" data-series-index="1">
+											<label for="checkboxGerCatOne" class="checkboxLabel">Category 1 Rank</label>
+											<label for="checkboxGerCatOne" class="checkboxLabelVisible">Category 1 Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatTwo" id="checkboxGerCatTwo" checked="" class="js-toggle-total-series" data-chart-index="0" data-series-index="2">
+											<label for="checkboxGerCatTwo" class="checkboxLabel">Category 2 Rank</label>
+											<label for="checkboxGerCatTwo" class="checkboxLabelVisible">Category 2 Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatThree" id="checkboxGerCatThree" checked="" class="js-toggle-total-series" data-chart-index="0" data-series-index="3">
+											<label for="checkboxGerCatThree" class="checkboxLabel">Category 3 Rank</label>
+											<label for="checkboxGerCatThree" class="checkboxLabelVisible">Category 3 Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatFour" id="checkboxGerCatFour" checked="" class="js-toggle-total-series" data-chart-index="0" data-series-index="4">
+											<label for="checkboxGerCatFour" class="checkboxLabel">Category 4 Rank</label>
+											<label for="checkboxGerCatFour" class="checkboxLabelVisible">Category 4 Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="chart-key-full__row">
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox-list--medium">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGer" id="checkboxUK" checked="">
+											<label for="checkboxUK" class="checkboxLabel">United Kingdom</label>
+											<label for="checkboxUK" class="checkboxLabelVisible">
+												<img src="images/icon-flag-gb.png" alt="UK flag" class="checkbox-label-img" />
+												<span>United Kingdom</span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerOverall" id="checkboxUKOverall" checked>
+											<label for="checkboxUKOverall" class="checkboxLabel">Overall Rank</label>
+											<label for="checkboxUKOverall" class="checkboxLabelVisible">Overall Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatOne" id="checkboxUKCatOne" checked>
+											<label for="checkboxUKCatOne" class="checkboxLabel">Category 1 Rank</label>
+											<label for="checkboxUKCatOne" class="checkboxLabelVisible">Category 1 Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatTwo" id="checkboxUKCatTwo" checked>
+											<label for="checkboxUKCatTwo" class="checkboxLabel">Category 2 Rank</label>
+											<label for="checkboxUKCatTwo" class="checkboxLabelVisible">Category 2 Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatThree" id="checkboxUKCatThree" checked>
+											<label for="checkboxUKCatThree" class="checkboxLabel">Category 3 Rank</label>
+											<label for="checkboxUKCatThree" class="checkboxLabelVisible">Category 3 Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatFour" id="checkboxUKCatFour" checked>
+											<label for="checkboxUKCatFour" class="checkboxLabel">Category 4 Rank</label>
+											<label for="checkboxUKCatFour" class="checkboxLabelVisible">Category 4 Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<a href="#" class="ref-icon-after--close chart-key-full__row__remove-link js-mock-remove-row">Delete</a>
+						</div>
+
+						<div class="chart-key-full__row">
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox-list--medium">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGer" id="checkboxUK" checked="">
+											<label for="checkboxUK" class="checkboxLabel">USA</label>
+											<label for="checkboxUK" class="checkboxLabelVisible">
+												<img src="images/icon-flag-usa.png" alt="USA flag" class="checkbox-label-img" />
+												<span>USA</span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerOverall" id="checkboxUSAOverall" checked>
+											<label for="checkboxUSAOverall" class="checkboxLabel">Overall Rank</label>
+											<label for="checkboxUSAOverall" class="checkboxLabelVisible">Overall Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatOne" id="checkboxUSACatOne">
+											<label for="checkboxUSACatOne" class="checkboxLabel">Category 1 Rank</label>
+											<label for="checkboxUSACatOne" class="checkboxLabelVisible">Category 1 Rank</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatTwo" id="checkboxUSACatTwo" disabled>
+											<label for="checkboxUSACatTwo" class="checkboxLabel"></label>
+											<label for="checkboxUSACatTwo" class="checkboxLabelVisible"></label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatThree" id="checkboxUSACatThree" disabled>
+											<label for="checkboxUSACatThree" class="checkboxLabel"></label>
+											<label for="checkboxUSACatThree" class="checkboxLabelVisible"></label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="chart-key-full__column">
+								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<ul>
+										<li>
+											<input type="checkbox" name="checkboxGerCatFour" id="checkboxUSACatFour" disabled>
+											<label for="checkboxUSACatFour" class="checkboxLabel"></label>
+											<label for="checkboxUSACatFour" class="checkboxLabelVisible"></label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<a href="#" class="ref-icon-after--close chart-key-full__row__remove-link js-mock-remove-row">Delete</a>
+						</div>
+
+					</aside>
+
+					<section class="data-table-section grid__column--three-quarters">
+						<header class="data-table-section__header">
+							<div class="data-table-section__filters">
+								
+								<label>Show Data For</label>
+								<div class="secondary-filter form-field--select">
+									<select class="js-select-box">								    
+								    <option value="uk">United Kingdom</option>
+								    <option value="ger" selected>Germany</option>
+								    <option value="fra">France</option>
+								    <option value="ita">Italy</option>
+									</select>
+								</div>
+
+								<div class="toggle-container">
+									<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+										<div class="toggle">
+											<input id="toggle--show-overall" name="radiocategory" checked type="radio">
+											<label for="toggle--show-overall">
+												Overall Rank
+											</label>
+										</div>
+										<div class="toggle">
+											<input id="toggle--show-catone" name="radiocategory" type="radio">
+											<label for="toggle--show-catone">
+												Category 1
+											</label>
+										</div>
+										<div class="toggle">
+											<input id="toggle--show-cattwo" name="radiocategory" type="radio">
+											<label for="toggle--show-cattwo">
+												Category 2
+											</label>
+										</div>
+										<div class="toggle">
+											<input id="toggle--show-catthree" name="radiocategory" type="radio">
+											<label for="toggle--show-catthree">
+												Category 3
+											</label>
+										</div>
+										<div class="toggle">
+											<input id="toggle--show-catfour" name="radiocategory" type="radio">
+											<label for="toggle--show-catfour">
+												Category 4
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</header>
+						<table class="ref-table ref-table--rank-history">
+							<thead>
+								<tr>
+									<th>Date <svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg></th>
+									<th>Grossing Rank <svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg></th>
+									<th>Download Rank <svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg></th>
+									<th class="rank-history-head-cell--revenue-downloads">Revenue <svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg></th>
+									<th class="rank-history-head-cell--revenue-downloads">Downloads <svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg></th>
+								</tr>
+							</thead>
+							<colgroup>
+								<col class="column-rank-history--date">
+								<col class="column-rank-history--grossing-rank">
+								<col class="column-rank-history--download-rank">
+								<col class="column-rank-history--revenue">
+								<col class="column-rank-history--downloads">
+							</colgroup>
+							<tbody>
+								<tr>
+									<td>Mon 1 Jan 2016</td>
+									<td class="rank-history-data-cell--rank"><span>10</span> <span class="data-table__revenue-rank-growth positive-colour ref-icon-after--up">15</span></td>
+									<td class="rank-history-data-cell--rank">25 <span class="data-table__download-rank-growth negative-colour ref-icon-after--down">15</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down positive-colour">+100%</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down negative-colour">-100%</span></td>
+								</tr>
+								<tr>
+									<td>Tues 2 Jan 2016</td>
+									<td class="rank-history-data-cell--rank"><span>10</span> <span class="data-table__revenue-rank-growth positive-colour ref-icon-after--up">15</span></td>
+									<td class="rank-history-data-cell--rank">25 <span class="data-table__download-rank-growth negative-colour ref-icon-after--down">15</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down positive-colour">+100%</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down negative-colour">-100%</span></td>
+								</tr>
+								<tr>
+									<td>Wed 3 Jan 2016</td>
+									<td class="rank-history-data-cell--rank"><span>10</span> <span class="data-table__revenue-rank-growth positive-colour ref-icon-after--up">15</span></td>
+									<td class="rank-history-data-cell--rank">25 <span class="data-table__download-rank-growth negative-colour ref-icon-after--down">15</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down positive-colour">+100%</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down negative-colour">-100%</span></td>
+								</tr>
+								<tr>
+									<td>Thu 4 Jan 2016</td>
+									<td class="rank-history-data-cell--rank"><span>10</span> <span class="data-table__revenue-rank-growth positive-colour ref-icon-after--up">15</span></td>
+									<td class="rank-history-data-cell--rank">25 <span class="data-table__download-rank-growth negative-colour ref-icon-after--down">15</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down positive-colour">+100%</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down negative-colour">-100%</span></td>
+								</tr>
+								<tr>
+									<td>Fri 5 Jan 2016</td>
+									<td class="rank-history-data-cell--rank"><span>10</span> <span class="data-table__revenue-rank-growth positive-colour ref-icon-after--up">15</span></td>
+									<td class="rank-history-data-cell--rank">25 <span class="data-table__download-rank-growth negative-colour ref-icon-after--down">15</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down positive-colour">+100%</span></td>
+									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down negative-colour">-100%</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<aside class="data-aside-bar grid__column--one-quarter">
+
+		 					<div class="summary-widget-container">
+		 						<aside class="summary-widget summary-widget--highest-lowest">
+		 							<h2 class="widget-title">Ranking Highs and Lows</h2>
+			 						<div class="toggle-container">	 							
+										<div class="filter-toggle filter-toggle--with-text">
+											<div class="toggle">
+												<input id="toggle--show-popxs" name="radioxsmall" checked type="radio">
+												<label for="toggle--show-popxs">
+													Grossing
+												</label>
+											</div>
+											<div class="toggle">
+												<input id="toggle--show-regxs" name="radioxsmall" type="radio">
+												<label for="toggle--show-regxs">
+													Download
+												</label>
+											</div>
+										</div>
+									</div>
+
+									<div class="summary-widget--highest-lowest__data-item">
+										<h2 class="summary-widget--highest-lowest__data-heading">Highest Rank</h2>
+										<img src="images/icon-flag-usa.png" alt="USA flag" />
+										<div>
+											<a href="#" class="summary-widget--highest-lowest__country">USA</a>
+											<span class="summary-widget--highest-lowest__rank">1</span><span class="summary-widget--highest-lowest__category">Overall</span>
+										</div>
+									</div>
+
+									<div class="summary-widget--highest-lowest__data-item">
+										<h2 class="summary-widget--highest-lowest__data-heading">Biggest Climber</h2>
+										<img src="images/icon-flag-gb.png" alt="UK flag" />
+										<div>
+											<a href="#" class="summary-widget--highest-lowest__country">United Kingdom</a>
+											<span class="summary-widget--highest-lowest__rank positive-colour ref-icon-after--up">3</span><span class="summary-widget--highest-lowest__category positive-colour">Overall</span>
+										</div>
+									</div>
+
+									<div class="summary-widget--highest-lowest__data-item">
+										<h2 class="summary-widget--highest-lowest__data-heading">Lowest Rank</h2>
+										<img src="images/icon-flag-china.png" alt="China flag" />
+										<div>
+											<a href="#" class="summary-widget--highest-lowest__country">China</a>
+											<span class="summary-widget--highest-lowest__rank">145</span><span class="summary-widget--highest-lowest__category">Overall</span>
+										</div>
+									</div>
+
+									<div class="summary-widget--highest-lowest__data-item">
+										<h2 class="summary-widget--highest-lowest__data-heading">Biggest Faller</h2>
+										<img src="images/icon-flag-fra.png" alt="France flag" />
+										<div>
+											<a href="#" class="summary-widget--highest-lowest__country">France</a>
+											<span class="summary-widget--highest-lowest__rank negative-colour ref-icon-after--down">32</span><span class="summary-widget--highest-lowest__category negative-colour">Overall</span>
+										</div>
+									</div>
+
+								</div>
+		 					</div>
+					</aside>
+
+				</div>
+			</div>			
+			
+		</div>
+
+		<div class="grid-container" id="js-component-import--global-footer"></div>
+	</div>	
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script src="js/vendor/highcharts-custom.js"></script>
+  <script src="js/data-vis/data-vis-release.js"></script> <!-- mock data -->
+  <script>
+  	// Utility function
+		Date.prototype.addHours= function(h){
+      this.setHours(this.getHours()+h);
+      return this;
+    }
+
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-data-template.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+  		new Page();
+  		new AllDropDowns();
+  		new FormInteractions();
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  		$('.js-multi-select-box').each(function() {
+  			new FormFieldMultipleSelect($(this));
+  		});
+  		$('.js-tabs').each(function() {
+  			new Tabs($(this));
+  		});
+
+  		// Mock function for template
+  		$('#topAppsDownloads').hide();
+  		$('.js-mock-switch-revenue').on("click", function(){
+  			$('#topAppsDownloads').hide();
+  			$('#topAppsRevenue').show();
+  		});
+  		$('.js-mock-switch-downloads').on("click", function(){
+  			$('#topAppsDownloads').show();
+  			$('#topAppsRevenue').hide();
+  		});
+
+  		$('.js-whats-this-tooltip').each(function(){
+  			new WhatsThisPopup($(this));
+  		});
+
+  		$('.js-mock-remove-row').on("click", function(e){
+  			e.preventDefault();
+  			$(this).parents('.chart-key-full__row').remove();
+  		});
+
+  		// HIGHCHARTS
+  		var monthNames = [
+        "Jan", "Feb", "Mar",
+        "Apr", "May", "Jun", "Jul",
+        "Aug", "Sep", "Oct",
+        "Nov", "Dec"
+      ];
+
+      var hasBeenSet = false,
+      		lastPoint;
+
+	    (function (H) {
+
+	      var customIconRect;
+	      H.wrap(H.Tooltip.prototype, 'refresh', function (proceed) {
+
+	        proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+
+	        if(this.chart.customIconRect !== undefined) {
+	          this.chart.customIconRect.destroy();
+	        }
+
+	        var $axisLabel = $(this.chart.container).find('.highcharts-axis-label'),
+	            leftOffset = 29,
+	            axisLabelYPos = $("#" + arguments[1][0].series.chart.container.id + "").height() - arguments[1][0].series.xAxis.bottom,
+	            //axisLabelYPos = arguments[1][0].series.chart.containerHeight - arguments[1][0].series.xAxis.bottom,
+	            axisLabelXPos = arguments[1][0].plotX - leftOffset,
+	            timeStampString = arguments[1][0].x + "",
+	            timeStampString = timeStampString.substring(0,10),
+	            xAxisDate = new Date(timeStampString*1000).addHours(12),
+	            formattedDate = xAxisDate.getDate() + " " + monthNames[xAxisDate.getMonth()];
+
+	        if($axisLabel.length > 0) {       
+
+	          var labelYPos = axisLabelYPos + 18,
+	              labelXPos = axisLabelXPos + 7;
+
+	          $axisLabel.attr("transform", "translate(" + labelXPos + "," + labelYPos + ")");
+	          $axisLabel.find("text").text(formattedDate);
+
+	        } else {
+	          this.chart.renderer.label(formattedDate, axisLabelXPos+7, axisLabelYPos + 18, 'callout', 0, 0, false, true, "axis-label")
+	          .css({
+	            color: '#fcfdfd',
+	            fontSize: '12px',
+	            fontFamily: 'Source Sans Pro',
+	            fontWeight: 600
+	          })
+	          .attr({
+	            zIndex: 100
+	          })
+	          .add();
+	        }
+
+	        this.chart.customIconRect = this.chart.renderer.image('images/axis-label-background.png', axisLabelXPos, axisLabelYPos + 4, 54, 20)
+	        .attr({
+	          zIndex: 99
+	        })
+	        .add();
+
+
+	        // MIRROR A SPLIT GRAPH HOVER
+	        // TODO - try this for better tooltip synchronize - http://www.highcharts.com/demo/synchronized-charts
+	        if(pageCharts.length > 1) {
+	        	if(arguments[1][0].series.name == 'grossingrank') {
+	        		chartIndexToHover = 1;
+	        	} else if(arguments[1][0].series.name == 'downloadsrank') {
+	        		chartIndexToHover = 0;
+	        	}
+
+	        	// find line index of currently selected line
+	        	var seriesIndexToHover = 0;
+	        	$('.chart').each(function(){
+	        		var $chart = $(this);
+	        		if($(this).attr("data-highcharts-chart") == chartIndexToHover) {
+	        			var counter = 0;
+	        			$chart.find('.highcharts-series path:nth-child(2)').each(function(){
+	        				if($(this).attr("stroke-width") == 3.1) {
+	        					seriesIndexToHover = counter;
+	        				}
+	        				counter ++;
+	        			});
+	        		}
+	        	});
+
+	        	// set the hover on the other graph - TODO - check the line is showing first
+	        	var pointIndex = arguments[1][0].index;
+	        	if(!hasBeenSet) {
+	        		hasBeenSet = true;
+	        		if(lastPoint) {
+	        			pageCharts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint].setState();
+            		pageCharts[chartIndexToHover].tooltip.hide();	        			
+	        		}
+	        		lastPoint = pointIndex;
+							var arrayOfPointsToHover = [];
+							for(var s = 0; s < pageCharts[chartIndexToHover].series.length; s++) {
+								if(pageCharts[chartIndexToHover].series[s].visible) {
+									arrayOfPointsToHover.push(pageCharts[chartIndexToHover].series[s].points[pointIndex]);
+								}								
+							}
+	        		pageCharts[chartIndexToHover].tooltip.refresh(arrayOfPointsToHover);
+		        		
+		        	setTimeout(function(){
+		        		hasBeenSet = false;
+		        	}, 10);
+		        }
+	        }
+	      });
+
+				H.wrap(H.Series.prototype, 'hide', function (proceed) {
+
+				  // Before the hide function
+				  var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent-fade");
+				  var instance = this;
+				  // Now apply the original function with the original arguments, 
+				  // which are sliced off this function's arguments
+				  setTimeout(function() {
+				  	proceed.apply(instance, Array.prototype.slice.call(arguments, 1));
+				  	par.attr("class", "highcharts-series");
+				  }, 200);
+				});
+
+	    }(Highcharts));
+
+	    pageCharts = [];
+
+	    function generateChart(containerId, dataType, seriesData, seriesColour) {
+
+	    	var seriesColour,
+	    			seriesArray = [],
+	    			yAxesSettings; // Mock only
+
+	    	
+    		yAxesSettings = [{
+    			reversed: true,
+          offset: -27,
+          showFirstLabel: false,
+          showLastLabel: true,
+          gridLineWidth: 0,
+          labels: {
+          	align: 'left',
+          	style: {
+          		color: '#81879d',
+          		fontSize: "12px"
+          	}
+          },
+          title: {
+          	text: null
+          }            
+        }];
+
+        for(var a = 0; a < seriesData.length; a++) {
+        	seriesArray.push({
+	         	yAxis: 0,
+	          name: dataType,
+	          id : dataType,
+	          color: (dataType == "downloadsrank" && a == 0) ? "#6d69c5" : seriesColour[a],
+	          data: seriesData[a],
+	          pointStart: Date.UTC(2016, 0, 1),
+	          pointInterval: 24 * 3600 * 1000, // one day
+	          lineColor: (dataType == "downloadsrank" && a == 0) ? "#6d69c5" : seriesColour[a],
+	          lineWidth: 3,
+	          lineWidthPlus: 0,
+	          fillOpacity: 0,
+	          marker: {
+	            enabled: false,
+	            states: {
+	              hover: {
+	                enabled: true,
+	                lineWidth: 0,
+	                lineWidthPlus: 0,
+	                radius: 4,
+	                radiusPlus: 0,
+	              }
+	            }
+	          }
+	        });
+        }
+
+	    	// Generate Demo Chart
+				var chart = new Highcharts.Chart({
+					chart: {
+	          renderTo: containerId,
+						marginLeft: 0,
+						marginRight: 0,
+						marginBottom: 24,
+						marginTop: 0,
+						spacing: [0,0,0,0],
+						height: 285,
+						backgroundColor: '#fcfdfd',
+						plotBackgroundColor: '#f2f2f5',
+			   		type: 'area',
+			   		animation: false,
+			   		style: {
+	            fontFamily: 'Source Sans Pro'
+	          },
+	          events: {
+	            load: function() {
+	                var countIndex = 0;
+	                var graphPointAnimationDelay = 20;
+
+	                // set the series opacity's on load
+	                var countIndex = 0;
+	                $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function() {
+	                  if (countIndex > 0) {                  	
+	                    $(this).attr("style", "opacity: 0.3");
+	                  } else {
+	                    $(this).attr("style", "opacity: 1");
+	                  }
+	                  countIndex++;
+	                });
+	            }
+	          }
+				  },
+				  legend: {
+				  	enabled: false
+				  },
+				  title: {
+	            text: ''
+	        },
+	        yAxis: yAxesSettings,
+	        xAxis: {
+	        	startOnTick: false,
+	        	endOnTick: false,
+	        	showFirstLabel: false,
+	          maxPadding: 0,
+	          minPadding: 0,
+	          type: 'datetime',
+	          dateTimeLabelFormats: {
+	              day: '%e %b'
+	          },
+	          tickmarkPlacement: 'on',
+	          tickPixelInterval: 30,
+	          tickLength: 0,     
+	          labels: {
+	          	align: 'center',
+	            x: 0,
+	            y: 18,
+	            step: 4,
+	            style: {
+	              color: '#81879d',
+	              fontSize: "12px"
+	            }
+	          }
+	        },
+	        plotOptions: {
+	        	area: {
+	            trackByArea: false,
+	        		tooltip: {
+	        			followPointer: true
+	        		},
+	        		states: {
+	        			hover: {
+	        				halo: {
+	        					size: 0
+	        				},
+	        				lineWidthPlus: 0
+	        			}
+	        		}        		
+	        	},
+	          series: {
+	            events: {
+	              click: function() {
+	                var that = this;
+
+                  var count = 0;
+                  $('#' + containerId + ' .highcharts-series').each(function(){
+                  	if(count != that.index) {
+	                    var thisFillPath = $(this).find('path:nth-child(2)');                        
+	                    if(thisFillPath.attr("stroke-width") == 3.1) {
+	                      that.chart.series[count].update({
+	                        lineWidth: 3
+	                      });           
+	                      var counterTwo = 0;
+	                      $('#' + containerId + ' .highcharts-series').each(function(){
+	                        if(counterTwo == count) {
+	                          thisFillPath = $(this).find('path:nth-child(2)');
+	                        }
+	                        counterTwo++;
+	                      });                          
+	                      thisFillPath.css("opacity", "1");
+	                      thisFillPath.animate({ "opacity": 0.3 }, 250);
+	                      thisFillPath.siblings("path").css("opacity", "1");
+	                      thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+	                    }
+	                  }
+                    count++;
+                  });
+
+	                this.update({
+	                  lineWidth: 3.1
+	                });	                
+
+	                // update the graph line CSS class's after this.udpate
+	                setGraphCSSClasses(containerId);
+
+	                var $selectedLine;
+	                $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
+	                  var $this = $(this);
+	                  if($this.attr("stroke-width") == 3.1) { // TODO, this isn't fading in             	
+	                    $this.css("opacity", "0.3");
+	                    $this.animate({ "opacity": 1 }, 250);
+	                    $this.siblings("path").css("opacity", "0.1");
+	                    $this.siblings("path").animate({ "opacity": 1 }, 250);
+	                    $selectedLine = $this;
+	                  }
+	                });
+
+	                // UPDATE THE MIRRORED CHART
+	                // click the mirroring chart line
+	                if($selectedLine) {
+	                	$("." + $selectedLine.attr("class")).each(function(){
+                    	if(!$(this).is($selectedLine)) {
+                    		var mirrorChartContainer = $(this).parents('.chart'),
+                    				mirrorChartIndex = mirrorChartContainer.attr("data-highcharts-chart"),
+                    				mirrorContainerId = mirrorChartContainer.attr("id");
+
+                    		// uodate the mirrored chart
+                    		for(var i = 0; i < pageCharts[mirrorChartIndex].series.length; i++) {
+
+			                    var count = 0;
+			                    $('#' + mirrorContainerId + ' .highcharts-series').each(function(){
+			                      if(count == i) {
+			                        var thisFillPath = $(this).find('path:nth-child(2)');                        
+			                        if(thisFillPath.attr("stroke-width") == 3.1) {
+			                          pageCharts[mirrorChartIndex].series[i].update({
+			                            lineWidth: 3
+			                          });           
+			                          var counterTwo = 0;
+			                          $('#' + mirrorContainerId + ' .highcharts-series').each(function(){
+			                            if(counterTwo == count) {
+			                              thisFillPath = $(this).find('path:nth-child(2)');
+			                            }
+			                            counterTwo++;
+			                          });                          
+			                          thisFillPath.css("opacity", "1");
+			                          thisFillPath.animate({ "opacity": 0.3 }, 250);
+			                          thisFillPath.siblings("path").css("opacity", "1");
+			                          thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+			                        }
+			                      }
+			                      count++;
+			                    });
+				              	};
+
+				              	pageCharts[mirrorChartIndex].series[that.index].update({
+				                  lineWidth: 3.1
+				                });	 
+
+				                // update the graph line CSS class's after this.udpate
+				                setGraphCSSClasses(mirrorContainerId);
+
+				                var $selectedLine;
+				                $('#' + mirrorContainerId + ' .highcharts-series path:nth-child(2)').each(function(){
+				                  var $this = $(this);
+				                  if($this.attr("stroke-width") == 3.1) {	                  	
+				                    $this.css("opacity", "1");
+				                    $this.siblings("path").css("opacity", "0.1");
+				                    $this.siblings("path").animate({ "opacity": 1 }, 250);
+				                    $selectedLine = $this;
+				                  }
+				                });
+                    	}
+                    });
+	                }
+
+	              },
+	            },
+	            cursor: 'pointer',
+	            animation: false
+	          },
+	      	},
+	        series: seriesArray,
+	        tooltip: {
+	        	useHTML: true,
+	        	shared: true,
+	          formatter: function() {
+	            var instance = this;
+	            var s = "";            
+	            $.each(instance.points, function (index, value) {
+	                var chartSeries = value.series;
+	                var imgString = "<img src=images/icon-chart-tooltip-downloads.png alt='Rank icon' class=icon-downloads />";
+	                s += '<div class="custom-tooltip ' + chartSeries.name + '" style="background-color: ' + chartSeries.color + '">' + imgString + value.y + '</div>';
+	            });
+	            return s;
+	          },
+	        	backgroundColor: 'transparent',
+	          borderWidth: 0,
+	          borderColor: '#dae3ed',
+				    crosshairs: [{
+	            width: 0,
+	            color: '#9ea7c4'
+	          }],
+	          shadow: {
+	            color: 'rgba(0,0,0,0.24)',
+	            width: 0,
+	            offsetX: 1,
+	            offsetY: 1
+	        	},
+	        	snap: 25
+	        }
+		    });
+
+	      pageCharts.push(chart);
+			} // end generateChart()
+
+
+			// TODO: Handle if a line is selected but is chosen to be hidden - needs to select the next line, if there is one
+			// function handleHideGraphLine() {
+			// 	console.log("handleHideGraphLine");
+			// 	for(var i = 0; i < chart.series.length; i++) {
+   //        if(i !== 0) {
+   //          var count = 0;
+   //          var isCurrentlyHighlighted = false;
+   //          $('.highcharts-series').each(function(){
+   //            if(count == i) {
+   //              var thisFillPath = $(this).find('path:nth-child(2)');                        
+   //              if(thisFillPath.attr("stroke-width") == 3.1) {
+   //                isCurrentlyHighlighted = true
+   //                chart.series[i].update({
+   //                  lineWidth: 3
+   //                });           
+   //                var counterTwo = 0;
+   //                $('.highcharts-series').each(function(){
+   //                  if(counterTwo == count) {
+   //                    thisFillPath = $(this).find('path:nth-child(2)');
+   //                  }
+   //                  counterTwo++;
+   //                });                          
+   //                thisFillPath.css("opacity", "1");
+   //                thisFillPath.animate({ "opacity": 0.4 }, 250);
+   //                thisFillPath.siblings("path").css("opacity", "1");
+   //                thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+   //              }
+   //            }
+   //            count++;
+   //          });
+   //        }
+   //      };
+
+   //      $('.highcharts-series path:nth-child(2)').each(function(){
+   //        if($(this).attr("stroke-width") == 3.1) {
+   //          $(this).css("opacity", "1");
+   //          $(this).siblings("path").css("opacity", "0.1");
+   //          $(this).siblings("path").animate({ "opacity": 1 }, 250);
+   //        }
+   //      });
+
+   //      // read the graph line id's after this.udpate
+   //      var counter = 0;
+
+   //      $('.highcharts-series path:nth-child(2)').each(function(){ // make sure this works for multiple charts using the chart container id
+   //        $(this).attr("class", "series" + counter);
+   //        $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series" + counter + "fill");
+   //        counter++;
+   //      });
+   //    } // end handleHideGraphLine()
+
+
+   		function setGraphCSSClasses(containerId) {
+   			var counter = 0;
+
+        $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
+          $(this).attr("class", "series-class-" + counter);
+          $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + counter);
+          counter++;
+        });
+   		} // setGraphCSSClasses
+
+
+			function handleChartInteraction() {
+				
+				// Hide/show series from key
+				$('.js-toggle-total-series').click(function(){
+					var $this = $(this);
+					var chartIndex = $this.data("chart-index");
+					var seriesIndex = $this.data("series-index");
+					if($(this).is(":checked")) {
+						// turn off same series on both charts
+						pageCharts[0].series[seriesIndex].show();
+						pageCharts[1].series[seriesIndex].show();
+					} else {
+						setTimeout(function(){
+							pageCharts[0].series[seriesIndex].hide();
+							pageCharts[1].series[seriesIndex].hide();
+						}, 200);
+					}
+					// turn off other checkboxes in other chart key
+					$('.js-toggle-total-series').each(function(){
+						var $thisToggle = $(this);
+						if(!$thisToggle.is($this)) {
+							if($thisToggle.data("series-index") == seriesIndex) {
+								if($thisToggle[0].checked) {
+									$thisToggle[0].checked = false;
+								} else {
+									$thisToggle[0].checked = true;
+								}
+							}
+						}
+					});
+				});
+
+				// toggle a row on/off in the key
+				$('.js-toggle-row-off').click(function(){
+					var counter = 0,
+							toggleAllValue = $(this)[0].checked;
+					$(this).parents('.chart-key-full__row').find('input[type=checkbox]').each(function(){
+						var $checkbox = $(this);
+						if(counter > 0) {
+							if(toggleAllValue && !$checkbox[0].checked) {
+								$checkbox.trigger("click");
+							} else if(!toggleAllValue && $checkbox[0].checked) {
+								$checkbox.trigger("click");
+							}
+						}
+						counter++;
+					});
+				});
+
+				// set first line to have larger width for interaction functionality
+				pageCharts[0].series[0].update({
+          lineWidth: 3.1
+        });
+        pageCharts[1].series[0].update({
+          lineWidth: 3.1
+        });
+
+        // set CSS classes on lines and fills
+        setGraphCSSClasses("chart-revenue");
+        setGraphCSSClasses("chart-downloads");
+
+			} // end handleChartInteraction();
+
+
+			// Generate Charts
+			setTimeout(function() {
+
+				var mockDataRevenue = [],
+						mockDataDownloads = [];
+
+				// create mock data
+				// chartData var comes from external js/data-vis/data-vis-release.js
+				for(var s = 0; s < 5; s++) {
+					var mockSeries = [];
+					for(var d = 0; d < 20; d++) {
+						if(chartData[s].data[d]) {
+							mockSeries.push(chartData[s].data[d].value);
+						} else {
+							mockSeries.push(50);
+						}
+					}
+					mockDataRevenue.push(mockSeries);
+				}
+				for(var s = 5; s < 10; s++) {
+					var mockSeries = [];
+					for(var d = 0; d < 20; d++) {
+						if(chartData[s].data[d]) {
+							mockSeries.push(chartData[s].data[d].value);
+						} else {
+							mockSeries.push(1);
+						}
+					}
+					mockDataDownloads.push(mockSeries);
+				}
+
+				var seriesColours = ["#f5c943", "#a5c0d8", "#0f9fbd", "#df8092", "#dbbca4"];
+				generateChart('chart-revenue', "grossingrank", mockDataRevenue, seriesColours);
+				generateChart('chart-downloads', "downloadsrank", mockDataDownloads, seriesColours);
+				$('.chart-container').addClass('is-animated');
+				handleChartInteraction();
+			}, 500);
+
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>

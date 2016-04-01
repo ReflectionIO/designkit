@@ -269,6 +269,7 @@ textarea {
 	}
 	position: relative;
 	width: 100%;
+	min-height: 20px;
 	.primary-filter &,
 	.secondary-filter & {
 		position: absolute;
@@ -390,6 +391,11 @@ textarea {
 		padding-left: calc(18px + 1.2rem);
 		font-size: 1.5rem;
 	}
+	&.form-field--checkbox-list--inline {
+		li {
+			margin-bottom: 0;
+		}		
+	}
 }
 .form-field--checkbox-list--large {
 	li {
@@ -409,10 +415,15 @@ textarea {
 		padding-left: calc(20px + 1.5rem);
 		font-size: 1.6rem;
 	}
+	&.form-field--checkbox-list--inline {
+		li {
+			margin-bottom: 0;
+		}
+	}
 }
 input[type="checkbox"]:disabled + .checkboxLabel,
 input[type="radio"]:disabled + .radioButtonLabel {
-	background-color: #f7f7f9;
+	background-color: $divider-grey;
 	overflow: visible;
 }
 input[type="checkbox"]:disabled + .checkboxLabel:active,
@@ -459,6 +470,20 @@ input[type="checkbox"]:checked + .checkboxLabel {
 	}
 	.form-filter & {
 		padding-left: calc(18px + 1rem);
+	}
+}
+.checkbox-label-img {
+  position: relative;
+  top: 1px;
+	width: 20px;
+	height: 20px;
+	margin-left: -2px;
+	margin-right: 9px;
+	display: inline-block;
+	vertical-align: middle;
+	+ span {
+		display: inline-block;
+		vertical-align: middle;
 	}
 }
 input[type="checkbox"]:disabled + label + .checkboxLabelVisible,

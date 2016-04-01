@@ -1,0 +1,83 @@
+.chart-key-full {
+	margin-bottom: 17px;
+}
+.chart-key-full__row {
+	position: relative;
+	padding: 8px 10px 0px;
+	font-size: 0;
+  border-bottom: 1px solid $divider-grey;
+	.chart-key-full__column {
+		width: percentage(1/6);
+		height: 26px;
+    display: inline-block;
+    vertical-align: top;
+   	&:nth-child(1) {
+   		margin-top: -2px;
+   	}
+   	&:nth-child(1), &:nth-child(2) {
+   		.checkboxLabelVisible {
+   			font-weight: 700;
+   		}
+   	}
+   	&:nth-child(3) {
+   		input[type="checkbox"]:checked + .checkboxLabel {
+   			background-color: $graph-color-one;
+   		}
+   	}
+   	&:nth-child(4) {
+   		input[type="checkbox"]:checked + .checkboxLabel {
+   			background-color: $graph-color-two;
+   		}
+   	}
+   	&:nth-child(5) {
+   		input[type="checkbox"]:checked + .checkboxLabel {
+   			background-color: $graph-color-three;
+   		}
+   	}
+   	&:nth-child(6) {
+   		input[type="checkbox"]:checked + .checkboxLabel {
+   			background-color: $graph-color-four;
+   		}
+   	}
+   	.checkboxLabel {
+   		margin-top: 1px;
+   	}
+   	.checkboxLabelVisible {
+   		padding-top: 1px;
+   		font-family: $brand-body-font;
+   		font-size: 13px;
+   		span {
+   			padding-top: 1px;
+   		}
+   	}
+   	.form-field--checkbox-list--medium {
+   		.checkboxLabelVisible {
+   			padding-top: 0;
+   		}
+   	}
+	}
+	&.is-selected {
+		background-color: $panel-grey;
+	}
+}
+.chart-key-full__row--header {
+	padding: 3px 10px 0px;
+	border-top: 1px solid $divider-grey;
+	.chart-key-full__column {
+		height: 23px;
+	}
+}
+.chart-key-full__row__remove-link {
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	&:after {
+		color: $light-grey-2;
+    font-size: 17.5px;
+	}
+	&:hover {
+		&:after {
+			color: darken($light-grey-2, 5%);
+		}
+	}
+}
