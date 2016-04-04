@@ -882,7 +882,7 @@
 	        		}
 	        	});
 
-	        	// set the hover on the other graph - TODO - check the line is showing first
+	        	// set the hover on the other graph
 	        	var pointIndex = arguments[1][0].index;
 	        	if(!hasBeenSet) {
 	        		hasBeenSet = true;
@@ -915,7 +915,7 @@
 				  // which are sliced off this function's arguments
 				  setTimeout(function() {
 				  	proceed.apply(instance, Array.prototype.slice.call(arguments, 1));
-				  	par.attr("class", "highcharts-series");
+				  	par.attr("class", "highcharts-series");				  	
 				  }, 200);
 				});
 
@@ -1096,7 +1096,7 @@
 	                var $selectedLine;
 	                $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
 	                  var $this = $(this);
-	                  if($this.attr("stroke-width") == 3.1) { // TODO, this isn't fading in             	
+	                  if($this.attr("stroke-width") == 3.1) { // TODO, this isn't fading in - nice to have            	
 	                    $this.css("opacity", "0.3");
 	                    $this.animate({ "opacity": 1 }, 250);
 	                    $this.siblings("path").css("opacity", "0.1");
@@ -1201,59 +1201,7 @@
 		    });
 
 	      pageCharts.push(chart);
-			} // end generateChart()
-
-
-			// TODO: Handle if a line is selected but is chosen to be hidden - needs to select the next line, if there is one
-			// function handleHideGraphLine() {
-			// 	console.log("handleHideGraphLine");
-			// 	for(var i = 0; i < chart.series.length; i++) {
-   //        if(i !== 0) {
-   //          var count = 0;
-   //          var isCurrentlyHighlighted = false;
-   //          $('.highcharts-series').each(function(){
-   //            if(count == i) {
-   //              var thisFillPath = $(this).find('path:nth-child(2)');                        
-   //              if(thisFillPath.attr("stroke-width") == 3.1) {
-   //                isCurrentlyHighlighted = true
-   //                chart.series[i].update({
-   //                  lineWidth: 3
-   //                });           
-   //                var counterTwo = 0;
-   //                $('.highcharts-series').each(function(){
-   //                  if(counterTwo == count) {
-   //                    thisFillPath = $(this).find('path:nth-child(2)');
-   //                  }
-   //                  counterTwo++;
-   //                });                          
-   //                thisFillPath.css("opacity", "1");
-   //                thisFillPath.animate({ "opacity": 0.4 }, 250);
-   //                thisFillPath.siblings("path").css("opacity", "1");
-   //                thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
-   //              }
-   //            }
-   //            count++;
-   //          });
-   //        }
-   //      };
-
-   //      $('.highcharts-series path:nth-child(2)').each(function(){
-   //        if($(this).attr("stroke-width") == 3.1) {
-   //          $(this).css("opacity", "1");
-   //          $(this).siblings("path").css("opacity", "0.1");
-   //          $(this).siblings("path").animate({ "opacity": 1 }, 250);
-   //        }
-   //      });
-
-   //      // read the graph line id's after this.udpate
-   //      var counter = 0;
-
-   //      $('.highcharts-series path:nth-child(2)').each(function(){ // make sure this works for multiple charts using the chart container id
-   //        $(this).attr("class", "series" + counter);
-   //        $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series" + counter + "fill");
-   //        counter++;
-   //      });
-   //    } // end handleHideGraphLine()
+			} // end generateChart()			
 
 
    		function setGraphCSSClasses(containerId) {
@@ -1264,7 +1212,54 @@
           $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + counter);
           counter++;
         });
-   		} // setGraphCSSClasses
+   		} // end setGraphCSSClasses
+
+
+   		function handleHideGraphLine(seriesIndexOfLineBeingHidden) {
+   			
+   			pageCharts[0].series[seriesIndexOfLineBeingHidden].update({
+          lineWidth: 3
+        });
+        pageCharts[1].series[seriesIndexOfLineBeingHidden].update({
+          lineWidth: 3
+        });
+
+        $('.highcharts-series path:nth-child(2)').each(function(){
+          var $this = $(this);
+          if($this.attr("stroke-width") == 3) {
+          	$this.css("opacity", "0.3");
+            $this.siblings("path").css("opacity", "0.1");
+          }
+        });
+
+				for(var i = 0; i < pageCharts[0].series.length; i++) {
+          if(i != seriesIndexOfLineBeingHidden) {
+          	if(pageCharts[0].series[i].visible) {
+          		pageCharts[0].series[i].update({
+			          lineWidth: 3.1
+			        });
+			        pageCharts[1].series[i].update({
+			          lineWidth: 3.1
+			        });
+
+			        // set CSS classes on lines and fills
+			        setGraphCSSClasses("chart-revenue");
+			        setGraphCSSClasses("chart-downloads");
+
+			        $('.highcharts-series path:nth-child(2)').each(function(){
+			          var $this = $(this);
+			          if($this.attr("stroke-width") == 3.1) {	                  	
+			            $this.css("opacity", "1");
+			            $this.siblings("path").css("opacity", "0.1");
+			            $this.siblings("path").animate({ "opacity": 1 }, 250);
+			          }
+			        });
+
+          		break;
+          	}
+          }
+        };
+			} // end handleHideGraphLine
 
 
 			function handleChartInteraction() {
@@ -1280,6 +1275,12 @@
 						pageCharts[1].series[seriesIndex].show();
 					} else {
 						setTimeout(function(){
+							// CHECK IF LINE IS SELECTED AND SELECT NEXT LINE
+							if(pageCharts[0].series[seriesIndex].graph.strokeWidth == 3.1) {
+								handleHideGraphLine(seriesIndex)
+							}
+
+							// Hide the series
 							pageCharts[0].series[seriesIndex].hide();
 							pageCharts[1].series[seriesIndex].hide();
 						}, 200);
@@ -1296,7 +1297,7 @@
 								}
 							}
 						}
-					});
+					});				
 				});
 
 				// toggle a row on/off in the key
