@@ -15,6 +15,11 @@ textarea {
 	-moz-appearance: none;
 	@extend %font-smoothing;
 }
+.reflection-form {
+	> button {
+		margin-top: 1.5rem;
+	}
+}
 .form-filter {
 	margin-bottom: 2rem;
 	.reflection-form & {
@@ -28,7 +33,7 @@ textarea {
 				border-radius: 4px 4px 0 0;
 			}			
 		}
-		&:last-child {
+		&:last-of-type {
 			.form-field--select__box,
 			.form-field--select__dropdown {
 				border-radius: 0 0 4px 4px;
@@ -95,7 +100,7 @@ textarea {
 			border-radius: 0;
 		}
 	}
-	&:last-child {
+	&:last-of-type {
 		.form-field--select__box,
 		.form-field--select__dropdown {
 			border-radius: 0 0 4px 4px;
@@ -125,7 +130,7 @@ textarea {
 			margin-top: 0;
 			border-radius: 4px 4px 0 0;
 		}
-		&:last-child {
+		&:last-of-type {
 			border-radius: 0 0 4px 4px;
 		}
 	}
@@ -201,6 +206,42 @@ textarea {
 			bottom: 6px;
 			.no-touch & {
 				transition: bottom 0.06s;
+			}
+		}
+	}
+}
+.reflection-form {
+	.form-field--split {
+		font-size: 0;
+		.form-field {
+			width: 50%;
+			display: inline-block;
+			float: left;
+			vertical-align: top;
+			&:last-child {
+				position: relative;
+				top: 1px;
+				border-left: none;
+			}
+		}
+		&:first-child {
+			.form-field {
+				&:first-child {
+					border-radius: 4px 0 0 0;
+				}
+				&:last-child {
+					border-radius: 0 4px 0 0;
+				}			
+			}
+		}
+		&:last-child {
+			.form-field {
+				&:first-child {
+					border-radius: 0 0 0 4px;
+				}
+				&:last-child {
+					border-radius: 0 0 4px 0;
+				}
 			}
 		}
 	}

@@ -60,6 +60,18 @@ button::-moz-focus-inner {
       border-top: 2px solid #96283c;
     }
   }
+  &.is-disabled {
+    background-color: $divider-grey;
+    cursor: default;
+    .no-touch & {
+      &:hover {
+        background-color: $divider-grey;
+      }
+      &:active {
+        border-top: 0;
+      }
+    }
+  }
 }
 .ref-button--primary--small {
 	@extend .ref-button;
@@ -67,10 +79,12 @@ button::-moz-focus-inner {
   padding: 1rem 1.5rem 1.2rem 1.5rem;
   font-size: 1.4rem;
   letter-spacing: -0.01rem;
-  .no-touch & {
-    &:active {
-      padding-top: calc(1rem - 1px);  
-      padding-bottom: calc(1.2rem - 1px);
+  &:not(.is-disabled) {
+    .no-touch & {
+      &:active {
+        padding-top: calc(1rem - 1px);  
+        padding-bottom: calc(1.2rem - 1px);
+      }
     }
   }
 }
@@ -80,10 +94,12 @@ button::-moz-focus-inner {
   padding: 1.3rem 1.7rem 1.3rem 1.5rem;
   font-size: 1.5rem;
   letter-spacing: -0.01rem;
-  .no-touch & {
-    &:active {
-      padding-top: calc(1.3rem - 1px);
-      padding-bottom: calc(1.3rem - 1px);
+  &:not(.is-disabled) {
+    .no-touch & {
+      &:active {
+        padding-top: calc(1.3rem - 1px);
+        padding-bottom: calc(1.3rem - 1px);
+      }
     }
   }
 }
@@ -93,10 +109,12 @@ button::-moz-focus-inner {
   padding: 1.7rem 2rem 1.6rem 1.9rem;
   font-size: 1.6rem;
   letter-spacing: -0.01rem;
-  .no-touch & {
-    &:active {
-      padding-top: calc(1.7rem - 1px);
-      padding-bottom: calc(1.6rem - 1px);
+  &:not(.is-disabled) {
+    .no-touch & {
+      &:active {
+        padding-top: calc(1.7rem - 1px);
+        padding-bottom: calc(1.6rem - 1px);
+      }
     }
   }
 }
