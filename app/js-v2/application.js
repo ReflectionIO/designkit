@@ -221,36 +221,18 @@ PanelRightOverlay.prototype.CloseRightPanel = function() {
 };
 
 var PanelRightMisplacedPassword = function() {
-	$('.panel-right .js-mock-show-reset-password').on("click", function(e){
-		$('.panel-right').addClass('show-reset-password-form').addClass('will-show');
-		setTimeout(function(){
-			$('.panel-right .form--login').css({"visibility":"hidden","position":"absolute"});
-			$('.panel-right .form--password-reset').css({"visibility":"visible","position":"relative"});
-			$('.panel-right').removeClass('will-show');
-			if($('.ie8').length > 0) {
-				$('.panel-right .form--login').css("display","none");
-				$('.panel-right .form--password-reset').css("display","block");
-			}
-		}, 150);
-	});
-
-	$('.panel-right .js-mock-send-reset-password').on("click", function(e){
+	$('.js-mock-forgot-my-password').on("click", function(e){
 		e.preventDefault();
-		var $this = $(this);
-		$this.attr('value', 'Email is on the way').addClass('ref-button--success');
-		$('.panel-right').addClass('reset-password-is-submitted').find('.form-submitted-success').addClass('is-showing');
+		$('.js-login-slide-container').addClass("is-reset-password");
 	});
-
-	$('.panel-right .js-link-to-login').on("click", function(e){
+	$('.js-mock-back-to-login').on("click", function(e){
 		e.preventDefault();
-		$('.panel-right').removeClass('show-reset-password-form').removeClass('reset-password-is-submitted').find('.form-submitted-success').removeClass('is-showing')
-		$('.panel-right .form--login').css({"visibility":"visible","position":"relative"});
-		$('.panel-right .form--password-reset').css({"visibility":"hidden","position":"absolute"});
-		$('.panel-right .js-mock-send-reset-password').removeClass('ref-button--success').attr('value', 'Send password reset email');
-		if($('.ie8').length > 0) {
-			$('.panel-right .form--login').css("display","block");
-			$('.panel-right .form--password-reset').css("display","none");
-		}
+		$('.js-login-slide-container').removeClass("is-reset-password");
+		$('.js-login-slide-container').removeClass("is-reset-password-confirmation");
+	});
+	$('.js-mock-reset-password').on("click", function(e){
+		e.preventDefault();
+		$('.js-login-slide-container').addClass("is-reset-password-confirmation");
 	});
 }
 
