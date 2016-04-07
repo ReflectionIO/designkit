@@ -359,7 +359,8 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
 .ref-icon-after--up:after,
 .ref-icon-after--down:after,
 .ref-icon-after--cancel:after,
-.ref-icon-after--tick:after {
+.ref-icon-after--tick:after, .date-picker__custom-range-container .date-to-arrow:after, .datePickerPreviousButton:after,
+.datePickerNextButton:after {
   vertical-align: top;
   speak: none;
   font-family: "reflection-icons-1";
@@ -1167,7 +1168,8 @@ input::-ms-clear {
 .ref-icon-after--up,
 .ref-icon-after--down,
 .ref-icon-after--cancel,
-.ref-icon-after--tick {
+.ref-icon-after--tick, .date-picker__custom-range-container .date-to-arrow, .datePickerPreviousButton,
+.datePickerNextButton {
   padding: 0;
   line-height: 1;
   text-decoration: none;
@@ -1909,6 +1911,267 @@ button::-moz-focus-inner {
 /* line 89, sass/components-v2/_chart-key-full.scss */
 .chart-key-full__row__remove-link:hover:after {
   color: #b6bac5;
+}
+
+/* line 2, sass/components-v2/_date-picker.scss */
+.date-picker {
+  top: 80px;
+  left: 40%;
+  position: absolute;
+  width: 640px;
+  display: none;
+  z-index: 990;
+  visibility: visible;
+  overflow: visible;
+  border-radius: 5px;
+}
+/* line 13, sass/components-v2/_date-picker.scss */
+.date-picker tbody, .date-picker tr {
+  width: 100%;
+}
+/* line 16, sass/components-v2/_date-picker.scss */
+.date-picker.is-showing {
+  visibility: visible;
+}
+/* line 19, sass/components-v2/_date-picker.scss */
+.date-picker .toggle-container {
+  margin: 0 auto 10px;
+}
+/* line 22, sass/components-v2/_date-picker.scss */
+.date-picker * {
+  overflow: visible;
+}
+
+/* line 26, sass/components-v2/_date-picker.scss */
+.date-picker__sections-container,
+.date-picker__custom-range-container {
+  width: 310px;
+  padding: 20px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #c4c7d0;
+  background-color: #fcfdfd;
+}
+
+/* line 36, sass/components-v2/_date-picker.scss */
+.date-picker__custom-range-container {
+  margin-left: 5px;
+}
+/* line 38, sass/components-v2/_date-picker.scss */
+.date-picker__custom-range-container .date-to-arrow {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 13px;
+}
+/* line 43, sass/components-v2/_date-picker.scss */
+.date-picker__custom-range-container .date-to-arrow:after {
+  content: "l";
+  font-size: 18px;
+  position: relative;
+  color: #828a91;
+}
+/* line 51, sass/components-v2/_date-picker.scss */
+.date-picker__custom-range-container .form-field--date {
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 56, sass/components-v2/_date-picker.scss */
+.date-picker__custom-range-container .ref-button--primary--small {
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+/* line 61, sass/components-v2/_date-picker.scss */
+.date-picker__custom-range-container .gwt-DatePicker {
+  display: none;
+}
+
+/* line 65, sass/components-v2/_date-picker.scss */
+.date-selector-container {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  display: none;
+}
+
+/* line 71, sass/components-v2/_date-picker.scss */
+.toggle-container + .date-selector-container {
+  display: block;
+}
+
+/* line 74, sass/components-v2/_date-picker.scss */
+.date-selector-container--month__cell {
+  width: 32%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 79, sass/components-v2/_date-picker.scss */
+.gwt-DatePicker {
+  width: 100%;
+}
+/* line 81, sass/components-v2/_date-picker.scss */
+.gwt-DatePicker tr {
+  width: 100%;
+}
+/* line 84, sass/components-v2/_date-picker.scss */
+.gwt-DatePicker * {
+  text-align: center;
+}
+/* line 86, sass/components-v2/_date-picker.scss */
+form .gwt-DatePicker * {
+  text-align: center;
+}
+/* line 90, sass/components-v2/_date-picker.scss */
+.gwt-DatePicker td {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 95, sass/components-v2/_date-picker.scss */
+.single-date-selector-container {
+  text-align: center;
+}
+
+/* line 98, sass/components-v2/_date-picker.scss */
+.datePickerDays {
+  width: 100%;
+  text-align: center;
+  background-color: #f2f2f5;
+}
+/* line 102, sass/components-v2/_date-picker.scss */
+.datePickerDays td {
+  padding-left: 0;
+  padding-right: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #363a47;
+  text-align: center;
+  border-left: 1px solid #e1e5e8;
+  border-top: 1px solid #e1e5e8;
+}
+/* line 112, sass/components-v2/_date-picker.scss */
+.datePickerDays td:first-child {
+  border-left: 0;
+}
+/* line 115, sass/components-v2/_date-picker.scss */
+.datePickerDays td > div {
+  padding-top: 12px;
+  padding-bottom: 14px;
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+}
+/* line 122, sass/components-v2/_date-picker.scss */
+.no-touch .datePickerDays td > div:active, .no-touch .datePickerDays td > div:hover {
+  color: #fcfdfd;
+  background-color: #81879d;
+}
+/* line 127, sass/components-v2/_date-picker.scss */
+.datePickerDays td > div:active {
+  padding-bottom: 12px;
+  color: #fcfdfd;
+  background-color: #81879d;
+  border-top: 2px solid #5a5e6e;
+}
+/* line 134, sass/components-v2/_date-picker.scss */
+.datePickerDays td > div.datePickerDayIsValue {
+  color: #fcfdfd;
+  background-color: #1bc79f;
+}
+/* line 138, sass/components-v2/_date-picker.scss */
+.no-touch .datePickerDays td > div.datePickerDayIsValue:hover, .no-touch .datePickerDays td > div.datePickerDayIsValue:active {
+  padding-bottom: 14px;
+  border-top: 0;
+  background-color: #1bc79f;
+}
+/* line 145, sass/components-v2/_date-picker.scss */
+.datePickerDays td .datePickerDayIsFiller {
+  color: #c4c7d0;
+}
+/* line 148, sass/components-v2/_date-picker.scss */
+.datePickerDays td .datePickerDayIsDisabled {
+  color: #c4c7d0;
+  font-style: italic;
+  cursor: not-allowed;
+}
+/* line 153, sass/components-v2/_date-picker.scss */
+.no-touch .datePickerDays td .datePickerDayIsDisabled:hover, .touch .datePickerDays td .datePickerDayIsDisabled:hover, .no-touch .datePickerDays td .datePickerDayIsDisabled:active, .touch .datePickerDays td .datePickerDayIsDisabled:active {
+  padding-bottom: 14px;
+  border-top: 0;
+  color: #c4c7d0;
+  background-color: #f2f2f5;
+}
+/* line 162, sass/components-v2/_date-picker.scss */
+.datePickerDays tr:first-child td {
+  border-top: 0;
+}
+
+/* line 166, sass/components-v2/_date-picker.scss */
+.datePickerDays .datePickerWeekdayLabel,
+.datePickerDays .datePickerWeekendLabel {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #81879d;
+}
+
+/* line 172, sass/components-v2/_date-picker.scss */
+.datePickerMonth {
+  padding-top: 18px;
+  padding-bottom: 19px;
+  text-align: center;
+}
+/* line 176, sass/components-v2/_date-picker.scss */
+.has-single-option .datePickerMonth {
+  padding-bottom: 10px;
+}
+
+/* line 180, sass/components-v2/_date-picker.scss */
+.datePickerPreviousButton,
+.datePickerNextButton {
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0px 4px;
+  outline: none;
+  margin-top: -2px;
+  padding: 0 13px;
+}
+/* line 190, sass/components-v2/_date-picker.scss */
+.datePickerPreviousButton:after,
+.datePickerNextButton:after {
+  font-size: 18px;
+  position: relative;
+  color: #828a91;
+}
+/* line 197, sass/components-v2/_date-picker.scss */
+.datePickerPreviousButton:hover:after,
+.datePickerNextButton:hover:after {
+  color: #697077;
+}
+/* line 201, sass/components-v2/_date-picker.scss */
+.datePickerPreviousButton:active,
+.datePickerNextButton:active {
+  margin-top: 0;
+}
+
+/* line 205, sass/components-v2/_date-picker.scss */
+.datePickerPreviousButton:after {
+  content: "k";
+}
+
+/* line 208, sass/components-v2/_date-picker.scss */
+.datePickerNextButton:after {
+  content: "l";
+}
+
+/* line 211, sass/components-v2/_date-picker.scss */
+.datePickerPreviousButton .html-face,
+.datePickerNextButton .html-face {
+  display: none;
 }
 
 /* line 1, sass/components-v2/_form.scss */

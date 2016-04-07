@@ -108,13 +108,8 @@
 							    <option value="googleThree" class="js-child-option">Google Account Three</option>
 								</select>
 							</div>
-							<div class="primary-filter form-field--select">
-								<select class="js-select-box">
-							    <option value="jan" selected>01/01/16 - 01/02/16</option>
-							    <option value="feb">01/02/16 - 01/03/16</option>
-							    <option value="mar">01/03/16 - 01/04/16</option>
-							    <option value="apr">01/04/16 - 01/05/16</option>
-								</select>
+							<div class="primary-filter form-field--date">
+								<span class="form-field--select__box ref-icon-after--angle-down js-date-trigger">01/01/16 - 01/02/16</span>
 							</div>
 							<div class="primary-filter js-multi-select-box" data-title="Select a Country" data-title-plural="Countries">
 								<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
@@ -1137,6 +1132,207 @@
 		</div>
 	</div>
 
+	<!-- Custom Date Picker -->
+	<div class="date-picker js-date-picker">
+
+			<div class="date-picker__sections-container">
+
+				<h2 class="heading-style--heading-five">Select a Date Range</h2>
+				<div class="toggle-container">	 							
+					<div class="filter-toggle filter-toggle--with-text">
+						<div class="toggle">
+							<input id="toggle--show-range" name="toggle--show-daterange" checked="" type="radio">
+							<label for="toggle--show-range" class="js-mock-toggle-date-selectors" data-show="range">
+								Range
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-day" name="toggle--show-daterange" type="radio">
+							<label for="toggle--show-day" class="js-mock-toggle-date-selectors" data-show="day">
+								Day
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-month" name="toggle--show-daterange" type="radio">
+							<label for="toggle--show-month" class="js-mock-toggle-date-selectors" data-show="month">
+								Month
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-quarter" name="toggle--show-daterange" type="radio">
+							<label for="toggle--show-quarter" class="js-mock-toggle-date-selectors" data-show="quarter">
+								Quarter
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-year" name="toggle--show-daterange" type="radio">
+							<label for="toggle--show-year" class="js-mock-toggle-date-selectors" data-show="year">
+								Year
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="date-selector-container js-date-selector-container" id="range">
+					<ul>
+						<li><a href="#" class="js-selected-date-trigger">Last 7 Days</a></li>
+						<li><a href="#" class="js-selected-date-trigger">Last 30 Days</a></li>
+						<li><a href="#" class="js-selected-date-trigger">Last 90 Days</a></li>
+						<li><a href="#" class="js-selected-date-trigger">Last 12 Months</a></li>
+						<li><a href="#" class="js-selected-date-trigger">All Time</a></li>
+					</ul>
+				</div>
+
+				<div class="date-selector-container js-date-selector-container" id="day">
+					<!-- gwt datepicker -->
+						<table class="gwt-DatePicker" cellpadding="0" cellspacing="0"><tbody><tr><td style="vertical-align: top;" align="left"><table class="datePickerMonthSelector"><colgroup><col></colgroup><tbody><tr><td width="1"><div aria-pressed="false" role="button" class="datePickerPreviousButton datePickerPreviousButton-up" tabindex="0"><input style="opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;" role="presentation" tabindex="-1" type="text"><div class="html-face">‹</div></div></td><td class="datePickerMonth" width="100%">
+						<div class="secondary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="jan" selected>Jan</option>
+						    <option value="feb">Feb</option>
+						    <option value="mar">Mar</option>
+						    <option value="apr">Apr</option>
+						    <option value="may">May</option>
+						    <option value="jun">Jun</option>
+						    <option value="jul">Jul</option>
+						    <option value="aug">Aug</option>
+						    <option value="sep">Sep</option>
+						    <option value="oct">Oct</option>
+						    <option value="nov">Nov</option>
+						    <option value="dec">Dec</option>
+							</select>
+						</div>
+						<div class="secondary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="2015" selected>2015</option>
+						    <option value="2015" selected>2014</option>
+						    <option value="2015" selected>2013</option>
+						    <option value="2015" selected>2012</option>
+						    <option value="2015" selected>2011</option>
+						    <option value="2015" selected>2010</option>
+							</select>
+						</div>
+					</td><td width="1"><div aria-pressed="false" role="button" class="datePickerNextButton datePickerNextButton-up" tabindex="0"><input style="opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;" role="presentation" tabindex="-1" type="text"><div class="html-face">›</div></div></td></tr>
+						</tbody></table></td></tr><tr><td style="vertical-align: top;" align="left"><table class="datePickerDays" border="0" cellpadding="0" cellspacing="0"><colgroup><col><col><col><col><col><col><col></colgroup><tbody><tr><td class="datePickerWeekdayLabel">M</td><td class="datePickerWeekdayLabel">T</td><td class="datePickerWeekdayLabel">W</td><td class="datePickerWeekdayLabel">T</td><td class="datePickerWeekdayLabel">F</td><td class="datePickerWeekendLabel">S</td><td class="datePickerWeekendLabel">S</td></tr><tr><td><div class="datePickerDay datePickerDayIsFiller datePickerDayIsFiller js-selected-date-trigger" aria-selected="false" tabindex="-1">29</div></td><td><div class="datePickerDay datePickerDayIsFiller js-selected-date-trigger" aria-selected="false" tabindex="-1">30</div></td><td><div class="datePickerDay datePickerDayIsFiller js-selected-date-trigger" aria-selected="false" tabindex="-1">31</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">1</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">2</div></td><td><div class="datePickerDay datePickerDayIsWeekend js-selected-date-trigger" aria-selected="false" tabindex="0">3</div></td><td><div class="datePickerDay datePickerDayIsWeekend js-selected-date-trigger" aria-selected="false" tabindex="0">4</div></td></tr><tr><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">5</div></td><td><div class="datePickerDay datePickerDayIsValue js-selected-date-trigger" aria-selected="false" tabindex="0">6</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">7</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">8</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">9</div></td><td><div class="datePickerDay datePickerDayIsWeekend js-selected-date-trigger" aria-selected="false" tabindex="0">10</div></td><td><div class="datePickerDay datePickerDayIsWeekend js-selected-date-trigger" aria-selected="false" tabindex="0">11</div></td></tr><tr><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">12</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">13</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">14</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">15</div></td><td><div class="datePickerDay datePickerDayIsToday js-selected-date-trigger" aria-selected="false" tabindex="0">16</div></td><td><div class="datePickerDay datePickerDayIsWeekend js-selected-date-trigger" aria-selected="false" tabindex="0">17</div></td><td><div class="datePickerDay datePickerDayIsWeekend js-selected-date-trigger" aria-selected="false" tabindex="0">18</div></td></tr><tr><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">19</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">20</div></td><td><div class="datePickerDay js-selected-date-trigger" aria-selected="false" tabindex="0">21</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">22</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">23</div></td><td><div class="datePickerDay datePickerDayIsWeekend  datePickerDayIsDisabled" aria-selected="false" tabindex="0">24</div></td><td><div class="datePickerDay datePickerDayIsWeekend  datePickerDayIsDisabled" aria-selected="false" tabindex="0">25</div></td></tr><tr><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">26</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">27</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">28</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">29</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">30</div></td><td><div class="datePickerDay datePickerDayIsWeekend  datePickerDayIsDisabled" aria-selected="false" tabindex="0">31</div></td><td><div class="datePickerDay datePickerDayIsWeekend datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">1</div></td></tr><tr><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">2</div></td><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">3</div></td><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">4</div></td><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">5</div></td><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">6</div></td><td><div class="datePickerDay datePickerDayIsWeekend datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">7</div></td><td><div class="datePickerDay datePickerDayIsWeekend datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">8</div></td></tr></tbody></table></td></tr></tbody></table>
+					<!-- end gwt datepicker -->
+				</div>
+
+				<div class="date-selector-container js-date-selector-container" id="month">
+					
+					<div aria-pressed="false" role="button" class="datePickerPreviousButton datePickerPreviousButton-up" tabindex="0"><input style="opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;" role="presentation" tabindex="-1" type="text"><div class="html-face">‹</div></div>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="2015" selected>2015</option>
+					    <option value="2015" selected>2014</option>
+					    <option value="2015" selected>2013</option>
+					    <option value="2015" selected>2012</option>
+					    <option value="2015" selected>2011</option>
+					    <option value="2015" selected>2010</option>
+					  </select>
+				 	</div>
+				 	<div aria-pressed="false" role="button" class="datePickerNextButton datePickerNextButton-up" tabindex="0"><input style="opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;" role="presentation" tabindex="-1" type="text"><div class="html-face">›</div></div>
+					
+					<div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Jan</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Feb</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Mar</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Apr</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">May</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Jun</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Jul</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Aug</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Sep</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Oct</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Nov</a></div>
+						<div class="date-selector-container--month__cell"><a href="#" class="js-selected-date-trigger">Dec</a></div>
+					</div>
+				</div>
+
+				<div class="date-selector-container js-date-selector-container" id="quarter">
+					<div aria-pressed="false" role="button" class="datePickerPreviousButton datePickerPreviousButton-up" tabindex="0"><input style="opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;" role="presentation" tabindex="-1" type="text"><div class="html-face">‹</div></div>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="2015" selected>2015</option>
+					    <option value="2015" selected>2014</option>
+					    <option value="2015" selected>2013</option>
+					    <option value="2015" selected>2012</option>
+					    <option value="2015" selected>2011</option>
+					    <option value="2015" selected>2010</option>
+					  </select>
+				 	</div>
+				 	<div aria-pressed="false" role="button" class="datePickerNextButton datePickerNextButton-up" tabindex="0"><input style="opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;" role="presentation" tabindex="-1" type="text"><div class="html-face">›</div></div>
+
+					<ul>
+						<li><a href="#" class="js-selected-date-trigger">Q1 (Jan - Mar)</a></li>
+						<li><a href="#" class="js-selected-date-trigger">Q2 (Apr - Jun)</a></li>
+						<li><a href="#" class="js-selected-date-trigger">Q3 (Jul - Sep)</a></li>
+						<li><a href="#" class="js-selected-date-trigger">Q4 (Oct - Dec)</a></li>
+					</ul>
+				</div>
+
+				<div class="date-selector-container js-date-selector-container" id="year">
+					<ul>
+						<li><a href="#" class="js-selected-date-trigger">2015</a></li>
+						<li><a href="#" class="js-selected-date-trigger">2014</a></li>
+						<li><a href="#" class="js-selected-date-trigger">2013</a></li>
+						<li><a href="#" class="js-selected-date-trigger">2012</a></li>
+						<li><a href="#" class="js-selected-date-trigger">2011</a></li>
+						<li><a href="#" class="js-selected-date-trigger">2010</a></li>
+						<li><a href="#" class="js-selected-date-trigger">2009</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="date-picker__custom-range-container js-custom-date-range-container">
+				<h2 class="heading-style--heading-five">Custom Range</h2>
+				<div class="form-field form-field--date">
+					<input name="custom-range--from" id="custom-range--from" value="From" type="text" class="js-mock-open-cal">
+					<span></span>
+				</div>
+				<span class="date-to-arrow"></span>
+				<div class="form-field form-field--date">
+					<input name="custom-range--to" id="custom-range--to" value="To" type="text">
+					<span></span>
+				</div>
+
+				<!-- gwt datepicker -->
+					<table class="gwt-DatePicker js-mock-show-cal" cellpadding="0" cellspacing="0"><tbody><tr><td style="vertical-align: top;" align="left"><table class="datePickerMonthSelector"><colgroup><col></colgroup><tbody><tr><td width="1"><div aria-pressed="false" role="button" class="datePickerPreviousButton datePickerPreviousButton-up" tabindex="0"><input style="opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;" role="presentation" tabindex="-1" type="text"><div class="html-face">‹</div></div></td><td class="datePickerMonth" width="100%">
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="jan" selected>Jan</option>
+					    <option value="feb">Feb</option>
+					    <option value="mar">Mar</option>
+					    <option value="apr">Apr</option>
+					    <option value="may">May</option>
+					    <option value="jun">Jun</option>
+					    <option value="jul">Jul</option>
+					    <option value="aug">Aug</option>
+					    <option value="sep">Sep</option>
+					    <option value="oct">Oct</option>
+					    <option value="nov">Nov</option>
+					    <option value="dec">Dec</option>
+						</select>
+					</div>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="2015" selected>2015</option>
+					    <option value="2015" selected>2014</option>
+					    <option value="2015" selected>2013</option>
+					    <option value="2015" selected>2012</option>
+					    <option value="2015" selected>2011</option>
+					    <option value="2015" selected>2010</option>
+						</select>
+					</div>
+					</td><td width="1"><div aria-pressed="false" role="button" class="datePickerNextButton datePickerNextButton-up" tabindex="0"><input style="opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;" role="presentation" tabindex="-1" type="text"><div class="html-face">›</div></div></td></tr>
+						</tbody></table></td></tr><tr><td style="vertical-align: top;" align="left"><table class="datePickerDays" border="0" cellpadding="0" cellspacing="0"><colgroup><col><col><col><col><col><col><col></colgroup><tbody><tr><td class="datePickerWeekdayLabel">M</td><td class="datePickerWeekdayLabel">T</td><td class="datePickerWeekdayLabel">W</td><td class="datePickerWeekdayLabel">T</td><td class="datePickerWeekdayLabel">F</td><td class="datePickerWeekendLabel">S</td><td class="datePickerWeekendLabel">S</td></tr><tr><td><div class="datePickerDay datePickerDayIsFiller datePickerDayIsFiller" aria-selected="false" tabindex="-1">29</div></td><td><div class="datePickerDay datePickerDayIsFiller" aria-selected="false" tabindex="-1">30</div></td><td><div class="datePickerDay datePickerDayIsFiller " aria-selected="false" tabindex="-1">31</div></td><td><div class="datePickerDay " aria-selected="false" tabindex="0">1</div></td><td><div class="datePickerDay " aria-selected="false" tabindex="0">2</div></td><td><div class="datePickerDay datePickerDayIsWeekend " aria-selected="false" tabindex="0">3</div></td><td><div class="datePickerDay datePickerDayIsWeekend " aria-selected="false" tabindex="0">4</div></td></tr><tr><td><div class="datePickerDay " aria-selected="false" tabindex="0">5</div></td><td><div class="datePickerDay datePickerDayIsValue" aria-selected="false" tabindex="0">6</div></td><td><div class="datePickerDay " aria-selected="false" tabindex="0">7</div></td><td><div class="datePickerDay " aria-selected="false" tabindex="0">8</div></td><td><div class="datePickerDay " aria-selected="false" tabindex="0">9</div></td><td><div class="datePickerDay datePickerDayIsWeekend " aria-selected="false" tabindex="0">10</div></td><td><div class="datePickerDay datePickerDayIsWeekend " aria-selected="false" tabindex="0">11</div></td></tr><tr><td><div class="datePickerDay " aria-selected="false" tabindex="0">12</div></td><td><div class="datePickerDay " aria-selected="false" tabindex="0">13</div></td><td><div class="datePickerDay " aria-selected="false" tabindex="0">14</div></td><td><div class="datePickerDay " aria-selected="false" tabindex="0">15</div></td><td><div class="datePickerDay datePickerDayIsToday" aria-selected="false" tabindex="0">16</div></td><td><div class="datePickerDay datePickerDayIsWeekend " aria-selected="false" tabindex="0">17</div></td><td><div class="datePickerDay datePickerDayIsWeekend " aria-selected="false" tabindex="0">18</div></td></tr><tr><td><div class="datePickerDay " aria-selected="false" tabindex="0">19</div></td><td><div class="datePickerDay " aria-selected="false" tabindex="0">20</div></td><td><div class="datePickerDay" aria-selected="false" tabindex="0">21</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">22</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">23</div></td><td><div class="datePickerDay datePickerDayIsWeekend  datePickerDayIsDisabled" aria-selected="false" tabindex="0">24</div></td><td><div class="datePickerDay datePickerDayIsWeekend  datePickerDayIsDisabled" aria-selected="false" tabindex="0">25</div></td></tr><tr><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">26</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">27</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">28</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">29</div></td><td><div class="datePickerDay  datePickerDayIsDisabled" aria-selected="false" tabindex="0">30</div></td><td><div class="datePickerDay datePickerDayIsWeekend  datePickerDayIsDisabled" aria-selected="false" tabindex="0">31</div></td><td><div class="datePickerDay datePickerDayIsWeekend datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">1</div></td></tr><tr><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">2</div></td><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">3</div></td><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">4</div></td><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">5</div></td><td><div class="datePickerDay datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">6</div></td><td><div class="datePickerDay datePickerDayIsWeekend datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">7</div></td><td><div class="datePickerDay datePickerDayIsWeekend datePickerDayIsFiller  datePickerDayIsDisabled" aria-selected="false" tabindex="-1">8</div></td></tr></tbody></table></td></tr></tbody></table>
+				<!-- end gwt datepicker -->
+
+				<a href="#" class="ref-button--primary--small is-disabled js-mock-apply js-selected-date-trigger">Apply</a>
+			</div>
+
+	</div> <!-- end date-picker-->
+
 <script src="js/vendor/jquery-1.11.1.min.js"></script>
 <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
 <script src="js-v2/application.js"></script>
@@ -1184,6 +1380,31 @@
 				e.preventDefault();
 				$('.page-overlay').fadeOut(100);
 				$('.page-overlay .popup-content').removeClass("is-showing");
+			});
+
+			// mock data picker
+			$('.js-selected-date-trigger').on("click", function(){
+				$('.js-date-picker').hide();
+			});
+			$('.js-mock-toggle-date-selectors').on("click", function(){
+				var contentIdToShow = $(this).data("show");
+				$('.js-date-selector-container').hide();
+				$('#' + contentIdToShow).show();
+				if(contentIdToShow == "range") {
+					$('.js-custom-date-range-container').show();
+				} else {
+					$('.js-custom-date-range-container').hide();
+				}
+			});
+			$('.js-mock-open-cal').on("focus", function(){
+				$('.js-mock-show-cal').show();
+			});
+			$('.js-mock-show-cal .datePickerDay').on("click", function(){
+				$('.js-mock-apply').removeClass("is-disabled");
+			});
+
+			$('.js-date-trigger').on("click", function(){
+				$('.js-date-picker').toggle();
 			});
   	}
 

@@ -1,0 +1,214 @@
+// Date Selector
+.date-picker {
+	top: 80px;
+  left: 40%;
+
+	position: absolute;
+	width: 640px;
+	display: none;
+	z-index: 990;
+	visibility: visible; // hidden;
+	overflow: visible;
+	border-radius: 5px;
+	tbody, tr {
+		width: 100%;
+	}
+	&.is-showing {
+		visibility: visible;
+	}
+	.toggle-container {
+		margin: 0 auto 10px;
+	}
+	* {
+		overflow: visible;
+	}
+}
+.date-picker__sections-container,
+.date-picker__custom-range-container {
+	width: 310px;
+	padding: 20px;	
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid #c4c7d0;
+	background-color: $reflection-white;
+}
+.date-picker__custom-range-container {
+	margin-left: 5px;
+	.date-to-arrow {		
+		display: inline-block;
+		vertical-align: top;
+		@extend %ref-icon;
+		padding: 0 13px;
+		&:after {
+			content: "l";	
+			@extend %icon-font;
+			font-size: 18px;
+			position: relative;
+			color: #828a91;
+		}
+	}
+	.form-field--date {
+		width: 40%;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.ref-button--primary--small {
+		width: 100%;
+		text-align: center;
+		box-sizing: border-box;
+	}
+	.gwt-DatePicker {
+		display: none;
+	}
+}
+.date-selector-container {
+	font-size: 14px;
+	line-height: 1.5;
+	text-align: center;
+	display: none;
+}
+.toggle-container + .date-selector-container {
+	display: block;
+}
+.date-selector-container--month__cell {
+	width: 32%;
+	display: inline-block;
+	vertical-align: top;
+}
+.gwt-DatePicker {
+	width: 100%;
+	tr {
+		width: 100%;
+	}
+	* {
+		text-align: center;
+		form & {
+			text-align: center;
+		}
+	}
+	td {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+.single-date-selector-container {
+	text-align: center;
+}
+.datePickerDays {
+	width: 100%;
+	text-align: center;
+	background-color: $panel-grey;
+	td {
+		padding-left: 0;
+		padding-right: 0;
+		font-family: $brand-heading-font;
+		font-size: 13px;
+		font-weight: 600;
+		color: $dark-grey-2;
+		text-align: center;
+		border-left: 1px solid $divider-grey;
+		border-top: 1px solid $divider-grey;
+		&:first-child {
+			border-left: 0;
+		}
+		> div {
+			padding-top: 12px;
+			padding-bottom: 14px;
+			box-sizing: border-box;
+			outline: none;
+			cursor: pointer;
+			&:active, &:hover {
+				.no-touch & {
+					color: $reflection-white;
+					background-color: $light-grey-1;
+				}
+			}
+			&:active {
+					padding-bottom: 12px;
+					color: $reflection-white;
+					background-color: $light-grey-1;
+					border-top: 2px solid #5a5e6e;
+			}
+		}
+		> div.datePickerDayIsValue {
+			color: $reflection-white;
+			background-color: $reflection-green;
+			&:hover, &:active {
+				.no-touch & {
+					padding-bottom: 14px;
+					border-top: 0;
+					background-color: $reflection-green;
+				}
+			}
+		}
+		.datePickerDayIsFiller {
+			color: $light-grey-2;
+		}
+		.datePickerDayIsDisabled {
+			color: $light-grey-2;
+			font-style: italic;
+			cursor: not-allowed;
+			&:hover, &:active {
+				.no-touch &, .touch & {
+					padding-bottom: 14px;
+					border-top: 0;
+					color: $light-grey-2;
+					background-color: $panel-grey;
+				}
+			}
+		}
+	}
+	tr:first-child td {
+		border-top: 0;
+	}
+}
+.datePickerDays .datePickerWeekdayLabel,
+.datePickerDays .datePickerWeekendLabel {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: $light-grey-1;
+}
+.datePickerMonth {
+	padding-top: 18px;
+	padding-bottom: 19px;
+	text-align: center;
+	.has-single-option & {
+		padding-bottom: 10px;
+	}
+}
+.datePickerPreviousButton,
+.datePickerNextButton {
+	display: inline-block;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 0px 4px;
+	outline: none;
+	@extend %ref-icon;
+	margin-top: -2px;
+	padding: 0 13px;
+	&:after {
+		@extend %icon-font;
+		font-size: 18px;
+		position: relative;
+		color: #828a91;
+	}
+	&:hover {
+		&:after {
+			color: darken(#828a91, 10%);
+		}
+	}
+	&:active {
+		margin-top: 0;
+	}
+}
+.datePickerPreviousButton:after {
+	content: "k";
+}
+.datePickerNextButton:after {
+	content: "l";
+}
+.datePickerPreviousButton .html-face,
+.datePickerNextButton .html-face {
+	display: none;
+}

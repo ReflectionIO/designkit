@@ -789,3 +789,32 @@ var ArticleIntro = function($domElement, charCount) {
 				$thisContainer.append(readMoreLink);
 			}
 }
+
+var datePopup = function($dateInput) {
+	$dateInput.on("click", function(){
+		$this = $(this);
+		$this.select();
+		$popup = $('.dateBoxPopup');
+		if($popup.hasClass('is-showing')) {
+			$popup.removeClass('is-showing');
+		}
+		else {
+			$popup.addClass('is-showing');
+		}
+	});
+
+	$('body').on("click", function(e){ // close date popup on click
+		if($(e.target).hasClass("js-apply-date") && !$(e.target).hasClass("datePickerDayIsDisabled") || $(e.target).hasClass("js-selected-date-trigger") || (!$(e.target).parents(".date-select-container").length > 0 && !$(e.target).parents(".dateBoxPopup").length > 0)) {
+			$('.dateBoxPopup').removeClass('is-showing');
+			$('.js-datepicker-range .hidden-calendar-container').css({"bottom": "0", "opacity": 0});
+		}
+	});
+
+	$('.js-datepicker-range .hidden-calendar-container').on("click", function(){
+		$('.js-apply-date').removeAttr("disabled");
+	});
+
+	$('.js-datepicker-range .form-field--date-select').on("click", function(){
+		$('.js-datepicker-range .hidden-calendar-container').animate({"bottom": "-110%", "opacity": 1}, 300);
+	});
+}
