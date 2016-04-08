@@ -108,7 +108,7 @@
 							    <option value="googleThree" class="js-child-option">Google Account Three</option>
 								</select>
 							</div>
-							<div class="primary-filter form-field--date">
+							<div class="primary-filter form-field--date js-form-field--date">
 								<span class="form-field--select__box ref-icon-after--angle-down js-date-trigger">01/01/16 - 01/02/16</span>
 							</div>
 							<div class="primary-filter js-multi-select-box" data-title="Select a Country" data-title-plural="Countries">
@@ -1385,7 +1385,11 @@
 			// mock data picker
 			$('.js-selected-date-trigger').on("click", function(){
 				$('.js-date-picker').hide();
+				$('.js-form-field--date').removeClass("is-open");
+				$('.js-mock-show-cal').hide();
+				$('.js-mock-apply').addClass("is-disabled");
 			});
+
 			$('.js-mock-toggle-date-selectors').on("click", function(){
 				var contentIdToShow = $(this).data("show");
 				$('.js-date-selector-container').hide();
@@ -1396,15 +1400,34 @@
 					$('.js-custom-date-range-container').hide();
 				}
 			});
+
 			$('.js-mock-open-cal').on("focus", function(){
 				$('.js-mock-show-cal').show();
 			});
+
 			$('.js-mock-show-cal .datePickerDay').on("click", function(){
 				$('.js-mock-apply').removeClass("is-disabled");
 			});
 
 			$('.js-date-trigger').on("click", function(){
-				$('.js-date-picker').toggle();
+				var $this = $(this),
+						thisPositionTop = $this.offset().top,
+						thisPositionLeft = $this.offset().left,
+						thisHeight = $this.innerHeight(),
+						offsetTop = 5,
+						isAlreadyOpen = $this.parent('.js-form-field--date').hasClass("is-open");
+						console.log(isAlreadyOpen);
+				
+				if(!isAlreadyOpen) {
+					setTimeout(function(){ // setTimeout is to wait for all other popups to close first
+						
+						$('.js-date-picker').show().css({ "top" : thisPositionTop + thisHeight + offsetTop, "left" : thisPositionLeft });
+						$this.parent(".js-form-field--date").addClass("is-open");
+						
+					}, 100);
+				} else {
+					$this.parent(".js-form-field--date").addClass("is-open");
+				}
 			});
   	}
 

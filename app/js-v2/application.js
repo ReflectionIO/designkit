@@ -368,15 +368,22 @@ var AllDropDowns = function() {
 	var instance = this;
 	$("html").on("click", function(e){
 		// close open filters on html click
-		if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
+		var parentIsDatePicker = false;
+		$(e.target).parents("div").each(function(){
+			if($(this).hasClass("js-date-picker")) {
+				parentIsDatePicker = true;
+			}
+		});
+		if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all") && !parentIsDatePicker) {
 			instance.closeAllFilters();
 		}
 	});
 }
 
 AllDropDowns.prototype.closeAllFilters = function() {
-	$('.primary-filter.is-open .form-field--select__dropdown').hide();
+	$('.primary-filter.is-open .form-field--select__dropdown').hide();	
 	$('.primary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
+	$('.js-date-picker').hide();
 	$('.secondary-filter.is-open .form-field--select__dropdown').hide();
 	$('.secondary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 };
@@ -438,7 +445,17 @@ var FormFieldSelect = function($domElement) {
 		} else {
 			setTimeout(function(){
 				if(!$parentDiv.hasClass("is-open")) {
-					AllDropDowns.prototype.closeAllFilters();
+					// make sure you're not in the date picker
+					var parentIsDatePicker = false;
+					$currentValue.parents("div").each(function(){
+						if($(this).hasClass("js-date-picker")) {
+							parentIsDatePicker = true;
+						}
+					});
+					
+					if(!parentIsDatePicker) {
+						AllDropDowns.prototype.closeAllFilters();
+					}
 				}
 				var parentWidth = $parentDiv.width();
 				var parentHeight = $parentDiv.height();
@@ -788,33 +805,4 @@ var ArticleIntro = function($domElement, charCount) {
 
 				$thisContainer.append(readMoreLink);
 			}
-}
-
-var datePopup = function($dateInput) {
-	$dateInput.on("click", function(){
-		$this = $(this);
-		$this.select();
-		$popup = $('.dateBoxPopup');
-		if($popup.hasClass('is-showing')) {
-			$popup.removeClass('is-showing');
-		}
-		else {
-			$popup.addClass('is-showing');
-		}
-	});
-
-	$('body').on("click", function(e){ // close date popup on click
-		if($(e.target).hasClass("js-apply-date") && !$(e.target).hasClass("datePickerDayIsDisabled") || $(e.target).hasClass("js-selected-date-trigger") || (!$(e.target).parents(".date-select-container").length > 0 && !$(e.target).parents(".dateBoxPopup").length > 0)) {
-			$('.dateBoxPopup').removeClass('is-showing');
-			$('.js-datepicker-range .hidden-calendar-container').css({"bottom": "0", "opacity": 0});
-		}
-	});
-
-	$('.js-datepicker-range .hidden-calendar-container').on("click", function(){
-		$('.js-apply-date').removeAttr("disabled");
-	});
-
-	$('.js-datepicker-range .form-field--date-select').on("click", function(){
-		$('.js-datepicker-range .hidden-calendar-container').animate({"bottom": "-110%", "opacity": 1}, 300);
-	});
 }
