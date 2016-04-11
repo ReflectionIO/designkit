@@ -374,7 +374,15 @@ var AllDropDowns = function() {
 				parentIsDatePicker = true;
 			}
 		});
-		if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all") && !parentIsDatePicker) {
+
+		var parentIsGroupPicker = false;
+		$(e.target).parents("div").each(function(){
+			if($(this).hasClass("js-group-picker")) {
+				parentIsGroupPicker = true;
+			}
+		});
+
+		if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all") && !parentIsDatePicker && !parentIsGroupPicker) {
 			instance.closeAllFilters();
 		}
 	});
@@ -384,6 +392,7 @@ AllDropDowns.prototype.closeAllFilters = function() {
 	$('.primary-filter.is-open .form-field--select__dropdown').hide();	
 	$('.primary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 	$('.js-date-picker').hide();
+	$('.js-group-picker').hide();
 	$('.secondary-filter.is-open .form-field--select__dropdown').hide();
 	$('.secondary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 };
