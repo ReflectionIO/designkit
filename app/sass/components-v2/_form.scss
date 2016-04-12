@@ -15,6 +15,11 @@ textarea {
 	-moz-appearance: none;
 	@extend %font-smoothing;
 }
+.reflection-form {
+	> button {
+		margin-top: 1.5rem;
+	}
+}
 .form-filter {
 	margin-bottom: 2rem;
 	.reflection-form & {
@@ -28,7 +33,7 @@ textarea {
 				border-radius: 4px 4px 0 0;
 			}			
 		}
-		&:last-child {
+		&:last-of-type {
 			.form-field--select__box,
 			.form-field--select__dropdown {
 				border-radius: 0 0 4px 4px;
@@ -39,7 +44,7 @@ textarea {
 					border-radius: 0 0 4px 4px;
 				}
 			}
-		}		
+		}	
 	}
 	> label {
 		position: absolute;
@@ -69,6 +74,9 @@ textarea {
 			border-color: $error-orange-border;
 			background-color: #fdf5ee;
 			z-index: 10;
+			.reflection-form--theme-dark & {
+				background-color: #353331;
+			}
 		}
 		.form-field-error-text {
 			position: absolute;
@@ -80,8 +88,14 @@ textarea {
 		.form-field--select__dropdown {
 			border-color: $error-orange-border;
 			background-color: #fdf5ee;
+			.reflection-form--theme-dark & {
+				background-color: #353331;
+			}
 		}
 	}
+}
+.form-field--select__dropdown {
+	text-align: left;
 }
 .reflection-form .form-field + .form-filter,
 .reflection-form .form-filter + .form-filter {
@@ -95,10 +109,15 @@ textarea {
 			border-radius: 0;
 		}
 	}
-	&:last-child {
+	&:last-of-type {
 		.form-field--select__box,
 		.form-field--select__dropdown {
 			border-radius: 0 0 4px 4px;
+		}
+		&.is-open {
+			.form-field--select__box {
+				border-radius: 0;
+			}
 		}
 	}
 }
@@ -107,6 +126,7 @@ textarea {
 }
 .form-field--select__box {
 	position: relative;
+	text-align: left;
 }
 .form-field {
 	position: relative;
@@ -117,6 +137,10 @@ textarea {
 	border: 1px solid $light-grey-2;
 	border-radius: 4px;
 	background-color: #f5f9f9;
+	.reflection-form--theme-dark & {
+		border: 1px solid #161617;
+		background-color: #333338;
+	}
 	.reflection-form & {
 		margin-top: -1px;
 		margin-bottom: 0;
@@ -125,8 +149,11 @@ textarea {
 			margin-top: 0;
 			border-radius: 4px 4px 0 0;
 		}
-		&:last-child {
+		&:last-of-type {
 			border-radius: 0 0 4px 4px;
+			&:first-of-type {
+				border-radius: 4px 4px 4px 4px;
+			}
 		}
 	}
 	&.form-field--with-error {
@@ -134,6 +161,9 @@ textarea {
 		border-color: $error-orange-border;
 		background-color: #fdf5ee;
 		z-index: 10;
+		.reflection-form--theme-dark & {
+			background-color: #353331;
+		}
 	}
 	.no-touch & {
 		transition: padding 0.06s;
@@ -143,6 +173,9 @@ textarea {
 		font-family: $brand-heading-font;
 		font-size: 12px;
 		color: #494490;
+		.reflection-form--theme-dark & {
+			color: $light-grey-1;
+		}
 		.no-touch & {
 			transition: font-size 0.06s;
 		}
@@ -150,6 +183,9 @@ textarea {
 	input:focus + label,
 	textarea:focus + label {
 		color: #494490;
+		.reflection-form--theme-dark & {
+			color: #9f9bff;
+		}
 	}
 	input, textarea {
 		display: block;
@@ -166,6 +202,9 @@ textarea {
 		font-family: $brand-heading-font;
 		font-size: 16px;
 		color: $dark-grey-1;
+		.reflection-form--theme-dark & {
+			color: $light-grey-2;
+		}
 		.no-touch & {
 			transition: bottom 0.06s;
 		}
@@ -181,7 +220,10 @@ textarea {
 		color: $dark-grey-1;
 		-webkit-box-shadow: 0 0 0px 1000px #f5f9f9 inset;
 		-webkit-text-fill-color: $dark-grey-1;
-	  background-color: #f5f9f9;
+		.reflection-form--theme-dark & {
+			color: $light-grey-1 !important;
+			-webkit-box-shadow: 0 0 0px 1000px #333338 inset;
+		}
 	}
 	&.is-closed {
 		padding: 15px 18px 20px;
@@ -193,6 +235,9 @@ textarea {
 			font-size: 16px;
 			color: #727686;
 			font-weight: 400;
+			.reflection-form--theme-dark & {
+				color: $light-grey-1;
+			}
 			.no-touch & {
 				transition: font-size 0.06s;
 			}
@@ -201,6 +246,42 @@ textarea {
 			bottom: 6px;
 			.no-touch & {
 				transition: bottom 0.06s;
+			}
+		}
+	}
+}
+.reflection-form {
+	.form-field--split {
+		font-size: 0;
+		.form-field {
+			width: 50%;
+			display: inline-block;
+			float: left;
+			vertical-align: top;
+			&:last-child {
+				position: relative;
+				top: 1px;
+				border-left: none;
+			}
+		}
+		&:first-child {
+			.form-field {
+				&:first-child {
+					border-radius: 4px 0 0 0;
+				}
+				&:last-child {
+					border-radius: 0 4px 0 0;
+				}			
+			}
+		}
+		&:last-child {
+			.form-field {
+				&:first-child {
+					border-radius: 0 0 0 4px;
+				}
+				&:last-child {
+					border-radius: 0 0 4px 0;
+				}
 			}
 		}
 	}
@@ -269,6 +350,7 @@ textarea {
 	}
 	position: relative;
 	width: 100%;
+	min-height: 20px;
 	.primary-filter &,
 	.secondary-filter & {
 		position: absolute;
@@ -328,12 +410,21 @@ textarea {
 	text-decoration: none;
 	background-color: #dde0e2;
 	overflow: visible;
+	.reflection-form--theme-dark & {
+		background-color: #333338;
+	}
 	&:hover {
 		background-color: #c4c7d0;
 		transition: background-color $base-transition-speed-on;
+		.reflection-form--theme-dark & {
+			background-color: lighten(#333338, 5%);
+		}
 	}
 	&:active {
 		border-top: 2px solid #9d9fa6;
+		.reflection-form--theme-dark & {
+			border-top: 2px solid #161617;
+		}
 	}
 	.primary-filter &,
 	.secondary-filter &,
@@ -390,6 +481,11 @@ textarea {
 		padding-left: calc(18px + 1.2rem);
 		font-size: 1.5rem;
 	}
+	&.form-field--checkbox-list--inline {
+		li {
+			margin-bottom: 0;
+		}		
+	}
 }
 .form-field--checkbox-list--large {
 	li {
@@ -409,10 +505,15 @@ textarea {
 		padding-left: calc(20px + 1.5rem);
 		font-size: 1.6rem;
 	}
+	&.form-field--checkbox-list--inline {
+		li {
+			margin-bottom: 0;
+		}
+	}
 }
 input[type="checkbox"]:disabled + .checkboxLabel,
 input[type="radio"]:disabled + .radioButtonLabel {
-	background-color: #f7f7f9;
+	background-color: $divider-grey;
 	overflow: visible;
 }
 input[type="checkbox"]:disabled + .checkboxLabel:active,
@@ -432,6 +533,9 @@ input[type="radio"]:checked + .radioButtonLabel {
 		opacity: 1;
 		color: #fcfdfd;
 		transition: opacity 0.3s;
+		.reflection-form--theme-dark & {
+			color: $dark-grey-1;
+		}
 		.no-opacity & {
 			display: block;
 		}
@@ -448,6 +552,9 @@ input[type="checkbox"]:checked + .checkboxLabel {
 	color: $dark-grey-2;
 	text-align: left;
 	cursor: pointer;
+	.reflection-form--theme-dark & {
+		color: $light-grey-1;
+	}
 	.primary-filter &,
 	.secondary-filter &,
 	.form-filter & {
@@ -459,6 +566,20 @@ input[type="checkbox"]:checked + .checkboxLabel {
 	}
 	.form-filter & {
 		padding-left: calc(18px + 1rem);
+	}
+}
+.checkbox-label-img {
+  position: relative;
+  top: 1px;
+	width: 20px;
+	height: 20px;
+	margin-left: -2px;
+	margin-right: 9px;
+	display: inline-block;
+	vertical-align: middle;
+	+ span {
+		display: inline-block;
+		vertical-align: middle;
 	}
 }
 input[type="checkbox"]:disabled + label + .checkboxLabelVisible,
@@ -955,6 +1076,16 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
     border-radius: 8px;
     .is-open & {
 			top: 0;
+		}
+	}
+}
+.reflection-form--theme-dark {
+	p {
+		margin-top: 24px;
+		font-size: 14px;
+		color: #727686;
+		+ button {
+			margin-top: 24px;
 		}
 	}
 }

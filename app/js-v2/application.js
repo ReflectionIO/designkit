@@ -221,36 +221,18 @@ PanelRightOverlay.prototype.CloseRightPanel = function() {
 };
 
 var PanelRightMisplacedPassword = function() {
-	$('.panel-right .js-mock-show-reset-password').on("click", function(e){
-		$('.panel-right').addClass('show-reset-password-form').addClass('will-show');
-		setTimeout(function(){
-			$('.panel-right .form--login').css({"visibility":"hidden","position":"absolute"});
-			$('.panel-right .form--password-reset').css({"visibility":"visible","position":"relative"});
-			$('.panel-right').removeClass('will-show');
-			if($('.ie8').length > 0) {
-				$('.panel-right .form--login').css("display","none");
-				$('.panel-right .form--password-reset').css("display","block");
-			}
-		}, 150);
-	});
-
-	$('.panel-right .js-mock-send-reset-password').on("click", function(e){
+	$('.js-mock-forgot-my-password').on("click", function(e){
 		e.preventDefault();
-		var $this = $(this);
-		$this.attr('value', 'Email is on the way').addClass('ref-button--success');
-		$('.panel-right').addClass('reset-password-is-submitted').find('.form-submitted-success').addClass('is-showing');
+		$('.js-login-slide-container').addClass("is-reset-password");
 	});
-
-	$('.panel-right .js-link-to-login').on("click", function(e){
+	$('.js-mock-back-to-login').on("click", function(e){
 		e.preventDefault();
-		$('.panel-right').removeClass('show-reset-password-form').removeClass('reset-password-is-submitted').find('.form-submitted-success').removeClass('is-showing')
-		$('.panel-right .form--login').css({"visibility":"visible","position":"relative"});
-		$('.panel-right .form--password-reset').css({"visibility":"hidden","position":"absolute"});
-		$('.panel-right .js-mock-send-reset-password').removeClass('ref-button--success').attr('value', 'Send password reset email');
-		if($('.ie8').length > 0) {
-			$('.panel-right .form--login').css("display","block");
-			$('.panel-right .form--password-reset').css("display","none");
-		}
+		$('.js-login-slide-container').removeClass("is-reset-password");
+		$('.js-login-slide-container').removeClass("is-reset-password-confirmation");
+	});
+	$('.js-mock-reset-password').on("click", function(e){
+		e.preventDefault();
+		$('.js-login-slide-container').addClass("is-reset-password-confirmation");
 	});
 }
 
@@ -386,15 +368,31 @@ var AllDropDowns = function() {
 	var instance = this;
 	$("html").on("click", function(e){
 		// close open filters on html click
-		if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
+		var parentIsDatePicker = false;
+		$(e.target).parents("div").each(function(){
+			if($(this).hasClass("js-date-picker")) {
+				parentIsDatePicker = true;
+			}
+		});
+
+		var parentIsGroupPicker = false;
+		$(e.target).parents("div").each(function(){
+			if($(this).hasClass("js-group-picker")) {
+				parentIsGroupPicker = true;
+			}
+		});
+
+		if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all") && !parentIsDatePicker && !parentIsGroupPicker) {
 			instance.closeAllFilters();
 		}
 	});
 }
 
 AllDropDowns.prototype.closeAllFilters = function() {
-	$('.primary-filter.is-open .form-field--select__dropdown').hide();
+	$('.primary-filter.is-open .form-field--select__dropdown').hide();	
 	$('.primary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
+	$('.js-date-picker').hide();
+	$('.js-group-picker').hide();
 	$('.secondary-filter.is-open .form-field--select__dropdown').hide();
 	$('.secondary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 };
@@ -456,7 +454,17 @@ var FormFieldSelect = function($domElement) {
 		} else {
 			setTimeout(function(){
 				if(!$parentDiv.hasClass("is-open")) {
-					AllDropDowns.prototype.closeAllFilters();
+					// make sure you're not in the date picker
+					var parentIsDatePicker = false;
+					$currentValue.parents("div").each(function(){
+						if($(this).hasClass("js-date-picker")) {
+							parentIsDatePicker = true;
+						}
+					});
+					
+					if(!parentIsDatePicker) {
+						AllDropDowns.prototype.closeAllFilters();
+					}
 				}
 				var parentWidth = $parentDiv.width();
 				var parentHeight = $parentDiv.height();

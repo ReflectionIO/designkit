@@ -1,0 +1,105 @@
+@keyframes mail-deliver {
+	0% { transform: translateX(0); }
+	15% { transform: translateX(-4px); }
+	100% { transform: translateX(47px); }
+}
+@keyframes van-shake {
+	0% { transform: translateY(0px); }
+	12.5% { transform: translateY(1px); }
+	25% { transform: translateY(0px); }
+	37.5% { transform: translateY(1px); }
+	50% { transform: translateY(0px); }
+	62.5% { transform: translateY(1px); }
+	75% { transform: translateY(0px); }
+	87.5% { transform: translateY(1px); }
+	100% { transform: translateY(0px); }
+}
+
+.login-panel {	
+	width: 244px;
+	padding-top: 11px;
+	margin-left: 28px;
+	.login-slide-container {
+		width: 820px;
+		transition: margin-left 0.3s;
+		&.is-reset-password {
+			margin-left: -274px;
+		}
+		&.is-reset-password-confirmation {
+			margin-left: -548px;
+		}
+		p {
+			margin-bottom: 1.3em;
+			font-size: 14px;
+			color: #727686;
+			text-align: center;
+		}
+	}
+	.login-panel__login-form,
+	.login-panel__reset-password,
+	.login-panel__reset-password-confirmation {
+		width: 244px;
+		margin-right: 28px;
+		display: inline-block;
+		vertical-align: top;		
+	}
+	.form-field--checkbox-list {
+		margin-top: 20px;
+	}
+	button {
+		width: 100%;
+		margin-top: 13px;
+		margin-bottom: 7px;
+		box-sizing: border-box;
+	}
+	.login-panel__footer-link {
+		width: 100%;
+		margin-top: 14px;
+		display: block;
+		font-family: $brand-heading-font;
+		font-size: 14px;
+		line-height: 1.2;
+		color: #9f9bff;
+		text-align: center;
+		&:hover {
+			color: lighten(#9f9bff, 5%);
+		}
+	}
+	.success-tick {
+		position: absolute;
+		top: 56px;
+    left: 50%;    
+    width: 50px;
+    height: 42px;
+    margin-left: -21px;
+		@include transform(scale(0.7));
+		@include opacity(0);
+	}
+	.email-delivery-animation {
+		position: relative;
+		width: 70%;
+		margin-top: 35px;
+    margin-bottom: 30px;
+		margin-left: 30px;		
+		overflow: visible;
+		opacity: 0;
+	}
+	.is-reset-password-confirmation {
+		.email-delivery-animation {
+			opacity: 1;
+			@include transform(translateX(300px));
+			transition: transform 0.4s 1.7s ease-in, opacity 0.5s;
+		}		
+		.email-delivery-animation--email {
+			animation: mail-deliver 0.6s 0.8s forwards;
+		}
+		.email-delivery-animation--van-body {
+			animation: van-shake 0.6s 1.3s;
+		}
+		.success-tick {
+			@include opacity(1);
+			@include transform(scale(1));
+			transition: opacity 0.4s 2.2s, transform 0.4s 2.2s;
+		}
+	}
+}

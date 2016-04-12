@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Account Details</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			
+			<div class="page-my-account page-my-account--details">
+				<div class="grid-container">
+					<header class="my-account__header">
+						<div>
+							<h1 class="page-title heading-style--heading-three">My Account</h1>
+							<h2 class="page-sub-title">Review or update your account details and settings</h1>
+						</div>
+						<div class="toggle-container">
+							<div class="filter-toggle filter-toggle--with-text filter-toggle--large">
+								<div class="toggle">
+									<input id="toggle--show-popla" name="radiolarge" checked="" type="radio">
+									<label for="toggle--show-popla" onclick="location.replace('v2-account-details.html');">
+										Account Details
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-users" name="radiolarge" type="radio">
+									<label for="toggle--show-users" onclick="location.replace('v2-account-licenses.html');">
+										Licenses
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-share" name="radiolarge" type="radio">
+									<label for="toggle--show-share" onclick="location.replace('v2-account-share.html');">
+										Sharing My Data
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-subscriptions" name="radiolarge" type="radio">
+									<label for="toggle--show-subscriptions" onclick="location.replace('v2-account-billing.html');">
+										Billing Details
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-notifications" name="radiolarge" type="radio">
+									<label for="toggle--show-notifications" onclick="location.replace('v2-account-manage-notifications.html');">
+										Manage Notfications
+									</label>
+								</div>
+							</div>
+						</div>
+					</header>
+
+					<section class="grid__column grid__column--one-third">
+ 						<h2 class="heading-style--heading-five my-account-section-title">Personal Details</h2>	 					
+	 					<form class="reflection-form">
+	 						<div class="form-field--split">
+			 					<div class="form-field">
+									<input type="text" name="firstname" id="firstname" autocomplete="off" value="Johnathan" />
+									<label for="username">First Name</label>
+								</div>
+								<div class="form-field">						
+									<input type="text" name="lastname" id="lastname" autocomplete="off" value="Barnes" />
+									<label for="lastname">Last Name</label>
+								</div>
+							</div>
+							<div class="form-field">						
+								<input type="text" name="company" id="company" autocomplete="off" value="Electronic Arts" />
+								<label for="company">Company</label>
+							</div>
+							<div class="form-field">						
+								<input type="email" name="email" id="email" autocomplete="off" value="johnathanbarnes@electronicarts.com"/>
+								<label for="email">Email</label>
+							</div>
+							<button class="ref-button--primary--medium">
+		 						Save Changes
+		 					</button>
+						</form>
+					</section>
+
+					<section class="grid__column grid__column--one-third">
+ 						<h2 class="heading-style--heading-five my-account-section-title">Change Password</h2>	 					
+	 					<form class="reflection-form">
+		 					<div class="form-field">						
+								<input type="password" name="currentPassword" id="currentPassword" autocomplete="off" />
+								<label for="currentPassword">Enter Current password</label>
+							</div>
+							<div class="form-field">
+								<input type="password" name="newPassword" id="newPassword" autocomplete="off" class="js-mock-change-password"/>
+								<label for="newPassword">
+									Enter New Password
+									<div class="password-strength-indicator-container">
+										<span class="password-strength-description">Ok</span>
+										<div class="password-strength-indicator"><span class="is-ok"></span></div>
+									</div>
+								</label>
+							</div>
+							<button class="ref-button--primary--medium is-disabled">
+		 						Create New Password
+		 					</button>
+						</form>
+					</section>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="grid-container" id="js-component-import--global-footer"></div>
+	</div>	
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script>
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--account-container').find('a[href="v2-account-details.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
+
+  		new Page();
+  		new FormInteractions();
+  		
+  		$('.js-mock-change-password').each(function(){
+  			$(this).on("keyup", function(){
+  				$("button.is-disabled").removeClass("is-disabled");
+  			});  			
+  		});
+  	}
+  	window.onready = initScripts();
+  </script>
+</body>
