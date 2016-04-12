@@ -5,6 +5,17 @@
 		padding-bottom: 1.2rem;		
 		border-bottom: 1px solid $divider-grey;
 	}
+	&.page-my-lists {
+		.my-account__header {
+			padding-bottom: 0;
+		}
+		.account-summary-action__license-info:last-child {
+			border-right: 0;
+		}
+		.account-summary-action__license-info:first-of-type span:first-child {
+			color: $dark-grey-2;
+		}
+	}
 	.page-title,
 	.page-sub-title {
 		display: inline-block;
@@ -22,6 +33,11 @@
 		font-size: 14px;
 		font-weight: 400;
 		color: #5a5a68;
+	}
+	&.page-my-lists {
+		.page-sub-title {
+			padding-top: 1.5rem;
+		}		
 	}
 	.my-account-section-title {
 		margin-bottom: 1.3rem;
@@ -42,6 +58,9 @@
 		display: inline-block;
 		vertical-align: top;
 		float: right;
+	}
+	.page-my-lists & {
+		padding-top: 3px;
 	}
 }
 .account-details__summary {	
@@ -134,18 +153,23 @@
     top: 4px;
 	}
 	.licenses-data-cell--actions,
-	.share-data-cell--actions {
+	.share-data-cell--actions,
+	.my-lists-data-cell--actions {
 		a:first-child {
 			margin-right: 4px;
-		}
-		.account-remove-link {
-			color: $reflection-red;
-		}
+		}		
+	}
+	.account-remove-link {
+		color: $reflection-red;
 	}
 	.licenses-data-cell--actions {
 		max-width: 100px;
 	}
-	.licenses-data-row--unassigned {
+	.my-lists-data-cell--actions {
+		max-width: 80px;
+	}	
+	.licenses-data-row--unassigned,
+	.my-lists-data-row--default {
 		background-color: #f2f2fb;
 		border-top: 2px solid $reflection-white;
 		&:nth-child(odd) {
@@ -208,7 +232,8 @@
 		}
 	}
 }
-.ref-table tbody .licenses-data-row--divider-row {
+.ref-table tbody .licenses-data-row--divider-row,
+.ref-table tbody .my-lists-data-row--divider-row {
 	border-top: solid 15px $reflection-white;
 	border-bottom: solid 15px $reflection-white;
 	td {
@@ -216,3 +241,38 @@
 		background-color: $divider-grey;
 	}
 }
+.ref-table--my-lists tbody {
+	tr:nth-child(even) {
+		background-color: $panel-grey;
+		&.my-lists-data-row--default {
+			background-color: #f2f2fb;
+		}
+	}
+	tr:nth-child(odd) {
+		background-color: $reflection-white;
+		&.my-lists-data-row--default {
+			background-color: #f2f2fb;
+		}
+	}
+	.my-lists-data-row--default {
+		td:first-child {
+			img, span {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.icon-apps-follow {
+				position: relative;
+    		top: 2px;
+				width: 24px;
+				height: 24px;
+				margin-left: 2px;
+    		margin-right: 16px;
+			}
+			.icon-publishers-follow {
+				width: 28px;
+				height: 28px;
+				margin-right: 14px;
+			}
+		}
+	}
+}		
