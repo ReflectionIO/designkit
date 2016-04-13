@@ -5,7 +5,8 @@
 		padding-bottom: 1.2rem;		
 		border-bottom: 1px solid $divider-grey;
 	}
-	&.page-my-lists {
+	&.page-my-lists,
+	&.page-linked-accounts {
 		.my-account__header {
 			padding-bottom: 0;
 		}
@@ -34,7 +35,8 @@
 		font-weight: 400;
 		color: #5a5a68;
 	}
-	&.page-my-lists {
+	&.page-my-lists,
+	&.page-linked-accounts {
 		.page-sub-title {
 			padding-top: 1.5rem;
 		}		
@@ -53,13 +55,15 @@
 	display: inline-block;
 	vertical-align: top;
 	float: right;
-	> a {
+	> a,
+	> .form-field--search {
 		margin-left: 10px;
 		display: inline-block;
 		vertical-align: top;
 		float: right;
 	}
-	.page-my-lists & {
+	.page-my-lists &,
+	.page-linked-accounts & {
 		padding-top: 3px;
 	}
 }
@@ -152,12 +156,8 @@
 		position: relative;
     top: 4px;
 	}
-	.licenses-data-cell--actions,
-	.share-data-cell--actions,
-	.my-lists-data-cell--actions {
-		a:first-child {
-			margin-right: 4px;
-		}		
+	.ref-button--secondary--small:first-child {
+		margin-right: 4px;
 	}
 	.account-remove-link {
 		color: $reflection-red;
@@ -185,8 +185,58 @@
 			}
 		}
 	}
+	.my-lists-data-row--default td {
+    padding-top: 11px;
+    padding-bottom: 12px;
+	}
 	.share-data-cell--actions {
 		max-width: 80px;
+	}
+	.linked-accounts-cell--actions {
+		max-width: 100px;
+	}
+	.linked-accounts-cell--store {
+		span {
+			font-weight: 400;
+			display: inline-block;
+			vertical-align: middle;
+			&:before {
+				color: $light-grey-1;
+			}
+		}
+		.ref-icon-before--apple:before {
+	    margin-right: 9px;
+  		font-size: 20px;
+		}
+		.ref-icon-before--play-store:before {
+      margin-right: 8px;	    
+	    margin-left: 3px;
+	    font-size: 18px;
+		}
+	}
+	.linked-accounts-cell--status {
+		font-weight: 700;
+		span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		span:before {
+			margin-right: 9px;
+  		font-size: 15px;
+		}
+		.ref-icon-before--tick:before {
+			color: $reflection-green;
+			font-size: 17px;
+		}
+		.ref-icon-before--minus:before {
+			color: $reflection-red;
+		}
+		.ref-icon-before--cog {		
+			color: $neutral-colour;
+			&:before {
+				margin-right: 11px;
+			}
+		}
 	}
 }
 .account-summary-action__license-info {
@@ -278,4 +328,7 @@
 			}
 		}
 	}
-}		
+}
+.page-linked-accounts .ref-table {
+	margin-bottom: 2rem;
+}
