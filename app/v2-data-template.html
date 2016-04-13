@@ -38,7 +38,7 @@
 		<div id="main" class="l-main" role="main">
 			<div class="page-data-dashboard">
 				<div class="grid-container">
-					<h1 class="heading-style--heading-two page-title">My Apps</h1>
+					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">My Apps</h1>
 					
 					<div class="toggle-container page-header__page-toggle">
 						<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
@@ -61,6 +61,7 @@
 					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span>
 
 					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+					<a href="v2-my-lists.html" class="page-header__text-link js-mock-show-for-my-list-view-only">Back to My Lists</a>
 				</div>
 
 				<div class="grid__row overflow-visible">
@@ -1072,6 +1073,15 @@
   		// mock menu select
   		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-data-template.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+		  // hide elements that should only show if you're viewing a list
+		  // if viewing my list get #from URL
+		  if(window.location.hash != "#show-list") {
+		  	$('.js-mock-show-for-my-list-view-only').hide();		  	
+		  } else {
+		  	$('.js-mock-change-heading-for-list-page').text("Football Games List (4 Apps)");
+		  }
+
 
   		new Page();
   		new AllDropDowns();
