@@ -137,10 +137,10 @@
 
 	<div class="page-overlay js-page-overlay--link">
 		<div class="page-popup">
-			<div class="popup-content">
-				<h2 class="heading-style--heading-five">Link App Store Account <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Link Your Appstore Account" data-whatsthis="Some helpful content here"><span>What's this?</span></a></h2>
+			<div class="popup-content">				
 				<div class="popup-sections-container js-popup-sections-container">
 					<div class="popup-section">
+						<h2 class="heading-style--heading-five">Link App Store Account <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Link Your Appstore Account" data-whatsthis="Some helpful content here"><span>What's this?</span></a></h2>
 						<form>
 							<div class="form-filter form-field--select">
 								<select class="js-select-box" id="countryselect">
@@ -169,26 +169,31 @@
 									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Account Password" data-whatsthis="Some helpful content here"><span>What's this?</span></a>
 								</div>
 							</div>
-							<p><a href="#">Help Linking an iTunes Connect Account</a></p>
-							<button class="ref-button--secondary--large js-popup-close">
+							<p class="popup-text-link"><a href="#">Help Linking an iTunes Connect Account</a></p>
+							<button class="ref-button--secondary--large button-medium-width js-popup-close">
 		 						Back
 		 					</button>
-							<button class="ref-button--primary--large js-navigate-to-popup-section" data-popup-section="1">
+							<button class="ref-button--primary--large button-medium-width js-navigate-to-popup-section" data-popup-section="1">
 		 						Link
 		 					</button>
 						</form>
 					</div>
 					<div class="popup-section">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 61 54" enable-background="new 0 0 61 54" xml:space="preserve" class="success-tick"><path fill="#1BC79F" d="M60.6,7.4l-8.1-7.1C52.2,0.1,51.9,0,51.6,0c-0.3,0-0.6,0.2-0.9,0.4L21.3,33.8L10.9,20
+						c-0.2-0.3-0.5-0.4-0.8-0.5c-0.3,0-0.7,0-0.9,0.2l-8.6,6.5c-0.6,0.4-0.7,1.2-0.2,1.7l19.4,25.5c0.2,0.3,0.6,0.5,1,0.5c0,0,0,0,0,0
+						c0.4,0,0.7-0.2,0.9-0.4L60.7,9.2C61.2,8.7,61.1,7.9,60.6,7.4z"></path></svg>
 						<h2 class="heading-style--heading-five">You Are Now a Publisher Member</h2>
 						<p>We're just compiling your apps and will let you know when they're are ready to view in 'My Data'. It will only take a few minutes.</p>
-						<a href="#" class="ref-button--secondary--medium">
+						<a href="v2-live-charts.html" class="ref-button--secondary--medium">
 	 						Continue to Live App Chart
 	 					</a>
-	 					<p><a href="#" class="js-navigate-to-popup-section"  data-popup-section="0">Link Another Account</a></p>
+	 					<p class="popup-text-link"><a href="#" class="js-navigate-to-popup-section"  data-popup-section="0">Link Another Account</a></p>
 					</div>
 				</div>
 				<aside class="popup-alert-message">
-					<p>Linked account credentials are securely stored by Reflection and your data is never shared</p>
+					<p class="p-with-inline-svg-img">
+						<img src="images/v2/icon-padlock@2x.png" alt="Padlock icon" />
+						<span>Linked account credentials are securely stored by Reflection and your data is never shared</span></p>
 				</aside>
 				<a href="#" class="popup-close js-popup-close"><span class="ref-icon-after--close">Close</span></a>
 			</div>
@@ -244,10 +249,11 @@
   			new WhatsThisPopup($(this));
   		});
 
+			var popupSectionWidth = 372;
   		$('.js-navigate-to-popup-section').on("click", function(e){
   			e.preventDefault();
   			var sectionToMoveTo = $(this).data("popup-section");
-  			var moveLeftBy = -333 * sectionToMoveTo;
+  			var moveLeftBy = -popupSectionWidth * sectionToMoveTo;
   			$(this).parents(".js-popup-sections-container").css("left", moveLeftBy + "px");
   		});
   	}
