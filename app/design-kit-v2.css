@@ -5496,29 +5496,36 @@ svg.loading-ellipsis .dot-3 {
   position: relative;
 }
 /* line 23, sass/components-v2/_multi-step-section.scss */
-.multi-step-section .heading-style--heading-five {
-  margin-bottom: 2rem;
+.multi-step-section .animation-hamster,
+.multi-step-section .hamster-wheel, .multi-step-section.is-viewed-step .animation-hamster, .multi-step-section.is-viewed-step .hamster-wheel {
+  position: absolute;
+  top: 40px;
 }
-/* line 25, sass/components-v2/_multi-step-section.scss */
-.popup-content .multi-step-section .heading-style--heading-five {
+/* line 30, sass/components-v2/_multi-step-section.scss */
+.multi-step-section .heading-style--heading-five {
   margin-bottom: 1.7rem;
 }
-/* line 28, sass/components-v2/_multi-step-section.scss */
+/* line 32, sass/components-v2/_multi-step-section.scss */
 .multi-step-section .heading-style--heading-five .whats-this-tooltip-icon {
   margin-left: 5px;
   margin-top: -3px;
 }
-/* line 33, sass/components-v2/_multi-step-section.scss */
+/* line 37, sass/components-v2/_multi-step-section.scss */
+.multi-step-section .multi-step-section__heading,
+.multi-step-section .heading-style--heading-five.multi-step-section__heading {
+  margin-bottom: 2.4rem;
+}
+/* line 41, sass/components-v2/_multi-step-section.scss */
 .multi-step-section p {
   margin-bottom: 2.9rem;
   font-size: 1.4rem;
 }
-/* line 37, sass/components-v2/_multi-step-section.scss */
+/* line 45, sass/components-v2/_multi-step-section.scss */
 .multi-step-section .secondary-filter {
   width: 100%;
   margin-bottom: 1.5rem;
 }
-/* line 41, sass/components-v2/_multi-step-section.scss */
+/* line 49, sass/components-v2/_multi-step-section.scss */
 .multi-step-section .popup-text-link {
   width: 100%;
   margin-top: 18px;
@@ -5530,39 +5537,39 @@ svg.loading-ellipsis .dot-3 {
   line-height: 1.2;
   text-align: center;
 }
-/* line 51, sass/components-v2/_multi-step-section.scss */
+/* line 59, sass/components-v2/_multi-step-section.scss */
 .multi-step-section .popup-text-link:last-child {
   margin-bottom: 0;
 }
-/* line 55, sass/components-v2/_multi-step-section.scss */
+/* line 63, sass/components-v2/_multi-step-section.scss */
 .multi-step-section input, .multi-step-section label {
   text-align: left;
 }
-/* line 58, sass/components-v2/_multi-step-section.scss */
+/* line 66, sass/components-v2/_multi-step-section.scss */
 .multi-step-section button, .multi-step-section input[type=submit] {
   margin-top: 2rem;
   text-align: center;
 }
-/* line 62, sass/components-v2/_multi-step-section.scss */
+/* line 70, sass/components-v2/_multi-step-section.scss */
 .multi-step-section .button-medium-width {
   margin-left: 0;
   margin-right: 0;
   display: inline-block;
   vertical-align: top;
 }
-/* line 67, sass/components-v2/_multi-step-section.scss */
+/* line 75, sass/components-v2/_multi-step-section.scss */
 .multi-step-section .button-medium-width:first-of-type {
   margin-right: 10px;
 }
-/* line 71, sass/components-v2/_multi-step-section.scss */
+/* line 79, sass/components-v2/_multi-step-section.scss */
 .multi-step-section p + button, .multi-step-section p + button + button {
   margin-top: 0;
 }
-/* line 74, sass/components-v2/_multi-step-section.scss */
+/* line 82, sass/components-v2/_multi-step-section.scss */
 .multi-step-section .form-field--checkbox-list {
   text-align: left;
 }
-/* line 77, sass/components-v2/_multi-step-section.scss */
+/* line 85, sass/components-v2/_multi-step-section.scss */
 .multi-step-section .success-tick {
   width: 50px;
   margin-top: 35px;
@@ -5573,12 +5580,12 @@ svg.loading-ellipsis .dot-3 {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 83, sass/components-v2/_multi-step-section.scss */
+/* line 91, sass/components-v2/_multi-step-section.scss */
 .multi-step-section .success-tick + .heading-style--heading-four,
 .multi-step-section .success-tick + .heading-style--heading-five {
   margin-top: 0;
 }
-/* line 89, sass/components-v2/_multi-step-section.scss */
+/* line 97, sass/components-v2/_multi-step-section.scss */
 .multi-step-section.is-success .success-tick {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
@@ -5587,6 +5594,76 @@ svg.loading-ellipsis .dot-3 {
   transform: scale(1);
   -webkit-transition: opacity 0.4s 0.3s, -webkit-transform 0.4s 0.3s;
           transition: opacity 0.4s 0.3s, transform 0.4s 0.3s;
+}
+
+/* line 104, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb {
+  margin-bottom: 2rem;
+}
+/* line 106, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb li {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  border: 1px solid #c4c7d0;
+  border-right-width: 0px;
+}
+/* line 114, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb li:first-child {
+  border-radius: 4px 0 0 4px;
+  z-index: 10;
+}
+/* line 118, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb li:last-child {
+  border-radius: 0 4px 4px 0;
+  border-right: 1px solid #c4c7d0;
+}
+/* line 123, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb a {
+  position: relative;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: block;
+  overflow: visible;
+  width: 100%;
+  color: #5a5a68;
+  background-color: #f2f7f7;
+}
+/* line 132, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb a:after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -23px;
+  width: 0;
+  height: 0;
+  border: 16px solid transparent;
+  border-left: 6px solid #f2f7f7;
+}
+/* line 143, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb .multi-step-breadcrumb__current-item {
+  font-weight: 600;
+  border: 1px solid #5551a4;
+}
+/* line 146, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb .multi-step-breadcrumb__current-item a {
+  color: #fcfdfd;
+  background-color: #6d69c5;
+}
+/* line 149, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb .multi-step-breadcrumb__current-item a:after {
+  border-left: 6px solid #6d69c5;
+}
+/* line 153, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb .multi-step-breadcrumb__current-item:last-child {
+  border-right: 1px solid #5551a4;
+}
+
+/* line 158, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb__one-half {
+  width: 50%;
 }
 
 /* line 1, sass/components-v2/_no-data-section.scss */
@@ -9269,13 +9346,7 @@ a:hover .summary-widget__data-item__app-name {
   margin-bottom: 1.9rem;
 }
 
-/* line 371, sass/templates-v2/_my-account--my-list.scss */
-.multi-step-section--link-account-loading.is-viewed-step .animation-hamster, .multi-step-section--link-account-loading.is-viewed-step .hamster-wheel {
-  position: absolute;
-  top: 40px;
-}
-
-/* line 377, sass/templates-v2/_my-account--my-list.scss */
+/* line 370, sass/templates-v2/_my-account--my-list.scss */
 .multi-step-section .link-account-multi-step__loading-button,
 .link-account-multi-step__loading-button {
   margin-top: 230px;

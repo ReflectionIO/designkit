@@ -73,8 +73,8 @@
 												</div>
 											</label>
 										</div>
-										<button class="ref-button--primary--large button-full-width js-mock-next-step" data-move-to-section="1">
-					 						Sign Up
+										<button class="ref-button--primary--large button-full-width js-mock-next-step" data-move-to-section="1" data-fake-loading="1">
+					 						Next
 					 					</button>
 					 					<p class="popup-text-link"><a href="#">Already a Member? Log in</a></p>
 									</form>
@@ -105,7 +105,7 @@
 							</div>
 
 							<div class="multi-step-section">
-								<h2 class="heading-style--heading-five">Link App Store Account <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Link App Store Account" data-whatsthis="Link an App Store account to get started. You can link further App Store or Ad Network accounts later on in Account settings."><span>What's this?</span></a></h2>
+								<h2 class="heading-style--heading-five multi-step-section__heading">Link App Store Account <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Link App Store Account" data-whatsthis="Link an App Store account to get started. You can link further App Store or Ad Network accounts later on in Account settings."><span>What's this?</span></a></h2>
 								<form>
 									<div class="secondary-filter secondary-filter--large form-field--select">
 										<select class="js-select-box">
@@ -137,12 +137,12 @@
 									<button class="ref-button--secondary--large button-medium-width js-mock-next-step" data-move-to-section="2" data-moving-back="1">
 				 						Back
 				 					</button>
-									<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="4">
+									<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="4" data-fake-loading="1">
 				 						Link
 				 					</button>
 								</form>
 							</div>
-							<div class="multi-step-section multi-step-section--link-account-loading">
+							<div class="multi-step-section">
 								<div class="hamster-wheel">
 									<img src="images/hamster-wheel.png" alt="hamster wheel" />
 								</div>
@@ -228,9 +228,10 @@
 				e.preventDefault();
 				var sectionToMoveTo = $(this).data("move-to-section");
   			var moveLeftBy = -popupSectionWidth * sectionToMoveTo;
-  			var stepsContainer = $(this).parents(".js-multi-step-container").css("left", moveLeftBy + "px");  			
+  			var stepsContainer = $(this).parents(".js-multi-step-container").css("left", moveLeftBy + "px");
+  			var fakeLoading = $(this).data("fake-loading");
 
-  			if(sectionToMoveTo == 1 || sectionToMoveTo == 4) { // automate loading with pause
+  			if(fakeLoading) { // automate loading with pause
 
   				var nextViewedStep = sectionToMoveTo + 1;
   				var nextViewedStepAfterLoading = sectionToMoveTo + 2;
