@@ -41,8 +41,8 @@
 					<h1 class="page-title"><img src="images/v2/logo-reflection-large@2x.png" alt="Reflection" class="logo-reflection-content-header" /></h1>
 					<h2 class="page-sub-title">Get App Market Data &amp; Insight Now</h2>
 					<div class="sign-up-steps-container">
-						<div class="multi-step-container">
-							<div class="multi-step-section">
+						<div class="multi-step-container js-multi-step-container">
+							<div class="multi-step-section is-viewed-step">
 								<div class="sign-up-step">
 									<form class="reflection-form">
 				 						<div class="form-field--split">
@@ -73,7 +73,7 @@
 												</div>
 											</label>
 										</div>
-										<button class="ref-button--primary--large button-full-width">
+										<button class="ref-button--primary--large button-full-width js-mock-next-step" data-move-to-section="1">
 					 						Sign Up
 					 					</button>
 					 					<p class="popup-text-link"><a href="#">Already a Member? Log in</a></p>
@@ -86,7 +86,87 @@
 									<img src="images/hamster-wheel.png" alt="hamster wheel" />
 								</div>
 								<div class="animation-hamster"></div>
+								<button class="ref-button--primary--large button-full-width is-loading sign-up-steps-container__loading-button" disabled>
+			 						Processing...
+			 					</button>
+			 					<p class="popup-text-link"><a href="#" class="js-mock-next-step" data-move-to-section="0" data-moving-back="1">Cancel</a></p>
 							</div>
+
+							<div class="multi-step-section js-multi-step-section-confirmation">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 61 54" enable-background="new 0 0 61 54" xml:space="preserve" class="success-tick"><path fill="#1BC79F" d="M60.6,7.4l-8.1-7.1C52.2,0.1,51.9,0,51.6,0c-0.3,0-0.6,0.2-0.9,0.4L21.3,33.8L10.9,20
+								c-0.2-0.3-0.5-0.4-0.8-0.5c-0.3,0-0.7,0-0.9,0.2l-8.6,6.5c-0.6,0.4-0.7,1.2-0.2,1.7l19.4,25.5c0.2,0.3,0.6,0.5,1,0.5c0,0,0,0,0,0
+								c0.4,0,0.7-0.2,0.9-0.4L60.7,9.2C61.2,8.7,61.1,7.9,60.6,7.4z"></path></svg>
+								<h2 class="heading-style--heading-four">Welcome Aboard Jan!</h2>
+								<p>If you have an app store account you can link it now to get powerful analytics for your own apps</p>
+								<a href="#" class="ref-button--primary--medium sign-up-steps-container__link-store-button js-mock-next-step" data-move-to-section="3">
+			 						Link App Store Account
+			 					</a>
+			 					<p class="popup-text-link"><a href="v2-live-charts.html">Continue to the Live App Chart</a></p>
+							</div>
+
+							<div class="multi-step-section">
+								<h2 class="heading-style--heading-five">Link App Store Account <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Link App Store Account" data-whatsthis="Link an App Store account to get started. You can link further App Store or Ad Network accounts later on in Account settings."><span>What's this?</span></a></h2>
+								<form>
+									<div class="secondary-filter secondary-filter--large form-field--select">
+										<select class="js-select-box">
+									    <option value="ios" selected>iTunes Connect</option>
+									    <option value="goo">Google Play</option>
+									    <option value="ama">Amazon App Store</option>
+										</select>
+									</div>
+									<div class="reflection-form">								
+										<div class="form-field">
+											<input type="text" name="accountName" id="accountName" autocomplete="off" />
+											<label for="uname">Create Name for Account</label>
+											<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Create Name" data-whatsthis="Some helpful content here"><span>What's this?</span></a>
+										</div>
+					 					<div class="form-field">						
+											<input type="text" name="appleid" id="appleid" autocomplete="off" />
+											<label for="uname">Apple ID</label>
+											<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Apple ID" data-whatsthis="Some helpful content here"><span>What's this?</span></a>
+										</div>
+										<div class="form-field">
+											<input type="password" name="accountpassword" id="accountpassword" autocomplete="off" />
+											<label for="accountpassword">
+												Account Password
+											</label>
+											<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Account Password" data-whatsthis="Some helpful content here"><span>What's this?</span></a>
+										</div>
+									</div>
+									<p class="popup-text-link"><a href="#">Help Linking an iTunes Connect Account</a></p>
+									<button class="ref-button--secondary--large button-medium-width js-mock-next-step" data-move-to-section="2" data-moving-back="1">
+				 						Back
+				 					</button>
+									<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="4">
+				 						Link
+				 					</button>
+								</form>
+							</div>
+							<div class="multi-step-section multi-step-section--link-account-loading">
+								<div class="hamster-wheel">
+									<img src="images/hamster-wheel.png" alt="hamster wheel" />
+								</div>
+								<div class="animation-hamster"></div>
+								<button class="ref-button--primary--large button-full-width is-loading link-account-multi-step__loading-button" disabled>
+			 						Processing...
+			 					</button>
+			 					<p class="popup-text-link"><a href="#" class="js-mock-next-step" data-move-to-section="3">Cancel</a></p>
+							</div>
+							<div class="multi-step-section js-multi-step-section-confirmation">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 61 54" enable-background="new 0 0 61 54" xml:space="preserve" class="success-tick"><path fill="#1BC79F" d="M60.6,7.4l-8.1-7.1C52.2,0.1,51.9,0,51.6,0c-0.3,0-0.6,0.2-0.9,0.4L21.3,33.8L10.9,20
+								c-0.2-0.3-0.5-0.4-0.8-0.5c-0.3,0-0.7,0-0.9,0.2l-8.6,6.5c-0.6,0.4-0.7,1.2-0.2,1.7l19.4,25.5c0.2,0.3,0.6,0.5,1,0.5c0,0,0,0,0,0
+								c0.4,0,0.7-0.2,0.9-0.4L60.7,9.2C61.2,8.7,61.1,7.9,60.6,7.4z"></path></svg>
+								<h2 class="heading-style--heading-five">You Are Now a Publisher Member</h2>
+								<p>We're just compiling your apps and will let you know when they're are ready to view in 'My Data'. It will only take a few minutes.</p>
+								<a href="v2-live-charts.html" class="ref-button--secondary--medium">
+			 						Continue to Live App Chart
+			 					</a>
+			 					<p class="popup-text-link"><a href="#" class="js-mock-next-step" data-move-to-section="3">Link Another Account</a></p>
+							</div>
+						</div>
+						<aside class="popup-alert-message">
+							<p>Linked account credentials are securely stored by Reflection and your data is never shared</p>
+						</aside>
 						</div>
 					</div>
 				</section>
@@ -136,6 +216,57 @@
   		new FormInteractions();
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
+  		});
+  		$('.js-whats-this-tooltip').each(function(){
+  			new WhatsThisPopup($(this));
+  		});
+
+  		// mock multistep form container
+  		var successTimeOut;
+  		var popupSectionWidth = 332;
+  		$('.js-mock-next-step').on("click", function(e){
+				e.preventDefault();
+				var sectionToMoveTo = $(this).data("move-to-section");
+  			var moveLeftBy = -popupSectionWidth * sectionToMoveTo;
+  			var stepsContainer = $(this).parents(".js-multi-step-container").css("left", moveLeftBy + "px");  			
+
+  			if(sectionToMoveTo == 1 || sectionToMoveTo == 4) { // automate loading with pause
+
+  				var nextViewedStep = sectionToMoveTo + 1;
+  				var nextViewedStepAfterLoading = sectionToMoveTo + 2;
+  				stepsContainer.css("left", "-" + popupSectionWidth * sectionToMoveTo + "px");
+  				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
+	  			stepsContainer.find(".multi-step-section:nth-child(" + nextViewedStep + ")").addClass("is-viewed-step");
+  				
+  				clearTimeout(successTimeOut);
+
+  				successTimeOut = setTimeout(function(){
+	  				stepsContainer.css("left", "-" + popupSectionWidth * nextViewedStep + "px");
+	  				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
+	  				stepsContainer.find(".multi-step-section:nth-child(" + nextViewedStepAfterLoading + ")").addClass("is-viewed-step");
+	  				$('.js-multi-step-section-confirmation').addClass("is-success");
+	  			}, 3000);
+
+  			} else {
+
+  				var nextSection = sectionToMoveTo + 1;
+  				var lastSection = sectionToMoveTo;
+  				clearTimeout(successTimeOut);
+  				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
+  				stepsContainer.find(".multi-step-section:nth-child(" + nextSection + ")").addClass("is-viewed-step");				
+  				stepsContainer.css("left", "-" + popupSectionWidth * sectionToMoveTo + "px");
+  				if(sectionToMoveTo != 2) {
+  					$('.js-multi-step-section-confirmation').removeClass("is-success");
+  				} else {
+  					$('.js-multi-step-section-confirmation').addClass("is-success");
+  				}
+  			}
+
+  			if(sectionToMoveTo >= 3) {
+  				$('.js-multi-step-container').addClass("show-popup-alert-message");
+  			} else {
+  				$('.js-multi-step-container').removeClass("show-popup-alert-message");
+  			}
   		});
   	}
 

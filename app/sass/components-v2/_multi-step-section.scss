@@ -1,10 +1,30 @@
 .multi-step-container {
+	position: relative;
+	left: 0;
 	width: 2000px;
+	font-size: 0;
+	text-align: left;
+	transition: left 0.3s;
 }
 .multi-step-section {
+	position: relative;
 	margin-right: 30px;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	> * {
+		position: absolute;
+	}
+	&.is-viewed-step {
+		> * {
+			position: relative;
+		}
+	}
 	.heading-style--heading-five {
 		margin-bottom: 2rem;
+		.popup-content & {
+			margin-bottom: 1.7rem;
+		}
 		.whats-this-tooltip-icon {
 			margin-left: 5px;
     	margin-top: -3px;
@@ -13,6 +33,10 @@
 	p {
 		margin-bottom: 2.9rem;
 		font-size: 1.4rem;    
+	}
+	.secondary-filter {
+		width: 100%;
+    margin-bottom: 1.5rem;
 	}
 	.popup-text-link {
 		width: 100%;
@@ -54,8 +78,18 @@
 		width: 50px;
 		margin-top: 35px;
     margin-bottom: 18px;
+    @include transform(scale(0.7));
+		@include opacity(0);
+		+ .heading-style--heading-four,
 		+ .heading-style--heading-five {
 			margin-top: 0;
+		}
+	}
+	&.is-success {
+		.success-tick {
+			@include opacity(1);
+			@include transform(scale(1));
+			transition: opacity 0.4s 0.3s, transform 0.4s 0.3s;
 		}
 	}
 }
