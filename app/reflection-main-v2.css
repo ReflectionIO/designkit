@@ -5608,19 +5608,31 @@ svg.loading-ellipsis .dot-3 {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 13px;
   border: 1px solid #c4c7d0;
-  border-right-width: 0px;
+  border-right: 0;
 }
 /* line 114, sass/components-v2/_multi-step-section.scss */
 .multi-step-breadcrumb li:first-child {
   border-radius: 4px 0 0 4px;
   z-index: 10;
 }
-/* line 118, sass/components-v2/_multi-step-section.scss */
+/* line 117, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb li:first-child a {
+  border-radius: 4px 0 0 4px;
+}
+/* line 121, sass/components-v2/_multi-step-section.scss */
 .multi-step-breadcrumb li:last-child {
   border-radius: 0 4px 4px 0;
   border-right: 1px solid #c4c7d0;
 }
-/* line 123, sass/components-v2/_multi-step-section.scss */
+/* line 124, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb li:last-child a {
+  border-radius: 0 4px 4px 0;
+}
+/* line 126, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb li:last-child a:after {
+  display: none;
+}
+/* line 132, sass/components-v2/_multi-step-section.scss */
 .multi-step-breadcrumb a {
   position: relative;
   padding-top: 8px;
@@ -5631,37 +5643,56 @@ svg.loading-ellipsis .dot-3 {
   color: #5a5a68;
   background-color: #f2f7f7;
 }
-/* line 132, sass/components-v2/_multi-step-section.scss */
+/* line 141, sass/components-v2/_multi-step-section.scss */
 .multi-step-breadcrumb a:after {
   content: '';
   position: absolute;
   top: -1px;
-  right: -23px;
+  right: -22px;
   width: 0;
   height: 0;
   border: 16px solid transparent;
   border-left: 6px solid #f2f7f7;
 }
-/* line 143, sass/components-v2/_multi-step-section.scss */
+/* line 152, sass/components-v2/_multi-step-section.scss */
 .multi-step-breadcrumb .multi-step-breadcrumb__current-item {
   font-weight: 600;
   border: 1px solid #5551a4;
+  border-right: 0;
 }
-/* line 146, sass/components-v2/_multi-step-section.scss */
+/* line 156, sass/components-v2/_multi-step-section.scss */
 .multi-step-breadcrumb .multi-step-breadcrumb__current-item a {
   color: #fcfdfd;
   background-color: #6d69c5;
+  cursor: default;
 }
-/* line 149, sass/components-v2/_multi-step-section.scss */
+/* line 160, sass/components-v2/_multi-step-section.scss */
 .multi-step-breadcrumb .multi-step-breadcrumb__current-item a:after {
   border-left: 6px solid #6d69c5;
 }
-/* line 153, sass/components-v2/_multi-step-section.scss */
+/* line 165, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb .multi-step-breadcrumb__current-item:first-child a {
+  border-radius: 0;
+}
+/* line 169, sass/components-v2/_multi-step-section.scss */
 .multi-step-breadcrumb .multi-step-breadcrumb__current-item:last-child {
   border-right: 1px solid #5551a4;
 }
+/* line 171, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb .multi-step-breadcrumb__current-item:last-child a {
+  border-radius: 0;
+}
+/* line 173, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb .multi-step-breadcrumb__current-item:last-child a:after {
+  display: none;
+}
+/* line 180, sass/components-v2/_multi-step-section.scss */
+.multi-step-breadcrumb .multi-step-breadcrumb__disabled a {
+  color: #bbbfc8;
+  cursor: default;
+}
 
-/* line 158, sass/components-v2/_multi-step-section.scss */
+/* line 186, sass/components-v2/_multi-step-section.scss */
 .multi-step-breadcrumb__one-half {
   width: 50%;
 }
