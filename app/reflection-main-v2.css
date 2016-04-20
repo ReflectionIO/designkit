@@ -1442,11 +1442,13 @@ input::-ms-clear {
 }
 
 /* line 44, sass/helpers/_helpers.scss */
-.text-link, .ref-table th a, .ref-table--apps .app-data-cell-more .more-data-link, .data-table__app-summary__app-name a, .tooltip--article-list-content, .data-table-section__summary__figures .data-table-section__summary__more-link {
+.text-link, .ref-table th a, .ref-table--apps .app-data-cell-more .more-data-link,
+.ref-table--publishers .app-data-cell-more .more-data-link, .data-table__app-summary__app-name a, .tooltip--article-list-content, .data-table-section__summary__figures .data-table-section__summary__more-link {
   color: #6d69c5;
 }
 /* line 46, sass/helpers/_helpers.scss */
-.text-link:hover, .ref-table th a:hover, .ref-table--apps .app-data-cell-more .more-data-link:hover, .data-table__app-summary__app-name a:hover, .tooltip--article-list-content:hover, .data-table-section__summary__figures .data-table-section__summary__more-link:hover {
+.text-link:hover, .ref-table th a:hover, .ref-table--apps .app-data-cell-more .more-data-link:hover,
+.ref-table--publishers .app-data-cell-more .more-data-link:hover, .data-table__app-summary__app-name a:hover, .tooltip--article-list-content:hover, .data-table-section__summary__figures .data-table-section__summary__more-link:hover {
   color: #4b46b5;
 }
 
@@ -6805,131 +6807,171 @@ a:hover .summary-widget__data-item__app-name {
 }
 
 /* line 36, sass/components-v2/_tables.scss */
-.ref-table--apps {
+.ref-table--apps,
+.ref-table--publishers {
   margin-bottom: 4rem;
 }
-/* line 38, sass/components-v2/_tables.scss */
-.ref-table--apps tr {
+/* line 39, sass/components-v2/_tables.scss */
+.ref-table--apps tr,
+.ref-table--publishers tr {
   border-bottom: 1px solid #fcfdfd;
 }
-/* line 41, sass/components-v2/_tables.scss */
-.ref-table--apps .column-row-selector {
+/* line 42, sass/components-v2/_tables.scss */
+.ref-table--apps .column-row-selector,
+.ref-table--publishers .column-row-selector {
   width: 8.9%;
 }
-/* line 44, sass/components-v2/_tables.scss */
-.ref-table--apps .column-app-name {
-  width: 27.2%;
+/* line 45, sass/components-v2/_tables.scss */
+.ref-table--apps .column-app-name,
+.ref-table--publishers .column-app-name {
+  width: 25.2%;
 }
-/* line 47, sass/components-v2/_tables.scss */
-.ref-table--apps .column-released {
+/* line 48, sass/components-v2/_tables.scss */
+.ref-table--apps .column-released,
+.ref-table--publishers .column-released {
   width: 10.9%;
 }
-/* line 50, sass/components-v2/_tables.scss */
-.ref-table--apps .column-revenue {
+/* line 51, sass/components-v2/_tables.scss */
+.ref-table--apps .column-apps-number,
+.ref-table--publishers .column-apps-number {
+  width: 8.9%;
+}
+/* line 54, sass/components-v2/_tables.scss */
+.ref-table--apps .column-revenue,
+.ref-table--publishers .column-revenue {
   width: 11.7%;
 }
-/* line 53, sass/components-v2/_tables.scss */
-.ref-table--apps .column-downloads {
-  width: 18%;
+/* line 57, sass/components-v2/_tables.scss */
+.ref-table--apps .column-downloads,
+.ref-table--publishers .column-downloads {
+  width: 20%;
 }
-/* line 56, sass/components-v2/_tables.scss */
-.ref-table--apps .column-percentage-of-total {
+/* line 60, sass/components-v2/_tables.scss */
+.ref-table--apps .column-percentage-of-total,
+.ref-table--publishers .column-percentage-of-total {
   width: 23.3%;
 }
-/* line 59, sass/components-v2/_tables.scss */
-.ref-table--apps .revenue-head-cell {
-  padding-left: 3px;
-}
-/* line 62, sass/components-v2/_tables.scss */
+/* line 63, sass/components-v2/_tables.scss */
 .ref-table--apps .revenue-head-cell,
-.ref-table--apps .downloads-head-cell {
+.ref-table--publishers .revenue-head-cell {
+  padding-right: 3rem;
+}
+/* line 66, sass/components-v2/_tables.scss */
+.ref-table--apps .downloads-head-cell,
+.ref-table--publishers .downloads-head-cell {
+  padding-right: 8rem;
+}
+/* line 69, sass/components-v2/_tables.scss */
+.ref-table--apps .revenue-head-cell,
+.ref-table--apps .downloads-head-cell,
+.ref-table--publishers .revenue-head-cell,
+.ref-table--publishers .downloads-head-cell {
+  text-align: right;
   font-size: 1.5rem;
 }
-/* line 67, sass/components-v2/_tables.scss */
-.ref-table--apps .total-for-period-head-cell span {
+/* line 75, sass/components-v2/_tables.scss */
+.ref-table--apps .total-for-period-head-cell span,
+.ref-table--publishers .total-for-period-head-cell span {
   display: inline-block;
 }
-/* line 70, sass/components-v2/_tables.scss */
-.ref-table--apps .total-for-period-head-cell span:first-child {
+/* line 78, sass/components-v2/_tables.scss */
+.ref-table--apps .total-for-period-head-cell span:first-child,
+.ref-table--publishers .total-for-period-head-cell span:first-child {
   margin-bottom: 0.4rem;
   display: block;
   font-size: 1.4rem;
 }
-/* line 75, sass/components-v2/_tables.scss */
-.ref-table--apps .total-for-period-head-cell span:nth-child(2) {
+/* line 83, sass/components-v2/_tables.scss */
+.ref-table--apps .total-for-period-head-cell span:nth-child(2),
+.ref-table--publishers .total-for-period-head-cell span:nth-child(2) {
   color: #ee9063;
   font-size: 1.3rem;
 }
-/* line 79, sass/components-v2/_tables.scss */
-.ref-table--apps .total-for-period-head-cell span:nth-child(3) {
+/* line 87, sass/components-v2/_tables.scss */
+.ref-table--apps .total-for-period-head-cell span:nth-child(3),
+.ref-table--publishers .total-for-period-head-cell span:nth-child(3) {
   margin-left: 1.5rem;
   color: #6d69c5;
   font-size: 1.3rem;
 }
-/* line 85, sass/components-v2/_tables.scss */
-.ref-table--apps .app-data-cell-show-hide {
+/* line 93, sass/components-v2/_tables.scss */
+.ref-table--apps .app-data-cell-show-hide,
+.ref-table--publishers .app-data-cell-show-hide {
   padding-left: 1.5rem;
 }
-/* line 87, sass/components-v2/_tables.scss */
-.ref-table--apps .app-data-cell-show-hide .form-field--checkbox-list {
+/* line 95, sass/components-v2/_tables.scss */
+.ref-table--apps .app-data-cell-show-hide .form-field--checkbox-list,
+.ref-table--publishers .app-data-cell-show-hide .form-field--checkbox-list {
   width: 17px;
   margin-right: 9px;
   padding-top: 3px;
   vertical-align: top;
 }
-/* line 94, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__store {
+/* line 102, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__store,
+.ref-table--publishers .data-table__store {
   display: inline-block;
   vertical-align: top;
 }
-/* line 97, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__store:after {
+/* line 105, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__store:after,
+.ref-table--publishers .data-table__store:after {
   font-size: 20px;
   color: #81879d;
 }
-/* line 101, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__store.ref-icon-after--play-store {
+/* line 109, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__store.ref-icon-after--play-store,
+.ref-table--publishers .data-table__store.ref-icon-after--play-store {
   padding-top: 1px;
   padding-left: 1px;
 }
-/* line 104, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__store.ref-icon-after--play-store:after {
+/* line 112, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__store.ref-icon-after--play-store:after,
+.ref-table--publishers .data-table__store.ref-icon-after--play-store:after {
   font-size: 18px;
 }
-/* line 109, sass/components-v2/_tables.scss */
-.ref-table--apps .app-data-cell-app-details {
+/* line 117, sass/components-v2/_tables.scss */
+.ref-table--apps .app-data-cell-app-details,
+.ref-table--publishers .app-data-cell-app-details {
   padding-top: 7px;
   padding-bottom: 5px;
 }
-/* line 113, sass/components-v2/_tables.scss */
-.ref-table--apps .app-data-cell-released-date {
+/* line 121, sass/components-v2/_tables.scss */
+.ref-table--apps .app-data-cell-released-date,
+.ref-table--publishers .app-data-cell-released-date {
   padding-top: 1.1rem;
   vertical-align: top;
 }
-/* line 117, sass/components-v2/_tables.scss */
+/* line 125, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-revenue,
-.ref-table--apps .app-data-downloads {
+.ref-table--apps .app-data-downloads,
+.ref-table--publishers .app-data-revenue,
+.ref-table--publishers .app-data-downloads {
   text-align: right;
 }
-/* line 121, sass/components-v2/_tables.scss */
-.ref-table--apps .app-data-revenue {
+/* line 129, sass/components-v2/_tables.scss */
+.ref-table--apps .app-data-revenue,
+.ref-table--publishers .app-data-revenue {
   width: calc(100% - 3rem);
 }
-/* line 124, sass/components-v2/_tables.scss */
-.ref-table--apps .app-data-downloads {
+/* line 132, sass/components-v2/_tables.scss */
+.ref-table--apps .app-data-downloads,
+.ref-table--publishers .app-data-downloads {
   width: 54.14013%;
   display: inline-block;
   vertical-align: top;
 }
-/* line 129, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__growth {
+/* line 137, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__growth,
+.ref-table--publishers .data-table__growth {
   margin-top: 0.4rem;
   display: block;
   font-weight: 700;
   font-size: 1.2rem;
 }
-/* line 135, sass/components-v2/_tables.scss */
-.ref-table--apps .more-app-data {
+/* line 143, sass/components-v2/_tables.scss */
+.ref-table--apps .more-app-data,
+.ref-table--publishers .more-app-data {
   position: absolute;
   top: 0;
   right: 8rem;
@@ -6941,30 +6983,37 @@ a:hover .summary-widget__data-item__app-name {
   background-color: #f2f2f5;
   border-radius: 5px;
 }
-/* line 146, sass/components-v2/_tables.scss */
-.ref-table--apps .more-app-data dt, .ref-table--apps .more-app-data dd {
+/* line 154, sass/components-v2/_tables.scss */
+.ref-table--apps .more-app-data dt, .ref-table--apps .more-app-data dd,
+.ref-table--publishers .more-app-data dt,
+.ref-table--publishers .more-app-data dd {
   display: block;
 }
-/* line 149, sass/components-v2/_tables.scss */
-.ref-table--apps .more-app-data dd {
+/* line 157, sass/components-v2/_tables.scss */
+.ref-table--apps .more-app-data dd,
+.ref-table--publishers .more-app-data dd {
   margin-bottom: 0.5rem;
 }
-/* line 153, sass/components-v2/_tables.scss */
-.ref-table--apps .app-data-cell-more {
+/* line 161, sass/components-v2/_tables.scss */
+.ref-table--apps .app-data-cell-more,
+.ref-table--publishers .app-data-cell-more {
   position: relative;
 }
-/* line 155, sass/components-v2/_tables.scss */
-.ref-table--apps .app-data-cell-more .more-data-link {
+/* line 163, sass/components-v2/_tables.scss */
+.ref-table--apps .app-data-cell-more .more-data-link,
+.ref-table--publishers .app-data-cell-more .more-data-link {
   margin-left: 10%;
   vertical-align: top;
   font-size: 1.2rem;
 }
-/* line 161, sass/components-v2/_tables.scss */
-.ref-table--apps .app-data-cell-more .more-data-link:hover + .more-app-data {
+/* line 169, sass/components-v2/_tables.scss */
+.ref-table--apps .app-data-cell-more .more-data-link:hover + .more-app-data,
+.ref-table--publishers .app-data-cell-more .more-data-link:hover + .more-app-data {
   display: inline-block;
 }
-/* line 166, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__value-bar > span {
+/* line 174, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__value-bar > span,
+.ref-table--publishers .data-table__value-bar > span {
   width: 35px;
   display: inline-block;
   font-weight: bold;
@@ -6972,44 +7021,51 @@ a:hover .summary-widget__data-item__app-name {
   color: #6d69c5;
   text-align: center;
 }
-/* line 174, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__value-bar div {
+/* line 182, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__value-bar div,
+.ref-table--publishers .data-table__value-bar div {
   width: calc(100% - 53px);
   height: 10px;
   display: inline-block;
   background-color: #e6e6eb;
 }
-/* line 180, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__value-bar div span {
+/* line 188, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__value-bar div span,
+.ref-table--publishers .data-table__value-bar div span {
   height: 10px;
   display: block;
   background-color: #6d69c5;
 }
-/* line 185, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__value-bar:first-child {
+/* line 193, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__value-bar:first-child,
+.ref-table--publishers .data-table__value-bar:first-child {
   margin-bottom: 4px;
 }
-/* line 187, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__value-bar:first-child > span {
+/* line 195, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__value-bar:first-child > span,
+.ref-table--publishers .data-table__value-bar:first-child > span {
   color: #ee9063;
 }
-/* line 190, sass/components-v2/_tables.scss */
-.ref-table--apps .data-table__value-bar:first-child div span {
+/* line 198, sass/components-v2/_tables.scss */
+.ref-table--apps .data-table__value-bar:first-child div span,
+.ref-table--publishers .data-table__value-bar:first-child div span {
   background-color: #f5c943;
 }
-/* line 195, sass/components-v2/_tables.scss */
+/* line 203, sass/components-v2/_tables.scss */
 .ref-table--apps .ratings-container,
-.ref-table--apps .ratings-full {
+.ref-table--apps .ratings-full,
+.ref-table--publishers .ratings-container,
+.ref-table--publishers .ratings-full {
   background-size: 65px 10px;
 }
 
-/* line 200, sass/components-v2/_tables.scss */
+/* line 208, sass/components-v2/_tables.scss */
 .ref-table--apps,
 .ref-table--apps * {
   overflow: visible;
 }
 
-/* line 205, sass/components-v2/_tables.scss */
+/* line 213, sass/components-v2/_tables.scss */
 .ref-table--apps.ref-table--apps--country .data-table__app-summary img {
   width: 32px;
   display: inline-block;
@@ -7017,13 +7073,26 @@ a:hover .summary-widget__data-item__app-name {
   padding-top: 5px;
 }
 
-/* line 213, sass/components-v2/_tables.scss */
+/* line 221, sass/components-v2/_tables.scss */
+.ref-table--publishers .column-app-name {
+  width: 23.2%;
+}
+/* line 224, sass/components-v2/_tables.scss */
+.ref-table--publishers .column-revenue {
+  width: 14.7%;
+}
+/* line 227, sass/components-v2/_tables.scss */
+.ref-table--publishers .column-downloads {
+  width: 21%;
+}
+
+/* line 232, sass/components-v2/_tables.scss */
 .data-table__app-summary img {
   width: 42px;
   display: inline-block;
   border-radius: 9px;
 }
-/* line 218, sass/components-v2/_tables.scss */
+/* line 237, sass/components-v2/_tables.scss */
 .data-table__app-summary > div {
   width: calc(100% - 55px);
   display: inline-block;
@@ -7032,7 +7101,7 @@ a:hover .summary-widget__data-item__app-name {
   text-align: left;
 }
 
-/* line 226, sass/components-v2/_tables.scss */
+/* line 245, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name {
   margin: 0;
   padding-top: 1px;
@@ -7040,7 +7109,7 @@ a:hover .summary-widget__data-item__app-name {
   font-family: "Lato", sans-serif;
   font-size: 1.39rem;
 }
-/* line 232, sass/components-v2/_tables.scss */
+/* line 251, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name a {
   padding-bottom: 0.5rem;
 }
