@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Manage Notifications</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			
+			<div class="page-my-account page-manage-notifications">
+				<div class="grid-container">
+					<header class="my-account__header">
+						<div>
+							<h1 class="page-title heading-style--heading-three">My Account</h1>
+							<h2 class="page-sub-title">Manage the type and frequency of notifications you receive for your account and apps you follow</h1>
+						</div>
+						<div class="toggle-container">
+							<div class="filter-toggle filter-toggle--with-text filter-toggle--large">
+								<div class="toggle">
+									<input id="toggle--show-popla" name="radiolarge" type="radio">
+									<label for="toggle--show-popla" onclick="location.replace('v2-account-details.html');">
+										Account Details
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-users" name="radiolarge" type="radio">
+									<label for="toggle--show-users" onclick="location.replace('v2-account-licenses.html');">
+										Licenses
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-share" name="radiolarge" type="radio">
+									<label for="toggle--show-share" onclick="location.replace('v2-account-share.html');">
+										Sharing My Data
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-subscriptions" name="radiolarge" type="radio">
+									<label for="toggle--show-subscriptions" onclick="location.replace('v2-account-billing.html');">
+										Billing Details
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-notifications" name="radiolarge" checked="" type="radio">
+									<label for="toggle--show-notifications" onclick="location.replace('v2-account-manage-notifications.html');">
+										Manage Notfications
+									</label>
+								</div>
+							</div>
+						</div>
+					</header>
+
+					<div class="notifications-settings-row-global">
+						<section class="grid__column grid__column--one-third">
+							<h2 class="heading-style--heading-six manage-notifications-section-title">Notification Types</h2>
+							<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox-list--large">
+								<ul>
+									<li>
+										<input type="checkbox" name="checkboxAllTypes" id="checkboxAllTypes" checked="">
+										<label for="checkboxAllTypes" class="checkboxLabel">All Types</label>
+										<label for="checkboxAllTypes" class="checkboxLabelVisible">All Types</label>
+									</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="grid__column grid__column--one-third">
+							<h2 class="heading-style--heading-six manage-notifications-section-title">Frequency</h2>
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--daily" name="freq" checked="" type="radio">
+										<label for="toggle--daily">
+											Daily
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--weekly" name="freq" type="radio">
+										<label for="toggle--weekly">
+											Weekly
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--monthly" name="freq" type="radio">
+										<label for="toggle--monthly">
+											Monthly
+										</label>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section class="grid__column grid__column--one-third">
+							<h2 class="heading-style--heading-six manage-notifications-section-title">Also Send Email</h2>
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--email" name="email" checked="" type="radio">
+										<label for="toggle--email">
+											Send Email
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--noemail" name="email" type="radio">
+										<label for="toggle--noemail">
+											No Email
+										</label>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+
+					<div class="notifications-settings-row">
+						<div class="grid__column grid__column--one-third">
+							<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox-list--medium">
+								<ul>
+									<li>
+										<input type="checkbox" name="checkboxMyApps" id="checkboxMyApps" checked="">
+										<label for="checkboxMyApps" class="checkboxLabel">My Apps Performance Report</label>
+										<label for="checkboxMyApps" class="checkboxLabelVisible">My Apps Performance Report</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--daily2" name="freq2" checked="" type="radio">
+										<label for="toggle--daily2">
+											Daily
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--weekly2" name="freq2" type="radio">
+										<label for="toggle--weekly2">
+											Weekly
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--monthly2" name="freq2" type="radio">
+										<label for="toggle--monthly2">
+											Monthly
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--email2" name="email2" checked="" type="radio">
+										<label for="toggle--email2">
+											Send Email
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--noemail2" name="email2" type="radio">
+										<label for="toggle--noemail2">
+											No Email
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="grid__column grid__column--full-width notifications-settings-row--divider">
+						<h2 class="heading-style--heading-six">Events</h2>
+					</div>
+
+					<div class="notifications-settings-row">
+						<div class="grid__column grid__column--one-third">
+							<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox-list--medium">
+								<ul>
+									<li>
+										<input type="checkbox" name="checkboxAppLaunched" id="checkboxAppLaunched" checked="">
+										<label for="checkboxAppLaunched" class="checkboxLabel">App Launched</label>
+										<label for="checkboxAppLaunched" class="checkboxLabelVisible">App Launched</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--daily3" name="freq3" checked="" type="radio">
+										<label for="toggle--daily3">
+											Daily
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--weekly3" name="freq3" type="radio">
+										<label for="toggle--weekly3">
+											Weekly
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--monthly3" name="freq3" type="radio">
+										<label for="toggle--monthly3">
+											Monthly
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--email3" name="email3" checked="" type="radio">
+										<label for="toggle--email3">
+											Send Email
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--noemail3" name="email3" type="radio">
+										<label for="toggle--noemail3">
+											No Email
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="notifications-settings-row notifications-settings-row--is-off">
+						<div class="grid__column grid__column--one-third">
+							<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox-list--medium">
+								<ul>
+									<li>
+										<input type="checkbox" name="checkboxAppUpdated" id="checkboxAppUpdated">
+										<label for="checkboxAppUpdated" class="checkboxLabel">App Updated</label>
+										<label for="checkboxAppUpdated" class="checkboxLabelVisible">App Updated</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--daily4" name="freq4" checked="" type="radio">
+										<label for="toggle--daily4">
+											Daily
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--weekly4" name="freq4" type="radio">
+										<label for="toggle--weekly4">
+											Weekly
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--monthly4" name="freq4" type="radio">
+										<label for="toggle--monthly4">
+											Monthly
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--email4" name="email4" checked="" type="radio">
+										<label for="toggle--email4">
+											Send Email
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--noemail4" name="email4" type="radio">
+										<label for="toggle--noemail4">
+											No Email
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="notifications-settings-row notifications-settings-row">
+						<div class="grid__column grid__column--one-third">
+							<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox-list--medium">
+								<ul>
+									<li>
+										<input type="checkbox" name="checkboxAppPriceChanged" id="checkboxAppPriceChanged" checked>
+										<label for="checkboxAppPriceChanged" class="checkboxLabel">App's Price Changed</label>
+										<label for="checkboxAppPriceChanged" class="checkboxLabelVisible">App Price Changed</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--daily5" name="freq5" checked="" type="radio">
+										<label for="toggle--daily5">
+											Daily
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--weekly5" name="freq5" type="radio">
+										<label for="toggle--weekly5">
+											Weekly
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--monthly5" name="freq5" type="radio">
+										<label for="toggle--monthly5">
+											Monthly
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--email5" name="email5" checked="" type="radio">
+										<label for="toggle--email5">
+											Send Email
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--noemail5" name="email5" type="radio">
+										<label for="toggle--noemail5">
+											No Email
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="notifications-settings-row notifications-settings-row">
+						<div class="grid__column grid__column--one-third">
+							<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox-list--medium">
+								<ul>
+									<li>
+										<input type="checkbox" name="checkboxMyApps" id="checkboxAppFeatured" checked>
+										<label for="checkboxAppFeatured" class="checkboxLabel">App Featured</label>
+										<label for="checkboxAppFeatured" class="checkboxLabelVisible">App Featured</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--daily6" name="freq6" checked="" type="radio">
+										<label for="toggle--daily6">
+											Daily
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--weekly6" name="freq6" type="radio">
+										<label for="toggle--weekly6">
+											Weekly
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--monthly6" name="freq6" type="radio">
+										<label for="toggle--monthly6">
+											Monthly
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="grid__column grid__column--one-third">
+							<div class="toggle-container">	 							
+								<div class="filter-toggle filter-toggle--with-text">
+									<div class="toggle">
+										<input id="toggle--email6" name="email6" checked="" type="radio">
+										<label for="toggle--email6">
+											Send Email
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--noemail6" name="email6" type="radio">
+										<label for="toggle--noemail6">
+											No Email
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="grid-container" id="js-component-import--global-footer"></div>
+	</div>	
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script>
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--account-container').find('a[href="v2-account-manage-notifications.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
+
+  		new Page();
+  		new FormInteractions();
+  		
+  		$('.js-mock-change-password').each(function(){
+  			$(this).on("keyup", function(){
+  				$(".js-mock-create-password").removeClass("is-disabled");
+  			});  			
+  		});
+
+  		$('.js-edit-details').each(function(){
+  			$(this).on("keyup", function(){
+  				$(".js-mock-save-changes").removeClass("is-disabled");
+  			});  			
+  		});
+  	}
+  	window.onready = initScripts();
+  </script>
+</body>

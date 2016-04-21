@@ -11,3 +11,44 @@ $rotationAmountForBellRing: 5deg;
    12% { transform: rotate(0deg); }
    100% { transform: rotate(0deg); }
 }
+
+@-webkit-keyframes spinweb {
+   0% {}
+  100% { -webkit-transform: rotate(-360deg) }
+}
+@keyframes spin {
+   0% {}
+  100% { transform: rotate(-360deg) }
+}  
+@-webkit-keyframes hamsterrun {
+   100% { background-position: -392px 0; }
+}
+@keyframes hamsterrun {
+   100% { background-position: -392px 0; }
+}
+.hamster-wheel {
+   position: absolute;
+   top: 0;
+   left: 50%;
+   margin-left: -65px;
+   width: 131px;
+   height: 131px;
+   img {
+      width: 100%;
+      animation: spin 1s linear 0s infinite;
+      -webkit-animation: spinweb 1s linear 0s infinite;
+   }  
+}
+.animation-hamster {
+   position: absolute;
+   top: 0;
+   left: 50%;
+   margin-left: -65px;
+   width: 130px;
+   height: 131px;
+   background-image: url('images/sprite-hamsters.png');
+   background-size: 392px 131px;
+   background-position: 0 0;
+   -webkit-animation: hamsterrun 0.2s infinite steps(3);
+   animation: hamsterrun 0.2s infinite steps(3);
+}

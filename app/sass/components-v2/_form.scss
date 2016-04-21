@@ -21,6 +21,7 @@ textarea {
 	}
 }
 .form-filter {
+	position: relative;
 	margin-bottom: 2rem;
 	.reflection-form & {
 		margin-top: -1px;
@@ -45,7 +46,7 @@ textarea {
 				}
 			}
 		}	
-	}
+	}	
 	> label {
 		position: absolute;
     left: 20px;    
@@ -95,6 +96,8 @@ textarea {
 	}
 }
 .form-field--select__dropdown {
+	max-height: 250px;
+	overflow: auto;
 	text-align: left;
 }
 .reflection-form .form-field + .form-filter,
@@ -249,6 +252,15 @@ textarea {
 			}
 		}
 	}
+}
+.form-field,
+.form-filter {
+	.whats-this-tooltip-icon {
+		position: absolute;
+    right: 17px;
+    top: 16px;
+    z-index: 10;
+  }
 }
 .reflection-form {
 	.form-field--split {
@@ -1079,9 +1091,10 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 		}
 	}
 }
-.reflection-form--theme-dark {
+.reflection-form {
 	p {
-		margin-top: 24px;
+		margin-top: 15px;
+		margin-bottom: 20px;
 		font-size: 14px;
 		color: #727686;
 		+ button {

@@ -1,0 +1,373 @@
+.page-my-account {
+	padding-top: 2rem;
+	padding-bottom: 4rem;
+	.my-account__header {
+		padding-bottom: 1.2rem;		
+		border-bottom: 1px solid $divider-grey;
+	}
+	&.page-my-lists,
+	&.page-linked-accounts {
+		.my-account__header {
+			padding-bottom: 0;
+		}
+		.account-summary-action__license-info:last-child {
+			border-right: 0;
+		}
+		.account-summary-action__license-info:first-of-type span:first-child {
+			color: $dark-grey-2;
+		}
+	}
+	&.page-manage-notifications {
+		.my-account__header {
+			padding-bottom: 2rem;
+			margin-bottom: 3rem;
+		}
+	}
+	.page-title,
+	.page-sub-title {
+		display: inline-block;
+		vertical-align: top;
+	}
+	.page-title {
+    margin-top: 0.1rem;
+		margin-bottom: 2.1rem;		
+	}
+	.page-sub-title {
+    padding-top: 1.1rem;
+    padding-left: 2.6rem;
+		margin-bottom: 0;
+		font-family: $brand-body-font;
+		font-size: 14px;
+		font-weight: 400;
+		color: #5a5a68;
+	}
+	&.page-my-lists,
+	&.page-linked-accounts {
+		.page-sub-title {
+			padding-top: 1.5rem;
+		}		
+	}
+	.my-account-section-title {
+		margin-bottom: 1.3rem;
+	}
+}
+.page-my-account--details {
+	.my-account__header {
+		margin-bottom: 1.3rem;
+	}
+}
+.account-summary-actions {
+	padding-top: 5px;
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	> a,
+	> .form-field--search {
+		margin-left: 10px;
+		display: inline-block;
+		vertical-align: top;
+		float: right;
+	}
+	.page-my-lists &,
+	.page-linked-accounts & {
+		padding-top: 3px;
+	}
+}
+.account-details__summary {	
+	padding: 4px 0 6px;
+  margin-bottom: 18px;
+	font-size: 14px;
+	border-bottom: 1px solid $divider-grey;
+	dt, dd {
+		margin-bottom: 11px;
+		display: inline-block;
+		float: left;
+		vertical-align: middle;
+	}
+	dt {
+		min-width: 90px;
+		padding-right: 10px;		
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		clear: both;
+		&:first-child {
+			margin-right: 10px;
+		}
+	}
+	dd {
+		font-family: $brand-body-font;
+		color: $mid-grey-2;
+	}
+	.account-details__account-type {
+		padding: 4px 20px 5px;
+		margin-top: -4px;
+		display: inline-block;
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		font-size: 14px;
+		color: $reflection-white;
+		border-radius: 20px;
+		background-color: $reflection-purple;
+	}
+	.account-details__account-type-free {
+		background-color: $light-grey-1;	
+	}
+	.account-details__account-type-pub {
+		background-color: $reflection-green;	
+	}
+	.account-details__account-type-pro {
+		background-color: $reflection-purple;	
+	}
+}
+.account-details__action-link {
+	margin-bottom: 10px;
+	display: block;
+	font-size: 14px;
+	font-family: $brand-heading-font;
+	font-weight: 400;
+	color: $reflection-purple;
+	&:hover {
+		color: $reflection-purple--hover;
+	}
+}
+.ref-table--my-account {
+	table-layout: auto;
+	td {
+		padding-right: 10px;
+		@include ellipses;
+		&:first-child {
+			font-size: 1.39rem;
+			font-weight: 700;
+		}
+		a {
+			color: $reflection-purple;
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+		}
+	}
+	th {
+		padding-bottom: 1.3rem;
+		font-size: 1.5rem;
+	}
+	.licenses-data-cell--user,
+	.licenses-data-cell--company,
+	.licenses-data-cell--account,
+	.share-data-cell--name,
+	.share-data-cell--company,
+	.share-data-cell--linked {
+		max-width: 150px;
+	}
+	.form-field--checkbox-list {
+		position: relative;
+    top: 4px;
+	}
+	.ref-button--secondary--small:first-child {
+		margin-right: 4px;
+	}
+	.account-remove-link {
+		color: $reflection-red;
+		&:hover {
+			color: darken($reflection-red, 10%);
+		}
+	}
+	.licenses-data-cell--actions {
+		max-width: 100px;
+	}
+	.my-lists-data-cell--actions {
+		max-width: 80px;
+	}	
+	.licenses-data-row--unassigned,
+	.my-lists-data-row--default {
+		background-color: #f2f2fb;
+		border-top: 2px solid $reflection-white;
+		&:nth-child(odd) {
+			background-color: #f2f2fb;
+		}
+		td:first-child a {
+			color: $reflection-purple;
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+		}
+	}
+	.my-lists-data-row--default td {
+    padding-top: 11px;
+    padding-bottom: 12px;
+	}
+	.share-data-cell--actions {
+		max-width: 80px;
+	}
+	.linked-accounts-cell--actions {
+		max-width: 100px;
+	}
+	.linked-accounts-cell--store {
+		span {
+			font-weight: 400;
+			display: inline-block;
+			vertical-align: middle;
+			&:before {
+				color: $light-grey-1;
+			}
+		}
+		.ref-icon-before--apple:before {
+	    margin-right: 9px;
+  		font-size: 20px;
+		}
+		.ref-icon-before--play-store:before {
+      margin-right: 8px;	    
+	    margin-left: 3px;
+	    font-size: 18px;
+		}
+	}
+	.linked-accounts-cell--status {
+		font-weight: 700;
+		span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		span:before {
+			margin-right: 9px;
+  		font-size: 15px;
+		}
+		.ref-icon-before--tick:before {
+			color: $reflection-green;
+			font-size: 17px;
+		}
+		.ref-icon-before--minus:before {
+			color: $reflection-red;
+		}
+		.ref-icon-before--cog {		
+			color: $neutral-colour;
+			&:before {
+				margin-right: 11px;
+			}
+		}
+	}
+}
+.account-summary-action__license-info {
+	height: 36px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	&:first-of-type {
+		span:first-child {
+			color: $light-grey-1;
+		}
+	}
+	&:last-child {
+		border-right: 1px solid $divider-grey;
+		.page-my-account--share-data & {
+			border-right: none;
+		}
+	}
+	span {
+		display: inline-block;
+		vertical-align: top;
+	}
+	span:first-child {
+		padding-right: 8px;
+		font-family: $brand-body-font;
+		font-size: 20px;
+		font-weight: 700;
+		color: $dark-grey-2;
+	}
+	span:last-child {
+		font-family: $brand-heading-font;
+		font-size: 14px;
+		color: $mid-grey-1;
+	}
+}
+.page-my-account--share-data .account-summary-action__license-info {
+	&:first-of-type {
+		span:first-child {
+			color: $dark-grey-2;			
+		}
+		span:last-child {
+			color: $mid-grey-1;
+		}
+	}
+}
+.ref-table tbody .licenses-data-row--divider-row,
+.ref-table tbody .my-lists-data-row--divider-row {
+	border-top: solid 15px $reflection-white;
+	border-bottom: solid 15px $reflection-white;
+	td {
+		padding: 1px 0 0;
+		background-color: $divider-grey;
+	}
+}
+.ref-table--my-lists tbody {
+	tr:nth-child(even) {
+		background-color: $panel-grey;
+		&.my-lists-data-row--default {
+			background-color: #f2f2fb;
+		}
+	}
+	tr:nth-child(odd) {
+		background-color: $reflection-white;
+		&.my-lists-data-row--default {
+			background-color: #f2f2fb;
+		}
+	}
+	.my-lists-data-row--default {
+		td:first-child {
+			img, span {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.icon-apps-follow {
+				position: relative;
+    		top: 2px;
+				width: 24px;
+				height: 24px;
+				margin-left: 2px;
+    		margin-right: 16px;
+			}
+			.icon-publishers-follow {
+				width: 28px;
+				height: 28px;
+				margin-right: 14px;
+			}
+		}
+	}
+}
+.page-linked-accounts .ref-table {
+	margin-bottom: 2rem;
+}
+.notifications-settings-row-global {
+	width: 100%;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid $divider-grey;
+	.form-field--checkbox-list {
+		margin-top: 5px;
+	}
+}
+.notifications-settings-row {
+	width: 100%;
+	padding-top: 10px;
+  padding-bottom: 10px;
+	&:nth-child(odd) {
+		background-color: $panel-grey;
+	}
+	.form-field--checkbox-list {
+		margin-top: 6px;
+	}
+}
+.notifications-settings-row--divider {
+	padding-top: 10px;
+	h2 {
+		margin-bottom: 7px;
+		font-size: 16px;    
+	}
+}
+.manage-notifications-section-title {
+	margin-bottom: 1.9rem;
+}
+.multi-step-section .link-account-multi-step__loading-button,
+.link-account-multi-step__loading-button {
+	margin-top: 230px;
+}

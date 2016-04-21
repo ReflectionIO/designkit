@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection V2, App Page</title>
+	<title>Reflection V2, Store Data, Publishers</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
@@ -36,64 +36,47 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-data-dashboard page-app">
+			<div class="page-data-dashboard">
 				<div class="grid-container">
-
-					<div class="page-header__app-icon-container">
-						<img src="images/v2/placeholder-app-icon.jpg" alt="Clash Royale Icon" />
-					</div>
-
-					<div class="page-header__app-title-links">
-						<h1 class="heading-style--heading-three app-title">Clash Royale</h1>
-						<div class="toggle-container page-header__page-toggle">
-							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
-								<div class="toggle">
-									<input id="toggle--show-downloads" name="app-info" checked type="radio">
-									<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
-										Revenue &amp; Downloads
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-ranks" name="app-info" type="radio">
-									<label for="toggle--show-ranks" onclick="location.replace('v2-app-rank.html');">
-										Rank History
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-ratings" name="app-info" type="radio">
-									<label for="toggle--show-ratings" onclick="location.replace('v2-app-ratings-info.html');">
-										Ratings &amp; Info
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-events" name="app-info" type="radio">
-									<label for="toggle--show-events" onclick="location.replace('v2-app-events.html');">
-										Events
-									</label>
-								</div>
+					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">Store Data - Publishers</h1>
+					
+					<div class="toggle-container page-header__page-toggle">
+						<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+							<div class="toggle">
+								<input id="toggle--show-overview" name="overview-country" checked type="radio">
+								<label for="toggle--show-overview">
+									Overview
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-country" name="overview-country" type="radio">
+								<label for="toggle--show-country">
+									By Country
+								</label>
 							</div>
 						</div>
 					</div>
 
-					<div class="page-header__app-info-and-actions">
-						<span class="page-header__app-price-details">Free + IAP</span>
-						<span class="page-header__publisher-name">By <a href="#">Supercell</a></span>
-						<div>
-							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
-							<button href="#" class="ref-button--secondary--small page-header_action-button">Follow App</button>
-							<a href="#" class="page-header__text-link">View in Appstore</a>
-						</div>
-					</div>
+					<span class="page-header__data-info-text">All Data Estimated</span>
+					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Estimated Data?" data-whatsthis="In the Store data section revenue and download data displayed are accurate estimates, including any data for your own apps. This may result in variations on actual data in your My Data dashboard<br /><br /><a href='#'>Learn More about Our Accuracy</a>"></span>
+
+					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+					<a href="v2-my-lists.html" class="page-header__text-link js-mock-show-for-my-list-view-only">Back to My Lists</a>
 				</div>
 
 				<div class="grid__row overflow-visible">
 					<aside class="primary-filters-container">
  						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
-						    <option value="all">All Store Accounts</option>
-						    <option value="ios" selected>iOS</option>
-						    <option value="play">Google Play</option>
-						    <option value="amazon">Amazon App Store</option>
+						    <option value="all" selected>All Stores &amp; Accounts</option>
+						    <option value="allIos" class="js-parent-option">All iOS Accounts</option>
+						    <option value="iosOne" class="js-child-option">iOS Account One</option>
+						    <option value="iosTwo" class="js-child-option">iOS Account Two</option>
+						    <option value="iosThree" class="js-child-option">iOS Account Three</option>
+						    <option value="allGoogle" class="js-parent-option">All Google Play Accounts</option>
+						    <option value="googleOne" class="js-child-option">Google Account One</option>
+						    <option value="googleTwo" class="js-child-option">Google Account Two</option>
+						    <option value="googleThree" class="js-child-option">Google Account Three</option>
 							</select>
 						</div>
 						<div class="primary-filter form-field--select">
@@ -104,38 +87,21 @@
 						    <option value="apr">01/04/16 - 01/05/16</option>
 							</select>
 						</div>
-						<div class="primary-filter js-multi-select-box" data-title="All Countries">
-							<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
-							<div class="dropdown-summary">
-								<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
-							</div>
-							<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">
-								<li>
-									<input type="checkbox" name="checkboxUKFaB" id="checkboxUKFaB" class="js-no-close-on-click" />
-									<label for="checkboxUKFaB" class="checkboxLabel js-no-close-on-click">United Kingdom</label>
-									<label for="checkboxUKFaB" class="checkboxLabelVisible js-no-close-on-click">United Kingdom</label>
-								</li>
-								<li>
-									<input type="checkbox" name="checkboxFraFaB" id="checkboxFraFaB" class="js-no-close-on-click" />
-									<label for="checkboxFraFaB" class="checkboxLabel js-no-close-on-click">France</label>
-									<label for="checkboxFraFaB" class="checkboxLabelVisible js-no-close-on-click">France</label>
-								</li>
-								<li>
-									<input type="checkbox" name="checkboxItaFaB" id="checkboxItaFaB" class="js-no-close-on-click" />
-									<label for="checkboxItaFaB" class="checkboxLabel js-no-close-on-click">Italy</label>
-									<label for="checkboxItaFaB" class="checkboxLabelVisible js-no-close-on-click">Italy</label>
-								</li>
-								<li>
-									<input type="checkbox" name="checkboxGeFaB" id="checkboxGeFaB" class="js-no-close-on-click" />
-									<label for="checkboxGeFaB" class="checkboxLabel js-no-close-on-click">Germany</label>
-									<label for="checkboxGeFaB" class="checkboxLabelVisible js-no-close-on-click">Germany</label>
-								</li>
-								<li>
-									<input type="checkbox" name="checkboxSpFaB" id="checkboxSpFaB" class="js-no-close-on-click" />
-									<label for="checkboxSpFaB" class="checkboxLabel js-no-close-on-click">Spain</label>
-									<label for="checkboxSpFaB" class="checkboxLabelVisible js-no-close-on-click">Spain</label>
-								</li>
-							</ul>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Countries</option>
+						    <option value="uni">United Kingdom</option>
+						    <option value="fra">France</option>
+						    <option value="ger">Germany</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Categories</option>
+						    <option value="uni">Games</option>
+						    <option value="fra">Lifestyle</option>
+						    <option value="ger">Productivity</option>
+							</select>
 						</div>
 						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
@@ -148,15 +114,6 @@
 				</div>
 
 				<aside class="grid-container secondary-filters-container">
-					<div class="secondary-filter form-field--select">
-						<select class="js-select-box">
-					    <option value="allrev" selected>All Revenue</option>
-					    <option value="pairev">Paid Revenue</option>
-					    <option value="iaprev">IAP Revenue</option>
-					    <option value="adrev">Ad Revenue</option>
-					    <option value="subrev">Subscription Revenue</option>
-						</select>
-					</div>
 					<div class="secondary-filter form-field--select">
 						<select class="js-select-box">
 					    <option value="overlayapps" selected>Overlay Apps (0)</option>
@@ -173,11 +130,6 @@
 								<input type="checkbox" name="checkboxOne" id="checkboxOne">
 								<label for="checkboxOne" class="checkboxLabel">Events</label>
 								<label for="checkboxOne" class="checkboxLabelVisible">Events</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxTwo" id="checkboxTwo">
-								<label for="checkboxTwo" class="checkboxLabel">Revenue Split</label>
-								<label for="checkboxTwo" class="checkboxLabelVisible">Revenue Split</label>
 							</li>
 							<li>
 								<input type="checkbox" name="checkboxThree" id="checkboxThree">
@@ -218,33 +170,6 @@
 							<label for="toggle--show-bar">
 								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M11.2,0v5.6H5.6v3.9H0V18h18V0H11.2z M6.8,6.8h5.1v10.1H6.8V6.8z M1.1,10.7h5.1v6.2H1.1V10.7z
 	 M16.9,16.9h-4.5V1.1h4.5V16.9z"/></svg>
-							</label>
-						</div>
-						<div class="toggle">
-							<input id="toggle--show-map" name="graphtype" type="radio">
-							<label for="toggle--show-map">
-								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M9,0C9,0,9,0,9,0C8.9,0,8.9,0,8.9,0C8.7,0,8.6,0,8.4,0c-0.1,0-0.3,0-0.4,0c-0.1,0-0.2,0-0.3,0.1
-	C3.4,0.7,0,4.5,0,9c0,5,4,9,9,9s9-4,9-9C18,4,14,0,9,0z M15.5,6.3c-0.3-0.1-0.3-0.3-0.6-0.4c-0.5-0.2-1.4-0.2-2,0
-	c-0.5,0.2-0.6,0.3-1,0.7c-0.1,0.1-0.1,0.3-0.2,0.4c-0.1,0.1-0.1,0.2-0.1,0.3c-0.1,0.6-0.4,1.3-0.1,1.8c0.1,0.2,0.4,0.3,0.6,0.5
-	c0.3,0.2,0.4,0.4,0.8,0.5c0.2,0,0.5,0,0.7,0c0.3,0,0.6,0.1,0.8,0.2c-0.2,0.4-0.2,1.1-0.2,1.3c0,0.2,0.1,0.2,0.1,0.4
-	c0.1,0.6-0.9,1-0.7,1.6c0,0.1,0.1,0.3,0.1,0.4c0,0.5-0.4,0.7-0.5,1.1c0,0.2,0,0.4,0,0.6c0,0.1,0,0.2,0,0.3c-1.3,0.8-2.8,1.3-4.4,1.3
-	c-4.5,0-8.2-3.7-8.2-8.2c0-1.6,0.5-3.1,1.3-4.4c0,0,0.1,0,0.1,0.1c0,0.1,0,0.3,0,0.4C2.2,5.6,2.5,6.1,3,6.1c0,0.3-0.1,0.3,0.2,0.7
-	c0,0.1,0,0.2,0.1,0.2c0.1,0.1,0.2,0.1,0.3,0.1C3.7,7.4,3.7,7.8,3.6,8S3.2,8.5,3.1,8.8c-0.2,0.4-0.1,1,0.2,1.4
-	c0.1,0.1,0.3,0.5,0.5,0.6S4,10.8,4,11c0.1,0.3,0.1,0.5,0.2,0.7c0,0.2-0.1,0.6-0.1,0.8c0,0.2,0.1,0.2,0.1,0.3c0,0.1-0.1,0-0.1,0.2
-	c0,0.3,0,1,0.1,1.2c0.1,0.8,0.6,1.5,1.1,1.4c0.2-0.4-0.2-0.8-0.1-1.2c0.1-0.2,0.1-0.3,0.3-0.4c0.6-0.4,1-0.8,1.3-1.4
-	c0-0.1,0.1-0.3,0.2-0.3c0.1,0,0.2,0,0.3-0.1c0.4-0.1,0.6-0.3,0.8-0.6s0.2-0.6,0.5-1c0.1-0.1,0.1-0.3,0.2-0.3
-	c0.2-0.3-0.1-0.7-0.4-0.8S7.8,9.4,7.5,9.2C7.2,9,7.2,8.6,7,8.3C6.7,8,6.4,7.8,6,7.7C5.6,7.5,5.7,7.3,5,7C4.9,7,4.7,7,4.6,7
-	C4.5,7,4.5,7.1,4.4,7.1C4.2,7.4,3.7,7.2,3.6,6.9c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.4-0.2-0.4C3.3,5.9,3.7,6.1,3.7,5.8
-	c0-0.3-0.2-0.1-0.4-0.2C3,5.5,3.1,5.1,3.1,4.9c0.1-0.3,0.2-0.2,0.3-0.3c0.3-0.2,0.7-0.3,1-0.2c0.3,0.1,0.2,0.7,0.3,0.7
-	c0.1,0.1,0.3-0.1,0.3-0.2s0-0.3,0-0.4c0-0.1,0.1-0.1,0.2-0.2c0.6-0.4,1.3-0.7,2.1-0.8c0.1,0,0.2,0,0.3,0c0.1-0.1,0.1-0.3,0.2-0.3
-	c0.1,0,0.2,0.2,0.4,0.2C8.4,3.5,8.6,3.2,8.6,3c0-0.2-0.1-0.4,0-0.6c0-0.1,0.1-0.1,0.1-0.2c0,0-0.1-0.1-0.1-0.1
-	C8.4,2.1,8.4,1.9,8.1,1.9C7.9,2,7.7,2,7.5,2.2C7.3,2.3,7.2,2.4,7,2.5C6.8,2.3,7,2,7.2,1.8c0.2-0.1,0.4-0.1,0.7-0.2
-	c0.1,0,0.2,0,0.3,0c0.1,0,0.2,0.1,0.2,0.1c0.2,0.1,0.3,0,0.4-0.1C9,1.5,9.1,1.4,8.9,1.2c0-0.1,0.2-0.1,0.2,0s0,0.2-0.1,0.4
-	C8.8,2.2,9.3,2.7,9.5,2.7c0.3,0,0.5-0.6,0.9-0.8c0.1,0,0.2-0.1,0.3-0.1c0.1-0.1,0.1-0.2,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2
-	c0.8,0.2,1.5,0.5,2.1,1c0,0,0,0,0,0c0,0-0.1,0-0.2,0c-0.4-0.1-0.5,0.3-0.4,0.7c0.1,0.3,0.3,0.5,0.6,0.6c0.1,0,0.3,0.1,0.4,0.2
-	c0,0,0,0.2,0,0.2c0,0.3,0,0.5-0.3,0.6c-0.2,0.2-0.6,0.1-0.8,0.3c-0.2,0.2,0.1,0.6,0.4,0.8c0.2,0.2,0.7,0.2,0.9-0.1
-	C14.1,5.3,14,5.1,14,5c0.3,0,0.5,0.2,0.6,0.4c0,0,0.1,0.1,0.2,0.1c0.1,0,0.2-0.2,0.3-0.1c0,0.1,0,0.2,0.1,0.2s0.1-0.1,0.2,0
-	s0.2,0.3,0.3,0.3c0.1,0,0.3,0,0.4,0.1c0.1,0.1,0.1,0.2,0.1,0.3C16.3,6.4,15.8,6.4,15.5,6.3z"/></svg>
 							</label>
 						</div>
 					</div>
@@ -361,14 +286,13 @@
 
 					<section class="data-table-section grid__column--three-quarters">
 						<header class="data-table-section__header">
-							<h2 class="section-title"><span>Total Countries</span> <span>5</span></h2>
+							<h2 class="section-title"><span>Total Apps</span> <span>5</span></h2>
 							<div class="data-table-section__filters">
 								
 								<div class="secondary-filter form-field--search">
 									<input type="text" placeholder="Find App in List" name="findapp" id="findapp" />
 									<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
 								</div>
-								<label>Sort</label>
 								<div class="secondary-filter form-field--select">
 									<select class="js-select-box">
 								    <option value="nam">Name</option>
@@ -382,7 +306,8 @@
 								    <option value="perrev">% of Revenue for Period</option>
 								    <option value="perdow">% of Downloads for Period</option>
 									</select>
-								</div>								
+								</div>
+								<label>Sort</label>
 
 							</div>
 						</header>
@@ -409,18 +334,16 @@
 							</div>
 						</div>
 
-						<table class="ref-table ref-table--apps ref-table--apps--country">
+						<table class="ref-table ref-table--publishers">
 							<thead>
 								<tr>
 									<th><a href="#">Clear</a></th>
 									<th>
-										<span>Country</span>
-										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg> &nbsp;/&nbsp; 
-										<span>Av. Rating</span>
+										<span>Publisher Name</span>
 										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
 									</th>
 									<th>
-										Released
+										<span>Apps</span>
 										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
 									</th>
 									<th class="revenue-head-cell">
@@ -447,7 +370,7 @@
 							<colgroup>
 								<col class="column-row-selector" />
 								<col class="column-app-name" />
-								<col class="column-released" />
+								<col class="column-apps-number" />
 								<col class="column-revenue" />
 								<col class="column-downloads" />
 								<col class="column-percentage-of-total" />
@@ -464,21 +387,14 @@
 												</li>
 											</ul>
 										</div>
-										<span class="data-table__store ref-icon-after--apple"></span>
 									</td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-usa.png" alt="USA Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">USA</a></h2>
-												<div class="ratings-container">
-													<div class="ratings-full" style="width:60%"></div>
-												</div>
-											</div>
+											<h2 class="data-table__app-summary__app-name"><a href="#">ustwo</a></h2>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
+									<td>
+										<span>12</span>
 									</td>
 									<td>
 										<div class="app-data-revenue">
@@ -528,21 +444,14 @@
 												</li>
 											</ul>
 										</div>
-										<span class="data-table__store ref-icon-after--apple"></span>
 									</td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-gb.png" alt="UK Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">United Kingdom</a></h2>
-												<div class="ratings-container">
-													<div class="ratings-full" style="width:60%"></div>
-												</div>
-											</div>
+											<h2 class="data-table__app-summary__app-name"><a href="#">Supercell</a></h2>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
+									<td>
+										<span>3</span>
 									</td>
 									<td>
 										<div class="app-data-revenue">
@@ -592,21 +501,14 @@
 												</li>
 											</ul>
 										</div>
-										<span class="data-table__store ref-icon-after--play-store"></span>
 									</td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-china.png" alt="China Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">China</a></h2>
-												<div class="ratings-container">
-													<div class="ratings-full" style="width:60%"></div>
-												</div>
-											</div>
+											<h2 class="data-table__app-summary__app-name"><a href="#">Sega</a></h2>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
+									<td>
+										<span>156</span>
 									</td>
 									<td>
 										<div class="app-data-revenue">
@@ -656,21 +558,14 @@
 												</li>
 											</ul>
 										</div>
-										<span class="data-table__store ref-icon-after--apple"></span>
 									</td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-fra.png" alt="France Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">France</a></h2>
-												<div class="ratings-container">
-													<div class="ratings-full" style="width:60%"></div>
-												</div>
-											</div>
+											<h2 class="data-table__app-summary__app-name"><a href="#">Spacehopper Studios, Ltd</a></h2>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
+									<td>
+										<span>200</span>
 									</td>
 									<td>
 										<div class="app-data-revenue">
@@ -720,21 +615,14 @@
 												</li>
 											</ul>
 										</div>
-										<span class="data-table__store ref-icon-after--apple"></span>
 									</td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-ger.png" alt="Germany Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">Germany</a></h2>
-												<div class="ratings-container">
-													<div class="ratings-full" style="width:60%"></div>
-												</div>
-											</div>
+											<h2 class="data-table__app-summary__app-name"><a href="#">Miniclip</a></h2>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
+									<td>
+										<span>4</span>
 									</td>
 									<td>
 										<div class="app-data-revenue">
@@ -784,21 +672,14 @@
 												</li>
 											</ul>
 										</div>
-										<span class="data-table__store ref-icon-after--apple"></span>
 									</td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-ita.png" alt="Italy Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">Italy</a></h2>
-												<div class="ratings-container">
-													<div class="ratings-full" style="width:60%"></div>
-												</div>
-											</div>
+											<h2 class="data-table__app-summary__app-name"><a href="#">Bossa Studios</a></h2>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
+									<td>
+										<span>10</span>
 									</td>
 									<td>
 										<div class="app-data-revenue">
@@ -841,6 +722,159 @@
 					</section>
 
 					<aside class="data-aside-bar grid__column--one-quarter">
+						<div class="summary-widget-container">
+							<ul class="tabs-list seconday-tabs js-tabs">
+		 							<li class="grid__column grid__column--one-half is-active">
+		 								<a href="#topApps">Top Publishers</a>
+		 							</li>
+		 							<li class="grid__column grid__column--one-half">
+		 								<a href="#bottomApps">Bottom Publishers</a>
+		 							</li>
+		 						</ul>
+		 						<ul class="tabs-content-list js-tabs-content-list">
+		 							<li class="is-active summary-widget" id="topApps">
+		 								<div class="toggle-container">
+			 								<div class="filter-toggle filter-toggle--with-text">
+												<div class="toggle">
+													<input id="toggle--show-revenue" name="radiorevdown" checked type="radio">
+													<label for="toggle--show-revenue" class="js-mock-switch-revenue">
+														Revenue
+													</label>
+												</div>
+												<div class="toggle">
+													<input id="toggle--show-downloads" name="radiorevdown" type="radio">
+													<label for="toggle--show-downloads" class="js-mock-switch-downloads">
+														Downloads
+													</label>
+												</div>
+											</div>
+										</div>
+
+										<div id="topAppsRevenue">
+			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
+			 								<ul class="summary-widget__data-row">
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-8ball.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">8 Ball Pool</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">&pound;102,843</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-agario.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Longer App Name</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">&pound;99,002</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-soccer.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Soccer Stars</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">&pound;45,781</span>
+			 									</li>
+			 								</ul>
+
+			 								<h2 class="summary-widget__data-title">Revenue % Growth</h2>
+			 								<ul class="summary-widget__data-row">
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-dino.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Dino Pets</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data positive-colour">+28%</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-bowling.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Bowling King</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data positive-colour">+14%</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-agario.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Agar.io</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
+			 									</li>
+			 								</ul>
+			 							</div>
+
+			 							<div id="topAppsDownloads">
+			 								<h2 class="summary-widget__data-title">Actual Downloads</h2>
+			 								<ul class="summary-widget__data-row">
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-8ball.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">8 Ball Pool</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">64,000</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-agario.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Longer App Name</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">30,000</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-soccer.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Soccer Stars</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">8,463</span>
+			 									</li>
+			 								</ul>
+
+			 								<h2 class="summary-widget__data-title">Downloads % Growth</h2>
+			 								<ul class="summary-widget__data-row">
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-dino.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Dino Pets</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data positive-colour">+13%</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-bowling.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Bowling King</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data positive-colour">+5%</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<img src="images/placeholder-icon-agario.png" alt="app icon" />
+			 											<h3 class="summary-widget__data-item__app-name">Agar.io</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data negative-colour">-4%</span>
+			 									</li>
+			 								</ul>
+			 							</div>
+
+		 							</li>
+		 							<li class="summary-widget" id="bottomApps">
+		 								<div class="toggle-container">
+			 								<div class="filter-toggle filter-toggle--with-text">
+												<div class="toggle">
+													<input id="toggle--show-revenue--bottom" name="radiorevdownbot" checked type="radio">
+													<label for="toggle--show-revenue--bottom">
+														Revenue
+													</label>
+												</div>
+												<div class="toggle">
+													<input id="toggle--show-downloads--bottom" name="radiorevdownbot" type="radio">
+													<label for="toggle--show-downloads--bottom">
+														Downloads
+													</label>
+												</div>
+											</div>
+										</div>
+		 							</li>
+		 						</ul>
+		 					</div>
 
 		 					<div class="summary-widget-container">
 
@@ -853,9 +887,25 @@
 		 							</li>
 		 						</ul>
 		 						<ul class="tabs-content-list js-tabs-content-list">
-		 							<li class="is-active summary-widget" id="topCountries">
+		 							<li class="is-active summary-widget" id="topApps">
+		 								<div class="toggle-container">
+			 								<div class="filter-toggle filter-toggle--with-text">
+												<div class="toggle">
+													<input id="toggle--show-revenue-country" name="radiorevdown-country" checked type="radio">
+													<label for="toggle--show-revenue-country">
+														Revenue
+													</label>
+												</div>
+												<div class="toggle">
+													<input id="toggle--show-downloads-country" name="radiorevdown-country" type="radio">
+													<label for="toggle--show-downloads-country">
+														Downloads
+													</label>
+												</div>
+											</div>
+										</div>
 
-										<div class="summary-widget--no-tabs">
+										<div id="topCountriesRevenue">
 			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
@@ -902,164 +952,6 @@
 			 											<img src="images/icon-flag-ger.png" alt="app icon" />
 			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
 			 										</a>
-			 										<span class="summary-widget__data-item__data positive-colour">+1%</span>
-			 									</li>
-			 								</ul>
-			 							</div>
-
-			 							<div class="summary-widget--no-tabs">
-			 								<h2 class="summary-widget__data-title">Actual Downloads</h2>
-			 								<ul class="summary-widget__data-row">
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-usa.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data">102,843</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-china.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">China</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data">99,002</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-gb.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data">45,781</span>
-			 									</li>
-			 								</ul>
-
-			 								<h2 class="summary-widget__data-title">Downloads % Growth</h2>
-			 								<ul class="summary-widget__data-row">
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-fra.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">France</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data positive-colour">+18%</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-ita.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data positive-colour">+4%</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-ger.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data positive-colour">+3%</span>
-			 									</li>
-			 								</ul>
-			 							</div>
-		 							</li>
-		 							<li class="summary-widget" id="bottomCountries">
-
-										<div class="summary-widget--no-tabs">
-			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
-			 								<ul class="summary-widget__data-row">
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-usa.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data">&pound;11,002</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-china.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">China</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data">&pound;9,762</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-gb.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data">&pound;5,343</span>
-			 									</li>
-			 								</ul>
-
-			 								<h2 class="summary-widget__data-title">Revenue % Growth</h2>
-			 								<ul class="summary-widget__data-row">
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-fra.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">France</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data negative-colour">-2%</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-ita.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-ger.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
-			 									</li>
-			 								</ul>
-			 							</div>
-
-			 							<div class="summary-widget--no-tabs">
-			 								<h2 class="summary-widget__data-title">Actual Downloads</h2>
-			 								<ul class="summary-widget__data-row">
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-usa.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data">14,943</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-china.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">China</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data">12,003</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-gb.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data">4,738</span>
-			 									</li>
-			 								</ul>
-
-			 								<h2 class="summary-widget__data-title">Downloads % Growth</h2>
-			 								<ul class="summary-widget__data-row">
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-fra.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">France</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data negative-colour">-10%</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-ita.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
-			 										</a>
-			 										<span class="summary-widget__data-item__data negative-colour">-5%</span>
-			 									</li>
-			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<img src="images/icon-flag-ger.png" alt="app icon" />
-			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
-			 										</a>
 			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
 			 									</li>
 			 								</ul>
@@ -1075,7 +967,7 @@
 		</div>
 
 		<div class="grid-container" id="js-component-import--global-footer"></div>
-	</div>
+	</div>	
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
@@ -1091,7 +983,7 @@
 
 	<div id="js-appendScriptsContainer"></div>
 
-	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
 
   <script src="js/vendor/highcharts-custom.js"></script>
@@ -1104,17 +996,23 @@
 
   	function initScripts() {
   		// mock menu select
-  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-data-template.html"]');
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-store-data-publishers.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+		  // hide elements that should only show if you're viewing a list
+		  // if viewing my list get #from URL
+		  if(window.location.hash != "#show-list") {
+		  	$('.js-mock-show-for-my-list-view-only').hide();		  	
+		  } else {
+		  	$('.js-mock-change-heading-for-list-page').text("Football Games List (4 Apps)");
+		  }
+
 
   		new Page();
   		new AllDropDowns();
   		new FormInteractions();
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
-  		});
-  		$('.js-multi-select-box').each(function() {
-  			new FormFieldMultipleSelect($(this));
   		});
   		$('.js-tabs').each(function() {
   			new Tabs($(this));

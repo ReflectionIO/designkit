@@ -81,41 +81,54 @@
 					</header>
 
 					<section class="grid__column grid__column--one-third">
- 						<h2 class="heading-style--heading-five my-account-section-title">Personal Details</h2>	 					
+						<h2 class="heading-style--heading-five my-account-section-title">Account Summary</h2>
+						<dl class="account-details__summary">
+							<dt>Current Subscription</dt>
+							<dd class="account-details__account-type account-details__account-type-pro">Pro</dd>
+							<dt>Licenses</dt>
+							<dd>3</dd>
+							<dt>Total Cost</dt>
+							<dd>&pound; 449.99 p/m</dd>
+						</dl>
+						<a href="#" class="account-details__action-link">Close Account</a>
+					</section>
+
+					<section class="grid__column grid__column--one-third">
+ 						<h2 class="heading-style--heading-five my-account-section-title">Personal Details</h2>
 	 					<form class="reflection-form">
 	 						<div class="form-field--split">
 			 					<div class="form-field">
-									<input type="text" name="firstname" id="firstname" autocomplete="off" value="Johnathan" />
+									<input type="text" name="firstname" id="firstname" autocomplete="off" value="Johnathan" class="js-edit-details" />
 									<label for="username">First Name</label>
 								</div>
 								<div class="form-field">						
-									<input type="text" name="lastname" id="lastname" autocomplete="off" value="Barnes" />
+									<input type="text" name="lastname" id="lastname" autocomplete="off" value="Barnes" class="js-edit-details"/>
 									<label for="lastname">Last Name</label>
 								</div>
 							</div>
 							<div class="form-field">						
-								<input type="text" name="company" id="company" autocomplete="off" value="Electronic Arts" />
+								<input type="text" name="company" id="company" autocomplete="off" value="Electronic Arts" class="js-edit-details"/>
 								<label for="company">Company</label>
 							</div>
 							<div class="form-field">						
-								<input type="email" name="email" id="email" autocomplete="off" value="johnathanbarnes@electronicarts.com"/>
+								<input type="email" name="email" id="email" autocomplete="off" value="johnathanbarnes@electronicarts.com" class="js-edit-details"/>
 								<label for="email">Email</label>
 							</div>
-							<button class="ref-button--primary--medium">
+							<button class="ref-button--primary--medium is-disabled js-mock-save-changes">
 		 						Save Changes
 		 					</button>
 						</form>
 					</section>
 
 					<section class="grid__column grid__column--one-third">
- 						<h2 class="heading-style--heading-five my-account-section-title">Change Password</h2>	 					
+						<h2 class="heading-style--heading-five my-account-section-title">Change Password</h2>	 					
 	 					<form class="reflection-form">
 		 					<div class="form-field">						
 								<input type="password" name="currentPassword" id="currentPassword" autocomplete="off" />
 								<label for="currentPassword">Enter Current password</label>
 							</div>
 							<div class="form-field">
-								<input type="password" name="newPassword" id="newPassword" autocomplete="off" class="js-mock-change-password"/>
+								<input type="password" name="newPassword" id="newPassword" autocomplete="off" class="js-mock-change-password" />
 								<label for="newPassword">
 									Enter New Password
 									<div class="password-strength-indicator-container">
@@ -124,7 +137,7 @@
 									</div>
 								</label>
 							</div>
-							<button class="ref-button--primary--medium is-disabled">
+							<button class="ref-button--primary--medium is-disabled js-mock-create-password">
 		 						Create New Password
 		 					</button>
 						</form>
@@ -166,7 +179,13 @@
   		
   		$('.js-mock-change-password').each(function(){
   			$(this).on("keyup", function(){
-  				$("button.is-disabled").removeClass("is-disabled");
+  				$(".js-mock-create-password").removeClass("is-disabled");
+  			});  			
+  		});
+
+  		$('.js-edit-details').each(function(){
+  			$(this).on("keyup", function(){
+  				$(".js-mock-save-changes").removeClass("is-disabled");
   			});  			
   		});
   	}
