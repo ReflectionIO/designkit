@@ -6,7 +6,8 @@
 		border-bottom: 1px solid $divider-grey;
 	}
 	&.page-my-lists,
-	&.page-linked-accounts {
+	&.page-linked-accounts,
+	&.page-match-ad-units {
 		.my-account__header {
 			padding-bottom: 0;
 		}
@@ -17,10 +18,39 @@
 			color: $dark-grey-2;
 		}
 	}
+	&.page-match-ad-units {
+		.form-field--search {
+			width: 156px;
+		}
+		.account-summary-action__license-info {
+			border-right: 1px solid $divider-grey;
+			&:last-child {
+				border-right: 1px solid $divider-grey;
+				span:first-child {
+					color: #363a47;
+				}
+			}
+			span:last-child {
+				color: #5a5a68;
+			}
+			span:first-child {
+				color: #81879d;
+			}
+		}
+		.secondary-filter + .account-summary-action__license-info {
+			border-right: 0;
+		}
+	}
 	&.page-manage-notifications {
 		.my-account__header {
 			padding-bottom: 2rem;
 			margin-bottom: 3rem;
+		}
+	}
+	&.page-linked-accounts,
+	&.page-match-ad-units {
+		.my-account__header {
+			margin-bottom: 1rem;
 		}
 	}
 	.page-title,
@@ -42,7 +72,8 @@
 		color: #5a5a68;
 	}
 	&.page-my-lists,
-	&.page-linked-accounts {
+	&.page-linked-accounts,
+	&.page-match-ad-units {
 		.page-sub-title {
 			padding-top: 1.5rem;
 		}		
@@ -69,7 +100,8 @@
 		float: right;
 	}
 	.page-my-lists &,
-	.page-linked-accounts & {
+	.page-linked-accounts &,
+	.page-match-ad-units & {
 		padding-top: 3px;
 	}
 }
@@ -220,6 +252,16 @@
 	    font-size: 18px;
 		}
 	}
+	&.ref-table--ad-networks,
+	&.ref-table--match-ad-unit {
+		.linked-accounts-cell--store {
+			img {
+				position: relative;
+				top: 2px;
+				margin-right: 10px;
+			}
+		}		
+	}
 	.linked-accounts-cell--status {
 		font-weight: 700;
 		span {
@@ -243,6 +285,38 @@
 				margin-right: 11px;
 			}
 		}
+	}
+}
+.ref-table--match-ad-unit {
+	overflow: visible;
+	table-layout: fixed;
+	* {
+		overflow: visible;
+	}
+	.col-ad-accounts--store {
+		width: 71.3%;
+	}
+	.col-ad-accounts--match {
+		width: 27.9%;
+	}
+	tr:nth-child(even) {
+		&.ad-accounts-data-row--unassigned {
+			background-color: #f2f2fb;
+		}
+	}
+	tr:nth-child(odd) {
+		&.ad-accounts-data-row--unassigned {
+			background-color: #f2f2fb;
+		}
+	}
+	.ad-accounts-data-row--unassigned {
+		border-bottom: 1px solid $reflection-white;
+	}
+	td {
+		overflow: visible;
+	}
+	.secondary-filter {
+		width: 100%;
 	}
 }
 .account-summary-action__license-info {
@@ -335,8 +409,28 @@
 		}
 	}
 }
-.page-linked-accounts .ref-table {
-	margin-bottom: 2rem;
+.page-linked-accounts,
+.page-match-ad-units {
+	.table-header {
+		margin-bottom: 0.3rem;
+		.heading-style--heading-six {
+			padding-top: 0.5rem;
+		}
+		.ref-button--secondary--small {
+			margin-left: 0.5rem;
+		}
+	}
+	.table-header--right {
+		text-align: right;		
+	}
+	.ref-table {
+		margin-bottom: 1.2rem;
+	}
+	.table-divider {
+		height: 1px;
+		margin-bottom: 1rem;
+		border-bottom: 1px solid #e1e5e8;
+	}
 }
 .notifications-settings-row-global {
 	width: 100%;
@@ -370,4 +464,10 @@
 .multi-step-section .link-account-multi-step__loading-button,
 .link-account-multi-step__loading-button {
 	margin-top: 230px;
+}
+.page-match-ad-units {
+	overflow: visible;
+	.grid-container {
+		overflow: visible;
+	}
 }
