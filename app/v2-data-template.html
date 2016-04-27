@@ -44,13 +44,13 @@
 						<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
 							<div class="toggle">
 								<input id="toggle--show-overview" name="overview-country" checked type="radio">
-								<label for="toggle--show-overview">
+								<label for="toggle--show-overview" onclick="location.replace('v2-data-template.html');">
 									Overview
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-country" name="overview-country" type="radio">
-								<label for="toggle--show-country">
+								<label for="toggle--show-country" onclick="location.replace('v2-my-apps-country.html');">
 									By Country
 								</label>
 							</div>
@@ -114,7 +114,7 @@
 				</div>
 
 				<aside class="grid-container secondary-filters-container">
-					<div class="secondary-filter form-field--select">
+					<div class="secondary-filter form-field--select js-mock-show-for-my-apps-view-only">
 						<select class="js-select-box">
 					    <option value="allrev" selected>All Revenue</option>
 					    <option value="pairev">Paid Revenue</option>
@@ -140,7 +140,7 @@
 								<label for="checkboxOne" class="checkboxLabel">Events</label>
 								<label for="checkboxOne" class="checkboxLabelVisible">Events</label>
 							</li>
-							<li>
+							<li class="js-mock-show-for-my-apps-view-only">
 								<input type="checkbox" name="checkboxTwo" id="checkboxTwo">
 								<label for="checkboxTwo" class="checkboxLabel">Revenue Split</label>
 								<label for="checkboxTwo" class="checkboxLabelVisible">Revenue Split</label>
@@ -1093,8 +1093,9 @@
 		  // hide elements that should only show if you're viewing a list
 		  // if viewing my list get #from URL
 		  if(window.location.hash != "#show-list") {
-		  	$('.js-mock-show-for-my-list-view-only').hide();		  	
+		  	$('.js-mock-show-for-my-list-view-only').hide();
 		  } else {
+		  	$('.js-mock-show-for-my-apps-view-only').hide();
 		  	$('.js-mock-change-heading-for-list-page').text("Football Games List (4 Apps)");
 		  }
 
