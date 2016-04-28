@@ -79,7 +79,7 @@
 							</div>
 						</div>
 						<div class="account-summary-actions">
-							<a href="#" class="ref-button--secondary--small">
+							<a href="#" class="ref-button--secondary--small js-open-modal--share">
 		 						Share Sales Data
 		 					</a>
 		 					<div class="account-summary-action__license-info">
@@ -105,10 +105,10 @@
 								<td class="share-data-cell--linked">Google Play Account 1 Name</td>
 								<td>10/01/16</td>
 								<td class="share-data-cell--actions">
-									<a href="#" class="ref-button--secondary--small">
+									<a href="#" class="ref-button--secondary--small js-open-modal--edit">
 				 						Edit
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--remove">
 				 						Remove
 				 					</a>
 								</td>
@@ -119,10 +119,10 @@
 								<td class="share-data-cell--linked">iOS Account Name</td>
 								<td>10/01/16</td>
 								<td class="share-data-cell--actions">
-									<a href="#" class="ref-button--secondary--small">
+									<a href="#" class="ref-button--secondary--small js-open-modal--edit">
 				 						Edit
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--remove">
 				 						Remove
 				 					</a>
 								</td>
@@ -133,10 +133,10 @@
 								<td class="share-data-cell--linked">All Accounts</td>
 								<td>10/01/16</td>
 								<td class="share-data-cell--actions">
-									<a href="#" class="ref-button--secondary--small">
+									<a href="#" class="ref-button--secondary--small js-open-modal--edit">
 				 						Edit
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--remove">
 				 						Remove
 				 					</a>
 								</td>
@@ -147,10 +147,10 @@
 								<td class="share-data-cell--linked"><a href="#" class="js-whats-this-tooltip" data-whatsthis-title="2 Accounts" data-whatsthis="iOS Account Name<br />Google Play Account Name 2">2 Accounts</a></td>
 								<td>10/01/16</td>
 								<td class="share-data-cell--actions">
-									<a href="#" class="ref-button--secondary--small">
+									<a href="#" class="ref-button--secondary--small js-open-modal--edit">
 				 						Edit
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--remove">
 				 						Remove
 				 					</a>
 								</td>
@@ -164,7 +164,134 @@
 		</div>
 
 		<div class="grid-container" id="js-component-import--global-footer"></div>
-	</div>	
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--share">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">				
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+							<div class="sign-up-step">
+								<h2 class="heading-style--heading-five multi-step-section__heading">Share Sales Data</h2>
+								<div class="secondary-filter secondary-filter--large secondary-filter--multi-select js-multi-select-box" data-title="Select an Account" data-title-plural="Accounts">
+									<label for="">Country</label>
+									<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+									<div class="dropdown-summary">
+										<span><span class="js-number-selected">0 </span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+									</div>
+									<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">			
+										<li>
+											<input type="checkbox" name="accountName" id="accountName" />
+											<label for="accountName" class="checkboxLabel">Account Name</label>
+											<label for="accountName" class="checkboxLabelVisible">Account Name</label>
+										</li>
+										<li>
+											<input type="checkbox" name="accountNameTwo" id="accountNameTwo" />
+											<label for="accountNameTwo" class="checkboxLabel">Account Two</label>
+											<label for="accountNameTwo" class="checkboxLabelVisible">Account Two</label>
+										</li>
+									</ul>
+								</div>
+								<form class="reflection-form js-reflection-form">			 						
+				 					<div class="form-field js-email-field">
+										<input type="email" name="email" id="email" autocomplete="off" />
+										<label for="email">Email of Recipient</label>
+									</div>
+								</form>
+								<p class="popup-text-link"><a href="#" class="js-create-another-email-input">Add Another Recipient</a></p>								
+								<button class="ref-button--secondary--large button-medium-width js-popup-close">
+			 						Cancel
+			 					</button>
+								<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1">
+			 						Share My Data
+			 					</button>
+							</div>
+						</div>
+
+						<div class="multi-step-section js-multi-step-section-confirmation">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 61 54" enable-background="new 0 0 61 54" xml:space="preserve" class="success-tick"><path fill="#1BC79F" d="M60.6,7.4l-8.1-7.1C52.2,0.1,51.9,0,51.6,0c-0.3,0-0.6,0.2-0.9,0.4L21.3,33.8L10.9,20
+							c-0.2-0.3-0.5-0.4-0.8-0.5c-0.3,0-0.7,0-0.9,0.2l-8.6,6.5c-0.6,0.4-0.7,1.2-0.2,1.7l19.4,25.5c0.2,0.3,0.6,0.5,1,0.5c0,0,0,0,0,0
+							c0.4,0,0.7-0.2,0.9-0.4L60.7,9.2C61.2,8.7,61.1,7.9,60.6,7.4z"></path></svg>
+							<h2 class="heading-style--heading-four">Your Invite has been sent</h2>
+							<p>We'll let you know once the recipients have accepted and been added to your account.</p>
+		 					<p class="popup-text-link"><a href="#" class="js-popup-close">Return to Sharing</a></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay page-overlay--edit js-page-overlay js-page-overlay--edit">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">				
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+							<div class="sign-up-step">
+								<h2 class="heading-style--heading-five multi-step-section__heading">Edit Sharer Details</h2>
+								<p>Manage which of your linked accounts and sales data this Sharer has access to</p>
+								<div class="secondary-filter secondary-filter--large secondary-filter--multi-select js-multi-select-box" data-title="Select an Account" data-title-plural="Accounts">
+									<label for="">Account</label>
+									<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+									<div class="dropdown-summary">
+										<span><span class="js-number-selected">0 </span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+									</div>
+									<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">			
+										<li>
+											<input type="checkbox" name="accountNameEdit" id="accountNameEdit" />
+											<label for="accountNameEdit" class="checkboxLabel">Account Name</label>
+											<label for="accountNameEdit" class="checkboxLabelVisible">Account Name</label>
+										</li>
+										<li>
+											<input type="checkbox" name="accountNameEditTwo" id="accountNameEditTwo" />
+											<label for="accountNameEditTwo" class="checkboxLabel">Account Two</label>
+											<label for="accountNameEditTwo" class="checkboxLabelVisible">Account Two</label>
+										</li>
+									</ul>
+								</div>
+						
+								<button class="ref-button--secondary--large button-medium-width js-popup-close">
+			 						Cancel
+			 					</button>
+								<button class="ref-button--primary--large button-medium-width js-popup-close">
+			 						Update
+			 					</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay page-overlay--edit js-page-overlay js-page-overlay--remove">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">				
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+							<div class="sign-up-step">
+								<h2 class="heading-style--heading-five multi-step-section__heading">Stop Sharing</h2>
+								<p>Access to all linked accounts being shared will be revoked</p>
+						
+								<button class="ref-button--secondary--large button-medium-width js-popup-close">
+			 						Cancel
+			 					</button>
+								<button class="ref-button--primary--large button-medium-width js-popup-close">
+			 						Stop Sharing
+			 					</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
@@ -193,6 +320,123 @@
 
   		$('.js-whats-this-tooltip').each(function(){
   			new WhatsThisPopup($(this));
+  		});
+
+  		new FormInteractions();
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  		$('.js-multi-select-box').each(function() {
+  			new FormFieldMultipleSelect($(this));
+  		});
+
+  		$('.js-open-modal--share').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--share').fadeIn(200);
+				setTimeout(function(){
+					$('.js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
+			$('.js-open-modal--edit').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--edit').fadeIn(200);
+				setTimeout(function(){
+					$('.js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
+			$('.js-open-modal--remove').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--remove').fadeIn(200);
+				setTimeout(function(){
+					$('.js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
+			$('.js-page-overlay').on("click", function(e){				
+				var parentIsPopupContent = false;
+				$(e.target).parents("div").each(function(){
+					if($(this).hasClass("js-popup-content")) {
+						parentIsPopupContent = true;
+					}
+				});
+				if(!parentIsPopupContent) {
+					$('.js-page-overlay').fadeOut(100);
+					$('.js-popup-content').removeClass("is-showing");
+				}				
+			});
+
+			$('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay').fadeOut(100);
+				$('.js-popup-content').removeClass("is-showing");
+			});
+
+			$('.js-create-another-email-input').on("click", function(e){
+				e.preventDefault();
+				var formContainer = $(".js-reflection-form");
+				var $newEmailField = formContainer.find(".js-email-field:last-child").clone();
+				console.log($newEmailField);
+				formContainer.append($newEmailField);
+			});
+
+			// Mock multistep form container
+  		var successTimeOut;
+  		var popupSectionWidth = 372;
+  		$('.js-mock-next-step').on("click", function(e){
+				e.preventDefault();
+				var sectionToMoveTo = $(this).data("move-to-section");
+  			var moveLeftBy = -popupSectionWidth * sectionToMoveTo;
+  			var stepsContainer = $(this).parents(".js-multi-step-container").css("left", moveLeftBy + "px");  			
+
+  			var fakeLoading = $(this).data("fake-loading");
+
+  			if(fakeLoading) { // automate loading with pause
+
+  				var nextViewedStep = sectionToMoveTo + 1;
+  				var nextViewedStepAfterLoading = sectionToMoveTo + 2;
+  				stepsContainer.css("left", "-" + popupSectionWidth * sectionToMoveTo + "px");
+  				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
+	  			stepsContainer.find(".multi-step-section:nth-child(" + nextViewedStep + ")").addClass("is-viewed-step");
+  				
+  				clearTimeout(successTimeOut);
+
+  				successTimeOut = setTimeout(function(){
+	  				stepsContainer.css("left", "-" + popupSectionWidth * nextViewedStep + "px");
+	  				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
+	  				stepsContainer.find(".multi-step-section:nth-child(" + nextViewedStepAfterLoading + ")").addClass("is-viewed-step");
+	  				$('.js-multi-step-section-confirmation').addClass("is-success");
+	  			}, 3000);
+
+  			} else {
+
+  				var nextSection = sectionToMoveTo + 1;
+  				var lastSection = sectionToMoveTo;
+  				clearTimeout(successTimeOut);
+  				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
+  				stepsContainer.find(".multi-step-section:nth-child(" + nextSection + ")").addClass("is-viewed-step");				
+  				stepsContainer.css("left", "-" + popupSectionWidth * sectionToMoveTo + "px");
+  				if(sectionToMoveTo != 2) {
+  					$('.js-multi-step-section-confirmation').removeClass("is-success");
+  				} else {
+  					$('.js-multi-step-section-confirmation').addClass("is-success");
+  				}
+  			}
+
+  			if($(this).parents(".js-page-overlay--pro").length) {
+  				if(sectionToMoveTo >= 4) {
+  					$('.js-multi-step-container').addClass("show-popup-alert-message");
+	  			} else {
+	  				$('.js-multi-step-container').removeClass("show-popup-alert-message");
+	  			}
+  			} else {
+	  			if(sectionToMoveTo >= 2) {
+	  				$('.js-multi-step-container').addClass("show-popup-alert-message");
+	  			} else {
+	  				$('.js-multi-step-container').removeClass("show-popup-alert-message");
+	  			}
+	  		}
   		});
   	}
   	window.onready = initScripts();

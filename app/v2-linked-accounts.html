@@ -82,7 +82,7 @@
 									<a href="#" class="ref-button--secondary--small">
 				 						Edit Details
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account">
 				 						Unlink
 				 					</a>
 								</td>
@@ -96,7 +96,7 @@
 									<a href="#" class="ref-button--secondary--small">
 				 						Edit Details
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account">
 				 						Unlink
 				 					</a>
 								</td>
@@ -110,7 +110,7 @@
 									<a href="#" class="ref-button--secondary--small">
 				 						Edit Details
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account">
 				 						Unlink
 				 					</a>
 								</td>
@@ -124,7 +124,7 @@
 									<a href="#" class="ref-button--secondary--small">
 				 						Edit Details
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account">
 				 						Unlink
 				 					</a>
 								</td>
@@ -168,7 +168,7 @@
 									<a href="#" class="ref-button--secondary--small">
 				 						Edit Details
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account">
 				 						Unlink
 				 					</a>
 								</td>
@@ -185,7 +185,7 @@
 									<a href="#" class="ref-button--secondary--small">
 				 						Edit Details
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account">
 				 						Unlink
 				 					</a>
 								</td>
@@ -202,7 +202,7 @@
 									<a href="#" class="ref-button--secondary--small">
 				 						Edit Details
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account">
 				 						Unlink
 				 					</a>
 								</td>
@@ -219,7 +219,7 @@
 									<a href="#" class="ref-button--secondary--small">
 				 						Edit Details
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account">
 				 						Unlink
 				 					</a>
 								</td>
@@ -271,7 +271,7 @@
 							<button class="ref-button--secondary--large button-medium-width js-popup-close">
 								Cancel
 							</button>
-							<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1">
+							<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1" data-fake-loading="1">
 		 						Link Account
 		 					</button>
 						</form>
@@ -340,7 +340,7 @@
 							<button class="ref-button--secondary--large button-medium-width js-popup-close">
 		 						Cancel
 		 					</button>
-							<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1">
+							<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1" data-fake-loading="1">
 		 						Link Account
 		 					</button>
 						</form>
@@ -371,6 +371,44 @@
 						<img src="images/v2/icon-padlock@2x.png" alt="Padlock icon" />
 						<span>Linked account credentials are securely stored by Reflection and your data is never shared</span></p>
 				</aside>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--unlink-account">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<div class="popup-sections-container js-popup-sections-container show-popup-alert-message">
+					<div class="multi-step-section is-viewed-step">
+						<h2 class="heading-style--heading-five multi-step-section__heading">Unlink Account</h2>
+						<button class="ref-button--secondary--large button-medium-width js-popup-close">
+							Cancel
+						</button>
+						<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1">
+	 						Unlink
+	 					</button>
+					</div>
+
+					<div class="multi-step-section">
+						<h2 class="heading-style--heading-five multi-step-section__heading">Unlink Account</h2>
+						<p>Unlinking this account means you will be automatically downgraded to a 'Free' Account. Do you still want to proceed?</p>
+						<button class="ref-button--secondary--large button-medium-width js-popup-close">
+							No, Cancel
+						</button>
+						<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="2">
+	 						Yes, Unlink
+	 					</button>
+					</div>
+
+					<div class="multi-step-section">
+						<h2 class="heading-style--heading-five multi-step-section__heading">Unlink Account</h2>
+						<p>Account successfully unlinked. You have now been transferred to a 'Free' account. You can upgrade to Publisher or Pro at any time.</p>
+						<a href="#" class="ref-button--secondary--medium js-popup-close">
+	 						Close
+	 					</a>
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
@@ -422,6 +460,14 @@
 				}, 100);
 			});
 
+			$('.js-open-modal--unlink-account').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--unlink-account').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--unlink-account .js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
 			$('.js-page-overlay').on("click", function(e){
 				var parentIsPopupContent = false;
 				$(e.target).parents("div").each(function(){
@@ -453,13 +499,17 @@
   			var moveLeftBy = -popupSectionWidth * sectionToMoveTo;
   			var stepsContainer = $(this).parents(".js-popup-sections-container").css("left", moveLeftBy + "px");
 
-  			if(sectionToMoveTo == 1) {
+  			var fakeLoading = $(this).data("fake-loading");
+
+  			if(fakeLoading) { // automate loading with pause
 
   				var nextViewedStep = sectionToMoveTo + 1;
   				var nextViewedStepAfterLoading = sectionToMoveTo + 2;
   				stepsContainer.css("left", "-" + popupSectionWidth * sectionToMoveTo + "px");
   				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
 	  			stepsContainer.find(".multi-step-section:nth-child(" + nextViewedStep + ")").addClass("is-viewed-step");
+  				
+  				clearTimeout(successTimeOut);
 
   				successTimeOut = setTimeout(function(){
 	  				stepsContainer.css("left", "-" + popupSectionWidth * nextViewedStep + "px");

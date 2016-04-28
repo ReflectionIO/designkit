@@ -80,9 +80,39 @@
 						<span class="page-header__publisher-name">By <a href="#">Supercell</a></span>
 						<div>
 							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
-							<button href="#" class="ref-button--secondary--small page-header_action-button">Follow App</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button js-follow-app">Follow App</button>
 							<a href="#" class="page-header__text-link">View in Appstore</a>
 						</div>
+						<ul class="form-field--checkbox-list form-field--select__dropdown checkbox-dropdown-from-button js-checkbox-dropdown">
+							<li>
+								<input type="checkbox" name="checkboxListOne" id="checkboxListOne">
+								<label for="checkboxListOne" class="checkboxLabel js-no-close-on-click">Apps I Follow</label>
+								<label for="checkboxListOne" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">Apps I Follow</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxListTwo" id="checkboxListTwo" class="js-no-close-on-click">
+								<label for="checkboxListTwo" class="checkboxLabel js-no-close-on-click">My List Name</label>
+								<label for="checkboxListTwo" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">My List Name</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxListThr" id="checkboxListThr" class="js-no-close-on-click">
+								<label for="checkboxListThr" class="checkboxLabel js-no-close-on-click">My List Name</label>
+								<label for="checkboxListThr" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">My List Name</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxListFou" id="checkboxListFou" class="js-no-close-on-click">
+								<label for="checkboxListFou" class="checkboxLabel js-no-close-on-click">My List Name</label>
+								<label for="checkboxListFou" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">My List Name</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxSpFaB" id="checkboxListFive" class="js-no-close-on-click">
+								<label for="checkboxListFive" class="checkboxLabel js-no-close-on-click">My List Name</label>
+								<label for="checkboxListFive" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">My List Name</label>
+							</li>
+							<a href="#" class="ref-button--secondary--small button-full-width js-checkbox-dropdown-close">
+		 						Done
+		 					</a>
+						</ul>
 					</div>
 				</div>
 
@@ -1162,6 +1192,36 @@
   				generateChart('chart-revenue-downloads', "downloads", true);
   			}
   		});
+
+  		$('.js-follow-app').on("click", function(){
+  			var $this = $(this),
+  					$checkboxDropdown = $('.js-checkbox-dropdown');
+  					$checkboxDropdown.toggle();
+  			if(!$this.hasClass("is-success") && $('.js-checkbox-dropdown').is(":visible")) {
+  				$('.js-checkbox-dropdown li:first-child input[type=checkbox]').trigger("click");
+  				setFollowButton();
+  			}
+  		});
+
+  		$('.js-checkbox-dropdown-close').on("click", function(){
+  			$('.js-checkbox-dropdown').hide();
+  		});
+
+  		$('.js-follow-app-checkbox').on("click", function(){
+  			setFollowButton();
+  		});
+
+  		function setFollowButton() {
+  			setTimeout(function(){
+  				if($(".js-checkbox-dropdown").find("input").is(":checked")) {
+	  				$('.js-follow-app').addClass("is-success");
+	  				$('.js-follow-app').text("Following");
+	  			} else {
+	  				$('.js-follow-app').removeClass("is-success");
+	  				$('.js-follow-app').text("Follow App");
+	  			}
+  			}, 100);
+  		}
 
   		// HIGHCHARTS
   		var monthNames = [

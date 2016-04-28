@@ -43,7 +43,7 @@
 						<h1 class="page-title heading-style--heading-two">My Lists</h1>
 						<h2 class="page-sub-title">View and manage lists of apps and publishers that you follow</h1>
 						<div class="account-summary-actions">
-							<a href="#" class="ref-button--secondary--small">
+							<a href="#" class="ref-button--secondary--small js-open-modal--create-list">
 		 						Create New List
 		 					</a>
 		 					<div class="account-summary-action__license-info">
@@ -95,10 +95,10 @@
 								<td>04/01/46</td>
 								<td>12</td>
 								<td class="my-lists-data-cell--actions">
-									<a href="#" class="ref-button--secondary--small">
+									<a href="#" class="ref-button--secondary--small js-open-modal--edit-list" data-current-name="Football Games">
 				 						Edit
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--delete-list">
 				 						Delete
 				 					</a>
 				 				</td>
@@ -108,10 +108,10 @@
 								<td>22/01/46</td>
 								<td>6</td>
 								<td class="my-lists-data-cell--actions">
-									<a href="#" class="ref-button--secondary--small">
+									<a href="#" class="ref-button--secondary--small js-open-modal--edit-list" data-current-name="Our Competitors">
 				 						Edit
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--delete-list">
 				 						Delete
 				 					</a>
 				 				</td>
@@ -125,7 +125,264 @@
 		</div>
 
 		<div class="grid-container" id="js-component-import--global-footer"></div>
-	</div>	
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--create-list">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<div class="popup-sections-container js-popup-sections-container">
+
+					<div class="multi-step-section is-viewed-step">
+						<h2 class="heading-style--heading-five multi-step-section__heading">Unlink Account</h2>
+						<p>Create a new list of apps or publishers you want to track.</p>
+						<form>
+							<div class="form-field">
+								<input type="text" name="listName" id="listName" autocomplete="off" />
+								<label for="listName">Name for this List</label>
+							</div>
+							<div class="secondary-filter secondary-filter--large js-form-field--group">
+								<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger">App Selector Here</span>
+							</div>
+						</form>
+						<button class="ref-button--secondary--large button-medium-width js-popup-close">
+							Cancel
+						</button>
+						<button class="ref-button--primary--large button-medium-width js-popup-close">
+	 						Create List
+	 					</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--edit-list">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<div class="popup-sections-container js-popup-sections-container">
+
+					<div class="multi-step-section is-viewed-step">
+						<h2 class="heading-style--heading-five multi-step-section__heading">Edit List Details</h2>
+						<form>
+							<div class="form-field">
+								<input type="text" name="listNameToEdit" id="listNameToEdit" autocomplete="off" class="js-list-name-to-edit" />
+								<label for="listNameToEdit">Name for this List</label>
+							</div>
+							<div class="secondary-filter secondary-filter--large js-form-field--group">
+								<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger">App Selector Here</span>
+							</div>
+						</form>
+						<button class="ref-button--secondary--large button-medium-width js-popup-close">
+							Cancel
+						</button>
+						<button class="ref-button--primary--large button-medium-width js-popup-close">
+	 						Update
+	 					</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--delete-list">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<div class="popup-sections-container js-popup-sections-container">
+
+					<div class="multi-step-section is-viewed-step">
+						<h2 class="heading-style--heading-five multi-step-section__heading">Delete List</h2>
+						<p>Are you sure you want to delete this list?</p>
+						<button class="ref-button--secondary--large button-medium-width js-popup-close">
+							Cancel
+						</button>
+						<button class="ref-button--primary--large button-medium-width js-popup-close">
+	 						Yes, Delete
+	 					</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Custom Country Picker -->
+	<div class="group-picker js-group-picker">
+		
+		<div class="group-picker__main-container">
+			<div class="toggle-container">	 							
+				<div class="filter-toggle filter-toggle--with-text">
+					<div class="toggle">
+						<input id="toggle--show-popular" name="toggle--show-picker" checked="" type="radio">
+						<label for="toggle--show-popular" class="js-mock-toggle-group-selectors" data-show="group-selector-container--popular">
+							Popular
+						</label>
+					</div>
+					<div class="toggle">
+						<input id="toggle--show-regions" name="toggle--show-picker" type="radio">
+						<label for="toggle--show-regions" class="js-mock-toggle-group-selectors" data-show="regions">
+							Regions
+						</label>
+					</div>
+					<div class="toggle">
+						<input id="toggle--show-countries" name="toggle--show-picker" type="radio">
+						<label for="toggle--show-countries" class="js-mock-toggle-group-selectors" data-show="countries">
+							Countries
+						</label>
+					</div>
+					<div class="toggle">
+						<input id="toggle--show-my-groups" name="toggle--show-picker" type="radio">
+						<label for="toggle--show-my-groups" class="js-mock-toggle-group-selectors" data-show="group-selector-container--groups">
+							My Groups
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="group-selector-container js-group-selector-container" id="group-selector-container--popular">
+				<div class="secondary-filter form-field--search js-form-field-search">
+					<input type="text" placeholder="Find Country" name="findapp" id="findapp">
+					<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+					<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+				</div>
+
+				<ul class="form-field--checkbox-list js-mock-group-item-results">
+					<li>
+						<input type="checkbox" name="checkboxCountryUK" id="checkboxCountryUK"/>
+						<label for="checkboxCountryUK" class="checkboxLabel">United Kingdom</label>
+						<label for="checkboxCountryUK" class="checkboxLabelVisible">
+							<img src="images/icon-flag-gb.png" alt="UK flag" class="checkbox-label-img">
+							<span>United Kingdom</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryFr" id="checkboxCountryFr" />
+						<label for="checkboxCountryFr" class="checkboxLabel">France</label>
+						<label for="checkboxCountryFr" class="checkboxLabelVisible">
+							<img src="images/icon-flag-fra.png" alt="France flag" class="checkbox-label-img">
+							<span>France</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryIt" id="checkboxCountryIt" />
+						<label for="checkboxCountryIt" class="checkboxLabel">Germany</label>
+						<label for="checkboxCountryIt" class="checkboxLabelVisible">
+							<img src="images/icon-flag-ger.png" alt="Germany flag" class="checkbox-label-img">
+							<span>Germany</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryCh" id="checkboxCountryCh" />
+						<label for="checkboxCountryCh" class="checkboxLabel">China</label>
+						<label for="checkboxCountryCh" class="checkboxLabelVisible">
+							<img src="images/icon-flag-china.png" alt="China flag" class="checkbox-label-img">
+							<span>China</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryUSA" id="checkboxCountryUSA" />
+						<label for="checkboxCountryUSA" class="checkboxLabel">USA</label>
+						<label for="checkboxCountryUSA" class="checkboxLabelVisible">
+							<img src="images/icon-flag-usa.png" alt="USA flag" class="checkbox-label-img">
+							<span>USA</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryUK" id="checkboxCountryNe"/>
+						<label for="checkboxCountryNe" class="checkboxLabel">Netherlands</label>
+						<label for="checkboxCountryNe" class="checkboxLabelVisible">
+							<img src="images/icon-flag-gb.png" alt="Netherlands flag" class="checkbox-label-img">
+							<span>Netherlands</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryFr" id="checkboxCountryPo" />
+						<label for="checkboxCountryPo" class="checkboxLabel">Portugal</label>
+						<label for="checkboxCountryPo" class="checkboxLabelVisible">
+							<img src="images/icon-flag-fra.png" alt="Portugal flag" class="checkbox-label-img">
+							<span>Portugal</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountrySp" id="checkboxCountrySp" />
+						<label for="checkboxCountrySp" class="checkboxLabel">Spain</label>
+						<label for="checkboxCountrySp" class="checkboxLabelVisible">
+							<img src="images/icon-flag-ger.png" alt="Spain flag" class="checkbox-label-img">
+							<span>Spain</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryCh" id="checkboxCountryJa" />
+						<label for="checkboxCountryJa" class="checkboxLabel">Japan</label>
+						<label for="checkboxCountryJa" class="checkboxLabelVisible">
+							<img src="images/icon-flag-china.png" alt="Japan flag" class="checkbox-label-img">
+							<span>Japan</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryUSA" id="checkboxCountryInd" />
+						<label for="checkboxCountryInd" class="checkboxLabel">India</label>
+						<label for="checkboxCountryInd" class="checkboxLabelVisible">
+							<img src="images/icon-flag-usa.png" alt="India flag" class="checkbox-label-img">
+							<span>India</span>
+						</label>
+					</li>
+				</ul>
+
+				<a href="#" class="ref-button--primary--small is-disabled group-picker__apply-link js-mock-group-picker-apply">Apply</a>
+			</div>
+
+			<div class="group-selector-container js-group-selector-container" id="group-selector-container--groups" style="display: none;">
+				<div class="secondary-filter form-field--search js-form-field-search">
+					<input type="text" placeholder="Find" name="findgroup" id="findgroup" class="js-mock-find-group">
+					<label for="findgroup" class="ref-icon-after--search"><span>Search</span></label>
+					<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+				</div>
+				<ul class="form-field--radio-list js-mock-group-results">
+					<li>
+						<input type="radio" name="radioButtons" id="radioButtonOne">
+						<label for="radioButtonOne" class="radioButtonLabel">My Group</label>
+						<label for="radioButtonOne" class="radioButtonLabelVisible">My Group</label>
+						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
+					</li>
+					<li>
+						<input type="radio" name="radioButtons" id="radioButtonTwo">
+						<label for="radioButtonTwo" class="radioButtonLabel">Main Competitors</label>
+						<label for="radioButtonTwo" class="radioButtonLabelVisible">Main Competitors</label>
+						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
+					</li>
+					<li>
+						<input type="radio" name="radioButtons" id="radioButtonThree">
+						<label for="radioButtonThree" class="radioButtonLabel">Another Group</label>
+						<label for="radioButtonThree" class="radioButtonLabelVisible">Another Group</label>
+						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
+					</li>
+				</ul>
+				<a href="#" class="ref-button--primary--small is-disabled group-picker__apply-link js-mock-group-picker-apply">Apply</a>
+			</div>
+
+		</div>
+
+		<div class="group-picker__selections-container">
+			<span class="group-picker__selections__number-selected"><span class="js-mock-picker-number-selected">0</span> Selected</span>
+			<a href="#" class="group-picker__selections__clear-link js-mock-clear-selected-countries">Clear All</a>
+			<div class="group-picker__selections js-group-picker__selections">				
+			</div>
+			<a href="#" class="group-picker__selections__save-to-groups-link ref-button--secondary--small js-mock-save-to-groups-link">Save Selection to New Group</a>
+			<form class="group-picker__create-group-container js-create-group-form">
+				<div class="form-field">
+					<input type="text" name="groupname" id="groupname" autocomplete="off" />
+					<label for="groupname">Group Name</label>
+				</div>
+				<a href="#" class="ref-button--secondary--small group-picker__create-group__cancel-button js-mock-create-group-cancel">Cancel</a>
+				<a href="#" class="ref-button--primary--small group-picker__create-group__save-button js-mock-create-group-apply">Create Group</a>
+			</form>
+			<form class="group-picker__amend-group-container js-amend-group-form">
+				<a href="#" class="ref-button--primary--small group-picker__create-group__save-button js-mock-save-group">Save Changes</a>
+			</form>
+		</div>
+	</div> <!-- end country picker -->
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
@@ -151,6 +408,356 @@
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
 
   		new Page();
+  		new FormInteractions();
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+
+  		$('.js-open-modal--create-list').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--create-list').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--create-list .js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
+			$('.js-open-modal--edit-list').on("click", function(e){
+				e.preventDefault();
+				var currentListName = $(this).data("current-name");
+				$('.js-list-name-to-edit').val(currentListName);
+
+				$('.js-page-overlay--edit-list').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--edit-list .js-popup-content').addClass("is-showing");
+					$('.js-list-name-to-edit').select()
+				}, 100);
+			});
+
+			$('.js-open-modal--delete-list').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--delete-list').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--delete-list .js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
+			$('.js-page-overlay').on("click", function(e){
+				var parentIsPopupContent = false;
+				$(e.target).parents("div").each(function(){
+					if($(this).hasClass("js-popup-content")) {
+						parentIsPopupContent = true;
+					}
+				});
+				if(!parentIsPopupContent) {
+					$('.js-page-overlay').fadeOut(100);
+					$('.js-popup-content').removeClass("is-showing");
+				}				
+			});
+
+			$('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay').fadeOut(100);
+				$('.js-popup-content').removeClass("is-showing");
+			});
+
+
+			// MOCK COUNTRY SELECTOR
+			$('.js-group-trigger').on("click", function(){ // to open the country selector
+				var $this = $(this),
+						thisPositionTop = $this.offset().top,
+						thisPositionLeft = $this.offset().left,
+						thisHeight = $this.innerHeight(),
+						thisWidth = $this.innerWidth(),
+						offsetTop = 5,
+						isAlreadyOpen = $this.parent('.js-form-field--group').hasClass("is-open"),
+						groupPickerWidth = 650;
+				
+				if(!isAlreadyOpen) {
+					setTimeout(function(){ // setTimeout is to wait for all other popups to close first
+						
+						$('.js-group-picker').show().css({ "top" : thisPositionTop + thisHeight + offsetTop, "left" : thisPositionLeft + thisWidth / 2 - groupPickerWidth / 2 });
+						$this.parent(".js-form-field--group").addClass("is-open");
+						
+					}, 100);
+				} else {
+					$this.parent(".js-form-field--group").addClass("is-open");
+				}
+			});
+
+			$('.js-mock-group-picker-apply, .js-group-trigger').on("click", function(e){
+				e.preventDefault();
+				$('.js-group-picker').hide();
+				$('.js-group-trigger').parent(".is-open").removeClass("is-open");
+				var numberOfCountriesValue = $('.js-mock-picker-number-selected').text();
+				var countryText = numberOfCountriesValue + " Countries";
+				if(numberOfCountriesValue == 1) {
+					countryText = $('.js-group-picker__selections .group-picker__selection:first-child span').text();
+				}
+				$('.js-group-trigger').text(countryText);
+			});
+
+			$('.js-mock-toggle-group-selectors').on("click", function(){ // this is the popular, regions, countries and my groups toggle
+				var contentIdToShow = $(this).data("show");
+				$('.js-group-selector-container').hide();
+				$('#' + contentIdToShow).show();
+				if(contentIdToShow == "group-selector-container--popular") {
+					synchCheckboxesWithCurrentSelection();
+					unselectRadioGroupsSelection();
+					toggleAmendGroupForm(true);
+				} else {
+					unselectRadioGroupsSelection();
+					toggleAmendGroupForm(true);
+				}
+			});
+
+			function setNumberSelected() {
+				var numberSelected = $('.js-group-picker__selections .group-picker__selection').length;
+	  		$('.js-mock-picker-number-selected').text(numberSelected);
+
+	  		if(numberSelected > 0) {
+	  			toggleSaveToGroupsLink(false);
+	  		} else {
+	  			toggleSaveToGroupsLink(true);
+	  		}
+			}
+			
+			function closeCreateGroupContainer() {
+				if($createGroupForm.hasClass("is-showing")) {
+					$createGroupFormCancel.show();
+					$createGroupForm.removeClass("is-showing");
+					$createGroupFormApply.removeClass("is-success is-disabled").text("Create Group");	
+				}				
+			}
+
+			function synchCheckboxesWithCurrentSelection() {
+				
+				// for instance, if a user goes from my groups to popular, selections need to synch
+				$('.js-mock-group-item-results input:checked').each(function(){
+					$(this)[0].checked = false;
+				});
+				
+				$('.js-group-picker__selections .group-picker__remove-group-link').each(function(){
+					var idOfCheckboxToTurnOn = $(this).attr("for");
+					$('#' + idOfCheckboxToTurnOn)[0].checked = true;
+				});
+			}
+
+			function unselectRadioGroupsSelection() {
+				$('.js-mock-group-results input:checked').each(function(){
+					$(this)[0].checked = false;
+				});				
+			}
+
+			function toggleSaveToGroupsLink(isHide) {
+				if(isHide) {
+					$saveToGroupsLink.css("display", "none");
+				} else {
+					$saveToGroupsLink.css("display", "block");
+				}
+			}
+
+			function toggleAmendGroupForm(isHide) {
+				if(isHide) {
+					$('.js-amend-group-form').hide();
+				} else {
+					$('.js-amend-group-form').show();
+				}
+			}
+
+			function showSaveIfRadioGroupSelected() {
+				var isAGroupSelected = false;
+				$('.js-mock-group-results input').each(function(){
+					if($(this)[0].checked == true) {
+						isAGroupSelected = true;						
+					}
+					if(isAGroupSelected) {
+						toggleAmendGroupForm(false);
+					} else {
+						toggleAmendGroupForm(true);
+					}
+				});
+			}
+
+			var $createGroupForm = $('.js-create-group-form'),
+					$createGroupFormApply = $('.js-mock-create-group-apply'),
+					$createGroupFormCancel = $('.js-mock-create-group-cancel'),
+					$saveToGroupsLink = $('.js-mock-save-to-groups-link');
+
+					// popular countries list item checkbox change
+	  	$('.js-mock-group-item-results input[type=checkbox]').on("change", function() {
+	  		var selectionContainer = $('.js-group-picker__selections'),
+	  				$this = $(this),
+	  				selectedLabel = $this.siblings(".checkboxLabelVisible"),
+	  				selectedText = selectedLabel.find("span").text(),
+	  				selectedImage = selectedLabel.find("img").attr("src"),
+	  				selectedCheckboxId = $this.attr("id");
+	  				closeCreateGroupContainer();
+
+	  		if($this[0].checked == true) {
+	  			var newSelection = $("<div>").addClass("group-picker__selection")
+	  																		.attr("id", "picker-id-" + selectedCheckboxId)
+	  																		.append($("<img>").attr("src", selectedImage).attr("alt", selectedText + " flag"))
+	  																		.append($("<span>").text(selectedText))
+	  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+	  																										.attr("for", selectedCheckboxId)
+	  																										.text("Clear")
+	  																										.on("click", function(){
+	  																											$(this).parent(".group-picker__selection").remove();
+	  																											closeCreateGroupContainer();
+	  																										})
+	  																						);
+
+					selectionContainer.append(newSelection);
+
+	  		} else {
+	  			selectionContainer.find("#picker-id-" + selectedCheckboxId).remove();
+	  		}
+
+	  		setNumberSelected();
+
+	  		$('.js-mock-group-picker-apply').removeClass('is-disabled');
+	  	});
+
+				// My groups radio button change
+			$('.js-mock-group-results input[type=radio]').on("change", function() {
+	  		var selectionContainer = $('.js-group-picker__selections'),
+	  				$this = $(this),
+	  				selectedCheckboxId = $this.attr("id");
+	  				closeCreateGroupContainer();
+
+	  				selectionContainer.empty();
+	  				$('.js-mock-picker-number-selected').text("0");
+	  				toggleAmendGroupForm(true);
+
+	  				// Add Mock Data to results
+	  				if(selectedCheckboxId == "radioButtonOne") {
+	  					// fill country selection with mock results (as if it were a saved group)
+		  				var ukSelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryUK")
+		  																		.append($("<img>").attr("src", "images/icon-flag-gb.png").attr("alt", "UK flag"))
+		  																		.append($("<span>").text("United Kingdom"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryUK")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+		  				var germanySelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryIt")
+		  																		.append($("<img>").attr("src", "images/icon-flag-ger.png").attr("alt", "Germany flag"))
+		  																		.append($("<span>").text("Germany"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryIt")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+							selectionContainer.append(ukSelection);
+							selectionContainer.append(germanySelection);
+	  				} else {
+	  					// fill country selection with mock results (as if it were a saved group)
+		  				var franceSelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryFr")
+		  																		.append($("<img>").attr("src", "images/icon-flag-fra.png").attr("alt", "France flag"))
+		  																		.append($("<span>").text("France"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryFr")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+		  				var germanySelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryIt")
+		  																		.append($("<img>").attr("src", "images/icon-flag-ger.png").attr("alt", "Germany flag"))
+		  																		.append($("<span>").text("Germany"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryIt")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+		  				var usaSelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryUSA")
+		  																		.append($("<img>").attr("src", "images/icon-flag-usa.png").attr("alt", "USA flag"))
+		  																		.append($("<span>").text("USA"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryUSA")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+							selectionContainer.append(franceSelection);
+							selectionContainer.append(germanySelection);
+							selectionContainer.append(usaSelection);
+	  				}
+
+	  				setNumberSelected();	  				
+	  				synchCheckboxesWithCurrentSelection();
+	  				toggleSaveToGroupsLink(true);
+	  				$('.js-mock-group-picker-apply').removeClass("is-disabled");
+	  	});
+
+			$saveToGroupsLink.on("click", function(){
+				$(this).hide();
+				$createGroupForm.addClass("is-showing");
+				$('.js-amend-group-form').hide();
+				$createGroupForm.find("input[type=text]").focus();
+			});
+
+			$createGroupFormCancel.on("click", function(){
+				$saveToGroupsLink.css("display", "block");
+				$createGroupForm.removeClass("is-showing");
+
+				showSaveIfRadioGroupSelected()
+			});			
+
+			$createGroupFormApply.on("click", function(){
+				$createGroupFormApply.addClass("is-success is-disabled").text("Group Created!");
+				$createGroupFormCancel.hide();
+				unselectRadioGroupsSelection();
+
+				// mock add to my groups
+				var nameForNewGroup = $('.js-create-group-form input[type=text]').val();
+				if(nameForNewGroup.length == 0) {
+					nameForNewGroup = "New Group";
+				}
+				var mockListItem = $('<li><input type="radio" name="radioButtons" id="radioButtonNew"><label for="radioButtonNew" class="radioButtonLabel">' + nameForNewGroup + '</label><label for="radioButtonNew" class="radioButtonLabelVisible">' + nameForNewGroup + '</label><span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span></li>'); // Obviously add this element in a better way, just for mock!!
+
+				$('.js-mock-group-results').append(mockListItem);
+					
+			});
+			
+			$('.js-mock-clear-selected-countries').on("click", function(){
+				unselectRadioGroupsSelection();
+				showSaveIfRadioGroupSelected();
+				$('.js-group-picker__selections').find(".js-remove-selected-group").trigger("click");
+				closeCreateGroupContainer();
+			});
+
+			$('.js-remove-group').on("click", function(){
+				$(this).parents("li").remove();
+			});
+
+			// end country picker
   	}
   	window.onready = initScripts();
   </script>
