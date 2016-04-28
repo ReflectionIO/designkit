@@ -264,7 +264,7 @@
   			$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=" + searchId + "&callback=handledata"));
   		} else {
   			$('body').append($("<script>").attr("id", "get-app-details").attr("src", "https://itunes.apple.com/gb/lookup?id=1053012308&callback=handledata")); // Clash Royale
-  		}
+  		}  		
 
   		// test ids
   		// Delta V 429903190 Arach 999971868 MValley 728293409 Pako 903183877 Smashy Road 1020119327
@@ -390,6 +390,7 @@
 		}
 
   	function handledata(data) {
+  		console.log(data);
   		if(data.results && data.results.length > 0) {
   			if(data.results[0].screenshotUrls) {
 

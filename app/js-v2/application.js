@@ -413,26 +413,56 @@ var FormFieldSelect = function($domElement) {
 			if($thisOption.is(":selected")) {
 				if($thisOption.val() != "") {
 					selectedClass = "is-selected";
-					$currentValue.text($thisOption.text());
+					if($thisOption.data("icon-class")) {
+						$currentValue.addClass($thisOption.data("icon-class"));
+					}
+					if($thisOption.data("app-icon")) {
+						$currentValue.html("");
+						$currentValue.append($("<img>").attr("src", $thisOption.data("app-icon")).attr("alt", $thisOption.text() + " icon"));
+						$currentValue.append($("<span>").text($thisOption.text()));
+					} else {
+						$currentValue.text($thisOption.text());
+					}
 				}
 			}
 
 			var $newListItem = $("<li>");
+			if($thisOption.data("icon-class") != undefined) {
+				$newListItem.addClass($thisOption.data("icon-class"));
+			}
+			if($thisOption.data("app-icon") != undefined) {
+				console.log($thisOption.data("app-icon"));
+				$newListItem.append($("<img>").attr("src", $thisOption.data("app-icon")).attr("alt", $thisOption.text() + " icon"));
+			}
 			$dropDownContainer.append($newListItem
-																		.addClass("js-dropdown-option")
-																		.text($thisOption.text())
+																		.addClass("js-dropdown-option")																		
 																		.addClass(selectedClass)
 																		.attr('data-value', $thisOption.attr('value'))
 																		.on("click", function() {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");
-																			$currentValue.text($thisOption.text());
+																			if($thisOption.data("icon-class")) {
+																				$currentValue.removeClass("ref-icon-before--apple");
+																				$currentValue.removeClass("ref-icon-before--play-store");
+																				$currentValue.addClass($thisOption.data("icon-class"));
+																			} else {
+																				$currentValue.removeClass("ref-icon-before--apple");
+																				$currentValue.removeClass("ref-icon-before--play-store");
+																			}
+																			if($thisOption.data("app-icon")) {
+																				$currentValue.html("");
+																				$currentValue.append($("<img>").attr("src", $thisOption.data("app-icon")).attr("alt", $thisOption.text() + " icon"));
+																				$currentValue.append($("<span>").text($thisOption.text()));
+																			} else {
+																				$currentValue.text($thisOption.text());
+																			}																			
 																			$dropDownContainer.toggle();
 																			$thisSelectBox.parent("div").toggleClass("is-open");
 																			$thisSelectBox.parent("div").removeClass("nothing-selected");
 																			$dropDownContainer.find(".is-selected").removeClass("is-selected");
 																			$(this).addClass("is-selected");
 																		})
+																		.append($("<span>").text($thisOption.text()))
 															);
 
 			if($thisOption.hasClass("js-parent-option")) {
@@ -442,6 +472,8 @@ var FormFieldSelect = function($domElement) {
 			if($thisOption.hasClass("js-child-option")) {
 				$newListItem.addClass("form-field--select__dropdown__child-option");
 			}
+		} else { // no value means placeholder text before option is selected
+			$currentValue.text($thisOption.text());
 		}
 
 	});
