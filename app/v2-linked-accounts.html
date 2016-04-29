@@ -124,7 +124,7 @@
 									<a href="#" class="ref-button--secondary--small">
 				 						Edit Details
 				 					</a>
-				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account">
+				 					<a href="#" class="ref-button--secondary--small account-remove-link js-open-modal--unlink-account-final">
 				 						Unlink
 				 					</a>
 								</td>
@@ -378,36 +378,43 @@
 	<div class="page-overlay js-page-overlay js-page-overlay--unlink-account">
 		<div class="page-popup">
 			<div class="popup-content js-popup-content">
-				<div class="popup-sections-container js-popup-sections-container show-popup-alert-message">
+				<div class="popup-sections-container js-popup-sections-container">
 					<div class="multi-step-section is-viewed-step">
 						<h2 class="heading-style--heading-five multi-step-section__heading">Unlink Account</h2>
 						<button class="ref-button--secondary--large button-medium-width js-popup-close">
 							Cancel
 						</button>
-						<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1">
+						<button class="ref-button--primary--large button-medium-width js-popup-close">
 	 						Unlink
 	 					</button>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-					<div class="multi-step-section">
+	<div class="page-overlay js-page-overlay js-page-overlay--unlink-account-final">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<div class="popup-sections-container js-popup-sections-container">
+					<div class="multi-step-section is-viewed-step">
 						<h2 class="heading-style--heading-five multi-step-section__heading">Unlink Account</h2>
 						<p>Unlinking this account means you will be automatically downgraded to a 'Free' Account. Do you still want to proceed?</p>
 						<button class="ref-button--secondary--large button-medium-width js-popup-close">
 							No, Cancel
 						</button>
-						<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="2">
-	 						Yes, Unlink
-	 					</button>
+						<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1">
+							Yes, Unlink
+						</button>
 					</div>
 
 					<div class="multi-step-section">
 						<h2 class="heading-style--heading-five multi-step-section__heading">Unlink Account</h2>
 						<p>Account successfully unlinked. You have now been transferred to a 'Free' account. You can upgrade to Publisher or Pro at any time.</p>
 						<a href="#" class="ref-button--secondary--medium js-popup-close">
-	 						Close
-	 					</a>
+								Close
+							</a>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -465,6 +472,14 @@
 				$('.js-page-overlay--unlink-account').fadeIn(200);
 				setTimeout(function(){
 					$('.js-page-overlay--unlink-account .js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
+			$('.js-open-modal--unlink-account-final').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--unlink-account-final').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--unlink-account-final .js-popup-content').addClass("is-showing");
 				}, 100);
 			});
 

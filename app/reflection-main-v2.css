@@ -121,8 +121,7 @@ button, .ref-button, .ref-button--primary--small, .ref-button--primary--medium, 
 input[type="email"],
 input[type="search"],
 input[type="password"],
-textarea, .global-header .link-log-in, .global-header .search-link-container input[type=text], .panel-right .blockquote-container blockquote,
-.no-js .panel-right .blockquote-container blockquote {
+textarea, .global-header .link-log-in, .global-header .search-link-container input[type=text] {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -809,6 +808,85 @@ p strong {
 .p-with-inline-svg-img span {
   width: calc(100% - 50px);
   text-align: left;
+}
+
+/* line 337, sass/ui-v2/_typography.scss */
+.multi-step-section .blockquote-container {
+  margin-bottom: 26px;
+  margin-top: 34px;
+}
+
+/* line 342, sass/ui-v2/_typography.scss */
+blockquote {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 42px;
+  color: #727686;
+}
+/* line 348, sass/ui-v2/_typography.scss */
+blockquote:before {
+  content: "\201C";
+  position: absolute;
+  top: 25px;
+  left: 24px;
+  display: block;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 91px;
+  color: #363a47;
+}
+/* line 357, sass/ui-v2/_typography.scss */
+.multi-step-section blockquote:before {
+  position: relative;
+  top: 43px;
+  left: 10px;
+  display: inline-block;
+  float: left;
+  vertical-align: top;
+  font-size: 83px;
+  color: #c4c7d0;
+}
+/* line 368, sass/ui-v2/_typography.scss */
+.multi-step-section blockquote {
+  padding-top: 0;
+}
+/* line 371, sass/ui-v2/_typography.scss */
+blockquote p {
+  margin-bottom: 23px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.43;
+  color: #727686;
+}
+/* line 378, sass/ui-v2/_typography.scss */
+.multi-step-section blockquote p {
+  padding-left: 57px;
+  margin-bottom: 1.7rem;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+  color: #363a47;
+  font-size: 18px;
+}
+/* line 388, sass/ui-v2/_typography.scss */
+blockquote cite {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+}
+/* line 391, sass/ui-v2/_typography.scss */
+blockquote cite span {
+  font-size: 16px;
+  color: #fefefe;
+}
+/* line 397, sass/ui-v2/_typography.scss */
+.multi-step-section blockquote footer {
+  text-align: left;
+}
+/* line 399, sass/ui-v2/_typography.scss */
+.multi-step-section blockquote footer span {
+  padding-left: 57px;
+  color: #81879d;
+  font-weight: 600;
 }
 
 /* line 1, sass/base/_reset-v2.scss */
@@ -1546,8 +1624,7 @@ button, .ref-button, .ref-button--primary--small, .ref-button--primary--medium, 
 input[type="email"],
 input[type="search"],
 input[type="password"],
-textarea, .global-header .link-log-in, .global-header .search-link-container input[type=text], .panel-right .blockquote-container blockquote,
-.no-js .panel-right .blockquote-container blockquote {
+textarea, .global-header .link-log-in, .global-header .search-link-container input[type=text] {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -3624,8 +3701,8 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 .ref-textarea {
   position: relative;
   width: 100%;
+  min-height: 100px;
   padding: 10px;
-  margin-bottom: 2rem;
   z-index: 1;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
@@ -3634,9 +3711,10 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   border: 1px solid #c4c7d0;
   border-radius: 4px;
   background-color: #f5f9f9;
+  resize: none;
 }
 
-/* line 787, sass/components-v2/_form.scss */
+/* line 788, sass/components-v2/_form.scss */
 .primary-filters-container {
   width: 100%;
   display: table;
@@ -3644,7 +3722,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   overflow: visible;
   font-size: 0;
 }
-/* line 793, sass/components-v2/_form.scss */
+/* line 794, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter {
   width: 20%;
   max-width: 100%;
@@ -3654,11 +3732,11 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   border-right: 1px solid #c4c7d0;
   border-bottom: 1px solid #c4c7d0;
 }
-/* line 801, sass/components-v2/_form.scss */
+/* line 802, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter:last-child {
   border-right: 0;
 }
-/* line 804, sass/components-v2/_form.scss */
+/* line 805, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter .form-field--select__box {
   padding: 10px 43px 14px 22px;
   display: block;
@@ -3670,7 +3748,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 812, sass/components-v2/_form.scss */
+/* line 813, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter .form-field--select__box:after {
   position: absolute;
   right: 18px;
@@ -3679,17 +3757,17 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   font-size: 20px;
   letter-spacing: -0.01rem;
 }
-/* line 820, sass/components-v2/_form.scss */
+/* line 821, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter .form-field--select__box:hover {
   background-color: #f2f2f5;
 }
-/* line 824, sass/components-v2/_form.scss */
+/* line 825, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter.is-open {
   border-top: 1px solid #5551a4;
   border-right: 1px solid #5551a4;
   border-bottom: 1px solid #5551a4;
 }
-/* line 828, sass/components-v2/_form.scss */
+/* line 829, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter.is-open .form-field--select__box {
   padding-top: 11px;
   padding-left: 21px;
@@ -3699,14 +3777,14 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   color: #fcfdfd;
   background-color: #6d69c5;
 }
-/* line 836, sass/components-v2/_form.scss */
+/* line 837, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter.is-open .form-field--select__box:after {
   top: 12px;
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
-/* line 842, sass/components-v2/_form.scss */
+/* line 843, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter.form-field--search {
   padding: 10px 18px 0 22px;
   border-left: 0;
@@ -3714,31 +3792,31 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   background-color: #fcfdfd;
   cursor: default;
 }
-/* line 848, sass/components-v2/_form.scss */
+/* line 849, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter.form-field--search.is-open {
   border-right: none;
   border-color: #c4c7d0;
 }
-/* line 851, sass/components-v2/_form.scss */
+/* line 852, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter.form-field--search.is-open .clear-search {
   top: 11px;
   right: 16px;
 }
-/* line 856, sass/components-v2/_form.scss */
+/* line 857, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter.form-field--search .ref-icon-after--search {
   margin-top: 1px;
 }
-/* line 859, sass/components-v2/_form.scss */
+/* line 860, sass/components-v2/_form.scss */
 .primary-filters-container .primary-filter.form-field--search input {
   font-size: 16px;
 }
 
-/* line 865, sass/components-v2/_form.scss */
+/* line 866, sass/components-v2/_form.scss */
 .secondary-filter {
   width: auto;
   max-width: 100%;
 }
-/* line 868, sass/components-v2/_form.scss */
+/* line 869, sass/components-v2/_form.scss */
 .secondary-filter .form-field--select__box {
   min-width: 85px;
   padding: 10px 42px 10px 15px;
@@ -3753,7 +3831,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 879, sass/components-v2/_form.scss */
+/* line 880, sass/components-v2/_form.scss */
 .secondary-filter .form-field--select__box:after {
   position: absolute;
   right: 12px;
@@ -3762,16 +3840,16 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   font-size: 20px;
   letter-spacing: -0.01rem;
 }
-/* line 887, sass/components-v2/_form.scss */
+/* line 888, sass/components-v2/_form.scss */
 .secondary-filter .form-field--select__box:hover {
   background-color: #f2f2f5;
 }
-/* line 890, sass/components-v2/_form.scss */
+/* line 891, sass/components-v2/_form.scss */
 .secondary-filter .form-field--select__box.ref-icon-before--apple, .secondary-filter .form-field--select__box.ref-icon-before--play-store {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-/* line 897, sass/components-v2/_form.scss */
+/* line 898, sass/components-v2/_form.scss */
 .secondary-filter.is-open .form-field--select__box {
   padding-bottom: 9px;
   border: 1px solid #5551a4;
@@ -3779,7 +3857,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   color: #fcfdfd;
   background-color: #6d69c5;
 }
-/* line 903, sass/components-v2/_form.scss */
+/* line 904, sass/components-v2/_form.scss */
 .secondary-filter.is-open .form-field--select__box:after {
   top: 10px;
   right: 11px;
@@ -3788,23 +3866,23 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
-/* line 909, sass/components-v2/_form.scss */
+/* line 910, sass/components-v2/_form.scss */
 .secondary-filter.is-open .form-field--select__box.ref-icon-before--apple, .secondary-filter.is-open .form-field--select__box.ref-icon-before--play-store {
   padding-bottom: 3px;
 }
-/* line 915, sass/components-v2/_form.scss */
+/* line 916, sass/components-v2/_form.scss */
 .secondary-filter .form-field--select__dropdown {
   padding-top: 14px;
   border-radius: 4px;
 }
-/* line 918, sass/components-v2/_form.scss */
+/* line 919, sass/components-v2/_form.scss */
 .secondary-filter .form-field--select__dropdown li {
   margin-bottom: 5px;
   font-size: 14px;
   white-space: nowrap;
 }
 
-/* line 925, sass/components-v2/_form.scss */
+/* line 926, sass/components-v2/_form.scss */
 .form-field--search {
   position: relative;
   width: 176px;
@@ -3817,7 +3895,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 934, sass/components-v2/_form.scss */
+/* line 935, sass/components-v2/_form.scss */
 .form-field--search input {
   width: calc(100% - 25px);
   display: inline-block;
@@ -3826,7 +3904,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   font-size: 14px;
   color: #29292c;
 }
-/* line 942, sass/components-v2/_form.scss */
+/* line 943, sass/components-v2/_form.scss */
 .form-field--search input::-webkit-input-placeholder,
 .form-field--search input:-moz-placeholder,
 .form-field--search input::-moz-placeholder,
@@ -3835,28 +3913,28 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   font-size: 14px;
   color: #81879d;
 }
-/* line 950, sass/components-v2/_form.scss */
+/* line 951, sass/components-v2/_form.scss */
 .form-field--search.secondary-filter {
   cursor: default;
 }
-/* line 953, sass/components-v2/_form.scss */
+/* line 954, sass/components-v2/_form.scss */
 .form-field--search span {
   position: absolute;
   top: 0;
   left: -999rem;
 }
-/* line 958, sass/components-v2/_form.scss */
+/* line 959, sass/components-v2/_form.scss */
 .form-field--search .ref-icon-after--search {
   display: inline-block;
   float: right;
 }
-/* line 961, sass/components-v2/_form.scss */
+/* line 962, sass/components-v2/_form.scss */
 .form-field--search .ref-icon-after--search:after {
   width: 14px;
   font-size: 18px;
   color: #81879d;
 }
-/* line 967, sass/components-v2/_form.scss */
+/* line 968, sass/components-v2/_form.scss */
 .form-field--search .clear-search {
   position: absolute;
   top: 9px;
@@ -3864,26 +3942,26 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   display: none;
   font-size: 0;
 }
-/* line 973, sass/components-v2/_form.scss */
+/* line 974, sass/components-v2/_form.scss */
 .form-field--search .clear-search:after {
   color: #c4c7d0;
   font-size: 17.5px;
 }
-/* line 979, sass/components-v2/_form.scss */
+/* line 980, sass/components-v2/_form.scss */
 .form-field--search.is-open .clear-search {
   display: block;
 }
-/* line 982, sass/components-v2/_form.scss */
+/* line 983, sass/components-v2/_form.scss */
 .form-field--search.is-open .ref-icon-after--search:after {
   color: #f2f7f7;
 }
 
-/* line 987, sass/components-v2/_form.scss */
+/* line 988, sass/components-v2/_form.scss */
 .form-filter {
   width: auto;
   max-width: 100%;
 }
-/* line 990, sass/components-v2/_form.scss */
+/* line 991, sass/components-v2/_form.scss */
 .form-filter .form-field--select__box {
   min-width: 101px;
   padding: 23px 50px 11px 19px;
@@ -3899,7 +3977,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 1002, sass/components-v2/_form.scss */
+/* line 1003, sass/components-v2/_form.scss */
 .form-filter .form-field--select__box:after {
   position: absolute;
   right: 15px;
@@ -3908,15 +3986,15 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   font-size: 20px;
   letter-spacing: -0.01rem;
 }
-/* line 1012, sass/components-v2/_form.scss */
+/* line 1013, sass/components-v2/_form.scss */
 .form-filter.nothing-selected .form-field--select__box {
   padding: 23px 50px 27px 19px;
 }
-/* line 1017, sass/components-v2/_form.scss */
+/* line 1018, sass/components-v2/_form.scss */
 .form-filter.is-open .form-field--select__box {
   border-radius: 4px 4px 0 0;
 }
-/* line 1019, sass/components-v2/_form.scss */
+/* line 1020, sass/components-v2/_form.scss */
 .form-filter.is-open .form-field--select__box:after {
   top: 16px;
   right: 16px;
@@ -3924,7 +4002,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
-/* line 1026, sass/components-v2/_form.scss */
+/* line 1027, sass/components-v2/_form.scss */
 .form-filter .form-field--select__dropdown {
   max-height: 329px;
   width: 100%;
@@ -3936,72 +4014,72 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   border-radius: 0 0 4px 4px;
   background-color: #f2f7f7;
 }
-/* line 1036, sass/components-v2/_form.scss */
+/* line 1037, sass/components-v2/_form.scss */
 .form-filter .form-field--select__dropdown li {
   margin-bottom: 6px;
   font-size: 15px;
   cursor: pointer;
 }
 
-/* line 1044, sass/components-v2/_form.scss */
+/* line 1045, sass/components-v2/_form.scss */
 .secondary-filter--medium .form-field--select__box {
   padding: 11px 50px 14px 15px;
   font-size: 15px;
 }
-/* line 1047, sass/components-v2/_form.scss */
+/* line 1048, sass/components-v2/_form.scss */
 .secondary-filter--medium .form-field--select__box:after {
   top: 11px;
 }
-/* line 1052, sass/components-v2/_form.scss */
+/* line 1053, sass/components-v2/_form.scss */
 .secondary-filter--medium.is-open .form-field--select__box {
   padding-top: 12px;
   padding-bottom: 12px;
 }
-/* line 1055, sass/components-v2/_form.scss */
+/* line 1056, sass/components-v2/_form.scss */
 .secondary-filter--medium.is-open .form-field--select__box:after {
   top: 13px;
 }
-/* line 1061, sass/components-v2/_form.scss */
+/* line 1062, sass/components-v2/_form.scss */
 .secondary-filter--medium .form-field--select__dropdown li {
   margin-bottom: 6px;
   font-size: 15px;
 }
 
-/* line 1068, sass/components-v2/_form.scss */
+/* line 1069, sass/components-v2/_form.scss */
 .secondary-filter--large .form-field--select__box {
   min-width: 132px;
   padding: 14px 40px 18px 15px;
   font-size: 16px;
 }
-/* line 1072, sass/components-v2/_form.scss */
+/* line 1073, sass/components-v2/_form.scss */
 .secondary-filter--large .form-field--select__box:after {
   top: 15px;
 }
-/* line 1077, sass/components-v2/_form.scss */
+/* line 1078, sass/components-v2/_form.scss */
 .secondary-filter--large.is-open .form-field--select__box {
   padding-top: 15px;
   padding-bottom: 16px;
 }
-/* line 1080, sass/components-v2/_form.scss */
+/* line 1081, sass/components-v2/_form.scss */
 .secondary-filter--large.is-open .form-field--select__box:after {
   top: 17px;
 }
-/* line 1085, sass/components-v2/_form.scss */
+/* line 1086, sass/components-v2/_form.scss */
 .secondary-filter--large .form-field--select__dropdown {
   padding-left: 23px;
 }
-/* line 1087, sass/components-v2/_form.scss */
+/* line 1088, sass/components-v2/_form.scss */
 .secondary-filter--large .form-field--select__dropdown li {
   margin-bottom: 6px;
   font-size: 15px;
 }
 
-/* line 1094, sass/components-v2/_form.scss */
+/* line 1095, sass/components-v2/_form.scss */
 .secondary-filter--multi-select .form-field--select__box {
   width: 170px;
 }
 
-/* line 1098, sass/components-v2/_form.scss */
+/* line 1099, sass/components-v2/_form.scss */
 .primary-filter,
 .secondary-filter {
   position: relative;
@@ -4011,13 +4089,13 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   line-height: 1;
   cursor: pointer;
 }
-/* line 1107, sass/components-v2/_form.scss */
+/* line 1108, sass/components-v2/_form.scss */
 .primary-filter .form-field--select__box:after,
 .secondary-filter .form-field--select__box:after {
   color: #81879d;
 }
 
-/* line 1112, sass/components-v2/_form.scss */
+/* line 1113, sass/components-v2/_form.scss */
 .secondary-filters-container {
   padding-top: 1.4rem;
   padding-bottom: 0.6rem;
@@ -4026,20 +4104,20 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   font-size: 0;
   background-color: #f1f5f7;
 }
-/* line 1119, sass/components-v2/_form.scss */
+/* line 1120, sass/components-v2/_form.scss */
 .secondary-filters-container .form-field--select__box {
   background-color: #fcfdfd;
 }
-/* line 1121, sass/components-v2/_form.scss */
+/* line 1122, sass/components-v2/_form.scss */
 .secondary-filters-container .form-field--select__box:hover {
   background-color: #f2f2f5;
 }
-/* line 1126, sass/components-v2/_form.scss */
+/* line 1127, sass/components-v2/_form.scss */
 .secondary-filters-container .secondary-filter.is-open .form-field--select__box:hover {
   background-color: #6d69c5;
 }
 
-/* line 1131, sass/components-v2/_form.scss */
+/* line 1132, sass/components-v2/_form.scss */
 .secondary-filter-label {
   padding-top: 1.1rem;
   padding-right: 5px;
@@ -4049,7 +4127,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   color: #727686;
 }
 
-/* line 1139, sass/components-v2/_form.scss */
+/* line 1140, sass/components-v2/_form.scss */
 .form-field-notification-number {
   position: absolute;
   top: 8px;
@@ -4067,7 +4145,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   border-radius: 11px;
   background-color: #ff496a;
 }
-/* line 1155, sass/components-v2/_form.scss */
+/* line 1156, sass/components-v2/_form.scss */
 .form-field-notification-number.is-large-number {
   width: auto;
   padding-top: 4px;
@@ -4075,11 +4153,11 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
   padding-right: 6px;
   font-size: 13px;
 }
-/* line 1162, sass/components-v2/_form.scss */
+/* line 1163, sass/components-v2/_form.scss */
 .is-open .form-field-notification-number {
   top: 10px;
 }
-/* line 1165, sass/components-v2/_form.scss */
+/* line 1166, sass/components-v2/_form.scss */
 li .form-field-notification-number {
   position: relative;
   top: 0;
@@ -4092,67 +4170,67 @@ li .form-field-notification-number {
   line-height: 1.4;
   border-radius: 8px;
 }
-/* line 1176, sass/components-v2/_form.scss */
+/* line 1177, sass/components-v2/_form.scss */
 .is-open li .form-field-notification-number {
   top: 0;
 }
 
-/* line 1182, sass/components-v2/_form.scss */
+/* line 1183, sass/components-v2/_form.scss */
 .reflection-form p {
   margin-top: 15px;
   margin-bottom: 20px;
   font-size: 14px;
   color: #727686;
 }
-/* line 1187, sass/components-v2/_form.scss */
+/* line 1188, sass/components-v2/_form.scss */
 .reflection-form p + button {
   margin-top: 24px;
 }
 
-/* line 1192, sass/components-v2/_form.scss */
+/* line 1193, sass/components-v2/_form.scss */
 .range-input {
   margin-bottom: 15px;
 }
-/* line 1194, sass/components-v2/_form.scss */
+/* line 1195, sass/components-v2/_form.scss */
 .range-input .ref-button--set-range, .range-input .range-input-box {
   display: inline-block;
   vertical-align: top;
 }
-/* line 1198, sass/components-v2/_form.scss */
+/* line 1199, sass/components-v2/_form.scss */
 .range-input .ref-button--set-range {
   box-sizing: border-box;
 }
-/* line 1200, sass/components-v2/_form.scss */
+/* line 1201, sass/components-v2/_form.scss */
 .range-input .ref-button--set-range span:before {
   font-size: 25px;
   color: #81879d;
 }
-/* line 1204, sass/components-v2/_form.scss */
+/* line 1205, sass/components-v2/_form.scss */
 .range-input .ref-button--set-range span.ref-icon-before--minus-two:before {
   font-size: 21px;
 }
-/* line 1208, sass/components-v2/_form.scss */
+/* line 1209, sass/components-v2/_form.scss */
 .range-input .ref-button--set-range:hover span:before {
   color: #6d69c5;
 }
-/* line 1212, sass/components-v2/_form.scss */
+/* line 1213, sass/components-v2/_form.scss */
 .range-input .ref-button--set-range:active {
   border-top: 3px solid #c4c7d0;
 }
-/* line 1215, sass/components-v2/_form.scss */
+/* line 1216, sass/components-v2/_form.scss */
 .range-input .ref-button--set-range.is-disabled {
   opacity: 0.4;
   cursor: default;
 }
-/* line 1219, sass/components-v2/_form.scss */
+/* line 1220, sass/components-v2/_form.scss */
 .range-input .ref-button--set-range.is-disabled:hover span:before {
   color: #81879d;
 }
-/* line 1223, sass/components-v2/_form.scss */
+/* line 1224, sass/components-v2/_form.scss */
 .range-input .ref-button--set-range.is-disabled:active {
   border-top: 1px solid #c4c7d0;
 }
-/* line 1228, sass/components-v2/_form.scss */
+/* line 1229, sass/components-v2/_form.scss */
 .range-input .range-input-box {
   width: calc(100% - 124px);
   height: 52px;
@@ -4169,7 +4247,7 @@ li .form-field-notification-number {
   background-color: #f5f9f9;
 }
 
-/* line 1244, sass/components-v2/_form.scss */
+/* line 1245, sass/components-v2/_form.scss */
 .multi-step-section .ref-button--set-range,
 .ref-button--set-range {
   width: 52px;
@@ -4180,18 +4258,18 @@ li .form-field-notification-number {
   background-color: #e1e5e8;
 }
 
-/* line 1253, sass/components-v2/_form.scss */
+/* line 1254, sass/components-v2/_form.scss */
 .checkbox-dropdown-from-button {
   position: absolute;
   width: 250px;
   display: none;
   padding: 20px;
 }
-/* line 1258, sass/components-v2/_form.scss */
+/* line 1259, sass/components-v2/_form.scss */
 .checkbox-dropdown-from-button .checkboxLabel, .checkbox-dropdown-from-button .radioButtonLabel {
   top: 2px;
 }
-/* line 1261, sass/components-v2/_form.scss */
+/* line 1262, sass/components-v2/_form.scss */
 .checkbox-dropdown-from-button .button-full-width {
   margin-top: 12px;
   text-align: center;
@@ -6449,66 +6527,24 @@ svg.loading-ellipsis .dot-3 {
   -webkit-transition: opacity 0.2s 0.2s;
           transition: opacity 0.2s 0.2s;
 }
-/* line 80, sass/components-v2/_panel-right.scss */
-.panel-right .blockquote-container blockquote,
-.no-js .panel-right .blockquote-container blockquote {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 42px;
-  color: #727686;
-}
-/* line 86, sass/components-v2/_panel-right.scss */
-.panel-right .blockquote-container blockquote:before,
-.no-js .panel-right .blockquote-container blockquote:before {
-  content: "\201C";
-  position: absolute;
-  top: 25px;
-  left: 24px;
-  display: block;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 91px;
-  color: #363a47;
-}
-/* line 96, sass/components-v2/_panel-right.scss */
-.panel-right .blockquote-container blockquote p,
-.no-js .panel-right .blockquote-container blockquote p {
-  margin-bottom: 23px;
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.43;
-  color: #727686;
-}
-/* line 104, sass/components-v2/_panel-right.scss */
-.panel-right .blockquote-container blockquote cite,
-.no-js .panel-right .blockquote-container blockquote cite {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
-}
-/* line 107, sass/components-v2/_panel-right.scss */
-.panel-right .blockquote-container blockquote cite span,
-.no-js .panel-right .blockquote-container blockquote cite span {
-  font-size: 16px;
-  color: #fefefe;
-}
 
-/* line 115, sass/components-v2/_panel-right.scss */
+/* line 82, sass/components-v2/_panel-right.scss */
 .panel-right.search-container {
   right: -319px;
   width: 319px;
   height: 630px;
   background-color: #fcfdfd;
 }
-/* line 120, sass/components-v2/_panel-right.scss */
+/* line 87, sass/components-v2/_panel-right.scss */
 .no-touch .panel-right.search-container {
   -webkit-transition: none;
           transition: none;
 }
-/* line 123, sass/components-v2/_panel-right.scss */
+/* line 90, sass/components-v2/_panel-right.scss */
 .is-showing .panel-right.search-container {
   right: 0;
 }
-/* line 125, sass/components-v2/_panel-right.scss */
+/* line 92, sass/components-v2/_panel-right.scss */
 .no-touch .is-showing .panel-right.search-container {
   -webkit-transition: none;
           transition: none;
