@@ -224,7 +224,7 @@
 		</div>
 	</div>
 
-	<div class="page-overlay page-overlay--edit js-page-overlay js-page-overlay--edit">
+	<div class="page-overlay page-overlay--overflow-visible js-page-overlay js-page-overlay--edit">
 		<div class="page-popup">
 			<div class="popup-content js-popup-content">				
 				<div class="popup-sections-container">
@@ -268,7 +268,7 @@
 		</div>
 	</div>
 
-	<div class="page-overlay page-overlay--edit js-page-overlay js-page-overlay--remove">
+	<div class="page-overlay js-page-overlay js-page-overlay--remove">
 		<div class="page-popup">
 			<div class="popup-content js-popup-content">				
 				<div class="popup-sections-container">
@@ -417,26 +417,7 @@
   				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
   				stepsContainer.find(".multi-step-section:nth-child(" + nextSection + ")").addClass("is-viewed-step");				
   				stepsContainer.css("left", "-" + popupSectionWidth * sectionToMoveTo + "px");
-  				if(sectionToMoveTo != 2) {
-  					$('.js-multi-step-section-confirmation').removeClass("is-success");
-  				} else {
-  					$('.js-multi-step-section-confirmation').addClass("is-success");
-  				}
   			}
-
-  			if($(this).parents(".js-page-overlay--pro").length) {
-  				if(sectionToMoveTo >= 4) {
-  					$('.js-multi-step-container').addClass("show-popup-alert-message");
-	  			} else {
-	  				$('.js-multi-step-container').removeClass("show-popup-alert-message");
-	  			}
-  			} else {
-	  			if(sectionToMoveTo >= 2) {
-	  				$('.js-multi-step-container').addClass("show-popup-alert-message");
-	  			} else {
-	  				$('.js-multi-step-container').removeClass("show-popup-alert-message");
-	  			}
-	  		}
   		});
   	}
   	window.onready = initScripts();
