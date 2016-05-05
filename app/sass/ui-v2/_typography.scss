@@ -227,42 +227,42 @@ h5 + .heading-style--heading-six,
 h1, .heading-style--heading-one {
 	@extend .heading-style;
 	margin-top: 3rem;	
-	margin-bottom: 2.5rem;
+	margin-bottom: 0.65em;
 	font-size: 3.4rem;
 	line-height: 1.29411764705882em;
 }
 h2, .heading-style--heading-two {
 	@extend .heading-style;
 	margin-top: 3rem;
-	margin-bottom: 2.4rem;
+	margin-bottom: 0.6em;
 	font-size: 2.8rem;
 	line-height: 1.35714285714286em;
 }
 h3, .heading-style--heading-three {
 	@extend .heading-style;
 	margin-top: 3rem;
-	margin-bottom: 2.2rem;
+	margin-bottom: 0.68em;
 	font-size: 2.4rem;
 	line-height: 1.41666666666667em;
 }
 h4, .heading-style--heading-four {
 	@extend .heading-style;
 	margin-top: 3rem;
-	margin-bottom: 2.2rem;
+	margin-bottom: 0.8em;
 	font-size: 2.2rem;
 	line-height: 1.36363636363636em;
 }
 h5, .heading-style--heading-five {
 	@extend .heading-style;
 	margin-top: 3rem;
-	margin-bottom: 2.1rem;
+	margin-bottom: 0.7em;
 	font-size: 2rem;
 	line-height: 1.4em;
 }
 h6, .heading-style--heading-six {
 	@extend .heading-style;
 	margin-top: 3rem;
-	margin-bottom: 2.1rem;
+	margin-bottom: 0.7em;
 	font-size: 1.8rem;	
 	line-height: 1.375em;
 	.whats-this-tooltip-icon {
@@ -340,6 +340,7 @@ p {
 	}
 }
 blockquote {
+	position: relative;
 	margin-top: 0;
 	margin-bottom: 0;
 	padding-top: 42px;
@@ -402,5 +403,168 @@ blockquote {
     		font-weight: 600;
 			}
 		}
+	}
+}
+.blockquote--large {
+	padding-top: 0;
+	padding-left: 65px;
+	margin-top: 3.4rem;
+	margin-bottom: 3.5rem;
+	font-size: 1.1em;
+	p {
+		margin-bottom: 1.2em;
+		font-size: 1.6em;
+	}
+	&:before {
+		top: 32px;
+		left: 0;
+		font-size: 100px;
+	}
+	cite {
+		font-size: 1.4rem;
+		line-height: 1.5;
+		span {
+			display: block;
+			font-size: 1.8rem;
+			font-weight: 600;
+			color: #29292c;
+		}
+	}
+}
+figcaption {
+	margin-top: 1.2rem;
+	margin-bottom: 1.9em;
+	padding: 0 3%;
+	font-size: 1.4em;
+	line-height: 1.5625em;	
+	display: block;
+	color: #81869e;
+}
+.content-list {
+	margin-top: 1.8em;
+	margin-bottom: 1.875em;
+	@include font-size(16px);
+	line-height: 1.375em;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	li {
+		max-width: 650px;
+		margin-bottom: 0.62em;
+		padding-left: 31px;
+		color: $mid-grey-1;
+		@include breakpoint($desktop) {
+			max-width: 850px;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+		a {
+			text-decoration: none;
+			color: $reflection-purple;
+			.no-touch & {
+				&:hover {
+					color: $reflection-purple--hover;
+				}
+				&:active {
+					position: relative;
+					top: 2px;
+				}
+			}			
+		}
+	}
+	&.content-list--no-bullets {
+		li {
+			padding-left: 0;
+			background: none;
+			&:before {
+				display: none;
+			}
+		}
+	}
+}
+h1 + .content-list,
+h2 + .content-list,
+h3 + .content-list,
+h4 + .content-list,
+h5 + .content-list,
+h6 + .content-list {
+	margin-top: 0;
+}
+.content-list--featured {
+	margin-bottom: 1.5em;
+	font-size: 2rem;
+	line-height: 1.3em;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	li {
+		margin-bottom: 0.5em;
+		padding-left: 31px;
+	}
+}
+.content-list--minor {
+	margin-bottom: 2.14285714285714em;
+	font-size: 1.4rem;
+	line-height: 1.42857142857143em;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	li {
+		margin-bottom: 0.44em;
+		padding-left: 26px;
+		color: $mid-grey-1;
+	}
+}
+ol.content-list,
+ol.content-list--minor,
+ol.content-list--featured {
+	counter-reset: ordered-counter;
+	li {
+		position: relative;
+		padding-left: 31px;
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-family: $brand-heading-font;
+			font-weight: 600;
+			color: $dark-grey-1;
+			content: counter(ordered-counter);
+			counter-increment: ordered-counter;
+			.page-terms & {
+				content: counter(ordered-counter) ".0";
+			}
+		}
+		ol {
+			counter-reset: ordered-sub-counter;
+			li:before {
+				font-family: $brand-heading-font;
+				font-weight: 600;
+				content: counter(ordered-counter) "." counter(ordered-sub-counter);
+				counter-increment: ordered-sub-counter;
+				.page-terms & {
+					content: counter(ordered-counter) "." counter(ordered-sub-counter);
+				}
+			}
+		}
+	}
+	p {
+		color: $mid-grey-1;
+	}
+}
+ul.content-list,
+ul.content-list--featured,
+ul.content-list--minor {
+	li {
+		position: relative;
+		&:before {
+    	content: "\2022";
+    	position: absolute;
+			left: 0.1rem;
+    	font-family: $brand-body-font;
+    	font-size: 1.6rem;
+    	color: $reflection-purple;
+  	}
 	}
 }
