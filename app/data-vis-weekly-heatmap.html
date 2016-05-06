@@ -162,7 +162,9 @@
 						</ul>
 						<ul class="data-week" ng-repeat="i in dataList.getNumber(dataList.numberOfRows)">
 							<li class="data-cell" ng-repeat="dataItem in dataList.appData" ng-if="$index >= 7 * i && $index < 7 * (i+1)">
-								<span class="data-cell-colour" style='opacity: {{dataList.getAppOpacity($index, "revenue")}}'></span>
+								<span class="data-cell-colour" style='opacity: {{dataList.getAppOpacity($index, "revenue")}}; color: white; font-weight: bold; font-size: 15px;'>
+									<!-- {{dataList.timeConverter(dataItem.date)}} / {{dataList.appData.length}} -->
+								</span>
 								<div class="data-hover">
 									<div class="data-hover__app-icon">
 										<img src='{{dataList.appDetails.icon_url}}' alt='{{dataList.appDetails.name}}' />
@@ -190,7 +192,9 @@
 						</ul>
 						<ul class="data-week" ng-repeat="i in dataList.getNumber(dataList.numberOfRows)">
 							<li class="data-cell" ng-repeat="dataItem in dataList.appData" ng-if="$index >= 7 * i && $index < 7 * (i+1)">
-								<span class="data-cell-colour" style='opacity: {{dataList.getAppOpacity($index, "downloads")}}'></span>
+								<span class="data-cell-colour" style='opacity: {{dataList.getAppOpacity($index, "downloads")}}'>
+									<!-- {{dataList.timeConverter(dataItem.date)}} -->
+								</span>
 								<div class="data-hover">
 									<div class="data-hover__app-icon">
 										<img src='{{dataList.appDetails.icon_url}}' alt='{{dataList.appDetails.name}}' />
