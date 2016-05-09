@@ -13,6 +13,9 @@
 	@include breakpoint($leftnav-wide) {
 		width: calc(100% - 200px);
 	}
+	.global-footer-dark & {
+		border-top: 1px solid $dark-grey-1;
+	}
 	.no-border-top & {
 		border-top: 0;
 	}
@@ -46,6 +49,12 @@
 		color: $reflection-purple;
 		&:hover {
 			color: $reflection-purple--hover;
+		}
+		.global-footer-dark & {
+			color: $light-grey-1;
+			&:hover {
+				color: lighten($light-grey-1, 10%);
+			}
 		}
 		span {
 			display: none;
@@ -117,10 +126,16 @@
 		font-size: 1.2rem;
 		color: #5a5a68;
 		text-align: right;
+		.global-footer-dark & {
+			color: $light-grey-2;
+		}
 	}
 }
 .logo-footer {
 	width: 105px;
 	height: 23px;
 	display: inline-block;
+}
+.global-footer-dark {
+	background-color: #363a47;
 }
