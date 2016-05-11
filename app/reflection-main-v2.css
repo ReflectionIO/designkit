@@ -271,6 +271,17 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
   margin: 0 auto;
 }
 
+/* line 112, sass/layout-v2/_layout.scss */
+.aside-component {
+  padding-bottom: 25px;
+  margin: 6px 0 22px 0;
+  border-bottom: 2px solid #e1e5e8;
+}
+/* line 116, sass/layout-v2/_layout.scss */
+.aside-component:last-child {
+  border-bottom: none;
+}
+
 @-webkit-keyframes bellring {
   0% {
     -webkit-transform: rotate(0deg);
@@ -954,7 +965,7 @@ figcaption {
 /* line 451, sass/ui-v2/_typography.scss */
 .content-list li {
   max-width: 650px;
-  margin-bottom: 0.62em;
+  margin-bottom: 0.5em;
   padding-left: 31px;
   color: #5b5b68;
 }
@@ -1111,6 +1122,33 @@ ul.content-list--minor li:before {
   font-family: "Lato", sans-serif;
   font-size: 1.6rem;
   color: #6d69c5;
+}
+
+/* line 572, sass/ui-v2/_typography.scss */
+.aside-component p {
+  font-size: 1.4rem;
+  line-height: 1.7;
+}
+/* line 577, sass/ui-v2/_typography.scss */
+.aside-component .content-list li {
+  padding-left: 26px;
+  font-size: 1.4rem;
+}
+/* line 580, sass/ui-v2/_typography.scss */
+.aside-component .content-list li:before {
+  left: 0;
+}
+/* line 584, sass/ui-v2/_typography.scss */
+.aside-component .content-list.content-list--no-bullets li {
+  padding-left: 0;
+}
+/* line 589, sass/ui-v2/_typography.scss */
+.aside-component:first-child p, .aside-component:first-child .content-list li {
+  font-size: 1.6rem;
+}
+/* line 593, sass/ui-v2/_typography.scss */
+.aside-component .aside-component-link-large {
+  font-size: 1.6rem;
 }
 
 /* line 1, sass/base/_reset-v2.scss */
@@ -8358,6 +8396,98 @@ a:hover .summary-widget__data-item__app-name {
   height: 18px;
 }
 
+/* line 1, sass/components-v2/_video-list.scss */
+.video-list {
+  padding-top: 3rem;
+  margin-top: 3.4rem;
+  border-top: 2px solid #eef0f2;
+}
+
+/* line 6, sass/components-v2/_video-list.scss */
+.video-static {
+  position: relative;
+  width: 100%;
+  height: 352px;
+  margin-bottom: 3rem;
+  background-size: cover;
+}
+/* line 12, sass/components-v2/_video-list.scss */
+.video-static h2 {
+  margin: 28px 0 0 41px;
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: #fcfdfd;
+}
+/* line 18, sass/components-v2/_video-list.scss */
+.video-static h3 {
+  margin-top: -2px;
+  margin-left: 39px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #fcfdfd;
+}
+/* line 25, sass/components-v2/_video-list.scss */
+.video-static:last-child {
+  margin-bottom: 4rem;
+}
+
+/* line 29, sass/components-v2/_video-list.scss */
+.video-static--chi {
+  background-image: url(images/v2/video-list-static-chi.jpg);
+}
+
+/* line 32, sass/components-v2/_video-list.scss */
+.video-static--mitul {
+  background-image: url(images/v2/video-list-static-mitul.jpg);
+}
+
+/* line 35, sass/components-v2/_video-list.scss */
+.video-static--martin {
+  background-image: url(images/v2/video-list-static-martin.jpg);
+}
+
+/* line 38, sass/components-v2/_video-list.scss */
+.question-bubble {
+  position: absolute;
+  bottom: 44px;
+  width: 194px;
+  background-repeat: no-repeat;
+}
+/* line 43, sass/components-v2/_video-list.scss */
+.question-bubble a {
+  padding: 15px 10px;
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #fcfdfd;
+  text-align: center;
+  margin-bottom: 25px;
+  background-color: rgba(109, 105, 197, 0.7);
+}
+
+/* line 55, sass/components-v2/_video-list.scss */
+.question-bubble--left {
+  left: 30px;
+  background-image: url(images/v2/question-left-pointer.png);
+  background-position: bottom left;
+}
+/* line 59, sass/components-v2/_video-list.scss */
+.question-bubble--left a {
+  border-radius: 14px 14px 14px 0;
+}
+
+/* line 63, sass/components-v2/_video-list.scss */
+.question-bubble--right {
+  right: 30px;
+  background-image: url(images/v2/question-right-pointer.png);
+  background-position: bottom right;
+}
+/* line 67, sass/components-v2/_video-list.scss */
+.question-bubble--right a {
+  border-radius: 14px 14px 0 14px;
+}
+
 /* Templates */
 /* line 2, sass/templates-v2/_about.scss */
 .page-about .content-centered-section {
@@ -9517,6 +9647,44 @@ a:hover .summary-widget__data-item__app-name {
   width: 100%;
   height: 123px;
   resize: none;
+}
+
+/* line 1, sass/templates-v2/_careers.scss */
+.careers-section-head {
+  height: 100%;
+  width: 100%;
+  height: 540px;
+  padding-left: 10.4918%;
+  margin-bottom: 3.1rem;
+  background-image: url(images/v2/bg-careers.jpg);
+  background-size: cover;
+}
+/* line 11, sass/helpers/_mixins.scss */
+.careers-section-head:before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.35em
+  /* Adjusts for spacing */
+}
+/* line 19, sass/helpers/_mixins.scss */
+.careers-section-head > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 10, sass/templates-v2/_careers.scss */
+.careers-section-head__text {
+  width: 470px;
+  margin-top: -55px;
+  display: inline-block;
+}
+/* line 14, sass/templates-v2/_careers.scss */
+.careers-section-head__text .page-title {
+  font-weight: 700;
+  color: #fcfdfd;
 }
 
 /* line 1, sass/templates-v2/_contact.scss */
