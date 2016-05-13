@@ -42,7 +42,14 @@ $navigation-purple: #47447c;
 					padding-left: 16px;
 					display: inline-block;
 					vertical-align: middle;
-					color: #727686;					
+					color: $mid-grey-2;					
+				}
+				&:after {
+					position: absolute;
+					top: 15px;
+    			right: 15px;
+					font-size: 20px;
+					color: $mid-grey-2;
 				}
 				@include breakpoint($laptop) {
 					.no-touch .panel-left & {
@@ -73,14 +80,14 @@ $navigation-purple: #47447c;
 							fill: $light-grey-2;
 						}
 					}
-					span {
+					span, &:after {
 						color: $light-grey-2;
 					}
 				}
 				&.is-selected:hover {
 					> a {
 						background-color: $navigation-purple;
-						span {
+						span, &:after {
 							color: $reflection-white;
 						}
 						svg path, svg polygon {
@@ -104,7 +111,7 @@ $navigation-purple: #47447c;
 							fill: $light-grey-2;
 						}
 					}
-					span {
+					span, &:after {
 						color: $light-grey-2;
 					}
 				}
@@ -119,7 +126,7 @@ $navigation-purple: #47447c;
 			&.is-selected {
 				> a {
 					background-color: $navigation-purple;
-					span {
+					span, &:after {
 						color: $reflection-white;
 					}
 					svg path, svg polygon {

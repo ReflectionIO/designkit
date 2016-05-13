@@ -431,7 +431,6 @@ var FormFieldSelect = function($domElement) {
 				$newListItem.addClass($thisOption.data("icon-class"));
 			}
 			if($thisOption.data("app-icon") != undefined) {
-				console.log($thisOption.data("app-icon"));
 				$newListItem.append($("<img>").attr("src", $thisOption.data("app-icon")).attr("alt", $thisOption.text() + " icon"));
 			}
 			$dropDownContainer.append($newListItem
@@ -479,31 +478,33 @@ var FormFieldSelect = function($domElement) {
 	});
 
 	$currentValue.on("click", function(){
-		var $parentDiv = $thisSelectBox.parent("div");
-		if($parentDiv.hasClass("is-open")) {
-			$dropDownContainer.toggle();	
-			$parentDiv.toggleClass("is-open");
-		} else {
-			setTimeout(function(){
-				if(!$parentDiv.hasClass("is-open")) {
-					// make sure you're not in the date picker
-					var parentIsDatePicker = false;
-					$currentValue.parents("div").each(function(){
-						if($(this).hasClass("js-date-picker")) {
-							parentIsDatePicker = true;
-						}
-					});
-					
-					if(!parentIsDatePicker) {
-						AllDropDowns.prototype.closeAllFilters();
-					}
-				}
-				var parentWidth = $parentDiv.width();
-				var parentHeight = $parentDiv.height();
-				$dropDownContainer.css({"min-width": parentWidth + "px"});
+		if(!$thisSelectBox.attr("disabled")) {
+			var $parentDiv = $thisSelectBox.parent("div");
+			if($parentDiv.hasClass("is-open")) {
 				$dropDownContainer.toggle();	
 				$parentDiv.toggleClass("is-open");
-			}, 50); // allow time for instance.closeAllFilters() to close other filters first
+			} else {
+				setTimeout(function(){
+					if(!$parentDiv.hasClass("is-open")) {
+						// make sure you're not in the date picker
+						var parentIsDatePicker = false;
+						$currentValue.parents("div").each(function(){
+							if($(this).hasClass("js-date-picker")) {
+								parentIsDatePicker = true;
+							}
+						});
+						
+						if(!parentIsDatePicker) {
+							AllDropDowns.prototype.closeAllFilters();
+						}
+					}
+					var parentWidth = $parentDiv.width();
+					var parentHeight = $parentDiv.height();
+					$dropDownContainer.css({"min-width": parentWidth + "px"});
+					$dropDownContainer.toggle();	
+					$parentDiv.toggleClass("is-open");
+				}, 50); // allow time for instance.closeAllFilters() to close other filters first
+			}
 		}
 	});
 
