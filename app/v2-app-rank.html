@@ -244,7 +244,7 @@
 								</ul>
 							</div>
 						</aside>
-						<div class="chart" id="chart-revenue"></div>
+						<div class="chart js-chart" id="chart-revenue"></div>
 					</section>
 					<section class="chart-container chart-container--split">
 						<header class="chart-container__header">
@@ -267,7 +267,7 @@
 								</ul>
 							</div>
 						</aside>
-						<div class="chart" id="chart-downloads"></div>
+						<div class="chart js-chart" id="chart-downloads"></div>
 					</section>
 				</div>
 
@@ -1064,23 +1064,24 @@
 
                   var count = 0;
                   $('#' + containerId + ' .highcharts-series').each(function(){
-                  	if(count != that.index) {
-	                    var thisFillPath = $(this).find('path:nth-child(2)');                        
-	                    if(thisFillPath.attr("stroke-width") == 3.1) {
+                  	if(count != that.index) { // if not the clicked series
+	                    var thisPath = $(this).find('path:nth-child(2)');                   
+	                    if(thisPath.attr("stroke-width") == 3.1) { // 3.1 is selected line width
 	                      that.chart.series[count].update({
-	                        lineWidth: 3
-	                      });           
+	                        lineWidth: 3 // set to 3 (unselected line)
+	                      });
 	                      var counterTwo = 0;
 	                      $('#' + containerId + ' .highcharts-series').each(function(){
-	                        if(counterTwo == count) {
-	                          thisFillPath = $(this).find('path:nth-child(2)');
+	                        if(counterTwo == count) { // get same series again after chart update
+	                          thisPath = $(this).find('path:nth-child(2)');
 	                        }
 	                        counterTwo++;
-	                      });                          
-	                      thisFillPath.css("opacity", "1");
-	                      thisFillPath.animate({ "opacity": 0.3 }, 250);
-	                      thisFillPath.siblings("path").css("opacity", "1");
-	                      thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+	                      });
+
+	                      thisPath.css("opacity", 1);
+	                      thisPath.animate({ "opacity": 0.3 }, 250);
+	                      thisPath.siblings("path").css("opacity", 1);
+	                      thisPath.siblings("path").animate({ "opacity": 0.1 }, 250);
 	                    }
 	                  }
                     count++;
@@ -1088,29 +1089,19 @@
 
 	                this.update({
 	                  lineWidth: 3.1
-	                });	                
+	                });
 
-	                // update the graph line CSS class's after this.udpate
+	                // update the graph line CSS classes after this.udpate
 	                setGraphCSSClasses(containerId);
 
-	                var $selectedLine;
-	                $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
-	                  var $this = $(this);
-	                  if($this.attr("stroke-width") == 3.1) { // TODO, this isn't fading in - nice to have            	
-	                    $this.css("opacity", "0.3");
-	                    $this.animate({ "opacity": 1 }, 250);
-	                    $this.siblings("path").css("opacity", "0.1");
-	                    $this.siblings("path").animate({ "opacity": 1 }, 250);
-	                    $selectedLine = $this;
-	                  }
-	                });
+	                var $selectedLine = animateSelectedSeries(containerId);
 
 	                // UPDATE THE MIRRORED CHART
 	                // click the mirroring chart line
 	                if($selectedLine) {
 	                	$("." + $selectedLine.attr("class")).each(function(){
                     	if(!$(this).is($selectedLine)) {
-                    		var mirrorChartContainer = $(this).parents('.chart'),
+                    		var mirrorChartContainer = $(this).parents('.js-chart'),
                     				mirrorChartIndex = mirrorChartContainer.attr("data-highcharts-chart"),
                     				mirrorContainerId = mirrorChartContainer.attr("id");
 
@@ -1120,23 +1111,7 @@
 			                    var count = 0;
 			                    $('#' + mirrorContainerId + ' .highcharts-series').each(function(){
 			                      if(count == i) {
-			                        var thisFillPath = $(this).find('path:nth-child(2)');                        
-			                        if(thisFillPath.attr("stroke-width") == 3.1) {
-			                          pageCharts[mirrorChartIndex].series[i].update({
-			                            lineWidth: 3
-			                          });           
-			                          var counterTwo = 0;
-			                          $('#' + mirrorContainerId + ' .highcharts-series').each(function(){
-			                            if(counterTwo == count) {
-			                              thisFillPath = $(this).find('path:nth-child(2)');
-			                            }
-			                            counterTwo++;
-			                          });                          
-			                          thisFillPath.css("opacity", "1");
-			                          thisFillPath.animate({ "opacity": 0.3 }, 250);
-			                          thisFillPath.siblings("path").css("opacity", "1");
-			                          thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
-			                        }
+			                      	toggleSelectedSeriesUI($(this), pageCharts[mirrorChartIndex].series[i], mirrorContainerId, count);
 			                      }
 			                      count++;
 			                    });
@@ -1149,19 +1124,10 @@
 				                // update the graph line CSS class's after this.udpate
 				                setGraphCSSClasses(mirrorContainerId);
 
-				                var $selectedLine;
-				                $('#' + mirrorContainerId + ' .highcharts-series path:nth-child(2)').each(function(){
-				                  var $this = $(this);
-				                  if($this.attr("stroke-width") == 3.1) {	                  	
-				                    $this.css("opacity", "1");
-				                    $this.siblings("path").css("opacity", "0.1");
-				                    $this.siblings("path").animate({ "opacity": 1 }, 250);
-				                    $selectedLine = $this;
-				                  }
-				                });
+				                $selectedLine = animateSelectedSeries(mirrorContainerId);
                     	}
                     });
-	                }
+	                }	                
 
 	              },
 	            },
@@ -1207,12 +1173,49 @@
    		function setGraphCSSClasses(containerId) {
    			var counter = 0;
 
-        $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
-          $(this).attr("class", "series-class-" + counter);
-          $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + counter);
+        $('#' + containerId + ' .highcharts-series').each(function(){
+          $(this).find("path:nth-child(2)").attr("class", "series-class-" + counter);
+          $(this).find('path:first-child').attr("class", "series-fill-" + counter);
           counter++;
         });
    		} // end setGraphCSSClasses
+
+   		function toggleSelectedSeriesUI($highchartSeriesDomElement, highchartChartObjectSeries, chartContainerId, seriesLoopCount) {
+
+      	var thisPath = $highchartSeriesDomElement.find('path:nth-child(2)');                        
+        if(thisPath.attr("stroke-width") == 3.1) {
+          highchartChartObjectSeries.update({
+            lineWidth: 3
+          });           
+          var counterTwo = 0;
+          $('#' + chartContainerId + ' .highcharts-series').each(function(){
+            if(counterTwo == seriesLoopCount) {
+              thisPath = $(this).find('path:nth-child(2)');
+            }
+            counterTwo++;
+          });                          
+          thisPath.css("opacity", "1");
+          thisPath.animate({ "opacity": 0.3 }, 250);
+          thisPath.siblings("path").css("opacity", "1");
+          thisPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+        }
+      } // end toggleSelectedSeriesUI
+
+      function animateSelectedSeries(containerId) {
+      	var $selectedLine;
+      	$('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
+          var $this = $(this);
+          if($this.attr("stroke-width") == 3.1) { // TODO, this isn't fading in - nice to have            	
+            $this.css("opacity", 0.3);
+            $this.animate({ "opacity": 1 }, 300);
+            $this.siblings("path").css("opacity", 0.1);
+            $this.siblings("path").animate({ "opacity": 1 }, 300);
+            $selectedLine = $this;
+          }
+        });
+
+        return $selectedLine;
+      } // animateSelectedSeries
 
 
    		function handleHideGraphLine(seriesIndexOfLineBeingHidden) {
@@ -1246,14 +1249,8 @@
 			        setGraphCSSClasses("chart-revenue");
 			        setGraphCSSClasses("chart-downloads");
 
-			        $('.highcharts-series path:nth-child(2)').each(function(){
-			          var $this = $(this);
-			          if($this.attr("stroke-width") == 3.1) {	                  	
-			            $this.css("opacity", "1");
-			            $this.siblings("path").css("opacity", "0.1");
-			            $this.siblings("path").animate({ "opacity": 1 }, 250);
-			          }
-			        });
+			        var $selectedLine = animateSelectedSeries("chart-revenue");
+			        $selectedLine = animateSelectedSeries("chart-downloads");
 
           		break;
           	}
