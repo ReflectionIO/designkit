@@ -17,3 +17,7 @@ $("#js-component-import--search-container").html(htmlPanelRight);
 var templateGlobalFooter = Handlebars.templates['globalFooter'];
 var htmlGlobalFooter = templateGlobalFooter({});
 $("#js-component-import--global-footer").html(htmlGlobalFooter);
+
+var templateGlobalFooterDark = Handlebars.templates['globalFooterDark'];
+var htmlGlobalFooter = templateGlobalFooterDark({});
+$("#js-component-import--global-footer--dark").html(htmlGlobalFooter);

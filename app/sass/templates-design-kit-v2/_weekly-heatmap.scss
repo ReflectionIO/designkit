@@ -1,0 +1,181 @@
+.page-weekly-heatmap {
+	min-height: calc(100vh - 50px);
+	background-color: #29292c;
+	.panel-left {
+		border-right: 1px solid #000;
+	}
+	.grid__row--heading-row {
+		margin-bottom: 11px;
+		overflow: visible;
+	}
+	.page-title {
+		margin-top: 1.9rem;
+		margin-bottom: 2.8rem;
+		font-size: 28px;
+		font-weight: 400;
+		color: #fcfdfd;
+	}
+	.page-weekly-heatmap__header {
+		width: 1024px;
+		padding-bottom: 12px;
+		margin: 0 auto;
+		overflow: visible;
+		border-bottom: 1px solid #000;
+	}
+	.secondary-filter {
+		margin-right: 20px;
+	}
+	.heatmaps-container {
+		position: relative;
+		left: -62px;
+		width: 1024px;
+		min-height: 500px;
+    margin: 0 auto;
+    overflow: visible;
+	}
+	.data-heatmap {
+		position: relative;		
+		width: 1024px;
+		margin: 0 auto;
+		overflow: visible;
+	}
+	.data-month-labels {
+		width: 100%;
+		margin-bottom: 9px;
+		span {
+			display: inline-block;
+			font-family: $brand-body-font;
+			font-size: 15px;
+			font-weight: 400;
+			color: #c4c7d0;
+			&:first-child {
+				padding-left: 195px;
+			}
+			&:last-child {
+				padding-left: 210px;
+			}
+		}
+	}
+	.data-week,
+	.data-day-labels {
+		display: inline-block;
+		vertical-align: top;
+		overflow: visible;
+	}
+	.data-cell {
+		position: relative;
+		width: 54px;
+		height: 54px;
+		margin-right: 11px;
+		margin-bottom: 11px;
+		overflow: visible;
+		border-radius: 4px;
+		background-color: #343438;
+		cursor: pointer;
+	}
+	.data-hover {
+		position: absolute;
+		top: -120px;
+  	left: -37px;
+  	width: 131px;
+  	padding: 13px;
+		display: none;
+		overflow: visible;
+		z-index: 1000;		
+		text-align: center;
+		border-radius: 4px;
+		background-color: #363a47;
+		pointer-events: none;
+	}
+	.data-cell-colour {
+		width: 54px;
+		height: 54px;
+		display: block;
+		border-radius: 4px;
+		background-color: #6d69c5;
+	}
+	.data-heatmap--downloads {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: none;
+		.data-cell-colour {
+			background-color: #1bc79f;
+		}
+	}
+	.data-cell:hover {
+		.data-hover {
+			display: block;
+		}
+		.data-cell-colour {
+			background-color: #fbaf5d;
+			opacity: 1 !important;
+		}
+	}
+	.data-day-labels {
+		li {
+			width: 54px;
+			height: 54px;
+			padding-top: 19px;
+			margin-right: 6px;
+			margin-bottom: 11px;
+			font-family: $brand-heading-font;
+			font-weight: 400;
+			font-size: 16px;
+			color: #727686;
+			text-align: center;
+			&.data-day-label--weekend {
+				color: #c4c7d0;
+			}
+		}
+	}
+	.data-hover__app-icon {
+		margin: 0 auto;
+		img {
+			width: 55px;
+			height: 55px;
+			margin-bottom: 5px;
+			border-radius: 7px;
+		}
+	}
+	.data-hover__data-date {
+		margin-bottom: 7px;
+		display: block;
+		font-size: 14px;
+		font-family: $brand-heading-font;
+		font-weight: 400;
+		color: #c4c7d0;
+	}
+	.data-hover__data-value {
+		display: block;
+		font-size: 16px;
+		font-family: $brand-body-font;
+		font-weight: 700;
+		color: #f2f2f5;
+	}
+	.toggle-container {
+		margin-top: 4px;
+	}
+	.filter-toggle {
+		label {
+			padding: 11px 20px 14px;
+			font-family: $brand-heading-font;
+			font-size: 16px;
+			font-weight: 400;			
+			color: #c4c7d0;
+			border-color: #000000;
+			background-color: #343438;
+			&:after {
+				display: none !important;
+			}
+		}
+		input:checked ~ label {
+			color: #fcfdfd;
+			border-color: #000000;
+			background-color: #47447c;
+		}
+		.toggle:last-child label {
+			border-right: 1px solid #000;
+		}
+	}
+}

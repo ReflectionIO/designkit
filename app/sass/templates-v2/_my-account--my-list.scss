@@ -1,14 +1,24 @@
-.page-my-account {
-	padding-top: 2rem;
-	padding-bottom: 4rem;
-	.my-account__header {
-		padding-bottom: 1.2rem;		
-		border-bottom: 1px solid $divider-grey;
+.common-page-header {
+	padding-bottom: 2rem;	
+	border-bottom: 1px solid $divider-grey;
+	.common-header__inline-label {		
+    padding-top: 8px;
+    margin-right: 11px;
+    margin-left: 19px;
+    display: inline-block;
+    vertical-align: top;
+		font-size: 14px;
+		color: #5a5a68;
 	}
+}
+.page-my-account,
+.page-faqs {
+	padding-top: 2rem;
+	padding-bottom: 4rem;	
 	&.page-my-lists,
 	&.page-linked-accounts,
 	&.page-match-ad-units {
-		.my-account__header {
+		.common-page-header {
 			padding-bottom: 0;
 		}
 		.account-summary-action__license-info:last-child {
@@ -42,14 +52,14 @@
 		}
 	}
 	&.page-manage-notifications {
-		.my-account__header {
+		.common-page-header {
 			padding-bottom: 2rem;
 			margin-bottom: 3rem;
 		}
 	}
 	&.page-linked-accounts,
 	&.page-match-ad-units {
-		.my-account__header {
+		.common-page-header {
 			margin-bottom: 1rem;
 		}
 	}
@@ -83,11 +93,11 @@
 	}
 }
 .page-my-account--details {
-	.my-account__header {
+	.common-page-header {
 		margin-bottom: 1.3rem;
 	}
 }
-.account-summary-actions {
+.common-summary-actions {
 	padding-top: 5px;
 	display: inline-block;
 	vertical-align: top;
@@ -101,7 +111,8 @@
 	}
 	.page-my-lists &,
 	.page-linked-accounts &,
-	.page-match-ad-units & {
+	.page-match-ad-units &,
+	.page-faqs & {
 		padding-top: 3px;
 	}
 }
@@ -172,6 +183,8 @@
 			font-weight: 700;
 		}
 		a {
+			display: inline-block;
+			vertical-align: middle;
 			color: $reflection-purple;
 			&:hover {
 				color: $reflection-purple--hover;
@@ -201,6 +214,15 @@
 		color: $reflection-red;
 		&:hover {
 			color: darken($reflection-red, 10%);
+		}
+	}
+	.licenses-data-cell__expires-label {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 13px;
+		span {
+			font-weight: 700;
+			color: $reflection-red;
 		}
 	}
 	.licenses-data-cell--actions {
@@ -469,5 +491,10 @@
 	overflow: visible;
 	.grid-container {
 		overflow: visible;
+	}
+}
+.page-overlay--close-account {
+	.form-field--checkbox-list {
+		margin-bottom: 2rem;
 	}
 }

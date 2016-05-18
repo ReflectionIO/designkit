@@ -431,7 +431,6 @@ var FormFieldSelect = function($domElement) {
 				$newListItem.addClass($thisOption.data("icon-class"));
 			}
 			if($thisOption.data("app-icon") != undefined) {
-				console.log($thisOption.data("app-icon"));
 				$newListItem.append($("<img>").attr("src", $thisOption.data("app-icon")).attr("alt", $thisOption.text() + " icon"));
 			}
 			$dropDownContainer.append($newListItem
@@ -479,31 +478,33 @@ var FormFieldSelect = function($domElement) {
 	});
 
 	$currentValue.on("click", function(){
-		var $parentDiv = $thisSelectBox.parent("div");
-		if($parentDiv.hasClass("is-open")) {
-			$dropDownContainer.toggle();	
-			$parentDiv.toggleClass("is-open");
-		} else {
-			setTimeout(function(){
-				if(!$parentDiv.hasClass("is-open")) {
-					// make sure you're not in the date picker
-					var parentIsDatePicker = false;
-					$currentValue.parents("div").each(function(){
-						if($(this).hasClass("js-date-picker")) {
-							parentIsDatePicker = true;
-						}
-					});
-					
-					if(!parentIsDatePicker) {
-						AllDropDowns.prototype.closeAllFilters();
-					}
-				}
-				var parentWidth = $parentDiv.width();
-				var parentHeight = $parentDiv.height();
-				$dropDownContainer.css({"min-width": parentWidth + "px"});
+		if(!$thisSelectBox.attr("disabled")) {
+			var $parentDiv = $thisSelectBox.parent("div");
+			if($parentDiv.hasClass("is-open")) {
 				$dropDownContainer.toggle();	
 				$parentDiv.toggleClass("is-open");
-			}, 50); // allow time for instance.closeAllFilters() to close other filters first
+			} else {
+				setTimeout(function(){
+					if(!$parentDiv.hasClass("is-open")) {
+						// make sure you're not in the date picker
+						var parentIsDatePicker = false;
+						$currentValue.parents("div").each(function(){
+							if($(this).hasClass("js-date-picker")) {
+								parentIsDatePicker = true;
+							}
+						});
+						
+						if(!parentIsDatePicker) {
+							AllDropDowns.prototype.closeAllFilters();
+						}
+					}
+					var parentWidth = $parentDiv.width();
+					var parentHeight = $parentDiv.height();
+					$dropDownContainer.css({"min-width": parentWidth + "px"});
+					$dropDownContainer.toggle();	
+					$parentDiv.toggleClass("is-open");
+				}, 50); // allow time for instance.closeAllFilters() to close other filters first
+			}
 		}
 	});
 
@@ -846,4 +847,66 @@ var ArticleIntro = function($domElement, charCount) {
 
 				$thisContainer.append(readMoreLink);
 			}
+}
+
+var reflectionMap = function() {	
+	var isDraggable = $('html.touch').length == 0;
+	var mapStyles = [{
+      featureType: "poi",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }];
+  var zoomValue = 17;
+  if($(window).innerWidth() < 720) {
+  	zoomValue = 16;
+  }
+	this.myLatlng = new google.maps.LatLng(51.518680, -0.136578);
+	this.centreLatlng = new google.maps.LatLng(51.5189, -0.1364);
+	this.mapOptions = {
+	  zoom: zoomValue,
+	  zoomControl: true,
+	  center: this.centreLatlng,
+	  disableDefaultUI: true,
+	  scrollwheel: false,
+	  streetViewControl: true,
+	  draggable: isDraggable,
+	  styles: mapStyles
+	}
+	this.markerImage = {
+    url: 'images/map-marker.png',
+    size: new google.maps.Size(34, 49),
+    scaledSize: new google.maps.Size(34, 49),
+    anchor: new google.maps.Point(0, 53)
+  };
+	this.map = new google.maps.Map(document.getElementById("js-map--contact"), this.mapOptions);	
+
+	var marker = this.marker = new google.maps.Marker({
+    position: this.myLatlng,
+    map: this.map,
+    title: "40-44 Newman Street",
+    icon: this.markerImage,
+    // animation: google.maps.Animation.DROP
+	});
+
+	// We get the map's default panorama and set up some defaults.
+  // Note that we don't yet set it visible.
+  this.panorama = this.map.getStreetView();
+  this.panorama.setPosition(new google.maps.LatLng(51.518660, -0.136540));
+  this.panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+    heading: 40,
+    pitch: 0
+  }));
+
+  this.toggleStreetView = function() {
+	  var toggle = this.panorama.getVisible();
+		  if (toggle == false) {
+		    this.panorama.setVisible(true);
+		  } else {
+		    this.panorama.setVisible(false);
+		  }
+	}
+
+	return this;
 }

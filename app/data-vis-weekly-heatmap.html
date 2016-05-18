@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Lab - Developer Leaderboard</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<script src="js/data-vis/weekly-heatmap.js"></script>
+<script src="js/vendor/angular.js"></script>
+<script>
+	// populate the data table
+		'use strict';
+
+		/* Controllers */
+
+		var qs = (function(a) {
+	    if (a == "") return {};
+	    var b = {};
+	    for (var i = 0; i < a.length; ++i)
+	    {
+	        var p=a[i].split('=', 2);
+	        if (p.length == 1)
+	            b[p[0]] = "";
+	        else
+	            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+	    }
+	    return b;
+		})(window.location.search.substr(1).split('&'));
+
+		var dataIndex = qs["id"];
+
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function($scope, $http) {
+
+				if(dataIndex == undefined) {
+					dataIndex = 0;
+				}
+
+				var dataList = this;
+				dataList.appDetails = heatmapData[dataIndex]; // from js/data-vis/weekly-heatmap.js
+				dataList.appData = heatmapData[dataIndex].data;
+
+				dataList.numberOfRows = dataList.appData.length / 7;
+				dataList.getNumber = function(num) {
+						var blankArray = new Array();
+						for(var i = 0; i < num; i++) {
+							blankArray.push(i);
+						}
+				    return blankArray;
+				}
+
+				dataList.getAppOpacity = function(listIndex, datatype) {
+		    	var min, max;
+		    	if(datatype == "revenue") {
+			    	min = dataList.appDetails.min_max_revenue[0];
+			    	max = dataList.appDetails.min_max_revenue[1];
+			    } else {
+			    	min = dataList.appDetails.min_max_downloads[0];
+			    	max = dataList.appDetails.min_max_downloads[1];
+			    }
+		    	var range = max - min;
+		    	var valueFromMin;
+		    	if(datatype == "revenue") {
+		    		valueFromMin = dataList.appData[listIndex].revenue_total - min;
+		    	} else {
+		    		valueFromMin = dataList.appData[listIndex].downloads - min;
+		    	}
+		    	var opacity = 1 / (range / valueFromMin);
+		    	return opacity;
+		    }
+
+		    dataList.timeConverter = function(UNIX_timestamp){
+				  var a = new Date(UNIX_timestamp);
+				  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+				  var year = a.getFullYear();
+				  var month = months[a.getMonth()];
+				  var date = a.getDate();
+				  var hour = a.getHours();
+				  var min = a.getMinutes();
+				  var sec = a.getSeconds();
+				  var time = date + ' ' + month + ' ' + year;
+				  return time;
+				}
+
+			});
+</script>
+<body class="page-weekly-heatmap">
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+  <header id="js-component-import--global-header" class="global-header">
+  	<div class="site-logo">
+			<a href="/">
+				<img src="images/v2/logo-reflection-header.png" alt="Reflection logo" class="img-site-logo">
+				<img src="images/logo-reflection-header-mobile.png" alt="Reflection logo" class="img-site-logo--mobile">
+			</a>
+		</div>
+  </header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+
+			<div class="grid-container" ng-controller="DataController as dataList">
+				<div class="grid__row grid__row--heading-row">
+					<h1 class="heading-style--heading-three page-title">Revenue &amp; Downloads by Day of the Week</h1>
+					<div class="page-weekly-heatmap__header">
+						<div class="secondary-filter secondary-filter--large form-field--select">
+							<select class="js-select-box">
+						    <option value="0">8 Ball Pool</option>
+						    <option value="1">Top Eleven 2016</option>
+						    <option value="2">Bloons TD 5</option>
+						    <option value="3">WordBrain</option>
+						    <option value="4">Goat Simulator</option>
+							</select>
+						</div>
+						<div class="toggle-container">
+							<div class="filter-toggle">
+								<div class="toggle">
+									<input id="toggle--show-revenue" name="radiogroupname" type="radio" checked>
+									<label for="toggle--show-revenue" class="js-toggle" data-show="revenue">
+										Revenue
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-downloads" name="radiogroupname" type="radio">
+									<label for="toggle--show-downloads" class="js-toggle" data-show="downloads">
+										Downloads
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="heatmaps-container">
+					<div class="data-heatmap is-showing js-toggle-content" id="revenue">
+						<div class="data-month-labels">
+							<span>Jan '16</span>
+							<span>Feb '16</span>
+						</div>
+						<ul class="data-day-labels">
+							<li>Mon</li>
+							<li>Tue</li>
+							<li>Wed</li>
+							<li>Thu</li>
+							<li>Fri</li>
+							<li class="data-day-label--weekend">Sat</li>
+							<li class="data-day-label--weekend">Sun</li>
+						</ul>
+						<ul class="data-week" ng-repeat="i in dataList.getNumber(dataList.numberOfRows)">
+							<li class="data-cell" ng-repeat="dataItem in dataList.appData" ng-if="$index >= 7 * i && $index < 7 * (i+1)">
+								<span class="data-cell-colour" style='opacity: {{dataList.getAppOpacity($index, "revenue")}}; color: white; font-weight: bold; font-size: 15px;'>
+									<!-- {{dataList.timeConverter(dataItem.date)}} / {{dataList.appData.length}} -->
+								</span>
+								<div class="data-hover">
+									<div class="data-hover__app-icon">
+										<img src='{{dataList.appDetails.icon_url}}' alt='{{dataList.appDetails.name}}' />
+									</div>
+									<span class="data-hover__data-date">{{dataList.timeConverter(dataItem.date)}}</span>
+									<span class="data-hover__data-value">&pound;{{dataItem.revenue_total}}</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="data-heatmap data-heatmap--downloads js-toggle-content" id="downloads">
+						<div class="data-month-labels">
+							<span>Jan '16</span>
+							<span>Feb '16</span>
+						</div>
+						<ul class="data-day-labels">
+							<li>Mon</li>
+							<li>Tue</li>
+							<li>Wed</li>
+							<li>Thu</li>
+							<li>Fri</li>
+							<li class="data-day-label--weekend">Sat</li>
+							<li class="data-day-label--weekend">Sun</li>
+						</ul>
+						<ul class="data-week" ng-repeat="i in dataList.getNumber(dataList.numberOfRows)">
+							<li class="data-cell" ng-repeat="dataItem in dataList.appData" ng-if="$index >= 7 * i && $index < 7 * (i+1)">
+								<span class="data-cell-colour" style='opacity: {{dataList.getAppOpacity($index, "downloads")}}'>
+									<!-- {{dataList.timeConverter(dataItem.date)}} -->
+								</span>
+								<div class="data-hover">
+									<div class="data-hover__app-icon">
+										<img src='{{dataList.appDetails.icon_url}}' alt='{{dataList.appDetails.name}}' />
+									</div>
+									<span class="data-hover__data-date">{{dataList.timeConverter(dataItem.date)}}</span>
+									<span class="data-hover__data-value">{{dataItem.downloads}}</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+	</div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js-v2/application.js"></script>
+
+  <script>
+		$(document).on("ready", function(){
+
+			$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+
+  		$('.js-dropdown-option').on("click", function(){
+  			location.replace('data-vis-weekly-heatmap.html?id=' + $(this).data("value"));
+  		});
+
+			var nthIndex = parseInt(dataIndex) + 1;
+			$('.js-dropdown-trigger').text($('.js-dropdown-option:nth-child(' + nthIndex + ') span').text());
+			$('.js-dropdown-option.is-selected').removeClass("is-selected");
+			$('.js-dropdown-option:nth-child(' + nthIndex + ')').addClass("is-selected");
+
+			$('.js-toggle').on("click", function(){
+				var showData = $(this).data("show");
+				$('.js-toggle-content.is-showing').fadeOut(300);
+				$("#" + showData).fadeIn(300);
+				setTimeout(function(){
+					$('.js-toggle-content.is-showing').removeClass("is-showing");
+					$("#" + showData).addClass("is-showing");
+				}, 300);
+			});
+
+		});
+  </script>
+</body>

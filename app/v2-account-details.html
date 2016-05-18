@@ -39,7 +39,7 @@
 			
 			<div class="page-my-account page-my-account--details">
 				<div class="grid-container">
-					<header class="my-account__header">
+					<header class="common-page-header">
 						<div>
 							<h1 class="page-title heading-style--heading-three">My Account</h1>
 							<h2 class="page-sub-title">Review or update your account details and settings</h1>
@@ -90,7 +90,7 @@
 							<dt>Total Cost</dt>
 							<dd>&pound; 449.99 p/m</dd>
 						</dl>
-						<a href="#" class="account-details__action-link">Close Account</a>
+						<a href="#" class="account-details__action-link js-open-modal-close-account">Close Account</a>
 					</section>
 
 					<section class="grid__column grid__column--one-third">
@@ -149,7 +149,86 @@
 		</div>
 
 		<div class="grid-container" id="js-component-import--global-footer"></div>
-	</div>	
+	</div>
+
+	<div class="page-overlay page-overlay--close-account js-page-overlay js-page-overlay--close-account">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+							<h2 class="heading-style--heading-five multi-step-section__heading">Close Account</h2>
+							<p>You still have <strong>15 days</strong> remaining of your current billing period. You have a couple of options:</p>
+							
+							<button class="ref-button--secondary--large button-full-width js-mock-next-step" data-move-to-section="1">
+		 						Cancel current subscription upon expiry but keep my account open (it will be free)
+		 					</button>
+							<button class="ref-button--secondary--large button-full-width js-mock-next-step" data-move-to-section="2">
+		 						Close my account completely now
+		 					</button>
+						</div>
+
+						<div class="multi-step-section">
+							<h2 class="heading-style--heading-five multi-step-section__heading">Downgrade Confirmed</h2>
+							<p>Okay, at the end of your current billing period we will automatically transfer you onto a Free account.  You can upgrade to Pro again at any time.</p>
+							<p>Thanks for continuing to use Reflection, please let us know if you have any comments or questions <a href="#">contact us</a></p>
+							<button class="ref-button--secondary--large js-popup-close">
+		 						Continue to site
+		 					</button>
+						</div>
+						<div class="multi-step-section">
+							<h2 class="heading-style--heading-five multi-step-section__heading">Close Account</h2>
+							<p>Please do take a second to tell us why you are closing your account</p>
+							<div class="form-field--checkbox-list">
+								<ul>
+									<li>
+										<input type="checkbox" name="checkboxOne" id="checkboxOne" checked="">
+										<label for="checkboxOne" class="checkboxLabel">Features and Tools</label>
+										<label for="checkboxOne" class="checkboxLabelVisible">Features and Tools</label>
+									</li>
+									<li>
+										<input type="checkbox" name="checkboxTwo" id="checkboxTwo">
+										<label for="checkboxTwo" class="checkboxLabel">Cost</label>
+										<label for="checkboxTwo" class="checkboxLabelVisible">Cost</label>
+									</li>
+									<li>
+										<input type="checkbox" name="checkboxThree" id="checkboxThree">
+										<label for="checkboxThree" class="checkboxLabel">Data accuracy</label>
+										<label for="checkboxThree" class="checkboxLabelVisible">Data accuracy</label>
+									</li>
+								</ul>
+							</div>
+							<p>Please tell us more so we can respond appropriately</p>
+							<textarea class="ref-textarea"></textarea>
+							<button class="ref-button--secondary--large button-full-width js-mock-next-step" data-move-to-section="3">
+		 						Close Account
+		 					</button>
+						</div>
+
+						<div class="multi-step-section">
+							<h2 class="heading-style--heading-five multi-step-section__heading">Close Account</h2>
+							<p>Your Account has been closed. Thank you very much for using Reflection, we hope to see you again in the future.</p>
+							<div class="blockquote-container">
+								<blockquote>
+									<p>Don't cry because it's over, smile because it happened.</p>
+									<footer>
+										<cite>
+											<span>Dr Seuss</span>
+										</cite>
+									</footer>
+								</blockquote>
+							</div>
+							<button class="ref-button--secondary--large button-full-width js-popup-close">
+		 						Finish
+		 					</button>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
@@ -188,6 +267,73 @@
   				$(".js-mock-save-changes").removeClass("is-disabled");
   			});  			
   		});
+
+  		$('.js-open-modal-close-account').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--close-account').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--close-account .js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
+			$('.js-page-overlay').on("click", function(e){
+				var parentIsPopupContent = false;
+				$(e.target).parents("div").each(function(){
+					if($(this).hasClass("js-popup-content")) {
+						parentIsPopupContent = true;
+					}
+				});
+				if(!parentIsPopupContent) {
+					$('.js-page-overlay').fadeOut(100);
+					$('.js-popup-content').removeClass("is-showing");
+				}
+			});
+
+			$('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay').fadeOut(100);
+				$('.js-popup-content').removeClass("is-showing");
+			});
+
+			// Mock multistep form container
+  		var successTimeOut;
+  		var popupSectionWidth = 372;
+  		$('.js-mock-next-step').on("click", function(e){
+				e.preventDefault();
+				var sectionToMoveTo = $(this).data("move-to-section");
+  			var moveLeftBy = -popupSectionWidth * sectionToMoveTo;
+  			var stepsContainer = $(this).parents(".js-multi-step-container").css("left", moveLeftBy + "px");  			
+
+  			var fakeLoading = $(this).data("fake-loading");
+
+  			if(fakeLoading) { // automate loading with pause
+
+  				var nextViewedStep = sectionToMoveTo + 1;
+  				var nextViewedStepAfterLoading = sectionToMoveTo + 2;
+  				stepsContainer.css("left", "-" + popupSectionWidth * sectionToMoveTo + "px");
+  				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
+	  			stepsContainer.find(".multi-step-section:nth-child(" + nextViewedStep + ")").addClass("is-viewed-step");
+  				
+  				clearTimeout(successTimeOut);
+
+  				successTimeOut = setTimeout(function(){
+	  				stepsContainer.css("left", "-" + popupSectionWidth * nextViewedStep + "px");
+	  				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
+	  				stepsContainer.find(".multi-step-section:nth-child(" + nextViewedStepAfterLoading + ")").addClass("is-viewed-step");
+	  				$('.js-multi-step-section-confirmation').addClass("is-success");
+	  			}, 3000);
+
+  			} else {
+
+  				var nextSection = sectionToMoveTo + 1;
+  				var lastSection = sectionToMoveTo;
+  				clearTimeout(successTimeOut);
+  				stepsContainer.find(".multi-step-section.is-viewed-step").removeClass("is-viewed-step");
+  				stepsContainer.find(".multi-step-section:nth-child(" + nextSection + ")").addClass("is-viewed-step");				
+  				stepsContainer.css("left", "-" + popupSectionWidth * sectionToMoveTo + "px");
+  			}
+  		});
+  		
   	}
   	window.onready = initScripts();
   </script>
