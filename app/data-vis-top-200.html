@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Lab - Developer Leaderboard</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<script src="js/data-vis/weekly-heatmap.js"></script>
+<script src="js/vendor/angular.js"></script>
+<script>
+// 	// populate the data table
+// 		'use strict';
+
+// 		/* Controllers */
+
+// 		var qs = (function(a) {
+// 	    if (a == "") return {};
+// 	    var b = {};
+// 	    for (var i = 0; i < a.length; ++i)
+// 	    {
+// 	        var p=a[i].split('=', 2);
+// 	        if (p.length == 1)
+// 	            b[p[0]] = "";
+// 	        else
+// 	            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+// 	    }
+// 	    return b;
+// 		})(window.location.search.substr(1).split('&'));
+
+// 		var dataIndex = qs["id"];
+
+// 		var reflectionApp = angular.module('reflectionApp', [])
+// 			.controller('DataController', function($scope, $http) {
+
+// 				if(dataIndex == undefined) {
+// 					dataIndex = 0;
+// 				}
+
+// 				var dataList = this;
+// 				dataList.appDetails = heatmapData[dataIndex]; // from js/data-vis/weekly-heatmap.js
+// 				dataList.appData = heatmapData[dataIndex].data;
+
+// 				dataList.numberOfRows = dataList.appData.length / 7;
+// 				dataList.getNumber = function(num) {
+// 						var blankArray = new Array();
+// 						for(var i = 0; i < num; i++) {
+// 							blankArray.push(i);
+// 						}
+// 				    return blankArray;
+// 				}
+
+// 				dataList.getAppOpacity = function(listIndex, datatype) {
+// 		    	var min, max;
+// 		    	if(datatype == "revenue") {
+// 			    	min = dataList.appDetails.min_max_revenue[0];
+// 			    	max = dataList.appDetails.min_max_revenue[1];
+// 			    } else {
+// 			    	min = dataList.appDetails.min_max_downloads[0];
+// 			    	max = dataList.appDetails.min_max_downloads[1];
+// 			    }
+// 		    	var range = max - min;
+// 		    	var valueFromMin;
+// 		    	if(datatype == "revenue") {
+// 		    		valueFromMin = dataList.appData[listIndex].revenue_total - min;
+// 		    	} else {
+// 		    		valueFromMin = dataList.appData[listIndex].downloads - min;
+// 		    	}
+// 		    	var opacity = 1 / (range / valueFromMin);
+// 		    	return opacity;
+// 		    }
+
+// 		    dataList.timeConverter = function(UNIX_timestamp){
+// 				  var a = new Date(UNIX_timestamp);
+// 				  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+// 				  var year = a.getFullYear();
+// 				  var month = months[a.getMonth()];
+// 				  var date = a.getDate();
+// 				  var hour = a.getHours();
+// 				  var min = a.getMinutes();
+// 				  var sec = a.getSeconds();
+// 				  var time = date + ' ' + month + ' ' + year;
+// 				  return time;
+// 				}
+
+// 			});
+</script>
+<body class="page-top-two-hundred">
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+  <header id="js-component-import--global-header" class="global-header">
+  	<div class="site-logo">
+			<a href="/">
+				<img src="images/v2/logo-reflection-header.png" alt="Reflection logo" class="img-site-logo">
+				<img src="images/logo-reflection-header-mobile.png" alt="Reflection logo" class="img-site-logo--mobile">
+			</a>
+		</div>
+  </header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+
+			<div class="grid-container" ng-controller="DataController as dataList">
+				<div class="grid__row grid__row--heading-row">
+					<h1 class="heading-style--heading-three page-title">What's Needed to Make the Top 200 (By Category) <span>UK / iPhone</span></h1>
+					<h2 class="page-subtitle">01 Mar 2016 - 01 Apr 2016</h2>
+				</div>
+
+				<div class="chart-two-hundred-container">
+					<div class="chart-two-hundred__revenue-chart">
+						<h2 class="ref-icon-after--revenue">Min Revenue Required</h2>
+						<ul>
+							<li class="chart-two-hundred__item" style="width: 10%;"><span>$100</span></li>
+							<li class="chart-two-hundred__item" style="width: 20%;"><span>$200</span></li>
+							<li class="chart-two-hundred__item" style="width: 50%;"><span>$500</span></li>
+							<li class="chart-two-hundred__item" style="width: 100%;"><span>$1000</span></li>
+						</ul>
+					</div>
+					<div class="chart-two-hundred-categories-container">
+						<h2>Category</h2>
+						<ul>
+							<li class="chart-two-hundred__category">Books</li>
+							<li class="chart-two-hundred__category">Business</li>
+							<li class="chart-two-hundred__category">Catalogs</li>
+							<li class="chart-two-hundred__category">Education</li>
+						</ul>
+					</div>
+					<div class="chart-two-hundred__downloads-chart">
+						<h2 class="ref-icon-before--download">Min Downloads Required</h2>
+						<ul>
+							<li class="chart-two-hundred__item" style="width: 10%;"><span>100</span></li>
+							<li class="chart-two-hundred__item" style="width: 30%;"><span>300</span></li>
+							<li class="chart-two-hundred__item" style="width: 80%;"><span>1200</span></li>
+							<li class="chart-two-hundred__item" style="width: 100%;"><span>2000</span></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+	</div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js-v2/application.js"></script>
+
+  <script>
+		$(document).on("ready", function(){
+
+			$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+
+  		$('.js-dropdown-option').on("click", function(){
+  			location.replace('data-vis-weekly-heatmap.html?id=' + $(this).data("value"));
+  		});
+
+			var nthIndex = parseInt(dataIndex) + 1;
+			$('.js-dropdown-trigger').text($('.js-dropdown-option:nth-child(' + nthIndex + ') span').text());
+			$('.js-dropdown-option.is-selected').removeClass("is-selected");
+			$('.js-dropdown-option:nth-child(' + nthIndex + ')').addClass("is-selected");
+
+			$('.js-toggle').on("click", function(){
+				var showData = $(this).data("show");
+				$('.js-toggle-content.is-showing').fadeOut(300);
+				$("#" + showData).fadeIn(300);
+				setTimeout(function(){
+					$('.js-toggle-content.is-showing').removeClass("is-showing");
+					$("#" + showData).addClass("is-showing");
+				}, 300);
+			});
+
+		});
+  </script>
+</body>
