@@ -10,10 +10,13 @@
 	}
 	p {
 		margin-bottom: 0.8em;
-		font-size: 1.8rem;
+		font-size: 1.7rem;
 		line-height: 1.5;
 		letter-spacing: -0.02px;
 		color: $light-grey-2;
+		@include breakpoint($desktop) {
+			font-size: 1.8rem;
+		}
 	}
 	a {
 		font-family: $brand-heading-font;
@@ -27,24 +30,60 @@
 	}
 }
 .home-section-head__illustration {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	width: 1221px;
-	min-width: 100%;
-	height: auto;
-	pointer-events: none;
+	display: none;
+	@include breakpoint($laptop) {
+		position: absolute;
+		left: -84px;
+		bottom: 0;
+		width: 1221px;
+		min-width: 100%;
+		height: auto;
+		display: block;
+		pointer-events: none;
+	}
+	@include breakpoint($laptop-mid) {
+		left: -18px;
+	}
+	@include breakpoint($desktop) {
+		left: inherit;
+		right: 0;
+	}
 }
 .home-section-head__text {
 	width: 100%;
-  max-width: 515px;
-  margin-left: 9.8%;
+	max-width: 515px;	
   padding-top: 68px;
+  padding-left: 22px;
+  padding-right: 22px;
+  margin: 0 auto;
+  @include breakpoint($tablet) {
+		max-width: 460px;
+		padding-left: 0;
+  	padding-right: 0;
+  	margin-left: 9%;
+	}
+	@include breakpoint($desktop) {
+		max-width: 515px;
+		margin-left: 70px;
+	}
+}
+.home-chart-filters-left {
+  margin-bottom: 15px;
+  display: block;
+	vertical-align: top;
+	@include breakpoint($tablet) {
+    margin-bottom: 0;
+		display: inline-block;
+	}
 }
 .home-chart-filters-container {
+	height: 110px;
 	padding-bottom: 15px;
 	overflow: visible;
 	border-bottom: 1px solid $divider-grey;
+	.toggle-container {
+		float: right;
+	}
 	.form-field--select__dropdown li span,
 	.form-field--select__box span {
 		display: block;
@@ -52,29 +91,70 @@
     white-space: nowrap;
     overflow: hidden;
 	}
+	@include breakpoint($tablet) {
+		height: auto;
+	}
+	@include breakpoint($laptop) {
+		.heading-style--heading-three {
+			font-size: 1.8rem;
+		}
+	}
 }
-.home-live-chart-container {
-	padding-top: 15px;
+.home-live-chart-heading-container {    
+  width: 120px;
+  padding-left: 4px;
+  margin-top: -3px;
+  display: inline-block;
+	vertical-align: middle;
+	@include breakpoint($tablet) {
+		padding-left: 0;
+	}
+	@include breakpoint($laptop) {
+		width: auto;
+		padding-top: 7px;
+		margin-top: 0;
+		margin-right: 30px;
+	}
+}
+.home-live-chart-container {  
+  padding-top: 15px;
 	padding-bottom: 30px;
 	overflow: visible;
 	background-color: $panel-grey;
 	.section-heading {
-    margin-top: 6px;
-    margin-right: 18px;
-    margin-bottom: 0;
-		display: inline-block;
-	}
-	.secondary-filter,
-	.secondary-filter-label {
-		margin-left: 10px;
-		float: right;
+    margin-top: 0;    
+    margin-bottom: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    @include breakpoint($laptop) {
+    	margin-right: 18px;
+    	margin-bottom: 0;
+    }
 	}
 	.secondary-filter {
-		width: 168px;
+		margin-left: 1%;
+		float: right;
+		&:last-child {
+			margin-left: 0;
+		}
+		@include breakpoint($tablet) {
+			margin-left: 10px;
+		}
 	}
-	.secondary-filter-label {
+	.secondary-filter {
+		width: 32.6%;
+		@include breakpoint($tablet) {
+			max-width: 168px;
+  		width: 15%;
+		}
+  	.form-field--select__box {
+  		min-width: auto;
+  	}
+	}
+	.home-live-chart__date {
 		margin-top: 1px;
-		margin-right: 5px;
+		display: inline-block;
+		vertical-align: middle;
     font-family: $brand-heading-font;
     font-size: 16px;
 	}
@@ -93,10 +173,13 @@
 	tbody tr:nth-child(even) {
 		border-bottom: 2px solid $panel-grey;
 		background-color: $reflection-white;
+		td {
+			background-color: $reflection-white;
+		}
 	}
 	tbody td {
 		padding-top: 3px;
-    padding-bottom: 5px;
+    padding-bottom: 5px;    
 	}	
 	td:first-child {
 		padding-left: 11px;
@@ -109,15 +192,28 @@
 		margin-top: 7px;
 		margin-right: 5px;
 		margin-bottom: 0;
-		display: inline-block;
+		display: none;
 	  vertical-align: top;
 		+ span {
 			margin: 4px 0 0;
 	    padding: 0;
-	    display: inline-block;
+	    display: none;
 	    vertical-align: top;
 	    font-size: 12px;
 		}
+	}
+	@include breakpoint($laptop-mid) {
+		.ratings-container {
+			display: inline-block;
+			+ span {
+				display: inline-block;
+			}
+		}
+	}
+	@media screen and (max-width: $laptop-mid) {
+		tr {
+			height: 40px;
+		}		
 	}
 }
 .ref-table--home-chart__rank-col {
@@ -128,12 +224,45 @@
 }
 .ref-table--home-chart__app-col {
   width: 28.4%;
+  @include breakpoint($tablet) {
+ 		width: 40%;
+  }
+  @include breakpoint($laptop-mid) {
+  	width: 28.4%;
+  }
 }
 .ref-table--home-chart__publisher-col {
   width: 16.8%;
 }
 .ref-table--home-chart__rating-col {
-  width: 19%;
+  width: 0;
+  @include breakpoint($laptop-mid) {
+  	width: 19%;
+  }  
+}
+.ref-table--home-chart__value-col {
+	width: 45%;
+  @include breakpoint($laptop-mid) {
+  	width: 25%;
+  }  	
+}
+.ref-table.ref-table--home-chart th.ref-table--home-chart__average-head-cell {
+	font-size: 0;
+	@include breakpoint($laptop-mid) {
+		font-size: 1.5rem;
+	}
+}
+.ref-table.ref-table--home-chart th.ref-table--home-chart__publisher-head-cell {
+	font-size: 0;
+	@include breakpoint($tablet) {
+		font-size: 1.5rem;
+	}
+}
+.ref-table.ref-table--home-chart th.ref-table--home-chart__price-head-cell {
+	font-size: 0;
+	@include breakpoint($laptop) {
+		font-size: 1.5rem;
+	}
 }
 .ref-table--home-chart__app-cell {
 	img, a, .icon-container {
@@ -144,9 +273,16 @@
 		width: 36px;
 		height: 36px;
 		margin-top: 2px;
-		margin-right: 28px;
+		margin-right: 15px;		
+		display: none;
 		background-color: $light-grey-2;
 		border-radius: 5px;
+		@include breakpoint($tablet) {
+			display: inline-block;
+		}
+		@include breakpoint($desktop) {
+			margin-right: 28px;
+		}
 	}
 	img {
 		width: 36px;
@@ -154,11 +290,20 @@
 		border-radius: 5px;
 	}
 	a {
-		font-size: 16px;
+		@include ellipses;
+		width: 100%;
+		font-size: 14px;
 		font-weight: 700;
+		line-height: 1.5;
 		color: $reflection-purple;
 		&:hover {
 			color: $reflection-purple--hover;
+		}
+		@include breakpoint($tablet) {
+			width: calc(100% - 70px);			
+		}
+		@include breakpoint($desktop) {
+			font-size: 16px;
 		}
 	}
 }
@@ -172,11 +317,21 @@
 	}
 }
 .ref-table--home-chart__publisher-cell {
+	font-size: 0;
 	a {
 		color: $reflection-purple;
 		&:hover {
 			color: $reflection-purple--hover;
 		}
+	}
+	@include breakpoint($tablet) {
+		font-size: 1.4rem;
+	}
+}
+.ref-table--home-chart__price-cell {
+	font-size: 0;
+	@include breakpoint($laptop) {
+		font-size: 1.4rem;
 	}
 }
 .ref-table--home-chart__movement-cell {	
@@ -190,16 +345,28 @@
 		}
 	}
 }
-.ref-table--home-chart__revenue-cell {
+.ref-table--home-chart__revenue-cell {	
 	padding-right: 20px;
-	text-align: right;  
+	text-align: right;
 	span {
+		position: relative;
+  	top: 2px;
 		font-weight: 700;
+		font-size: 13px;
 	}
 	span:first-child {
 		margin-right: 5px;
-		font-size: 16px;		
+		font-size: 14px;		
 		color: #363a47;
+	}
+	@include breakpoint($laptop-mid) {
+		span {
+			top: 0;
+			font-size: 14px;
+		}
+		span:first-child {
+			font-size: 16px;
+		}
 	}
 }
 .home-chart-find-button {

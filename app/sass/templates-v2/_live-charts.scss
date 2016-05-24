@@ -175,6 +175,36 @@
 	&:hover {
 		color: $reflection-purple--hover;
 	}
+	&.is-loading {
+		width: calc(100% - 130px);
+		height: 10px;
+		padding-bottom: 0;
+		margin-top: 2px;
+		margin-bottom: 8px;
+		background-color: $loading-colour;
+	}
+	&.live-chart__cell__app-name--no-data {
+		margin-top: 3px;
+		margin-bottom: 3px;
+		overflow: visible;
+		font-family: $brand-heading-font;
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: $light-grey-1;
+		&:before {
+			top: -4px;
+	    margin-right: 10px;
+	    font-size: 24px;
+		}
+		.live-chart--compact-view & {
+			margin-bottom: -9px;
+		}
+	}
+	.whats-this-tooltip-icon {
+		margin-top: -1px;
+		margin-left: 5px;
+		vertical-align: top;
+	}
 }
 .live-chart__cell__rank {
 	width: 85px;
@@ -200,6 +230,9 @@
 	.ref-icon-after--down,
 	.ref-icon-after--down:after {
 		color: $reflection-red;
+	}
+	&.is-loading {
+		float: right;
 	}
 }
 .live-chart__cell__new-entry {
@@ -235,6 +268,12 @@
 		top: 1px;    
     width: calc(100% - 120px);
     display: inline-block;
+	}
+	&.is-loading {
+		width: calc(100% - 150px);;
+		height: 10px;
+		margin-bottom: 2px;
+		background-color: $loading-colour;
 	}		
 }
 .live-chart__cell__number-of-ratings,
@@ -263,6 +302,13 @@
 	color: $dark-grey-2;
 	.live-chart--compact-view & {
 	  padding-top: 4px;
+	  &.is-loading,
+	  &.is-no-data {
+	  	padding-top: 0;
+	  }
+	  &.is-no-data {
+	 		margin-bottom: 2px;
+	  }
 	}
 	&.positive-colour {
 		color: $reflection-green;
@@ -291,6 +337,9 @@
 }
 .live-chart__cell__growth {
 	padding-left: 7px;
+	&.is-loading {
+		display: none;
+	}
 }
 .live-chart__cell__no-results {
 	width: 100%;

@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Live App Charts</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+</head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container" ng-controller="DataController as dataList"> <!-- ng-controller is static template only -->
+		<div id="main" class="l-main" role="main">
+			<div class="page-live-charts">
+				<header class="grid-container">
+					<h1 class="heading-style--heading-two page-title">Live App Charts</h1>
+					<div class="page-header__page-actions">
+						
+						<div class="filter-toggle">
+							<div class="toggle">
+								<input id="toggle--show-full-view" name="viewtype" checked type="radio">
+								<label for="toggle--show-full-view" class="js-mock-show-full-view">
+									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M1,1h3v2H1V1z M6,3h11V1H6V3z M1,10h3V8H1V10z M6,10h11V8H6V10z M1,17h3v-2H1V17z M6,17h11v-2H6V17z"/></svg>
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-compact-view" name="viewtype" type="radio">
+								<label for="toggle--show-compact-view" class="js-mock-show-compact-view">
+									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M1,4h3v2H1V4z M6,6h11V4H6V6z M1,10h3V8H1V10z M6,10h11V8H6V10z M1,14h3v-2H1V14z M6,14h11v-2H6V14z"/></svg>
+								</label>
+							</div>
+						</div>
+
+						<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+
+						<div class="secondary-filter form-field--search js-form-field-search">
+							<input type="text" placeholder="Find App in List" name="findapp" id="findapp" class="js-mock-find-app">
+							<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+							<a href="#" class="clear-search ref-icon-after--close js-clear-search js-mock-clear-find-app">Clear</a>
+						</div>
+
+						<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+							<ul>
+								<li>
+									<input type="checkbox" name="checkboxOne" id="checkboxOne" class="js-mock-toggle-new">
+									<label for="checkboxOne" class="checkboxLabel">Only New Entries</label>
+									<label for="checkboxOne" class="checkboxLabelVisible">Only New Entries</label>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</header>
+
+					<aside class="primary-filters-container">
+						<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="allstores" selected>All Stores</option>
+					    <option value="iosiphone">iOS iPhone</option>
+					    <option value="iosipad">iOS iPad</option>
+					    <option value="play">Google Play</option>
+					    <option value="amazon">Amazon App Store</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="jan" selected>01/01/16 - 01/02/16</option>
+					    <option value="feb">01/02/16 - 01/03/16</option>
+					    <option value="mar">01/03/16 - 01/04/16</option>
+					    <option value="apr">01/04/16 - 01/05/16</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="allcountries" selected>All Countries</option>
+					    <option value="uni">United Kingdom</option>
+					    <option value="fra">France</option>
+					    <option value="ger">Germany</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					  	<option>All Categories</option><option>Business</option><option>Weather</option><option>Utilities</option><option>Travel</option><option>Sports</option><option>Social Networking</option><option>Reference</option><option>Productivity</option><option>Photo &amp; Video</option><option>News</option><option>Navigation</option><option>Music</option><option>Lifestyle</option><option>Health &amp; Fitness</option><option selected="">Games</option><option>Finance</option><option>Entertainment</option><option>Education</option><option>Books</option><option>Medical</option><option>Magazines &amp; Newspapers</option><option>Catalogs</option><option>Food &amp; Drink</option><option>Shopping</option>
+					  </select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box js-mock-price-select-box">
+					    <option value="allprices" selected>All Prices</option>
+					    <option value="free">Free</option>
+					    <option value="tier1">$0.99</option>
+					    <option value="tier2">$1.49</option>
+					    <option value="tier3">$1.99</option>
+					    <option value="tier4">$2.49</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="alliap" selected>All IAP Status</option>
+					    <option value="withiap">With IAP</option>
+					    <option value="noiap">No IAP</option>
+						</select>
+					</div>
+				</aside>
+
+ 				<div class="live-chart-container">
+ 					<table class="live-chart js-live-chart">
+ 						<thead>
+ 							<tr>
+ 								<th>
+ 									<svg x=0px y=0px viewBox="0 0 24 24"enable-background="new 0 0 24 24"xml:space=preserve><path d="M7.2,23L0,10.6l16.8-9.7L24,5v8.3L7.2,23z M2.1,11.1L7.7,21l14.7-8.5V5.9l-5.7-3.2L2.1,11.1z
+	 M18.3,10.7c-0.2,0-0.4,0-0.6-0.1c-0.6-0.2-1.2-0.6-1.5-1.1c-0.7-1.2-0.3-2.7,0.9-3.4c0.6-0.3,1.2-0.4,1.9-0.2
+	c0.6,0.2,1.2,0.6,1.5,1.1c0.3,0.6,0.4,1.2,0.2,1.9c-0.2,0.6-0.6,1.2-1.1,1.5C19.2,10.6,18.8,10.7,18.3,10.7z M18.3,7
+	c-0.2,0-0.5,0.1-0.7,0.2C17,7.5,16.8,8.3,17.2,9c0.2,0.3,0.5,0.5,0.8,0.6c0.3,0.1,0.7,0,1-0.1c0.3-0.2,0.5-0.5,0.6-0.8
+	c0.1-0.3,0-0.7-0.1-1v0C19.3,7.3,19,7.1,18.7,7C18.6,7,18.4,7,18.3,7z M10.9,18.2L10,16.6c-0.4,0.1-0.7,0.2-1,0.1
+	c-0.3,0-0.5-0.1-0.8-0.3l-0.6,0.3L7.2,16l1.2-0.7l0,0.1l0,0c0.2,0.3,0.4,0.4,0.6,0.5s0.6-0.1,0.9-0.3c0.3-0.2,0.6-0.4,0.7-0.6
+	c0.1-0.2,0.1-0.5,0-0.7c-0.1-0.1-0.2-0.2-0.3-0.3c-0.1,0-0.2-0.1-0.4-0.1s-0.3,0-0.4,0.1c-0.1,0-0.3,0.1-0.4,0.1l-1,0.3
+	c-0.2,0.1-0.4,0.1-0.6,0.1c-0.2,0-0.4,0-0.6-0.1c-0.2-0.1-0.4-0.1-0.5-0.3c-0.2-0.1-0.3-0.3-0.4-0.5c-0.1-0.2-0.2-0.4-0.2-0.6
+	c0-0.2,0-0.4,0.1-0.6c0.1-0.2,0.2-0.4,0.3-0.6c0.1-0.2,0.3-0.4,0.6-0.6l-1-1.7l1-0.6l1,1.7c0.3-0.1,0.6-0.2,0.9-0.2
+	c0.3,0,0.5,0.1,0.8,0.2l0.5-0.3l0.5,0.9l-1,0.6l-0.1,0.1l0,0l0,0l-0.1-0.1c-0.2-0.2-0.4-0.3-0.6-0.3c-0.3,0-0.5,0-0.8,0.2
+	C7.4,11.8,7.2,12,7,12.2c-0.1,0.2-0.1,0.4,0,0.6c0.1,0.1,0.2,0.2,0.3,0.3c0.1,0,0.2,0.1,0.3,0.1s0.2,0,0.4-0.1
+	c0.1,0,0.3-0.1,0.4-0.1l1-0.2c0.3-0.1,0.5-0.1,0.7-0.1c0.2,0,0.4,0,0.6,0s0.4,0.1,0.5,0.2c0.2,0.1,0.3,0.3,0.4,0.5
+	c0.1,0.2,0.2,0.4,0.2,0.6c0,0.2,0,0.4-0.1,0.7c-0.1,0.2-0.2,0.4-0.3,0.7c-0.1,0.2-0.3,0.4-0.5,0.6l0.9,1.6L10.9,18.2z"/></svg>
+ 									<span>Paid</span>
+ 									<a href="#" class="live-chart__head-cell__clear-link js-mock-clear-search-results-link">Clear</a>
+ 								</th>
+ 								<th>
+ 									<svg x=0px y=0px viewBox="0 0 24 24"enable-background="new 0 0 24 24"xml:space=preserve><path fill=#5A5A68 d="M7.2,23L0,10.5l16.8-9.7L24,5v8.3L7.2,23z M2.1,11.1l5.7,9.8l14.7-8.5V5.8l-5.7-3.2L2.1,11.1z
+	 M18.3,10.7c-0.2,0-0.4,0-0.6-0.1c-0.6-0.2-1.2-0.6-1.5-1.1c-0.7-1.2-0.3-2.7,0.9-3.4c0.6-0.3,1.2-0.4,1.9-0.2
+	C19.6,6,20.1,6.4,20.5,7c0.3,0.6,0.4,1.2,0.2,1.9c-0.2,0.6-0.6,1.2-1.1,1.5C19.2,10.6,18.8,10.7,18.3,10.7z M18.3,6.9
+	c-0.2,0-0.5,0.1-0.7,0.2c-0.6,0.4-0.8,1.2-0.5,1.8c0.2,0.3,0.5,0.5,0.8,0.6c0.3,0.1,0.7,0,1-0.1c0.3-0.2,0.5-0.5,0.6-0.8
+	c0.1-0.3,0-0.7-0.1-1v0C19.3,7.3,19,7.1,18.7,7C18.6,6.9,18.4,6.9,18.3,6.9z"/></svg>
+ 									<span>Free</span>
+ 									<a href="#" class="live-chart__head-cell__clear-link js-mock-clear-search-results-link">Clear</a>
+ 								</th>
+ 								<th>
+ 									<svg x=0px y=0px viewBox="0 0 24 24"enable-background="new 0 0 24 24"xml:space=preserve><path fill=#5A5A68 d="M18,8.5l-3,0.6V2L9,0.3L0,1.9v15.5l6.5,2.8L9,19.4v1.9l6.5,2.8l8.5-3.1V10.1L18,8.5z M1.5,3.2
+	L9,1.8l4.5,1.3v0.1L6.6,5.1L1.5,3.5V3.2z M1.5,4.2l5.1,1.6L13.5,4v1.5L6.6,7.3L1.5,5.7V4.2z M1.5,6.5l5.1,1.6l6.9-1.9v1.5L6.6,9.6
+	L1.5,8V6.5z M1.5,8.7l5.1,1.6l6.9-1.9v1L9,10.3v0.8l-2.4,0.7l-5.1-1.6V8.7z M1.5,11l5.1,1.6L9,11.9v1.5l-2.4,0.8l-5.1-1.8V11z
+	 M1.5,13.2L6.6,15L9,14.2v1.6l-2.4,0.9l-5.1-2V13.2z M6.6,18.6l-5.1-2.2v-1l5.1,2L9,16.6v1.2L6.6,18.6z M22.5,19.9l-6.9,2.5
+	l-5.1-2.2v-1l5.1,2l6.9-2.4V19.9z M22.5,18l-6.9,2.4l-5.1-2V17l5.1,1.8l6.9-2.2V18z M22.5,15.8L15.6,18l-5.1-1.8v-1.4l5.1,1.6
+	l6.9-1.9V15.8z M22.5,13.7l-6.9,1.9L10.5,14v-1.5l5.1,1.6l6.9-1.9V13.7z M22.5,11.4l-6.9,1.9l-5.1-1.6v-0.2l7.5-1.5l4.5,1.2V11.4z"/></svg>
+ 									<span>Top Grossing</span>
+ 									<a href="#" class="live-chart__head-cell__clear-link js-mock-clear-search-results-link">Clear</a>
+ 								</th>
+ 							</tr>
+ 						</thead>
+ 						<colgroup>
+ 							<col>
+ 							<col>
+ 							<col>
+ 						</colgroup>
+ 						<tbody>
+ 							<tr>
+ 								<td>
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/app-icon-loading.png" alt="Loading" class="live-chart__cell__app-icon">
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name is-loading"></a>
+	 										<span class="live-chart__cell__rank is-loading">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class=""></span>-</span>
+	 										<a href="#" class="live-chart__cell__publisher-name is-loading"></a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:0%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings"></span>
+	 										<span class="live-chart__cell__app-price ng-binding"></span>
+	 										<span class="live-chart__cell__growth is-loading"></span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download is-loading"><span>-</span></span>
+ 										</div> 										
+ 									</div> 									
+ 								</td>
+ 								<td>
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/app-icon-loading.png" alt="Loading" class="live-chart__cell__app-icon">
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name is-loading"></a>
+	 										<span class="live-chart__cell__rank is-loading">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class=""></span>-</span>
+	 										<a href="#" class="live-chart__cell__publisher-name is-loading"></a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:0%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings"></span>
+	 										<span class="live-chart__cell__app-price ng-binding"></span>
+	 										<span class="live-chart__cell__growth is-loading"></span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download is-loading"><span>-</span></span>
+ 										</div> 										
+ 									</div> 									
+ 								</td>
+ 								<td>
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/app-icon-loading.png" alt="Loading" class="live-chart__cell__app-icon">
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name is-loading"></a>
+	 										<span class="live-chart__cell__rank is-loading">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class=""></span>-</span>
+	 										<a href="#" class="live-chart__cell__publisher-name is-loading"></a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:0%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings"></span>
+	 										<span class="live-chart__cell__app-price ng-binding"></span>
+	 										<span class="live-chart__cell__growth is-loading"></span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download is-loading"><span>-</span></span>
+ 										</div> 										
+ 									</div> 									
+ 								</td>
+ 							</tr>
+ 							<tr>
+ 								<td>
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/app-icon-loading.png" alt="Loading" class="live-chart__cell__app-icon">
+	 									<div class="live-chart__cell__app-details-container">
+	 										<span class="live-chart__cell__app-name live-chart__cell__app-name--no-data ref-icon-before--warning">No Available Data <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="No Available Data" data-whatsthis="Information on why data isn't showing"><span>What's this?</span></a></span>
+	 										<span class="live-chart__cell__rank is-loading">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class=""></span>-</span>
+	 										<a href="#" class="live-chart__cell__publisher-name" style="display: none"></a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:0%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings"></span>
+	 										<span class="live-chart__cell__app-price ng-binding"></span>
+	 										<span class="live-chart__cell__growth is-loading"></span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download is-no-data"><span>-</span></span>
+ 										</div> 										
+ 									</div> 									
+ 								</td>
+ 								<td>
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/app-icon-loading.png" alt="Loading" class="live-chart__cell__app-icon">
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name is-loading"></a>
+	 										<span class="live-chart__cell__rank is-loading">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class=""></span>-</span>
+	 										<a href="#" class="live-chart__cell__publisher-name is-loading"></a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:0%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings"></span>
+	 										<span class="live-chart__cell__app-price ng-binding"></span>
+	 										<span class="live-chart__cell__growth is-loading"></span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download is-loading"><span>-</span></span>
+ 										</div> 										
+ 									</div> 									
+ 								</td>
+ 								<td>
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/app-icon-loading.png" alt="Loading" class="live-chart__cell__app-icon">
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name is-loading"></a>
+	 										<span class="live-chart__cell__rank is-loading">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class=""></span>-</span>
+	 										<a href="#" class="live-chart__cell__publisher-name is-loading"></a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:0%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings"></span>
+	 										<span class="live-chart__cell__app-price ng-binding"></span>
+	 										<span class="live-chart__cell__growth is-loading"></span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download is-loading"><span>-</span></span>
+ 										</div> 										
+ 									</div> 									
+ 								</td>
+ 							</tr>
+ 						</tbody>
+ 					</table>
+
+ 					<a href="#" class="ref-button--secondary--medium live-chart__show-more-button">Show Next 100 Apps</a>
+ 				</div>
+
+			</div>			
+			
+		</div>
+
+		<div class="grid-container" id="js-component-import--global-footer"></div>
+	</div>	
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+
+	<div class="MHXTE6C-ob-a"><a class="is-showing"><span class="ref-icon-before--angle-up"></span> <span class="OOWHQGD-a-jf">Back to Top</span></a></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script>
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-live-charts.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+  		new Page();
+  		new AllDropDowns();
+  		new FormInteractions();
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  		$('.js-form-field-search').each(function(){
+  			new FormFieldSearch($(this));
+  		});
+
+  		// Mock JS for static template only
+  		$('.js-mock-show-full-view').on("click", function(){
+  			$('.live-chart').removeClass("live-chart--compact-view");
+  		});
+  		$('.js-mock-show-compact-view').on("click", function(){
+  			$('.live-chart').addClass("live-chart--compact-view");
+  		});
+
+  		$('.js-mock-toggle-new').on("change", function(){
+  			if($(this).is(':checked')) {
+  				$('.live-chart td').each(function(){
+  					var $this = $(this);
+  					if($this.data("is-new") !== "inline-block") {
+  						$this.addClass("live-chart__cell--disabled");
+  					}
+  				});
+  			} else {
+  				$('.live-chart__cell--disabled').removeClass("live-chart__cell--disabled");
+  			}
+  		});
+
+  		$('.js-whats-this-tooltip').each(function(){
+  			new WhatsThisPopup($(this));
+  		});
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>
