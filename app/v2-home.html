@@ -43,7 +43,9 @@
       families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
     }
   });
-</script></head>
+</script>
+<script src="js-v2/vendor/picturefill302.min.js" async></script>
+</head>
 <body>
 	<!--[if (lt IE 9)]>
       <div class="window-warning">
@@ -58,13 +60,20 @@
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
 			
-			<section class="home-section-head">
-				<img src="images/v2/Mid_Chart_Lines@2x.png" class="home-section-head__illustration" />
+			<section class="home-section-head">				
 				<div class="home-section-head__text">
 					<h1 class="page-title"><span>Reflection Helps You</span> <span>Understand the App Market</span></h1>
 					<p>Track the performance of the world's top apps, publishers or your own sales with our affordable &amp; easy to use analysis platform.</p>
 					<p><a href="#how">How Reflection Works</a></p>
 				</div>
+				<picture class="home-section-head__illustration"> <!-- uses js/picturefill.2.3.1.min.js -->
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source srcset="images/v2/Wide_Chart_Lines@2x.png" media="(min-width: 1280px)" />
+					<source srcset="images/v2/Mid_Chart_Lines@2x.png" media="(min-width: 720px)" />
+					<source srcset="images/v2/Mobile_Chart_Lines@2x.png" />
+					<!--[if IE 9]></video><![endif]-->
+					<img src="images/v2/Mid_Chart_Lines@2x.png" />
+				</picture>
 			</section>
 			
 			<section class="grid-container home-live-chart-container">
@@ -97,7 +106,7 @@
 							</div>
 						</div>
 					</div>
-				
+
 					<div class="secondary-filter secondary-filter--medium form-field--select">
 						<select class="js-select-box">
 					    <option value="all" selected>All Categories</option>
@@ -350,7 +359,7 @@
 					<div class="home-section-content-left revenue-illustration">
 						<ul class="revenue-tabs-list">
 							<li>
-								<img src="images/v2/placeholder-app-icon-clash.png" alt="Clash of Clans app icon" />
+								<img src="images/v2/ClashClans_Icon_92px@2x.jpg" alt="Clash of Clans app icon" />
 								<div>
 									<h2>Clash of Clans</h2>
 									<h3>Supercell</h3>
@@ -358,7 +367,7 @@
 								<span class="numeric-value">$ 175,009</span>
 							</li>
 							<li>
-								<img src="images/v2/placeholder-icon-spotify.png" alt="Spotify app icon" />
+								<img src="images/v2/Spotify_Icon_92px@2x.jpg" alt="Spotify app icon" />
 								<div>
 									<h2>Spotify</h2>
 									<h3>Spotify, Inc</h3>
@@ -366,7 +375,7 @@
 								<span class="numeric-value">$ 130,167</span>
 							</li>
 							<li>
-								<img src="images/v2/placeholder-icon-tinder.png" alt="Tinder app icon" />
+								<img src="images/v2/Tindr_Icon_92px@2x.jpg" alt="Tinder app icon" />
 								<div>
 									<h2>Tinder</h2>
 									<h3>Tinder, Inc</h3>
@@ -391,10 +400,10 @@
 						<p>Save time and effort keeping track of the apps and publishers you’re following with customisable, automated alerts for key events</p>
 						<p class="home-section__more-link"><a href="#">Learn More About Alerts</a></p>
 					</div>
-					<div class="home-section-content-right">
+					<div class="home-section-content-right home-section-notifications-content">
 						<ul class="notifications-tabs-list">
 							<li>
-								<img src="images/v2/placeholder-app-icon-deezer.png" alt="Deezer Music app icon" />
+								<img src="images/v2/Deezr_Icon_92px@2x.jpg" alt="Deezer Music app icon" />
 								<div>
 									<h2>Deezer Music</h2>
 									<h3>App Launched</h3>
@@ -405,7 +414,7 @@
 			 					</a>
 							</li>
 							<li>
-								<img src="images/loading-demo-app-icon.png" alt="Monument Valley app icon" />
+								<img src="images/v2/MonumentValley_Icon_92px@2x.jpg" alt="Monument Valley app icon" />
 								<div>
 									<h2>Monument Valley</h2>
 									<h3>Price Change</h3>
@@ -423,7 +432,13 @@
 			<section class="home-section home-section--three">
 				<div class="home-section-content-container">
 					<div class="home-section-content-left networks-illustration">
-						<img src="images/v2/home-placeholder-networks-illustration.png" alt="" />
+						<picture> <!-- uses js/picturefill.2.3.1.min.js -->
+							<!--[if IE 9]><video style="display: none;"><![endif]-->
+							<source srcset="images/v2/LinkAccountsIllustration-Wide@2x.png" media="(min-width: 1600px)" />
+							<source srcset="images/v2/LinkAccountsIllustration@2x.png" />
+							<!--[if IE 9]></video><![endif]-->
+							<img src="images/v2/LinkAccountsIllustration@2x.png" alt="" />
+						</picture>
 					</div>
 					<div class="home-section-content-right home-section-text-content">
 						<h2>All Your Own Data in One Place</h2>
