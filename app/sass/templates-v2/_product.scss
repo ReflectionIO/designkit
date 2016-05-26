@@ -6,12 +6,14 @@
 	background-size: cover;
 }
 .product-section-head__content-container {
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	margin-left: -513px;
 	width: 100%;
-	max-width: 1050px;
+	@include breakpoint($desktop) {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		margin-left: -513px;		
+		max-width: 1050px;
+	}	
 }
 .product-section-head__text,
 .product-slideshow {
@@ -20,8 +22,9 @@
 }
 .product-section-head__text {
 	width: 310px;
-	margin-top: -98px;
-	margin-right: 90px;
+  margin-top: 168px;
+  margin-right: 0;
+  margin-left: 8%;
 	.page-title {
 		margin-bottom: 1.5rem;
 		color: $reflection-white;
@@ -33,9 +36,16 @@
 		line-height: 1.5;
 		text-align: center;
 	}
+	@include breakpoint($desktop) {
+		margin-top: -98px;
+		margin-right: 90px;
+		margin-left: 0;
+	}
 }
 .product-slideshow {
-	position: relative;
+	position: absolute;
+	bottom: 0;
+  left: 49%;
 	width: 648px;
 	height: 469px;
 	li {
@@ -52,6 +62,14 @@
 	}
 	img {
 		float: left;
+	}
+	@include breakpoint($laptop-plus) {
+		left: 47%;
+	}
+	@include breakpoint($desktop) {
+		position: relative;
+		left: 0;
+		bottom: inherit;
 	}
 }
 .product-slideshow-thumbnails {
@@ -97,9 +115,9 @@
 	float: right;
 }
 .product-section-text-content {
-	width: 382px;
+	width: 355px;	
 	p {		
-		font-size: 1.8rem;
+		font-size: 1.6rem;
 	}
 	p:not(:last-child) {
 		margin-bottom: 1em;
@@ -109,12 +127,21 @@
 		font-weight: 600;
 		font-size: 16px;
 	}
+	@include breakpoint($desktop) {
+		width: 382px;
+		p {		
+			font-size: 1.8rem;
+		}
+	}
 }
 .product-section {
 	width: 100%;
-	min-height: 512px;
+	min-height: 488px;	
 	img {
 		width: 100%;
+	}
+	@include breakpoint($desktop) {
+		min-height: 512px;
 	}
 }
 .product-section-sm {
@@ -128,15 +155,25 @@
 	padding-top: 59px;
 	background-color: $reflection-white;
 	.product-section-content-left {
-		width: 564px;
+		width: 47%;
+    margin-top: 5rem;
 	}
 	.product-section-content-right {
 		margin: 67px 1px 120px 0;
 	}
+	@include breakpoint($desktop) {
+		.product-section-content-left {
+			width: 564px;
+			margin-top: 0;
+		}
+	}
 }
 .product-section-one__content-container {
-	width: 1065px;
+	width: 86%;	
 	margin: 0 auto;
+	@include breakpoint($desktop) {
+		width: 1065px;
+	}
 }
 .product-section-two {
 	padding-top: 60px;
@@ -146,33 +183,71 @@
 		margin-bottom: 200px;
 	}
 	.product-section-content-right {
-		width: 645px;
-		margin-right: -10px;
+		width: 62%;
+		max-width: 552px;
+    margin-right: -12%;
+    margin-top: 1.6rem;
+	}
+	@include breakpoint(1100px) {
+		.product-section-content-right {
+			margin-right: -2%;
+		}
+	}
+	@include breakpoint($desktop) {
+		.product-section-content-right {
+			width: 645px;
+			max-width: inherit;
+			margin-top: 0;
+			margin-right: -10px;
+		}
 	}
 }
-.product-section-two__content-container {
-	width: 1106px;
-	float: right;
+.product-section-two__content-container {  
+  width: 93%;
+  margin: 0;
+  float: right;
+	@include breakpoint($desktop) {
+		width: 1106px;
+		margin: 0 auto;
+		float: none;
+	}	
 }
 .product-section-three {
 	padding-top: 59px;
 	background-color: $reflection-white;
 	.notifications-tabs-list {
+		width: 100%;
 		margin-right: 0;
+		li {
+			width: 100%;
+		}
 	}
 	.product-section-content-left {
+		width: 48%;
 		margin-top: 80px;
-		margin-bottom: 120px;
+		margin-bottom: 95px;
 	}
 	.product-section-content-right {
 		margin-top: 69px;
 	}
+	@include breakpoint($desktop) {
+		.product-section-content-left {
+			width: auto;
+			margin-bottom: 120px;
+		}
+		.notifications-tabs-list li {
+			width: 525px;
+		}
+	}
 }
 .product-section-three__content-container {
 	position: relative;
-	left: -8px;
-	width: 1002px;
+	width: 86%;
 	margin: 0 auto;
+	@include breakpoint($desktop) {		
+		width: 1002px;
+		left: -8px;
+	}
 }
 .product-section-four {
 	padding-top: 66px;
@@ -181,26 +256,47 @@
 		margin: 90px 0 120px 23px;
 	}
 	.product-section-content-right {
-		width: 406px;
+		width: 43%;
+	}
+	@include breakpoint(1100px) {		
+		.product-section-content-right {
+			width: 406px;
+		}
 	}
 }
 .product-section-four__content-container {
-	width: 968px;
+	width: 87%;
 	margin: 0 auto;
+	@include breakpoint($desktop) {
+		width: 968px;
+	}
 }
 .product-section-five {
 	padding-top: 94px;
 	background-color: #363a47;
 	.product-section-content-left {
-		width: 565px;
+		width: 47%;
+		margin-top: 3rem;
 	}
 	.product-section-content-right {
-		margin: 31px 19px 120px 0;
+		margin: 31px 0 120px 0;
+	}
+	@include breakpoint($desktop) {
+		.product-section-content-right {
+			margin-right: 19px;
+		}
+		.product-section-content-left {
+			width: 565px;
+			margin-top: 0;
+		}
 	}
 }
 .product-section-five__content-container {
-	width: 1064px;
+	width: 87%;	
 	margin: 0 auto;
+	@include breakpoint($desktop) {
+		width: 1064px;
+	}
 }
 .product-section-two,
 .product-section-five {
@@ -216,36 +312,85 @@
 	background-color: $panel-grey;
 	.product-section-content-left {
 		margin-bottom: 80px;
+		width: 54%;
 	}
-	.product-section-text-content {
-		width: 490px;
+	.product-section-content-right {
+		width: 30%;
+    margin-left: 6%;
+		float: left;
 	}
 	svg {
-    width: 302px;
+		width: 100%;
     margin-right: 87px;
     margin-top: 15px;
 	}
+	@include breakpoint($desktop) {
+		.product-section-content-left {
+			width: auto;
+		}
+		.product-section-content-right {
+			width: auto;
+			float: right;
+		}
+		.product-section-text-content {
+			width: 490px;
+		}
+		svg {
+			width: 302px;
+		}
+	}
 }
 .product-section-six__content-container {
-	width: 982px;
+	width: 86%;
 	margin: 0 auto;
+	@include breakpoint($desktop) {
+		width: 982px;
+	}
 }
 .product-section-seven {
 	padding-top: 71px;
 	background-color: $reflection-white;
 	.product-section-content-right {
-		margin-top: 40px;
+		float: right;		
+    margin-top: 40px;
 		margin-bottom: 100px;
 	}
-	.product-section-text-content {
-		width: 490px;
+	.product-section-content-left {		
+    width: 35%;
+    margin-top: 1rem;
+    margin-left: 4%;
+    float: left;
 	}
-	svg {
-		width: 310px;
-    margin-left: 36px;
+	.product-section-text-content {
+		width: 360px;
+	}
+	@include breakpoint($desktop) {
+		.product-section-content-right,
+		.product-section-content-left {			
+    	width: auto;
+    	margin-left: 0;
+    }
+    .product-section-content-right {
+    	float: right;
+    }
+    .product-section-content-left {
+    	width: auto;
+    	margin-top: 0;
+    }
+    .product-section-text-content {
+			width: 490px;
+		}
+		svg {
+			width: 310px;
+	    margin-left: 36px;
+		}
 	}
 }
 .product-section-seven__content-container {
-	width: 977px;
-	margin: 0 auto;
+	width: 83%;
+  margin: 0 0 0 7%;	
+	@include breakpoint($desktop) {
+		width: 977px;
+		margin: 0 auto;
+	}
 }
