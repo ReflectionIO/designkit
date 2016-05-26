@@ -12,6 +12,7 @@
 	padding-top: 132px;
 	background-image: url(images/v2/bg-about-head.jpg);
 	background-size: cover;
+	background-position: -189px 0;
 	blockquote {
 		padding-top: 0;
 		&:before {
@@ -39,10 +40,23 @@
 	    color: $reflection-white;
 		}
 	}
+	@include breakpoint(1100px) {
+		background-position: 0 0;
+	}
 }
 .about-section-head__text {
 	width: 470px;
 	margin-right: 7.1%;
 	display: inline-block;
 	float: right;
+	@include breakpoint(1100px) {
+		margin-left: 50%;
+		margin-right: 0;
+    float: left;
+	}
+	@include breakpoint($desktop) {
+		margin-right: 7.1%;
+		margin-left: 0;
+		float: right;
+	}
 }
