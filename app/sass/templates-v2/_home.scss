@@ -140,10 +140,9 @@
 	}
 }
 .home-chart-filters-container {
-	height: 110px;
-	padding-bottom: 15px;
+	height: 210px;
 	overflow: visible;
-	border-bottom: 1px solid $divider-grey;
+	border-bottom: 1px solid $divider-grey;	
 	.toggle-container {
 		float: right;
 	}
@@ -153,6 +152,9 @@
 		text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+	}
+	@include breakpoint($phablet) {
+		height: 110px;
 	}
 	@include breakpoint($tablet) {
 		height: auto;
@@ -195,24 +197,24 @@
     }
 	}
 	.secondary-filter {
-		margin-left: 1%;
-		float: right;
-		&:last-child {
-			margin-left: 0;
+		width: 80%;
+		margin: 0 0 7px 10%;
+		.form-field--select__box {
+  		min-width: inherit;
+  	}		
+		@include breakpoint($phablet) {
+			width: 32.6%;
+			margin-left: 1%;
+			float: right;
+			&:last-child {
+				margin-left: 0;
+			}
 		}
 		@include breakpoint($tablet) {
+			width: 15%;
+			max-width: 168px;
 			margin-left: 10px;
 		}
-	}
-	.secondary-filter {
-		width: 32.6%;
-		@include breakpoint($tablet) {
-			max-width: 168px;
-  		width: 15%;
-		}
-  	.form-field--select__box {
-  		min-width: auto;
-  	}
 	}
 	.home-live-chart__date {
 		margin-top: 1px;
@@ -474,10 +476,14 @@
 	}
 }
 .home-section--two {
-	min-height: 546px;
+	min-height: 422px;
 	padding-top: 50px;	
 	background-color: $panel-grey;
 	@include breakpoint($laptop) {
+		padding-top: 95px;
+	}
+	@include breakpoint($desktop-wide) {
+		min-height: 546px;
 		padding-top: 108px;
 		.home-section-content-left {
 			padding-top: 12px;
@@ -493,7 +499,7 @@
 	padding-top: 50px;
 	@include breakpoint($laptop) {
 		.home-section-content-container {
-			padding-top: 97px;
+			padding-top: 53px;
 		}
 		.home-section-content-left {
 			margin-left: 0;
@@ -501,6 +507,12 @@
 		}
 		.home-section-text-content {
 			padding-bottom: 93px;
+		}
+	}
+	@include breakpoint($desktop) {
+		padding-top: 65px;
+		.home-section-text-content {
+			padding-bottom: 120px;
 		}
 	}
 	@include breakpoint($desktop-wide) {
@@ -581,9 +593,6 @@
 	}
 	@include breakpoint($tablet) {
 		width: 396px;
-		p {
-			font-size: 18px;
-		}
 	}
 	@include breakpoint($laptop) {
 		width: 42%;
@@ -591,6 +600,9 @@
 	}
 	@include breakpoint($desktop) {
 		width: 396px;
+		p {
+			font-size: 18px;
+		}
 	}
 	@include breakpoint($desktop-wide) {
 		width: 495px;
