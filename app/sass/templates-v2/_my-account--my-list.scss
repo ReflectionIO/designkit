@@ -70,22 +70,33 @@
 	}
 	.page-title {
     margin-top: 0.1rem;
-		margin-bottom: 2.1rem;		
+    margin-bottom: 0.3rem;
+    @include breakpoint($desktop) {
+    	margin-bottom: 2.1rem;
+    }
 	}
 	.page-sub-title {
-    padding-top: 1.1rem;
-    padding-left: 2.6rem;
-		margin-bottom: 0;
+    padding-top: 0;
+		margin-bottom: 2rem;
+		display: block;
 		font-family: $brand-body-font;
 		font-size: 14px;
 		font-weight: 400;
 		color: #5a5a68;
+		@include breakpoint($desktop) {
+			padding-top: 1.5rem;
+    	padding-left: 2.6rem;
+    	margin-bottom: 0;
+    	display: inline-block;
+		}
 	}
 	&.page-my-lists,
 	&.page-linked-accounts,
 	&.page-match-ad-units {
 		.page-sub-title {
-			padding-top: 1.5rem;
+			@include breakpoint($desktop) {
+				padding-top: 1.5rem;
+			}
 		}		
 	}
 	.my-account-section-title {
@@ -226,7 +237,7 @@
 		}
 	}
 	.licenses-data-cell--actions {
-		max-width: 100px;
+		max-width: 125px;
 	}
 	.my-lists-data-cell--actions {
 		max-width: 80px;
@@ -250,7 +261,7 @@
     padding-bottom: 12px;
 	}
 	.share-data-cell--actions {
-		max-width: 80px;
+		max-width: 105px;
 	}
 	.linked-accounts-cell--actions {
 		max-width: 100px;
@@ -586,9 +597,12 @@
 }
 .upgrade-content {
 	width: 380px;
-	margin: 4.1rem 11% 7rem 4.7%;
+	margin: 4.1rem 6% 7rem 4.7%;
 	display: inline-block;
 	float: left;
+	@include breakpoint($laptop-mid) {
+		margin-right: 11%;
+	}
 	.page-linked-accounts {
 		margin-top: 3.1rem;
 	}

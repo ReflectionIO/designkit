@@ -21,6 +21,9 @@
 .page-app,
 .page-data-dashboard.page-app {
 	padding-top: 1.8rem;
+	> .grid-container {
+		font-size: 0;
+	}
 }
 .page-header__app-info-and-actions {
 	width: 375px;
@@ -33,10 +36,10 @@
 .page-app {
 	.app-title {
 		min-height: 35px;
-		margin-bottom: 7px;
+		margin-bottom: 4px;
     padding-top: 1px;
     display: inline-block;
-    font-size: 24px;    
+    font-size: 24px;
 	}
 	.app-bundle-number-of-apps {
 		padding-left: 12px;
@@ -46,12 +49,25 @@
 		font-weight: 400;
 		color: #28292c;
 	}
-	.page-header__page-toggle {
-		display: block;
+	&.page-data-dashboard {
+		.page-header__page-toggle {
+			margin-right: 0;
+			margin-bottom: 1.5rem;
+			display: block;
+		}
+		.page-header__data-info-text {
+			position: relative;
+			top: 4px;
+			padding-top: 0;
+			padding-left: 15px;
+			font-weight: 400;
+		}
+		.page-header__data-info-icon {
+			padding-top: 8px;
+		}
 	}
-	.page-header__app-price-details,
-	.page-header__publisher-name {
-		margin-bottom: 20px;
+	.page-header__app-price-details {
+		margin-bottom: 19px;
 		display: inline-block;
 		vertical-align: top;
 		float: right;
@@ -59,9 +75,17 @@
 		font-size: 16px;		
 		color: $dark-grey-1;
 	}
-	.page-header__publisher-name {
-		padding-right: 1.8rem;
+	.page-header__app-info-and-actions {
+		width: 300px;
+	}
+	.page-header__app-title-links {
+		width: calc(100% - 378px);
+	}
+	.app-developer-name {		
+    margin-right: 8px;
+    margin-left: 13px;
 		font-weight: 600;
+		font-size: 14px;
 		a {
 			color: $reflection-purple;
 			&:hover {
@@ -103,11 +127,16 @@
 		color: $reflection-purple--hover;
 	}
 }
+.page-header__text-link--top {
+	padding-top: 0;
+	margin-left: 20px;
+}
 .label-my-app {
 	position: relative;
 	top: -3px;    
 	padding: 6px 10px 7px 11px;
 	margin-right: 5px;
+	margin-left: 10px;
 	display: inline-block;
 	font-family: $brand-heading-font;
 	font-weight: 600;
