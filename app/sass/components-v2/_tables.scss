@@ -5,7 +5,7 @@ $table-gold: #ee9063;
 	width: 100%;
 	font-size: 1.3rem;
 	color: $dark-grey-1;
-	table-layout: fixed;
+	table-layout: auto;
 	.is-safari &,
 	.is-touch.is-chrome & {
 		table-layout: auto;
@@ -87,11 +87,18 @@ $table-gold: #ee9063;
 	.total-for-period-head-cell {
 		span {
 			display: inline-block;
+			@include breakpoint($desktop-widest) {
+				display: inline;
+			}
 		}
 		span:first-child {
 			margin-bottom: 0.4rem;
 			display: block;
 			font-size: 1.4rem;
+			@include breakpoint($desktop-widest) {
+				padding-right: 7px;
+				display: inline;
+			}
 		}
 		span:nth-child(2) {
 			color: $table-gold;
@@ -142,7 +149,7 @@ $table-gold: #ee9063;
 		padding-bottom: 5px;
 	}	
 	.app-data-cell-released-date {
-		padding-top: 1.1rem;
+		padding-top: 1.7rem;
 		vertical-align: top;
 		&.is-loading span {
 			position: relative;
@@ -179,6 +186,10 @@ $table-gold: #ee9063;
 		display: block;
 		font-weight: 700;
 		font-size: 1.2rem;
+		@include breakpoint($desktop-wide) {
+			padding-left: 5px;
+			display: inline;
+		}
 	}
 	.more-app-data {
 		position: absolute;
@@ -203,6 +214,9 @@ $table-gold: #ee9063;
 		padding-left: 12px;    
     padding-top: 10px;
     vertical-align: top;
+    @include breakpoint($desktop-wide) {
+    	padding-top: 17px;
+    }
 		.more-data-link {
 			@extend .text-link;
 			margin-left: 10%;
@@ -225,6 +239,7 @@ $table-gold: #ee9063;
 		}
 	}
 	.data-table__value-bar {
+		max-width: 300px;
 		> span {
 			width: 35px;
 			display: inline-block;
@@ -344,6 +359,7 @@ $table-gold: #ee9063;
 	}
 	&.is-loading {
 		width: 80%;
+		max-width: 200px;
     height: 10px;
     margin-top: 7px;
     margin-bottom: 9px;

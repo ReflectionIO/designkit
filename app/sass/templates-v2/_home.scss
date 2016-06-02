@@ -1,21 +1,16 @@
 .home-section-head {
 	position: relative;
+	height: 422px;
 	background-image: url(images/v2/bg-home-head.jpg);
 	background-size: cover;
-	@include breakpoint($tablet) {
-		height: 422px;
-	}
 	@include breakpoint($desktop-wide) {
 		height: 460px;
 	}
 	.page-title {		
 		margin-bottom: 0.74em;
-		color: $reflection-white;
-    text-align: center;
-    @include breakpoint($tablet) {
-    	padding-right: 50px;
-    	text-align: left;
-    }
+    padding-right: 50px;
+    text-align: left;
+    color: $reflection-white;
 		@include breakpoint(1700px) {
 			font-size: 4.2rem;
 		}
@@ -26,10 +21,7 @@
 		line-height: 1.5;
 		letter-spacing: -0.02px;
 		color: $light-grey-2;
-		text-align: center;
-		@include breakpoint($tablet) {
-			text-align: left;
-		}
+		text-align: left;
 		@include breakpoint($desktop) {
 			font-size: 1.8rem;
 		}
@@ -49,39 +41,20 @@
 	}
 }
 .home-section-head__illustration {
-	position: relative;
+	position: absolute;
+	right: -180px;
+  bottom: 0;
+	height: auto;
 	display: block;
+	pointer-events: none;
 	source, img {
 		position: relative;
-    left: 50%;
-    width: 100%;
-    min-width: 720px;
-    margin-left: -360px;
+    left: 0;
+    width: 1220px;
+    min-width: auto;
+    margin-left: 0;
     display: block;
   }
-	@include breakpoint($tablet) {
-		position: absolute;
-		right: -209px;
-    bottom: -70px;
-		height: auto;
-		display: block;
-		pointer-events: none;
-		source, img {
-			position: relative;
-	    left: 0;
-	    width: 1220px;
-	    min-width: auto;
-	    margin-left: 0;
-	    display: block;
-	  }
-	}
-	@media screen and (min-width: 820px) {
-		bottom: -40px;
-	}
-	@include breakpoint($laptop) {
-		bottom: 0;
-		right: -180px;
-	}
 	@include breakpoint($laptop-mid) {
 		left: -50px;
 		right: auto;
@@ -105,21 +78,11 @@
 }
 .home-section-head__text {
 	width: 100%;
-	max-width: 515px;	
-  padding-top: 38px;
-  padding-left: 22px;
-  padding-right: 22px;
-  margin: 0 auto 10px;
-  @include breakpoint($tablet) {
-		max-width: 360px;
-		padding-left: 0;
-  	padding-right: 0;
-  	margin-left: 9%;
-	}
-	@include breakpoint($laptop) {
-		max-width: 460px;
-		padding-top: 68px;
-	}
+	max-width: 460px;
+  padding-top: 68px;
+  padding-left: 0;
+	padding-right: 0;
+  margin: 0 auto 10px 9%;
 	@include breakpoint($desktop) {
 		max-width: 515px;
 		margin-left: 70px;
@@ -131,16 +94,12 @@
 	}
 }
 .home-chart-filters-left {
-  margin-bottom: 15px;
-  display: block;
+  margin-bottom: 0;
+	display: inline-block;
 	vertical-align: top;
-	@include breakpoint($tablet) {
-    margin-bottom: 0;
-		display: inline-block;
-	}
 }
 .home-chart-filters-container {
-	height: 210px;
+	height: 50px;
 	overflow: visible;
 	border-bottom: 1px solid $divider-grey;	
 	.toggle-container {
@@ -153,33 +112,17 @@
     white-space: nowrap;
     overflow: hidden;
 	}
-	@include breakpoint($phablet) {
-		height: 110px;
-	}
-	@include breakpoint($tablet) {
-		height: auto;
-	}
-	@include breakpoint($laptop) {
-		.heading-style--heading-three {
-			font-size: 1.8rem;
-		}
+	.heading-style--heading-three {
+		font-size: 1.8rem;
 	}
 }
 .home-live-chart-heading-container {    
-  width: 120px;
-  padding-left: 4px;
-  margin-top: -3px;
+  width: auto;
+	padding-top: 7px;
+	margin-top: 0;
+	margin-right: 30px;
   display: inline-block;
 	vertical-align: middle;
-	@include breakpoint($tablet) {
-		padding-left: 0;
-	}
-	@include breakpoint($laptop) {
-		width: auto;
-		padding-top: 7px;
-		margin-top: 0;
-		margin-right: 30px;
-	}
 }
 .home-live-chart-container {  
   padding-top: 15px;
@@ -189,32 +132,24 @@
 	.section-heading {
     margin-top: 0;    
     margin-bottom: 4px;
+    margin-right: 18px;
+    margin-bottom: 0;
     display: inline-block;
     vertical-align: middle;
-    @include breakpoint($laptop) {
-    	margin-right: 18px;
-    	margin-bottom: 0;
-    }
 	}
 	.secondary-filter {
-		width: 80%;
-		margin: 0 0 7px 10%;
+		width: 15%;
+		width: 15%;
+		max-width: 168px;
+		margin-left: 10px;
+		margin-bottom: 7px;
+		float: right;
+		&:last-child {
+			margin-left: 0;
+		}
 		.form-field--select__box {
   		min-width: inherit;
-  	}		
-		@include breakpoint($phablet) {
-			width: 32.6%;
-			margin-left: 1%;
-			float: right;
-			&:last-child {
-				margin-left: 0;
-			}
-		}
-		@include breakpoint($tablet) {
-			width: 15%;
-			max-width: 168px;
-			margin-left: 10px;
-		}
+  	}
 	}
 	.home-live-chart__date {
 		margin-top: 1px;
@@ -288,10 +223,7 @@
 	width: 52px;
 }
 .ref-table--home-chart__app-col {
-  width: 28.4%;
-  @include breakpoint($tablet) {
- 		width: 40%;
-  }
+  width: 40%;
   @include breakpoint($laptop-mid) {
   	width: 28.4%;
   }
@@ -318,16 +250,10 @@
 	}
 }
 .ref-table.ref-table--home-chart th.ref-table--home-chart__publisher-head-cell {
-	font-size: 0;
-	@include breakpoint($tablet) {
-		font-size: 1.5rem;
-	}
+	font-size: 1.5rem;
 }
 .ref-table.ref-table--home-chart th.ref-table--home-chart__price-head-cell {
-	font-size: 0;
-	@include breakpoint($laptop) {
-		font-size: 1.5rem;
-	}
+	font-size: 1.5rem;
 }
 .ref-table--home-chart__app-cell {
 	img, a, .icon-container {
@@ -339,12 +265,9 @@
 		height: 36px;
 		margin-top: 2px;
 		margin-right: 15px;		
-		display: none;
+		display: inline-block;
 		background-color: $light-grey-2;
 		border-radius: 5px;
-		@include breakpoint($tablet) {
-			display: inline-block;
-		}
 		@include breakpoint($desktop) {
 			margin-right: 28px;
 		}
@@ -356,16 +279,13 @@
 	}
 	a {
 		@include ellipses;
-		width: 100%;
+		width: calc(100% - 70px);
 		font-size: 14px;
 		font-weight: 700;
 		line-height: 1.5;
 		color: $reflection-purple;
 		&:hover {
 			color: $reflection-purple--hover;
-		}
-		@include breakpoint($tablet) {
-			width: calc(100% - 70px);			
 		}
 		@include breakpoint($desktop) {
 			font-size: 16px;
@@ -382,22 +302,16 @@
 	}
 }
 .ref-table--home-chart__publisher-cell {
-	font-size: 0;
+	font-size: 1.4rem;
 	a {
 		color: $reflection-purple;
 		&:hover {
 			color: $reflection-purple--hover;
 		}
 	}
-	@include breakpoint($tablet) {
-		font-size: 1.4rem;
-	}
 }
 .ref-table--home-chart__price-cell {
-	font-size: 0;
-	@include breakpoint($laptop) {
-		font-size: 1.4rem;
-	}
+	font-size: 1.4rem;
 }
 .ref-table--home-chart__movement-cell {	
 	span {
@@ -435,26 +349,16 @@
 	}
 }
 .home-chart-find-button {
-	width: 50%;
-	@include breakpoint($phablet) {
-		width: auto;
-		float: left;
-	}	
+	width: auto;
+	float: left;	
 }
 .home-chart-table__foot {
-	text-align: center;
-	@include breakpoint($phablet) {
-		text-align: right;
-	}
+	text-align: right;
 }
 .home-chart-see-full-button {
-	width: 50%;
-	margin-top: 20px;	
-	@include breakpoint($phablet) {
-		width: auto;
-		margin-top: 0;
-		float: right;
-	}
+	width: auto;
+	margin-top: 0;
+	float: right;
 }
 .home-section {
 	min-height: 422px;
@@ -463,11 +367,8 @@
 	}
 }
 .home-section--one {
-	padding-top: 50px;	
+	padding-top: 79px;
 	background-color: $reflection-white;
-	@include breakpoint($laptop) {
-		padding-top: 79px;
-	}
 	@include breakpoint($desktop-wide) {
 		padding-top: 147px;
 		.home-section-text-content {
@@ -477,11 +378,8 @@
 }
 .home-section--two {
 	min-height: 422px;
-	padding-top: 50px;	
+	padding-top: 95px;
 	background-color: $panel-grey;
-	@include breakpoint($laptop) {
-		padding-top: 95px;
-	}
 	@include breakpoint($desktop-wide) {
 		min-height: 546px;
 		padding-top: 108px;
@@ -497,17 +395,15 @@
 .home-section--three {
 	min-height: inherit;
 	padding-top: 50px;
-	@include breakpoint($laptop) {
-		.home-section-content-container {
-			padding-top: 53px;
-		}
-		.home-section-content-left {
-			margin-left: 0;
-			padding: 0 0 0 19px;
-		}
-		.home-section-text-content {
-			padding-bottom: 93px;
-		}
+	.home-section-content-container {
+		padding-top: 53px;
+	}
+	.home-section-content-left {
+		margin-left: 0;
+		padding: 0 0 0 19px;
+	}
+	.home-section-text-content {
+		padding-bottom: 93px;
 	}
 	@include breakpoint($desktop) {
 		padding-top: 65px;
@@ -527,27 +423,19 @@
 }
 .home-section-content-container {
 	position: relative;
-	width: 100%;	
+	width: 90%;
 	max-width: 1064px;
-	padding: 0 20px;
+	padding: 0 40px;
 	margin: 0 auto;
-	display: flex;
+	display: block;
 	flex-direction: column;
-	text-align: center;
+	text-align: left;
 	.home-section--one &,
 	.home-section--three & {
 		flex-direction: column-reverse;
 	}
 	.home-section--two & {
 		overflow: visible;
-	}
-	@include breakpoint($tablet) {
-		width: 90%;
-		padding: 0 40px;
-	}
-	@include breakpoint($laptop) {
-		display: block;
-		text-align: left;
 	}
 	@include breakpoint($desktop-wide) {
 		max-width: 1284px;
@@ -563,21 +451,17 @@
 	}
 }
 .home-section-content-left {	
-  @include breakpoint($laptop) {
-  	float: left;
-  	padding-top: 19px;
-  	margin-left: 2px;
-  }
+	float: left;
+	padding-top: 19px;
+	margin-left: 2px;
 }
 .home-section-content-right {	
 	overflow: visible;
-	@include breakpoint($laptop) {
-  	float: right;
-  }
+	float: right;
 }
 .home-section-text-content {
-	width: 100%;
-	padding-bottom: 20px;	
+	width: 42%;
+	padding-bottom: 73px;
 	h2 {
 		margin-bottom: 0.8em;
 	}
@@ -590,13 +474,6 @@
 		font-family: $brand-heading-font;
 		font-weight: 600;
 		font-size: 16px;
-	}
-	@include breakpoint($tablet) {
-		width: 396px;
-	}
-	@include breakpoint($laptop) {
-		width: 42%;
-		padding-bottom: 73px;
 	}
 	@include breakpoint($desktop) {
 		width: 396px;
@@ -620,18 +497,9 @@
 	}
 }
 .revenue-illustration {
-  width: 100%;
-  max-width: 340px;
-  margin-bottom: 60px;
+  width: 45%;
+  margin-bottom: 0;
   text-align: left;
-  @include breakpoint($tablet) {
-  	width: 390px;
-  	max-width: inherit;
-  }
-  @include breakpoint($laptop) {
-  	width: 45%;
-  	margin-bottom: 0;
-  }
   @include breakpoint($desktop) {
 		width: 390px;  	
   }
@@ -674,7 +542,7 @@
 				display: block;
 				font-family: $brand-body-font;
 				font-weight: 700;				
-				font-size: 15px;
+				font-size: 17.9px;
 				color: $reflection-white;
 				@include ellipses;
 			}
@@ -692,16 +560,8 @@
 			float: right;
 			font-family: $brand-body-font;
 			font-weight: 700;
-			font-size: 16px;
+			font-size: 18px;
 			color: $reflection-white;
-		}
-		@include breakpoint($tablet) {
-			.numeric-value {
-				font-size: 18px;
-			}
-			div h2 {
-				font-size: 17.9px;
-			}
 		}
 		@include breakpoint($desktop-wide) {
 			padding: 10px 20px 10px 8px;
@@ -738,14 +598,8 @@
 	}
 }
 .home-section-notifications-content {
-	width: 100%;
-	@include breakpoint($phablet) {
-		width: 90%;
-		max-width: 460px;
-	}
-	@include breakpoint($laptop) {
-		width: 50%;
-	}
+	width: 50%;
+	max-width: 460px;
 	@include breakpoint($desktop-wide) {
 		max-width: 550px;
 	}
@@ -762,6 +616,7 @@
 }
 .notifications-tabs-list {	
 	margin-bottom: 60px;
+	margin-right: -15px;
 	overflow: visible;
 	text-align: left;
 	li {
@@ -779,7 +634,7 @@
 			border-radius: 7px;
 		}
 		div {
-			width: calc(100% - 70px);
+			width: calc(100% - 185px);
 			display: inline-block;
 			vertical-align: top;
 
@@ -801,26 +656,10 @@
 			}
 			span {
 				margin: 4px 0 0 11px;
-				display: inline-block;
+				display: none;
 				vertical-align: top;
 				font-size: 14px;
 				color: $light-grey-1;
-			}
-			@include breakpoint($phablet) {
-				width: calc(100% - 185px);
-				span {
-					display: none;
-				}
-			}
-			@include breakpoint($tablet) {
-				span {
-					display: inline-block;
-				}
-			}
-			@include breakpoint($laptop) {
-				span {
-					display: none;
-				}
 			}
 			@include breakpoint($laptop-plus) {				
 				span {
@@ -839,16 +678,9 @@
 			}
 		}
 		.ref-button--secondary--small {
-			display: none;
-			@include breakpoint($phablet) {
-				display: inline-block;
-				float: right;
-			}			
+			display: inline-block;
+			float: right;		
 		}
-	}
-	@include breakpoint($laptop) {
-		margin-bottom: 60px;
-		margin-right: -15px;
 	}
 	@include breakpoint($desktop-wide) {
 		li {
@@ -860,29 +692,21 @@
 		}
 	}
 }
-.networks-illustration {
-	position: relative;
-	width: 100%;
+.networks-illustration {	
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 47%;
 	max-width: 404px;
 	padding: 0;
 	overflow: visible;
-	@include breakpoint($laptop) {
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		width: 47%;
-		max-width: 404px;		
-	}
 	@include breakpoint($laptop-plus) {
 		left: 19px;
 		width: 404px;
 	}
 	source, img {		
-		width: 88%;				
-		@include breakpoint($tablet) {
-			width: 100%;
-			float: left;
-		}
+		width: 100%;
+		float: left;
 	}
 	@include breakpoint($desktop-wide) {
 		width: 470px;
@@ -899,8 +723,8 @@
     left: 10px;
     width: 80%;
 		max-width: 610px;
-    padding-top: 80px;
-    padding-bottom: 90px;		
+		padding-top: 103px;
+		padding-bottom: 80px;
 		margin: 0 auto;
 		&:before {
 			display: none;
@@ -909,38 +733,21 @@
 			margin-bottom: 4.2rem;
 			font-family: $brand-heading-font;
 			font-weight: 700;
-			font-size: 2.4rem;
-  		line-height: 1.5;
+			font-size: 3.4rem;			
+			line-height: 1.3;
 			color: $reflection-white;
 		}
 		cite {
 			font-family: $brand-heading-font;
 			font-weight: 400;
-			font-size: 1.3rem;
+			font-size: 1.6rem;
 			color: $light-grey-2;
 			span {
-				margin-bottom: 1.2rem;
+				margin-bottom: 1.6rem;
 				display: block;
 				font-weight: 700;				
-				font-size: 1.9rem;
+				font-size: 2.4rem;
 				color: $reflection-white;
-			}
-		}
-	}
-	@include breakpoint($tablet) {
-		blockquote {
-			padding-top: 103px;
-			padding-bottom: 80px;
-			p {
-		    font-size: 3.4rem;			
-				line-height: 1.3;    
-			}
-			cite {
-				font-size: 1.6rem;
-				span {
-					margin-bottom: 1.6rem;
-					font-size: 2.4rem;
-				}
 			}
 		}
 	}
@@ -965,8 +772,8 @@
 	}
 }
 .home-section-trusted-by {
-	padding-top: 5rem;
-	padding-bottom: 5rem;
+	padding-top: 7.1rem;
+	padding-bottom: 6.5rem;
 	.section-title {
 		margin-bottom: 4rem;
 		text-align: center;
@@ -975,7 +782,7 @@
 		width: 100%;
 		font-size: 0;
 		li {
-			width: 33%;			
+			width: 25%;
 			margin-bottom: 1.5rem;
 			display: inline-block;
 			text-align: center;
@@ -983,19 +790,6 @@
 				width: 80%;				
 				max-width: 170px;
 				margin: 0 auto;
-			}
-			&:last-child {
-				display: none;
-			}
-		}
-	}
-	@include breakpoint($tablet) {
-		padding-top: 7.1rem;
-		padding-bottom: 6.5rem;
-		.logo-list li {
-			width: 25%;
-			&:last-child {
-				display: inline-block;
 			}
 		}
 	}
@@ -1011,7 +805,7 @@
 	}
 }
 .home-section-featured-in {
-	padding: 1.5rem 40px 3rem;
+	padding: 1.5rem 40px 4.1rem;
 	background-color: $panel-grey;
 	.section-title {
 		font-weight: 400;
@@ -1021,29 +815,20 @@
 		margin-bottom: 1rem;
 	}
 	.featured-in-list {
-		display: block;
+		display: -webkit-box;
+	  /* @alternate */ display: -ms-flexbox;
+	  /* @alternate */ display: -webkit-flex;
+	  /* @alternate */ display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
 		font-size: 0;
 		li {
 			display: inline-block;
-			width: 33%;
+			width: auto;
 			img {
 				width: 100%;
 				max-width: 160px;
-			}
-		}
-	}
-	@include breakpoint($tablet) {
-		padding-bottom: 4.1rem;
-		.featured-in-list {
-			display: -webkit-box;
-		  /* @alternate */ display: -ms-flexbox;
-		  /* @alternate */ display: -webkit-flex;
-		  /* @alternate */ display: flex;
-			flex-direction: row;
-			flex-wrap: nowrap;
-			justify-content: space-between;
-			li {
-				width: auto;
 			}
 		}
 	}

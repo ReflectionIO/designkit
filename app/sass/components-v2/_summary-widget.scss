@@ -25,6 +25,13 @@
 			}
 		}
 	}
+	@include breakpoint($desktop-widest) {
+		.toggle-container {
+			width: 70%;
+	    margin-left: 15%;
+	    margin-bottom: 1.5rem;
+	  }
+	}
 	.summary-widget--no-tabs {
 		padding-bottom: 3px;
 		.summary-widget__data-title:first-of-type {
@@ -151,6 +158,16 @@
 	&:last-child {
 		padding-bottom: 9px;
 		border-bottom: none;
+	}
+	@include breakpoint($desktop-widest) {
+		width: 50%;
+		display: inline-block;
+		vertical-align: top;
+		&:nth-of-type(odd),
+		&:last-child {
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
 	}
 }
 .summary-widget--highest-lowest__country {
