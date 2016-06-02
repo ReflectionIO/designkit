@@ -1,6 +1,9 @@
 .page-live-charts {
 	padding-top: 23px;
 	overflow: visible;
+	> header {
+		overflow: visible;
+	}
 	.page-title,
 	.page-header__page-actions {
 		display: inline-block;
@@ -8,6 +11,9 @@
 	}
 	.page-title {
 		margin: -2px 0 23px -2px;
+		+ .secondary-filter {
+			margin-left: 2.8rem;
+		}
 	}
 	.page-header__page-actions {
 		float: right;
@@ -24,6 +30,10 @@
 		}
 		.form-field--checkbox-list {
 			padding-top: 10px;
+			display: none;
+			@include breakpoint(1100px) {
+				display: inline-block;
+			}
 		}
 	}
 	+ div .global-footer {

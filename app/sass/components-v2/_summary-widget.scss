@@ -29,7 +29,7 @@
 		.toggle-container {
 			width: 70%;
 	    margin-left: 15%;
-	    margin-bottom: 1.5rem;
+	    margin-bottom: 1rem;
 	  }
 	}
 	.summary-widget--no-tabs {
@@ -57,13 +57,20 @@
 	font-family: $brand-heading-font;
 	color: $light-grey-1;
 }
-.summary-widget__data-row {
+.summary-widget__data-row {	
 	width: 100%;
+	margin-bottom: 0.5rem;
 	font-size: 0;
+	@include breakpoint(1100px) {
+		margin-bottom: 0;
+	}
+	@include breakpoint($desktop-super-wide) {
+		margin-bottom: 0.5rem;
+	}
 }
 .summary-widget__data-item {
 	width: 33%;
-	padding: 0 3px 0.9rem;
+	padding: 0 1rem 0.9rem 1rem;
 	display: inline-block;
 	vertical-align: top;
 	list-style: none;
@@ -73,11 +80,14 @@
 		display: block;
 		text-align: center;
 		img, .icon-flag {
-			display: inline-block;			
+			display: inline-block;
+			float: left;		
 		}
 		img {
 			width: 32px;
 			height: 32px;
+			display: inline-block;
+			float: left;
 			border-radius: 7px;
 		}
 		.icon-flag {
@@ -85,10 +95,37 @@
 			height: 32px;
 		}
 	}
+	@include breakpoint(1100px) {
+		padding: 0 3px 0.9rem;
+		a {
+			img, .icon-flag {
+				float: none;
+			}
+			img {
+				float: none;
+			}
+		}
+	}
+	@include breakpoint($desktop-super-wide) {
+		padding: 0 1rem 0.9rem 1rem;
+		a {
+			img {
+				display: inline-block;
+				float: left;
+			}
+			img, .icon-flag {
+				float: left;
+			}	
+		}
+	}
 }
 .summary-widget__data-item__app-name {
+	width: calc(100% - 50px);
+	margin-left: 8px;
 	margin-top: -3px;
 	margin-bottom: 4px !important;
+	display: inline-block;
+	text-align: left;
 	font-family: $brand-body-font;
 	font-size: 1.39rem;
 	font-weight: 700;
@@ -105,8 +142,24 @@
 		margin: 2px auto 0;		
 		background-color: $loading-colour;
 	}
+	@include breakpoint(1100px) {
+		width: 100%;
+		margin-left: 0;    
+		display: block;
+		text-align: center;
+	}
+	@include breakpoint($desktop-super-wide) {
+		width: calc(100% - 50px);
+		margin-left: 8px;    
+		display: inline-block;
+		text-align: left;
+	}
 }
 .summary-widget__data-item__data {
+	padding-left: 45px;
+	margin-top: -11px;
+	display: block;
+	text-align: left;
 	font-family: $brand-body-font;
 	font-size: 1.2rem;
 	font-weight: 700;
@@ -124,6 +177,16 @@
 		display: inline-block;
 		background-color: $loading-colour;
 	}
+	@include breakpoint(1100px) {
+		padding-left: 0;
+		margin-top: 0;
+		display: inline;
+	}
+	@include breakpoint($desktop-super-wide) {
+		padding-left: 45px;
+  	margin-top: -11px;
+  	display: block;
+  }
 }
 .widget-title {
 	margin-bottom: 1.9rem;
