@@ -1,5 +1,13 @@
 .summary-widget-container {
 	margin-bottom: 2rem;
+	@media screen and (max-width: 1100px) {
+		width: 49%;
+		display: inline-block;
+		vertical-align: top;
+		&:first-child {
+			margin-right: 2%;
+		}
+	}
 }
 .summary-widget {
 	padding: 1rem 0.7rem 1.3rem;
@@ -16,6 +24,13 @@
 				width: 100%;
 			}
 		}
+	}
+	@include breakpoint($desktop-widest) {
+		.toggle-container {
+			width: 70%;
+	    margin-left: 15%;
+	    margin-bottom: 1rem;
+	  }
 	}
 	.summary-widget--no-tabs {
 		padding-bottom: 3px;
@@ -42,13 +57,20 @@
 	font-family: $brand-heading-font;
 	color: $light-grey-1;
 }
-.summary-widget__data-row {
+.summary-widget__data-row {	
 	width: 100%;
+	margin-bottom: 0.5rem;
 	font-size: 0;
+	@include breakpoint(1100px) {
+		margin-bottom: 0;
+	}
+	@include breakpoint($desktop-super-wide) {
+		margin-bottom: 0.5rem;
+	}
 }
 .summary-widget__data-item {
 	width: 33%;
-	padding: 0 3px 0.9rem;
+	padding: 0 1rem 0.9rem 1rem;
 	display: inline-block;
 	vertical-align: top;
 	list-style: none;
@@ -58,22 +80,52 @@
 		display: block;
 		text-align: center;
 		img, .icon-flag {
-			display: inline-block;			
+			display: inline-block;
+			float: left;		
 		}
 		img {
 			width: 32px;
 			height: 32px;
+			display: inline-block;
+			float: left;
 			border-radius: 7px;
 		}
 		.icon-flag {
-			width: 34px;
-			height: 34px;
+			width: 32px;
+			height: 32px;
+		}
+	}
+	@include breakpoint(1100px) {
+		padding: 0 3px 0.9rem;
+		a {
+			img, .icon-flag {
+				float: none;
+			}
+			img {
+				float: none;
+			}
+		}
+	}
+	@include breakpoint($desktop-super-wide) {
+		padding: 0 1rem 0.9rem 1rem;
+		a {
+			img {
+				display: inline-block;
+				float: left;
+			}
+			img, .icon-flag {
+				float: left;
+			}	
 		}
 	}
 }
 .summary-widget__data-item__app-name {
+	width: calc(100% - 50px);
+	margin-left: 8px;
 	margin-top: -3px;
 	margin-bottom: 4px !important;
+	display: inline-block;
+	text-align: left;
 	font-family: $brand-body-font;
 	font-size: 1.39rem;
 	font-weight: 700;
@@ -84,8 +136,30 @@
 		color: $reflection-purple--hover;
 		transition: color $base-transition-speed-on;
 	}
+	&.is-loading {
+		width: 77%;
+		height: 10px;
+		margin: 2px auto 0;		
+		background-color: $loading-colour;
+	}
+	@include breakpoint(1100px) {
+		width: 100%;
+		margin-left: 0;    
+		display: block;
+		text-align: center;
+	}
+	@include breakpoint($desktop-super-wide) {
+		width: calc(100% - 50px);
+		margin-left: 8px;    
+		display: inline-block;
+		text-align: left;
+	}
 }
 .summary-widget__data-item__data {
+	padding-left: 45px;
+	margin-top: -11px;
+	display: block;
+	text-align: left;
 	font-family: $brand-body-font;
 	font-size: 1.2rem;
 	font-weight: 700;
@@ -96,6 +170,23 @@
 	&.negative-colour {
 		color: #ff496a;
 	}
+	&.is-loading {
+		width: 77%;
+		height: 10px;
+		margin: 6px auto 0;
+		display: inline-block;
+		background-color: $loading-colour;
+	}
+	@include breakpoint(1100px) {
+		padding-left: 0;
+		margin-top: 0;
+		display: inline;
+	}
+	@include breakpoint($desktop-super-wide) {
+		padding-left: 45px;
+  	margin-top: -11px;
+  	display: block;
+  }
 }
 .widget-title {
 	margin-bottom: 1.9rem;
@@ -130,6 +221,16 @@
 	&:last-child {
 		padding-bottom: 9px;
 		border-bottom: none;
+	}
+	@include breakpoint($desktop-widest) {
+		width: 50%;
+		display: inline-block;
+		vertical-align: top;
+		&:nth-of-type(odd),
+		&:last-child {
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
 	}
 }
 .summary-widget--highest-lowest__country {

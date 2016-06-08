@@ -9,22 +9,32 @@
 		vertical-align: top;
 		line-height: 1;
     letter-spacing: -0.01em;
+    &.is-loading {
+    	min-width: 98px;
+    	height: 25px;
+    	margin-top: 6px;
+    	margin-bottom: calc(3rem - 6px);
+    	background-color: $loading-colour;
+    }
 	}
 	.page-header__page-toggle {
 		margin-right: 2rem;
 	}
 	.page-header__data-info-text {
-		padding-top: 15px;
+		padding-top: 12px;
 		padding-right: 5px;
-		display: inline-block;
 		vertical-align: top;
+		display: none;
 		font-family: $brand-body-font;
 		font-size: 1.2rem;
 		color: #5a5a68;
+		@include breakpoint($desktop) {
+			display: inline-block;
+		}
 	}
 	.page-header__data-info-icon {
 		vertical-align: top;
-    padding-top: 12px;
+    padding-top: 9px;
 	}
 	.page-header_action-button {
 		float: right;
@@ -35,11 +45,16 @@
 				min-width: auto;
 			}
 			&:nth-child(1),
-			&:nth-child(2) {
-				margin-right: 1rem;
-				.form-field--select__box {
+			&:nth-child(2),
+			&:nth-child(3) {
+				margin-right: 1rem;				
+			}
+			.form-field--select__box {
+				width: 70px;
+				@include breakpoint($desktop) {
+					width: auto;
 					min-width: 94px;
-				}	
+				}
 			}
 		}
 		.form-field--checkbox-list {
@@ -183,7 +198,16 @@
 	}
 }
 .data-table-section {
-	padding: 0 2% 0 0;
+	position: relative;
+	padding: 0;
+	@media screen and (max-width: 1100px) {
+		&.grid__column--three-quarters {
+			width: 100%;
+		}
+	}
+	@include breakpoint(1100px) {
+		padding: 0 2% 0 0;
+	}
 	.page-data-dashboard--country & {
 		padding: 0;
 	}
@@ -250,6 +274,12 @@
 .data-aside-bar {
 	padding: 0;
 	margin-top: 2px;
+	@media screen and (max-width: 1100px) {
+		&.grid__column--one-quarter {
+			width: 100%;
+			font-size: 0;
+		}
+	}
 }
 .data-table-section__summary {
 	width: 100%;

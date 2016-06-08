@@ -316,7 +316,6 @@ textarea {
 }
 .form-field--select__dropdown {
 	position: absolute;
-	max-width: 100%;
 	margin-top: 5px;
 	padding: 15px 30px 18px 24px;
 	z-index: 2001;
@@ -368,20 +367,12 @@ textarea {
     color: $light-grey-1;
 		font-size: 19px;
 	}
-	&.ref-icon-before--play-store {
-		&:before {
-			top: 5px;
-			margin-left: -15px;
-			margin-right: 8px;
-			font-size: 15px;
-		}
-	}
 	img {
 		width: 26px;
     height: 26px;
     margin-right: 10px;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
     border-radius: 4px;
 	}
 	span {
@@ -389,16 +380,19 @@ textarea {
 		vertical-align: middle;
 	}
 }
+.form-field--select__box > img {
+	margin-top: -5px;
+}
 .select-with-images + span + ul li {
 	span {
-		padding-left: 45px;
+		padding-left: 56px;
 	}
 	img + span {
 		padding-left: 0;
 	}
 }
 .form-field--select__box {	
-	&.ref-icon-before--apple {
+	&.ref-icon-before--ios {
 		&:before {
 			margin-left: -8px;
 		}
@@ -641,7 +635,8 @@ input[type="checkbox"]:checked + .checkboxLabel {
 		padding-left: calc(18px + 1rem);
 	}
 }
-.checkbox-label-img {
+.checkbox-label-img,
+.checkboxLabelVisible .icon-flag-sm {
   position: relative;
   top: 1px;
 	width: 20px;
@@ -791,6 +786,9 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	table-layout: fixed;
 	overflow: visible;
 	font-size: 0;
+	@include breakpoint($desktop-wide) {
+		border-bottom: 1px solid $light-grey-2;
+	}
 	.primary-filter {
 		width: 20%;
 		max-width: 100%;
@@ -798,9 +796,23 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 		color: $dark-grey-1;
 		border-top: 1px solid $light-grey-2;
 		border-right: 1px solid $light-grey-2;
-		border-bottom: 1px solid $light-grey-2;		
+		border-bottom: 1px solid $light-grey-2;
 		&:last-child {
 			border-right: 0;
+		}
+		@include breakpoint($desktop-wide) {
+			max-width: 400px;
+    	display: inline-block;
+    	border-bottom: 0;
+    	&:last-child {
+				border-right: 1px solid $light-grey-2;
+			}
+    	.page-live-charts & {
+    		display: table-cell;
+    		&:last-child {
+					border-right: 0;
+				}
+    	}
 		}
 		.form-field--select__box {
 			padding: 10px 43px 14px 22px;
@@ -851,11 +863,17 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 			}
 		}
 		&.form-field--search {
-			padding: 10px 18px 0 22px;
+			padding: 10px 18px 11px 22px;
 			border-left: 0;
 			border-radius: 0;
 			background-color: $reflection-white;
 			cursor: default;
+			@include breakpoint($desktop-wide) {
+				border-right: 1px solid #c4c7d0;
+				&.is-open {
+					border-right: 1px solid #c4c7d0;
+				}
+			}
 			&.is-open {
 				border-right: none;
 				border-color: $light-grey-2;
@@ -898,10 +916,22 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 		&:hover {
 			background-color: $panel-grey;
 		}
-		&.ref-icon-before--apple,
+		&.ref-icon-before--ios,
 		&.ref-icon-before--play-store {
-			padding-top: 4px;
-    	padding-bottom: 4px;
+			padding-bottom: 4px;
+			&:before {
+				top: -2px;
+				margin-left: -5px;
+				margin-right: 9px;
+				font-size: 20px;
+			}
+		}
+		&.ref-icon-before--play-store {
+			&:before {
+				padding-bottom: 1px;
+				font-size: 19px;
+		    display: inline-block;
+			}
 		}
 	}
 	&.is-open {
@@ -917,7 +947,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 				color: #c4c7d0;
 				transform: rotate(180deg);
 			}
-			&.ref-icon-before--apple,
+			&.ref-icon-before--ios,
 			&.ref-icon-before--play-store {
 				padding-bottom: 3px;
 			}
@@ -930,6 +960,24 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 			margin-bottom: 5px;
 			font-size: 14px;
 			white-space: nowrap;
+			&.ref-icon-before--ios,
+			&.ref-icon-before--play-store {				
+				overflow: visible;
+				&:before {
+					margin-left: -8px;
+					margin-right: 9px;
+				}
+				&.is-selected {
+					&:before {
+						color: $light-grey-2;
+					}
+				}
+			}
+			&.ref-icon-before--play-store {
+				&:before {
+					margin-left: -7px;
+				}
+			}
 		}
 	}
 }
@@ -1053,7 +1101,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 }
 .secondary-filter--medium {
 	.form-field--select__box {
-		padding: 11px 50px 14px 15px;
+		padding: 11px 32px 14px 15px;
 		font-size: 15px;
 		&:after {
 			top: 11px;

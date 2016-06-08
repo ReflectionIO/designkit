@@ -1,10 +1,15 @@
 $table-gold: #ee9063;
 
 .ref-table {
+	position: relative;
 	width: 100%;
 	font-size: 1.3rem;
 	color: $dark-grey-1;
-	table-layout: fixed;
+	table-layout: auto;
+	.is-safari &,
+	.is-touch.is-chrome & {
+		table-layout: auto;
+	}
 	th {
 		padding-top: 1.2rem;
 		padding-bottom: 1.1rem;
@@ -23,6 +28,9 @@ $table-gold: #ee9063;
 	tbody {
 		tr:nth-child(odd) {
 			background-color: $panel-grey;
+			td {
+				background-color: $panel-grey;
+			}
 		}
 		td {
 			padding-top: 5px;
@@ -32,10 +40,18 @@ $table-gold: #ee9063;
 			}
 		}
 	}
+	&.ref-table--is-no-data {
+		tbody tr {
+			height: 56px;
+		}
+	}
 }
 .ref-table--apps,
 .ref-table--publishers {
-	margin-bottom: 4rem;
+	margin-bottom: 2rem;
+	@include breakpoint(1100px) {
+		margin-bottom: 4rem;
+	}
 	tr {
 		border-bottom: 1px solid #fcfdfd;
 	}
@@ -71,11 +87,18 @@ $table-gold: #ee9063;
 	.total-for-period-head-cell {
 		span {
 			display: inline-block;
+			@include breakpoint($desktop-widest) {
+				display: inline;
+			}
 		}
 		span:first-child {
 			margin-bottom: 0.4rem;
 			display: block;
 			font-size: 1.4rem;
+			@include breakpoint($desktop-widest) {
+				padding-right: 7px;
+				display: inline;
+			}
 		}
 		span:nth-child(2) {
 			color: $table-gold;
@@ -111,7 +134,14 @@ $table-gold: #ee9063;
   		padding-left: 1px;
   		&:after {				
 				font-size: 18px;
-			}			
+			}
+		}
+		&.is-loading {
+	    position: relative;
+	    left: 2px;
+	    width: 17px;
+	    height: 18px;
+	    background-color: $loading-colour;	    
 		}
 	}
 	.app-data-cell-app-details {
@@ -119,13 +149,33 @@ $table-gold: #ee9063;
 		padding-bottom: 5px;
 	}	
 	.app-data-cell-released-date {
-		padding-top: 1.1rem;
-		vertical-align: top;		
+		padding-top: 1.7rem;
+		vertical-align: top;
+		&.is-loading span {
+			position: relative;
+    	top: 1px;
+    	width: 80%;
+    	height: 10px;
+    	display: inline-block;
+			background-color: $loading-colour;
+		}
 	}
 	.app-data-revenue,
 	.app-data-downloads {
 		float: right;
 		text-align: right;
+		&.is-loading {
+			width: 100%;
+			span {
+				width: 80%;
+	    	height: 10px;
+	    	display: inline-block;
+				background-color: $loading-colour;
+				&.data-table__growth {
+					width: 25%;
+				}
+			}
+		}
 	}
 	.app-data-downloads	{
 		display: inline-block;
@@ -136,6 +186,10 @@ $table-gold: #ee9063;
 		display: block;
 		font-weight: 700;
 		font-size: 1.2rem;
+		@include breakpoint($desktop-wide) {
+			padding-left: 5px;
+			display: inline;
+		}
 	}
 	.more-app-data {
 		position: absolute;
@@ -160,17 +214,32 @@ $table-gold: #ee9063;
 		padding-left: 12px;    
     padding-top: 10px;
     vertical-align: top;
+    @include breakpoint($desktop-wide) {
+    	padding-top: 17px;
+    }
 		.more-data-link {
 			@extend .text-link;
 			margin-left: 10%;
 			vertical-align: top;
 			font-size: 1.2rem;
 		}
+		&.is-loading {
+			span {
+				position: relative;
+	    	top: 2px;
+		    width: 50%;
+		    height: 10px;
+		    left: 4px;
+	    	display: inline-block;
+				background-color: $loading-colour;
+			}
+		}
 		.more-data-link:hover + .more-app-data {
 			display: inline-block;
 		}
 	}
 	.data-table__value-bar {
+		max-width: 300px;
 		> span {
 			width: 35px;
 			display: inline-block;
@@ -197,6 +266,14 @@ $table-gold: #ee9063;
 			}
 			div span {
 				background-color: #f5c943;
+			}
+		}
+		&.is-loading {
+			span {
+				width: 22px;
+		    height: 10px;
+		    margin-right: 7px;
+				background-color: $loading-colour;
 			}
 		}
 	}
@@ -240,10 +317,14 @@ $table-gold: #ee9063;
 .ref-table--apps.ref-table--apps--country {
 	.data-table__app-summary img,
 	.data-table__app-summary .icon-flag {
-		margin-top: 0;
-		width: 34px;
+		margin-top: 2px;
+		width: 32px;
 	  display: inline-block;
 	  border-radius: 0;
+	}
+	.ratings-container {
+   	margin-top: 2px;
+    margin-bottom: 0;
 	}
 }
 .data-table__app-summary {
@@ -275,5 +356,13 @@ $table-gold: #ee9063;
 	a {
 		padding-bottom: 0.5rem;
 		@extend .text-link;
+	}
+	&.is-loading {
+		width: 80%;
+		max-width: 200px;
+    height: 10px;
+    margin-top: 7px;
+    margin-bottom: 9px;
+    background-color: $loading-colour;    
 	}
 }

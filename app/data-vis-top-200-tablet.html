@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Lab - Developer Leaderboard</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<script src="js/data-vis/making_the_top_200.js"></script>
+<script src="js/vendor/angular.js"></script>
+<script>
+	// populate the data table
+		'use strict';
+
+		/* Controllers */
+
+		// var qs = (function(a) {
+	 //    if (a == "") return {};
+	 //    var b = {};
+	 //    for (var i = 0; i < a.length; ++i)
+	 //    {
+	 //        var p=a[i].split('=', 2);
+	 //        if (p.length == 1)
+	 //            b[p[0]] = "";
+	 //        else
+	 //            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+	 //    }
+	 //    return b;
+		// })(window.location.search.substr(1).split('&'));
+
+		// var dataIndex = qs["id"];
+
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function($scope, $http) {
+
+			var dataList = this;
+			dataList.phoneData = data["TABLET"]; // from js/data-vis/making_the_top_200.js
+
+			dataList.getMaxFromArray = function(list) {
+				var mx = 0;
+				for(var x = 0; x < list.length; x++) {
+					if(list[x].value > mx) {
+						mx = list[x].value;
+					}
+				}
+
+				return mx;
+			}
+
+			dataList.maxFree = dataList.getMaxFromArray(dataList.phoneData.FREE.categories);
+			dataList.maxPaid = dataList.getMaxFromArray(dataList.phoneData.PAID.categories);
+			dataList.maxGrossing = dataList.getMaxFromArray(dataList.phoneData.GROSSING.categories);
+
+			dataList.phoneData.GROSSING.categories.sort(function(a,b) {return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0);} );
+			dataList.phoneData.GROSSING.subcategories.sort(function(a,b) {return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0);} );
+
+			dataList.phoneData.PAID.categories.sort(function(a,b) {return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0);} );
+			dataList.phoneData.PAID.subcategories.sort(function(a,b) {return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0);} );
+
+			dataList.phoneData.FREE.categories.sort(function(a,b) {return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0);} );
+			dataList.phoneData.FREE.subcategories.sort(function(a,b) {return (a.value < b.value) ? 1 : ((b.value < a.value) ? -1 : 0);} );
+
+			dataList.getCorrespodingGrossing = function(categoryName, list) {
+
+				var grossingValue = 0;
+				for(var x = 0; x < list.length; x++) {
+					if(list[x].name == categoryName) {
+						grossingValue = list[x].value;
+						break;
+						console.log(x);
+					}
+				}
+
+				return grossingValue;
+			}
+
+		});
+</script>
+<body class="page-top-two-hundred">
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+  <header id="js-component-import--global-header" class="global-header">
+  	<div class="site-logo">
+			<a href="/">
+				<img src="images/v2/logo-reflection-header.png" alt="Reflection logo" class="img-site-logo">
+				<img src="images/logo-reflection-header-mobile.png" alt="Reflection logo" class="img-site-logo--mobile">
+			</a>
+		</div>
+  </header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+
+			<div class="grid-container" ng-controller="DataController as dataList">
+				<div class="grid__row grid__row--heading-row">
+					<h1 class="heading-style--heading-three page-title">What's Needed to Make the Top 200 (By Category) <span>UK / iPad</span></h1>
+					<h2 class="page-subtitle">Date required</h2>
+					<div class="toggle-container">
+						<div class="filter-toggle filter-toggle--with-text filter-toggle--medium">
+							<div class="toggle">
+								<input id="toggle--show-free" name="radiomedium" checked="" type="radio">
+								<label for="toggle--show-free" class="js-toggle-data" data-show="free">
+									Free
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-paid" name="radiomedium" type="radio">
+								<label for="toggle--show-paid" class="js-toggle-data" data-show="paid">
+									Paid
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="chart-two-hundred-container is-showing" id="free">
+					<div class="chart-two-hundred__revenue-chart">
+						<h2 class="ref-icon-after--revenue">Min Revenue Required</h2>
+						<ul>
+							<li class="chart-two-hundred__item" style='width: {{ dataList.getCorrespodingGrossing(dataItem.name, dataList.phoneData.GROSSING.categories) / dataList.maxGrossing * 100 }}%' ng-repeat="dataItem in dataList.phoneData.FREE.categories">
+								<span>&pound;{{ dataList.getCorrespodingGrossing(dataItem.name, dataList.phoneData.GROSSING.categories) }}</span>
+							</li>
+						</ul>
+						<div class="divider-line"></div>
+						<ul>
+							<li class="chart-two-hundred__item" style='width: {{ dataList.getCorrespodingGrossing(dataItem.name, dataList.phoneData.GROSSING.subcategories) / dataList.maxGrossing * 100 }}%' ng-repeat="dataItem in dataList.phoneData.FREE.subcategories">
+								<span>&pound;{{ dataList.getCorrespodingGrossing(dataItem.name, dataList.phoneData.GROSSING.subcategories) }}</span>
+							</li>
+						</ul>
+					</div>
+					<div class="chart-two-hundred-categories-container">
+						<h2>Category</h2>
+						<ul>
+							<li class="chart-two-hundred__category" ng-repeat="dataItem in dataList.phoneData.FREE.categories">{{ dataItem.name }}</li>
+						</ul>
+						<div class="divider-line">
+							<h2 class="subcategory-title">Games Subcategories</h2>
+						</div>
+						<ul>
+							<li class="chart-two-hundred__category" ng-repeat="dataItem in dataList.phoneData.FREE.subcategories">{{ dataItem.name }}</li>
+						</ul>
+					</div>
+					<div class="chart-two-hundred__downloads-chart">
+						<h2 class="ref-icon-before--download">Min Downloads Required</h2>
+						<ul>
+							<li class="chart-two-hundred__item" style='width: {{ dataItem.value / dataList.maxFree * 100 }}%' ng-repeat="dataItem in dataList.phoneData.FREE.categories">
+								<span>{{ dataItem.value }} <span style="display: none;">{{ dataItem.name }}</span></span>
+							</li>
+						</ul>
+						<div class="divider-line"></div>
+						<ul>
+							<li class="chart-two-hundred__item" style='width: {{ dataItem.value / dataList.maxFree * 100 }}%' ng-repeat="dataItem in dataList.phoneData.FREE.subcategories">
+								<span>{{ dataItem.value }} <span style="display: none;">{{ dataItem.name }}</span></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="chart-two-hundred-container" id="paid">
+					<div class="chart-two-hundred__revenue-chart">
+						<h2 class="ref-icon-after--revenue">Min Revenue Required</h2>
+						<ul>
+							<li class="chart-two-hundred__item" style='width: {{ dataList.getCorrespodingGrossing(dataItem.name, dataList.phoneData.GROSSING.categories) / dataList.maxGrossing * 100 }}%' ng-repeat="dataItem in dataList.phoneData.PAID.categories">
+								<span>&pound;{{ dataList.getCorrespodingGrossing(dataItem.name, dataList.phoneData.GROSSING.categories) }}</span>
+							</li>
+						</ul>
+						<div class="divider-line"></div>
+						<ul>
+							<li class="chart-two-hundred__item" style='width: {{ dataList.getCorrespodingGrossing(dataItem.name, dataList.phoneData.GROSSING.subcategories) / dataList.maxGrossing * 100 }}%' ng-repeat="dataItem in dataList.phoneData.PAID.subcategories">
+								<span>&pound;{{ dataList.getCorrespodingGrossing(dataItem.name, dataList.phoneData.GROSSING.subcategories) }}</span>
+							</li>
+						</ul>
+					</div>
+					<div class="chart-two-hundred-categories-container">
+						<h2>Category</h2>
+						<ul>
+							<li class="chart-two-hundred__category" ng-repeat="dataItem in dataList.phoneData.PAID.categories">{{ dataItem.name }}</li>
+						</ul>
+						<div class="divider-line">
+							<h2 class="subcategory-title">Games Subcategories</h2>
+						</div>
+						<ul>
+							<li class="chart-two-hundred__category" ng-repeat="dataItem in dataList.phoneData.PAID.subcategories">{{ dataItem.name }}</li>
+						</ul>
+					</div>
+					<div class="chart-two-hundred__downloads-chart">
+						<h2 class="ref-icon-before--download">Min Downloads Required</h2>
+						<ul>
+							<li class="chart-two-hundred__item" style='width: {{ dataItem.value / dataList.maxPaid * 100 }}%' ng-repeat="dataItem in dataList.phoneData.PAID.categories">
+								<span>{{ dataItem.value }} <span style="display: none;">{{ dataItem.name }}</span></span>
+							</li>
+						</ul>
+						<div class="divider-line"></div>
+						<ul>
+							<li class="chart-two-hundred__item" style='width: {{ dataItem.value / dataList.maxPaid * 100 }}%' ng-repeat="dataItem in dataList.phoneData.PAID.subcategories">
+								<span>{{ dataItem.value }} <span style="display: none;">{{ dataItem.name }}</span></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js-v2/application.js"></script>
+
+  <script>
+		$(document).on("ready", function(){
+
+			$('.js-toggle-data').on("click", function(){
+				var dataToShow = $(this).data("show");
+				$('.chart-two-hundred-container.is-showing').removeClass("is-showing");
+				$('#' + dataToShow).addClass("is-showing");
+			});			
+
+		});
+  </script>
+</body>

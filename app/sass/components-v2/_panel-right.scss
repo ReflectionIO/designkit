@@ -67,19 +67,22 @@
 		}
 	}
 	.blockquote-container {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    width: 300px;
-    padding: 0 28px 50px 28px;
-    opacity: 0;
-    .is-showing & {
-    	opacity: 1;
-    	transition: opacity 0.2s 0.2s;
-    }
-    blockquote:before {
-    	left: -4px;
-    }
+		display: none;
+		@include breakpoint($tablet) {
+			position: fixed;
+	    right: 0;
+	    bottom: 0;
+	    width: 300px;
+	    padding: 0 28px 50px 28px;
+	    opacity: 0;
+	    .is-showing & {
+	    	opacity: 1;
+	    	transition: opacity 0.2s 0.2s;
+	    }
+	    blockquote:before {
+	    	left: -4px;
+	    }
+		}    
 	}
 }
 .panel-right.search-container {	

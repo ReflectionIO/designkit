@@ -5,6 +5,20 @@
 			text-align: center;
 		}
 	}
+	@include breakpoint($desktop-wide) {
+		.content-centered-section {
+    	max-width: 666px;
+			padding: 6rem 0 12.4rem;
+			h1 {
+				margin-bottom: 4rem;
+				font-size: 3.8rem;
+			}
+			p {
+				font-size: 1.8rem;
+    		line-height: 1.8em;
+			}
+		}
+	}
 }
 .about-section-head {
 	width: 100%;
@@ -12,6 +26,7 @@
 	padding-top: 132px;
 	background-image: url(images/v2/bg-about-head.jpg);
 	background-size: cover;
+	background-position: -189px 0;
 	blockquote {
 		padding-top: 0;
 		&:before {
@@ -39,10 +54,46 @@
 	    color: $reflection-white;
 		}
 	}
+	@include breakpoint(1100px) {
+		background-position: 0 0;
+	}
+	@include breakpoint($desktop-super-wide) {
+		height: 617px;
+		padding-top: 166px;
+		background-position: 0 -100px;
+		blockquote {
+			p {
+				font-size: 3.9rem;
+			}
+			cite {
+				font-size: 1.8rem;
+			}
+			span {
+				font-size: 2.6rem;
+			}
+		}
+	}
 }
 .about-section-head__text {
 	width: 470px;
 	margin-right: 7.1%;
 	display: inline-block;
 	float: right;
+	@include breakpoint(1100px) {
+		margin-left: 50%;
+		margin-right: 0;
+    float: left;
+	}
+	@include breakpoint($desktop) {
+		margin-right: 7.1%;
+		margin-left: 0;
+		float: right;
+	}
+	@include breakpoint($desktop-super-wide) {
+		width: 670px;
+		margin-right: 14.1%;
+	}
+	@include breakpoint($desktop-widest) {
+		margin-right: 17.1%;	
+	}
 }

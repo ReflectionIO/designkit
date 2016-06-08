@@ -6,6 +6,8 @@ $laptop-mid: 1024px;
 $laptop-plus: 1150px;
 $desktop: 1280px;
 $desktop-wide: 1600px;
+$desktop-super-wide: 1900px;
+$desktop-widest: 2300px;
 $mobile-max-width: 719px;
 $leftnav-wide: 1360px;
 
@@ -14,9 +16,13 @@ $base-margin-bottom: 4rem;
 .l-page-container {
 	position: relative;
 	width: 100%;
+	min-width: 960px;
 	min-height: 100vh;
 	z-index: 0;
 	transition: filter 0.18s;
+	.page-home & {
+		min-width: inherit;
+	}
 	.touch .no-scroll & {
 		overflow: hidden;
 		height: 100vh;
@@ -116,4 +122,14 @@ $base-margin-bottom: 4rem;
 	&:last-child {
 		border-bottom: none;
 	}
+}
+.desktop-only {
+	display: none;
+	@include breakpoint($desktop) {
+		display: inline-block;
+	}
+}
+.centred-content-container {
+	max-width: 1400px;
+  margin: 0 auto;
 }

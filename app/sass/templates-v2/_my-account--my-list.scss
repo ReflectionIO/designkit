@@ -70,22 +70,33 @@
 	}
 	.page-title {
     margin-top: 0.1rem;
-		margin-bottom: 2.1rem;		
+    margin-bottom: 0.3rem;
+    @include breakpoint($desktop) {
+    	margin-bottom: 2.1rem;
+    }
 	}
 	.page-sub-title {
-    padding-top: 1.1rem;
-    padding-left: 2.6rem;
-		margin-bottom: 0;
+    padding-top: 0;
+		margin-bottom: 2rem;
+		display: block;
 		font-family: $brand-body-font;
 		font-size: 14px;
 		font-weight: 400;
 		color: #5a5a68;
+		@include breakpoint($desktop) {
+			padding-top: 1.5rem;
+    	padding-left: 2.6rem;
+    	margin-bottom: 0;
+    	display: inline-block;
+		}
 	}
 	&.page-my-lists,
 	&.page-linked-accounts,
 	&.page-match-ad-units {
 		.page-sub-title {
-			padding-top: 1.5rem;
+			@include breakpoint($desktop) {
+				padding-top: 1.5rem;
+			}
 		}		
 	}
 	.my-account-section-title {
@@ -226,7 +237,7 @@
 		}
 	}
 	.licenses-data-cell--actions {
-		max-width: 100px;
+		max-width: 125px;
 	}
 	.my-lists-data-cell--actions {
 		max-width: 80px;
@@ -250,7 +261,7 @@
     padding-bottom: 12px;
 	}
 	.share-data-cell--actions {
-		max-width: 80px;
+		max-width: 105px;
 	}
 	.linked-accounts-cell--actions {
 		max-width: 100px;
@@ -339,6 +350,7 @@
 	}
 	.secondary-filter {
 		width: 100%;
+		max-width: 300px;
 	}
 }
 .account-summary-action__license-info {
@@ -496,5 +508,109 @@
 .page-overlay--close-account {
 	.form-field--checkbox-list {
 		margin-bottom: 2rem;
+	}
+}
+.chart__no-data,
+.chart__loading {
+	position: relative;
+  min-height: 200px;
+	width: 100%;
+  padding-left: 22px;
+  padding-bottom: 10px;
+	margin-top: 109px;
+	text-align: center;
+	svg, div {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	svg {
+		position: relative;
+		top: 3px;    
+    width: 104px;
+    margin-right: 29px;
+	}
+	h2 {
+		margin-bottom: 1rem;
+		font-size: 2.4rem;
+		font-weight: 600;
+		color: $light-grey-1;
+	}
+	p {
+		font-size: 1.4rem;
+		color: $light-grey-1;
+	}
+	.hamster-wheel,
+	.animation-hamster {
+		width: 110px;
+    height: 110px;
+	}
+	.animation-hamster {
+		background-size: 330px auto;
+		-webkit-animation: hamsterrunsm 0.2s infinite steps(3);
+   	animation: hamsterrunsm 0.2s infinite steps(3);
+	}
+}
+.chart__loading {
+	margin-top: 100px;
+}
+.no-data-message-container {
+	text-align: center;
+	svg, div {
+		display: inline-block;
+		vertical-align: top;
+	}
+	svg {
+		width: 170px;
+		margin-top: 7px;
+		margin-right: 36px;
+		.page-my-account--billing & {
+			width: 106px;
+		}
+	}
+	h2 {
+		font-size: 2.4rem;
+		color: #81879d;
+	}
+	p {
+		font-size: 1.4rem;
+		color: #81879d;
+	}
+	button {
+		margin-top: 10px;
+	}
+}
+.linked-accounts-screenshot {
+	width: 529px;
+	margin-top: 44px;
+	float: left;
+}
+.no-data-message-content {
+	width: 600px;
+	margin: 100px auto;
+	display: inline-block;
+	text-align: left;
+	.page-my-account--billing & {
+		width: 536px;
+	}
+	div {
+		width: 392px;
+	}
+}
+.upgrade-content {
+	width: 380px;
+	margin: 4.1rem 6% 7rem 4.7%;
+	display: inline-block;
+	float: left;
+	@include breakpoint($laptop-mid) {
+		margin-right: 11%;
+	}
+	.page-linked-accounts {
+		margin-top: 3.1rem;
+	}
+}
+.page-linked-accounts--upgrade {
+	padding-bottom: 0;
+	> .grid-container {
+		position: relative;
 	}
 }

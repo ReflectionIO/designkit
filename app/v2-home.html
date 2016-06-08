@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Reflection V2, Home</title>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
@@ -14,7 +13,28 @@
 		<script src="js/vendor/html5shiv.min.js"></script>
 		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
 	<![endif]-->
+
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+	<link rel="apple-touch-icon" sizes="57x57" href="images/v2/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="images/v2/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/v2/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/v2/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/v2/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/v2/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/v2/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/v2/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/v2/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="images/v2/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="images/v2/favicon-194x194.png" sizes="194x194">
+	<link rel="icon" type="image/png" href="images/v2/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="images/v2/android-chrome-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="images/v2/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="images/v2/manifest.json">
+	<link rel="mask-icon" href="images/v2/safari-pinned-tab.svg" color="#6d69c5">
+	<meta name="msapplication-TileColor" content="#6d69c5">
+	<meta name="msapplication-TileImage" content="images/v2/mstile-144x144.png">
+	<meta name="theme-color" content="#6d69c5">
+
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 <script>
   WebFont.load({
@@ -22,7 +42,9 @@
       families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
     }
   });
-</script></head>
+</script>
+<script src="js-v2/vendor/picturefill302.min.js" async></script>
+</head>
 <body>
 	<!--[if (lt IE 9)]>
       <div class="window-warning">
@@ -37,42 +59,53 @@
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
 			
-			<section class="home-section-head">
-				<img src="images/v2/illustration-home-head.png" class="home-section-head__illustration" />
+			<section class="home-section-head">				
 				<div class="home-section-head__text">
 					<h1 class="page-title"><span>Reflection Helps You</span> <span>Understand the App Market</span></h1>
 					<p>Track the performance of the world's top apps, publishers or your own sales with our affordable &amp; easy to use analysis platform.</p>
 					<p><a href="#how">How Reflection Works</a></p>
 				</div>
+				<picture class="home-section-head__illustration"> <!-- uses js/picturefill.2.3.1.min.js -->
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source srcset="images/v2/Wide_Chart_Lines@2x.png" media="(min-width: 1280px)" />
+					<source srcset="images/v2/Mid_Chart_Lines@2x.png" media="(min-width: 720px)" />
+					<source srcset="images/v2/Mid_Chart_Lines@2x.png" />
+					<!--[if IE 9]></video><![endif]-->
+					<img src="images/v2/Mid_Chart_Lines@2x.png" />
+				</picture>
 			</section>
 			
 			<section class="grid-container home-live-chart-container">
 				<div class="home-chart-filters-container">
-					<h2 class="heading-style--heading-three section-heading">Top 10 App Live Chart</h2>
-
-					<div class="toggle-container">	 							
-						<div class="filter-toggle filter-toggle--with-text filter-toggle--large">
-							<div class="toggle">
-								<input id="toggle--show-paid" name="charttoggle" checked type="radio">
-								<label for="toggle--show-paid">
-									Paid
-								</label>
-							</div>
-							<div class="toggle">
-								<input id="toggle--show-free" name="charttoggle" type="radio">
-								<label for="toggle--show-free">
-									Free
-								</label>
-							</div>
-							<div class="toggle">
-								<input id="toggle--show-grossing" name="charttoggle" type="radio">
-								<label for="toggle--show-grossing">
-									Grossing
-								</label>
+					<div class="home-chart-filters-left">
+						<div class="home-live-chart-heading-container">
+							<h2 class="heading-style--heading-six section-heading">Top 10 Apps</h2>
+							<span class="home-live-chart__date">01/01/16</span>
+						</div>
+						<div class="toggle-container">	 							
+							<div class="filter-toggle filter-toggle--with-text filter-toggle--large">
+								<div class="toggle">
+									<input id="toggle--show-paid" name="charttoggle" checked type="radio">
+									<label for="toggle--show-paid">
+										Paid
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-free" name="charttoggle" type="radio">
+									<label for="toggle--show-free">
+										Free
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-grossing" name="charttoggle" type="radio">
+									<label for="toggle--show-grossing">
+										Grossing
+									</label>
+								</div>
 							</div>
 						</div>
 					</div>
-				
+
 					<div class="secondary-filter secondary-filter--medium form-field--select">
 						<select class="js-select-box">
 					    <option value="all" selected>All Categories</option>
@@ -93,8 +126,7 @@
 					    <option value="goo">Google Play Store</option>
 					    <option value="ama">Amazon Play Store</option>
 						</select>
-					</div>
-					<span class="secondary-filter-label">01/01/16</span>
+					</div>					
 				</div>
 
 				<table class="ref-table ref-table--home-chart">
@@ -103,9 +135,9 @@
 							<th>Rank</th>
 							<th></th>
 							<th>App</th>
-							<th>Publisher</th>
-							<th>Average Rating</th>
-							<th>Price</th>
+							<th class="ref-table--home-chart__publisher-head-cell">Publisher</th>
+							<th class="ref-table--home-chart__average-head-cell">Average Rating</th>
+							<th class="ref-table--home-chart__price-head-cell">Price</th>
 							<th class="ref-table--home-chart__revenue-cell--head">Revenue &amp; Growth <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-left" data-whatsthis="Revenue and Growth info"><span>What's this?</span></a></th>
 						</tr>
 					</thead>
@@ -116,7 +148,7 @@
 						<col class="ref-table--home-chart__publisher-col"></col>
 						<col class="ref-table--home-chart__rating-col"></col>
 						<col></col>
-						<col></col>
+						<col class="ref-table--home-chart__value-col"></col>
 					</colgroup>
 					<tbody>
 						<tr>
@@ -135,7 +167,7 @@
 								</div>
 								<span>(78,001)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period positive-colour"> + 10%</span></td>
 						</tr>
 						<tr>
@@ -154,7 +186,7 @@
 								</div>
 								<span>(48,994)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period negative-colour"> - 2%</span></td>
 						</tr>
 						<tr>
@@ -173,7 +205,7 @@
 								</div>
 								<span>(78,001)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period positive-colour"> + 2%</span></td>
 						</tr>
 						<tr>
@@ -192,7 +224,7 @@
 								</div>
 								<span>(78,001)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period positive-colour"> + 4%</span></td>
 						</tr>
 						<tr>
@@ -211,7 +243,7 @@
 								</div>
 								<span>(78,001)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period positive-colour"> + 10%</span></td>
 						</tr>
 						<tr>
@@ -230,7 +262,7 @@
 								</div>
 								<span>(78,001)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period positive-colour"> + 10%</span></td>
 						</tr>
 						<tr>
@@ -249,7 +281,7 @@
 								</div>
 								<span>(78,001)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period positive-colour"> + 10%</span></td>
 						</tr>
 						<tr>
@@ -268,7 +300,7 @@
 								</div>
 								<span>(78,001)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period positive-colour"> + 10%</span></td>
 						</tr>
 						<tr>
@@ -287,7 +319,7 @@
 								</div>
 								<span>(78,001)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period positive-colour"> + 10%</span></td>
 						</tr>
 						<tr>
@@ -306,7 +338,7 @@
 								</div>
 								<span>(78,001)</span>
 							</td>
-							<td>Free</td>
+							<td class="ref-table--home-chart__price-cell">Free</td>
 							<td class="ref-table--home-chart__revenue-cell"><span>&pound;102,843</span> <span class="growth-on-last-period positive-colour"> + 10%</span></td>
 						</tr>
 					</tbody>
@@ -326,7 +358,7 @@
 					<div class="home-section-content-left revenue-illustration">
 						<ul class="revenue-tabs-list">
 							<li>
-								<img src="images/v2/placeholder-app-icon-clash.png" alt="Clash of Clans app icon" />
+								<img src="images/v2/ClashClans_Icon_92px@2x.jpg" alt="Clash of Clans app icon" />
 								<div>
 									<h2>Clash of Clans</h2>
 									<h3>Supercell</h3>
@@ -334,7 +366,7 @@
 								<span class="numeric-value">$ 175,009</span>
 							</li>
 							<li>
-								<img src="images/v2/placeholder-icon-spotify.png" alt="Spotify app icon" />
+								<img src="images/v2/Spotify_Icon_92px@2x.jpg" alt="Spotify app icon" />
 								<div>
 									<h2>Spotify</h2>
 									<h3>Spotify, Inc</h3>
@@ -342,7 +374,7 @@
 								<span class="numeric-value">$ 130,167</span>
 							</li>
 							<li>
-								<img src="images/v2/placeholder-icon-tinder.png" alt="Tinder app icon" />
+								<img src="images/v2/Tindr_Icon_92px@2x.jpg" alt="Tinder app icon" />
 								<div>
 									<h2>Tinder</h2>
 									<h3>Tinder, Inc</h3>
@@ -367,10 +399,10 @@
 						<p>Save time and effort keeping track of the apps and publishers you’re following with customisable, automated alerts for key events</p>
 						<p class="home-section__more-link"><a href="#">Learn More About Alerts</a></p>
 					</div>
-					<div class="home-section-content-right">
+					<div class="home-section-content-right home-section-notifications-content">
 						<ul class="notifications-tabs-list">
 							<li>
-								<img src="images/v2/placeholder-app-icon-deezer.png" alt="Deezer Music app icon" />
+								<img src="images/v2/Deezr_Icon_92px@2x.jpg" alt="Deezer Music app icon" />
 								<div>
 									<h2>Deezer Music</h2>
 									<h3>App Launched</h3>
@@ -381,7 +413,7 @@
 			 					</a>
 							</li>
 							<li>
-								<img src="images/loading-demo-app-icon.png" alt="Monument Valley app icon" />
+								<img src="images/v2/MonumentValley_Icon_92px@2x.jpg" alt="Monument Valley app icon" />
 								<div>
 									<h2>Monument Valley</h2>
 									<h3>Price Change</h3>
@@ -399,7 +431,13 @@
 			<section class="home-section home-section--three">
 				<div class="home-section-content-container">
 					<div class="home-section-content-left networks-illustration">
-						<img src="images/v2/home-placeholder-networks-illustration.png" alt="" />
+						<picture> <!-- uses js/picturefill.2.3.1.min.js -->
+							<!--[if IE 9]><video style="display: none;"><![endif]-->
+							<source srcset="images/v2/LinkAccountsIllustration-Wide@2x.png" media="(min-width: 1600px)" />
+							<source srcset="images/v2/LinkAccountsIllustration@2x.png" />
+							<!--[if IE 9]></video><![endif]-->
+							<img src="images/v2/LinkAccountsIllustration@2x.png" alt="" />
+						</picture>
 					</div>
 					<div class="home-section-content-right home-section-text-content">
 						<h2>All Your Own Data in One Place</h2>

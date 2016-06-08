@@ -441,11 +441,11 @@ var FormFieldSelect = function($domElement) {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");
 																			if($thisOption.data("icon-class")) {
-																				$currentValue.removeClass("ref-icon-before--apple");
+																				$currentValue.removeClass("ref-icon-before--ios");
 																				$currentValue.removeClass("ref-icon-before--play-store");
 																				$currentValue.addClass($thisOption.data("icon-class"));
 																			} else {
-																				$currentValue.removeClass("ref-icon-before--apple");
+																				$currentValue.removeClass("ref-icon-before--ios");
 																				$currentValue.removeClass("ref-icon-before--play-store");
 																			}
 																			if($thisOption.data("app-icon")) {

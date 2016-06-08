@@ -64,6 +64,12 @@
 		padding-top: 13px;
     padding-bottom: 14px;
 	}
+	.data-cell-ad-total-for-period {
+		display: none;
+		@include breakpoint($desktop) {
+			display: block;
+		}
+	}
 	col {
 		width: 12%;
 	}
@@ -81,14 +87,17 @@
 	col.column-row-selector {
 		width: 7%;
 	}
-	.column-ad-platform {
-		width: 17%;
+	.column-ad-platform {		
+		width: 12%;
 	}
 	.column-total-for-period {
 		width: 15%;
 	}
 	.column-ecp {
-		width: 10%;
+		width: 11%;
+		@include breakpoint($desktop) {
+			width: 9%;
+		}
 	}
 	.column-impressions {
 		width: 13%;
@@ -115,17 +124,34 @@
     	vertical-align: middle;
 		}
 		img {
-			width: 28px;
-			border-radius: 5px;
+			display: none;
+			@include breakpoint($desktop) {
+				width: 28px;
+				display: inline-block;
+				border-radius: 5px;
+			}			
 		}
 		img + div {
-			width: calc(100% - 55px);
-			margin-left: 10px;
-			float: none;
+			width: 100%;
+			@include breakpoint($desktop) {
+				width: calc(100% - 55px);
+				margin-left: 10px;
+				float: none;
+			}			
 			h2 {
 				font-weight: 400;
 				@include ellipses();
 			}
+		}
+		&.data-table__app-summary--app-icon {
+			@media screen and (max-width: $desktop - 1px) {
+				img {
+					width: 25px;
+					margin-left: 8px;
+			    display: inline-block;
+			    border-radius: 7px;
+				}
+			}			
 		}
 	}
 }

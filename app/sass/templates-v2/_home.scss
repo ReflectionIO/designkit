@@ -3,17 +3,31 @@
 	height: 422px;
 	background-image: url(images/v2/bg-home-head.jpg);
 	background-size: cover;
-	.page-title {
-		padding-right: 50px;
+	@include breakpoint($desktop-wide) {
+		height: 460px;
+	}
+	.page-title {		
 		margin-bottom: 0.74em;
-		color: $reflection-white;
+    padding-right: 50px;
+    text-align: left;
+    color: $reflection-white;
+		@include breakpoint(1700px) {
+			font-size: 4.2rem;
+		}
 	}
 	p {
 		margin-bottom: 0.8em;
-		font-size: 1.8rem;
+		font-size: 1.7rem;
 		line-height: 1.5;
 		letter-spacing: -0.02px;
 		color: $light-grey-2;
+		text-align: left;
+		@include breakpoint($desktop) {
+			font-size: 1.8rem;
+		}
+		@include breakpoint(1700px) {
+			font-size: 2rem;
+		}
 	}
 	a {
 		font-family: $brand-heading-font;
@@ -28,23 +42,69 @@
 }
 .home-section-head__illustration {
 	position: absolute;
-	right: 0;
-	bottom: 0;
-	width: 1221px;
-	min-width: 100%;
+	right: -180px;
+  bottom: 0;
 	height: auto;
+	display: block;
 	pointer-events: none;
+	source, img {
+		position: relative;
+    left: 0;
+    width: 1220px;
+    min-width: auto;
+    margin-left: 0;
+    display: block;
+  }
+	@include breakpoint($laptop-mid) {
+		left: -50px;
+		right: auto;
+	}
+	@media screen and (min-width: 1100px) {
+		left: 0;
+	}
+	@include breakpoint($desktop) {
+		left: inherit;
+		right: 0;
+    bottom: 0;
+		source, img {
+			width: 1098px;
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		source, img {
+			width: 1237px;
+		}
+	}
 }
 .home-section-head__text {
 	width: 100%;
-  max-width: 515px;
-  margin-left: 9.8%;
+	max-width: 460px;
   padding-top: 68px;
+  padding-left: 0;
+	padding-right: 0;
+  margin: 0 auto 10px 9%;
+	@include breakpoint($desktop) {
+		max-width: 515px;
+		margin-left: 70px;
+	}
+	@include breakpoint(1700px) {
+		max-width: 600px;
+		padding-top: 84px;
+		margin-left: 129px;
+	}
+}
+.home-chart-filters-left {
+  margin-bottom: 0;
+	display: inline-block;
+	vertical-align: top;
 }
 .home-chart-filters-container {
-	padding-bottom: 15px;
+	height: 50px;
 	overflow: visible;
-	border-bottom: 1px solid $divider-grey;
+	border-bottom: 1px solid $divider-grey;	
+	.toggle-container {
+		float: right;
+	}
 	.form-field--select__dropdown li span,
 	.form-field--select__box span {
 		display: block;
@@ -52,29 +112,49 @@
     white-space: nowrap;
     overflow: hidden;
 	}
+	.heading-style--heading-three {
+		font-size: 1.8rem;
+	}
 }
-.home-live-chart-container {
-	padding-top: 15px;
+.home-live-chart-heading-container {    
+  width: auto;
+	padding-top: 7px;
+	margin-top: 0;
+	margin-right: 30px;
+  display: inline-block;
+	vertical-align: middle;
+}
+.home-live-chart-container {  
+  padding-top: 15px;
 	padding-bottom: 30px;
 	overflow: visible;
 	background-color: $panel-grey;
 	.section-heading {
-    margin-top: 6px;
+    margin-top: 0;    
+    margin-bottom: 4px;
     margin-right: 18px;
     margin-bottom: 0;
-		display: inline-block;
-	}
-	.secondary-filter,
-	.secondary-filter-label {
-		margin-left: 10px;
-		float: right;
+    display: inline-block;
+    vertical-align: middle;
 	}
 	.secondary-filter {
-		width: 168px;
+		width: 15%;
+		width: 15%;
+		max-width: 168px;
+		margin-left: 10px;
+		margin-bottom: 7px;
+		float: right;
+		&:last-child {
+			margin-left: 0;
+		}
+		.form-field--select__box {
+  		min-width: inherit;
+  	}
 	}
-	.secondary-filter-label {
+	.home-live-chart__date {
 		margin-top: 1px;
-		margin-right: 5px;
+		display: inline-block;
+		vertical-align: middle;
     font-family: $brand-heading-font;
     font-size: 16px;
 	}
@@ -93,10 +173,13 @@
 	tbody tr:nth-child(even) {
 		border-bottom: 2px solid $panel-grey;
 		background-color: $reflection-white;
+		td {
+			background-color: $reflection-white;
+		}
 	}
 	tbody td {
 		padding-top: 3px;
-    padding-bottom: 5px;
+    padding-bottom: 5px;    
 	}	
 	td:first-child {
 		padding-left: 11px;
@@ -109,15 +192,28 @@
 		margin-top: 7px;
 		margin-right: 5px;
 		margin-bottom: 0;
-		display: inline-block;
+		display: none;
 	  vertical-align: top;
 		+ span {
 			margin: 4px 0 0;
 	    padding: 0;
-	    display: inline-block;
+	    display: none;
 	    vertical-align: top;
 	    font-size: 12px;
 		}
+	}
+	@include breakpoint($laptop-mid) {
+		.ratings-container {
+			display: inline-block;
+			+ span {
+				display: inline-block;
+			}
+		}
+	}
+	@media screen and (max-width: $laptop-mid) {
+		tr {
+			height: 40px;
+		}		
 	}
 }
 .ref-table--home-chart__rank-col {
@@ -127,13 +223,37 @@
 	width: 52px;
 }
 .ref-table--home-chart__app-col {
-  width: 28.4%;
+  width: 40%;
+  @include breakpoint($laptop-mid) {
+  	width: 28.4%;
+  }
 }
 .ref-table--home-chart__publisher-col {
   width: 16.8%;
 }
 .ref-table--home-chart__rating-col {
-  width: 19%;
+  width: 0;
+  @include breakpoint($laptop-mid) {
+  	width: 19%;
+  }  
+}
+.ref-table--home-chart__value-col {
+	width: 45%;
+  @include breakpoint($laptop-mid) {
+  	width: 25%;
+  }  	
+}
+.ref-table.ref-table--home-chart th.ref-table--home-chart__average-head-cell {
+	font-size: 0;
+	@include breakpoint($laptop-mid) {
+		font-size: 1.5rem;
+	}
+}
+.ref-table.ref-table--home-chart th.ref-table--home-chart__publisher-head-cell {
+	font-size: 1.5rem;
+}
+.ref-table.ref-table--home-chart th.ref-table--home-chart__price-head-cell {
+	font-size: 1.5rem;
 }
 .ref-table--home-chart__app-cell {
 	img, a, .icon-container {
@@ -144,9 +264,13 @@
 		width: 36px;
 		height: 36px;
 		margin-top: 2px;
-		margin-right: 28px;
+		margin-right: 15px;		
+		display: inline-block;
 		background-color: $light-grey-2;
 		border-radius: 5px;
+		@include breakpoint($desktop) {
+			margin-right: 28px;
+		}
 	}
 	img {
 		width: 36px;
@@ -154,11 +278,17 @@
 		border-radius: 5px;
 	}
 	a {
-		font-size: 16px;
+		@include ellipses;
+		width: calc(100% - 70px);
+		font-size: 14px;
 		font-weight: 700;
+		line-height: 1.5;
 		color: $reflection-purple;
 		&:hover {
 			color: $reflection-purple--hover;
+		}
+		@include breakpoint($desktop) {
+			font-size: 16px;
 		}
 	}
 }
@@ -172,12 +302,16 @@
 	}
 }
 .ref-table--home-chart__publisher-cell {
+	font-size: 1.4rem;
 	a {
 		color: $reflection-purple;
 		&:hover {
 			color: $reflection-purple--hover;
 		}
 	}
+}
+.ref-table--home-chart__price-cell {
+	font-size: 1.4rem;
 }
 .ref-table--home-chart__movement-cell {	
 	span {
@@ -190,43 +324,79 @@
 		}
 	}
 }
-.ref-table--home-chart__revenue-cell {
+.ref-table--home-chart__revenue-cell {	
 	padding-right: 20px;
-	text-align: right;  
+	text-align: right;
 	span {
+		position: relative;
+  	top: 2px;
 		font-weight: 700;
+		font-size: 13px;
 	}
 	span:first-child {
 		margin-right: 5px;
-		font-size: 16px;		
+		font-size: 14px;		
 		color: #363a47;
+	}
+	@include breakpoint($laptop-mid) {
+		span {
+			top: 0;
+			font-size: 14px;
+		}
+		span:first-child {
+			font-size: 16px;
+		}
 	}
 }
 .home-chart-find-button {
-	float: left;
+	width: auto;
+	float: left;	
 }
 .home-chart-table__foot {
 	text-align: right;
 }
+.home-chart-see-full-button {
+	width: auto;
+	margin-top: 0;
+	float: right;
+}
 .home-section {
 	min-height: 422px;
+	@include breakpoint($desktop-wide) {
+		min-height: 622px;
+	}
 }
 .home-section--one {
 	padding-top: 79px;
 	background-color: $reflection-white;
+	@include breakpoint($desktop-wide) {
+		padding-top: 147px;
+		.home-section-text-content {
+			padding-top: 1rem;
+		}
+	}
 }
 .home-section--two {
-	padding-top: 108px;
+	min-height: 422px;
+	padding-top: 95px;
 	background-color: $panel-grey;
-	.home-section-content-left {
-		padding-top: 12px;
-		margin-left: 0;
+	@include breakpoint($desktop-wide) {
+		min-height: 546px;
+		padding-top: 108px;
+		.home-section-content-left {
+			padding-top: 12px;
+			margin-left: 0;
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		padding-top: 145px;
 	}
 }
 .home-section--three {
-	min-height: auto;
+	min-height: inherit;
+	padding-top: 50px;
 	.home-section-content-container {
-		padding-top: 97px;
+		padding-top: 53px;
 	}
 	.home-section-content-left {
 		margin-left: 0;
@@ -235,37 +405,69 @@
 	.home-section-text-content {
 		padding-bottom: 93px;
 	}
+	@include breakpoint($desktop) {
+		padding-top: 65px;
+		.home-section-text-content {
+			padding-bottom: 120px;
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		padding-top: 30px;
+		.home-section-content-container {
+			padding-top: 120px;
+		}
+		.home-section-text-content {
+			padding-bottom: 146px;
+		}
+	}
 }
 .home-section-content-container {
 	position: relative;
-	width: 100%;
+	width: 90%;
 	max-width: 1064px;
-	padding: 0 40px;  
+	padding: 0 40px;
 	margin: 0 auto;
+	display: block;
+	flex-direction: column;
+	text-align: left;
+	.home-section--one &,
+	.home-section--three & {
+		flex-direction: column-reverse;
+	}
+	.home-section--two & {
+		overflow: visible;
+	}
+	@include breakpoint($desktop-wide) {
+		max-width: 1284px;
+	}
 }
 .home-section-content-left,
 .home-section-content-right {
+	margin: 0 auto;
 	display: inline-block;
 	vertical-align: middle;
+	@include breakpoint($desktop) {
+		margin: 0;
+	}
 }
-.home-section-content-left {
+.home-section-content-left {	
+	float: left;
 	padding-top: 19px;
-  margin-left: 2px;
-  float: left;
+	margin-left: 2px;
 }
-.home-section-content-right {
-	float: right;
+.home-section-content-right {	
 	overflow: visible;
+	float: right;
 }
 .home-section-text-content {
-	width: 396px;
+	width: 42%;
 	padding-bottom: 73px;
 	h2 {
 		margin-bottom: 0.8em;
 	}
 	p {
 		margin-bottom: 1em;
-		font-size: 18px;
+		font-size: 16px;
 		line-height: 1.6;
 	}
 	.home-section__more-link {
@@ -273,9 +475,37 @@
 		font-weight: 600;
 		font-size: 16px;
 	}
+	@include breakpoint($desktop) {
+		width: 396px;
+		p {
+			font-size: 18px;
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		width: 495px;
+		h2 {
+			width: 456px;
+			font-size: 3.4rem;
+		}
+		p {
+			font-size: 18px;
+			line-height: 1.8;
+		}
+		.home-section__more-link {
+			font-size: 19px;
+		}
+	}
 }
 .revenue-illustration {
-	width: 390px;
+  width: 45%;
+  margin-bottom: 0;
+  text-align: left;
+  @include breakpoint($desktop) {
+		width: 390px;  	
+  }
+  @include breakpoint($desktop-wide) {
+  	width: 512px;
+  }
 }
 .revenue-tabs-list {
 	margin-bottom: 19px;
@@ -300,15 +530,18 @@
 			border-radius: 7px;
 		}
 		div {
-			width: 200px;
+			width: 50%;			
 			margin-top: -2px;
 			display: inline-block;
 			vertical-align: middle;
+			@include breakpoint($desktop) {
+				width: 200px;
+			}
 			h2 {
 				margin-bottom: 1px;
 				display: block;
 				font-family: $brand-body-font;
-				font-weight: 700;
+				font-weight: 700;				
 				font-size: 17.9px;
 				color: $reflection-white;
 				@include ellipses;
@@ -330,6 +563,27 @@
 			font-size: 18px;
 			color: $reflection-white;
 		}
+		@include breakpoint($desktop-wide) {
+			padding: 10px 20px 10px 8px;
+    	margin-bottom: 5px;
+    	img {
+    		width: 56px;
+    		height: 56px;
+    		border-radius: 11px;
+    	}
+    	div {
+    		h2 {
+    		font-size: 22px;
+	    	}
+	    	h3 {
+	    		font-size: 15px;
+	    	}	    	
+    	}
+    	.numeric-value {
+    		padding-top: 19px;
+    		font-size: 22px;
+    	}  	
+		}
 	}
 }
 .revenue-tabs-list-p {
@@ -343,14 +597,28 @@
 		font-weight: 400;
 	}
 }
-.notifications-tabs-list {
-	li {
-		width: 525px;
-		background-color: #fcfdfd;
+.home-section-notifications-content {
+	width: 50%;
+	max-width: 460px;
+	@include breakpoint($desktop-wide) {
+		max-width: 550px;
 	}
 }
 .notifications-tabs-list {
+	li {		
+		background-color: #fcfdfd;
+	}
+	@include breakpoint($desktop) {
+		li {
+			width: 525px;
+		}
+	}
+}
+.notifications-tabs-list {	
+	margin-bottom: 60px;
 	margin-right: -15px;
+	overflow: visible;
+	text-align: left;
 	li {
 		padding: 15px 15px 20px 20px;
 		margin-bottom: 10px;
@@ -366,15 +634,15 @@
 			border-radius: 7px;
 		}
 		div {
-			width: 290px;
+			width: calc(100% - 185px);
 			display: inline-block;
 			vertical-align: top;
-			h2 {
-				margin-top: -2px;
+
+			h2 {				
     		margin-bottom: 4px;
 				font-family: $brand-heading-font;
 				font-weight: 600;
-				font-size: 24px;
+				font-size: 20px;
 				color: $reflection-purple;
 			}
 			h3 {
@@ -383,31 +651,66 @@
 				vertical-align: top;
 				font-family: $brand-heading-font;
 				font-weight: 600;
-				font-size: 18px;
+				font-size: 16px;
 				color: #29292c;
 			}
 			span {
-				margin: 6px 0 0 11px;
-				display: inline-block;
+				margin: 4px 0 0 11px;
+				display: none;
 				vertical-align: top;
 				font-size: 14px;
 				color: $light-grey-1;
 			}
+			@include breakpoint($laptop-plus) {				
+				span {
+					display: inline-block;
+				}
+			}
+			@include breakpoint($desktop) {
+				width: 290px;
+				h2 {
+					margin-top: -2px;
+					font-size: 24px;
+				}
+				h3 {
+					font-size: 18px;
+				}
+			}
 		}
 		.ref-button--secondary--small {
 			display: inline-block;
-			float: right;
+			float: right;		
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		li {
+			width: 590px;
+			padding: 20px 15px 28px 20px;
+			div span {
+				margin-top: 6px;
+			}
 		}
 	}
 }
-.networks-illustration {
+.networks-illustration {	
 	position: absolute;
+	left: 0;
 	bottom: 0;
-	width: 404px;
-	padding: 0 0 0 19px;
+	width: 47%;
+	max-width: 404px;
+	padding: 0;
 	overflow: visible;
-	img {
+	@include breakpoint($laptop-plus) {
+		left: 19px;
+		width: 404px;
+	}
+	source, img {		
+		width: 100%;
 		float: left;
+	}
+	@include breakpoint($desktop-wide) {
+		width: 470px;
+		max-width: 470px;
 	}
 }
 .home-section-quote {
@@ -430,8 +733,8 @@
 			margin-bottom: 4.2rem;
 			font-family: $brand-heading-font;
 			font-weight: 700;
-			font-size: 3.4rem;
-			line-height: 1.3;    
+			font-size: 3.4rem;			
+			line-height: 1.3;
 			color: $reflection-white;
 		}
 		cite {
@@ -442,9 +745,28 @@
 			span {
 				margin-bottom: 1.6rem;
 				display: block;
-				font-weight: 700;
+				font-weight: 700;				
 				font-size: 2.4rem;
 				color: $reflection-white;
+			}
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		min-height: 580px;
+		blockquote {
+			left: -36px;
+			max-width: 785px;
+			padding-top: 160px;
+			p {
+		    font-size: 3.9rem;
+    		line-height: 1.4;
+			}
+			cite {
+				font-size: 1.8rem;
+				span {
+					margin-bottom: 1.9rem;
+    			font-size: 2.6rem;
+				}
 			}
 		}
 	}
@@ -471,6 +793,16 @@
 			}
 		}
 	}
+	@include breakpoint($desktop-wide) {
+		max-width: 1520px;
+		padding-top: 8rem;
+    padding-bottom: 8rem;
+    margin: 0 auto;
+    .section-title {
+    	margin-bottom: 6rem;
+    	font-size: 3.4rem;
+    }
+	}
 }
 .home-section-featured-in {
 	padding: 1.5rem 40px 4.1rem;
@@ -490,11 +822,20 @@
 		flex-direction: row;
 		flex-wrap: nowrap;
 		justify-content: space-between;
+		font-size: 0;
 		li {
+			display: inline-block;
+			width: auto;
 			img {
 				width: 100%;
 				max-width: 160px;
 			}
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		padding-top: 2rem;
+		.section-title {
+			margin-bottom: 0rem;
 		}
 	}
 }
@@ -509,9 +850,22 @@
 		margin: 0 auto 3.4rem;
 		font-weight: 400;
 		font-size: 22px;
+		line-height: 1.5;
 		color: $reflection-white;
 		span {
 			color: $reflection-red;
 		}
+	}
+	@include breakpoint($desktop-wide) {
+    padding-top: 100px;
+    padding-bottom: 110px;
+		.section-title {
+			max-width: 650px;
+			margin-bottom: 4.3rem;
+			font-size: 28px;
+		}	
+		.ref-button--primary--large {
+			font-size: 1.7rem;
+		}	
 	}
 }

@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, App Page</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			<div class="page-data-dashboard page-app">
+				<div class="grid-container">
+
+					<div class="page-header__app-icon-container">
+						<img src="images/v2/placeholder-app-icon.jpg" alt="Clash Royale Icon" />
+					</div>
+
+					<div class="page-header__app-title-links">
+						<h1 class="heading-style--heading-three app-title"><span class="label-my-app">My App</span> Clash Royale</h1>
+						<div class="toggle-container page-header__page-toggle">
+							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+								<div class="toggle">
+									<input id="toggle--show-downloads" name="app-info" checked type="radio">
+									<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
+										Revenue &amp; Downloads
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ranks" name="app-info" type="radio">
+									<label for="toggle--show-ranks" onclick="location.replace('v2-app-rank.html');">
+										Rank History
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ratings" name="app-info" type="radio">
+									<label for="toggle--show-ratings" onclick="location.replace('v2-app-ratings-info.html');">
+										Ratings &amp; Info
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-events" name="app-info" type="radio">
+									<label for="toggle--show-events" onclick="location.replace('v2-app-events.html');">
+										Events
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-header__app-info-and-actions">
+						<span class="page-header__app-price-details">Free + IAP</span>
+						<span class="page-header__publisher-name">By <a href="#">Supercell</a></span>
+						<div>
+							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button js-follow-app">Follow App</button>
+							<a href="#" class="page-header__text-link">View in Appstore</a>
+						</div>
+						<ul class="form-field--checkbox-list form-field--select__dropdown checkbox-dropdown-from-button js-checkbox-dropdown">
+							<li>
+								<input type="checkbox" name="checkboxListOne" id="checkboxListOne">
+								<label for="checkboxListOne" class="checkboxLabel js-no-close-on-click">Apps I Follow</label>
+								<label for="checkboxListOne" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">Apps I Follow</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxListTwo" id="checkboxListTwo" class="js-no-close-on-click">
+								<label for="checkboxListTwo" class="checkboxLabel js-no-close-on-click">My List Name</label>
+								<label for="checkboxListTwo" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">My List Name</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxListThr" id="checkboxListThr" class="js-no-close-on-click">
+								<label for="checkboxListThr" class="checkboxLabel js-no-close-on-click">My List Name</label>
+								<label for="checkboxListThr" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">My List Name</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxListFou" id="checkboxListFou" class="js-no-close-on-click">
+								<label for="checkboxListFou" class="checkboxLabel js-no-close-on-click">My List Name</label>
+								<label for="checkboxListFou" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">My List Name</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxSpFaB" id="checkboxListFive" class="js-no-close-on-click">
+								<label for="checkboxListFive" class="checkboxLabel js-no-close-on-click">My List Name</label>
+								<label for="checkboxListFive" class="checkboxLabelVisible js-no-close-on-click js-follow-app-checkbox">My List Name</label>
+							</li>
+							<a href="#" class="ref-button--secondary--small button-full-width js-checkbox-dropdown-close">
+		 						Done
+		 					</a>
+						</ul>
+					</div>
+				</div>
+
+				<div class="grid__row overflow-visible">
+					<aside class="primary-filters-container">
+ 						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all">All Store Accounts</option>
+						    <option value="ios" selected>iOS</option>
+						    <option value="play">Google Play</option>
+						    <option value="amazon">Amazon App Store</option>
+							</select>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="jan" selected>01/01/16 - 01/02/16</option>
+						    <option value="feb">01/02/16 - 01/03/16</option>
+						    <option value="mar">01/03/16 - 01/04/16</option>
+						    <option value="apr">01/04/16 - 01/05/16</option>
+							</select>
+						</div>
+						<div class="primary-filter js-multi-select-box" data-title="All Countries">
+							<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+							<div class="dropdown-summary">
+								<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+							</div>
+							<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">
+								<li>
+									<input type="checkbox" name="checkboxUKFaB" id="checkboxUKFaB" class="js-no-close-on-click" />
+									<label for="checkboxUKFaB" class="checkboxLabel js-no-close-on-click">United Kingdom</label>
+									<label for="checkboxUKFaB" class="checkboxLabelVisible js-no-close-on-click">United Kingdom</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxFraFaB" id="checkboxFraFaB" class="js-no-close-on-click" />
+									<label for="checkboxFraFaB" class="checkboxLabel js-no-close-on-click">France</label>
+									<label for="checkboxFraFaB" class="checkboxLabelVisible js-no-close-on-click">France</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxItaFaB" id="checkboxItaFaB" class="js-no-close-on-click" />
+									<label for="checkboxItaFaB" class="checkboxLabel js-no-close-on-click">Italy</label>
+									<label for="checkboxItaFaB" class="checkboxLabelVisible js-no-close-on-click">Italy</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxGeFaB" id="checkboxGeFaB" class="js-no-close-on-click" />
+									<label for="checkboxGeFaB" class="checkboxLabel js-no-close-on-click">Germany</label>
+									<label for="checkboxGeFaB" class="checkboxLabelVisible js-no-close-on-click">Germany</label>
+								</li>
+								<li>
+									<input type="checkbox" name="checkboxSpFaB" id="checkboxSpFaB" class="js-no-close-on-click" />
+									<label for="checkboxSpFaB" class="checkboxLabel js-no-close-on-click">Spain</label>
+									<label for="checkboxSpFaB" class="checkboxLabelVisible js-no-close-on-click">Spain</label>
+								</li>
+							</ul>
+						</div>
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Devices</option>
+						    <option value="ipa">iPad</option>
+						    <option value="iph">iPhone</option>
+							</select>
+						</div>
+					</aside>
+				</div>
+
+				<aside class="grid-container secondary-filters-container">
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="allrev" selected>All Revenue</option>
+					    <option value="pairev">Paid Revenue</option>
+					    <option value="iaprev">IAP Revenue</option>
+					    <option value="adrev">Ad Revenue</option>
+					    <option value="subrev">Subscription Revenue</option>
+						</select>
+					</div>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="overlayapps" selected>Overlay Apps (0)</option>
+					    <option value="candy">Candy Crush Saga</option>
+					    <option value="clash">Clash of Clans</option>
+					    <option value="soccerstars">Soccer Stars</option>
+					    <option value="eightball">8 Ball Pool</option>
+						</select>
+					</div>
+
+					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+						<ul>
+							<li>
+								<input type="checkbox" name="checkboxOne" id="checkboxOne">
+								<label for="checkboxOne" class="checkboxLabel">Events</label>
+								<label for="checkboxOne" class="checkboxLabelVisible">Events</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxTwo" id="checkboxTwo">
+								<label for="checkboxTwo" class="checkboxLabel">Revenue Split</label>
+								<label for="checkboxTwo" class="checkboxLabelVisible">Revenue Split</label>
+							</li>
+							<li>
+								<input type="checkbox" name="checkboxThree" id="checkboxThree">
+								<label for="checkboxThree" class="checkboxLabel">Cumulative</label>
+								<label for="checkboxThree" class="checkboxLabelVisible">Cumulative</label>
+							</li>
+						</ul>
+					</div>
+
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="overlayapps" selected>More (0/3)</option>
+					    <option value="candy">Device Breakdown</option>
+					    <option value="clash">Re-downloads</option>
+					    <option value="soccerstars">Installed Updates</option>
+					    <option value="eightball">Revenue/Download Comparison</option>
+						</select>
+					</div>
+
+					<div class="filter-toggle toggle-container--chart-type">
+						<div class="toggle">
+							<input id="toggle--show-line" name="graphtype" type="radio">
+							<label for="toggle--show-line">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M16.9,16.9h-2.8h-0.6h-2.8h-0.6H7.3
+	H6.8H3.9H3.4H1.1v-4l2.5-3.8L7,10.7l3.4-6.2L14,6.1l2.9-3.2V16.9z"/></svg>
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-stacked" name="graphtype" checked type="radio">
+							<label for="toggle--show-stacked">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M3.6,9.1L7,10.7l3.4-6.2L14,6.1l2.9-3.2v4
+	l-3,4.5l-3.2-1.1l-3.7,3.4L3.7,13l-2.6,1.4v-1.5L3.6,9.1z M14.1,16.9h-0.6h-2.8h-0.6H7.3H6.8H3.9H3.4H1.1V15l2.7-1.5l3.3,0.9
+	l3.7-3.4l3.3,1.1l2.8-4.2v9H14.1z"/></svg>
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-bar" name="graphtype" type="radio">
+							<label for="toggle--show-bar">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M11.2,0v5.6H5.6v3.9H0V18h18V0H11.2z M6.8,6.8h5.1v10.1H6.8V6.8z M1.1,10.7h5.1v6.2H1.1V10.7z
+	 M16.9,16.9h-4.5V1.1h4.5V16.9z"/></svg>
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-map" name="graphtype" type="radio">
+							<label for="toggle--show-map">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M9,0C9,0,9,0,9,0C8.9,0,8.9,0,8.9,0C8.7,0,8.6,0,8.4,0c-0.1,0-0.3,0-0.4,0c-0.1,0-0.2,0-0.3,0.1
+	C3.4,0.7,0,4.5,0,9c0,5,4,9,9,9s9-4,9-9C18,4,14,0,9,0z M15.5,6.3c-0.3-0.1-0.3-0.3-0.6-0.4c-0.5-0.2-1.4-0.2-2,0
+	c-0.5,0.2-0.6,0.3-1,0.7c-0.1,0.1-0.1,0.3-0.2,0.4c-0.1,0.1-0.1,0.2-0.1,0.3c-0.1,0.6-0.4,1.3-0.1,1.8c0.1,0.2,0.4,0.3,0.6,0.5
+	c0.3,0.2,0.4,0.4,0.8,0.5c0.2,0,0.5,0,0.7,0c0.3,0,0.6,0.1,0.8,0.2c-0.2,0.4-0.2,1.1-0.2,1.3c0,0.2,0.1,0.2,0.1,0.4
+	c0.1,0.6-0.9,1-0.7,1.6c0,0.1,0.1,0.3,0.1,0.4c0,0.5-0.4,0.7-0.5,1.1c0,0.2,0,0.4,0,0.6c0,0.1,0,0.2,0,0.3c-1.3,0.8-2.8,1.3-4.4,1.3
+	c-4.5,0-8.2-3.7-8.2-8.2c0-1.6,0.5-3.1,1.3-4.4c0,0,0.1,0,0.1,0.1c0,0.1,0,0.3,0,0.4C2.2,5.6,2.5,6.1,3,6.1c0,0.3-0.1,0.3,0.2,0.7
+	c0,0.1,0,0.2,0.1,0.2c0.1,0.1,0.2,0.1,0.3,0.1C3.7,7.4,3.7,7.8,3.6,8S3.2,8.5,3.1,8.8c-0.2,0.4-0.1,1,0.2,1.4
+	c0.1,0.1,0.3,0.5,0.5,0.6S4,10.8,4,11c0.1,0.3,0.1,0.5,0.2,0.7c0,0.2-0.1,0.6-0.1,0.8c0,0.2,0.1,0.2,0.1,0.3c0,0.1-0.1,0-0.1,0.2
+	c0,0.3,0,1,0.1,1.2c0.1,0.8,0.6,1.5,1.1,1.4c0.2-0.4-0.2-0.8-0.1-1.2c0.1-0.2,0.1-0.3,0.3-0.4c0.6-0.4,1-0.8,1.3-1.4
+	c0-0.1,0.1-0.3,0.2-0.3c0.1,0,0.2,0,0.3-0.1c0.4-0.1,0.6-0.3,0.8-0.6s0.2-0.6,0.5-1c0.1-0.1,0.1-0.3,0.2-0.3
+	c0.2-0.3-0.1-0.7-0.4-0.8S7.8,9.4,7.5,9.2C7.2,9,7.2,8.6,7,8.3C6.7,8,6.4,7.8,6,7.7C5.6,7.5,5.7,7.3,5,7C4.9,7,4.7,7,4.6,7
+	C4.5,7,4.5,7.1,4.4,7.1C4.2,7.4,3.7,7.2,3.6,6.9c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.4-0.2-0.4C3.3,5.9,3.7,6.1,3.7,5.8
+	c0-0.3-0.2-0.1-0.4-0.2C3,5.5,3.1,5.1,3.1,4.9c0.1-0.3,0.2-0.2,0.3-0.3c0.3-0.2,0.7-0.3,1-0.2c0.3,0.1,0.2,0.7,0.3,0.7
+	c0.1,0.1,0.3-0.1,0.3-0.2s0-0.3,0-0.4c0-0.1,0.1-0.1,0.2-0.2c0.6-0.4,1.3-0.7,2.1-0.8c0.1,0,0.2,0,0.3,0c0.1-0.1,0.1-0.3,0.2-0.3
+	c0.1,0,0.2,0.2,0.4,0.2C8.4,3.5,8.6,3.2,8.6,3c0-0.2-0.1-0.4,0-0.6c0-0.1,0.1-0.1,0.1-0.2c0,0-0.1-0.1-0.1-0.1
+	C8.4,2.1,8.4,1.9,8.1,1.9C7.9,2,7.7,2,7.5,2.2C7.3,2.3,7.2,2.4,7,2.5C6.8,2.3,7,2,7.2,1.8c0.2-0.1,0.4-0.1,0.7-0.2
+	c0.1,0,0.2,0,0.3,0c0.1,0,0.2,0.1,0.2,0.1c0.2,0.1,0.3,0,0.4-0.1C9,1.5,9.1,1.4,8.9,1.2c0-0.1,0.2-0.1,0.2,0s0,0.2-0.1,0.4
+	C8.8,2.2,9.3,2.7,9.5,2.7c0.3,0,0.5-0.6,0.9-0.8c0.1,0,0.2-0.1,0.3-0.1c0.1-0.1,0.1-0.2,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2
+	c0.8,0.2,1.5,0.5,2.1,1c0,0,0,0,0,0c0,0-0.1,0-0.2,0c-0.4-0.1-0.5,0.3-0.4,0.7c0.1,0.3,0.3,0.5,0.6,0.6c0.1,0,0.3,0.1,0.4,0.2
+	c0,0,0,0.2,0,0.2c0,0.3,0,0.5-0.3,0.6c-0.2,0.2-0.6,0.1-0.8,0.3c-0.2,0.2,0.1,0.6,0.4,0.8c0.2,0.2,0.7,0.2,0.9-0.1
+	C14.1,5.3,14,5.1,14,5c0.3,0,0.5,0.2,0.6,0.4c0,0,0.1,0.1,0.2,0.1c0.1,0,0.2-0.2,0.3-0.1c0,0.1,0,0.2,0.1,0.2s0.1-0.1,0.2,0
+	s0.2,0.3,0.3,0.3c0.1,0,0.3,0,0.4,0.1c0.1,0.1,0.1,0.2,0.1,0.3C16.3,6.4,15.8,6.4,15.5,6.3z"/></svg>
+							</label>
+						</div>
+					</div>
+
+					<div class="filter-toggle toggle-container--chart-type">
+						<div class="toggle toggle-split-graph">
+							<input id="toggle--show-split-graph" name="splitgraph" checked type="radio">
+							<label for="toggle--show-split-graph" class="js-mock-show-split-chart">
+								<svg x=0px y=0px viewBox="0 0 39 18"enable-background="new 0 0 39 18"xml:space=preserve><g><path class=chart-lines d="M1,14.2l-1-0.6l3.2-4.9l3.5,1.6l3.5-6.4l4,1.8l3.4-3.8l0.9,0.8l-4,4.4l-3.7-1.7l-3.5,6.4
+		l-3.5-1.6L1,14.2z M38.7,10.3l-0.6-1l-3.5,2.2l-3.4-0.5l-3.4-4l-4-1.8l-3.2,3.7l0.9,0.8l2.6-3L27,8l3.6,4.1l4.3,0.6L38.7,10.3z"/><path class=base-lines d="M18.6,17H0v-1.2h18.6V17z M39,15.8H20.4V17H39V15.8z"/></g></svg>
+							</label>
+						</div>
+						<div class="toggle toggle-single-graph">
+							<input id="toggle--show-one-graph" name="splitgraph" type="radio">
+							<label for="toggle--show-one-graph" class="js-mock-show-single-chart">
+								<svg x=0px y=0px viewBox="0 0 32 18"enable-background="new 0 0 32 18"xml:space=preserve><g><polygon class=chart-lines fill=#727686 points="24.9,11.5 18.3,11 14.9,8.7 18.3,5.1 25.1,6.9 32,2.6 31.4,1.6 24.9,5.6 17.9,3.8 
+										13.9,8 12.1,6.9 5.5,5.2 0.1,8.7 0.7,9.7 5.7,6.4 11.6,8 13,8.9 11.7,10.3 5.5,8.7 0,13.5 0.8,14.3 5.8,10 12.1,11.6 14,9.6 
+										17.9,12.1 25.1,12.7 31.9,10.3 31.5,9.2 	"/><polyline class=base-lines fill=#B2B5C0 points="0.1,15.8 0.1,17 31.9,17 31.9,15.8 	"/></g></svg>
+							</label>
+						</div>
+					</div>
+
+				</aside>
+
+				<div class="grid__row">
+					<ul class="tabs-content-list">
+						<li class="is-active" id="split-chart-container">
+							<section class="chart-container chart-container--split">
+								<header class="chart-container__header">
+									<h2 class="chart-heading heading-style--heading-three">Revenue</h2>
+									<!-- <dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Total for Period / % Growth</dd>
+											<dt class="total-for-period">$7,501,876 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
+										</div>
+									</dl> -->
+								</header>
+								<!-- <aside class="custom-chart-key">
+									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+										<ul>
+											<li class="revenue-key">
+												<input type="checkbox" name="showhiderevenue" id="showhiderevenue" class="js-toggle-total-series" data-chart-index="0" data-series-index="0" checked>
+												<label for="showhiderevenue" class="checkboxLabel">Total</label>
+												<label for="showhiderevenue" class="checkboxLabelVisible">Total</label>
+											</li>
+										</ul>
+									</div>
+								</aside> -->
+								<div class="chart" id="chart-revenue">
+									<div class="chart__no-data">
+										<svg enable-background="new 0 0 104.4 72.3"viewBox="0 0 104.4 72.3" x=0px xml:space=preserve y=0px><path d="M90.9,52.1H13.5V4.6h77.4V52.1z M14.5,51.1h75.4V5.6H14.5V51.1z M103.9,64.9l-8.8-8.8c0-0.2,0.1-0.5,0.1-0.8
+    V4.8c0-2.7-2.1-4.8-4.7-4.8H52.2H14c-2.6,0-4.7,2.1-4.7,4.8v50.5c0,0.3,0,0.6,0.1,0.8l-8.8,8.8L0,65.4v0.7v3v0.3l0.1,0.2
+    c0.6,2,5.2,2.7,6.2,2.7h46h45.9c1,0,5.6-0.7,6.2-2.7l0.1-0.2v-0.3v-3v-0.7L103.9,64.9z M14,1.8c1.5,0,37.9,0,38.2,0c0,0,0,0,0,0
+    c0.3,0,36.7,0,38.2,0c1.8,0,2.9,1.4,2.9,3c0,1.5,0,47.4,0,50.4H11.1c0-2.9,0-48.9,0-50.4C11.1,3.2,12.2,1.8,14,1.8z M89,56.7
+    l5.5,6.6h-85l5.9-6.6H89z M102.6,69.2c-0.1,0.3-2.7,1.4-4.4,1.4c-1.1,0-45,0-45.9,0h0c-0.7,0-44.9,0-45.9,0c-1.7,0-4.3-1-4.4-1.4
+    c0-0.1,0-3,0-3l9.5-9.5h2.8l-6.9,7.6h89.4l-6.3-7.6h2.7l9.5,9.5C102.6,66.2,102.6,69,102.6,69.2z M66.2,40.4h-28
+    c-0.4,0-0.7-0.2-0.9-0.5s-0.2-0.7,0-1l14-24.3c0.4-0.6,1.4-0.6,1.7,0l14,24.3c0.2,0.3,0.2,0.7,0,1S66.6,40.4,66.2,40.4z M39.9,38.4
+    h24.6L52.2,17.2L39.9,38.4z M53.4,30.9v-7.5c0-0.7-0.6-1.2-1.2-1.2s-1.2,0.6-1.2,1.2v7.5c0,0.7,0.6,1.2,1.2,1.2S53.4,31.6,53.4,30.9
+    z M52.2,33.5c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5s1.5-0.7,1.5-1.5S53,33.5,52.2,33.5z" fill="#81879D" /></svg>
+    								<div>
+											<h2>No Available Data</h2>
+											<p>Please try refining your filters</p>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section class="chart-container chart-container--split">
+								<header class="chart-container__header">
+									<h2 class="chart-heading heading-style--heading-three">Downloads</h2>
+									<!-- <dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Total for Period / % Growth</dd>
+											<dt class="total-for-period">3,578,160 <span class="growth-on-last-period negative-colour"> - 100%</span></dt>
+										</div>
+									</dl> -->
+								</header>
+								<!-- <aside class="custom-chart-key">
+									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+										<ul>
+											<li class="downloads-key">
+												<input type="checkbox" name="showhidedownloads" id="showhidedownloads" class="js-toggle-total-series" data-chart-index="1" data-series-index="0" checked>
+												<label for="showhidedownloads" class="checkboxLabel">Total</label>
+												<label for="showhidedownloads" class="checkboxLabelVisible">Total</label>
+											</li>
+										</ul>
+									</div>
+								</aside> -->
+								<div class="chart" id="chart-downloads">
+									<div class="chart__no-data">
+										<svg enable-background="new 0 0 104.4 72.3"viewBox="0 0 104.4 72.3" x=0px xml:space=preserve y=0px><path d="M90.9,52.1H13.5V4.6h77.4V52.1z M14.5,51.1h75.4V5.6H14.5V51.1z M103.9,64.9l-8.8-8.8c0-0.2,0.1-0.5,0.1-0.8
+    V4.8c0-2.7-2.1-4.8-4.7-4.8H52.2H14c-2.6,0-4.7,2.1-4.7,4.8v50.5c0,0.3,0,0.6,0.1,0.8l-8.8,8.8L0,65.4v0.7v3v0.3l0.1,0.2
+    c0.6,2,5.2,2.7,6.2,2.7h46h45.9c1,0,5.6-0.7,6.2-2.7l0.1-0.2v-0.3v-3v-0.7L103.9,64.9z M14,1.8c1.5,0,37.9,0,38.2,0c0,0,0,0,0,0
+    c0.3,0,36.7,0,38.2,0c1.8,0,2.9,1.4,2.9,3c0,1.5,0,47.4,0,50.4H11.1c0-2.9,0-48.9,0-50.4C11.1,3.2,12.2,1.8,14,1.8z M89,56.7
+    l5.5,6.6h-85l5.9-6.6H89z M102.6,69.2c-0.1,0.3-2.7,1.4-4.4,1.4c-1.1,0-45,0-45.9,0h0c-0.7,0-44.9,0-45.9,0c-1.7,0-4.3-1-4.4-1.4
+    c0-0.1,0-3,0-3l9.5-9.5h2.8l-6.9,7.6h89.4l-6.3-7.6h2.7l9.5,9.5C102.6,66.2,102.6,69,102.6,69.2z M66.2,40.4h-28
+    c-0.4,0-0.7-0.2-0.9-0.5s-0.2-0.7,0-1l14-24.3c0.4-0.6,1.4-0.6,1.7,0l14,24.3c0.2,0.3,0.2,0.7,0,1S66.6,40.4,66.2,40.4z M39.9,38.4
+    h24.6L52.2,17.2L39.9,38.4z M53.4,30.9v-7.5c0-0.7-0.6-1.2-1.2-1.2s-1.2,0.6-1.2,1.2v7.5c0,0.7,0.6,1.2,1.2,1.2S53.4,31.6,53.4,30.9
+    z M52.2,33.5c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5s1.5-0.7,1.5-1.5S53,33.5,52.2,33.5z" fill="#81879D" /></svg>
+    								<div>
+											<h2>No Available Data</h2>
+											<p>Please try refining your filters</p>
+										</div>
+									</div>
+								</div>
+							</section>
+						</li>
+						<li id="single-chart-container">
+							<section class="chart-container chart-container--single">
+								<header class="chart-container__header">
+									<dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Revenue for Period / % Growth</dd>
+											<dt class="total-for-period">$7,501,876 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
+										</div>
+									</dl>
+									<dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Downloads for Period / % Growth</dd>
+											<dt class="total-for-period">3,578,160 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
+										</div>
+									</dl>
+								</header>
+								<aside class="custom-chart-key">
+									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+										<ul>
+											<li class="revenue-key">
+												<input type="checkbox" name="showhiderevenuesingle" id="showhiderevenuesingle" class="js-toggle-total-series" data-chart-index="2" data-series-index="0" checked>
+												<label for="showhiderevenuesingle" class="checkboxLabel">Revenue</label>
+												<label for="showhiderevenuesingle" class="checkboxLabelVisible">Revenue</label>
+											</li>
+											<li class="downloads-key">
+												<input type="checkbox" name="showhidedownloadssingle" id="showhidedownloadssingle" class="js-toggle-total-series" data-chart-index="2" data-series-index="1" checked>
+												<label for="showhidedownloadssingle" class="checkboxLabel">Downloads</label>
+												<label for="showhidedownloadssingle" class="checkboxLabelVisible">Downloads</label>
+											</li>
+										</ul>
+									</div>
+								</aside>
+								<div class="chart" id="chart-revenue-downloads"></div>
+							</section>
+						</li>
+					</ul>
+				</div>
+
+				<div class="grid-container">
+
+					<section class="data-table-section grid__column--three-quarters">
+						<header class="data-table-section__header">
+							<h2 class="section-title"><span>Total Countries</span> <span>5</span></h2>
+							<div class="data-table-section__filters">
+								
+								<div class="secondary-filter form-field--search">
+									<input type="text" placeholder="Find App in List" name="findapp" id="findapp" />
+									<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+								</div>
+								<label>Sort</label>
+								<div class="secondary-filter form-field--select">
+									<select class="js-select-box">
+								    <option value="nam">Name</option>
+								    <option value="rat">Average Rating</option>
+								    <option value="rel">Release Date</option>
+								    <option value="las">Last Updated</option>
+								    <option value="rev" selected>Revenue Actual</option>
+								    <option value="revgro">Revenue - % Growth</option>
+								    <option value="dow">Downloads - Actual</option>
+								    <option value="dowgro">Downloads - % Growth</option>
+								    <option value="perrev">% of Revenue for Period</option>
+								    <option value="perdow">% of Downloads for Period</option>
+									</select>
+								</div>								
+
+							</div>
+						</header>
+						<div class="data-table-section__summary">
+							<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+								<ul>
+									<li>
+										<input type="checkbox" name="checkboxTotals" id="checkboxTotals" checked>
+										<label for="checkboxTotals" class="checkboxLabel">Totals</label>
+										<label for="checkboxTotals" class="checkboxLabelVisible">Totals</label>
+									</li>
+								</ul>
+							</div>
+							<div class="data-table-section__summary__figures">
+								<span class="data-table-section__summary__total-revenue ref-icon-before--revenue">
+									<span>£18,028,173</span>
+								</span>
+								<span class="data-table-section__summary__growth positive-colour">+5%</span>
+								<span class="data-table-section__summary__total-downloads ref-icon-before--download">
+									<span>33,159,002</span>
+								</span>
+								<span class="data-table-section__summary__growth negative-colour">-1%</span>
+								<a href="#" class="data-table-section__summary__more-link">More</a>
+							</div>
+						</div>
+
+						<table class="ref-table ref-table--apps ref-table--apps--country ref-table--is-no-data">
+							<thead>
+								<tr>
+									<th><a href="#">Clear</a></th>
+									<th></th>
+									<th>
+										<span>Country</span>
+										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg> &nbsp;/&nbsp; 
+										<span>Av. Rating</span>
+										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
+									</th>
+									<th>
+										Released
+										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
+									</th>
+									<th class="revenue-head-cell">
+										Revenue
+										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
+									</th>
+									<th class="downloads-head-cell">
+										Downloads
+										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
+									</th>
+									<th></th>
+									<th class="total-for-period-head-cell">
+										<span>% of Total for Period</span>
+										<span>
+											Revenue
+											<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
+										</span>
+										<span>
+											Downloads
+											<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
+										</span>
+									</th>
+								</tr>
+							</thead>
+							<colgroup>
+								<col class="column-row-selector" />
+								<col class="column-store-icon" />
+								<col class="column-app-name" />
+								<col class="column-released" />
+								<col class="column-revenue" />
+								<col class="column-downloads" />
+								<col class="column-more" />
+								<col class="column-percentage-of-total" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<td class="app-data-cell-show-hide">
+										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
+											<ul>
+												<li>
+													<input type="checkbox" name="checkboxShowRow1" id="checkboxShowRow1" disabled>
+													<label for="checkboxShowRow1" class="checkboxLabel">Show</label>
+													<label for="checkboxShowRow1" class="checkboxLabelVisible">Show</label>
+												</li>
+											</ul>
+										</div>										
+									</td>
+									<td></td>
+									<td class="app-data-cell-app-details"></td>
+									<td class="app-data-cell-released-date"></td>
+									<td></td>
+									<td></td>
+									<td class="app-data-cell-more"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="app-data-cell-show-hide">
+										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
+											<ul>
+												<li>
+													<input type="checkbox" name="checkboxShowRow1" id="checkboxShowRow1" disabled>
+													<label for="checkboxShowRow1" class="checkboxLabel">Show</label>
+													<label for="checkboxShowRow1" class="checkboxLabelVisible">Show</label>
+												</li>
+											</ul>
+										</div>										
+									</td>
+									<td></td>
+									<td class="app-data-cell-app-details"></td>
+									<td class="app-data-cell-released-date"></td>
+									<td></td>
+									<td></td>
+									<td class="app-data-cell-more"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="app-data-cell-show-hide">
+										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
+											<ul>
+												<li>
+													<input type="checkbox" name="checkboxShowRow1" id="checkboxShowRow1" disabled>
+													<label for="checkboxShowRow1" class="checkboxLabel">Show</label>
+													<label for="checkboxShowRow1" class="checkboxLabelVisible">Show</label>
+												</li>
+											</ul>
+										</div>										
+									</td>
+									<td></td>
+									<td class="app-data-cell-app-details"></td>
+									<td class="app-data-cell-released-date"></td>
+									<td></td>
+									<td></td>
+									<td class="app-data-cell-more"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="app-data-cell-show-hide">
+										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
+											<ul>
+												<li>
+													<input type="checkbox" name="checkboxShowRow1" id="checkboxShowRow1" disabled>
+													<label for="checkboxShowRow1" class="checkboxLabel">Show</label>
+													<label for="checkboxShowRow1" class="checkboxLabelVisible">Show</label>
+												</li>
+											</ul>
+										</div>										
+									</td>
+									<td></td>
+									<td class="app-data-cell-app-details"></td>
+									<td class="app-data-cell-released-date"></td>
+									<td></td>
+									<td></td>
+									<td class="app-data-cell-more"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="app-data-cell-show-hide">
+										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
+											<ul>
+												<li>
+													<input type="checkbox" name="checkboxShowRow1" id="checkboxShowRow1" disabled>
+													<label for="checkboxShowRow1" class="checkboxLabel">Show</label>
+													<label for="checkboxShowRow1" class="checkboxLabelVisible">Show</label>
+												</li>
+											</ul>
+										</div>										
+									</td>
+									<td></td>
+									<td class="app-data-cell-app-details"></td>
+									<td class="app-data-cell-released-date"></td>
+									<td></td>
+									<td></td>
+									<td class="app-data-cell-more"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="app-data-cell-show-hide">
+										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
+											<ul>
+												<li>
+													<input type="checkbox" name="checkboxShowRow1" id="checkboxShowRow1" disabled>
+													<label for="checkboxShowRow1" class="checkboxLabel">Show</label>
+													<label for="checkboxShowRow1" class="checkboxLabelVisible">Show</label>
+												</li>
+											</ul>
+										</div>										
+									</td>
+									<td></td>
+									<td class="app-data-cell-app-details"></td>
+									<td class="app-data-cell-released-date"></td>
+									<td></td>
+									<td></td>
+									<td class="app-data-cell-more"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="app-data-cell-show-hide">
+										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
+											<ul>
+												<li>
+													<input type="checkbox" name="checkboxShowRow1" id="checkboxShowRow1" disabled>
+													<label for="checkboxShowRow1" class="checkboxLabel">Show</label>
+													<label for="checkboxShowRow1" class="checkboxLabelVisible">Show</label>
+												</li>
+											</ul>
+										</div>										
+									</td>
+									<td></td>
+									<td class="app-data-cell-app-details"></td>
+									<td class="app-data-cell-released-date"></td>
+									<td></td>
+									<td></td>
+									<td class="app-data-cell-more"></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+						<span class="table-no-data-message ref-icon-before--warning">No Available Data <span>Please try refining your filters</span></span>
+					</section>
+
+					<aside class="data-aside-bar grid__column--one-quarter">
+
+		 					<div class="summary-widget-container">
+
+		 						<ul class="tabs-list seconday-tabs js-tabs">
+		 							<li class="grid__column grid__column--one-half is-active">
+		 								<a href="#topCountries">Top Countries</a>
+		 							</li>
+		 							<li class="grid__column grid__column--one-half">
+		 								<a href="#bottomCountries">Bottom Countries</a>
+		 							</li>
+		 						</ul>
+		 						<ul class="tabs-content-list js-tabs-content-list">
+		 							<li class="is-active summary-widget" id="topCountries">
+
+										<div class="summary-widget--no-tabs">
+			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
+			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">No Available Data</h3>
+
+			 								<h2 class="summary-widget__data-title">Revenue % Growth</h2>
+			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">No Available Data</h3>
+			 							</div>
+
+			 							<div class="summary-widget--no-tabs">
+			 								<h2 class="summary-widget__data-title">Actual Downloads</h2>
+			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">No Available Data</h3>
+
+			 								<h2 class="summary-widget__data-title">Downloads % Growth</h2>
+			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">No Available Data</h3>
+			 							</div>
+		 							</li>
+		 							<li class="summary-widget" id="bottomCountries">
+
+										<div class="summary-widget--no-tabs">
+			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
+			 								<ul class="summary-widget__data-row">
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--united-states-of-america"></div>
+			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">&pound;11,002</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--china"></div>
+			 											<h3 class="summary-widget__data-item__app-name">China</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">&pound;9,762</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--united-kingdom"></div>
+			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">&pound;5,343</span>
+			 									</li>
+			 								</ul>
+
+			 								<h2 class="summary-widget__data-title">Revenue % Growth</h2>
+			 								<ul class="summary-widget__data-row">
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--france"></div>
+			 											<h3 class="summary-widget__data-item__app-name">France</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data negative-colour">-2%</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--italy"></div>
+			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--germany"></div>
+			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
+			 									</li>
+			 								</ul>
+			 							</div>
+
+			 							<div class="summary-widget--no-tabs">
+			 								<h2 class="summary-widget__data-title">Actual Downloads</h2>
+			 								<ul class="summary-widget__data-row">
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--united-states-of-america"></div>
+			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">14,943</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--china"></div>
+			 											<h3 class="summary-widget__data-item__app-name">China</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">12,003</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--united-kingdom"></div>
+			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data">4,738</span>
+			 									</li>
+			 								</ul>
+
+			 								<h2 class="summary-widget__data-title">Downloads % Growth</h2>
+			 								<ul class="summary-widget__data-row">
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--france"></div>
+			 											<h3 class="summary-widget__data-item__app-name">France</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data negative-colour">-10%</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--italy"></div>
+			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data negative-colour">-5%</span>
+			 									</li>
+			 									<li class="summary-widget__data-item">
+			 										<a href="#">
+			 											<div class="icon-flag icon-flag--germany"></div>
+			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
+			 										</a>
+			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
+			 									</li>
+			 								</ul>
+			 							</div>
+		 							</li>
+		 						</ul>
+		 					</div>
+					</aside>
+
+				</div>
+			</div>			
+			
+		</div>
+
+		<div class="grid-container" id="js-component-import--global-footer"></div>
+	</div>
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script src="js/vendor/highcharts-custom.js"></script>
+  <script>
+  	// Utility function
+		Date.prototype.addHours= function(h){
+      this.setHours(this.getHours()+h);
+      return this;
+    }
+
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-data-template.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+  		new Page();
+  		new AllDropDowns();
+  		new FormInteractions();
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  		$('.js-multi-select-box').each(function() {
+  			new FormFieldMultipleSelect($(this));
+  		});
+  		$('.js-tabs').each(function() {
+  			new Tabs($(this));
+  		});
+
+  		// Mock function for template
+  		$('#topAppsDownloads').hide();
+  		$('.js-mock-switch-revenue').on("click", function(){
+  			$('#topAppsDownloads').hide();
+  			$('#topAppsRevenue').show();
+  		});
+  		$('.js-mock-switch-downloads').on("click", function(){
+  			$('#topAppsDownloads').show();
+  			$('#topAppsRevenue').hide();
+  		});
+
+  		$('.js-whats-this-tooltip').each(function(){
+  			new WhatsThisPopup($(this));
+  		});
+
+			$('.js-mock-show-split-chart').on("click", function(){
+  			$('#split-chart-container').addClass("is-active");
+  			$('#single-chart-container').removeClass("is-active");
+  		});
+  		$('.js-mock-show-single-chart').on("click", function(){
+  			$('#split-chart-container').removeClass("is-active");
+  			$('#single-chart-container').addClass("is-active");
+  		});
+
+  		$('.js-follow-app').on("click", function(){
+  			var $this = $(this),
+  					$checkboxDropdown = $('.js-checkbox-dropdown');
+  					$checkboxDropdown.toggle();
+  			if(!$this.hasClass("is-success") && $('.js-checkbox-dropdown').is(":visible")) {
+  				$('.js-checkbox-dropdown li:first-child input[type=checkbox]').trigger("click");
+  				setFollowButton();
+  			}
+  		});
+
+  		$('.js-checkbox-dropdown-close').on("click", function(){
+  			$('.js-checkbox-dropdown').hide();
+  		});
+
+  		$('.js-follow-app-checkbox').on("click", function(){
+  			setFollowButton();
+  		});
+
+  		function setFollowButton() {
+  			setTimeout(function(){
+  				if($(".js-checkbox-dropdown").find("input").is(":checked")) {
+	  				$('.js-follow-app').addClass("is-success");
+	  				$('.js-follow-app').text("Following");
+	  			} else {
+	  				$('.js-follow-app').removeClass("is-success");
+	  				$('.js-follow-app').text("Follow App");
+	  			}
+  			}, 100);
+  		}
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>
