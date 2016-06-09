@@ -10,7 +10,7 @@
 		instance = this;
 		new BrowserDetection();
 		new LeftPanelAndHamburger();
-		new FormInteractions();
+		;
 		new PanelRightOverlay();
 		new PanelRightMisplacedPassword();
 		new AccountContainer();

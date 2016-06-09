@@ -76,7 +76,7 @@
 										<button class="ref-button--primary--large button-full-width js-mock-next-step" data-move-to-section="1" data-fake-loading="1">
 					 						Next
 					 					</button>
-					 					<p class="popup-text-link"><a href="#">Already a Member? Log in</a></p>
+					 					<p class="popup-text-link"><a href="#" class="js-open-login">Already a Member? Log in</a></p>
 									</form>
 							</div>
 
@@ -212,12 +212,17 @@
 
   		new Page();
   		new AllDropDowns();
-  		new FormInteractions();
+  		;
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});
   		$('.js-whats-this-tooltip').each(function(){
   			new WhatsThisPopup($(this));
+  		});
+  		$('.js-open-login').on("click", function(e){
+  			e.preventDefault();
+  			$('.js-link-log-in').trigger("click");
+  			$('.js-login-slide-container #loginusername').focus(); // or equivalent ID
   		});
 
   		// mock multistep form container

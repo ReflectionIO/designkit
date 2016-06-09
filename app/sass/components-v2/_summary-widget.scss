@@ -75,7 +75,7 @@
 	vertical-align: top;
 	list-style: none;
 	text-align: center;
-	a {
+	a, .summary-widget__data-item__icon-title-container {
 		width: 100%;
 		display: block;
 		float: left;
@@ -98,7 +98,7 @@
 	}
 	@include breakpoint(1100px) {
 		padding: 0 3px 0.9rem;
-		a {
+		a, .summary-widget__data-item__icon-title-container {
 			img, .icon-flag {
 				float: none;
 			}
@@ -109,7 +109,7 @@
 	}
 	@include breakpoint($desktop-super-wide) {
 		padding: 0 1rem 0.9rem 1rem;
-		a {
+		a, .summary-widget__data-item__icon-title-container {
 			img {
 				display: inline-block;
 				float: left;
@@ -133,6 +133,9 @@
 	color: $reflection-purple;
 	@include ellipses();
 	transition: color $base-transition-speed-off;
+	.summary-widget__data-item__icon-title-container & {
+		color: $dark-grey-1;
+	}
 	a:hover & {
 		color: $reflection-purple--hover;
 		transition: color $base-transition-speed-on;
@@ -266,13 +269,10 @@
 	font-family: $brand-body-font;
 	font-size: 13.5px;
 	font-weight: 700;
-	color: $reflection-purple;
+	color: $dark-grey-1;
 	text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-	&:hover {
-		color: $reflection-purple--hover;
-	}
 }
 .summary-widget--highest-lowest__data-heading {
 	width: 65px;

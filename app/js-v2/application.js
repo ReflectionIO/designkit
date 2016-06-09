@@ -595,6 +595,7 @@ FormFieldMultipleSelect.prototype.setCurrentValue = function($componentContainer
 
 
 var FormInteractions = function() {
+	
 	setTimeout(function(){
 		$('.form-field input[type=email], .form-field input[type=password], .form-field input[type=text], .form-field textarea').each(function(){
 			var $this = $(this);
@@ -612,6 +613,9 @@ var FormInteractions = function() {
 					}
 				});
 			}
+		});
+		$('.form-field input:-webkit-autofill').each(function(){
+				$(this).parent('.form-field').removeClass('is-closed');
 		});
 	}, 100); // fixes bug in IE11 for prepopulated data
 };
@@ -909,4 +913,23 @@ var reflectionMap = function() {
 	}
 
 	return this;
+}
+
+var scrollToSection = function($actionLink, speed, offset) {
+
+	var scrollSpeed = (speed) ? speed : 2000;
+	var scrollOffset = (offset) ? offset : 70;
+
+	$actionLink.on("click", function(e) {
+
+		e.preventDefault();
+
+		var scrollToId = $actionLink.attr("href"),
+				$scrollToElement = $(scrollToId),
+				scrollToPosition = $scrollToElement.offset().top;
+
+		$('html,body').animate({
+	    scrollTop: scrollToPosition - scrollOffset
+	  }, scrollSpeed);
+	});
 }

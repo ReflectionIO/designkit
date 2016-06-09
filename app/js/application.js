@@ -13,7 +13,7 @@
 			new LeftPanelAndHamburger();
 		}, 500); // only for design kit template because CSS class is-selected is added dynamically
 		// and needs to be in place before the LeftNav will work
-		new FormInteractions();
+		;
 		new PanelRightOverlay();
 		new PanelRightMisplacedPassword();
 		new AccountContainer();
