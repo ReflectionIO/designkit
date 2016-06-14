@@ -53,12 +53,23 @@
 		margin-right: 0;
 		margin-bottom: 1.5rem;
 		display: block;
+		.is-ie & {
+			label {
+				font-size: 1.3rem;
+			}
+			@include breakpoint($desktop) {
+				label {
+					font-size: 1.4rem;
+				}
+			}
+		}
 	}
 	&.page-data-dashboard {
 		.page-header__page-toggle {
-			margin-right: 0;
+			margin-left: 0;
 			margin-bottom: 1.5rem;
 			display: block;
+			float: none;
 		}
 		.page-header__data-info-text {
 			position: relative;
@@ -111,6 +122,9 @@
 	}
 	.page-header__app-title-links {
 		width: calc(100% - 380px);
+		.is-ie & {
+			width: calc(100% - 400px);
+		}
 	}
 	.app-developer-name {		
     margin-right: 8px;

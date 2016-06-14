@@ -614,9 +614,11 @@ var FormInteractions = function() {
 				});
 			}
 		});
-		$('.form-field input:-webkit-autofill').each(function(){
+		if(!$("body.ie10")) {
+			$('.form-field input:-webkit-autofill').each(function(){
 				$(this).parent('.form-field').removeClass('is-closed');
-		});
+			});
+		}		
 	}, 100); // fixes bug in IE11 for prepopulated data
 };
 

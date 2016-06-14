@@ -957,11 +957,6 @@
   -webkit-transition: right 0.1s 0.1s ease-out;
           transition: right 0.1s 0.1s ease-out;
 }
-/* line 69, sass/components-v2/_panel-right.scss */
-.panel-right .blockquote-container,
-.no-js .panel-right .blockquote-container {
-  display: none;
-}
 @media (min-width: 720px) {
   /* line 69, sass/components-v2/_panel-right.scss */
   .panel-right .blockquote-container,
@@ -973,17 +968,18 @@
     padding: 0 28px 50px 28px;
     opacity: 0;
   }
-  /* line 78, sass/components-v2/_panel-right.scss */
+  /* line 77, sass/components-v2/_panel-right.scss */
   .is-showing .panel-right .blockquote-container, .is-showing
   .no-js .panel-right .blockquote-container {
     opacity: 1;
     -webkit-transition: opacity 0.2s 0.2s;
             transition: opacity 0.2s 0.2s;
   }
-  /* line 82, sass/components-v2/_panel-right.scss */
+  /* line 81, sass/components-v2/_panel-right.scss */
   .panel-right .blockquote-container blockquote:before,
   .no-js .panel-right .blockquote-container blockquote:before {
     left: -4px;
+    color: #363a47;
   }
 }
 
@@ -1637,26 +1633,27 @@
   text-align: center;
 }
 /* line 78, sass/components-v2/_summary-widget.scss */
-.summary-widget__data-item a {
+.summary-widget__data-item a, .summary-widget__data-item .summary-widget__data-item__icon-title-container {
   width: 100%;
   display: block;
+  float: left;
   text-align: center;
 }
-/* line 82, sass/components-v2/_summary-widget.scss */
-.summary-widget__data-item a img, .summary-widget__data-item a .icon-flag {
+/* line 83, sass/components-v2/_summary-widget.scss */
+.summary-widget__data-item a img, .summary-widget__data-item a .icon-flag, .summary-widget__data-item .summary-widget__data-item__icon-title-container img, .summary-widget__data-item .summary-widget__data-item__icon-title-container .icon-flag {
   display: inline-block;
   float: left;
 }
-/* line 86, sass/components-v2/_summary-widget.scss */
-.summary-widget__data-item a img {
+/* line 87, sass/components-v2/_summary-widget.scss */
+.summary-widget__data-item a img, .summary-widget__data-item .summary-widget__data-item__icon-title-container img {
   width: 32px;
   height: 32px;
   display: inline-block;
   float: left;
   border-radius: 7px;
 }
-/* line 93, sass/components-v2/_summary-widget.scss */
-.summary-widget__data-item a .icon-flag {
+/* line 94, sass/components-v2/_summary-widget.scss */
+.summary-widget__data-item a .icon-flag, .summary-widget__data-item .summary-widget__data-item__icon-title-container .icon-flag {
   width: 32px;
   height: 32px;
 }
@@ -1665,12 +1662,12 @@
   .summary-widget__data-item {
     padding: 0 3px 0.9rem;
   }
-  /* line 101, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item a img, .summary-widget__data-item a .icon-flag {
+  /* line 102, sass/components-v2/_summary-widget.scss */
+  .summary-widget__data-item a img, .summary-widget__data-item a .icon-flag, .summary-widget__data-item .summary-widget__data-item__icon-title-container img, .summary-widget__data-item .summary-widget__data-item__icon-title-container .icon-flag {
     float: none;
   }
-  /* line 104, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item a img {
+  /* line 105, sass/components-v2/_summary-widget.scss */
+  .summary-widget__data-item a img, .summary-widget__data-item .summary-widget__data-item__icon-title-container img {
     float: none;
   }
 }
@@ -1679,18 +1676,18 @@
   .summary-widget__data-item {
     padding: 0 1rem 0.9rem 1rem;
   }
-  /* line 112, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item a img {
+  /* line 113, sass/components-v2/_summary-widget.scss */
+  .summary-widget__data-item a img, .summary-widget__data-item .summary-widget__data-item__icon-title-container img {
     display: inline-block;
     float: left;
   }
-  /* line 116, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item a img, .summary-widget__data-item a .icon-flag {
+  /* line 117, sass/components-v2/_summary-widget.scss */
+  .summary-widget__data-item a img, .summary-widget__data-item a .icon-flag, .summary-widget__data-item .summary-widget__data-item__icon-title-container img, .summary-widget__data-item .summary-widget__data-item__icon-title-container .icon-flag {
     float: left;
   }
 }
 
-/* line 122, sass/components-v2/_summary-widget.scss */
+/* line 123, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__app-name {
   width: calc(100% - 50px);
   margin-left: 8px;
@@ -1708,42 +1705,55 @@
   -webkit-transition: color 0.2s;
           transition: color 0.2s;
 }
-/* line 135, sass/components-v2/_summary-widget.scss */
+/* line 136, sass/components-v2/_summary-widget.scss */
+.summary-widget__data-item__icon-title-container .summary-widget__data-item__app-name {
+  color: #29292c;
+}
+/* line 139, sass/components-v2/_summary-widget.scss */
 a:hover .summary-widget__data-item__app-name {
   color: #4b46b5;
   -webkit-transition: color 0.3s;
           transition: color 0.3s;
 }
-/* line 139, sass/components-v2/_summary-widget.scss */
+/* line 143, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__app-name.is-loading {
-  width: 77%;
+  width: calc(100% - 52px);
   height: 10px;
   margin: 2px auto 0;
   background-color: #e9e9ed;
 }
 @media (min-width: 1100px) {
-  /* line 122, sass/components-v2/_summary-widget.scss */
+  /* line 123, sass/components-v2/_summary-widget.scss */
   .summary-widget__data-item__app-name {
     width: 100%;
     margin-left: 0;
     display: block;
     text-align: center;
   }
+  /* line 154, sass/components-v2/_summary-widget.scss */
+  .summary-widget__data-item__app-name.is-loading {
+    width: 90%;
+  }
 }
 @media (min-width: 1900px) {
-  /* line 122, sass/components-v2/_summary-widget.scss */
+  /* line 123, sass/components-v2/_summary-widget.scss */
   .summary-widget__data-item__app-name {
     width: calc(100% - 50px);
     margin-left: 8px;
     display: inline-block;
     text-align: left;
   }
+  /* line 163, sass/components-v2/_summary-widget.scss */
+  .summary-widget__data-item__app-name.is-loading {
+    width: calc(100% - 52px);
+  }
 }
 
-/* line 158, sass/components-v2/_summary-widget.scss */
+/* line 168, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data {
+  position: relative;
+  top: -14px;
   padding-left: 45px;
-  margin-top: -11px;
   display: block;
   text-align: left;
   font-family: "Lato", sans-serif;
@@ -1751,95 +1761,118 @@ a:hover .summary-widget__data-item__app-name {
   font-weight: 700;
   color: #363a47;
 }
-/* line 167, sass/components-v2/_summary-widget.scss */
+/* line 178, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data.positive-colour {
   color: #12a76a;
 }
-/* line 170, sass/components-v2/_summary-widget.scss */
+/* line 181, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data.negative-colour {
   color: #ff496a;
 }
-/* line 173, sass/components-v2/_summary-widget.scss */
+/* line 184, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data.is-loading {
-  width: 77%;
+  width: calc(100% - 52px);
   height: 10px;
-  margin: 6px auto 0;
+  margin: 6px 0 0 32px;
+  padding-left: 0;
   display: inline-block;
   background-color: #e9e9ed;
 }
 @media (min-width: 1100px) {
-  /* line 158, sass/components-v2/_summary-widget.scss */
+  /* line 168, sass/components-v2/_summary-widget.scss */
   .summary-widget__data-item__data {
+    top: 0;
     padding-left: 0;
-    margin-top: 0;
     display: inline;
+  }
+  /* line 196, sass/components-v2/_summary-widget.scss */
+  .summary-widget__data-item__data.is-loading {
+    width: 90%;
+    padding-left: 0;
+    margin: 6px auto 0;
   }
 }
 @media (min-width: 1900px) {
-  /* line 158, sass/components-v2/_summary-widget.scss */
+  /* line 168, sass/components-v2/_summary-widget.scss */
   .summary-widget__data-item__data {
+    top: -14px;
     padding-left: 45px;
-    margin-top: -11px;
     display: block;
+  }
+  /* line 206, sass/components-v2/_summary-widget.scss */
+  .summary-widget__data-item__data.is-loading {
+    width: calc(100% - 52px);
+    padding-left: 0;
+    margin: 6px 0 0 32px;
   }
 }
 
-/* line 191, sass/components-v2/_summary-widget.scss */
+/* line 213, sass/components-v2/_summary-widget.scss */
 .widget-title {
   margin-bottom: 1.9rem;
   font-size: 16px;
 }
 
-/* line 195, sass/components-v2/_summary-widget.scss */
+/* line 217, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item {
+  width: 50%;
   padding-left: 2px;
   margin-bottom: 15px;
+  display: inline-block;
+  vertical-align: top;
 }
-/* line 199, sass/components-v2/_summary-widget.scss */
+/* line 224, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item .icon-flag + div, .summary-widget--highest-lowest__data-item svg + div {
   width: calc(100% - 112px);
   display: inline-block;
   vertical-align: top;
   color: #363a47;
 }
-/* line 206, sass/components-v2/_summary-widget.scss */
+/* line 231, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item .icon-flag {
   margin-top: 4px;
   margin-right: 8px;
   display: inline-block;
   vertical-align: top;
 }
-/* line 212, sass/components-v2/_summary-widget.scss */
+/* line 237, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item svg {
   width: 26px;
   display: inline-block;
   margin: 3px 11px 0 3px;
 }
-/* line 217, sass/components-v2/_summary-widget.scss */
+/* line 242, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item:nth-of-type(odd) {
   padding-bottom: 11px;
   border-bottom: 1px solid #c4c7d0;
 }
-/* line 221, sass/components-v2/_summary-widget.scss */
+/* line 246, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item:last-child {
   padding-bottom: 9px;
   border-bottom: none;
 }
+@media (min-width: 1100px) {
+  /* line 217, sass/components-v2/_summary-widget.scss */
+  .summary-widget--highest-lowest__data-item {
+    width: 100%;
+    display: block;
+  }
+}
 @media (min-width: 2300px) {
-  /* line 195, sass/components-v2/_summary-widget.scss */
+  /* line 217, sass/components-v2/_summary-widget.scss */
   .summary-widget--highest-lowest__data-item {
     width: 50%;
     display: inline-block;
     vertical-align: top;
   }
-  /* line 229, sass/components-v2/_summary-widget.scss */
+  /* line 258, sass/components-v2/_summary-widget.scss */
   .summary-widget--highest-lowest__data-item:nth-of-type(odd), .summary-widget--highest-lowest__data-item:last-child {
     padding-bottom: 0;
     border-bottom: 0;
   }
 }
 
-/* line 236, sass/components-v2/_summary-widget.scss */
+/* line 265, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__country {
   padding-top: 3px;
   padding-bottom: 5px;
@@ -1847,17 +1880,13 @@ a:hover .summary-widget__data-item__app-name {
   font-family: "Lato", sans-serif;
   font-size: 13.5px;
   font-weight: 700;
-  color: #6d69c5;
+  color: #29292c;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 247, sass/components-v2/_summary-widget.scss */
-.summary-widget--highest-lowest__country:hover {
-  color: #4b46b5;
-}
 
-/* line 251, sass/components-v2/_summary-widget.scss */
+/* line 277, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-heading {
   width: 65px;
   margin-bottom: 0;
@@ -1870,7 +1899,7 @@ a:hover .summary-widget__data-item__app-name {
   line-height: 1.3;
 }
 
-/* line 262, sass/components-v2/_summary-widget.scss */
+/* line 288, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__rank,
 .summary-widget--highest-lowest__category {
   display: inline-block;
@@ -1878,23 +1907,23 @@ a:hover .summary-widget__data-item__app-name {
   font-family: "Lato", sans-serif;
 }
 
-/* line 268, sass/components-v2/_summary-widget.scss */
+/* line 294, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__rank {
   font-size: 14px;
   font-weight: 700;
 }
-/* line 271, sass/components-v2/_summary-widget.scss */
+/* line 297, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__rank:after {
   top: -5px;
 }
 
-/* line 275, sass/components-v2/_summary-widget.scss */
+/* line 301, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__category {
   padding-left: 8px;
   font-size: 12px;
 }
 
-/* line 279, sass/components-v2/_summary-widget.scss */
+/* line 305, sass/components-v2/_summary-widget.scss */
 .ref-icon-after--up + .summary-widget--highest-lowest__category,
 .ref-icon-after--down + .summary-widget--highest-lowest__category {
   padding-left: 6px;
@@ -1933,82 +1962,78 @@ a:hover .summary-widget__data-item__app-name {
 .ref-table tbody tr:nth-child(odd) {
   background-color: #f2f2f5;
 }
-/* line 31, sass/components-v2/_tables.scss */
-.ref-table tbody tr:nth-child(odd) td {
-  background-color: #f2f2f5;
-}
-/* line 35, sass/components-v2/_tables.scss */
+/* line 32, sass/components-v2/_tables.scss */
 .ref-table tbody td {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 38, sass/components-v2/_tables.scss */
+/* line 35, sass/components-v2/_tables.scss */
 .ref-table tbody td:first-child {
   padding-left: 1.5rem;
 }
-/* line 44, sass/components-v2/_tables.scss */
+/* line 41, sass/components-v2/_tables.scss */
 .ref-table.ref-table--is-no-data tbody tr {
   height: 56px;
 }
 
-/* line 49, sass/components-v2/_tables.scss */
+/* line 46, sass/components-v2/_tables.scss */
 .ref-table--apps,
 .ref-table--publishers {
   margin-bottom: 2rem;
 }
 @media (min-width: 1100px) {
-  /* line 49, sass/components-v2/_tables.scss */
+  /* line 46, sass/components-v2/_tables.scss */
   .ref-table--apps,
   .ref-table--publishers {
     margin-bottom: 4rem;
   }
 }
-/* line 55, sass/components-v2/_tables.scss */
+/* line 52, sass/components-v2/_tables.scss */
 .ref-table--apps tr,
 .ref-table--publishers tr {
   border-bottom: 1px solid #fcfdfd;
 }
-/* line 58, sass/components-v2/_tables.scss */
+/* line 55, sass/components-v2/_tables.scss */
 .ref-table--apps .column-row-selector,
 .ref-table--publishers .column-row-selector {
   width: 4.9%;
 }
-/* line 61, sass/components-v2/_tables.scss */
+/* line 58, sass/components-v2/_tables.scss */
 .ref-table--apps .column-store-icon,
 .ref-table--publishers .column-store-icon {
   width: 4%;
 }
-/* line 64, sass/components-v2/_tables.scss */
+/* line 61, sass/components-v2/_tables.scss */
 .ref-table--apps .column-app-name,
 .ref-table--publishers .column-app-name {
   width: 25.2%;
 }
-/* line 67, sass/components-v2/_tables.scss */
+/* line 64, sass/components-v2/_tables.scss */
 .ref-table--apps .column-released,
 .ref-table--publishers .column-released {
   width: 8%;
 }
-/* line 70, sass/components-v2/_tables.scss */
+/* line 67, sass/components-v2/_tables.scss */
 .ref-table--apps .column-revenue,
 .ref-table--publishers .column-revenue {
   width: 12%;
 }
-/* line 73, sass/components-v2/_tables.scss */
+/* line 70, sass/components-v2/_tables.scss */
 .ref-table--apps .column-downloads,
 .ref-table--publishers .column-downloads {
   width: 14%;
 }
-/* line 76, sass/components-v2/_tables.scss */
+/* line 73, sass/components-v2/_tables.scss */
 .ref-table--apps .column-more,
 .ref-table--publishers .column-more {
   width: 9%;
 }
-/* line 79, sass/components-v2/_tables.scss */
+/* line 76, sass/components-v2/_tables.scss */
 .ref-table--apps .column-percentage-of-total,
 .ref-table--publishers .column-percentage-of-total {
   width: 23.3%;
 }
-/* line 82, sass/components-v2/_tables.scss */
+/* line 79, sass/components-v2/_tables.scss */
 .ref-table--apps .revenue-head-cell,
 .ref-table--apps .downloads-head-cell,
 .ref-table--publishers .revenue-head-cell,
@@ -2016,19 +2041,19 @@ a:hover .summary-widget__data-item__app-name {
   text-align: right;
   font-size: 1.5rem;
 }
-/* line 88, sass/components-v2/_tables.scss */
+/* line 85, sass/components-v2/_tables.scss */
 .ref-table--apps .total-for-period-head-cell span,
 .ref-table--publishers .total-for-period-head-cell span {
   display: inline-block;
 }
 @media (min-width: 2300px) {
-  /* line 88, sass/components-v2/_tables.scss */
+  /* line 85, sass/components-v2/_tables.scss */
   .ref-table--apps .total-for-period-head-cell span,
   .ref-table--publishers .total-for-period-head-cell span {
     display: inline;
   }
 }
-/* line 94, sass/components-v2/_tables.scss */
+/* line 91, sass/components-v2/_tables.scss */
 .ref-table--apps .total-for-period-head-cell span:first-child,
 .ref-table--publishers .total-for-period-head-cell span:first-child {
   margin-bottom: 0.4rem;
@@ -2036,32 +2061,32 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 1.4rem;
 }
 @media (min-width: 2300px) {
-  /* line 94, sass/components-v2/_tables.scss */
+  /* line 91, sass/components-v2/_tables.scss */
   .ref-table--apps .total-for-period-head-cell span:first-child,
   .ref-table--publishers .total-for-period-head-cell span:first-child {
     padding-right: 7px;
     display: inline;
   }
 }
-/* line 103, sass/components-v2/_tables.scss */
+/* line 100, sass/components-v2/_tables.scss */
 .ref-table--apps .total-for-period-head-cell span:nth-child(2),
 .ref-table--publishers .total-for-period-head-cell span:nth-child(2) {
   color: #ee9063;
   font-size: 1.3rem;
 }
-/* line 107, sass/components-v2/_tables.scss */
+/* line 104, sass/components-v2/_tables.scss */
 .ref-table--apps .total-for-period-head-cell span:nth-child(3),
 .ref-table--publishers .total-for-period-head-cell span:nth-child(3) {
   margin-left: 1.5rem;
   color: #6d69c5;
   font-size: 1.3rem;
 }
-/* line 113, sass/components-v2/_tables.scss */
+/* line 110, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-show-hide,
 .ref-table--publishers .app-data-cell-show-hide {
   padding-left: 1.5rem;
 }
-/* line 115, sass/components-v2/_tables.scss */
+/* line 112, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-show-hide .form-field--checkbox-list,
 .ref-table--publishers .app-data-cell-show-hide .form-field--checkbox-list {
   width: 17px;
@@ -2069,7 +2094,7 @@ a:hover .summary-widget__data-item__app-name {
   padding-top: 3px;
   vertical-align: top;
 }
-/* line 122, sass/components-v2/_tables.scss */
+/* line 119, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store,
 .ref-table--publishers .data-table__store {
   position: relative;
@@ -2078,24 +2103,24 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   vertical-align: top;
 }
-/* line 128, sass/components-v2/_tables.scss */
+/* line 125, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store:after,
 .ref-table--publishers .data-table__store:after {
   font-size: 20px;
   color: #81879d;
 }
-/* line 132, sass/components-v2/_tables.scss */
+/* line 129, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store.ref-icon-after--play-store,
 .ref-table--publishers .data-table__store.ref-icon-after--play-store {
   padding-top: 1px;
   padding-left: 1px;
 }
-/* line 135, sass/components-v2/_tables.scss */
+/* line 132, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store.ref-icon-after--play-store:after,
 .ref-table--publishers .data-table__store.ref-icon-after--play-store:after {
   font-size: 18px;
 }
-/* line 139, sass/components-v2/_tables.scss */
+/* line 136, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store.is-loading,
 .ref-table--publishers .data-table__store.is-loading {
   position: relative;
@@ -2104,19 +2129,19 @@ a:hover .summary-widget__data-item__app-name {
   height: 18px;
   background-color: #e9e9ed;
 }
-/* line 147, sass/components-v2/_tables.scss */
+/* line 144, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-app-details,
 .ref-table--publishers .app-data-cell-app-details {
   padding-top: 7px;
   padding-bottom: 5px;
 }
-/* line 151, sass/components-v2/_tables.scss */
+/* line 148, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-released-date,
 .ref-table--publishers .app-data-cell-released-date {
   padding-top: 1.7rem;
   vertical-align: top;
 }
-/* line 154, sass/components-v2/_tables.scss */
+/* line 151, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-released-date.is-loading span,
 .ref-table--publishers .app-data-cell-released-date.is-loading span {
   position: relative;
@@ -2126,7 +2151,7 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   background-color: #e9e9ed;
 }
-/* line 163, sass/components-v2/_tables.scss */
+/* line 160, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-revenue,
 .ref-table--apps .app-data-downloads,
 .ref-table--publishers .app-data-revenue,
@@ -2134,14 +2159,14 @@ a:hover .summary-widget__data-item__app-name {
   float: right;
   text-align: right;
 }
-/* line 167, sass/components-v2/_tables.scss */
+/* line 164, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-revenue.is-loading,
 .ref-table--apps .app-data-downloads.is-loading,
 .ref-table--publishers .app-data-revenue.is-loading,
 .ref-table--publishers .app-data-downloads.is-loading {
   width: 100%;
 }
-/* line 169, sass/components-v2/_tables.scss */
+/* line 166, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-revenue.is-loading span,
 .ref-table--apps .app-data-downloads.is-loading span,
 .ref-table--publishers .app-data-revenue.is-loading span,
@@ -2151,20 +2176,20 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   background-color: #e9e9ed;
 }
-/* line 174, sass/components-v2/_tables.scss */
+/* line 171, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-revenue.is-loading span.data-table__growth,
 .ref-table--apps .app-data-downloads.is-loading span.data-table__growth,
 .ref-table--publishers .app-data-revenue.is-loading span.data-table__growth,
 .ref-table--publishers .app-data-downloads.is-loading span.data-table__growth {
   width: 25%;
 }
-/* line 180, sass/components-v2/_tables.scss */
+/* line 177, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-downloads,
 .ref-table--publishers .app-data-downloads {
   display: inline-block;
   vertical-align: top;
 }
-/* line 184, sass/components-v2/_tables.scss */
+/* line 181, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__growth,
 .ref-table--publishers .data-table__growth {
   margin-top: 0.4rem;
@@ -2173,14 +2198,14 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 1.2rem;
 }
 @media (min-width: 1600px) {
-  /* line 184, sass/components-v2/_tables.scss */
+  /* line 181, sass/components-v2/_tables.scss */
   .ref-table--apps .data-table__growth,
   .ref-table--publishers .data-table__growth {
     padding-left: 5px;
     display: inline;
   }
 }
-/* line 194, sass/components-v2/_tables.scss */
+/* line 191, sass/components-v2/_tables.scss */
 .ref-table--apps .more-app-data,
 .ref-table--publishers .more-app-data {
   position: absolute;
@@ -2194,18 +2219,18 @@ a:hover .summary-widget__data-item__app-name {
   background-color: #f2f2f5;
   border-radius: 5px;
 }
-/* line 205, sass/components-v2/_tables.scss */
+/* line 202, sass/components-v2/_tables.scss */
 .ref-table--apps .more-app-data dt, .ref-table--apps .more-app-data dd,
 .ref-table--publishers .more-app-data dt,
 .ref-table--publishers .more-app-data dd {
   display: block;
 }
-/* line 208, sass/components-v2/_tables.scss */
+/* line 205, sass/components-v2/_tables.scss */
 .ref-table--apps .more-app-data dd,
 .ref-table--publishers .more-app-data dd {
   margin-bottom: 0.5rem;
 }
-/* line 212, sass/components-v2/_tables.scss */
+/* line 209, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-more,
 .ref-table--publishers .app-data-cell-more {
   position: relative;
@@ -2214,20 +2239,20 @@ a:hover .summary-widget__data-item__app-name {
   vertical-align: top;
 }
 @media (min-width: 1600px) {
-  /* line 212, sass/components-v2/_tables.scss */
+  /* line 209, sass/components-v2/_tables.scss */
   .ref-table--apps .app-data-cell-more,
   .ref-table--publishers .app-data-cell-more {
     padding-top: 17px;
   }
 }
-/* line 220, sass/components-v2/_tables.scss */
+/* line 217, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-more .more-data-link,
 .ref-table--publishers .app-data-cell-more .more-data-link {
   margin-left: 10%;
   vertical-align: top;
   font-size: 1.2rem;
 }
-/* line 227, sass/components-v2/_tables.scss */
+/* line 225, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-more.is-loading span,
 .ref-table--publishers .app-data-cell-more.is-loading span {
   position: relative;
@@ -2238,17 +2263,17 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   background-color: #e9e9ed;
 }
-/* line 237, sass/components-v2/_tables.scss */
+/* line 235, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-more .more-data-link:hover + .more-app-data,
 .ref-table--publishers .app-data-cell-more .more-data-link:hover + .more-app-data {
   display: inline-block;
 }
-/* line 241, sass/components-v2/_tables.scss */
+/* line 239, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar,
 .ref-table--publishers .data-table__value-bar {
   max-width: 300px;
 }
-/* line 243, sass/components-v2/_tables.scss */
+/* line 241, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar > span,
 .ref-table--publishers .data-table__value-bar > span {
   width: 35px;
@@ -2258,7 +2283,7 @@ a:hover .summary-widget__data-item__app-name {
   color: #6d69c5;
   text-align: center;
 }
-/* line 251, sass/components-v2/_tables.scss */
+/* line 249, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar div,
 .ref-table--publishers .data-table__value-bar div {
   width: calc(100% - 53px);
@@ -2266,29 +2291,29 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   background-color: #e6e6eb;
 }
-/* line 257, sass/components-v2/_tables.scss */
+/* line 255, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar div span,
 .ref-table--publishers .data-table__value-bar div span {
   height: 10px;
   display: block;
   background-color: #6d69c5;
 }
-/* line 262, sass/components-v2/_tables.scss */
+/* line 260, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar:first-child,
 .ref-table--publishers .data-table__value-bar:first-child {
   margin-bottom: 4px;
 }
-/* line 264, sass/components-v2/_tables.scss */
+/* line 262, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar:first-child > span,
 .ref-table--publishers .data-table__value-bar:first-child > span {
   color: #ee9063;
 }
-/* line 267, sass/components-v2/_tables.scss */
+/* line 265, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar:first-child div span,
 .ref-table--publishers .data-table__value-bar:first-child div span {
   background-color: #f5c943;
 }
-/* line 272, sass/components-v2/_tables.scss */
+/* line 270, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar.is-loading span,
 .ref-table--publishers .data-table__value-bar.is-loading span {
   width: 22px;
@@ -2297,7 +2322,12 @@ a:hover .summary-widget__data-item__app-name {
   background-color: #e9e9ed;
 }
 
-/* line 284, sass/components-v2/_tables.scss */
+/* line 279, sass/components-v2/_tables.scss */
+tr:nth-child(odd) .app-data-cell-more.is-loading {
+  background-color: #f2f2f5;
+}
+
+/* line 285, sass/components-v2/_tables.scss */
 .ref-table--apps .ratings-container,
 .ref-table--apps .ratings-full,
 .ref-table--publishers .ratings-container,
@@ -2306,46 +2336,46 @@ a:hover .summary-widget__data-item__app-name {
 .ref-table--home-chart .ratings-full {
   background-size: 65px 10px;
 }
-/* line 288, sass/components-v2/_tables.scss */
+/* line 289, sass/components-v2/_tables.scss */
 .ref-table--apps .ratings-container,
 .ref-table--publishers .ratings-container,
 .ref-table--home-chart .ratings-container {
   width: 65px;
 }
 
-/* line 293, sass/components-v2/_tables.scss */
+/* line 294, sass/components-v2/_tables.scss */
 .ref-table--publishers tbody td:first-child {
   padding-top: 17px;
   padding-bottom: 17px;
 }
-/* line 297, sass/components-v2/_tables.scss */
+/* line 298, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-row-selector {
   width: 7%;
 }
-/* line 300, sass/components-v2/_tables.scss */
+/* line 301, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-app-name {
   width: 25%;
 }
-/* line 303, sass/components-v2/_tables.scss */
+/* line 304, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-apps-number {
   width: 5%;
 }
-/* line 306, sass/components-v2/_tables.scss */
+/* line 307, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-revenue {
   width: 15%;
 }
-/* line 309, sass/components-v2/_tables.scss */
+/* line 310, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-downloads {
   width: 15%;
 }
 
-/* line 313, sass/components-v2/_tables.scss */
+/* line 314, sass/components-v2/_tables.scss */
 .ref-table--apps,
 .ref-table--apps * {
   overflow: visible;
 }
 
-/* line 318, sass/components-v2/_tables.scss */
+/* line 319, sass/components-v2/_tables.scss */
 .ref-table--apps.ref-table--apps--country .data-table__app-summary img,
 .ref-table--apps.ref-table--apps--country .data-table__app-summary .icon-flag {
   margin-top: 2px;
@@ -2353,19 +2383,19 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   border-radius: 0;
 }
-/* line 325, sass/components-v2/_tables.scss */
+/* line 326, sass/components-v2/_tables.scss */
 .ref-table--apps.ref-table--apps--country .ratings-container {
   margin-top: 2px;
   margin-bottom: 0;
 }
 
-/* line 331, sass/components-v2/_tables.scss */
+/* line 332, sass/components-v2/_tables.scss */
 .data-table__app-summary img {
   width: 42px;
   display: inline-block;
   border-radius: 9px;
 }
-/* line 336, sass/components-v2/_tables.scss */
+/* line 337, sass/components-v2/_tables.scss */
 .data-table__app-summary .data-table__app-details-container {
   width: calc(100% - 55px);
   display: inline-block;
@@ -2373,12 +2403,12 @@ a:hover .summary-widget__data-item__app-name {
   float: right;
   text-align: left;
 }
-/* line 342, sass/components-v2/_tables.scss */
+/* line 343, sass/components-v2/_tables.scss */
 .page-data-dashboard--country .data-table__app-summary .data-table__app-details-container {
   width: calc(100% - 50px);
 }
 
-/* line 347, sass/components-v2/_tables.scss */
+/* line 348, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name {
   margin: 0;
   padding-top: 1px;
@@ -2386,15 +2416,15 @@ a:hover .summary-widget__data-item__app-name {
   font-family: "Lato", sans-serif;
   font-size: 1.39rem;
 }
-/* line 353, sass/components-v2/_tables.scss */
+/* line 354, sass/components-v2/_tables.scss */
 .page-data-dashboard--country .data-table__app-summary__app-name {
   margin-top: 9px;
 }
-/* line 356, sass/components-v2/_tables.scss */
+/* line 357, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name a {
   padding-bottom: 0.5rem;
 }
-/* line 360, sass/components-v2/_tables.scss */
+/* line 361, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name.is-loading {
   width: 80%;
   max-width: 200px;
@@ -2697,7 +2727,7 @@ a:hover .summary-widget__data-item__app-name {
 /* line 52, sass/components-v2/_toggle.scss */
 .filter-toggle input {
   position: absolute;
-  z-index: -1;
+  left: -999rem;
 }
 /* line 57, sass/components-v2/_toggle.scss */
 .filter-toggle input:checked ~ label {
@@ -3227,16 +3257,18 @@ a:hover .summary-widget__data-item__app-name {
 }
 /* line 141, sass/templates-v2/_ad-charts.scss */
 .ref-table--ad-network .data-table__app-summary img + div h2 {
+  padding-right: 0.7rem;
   font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 @media screen and (max-width: 1279px) {
-  /* line 148, sass/templates-v2/_ad-charts.scss */
+  /* line 149, sass/templates-v2/_ad-charts.scss */
   .ref-table--ad-network .data-table__app-summary.data-table__app-summary--app-icon img {
     width: 25px;
     margin-left: 8px;
+    margin-right: 12px;
     display: inline-block;
     border-radius: 7px;
   }
@@ -3288,85 +3320,87 @@ a:hover .summary-widget__data-item__app-name {
 .page-data-dashboard.page-app-rank-history .chart-container--split .growth-on-last-period {
   position: relative;
   top: 7px;
+  display: inline-block;
+  vertical-align: top;
   font-size: 14px;
 }
-/* line 24, sass/templates-v2/_app-rank-history.scss */
+/* line 26, sass/templates-v2/_app-rank-history.scss */
 .page-data-dashboard.page-app-rank-history .chart-container--split .growth-on-last-period:after {
   position: relative;
   top: -5px;
   left: -1px;
 }
-/* line 30, sass/templates-v2/_app-rank-history.scss */
+/* line 32, sass/templates-v2/_app-rank-history.scss */
 .page-data-dashboard.page-app-rank-history .chart-container--split .total-for-period-container {
   padding-right: 15px;
 }
 
-/* line 34, sass/templates-v2/_app-rank-history.scss */
+/* line 36, sass/templates-v2/_app-rank-history.scss */
 .ref-table--rank-history {
   margin-bottom: 3rem;
 }
-/* line 36, sass/templates-v2/_app-rank-history.scss */
+/* line 38, sass/templates-v2/_app-rank-history.scss */
 .ref-table--rank-history th {
   font-size: 15px;
 }
-/* line 39, sass/templates-v2/_app-rank-history.scss */
+/* line 41, sass/templates-v2/_app-rank-history.scss */
 .ref-table--rank-history th:first-child {
   padding-left: 2rem;
 }
-/* line 42, sass/templates-v2/_app-rank-history.scss */
+/* line 44, sass/templates-v2/_app-rank-history.scss */
 .ref-table--rank-history th:last-child,
 .ref-table--rank-history td:last-child {
   padding-right: 2rem;
 }
-/* line 47, sass/templates-v2/_app-rank-history.scss */
+/* line 49, sass/templates-v2/_app-rank-history.scss */
 .ref-table--rank-history tbody tr {
   height: 35px;
 }
-/* line 50, sass/templates-v2/_app-rank-history.scss */
+/* line 52, sass/templates-v2/_app-rank-history.scss */
 .ref-table--rank-history tbody td {
   padding-top: 7px;
   padding-bottom: 6px;
 }
-/* line 53, sass/templates-v2/_app-rank-history.scss */
+/* line 55, sass/templates-v2/_app-rank-history.scss */
 .ref-table--rank-history tbody td:first-child {
   padding-left: 2rem;
 }
 
-/* line 59, sass/templates-v2/_app-rank-history.scss */
+/* line 61, sass/templates-v2/_app-rank-history.scss */
 .column-rank-history--date {
   width: 24.13793%;
 }
 
-/* line 62, sass/templates-v2/_app-rank-history.scss */
+/* line 64, sass/templates-v2/_app-rank-history.scss */
 .column-rank-history--grossing-rank {
   width: 20.57471%;
 }
 
-/* line 65, sass/templates-v2/_app-rank-history.scss */
+/* line 67, sass/templates-v2/_app-rank-history.scss */
 .column-rank-history--download-rank {
   width: 18.3908%;
 }
 
-/* line 68, sass/templates-v2/_app-rank-history.scss */
+/* line 70, sass/templates-v2/_app-rank-history.scss */
 .column-rank-history--revenue {
   width: 14.94253%;
 }
 
-/* line 71, sass/templates-v2/_app-rank-history.scss */
+/* line 73, sass/templates-v2/_app-rank-history.scss */
 .column-rank-history--downloads {
   width: 21.95402%;
 }
 
-/* line 74, sass/templates-v2/_app-rank-history.scss */
+/* line 76, sass/templates-v2/_app-rank-history.scss */
 .rank-history-data-cell--rank {
   position: relative;
 }
-/* line 76, sass/templates-v2/_app-rank-history.scss */
+/* line 78, sass/templates-v2/_app-rank-history.scss */
 .rank-history-data-cell--rank span {
   display: inline-block;
   vertical-align: baseline;
 }
-/* line 80, sass/templates-v2/_app-rank-history.scss */
+/* line 82, sass/templates-v2/_app-rank-history.scss */
 .rank-history-data-cell--rank .data-table__revenue-rank-growth,
 .rank-history-data-cell--rank .data-table__download-rank-growth {
   position: absolute;
@@ -3375,20 +3409,20 @@ a:hover .summary-widget__data-item__app-name {
   float: right;
   font-weight: 700;
 }
-/* line 87, sass/templates-v2/_app-rank-history.scss */
+/* line 89, sass/templates-v2/_app-rank-history.scss */
 .rank-history-data-cell--rank .data-table__revenue-rank-growth:after,
 .rank-history-data-cell--rank .data-table__download-rank-growth:after {
   top: -7px;
   left: -2px;
 }
 
-/* line 93, sass/templates-v2/_app-rank-history.scss */
+/* line 95, sass/templates-v2/_app-rank-history.scss */
 .rank-history-head-cell--revenue-downloads,
 .rank-history-data-cell--revenue-downloads {
   text-align: right;
 }
 
-/* line 97, sass/templates-v2/_app-rank-history.scss */
+/* line 99, sass/templates-v2/_app-rank-history.scss */
 .data-table__rank-history-rev-down {
   padding-left: 5px;
   font-size: 12px;
@@ -3549,57 +3583,73 @@ a:hover .summary-widget__data-item__app-name {
 }
 /* line 132, sass/templates-v2/_app-ratings-info.scss */
 .page-app .reviews-and-ratings .reviews-and-ratings-title {
-  margin: -9px 29px 29px 0;
-  display: inline-block;
+  width: 100%;
+  margin: -9px 29px 15px 0;
+  display: block;
   float: left;
 }
-/* line 137, sass/templates-v2/_app-ratings-info.scss */
+@media (min-width: 1280px) {
+  /* line 132, sass/templates-v2/_app-ratings-info.scss */
+  .page-app .reviews-and-ratings .reviews-and-ratings-title {
+    width: auto;
+    margin-bottom: 29px;
+    display: inline-block;
+  }
+}
+/* line 143, sass/templates-v2/_app-ratings-info.scss */
 .page-app .reviews-and-ratings .ratings-container {
   margin-right: 17px;
   display: inline-block;
   vertical-align: middle;
 }
-/* line 142, sass/templates-v2/_app-ratings-info.scss */
+/* line 148, sass/templates-v2/_app-ratings-info.scss */
 .page-app .reviews-and-ratings button {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-/* line 146, sass/templates-v2/_app-ratings-info.scss */
+/* line 152, sass/templates-v2/_app-ratings-info.scss */
 .page-app .reviews-and-ratings .form-field--select {
   margin-right: 10px;
+  margin-bottom: 2rem;
   display: inline-block;
   float: left;
 }
-/* line 151, sass/templates-v2/_app-ratings-info.scss */
+@media (min-width: 1280px) {
+  /* line 152, sass/templates-v2/_app-ratings-info.scss */
+  .page-app .reviews-and-ratings .form-field--select {
+    margin-bottom: 0;
+  }
+}
+/* line 161, sass/templates-v2/_app-ratings-info.scss */
 .page-app .reviews-and-ratings .toggle-container {
   padding-top: 29px;
   padding-left: 2px;
 }
-/* line 156, sass/templates-v2/_app-ratings-info.scss */
+/* line 166, sass/templates-v2/_app-ratings-info.scss */
 .page-app .reviews-and-ratings__actions-container {
   overflow: visible;
   float: left;
 }
-/* line 160, sass/templates-v2/_app-ratings-info.scss */
+/* line 170, sass/templates-v2/_app-ratings-info.scss */
 .page-app .average-ratings-container {
   width: 211px;
   display: inline-block;
   vertical-align: top;
 }
-/* line 164, sass/templates-v2/_app-ratings-info.scss */
+/* line 174, sass/templates-v2/_app-ratings-info.scss */
 .page-app .average-ratings-container h3, .page-app .average-ratings-container div, .page-app .average-ratings-container span {
   margin: 0;
   display: inline-block;
   vertical-align: middle;
 }
-/* line 169, sass/templates-v2/_app-ratings-info.scss */
+/* line 179, sass/templates-v2/_app-ratings-info.scss */
 .page-app .average-ratings-container h3 {
   padding-right: 7px;
   margin-bottom: 7px;
   vertical-align: top;
   font-size: 2rem;
 }
-/* line 175, sass/templates-v2/_app-ratings-info.scss */
+/* line 185, sass/templates-v2/_app-ratings-info.scss */
 .page-app .average-ratings-container .average-ratings-container__number,
 .page-app .average-ratings-container .ratings-average-label {
   display: inline-block;
@@ -3608,26 +3658,26 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 1.6rem;
   line-height: 1.2;
 }
-/* line 183, sass/templates-v2/_app-ratings-info.scss */
+/* line 193, sass/templates-v2/_app-ratings-info.scss */
 .page-app .average-ratings-container .average-ratings-container__number {
   padding-top: 6px;
 }
-/* line 186, sass/templates-v2/_app-ratings-info.scss */
+/* line 196, sass/templates-v2/_app-ratings-info.scss */
 .page-app .average-ratings-container .ratings-average-label {
   padding-right: 12px;
   padding-left: 1px;
   color: #727686;
 }
-/* line 192, sass/templates-v2/_app-ratings-info.scss */
+/* line 202, sass/templates-v2/_app-ratings-info.scss */
 .page-app .customer-reviews {
   padding-top: 3rem;
   display: none;
 }
-/* line 196, sass/templates-v2/_app-ratings-info.scss */
+/* line 206, sass/templates-v2/_app-ratings-info.scss */
 .page-app .customer-review {
   margin-bottom: 3rem;
 }
-/* line 199, sass/templates-v2/_app-ratings-info.scss */
+/* line 209, sass/templates-v2/_app-ratings-info.scss */
 .page-app .customer-review__title {
   margin: 2px 0 0;
   display: inline-block;
@@ -3635,7 +3685,7 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 1.8rem;
   color: #29292c;
 }
-/* line 206, sass/templates-v2/_app-ratings-info.scss */
+/* line 216, sass/templates-v2/_app-ratings-info.scss */
 .page-app .customer-review__content {
   margin-top: 12px;
   padding-left: 2px;
@@ -3643,61 +3693,61 @@ a:hover .summary-widget__data-item__app-name {
   line-height: 1.7;
   color: #5b5d61;
 }
-/* line 213, sass/templates-v2/_app-ratings-info.scss */
+/* line 223, sass/templates-v2/_app-ratings-info.scss */
 .page-app .more-reviews-container {
   display: none;
 }
-/* line 215, sass/templates-v2/_app-ratings-info.scss */
+/* line 225, sass/templates-v2/_app-ratings-info.scss */
 .page-app .more-reviews-container li:last-child article {
   margin-bottom: 0;
 }
-/* line 219, sass/templates-v2/_app-ratings-info.scss */
+/* line 229, sass/templates-v2/_app-ratings-info.scss */
 .page-app .release-notes-container {
   margin-top: 3rem;
   display: none;
 }
-/* line 222, sass/templates-v2/_app-ratings-info.scss */
+/* line 232, sass/templates-v2/_app-ratings-info.scss */
 .page-app .release-notes-container .heading-style--heading-four span {
   display: inline;
 }
-/* line 226, sass/templates-v2/_app-ratings-info.scss */
+/* line 236, sass/templates-v2/_app-ratings-info.scss */
 .page-app .more-apps-listed {
   margin-top: -5px;
 }
 
-/* line 232, sass/templates-v2/_app-ratings-info.scss */
+/* line 242, sass/templates-v2/_app-ratings-info.scss */
 .page-app-ratings-info__app-description span,
 .page-app-ratings-info__release-notes span {
   margin-bottom: 1em;
   display: block;
 }
-/* line 235, sass/templates-v2/_app-ratings-info.scss */
+/* line 245, sass/templates-v2/_app-ratings-info.scss */
 .page-app-ratings-info__app-description span:last-child,
 .page-app-ratings-info__release-notes span:last-child {
   margin-bottom: 0;
 }
-/* line 238, sass/templates-v2/_app-ratings-info.scss */
+/* line 248, sass/templates-v2/_app-ratings-info.scss */
 .page-app-ratings-info__app-description span.text-ellipses,
 .page-app-ratings-info__release-notes span.text-ellipses {
   display: inline;
 }
-/* line 240, sass/templates-v2/_app-ratings-info.scss */
+/* line 250, sass/templates-v2/_app-ratings-info.scss */
 .is-open .page-app-ratings-info__app-description span.text-ellipses, .is-open
 .page-app-ratings-info__release-notes span.text-ellipses {
   display: none;
 }
-/* line 244, sass/templates-v2/_app-ratings-info.scss */
+/* line 254, sass/templates-v2/_app-ratings-info.scss */
 .page-app-ratings-info__app-description span.is-hidden-text,
 .page-app-ratings-info__release-notes span.is-hidden-text {
   display: none;
 }
-/* line 246, sass/templates-v2/_app-ratings-info.scss */
+/* line 256, sass/templates-v2/_app-ratings-info.scss */
 .is-open .page-app-ratings-info__app-description span.is-hidden-text, .is-open
 .page-app-ratings-info__release-notes span.is-hidden-text {
   display: inline;
 }
 
-/* line 252, sass/templates-v2/_app-ratings-info.scss */
+/* line 262, sass/templates-v2/_app-ratings-info.scss */
 .page-app-ratings-info__app-description + p {
   display: none;
 }
@@ -4438,13 +4488,23 @@ a:hover .summary-widget__data-item__app-name {
   margin-bottom: 1.5rem;
   display: block;
 }
-/* line 58, sass/templates-v2/_data-dashboard--app.scss */
+/* line 57, sass/templates-v2/_data-dashboard--app.scss */
+.is-ie .page-app .page-header__page-toggle label {
+  font-size: 1.3rem;
+}
+@media (min-width: 1280px) {
+  /* line 61, sass/templates-v2/_data-dashboard--app.scss */
+  .is-ie .page-app .page-header__page-toggle label {
+    font-size: 1.4rem;
+  }
+}
+/* line 68, sass/templates-v2/_data-dashboard--app.scss */
 .page-app.page-data-dashboard .page-header__page-toggle {
   margin-right: 0;
   margin-bottom: 1.5rem;
   display: block;
 }
-/* line 63, sass/templates-v2/_data-dashboard--app.scss */
+/* line 73, sass/templates-v2/_data-dashboard--app.scss */
 .page-app.page-data-dashboard .page-header__data-info-text {
   position: relative;
   top: 4px;
@@ -4452,11 +4512,11 @@ a:hover .summary-widget__data-item__app-name {
   padding-left: 15px;
   font-weight: 400;
 }
-/* line 70, sass/templates-v2/_data-dashboard--app.scss */
+/* line 80, sass/templates-v2/_data-dashboard--app.scss */
 .page-app.page-data-dashboard .page-header__data-info-icon {
   padding-top: 8px;
 }
-/* line 74, sass/templates-v2/_data-dashboard--app.scss */
+/* line 84, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .page-header__app-price-details {
   margin-bottom: 19px;
   margin-left: 20px;
@@ -4467,7 +4527,11 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 16px;
   color: #29292c;
 }
-/* line 84, sass/templates-v2/_data-dashboard--app.scss */
+/* line 93, sass/templates-v2/_data-dashboard--app.scss */
+.is-safari .page-app .page-header__app-price-details {
+  margin-bottom: 18px;
+}
+/* line 97, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .page-header__app-store {
   display: inline-block;
   vertical-align: top;
@@ -4477,7 +4541,7 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 14px;
   color: #28292c;
 }
-/* line 92, sass/templates-v2/_data-dashboard--app.scss */
+/* line 105, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .page-header__app-store:before {
   position: relative;
   top: -1px;
@@ -4485,63 +4549,67 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 18px;
   color: #81879d;
 }
-/* line 100, sass/templates-v2/_data-dashboard--app.scss */
+/* line 113, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .page-header__app-store.ref-icon-before--ios:before {
   top: -2px;
   font-size: 19px;
 }
-/* line 106, sass/templates-v2/_data-dashboard--app.scss */
+/* line 119, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .page-header__app-info-and-actions {
   width: 302px;
 }
-/* line 109, sass/templates-v2/_data-dashboard--app.scss */
+/* line 122, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .page-header__app-title-links {
   width: calc(100% - 380px);
 }
-/* line 112, sass/templates-v2/_data-dashboard--app.scss */
+/* line 124, sass/templates-v2/_data-dashboard--app.scss */
+.is-ie .page-app .page-header__app-title-links {
+  width: calc(100% - 400px);
+}
+/* line 128, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .app-developer-name {
   margin-right: 8px;
   margin-left: 13px;
   font-weight: 600;
   font-size: 14px;
 }
-/* line 117, sass/templates-v2/_data-dashboard--app.scss */
+/* line 133, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .app-developer-name a {
   color: #6d69c5;
 }
-/* line 119, sass/templates-v2/_data-dashboard--app.scss */
+/* line 135, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .app-developer-name a:hover {
   color: #4b46b5;
 }
-/* line 124, sass/templates-v2/_data-dashboard--app.scss */
+/* line 140, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .data-table-section .section-title {
   width: 100px;
 }
-/* line 127, sass/templates-v2/_data-dashboard--app.scss */
+/* line 143, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .data-table-section__filters {
   width: calc(100% - 125px);
 }
-/* line 129, sass/templates-v2/_data-dashboard--app.scss */
+/* line 145, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .data-table-section__filters label {
   float: left;
 }
-/* line 133, sass/templates-v2/_data-dashboard--app.scss */
+/* line 149, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .data-table-section__filters .secondary-filter:first-child {
   width: 26.2%;
 }
-/* line 136, sass/templates-v2/_data-dashboard--app.scss */
+/* line 152, sass/templates-v2/_data-dashboard--app.scss */
 .page-app .data-table-section__filters .secondary-filter:last-of-type {
   width: 20.7%;
   float: left;
 }
 
-/* line 143, sass/templates-v2/_data-dashboard--app.scss */
+/* line 159, sass/templates-v2/_data-dashboard--app.scss */
 .page-header_action-button {
   margin-left: 10px;
   float: right;
 }
 
-/* line 147, sass/templates-v2/_data-dashboard--app.scss */
+/* line 163, sass/templates-v2/_data-dashboard--app.scss */
 .page-header__text-link {
   padding-top: 10px;
   padding-right: 2px;
@@ -4550,18 +4618,18 @@ a:hover .summary-widget__data-item__app-name {
   float: right;
   color: #6d69c5;
 }
-/* line 154, sass/templates-v2/_data-dashboard--app.scss */
+/* line 170, sass/templates-v2/_data-dashboard--app.scss */
 .page-header__text-link:hover {
   color: #4b46b5;
 }
 
-/* line 158, sass/templates-v2/_data-dashboard--app.scss */
+/* line 174, sass/templates-v2/_data-dashboard--app.scss */
 .page-header__text-link--top {
   padding-top: 0;
   margin-left: 20px;
 }
 
-/* line 162, sass/templates-v2/_data-dashboard--app.scss */
+/* line 178, sass/templates-v2/_data-dashboard--app.scss */
 .label-my-app {
   position: relative;
   top: -3px;
@@ -4632,7 +4700,7 @@ a:hover .summary-widget__data-item__app-name {
 }
 /* line 44, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .secondary-filters-container .secondary-filter .form-field--select__box {
-  min-width: auto;
+  min-width: inherit;
 }
 /* line 47, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .secondary-filters-container .secondary-filter:nth-child(1), .page-data-dashboard .secondary-filters-container .secondary-filter:nth-child(2), .page-data-dashboard .secondary-filters-container .secondary-filter:nth-child(3) {
@@ -4645,7 +4713,7 @@ a:hover .summary-widget__data-item__app-name {
 @media (min-width: 1280px) {
   /* line 52, sass/templates-v2/_data-dashboard.scss */
   .page-data-dashboard .secondary-filters-container .secondary-filter .form-field--select__box {
-    width: auto;
+    width: inherit;
     min-width: 94px;
   }
 }
@@ -4893,7 +4961,7 @@ a:hover .summary-widget__data-item__app-name {
 }
 /* line 258, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__filters .secondary-filter .form-field--select__box {
-  min-width: auto;
+  min-width: inherit;
 }
 /* line 262, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__filters > label {
@@ -5121,7 +5189,7 @@ a:hover .summary-widget__data-item__app-name {
   position: relative;
   left: 0;
   width: 1220px;
-  min-width: auto;
+  min-width: inherit;
   margin-left: 0;
   display: block;
 }
@@ -6185,11 +6253,19 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 0;
 }
 /* line 826, sass/templates-v2/_home.scss */
+.no-flexbox .home-section-featured-in .featured-in-list {
+  display: block;
+}
+/* line 829, sass/templates-v2/_home.scss */
 .home-section-featured-in .featured-in-list li {
   display: inline-block;
   width: auto;
 }
-/* line 829, sass/templates-v2/_home.scss */
+/* line 832, sass/templates-v2/_home.scss */
+.no-flexbox .home-section-featured-in .featured-in-list li {
+  width: 16.6%;
+}
+/* line 835, sass/templates-v2/_home.scss */
 .home-section-featured-in .featured-in-list li img {
   width: 100%;
   max-width: 160px;
@@ -6199,20 +6275,20 @@ a:hover .summary-widget__data-item__app-name {
   .home-section-featured-in {
     padding-top: 2rem;
   }
-  /* line 837, sass/templates-v2/_home.scss */
+  /* line 843, sass/templates-v2/_home.scss */
   .home-section-featured-in .section-title {
     margin-bottom: 0rem;
   }
 }
 
-/* line 842, sass/templates-v2/_home.scss */
+/* line 848, sass/templates-v2/_home.scss */
 .home-section-sign-up {
   padding-top: 83px;
   padding-bottom: 90px;
   text-align: center;
   background-color: #363a47;
 }
-/* line 847, sass/templates-v2/_home.scss */
+/* line 853, sass/templates-v2/_home.scss */
 .home-section-sign-up .section-title {
   width: 80%;
   max-width: 590px;
@@ -6222,23 +6298,23 @@ a:hover .summary-widget__data-item__app-name {
   line-height: 1.5;
   color: #fcfdfd;
 }
-/* line 855, sass/templates-v2/_home.scss */
+/* line 861, sass/templates-v2/_home.scss */
 .home-section-sign-up .section-title span {
   color: #ff496a;
 }
 @media (min-width: 1600px) {
-  /* line 842, sass/templates-v2/_home.scss */
+  /* line 848, sass/templates-v2/_home.scss */
   .home-section-sign-up {
     padding-top: 100px;
     padding-bottom: 110px;
   }
-  /* line 862, sass/templates-v2/_home.scss */
+  /* line 868, sass/templates-v2/_home.scss */
   .home-section-sign-up .section-title {
     max-width: 650px;
     margin-bottom: 4.3rem;
     font-size: 28px;
   }
-  /* line 867, sass/templates-v2/_home.scss */
+  /* line 873, sass/templates-v2/_home.scss */
   .home-section-sign-up .ref-button--primary--large {
     font-size: 1.7rem;
   }
@@ -6598,28 +6674,33 @@ a:hover .summary-widget__data-item__app-name {
   text-align: right;
   overflow: visible;
 }
-/* line 235, sass/templates-v2/_live-charts.scss */
+/* line 233, sass/templates-v2/_live-charts.scss */
+.live-chart__cell__rank .ref-icon-after--up,
+.live-chart__cell__rank .ref-icon-after--down {
+  vertical-align: top;
+}
+/* line 236, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__rank .ref-icon-after--up:after,
 .live-chart__cell__rank .ref-icon-after--down:after {
   position: relative;
   top: -6px;
 }
-/* line 240, sass/templates-v2/_live-charts.scss */
+/* line 241, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__rank .ref-icon-after--up,
 .live-chart__cell__rank .ref-icon-after--up:after {
   color: #1bc79f;
 }
-/* line 244, sass/templates-v2/_live-charts.scss */
+/* line 245, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__rank .ref-icon-after--down,
 .live-chart__cell__rank .ref-icon-after--down:after {
   color: #ff496a;
 }
-/* line 248, sass/templates-v2/_live-charts.scss */
+/* line 249, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__rank.is-loading {
   float: right;
 }
 
-/* line 252, sass/templates-v2/_live-charts.scss */
+/* line 253, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__new-entry {
   position: relative;
   top: -2px;
@@ -6638,7 +6719,7 @@ a:hover .summary-widget__data-item__app-name {
   background-color: #6d69c5;
 }
 
-/* line 269, sass/templates-v2/_live-charts.scss */
+/* line 270, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__publisher-name {
   width: calc(100% - 65px);
   display: block;
@@ -6648,18 +6729,18 @@ a:hover .summary-widget__data-item__app-name {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 277, sass/templates-v2/_live-charts.scss */
+/* line 278, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__publisher-name:hover {
   color: #4b46b5;
 }
-/* line 280, sass/templates-v2/_live-charts.scss */
+/* line 281, sass/templates-v2/_live-charts.scss */
 .live-chart--compact-view .live-chart__cell__publisher-name {
   position: relative;
   top: 1px;
   width: calc(100% - 120px);
   display: inline-block;
 }
-/* line 286, sass/templates-v2/_live-charts.scss */
+/* line 287, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__publisher-name.is-loading {
   width: calc(100% - 150px);
   max-width: 200px;
@@ -6667,12 +6748,12 @@ a:hover .summary-widget__data-item__app-name {
   margin-bottom: 2px;
   background-color: #e9e9ed;
 }
-/* line 292, sass/templates-v2/_live-charts.scss */
+/* line 293, sass/templates-v2/_live-charts.scss */
 .live-chart--compact-view .live-chart__cell__publisher-name.is-loading {
   display: none;
 }
 
-/* line 297, sass/templates-v2/_live-charts.scss */
+/* line 298, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__number-of-ratings,
 .live-chart__cell__app-price {
   display: inline-block;
@@ -6680,36 +6761,37 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 12px;
   color: #363a47;
 }
-/* line 303, sass/templates-v2/_live-charts.scss */
+/* line 304, sass/templates-v2/_live-charts.scss */
 .live-chart--compact-view .live-chart__cell__number-of-ratings, .live-chart--compact-view
 .live-chart__cell__app-price {
   display: none;
 }
 
-/* line 307, sass/templates-v2/_live-charts.scss */
+/* line 308, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__number-of-ratings {
   padding-left: 5px;
   display: none;
 }
 @media (min-width: 1280px) {
-  /* line 307, sass/templates-v2/_live-charts.scss */
+  /* line 308, sass/templates-v2/_live-charts.scss */
   .live-chart__cell__number-of-ratings {
     display: inline-block;
   }
 }
 
-/* line 314, sass/templates-v2/_live-charts.scss */
+/* line 315, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__app-price {
   padding-top: 2px;
 }
 @media (min-width: 1280px) {
-  /* line 314, sass/templates-v2/_live-charts.scss */
+  /* line 315, sass/templates-v2/_live-charts.scss */
   .live-chart__cell__app-price {
+    padding-top: 0;
     padding-left: 8px;
   }
 }
 
-/* line 320, sass/templates-v2/_live-charts.scss */
+/* line 322, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__growth,
 .live-chart__cell__app-downloads-revenue {
   display: inline-block;
@@ -6719,65 +6801,65 @@ a:hover .summary-widget__data-item__app-name {
   font-weight: 700;
   color: #363a47;
 }
-/* line 328, sass/templates-v2/_live-charts.scss */
+/* line 330, sass/templates-v2/_live-charts.scss */
 .live-chart--compact-view .live-chart__cell__growth, .live-chart--compact-view
 .live-chart__cell__app-downloads-revenue {
   padding-top: 4px;
 }
-/* line 330, sass/templates-v2/_live-charts.scss */
+/* line 332, sass/templates-v2/_live-charts.scss */
 .live-chart--compact-view .live-chart__cell__growth.is-loading, .live-chart--compact-view .live-chart__cell__growth.is-no-data, .live-chart--compact-view
 .live-chart__cell__app-downloads-revenue.is-loading, .live-chart--compact-view
 .live-chart__cell__app-downloads-revenue.is-no-data {
   padding-top: 0;
 }
-/* line 334, sass/templates-v2/_live-charts.scss */
+/* line 336, sass/templates-v2/_live-charts.scss */
 .live-chart--compact-view .live-chart__cell__growth.is-no-data, .live-chart--compact-view
 .live-chart__cell__app-downloads-revenue.is-no-data {
   margin-bottom: 2px;
 }
-/* line 338, sass/templates-v2/_live-charts.scss */
+/* line 340, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__growth.positive-colour,
 .live-chart__cell__app-downloads-revenue.positive-colour {
   color: #1bc79f;
 }
-/* line 341, sass/templates-v2/_live-charts.scss */
+/* line 343, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__growth.negative-colour,
 .live-chart__cell__app-downloads-revenue.negative-colour {
   color: #ff496a;
 }
-/* line 344, sass/templates-v2/_live-charts.scss */
+/* line 346, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__growth span,
 .live-chart__cell__app-downloads-revenue span {
   padding-top: 2px;
   display: inline-block;
   vertical-align: top;
 }
-/* line 349, sass/templates-v2/_live-charts.scss */
+/* line 351, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__growth:before,
 .live-chart__cell__app-downloads-revenue:before {
   font-size: 18px;
 }
-/* line 353, sass/templates-v2/_live-charts.scss */
+/* line 355, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__growth.ref-icon-before--download:before,
 .live-chart__cell__app-downloads-revenue.ref-icon-before--download:before {
   padding-right: 6px;
 }
-/* line 358, sass/templates-v2/_live-charts.scss */
+/* line 360, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__growth.ref-icon-before--revenue:before,
 .live-chart__cell__app-downloads-revenue.ref-icon-before--revenue:before {
   padding-right: 7px;
 }
 
-/* line 363, sass/templates-v2/_live-charts.scss */
+/* line 365, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__growth {
   padding-left: 7px;
 }
-/* line 365, sass/templates-v2/_live-charts.scss */
+/* line 367, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__growth.is-loading {
   display: none;
 }
 
-/* line 369, sass/templates-v2/_live-charts.scss */
+/* line 371, sass/templates-v2/_live-charts.scss */
 .live-chart__cell__no-results {
   width: 100%;
   padding-top: 6px;
@@ -6915,7 +6997,7 @@ a:hover .summary-widget__data-item__app-name {
   /* line 78, sass/templates-v2/_my-account--my-list.scss */
   .page-my-account .page-sub-title,
   .page-faqs .page-sub-title {
-    padding-top: 1.5rem;
+    padding-top: 1.1rem;
     padding-left: 2.6rem;
     margin-bottom: 0;
     display: inline-block;
@@ -6936,19 +7018,26 @@ a:hover .summary-widget__data-item__app-name {
   margin-bottom: 1.3rem;
 }
 
-/* line 107, sass/templates-v2/_my-account--my-list.scss */
+@media (min-width: 1280px) {
+  /* line 107, sass/templates-v2/_my-account--my-list.scss */
+  .page-faqs .page-sub-title {
+    padding-top: 1.5rem;
+  }
+}
+
+/* line 114, sass/templates-v2/_my-account--my-list.scss */
 .page-my-account--details .common-page-header {
   margin-bottom: 1.3rem;
 }
 
-/* line 111, sass/templates-v2/_my-account--my-list.scss */
+/* line 118, sass/templates-v2/_my-account--my-list.scss */
 .common-summary-actions {
   padding-top: 5px;
   display: inline-block;
   vertical-align: top;
   float: right;
 }
-/* line 116, sass/templates-v2/_my-account--my-list.scss */
+/* line 123, sass/templates-v2/_my-account--my-list.scss */
 .common-summary-actions > a,
 .common-summary-actions > .form-field--search {
   margin-left: 10px;
@@ -6956,26 +7045,26 @@ a:hover .summary-widget__data-item__app-name {
   vertical-align: top;
   float: right;
 }
-/* line 123, sass/templates-v2/_my-account--my-list.scss */
+/* line 130, sass/templates-v2/_my-account--my-list.scss */
 .page-my-lists .common-summary-actions, .page-linked-accounts .common-summary-actions, .page-match-ad-units .common-summary-actions, .page-faqs .common-summary-actions {
   padding-top: 3px;
 }
 
-/* line 130, sass/templates-v2/_my-account--my-list.scss */
+/* line 137, sass/templates-v2/_my-account--my-list.scss */
 .account-details__summary {
   padding: 4px 0 6px;
   margin-bottom: 18px;
   font-size: 14px;
   border-bottom: 1px solid #e1e5e8;
 }
-/* line 135, sass/templates-v2/_my-account--my-list.scss */
+/* line 142, sass/templates-v2/_my-account--my-list.scss */
 .account-details__summary dt, .account-details__summary dd {
   margin-bottom: 11px;
   display: inline-block;
   float: left;
   vertical-align: middle;
 }
-/* line 141, sass/templates-v2/_my-account--my-list.scss */
+/* line 148, sass/templates-v2/_my-account--my-list.scss */
 .account-details__summary dt {
   min-width: 90px;
   padding-right: 10px;
@@ -6983,16 +7072,16 @@ a:hover .summary-widget__data-item__app-name {
   font-weight: 600;
   clear: both;
 }
-/* line 147, sass/templates-v2/_my-account--my-list.scss */
+/* line 154, sass/templates-v2/_my-account--my-list.scss */
 .account-details__summary dt:first-child {
   margin-right: 10px;
 }
-/* line 151, sass/templates-v2/_my-account--my-list.scss */
+/* line 158, sass/templates-v2/_my-account--my-list.scss */
 .account-details__summary dd {
   font-family: "Lato", sans-serif;
   color: #727686;
 }
-/* line 155, sass/templates-v2/_my-account--my-list.scss */
+/* line 162, sass/templates-v2/_my-account--my-list.scss */
 .account-details__summary .account-details__account-type {
   padding: 4px 20px 5px;
   margin-top: -4px;
@@ -7004,20 +7093,20 @@ a:hover .summary-widget__data-item__app-name {
   border-radius: 20px;
   background-color: #6d69c5;
 }
-/* line 166, sass/templates-v2/_my-account--my-list.scss */
+/* line 173, sass/templates-v2/_my-account--my-list.scss */
 .account-details__summary .account-details__account-type-free {
   background-color: #81879d;
 }
-/* line 169, sass/templates-v2/_my-account--my-list.scss */
+/* line 176, sass/templates-v2/_my-account--my-list.scss */
 .account-details__summary .account-details__account-type-pub {
   background-color: #1bc79f;
 }
-/* line 172, sass/templates-v2/_my-account--my-list.scss */
+/* line 179, sass/templates-v2/_my-account--my-list.scss */
 .account-details__summary .account-details__account-type-pro {
   background-color: #6d69c5;
 }
 
-/* line 176, sass/templates-v2/_my-account--my-list.scss */
+/* line 183, sass/templates-v2/_my-account--my-list.scss */
 .account-details__action-link {
   margin-bottom: 10px;
   display: block;
@@ -7026,43 +7115,43 @@ a:hover .summary-widget__data-item__app-name {
   font-weight: 400;
   color: #6d69c5;
 }
-/* line 183, sass/templates-v2/_my-account--my-list.scss */
+/* line 190, sass/templates-v2/_my-account--my-list.scss */
 .account-details__action-link:hover {
   color: #4b46b5;
 }
 
-/* line 187, sass/templates-v2/_my-account--my-list.scss */
+/* line 194, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account {
   table-layout: auto;
 }
-/* line 189, sass/templates-v2/_my-account--my-list.scss */
+/* line 196, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account td {
   padding-right: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 192, sass/templates-v2/_my-account--my-list.scss */
+/* line 199, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account td:first-child {
   font-size: 1.39rem;
   font-weight: 700;
 }
-/* line 196, sass/templates-v2/_my-account--my-list.scss */
+/* line 203, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account td a {
   display: inline-block;
   vertical-align: middle;
   color: #6d69c5;
 }
-/* line 200, sass/templates-v2/_my-account--my-list.scss */
+/* line 207, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account td a:hover {
   color: #4b46b5;
 }
-/* line 205, sass/templates-v2/_my-account--my-list.scss */
+/* line 212, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account th {
   padding-bottom: 1.3rem;
   font-size: 1.5rem;
 }
-/* line 209, sass/templates-v2/_my-account--my-list.scss */
+/* line 216, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .licenses-data-cell--user,
 .ref-table--my-account .licenses-data-cell--company,
 .ref-table--my-account .licenses-data-cell--account,
@@ -7071,175 +7160,179 @@ a:hover .summary-widget__data-item__app-name {
 .ref-table--my-account .share-data-cell--linked {
   max-width: 150px;
 }
-/* line 217, sass/templates-v2/_my-account--my-list.scss */
+/* line 224, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .form-field--checkbox-list {
   position: relative;
   top: 4px;
 }
-/* line 221, sass/templates-v2/_my-account--my-list.scss */
+/* line 228, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .ref-button--secondary--small:first-child {
   margin-right: 4px;
 }
-/* line 224, sass/templates-v2/_my-account--my-list.scss */
+/* line 231, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .account-remove-link {
   color: #ff496a;
 }
-/* line 226, sass/templates-v2/_my-account--my-list.scss */
+/* line 233, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .account-remove-link:hover {
   color: #ff1640;
 }
-/* line 230, sass/templates-v2/_my-account--my-list.scss */
+/* line 237, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .licenses-data-cell__expires-label {
   display: inline-block;
   vertical-align: middle;
   font-size: 13px;
 }
-/* line 234, sass/templates-v2/_my-account--my-list.scss */
+/* line 241, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .licenses-data-cell__expires-label span {
   font-weight: 700;
   color: #ff496a;
 }
-/* line 239, sass/templates-v2/_my-account--my-list.scss */
+/* line 246, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .licenses-data-cell--actions {
   max-width: 125px;
 }
-/* line 242, sass/templates-v2/_my-account--my-list.scss */
+/* line 249, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .my-lists-data-cell--actions {
   max-width: 80px;
 }
-/* line 245, sass/templates-v2/_my-account--my-list.scss */
+/* line 252, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .licenses-data-row--unassigned,
 .ref-table--my-account .my-lists-data-row--default {
   background-color: #f2f2fb;
   border-top: 2px solid #fcfdfd;
 }
-/* line 249, sass/templates-v2/_my-account--my-list.scss */
+/* line 256, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .licenses-data-row--unassigned:nth-child(odd),
 .ref-table--my-account .my-lists-data-row--default:nth-child(odd) {
   background-color: #f2f2fb;
 }
-/* line 252, sass/templates-v2/_my-account--my-list.scss */
+/* line 259, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .licenses-data-row--unassigned td:first-child a,
 .ref-table--my-account .my-lists-data-row--default td:first-child a {
   color: #6d69c5;
 }
-/* line 254, sass/templates-v2/_my-account--my-list.scss */
+/* line 261, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .licenses-data-row--unassigned td:first-child a:hover,
 .ref-table--my-account .my-lists-data-row--default td:first-child a:hover {
   color: #4b46b5;
 }
-/* line 259, sass/templates-v2/_my-account--my-list.scss */
+/* line 266, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .my-lists-data-row--default td {
   padding-top: 11px;
   padding-bottom: 12px;
 }
-/* line 263, sass/templates-v2/_my-account--my-list.scss */
+/* line 270, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .share-data-cell--actions {
   max-width: 105px;
 }
-/* line 266, sass/templates-v2/_my-account--my-list.scss */
+/* line 273, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--actions {
   max-width: 100px;
 }
-/* line 270, sass/templates-v2/_my-account--my-list.scss */
+/* line 277, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--store span {
   font-weight: 400;
   display: inline-block;
   vertical-align: middle;
 }
-/* line 274, sass/templates-v2/_my-account--my-list.scss */
+/* line 281, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--store span:before {
   color: #81879d;
 }
-/* line 278, sass/templates-v2/_my-account--my-list.scss */
+/* line 285, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--store .ref-icon-before--apple:before {
   margin-right: 9px;
   font-size: 20px;
 }
-/* line 282, sass/templates-v2/_my-account--my-list.scss */
+/* line 289, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--store .ref-icon-before--play-store:before {
   margin-right: 8px;
   margin-left: 3px;
   font-size: 18px;
 }
-/* line 291, sass/templates-v2/_my-account--my-list.scss */
+/* line 298, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account.ref-table--ad-networks .linked-accounts-cell--store img, .ref-table--my-account.ref-table--match-ad-unit .linked-accounts-cell--store img {
   position: relative;
   top: 2px;
   margin-right: 10px;
 }
-/* line 298, sass/templates-v2/_my-account--my-list.scss */
+/* line 305, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--status {
   font-weight: 700;
 }
-/* line 300, sass/templates-v2/_my-account--my-list.scss */
+/* line 307, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--status span {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 304, sass/templates-v2/_my-account--my-list.scss */
+/* line 311, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--status span:before {
   margin-right: 9px;
   font-size: 15px;
 }
-/* line 308, sass/templates-v2/_my-account--my-list.scss */
+/* line 315, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--status .ref-icon-before--tick:before {
   color: #1bc79f;
   font-size: 17px;
 }
-/* line 312, sass/templates-v2/_my-account--my-list.scss */
+/* line 319, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--status .ref-icon-before--minus:before {
   color: #ff496a;
 }
-/* line 315, sass/templates-v2/_my-account--my-list.scss */
+/* line 322, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--status .ref-icon-before--cog {
   color: #5674b9;
 }
-/* line 317, sass/templates-v2/_my-account--my-list.scss */
+/* line 324, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--status .ref-icon-before--cog:before {
   margin-right: 11px;
 }
 
-/* line 323, sass/templates-v2/_my-account--my-list.scss */
+/* line 330, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--match-ad-unit {
   overflow: visible;
   table-layout: fixed;
 }
-/* line 326, sass/templates-v2/_my-account--my-list.scss */
+/* line 333, sass/templates-v2/_my-account--my-list.scss */
+.is-safari .ref-table--match-ad-unit, .is-touch.is-chrome .ref-table--match-ad-unit {
+  table-layout: fixed;
+}
+/* line 337, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--match-ad-unit * {
   overflow: visible;
 }
-/* line 329, sass/templates-v2/_my-account--my-list.scss */
+/* line 340, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--match-ad-unit .col-ad-accounts--store {
   width: 71.3%;
 }
-/* line 332, sass/templates-v2/_my-account--my-list.scss */
+/* line 343, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--match-ad-unit .col-ad-accounts--match {
   width: 27.9%;
 }
-/* line 336, sass/templates-v2/_my-account--my-list.scss */
+/* line 347, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--match-ad-unit tr:nth-child(even).ad-accounts-data-row--unassigned {
   background-color: #f2f2fb;
 }
-/* line 341, sass/templates-v2/_my-account--my-list.scss */
+/* line 352, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--match-ad-unit tr:nth-child(odd).ad-accounts-data-row--unassigned {
   background-color: #f2f2fb;
 }
-/* line 345, sass/templates-v2/_my-account--my-list.scss */
+/* line 356, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--match-ad-unit .ad-accounts-data-row--unassigned {
   border-bottom: 1px solid #fcfdfd;
 }
-/* line 348, sass/templates-v2/_my-account--my-list.scss */
+/* line 359, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--match-ad-unit td {
   overflow: visible;
 }
-/* line 351, sass/templates-v2/_my-account--my-list.scss */
+/* line 362, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--match-ad-unit .secondary-filter {
   width: 100%;
   max-width: 300px;
 }
 
-/* line 356, sass/templates-v2/_my-account--my-list.scss */
+/* line 367, sass/templates-v2/_my-account--my-list.scss */
 .account-summary-action__license-info {
   height: 36px;
   padding-top: 10px;
@@ -7249,24 +7342,24 @@ a:hover .summary-widget__data-item__app-name {
   vertical-align: top;
   float: right;
 }
-/* line 365, sass/templates-v2/_my-account--my-list.scss */
+/* line 376, sass/templates-v2/_my-account--my-list.scss */
 .account-summary-action__license-info:first-of-type span:first-child {
   color: #81879d;
 }
-/* line 369, sass/templates-v2/_my-account--my-list.scss */
+/* line 380, sass/templates-v2/_my-account--my-list.scss */
 .account-summary-action__license-info:last-child {
   border-right: 1px solid #e1e5e8;
 }
-/* line 371, sass/templates-v2/_my-account--my-list.scss */
+/* line 382, sass/templates-v2/_my-account--my-list.scss */
 .page-my-account--share-data .account-summary-action__license-info:last-child {
   border-right: none;
 }
-/* line 375, sass/templates-v2/_my-account--my-list.scss */
+/* line 386, sass/templates-v2/_my-account--my-list.scss */
 .account-summary-action__license-info span {
   display: inline-block;
   vertical-align: top;
 }
-/* line 379, sass/templates-v2/_my-account--my-list.scss */
+/* line 390, sass/templates-v2/_my-account--my-list.scss */
 .account-summary-action__license-info span:first-child {
   padding-right: 8px;
   font-family: "Lato", sans-serif;
@@ -7274,57 +7367,57 @@ a:hover .summary-widget__data-item__app-name {
   font-weight: 700;
   color: #363a47;
 }
-/* line 386, sass/templates-v2/_my-account--my-list.scss */
+/* line 397, sass/templates-v2/_my-account--my-list.scss */
 .account-summary-action__license-info span:last-child {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
   color: #5b5b68;
 }
 
-/* line 394, sass/templates-v2/_my-account--my-list.scss */
+/* line 405, sass/templates-v2/_my-account--my-list.scss */
 .page-my-account--share-data .account-summary-action__license-info:first-of-type span:first-child {
   color: #363a47;
 }
-/* line 397, sass/templates-v2/_my-account--my-list.scss */
+/* line 408, sass/templates-v2/_my-account--my-list.scss */
 .page-my-account--share-data .account-summary-action__license-info:first-of-type span:last-child {
   color: #5b5b68;
 }
 
-/* line 402, sass/templates-v2/_my-account--my-list.scss */
+/* line 413, sass/templates-v2/_my-account--my-list.scss */
 .ref-table tbody .licenses-data-row--divider-row,
 .ref-table tbody .my-lists-data-row--divider-row {
   border-top: solid 15px #fcfdfd;
   border-bottom: solid 15px #fcfdfd;
 }
-/* line 406, sass/templates-v2/_my-account--my-list.scss */
+/* line 417, sass/templates-v2/_my-account--my-list.scss */
 .ref-table tbody .licenses-data-row--divider-row td,
 .ref-table tbody .my-lists-data-row--divider-row td {
   padding: 1px 0 0;
   background-color: #e1e5e8;
 }
 
-/* line 412, sass/templates-v2/_my-account--my-list.scss */
+/* line 423, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-lists tbody tr:nth-child(even) {
   background-color: #f2f2f5;
 }
-/* line 414, sass/templates-v2/_my-account--my-list.scss */
+/* line 425, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-lists tbody tr:nth-child(even).my-lists-data-row--default {
   background-color: #f2f2fb;
 }
-/* line 418, sass/templates-v2/_my-account--my-list.scss */
+/* line 429, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-lists tbody tr:nth-child(odd) {
   background-color: #fcfdfd;
 }
-/* line 420, sass/templates-v2/_my-account--my-list.scss */
+/* line 431, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-lists tbody tr:nth-child(odd).my-lists-data-row--default {
   background-color: #f2f2fb;
 }
-/* line 426, sass/templates-v2/_my-account--my-list.scss */
+/* line 437, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-lists tbody .my-lists-data-row--default td:first-child img, .ref-table--my-lists tbody .my-lists-data-row--default td:first-child span {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 430, sass/templates-v2/_my-account--my-list.scss */
+/* line 441, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-lists tbody .my-lists-data-row--default td:first-child .icon-apps-follow {
   position: relative;
   top: 2px;
@@ -7333,39 +7426,39 @@ a:hover .summary-widget__data-item__app-name {
   margin-left: 2px;
   margin-right: 16px;
 }
-/* line 438, sass/templates-v2/_my-account--my-list.scss */
+/* line 449, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-lists tbody .my-lists-data-row--default td:first-child .icon-publishers-follow {
   width: 28px;
   height: 28px;
   margin-right: 14px;
 }
 
-/* line 448, sass/templates-v2/_my-account--my-list.scss */
+/* line 459, sass/templates-v2/_my-account--my-list.scss */
 .page-linked-accounts .table-header,
 .page-match-ad-units .table-header {
   margin-bottom: 0.3rem;
 }
-/* line 450, sass/templates-v2/_my-account--my-list.scss */
+/* line 461, sass/templates-v2/_my-account--my-list.scss */
 .page-linked-accounts .table-header .heading-style--heading-six,
 .page-match-ad-units .table-header .heading-style--heading-six {
   padding-top: 0.5rem;
 }
-/* line 453, sass/templates-v2/_my-account--my-list.scss */
+/* line 464, sass/templates-v2/_my-account--my-list.scss */
 .page-linked-accounts .table-header .ref-button--secondary--small,
 .page-match-ad-units .table-header .ref-button--secondary--small {
   margin-left: 0.5rem;
 }
-/* line 457, sass/templates-v2/_my-account--my-list.scss */
+/* line 468, sass/templates-v2/_my-account--my-list.scss */
 .page-linked-accounts .table-header--right,
 .page-match-ad-units .table-header--right {
   text-align: right;
 }
-/* line 460, sass/templates-v2/_my-account--my-list.scss */
+/* line 471, sass/templates-v2/_my-account--my-list.scss */
 .page-linked-accounts .ref-table,
 .page-match-ad-units .ref-table {
   margin-bottom: 1.2rem;
 }
-/* line 463, sass/templates-v2/_my-account--my-list.scss */
+/* line 474, sass/templates-v2/_my-account--my-list.scss */
 .page-linked-accounts .table-divider,
 .page-match-ad-units .table-divider {
   height: 1px;
@@ -7373,68 +7466,68 @@ a:hover .summary-widget__data-item__app-name {
   border-bottom: 1px solid #e1e5e8;
 }
 
-/* line 469, sass/templates-v2/_my-account--my-list.scss */
+/* line 480, sass/templates-v2/_my-account--my-list.scss */
 .notifications-settings-row-global {
   width: 100%;
   padding-bottom: 2rem;
   border-bottom: 1px solid #e1e5e8;
 }
-/* line 473, sass/templates-v2/_my-account--my-list.scss */
+/* line 484, sass/templates-v2/_my-account--my-list.scss */
 .notifications-settings-row-global .form-field--checkbox-list {
   margin-top: 5px;
 }
 
-/* line 477, sass/templates-v2/_my-account--my-list.scss */
+/* line 488, sass/templates-v2/_my-account--my-list.scss */
 .notifications-settings-row {
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 481, sass/templates-v2/_my-account--my-list.scss */
+/* line 492, sass/templates-v2/_my-account--my-list.scss */
 .notifications-settings-row:nth-child(odd) {
   background-color: #f2f2f5;
 }
-/* line 484, sass/templates-v2/_my-account--my-list.scss */
+/* line 495, sass/templates-v2/_my-account--my-list.scss */
 .notifications-settings-row .form-field--checkbox-list {
   margin-top: 6px;
 }
 
-/* line 488, sass/templates-v2/_my-account--my-list.scss */
+/* line 499, sass/templates-v2/_my-account--my-list.scss */
 .notifications-settings-row--divider {
   padding-top: 10px;
 }
-/* line 490, sass/templates-v2/_my-account--my-list.scss */
+/* line 501, sass/templates-v2/_my-account--my-list.scss */
 .notifications-settings-row--divider h2 {
   margin-bottom: 7px;
   font-size: 16px;
 }
 
-/* line 495, sass/templates-v2/_my-account--my-list.scss */
+/* line 506, sass/templates-v2/_my-account--my-list.scss */
 .manage-notifications-section-title {
   margin-bottom: 1.9rem;
 }
 
-/* line 498, sass/templates-v2/_my-account--my-list.scss */
+/* line 509, sass/templates-v2/_my-account--my-list.scss */
 .multi-step-section .link-account-multi-step__loading-button,
 .link-account-multi-step__loading-button {
   margin-top: 230px;
 }
 
-/* line 502, sass/templates-v2/_my-account--my-list.scss */
+/* line 513, sass/templates-v2/_my-account--my-list.scss */
 .page-match-ad-units {
   overflow: visible;
 }
-/* line 504, sass/templates-v2/_my-account--my-list.scss */
+/* line 515, sass/templates-v2/_my-account--my-list.scss */
 .page-match-ad-units .grid-container {
   overflow: visible;
 }
 
-/* line 509, sass/templates-v2/_my-account--my-list.scss */
+/* line 520, sass/templates-v2/_my-account--my-list.scss */
 .page-overlay--close-account .form-field--checkbox-list {
   margin-bottom: 2rem;
 }
 
-/* line 513, sass/templates-v2/_my-account--my-list.scss */
+/* line 524, sass/templates-v2/_my-account--my-list.scss */
 .chart__no-data,
 .chart__loading {
   position: relative;
@@ -7445,14 +7538,14 @@ a:hover .summary-widget__data-item__app-name {
   margin-top: 109px;
   text-align: center;
 }
-/* line 522, sass/templates-v2/_my-account--my-list.scss */
+/* line 533, sass/templates-v2/_my-account--my-list.scss */
 .chart__no-data svg, .chart__no-data div,
 .chart__loading svg,
 .chart__loading div {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 526, sass/templates-v2/_my-account--my-list.scss */
+/* line 537, sass/templates-v2/_my-account--my-list.scss */
 .chart__no-data svg,
 .chart__loading svg {
   position: relative;
@@ -7460,7 +7553,7 @@ a:hover .summary-widget__data-item__app-name {
   width: 104px;
   margin-right: 29px;
 }
-/* line 532, sass/templates-v2/_my-account--my-list.scss */
+/* line 543, sass/templates-v2/_my-account--my-list.scss */
 .chart__no-data h2,
 .chart__loading h2 {
   margin-bottom: 1rem;
@@ -7468,13 +7561,13 @@ a:hover .summary-widget__data-item__app-name {
   font-weight: 600;
   color: #81879d;
 }
-/* line 538, sass/templates-v2/_my-account--my-list.scss */
+/* line 549, sass/templates-v2/_my-account--my-list.scss */
 .chart__no-data p,
 .chart__loading p {
   font-size: 1.4rem;
   color: #81879d;
 }
-/* line 542, sass/templates-v2/_my-account--my-list.scss */
+/* line 553, sass/templates-v2/_my-account--my-list.scss */
 .chart__no-data .hamster-wheel,
 .chart__no-data .animation-hamster,
 .chart__loading .hamster-wheel,
@@ -7482,7 +7575,7 @@ a:hover .summary-widget__data-item__app-name {
   width: 110px;
   height: 110px;
 }
-/* line 547, sass/templates-v2/_my-account--my-list.scss */
+/* line 558, sass/templates-v2/_my-account--my-list.scss */
 .chart__no-data .animation-hamster,
 .chart__loading .animation-hamster {
   background-size: 330px auto;
@@ -7490,69 +7583,69 @@ a:hover .summary-widget__data-item__app-name {
   animation: hamsterrunsm 0.2s infinite steps(3);
 }
 
-/* line 553, sass/templates-v2/_my-account--my-list.scss */
+/* line 564, sass/templates-v2/_my-account--my-list.scss */
 .chart__loading {
   margin-top: 100px;
 }
 
-/* line 556, sass/templates-v2/_my-account--my-list.scss */
+/* line 567, sass/templates-v2/_my-account--my-list.scss */
 .no-data-message-container {
   text-align: center;
 }
-/* line 558, sass/templates-v2/_my-account--my-list.scss */
+/* line 569, sass/templates-v2/_my-account--my-list.scss */
 .no-data-message-container svg, .no-data-message-container div {
   display: inline-block;
   vertical-align: top;
 }
-/* line 562, sass/templates-v2/_my-account--my-list.scss */
+/* line 573, sass/templates-v2/_my-account--my-list.scss */
 .no-data-message-container svg {
   width: 170px;
   margin-top: 7px;
   margin-right: 36px;
 }
-/* line 566, sass/templates-v2/_my-account--my-list.scss */
+/* line 577, sass/templates-v2/_my-account--my-list.scss */
 .page-my-account--billing .no-data-message-container svg {
   width: 106px;
 }
-/* line 570, sass/templates-v2/_my-account--my-list.scss */
+/* line 581, sass/templates-v2/_my-account--my-list.scss */
 .no-data-message-container h2 {
   font-size: 2.4rem;
   color: #81879d;
 }
-/* line 574, sass/templates-v2/_my-account--my-list.scss */
+/* line 585, sass/templates-v2/_my-account--my-list.scss */
 .no-data-message-container p {
   font-size: 1.4rem;
   color: #81879d;
 }
-/* line 578, sass/templates-v2/_my-account--my-list.scss */
+/* line 589, sass/templates-v2/_my-account--my-list.scss */
 .no-data-message-container button {
   margin-top: 10px;
 }
 
-/* line 582, sass/templates-v2/_my-account--my-list.scss */
+/* line 593, sass/templates-v2/_my-account--my-list.scss */
 .linked-accounts-screenshot {
   width: 529px;
   margin-top: 44px;
   float: left;
 }
 
-/* line 587, sass/templates-v2/_my-account--my-list.scss */
+/* line 598, sass/templates-v2/_my-account--my-list.scss */
 .no-data-message-content {
   width: 600px;
   margin: 100px auto;
   display: inline-block;
   text-align: left;
 }
-/* line 592, sass/templates-v2/_my-account--my-list.scss */
+/* line 603, sass/templates-v2/_my-account--my-list.scss */
 .page-my-account--billing .no-data-message-content {
   width: 536px;
 }
-/* line 595, sass/templates-v2/_my-account--my-list.scss */
+/* line 606, sass/templates-v2/_my-account--my-list.scss */
 .no-data-message-content div {
   width: 392px;
 }
 
-/* line 599, sass/templates-v2/_my-account--my-list.scss */
+/* line 610, sass/templates-v2/_my-account--my-list.scss */
 .upgrade-content {
   width: 380px;
   margin: 4.1rem 6% 7rem 4.7%;
@@ -7560,21 +7653,21 @@ a:hover .summary-widget__data-item__app-name {
   float: left;
 }
 @media (min-width: 1024px) {
-  /* line 599, sass/templates-v2/_my-account--my-list.scss */
+  /* line 610, sass/templates-v2/_my-account--my-list.scss */
   .upgrade-content {
     margin-right: 11%;
   }
 }
-/* line 607, sass/templates-v2/_my-account--my-list.scss */
+/* line 618, sass/templates-v2/_my-account--my-list.scss */
 .upgrade-content .page-linked-accounts {
   margin-top: 3.1rem;
 }
 
-/* line 611, sass/templates-v2/_my-account--my-list.scss */
+/* line 622, sass/templates-v2/_my-account--my-list.scss */
 .page-linked-accounts--upgrade {
   padding-bottom: 0;
 }
-/* line 613, sass/templates-v2/_my-account--my-list.scss */
+/* line 624, sass/templates-v2/_my-account--my-list.scss */
 .page-linked-accounts--upgrade > .grid-container {
   position: relative;
 }
@@ -7584,16 +7677,35 @@ a:hover .summary-widget__data-item__app-name {
   padding-bottom: 6rem;
 }
 
-/* line 2, sass/templates-v2/_page-publisher.scss */
+@media screen and (max-width: 1150px) {
+  /* line 2, sass/templates-v2/_page-publisher.scss */
+  .page-data-dashboard.page-publisher .page-header--left {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1150px) {
+  /* line 7, sass/templates-v2/_page-publisher.scss */
+  .page-data-dashboard.page-publisher .page-header--right {
+    width: 60%;
+  }
+  /* line 10, sass/templates-v2/_page-publisher.scss */
+  .page-data-dashboard.page-publisher .page-header--right .page-header__page-toggle {
+    margin-top: 1rem;
+    display: block;
+    float: right;
+    clear: both;
+  }
+}
+/* line 18, sass/templates-v2/_page-publisher.scss */
 .page-data-dashboard.page-publisher .page-title {
   margin-bottom: 1.8rem;
 }
-/* line 5, sass/templates-v2/_page-publisher.scss */
+/* line 21, sass/templates-v2/_page-publisher.scss */
 .page-data-dashboard.page-publisher .page-header__page-toggle {
   margin-right: 0;
   margin-bottom: 1.5rem;
 }
-/* line 9, sass/templates-v2/_page-publisher.scss */
+/* line 25, sass/templates-v2/_page-publisher.scss */
 .page-data-dashboard.page-publisher .page-header__data-info-text {
   margin-bottom: 1.7rem;
 }
@@ -7923,20 +8035,21 @@ a:hover .summary-widget__data-item__app-name {
 /* line 188, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-sign-up-container a {
   width: 100%;
+  line-height: 1;
   box-sizing: border-box;
 }
 @media screen and (max-width: 1279px) {
-  /* line 192, sass/templates-v2/_pricing.scss */
+  /* line 193, sass/templates-v2/_pricing.scss */
   .page-pricing .pricing-sign-up-container .ref-button--primary--medium {
     font-size: 1.4rem;
   }
 }
-/* line 198, sass/templates-v2/_pricing.scss */
+/* line 199, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row {
   display: table-row;
   border-radius: 7px 0 0;
 }
-/* line 201, sass/templates-v2/_pricing.scss */
+/* line 202, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row .grid__column {
   position: relative;
   padding: 15px 20px 16px;
@@ -7952,7 +8065,7 @@ a:hover .summary-widget__data-item__app-name {
   border-right: 1px solid #29292c;
   border-bottom: 1px solid #29292c;
 }
-/* line 215, sass/templates-v2/_pricing.scss */
+/* line 216, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row .grid__column:first-child {
   padding: 16px 20px 15px;
   font-family: "Lato", sans-serif;
@@ -7964,71 +8077,75 @@ a:hover .summary-widget__data-item__app-name {
   border-right: 0;
   border-bottom: 1px solid #f2f2f5;
 }
-/* line 226, sass/templates-v2/_pricing.scss */
+/* line 227, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row .grid__column span {
   max-width: 200px;
   display: inline-block;
 }
-/* line 232, sass/templates-v2/_pricing.scss */
+/* line 233, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row:first-child .grid__column:first-child {
   border-radius: 7px 0 0;
 }
-/* line 237, sass/templates-v2/_pricing.scss */
+/* line 238, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row:last-child .grid__column {
   padding: 0;
   border: 0;
 }
-/* line 240, sass/templates-v2/_pricing.scss */
+/* line 241, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row:last-child .grid__column:first-child {
   border-radius: 0 0 0 7px;
 }
-/* line 245, sass/templates-v2/_pricing.scss */
+/* line 244, sass/templates-v2/_pricing.scss */
+.page-pricing .pricing-details-row:last-child .grid__column:last-child {
+  border-radius: 0 0 7px 0;
+}
+/* line 249, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row .whats-this-tooltip-icon {
   position: absolute;
   right: 13px;
   top: calc(50% - 10px);
 }
-/* line 249, sass/templates-v2/_pricing.scss */
+/* line 253, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row .whats-this-tooltip-icon:after {
   color: #f2f2f5;
 }
-/* line 253, sass/templates-v2/_pricing.scss */
+/* line 257, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row .whats-this-tooltip-icon.is-open:after {
   color: #6d69c5;
 }
-/* line 258, sass/templates-v2/_pricing.scss */
+/* line 262, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row .whats-this-tooltip-icon:hover:after {
   color: #6d69c5;
 }
-/* line 263, sass/templates-v2/_pricing.scss */
+/* line 267, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row .ref-icon-before--cancel {
   color: #5a5a68;
 }
-/* line 265, sass/templates-v2/_pricing.scss */
+/* line 269, sass/templates-v2/_pricing.scss */
 .page-pricing .pricing-details-row .ref-icon-before--cancel:before {
   font-size: 26px;
 }
 
-/* line 271, sass/templates-v2/_pricing.scss */
+/* line 275, sass/templates-v2/_pricing.scss */
 .pricing-page__text-content {
   max-width: 1400px;
   margin: 5rem auto 5.3rem;
 }
 
-/* line 275, sass/templates-v2/_pricing.scss */
+/* line 279, sass/templates-v2/_pricing.scss */
 .current-subscription-text {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14.9px;
   font-weight: 600;
   color: #fcfdfd;
 }
-/* line 280, sass/templates-v2/_pricing.scss */
+/* line 284, sass/templates-v2/_pricing.scss */
 .current-subscription-text:before {
   padding-right: 7px;
   font-size: 19px;
   color: #25f9c8;
 }
-/* line 286, sass/templates-v2/_pricing.scss */
+/* line 290, sass/templates-v2/_pricing.scss */
 .pricing-header .current-subscription-text span {
   position: relative;
   top: 2px;
