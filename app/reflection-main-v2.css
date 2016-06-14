@@ -11978,19 +11978,24 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
 /* line 50, sass/templates-v2/_article-list.scss */
 .article-list__item {
   width: 100%;
-  padding: 20px 20px 21px;
   margin-bottom: 10px;
   font-size: 0;
   background-color: #fcfdfd;
 }
-/* line 56, sass/templates-v2/_article-list.scss */
-.article-list__item.is-new {
+/* line 55, sass/templates-v2/_article-list.scss */
+.article-list__item > article {
+  position: relative;
+  padding: 20px 20px 21px;
+  overflow: visible;
+}
+/* line 59, sass/templates-v2/_article-list.scss */
+.article-list__item > article.is-new {
   position: relative;
   margin-bottom: 9px;
   border: 1px solid #6d69c5;
 }
-/* line 60, sass/templates-v2/_article-list.scss */
-.article-list__item.is-new:after {
+/* line 63, sass/templates-v2/_article-list.scss */
+.article-list__item > article.is-new:after {
   content: "NEW";
   position: absolute;
   bottom: 0;
@@ -12003,11 +12008,6 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   color: #fcfdfd;
   border-radius: 0 10px 0 0;
   background-color: #6d69c5;
-}
-/* line 75, sass/templates-v2/_article-list.scss */
-.article-list__item > article {
-  position: relative;
-  overflow: visible;
 }
 
 /* line 80, sass/templates-v2/_article-list.scss */
@@ -12215,8 +12215,8 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
 /* line 234, sass/templates-v2/_article-list.scss */
 .article-list__item__actions-container {
   position: absolute;
-  right: 0;
-  top: 0;
+  top: 20px;
+  right: 20px;
   width: 225px;
   text-align: right;
 }
