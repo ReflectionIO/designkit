@@ -84,7 +84,7 @@
 		font-weight: 400;
 		color: #5a5a68;
 		@include breakpoint($desktop) {
-			padding-top: 1.5rem;
+			padding-top: 1.1rem;
     	padding-left: 2.6rem;
     	margin-bottom: 0;
     	display: inline-block;
@@ -101,6 +101,13 @@
 	}
 	.my-account-section-title {
 		margin-bottom: 1.3rem;
+	}
+}
+.page-faqs {
+	.page-sub-title {
+		@include breakpoint($desktop) {
+			padding-top: 1.5rem;
+		}
 	}
 }
 .page-my-account--details {
@@ -323,6 +330,10 @@
 .ref-table--match-ad-unit {
 	overflow: visible;
 	table-layout: fixed;
+	.is-safari &,
+	.is-touch.is-chrome & {
+		table-layout: fixed;
+	}
 	* {
 		overflow: visible;
 	}

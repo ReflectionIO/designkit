@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
 	<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
@@ -38,28 +40,27 @@
 			<div class="page-data-dashboard">
 				<div class="grid-container">
 					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">My Apps</h1>
-					
-					<div class="toggle-container page-header__page-toggle">
-						<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
-							<div class="toggle">
-								<input id="toggle--show-overview" name="overview-country" checked type="radio">
-								<label for="toggle--show-overview" onclick="location.replace('v2-data-template.html');">
-									Overview
-								</label>
-							</div>
-							<div class="toggle">
-								<input id="toggle--show-country" name="overview-country" type="radio">
-								<label for="toggle--show-country" onclick="location.replace('v2-my-apps-country.html');">
-									By Country
-								</label>
-							</div>
+
+					<span class="page-header__data-info-text js-mock-show-for-my-apps-view-only">All Actual Data</span>
+					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip js-mock-show-for-my-apps-view-only" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span>
+
+					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+
+					<div class="toggle-container page-header__page-toggle filter-toggle filter-toggle--with-text filter-toggle--small">
+						<div class="toggle">
+							<input id="toggle--show-overview" name="overview-country" checked type="radio">
+							<label for="toggle--show-overview" onclick="location.replace('v2-data-template.html');">
+								Overview
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-country" name="overview-country" type="radio">
+							<label for="toggle--show-country" onclick="location.replace('v2-my-apps-country.html');">
+								By Country
+							</label>
 						</div>
 					</div>
 
-					<span class="page-header__data-info-text">All Actual Data</span>
-					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span>
-
-					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
 					<a href="v2-my-lists.html" class="page-header__text-link js-mock-show-for-my-list-view-only">Back to My Lists</a>
 				</div>
 
@@ -203,7 +204,7 @@
 						<li class="is-active" id="split-chart-container">
 							<section class="chart-container chart-container--split">
 								<header class="chart-container__header">
-									<h2 class="chart-heading heading-style--heading-three">Revenue</h2>
+									<h2 class="chart-heading heading-style--heading-three">Revenue <span>(All)</span></h2>
 									<dl class="chart-summary">
 										<div class="total-for-period-container">
 											<dd class="total-for-period-title">Total for Period</dd>
@@ -814,20 +815,18 @@
 		 						</ul>
 		 						<ul class="tabs-content-list js-tabs-content-list">
 		 							<li class="is-active summary-widget" id="topApps">
-		 								<div class="toggle-container">
-			 								<div class="filter-toggle filter-toggle--with-text">
-												<div class="toggle">
-													<input id="toggle--show-revenue" name="radiorevdown" checked type="radio">
-													<label for="toggle--show-revenue" class="js-mock-switch-revenue">
-														Revenue
-													</label>
-												</div>
-												<div class="toggle">
-													<input id="toggle--show-downloads" name="radiorevdown" type="radio">
-													<label for="toggle--show-downloads" class="js-mock-switch-downloads">
-														Downloads
-													</label>
-												</div>
+		 								<div class="toggle-container filter-toggle filter-toggle--with-text">
+											<div class="toggle">
+												<input id="toggle--show-revenue" name="radiorevdown" checked type="radio">
+												<label for="toggle--show-revenue" class="js-mock-switch-revenue">
+													Revenue
+												</label>
+											</div>
+											<div class="toggle">
+												<input id="toggle--show-downloads" name="radiorevdown" type="radio">
+												<label for="toggle--show-downloads" class="js-mock-switch-downloads">
+													Downloads
+												</label>
 											</div>
 										</div>
 
@@ -937,20 +936,18 @@
 
 		 							</li>
 		 							<li class="summary-widget" id="bottomApps">
-		 								<div class="toggle-container">
-			 								<div class="filter-toggle filter-toggle--with-text">
-												<div class="toggle">
-													<input id="toggle--show-revenue--bottom" name="radiorevdownbot" checked type="radio">
-													<label for="toggle--show-revenue--bottom">
-														Revenue
-													</label>
-												</div>
-												<div class="toggle">
-													<input id="toggle--show-downloads--bottom" name="radiorevdownbot" type="radio">
-													<label for="toggle--show-downloads--bottom">
-														Downloads
-													</label>
-												</div>
+		 								<div class="toggle-container filter-toggle filter-toggle--with-text">
+											<div class="toggle">
+												<input id="toggle--show-revenue--bottom" name="radiorevdownbot" checked type="radio">
+												<label for="toggle--show-revenue--bottom">
+													Revenue
+												</label>
+											</div>
+											<div class="toggle">
+												<input id="toggle--show-downloads--bottom" name="radiorevdownbot" type="radio">
+												<label for="toggle--show-downloads--bottom">
+													Downloads
+												</label>
 											</div>
 										</div>
 		 							</li>
@@ -969,20 +966,18 @@
 		 						</ul>
 		 						<ul class="tabs-content-list js-tabs-content-list">
 		 							<li class="is-active summary-widget" id="topApps">
-		 								<div class="toggle-container">
-			 								<div class="filter-toggle filter-toggle--with-text">
-												<div class="toggle">
-													<input id="toggle--show-revenue-country" name="radiorevdown-country" checked type="radio">
-													<label for="toggle--show-revenue-country">
-														Revenue
-													</label>
-												</div>
-												<div class="toggle">
-													<input id="toggle--show-downloads-country" name="radiorevdown-country" type="radio">
-													<label for="toggle--show-downloads-country">
-														Downloads
-													</label>
-												</div>
+		 								<div class="toggle-container filter-toggle filter-toggle--with-text">
+											<div class="toggle">
+												<input id="toggle--show-revenue-country" name="radiorevdown-country" checked type="radio">
+												<label for="toggle--show-revenue-country">
+													Revenue
+												</label>
+											</div>
+											<div class="toggle">
+												<input id="toggle--show-downloads-country" name="radiorevdown-country" type="radio">
+												<label for="toggle--show-downloads-country">
+													Downloads
+												</label>
 											</div>
 										</div>
 
@@ -990,24 +985,24 @@
 			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-states-of-america"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--US"></div>
 			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;102,843</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--china"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--CN"></div>
 			 											<h3 class="summary-widget__data-item__app-name">China</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;99,002</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-kingdom"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--GB"></div>
 			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;45,781</span>
 			 									</li>
 			 								</ul>
@@ -1015,24 +1010,24 @@
 			 								<h2 class="summary-widget__data-title">Revenue % Growth</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--france"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--FR"></div>
 			 											<h3 class="summary-widget__data-item__app-name">France</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+28%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--italy"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--IT"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+14%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--germany"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--DE"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
 			 									</li>
 			 								</ul>
@@ -1086,13 +1081,13 @@
 		  	$('.js-mock-show-for-my-list-view-only').hide();
 		  } else {
 		  	$('.js-mock-show-for-my-apps-view-only').hide();
-		  	$('.js-mock-change-heading-for-list-page').text("Football Games List (4 Apps)");
+		  	$('.js-mock-change-heading-for-list-page').html("Football Games List <span>(4 Apps)</span>");
 		  }
 
 
   		new Page();
   		new AllDropDowns();
-  		new FormInteractions();
+  		;
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});

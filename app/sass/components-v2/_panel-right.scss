@@ -67,7 +67,6 @@
 		}
 	}
 	.blockquote-container {
-		display: none;
 		@include breakpoint($tablet) {
 			position: fixed;
 	    right: 0;
@@ -81,8 +80,19 @@
 	    }
 	    blockquote:before {
 	    	left: -4px;
+	    	color: #363a47;
 	    }
-		}    
+		}		
+	}
+	.login-panel + .blockquote-container {
+		@media screen and (max-height: 650px) {
+			display: none;
+		}
+	}
+	.main-navigation--account + .blockquote-container {
+		@media screen and (max-height: 750px) {
+			display: none;
+		}
 	}
 }
 .panel-right.search-container {	

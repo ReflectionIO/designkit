@@ -36,7 +36,7 @@ textarea {
 			.form-field--select__box,
 			.form-field--select__dropdown {
 				border-radius: 4px 4px 0 0;
-			}			
+			}
 		}
 		&:last-of-type {
 			.form-field--select__box,
@@ -49,8 +49,8 @@ textarea {
 					border-radius: 0 0 4px 4px;
 				}
 			}
-		}	
-	}	
+		}
+	}
 	> label {
 		position: absolute;
     left: 20px;    
@@ -228,7 +228,8 @@ textarea {
 		-webkit-box-shadow: 0 0 0px 1000px #f5f9f9 inset;
 		-webkit-text-fill-color: $dark-grey-1;
 		.reflection-form--theme-dark & {
-			color: $light-grey-1 !important;
+			color: $light-grey-2 !important;
+			-webkit-text-fill-color: $light-grey-2 !important;
 			-webkit-box-shadow: 0 0 0px 1000px #333338 inset;
 		}
 	}
@@ -250,7 +251,7 @@ textarea {
 			}
 		}
 		input, textarea {
-			bottom: 6px;
+			bottom: 14px;
 			.no-touch & {
 				transition: bottom 0.06s;
 			}
@@ -264,6 +265,11 @@ textarea {
     right: 17px;
     top: 16px;
     z-index: 10;
+  }
+  input[type=password] + label + .whats-this-tooltip-icon {
+  	.no-touch.is-safari & {
+  		right: 32px;
+  	}  	
   }
 }
 .reflection-form {
@@ -850,7 +856,10 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 					top: 12px;
 					transform: rotate(180deg);
 				}
-			}			
+			}
+			@include breakpoint($desktop-wide) {
+	    	border-bottom: 0;
+	    }
 		}
 		select:disabled + .form-field--select__box {
 			color: $light-grey-2;
@@ -868,11 +877,8 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 			border-radius: 0;
 			background-color: $reflection-white;
 			cursor: default;
-			@include breakpoint($desktop-wide) {
-				border-right: 1px solid #c4c7d0;
-				&.is-open {
-					border-right: 1px solid #c4c7d0;
-				}
+			.is-ie & {
+				padding: 9px 18px 10px 22px;
 			}
 			&.is-open {
 				border-right: none;
@@ -887,6 +893,12 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 			}
 			input {
 				font-size: 16px;
+			}
+			@include breakpoint($desktop-wide) {
+				border-right: 1px solid #c4c7d0;
+				&.is-open {
+					border-right: 1px solid #c4c7d0;
+				}
 			}
 		}
 	}
@@ -960,6 +972,9 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 			margin-bottom: 5px;
 			font-size: 14px;
 			white-space: nowrap;
+			.is-ie & {
+				margin-bottom: 4px;
+			}
 			&.ref-icon-before--ios,
 			&.ref-icon-before--play-store {				
 				overflow: visible;

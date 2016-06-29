@@ -40,6 +40,17 @@
     padding-top: 1px;
     display: inline-block;
     font-size: 24px;
+    &.is-loading {
+    	min-height: 0;
+    	min-width: 250px;
+	    height: 21px;
+	    margin-bottom: 17px;
+	    margin-top: 4px;	    
+  		background-color: #e9e9ed;
+  		.page-header__data-info-icon {
+  			display: none;
+  		}
+    }
 	}
 	.app-bundle-number-of-apps {
 		padding-left: 12px;
@@ -53,12 +64,23 @@
 		margin-right: 0;
 		margin-bottom: 1.5rem;
 		display: block;
+		.is-ie & {
+			label {
+				font-size: 1.3rem;
+			}
+			@include breakpoint($desktop) {
+				label {
+					font-size: 1.4rem;
+				}
+			}
+		}
 	}
 	&.page-data-dashboard {
 		.page-header__page-toggle {
-			margin-right: 0;
+			margin-left: 0;
 			margin-bottom: 1.5rem;
 			display: block;
+			float: none;
 		}
 		.page-header__data-info-text {
 			position: relative;
@@ -80,6 +102,9 @@
 		font-family: $brand-heading-font;
 		font-size: 16px;		
 		color: $dark-grey-1;
+		.is-safari & {
+			margin-bottom: 18px;
+		}
 	}
 	.page-header__app-store {
 		display: inline-block;
@@ -108,6 +133,9 @@
 	}
 	.page-header__app-title-links {
 		width: calc(100% - 380px);
+		.is-ie & {
+			width: calc(100% - 400px);
+		}
 	}
 	.app-developer-name {		
     margin-right: 8px;

@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
 	<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
@@ -46,26 +48,24 @@
 					<div class="page-header__app-title-links">
 						<h1 class="heading-style--heading-three app-title">App Bundle Name <span class="app-developer-name">By <a href="#">Supercell</a></span><span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span></h1>
 						<span class="app-bundle-number-of-apps">4 Apps</span>
-						<div class="toggle-container page-header__page-toggle">
-							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
-								<div class="toggle">
-									<input id="toggle--show-downloads" name="app-info" checked type="radio">
-									<label for="toggle--show-downloads" onclick="location.replace('v2-app-bundle.html');">
-										Revenue &amp; Downloads
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-downloads" name="app-info" type="radio">
-									<label for="toggle--show-downloads" onclick="location.replace('v2-app-bundle-ratings-info.html');">
-										Ratings &amp; Info
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-ratings" name="app-info" type="radio">
-									<label for="toggle--show-ratings" onclick="location.replace('v2-app-bundle-events.html');">
-										Events
-									</label>
-								</div>
+						<div class="toggle-container page-header__page-toggle filter-toggle filter-toggle--with-text filter-toggle--small">
+							<div class="toggle">
+								<input id="toggle--show-downloads" name="app-info" checked type="radio">
+								<label for="toggle--show-downloads" onclick="location.replace('v2-app-bundle.html');">
+									Revenue &amp; Downloads
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-downloads" name="app-info" type="radio">
+								<label for="toggle--show-downloads" onclick="location.replace('v2-app-bundle-ratings-info.html');">
+									Ratings &amp; Info
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-ratings" name="app-info" type="radio">
+								<label for="toggle--show-ratings" onclick="location.replace('v2-app-bundle-events.html');">
+									Events
+								</label>
 							</div>
 						</div>
 					</div>
@@ -83,14 +83,6 @@
 
 				<div class="grid__row overflow-visible">
 					<aside class="primary-filters-container">
- 						<div class="primary-filter form-field--select">
-							<select class="js-select-box">
-						    <option value="all">All Store Accounts</option>
-						    <option value="ios" selected>iOS</option>
-						    <option value="play">Google Play</option>
-						    <option value="amazon">Amazon App Store</option>
-							</select>
-						</div>
 						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
 						    <option value="jan" selected>01/01/16 - 01/02/16</option>
@@ -162,33 +154,24 @@
 						</select>
 					</div>
 
-					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
-						<ul>
-							<li>
-								<input type="checkbox" name="checkboxOne" id="checkboxOne">
-								<label for="checkboxOne" class="checkboxLabel">Events</label>
-								<label for="checkboxOne" class="checkboxLabelVisible">Events</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxTwo" id="checkboxTwo">
-								<label for="checkboxTwo" class="checkboxLabel">Revenue Split</label>
-								<label for="checkboxTwo" class="checkboxLabelVisible">Revenue Split</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxThree" id="checkboxThree">
-								<label for="checkboxThree" class="checkboxLabel">Cumulative</label>
-								<label for="checkboxThree" class="checkboxLabelVisible">Cumulative</label>
-							</li>
-						</ul>
-					</div>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="events" selected>Events</option>
+					    <option value="launch">Launch</option>
+					    <option value="update">Update</option>
+					    <option value="featured">Featured</option>
+						</select>
+					</div>					
 
 					<div class="secondary-filter form-field--select">
 						<select class="js-select-box">
-					    <option value="overlayapps" selected>More (0/3)</option>
-					    <option value="candy">Device Breakdown</option>
-					    <option value="clash">Re-downloads</option>
-					    <option value="soccerstars">Installed Updates</option>
-					    <option value="eightball">Revenue/Download Comparison</option>
+					    <option value="more" selected>More (0/6)</option>
+					    <option value="device">Device Breakdown</option>
+					    <option value="redownloads">Re-downloads</option>
+					    <option value="installed">Installed Updates</option>
+					    <option value="compare">Revenue/Download Comparison</option>
+					    <option value="split">Revenue Split</option>
+					    <option value="cumulative">Cumulative</option>
 						</select>
 					</div>
 
@@ -272,7 +255,7 @@
 									<h2 class="chart-heading heading-style--heading-three">Revenue</h2>
 									<dl class="chart-summary">
 										<div class="total-for-period-container">
-											<dd class="total-for-period-title">Total for Period / % Growth</dd>
+											<dd class="total-for-period-title">Total for Period</dd>
 											<dt class="total-for-period">$7,501,876 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
 										</div>
 									</dl>
@@ -295,7 +278,7 @@
 									<h2 class="chart-heading heading-style--heading-three">Downloads</h2>
 									<dl class="chart-summary">
 										<div class="total-for-period-container">
-											<dd class="total-for-period-title">Total for Period / % Growth</dd>
+											<dd class="total-for-period-title">Total for Period</dd>
 											<dt class="total-for-period">3,578,160 <span class="growth-on-last-period negative-colour"> - 100%</span></dt>
 										</div>
 									</dl>
@@ -467,9 +450,9 @@
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<div class="icon-flag icon-flag--united-states-of-america"></div>
+											<div class="icon-flag icon-flag--US"></div>
 											<div class="data-table__app-details-container">
-												<h2 class="data-table__app-summary__app-name"><a href="#">USA</a></h2>
+												<h2 class="data-table__app-summary__app-name">USA</h2>
 												<div class="ratings-container">
 													<div class="ratings-full" style="width:60%"></div>
 												</div>
@@ -533,9 +516,9 @@
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<div class="icon-flag icon-flag--united-kingdom"></div>
+											<div class="icon-flag icon-flag--GB"></div>
 											<div class="data-table__app-details-container">
-												<h2 class="data-table__app-summary__app-name"><a href="#">United Kingdom</a></h2>
+												<h2 class="data-table__app-summary__app-name">United Kingdom</h2>
 												<div class="ratings-container">
 													<div class="ratings-full" style="width:60%"></div>
 												</div>
@@ -599,9 +582,9 @@
 									<td><span class="data-table__store ref-icon-after--play-store"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<div class="icon-flag icon-flag--china"></div>
+											<div class="icon-flag icon-flag--CN"></div>
 											<div class="data-table__app-details-container">
-												<h2 class="data-table__app-summary__app-name"><a href="#">China</a></h2>
+												<h2 class="data-table__app-summary__app-name">China</h2>
 												<div class="ratings-container">
 													<div class="ratings-full" style="width:60%"></div>
 												</div>
@@ -665,9 +648,9 @@
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<div class="icon-flag icon-flag--france"></div>
+											<div class="icon-flag icon-flag--FR"></div>
 											<div class="data-table__app-details-container">
-												<h2 class="data-table__app-summary__app-name"><a href="#">France</a></h2>
+												<h2 class="data-table__app-summary__app-name">France</h2>
 												<div class="ratings-container">
 													<div class="ratings-full" style="width:60%"></div>
 												</div>
@@ -731,9 +714,9 @@
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<div class="icon-flag icon-flag--germany"></div>
+											<div class="icon-flag icon-flag--DE"></div>
 											<div class="data-table__app-details-container">
-												<h2 class="data-table__app-summary__app-name"><a href="#">Germany</a></h2>
+												<h2 class="data-table__app-summary__app-name">Germany</h2>
 												<div class="ratings-container">
 													<div class="ratings-full" style="width:60%"></div>
 												</div>
@@ -797,9 +780,9 @@
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<div class="icon-flag icon-flag--italy"></div>
+											<div class="icon-flag icon-flag--IT"></div>
 											<div class="data-table__app-details-container">
-												<h2 class="data-table__app-summary__app-name"><a href="#">Italy</a></h2>
+												<h2 class="data-table__app-summary__app-name">Italy</h2>
 												<div class="ratings-container">
 													<div class="ratings-full" style="width:60%"></div>
 												</div>
@@ -870,24 +853,24 @@
 			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-states-of-america"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--US"></div>
 			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;102,843</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--china"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--CN"></div>
 			 											<h3 class="summary-widget__data-item__app-name">China</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;99,002</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-kingdom"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--GB"></div>
 			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;45,781</span>
 			 									</li>
 			 								</ul>
@@ -895,24 +878,24 @@
 			 								<h2 class="summary-widget__data-title">Revenue % Growth</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--france"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--FR"></div>
 			 											<h3 class="summary-widget__data-item__app-name">France</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+28%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--italy"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--IT"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+14%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--germany"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--DE"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+1%</span>
 			 									</li>
 			 								</ul>
@@ -922,24 +905,24 @@
 			 								<h2 class="summary-widget__data-title">Actual Downloads</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-states-of-america"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--US"></div>
 			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">102,843</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--china"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--CN"></div>
 			 											<h3 class="summary-widget__data-item__app-name">China</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">99,002</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-kingdom"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--GB"></div>
 			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">45,781</span>
 			 									</li>
 			 								</ul>
@@ -947,24 +930,24 @@
 			 								<h2 class="summary-widget__data-title">Downloads % Growth</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--france"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--FR"></div>
 			 											<h3 class="summary-widget__data-item__app-name">France</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+18%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--italy"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--IT"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+4%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--germany"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--DE"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+3%</span>
 			 									</li>
 			 								</ul>
@@ -976,24 +959,24 @@
 			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-states-of-america"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--US"></div>
 			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;11,002</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--china"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--CN"></div>
 			 											<h3 class="summary-widget__data-item__app-name">China</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;9,762</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-kingdom"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--GB"></div>
 			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;5,343</span>
 			 									</li>
 			 								</ul>
@@ -1001,24 +984,24 @@
 			 								<h2 class="summary-widget__data-title">Revenue % Growth</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--france"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--FR"></div>
 			 											<h3 class="summary-widget__data-item__app-name">France</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data negative-colour">-2%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--italy"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--IT"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--germany"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--DE"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
 			 									</li>
 			 								</ul>
@@ -1028,24 +1011,24 @@
 			 								<h2 class="summary-widget__data-title">Actual Downloads</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-states-of-america"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--US"></div>
 			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">14,943</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--china"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--CN"></div>
 			 											<h3 class="summary-widget__data-item__app-name">China</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">12,003</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-kingdom"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--GB"></div>
 			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">4,738</span>
 			 									</li>
 			 								</ul>
@@ -1053,24 +1036,24 @@
 			 								<h2 class="summary-widget__data-title">Downloads % Growth</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--france"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--FR"></div>
 			 											<h3 class="summary-widget__data-item__app-name">France</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data negative-colour">-10%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--italy"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--IT"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data negative-colour">-5%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--germany"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--DE"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
 			 									</li>
 			 								</ul>
@@ -1120,7 +1103,7 @@
 
   		new Page();
   		new AllDropDowns();
-  		new FormInteractions();
+  		
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});

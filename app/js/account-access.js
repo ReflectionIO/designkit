@@ -11,7 +11,7 @@ var AccountAccess = function() {
 	instance = this;
 	// App Components
 	new BrowserDetection();
-	new FormInteractions();
+	;
 	new Tabs();
 
 	// Functionality for this template set
@@ -118,7 +118,7 @@ var AccountSetup = function() {
 	instance = this;
 	// App Components
 	new BrowserDetection();
-	new FormInteractions();
+	;
 
 	// Functionality for this template set
 	this.mockLinkAccount();
@@ -149,7 +149,7 @@ AccountSetup.prototype.mockLinkAccount = function() {
 
 var ResetPasswordPage = function() {
 	new BrowserDetection();
-	new FormInteractions();
+	;
 
 	// JS for reset password button
 	$('.js-mock-reset-password').on("click", function(e) {

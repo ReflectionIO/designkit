@@ -130,9 +130,15 @@
 		display: block;
 		overflow: visible;
 		.reviews-and-ratings-title {
-			margin: -9px 29px 29px 0;
-			display: inline-block;
+			width: 100%;
+			margin: -9px 29px 15px 0;
+			display: block;
 			float: left;
+			@include breakpoint($desktop) {
+				width: auto;
+				margin-bottom: 29px;
+				display: inline-block;
+			}
 		}
 		.ratings-container {
 			margin-right: 17px;
@@ -145,10 +151,14 @@
 		}
 		.form-field--select {
 			margin-right: 10px;
+			margin-bottom: 2rem;
 			display: inline-block;
 			float: left;
+			@include breakpoint($desktop) {
+				margin-bottom: 0;
+			}
 		}
-		.toggle-container {
+		.filter-toggle {
 			padding-top: 29px;
     	padding-left: 2px;
 		}

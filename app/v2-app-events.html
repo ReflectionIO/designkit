@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
 	<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
@@ -45,32 +47,30 @@
 
 					<div class="page-header__app-title-links">
 						<h1 class="heading-style--heading-three app-title">Clash Royale <span class="app-developer-name">By <a href="#">Supercell</a></span><span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span></h1>
-						<div class="toggle-container page-header__page-toggle">
-							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
-								<div class="toggle">
-									<input id="toggle--show-downloads" name="app-info" type="radio">
-									<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
-										Revenue &amp; Downloads
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-ranks" name="app-info" type="radio">
-									<label for="toggle--show-ranks" onclick="location.replace('v2-app-rank.html');">
-										Rank History
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-ratings" name="app-info" type="radio">
-									<label for="toggle--show-ratings" onclick="location.replace('v2-app-ratings-info.html');">
-										Ratings &amp; Info
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-events" name="app-info" checked type="radio">
-									<label for="toggle--show-events" onclick="location.replace('v2-app-events.html');">
-										Events
-									</label>
-								</div>
+						<div class="toggle-container page-header__page-toggle filter-toggle filter-toggle--with-text filter-toggle--small">
+							<div class="toggle">
+								<input id="toggle--show-downloads" name="app-info" type="radio">
+								<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
+									Revenue &amp; Downloads
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-ranks" name="app-info" type="radio">
+								<label for="toggle--show-ranks" onclick="location.replace('v2-app-rank.html');">
+									Rank History
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-ratings" name="app-info" type="radio">
+								<label for="toggle--show-ratings" onclick="location.replace('v2-app-ratings-info.html');">
+									Ratings &amp; Info
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-events" name="app-info" checked type="radio">
+								<label for="toggle--show-events" onclick="location.replace('v2-app-events.html');">
+									Events
+								</label>
 							</div>
 						</div>
 					</div>
@@ -273,7 +273,6 @@
 
   		new Page();
   		new AllDropDowns();
-  		new FormInteractions();
   		
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));

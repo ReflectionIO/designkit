@@ -84,23 +84,38 @@
 		margin-left: 30px;		
 		overflow: visible;
 		opacity: 0;
+		.is-ie & {
+			height: 100px;
+		}
 	}
 	.is-reset-password-confirmation {
 		.email-delivery-animation {
 			opacity: 1;
 			@include transform(translateX(300px));
 			transition: transform 0.4s 1.7s ease-in, opacity 0.5s;
+			.is-ie & {
+				transition: transform 0.4s 0.8s ease-in, opacity 0.5s;
+			}
 		}		
 		.email-delivery-animation--email {
 			animation: mail-deliver 0.6s 0.8s forwards;
+			.is-ie & {
+				display: none;
+			}
 		}
 		.email-delivery-animation--van-body {
 			animation: van-shake 0.6s 1.3s;
+			.is-ie & {
+				animation: van-shake 0.6s 0.3s;
+			}
 		}
 		.success-tick {
 			@include opacity(1);
 			@include transform(scale(1));
 			transition: opacity 0.4s 2.2s, transform 0.4s 2.2s;
+			.is-ie & {
+				transition: opacity 0.4s 1.5s, transform 0.4s 1.5s;
+			}
 		}
 	}
 }

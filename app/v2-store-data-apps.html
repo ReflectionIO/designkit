@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
 	<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
@@ -39,6 +41,18 @@
 				<div class="grid-container">
 					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">Store Data - Apps</h1>
 					
+					<div class="secondary-filter form-field--select js-mock-show-for-my-apps-view-only">
+						<select class="js-select-box">
+					    <option value="iphone" data-icon-class="ref-icon-before--ios" selected>iPhone</option>
+					    <option value="ipad" data-icon-class="ref-icon-before--ios">iPad</option>
+					    <option value="google" data-icon-class="ref-icon-before--play-store">Google Play</option>
+						</select>
+					</div>
+
+					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Estimated Data?" data-whatsthis="In the Store data section revenue and download data displayed are accurate estimates, including any data for your own apps. This may result in variations on actual data in your My Data dashboard"></span>
+
+					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+
 					<div class="toggle-container page-header__page-toggle">
 						<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
 							<div class="toggle">
@@ -55,29 +69,10 @@
 							</div>
 						</div>
 					</div>
-
-					<span class="page-header__data-info-text">All Data Estimated</span>
-					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Estimated Data?" data-whatsthis="In the Store data section revenue and download data displayed are accurate estimates, including any data for your own apps. This may result in variations on actual data in your My Data dashboard<br /><br /><a href='#'>Learn More about Our Accuracy</a>"></span>
-
-					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
-					<a href="v2-my-lists.html" class="page-header__text-link js-mock-show-for-my-list-view-only">Back to My Lists</a>
 				</div>
 
 				<div class="grid__row overflow-visible">
 					<aside class="primary-filters-container">
- 						<div class="primary-filter form-field--select">
-							<select class="js-select-box">
-						    <option value="all" selected>All Stores &amp; Accounts</option>
-						    <option value="allIos" class="js-parent-option">All iOS Accounts</option>
-						    <option value="iosOne" class="js-child-option">iOS Account One</option>
-						    <option value="iosTwo" class="js-child-option">iOS Account Two</option>
-						    <option value="iosThree" class="js-child-option">iOS Account Three</option>
-						    <option value="allGoogle" class="js-parent-option">All Google Play Accounts</option>
-						    <option value="googleOne" class="js-child-option">Google Account One</option>
-						    <option value="googleTwo" class="js-child-option">Google Account Two</option>
-						    <option value="googleThree" class="js-child-option">Google Account Three</option>
-							</select>
-						</div>
 						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
 						    <option value="jan" selected>01/01/16 - 01/02/16</option>
@@ -123,28 +118,24 @@
 						</select>
 					</div>
 
-					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
-						<ul>
-							<li>
-								<input type="checkbox" name="checkboxOne" id="checkboxOne">
-								<label for="checkboxOne" class="checkboxLabel">Events</label>
-								<label for="checkboxOne" class="checkboxLabelVisible">Events</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxThree" id="checkboxThree">
-								<label for="checkboxThree" class="checkboxLabel">Cumulative</label>
-								<label for="checkboxThree" class="checkboxLabelVisible">Cumulative</label>
-							</li>
-						</ul>
-					</div>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="events" selected>Events</option>
+					    <option value="launch">Launch</option>
+					    <option value="update">Update</option>
+					    <option value="featured">Featured</option>
+						</select>
+					</div>					
 
 					<div class="secondary-filter form-field--select">
 						<select class="js-select-box">
-					    <option value="overlayapps" selected>More (0/3)</option>
-					    <option value="candy">Device Breakdown</option>
-					    <option value="clash">Re-downloads</option>
-					    <option value="soccerstars">Installed Updates</option>
-					    <option value="eightball">Revenue/Download Comparison</option>
+					    <option value="more" selected>More (0/6)</option>
+					    <option value="device">Device Breakdown</option>
+					    <option value="redownloads">Re-downloads</option>
+					    <option value="installed">Installed Updates</option>
+					    <option value="compare">Revenue/Download Comparison</option>
+					    <option value="split">Revenue Split</option>
+					    <option value="cumulative">Cumulative</option>
 						</select>
 					</div>
 
@@ -985,24 +976,24 @@
 			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-states-of-america"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--US"></div>
 			 											<h3 class="summary-widget__data-item__app-name">USA</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;102,843</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--china"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--CN"></div>
 			 											<h3 class="summary-widget__data-item__app-name">China</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;99,002</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--united-kingdom"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--GB"></div>
 			 											<h3 class="summary-widget__data-item__app-name">United Kingdom</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data">&pound;45,781</span>
 			 									</li>
 			 								</ul>
@@ -1010,24 +1001,24 @@
 			 								<h2 class="summary-widget__data-title">Revenue % Growth</h2>
 			 								<ul class="summary-widget__data-row">
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--france"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--FR"></div>
 			 											<h3 class="summary-widget__data-item__app-name">France</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+28%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--italy"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--IT"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Italy</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data positive-colour">+14%</span>
 			 									</li>
 			 									<li class="summary-widget__data-item">
-			 										<a href="#">
-			 											<div class="icon-flag icon-flag--germany"></div>
+			 										<div class="summary-widget__data-item__icon-title-container">
+			 											<div class="icon-flag icon-flag--DE"></div>
 			 											<h3 class="summary-widget__data-item__app-name">Germany</h3>
-			 										</a>
+			 										</div>
 			 										<span class="summary-widget__data-item__data negative-colour">-1%</span>
 			 									</li>
 			 								</ul>
@@ -1086,7 +1077,7 @@
 
   		new Page();
   		new AllDropDowns();
-  		new FormInteractions();
+  		;
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});

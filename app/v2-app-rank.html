@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
 	<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
@@ -44,32 +46,30 @@
 
 					<div class="page-header__app-title-links">
 						<h1 class="heading-style--heading-three app-title">Clash Royale <span class="app-developer-name">By <a href="#">Supercell</a></span><span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span></h1>
-						<div class="toggle-container page-header__page-toggle">
-							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
-								<div class="toggle">
-									<input id="toggle--show-downloads" name="app-info" type="radio">
-									<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
-										Revenue &amp; Downloads
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-ranks" name="app-info" checked type="radio">
-									<label for="toggle--show-ranks" onclick="location.replace('v2-app-rank.html');">
-										Rank History
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-ratings" name="app-info" type="radio">
-									<label for="toggle--show-ratings" onclick="location.replace('v2-app-ratings-info.html');">
-										Ratings &amp; Info
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-events" name="app-info" type="radio">
-									<label for="toggle--show-events" onclick="location.replace('v2-app-events.html');">
-										Events
-									</label>
-								</div>
+						<div class="toggle-container page-header__page-toggle filter-toggle filter-toggle--with-text filter-toggle--small">
+							<div class="toggle">
+								<input id="toggle--show-downloads" name="app-info" type="radio">
+								<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
+									Revenue &amp; Downloads
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-ranks" name="app-info" checked type="radio">
+								<label for="toggle--show-ranks" onclick="location.replace('v2-app-rank.html');">
+									Rank History
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-ratings" name="app-info" type="radio">
+								<label for="toggle--show-ratings" onclick="location.replace('v2-app-ratings-info.html');">
+									Ratings &amp; Info
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-events" name="app-info" type="radio">
+								<label for="toggle--show-events" onclick="location.replace('v2-app-events.html');">
+									Events
+								</label>
 							</div>
 						</div>
 					</div>
@@ -87,14 +87,6 @@
 
 				<div class="grid__row overflow-visible">
 					<aside class="primary-filters-container">
- 						<div class="primary-filter form-field--select">
-							<select class="js-select-box">
-						    <option value="all">All Store Accounts</option>
-						    <option value="ios" selected>iOS</option>
-						    <option value="play">Google Play</option>
-						    <option value="amazon">Amazon App Store</option>
-							</select>
-						</div>
 						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
 						    <option value="jan" selected>01/01/16 - 01/02/16</option>
@@ -157,14 +149,13 @@
 						</select>
 					</div>
 
-					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
-						<ul>
-							<li>
-								<input type="checkbox" name="checkboxOne" id="checkboxOne">
-								<label for="checkboxOne" class="checkboxLabel">Events</label>
-								<label for="checkboxOne" class="checkboxLabelVisible">Events</label>
-							</li>
-						</ul>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="events" selected>Events</option>
+					    <option value="launch">Launch</option>
+					    <option value="update">Update</option>
+					    <option value="featured">Featured</option>
+						</select>
 					</div>
 
 					<div class="filter-toggle toggle-container--chart-type">
@@ -342,7 +333,7 @@
 											<input type="checkbox" name="checkboxGer" id="checkboxGer" checked="" class="js-toggle-row-off">
 											<label for="checkboxGer" class="checkboxLabel">Germany</label>
 											<label for="checkboxGer" class="checkboxLabelVisible">
-												<div class="icon-flag-sm icon-flag--germany"></div>
+												<div class="icon-flag-sm icon-flag--DE"></div>
 												<span>Germany</span>
 											</label>
 										</li>
@@ -414,7 +405,7 @@
 											<input type="checkbox" name="checkboxGer" id="checkboxUK" checked="">
 											<label for="checkboxUK" class="checkboxLabel">United Kingdom</label>
 											<label for="checkboxUK" class="checkboxLabelVisible">
-												<div class="icon-flag-sm icon-flag--united-kingdom"></div>
+												<div class="icon-flag-sm icon-flag--GB"></div>
 												<span>United Kingdom</span>
 											</label>
 										</li>
@@ -487,7 +478,7 @@
 											<input type="checkbox" name="checkboxGer" id="checkboxUK" checked="">
 											<label for="checkboxUK" class="checkboxLabel">USA</label>
 											<label for="checkboxUK" class="checkboxLabelVisible">
-												<div class="icon-flag-sm icon-flag--united-states-of-america"></div>
+												<div class="icon-flag-sm icon-flag--US"></div>
 												<span>USA</span>
 											</label>
 										</li>
@@ -568,38 +559,36 @@
 									</select>
 								</div>
 
-								<div class="toggle-container">
-									<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
-										<div class="toggle">
-											<input id="toggle--show-overall" name="radiocategory" checked type="radio">
-											<label for="toggle--show-overall">
-												Overall Rank
-											</label>
-										</div>
-										<div class="toggle">
-											<input id="toggle--show-catone" name="radiocategory" type="radio">
-											<label for="toggle--show-catone">
-												Category 1
-											</label>
-										</div>
-										<div class="toggle">
-											<input id="toggle--show-cattwo" name="radiocategory" type="radio">
-											<label for="toggle--show-cattwo">
-												Category 2
-											</label>
-										</div>
-										<div class="toggle">
-											<input id="toggle--show-catthree" name="radiocategory" type="radio">
-											<label for="toggle--show-catthree">
-												Category 3
-											</label>
-										</div>
-										<div class="toggle">
-											<input id="toggle--show-catfour" name="radiocategory" type="radio">
-											<label for="toggle--show-catfour">
-												Category 4
-											</label>
-										</div>
+								<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--small">
+									<div class="toggle">
+										<input id="toggle--show-overall" name="radiocategory" checked type="radio">
+										<label for="toggle--show-overall">
+											Overall Rank
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--show-catone" name="radiocategory" type="radio">
+										<label for="toggle--show-catone">
+											Category 1
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--show-cattwo" name="radiocategory" type="radio">
+										<label for="toggle--show-cattwo">
+											Category 2
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--show-catthree" name="radiocategory" type="radio">
+										<label for="toggle--show-catthree">
+											Category 3
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--show-catfour" name="radiocategory" type="radio">
+										<label for="toggle--show-catfour">
+											Category 4
+										</label>
 									</div>
 								</div>
 
@@ -667,20 +656,18 @@
 		 					<div class="summary-widget-container">
 		 						<aside class="summary-widget summary-widget--highest-lowest">
 		 							<h2 class="widget-title">Ranking Highs and Lows</h2>
-			 						<div class="toggle-container">	 							
-										<div class="filter-toggle filter-toggle--with-text">
-											<div class="toggle">
-												<input id="toggle--show-popxs" name="radioxsmall" checked type="radio">
-												<label for="toggle--show-popxs">
-													Grossing
-												</label>
-											</div>
-											<div class="toggle">
-												<input id="toggle--show-regxs" name="radioxsmall" type="radio">
-												<label for="toggle--show-regxs">
-													Download
-												</label>
-											</div>
+			 						<div class="toggle-container filter-toggle filter-toggle--with-text">
+										<div class="toggle">
+											<input id="toggle--show-popxs" name="radioxsmall" checked type="radio">
+											<label for="toggle--show-popxs">
+												Grossing
+											</label>
+										</div>
+										<div class="toggle">
+											<input id="toggle--show-regxs" name="radioxsmall" type="radio">
+											<label for="toggle--show-regxs">
+												Download
+											</label>
 										</div>
 									</div>
 
@@ -691,23 +678,23 @@
     c2.2,0.8,4,1.1,5.5,1.1c1.9,0,3.3-0.5,4.7-0.9c1.7-0.5,3.1-1,5.2-0.6L25,20V8.1l-0.5-0.2c-3.4-1.4-5.8-0.3-8,0.6
     c-2.5,1.1-4.6,2-8.2-0.5L7.2,7.1v12.5l0,0v10.2C7.7,29.9,8.2,30,8.7,30z"fill="#C4C7D0 "/></svg>
 										<div>
-											<a href="#" class="summary-widget--highest-lowest__country js-tooltip js-tooltip--instant" data-tooltip="United Kingdom, USA, France">3 Countries</a>
+											<div class="summary-widget--highest-lowest__country js-tooltip js-tooltip--instant" data-tooltip="United Kingdom, USA, France">3 Countries</div>
 											<span class="summary-widget--highest-lowest__rank">1</span><span class="summary-widget--highest-lowest__category">Overall</span>
 										</div>
 									</div>
 
 									<div class="summary-widget--highest-lowest__data-item">
 										<h2 class="summary-widget--highest-lowest__data-heading">Biggest Climber</h2>
-										<div class="icon-flag icon-flag--united-kingdom"></div>
+										<div class="icon-flag icon-flag--GB"></div>
 										<div>
-											<a href="#" class="summary-widget--highest-lowest__country">United Kingdom</a>
+											<div class="summary-widget--highest-lowest__country">United Kingdom</div>
 											<span class="summary-widget--highest-lowest__rank positive-colour ref-icon-after--up">3</span><span class="summary-widget--highest-lowest__category positive-colour">Overall</span>
 										</div>
 									</div>
 
 									<div class="summary-widget--highest-lowest__data-item">
 										<h2 class="summary-widget--highest-lowest__data-heading">Lowest Rank</h2>
-										<div class="icon-flag icon-flag--china"></div>
+										<div class="icon-flag icon-flag--CN"></div>
 										<div>
 											<a href="#" class="summary-widget--highest-lowest__country">China</a>
 											<span class="summary-widget--highest-lowest__rank">145</span><span class="summary-widget--highest-lowest__category">Overall</span>
@@ -716,7 +703,7 @@
 
 									<div class="summary-widget--highest-lowest__data-item">
 										<h2 class="summary-widget--highest-lowest__data-heading">Biggest Faller</h2>
-										<div class="icon-flag icon-flag--france"></div>
+										<div class="icon-flag icon-flag--FR"></div>
 										<div>
 											<a href="#" class="summary-widget--highest-lowest__country">France</a>
 											<span class="summary-widget--highest-lowest__rank negative-colour ref-icon-after--down">32</span><span class="summary-widget--highest-lowest__category negative-colour">Overall</span>
@@ -768,7 +755,7 @@
 
   		new Page();
   		new AllDropDowns();
-  		new FormInteractions();
+
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});

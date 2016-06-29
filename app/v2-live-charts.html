@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
 	<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
@@ -98,16 +100,7 @@
 					</div>
 				</header>
 
-					<aside class="primary-filters-container">
-						<div class="primary-filter form-field--select">
-						<select class="js-select-box">
-					    <option value="allstores" selected>All Stores</option>
-					    <option value="iosiphone">iOS iPhone</option>
-					    <option value="iosipad">iOS iPad</option>
-					    <option value="play">Google Play</option>
-					    <option value="amazon">Amazon App Store</option>
-						</select>
-					</div>
+				<aside class="primary-filters-container">
 					<div class="primary-filter form-field--select">
 						<select class="js-select-box">
 					    <option value="jan" selected>01/01/16 - 01/02/16</option>
@@ -197,8 +190,6 @@
  						</colgroup>
  						<tbody>
  							<tr ng-repeat="dataItem in dataList.data" class="js-mock-all-data">
- 								<!-- CSS class if for static template only -->
- 								<!-- ng-repeat is static template only for outputting table rows from JS data -->
  								<td data-price-tier="{{dataItem.appPrice1}}" data-is-new="{{dataItem.appNewDisplay1}}">
  									<div class="live-chart__cell__disabled-overlay"></div>
  									<div class="live-chart__cell">
@@ -206,8 +197,8 @@
 	 									<div class="live-chart__cell__app-details-container">
 	 										<a href="v2-app.html" class="live-chart__cell__app-name">{{dataItem.appName1}}</a>
 	 										<span class="live-chart__cell__rank">
-	 											<div class="live-chart__cell__new-entry" style="display: {{dataItem.appNewDisplay1}}">NEW</div>
-	 											<span class='{{dataItem.appPositionChange1 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style="display: {{dataItem.appPositionChangeDisplay1}}">{{dataItem.appPositionChange1}}</span>{{$index + 1}}</span>
+	 											<div class="live-chart__cell__new-entry" style='display: {{dataItem.appNewDisplay1}}'>NEW</div>
+	 											<span class='{{dataItem.appPositionChange1 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style='display: {{dataItem.appPositionChangeDisplay1}}'>{{dataItem.appPositionChange1}}</span>{{$index + 1}}</span>
 	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name">{{dataItem.appPublisher1}}</a>
 	 										<div class="ratings-container">
 												<div class="ratings-full" style="width:60%"></div>
@@ -226,8 +217,8 @@
 	 									<div class="live-chart__cell__app-details-container">
 	 										<a href="v2-app.html" class="live-chart__cell__app-name">{{dataItem.appName2}}</a>
 	 										<span class="live-chart__cell__rank">
-	 											<div class="live-chart__cell__new-entry" style="display: {{dataItem.appNewDisplay2}}">NEW</div>
-	 											<span class='{{dataItem.appPositionChange2 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style="display: {{dataItem.appPositionChangeDisplay2}}">{{dataItem.appPositionChange2}}</span>{{$index + 1}}</span>
+	 											<div class="live-chart__cell__new-entry" style='display: {{dataItem.appNewDisplay2}}'>NEW</div>
+	 											<span class='{{dataItem.appPositionChange2 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style='display: {{dataItem.appPositionChangeDisplay2}}'>{{dataItem.appPositionChange2}}</span>{{$index + 1}}</span>
 	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name">{{dataItem.appPublisher2}}</a>
 	 										<div class="ratings-container">
 												<div class="ratings-full" style="width:60%"></div>
@@ -246,8 +237,8 @@
 	 									<div class="live-chart__cell__app-details-container">
 	 										<a href="v2-app.html" class="live-chart__cell__app-name">{{dataItem.appName3}}</a>
 	 										<span class="live-chart__cell__rank">
-	 											<div class="live-chart__cell__new-entry" style="display: {{dataItem.appNewDisplay3}}">NEW</div>
-	 											<span class='{{dataItem.appPositionChange3 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style="display: {{dataItem.appPositionChangeDisplay3}}">{{dataItem.appPositionChange3}}</span>{{$index + 1}}</span>
+	 											<div class="live-chart__cell__new-entry" style='display: {{dataItem.appNewDisplay3}}'>NEW</div>
+	 											<span class='{{dataItem.appPositionChange3 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style='display: {{dataItem.appPositionChangeDisplay3}}'>{{dataItem.appPositionChange3}}</span>{{$index + 1}}</span>
 	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name">{{dataItem.appPublisher3}}</a>
 	 										<div class="ratings-container">
 												<div class="ratings-full" style="width:60%"></div>
@@ -260,7 +251,7 @@
  									</div> 	
  								</td>
  							</tr>
- 							<tr class="js-mock-search-results"> <!-- CSS class if for static template only -->
+ 							<tr class="js-mock-search-results">
  								<td>
  									<div class="live-chart__cell__no-results">No Matching Apps in this Chart</div>
  								</td>
@@ -346,7 +337,7 @@
 
   		new Page();
   		new AllDropDowns();
-  		new FormInteractions();
+  		;
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});

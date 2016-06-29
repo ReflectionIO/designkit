@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
 	<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
@@ -117,11 +119,14 @@
 
 	<div class="page-overlay js-page-overlay">
 		<div class="page-popup">
-			<div class="popup-content js-popup-content">
-				
-				<h2>Popup Text in Design</h2>
-				<p>Cultivating our collaborative and relaxed culture is a core company goal because we want to work with people like ourselves who thrive in such an environment.</p>
+			<div class="popup-content popup-content--career js-popup-content">
+				<a href="#" class="ref-icon-after--close close-popup-icon js-popup-close">Close</a>
+				<img src="images/v2/careers-chi.png" alt="Chi Dire" class="career-popup__profile-image" />
+				<p>"We’ve managed to create a genuinely enjoyable working environment by giving everyone in the team full autonomy over how they complete their tasks. This helps to give everyone a sense of real responsibility for the product.</p>
 
+				<p>The mix of people we have helps to make the workplace a fun and interesting place to be with regular Show and Tells where inspiring speakers come and share their experiences."</p>
+				<span class="careers-popup__name">Chi Dire</span>
+				<span class="careers-popup__position">Founder &amp; COO - Reflection</span>
 			</div>
 		</div>
 	</div>
@@ -164,6 +169,12 @@
 					$('.js-page-overlay').fadeOut(100);
 					$('.js-popup-content').removeClass("is-showing");
 				}				
+			});
+
+			$('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.page-overlay').fadeOut(100);
+				$('.page-overlay .popup-content').removeClass("is-showing");
 			});
   	});
   </script>

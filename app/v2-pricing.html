@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
 	<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
@@ -42,7 +44,7 @@
 						<h1 class="heading-style--heading-two page-title">Pricing</h1>
 						<h2 class="page-sub-title">Browse our subscription options or use the filters to find the most suitable for you</h2>
 						<div class="page-pricing__header__links">
-							<p>Need Help? <a href="#faqs">Read Pricing FAQs</a> <a href="mailto:info@reflection.io">Talk to Us</a></p>
+							<p>Need Help? <a href="#faqs" class="js-scroll-to-anchor">Read Pricing FAQs</a> <a href="v2-contact.html">Talk to Us</a></p>
 						</div>
 					</header>
 				</div>
@@ -821,7 +823,9 @@
 
   		new Page();
   		new AllDropDowns();
-  		new FormInteractions();
+  		
+  		new scrollToSection($('.js-scroll-to-anchor'), 500);
+
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});

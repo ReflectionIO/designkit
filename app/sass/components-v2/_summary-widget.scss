@@ -12,12 +12,10 @@
 .summary-widget {
 	padding: 1rem 0.7rem 1.3rem;
 	background-color: $panel-grey;
-	.toggle-container {
+	.filter-toggle {
 		width: 100%;
 		padding: 0 1.3rem 0.8rem;
-		.filter-toggle {
-			width: 100%;
-		}
+		float: none;
 		.toggle {
 			width: 50%;
 			label {
@@ -26,7 +24,7 @@
 		}
 	}
 	@include breakpoint($desktop-widest) {
-		.toggle-container {
+		.filter-toggle {
 			width: 70%;
 	    margin-left: 15%;
 	    margin-bottom: 1rem;
@@ -42,7 +40,7 @@
 	}
 	&.summary-widget--highest-lowest {
 		padding: 1.6rem 2rem 0;
-		.toggle-container {
+		.filter-toggle {
 			padding-left: 0;
 			padding-right: 0;
 			padding-bottom: 1.3rem;
@@ -75,9 +73,10 @@
 	vertical-align: top;
 	list-style: none;
 	text-align: center;
-	a {
+	a, .summary-widget__data-item__icon-title-container {
 		width: 100%;
 		display: block;
+		float: left;
 		text-align: center;
 		img, .icon-flag {
 			display: inline-block;
@@ -97,7 +96,7 @@
 	}
 	@include breakpoint(1100px) {
 		padding: 0 3px 0.9rem;
-		a {
+		a, .summary-widget__data-item__icon-title-container {
 			img, .icon-flag {
 				float: none;
 			}
@@ -108,7 +107,7 @@
 	}
 	@include breakpoint($desktop-super-wide) {
 		padding: 0 1rem 0.9rem 1rem;
-		a {
+		a, .summary-widget__data-item__icon-title-container {
 			img {
 				display: inline-block;
 				float: left;
@@ -132,12 +131,15 @@
 	color: $reflection-purple;
 	@include ellipses();
 	transition: color $base-transition-speed-off;
+	.summary-widget__data-item__icon-title-container & {
+		color: $dark-grey-1;
+	}
 	a:hover & {
 		color: $reflection-purple--hover;
 		transition: color $base-transition-speed-on;
 	}
 	&.is-loading {
-		width: 77%;
+		width: calc(100% - 52px);		
 		height: 10px;
 		margin: 2px auto 0;		
 		background-color: $loading-colour;
@@ -147,17 +149,24 @@
 		margin-left: 0;    
 		display: block;
 		text-align: center;
+		&.is-loading {
+			width: 90%;
+		}
 	}
 	@include breakpoint($desktop-super-wide) {
 		width: calc(100% - 50px);
 		margin-left: 8px;    
 		display: inline-block;
 		text-align: left;
+		&.is-loading {
+			width: calc(100% - 52px);	
+		}
 	}
 }
 .summary-widget__data-item__data {
+	position: relative;
+	top: -14px;
 	padding-left: 45px;
-	margin-top: -11px;
 	display: block;
 	text-align: left;
 	font-family: $brand-body-font;
@@ -170,22 +179,33 @@
 	&.negative-colour {
 		color: #ff496a;
 	}
-	&.is-loading {
-		width: 77%;
+	&.is-loading {		
+		width: calc(100% - 52px);
 		height: 10px;
-		margin: 6px auto 0;
+		margin: 6px 0 0 32px;
+		padding-left: 0;
 		display: inline-block;
 		background-color: $loading-colour;
 	}
 	@include breakpoint(1100px) {
+		top: 0;
 		padding-left: 0;
-		margin-top: 0;
 		display: inline;
+		&.is-loading {
+			width: 90%;
+			padding-left: 0;
+			margin: 6px auto 0;
+		}
 	}
 	@include breakpoint($desktop-super-wide) {
+		top: -14px;
 		padding-left: 45px;
-  	margin-top: -11px;
   	display: block;
+  	&.is-loading {		
+			width: calc(100% - 52px);
+			padding-left: 0;
+			margin: 6px 0 0 32px;
+		}
   }
 }
 .widget-title {
@@ -193,8 +213,11 @@
 	font-size: 16px;
 }
 .summary-widget--highest-lowest__data-item {
+	width: 50%;
 	padding-left: 2px;
 	margin-bottom: 15px;
+	display: inline-block;
+	vertical-align: top;
 	.icon-flag, svg {
 		+ div {
 			width: calc(100% - 112px);
@@ -222,6 +245,10 @@
 		padding-bottom: 9px;
 		border-bottom: none;
 	}
+	@include breakpoint(1100px) {
+		width: 100%;
+		display: block;
+	}
 	@include breakpoint($desktop-widest) {
 		width: 50%;
 		display: inline-block;
@@ -240,13 +267,10 @@
 	font-family: $brand-body-font;
 	font-size: 13.5px;
 	font-weight: 700;
-	color: $reflection-purple;
+	color: $dark-grey-1;
 	text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-	&:hover {
-		color: $reflection-purple--hover;
-	}
 }
 .summary-widget--highest-lowest__data-heading {
 	width: 65px;

@@ -8,10 +8,12 @@
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
 	<![endif]-->
 	<!--[if (lt IE 9)]>
 		<script src="js/vendor/html5shiv.min.js"></script>
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<![endif]-->
 
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
@@ -35,22 +37,15 @@
 	<meta name="msapplication-TileImage" content="images/v2/mstile-144x144.png">
 	<meta name="theme-color" content="#6d69c5">
 
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-<script>
-  WebFont.load({
-    google: {
-      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
-    }
-  });
-</script>
-<script src="js-v2/vendor/picturefill302.min.js" async></script>
+
+<script src="js-v2/vendor/picturefill302.min.js"></script>
 </head>
 <body>
 	<!--[if (lt IE 9)]>
-      <div class="window-warning">
-  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
-  		</div>
-  <![endif]-->
+		<div class="window-warning">
+	     <p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a>.</p>
+		</div>
+	<![endif]-->
 
   <header id="js-component-import--global-header" class="global-header"></header>
   
@@ -63,7 +58,7 @@
 				<div class="home-section-head__text">
 					<h1 class="page-title"><span>Reflection Helps You</span> <span>Understand the App Market</span></h1>
 					<p>Track the performance of the world's top apps, publishers or your own sales with our affordable &amp; easy to use analysis platform.</p>
-					<p><a href="#how">How Reflection Works</a></p>
+					<p><a href="#how" class="js-scroll-to-anchor">How Reflection Works</a></p>
 				</div>
 				<picture class="home-section-head__illustration"> <!-- uses js/picturefill.2.3.1.min.js -->
 					<!--[if IE 9]><video style="display: none;"><![endif]-->
@@ -73,6 +68,7 @@
 					<!--[if IE 9]></video><![endif]-->
 					<img src="images/v2/Mid_Chart_Lines@2x.png" />
 				</picture>
+				<span class="home-section-head__sm-text">*Mock Data Displayed</span>
 			</section>
 			
 			<section class="grid-container home-live-chart-container">
@@ -81,27 +77,25 @@
 						<div class="home-live-chart-heading-container">
 							<h2 class="heading-style--heading-six section-heading">Top 10 Apps</h2>
 							<span class="home-live-chart__date">01/01/16</span>
-						</div>
-						<div class="toggle-container">	 							
-							<div class="filter-toggle filter-toggle--with-text filter-toggle--large">
-								<div class="toggle">
-									<input id="toggle--show-paid" name="charttoggle" checked type="radio">
-									<label for="toggle--show-paid">
-										Paid
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-free" name="charttoggle" type="radio">
-									<label for="toggle--show-free">
-										Free
-									</label>
-								</div>
-								<div class="toggle">
-									<input id="toggle--show-grossing" name="charttoggle" type="radio">
-									<label for="toggle--show-grossing">
-										Grossing
-									</label>
-								</div>
+						</div> 							
+						<div class="filter-toggle filter-toggle--with-text filter-toggle--large">
+							<div class="toggle">
+								<input id="toggle--show-paid" name="charttoggle" checked type="radio">
+								<label for="toggle--show-paid">
+									Paid
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-free" name="charttoggle" type="radio">
+								<label for="toggle--show-free">
+									Free
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-grossing" name="charttoggle" type="radio">
+								<label for="toggle--show-grossing">
+									Grossing
+								</label>
 							</div>
 						</div>
 					</div>
@@ -353,7 +347,7 @@
 				</div>
 			</section>
 
-			<section class="home-section home-section--one">
+			<section class="home-section home-section--one" id="how">
 				<div class="home-section-content-container">
 					<div class="home-section-content-left revenue-illustration">
 						<ul class="revenue-tabs-list">
@@ -382,12 +376,12 @@
 								<span class="numeric-value">$ 85,281</span>
 							</li>
 						</ul>
-						<p class="revenue-tabs-list-p">Actual Global Revenue <span>01/01/16</span></p>
+						<p class="revenue-tabs-list-p">*Mock Data Displayed</p>
 					</div>
 					<div class="home-section-content-right home-section-text-content">
 						<h2>Build a Picture of the Entire App Market</h2>
 						<p>Track revenue and downloads for the top apps and publishers in any app store, country or category. Identify trends that can inform your own product development, marketing or research.</p>
-						<p class="home-section__more-link"><a href="#">Learn More About Tracking the Market</a></p>
+						<p class="home-section__more-link"><a href="v2-product.html">Learn More About Tracking the Market</a></p>
 					</div>
 				</div>
 			</section>
@@ -397,7 +391,7 @@
 					<div class="home-section-content-left home-section-text-content">
 						<h2>Automated Alerts</h2>
 						<p>Save time and effort keeping track of the apps and publishers you’re following with customisable, automated alerts for key events</p>
-						<p class="home-section__more-link"><a href="#">Learn More About Alerts</a></p>
+						<p class="home-section__more-link"><a href="v2-product.html">Learn More About Alerts</a></p>
 					</div>
 					<div class="home-section-content-right home-section-notifications-content">
 						<ul class="notifications-tabs-list">
@@ -442,7 +436,7 @@
 					<div class="home-section-content-right home-section-text-content">
 						<h2>All Your Own Data in One Place</h2>
 						<p>Link multiple app store or ad network accounts to analyse all the data you need for your own apps in one interactive dashboard. Get live feedback on how you're performing with automatic alerts.</p>
-						<p class="home-section__more-link"><a href="#">Learn More About Analytics for Your Apps</a></p>
+						<p class="home-section__more-link"><a href="v2-product.html">Learn More About Analytics for Your Apps</a></p>
 					</div>
 				</div>
 			</section>
@@ -469,7 +463,7 @@
 					<li><img src="images/v2/logo-toca.png" alt="Toca Boca logo" /></li>
 					<li><img src="images/v2/logo-sky.png" alt="Sky logo" /></li>
 					<li><img src="images/v2/logo-miniclip.png" alt="Miniclip logo" /></li>
-					<li><img src="images/v2/logo-redbull.png" alt="Red Bull logo" /></li>
+					<li><img src="images/v2/logo-coffeestainstudios.png" alt="Coffee Stain Studios logo" /></li>
 					<li><img src="images/v2/logo-soundcloud.png" alt="Soundcloud logo" /></li>
 					<li><img src="images/v2/logo-bbc.png" alt="BBC logo" /></li>
 					<li><img src="images/v2/logo-wooga.png" alt="Wooga logo" /></li>
@@ -520,11 +514,14 @@
   <script src="js-v2/application.js"></script>
 
   <script>
+
   	$(window).on("load", function(){
 		  new Page();
 
 		  new AllDropDowns();
-  		new FormInteractions();
+  		
+  		new scrollToSection($('.js-scroll-to-anchor'), 500, -30);
+
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});
@@ -545,5 +542,6 @@
   			$('.js-get-items').select();
   		});
   	});
-  </script>
+
+  </script>  
 </body>

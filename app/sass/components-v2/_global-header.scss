@@ -116,7 +116,7 @@ $headerLinkBackgroundHoverColour: #323643;
 			font-family: $brand-heading-font;
 			font-size: 14px;
 			color: $reflection-white;
-			line-height: 42px;			
+			height: 42px;	
 			border: 0;
 			border-radius: 0;
 			background-color: transparent;
@@ -129,7 +129,10 @@ $headerLinkBackgroundHoverColour: #323643;
 				width: 205px;
 				padding-left: 19px;
 				padding-right: 20px;
-				line-height: 47px;
+				height: 48px;
+				.is-ie & {
+					height: 51px;
+				}
 			}
 		}
 		.search-stores-label {
@@ -143,6 +146,9 @@ $headerLinkBackgroundHoverColour: #323643;
 			@include breakpoint($phablet) {
 				left: 19px;
 				line-height: 47px;
+				.is-ie & {
+					line-height: 49px;
+				}
 			}
 		}
 		.search-icon {
@@ -214,6 +220,7 @@ $headerLinkBackgroundHoverColour: #323643;
 		background-color: $reflection-red;
 		.notifications-link:after {
 			top: 6px;
+			width: 100%;
 			color: $reflection-white;
 			display: inline-block;
 			transform-origin: top center;
