@@ -1038,8 +1038,10 @@
 		        	if(!hasBeenSet) {
 		        		hasBeenSet = true;
 		        		if(lastPoint) {
-		        			pageCharts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint].setState();
-	            		pageCharts[chartIndexToHover].tooltip.hide();	        			
+		        			if(pageCharts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint] != undefined) { // check if data series are present on the chart
+		        				pageCharts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint].setState();
+	            			pageCharts[chartIndexToHover].tooltip.hide();
+		        			}		        			
 		        		}
 		        		lastPoint = pointIndex;
 								var arrayOfPointsToHover = [];
@@ -1081,6 +1083,24 @@
 	    }(Highcharts));
 
 	    pageCharts = [];
+	    // chart helper function
+			function animateSelectedLines(containerId, indexToSelect, previousSelectedIndex) {
+    		$(containerId + ' .highcharts-series path:nth-child(2)').each(function(){
+          var $this = $(this);
+          if($this.data("index") == indexToSelect) { // if this is the newly selected line
+            $this.css("opacity", "0.3");
+            $this.animate({ "opacity": 1 }, 250);
+            $this.siblings("path").css("opacity", "0");
+            $this.siblings("path").animate({ "opacity": 1 }, 250);
+
+          } else if($this.data("index") == previousSelectedIndex) { // if it was the previously selected line
+          	$this.css("opacity", 1);
+            $this.animate({ "opacity": 0.3 }, 250);
+            $this.siblings("path").css("opacity", 1);
+            $this.siblings("path").animate({ "opacity": 0 }, 250);
+          }
+        });
+    	}
 
 	    function generateChart(containerId, dataType, seriesData, seriesColour, chartType, isMerged) {
 
@@ -1333,111 +1353,43 @@
 	          series: {
 	            events: {
 	              click: function() {
-	                var that = this;
-	                console.log(that.index);
-                  $('#' + containerId + ' .highcharts-series').each(function(){                  	
-                  	
-                  	var thisPath = $(this).find('path:nth-child(2)');    
-                  	var seriesNumber = thisPath.data("index");
-                  	if(seriesNumber != that.index) { // loop all lines other than the one clicked
-	                    
-	                    if(thisPath.attr("stroke-width") == 3.1) { // get selected line
-	                      that.chart.series[seriesNumber].update({
-	                        lineWidth: 3
-	                      });
+	                var that = this,
+	                		indexToSelect = that.index;
 
-	                      setGraphCSSClasses(containerId);
+	                if(!that.selected) { // if user clicked on a line that isn't currently selected
 
-	                      // get the line again after chart update
-	                      thisPath = $('#' + containerId + ' .highcharts-series .series-class-' + seriesNumber);
-	                      // set the line to unselected style
-	                      thisPath.css("opacity", "1");
-	                      thisPath.animate({ "opacity": 0.3 }, 250);
-	                      thisPath.siblings("path").css("opacity", "1");
-	                      thisPath.siblings("path").animate({ "opacity": 0 }, 250);
-	                    }
-	                  }
-                  });
+	                	// get the index of the previously selected line
+	                	var previousSelectedIndex = $('#' + containerId + ' .highcharts-series path[data-selected]').data("index");
 
-	                this.update({
-	                  lineWidth: 3.1
-	                });
+	                	if(previousSelectedIndex != null) {
+	                		// set the previously selected line to unselected
+		                	$('#' + containerId + ' .highcharts-series path[data-selected]').removeAttr("data-selected");
+		                	that.chart.series[previousSelectedIndex].selected = false;
 
-	                // update the graph line CSS class's after this.udpate
-	                setGraphCSSClasses(containerId);
+		                	// set the clicked line to selected
+		                	that.selected = true;
+		                	that.graph.element.setAttribute("data-selected", "selected");
 
-	                var $selectedLine;
-	                $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
-	                  var $this = $(this);
-	                  if($this.attr("stroke-width") == 3.1) { // TODO, this isn't fading in - nice to have            	
-	                    $this.css("opacity", "0.3");
-	                    $this.animate({ "opacity": 1 }, 250);
-	                    $this.siblings("path").css("opacity", "0");
-	                    $this.siblings("path").animate({ "opacity": 1 }, 250);
-	                    $selectedLine = $this;
-	                  }
-	                });
+		                	// animate the selected line change
+		                	animateSelectedLines('#' + containerId, indexToSelect, previousSelectedIndex);
 
-	                // UPDATE THE MIRRORED CHART
-	                // click the mirroring chart line
-	                if($selectedLine && containerId != "chart-combined") { // only if it's a twin chart
-	                	$("." + $selectedLine.attr("class")).each(function(){
-                    	if(!$(this).is($selectedLine)) {
-                    		var mirrorChartContainer = $(this).parents('.chart'),
-                    				mirrorChartIndex = mirrorChartContainer.attr("data-highcharts-chart"),
-                    				mirrorContainerId = mirrorChartContainer.attr("id");
+			                // UPDATE THE MIRROR CHART IF TWIN CHART VIEW
+			                if(that.chart.index < 2) { // currently viewing the twin charts
+			                	var mirrorChartIndex = (that.chart.index == 0) ? 1 : 0;
 
-                    		if(mirrorChartContainer.attr("id") != "chart-combined") {
-                    			// uodate the mirrored chart
-	                    		for(var i = 0; i < pageCharts[mirrorChartIndex].series.length; i++) {
+			                	$('.chart[data-highcharts-chart="' + mirrorChartIndex + '"] .highcharts-series path[data-selected]').removeAttr("data-selected");
+			                	pageCharts[mirrorChartIndex].series[previousSelectedIndex].selected = false;
 
-				                    var count = 0;
-				                    $('#' + mirrorContainerId + ' .highcharts-series').each(function(){
-				                      if(count == i) {
-				                        var thisFillPath = $(this).find('path:nth-child(2)');                        
-				                        if(thisFillPath.attr("stroke-width") == 3.1) {
-				                          pageCharts[mirrorChartIndex].series[i].update({
-				                            lineWidth: 3
-				                          });           
-				                          var counterTwo = 0;
-				                          $('#' + mirrorContainerId + ' .highcharts-series').each(function(){
-				                            if(counterTwo == count) {
-				                              thisFillPath = $(this).find('path:nth-child(2)');
-				                            }
-				                            counterTwo++;
-				                          });                          
-				                          thisFillPath.css("opacity", "1");
-				                          thisFillPath.animate({ "opacity": 0.3 }, 250);
-				                          thisFillPath.siblings("path").css("opacity", "1");
-				                          thisFillPath.siblings("path").animate({ "opacity": 0 }, 250);
-				                        }
-				                      }
-				                      count++;
-				                    });
-					              	};
+			                	// set the clicked line to selected
+			                	pageCharts[mirrorChartIndex].series[indexToSelect].selected = true;
+			                	pageCharts[mirrorChartIndex].series[indexToSelect].graph.element.setAttribute("data-selected", "selected");
 
-					              	pageCharts[mirrorChartIndex].series[that.index].update({
-					                  lineWidth: 3.1
-					                });	 
-
-					                // update the graph line CSS class's after this.udpate
-					                setGraphCSSClasses(mirrorContainerId);
-
-					                var $selectedLine;
-					                $('#' + mirrorContainerId + ' .highcharts-series path:nth-child(2)').each(function(){
-					                  var $this = $(this);
-					                  if($this.attr("stroke-width") == 3.1) {	                  	
-					                    $this.css("opacity", "1");
-					                    $this.siblings("path").css("opacity", "0");
-					                    $this.siblings("path").animate({ "opacity": 1 }, 250);
-					                    $selectedLine = $this;
-					                  }
-					                });
-                    		}
-                    	}
-                    });
+			                	// animate the selected line change on the mirrored chart
+			                	var mirrorContainer = '.chart[data-highcharts-chart="' + mirrorChartIndex + '"]';
+			                	animateSelectedLines(mirrorContainer, indexToSelect, previousSelectedIndex);
+			                }
+	                	}
 	                }
-
 	              },
 	            },
 	            cursor: 'pointer',
@@ -1591,16 +1543,41 @@
 			} // end handleHideGraphLine
 
 			function resetLineOpacity(containerId) {
+				$.each(pageCharts, function(key, chart) {
+					$.each(chart.series, function (key, series) {
+						if(series.graph != undefined) {
+							if(series.selected) {
+								series.graph.element.setAttribute("style", "opacity: 1");
+	        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 1");
+							} else {
+								series.graph.element.setAttribute("style", "opacity: 0.3");
+	        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 0");
+							}						
+						}							
+					});  	
+				});
+			}
 
-        $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function() {
-          var $this = $(this);
-          if($this.attr("stroke-width") == 3) {
-            $(this).attr("style", "opacity: 0.3");
-            $(this).siblings("path").attr("style", "opacity: 0");
-          } else {
-            $(this).attr("style", "opacity: 1");
-          }
-        });
+			function initChartStyles() {
+				// set first visible line of each chart to be selected
+				$.each(pageCharts, function(key, chart) {
+					for(var s = 0; s < chart.series.length; s++) {
+						if(chart.series[s].visible == true) {
+							chart.series[s].graph.element.setAttribute("data-selected", "selected");
+      				chart.series[s].selected = true;
+							break;
+						}
+					}
+				});
+
+        // set CSS classes on lines and fills
+        setGraphCSSClasses("chart-revenue");
+        setGraphCSSClasses("chart-downloads");
+        setGraphCSSClasses("chart-combined");
+
+        resetLineOpacity("chart-revenue");
+				resetLineOpacity("chart-downloads");
+				resetLineOpacity("chart-combined");
 			}
 
 			function handleChartInteraction() {
@@ -1778,34 +1755,7 @@
 						});
 					});
 
-					$.each(pageCharts, function(key, chart) {
-						for(var s = 0; s < chart.series.length; s++) {
-							if(chart.series[s].visible == true) {
-								chart.series[s].update({
-			          	lineWidth: 3
-			        	});
-							}
-						}
-					});
-
-					$.each(pageCharts, function(key, chart) {
-						for(var s = 0; s < chart.series.length; s++) {
-							if(chart.series[s].visible == true) {
-								chart.series[s].update({
-			          	lineWidth: 3.1
-			        	});
-								break;
-							}
-						}
-					});
-
-					setGraphCSSClasses("chart-revenue");
-					setGraphCSSClasses("chart-downloads");
-					setGraphCSSClasses("chart-combined");
-
-					resetLineOpacity("chart-revenue");
-					resetLineOpacity("chart-downloads");
-					resetLineOpacity("chart-combined");
+					initChartStyles();
 				});
 
 				// change chart type
@@ -1824,65 +1774,7 @@
 							}				    
 						});
 					});
-
-					$.each(pageCharts, function(key, chart) {
-						for(var s = 0; s < chart.series.length; s++) {
-							if(chart.series[s].visible == true) {
-								chart.series[s].update({
-			          	lineWidth: 3
-			        	});
-							}
-						}
-					});
-
-					$.each(pageCharts, function(key, chart) {
-						for(var s = 0; s < chart.series.length; s++) {
-							if(chart.series[s].visible == true) {
-								chart.series[s].update({
-			          	lineWidth: 3.1
-			        	});
-								break;
-							}
-						}
-					});
-
-					setGraphCSSClasses("chart-revenue");
-					setGraphCSSClasses("chart-downloads");
-					setGraphCSSClasses("chart-combined");
-
-					resetLineOpacity("chart-revenue");
-					resetLineOpacity("chart-downloads");
-					resetLineOpacity("chart-combined");				
 				});
-
-				// toggle a row on/off in the key
-				$('.js-toggle-row-off').click(function(){
-					var counter = 0,
-							toggleAllValue = $(this)[0].checked;
-					$(this).parents('.chart-key-full__row').find('input[type=checkbox]').each(function(){
-						var $checkbox = $(this);
-						if(counter > 0) {
-							if(toggleAllValue && !$checkbox[0].checked) {
-								$checkbox.trigger("click");
-							} else if(!toggleAllValue && $checkbox[0].checked) {
-								$checkbox.trigger("click");
-							}
-						}
-						counter++;
-					});
-				});
-
-				// set first line to have larger width for interaction functionality
-				$.each(pageCharts, function(key, chart) {
-					chart.series[0].update({
-          	lineWidth: 3.1
-        	});
-				});
-
-        // set CSS classes on lines and fills
-        setGraphCSSClasses("chart-revenue");
-        setGraphCSSClasses("chart-downloads");
-        setGraphCSSClasses("chart-combined");
 
 			} // end handleChartInteraction();
 
@@ -1959,6 +1851,8 @@
 				generateChart('chart-combined', "split", revAndDownData, seriesColours, "area", true);
 				$('.chart-container').addClass('is-animated');
 				handleChartInteraction();
+
+				initChartStyles();
 			}, 500);
 
   	}
