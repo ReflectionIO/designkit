@@ -157,15 +157,29 @@
 
 					<div class="filter-toggle toggle-container--chart-type">
 						<div class="toggle">
-							<input id="toggle--show-stacked" name="graphtype" checked type="radio">
-							<label for="toggle--show-stacked">
+							<input id="toggle--show-area" name="graphtype" checked type="radio" data-chart-type="area">
+							<label for="toggle--show-area" class="js-toggle--show-area">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M16.9,16.9h-2.8h-0.6h-2.8h-0.6H7.3
+	H6.8H3.9H3.4H1.1v-4l2.5-3.8L7,10.7l3.4-6.2L14,6.1l2.9-3.2V16.9z"/></svg>
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-stacked" name="graphtype" type="radio" data-chart-type="stacked">
+							<label for="toggle--show-stacked" class="js-toggle--show-stacked">
 								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M3.6,9.1L7,10.7l3.4-6.2L14,6.1l2.9-3.2v4
 	l-3,4.5l-3.2-1.1l-3.7,3.4L3.7,13l-2.6,1.4v-1.5L3.6,9.1z M14.1,16.9h-0.6h-2.8h-0.6H7.3H6.8H3.9H3.4H1.1V15l2.7-1.5l3.3,0.9
 	l3.7-3.4l3.3,1.1l2.8-4.2v9H14.1z"/></svg>
 							</label>
 						</div>
 						<div class="toggle">
-							<input id="toggle--show-map" name="graphtype" type="radio">
+							<input id="toggle--show-bar" name="graphtype" type="radio" data-chart-type="bar">
+							<label for="toggle--show-bar" class="js-toggle--show-bar">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M11.2,0v5.6H5.6v3.9H0V18h18V0H11.2z M6.8,6.8h5.1v10.1H6.8V6.8z M1.1,10.7h5.1v6.2H1.1V10.7z
+	 M16.9,16.9h-4.5V1.1h4.5V16.9z"/></svg>
+							</label>
+						</div>
+						<!-- <div class="toggle">
+							<input id="toggle--show-map" name="graphtype" type="radio" data-chart-type="map">
 							<label for="toggle--show-map">
 								<svg x="0px" y="0px" viewBox="0 0 18 18" enable-background="new 0 0 18 18" xml:space="preserve"><path d="M9,0C9,0,9,0,9,0C8.9,0,8.9,0,8.9,0C8.7,0,8.6,0,8.4,0c-0.1,0-0.3,0-0.4,0c-0.1,0-0.2,0-0.3,0.1
 	C3.4,0.7,0,4.5,0,9c0,5,4,9,9,9s9-4,9-9C18,4,14,0,9,0z M15.5,6.3c-0.3-0.1-0.3-0.3-0.6-0.4c-0.5-0.2-1.4-0.2-2,0
@@ -190,7 +204,7 @@
 	C14.1,5.3,14,5.1,14,5c0.3,0,0.5,0.2,0.6,0.4c0,0,0.1,0.1,0.2,0.1c0.1,0,0.2-0.2,0.3-0.1c0,0.1,0,0.2,0.1,0.2s0.1-0.1,0.2,0
 	s0.2,0.3,0.3,0.3c0.1,0,0.3,0,0.4,0.1c0.1,0.1,0.1,0.2,0.1,0.3C16.3,6.4,15.8,6.4,15.5,6.3z"></path></svg>
 							</label>
-						</div>
+						</div> -->
 					</div>
 
 					<div class="filter-toggle toggle-container--chart-type">
@@ -924,20 +938,13 @@
   		$('.js-mock-show-split-chart').on("click", function(){
   			$('#split-chart-container').addClass("is-active");
   			$('#single-chart-container').removeClass("is-active");
+  			pageCharts[0].reflow(); // reflow in case of window width change before making visible again
+  			pageCharts[1].reflow();
   		});
   		$('.js-mock-show-single-chart').on("click", function(){
   			$('#split-chart-container').removeClass("is-active");
   			$('#single-chart-container').addClass("is-active");
-  			if(pageCharts.length < 3) {
-  				revAndDownData = new Array(); 				
-  				revAndDownData.push(mockDataRevenue);
-  				revAndDownData.push(mockDataDownloads);
-  				generateChart('chart-combined', "split", revAndDownData, seriesColours, true);
-  				pageCharts[2].series[0].update({
-		        lineWidth: 3.1
-		      });
-		      setGraphCSSClasses("chart-combined");
-  			}
+  			pageCharts[2].reflow();
   		});
 
   		// HIGHCHARTS
@@ -1054,13 +1061,20 @@
 				H.wrap(H.Series.prototype, 'hide', function (proceed) {
 
 				  // Before the hide function
-				  var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent-fade");
+				  var t = $(this),
+				  				par;
+
+				  if(t[0].type == "area") {
+				  	var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent-fade");
+				  }
+
 				  var instance = this;
-				  // Now apply the original function with the original arguments, 
-				  // which are sliced off this function's arguments
+				
 				  setTimeout(function() {
 				  	proceed.apply(instance, Array.prototype.slice.call(arguments, 1));
-				  	par.attr("class", "highcharts-series");				  	
+				  	if(t[0].type == "area") {
+				  		par.attr("class", "highcharts-series");
+				  	}
 				  }, 200);
 				});
 
@@ -1068,7 +1082,7 @@
 
 	    pageCharts = [];
 
-	    function generateChart(containerId, dataType, seriesData, seriesColour, isMerged) {
+	    function generateChart(containerId, dataType, seriesData, seriesColour, chartType, isMerged) {
 
 	    	var seriesColour,
 	    			seriesArray = [],
@@ -1246,7 +1260,7 @@
 						height: 285,
 						backgroundColor: '#fcfdfd',
 						plotBackgroundColor: '#f2f2f5',
-			   		type: 'area',
+			   		type: chartType,
 			   		animation: false,
 			   		style: {
 	            fontFamily: 'Source Sans Pro'
@@ -1320,34 +1334,34 @@
 	            events: {
 	              click: function() {
 	                var that = this;
-
-                  var count = 0;
-                  $('#' + containerId + ' .highcharts-series').each(function(){
-                  	if(count != that.index) {
-	                    var thisFillPath = $(this).find('path:nth-child(2)');                        
-	                    if(thisFillPath.attr("stroke-width") == 3.1) {
-	                      that.chart.series[count].update({
+	                console.log(that.index);
+                  $('#' + containerId + ' .highcharts-series').each(function(){                  	
+                  	
+                  	var thisPath = $(this).find('path:nth-child(2)');    
+                  	var seriesNumber = thisPath.data("index");
+                  	if(seriesNumber != that.index) { // loop all lines other than the one clicked
+	                    
+	                    if(thisPath.attr("stroke-width") == 3.1) { // get selected line
+	                      that.chart.series[seriesNumber].update({
 	                        lineWidth: 3
-	                      });           
-	                      var counterTwo = 0;
-	                      $('#' + containerId + ' .highcharts-series').each(function(){
-	                        if(counterTwo == count) {
-	                          thisFillPath = $(this).find('path:nth-child(2)');
-	                        }
-	                        counterTwo++;
-	                      });                          
-	                      thisFillPath.css("opacity", "1");
-	                      thisFillPath.animate({ "opacity": 0.3 }, 250);
-	                      thisFillPath.siblings("path").css("opacity", "1");
-	                      thisFillPath.siblings("path").animate({ "opacity": 0 }, 250);
+	                      });
+
+	                      setGraphCSSClasses(containerId);
+
+	                      // get the line again after chart update
+	                      thisPath = $('#' + containerId + ' .highcharts-series .series-class-' + seriesNumber);
+	                      // set the line to unselected style
+	                      thisPath.css("opacity", "1");
+	                      thisPath.animate({ "opacity": 0.3 }, 250);
+	                      thisPath.siblings("path").css("opacity", "1");
+	                      thisPath.siblings("path").animate({ "opacity": 0 }, 250);
 	                    }
 	                  }
-                    count++;
                   });
 
 	                this.update({
 	                  lineWidth: 3.1
-	                });	                
+	                });
 
 	                // update the graph line CSS class's after this.udpate
 	                setGraphCSSClasses(containerId);
@@ -1472,12 +1486,20 @@
 
 
    		function setGraphCSSClasses(containerId) {
-   			var counter = 0;
+
+   			$.each(pageCharts, function(key, chart) {
+					$.each(chart.series, function (key, series) {
+						if(series.graph) {
+							series.graph.element.setAttribute("class", "series-class-" + series.index);
+				    	series.graph.element.setAttribute("data-index", series.index);
+						}				    
+				    // console.log(series.graph.element);
+					});
+				});	
 
         $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
-          $(this).attr("class", "series-class-" + counter);
-          $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + counter);
-          counter++;
+          var lineIndex = $(this).data("index");
+          $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + lineIndex);
         });
    		} // end setGraphCSSClasses
 
@@ -1568,6 +1590,18 @@
         }
 			} // end handleHideGraphLine
 
+			function resetLineOpacity(containerId) {
+
+        $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function() {
+          var $this = $(this);
+          if($this.attr("stroke-width") == 3) {
+            $(this).attr("style", "opacity: 0.3");
+            $(this).siblings("path").attr("style", "opacity: 0");
+          } else {
+            $(this).attr("style", "opacity: 1");
+          }
+        });
+			}
 
 			function handleChartInteraction() {
 				
@@ -1576,16 +1610,40 @@
 					var $this = $(this);
 					var chartIndex = $this.data("chart-index");
 					var seriesIndex = $this.data("series-index");
+
+					var currentChartType = "area";
+					$('.toggle input[type=radio][name=graphtype]').each(function(){
+						if($(this).is(":checked")) {
+							currentChartType = $(this).data("chart-type");
+						}
+					});
+
+
 					if(chartIndex < 2) {
 						if($(this).is(":checked")) {
-						// turn off same series on both charts
+						// turn on same series on both charts
 							pageCharts[0].series[seriesIndex].show();
 							pageCharts[1].series[seriesIndex].show();
-						} else {
+							pageCharts[0].series[seriesIndex].update({
+		          	lineWidth: 3
+		        	});
+							pageCharts[1].series[seriesIndex].update({
+		          	lineWidth: 3
+		        	});
+							
+							setGraphCSSClasses("chart-revenue");
+        			setGraphCSSClasses("chart-downloads");
+
+        			resetLineOpacity("chart-revenue");
+        			resetLineOpacity("chart-downloads");
+
+						} else { // turn off series
 							setTimeout(function(){
-								// CHECK IF LINE IS SELECTED AND SELECT NEXT LINE
-								if(pageCharts[0].series[seriesIndex].graph.strokeWidth == 3.1) {
-									handleHideGraphLine(seriesIndex, true)
+								// CHECK IF LINE IS SELECTED AND SELECT NEXT LINE								
+								if(currentChartType == "area") {
+									if(pageCharts[0].series[seriesIndex].graph.strokeWidth == 3.1) {
+										handleHideGraphLine(seriesIndex, true)
+									}
 								}
 
 								// Hide the series
@@ -1605,15 +1663,17 @@
 									}
 								}
 							}
-						});	
+						});
 					} else { // combined chart
 						if($(this).is(":checked")) {
 							pageCharts[chartIndex].series[seriesIndex].show();
 						} else {
 							setTimeout(function(){
 								// CHECK IF LINE IS SELECTED AND SELECT NEXT LINE
-								if(pageCharts[chartIndex].series[seriesIndex].graph.strokeWidth == 3.1) {
-									handleHideGraphLine(seriesIndex, false)
+								if(currentChartType == "area") {
+									if(pageCharts[chartIndex].series[seriesIndex].graph.strokeWidth == 3.1) {
+										handleHideGraphLine(seriesIndex, false)
+									}
 								}
 
 								// Hide the series
@@ -1625,7 +1685,6 @@
 
 				// hover on/off key to highlight lines
 				$('.js-hover-series').on("mouseenter", function(){
-					console.log(pageCharts);
 					if($('html.no-touch').length) {
 						var $this = $(this);
 						var chartToHoverIndex = $this.data("chart-index");
@@ -1635,7 +1694,6 @@
 						if(chartToHoverIndex < 2) { // if it's the twin chart
 							for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
 								var chartContainerId = pageCharts[ch].container.id;
-								console.log(chartContainerId);
 
 								for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
 									$('#' + chartContainerId + ' .series-class-' + seriesToHoverArray[i]).each(function(){
@@ -1649,7 +1707,6 @@
 							}
 						} else { // it's the combined chart
 							var chartContainerId = pageCharts[chartToHoverIndex].container.id;
-								console.log(chartContainerId);
 
 								for(var i = 0; i < seriesToHoverArray.length; i++) {
 									$('#' + chartContainerId + ' .series-class-' + seriesToHoverArray[i]).each(function(){
@@ -1672,7 +1729,6 @@
 						if(chartToHoverIndex < 2) { // if it's the twin chart
 							for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
 								var chartContainerId = pageCharts[ch].container.id;
-								console.log(chartContainerId);
 
 								for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
 									$('#' + chartContainerId + ' .series-class-' + seriesToHoverArray[i]).each(function(){
@@ -1686,7 +1742,6 @@
 							}
 						} else { // it's the combined chart
 							var chartContainerId = pageCharts[chartToHoverIndex].container.id;
-								console.log(chartContainerId);
 
 								for(var i = 0; i < seriesToHoverArray.length; i++) {
 									$('#' + chartContainerId + ' .series-class-' + seriesToHoverArray[i]).each(function(){
@@ -1697,8 +1752,107 @@
 										}
 									});
 								}
-						}          
+						}
 					}
+				});
+
+				// change chart type
+				$('.js-toggle--show-bar').on("click", function(){
+					$.each(pageCharts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+					    series.update({
+					    	type: 'bar'
+					    });
+						});
+					});					
+				});
+
+				// change chart type
+				$('.js-toggle--show-area').on("click", function(){
+					$.each(pageCharts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+					    series.update({
+					    	type: 'area',
+					    	stacking: null
+					    });
+						});
+					});
+
+					$.each(pageCharts, function(key, chart) {
+						for(var s = 0; s < chart.series.length; s++) {
+							if(chart.series[s].visible == true) {
+								chart.series[s].update({
+			          	lineWidth: 3
+			        	});
+							}
+						}
+					});
+
+					$.each(pageCharts, function(key, chart) {
+						for(var s = 0; s < chart.series.length; s++) {
+							if(chart.series[s].visible == true) {
+								chart.series[s].update({
+			          	lineWidth: 3.1
+			        	});
+								break;
+							}
+						}
+					});
+
+					setGraphCSSClasses("chart-revenue");
+					setGraphCSSClasses("chart-downloads");
+					setGraphCSSClasses("chart-combined");
+
+					resetLineOpacity("chart-revenue");
+					resetLineOpacity("chart-downloads");
+					resetLineOpacity("chart-combined");
+				});
+
+				// change chart type
+				$('.js-toggle--show-stacked').on("click", function(){
+					$.each(pageCharts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							if(key > 0) {
+								series.update({
+									type: 'area',
+						    	stacking: 'normal'
+						    });
+							} else {
+								series.update({
+									type: 'area',
+								});
+							}				    
+						});
+					});
+
+					$.each(pageCharts, function(key, chart) {
+						for(var s = 0; s < chart.series.length; s++) {
+							if(chart.series[s].visible == true) {
+								chart.series[s].update({
+			          	lineWidth: 3
+			        	});
+							}
+						}
+					});
+
+					$.each(pageCharts, function(key, chart) {
+						for(var s = 0; s < chart.series.length; s++) {
+							if(chart.series[s].visible == true) {
+								chart.series[s].update({
+			          	lineWidth: 3.1
+			        	});
+								break;
+							}
+						}
+					});
+
+					setGraphCSSClasses("chart-revenue");
+					setGraphCSSClasses("chart-downloads");
+					setGraphCSSClasses("chart-combined");
+
+					resetLineOpacity("chart-revenue");
+					resetLineOpacity("chart-downloads");
+					resetLineOpacity("chart-combined");				
 				});
 
 				// toggle a row on/off in the key
@@ -1719,16 +1873,16 @@
 				});
 
 				// set first line to have larger width for interaction functionality
-				pageCharts[0].series[0].update({
-          lineWidth: 3.1
-        });
-        pageCharts[1].series[0].update({
-          lineWidth: 3.1
-        });        
+				$.each(pageCharts, function(key, chart) {
+					chart.series[0].update({
+          	lineWidth: 3.1
+        	});
+				});
 
         // set CSS classes on lines and fills
         setGraphCSSClasses("chart-revenue");
         setGraphCSSClasses("chart-downloads");
+        setGraphCSSClasses("chart-combined");
 
 			} // end handleChartInteraction();
 
@@ -1740,11 +1894,14 @@
 
 			setTimeout(function() {
 
-				// create mock data
+				// CREATE MOCK DATA FOR CHART
 				// chartData var comes from external js/data-vis/data-vis-release.js
-				for(var s = 0; s < 5; s++) {
+				
+					// MOCK REVENUE DATA
+				mockDataRevenue.push([]); // mock only, first item in array placeholder for totals calculated later
+				for(var s = 0; s < 4; s++) {
 					var mockSeries = [];
-					for(var d = 0; d < 20; d++) {
+					for(var d = 0; d < 20; d++) {						
 						if(chartData[s].data[d]) {
 							mockSeries.push(chartData[s].data[d].value);
 						} else {
@@ -1752,8 +1909,23 @@
 						}
 					}
 					mockDataRevenue.push(mockSeries);
+				}				
+
+				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
+				for(var d = 0; d < 20; d++) {
+					var totalOfSeriesForDataPoint = 0;
+					for(var s = 1; s < 5; s++) {
+						if(mockDataRevenue[s][d] != null) {
+							totalOfSeriesForDataPoint = totalOfSeriesForDataPoint + parseInt(mockDataRevenue[s][d]);
+						}						
+					}
+					mockSeriesTotal.push(totalOfSeriesForDataPoint);
 				}
-				for(var s = 5; s < 10; s++) {
+				mockDataRevenue[0] = mockSeriesTotal; // TOTAL IS THE FIRST LINE ON THE GRAPH
+
+					// MOCK DOWNLOADS DATA
+				mockDataDownloads.push([]);
+				for(var s = 5; s < 9; s++) {
 					var mockSeries = [];
 					for(var d = 0; d < 20; d++) {
 						if(chartData[s].data[d]) {
@@ -1765,8 +1937,26 @@
 					mockDataDownloads.push(mockSeries);
 				}
 
-				generateChart('chart-revenue', "grossingrank", mockDataRevenue, seriesColours, false);
-				generateChart('chart-downloads', "downloadsrank", mockDataDownloads, seriesColours, false);
+				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
+				for(var d = 0; d < 20; d++) {
+					var totalOfSeriesForDataPoint = 0;
+					for(var s = 1; s < 5; s++) {
+						if(mockDataDownloads[s][d] != null) {
+							totalOfSeriesForDataPoint = totalOfSeriesForDataPoint + parseInt(mockDataDownloads[s][d]);
+						}
+					}
+					mockSeriesTotal.push(totalOfSeriesForDataPoint);
+				}
+				mockDataDownloads[0] = mockSeriesTotal;
+
+
+				revAndDownData = new Array(); 				
+				revAndDownData.push(mockDataRevenue);
+				revAndDownData.push(mockDataDownloads);				
+
+				generateChart('chart-revenue', "grossingrank", mockDataRevenue, seriesColours, "area", false);
+				generateChart('chart-downloads', "downloadsrank", mockDataDownloads, seriesColours, "area", false);
+				generateChart('chart-combined', "split", revAndDownData, seriesColours, "area", true);
 				$('.chart-container').addClass('is-animated');
 				handleChartInteraction();
 			}, 500);
