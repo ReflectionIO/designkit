@@ -205,7 +205,7 @@
 
 				<div class="grid__row">
 					<ul class="tabs-content-list">
-						<li class="is-active" id="split-chart-container">
+						<li class="is-active js-twin-chart-container">
 							<section class="chart-container chart-container--split">
 								<header class="chart-container__header">
 									<h2 class="chart-heading heading-style--heading-three">Revenue <span>(All)</span></h2>
@@ -263,7 +263,7 @@
 								</div>
 							</aside>
 						</li>
-						<li id="single-chart-container">
+						<li class="js-combined-chart-container">
 							<section class="chart-container chart-container--single">
 								<header class="chart-container__header">
 									<dl class="chart-summary">
@@ -890,22 +890,22 @@
 				$('.js-toggle--show-bar.is-disabled').removeClass("is-disabled")
 																							.siblings("input").removeAttr("disabled", "disabled");
 
-  			$('#split-chart-container').addClass("is-active");
-  			$('#single-chart-container').removeClass("is-active");
+  			$('.js-twin-chart-container').addClass("is-active");
+  			$('.js-combined-chart-container').removeClass("is-active");
   			pageCharts[0].reflow(); // reflow in case of window width change before making visible again
   			pageCharts[1].reflow();
   		});
 
-  		$('.js-mock-show-single-chart').on("click", function(){		
+  		$('.js-mock-show-single-chart').on("click", function(){
   			if(!$(this).hasClass("is-disabled")) {
 
 					$('.js-toggle--show-stacked').addClass("is-disabled")
 																				.siblings("input").attr("disabled", "disabled");
 
-  				$('#split-chart-container').removeClass("is-active");
-	  			$('#single-chart-container').addClass("is-active");
+  				$('.js-twin-chart-container').removeClass("is-active");
+	  			$('.js-combined-chart-container').addClass("is-active");
 	  			pageCharts[2].reflow();
-  			}  			
+  			}
   		});
 
   		// HIGHCHARTS
@@ -1036,27 +1036,94 @@
 				  }, 200);
 				});
 
+				H.Chart.prototype.animateSelectedLines = function(containerId, indexToSelect, previousSelectedIndex) {
+	    		$(containerId + ' .highcharts-series path:nth-child(2)').each(function(){
+	          var $this = $(this);
+	          if($this.attr("data-index") == indexToSelect) {
+	            $this.css("opacity", "0.3");
+	            $this.animate({ "opacity": 1 }, 250);
+	            $this.siblings("path").css("opacity", "0");
+	            $this.siblings("path").animate({ "opacity": 1 }, 250);
+
+	          } else if($this.attr("data-index") == previousSelectedIndex) {
+	          	$this.css("opacity", 1);
+	            $this.animate({ "opacity": 0.3 }, 250);
+	            $this.siblings("path").css("opacity", 1);
+	            $this.siblings("path").animate({ "opacity": 0 }, 250);
+	          }
+	        });
+	    	}
+
+	    	H.Chart.prototype.setSeriesToSelected = function(chartIndex, seriesIndex) {
+	    		pageCharts[chartIndex].series[seriesIndex].selected = true;
+	      	pageCharts[chartIndex].series[seriesIndex].graph.element.setAttribute("data-selected", "selected");
+	    	}
+
+	    	H.Chart.prototype.setSeriesToUnselected = function(chartIndex, seriesIndex) {
+	    		$('.chart[data-highcharts-chart="' + chartIndex + '"] .highcharts-series path[data-selected]').removeAttr("data-selected");
+	      	pageCharts[chartIndex].series[seriesIndex].selected = false;
+	    	}
+
+	    	H.Chart.prototype.setGraphCSSClasses = function() {
+	   			$.each(pageCharts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							series.refseriesindex = key;
+							if(series.graph) {
+								series.graph.element.setAttribute("class", "series-class-" + key);
+					    	series.graph.element.setAttribute("data-index", key);
+							}
+						});
+
+						// set CSS classes on the area fills
+						$('.chart[data-highcharts-chart="' + key + '"] .highcharts-series path:nth-child(2)').each(function(){
+		          var lineIndex = $(this).attr("data-index");
+		          $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + lineIndex);
+		        });
+					});
+	   		}
+
+	   		H.Chart.prototype.resetLineStyling = function() {
+					$.each(pageCharts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							if(series.graph != undefined) {
+								if(series.selected) {
+									series.graph.element.setAttribute("style", "opacity: 1");
+		        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 1");
+								} else {
+									series.graph.element.setAttribute("style", "opacity: 0.3");
+		        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 0");
+								}						
+							}							
+						});  	
+					});
+				}
+
+				H.Chart.prototype.setFirstVisibleSeriesToSelected = function() {
+					// set first visible line of each chart to be selected
+					$.each(pageCharts, function(key, chart) {
+						for(var s = 0; s < chart.series.length; s++) {
+							if(chart.series[s].visible == true) {
+								chart.series[s].graph.element.setAttribute("data-selected", "selected");
+	      				chart.series[s].selected = true;
+								break;
+							}
+						}
+					});
+				}
+
+				H.Chart.prototype.setGraphFillsTransparency = function() {
+					$.each(pageCharts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							if(series.graph != undefined) {
+		        		series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 0.25");
+							}
+						});  	
+					});
+				}
+
 	    }(Highcharts));
-
+	
 	    pageCharts = [];
-	    // chart helper function
-			function animateSelectedLines(containerId, indexToSelect, previousSelectedIndex) {
-    		$(containerId + ' .highcharts-series path:nth-child(2)').each(function(){
-          var $this = $(this);
-          if($this.attr("data-index") == indexToSelect) { // if this is the newly selected line
-            $this.css("opacity", "0.3");
-            $this.animate({ "opacity": 1 }, 250);
-            $this.siblings("path").css("opacity", "0");
-            $this.siblings("path").animate({ "opacity": 1 }, 250);
-
-          } else if($this.attr("data-index") == previousSelectedIndex) { // if it was the previously selected line
-          	$this.css("opacity", 1);
-            $this.animate({ "opacity": 0.3 }, 250);
-            $this.siblings("path").css("opacity", 1);
-            $this.siblings("path").animate({ "opacity": 0 }, 250);
-          }
-        });
-    	}
 
 	    function generateChart(containerId, dataType, seriesData, seriesColour, chartType, isMerged) {
 
@@ -1300,7 +1367,7 @@
 	              click: function() {
 	                var that = this,
 	                		indexToSelect = that.refseriesindex;
-
+	                	console.log(that);
               		// TO DO - Refactor this, code duplication
 
 	                if(!that.selected) { // if user clicked on a line that isn't currently selected
@@ -1308,18 +1375,19 @@
 	                	// get the index of the previously selected line
 	                	var previousSelectedIndex = $('#' + containerId + ' .highcharts-series path[data-selected]').attr("data-index");
 
-	                	if(previousSelectedIndex != null && previousSelectedIndex != undefined) { // means we're using the non stacked, because lines aren't selected on the stacked chart
+	                	if($('.js-toggle--show-area').siblings("input").is(":checked")) { // user is viewing the area chart, non stacked, which is the only chart that allows series selection
 
 	                		// set the previously selected line to unselected
-		                	$('#' + containerId + ' .highcharts-series path[data-selected]').removeAttr("data-selected");
-		                	that.chart.series[previousSelectedIndex].selected = false;
+	                		if(previousSelectedIndex != undefined) {
+	                			that.chart.setSeriesToUnselected(that.chart.index, previousSelectedIndex);
+	                		}
 
 		                	// set the clicked line to selected
 		                	that.selected = true;
 		                	that.graph.element.setAttribute("data-selected", "selected");
 
 		                	// animate the selected line change
-		                	animateSelectedLines('#' + containerId, indexToSelect, previousSelectedIndex);
+		                	that.chart.animateSelectedLines('#' + containerId, indexToSelect, previousSelectedIndex);
 
 			                // Update all other charts with the selection
 			                if(that.chart.index < 2) { // currently viewing the twin charts
@@ -1328,59 +1396,51 @@
 			                	var mirrorChartIndex = (that.chart.index == 0) ? 1 : 0;
 
 			                	// remove previously selected from twin chart
-			                	$('.chart[data-highcharts-chart="' + mirrorChartIndex + '"] .highcharts-series path[data-selected]').removeAttr("data-selected");
-			                	pageCharts[mirrorChartIndex].series[previousSelectedIndex].selected = false;			                	
-			                	// get the previously clicked line on the combined chart
+			                	if(previousSelectedIndex != undefined) {
+			                		that.chart.setSeriesToUnselected(mirrorChartIndex, previousSelectedIndex);                	
+				                }
+
+			                	// get the previously selected line on the combined chart
 			                	// and remove previously selected state from combined chart
 			                	var previousSelectedIndexOnCombined = $('.chart[data-highcharts-chart="2"] .highcharts-series path[data-selected]').attr("data-index");
 
-			                	$('.chart[data-highcharts-chart="2"] .highcharts-series path[data-selected]').removeAttr("data-selected");
-			                	pageCharts[2].series[previousSelectedIndexOnCombined].selected = false;
+			                	if(previousSelectedIndexOnCombined != undefined) {
+			                		that.chart.setSeriesToUnselected(2, previousSelectedIndexOnCombined);
+			                	}
 
 			                	// set the clicked line to selected on the twin chart
-			                	pageCharts[mirrorChartIndex].series[indexToSelect].selected = true;
-			                	pageCharts[mirrorChartIndex].series[indexToSelect].graph.element.setAttribute("data-selected", "selected");
+			                	that.chart.setSeriesToSelected(mirrorChartIndex, indexToSelect);
 
 			                	// set the clicked line to selected on the combined chart
 			                	var indexToSelectOnCombinedChart = indexToSelect * 2;
 
-			                	pageCharts[2].series[indexToSelectOnCombinedChart].selected = true;
-			                	pageCharts[2].series[indexToSelectOnCombinedChart].graph.element.setAttribute("data-selected", "selected");
+			                	that.chart.setSeriesToSelected(2, indexToSelectOnCombinedChart);
 
-			                	// animate the selected line change on the mirrored chart
-			                	var mirrorContainer = '.chart[data-highcharts-chart="' + mirrorChartIndex + '"]';
-			                	animateSelectedLines(mirrorContainer, indexToSelect, previousSelectedIndex);
-
-			                	var combinedContainer = '.chart[data-highcharts-chart="2"]';
-			                	animateSelectedLines(combinedContainer, indexToSelectOnCombinedChart, previousSelectedIndexOnCombined);
+			                	// animate the selected line change on the mirrored and combined charts
+			                	that.chart.animateSelectedLines('.chart[data-highcharts-chart="' + mirrorChartIndex + '"]', indexToSelect, previousSelectedIndex);
+			                	that.chart.animateSelectedLines('.chart[data-highcharts-chart="2"]', indexToSelectOnCombinedChart, previousSelectedIndexOnCombined);
 			                
 			                } else { 
 												
 												// using the combined chart, so select the same for the twin charts
-			                	var correspondingIndexOfPreviouslySelectedOnTwinCharts = Math.floor(previousSelectedIndex / 2);
+												if(previousSelectedIndex != undefined) {
+			                		var correspondingIndexOfPreviouslySelectedOnTwinCharts = Math.floor(previousSelectedIndex / 2); // (combined has twice the series lines as a twin chart)
 
-			                	var correspondingIndexToSelectOnTwinCharts = Math.floor(indexToSelect/2);
+			                		// unselect the previously selected line on twin charts
+			                		that.chart.setSeriesToUnselected(0, correspondingIndexOfPreviouslySelectedOnTwinCharts);
+			                		that.chart.setSeriesToUnselected(1, correspondingIndexOfPreviouslySelectedOnTwinCharts);
+				                }
 
-			                	$('.chart[data-highcharts-chart="0"] .highcharts-series path[data-selected]').removeAttr("data-selected");
-			                	pageCharts[0].series[correspondingIndexOfPreviouslySelectedOnTwinCharts].selected = false;
+				                var correspondingIndexToSelectOnTwinCharts = Math.floor(indexToSelect/2);
 
-			                	$('.chart[data-highcharts-chart="1"] .highcharts-series path[data-selected]').removeAttr("data-selected");
-			                	pageCharts[1].series[correspondingIndexOfPreviouslySelectedOnTwinCharts].selected = false;
-
-			                	// set the clicked line to selected
-			                	pageCharts[0].series[correspondingIndexToSelectOnTwinCharts].selected = true;
-			                	pageCharts[0].series[correspondingIndexToSelectOnTwinCharts].graph.element.setAttribute("data-selected", "selected");
-
-			                	// set the clicked line to selected on the combined chart
-			                	pageCharts[1].series[correspondingIndexToSelectOnTwinCharts].selected = true;
-			                	pageCharts[1].series[correspondingIndexToSelectOnTwinCharts].graph.element.setAttribute("data-selected", "selected");
+			                	// set the clicked line to selected on the twin charts
+			                	that.chart.setSeriesToSelected(0, correspondingIndexToSelectOnTwinCharts);
+			                	that.chart.setSeriesToSelected(1, correspondingIndexToSelectOnTwinCharts);
 
 			                	// animate the selected line change on the mirrored chart
-			                	var firstChartContainer = '.chart[data-highcharts-chart="0"]';
-			                	animateSelectedLines(firstChartContainer, correspondingIndexToSelectOnTwinCharts, correspondingIndexOfPreviouslySelectedOnTwinCharts);
+			                	that.chart.animateSelectedLines('.chart[data-highcharts-chart="0"]', correspondingIndexToSelectOnTwinCharts, correspondingIndexOfPreviouslySelectedOnTwinCharts);
 
-			                	var secondChartContainer = '.chart[data-highcharts-chart="1"]';
-			                	animateSelectedLines(secondChartContainer, correspondingIndexToSelectOnTwinCharts, correspondingIndexOfPreviouslySelectedOnTwinCharts);
+			                	that.chart.animateSelectedLines('.chart[data-highcharts-chart="1"]', correspondingIndexToSelectOnTwinCharts, correspondingIndexOfPreviouslySelectedOnTwinCharts);
 			                }
 	                	}
 	                }
@@ -1430,64 +1490,6 @@
 	      pageCharts.push(chart);
 			} // end generateChart()
 
-			function setGraphCSSClasses() {
-
-   			$.each(pageCharts, function(key, chart) {
-					$.each(chart.series, function (key, series) {
-						series.refseriesindex = key;
-						if(series.graph) {
-							series.graph.element.setAttribute("class", "series-class-" + key);
-				    	series.graph.element.setAttribute("data-index", key);
-						}
-					});
-
-					// set CSS classes on the area fills
-					$('.chart[data-highcharts-chart="' + key + '"] .highcharts-series path:nth-child(2)').each(function(){
-	          var lineIndex = $(this).attr("data-index");
-	          $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + lineIndex);
-	        });
-				});
-   		} // end setGraphCSSClasses
-
-			function resetLineStyling() {
-				$.each(pageCharts, function(key, chart) {
-					$.each(chart.series, function (key, series) {
-						if(series.graph != undefined) {
-							if(series.selected) {
-								series.graph.element.setAttribute("style", "opacity: 1");
-	        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 1");
-							} else {
-								series.graph.element.setAttribute("style", "opacity: 0.3");
-	        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 0");
-							}						
-						}							
-					});  	
-				});
-			}
-
-			function setFirstVisibleSeriesToSelected() {
-				// set first visible line of each chart to be selected
-				$.each(pageCharts, function(key, chart) {
-					for(var s = 0; s < chart.series.length; s++) {
-						if(chart.series[s].visible == true) {
-							chart.series[s].graph.element.setAttribute("data-selected", "selected");
-      				chart.series[s].selected = true;
-							break;
-						}
-					}
-				});
-			}
-
-			function setGraphFillsTransparency() {
-				$.each(pageCharts, function(key, chart) {
-					$.each(chart.series, function (key, series) {
-						if(series.graph != undefined) {
-	        		series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 0.25");
-						}
-					});  	
-				});
-			}
-
 			function handleChartInteraction() {
 				
 				pageCharts[0].numberofSeriesAdded = pageCharts[0].series.length - 1; // mock, just for index when you add a series
@@ -1521,13 +1523,13 @@
 							// data-selected is not added to stacked chart, so if this exists then restyle for non stacked, otherwise don't restyle for stacked chart
 							setTimeout(function(){
 								if($('.chart[data-highcharts-chart="0"] .highcharts-series path[data-selected]').length) {
-									setGraphCSSClasses();
-									resetLineStyling();
+									Highcharts.Chart.prototype.setGraphCSSClasses();
+									Highcharts.Chart.prototype.resetLineStyling();
 								}
 							}, 200);
 
 							// turn off other checkboxes in mirror chart key
-							$('#split-chart-container .js-toggle-series').each(function(){
+							$('.js-twin-chart-container .js-toggle-series').each(function(){
 								var $thisToggle = $(this);
 								if(!$thisToggle.is($this)) {
 									if($thisToggle.attr("data-series-index") == seriesIndex) {
@@ -1537,7 +1539,7 @@
 							});
 
 							// combined chart turn on/off corresponding series
-							$('#single-chart-container .js-toggle-series').each(function(){
+							$('.js-combined-chart-container .js-toggle-series').each(function(){
 								var $thisToggle = $(this);
 								if(!$thisToggle.is($this)) {
 									if($thisToggle.attr("data-series-index") == seriesIndex * 2 || $thisToggle.attr("data-series-index") == (seriesIndex * 2) + 1) {
@@ -1582,15 +1584,15 @@
 
 								setTimeout(function(){
 									if(!isStackedChart) {
-										setFirstVisibleSeriesToSelected();
-										setGraphCSSClasses();
-						        resetLineStyling();
+										Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+										Highcharts.Chart.prototype.setGraphCSSClasses();
+						        Highcharts.Chart.prototype.resetLineStyling();
 									}
 								}, 200);
 							}, 200);
 
 							// turn off other checkboxes in mirror chart key
-							$('#split-chart-container .js-toggle-series').each(function(){
+							$('.js-twin-chart-container .js-toggle-series').each(function(){
 								var $thisToggle = $(this);
 								if(!$thisToggle.is($this)) {
 									if($thisToggle.attr("data-series-index") == seriesIndex) {
@@ -1600,7 +1602,7 @@
 							});
 
 							// combined chart turn on/off corresponding series
-							$('#single-chart-container .js-toggle-series').each(function(){
+							$('.js-combined-chart-container .js-toggle-series').each(function(){
 								var $thisToggle = $(this);
 								if(!$thisToggle.is($this)) {
 									if($thisToggle.attr("data-series-index") == seriesIndex * 2 || $thisToggle.attr("data-series-index") == (seriesIndex * 2) + 1) {
@@ -1624,7 +1626,7 @@
 							if(isDownloadsSeriesBeingTurnedOn) {
 								correspondingSeriesIndex = seriesIndex - 1;
 							} else {
-								correspondingSeriesIndex = seriesIndex + 1;
+								correspondingSeriesIndex = parseInt(seriesIndex) + 1;
 							}
 
 							var isCorrespondingSeriesVisible = pageCharts[2].series[correspondingSeriesIndex].visible;
@@ -1644,7 +1646,7 @@
 								pageCharts[1].series[correspondingTwinIndex].show();
 
 								// set the key toggle
-								$('#split-chart-container .js-toggle-series').each(function(){
+								$('.js-twin-chart-container .js-toggle-series').each(function(){
 									var $thisToggle = $(this);
 									if(!$thisToggle.is($this)) {
 										if($thisToggle.attr("data-series-index") == correspondingTwinIndex) {
@@ -1655,8 +1657,8 @@
 							}
 
 							if($('.chart[data-highcharts-chart="2"] .highcharts-series path[data-selected]').length) {
-								setGraphCSSClasses();
-								resetLineStyling();
+								Highcharts.Chart.prototype.setGraphCSSClasses();
+								Highcharts.Chart.prototype.resetLineStyling();
 							}
 
 						} else {
@@ -1697,7 +1699,7 @@
 								pageCharts[1].series[correspondingTwinIndex].hide();
 
 								// set the key toggle
-								$('#split-chart-container .js-toggle-series').each(function(){
+								$('.js-twin-chart-container .js-toggle-series').each(function(){
 									var $thisToggle = $(this);
 									if(!$thisToggle.is($this)) {
 										if($thisToggle.attr("data-series-index") == correspondingTwinIndex) {
@@ -1708,9 +1710,9 @@
 
 								setTimeout(function(){
 									if(!isStackedChart) {
-										setFirstVisibleSeriesToSelected();
-										setGraphCSSClasses();
-						        resetLineStyling();					
+										Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+										Highcharts.Chart.prototype.setGraphCSSClasses();
+						        Highcharts.Chart.prototype.resetLineStyling();					
 									}
 								}, 200);
 							}, 200);
@@ -1768,9 +1770,9 @@
 						});
 					});
 
-					setFirstVisibleSeriesToSelected();
-					setGraphCSSClasses();
-	        resetLineStyling();
+					Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+					Highcharts.Chart.prototype.setGraphCSSClasses();
+	        Highcharts.Chart.prototype.resetLineStyling();
 				});
 
 				var seriesFills = ["rgba(245,201,67,0)", "rgba(190,185,219,1)", "rgba(253,127,110,1)", "rgba(127,177,213,1)", "rgba(242,189,216,1)", "rgba(199,178,153,1)", "rgba(189,126,191,1)", "rgba(139,212,199,1)", "rgba(255,181,90,1)", "rgba(217,217,217,1)", "rgba(145,142,223,1)"];
@@ -1803,14 +1805,26 @@
 							});
 						});
 
-						setGraphCSSClasses();
-						setGraphFillsTransparency();
+						Highcharts.Chart.prototype.setGraphCSSClasses();
+						Highcharts.Chart.prototype.setGraphFillsTransparency();
 					}
 				});
 
 				$('.js-add-series').on("click", function(e){
 
 					e.preventDefault();
+
+					// set stacking to normal if currently viewing stacked chart
+					var stackingValue = null;
+					if($('#toggle--show-stacked').is(":checked")) {
+						stackingValue = 'normal';
+					}
+
+					var chartType = "area";
+					if($('#toggle--show-bar').is(":checked")) {
+						chartType = "bar";
+					}
+
 					var mockSeries = [];
 					for(var d = 0; d < 8; d++) {
 						var randomNumber = Math.floor((Math.random() * 50000) + 30000);				
@@ -1833,12 +1847,13 @@
 						}
 					}
 
-					usedSeriesColours.push(availableColour);
+					usedSeriesColours.push(availableColour);				
 
 					pageCharts[0].addSeries({
           	yAxis: 0,
 	          name: "grossingrank",
             id : "grossingrank",
+            type: chartType,
 	          color: availableColour,
 	          data: mockSeries,
 	          pointStart: Date.UTC(2016, 0, 1),
@@ -1854,6 +1869,7 @@
                 [1, 'rgba(27,199,159,0.1)']
               ]
             },
+            stacking: stackingValue,
 	          marker: {
 	            enabled: false,
 	            states: {
@@ -1872,6 +1888,7 @@
           	yAxis: 0,
 	          name: "downloadsrank",
             id : "downloads",
+            type: chartType,
 	          color: availableColour,
 	          data: mockSeriesDownloads,
 	          pointStart: Date.UTC(2016, 0, 1),
@@ -1887,6 +1904,7 @@
                 [1, 'rgba(27,199,159,0.1)']
               ]
             },
+            stacking: stackingValue,
 	          marker: {
 	            enabled: false,
 	            states: {
@@ -1905,6 +1923,7 @@
           	yAxis: 0,
 	          name: "grossingrank",
             id : "grossingrank",
+            type: chartType,
 	          color: availableColour,
 	          data: mockSeries,
 	          pointStart: Date.UTC(2016, 0, 1),
@@ -1938,6 +1957,7 @@
           	yAxis: 1,
 	          name: "downloadsrank",
             id : "downloads",
+            type: chartType,
 	          color: availableColour,
 	          data: mockSeriesDownloads,
 	          pointStart: Date.UTC(2016, 0, 1),
@@ -1968,12 +1988,19 @@
 	          }
          	});
 
-					setGraphCSSClasses();
-        	resetLineStyling();
+         	// reset lines CSS and styling if not viewing stacked chart
+					if(stackingValue == null) {
+						setTimeout(function(){
+							Highcharts.Chart.prototype.setGraphCSSClasses();
+		      		Highcharts.Chart.prototype.resetLineStyling();
+		      	}, 200);
+					}
 
 					pageCharts[0].numberofSeriesAdded++; // MOCK, just to generate index
 
-					addASeriesToggle(pageCharts[0].numberofSeriesAdded, "showhiderevenue-" + pageCharts[0].numberofSeriesAdded, availableColourIndex);
+					// in the app, ("showhiderevenue-" + pageCharts[0].numberofSeriesAdded) should be replaced with an id for that series
+					// the (pageCharts[0].numberofSeriesAdded) index should be the same as the series index
+					addASeriesToggle(pageCharts[0].series.length - 1, "showhiderevenue-" + pageCharts[0].numberofSeriesAdded, availableColourIndex);
 				});
 
 				
@@ -1986,6 +2013,11 @@
 						isStackedChart = false;
 					}
 
+					var removedLineWasSelected = false;
+					if(pageCharts[0].series[2].selected == true) {
+						removedLineWasSelected = true;
+					}
+
 					// mock removal of series 2
 					pageCharts[0].series[2].remove(true);
 					pageCharts[1].series[2].remove(true);
@@ -1996,9 +2028,11 @@
 
 					if(!isStackedChart) {
 						setTimeout(function(){
-							setFirstVisibleSeriesToSelected();
-							setGraphCSSClasses();
-		      		resetLineStyling();
+							if(removedLineWasSelected) {
+								Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+							}							
+							Highcharts.Chart.prototype.setGraphCSSClasses();
+		      		Highcharts.Chart.prototype.resetLineStyling();
 		      	}, 200);
 					}					
 
@@ -2006,10 +2040,6 @@
 				});
 
 			} // end handleChartInteraction();
-
-			function updateChartSeriesIndexes() {
-
-			}
 
 			function handleMouseEnterChartKeyLabel($label) {
 					if($('html.no-touch').length) {
@@ -2154,7 +2184,7 @@
 									.append(newCheckboxLabel)
 									.append(newCheckboxLabelVisible);
 
-				$('#split-chart-container .custom-chart-key ul').append(newToggle);
+				$('.js-twin-chart-container .custom-chart-key ul').append(newToggle);
 
 
 				// Add a new toggle to the chart key on the combined chart
@@ -2210,27 +2240,27 @@
 									.append(newCheckboxLabel)
 									.append(newCheckboxLabelVisible);
 
-				$('#single-chart-container .custom-chart-key ul').append(newToggle);
-				$('#single-chart-container .custom-chart-key ul').append(newToggleDownloads);
+				$('.js-combined-chart-container .custom-chart-key ul').append(newToggle);
+				$('.js-combined-chart-container .custom-chart-key ul').append(newToggleDownloads);
 			}
 
 			function removeASeriesToggle(seriesIndex) {
 
 				// remove from the twin chart legend
-				var toggleToRemove = $('#split-chart-container .custom-chart-key input[data-series-index="' + seriesIndex + '"').parent("li");
+				var toggleToRemove = $('.js-twin-chart-container .custom-chart-key input[data-series-index="' + seriesIndex + '"').parent("li");
 				toggleToRemove.remove();
 
 				// remove from the combined chart legend
 				var combinedSeriesIndex = seriesIndex * 2;
-				var toggleToRemove = $('#single-chart-container .custom-chart-key input[data-series-index="' + combinedSeriesIndex + '"').parent("li");
+				var toggleToRemove = $('.js-combined-chart-container .custom-chart-key input[data-series-index="' + combinedSeriesIndex + '"').parent("li");
 				toggleToRemove.remove();
 
 				var combinedSeriesIndexTwo = seriesIndex * 2 + 1;
-				var toggleToRemove = $('#single-chart-container .custom-chart-key input[data-series-index="' + combinedSeriesIndexTwo + '"').parent("li");
+				var toggleToRemove = $('.js-combined-chart-container .custom-chart-key input[data-series-index="' + combinedSeriesIndexTwo + '"').parent("li");
 				toggleToRemove.remove();
 
 				// recalculate the toggle data series indexes
-				$('#split-chart-container .custom-chart-key input').each(function(){
+				$('.js-twin-chart-container .custom-chart-key input').each(function(){
 					var thisSeriesIndex = $(this).attr("data-series-index");		
 					if(thisSeriesIndex > seriesIndex) {
 						$(this).attr("data-series-index", thisSeriesIndex - 1);
@@ -2238,7 +2268,7 @@
 				});
 
 				// recalculate the toggle data series indexes
-				$('#single-chart-container .custom-chart-key input').each(function(){
+				$('.js-combined-chart-container .custom-chart-key input').each(function(){
 					var thisSeriesIndex = $(this).attr("data-series-index");	
 					if($(this).attr("data-series-index") >= seriesIndex * 3) {
 						$(this).attr("data-series-index", thisSeriesIndex - 2);
@@ -2328,9 +2358,9 @@
 				$('.chart-container').addClass('is-animated');
 				handleChartInteraction();
 
-				setFirstVisibleSeriesToSelected();
-				setGraphCSSClasses();
-        resetLineStyling();
+				Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+				Highcharts.Chart.prototype.setGraphCSSClasses();
+        Highcharts.Chart.prototype.resetLineStyling();
 			}, 500);
 
   	}
