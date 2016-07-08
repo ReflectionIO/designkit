@@ -20,27 +20,22 @@
 	// populate the data table
 		'use strict';
 
-		var appData = [
-			{"number_of_apps_per_day": 59, "price": 0.79, "average_downloads": 37, "top10_average_downloads": 439},
-			{"number_of_apps_per_day": 3, "price": 0.99, "average_downloads": 55, "top10_average_downloads": 159},
-			{"number_of_apps_per_day": 42, "price": 1.49, "average_downloads": 22, "top10_average_downloads": 164},
-			{"number_of_apps_per_day": 3, "price": 1.99, "average_downloads": 19, "top10_average_downloads": 57},
-			{"number_of_apps_per_day": 25, "price": 2.29, "average_downloads": 20, "top10_average_downloads": 144},
-			{"number_of_apps_per_day": 2, "price": 2.49, "average_downloads": 96, "top10_average_downloads": 196},
-			{"number_of_apps_per_day": 16, "price": 2.99, "average_downloads": 40, "top10_average_downloads": 505},
-			{"number_of_apps_per_day": 37, "price": 3.99, "average_downloads": 24, "top10_average_downloads": 213},
-
-			{"number_of_apps_per_day": 7, "price": 4.98, "average_downloads": 121, "top10_average_downloads": 565},
-			{"number_of_apps_per_day": 2, "price": 4.48, "average_downloads": 11, "top10_average_downloads": 17},
-			{"number_of_apps_per_day": 1, "price": 5.99, "average_downloads": 18, "top10_average_downloads": 45},
-			{"number_of_apps_per_day": 1, "price": 6.99, "average_downloads": 195, "top10_average_downloads": 288},
-			{"number_of_apps_per_day": 1, "price": 7.99, "average_downloads": 9, "top10_average_downloads": 14},
-			{"number_of_apps_per_day": 0, "price": 10.49, "average_downloads": 6, "top10_average_downloads": 6},
-			{"number_of_apps_per_day": 0, "price": 10.99, "average_downloads": 8, "top10_average_downloads": 8},
-			{"number_of_apps_per_day": 1, "price": 11.99, "average_downloads": 9, "top10_average_downloads": 10},
-			{"number_of_apps_per_day": 0, "price": 14.99, "average_downloads": 11, "top10_average_downloads": 11},
-			{"number_of_apps_per_day": 0, "price": 15.99, "average_downloads": 7, "top10_average_downloads": 7}];
-
+		var appData = [{'number_of_apps_per_day': 62, 'price': 0.79, 'average_downloads': 38, 'top10_average_downloads': 511},
+           {'number_of_apps_per_day': 45, 'price': 1.49, 'average_downloads': 22, 'top10_average_downloads': 168},
+           {'number_of_apps_per_day': 25, 'price': 2.29, 'average_downloads': 20, 'top10_average_downloads': 144},
+           {'number_of_apps_per_day': 2, 'price': 2.49, 'average_downloads': 96, 'top10_average_downloads': 196},  
+           {'number_of_apps_per_day': 16, 'price': 2.99, 'average_downloads': 40, 'top10_average_downloads': 505},
+           {'number_of_apps_per_day': 37, 'price': 3.99, 'average_downloads': 24, 'top10_average_downloads': 213},
+           {'number_of_apps_per_day': 2, 'price': 4.48, 'average_downloads': 11, 'top10_average_downloads': 17},
+           {'number_of_apps_per_day': 7, 'price': 4.98, 'average_downloads': 121, 'top10_average_downloads': 565}, 
+           {'number_of_apps_per_day': 1, 'price': 5.99, 'average_downloads': 18, 'top10_average_downloads': 45},  
+           {'number_of_apps_per_day': 1, 'price': 6.99, 'average_downloads': 195, 'top10_average_downloads': 288}, 
+           {'number_of_apps_per_day': 1, 'price': 7.99, 'average_downloads': 9, 'top10_average_downloads': 14}, 
+           {'number_of_apps_per_day': 0, 'price': 10.49, 'average_downloads': 6, 'top10_average_downloads': 6},
+           {'number_of_apps_per_day': 0, 'price': 10.99, 'average_downloads': 8, 'top10_average_downloads': 8}, 
+           {'number_of_apps_per_day': 1, 'price': 11.99, 'average_downloads': 9, 'top10_average_downloads': 10}, 
+           {'number_of_apps_per_day': 0, 'price': 14.99, 'average_downloads': 11, 'top10_average_downloads': 11},
+           {'number_of_apps_per_day': 0, 'price': 15.99, 'average_downloads': 7, 'top10_average_downloads': 7}];
 
 		var reflectionApp = angular.module('reflectionApp', [])
 			.controller('DataController', function($scope, $http) {
@@ -52,13 +47,13 @@
 				for(var i = 0; i < dataList.data.length; i++) {
 					if(parseInt(dataList.data[i].number_of_apps_per_day) > dataList.highestNumberOfApps) {
 						dataList.highestNumberOfApps = dataList.data[i].number_of_apps_per_day;
-					}					
+					}
 				}
 
 				dataList.calculateBarHeight = function(number_of_apps_per_day) {
 					var barHeight = 0;
 					if(number_of_apps_per_day > 0) {
-						barHeight = (number_of_apps_per_day / dataList.highestNumberOfApps) * 100;	
+						barHeight = (number_of_apps_per_day / dataList.highestNumberOfApps) * 100;
 					}
 
 		    	return barHeight;
@@ -96,7 +91,7 @@
 				<h4 class="bar-chart-sub-title bar-chart-sub-title--first">Daily average for June 2016</h4>
 				<ul class="bar-chart">
 					<li ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.number_of_apps_per_day)}}%'>
-						<span class="price-label">${{ dataItem.price }}</span>
+						<span class="price-label">&pound;{{ dataItem.price }}</span>
 						<span class="number-of-apps-label">{{ dataItem.number_of_apps_per_day }}</span>
 					</li>
 				</ul>
