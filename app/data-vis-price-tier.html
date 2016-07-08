@@ -20,12 +20,49 @@
 	// populate the data table
 		'use strict';
 
+		var appData = [
+			{"number_of_apps_per_day": 59, "price": 0.79, "average_downloads": 37, "top10_average_downloads": 439},
+			{"number_of_apps_per_day": 3, "price": 0.99, "average_downloads": 55, "top10_average_downloads": 159},
+			{"number_of_apps_per_day": 42, "price": 1.49, "average_downloads": 22, "top10_average_downloads": 164},
+			{"number_of_apps_per_day": 3, "price": 1.99, "average_downloads": 19, "top10_average_downloads": 57},
+			{"number_of_apps_per_day": 25, "price": 2.29, "average_downloads": 20, "top10_average_downloads": 144},
+			{"number_of_apps_per_day": 2, "price": 2.49, "average_downloads": 96, "top10_average_downloads": 196},
+			{"number_of_apps_per_day": 16, "price": 2.99, "average_downloads": 40, "top10_average_downloads": 505},
+			{"number_of_apps_per_day": 37, "price": 3.99, "average_downloads": 24, "top10_average_downloads": 213},
+
+			{"number_of_apps_per_day": 7, "price": 4.98, "average_downloads": 121, "top10_average_downloads": 565},
+			{"number_of_apps_per_day": 2, "price": 4.48, "average_downloads": 11, "top10_average_downloads": 17},
+			{"number_of_apps_per_day": 1, "price": 5.99, "average_downloads": 18, "top10_average_downloads": 45},
+			{"number_of_apps_per_day": 1, "price": 6.99, "average_downloads": 195, "top10_average_downloads": 288},
+			{"number_of_apps_per_day": 1, "price": 7.99, "average_downloads": 9, "top10_average_downloads": 14},
+			{"number_of_apps_per_day": 0, "price": 10.49, "average_downloads": 6, "top10_average_downloads": 6},
+			{"number_of_apps_per_day": 0, "price": 10.99, "average_downloads": 8, "top10_average_downloads": 8},
+			{"number_of_apps_per_day": 1, "price": 11.99, "average_downloads": 9, "top10_average_downloads": 10},
+			{"number_of_apps_per_day": 0, "price": 14.99, "average_downloads": 11, "top10_average_downloads": 11},
+			{"number_of_apps_per_day": 0, "price": 15.99, "average_downloads": 7, "top10_average_downloads": 7}];
+
+
 		var reflectionApp = angular.module('reflectionApp', [])
 			.controller('DataController', function($scope, $http) {
 
 			var dataList = this;
-			// dataList.data = data["PHONE"]; // from data.js
+			dataList.data = appData;
 
+				dataList.highestNumberOfApps = 0;
+				for(var i = 0; i < dataList.data.length; i++) {
+					if(parseInt(dataList.data[i].number_of_apps_per_day) > dataList.highestNumberOfApps) {
+						dataList.highestNumberOfApps = dataList.data[i].number_of_apps_per_day;
+					}					
+				}
+
+				dataList.calculateBarHeight = function(number_of_apps_per_day) {
+					var barHeight = 0;
+					if(number_of_apps_per_day > 0) {
+						barHeight = (number_of_apps_per_day / dataList.highestNumberOfApps) * 100;	
+					}
+
+		    	return barHeight;
+		    }
 		});
 </script>
 <body class="page-top-two-hundred page-price-tier">
@@ -51,55 +88,28 @@
 				
 				<div class="grid__row grid__row--heading-row">
 					<h1 class="heading-style--heading-three page-title">Price Tier Distribution <span>UK / iPhone / Top 200 Paid Apps / Games Category</span></h1>
-					<h2 class="page-subtitle">Date required</h2>
+					<h2 class="page-subtitle">June 2016</h2>
 				</div>
 
 				<!-- Bar Chart -->
-				<!-- <ul>
-					<li ng-repeat="dataItem in dataList">
-					</li>
-				</ul> -->
-				<h3 class="bar-chart-title">Number of Apps per price tier</h2>
+				<h2 class="bar-chart-title">Number of apps per price tier</h2>
+				<h4 class="bar-chart-sub-title bar-chart-sub-title--first">Daily average for June 2016</h4>
 				<ul class="bar-chart">
-					<li style="height: 320px">
-						<span class="price-label">$0.99</span>
-						<span class="number-of-apps-label">120</span>
-					</li>
-					<li style="height: 120px">
-						<span class="price-label">$0.99</span>
-						<span class="number-of-apps-label">120</span>
-					</li>
-					<li style="height: 110px">
-						<span class="price-label">$0.99</span>
-						<span class="number-of-apps-label">120</span>
-					</li>
-					<li style="height: 80px">
-						<span class="price-label">$0.99</span>
-						<span class="number-of-apps-label">120</span>
-					</li>
-					<li style="height: 50px">
-						<span class="price-label">$0.99</span>
-						<span class="number-of-apps-label">120</span>
-					</li>
-					<li style="height: 30px">
-						<span class="price-label">$0.99</span>
-						<span class="number-of-apps-label">120</span>
-					</li>
-					<li style="height: 5px">
-						<span class="price-label">$0.99</span>
-						<span class="number-of-apps-label">120</span>
-					</li>
-					<li style="height: 2px">
-						<span class="price-label">$0.99</span>
-						<span class="number-of-apps-label">120</span>
+					<li ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.number_of_apps_per_day)}}%'>
+						<span class="price-label">${{ dataItem.price }}</span>
+						<span class="number-of-apps-label">{{ dataItem.number_of_apps_per_day }}</span>
 					</li>
 				</ul>
-				<!-- End Bar Chart -->
-
 
 				<!-- Polar Chart -->
-				<h3 class="bar-chart-title">Average Revenue of apps per price tier</h2>
+				<h2 class="spider-chart-title">Price tiers that make the most revenue</h2>
+					<h4 class="bar-chart-sub-title">(Daily average for June 2016 -  revneue from downloads only)</h4>
 				<div id="polar-chart-container"></div>
+
+				<!-- Polar Chart -->
+				<h2 class="spider-chart-title">Revenue for the top ten apps in each price tier</h2>
+					<h4 class="bar-chart-sub-title">(Daily average for June 2016 -  revneue from downloads only)</h4>
+				<div id="polar-chart-container-two"></div>
 
 			</div>
 
@@ -113,6 +123,21 @@
   <script>
 
   	$(function () {
+
+  		var priceCategories = [];
+  		for (var i = 0; i < appData.length; i++) {
+  			priceCategories.push(appData[i].price);
+  		}
+
+  		var averageDownloadsAll = [];
+  		for (var i = 0; i < appData.length; i++) {
+  			averageDownloadsAll.push(appData[i].average_downloads);
+  		}
+
+  		var averageRevenueAll = [];
+  		for (var i = 0; i < appData.length; i++) {
+  			averageRevenueAll.push(appData[i].average_downloads * appData[i].price);
+  		}
 
 		  $('#polar-chart-container').highcharts({
 		    chart: {
@@ -130,45 +155,140 @@
 		    },
 
 		    xAxis: {
-		        categories: ['$0.99', '$1.99', '$2.99', '$3.99',
-		                '$4.99', '$5.99'],
+		        categories: priceCategories,
 		        tickmarkPlacement: 'on',
 		        lineWidth: 0
 		    },
 
-		    yAxis: {
+		    yAxis: [{
 		        gridLineInterpolation: 'polygon',
 		        lineWidth: 0,
-		        min: 0
-		    },
+		        min: 0,
+		        labels: {
+		        	align: 'left',
+		        	x: 12
+		        }
+		    },{
+		        gridLineInterpolation: 'polygon',
+		        lineWidth: 0,
+		        min: 0,
+		        labels: {
+		        	align: 'right',
+		        	x: -12
+		        }
+		    }],
 
 		    tooltip: {
 		        shared: true,
-		        pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+		        pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
 		    },
 
 		    legend: {
-		        align: 'left',
+		        align: 'bottom',
 		        itemMarginTop: 5,
             itemMarginBottom: 5,
-		        verticalAlign: 'top',
+		        verticalAlign: 'bottom',
 		        y: 70,
 		        layout: 'vertical'
 		    },
 
 		    series: [{
-		        name: 'Average Revenue for top 10 apps',
-		        data: [43000, 19000, 60000, 35000, 17000, 10000],
+		    		yAxis: 0,
+		        name: 'Average Revenue for all apps',
+		        data: averageRevenueAll,
 		        pointPlacement: 'on',
 		        color: '#f5c943'
 		    }, {
-		        name: 'Average Revenue for all apps',
-		        data: [50000, 39000, 42000, 31000, 26000, 14000],
+		    		yAxis: 1,
+		        name: 'Average Downloads for all apps',
+		        data: averageDownloadsAll,
 		        pointPlacement: 'on',
 		        color: '#beb9db'
 		    }]
 
 		  });
+
+			
+			var topTenAverageDownloads = [];
+  		for (var i = 0; i < appData.length; i++) {
+  			topTenAverageDownloads.push(appData[i].top10_average_downloads);
+  		}
+
+  		var averageRevenueTopTen = [];
+  		for (var i = 0; i < appData.length; i++) {
+  			averageRevenueTopTen.push(appData[i].top10_average_downloads * appData[i].price);
+  		}
+
+			$('#polar-chart-container-two').highcharts({
+		    chart: {
+		        polar: true,
+		        type: 'line'
+		    },
+
+		    title: {
+		        text: '',
+		        x: -80
+		    },
+
+		    pane: {
+		        size: '80%'
+		    },
+
+		    xAxis: {
+		        categories: priceCategories,
+		        tickmarkPlacement: 'on',
+		        lineWidth: 0
+		    },
+
+		    yAxis: [{
+		        gridLineInterpolation: 'polygon',
+		        lineWidth: 0,
+		        min: 0,
+		        labels: {
+		        	align: 'left',
+		        	padding: 10,
+		        	x: 12
+		        }
+		    },{
+		        gridLineInterpolation: 'polygon',
+		        lineWidth: 0,
+		        min: 0,
+		        labels: {
+		        	align: 'right',
+		        	x: -12
+		        }
+		    }],
+
+		    tooltip: {
+		        shared: true,
+		        pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
+		    },
+
+		    legend: {
+		        align: 'bottom',
+		        itemMarginTop: 5,
+            itemMarginBottom: 5,
+		        verticalAlign: 'bottom',
+		        y: 70,
+		        layout: 'vertical'
+		    },
+
+		    series: [{
+		    		yAxis: 0,
+		        name: 'Average Revenue for top ten apps',
+		        data: averageRevenueTopTen,
+		        pointPlacement: 'on',
+		        color: '#f5c943'
+		    }, {
+		    		yAxis: 1,
+		        name: 'Average Downloads for top ten apps',
+		        data: topTenAverageDownloads,
+		        pointPlacement: 'on',
+		        color: '#beb9db'
+		    }]
+
+		  });
+
 		});
 
 		$(document).on("ready", function(){
