@@ -1789,7 +1789,6 @@
 			}
 
 			function handleShowStackedAreaChart() {
-				var seriesFills = ["rgba(245,201,67,0)", "rgba(190,185,219,1)", "rgba(253,127,110,1)", "rgba(127,177,213,1)", "rgba(242,189,216,1)", "rgba(199,178,153,1)", "rgba(189,126,191,1)", "rgba(139,212,199,1)", "rgba(255,181,90,1)", "rgba(217,217,217,1)", "rgba(145,142,223,1)"];
 
 				// change chart type
 				$('.js-toggle--show-stacked').on("click", function(){
@@ -1868,7 +1867,19 @@
 						}
 					}
 
-					usedSeriesColours.push(availableColour);				
+					usedSeriesColours.push(availableColour);
+
+					var fillColourForNewSeries = {
+							linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+              stops: [
+                [0, 'rgba(109,105,197,0.1)'],
+                [1, 'rgba(27,199,159,0.1)']
+              ]
+          };
+
+					if(stackingValue == 'normal') {
+						fillColourForNewSeries = seriesFills[availableColourIndex];
+					}
 
 					Highcharts.charts[0].addSeries({
           	yAxis: 0,
@@ -1880,16 +1891,10 @@
 	          pointStart: Date.UTC(2016, 0, 1),
 	          pointInterval: 24 * 3600 * 1000, // one day
 	          lineColor: availableColour,
-	          lineWidth: 3,
+	          lineWidth: (stackingValue == null) ? 3 : 2,
 	          lineWidthPlus: 0,
 	          fillOpacity: 0,
-	          fillColor: {
-              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-              stops: [
-                [0, 'rgba(109,105,197,0.1)'],
-                [1, 'rgba(27,199,159,0.1)']
-              ]
-            },
+	          fillColor: fillColourForNewSeries,
             stacking: stackingValue,
 	          marker: {
 	            enabled: false,
@@ -1915,16 +1920,10 @@
 	          pointStart: Date.UTC(2016, 0, 1),
 	          pointInterval: 24 * 3600 * 1000, // one day
 	          lineColor: availableColour,
-	          lineWidth: 3,
+	          lineWidth: (stackingValue == null) ? 3 : 2,
 	          lineWidthPlus: 0,
 	          fillOpacity: 0,
-	          fillColor: {
-              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-              stops: [
-                [0, 'rgba(109,105,197,0.1)'],
-                [1, 'rgba(27,199,159,0.1)']
-              ]
-            },
+	          fillColor: fillColourForNewSeries,
             stacking: stackingValue,
 	          marker: {
 	            enabled: false,
@@ -1953,13 +1952,7 @@
 	          lineWidth: 3,
 	          lineWidthPlus: 0,
 	          fillOpacity: 0,
-	          fillColor: {
-              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-              stops: [
-                [0, 'rgba(109,105,197,0.1)'],
-                [1, 'rgba(27,199,159,0.1)']
-              ]
-            },
+	          fillColor: fillColourForNewSeries,
 	          marker: {
 	            enabled: false,
 	            states: {
@@ -1987,13 +1980,7 @@
 	          lineWidth: 3,
 	          lineWidthPlus: 0,
 	          fillOpacity: 0,
-	          fillColor: {
-              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-              stops: [
-                [0, 'rgba(109,105,197,0.1)'],
-                [1, 'rgba(27,199,159,0.1)']
-              ]
-            },
+	          fillColor: fillColourForNewSeries,
             dashStyle: 'shortdash',
 	          marker: {
 	            enabled: false,
@@ -2015,6 +2002,9 @@
 							Highcharts.Chart.prototype.setGraphCSSClasses();
 		      		Highcharts.Chart.prototype.resetLineStyling();
 		      	}, 200);
+					} else {
+						Highcharts.Chart.prototype.setGraphCSSClasses();
+						Highcharts.Chart.prototype.setGraphFillsTransparency();
 					}
 
 					Highcharts.charts[0].numberofSeriesAdded++; // MOCK, just to generate index
@@ -2300,6 +2290,8 @@
 					mockDataDownloads = [];
 
 			var seriesColours = ["#f5c943", "#beb9db", "#fd7f6e", "#7fb1d5", "#f2bdd8", "#c7b299", "#bd7ebf", "#8bd4c7", "#ffb55a", "#d9d9d9", "#918edf"];
+
+			var seriesFills = ["rgba(245,201,67,0)", "rgba(190,185,219,1)", "rgba(253,127,110,1)", "rgba(127,177,213,1)", "rgba(242,189,216,1)", "rgba(199,178,153,1)", "rgba(189,126,191,1)", "rgba(139,212,199,1)", "rgba(255,181,90,1)", "rgba(217,217,217,1)", "rgba(145,142,223,1)"];
 
 			var usedSeriesColours = [];
 
