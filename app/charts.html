@@ -969,13 +969,12 @@
 	        .add();
 
 
-	        // MIRROR A SPLIT GRAPH HOVER
-	        // TODO - try this for better tooltip synchronize - http://www.highcharts.com/demo/synchronized-charts
+	        // Mirror the tooltip on twin charts
 	        if(H.charts.length > 1) {
 	        
 	        	var chartIndexToHover = (arguments[1][0].series.chart.index == 0) ? 1 : 0;
 	        	
-	        	if(chartIndexToHover < 2) { // not on the single/combined chart so want to mirror
+	        	if(chartIndexToHover < 2) { // using twin chart to want to mirror the tooltip
 	        		
 	        		// find line index of currently selected line
 		        	var seriesIndexToHover = 0;
@@ -990,7 +989,7 @@
 		        	if(!hasBeenSet) {
 		        		hasBeenSet = true;
 		        		// not sure why this if statement is here but there must have been an associated bug
-		        		// try removing to see if there is any lasting effect
+		        		// could try removing to see if there is any lasting effect
 		        		if(lastPoint) {
 		        			if(H.charts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint] != undefined) { // check if data series are present on the chart
 		        				H.charts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint].setState();
@@ -1056,7 +1055,9 @@
 
 	    	H.Chart.prototype.setSeriesToSelected = function(chartIndex, seriesIndex) {
 	    		H.charts[chartIndex].series[seriesIndex].selected = true;
-	      	H.charts[chartIndex].series[seriesIndex].graph.element.setAttribute("data-selected", "selected");
+	    		if(H.charts[chartIndex].series[seriesIndex].graph) {
+	    			H.charts[chartIndex].series[seriesIndex].graph.element.setAttribute("data-selected", "selected");
+	    		}	      	
 	    	}
 
 	    	H.Chart.prototype.setSeriesToUnselected = function(chartIndex, seriesIndex) {
@@ -1138,8 +1139,6 @@
 			}
 
 	    }(Highcharts));
-	
-	    pageCharts = [];
 
 	    // generateChart is template only to speed up generating three charts in the template
 	    function generateChart(containerId, dataType, seriesData, seriesColour, chartType, isMerged) {
@@ -1505,15 +1504,10 @@
 	        	snap: 25
 	        }
 		    });
-
-	      pageCharts.push(chart);
 			} // end generateChart()
 
-			function handleChartInteraction() {
-				
-				// mock, just for index when you add a series
-				// not needed in app
-				Highcharts.charts[0].numberofSeriesAdded = Highcharts.charts[0].series.length - 1; 
+
+			function handleCustomLegendInteraction() {
 
 				// Hide/show series from custom legend
 				$('.js-custom-chart-key').on("click", '.js-toggle-series', function(){ // for each current or new '.js-toggle-series' (checkbox in the legend)
@@ -1739,6 +1733,9 @@
 				}).on("mouseleave", function(){
 					handleMouseLeaveChartKeyLabel($(this));
 				});
+			}
+
+			function handleShowBarChart() {
 
 				// change chart type
 				$('.js-toggle--show-bar').on("click", function(){
@@ -1758,7 +1755,9 @@
 						});
 					}
 				});
+			}
 
+			function handleShowAreaChart() {
 				// change chart type
 				$('.js-toggle--show-area').on("click", function(){
 
@@ -1787,7 +1786,9 @@
 					Highcharts.Chart.prototype.setGraphCSSClasses();
 	        Highcharts.Chart.prototype.resetLineStyling();
 				});
+			}
 
+			function handleShowStackedAreaChart() {
 				var seriesFills = ["rgba(245,201,67,0)", "rgba(190,185,219,1)", "rgba(253,127,110,1)", "rgba(127,177,213,1)", "rgba(242,189,216,1)", "rgba(199,178,153,1)", "rgba(189,126,191,1)", "rgba(139,212,199,1)", "rgba(255,181,90,1)", "rgba(217,217,217,1)", "rgba(145,142,223,1)"];
 
 				// change chart type
@@ -1822,6 +1823,13 @@
 						Highcharts.Chart.prototype.setGraphFillsTransparency();
 					}
 				});
+			}
+
+			function handleAddSeriesTest() {
+
+				// mock, just for index when you add a series
+				// not needed in app
+				Highcharts.charts[0].numberofSeriesAdded = Highcharts.charts[0].series.length - 1; 
 
 				$('.js-add-series').on("click", function(e){
 
@@ -2016,7 +2024,9 @@
 					addASeriesToggle(Highcharts.charts[0].series.length - 1, "showhiderevenue-" + Highcharts.charts[0].numberofSeriesAdded, availableColourIndex);
 				});
 
-				
+			}
+
+			function handleRemoveSeriesTest() {
 				$('.js-remove-series').on("click", function(e){
 
 					e.preventDefault();
@@ -2051,102 +2061,113 @@
 
 					removeASeriesToggle(2);
 				});
+			}
 
-			} // end handleChartInteraction();
+			function handleChartInteraction() {
+				
+				handleCustomLegendInteraction();
+				handleShowBarChart();
+				handleShowAreaChart();
+				handleShowStackedAreaChart();
+
+				handleAddSeriesTest();
+				handleRemoveSeriesTest();
+
+			}
 
 			function handleMouseEnterChartKeyLabel($label) {
-					if($('html.no-touch').length) {
-						var $this = $label.siblings("input");
-						var chartToHoverIndex = $this.attr("data-chart-index");
-						var seriesToHover = $this.attr("data-series-index");
+				if($('html.no-touch').length) {
+					var $this = $label.siblings("input");
+					var chartToHoverIndex = $this.attr("data-chart-index");
+					var seriesToHover = $this.attr("data-series-index");
 
-						var seriesToHoverArray = [seriesToHover];
+					var seriesToHoverArray = [seriesToHover];
 
-						if(chartToHoverIndex < 2) { // if it's the twin chart
+					if(chartToHoverIndex < 2) { // if it's the twin chart
 
-							for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
+						for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
 
-								var chartContainerId = Highcharts.charts[ch].container.id;
+							var chartContainerId = Highcharts.charts[ch].container.id;
 
-								var selectedLine = $('#' + chartContainerId + ' .highcharts-series path[data-selected]').attr("data-index");
+							var selectedLine = $('#' + chartContainerId + ' .highcharts-series path[data-selected]').attr("data-index");
 
-								for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
+							for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
 
-									if(selectedLine != undefined) { // if there is a selected line, it's the area chart, just highlight the line
-										if(!Highcharts.charts[ch].series[seriesToHoverArray[i]].selected) {
-											Highcharts.Chart.prototype.highlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
-										}
-
-									} else { // otherwise it's the stacked chart, just highlight the fill
-
-										$('#' + chartContainerId + ' .series-fill-' + seriesToHoverArray[i]).each(function(){
-											var $this = $(this);
-											$this.css("opacity", 0.25);
-					            $this.animate({ "opacity": 0.6 }, 100);
-										});
+								if(selectedLine != undefined) { // if there is a selected line, it's the area chart, just highlight the line
+									if(!Highcharts.charts[ch].series[seriesToHoverArray[i]].selected) {
+										Highcharts.Chart.prototype.highlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
 									}
+
+								} else { // otherwise it's the stacked chart, just highlight the fill
+
+									$('#' + chartContainerId + ' .series-fill-' + seriesToHoverArray[i]).each(function(){
+										var $this = $(this);
+										$this.css("opacity", 0.25);
+				            $this.animate({ "opacity": 0.6 }, 100);
+									});
 								}
 							}
-						} else { // user is hovering over combined chart key label
-							// get the corresponding line to hover
-							if(seriesToHover != 0 && seriesToHover != 1) {
-								seriesToHoverArray.push(seriesToHover - 1);
+						}
+					} else { // user is hovering over combined chart key label
+						// get the corresponding line to hover
+						if(seriesToHover != 0 && seriesToHover != 1) {
+							seriesToHoverArray.push(seriesToHover - 1);
+						}
+						var chartContainerId = Highcharts.charts[chartToHoverIndex].container.id;
+
+						for(var i = 0; i < seriesToHoverArray.length; i++) {
+							if(!Highcharts.charts[2].series[seriesToHoverArray[i]].selected) {
+								Highcharts.Chart.prototype.highlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
 							}
-							var chartContainerId = Highcharts.charts[chartToHoverIndex].container.id;
+						}
+					}
+				}
+			}
+
+			function handleMouseLeaveChartKeyLabel($label) {
+				if($('html.no-touch').length) {
+					var $this = $label.siblings("input");
+					var chartToHoverIndex = $this.attr("data-chart-index");
+					var seriesToHover = $this.attr("data-series-index");
+					var seriesToHoverArray = [seriesToHover];
+
+					if(chartToHoverIndex < 2) { // if it's the twin chart
+						for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
+
+							var chartContainerId = Highcharts.charts[ch].container.id;
+							var selectedLine = $('#' + chartContainerId + ' .highcharts-series path[data-selected]').attr("data-index");
+
+							for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
+								if(selectedLine != undefined) { // if there is a selected line, it's the area chart, just highlight the line
+									if(!Highcharts.charts[ch].series[seriesToHoverArray[i]].selected) {
+										Highcharts.Chart.prototype.unhighlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+									}
+								} else { // otherwise it's the stacked chart, just highlight the fill
+
+									$('#' + chartContainerId + ' .series-fill-' + seriesToHoverArray[i]).each(function(){
+										var $this = $(this);
+										$this.css("opacity", 0.6);
+				            $this.animate({ "opacity": 0.25 }, 100);
+									});
+								}
+							}
+						}
+					} else { // it's the combined chart
+						
+						// get the corresponding line to hover
+						if(seriesToHover != 0 && seriesToHover != 1) {
+							seriesToHoverArray.push(seriesToHover - 1);
+						}
+						var chartContainerId = Highcharts.charts[chartToHoverIndex].container.id;
 
 							for(var i = 0; i < seriesToHoverArray.length; i++) {
 								if(!Highcharts.charts[2].series[seriesToHoverArray[i]].selected) {
-									Highcharts.Chart.prototype.highlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+									Highcharts.Chart.prototype.unhighlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
 								}
 							}
-						}
 					}
 				}
-
-				function handleMouseLeaveChartKeyLabel($label) {
-					if($('html.no-touch').length) {
-						var $this = $label.siblings("input");
-						var chartToHoverIndex = $this.attr("data-chart-index");
-						var seriesToHover = $this.attr("data-series-index");
-						var seriesToHoverArray = [seriesToHover];
-
-						if(chartToHoverIndex < 2) { // if it's the twin chart
-							for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
-
-								var chartContainerId = Highcharts.charts[ch].container.id;
-								var selectedLine = $('#' + chartContainerId + ' .highcharts-series path[data-selected]').attr("data-index");
-
-								for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
-									if(selectedLine != undefined) { // if there is a selected line, it's the area chart, just highlight the line
-										if(!Highcharts.charts[ch].series[seriesToHoverArray[i]].selected) {
-											Highcharts.Chart.prototype.unhighlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
-										}
-									} else { // otherwise it's the stacked chart, just highlight the fill
-
-										$('#' + chartContainerId + ' .series-fill-' + seriesToHoverArray[i]).each(function(){
-											var $this = $(this);
-											$this.css("opacity", 0.6);
-					            $this.animate({ "opacity": 0.25 }, 100);
-										});
-									}
-								}
-							}
-						} else { // it's the combined chart
-							
-							// get the corresponding line to hover
-							if(seriesToHover != 0 && seriesToHover != 1) {
-								seriesToHoverArray.push(seriesToHover - 1);
-							}
-							var chartContainerId = Highcharts.charts[chartToHoverIndex].container.id;
-
-								for(var i = 0; i < seriesToHoverArray.length; i++) {
-									if(!Highcharts.charts[2].series[seriesToHoverArray[i]].selected) {
-										Highcharts.Chart.prototype.unhighlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
-									}
-								}
-						}
-					}
-				}
+			}
 
 			function addASeriesToggle(seriesIndex, seriesName, availableColourIndex) {
 
@@ -2274,7 +2295,7 @@
 				usedSeriesColours.splice(seriesIndex, 1);
 			}
 
-			// Generate Charts
+			// Generate Demo Charts
 			var mockDataRevenue = [],
 					mockDataDownloads = [];
 
