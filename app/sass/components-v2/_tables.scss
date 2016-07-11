@@ -321,6 +321,7 @@ tr:nth-child(odd) .app-data-cell-more.is-loading { // fixes strange background c
 		margin-top: 2px;
 		width: 32px;
 	  display: inline-block;
+	  float: left;
 	  border-radius: 0;
 	}
 	.ratings-container {
@@ -332,16 +333,22 @@ tr:nth-child(odd) .app-data-cell-more.is-loading { // fixes strange background c
 	img {
 		width: 42px;
 		display: inline-block;
+		float: left;
 		border-radius: 9px;
 	}
 	.data-table__app-details-container {
 		width: calc(100% - 55px);
+		max-width: 170px;
+		margin-left: 11px;
 		display: inline-block;
 		vertical-align: top;
-		float: right;
+		float: left;
 		text-align: left;
 		.page-data-dashboard--country & {
 			width: calc(100% - 50px);
+		}
+		@include breakpoint($desktop-wide) {
+			max-width: 300px;
 		}
 	}
 }
@@ -349,8 +356,12 @@ tr:nth-child(odd) .app-data-cell-more.is-loading { // fixes strange background c
 	margin: 0;
 	padding-top: 1px;
 	padding-bottom: 2px;
+	padding-right: 10px;
 	font-family: $brand-body-font;
 	font-size: 1.39rem;
+	overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;  
 	.page-data-dashboard--country & {
 		margin-top: 9px;
 	}
@@ -365,5 +376,18 @@ tr:nth-child(odd) .app-data-cell-more.is-loading { // fixes strange background c
     margin-top: 7px;
     margin-bottom: 9px;
     background-color: $loading-colour;    
+	}
+}
+.cellTableSortableHeader {
+	outline: none;
+	&:focus {
+		outline: none;
+	}	
+	span {
+		cursor: pointer;
+			&:active {
+			position: relative;
+			top: 2px;
+		}
 	}
 }
