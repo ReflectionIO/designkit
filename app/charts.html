@@ -136,15 +136,6 @@
 
 					<div class="secondary-filter form-field--select">
 						<select class="js-select-box">
-					    <option value="events" selected>Events</option>
-					    <option value="launch">Launch</option>
-					    <option value="update">Update</option>
-					    <option value="featured">Featured</option>
-						</select>
-					</div>
-
-					<div class="secondary-filter form-field--select">
-						<select class="js-select-box">
 					    <option value="more" selected>More (0/6)</option>
 					    <option value="device">Device Breakdown</option>
 					    <option value="redownloads">Re-downloads</option>
@@ -153,6 +144,16 @@
 					    <option value="split">Revenue Split</option>
 					    <option value="cumulative">Cumulative</option>
 						</select>
+					</div>
+
+					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+						<ul>
+							<li>
+								<input type="checkbox" name="checkboxOne" id="checkboxOne" class="js-toggle-events">
+								<label for="checkboxOne" class="checkboxLabel">Show Events</label>
+								<label for="checkboxOne" class="checkboxLabelVisible">Show Events</label>
+							</li>
+						</ul>
 					</div>
 
 					<button href="#" class="ref-button--secondary--small page-header_action-button js-add-series">Add Test</button>
@@ -183,7 +184,7 @@
 						</div>
 					</div>
 
-					<div class="filter-toggle toggle-container--chart-type">
+					<!-- <div class="filter-toggle toggle-container--chart-type">
 						<div class="toggle toggle-split-graph">
 							<input id="toggle--show-split-graph" name="splitgraph" checked type="radio">
 							<label for="toggle--show-split-graph" class="js-mock-show-split-chart">
@@ -199,11 +200,11 @@
 										17.9,12.1 25.1,12.7 31.9,10.3 31.5,9.2 	"/><polyline class=base-lines fill=#B2B5C0 points="0.1,15.8 0.1,17 31.9,17 31.9,15.8 	"/></g></svg>
 							</label>
 						</div>
-					</div>
+					</div> -->
 
 				</aside>
 
-				<div class="grid__row">
+				<div class="grid__row chart-section">
 					<ul class="tabs-content-list">
 						<li class="is-active js-twin-chart-container">
 							<section class="chart-container chart-container--split">
@@ -232,32 +233,37 @@
 							</section>
 
 							<aside class="custom-chart-key js-custom-chart-key">
-								<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+								<div class="form-field--checkbox-list form-field--checkbox-list--medium form-field--checkbox-list--inline">
 									<ul>
 										<li class="revenue-key">
 											<input type="checkbox" name="showhiderevenue" id="showhiderevenue" class="js-toggle-series" data-chart-index="0" data-series-index="0" checked>
-											<label for="showhiderevenue" class="checkboxLabel">Total</label>
-											<label for="showhiderevenue" class="checkboxLabelVisible js-hover-series">Total</label>
+											<label for="showhiderevenue" class="checkboxLabel">Total Revenue</label>
+											<label for="showhiderevenue" class="checkboxLabelVisible js-hover-series">Total Revenue</label>
+										</li>
+										<li class="downloads-key">
+											<input type="checkbox" name="showhidedownloads" id="showhidedownloads" class="js-toggle-series" data-chart-index="0" data-series-index="0" checked>
+											<label for="showhidedownloads" class="checkboxLabel">Total Downloads</label>
+											<label for="showhidedownloads" class="checkboxLabelVisible js-hover-series">Total Downloads</label>
 										</li>
 										<li class="series-1">
 											<input type="checkbox" name="showhideUSArev" id="showhideUSArev" class="js-toggle-series" data-chart-index="0" data-series-index="1" checked>
-											<label for="showhideUSArev" class="checkboxLabel">USA</label>
-											<label for="showhideUSArev" class="checkboxLabelVisible js-hover-series">USA</label>
+											<label for="showhideUSArev" class="checkboxLabel">Spotify</label>
+											<label for="showhideUSArev" class="checkboxLabelVisible js-hover-series">Spotify</label>
 										</li>
 										<li class="series-2">
 											<input type="checkbox" name="showhideUKrev" id="showhideUKrev" class="js-toggle-series" data-chart-index="0" data-series-index="2" checked>
-											<label for="showhideUKrev" class="checkboxLabel">UK</label>
-											<label for="showhideUKrev" class="checkboxLabelVisible js-hover-series">UK</label>
+											<label for="showhideUKrev" class="checkboxLabel">Tinder</label>
+											<label for="showhideUKrev" class="checkboxLabelVisible js-hover-series">Tinder</label>
 										</li>
 										<li class="series-3">
 											<input type="checkbox" name="showhideChinarev" id="showhideChinarev" class="js-toggle-series" data-chart-index="0" data-series-index="3" checked>
-											<label for="showhideChinarev" class="checkboxLabel">China</label>
-											<label for="showhideChinarev" class="checkboxLabelVisible js-hover-series">China</label>
+											<label for="showhideChinarev" class="checkboxLabel">Clash Royale</label>
+											<label for="showhideChinarev" class="checkboxLabelVisible js-hover-series">Clash Royale</label>
 										</li>
 										<li class="series-4">
 											<input type="checkbox" name="showhideFrancerev" id="showhideFrancerev" class="js-toggle-series" data-chart-index="0" data-series-index="4" checked>
-											<label for="showhideFrancerev" class="checkboxLabel">France</label>
-											<label for="showhideFrancerev" class="checkboxLabelVisible js-hover-series">France</label>
+											<label for="showhideFrancerev" class="checkboxLabel">Minecraft</label>
+											<label for="showhideFrancerev" class="checkboxLabelVisible js-hover-series">Minecraft</label>
 										</li>
 									</ul>
 								</div>
@@ -283,7 +289,7 @@
 							</section>
 
 							<aside class="custom-chart-key js-custom-chart-key">
-									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+									<div class="form-field--checkbox-list form-field--checkbox-list--medium form-field--checkbox-list--inline">
 										<ul>
 											<li class="revenue-key">
 												<input type="checkbox" name="showhiderevenuecomb" id="showhiderevenuecomb" class="js-toggle-series" data-chart-index="2" data-series-index="0" checked>
@@ -297,33 +303,33 @@
 											</li>
 											<li class="revenue-key-combined-chart series-1">
 												<input type="checkbox" name="showhiderevenuesusacomb" id="showhiderevenuesusacomb" class="js-toggle-series" data-chart-index="2" data-series-index="2" checked>
-												<label for="showhiderevenuesusacomb" class="checkboxLabel">USA</label>
-												<label for="showhiderevenuesusacomb" class="checkboxLabelVisible">USA</label>
+												<label for="showhiderevenuesusacomb" class="checkboxLabel">Spotify</label>
+												<label for="showhiderevenuesusacomb" class="checkboxLabelVisible">Spotify</label>
 											</li>
 											<li class="downloads-key-combined-chart series-1">
 												<input type="checkbox" name="showhidedownloadsusacomb" id="showhidedownloadsusacomb" class="js-toggle-series" data-chart-index="2" data-series-index="3" checked>
-												<label for="showhidedownloadsusacomb" class="checkboxLabel">USA</label>
-												<label for="showhidedownloadsusacomb" class="checkboxLabelVisible js-hover-series">USA</label>
+												<label for="showhidedownloadsusacomb" class="checkboxLabel">Spotify</label>
+												<label for="showhidedownloadsusacomb" class="checkboxLabelVisible js-hover-series">Spotify</label>
 											</li>
 											<li class="revenue-key-combined-chart series-2">
 												<input type="checkbox" name="showhiderevenuesukcomb" id="showhiderevenuesukcomb" class="js-toggle-series" data-chart-index="2" data-series-index="4" checked>
-												<label for="showhiderevenuesukcomb" class="checkboxLabel">UK</label>
-												<label for="showhiderevenuesukcomb" class="checkboxLabelVisible">UK</label>
+												<label for="showhiderevenuesukcomb" class="checkboxLabel">Tinder</label>
+												<label for="showhiderevenuesukcomb" class="checkboxLabelVisible">Tinder</label>
 											</li>
 											<li class="downloads-key-combined-chart series-2">
 												<input type="checkbox" name="showhidedownloadsukcomb" id="showhidedownloadsukcomb" class="js-toggle-series" data-chart-index="2" data-series-index="5" checked>
-												<label for="showhidedownloadsukcomb" class="checkboxLabel">UK</label>
-												<label for="showhidedownloadsukcomb" class="checkboxLabelVisible js-hover-series">UK</label>
+												<label for="showhidedownloadsukcomb" class="checkboxLabel">Tinder</label>
+												<label for="showhidedownloadsukcomb" class="checkboxLabelVisible js-hover-series">Tinder</label>
 											</li>
 											<li class="revenue-key-combined-chart series-3">
 												<input type="checkbox" name="showhiderevenueschinacomb" id="showhiderevenueschinacomb" class="js-toggle-series" data-chart-index="2" data-series-index="6" checked>
-												<label for="showhiderevenueschinacomb" class="checkboxLabel">China</label>
-												<label for="showhiderevenueschinacomb" class="checkboxLabelVisible">China</label>
+												<label for="showhiderevenueschinacomb" class="checkboxLabel">Clash Royale</label>
+												<label for="showhiderevenueschinacomb" class="checkboxLabelVisible">Clash Royale</label>
 											</li>
 											<li class="downloads-key-combined-chart series-3">
 												<input type="checkbox" name="showhidedownloadschinacomb" id="showhidedownloadschinacomb" class="js-toggle-series" data-chart-index="2" data-series-index="7" checked>
-												<label for="showhidedownloadschinacomb" class="checkboxLabel">China</label>
-												<label for="showhidedownloadschinacomb" class="checkboxLabelVisible js-hover-series">China</label>
+												<label for="showhidedownloadschinacomb" class="checkboxLabel">Clash Royale</label>
+												<label for="showhidedownloadschinacomb" class="checkboxLabelVisible js-hover-series">Clash Royale</label>
 											</li>
 											<li class="revenue-key-combined-chart series-4">
 												<input type="checkbox" name="showhiderevenuesfrancecomb" id="showhiderevenuesfrancecomb" class="js-toggle-series" data-chart-index="2" data-series-index="8" checked>
@@ -332,8 +338,8 @@
 											</li>
 											<li class="downloads-key-combined-chart series-4">
 												<input type="checkbox" name="showhidedownloadsfrancecomb" id="showhidedownloadsfrancecomb" class="js-toggle-series" data-chart-index="2" data-series-index="9" checked>
-												<label for="showhidedownloadsfrancecomb" class="checkboxLabel">France</label>
-												<label for="showhidedownloadsfrancecomb" class="checkboxLabelVisible js-hover-series">France</label>
+												<label for="showhidedownloadsfrancecomb" class="checkboxLabel">Minecraft</label>
+												<label for="showhidedownloadsfrancecomb" class="checkboxLabelVisible js-hover-series">Minecraft</label>
 											</li>
 										</ul>
 									</div>
@@ -835,7 +841,9 @@
 	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
 
+  <script src="js/vendor/snap.svg.js"></script> <!-- snap used for animating event flags on charts -->
   <script src="js/vendor/highcharts-custom.js"></script>
+  <script src="js/vendor/highslide-software/rounded-corners.js"></script>
   <script src="js/data-vis/data-vis-release.js"></script> <!-- mock data -->
   <script>
   	// Utility function
@@ -1011,6 +1019,87 @@
 			        }
 	        	}
 	        }
+
+	        // Add Event Labels
+	        	// destroy any existing labels
+	        var thisPlotX = arguments[1][0].plotX,
+	        		eventTooltip;
+
+	        		if(this.chart.eventTooltips) {
+	        			for (var t = 0; t < this.chart.eventTooltips.length; t++) {
+	        				this.chart.eventTooltips[t].destroy();
+	        			}
+	        		}
+	        		this.chart.eventTooltips = [];
+
+	        	// remove existing animating CSS class for icons
+	        $(".event-icon--launch.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--launch");
+	        });
+	        $(".event-icon--flag.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--flag");
+	        });
+	        
+        	// create tooltip on event hover
+        	var eventsCounter = 0,
+	        			previousEventPlotX;
+	        			window.animatingFlags = false;
+
+	        if(this.chart.refEvents) {
+			      for (var e = 0; e < this.chart.refEvents.length; e++) {
+			      	if(this.chart.refEvents[e].plotX == thisPlotX) {
+			      		// check if previous event plotX is the same as this plotX, to calculate event details label spacing
+			      		if(previousEventPlotX) {
+			      			if(previousEventPlotX == this.chart.refEvents[e].plotX) {
+			      				eventsCounter++;
+			      			} else {
+			      				eventsCounter = 0;
+			      			}
+			      		}
+			      		
+			      		previousEventPlotX = this.chart.refEvents[e].plotX;
+			      		var eventLabelOffset = 80;
+			      		if(parseInt(previousEventPlotX) < 100) {
+			      			eventLabelOffset = 30;
+			      		}
+			      		var labelTopSpace = axisLabelYPos + 29 + (eventsCounter * 57);
+			      		var eventIcon = this.chart.refEvents[e].icon.element;
+			        	eventTooltip = this.chart.renderer.label($(eventIcon).data("tooltip"), this.chart.series[0].data[$(eventIcon).data("datapoint")].plotX - eventLabelOffset, labelTopSpace, 'callout')
+			            .css({
+			                color: $(eventIcon).data("tooltipcolour")
+			            })
+			            .attr({
+			            		width: 139,
+			                fill: $(eventIcon).data("tooltipfill"),
+			                padding: 10,
+			                r: 5,
+			                zIndex: 6
+			            })
+			            .addClass("chart-event-label")
+			            .add();
+
+			         	this.chart.eventTooltips.push(eventTooltip);
+
+			         	// add event icon animate CSS class
+			         	var currentCSSClass = $(this.chart.refEvents[e].icon.element).attr("class");
+		      			$(this.chart.refEvents[e].icon.element).attr("class", "is-animating " + currentCSSClass);
+		      			if(currentCSSClass.indexOf("event-icon--flag") > -1) {
+		      				this.chart.refEvents[e].flag = null;
+			      			window.animatingFlags = true;
+			      			animateSquash = function(flagToAnimate) {
+		      					flagToAnimate.animate({width: 15}, 100, function(){
+		      						flagToAnimate.animate({width: 18}, 100, function() {
+		      							if(window.animatingFlags) {
+		      								animateSquash(flagToAnimate);
+		      							}      							
+		      						});
+		      					});
+			      			}
+			      			animateSquash(Snap(this.chart.refEvents[e].icon.element)); // makes the flag "flap" (uses snap.js)
+		      			}
+			        }
+			      }
+			    }
 	      });
 
 				H.wrap(H.Series.prototype, 'hide', function (proceed) {
@@ -1206,13 +1295,30 @@
 	        		dataIndex = 0;
 	        	}
 
+	        	var seriesName = "";
+	        	if(isRevenue) {
+	        		if(a == 0) {
+	        			seriesName = "revenueseries-total";
+	        		} else {
+	        			seriesName = "revenueseries";
+	        		}
+	        	} else {
+	        		if(a == 1) {
+	        			seriesName = "downloadsseries-total";
+	        		} else {
+	        			seriesName = "downloadsseries";
+	        		}
+	        	}
+
 	        	// TEMPLATE ONLY: Create mock series
 	        	seriesArray.push({
 		         	yAxis: (isRevenue) ? 0 : 1,
-		          name: (isRevenue) ? "grossingrank" : "downloadsrank",
-	            id : (isRevenue) ? "grossingrank" : "downloadsrank",
+		          name: seriesName,
+	            id : seriesName,
 		          color: thisSeriesColour,
 		          data: (isRevenue) ? seriesData[0][dataIndex] : seriesData[1][dataIndex],
+		          borderRadiusTopLeft: 3,
+        			borderRadiusTopRight: 3,
 		          pointStart: Date.UTC(2016, 0, 1),
 		          pointInterval: 24 * 3600 * 1000, // one day
 		          lineColor: thisSeriesColour,
@@ -1238,7 +1344,7 @@
 		                radiusPlus: 0,
 		              }
 		            }
-		          }
+		          }		          
 		        });
 	        }
 
@@ -1258,20 +1364,28 @@
 	          },
 	          title: {
 	          	text: null
-	          }            
+	          }         
 	        }];
 
 	        // TEMPLATE ONLY: Create mock series
 	        for(var a = 0; a < seriesData.length; a++) {
+
+	        	var seriesName = dataType;
+	        	if(a == 0) {
+	        		seriesName += "-total";
+        		}
+
 	        	seriesArray.push({
 		         	yAxis: 0,
-		          name: dataType,
-		          id : dataType,
-		          color: (dataType == "downloadsrank" && a == 0) ? "#6d69c5" : seriesColour[a],
+		          name: seriesName,
+		          id : seriesName,
+		          color: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
 		          data: seriesData[a],
+		          borderRadiusTopLeft: 3,
+        			borderRadiusTopRight: 3,
 		          pointStart: Date.UTC(2016, 0, 1),
 		          pointInterval: 24 * 3600 * 1000, // one day
-		          lineColor: (dataType == "downloadsrank" && a == 0) ? "#6d69c5" : seriesColour[a],
+		          lineColor: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
 		          lineWidth: 3,
 		          lineWidthPlus: 0,
 		          fillOpacity: 0,
@@ -1304,10 +1418,10 @@
 	          renderTo: containerId,
 						marginLeft: 0,
 						marginRight: 0,
-						marginBottom: 24,
+						marginBottom: 0,
 						marginTop: 0,
 						spacing: [0,0,0,0],
-						height: 285,
+						height: 306,
 						backgroundColor: '#fcfdfd',
 						plotBackgroundColor: '#f2f2f5',
 			   		type: chartType,
@@ -1342,6 +1456,8 @@
 	        },
 	        yAxis: yAxesSettings,
 	        xAxis: {
+	        	lineColor: '#e1e5e8',
+            lineWidth: 1,
 	        	startOnTick: false,
 	        	endOnTick: false,
 	        	showFirstLabel: false,
@@ -1358,12 +1474,12 @@
 	          	align: 'center',
 	            x: 0,
 	            y: 18,
-	            step: 4,
+	            step: 2,
 	            style: {
 	              color: '#81879d',
 	              fontSize: "12px"
 	            }
-	          }
+	          },
 	        },
 	        plotOptions: {
 	        	area: {
@@ -1378,7 +1494,21 @@
 	        				},
 	        				lineWidthPlus: 0
 	        			}
-	        		}        		
+	        		},
+	        		marker: {
+	        			symbol: "circle"
+	        		}		
+	        	},
+	        	bar: {
+	        		borderColor: "#f2f2f5",
+	        		borderWidth: 1,
+	        		groupPadding: 0.08,
+	        		pointPadding: 0,
+	        		states: {
+	        			hover : {
+	        				brightness: 0.1
+	        			}
+	        		}
 	        	},
 	          series: {
 	            events: {
@@ -1472,19 +1602,48 @@
 	        tooltip: {
 	        	useHTML: true,
 	        	shared: true,
-	          formatter: function() { // TO DO, improve tooltip styling
+	          formatter: function() {
 	            var instance = this;
-	            var s = "";            
+	            var s = "";
+	            var thisPointIndex = instance.points[0].point.index;
+	            // for stacked percentage
+	            // TO DO - bug if first line is off
+	            var thisPointTotalValue = instance.points[0].series.chart.series[0].data[thisPointIndex].y;
+
 	            $.each(instance.points, function (index, value) {
 	                var chartSeries = value.series;
-	                var imgString;
-	                if(chartSeries.name == "grossingrank") {
-	                	imgString = "<img src=images/icon-chart-tooltip-revenue.png alt='Rank icon' class=icon-revenue />";
-	                } else {
-	                	imgString = "<img src=images/icon-chart-tooltip-downloads.png alt='Rank icon' class=icon-downloads />";	
+	                var imgString = "",
+	                		storeString = ""
+	                		valueString = "",
+	                		stackedString = "";
+
+	                if(chartSeries.name == "revenueseries") {
+	                	valueString = "$ ";
+	                }
+	                if(chartSeries.name == "revenueseries-total") {
+	                	imgString = "<img src=images/v2/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
+	                } else if(chartSeries.name == "downloadsseries-total") {
+	                	imgString = "<img src=images/v2/icon-chart-tt-downloads@2x.png alt='Rank icon' class=icon-downloads />";	
+	                } else { // output app and store icon from data
+	                	var appIcon = chartSeries.appIcon;
+	                	var store = chartSeries.appStore;
+	                	imgString = "<img src=" + appIcon + " class='chart-tooltip-app-icon' />";
+	                	storeString = "<span class='ref-icon-before--" + store + "'></span>"
 	                }
 	                
-	                s += '<div class="custom-tooltip ' + chartSeries.name + '" style="background-color: ' + chartSeries.color + '">' + imgString + value.y + '</div>';
+	                var seriesClassName = chartSeries.name;
+	                if(seriesClassName == "revenueseries-total") {
+	                	seriesClassName = "revenueseries";
+	                } else if(seriesClassName == "downloadsseries-total") {
+	                	seriesClassName = "downloadsseries";
+	                }
+
+	                if($('#toggle--show-stacked').is(":checked") && thisPointTotalValue != undefined) {
+	                	var percentageOfTotal = parseInt(value.y / thisPointTotalValue * 100);
+	                	stackedString = "<span class='chart-tooltip-percentage' style='background-color: " + chartSeries.color + "'>" + percentageOfTotal + "%</span>";
+	                }
+
+	                s += '<div class="custom-tooltip ' + seriesClassName + '" style="background-color: ' + chartSeries.color + '">' + imgString + storeString + '<span class="chart-tooltip-value">' + valueString + value.y + '</span>' + stackedString + '</div>';
 	            });
 	            return s;
 	          },
@@ -1492,7 +1651,7 @@
 	          borderWidth: 0,
 	          borderColor: '#dae3ed',
 				    crosshairs: [{
-	            width: 0,
+	            width: 1,
 	            color: '#9ea7c4'
 	          }],
 	          shadow: {
@@ -1501,11 +1660,37 @@
 	            offsetX: 1,
 	            offsetY: 1
 	        	},
-	        	snap: 25
+	        	snap: 25,
+	        	// the positioner callback could be used in future for the combined chart where it goes off the left of the graph
+	        	// positioner: function (labelWidth, labelHeight, point) {
+          //     console.log("labelWidth = " + labelWidth);
+          //     console.log("labelHeight = " + labelHeight);
+          //     console.log(point);
+          //     return { x: point.plotX, y: 0 };
+          //   },
 	        }
 		    });
+
 			} // end generateChart()
 
+			function addAppDataToSeries() {
+				// add the app icon and store to the Highcharts series objects for the tooltip
+
+				// template only, mock data
+				for(var k = 0; k < 2; k++) {
+					$.each(Highcharts.charts[k].series, function (key, series) { // twin chart
+				    series.appIcon = seriesAppIcons[key].icon;
+				    series.appStore = seriesAppIcons[key].store;
+					});
+				}
+
+				$.each(Highcharts.charts[2].series, function (key, series) { // combined chart
+			    // combined chart, use the same icon for rev and downloads
+			    var combinedSeriesIndex = Math.floor(key / 2);
+			    series.appIcon = seriesAppIcons[combinedSeriesIndex].icon;
+			    series.appStore = seriesAppIcons[combinedSeriesIndex].store;
+				});
+			}
 
 			function handleCustomLegendInteraction() {
 
@@ -1539,6 +1724,9 @@
 								if(!$('#toggle--show-stacked').is(":checked") && currentChartType == "area") {
 									Highcharts.Chart.prototype.setGraphCSSClasses();
 									Highcharts.Chart.prototype.resetLineStyling();
+								} else {
+									Highcharts.Chart.prototype.setGraphCSSClasses();
+									Highcharts.Chart.prototype.setGraphFillsTransparency();
 								}
 							}, 200);
 
@@ -1671,6 +1859,9 @@
 							if(!$('#toggle--show-stacked').is(":checked") && currentChartType == "area") {
 								Highcharts.Chart.prototype.setGraphCSSClasses();
 								Highcharts.Chart.prototype.resetLineStyling();
+							} else {
+								Highcharts.Chart.prototype.setGraphCSSClasses();
+								Highcharts.Chart.prototype.setGraphFillsTransparency();
 							}
 
 						} else {
@@ -1754,6 +1945,9 @@
 							});
 						});
 					}
+
+					addAppDataToSeries();
+					redrawChartEvents();
 				});
 			}
 
@@ -1785,6 +1979,9 @@
 					Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
 					Highcharts.Chart.prototype.setGraphCSSClasses();
 	        Highcharts.Chart.prototype.resetLineStyling();
+
+	        addAppDataToSeries();
+	        redrawChartEvents();
 				});
 			}
 
@@ -1820,6 +2017,9 @@
 
 						Highcharts.Chart.prototype.setGraphCSSClasses();
 						Highcharts.Chart.prototype.setGraphFillsTransparency();
+
+						addAppDataToSeries();
+						redrawChartEvents()
 					}
 				});
 			}
@@ -1846,12 +2046,12 @@
 					}
 
 					var mockSeries = [];
-					for(var d = 0; d < 8; d++) {
+					for(var d = 0; d < 12; d++) {
 						var randomNumber = Math.floor((Math.random() * 50000) + 30000);				
 						mockSeries.push(randomNumber);
 					}
 					var mockSeriesDownloads = [];
-					for(var d = 0; d < 8; d++) {
+					for(var d = 0; d < 12; d++) {
 						var randomNumber = Math.floor((Math.random() * 50000) + 30000);		
 						mockSeriesDownloads.push(randomNumber);
 					}
@@ -1883,8 +2083,8 @@
 
 					Highcharts.charts[0].addSeries({
           	yAxis: 0,
-	          name: "grossingrank",
-            id : "grossingrank",
+	          name: "revenueseries",
+            id : "revenueseries",
             type: chartType,
 	          color: availableColour,
 	          data: mockSeries,
@@ -1912,7 +2112,7 @@
 
          	Highcharts.charts[1].addSeries({
           	yAxis: 0,
-	          name: "downloadsrank",
+	          name: "downloadsseries",
             id : "downloads",
             type: chartType,
 	          color: availableColour,
@@ -1941,8 +2141,8 @@
 
          	Highcharts.charts[2].addSeries({
           	yAxis: 0,
-	          name: "grossingrank",
-            id : "grossingrank",
+	          name: "revenueseries",
+            id : "revenueseries",
             type: chartType,
 	          color: availableColour,
 	          data: mockSeries,
@@ -1969,7 +2169,7 @@
 
          	Highcharts.charts[2].addSeries({
           	yAxis: 1,
-	          name: "downloadsrank",
+	          name: "downloadsseries",
             id : "downloads",
             type: chartType,
 	          color: availableColour,
@@ -2012,6 +2212,9 @@
 					// in the app, ("showhiderevenue-" + Highcharts.charts[0].numberofSeriesAdded) should be replaced with an id for that series
 					// the (Highcharts.charts[0].numberofSeriesAdded) index should be the same as the series index
 					addASeriesToggle(Highcharts.charts[0].series.length - 1, "showhiderevenue-" + Highcharts.charts[0].numberofSeriesAdded, availableColourIndex);
+
+					addAppDataToSeries();
+
 				});
 
 			}
@@ -2052,6 +2255,232 @@
 					removeASeriesToggle(2);
 				});
 			}
+			
+			function handleChartEvents() {
+
+				// Use Highcharts.charts[0].refEvents[] to hold the event objects, which consist of an icon, line and tooltip content and tooltip colour
+				Highcharts.charts[0].refEvents = [];
+
+				if($('.js-toggle-events:checked').length > 0) {
+					addEventsToGraph();
+				}
+
+				$('.js-toggle-events').change(function(){
+					if($(this).is(":checked")) {
+						if(Highcharts.charts[0].refEvents.length == 0) {
+							addEventsToGraph();
+						} else { // otherwise show existing events
+							for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+								if(Highcharts.charts[0].refEvents[e].icon) {
+									$(Highcharts.charts[0].refEvents[e].icon.element).fadeIn(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].line) {
+									$(Highcharts.charts[0].refEvents[e].line.element).fadeIn(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].area) {
+									$(Highcharts.charts[0].refEvents[e].area.element).fadeIn(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].label) {
+									$(Highcharts.charts[0].refEvents[e].label.element).fadeIn(200);
+								}
+							}
+						}
+					} else {
+						if(Highcharts.charts[0].refEvents.length > 0) {
+							// hide existing events
+							for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+								if(Highcharts.charts[0].refEvents[e].icon) {
+									$(Highcharts.charts[0].refEvents[e].icon.element).fadeOut(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].line) {
+									$(Highcharts.charts[0].refEvents[e].line.element).fadeOut(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].area) {
+									$(Highcharts.charts[0].refEvents[e].area.element).fadeOut(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].label) {
+									$(Highcharts.charts[0].refEvents[e].label.element).fadeOut(200);
+								}
+							}
+						}
+					}
+				});
+
+				// Events - Redraw events for window width change
+				$(window).on("resize", function(){
+					setTimeout(function(){
+						redrawChartEvents();
+					}, 1500);
+				});
+			}
+
+			function redrawChartEvents() {
+				if(Highcharts.charts[0].refEvents.length > 0) {
+						// redraw events
+						for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+							if(Highcharts.charts[0].refEvents[e].icon) {
+								Highcharts.charts[0].refEvents[e].icon.destroy();
+							}
+							if(Highcharts.charts[0].refEvents[e].line) {
+								Highcharts.charts[0].refEvents[e].line.destroy();
+							}
+							if(Highcharts.charts[0].refEvents[e].area) {
+								Highcharts.charts[0].refEvents[e].area.destroy();
+							}
+							if(Highcharts.charts[0].refEvents[e].label) {
+								Highcharts.charts[0].refEvents[e].label.destroy();
+							}
+						}
+						Highcharts.charts[0].refEvents = [];						
+						if(Highcharts.charts[0].refEvents.length == 0) {
+							if($('.js-toggle-events:checked').length > 0) {
+								addEventsToGraph();
+							}
+						}
+					}
+			}
+
+			// Add events to the graph function
+			function addEventsToGraph() {
+
+				var chart = Highcharts.charts[0];
+				var numberOfChartItems = chart.series[0].data.length - 1;
+			  var chartWidth = $(chart.container).width();
+
+			  Highcharts.charts[0].refEvents = [];
+
+	      Highcharts.charts[0].refEvents.push({
+	      	icon: chart.renderer.image('images/icon-chart-event-launch@2x.png', chart.series[0].data[2].plotX - 11, chart.chartHeight - 36, 22, 36)
+		            .attr({		            	
+		              zIndex: 15
+		            })
+		            .addClass("event-icon--launch")
+		            .add(),
+		    	plotX: chart.series[0].data[2].plotX,
+	      },{
+	      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[6].plotX - 1, chart.chartHeight - 38, 18, 12)
+		            .attr({
+		              zIndex: 9		              
+		            })
+		            .addClass("event-icon--flag")
+		            .add(),
+		      line: chart.renderer.path(['M', chart.series[0].data[6].plotX, chart.chartHeight, 'L', chart.series[0].data[6].plotX, chart.chartHeight - 38])
+		            .attr({
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 8
+		            })
+		            .add(),
+					plotX: chart.series[0].data[6].plotX,
+	      },{
+	      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
+		            .attr({
+		              zIndex: 9
+		            })
+		            .addClass("event-icon--flag")
+		            .add(),
+		      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
+		            .attr({
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 8
+		            })
+		            .add(),
+					plotX: chart.series[0].data[8].plotX,
+		      },{
+		      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
+			            .attr({
+			            	visibility: "hidden", // duplicate event flags are hidden but are needed to caluclate no of events for a given date
+			              zIndex: 9
+			            })
+			            .addClass("event-icon--flag")
+			            .add(),
+			      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
+			            .attr({
+			            	visibility: "hidden",
+		                'stroke-width': 1,
+		                stroke: '#81879d',
+		                zIndex: 8
+			            })
+			            .add(),
+						plotX: chart.series[0].data[8].plotX,
+				});
+
+				// Events - Add tooltip data
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltip", "<span>App Launch</span><br /><span>02/01/2016</span>");				
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("datapoint", 2);
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltip", "<span>App Name Change</span><br /><span>'Splashy Crossy Copy...'</span>");
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("datapoint", 6);
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltip", "<span>Price Change</span><br /><span>$0.99 - Free</span>");
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("datapoint", 8);
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltip", "<span>App Update</span><br /><span>Version 1.1.3.1</span>");
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("datapoint", 8);
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+	      // if there are more than one events on one date, calculate and add number of events label
+		      // find which plotX has more than one event and add to plotXDuplicates[]
+		      var plotXDuplicates = [];
+		      for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+		      	var thisPlotX = Highcharts.charts[0].refEvents[e].plotX;
+		      	for (var a = e+1; a < Highcharts.charts[0].refEvents.length; a++) {
+		      		if(Highcharts.charts[0].refEvents[a].plotX == thisPlotX) {
+		      			var alreadyExists = false;
+		      			if(plotXDuplicates.length > 0) {	      				
+			      			for (var x = 0; x < plotXDuplicates.length; x++) {
+			      				if(plotXDuplicates[x] == thisPlotX) {
+			      					alreadyExists = true;
+			      				}
+			      			}
+		      			}
+		      			if(!alreadyExists) {
+		      				plotXDuplicates.push(Highcharts.charts[0].refEvents[a].plotX);
+		      			}	      			
+		      		}
+		      	}
+		      }
+
+	      	// iterate plotXDuplicates and find number of events on the same date
+		      var eventIndexesForDuplicateEventDate = [],
+		      		counterOfDuplicates = [];
+		      for(var p = 0; p < plotXDuplicates.length; p++) {
+		      	var counter = 0;
+		      	for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+			      	if(plotXDuplicates[p] == Highcharts.charts[0].refEvents[e].plotX) {
+			      		eventIndexesForDuplicateEventDate.push(e);
+			      		counter++;
+			      	}
+			      }
+			      counterOfDuplicates.push(counter);
+		      }
+		      
+	      	// add label to chart for number of events on the same data
+		      for(var p = 0; p < plotXDuplicates.length; p++) {
+		      	if(Highcharts.charts[0].refEvents[eventIndexesForDuplicateEventDate[p]]) {
+		      		Highcharts.charts[0].refEvents[eventIndexesForDuplicateEventDate[p]].label = chart.renderer.text('<span>' + counterOfDuplicates[p] + '</span>', plotXDuplicates[p] + 4, 265)
+		          .attr({
+		          	zIndex: 10
+		          })
+		          .css({
+		            color: '#ff496a',
+		            fontSize: '13px',
+		            fontFamily: 'Source Sans Pro',
+		            fontWeight: 'bold',
+		            pointerEvents: 'none'
+		          })
+		          .add();
+		      	}
+		      }
+			}
 
 			function handleChartInteraction() {
 				
@@ -2063,6 +2492,7 @@
 				handleAddSeriesTest();
 				handleRemoveSeriesTest();
 
+				handleChartEvents();
 			}
 
 			function handleMouseEnterChartKeyLabel($label) {
@@ -2173,12 +2603,12 @@
 				
 				var newCheckboxLabel = $('<label>').attr("for", seriesName)
 																						.addClass("checkboxLabel")
-																						.text("Germany");
+																						.text("Another App");
 
 				var newCheckboxLabelVisible = $('<label>').attr("for", seriesName)
 																						.addClass("checkboxLabelVisible")
 																						.attr("data-chart-index", "0")
-																						.text("Germany")
+																						.text("Another App")
 																						.on("mouseenter", function(){
 																							handleMouseEnterChartKeyLabel($(this));
 																						})
@@ -2207,7 +2637,7 @@
 				
 				var newCheckboxLabel = $('<label>').attr("for", seriesName)
 																						.addClass("checkboxLabel")
-																						.text("Germany");
+																						.text("Another App");
 
 				var newCheckboxLabelVisible = $('<label>').attr("for", seriesName)
 																						.addClass("checkboxLabelVisible js-hover-series");
@@ -2229,12 +2659,12 @@
 				
 				var newCheckboxLabel = $('<label>').attr("for", seriesName)
 																						.addClass("checkboxLabel")
-																						.text("Germany");
+																						.text("Another App");
 
 				var seriesIndexPlusOne = (seriesIndex * 2) + 1;
 				var newCheckboxLabelVisible = $('<label>').attr("for", seriesName)
 																						.addClass("checkboxLabelVisible js-hover-series")
-																						.text("Germany")
+																						.text("Another App")
 																						.on("mouseenter", function(){
 																							handleMouseEnterChartKeyLabel($(this));
 																						})
@@ -2293,6 +2723,69 @@
 
 			var seriesFills = ["rgba(245,201,67,0)", "rgba(190,185,219,1)", "rgba(253,127,110,1)", "rgba(127,177,213,1)", "rgba(242,189,216,1)", "rgba(199,178,153,1)", "rgba(189,126,191,1)", "rgba(139,212,199,1)", "rgba(255,181,90,1)", "rgba(217,217,217,1)", "rgba(145,142,223,1)"];
 
+			var seriesAppIcons = [
+				{ 
+					icon: "images/v2/placeholder-app-icon-clash.png",
+					store: "ios"
+				},
+				{ 
+					icon: "images/v2/placeholder-icon-spotify.png",
+					store: "ios"
+				},
+				{ 
+					icon: "images/v2/placeholder-icon-tinder.png",
+					store: "play-store"
+				},
+				{ 
+					icon: "images/v2/placeholder-app-icon.jpg",
+					store: "play-store"
+				},
+				{ 
+					icon: "images/v2/placeholder-app-icon-minecraft.png",
+					store: "ios"
+				},
+				{ 
+					icon: "images/v2/placeholder-app-icon-drift.png",
+					store: "ios"
+				},
+				{ 
+					icon: "images/v2/placeholder-app-icon-delta.png",
+					store: "ios"
+				},
+				{ 
+					icon: "images/v2/placeholder-app-icon-deezer.png",
+					store: "play-store"
+				},
+				{ 
+					icon: "images/v2/placeholder-app-icon-8ball.png",
+					store: "ios"
+				},
+				{ 
+					icon: "images/v2/placeholder-app-icon-bridge.png",
+					store: "ios"
+				},
+				{ 
+					icon: "images/icon-cc.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/icon-ccjs.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/icon-ccss.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/icon-ccam.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/icon-bws.jpg",
+					store: "ios"
+				}
+			];
+			
 			var usedSeriesColours = [];
 
 			setTimeout(function() {
@@ -2306,7 +2799,7 @@
 
 				for(var s = 0; s < 4; s++) {
 					var mockSeries = [];
-					for(var d = 0; d < 8; d++) {						
+					for(var d = 0; d < 12; d++) {						
 						if(chartData[s].data[d]) {
 							mockSeries.push(chartData[s].data[d].value);
 						} else {
@@ -2318,7 +2811,7 @@
 				}				
 
 				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
-				for(var d = 0; d < 8; d++) {
+				for(var d = 0; d < 12; d++) {
 					var totalOfSeriesForDataPoint = 0;
 					for(var s = 1; s < 5; s++) {
 						if(mockDataRevenue[s][d] != null) {
@@ -2333,7 +2826,7 @@
 				mockDataDownloads.push([]);
 				for(var s = 5; s < 9; s++) {
 					var mockSeries = [];
-					for(var d = 0; d < 8; d++) {
+					for(var d = 0; d < 12; d++) {
 						if(chartData[s].data[d]) {
 							mockSeries.push(chartData[s].data[d].value);
 						} else {
@@ -2344,7 +2837,7 @@
 				}
 
 				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
-				for(var d = 0; d < 8; d++) {
+				for(var d = 0; d < 12; d++) {
 					var totalOfSeriesForDataPoint = 0;
 					for(var s = 1; s < 5; s++) {
 						if(mockDataDownloads[s][d] != null) {
@@ -2360,12 +2853,13 @@
 				revAndDownData.push(mockDataRevenue);
 				revAndDownData.push(mockDataDownloads);				
 
-				generateChart('chart-revenue', "grossingrank", mockDataRevenue, seriesColours, "area", false);
-				generateChart('chart-downloads', "downloadsrank", mockDataDownloads, seriesColours, "area", false);
+				generateChart('chart-revenue', "revenueseries", mockDataRevenue, seriesColours, "area", false);
+				generateChart('chart-downloads', "downloadsseries", mockDataDownloads, seriesColours, "area", false);
 				generateChart('chart-combined', "split", revAndDownData, seriesColours, "area", true);
 				$('.chart-container').addClass('is-animated');
 				handleChartInteraction();
 
+				addAppDataToSeries();
 				Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
 				Highcharts.Chart.prototype.setGraphCSSClasses();
         Highcharts.Chart.prototype.resetLineStyling();

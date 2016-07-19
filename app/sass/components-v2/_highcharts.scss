@@ -46,41 +46,138 @@
 	}
 }
 .highcharts-axis path {
-	stroke: $light-grey-2;
+	stroke: #e1e5e8;
+}
+.highcharts-tooltip {
+	> span {
+		overflow: visible;
+	}
+}
+.chart-section {
+	position: relative;
+	z-index: 100;
+	overflow: visible;
+	ul, li {
+		overflow: visible;
+	}
+}
+.chart-container {
+	z-index: 100;
 }
 .custom-tooltip {
 	position: relative;
-	padding: 3px 10px 5px 33px;
+	width: 126px;
+  min-height: 24px;
+	padding: 3px 7px 3px 3px;
 	margin-bottom: 2px;
+	display: block;
+	overflow: visible;
 	font-family: $brand-heading-font;
 	font-size: 15px;
 	font-weight: 600;
 	color: #fcfdfd;
 	border-radius: 3px;
 	opacity: 0.9;
-	img {
-		position: absolute;
-		top: 5px;
-		left: 7px;
-	}
-	.icon-revenue {
-		top: 8px;
-		width: 16px;
-		height: 11px;
+	.icon-revenue {    
+    position: relative;
+    top: 1px;
+		width: 22px;
+		height: 15px;
+		margin: 3px 0 0 6px;
+		+ span {
+			top: 4px;
+			+ .chart-tooltip-percentage {
+				min-height: 28px;
+				padding-top: 7px;
+			}
+		}
 	}
 	.icon-downloads {
-		width: 16px;
+		position: relative;
+		top: 1px;
+		width: 22px;
 		height: 15px;
+		margin: 3px 0 0 5px;
+		+ span {
+			top: 4px;
+			+ .chart-tooltip-percentage {
+				min-height: 28px;
+				padding-top: 7px;
+			}
+		}
 	}
 	.icon-rank {
-		top: 8px;
-		width: 17px;
-		height: 13px;
+		width: 16px;
+		height: 15px;
 	}
 	.icon-ad-network {
 		width: 16px;
 		height: 16px;
 	}
+	.chart-tooltip-app-icon {
+		width: 18px;
+    height: 18px;
+		margin: 0;
+		display: inline-block;
+		vertical-align: top;
+		float: left;
+		border-radius: 3px;
+	}
+	.ref-icon-before--play-store,
+	.ref-icon-before--ios {
+		display: inline-block;
+		vertical-align: top;
+		float: left;
+	}
+	.ref-icon-before--play-store:before,
+	.ref-icon-before--ios:before {		
+		color: #000;
+	  opacity: 0.5;
+	}
+	.ref-icon-before--ios {
+		margin: 2px 0 0 5px;
+		&:before {
+			font-size: 15px;
+		}
+	}
+	.ref-icon-before--play-store {
+		margin: 2px 0 0 6px;
+		&:before {
+			font-size: 14px;
+		}
+	}
+	.chart-tooltip-value {
+		position: relative;
+    top: 2px;
+    margin-top: 0px;    
+    display: inline-block;
+		vertical-align: top;
+		float: right;
+		font-size: 12.5px;
+    font-family: $brand-body-font;
+    font-weight: 700;
+	}
+}
+.chart-tooltip-percentage {	
+  position: absolute;
+  right: -44px;
+  top: 0px;
+  width: 43px;
+  min-height: 24px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: block;
+  box-sizing: border-box;
+  font-size: 12.5px;
+  font-family: $brand-body-font;
+  font-weight: 700;
+  text-align: right;
+  border-radius: 4px;
+}
+.chart-container--single .custom-tooltip.revenueseries {
+	position: absolute;
+	left: -127px;
 }
 .highcharts-axis-label {
 	&:after {
@@ -95,43 +192,40 @@
 		border-bottom: 10px solid $light-grey-1;
 	}
 }
-$translateYHeightLaunch: -420px;
-$translateYHeightFlag: -443px;
 @keyframes launch {
 	0% { transform: translateY(0px); }
-	100% { transform: translateY($translateYHeightLaunch); }
+	100% { transform: translateY(-280px); }
 }
 @keyframes launch-hover {
-	0% { transform: translateY($translateYHeightLaunch) translateX(0px); }
-	25% { transform: translateY($translateYHeightLaunch) translateX(1px); }
-	50% { transform: translateY($translateYHeightLaunch) translateX(0px); }
-	75% { transform: translateY($translateYHeightLaunch) translateX(-1px); }
-	100% { transform: translateY($translateYHeightLaunch) translateX(0px); }
+	0% { transform: translateX(0px); }
+	25% { transform: translateX(1px); }
+	50% { transform: translateX(0px); }
+	75% { transform: translateX(-1px); }
+	100% { transform: translateX(0px); }
 }
 .event-icon--launch {
-	animation: vibrate 0.2s 6, launch 0.8s 1.2s ease-in forwards;
-	&.animation-complete {
-		animation: none;
-		transform: translateY($translateYHeightLaunch);			
-	}
 	&.is-animating {
-		animation: launch-hover 0.2s infinite forwards;
+		animation: launch-hover 0.2s infinite forwards, launch 0.5s 0.6s ease-in forwards;
 	}
 }
 .event-icon--flag {
 	transform: translateY(0);
-	transition: transform 1.9s ease-in;
-	.is-animating {
-		width: 5px;
+	transition: transform 0.2s ease-in;
+	&.is-animating {
+		transform: translateY(-12px);
+		transition: transform 0.3s ease-in;
 	}
 }
 .custom-chart-key {
+	z-index: 0;
 	.checkboxLabelVisible {
-		padding-left: calc(14px + 1rem);
-		font-size: 1.5rem;
+		padding-top: 1px;
+		padding-left: calc(17px + 1rem);
+    font-size: 1.4rem;    
 	}
 	li {
 		margin-right: 1.5rem;
+		margin-bottom: 0.5rem;
 	}
 	li.revenue-key {
 		input[type="checkbox"]:checked + .checkboxLabel {
@@ -140,7 +234,7 @@ $translateYHeightFlag: -443px;
 	}
 	li.downloads-key {
 		input[type="checkbox"]:checked + .checkboxLabel {
-			background-color: $reflection-purple !important;
+			background-color: #918edf !important;
 		}
 	}
 	li.series-1 {
@@ -188,11 +282,6 @@ $translateYHeightFlag: -443px;
 			background-color: #d9d9d9;
 		}
 	}
-	li.series-10 {
-		input[type="checkbox"]:checked + .checkboxLabel {
-			background-color: #918edf;
-		}
-	}
 }
 .revenue-key-combined-chart {
 	vertical-align: top;
@@ -212,5 +301,20 @@ $translateYHeightFlag: -443px;
 		content: "A";
 		top: 2px;
 		font-size: 13px;
+	}
+}
+.chart-event-label {
+	text {
+		tspan {
+			font-family: $brand-heading-font;			
+			font-size: 14px;
+			fill: #fcfdfd;
+			&:first-child {
+				font-weight: 600;
+			}
+			&:last-child {
+				font-size: 13px;
+			}
+		}
 	}
 }
