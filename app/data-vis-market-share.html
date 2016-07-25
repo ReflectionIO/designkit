@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Lab - Price Tier Distribution</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<!-- <script src="js/data-vis/making_the_top_200.js"></script> -->
+<script src="js/vendor/angular.js"></script>
+<script>
+		'use strict';
+
+		var appData = [
+			{
+				"code": "AF",
+				"value": 53,
+				"name": "Afghanistan"
+			},
+			{
+				"code": "AL",
+				"value": 117,
+				"name": "Albania"
+			},
+			{
+				"code": "DZ",
+				"value": 15,
+				"name": "Algeria"
+			},
+			{
+				"code": "AS",
+				"value": 342,
+				"name": "American Samoa"
+			},
+			{
+				"code": "AD",
+				"value": 181,
+				"name": "Andorra"
+			},
+			{
+				"code": "AO",
+				"value": 15,
+				"name": "Angola"
+			},
+			{
+				"code": "AI",
+				"value": 202,
+				"name": "Antigua and Barbuda"
+			},
+			{
+				"code": "AR",
+				"value": 15,
+				"name": "Argentina"
+			},
+			{
+				"code": "AM",
+				"value": 109,
+				"name": "Armenia"
+			},
+			{
+				"code": "AW",
+				"value": 597,
+				"name": "Aruba"
+			},
+			{
+				"code": "AU",
+				"value": 3,
+				"name": "Australia"
+			},
+			{
+				"code": "AT",
+				"value": 102,
+				"name": "Austria"
+			},
+			{
+				"code": "AZ",
+				"value": 110,
+				"name": "Azerbaijan"
+			},
+			{
+				"code": "BS",
+				"value": 34,
+				"name": "Bahamas, The"
+			},
+			{
+				"code": "BH",
+				"value": 166,
+				"name": "Bahrain"
+			},
+			{
+				"code": "BD",
+				"value": 114,
+				"name": "Bangladesh"
+			},
+			{
+				"code": "BB",
+				"value": 636,
+				"name": "Barbados"
+			},
+			{
+				"code": "BY",
+				"value": 47,
+				"name": "Belarus"
+			},
+			{
+				"code": "BE",
+				"value": 359,
+				"name": "Belgium"
+			},
+			{
+				"code": "BZ",
+				"value": 15,
+				"name": "Belize"
+			},
+			{
+				"code": "BJ",
+				"value": 80,
+				"name": "Benin"
+			},
+			{
+				"code": "BM",
+				"value": 129,
+				"name": "Bermuda"
+			},
+			{
+				"code": "BT",
+				"value": 19,
+				"name": "Bhutan"
+			},
+			{
+				"code": "BO",
+				"value": 9,
+				"name": "Bolivia"
+			},
+			{
+				"code": "BA",
+				"value": 73,
+				"name": "Bosnia and Herzegovina"
+			},
+			{
+				"code": "BW",
+				"value": 4,
+				"name": "Botswana"
+			},
+			{
+				"code": "BR",
+				"value": 23,
+				"name": "Brazil"
+			},
+			{
+				"code": "BN",
+				"value": 76,
+				"name": "Brunei Darussalam"
+			},
+			{
+				"code": "BG",
+				"value": 69,
+				"name": "Bulgaria"
+			},
+			{
+				"code": "BF",
+				"value": 60,
+				"name": "Burkina Faso"
+			},
+			{
+				"code": "BI",
+				"value": 326,
+				"name": "Burundi"
+			},
+			{
+				"code": "KH",
+				"value": 80,
+				"name": "Cambodia"
+			},
+			{
+				"code": "CM",
+				"value": 41,
+				"name": "Cameroon"
+			},
+			{
+				"code": "CA",
+				"value": 214,
+				"name": "Canada"
+			},
+			{
+				"code": "CV",
+				"value": 123,
+				"name": "Cape Verde"
+			},
+			{
+				"code": "KY",
+				"value": 234,
+				"name": "Cayman Islands"
+			},
+			{
+				"code": "CF",
+				"value": 7,
+				"name": "Central African Republic"
+			},
+			{
+				"code": "TD",
+				"value": 9,
+				"name": "Chad"
+			},
+			{
+				"code": "CL",
+				"value": 23,
+				"name": "Chile"
+			},
+			{
+				"code": "CN",
+				"value": 143,
+				"name": "China"
+			},
+			{
+				"code": "CO",
+				"value": 42,
+				"name": "Colombia"
+			},
+			{
+				"code": "KM",
+				"value": 395,
+				"name": "Comoros"
+			},
+			{
+				"code": "CD",
+				"value": 29,
+				"name": "Congo, Dem. Rep."
+			},
+			{
+				"code": "CG",
+				"value": 12,
+				"name": "Congo, Rep."
+			},
+			{
+				"code": "CR",
+				"value": 91,
+				"name": "Costa Rica"
+			},
+			{
+				"code": "CI",
+				"value": 62,
+				"name": "Cote d'Ivoire"
+			},
+			{
+				"code": "HR",
+				"value": 79,
+				"name": "Croatia"
+			},
+			{
+				"code": "CU",
+				"value": 106,
+				"name": "Cuba"
+			},
+			{
+				"code": "CW",
+				"value": 321,
+				"name": "Curacao"
+			},
+			{
+				"code": "CY",
+				"value": 119,
+				"name": "Cyprus"
+			},
+			{
+				"code": "CZ",
+				"value": 136,
+				"name": "Czech Republic"
+			},
+			{
+				"code": "DK",
+				"value": 131,
+				"name": "Denmark"
+			},
+			{
+				"code": "DJ",
+				"value": 38,
+				"name": "Djibouti"
+			},
+			{
+				"code": "DM",
+				"value": 90,
+				"name": "Dominica"
+			},
+			{
+				"code": "DO",
+				"value": 205,
+				"name": "Dominican Republic"
+			},
+			{
+				"code": "EC",
+				"value": 58,
+				"name": "Ecuador"
+			},
+			{
+				"code": "EG",
+				"value": 81,
+				"name": "Egypt, Arab Rep."
+			},
+			{
+				"code": "SV",
+				"value": 299,
+				"name": "El Salvador"
+			},
+			{
+				"code": "GQ",
+				"value": 25,
+				"name": "Equatorial Guinea"
+			},
+			{
+				"code": "ER",
+				"value": 52,
+				"name": "Eritrea"
+			},
+			{
+				"code": "EE",
+				"value": 32,
+				"name": "Estonia"
+			},
+			{
+				"code": "ET",
+				"value": 83,
+				"name": "Ethiopia"
+			},
+			{
+				"code": "FO",
+				"value": 35,
+				"name": "Faeroe Islands"
+			},
+			{
+				"code": "FJ",
+				"value": 47,
+				"name": "Fiji"
+			},
+			{
+				"code": "FI",
+				"value": 18,
+				"name": "Finland"
+			},
+			{
+				"code": "FR",
+				"value": 118,
+				"name": "France"
+			},
+			{
+				"code": "PF",
+				"value": 74,
+				"name": "French Polynesia"
+			},
+			{
+				"code": "GA",
+				"value": 6,
+				"name": "Gabon"
+			},
+			{
+				"code": "GM",
+				"value": 173,
+				"name": "Gambia, The"
+			},
+			{
+				"code": "GE",
+				"value": 78,
+				"name": "Georgia"
+			},
+			{
+				"code": "DE",
+				"value": 234,
+				"name": "Germany"
+			},
+			{
+				"code": "GH",
+				"value": 107,
+				"name": "Ghana"
+			},
+			{
+				"code": "GR",
+				"value": 88,
+				"name": "Greece"
+			},
+			{
+				"code": "GL",
+				"value": 0.02,
+				"name": "Greenland"
+			},
+			{
+				"code": "GD",
+				"value": 307,
+				"name": "Grenada"
+			},
+			{
+				"code": "GU",
+				"value": 333,
+				"name": "Guam"
+			},
+			{
+				"code": "GT",
+				"value": 134,
+				"name": "Guatemala"
+			},
+			{
+				"code": "GN",
+				"value": 41,
+				"name": "Guinea"
+			},
+			{
+				"code": "GW",
+				"value": 54,
+				"name": "Guinea-Bissau"
+			},
+			{
+				"code": "GY",
+				"value": 4,
+				"name": "Guyana"
+			},
+			{
+				"code": "HT",
+				"value": 363,
+				"name": "Haiti"
+			},
+			{
+				"code": "HN",
+				"value": 68,
+				"name": "Honduras"
+			},
+			{
+				"code": "HK",
+				"value": 67,
+				"name": "Hong Kong SAR, China"
+			},
+			{
+				"code": "HU",
+				"value": 112,
+				"name": "Hungary"
+			},
+			{
+				"code": "IS",
+				"value": 3,
+				"name": "Iceland"
+			},
+			{
+				"code": "IN",
+				"value": 394,
+				"name": "India"
+			},
+			{
+				"code": "ID",
+				"value": 132,
+				"name": "Indonesia"
+			},
+			{
+				"code": "IR",
+				"value": 45,
+				"name": "Iran, Islamic Rep."
+			},
+			{
+				"code": "IQ",
+				"value": 73,
+				"name": "Iraq"
+			},
+			{
+				"code": "IE",
+				"value": 65,
+				"name": "Ireland"
+			},
+			{
+				"code": "IM",
+				"value": 145,
+				"name": "Isle of Man"
+			},
+			{
+				"code": "IL",
+				"value": 352,
+				"name": "Israel"
+			},
+			{
+				"code": "IT",
+				"value": 206,
+				"name": "Italy"
+			},
+			{
+				"code": "JM",
+				"value": 250,
+				"name": "Jamaica"
+			},
+			{
+				"code": "JP",
+				"value": 350,
+				"name": "Japan"
+			},
+			{
+				"code": "JO",
+				"value": 69,
+				"name": "Jordan"
+			},
+			{
+				"code": "KZ",
+				"value": 6,
+				"name": "Kazakhstan"
+			},
+			{
+				"code": "KE",
+				"value": 71,
+				"name": "Kenya"
+			},
+			{
+				"code": "KI",
+				"value": 123,
+				"name": "Kiribati"
+			},
+			{
+				"code": "KP",
+				"value": 202,
+				"name": "Korea, Dem. Rep."
+			},
+			{
+				"code": "KR",
+				"value": 504,
+				"name": "Korea, Rep."
+			},
+			{
+				"code": "XK",
+				"value": 167,
+				"name": "Kosovo"
+			},
+			{
+				"code": "KW",
+				"value": 154,
+				"name": "Kuwait"
+			},
+			{
+				"code": "KG",
+				"value": 28,
+				"name": "Kyrgyz Republic"
+			},
+			{
+				"code": "LA",
+				"value": 27,
+				"name": "Lao PDR"
+			},
+			{
+				"code": "LV",
+				"value": 36,
+				"name": "Latvia"
+			},
+			{
+				"code": "LB",
+				"value": 413,
+				"name": "Lebanon"
+			},
+			{
+				"code": "LS",
+				"value": 72,
+				"name": "Lesotho"
+			},
+			{
+				"code": "LR",
+				"value": 41,
+				"name": "Liberia"
+			},
+			{
+				"code": "LY",
+				"value": 4,
+				"name": "Libya"
+			},
+			{
+				"code": "LI",
+				"value": 225,
+				"name": "Liechtenstein"
+			},
+			{
+				"code": "LT",
+				"value": 53,
+				"name": "Lithuania"
+			},
+			{
+				"code": "LU",
+				"value": 195,
+				"name": "Luxembourg"
+			},
+			{
+				"code": "MO",
+				"value": 194,
+				"name": "Macao SAR, China"
+			},
+			{
+				"code": "MK",
+				"value": 82,
+				"name": "Macedonia, FYR"
+			},
+			{
+				"code": "MG",
+				"value": 36,
+				"name": "Madagascar"
+			},
+			{
+				"code": "MW",
+				"value": 158,
+				"name": "Malawi"
+			},
+			{
+				"code": "MY",
+				"value": 86,
+				"name": "Malaysia"
+			},
+			{
+				"code": "MV",
+				"value": 105,
+				"name": "Maldives"
+			},
+			{
+				"code": "ML",
+				"value": 13,
+				"name": "Mali"
+			},
+			{
+				"code": "MT",
+				"value": 129,
+				"name": "Malta"
+			},
+			{
+				"code": "MH",
+				"value": 300,
+				"name": "Marshall Islands"
+			},
+			{
+				"code": "MR",
+				"value": 3,
+				"name": "Mauritania"
+			},
+			{
+				"code": "MU",
+				"value": 631,
+				"name": "Mauritius"
+			},
+			{
+				"code": "YT",
+				"value": 552,
+				"name": "Mayotte"
+			},
+			{
+				"code": "MX",
+				"value": 58,
+				"name": "Mexico"
+			},
+			{
+				"code": "FM",
+				"value": 159,
+				"name": "Micronesia, Fed. Sts."
+			},
+			{
+				"code": "MD",
+				"value": 124,
+				"name": "Moldova"
+			},
+			{
+				"code": "MC",
+				"value": 177,
+				"name": "Monaco"
+			},
+			{
+				"code": "MN",
+				"value": 2,
+				"name": "Mongolia"
+			},
+			{
+				"code": "ME",
+				"value": 47,
+				"name": "Montenegro"
+			},
+			{
+				"code": "MA",
+				"value": 72,
+				"name": "Morocco"
+			},
+			{
+				"code": "MZ",
+				"value": 30,
+				"name": "Mozambique"
+			},
+			{
+				"code": "MM",
+				"value": 73,
+				"name": "Myanmar"
+			},
+			{
+				"code": "NA",
+				"value": 3,
+				"name": "Namibia"
+			},
+			{
+				"code": "NP",
+				"value": 209,
+				"name": "Nepal"
+			},
+			{
+				"code": "NL",
+				"value": 492,
+				"name": "Netherlands"
+			},
+			{
+				"code": "NC",
+				"value": 14,
+				"name": "New Caledonia"
+			},
+			{
+				"code": "NZ",
+				"value": 17,
+				"name": "New Zealand"
+			},
+			{
+				"code": "NI",
+				"value": 48,
+				"name": "Nicaragua"
+			},
+			{
+				"code": "NE",
+				"value": 12,
+				"name": "Niger"
+			},
+			{
+				"code": "NG",
+				"value": 174,
+				"name": "Nigeria"
+			},
+			{
+				"code": "MP",
+				"value": 132,
+				"name": "Northern Mariana Islands"
+			},
+			{
+				"code": "NO",
+				"value": 16,
+				"name": "Norway"
+			},
+			{
+				"code": "OM",
+				"value": 9,
+				"name": "Oman"
+			},
+			{
+				"code": "PK",
+				"value": 225,
+				"name": "Pakistan"
+			},
+			{
+				"code": "PW",
+				"value": 45,
+				"name": "Palau"
+			},
+			{
+				"code": "PA",
+				"value": 47,
+				"name": "Panama"
+			},
+			{
+				"code": "PG",
+				"value": 15,
+				"name": "Papua New Guinea"
+			},
+			{
+				"code": "PY",
+				"value": 16,
+				"name": "Paraguay"
+			},
+			{
+				"code": "PE",
+				"value": 23,
+				"name": "Peru"
+			},
+			{
+				"code": "PH",
+				"value": 313,
+				"name": "Philippines"
+			},
+			{
+				"code": "PL",
+				"value": 126,
+				"name": "Poland"
+			},
+			{
+				"code": "PT",
+				"value": 116,
+				"name": "Portugal"
+			},
+			{
+				"code": "PR",
+				"value": 449,
+				"name": "Puerto Rico"
+			},
+			{
+				"code": "WA",
+				"value": 152,
+				"name": "Qatar"
+			},
+			{
+				"code": "RO",
+				"value": 93,
+				"name": "Romania"
+			},
+			{
+				"code": "RU",
+				"value": 9,
+				"name": "Russian Federation"
+			},
+			{
+				"code": "RW",
+				"value": 431,
+				"name": "Rwanda"
+			},
+			{
+				"code": "WS",
+				"value": 65,
+				"name": "Samoa"
+			},
+			{
+				"code": "SM",
+				"value": 526,
+				"name": "San Marino"
+			},
+			{
+				"code": "ST",
+				"value": 172,
+				"name": "Sao Tome and Principe"
+			},
+			{
+				"code": "SA",
+				"value": 14,
+				"name": "Saudi Arabia"
+			},
+			{
+				"code": "SN",
+				"value": 65,
+				"name": "Senegal"
+			},
+			{
+				"code": "RS",
+				"value": 83,
+				"name": "Serbia"
+			},
+			{
+				"code": "SC",
+				"value": 188,
+				"name": "Seychelles"
+			},
+			{
+				"code": "SL",
+				"value": 82,
+				"name": "Sierra Leone"
+			},
+			{
+				"code": "SG",
+				"value": 72,
+				"name": "Singapore"
+			},
+			{
+				"code": "SK",
+				"value": 113,
+				"name": "Slovak Republic"
+			},
+			{
+				"code": "SI",
+				"value": 102,
+				"name": "Slovenia"
+			},
+			{
+				"code": "SB",
+				"value": 19,
+				"name": "Solomon Islands"
+			},
+			{
+				"code": "SO",
+				"value": 15,
+				"name": "Somalia"
+			},
+			{
+				"code": "ZA",
+				"value": 41,
+				"name": "South Africa"
+			},
+			{
+				"code": "SS",
+				"value": 13,
+				"name": "South Sudan"
+			},
+			{
+				"code": "ES",
+				"value": 92,
+				"name": "Spain"
+			},
+			{
+				"code": "LK",
+				"value": 333,
+				"name": "Sri Lanka"
+			},
+			{
+				"code": "KN",
+				"value": 202,
+				"name": "St. Kitts and Nevis"
+			},
+			{
+				"code": "LC",
+				"value": 285,
+				"name": "St. Lucia"
+			},
+			{
+				"code": "MF",
+				"value": 556,
+				"name": "St. Martin (French part)"
+			},
+			{
+				"code": "VC",
+				"value": 280,
+				"name": "St. Vincent and the Grenadines"
+			},
+			{
+				"code": "SD",
+				"value": 16,
+				"name": "Sudan"
+			},
+			{
+				"code": "SR",
+				"value": 3,
+				"name": "Suriname"
+			},
+			{
+				"code": "SZ",
+				"value": 69,
+				"name": "Swaziland"
+			},
+			{
+				"code": "SE",
+				"value": 23,
+				"name": "Sweden"
+			},
+			{
+				"code": "CH",
+				"value": 196,
+				"name": "Switzerland"
+			},
+			{
+				"code": "SY",
+				"value": 111,
+				"name": "Syrian Arab Republic"
+			},
+			{
+				"code": "TJ",
+				"value": 49,
+				"name": "Tajikistan"
+			},
+			{
+				"code": "TZ",
+				"value": 51,
+				"name": "Tanzania"
+			},
+			{
+				"code": "TH",
+				"value": 135,
+				"name": "Thailand"
+			},
+			{
+				"code": "TP",
+				"value": 76,
+				"name": "Timor-Leste"
+			},
+			{
+				"code": "TG",
+				"value": 111,
+				"name": "Togo"
+			},
+			{
+				"code": "TO",
+				"value": 145,
+				"name": "Tonga"
+			},
+			{
+				"code": "TT",
+				"value": 261,
+				"name": "Trinidad and Tobago"
+			},
+			{
+				"code": "TN",
+				"value": 68,
+				"name": "Tunisia"
+			},
+			{
+				"code": "TR",
+				"value": 95,
+				"name": "Turkey"
+			},
+			{
+				"code": "TM",
+				"value": 11,
+				"name": "Turkmenistan"
+			},
+			{
+				"code": "TC",
+				"value": 40,
+				"name": "Turks and Caicos Islands"
+			},
+			{
+				"code": "TV",
+				"value": 328,
+				"name": "Tuvalu"
+			},
+			{
+				"code": "UG",
+				"value": 170,
+				"name": "Uganda"
+			},
+			{
+				"code": "UA",
+				"value": 79,
+				"name": "Ukraine"
+			},
+			{
+				"code": "AE",
+				"value": 90,
+				"name": "United Arab Emirates"
+			},
+			{
+				"code": "GB",
+				"value": 257,
+				"name": "United Kingdom"
+			},
+			{
+				"code": "US",
+				"value": 34,
+				"name": "United States"
+			},
+			{
+				"code": "UY",
+				"value": 19,
+				"name": "Uruguay"
+			},
+			{
+				"code": "UZ",
+				"value": 66,
+				"name": "Uzbekistan"
+			},
+			{
+				"code": "VU",
+				"value": 20,
+				"name": "Vanuatu"
+			},
+			{
+				"code": "VE",
+				"value": 33,
+				"name": "Venezuela, RB"
+			},
+			{
+				"code": "VN",
+				"value": 280,
+				"name": "Vietnam"
+			},
+			{
+				"code": "VI",
+				"value": 314,
+				"name": "Virgin Islands (U.S.)"
+			},
+			{
+				"code": "PS",
+				"value": 690,
+				"name": "West Bank and Gaza"
+			},
+			{
+				"code": "EH",
+				"value": 2,
+				"name": "Western Sahara"
+			},
+			{
+				"code": "YE",
+				"value": 46,
+				"name": "Yemen, Rep."
+			},
+			{
+				"code": "ZM",
+				"value": 17,
+				"name": "Zambia"
+			},
+			{
+				"code": "ZW",
+				"value": 32,
+				"name": "Zimbabwe"
+			}
+		];
+
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function($scope, $http) {
+
+			var dataList = this;
+			dataList.data = appData;
+
+			dataList.highestValue = 0;
+			for(var i = 0; i < dataList.data.length; i++) {
+				if(parseInt(dataList.data[i].value) > dataList.highestValue) {
+					dataList.highestValue = dataList.data[i].value;
+				}
+			}
+
+			console.log(dataList.highestValue);
+
+			dataList.calculateBarHeight = function(value) {
+				var barHeight = 0;
+				if(value > 0) {
+					barHeight = (value / dataList.highestValue) * 100;
+				}
+
+	    	return barHeight;
+	    }
+		});
+</script>
+<body class="page-data-vis page-data-vis-market-share">
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+  <header id="js-component-import--global-header" class="global-header">
+  	<div class="site-logo">
+			<a href="/">
+				<img src="images/v2/logo-reflection-header.png" alt="Reflection logo" class="img-site-logo">
+			</a>
+		</div>
+  </header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+
+			<div class="grid-container" ng-controller="DataController as dataList">
+				
+				<div class="grid__row grid__row--heading-row">
+					<h1 class="heading-style--heading-three page-title">Global App Market Share</span></h1>
+					<h2 class="page-subtitle">Where in the world are most app revenues and downloads generated?</h2>
+
+					<div class="filter-toggle dark-toggle">
+						<div class="toggle">
+							<input id="toggle--show-revenue" name="radiogroupname" type="radio" checked="">
+							<label for="toggle--show-revenue" class="js-toggle" data-show="revenue">
+								Overall
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-downloads" name="radiogroupname" type="radio">
+							<label for="toggle--show-downloads" class="js-toggle" data-show="downloads">
+								Per Capita
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<h3 class="market-share-chart-title"><span>Overall Revenue</span> <span>UK iPhone Store, 10/04/16 - 10/05/16</span></h3>
+				<div id="market-share-map-container"></div>
+				<ul id="market-share-bar-container" ng-controller="DataController as dataList">
+						<li ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.value)}}%' class="bar js-bar" data-index="{{$index}}"></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+	<script src="https://code.highcharts.com/mapdata/custom/world-robinson-highres.js"></script>
+
+	<!-- Flag sprites service provided by Martijn Lafeber, https://github.com/lafeber/world-flags-sprite/blob/master/LICENSE -->
+	<link rel="stylesheet" type="text/css" href="https://cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
+
+  <script>
+
+  	$(function () {
+
+  		(function (H) {
+  			H.wrap(H.Tooltip.prototype, 'refresh', function (proceed, points) {
+  				proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+  				chart.series[0].points[previousHoverPoint].setState();
+  				$('#market-share-bar-container .is-active').removeClass("is-active");
+  				var indexToHighlight = points.index + 1;
+  				$('#market-share-bar-container li:nth-child(' + indexToHighlight + ')').addClass("is-active");
+  			});
+  		}(Highcharts));
+
+  		
+
+      // Add lower case codes to the data set for inclusion in the tooltip.pointFormat
+      $.each(appData, function () {
+          this.flag = this.code.replace('UK', 'GB').toLowerCase();
+      });
+
+      // Initiate the chart
+      var chart = new Highcharts.Map({
+
+      		chart: {
+      			renderTo: 'market-share-map-container',
+      			backgroundColor: "",
+      			height: 530,
+      			width: 1050
+      		},
+
+          title: {
+              text: ''
+          },
+
+          legend: {
+          		align: 'right',
+              title: {
+                  text: 'Market Share Density, Low to High',
+                  style: {
+                      color: "white",
+                      fontWeight: "normal",
+                  }
+              }
+          },
+
+          mapNavigation: {
+              enabled: false,
+              buttonOptions: {
+                  verticalAlign: 'bottom'
+              }
+          },
+
+          tooltip: {
+              backgroundColor: 'none',
+              borderWidth: 0,
+              shadow: false,
+              useHTML: true,
+              headerFormat: '',
+              pointFormat: '<span class="f32"><span class="flag {point.flag}"></span></span>' +
+                  '<span class="country-name">{point.name}</span> <span class="country-value">{point.value}</span>',
+              positioner: function () {
+                  return { x: 940, y: 50 };
+              },
+              style: {
+              	padding: "10px 15px 14px"
+              }
+          },
+
+          plotOptions: {
+        		map: {
+        			nullColor: '#6b6b6c'
+        		}
+        	},
+
+          colorAxis: {
+              min: 1,
+              max: 1000,
+              type: 'logarithmic',
+              minColor: '#343438',
+              maxColor: '#8783df'
+          },
+
+          series : [{
+              data : appData,
+              mapData: Highcharts.maps['custom/world-robinson-highres'],
+              joinBy: ['iso-a2', 'code'],
+              name: 'Revenue over 1 month ($)',
+							borderColor: '#45454a',
+              borderWidth: 0.5,
+              states: {
+                  hover: {
+                      color: '#1bc79f'
+                  }
+              }
+          }]
+      });
+
+			var previousHoverPoint = 0;
+
+			$('.js-bar').on("mouseenter", function(){
+				$('#market-share-bar-container .is-active').removeClass("is-active");
+				var dataIndex = $(this).data("index");
+				chart.series[0].points[previousHoverPoint].setState();
+				chart.tooltip.refresh(chart.series[0].points[dataIndex]);
+				chart.series[0].points[dataIndex].setState("hover");
+				previousHoverPoint = dataIndex;
+			});
+
+		});
+
+  </script>
+</body>
