@@ -33,6 +33,12 @@
 
 	<div class="l-page-container">
 	 	<div id="main" class="l-main" role="main">
+	 			<div class="alert-urgent js-alert-urgent">
+	 				<div>
+	 					<span class="ref-icon-before--warning-filled"></span><span class="alert-urgent_description">Your linked account password was changed and no data can be retrieved</span>
+	 					<a href="#" class="alert-urgent_cta ref-icon-after--angle-right">Update Account Details</a>
+	 				</div>
+	 			</div>
 		 		<div class="page-base">
 		 			<div class="grid-container components-row">
 		 				<div class="grid__column--full-width">
@@ -43,14 +49,14 @@
 		 					<button class="ref-button--primary--small">
 		 						Link App Store Account
 		 					</button>
-		 					<a href="#" class="ref-button--primary--small">
-		 						Link App Store Account
+		 					<a href="#" class="ref-button--primary--small js-demo-alert-urgent">
+		 						Test Urgent Alert
 		 					</a>
-		 					<button class="ref-button--secondary--small">
-		 						Link App Store Account
+		 					<button class="ref-button--secondary--small js-demo-alert-save">
+		 						Test Save Alert
 		 					</button>
-		 					<a href="#" class="ref-button--secondary--small">
-		 						Link App Store Account
+		 					<a href="#" class="ref-button--secondary--small js-demo-alert-standard">
+		 						Test Standard Alert
 		 					</a>
 		 				</div>
 
@@ -1898,6 +1904,55 @@
 			});
 
 			// end country picker
+
+			// Alerts
+			$('.js-demo-alert-urgent').on("click", function(){
+				$('.js-alert-urgent').addClass("is-open");
+			});
+
+			$('.js-demo-alert-standard').on("click", function(){
+
+				var popupToastContainer = $("<div>").addClass("popup-toast-container js-popup-toast-container");
+				var popupToast = $("<div>").addClass("popup-toast js-popup-toast").html('<h2>Apps Ready to View</h2><p>Your recently linked App Store account is ready to view</p>');
+				var popupCloseButton = $("<button>").addClass("ref-icon-after--close").on("click", function(){
+						$(this).parent(".js-popup-toast").addClass("is-closed");
+						setTimeout(function(){
+							popupToastContainer.remove();
+						}, 500);
+					});
+				popupToast.append(popupCloseButton);
+				popupToastContainer.append(popupToast);
+				$('body').append(popupToastContainer);
+
+				var popupHeight = popupToast.innerHeight();
+				popupToastContainer.css("z-index", 10000);
+				popupToastContainer.css("top", "calc(100% - " + popupHeight + "px)");
+
+				setTimeout(function(){
+					popupToast.addClass("is-closed");
+					setTimeout(function(){
+						popupToastContainer.remove();
+					}, 500);
+				}, 6000);
+			});
+
+			$('.js-demo-alert-save').on("click", function(){
+
+				var popupToastContainer = $("<div>").addClass("popup-toast-container js-popup-toast-container");
+				var popupToast = $("<div>").addClass("popup-toast popup-toast--save js-popup-toast").html('<span class="ref-icon-before--tick"></span><span>Changes Saved Automatically</span>');
+				popupToastContainer.append(popupToast);
+				$('body').append(popupToastContainer);
+
+				var popupHeight = popupToast.innerHeight();
+				popupToastContainer.css("z-index", 10000);
+				popupToastContainer.css("top", "calc(100% - " + popupHeight + "px)");
+				setTimeout(function(){
+					popupToast.addClass("is-closed");
+					setTimeout(function(){
+						popupToastContainer.remove();
+					}, 500);
+				}, 3000);
+			});
   	}	
 
   	window.onready = initScripts();
