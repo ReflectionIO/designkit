@@ -164,7 +164,7 @@
               useHTML: true,
               headerFormat: '',
               pointFormat: '<span class="f32"><span class="flag {point.flag}"></span></span>' +
-                  '<span class="country-name">{point.name}</span> <span class="country-value">{point.value}</span>',
+                  '<span class="country-name">{point.name}</span> <span class="country-value">£{point.value}</span>',
               positioner: function () {
                   return { x: 940, y: 50 };
               },
@@ -173,9 +173,13 @@
               }
           },
 
+          mapNavigation: {
+                    enabled: true
+                },
+
           plotOptions: {
         		map: {
-        			nullColor: '#6b6b6c'
+        			nullColor: '#343438'
         		}
         	},
 
@@ -183,8 +187,8 @@
               min: 0.0000069773,
               max: 0.0807405383,
               type: 'logarithmic',
-              minColor: '#343438',
-              maxColor: '#8783df'
+              minColor: '#0099ff',
+              maxColor: '#ff496a'
           },
 
           series : [{
