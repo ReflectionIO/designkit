@@ -6,6 +6,10 @@
 .highcharts-axis-labels {
 	overflow: visible !important;
 }
+// fix buggy extra rect appearing in chart, hack
+.highcharts-container > svg rect:nth-of-type(3) {
+	display: none;
+}
 .highcharts-series {
 	opacity: 1;
 	transition: opacity 0.3s;
@@ -39,7 +43,7 @@
 }
 .highcharts-axis-labels,
 .highcharts-grid path {
-	opacity: 0;
+	opacity: 1;
 	.is-animated & {
 		opacity: 1;
 		transition: opacity 1s;

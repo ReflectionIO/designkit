@@ -1351,7 +1351,7 @@
 	      } else { // else single chart, so one yaxis
 	      	yAxesSettings = [{
 	    			reversed: false,
-	          offset: -27,
+	          offset: -37,
 	          showFirstLabel: false,
 	          showLastLabel: true,
 	          gridLineWidth: 0,
@@ -1458,8 +1458,8 @@
 	        xAxis: {
 	        	lineColor: '#e1e5e8',
             lineWidth: 1,
-	        	startOnTick: false,
-	        	endOnTick: false,
+	        	startOnTick: true,
+	        	endOnTick: true,
 	        	showFirstLabel: false,
 	          maxPadding: 0,
 	          minPadding: 0,
@@ -1469,7 +1469,7 @@
 	          },
 	          tickmarkPlacement: 'on',
 	          tickPixelInterval: 30,
-	          tickLength: 0,     
+	          tickLength: 0,
 	          labels: {
 	          	align: 'center',
 	            x: 0,
@@ -1602,13 +1602,15 @@
 	        tooltip: {
 	        	useHTML: true,
 	        	shared: true,
-	          formatter: function() {
+	          formatter: function() {	          	
+	          	Highcharts.charts[0].series[0].test = "something";
+	          	console.log(Highcharts);
 	            var instance = this;
 	            var s = "";
 	            var thisPointIndex = instance.points[0].point.index;
 	            // for stacked percentage
 	            // TO DO - bug if first line is off
-	            var thisPointTotalValue = instance.points[0].series.chart.series[0].data[thisPointIndex].y;
+	            var thisPointTotalValue = 2000; //instance.points[0].series.chart.series[0].data[thisPointIndex].y;
 
 	            $.each(instance.points, function (index, value) {
 	                var chartSeries = value.series;
@@ -1623,7 +1625,7 @@
 	                if(chartSeries.name == "revenueseries-total") {
 	                	imgString = "<img src=images/v2/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
 	                } else if(chartSeries.name == "downloadsseries-total") {
-	                	imgString = "<img src=images/v2/icon-chart-tt-downloads@2x.png alt='Rank icon' class=icon-downloads />";	
+	                	imgString = "<img src=images/v2/icon-chart-tt-downloads@2x.png alt='Downloads icon' class=icon-downloads />";	
 	                } else { // output app and store icon from data
 	                	var appIcon = chartSeries.appIcon;
 	                	var store = chartSeries.appStore;
