@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Lab - Price Tier Distribution</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<!-- <script src="js/data-vis/making_the_top_200.js"></script> -->
+<script src="js/vendor/angular.js"></script>
+<script>
+		'use strict';
+
+		var appData = [{"country":"PW","value":0.0807405383},{"country":"CH","value":0.0214800961},{"country":"VG","value":0.0199790583},{"country":"AU","value":0.0196252421},{"country":"US","value":0.0191781128},{"country":"NO","value":0.0188461665},{"country":"DK","value":0.018590899},{"country":"HK","value":0.0147886157},{"country":"GB","value":0.0131986696},{"country":"SG","value":0.0130939103},{"country":"CA","value":0.0116196498},{"country":"LU","value":0.0112674657},{"country":"SE","value":0.0107552828},{"country":"BM","value":0.0105449176},{"country":"NZ","value":0.0069507354},{"country":"DE","value":0.0060475465},{"country":"AT","value":0.0060236084},{"country":"MO","value":0.0059333783},{"country":"AE","value":0.0057400297},{"country":"FR","value":0.005676588},{"country":"NL","value":0.0056550744},{"country":"KY","value":0.0052562493},{"country":"SC","value":0.0050375048},{"country":"IS","value":0.0050244267},{"country":"TC","value":0.0050073561},{"country":"IE","value":0.0047446243},{"country":"BE","value":0.0045413},{"country":"KW","value":0.0045177261},{"country":"LC","value":0.0044400683},{"country":"KN","value":0.00395341},{"country":"KR","value":0.0033945684},{"country":"IT","value":0.0032220069},{"country":"GY","value":0.003026961},{"country":"MT","value":0.0029677261},{"country":"CN","value":0.002967037},{"country":"GD","value":0.0025928294},{"country":"BN","value":0.0025732433},{"country":"FI","value":0.002488443},{"country":"BZ","value":0.0022063545},{"country":"ES","value":0.0019060143},{"country":"AG","value":0.0018727003},{"country":"QA","value":0.0018587202},{"country":"IL","value":0.0017791097},{"country":"SA","value":0.0016191546},{"country":"CV","value":0.001560213},{"country":"CY","value":0.0014755651},{"country":"BB","value":0.001411898},{"country":"RU","value":0.0013691463},{"country":"DM","value":0.0011829086},{"country":"BH","value":0.0011790753},{"country":"MY","value":0.0011749129},{"country":"EE","value":0.0011431245},{"country":"VC","value":0.0011346065},{"country":"BW","value":0.0011192179},{"country":"SR","value":0.0011081713},{"country":"PT","value":0.0010827987},{"country":"TR","value":0.0010678504},{"country":"GR","value":0.0010237575},{"country":"LV","value":0.0009318276},{"country":"BS","value":0.0008862844},{"country":"CL","value":0.0008791454},{"country":"TH","value":0.0008422966},{"country":"TT","value":0.0008007372},{"country":"SV","value":0.0007860532},{"country":"SK","value":0.0007748377},{"country":"CZ","value":0.0007568521},{"country":"NA","value":0.0007227332},{"country":"LB","value":0.000719976},{"country":"SI","value":0.0006434006},{"country":"HU","value":0.0006267977},{"country":"MX","value":0.0006172254},{"country":"HR","value":0.0006082445},{"country":"CR","value":0.0005840921},{"country":"OM","value":0.000542393},{"country":"MU","value":0.0005069195},{"country":"LT","value":0.0004464079},{"country":"MR","value":0.0004415753},{"country":"UY","value":0.0004203312},{"country":"BR","value":0.00041186},{"country":"PA","value":0.0003987095},{"country":"KG","value":0.0003833664},{"country":"PL","value":0.0003519326},{"country":"ZA","value":0.0003426043},{"country":"TM","value":0.0003324846},{"country":"LA","value":0.0003272878},{"country":"MK","value":0.0003078885},{"country":"AR","value":0.0003014143},{"country":"RO","value":0.0002962011},{"country":"JM","value":0.0002488174},{"country":"BG","value":0.0002342085},{"country":"AL","value":0.0002049658},{"country":"JO","value":0.0001861462},{"country":"DO","value":0.0001814599},{"country":"AZ","value":0.0001751639},{"country":"AM","value":0.0001487639},{"country":"PY","value":0.0001424291},{"country":"MW","value":0.0001393174},{"country":"PE","value":0.0001382107},{"country":"PH","value":0.000136407},{"country":"EC","value":0.0001354937},{"country":"ID","value":0.0001323603},{"country":"CO","value":0.0001285378},{"country":"BY","value":0.0001235088},{"country":"HN","value":0.0001218485},{"country":"MN","value":0.0001065182},{"country":"MD","value":0.0000994398},{"country":"NI","value":0.0000989499},{"country":"UA","value":0.0000965833},{"country":"FJ","value":0.0000963675},{"country":"GT","value":0.0000958573},{"country":"KZ","value":0.0000941945},{"country":"VN","value":0.0000849952},{"country":"CG","value":0.0000723685},{"country":"TJ","value":0.0000720642},{"country":"SN","value":0.0000694581},{"country":"KH","value":0.0000625436},{"country":"ML","value":0.000059167},{"country":"EG","value":0.0000499982},{"country":"TN","value":0.0000447143},{"country":"YE","value":0.0000444946},{"country":"MZ","value":0.0000437098},{"country":"LK","value":0.0000387236},{"country":"AO","value":0.0000381761},{"country":"DZ","value":0.0000351672},{"country":"BO","value":0.0000293902},{"country":"MG","value":0.0000287728},{"country":"PG","value":0.0000225673},{"country":"LR","value":0.0000190907},{"country":"UZ","value":0.0000180065},{"country":"GH","value":0.0000174251},{"country":"KE","value":0.0000165957},{"country":"IN","value":0.0000164943},{"country":"NG","value":0.000015046},{"country":"TZ","value":0.0000123264},{"country":"ZW","value":0.0000079599},{"country":"BJ","value":0.0000079021},{"country":"PK","value":0.0000069773},{"country":"UG","value":0.000003426}];
+
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function($scope, $http) {
+
+			var dataList = this;
+			dataList.data = appData;
+
+			dataList.highestValue = 0;
+			for(var i = 0; i < dataList.data.length; i++) {
+				if(dataList.data[i].value > dataList.highestValue) {
+					dataList.highestValue = dataList.data[i].value;
+				}
+			}
+
+			console.log(dataList.highestValue);
+
+			dataList.calculateBarHeight = function(value) {
+				var barHeight = 0;
+				if(value > 0) {
+					barHeight = (value / dataList.highestValue) * 100;
+				}
+
+	    	return barHeight;
+	    }
+		});
+</script>
+<body class="page-data-vis page-data-vis-market-share">
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+  <header id="js-component-import--global-header" class="global-header">
+  	<div class="site-logo">
+			<a href="/">
+				<img src="images/v2/logo-reflection-header.png" alt="Reflection logo" class="img-site-logo">
+			</a>
+		</div>
+  </header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+
+			<div class="grid-container" ng-controller="DataController as dataList">
+				
+				<div class="grid__row grid__row--heading-row">
+					<h1 class="heading-style--heading-three page-title">Global App Market Share</span></h1>
+					<h2 class="page-subtitle">Where in the world are most app revenues generated?</h2>
+
+					<div class="filter-toggle dark-toggle">
+						<div class="toggle">
+							<input id="toggle--show-revenue" name="radiogroupname" type="radio">
+							<label for="toggle--show-revenue" class="js-toggle" data-show="revenue" onclick="location.replace('data-vis-market-share.html');">
+								Overall
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-downloads" name="radiogroupname" type="radio" checked>
+							<label for="toggle--show-downloads" class="js-toggle" data-show="downloads" onclick="location.replace('data-vis-market-share-per-capita.html');">
+								Per Capita
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<h3 class="market-share-chart-title"><span>Overall Revenue</span> <span>A sum of Top 200 Grossing Daily averaged over Jan to June 2016, iPhone and iPad combined, in &pound;</span></h3>
+				<div id="market-share-map-container"></div>
+				<ul id="market-share-bar-container" ng-controller="DataController as dataList">
+						<li ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.value)}}%' class="bar js-bar" data-index="{{$index}}"></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+	<script src="https://code.highcharts.com/mapdata/custom/world-robinson-highres.js"></script>
+
+	<!-- Flag sprites service provided by Martijn Lafeber, https://github.com/lafeber/world-flags-sprite/blob/master/LICENSE -->
+	<link rel="stylesheet" type="text/css" href="https://cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
+
+  <script>
+
+  	$(function () {
+
+  		(function (H) {
+  			H.wrap(H.Tooltip.prototype, 'refresh', function (proceed, points) {
+  				proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+  				chart.series[0].points[previousHoverPoint].setState();
+  				$('#market-share-bar-container .is-active').removeClass("is-active");
+  				var indexToHighlight = points.index + 1;
+  				$('#market-share-bar-container li:nth-child(' + indexToHighlight + ')').addClass("is-active");
+  			});
+  		}(Highcharts));
+
+  		
+
+      // Add lower case codes to the data set for inclusion in the tooltip.pointFormat
+      $.each(appData, function () {
+          this.flag = this.country.replace('UK', 'GB').toLowerCase();
+      });
+
+      // Initiate the chart
+      var chart = new Highcharts.Map({
+
+      		chart: {
+      			renderTo: 'market-share-map-container',
+      			backgroundColor: "",
+      			height: 530,
+      			width: 1050
+      		},
+
+          title: {
+              text: ''
+          },
+
+          legend: {
+          		align: 'right',
+              title: {
+                  text: 'Market Share Density, Low to High',
+                  style: {
+                      color: "white",
+                      fontWeight: "normal",
+                  }
+              }
+          },
+
+          mapNavigation: {
+              enabled: false,
+              buttonOptions: {
+                  verticalAlign: 'bottom'
+              }
+          },
+
+          tooltip: {
+              backgroundColor: 'none',
+              borderWidth: 0,
+              shadow: false,
+              useHTML: true,
+              headerFormat: '',
+              pointFormat: '<span class="f32"><span class="flag {point.flag}"></span></span>' +
+                  '<span class="country-name">{point.name}</span> <span class="country-value">£{point.value}</span>',
+              positioner: function () {
+                  return { x: 940, y: 50 };
+              },
+              style: {
+              	padding: "10px 15px 14px"
+              }
+          },
+
+          mapNavigation: {
+                    enabled: true
+                },
+
+          plotOptions: {
+        		map: {
+        			nullColor: '#343438'
+        		}
+        	},
+
+          colorAxis: {
+              min: 0.0000069773,
+              max: 0.0807405383,
+              type: 'logarithmic',
+              minColor: '#0099ff',
+              maxColor: '#ff496a'
+          },
+
+          series : [{
+              data : appData,
+              mapData: Highcharts.maps['custom/world-robinson-highres'],
+              joinBy: ['iso-a2', 'country'],
+              name: 'Revenue over 1 month ($)',
+							borderColor: '#45454a',
+              borderWidth: 0.5,
+              states: {
+                  hover: {
+                      color: '#1bc79f'
+                  }
+              }
+          }]
+      });
+
+			var previousHoverPoint = 0;
+
+			$('.js-bar').on("mouseenter", function(){
+				$('#market-share-bar-container .is-active').removeClass("is-active");
+				var dataIndex = $(this).data("index");
+				chart.series[0].points[previousHoverPoint].setState();
+				chart.tooltip.refresh(chart.series[0].points[dataIndex]);
+				chart.series[0].points[dataIndex].setState("hover");
+				previousHoverPoint = dataIndex;
+			});
+
+		});
+
+  </script>
+</body>
