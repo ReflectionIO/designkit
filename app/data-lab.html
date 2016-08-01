@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection V2, Product</title>
+	<title>Reflection V2, Data Lab</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
@@ -37,63 +37,38 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-lab-base grid-container">
-				
-				<div class="grid__row grid__row--heading-row">
-					<div class="grid__row--heading-row__left">
-						<h1 class="heading-style--heading-three page-title">What Downloads or Revenue are Needed to Break into the Top Charts?</h1>
-					</div>
-					<div class="grid__row--heading-row__right">
-						<button class="ref-button--primary--medium">
-	 						Share This
-	 					</button>
-					</div>
-					<div class="filters-row">
-						<span class="filter-label">To Break Into</span>
-						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
-							<select class="js-select-box">
-						    <option value="top200" selected>Top 200 Apps</option>
-						    <option value="top150">Top 150 Apps</option>
-						    <option value="top100">Top 100 Apps</option>
-						    <option value="top50">Top 50 Apps</option>
-						    <option value="top20">Top 20 Apps</option>
-						    <option value="top10">Top 10 Apps</option>
-							</select>
-						</div>
-						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
-							<select class="js-select-box">
-						    <option value="uk" selected>United Kingdom</option>
-						    <option value="usa">USA</option>
-						    <option value="fra">France</option>
-						    <option value="ita">Italy</option>
-						    <option value="ger">Germany</option>
-							</select>
-						</div>
-
-						<div class="filters-right">
-							<span class="filter-label">Show Data For</span>
-							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
-								<select class="js-select-box">
-							    <option value="mar">March 2016</option>
-							    <option value="apr">USA</option>
-							    <option value="may">France</option>
-							    <option value="jun">Italy</option>
-							    <option value="jul" selected>Germany</option>
-								</select>
-							</div>
-						</div>
-					</div>
+			<div class="page-lab-base page-lab-home grid-container">
+				<div class="grid-column-lab-welcome data-lab-welcome-container">
+					<h1 class="data-lab-welcome-heading"><span>Welcome to</span> The Reflection Data Lab</h1>
+					<p>We are experimenting with new ways to unearth and communicate insights from our data here in the Data Lab.</p>
+					<ul class="content-list">
+						<li>Be inspired</li>
+						<li>Discover intriguing trends</li>
+						<li>Findings you can put to work</li>
+					</ul>
 				</div>
-
-				<div class="grid__row data-vis-top-downloads__main is-loading">
-					<div class="chart__loading">
-						<div class="hamster-wheel">
-							<img src="images/hamster-wheel.png" alt="hamster wheel">
-						</div>
-						<div class="animation-hamster"></div>
-					</div>
+				<div class="grid-column-lab-welcome">
+					<img src="images/data-lab-illustration@2x.png" alt="Data Lab Illustration" class="data-lab-illustration" />
 				</div>
-
+				<ul class="grid__row lab-article-list">
+					<li class="lab-article-list__item">
+						<a href="making-top-charts.html">
+							<article class="lab-article-making-top-charts">
+								<h2>What Downloads or Revenue are Needed to Break into the Top Charts?</h2>
+								<span class="link-to-lab-article">Let's Find Out</span>
+							</article>
+						</a>
+					</li>
+					<li>
+						<article class="lab-brewing">
+							<img src="images/lab-icon-brewing@2x.png" alt="Lab Brewing Icon" />
+							<p>More Visualisations are Currently Brewing...</p>
+							<a href="v2-sign-up.html" class="ref-button--primary--medium">
+		 						Sign Up to See Future Visualisations
+		 					</a>
+						</article>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -116,102 +91,11 @@
   <script src="js-v2/application.js"></script>
 
   <script>
-
   	$(window).on("load", function(){
 		  new Page();
 
-		  var FilterDropDown = function($domElement) {
 
-				var $thisSelectBox = $domElement,
-						$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
-						$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
-
-				$thisSelectBox.find('option').each(function(){
-					
-					var $thisOption = $(this),
-							selectedClass = "";
-
-					if($thisOption.val() != "") {
-
-						if($thisOption.is(":selected")) {
-							if($thisOption.val() != "") {
-								selectedClass = "is-selected";
-								$currentValue.text($thisOption.text());
-							}
-						}
-
-						var $newListItem = $("<li>");
-						$dropDownContainer.append($newListItem
-																					.addClass("js-dropdown-option")																		
-																					.addClass(selectedClass)
-																					.attr('data-value', $thisOption.attr('value'))
-																					.on("click", function() {
-																						$thisSelectBox.find("option").removeAttr("selected");
-																						$thisOption.attr("selected", "selected");
-																						$currentValue.text($thisOption.text());
-																						$dropDownContainer.toggle();
-																						$thisSelectBox.parent("div").toggleClass("is-open");
-																						$thisSelectBox.parent("div").removeClass("nothing-selected");
-																						$dropDownContainer.find(".is-selected").removeClass("is-selected");
-																						$(this).addClass("is-selected");
-
-																						// check the user role
-
-																						// request data based on filters
-																					})
-																					.append($("<span>").text($thisOption.text()))
-																		);
-					} else {
-						// no option value means placeholder text before option is selected
-						$currentValue.text($thisOption.text());
-					}
-
-				});
-
-				$currentValue.on("click", function(){
-					if(!$thisSelectBox.attr("disabled")) {
-						var $parentDiv = $thisSelectBox.parent("div");
-						if($parentDiv.hasClass("is-open")) {
-							$dropDownContainer.toggle();	
-							$parentDiv.toggleClass("is-open");
-						} else {
-							setTimeout(function(){
-								if(!$parentDiv.hasClass("is-open")) {
-									closeAllFilters();
-								}
-								var parentWidth = $parentDiv.width();
-								var parentHeight = $parentDiv.height();
-								$dropDownContainer.css({"min-width": parentWidth + "px"});
-								$dropDownContainer.toggle();	
-								$parentDiv.toggleClass("is-open");
-							}, 50); // allow time for instance.closeAllFilters() to close other filters first
-						}
-					}
-				});
-
-				if($currentValue.text() == "") {
-					$thisSelectBox.parent("div").addClass("nothing-selected");
-				}
-
-				$thisSelectBox.parent("div").append($currentValue)
-																		.append($dropDownContainer);
-			};
-
-			function closeAllFilters() {
-				$('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
-				$('.js-secondary-filter.is-open').removeClass("is-open");
-			}
-
-			$("html").on("click", function(e){
-				if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
-					closeAllFilters();	
-				}
-			});
-
-		  $('.js-select-box').each(function() {
-  			new FilterDropDown($(this));
-  		});
-
-  	});
-  </script>
+		});
+	</script>
 </body>
+</html>
