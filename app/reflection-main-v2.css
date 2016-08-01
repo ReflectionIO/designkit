@@ -133,8 +133,8 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
   position: relative;
   width: 100%;
   min-width: 960px;
-  min-height: 100vh;
   z-index: 0;
+  overflow: visible;
   -webkit-transition: -webkit-filter 0.18s, filter 0.18s;
           transition: filter 0.18s;
 }
@@ -5862,40 +5862,50 @@ li .form-field-notification-number {
   display: none;
 }
 
-/* line 13, sass/components-v2/_highcharts.scss */
+/* line 14, sass/components-v2/_highcharts.scss */
+.chart__loading + .highcharts-container {
+  visibility: hidden;
+}
+
+/* line 18, sass/components-v2/_highcharts.scss */
+.chart__loading[aria-hidden="true"] + .highcharts-container {
+  visibility: visible;
+}
+
+/* line 21, sass/components-v2/_highcharts.scss */
 .highcharts-series {
   opacity: 1;
   -webkit-transition: opacity 0.3s;
           transition: opacity 0.3s;
 }
-/* line 16, sass/components-v2/_highcharts.scss */
+/* line 24, sass/components-v2/_highcharts.scss */
 .highcharts-series stroke {
   cursor: pointer;
 }
-/* line 19, sass/components-v2/_highcharts.scss */
+/* line 27, sass/components-v2/_highcharts.scss */
 .highcharts-series.is-transparent {
   opacity: 0;
   -webkit-transition: opacity 0s;
           transition: opacity 0s;
 }
-/* line 23, sass/components-v2/_highcharts.scss */
+/* line 31, sass/components-v2/_highcharts.scss */
 .highcharts-series.is-transparent-fade {
   opacity: 0;
   -webkit-transition: opacity 0.2s;
           transition: opacity 0.2s;
 }
 
-/* line 29, sass/components-v2/_highcharts.scss */
+/* line 37, sass/components-v2/_highcharts.scss */
 .highcharts-series.selected-series path {
   stroke-opacity: 1;
 }
 
-/* line 33, sass/components-v2/_highcharts.scss */
+/* line 41, sass/components-v2/_highcharts.scss */
 .highcharts-series path:nth-child(1) {
   pointer-events: none;
 }
 
-/* line 36, sass/components-v2/_highcharts.scss */
+/* line 44, sass/components-v2/_highcharts.scss */
 .chart-watermark {
   position: absolute;
   right: 26px;
@@ -5905,12 +5915,12 @@ li .form-field-notification-number {
   z-index: 100;
 }
 
-/* line 44, sass/components-v2/_highcharts.scss */
+/* line 52, sass/components-v2/_highcharts.scss */
 .highcharts-axis-labels,
 .highcharts-grid path {
   opacity: 1;
 }
-/* line 47, sass/components-v2/_highcharts.scss */
+/* line 55, sass/components-v2/_highcharts.scss */
 .is-animated .highcharts-axis-labels, .is-animated
 .highcharts-grid path {
   opacity: 1;
@@ -5918,33 +5928,33 @@ li .form-field-notification-number {
           transition: opacity 1s;
 }
 
-/* line 52, sass/components-v2/_highcharts.scss */
+/* line 60, sass/components-v2/_highcharts.scss */
 .highcharts-axis path {
   stroke: #e1e5e8;
 }
 
-/* line 56, sass/components-v2/_highcharts.scss */
+/* line 64, sass/components-v2/_highcharts.scss */
 .highcharts-tooltip > span {
   overflow: visible;
 }
 
-/* line 60, sass/components-v2/_highcharts.scss */
+/* line 68, sass/components-v2/_highcharts.scss */
 .chart-section {
   position: relative;
   z-index: 100;
   overflow: visible;
 }
-/* line 64, sass/components-v2/_highcharts.scss */
+/* line 72, sass/components-v2/_highcharts.scss */
 .chart-section ul, .chart-section li {
   overflow: visible;
 }
 
-/* line 68, sass/components-v2/_highcharts.scss */
+/* line 76, sass/components-v2/_highcharts.scss */
 .chart-container {
   z-index: 100;
 }
 
-/* line 71, sass/components-v2/_highcharts.scss */
+/* line 79, sass/components-v2/_highcharts.scss */
 .custom-tooltip {
   position: relative;
   width: 126px;
@@ -5960,7 +5970,7 @@ li .form-field-notification-number {
   border-radius: 3px;
   opacity: 0.9;
 }
-/* line 85, sass/components-v2/_highcharts.scss */
+/* line 93, sass/components-v2/_highcharts.scss */
 .custom-tooltip .icon-revenue {
   position: relative;
   top: 1px;
@@ -5968,16 +5978,16 @@ li .form-field-notification-number {
   height: 15px;
   margin: 3px 0 0 6px;
 }
-/* line 91, sass/components-v2/_highcharts.scss */
+/* line 99, sass/components-v2/_highcharts.scss */
 .custom-tooltip .icon-revenue + span {
   top: 4px;
 }
-/* line 93, sass/components-v2/_highcharts.scss */
+/* line 101, sass/components-v2/_highcharts.scss */
 .custom-tooltip .icon-revenue + span + .chart-tooltip-percentage {
   min-height: 28px;
   padding-top: 7px;
 }
-/* line 99, sass/components-v2/_highcharts.scss */
+/* line 107, sass/components-v2/_highcharts.scss */
 .custom-tooltip .icon-downloads {
   position: relative;
   top: 1px;
@@ -5985,26 +5995,26 @@ li .form-field-notification-number {
   height: 15px;
   margin: 3px 0 0 5px;
 }
-/* line 105, sass/components-v2/_highcharts.scss */
+/* line 113, sass/components-v2/_highcharts.scss */
 .custom-tooltip .icon-downloads + span {
   top: 4px;
 }
-/* line 107, sass/components-v2/_highcharts.scss */
+/* line 115, sass/components-v2/_highcharts.scss */
 .custom-tooltip .icon-downloads + span + .chart-tooltip-percentage {
   min-height: 28px;
   padding-top: 7px;
 }
-/* line 113, sass/components-v2/_highcharts.scss */
+/* line 121, sass/components-v2/_highcharts.scss */
 .custom-tooltip .icon-rank {
   width: 16px;
   height: 15px;
 }
-/* line 117, sass/components-v2/_highcharts.scss */
+/* line 125, sass/components-v2/_highcharts.scss */
 .custom-tooltip .icon-ad-network {
   width: 16px;
   height: 16px;
 }
-/* line 121, sass/components-v2/_highcharts.scss */
+/* line 129, sass/components-v2/_highcharts.scss */
 .custom-tooltip .chart-tooltip-app-icon {
   width: 18px;
   height: 18px;
@@ -6014,36 +6024,36 @@ li .form-field-notification-number {
   float: left;
   border-radius: 3px;
 }
-/* line 130, sass/components-v2/_highcharts.scss */
+/* line 138, sass/components-v2/_highcharts.scss */
 .custom-tooltip .ref-icon-before--play-store,
 .custom-tooltip .ref-icon-before--ios {
   display: inline-block;
   vertical-align: top;
   float: left;
 }
-/* line 136, sass/components-v2/_highcharts.scss */
+/* line 144, sass/components-v2/_highcharts.scss */
 .custom-tooltip .ref-icon-before--play-store:before,
 .custom-tooltip .ref-icon-before--ios:before {
   color: #000;
   opacity: 0.5;
 }
-/* line 141, sass/components-v2/_highcharts.scss */
+/* line 149, sass/components-v2/_highcharts.scss */
 .custom-tooltip .ref-icon-before--ios {
   margin: 2px 0 0 5px;
 }
-/* line 143, sass/components-v2/_highcharts.scss */
+/* line 151, sass/components-v2/_highcharts.scss */
 .custom-tooltip .ref-icon-before--ios:before {
   font-size: 15px;
 }
-/* line 147, sass/components-v2/_highcharts.scss */
+/* line 155, sass/components-v2/_highcharts.scss */
 .custom-tooltip .ref-icon-before--play-store {
   margin: 2px 0 0 6px;
 }
-/* line 149, sass/components-v2/_highcharts.scss */
+/* line 157, sass/components-v2/_highcharts.scss */
 .custom-tooltip .ref-icon-before--play-store:before {
   font-size: 14px;
 }
-/* line 153, sass/components-v2/_highcharts.scss */
+/* line 161, sass/components-v2/_highcharts.scss */
 .custom-tooltip .chart-tooltip-value {
   position: relative;
   top: 2px;
@@ -6056,7 +6066,7 @@ li .form-field-notification-number {
   font-weight: 700;
 }
 
-/* line 165, sass/components-v2/_highcharts.scss */
+/* line 173, sass/components-v2/_highcharts.scss */
 .chart-tooltip-percentage {
   position: absolute;
   right: -44px;
@@ -6075,13 +6085,13 @@ li .form-field-notification-number {
   border-radius: 4px;
 }
 
-/* line 182, sass/components-v2/_highcharts.scss */
+/* line 190, sass/components-v2/_highcharts.scss */
 .chart-container--single .custom-tooltip.revenueseries {
   position: absolute;
   left: -127px;
 }
 
-/* line 187, sass/components-v2/_highcharts.scss */
+/* line 195, sass/components-v2/_highcharts.scss */
 .highcharts-axis-label:after {
   content: ' ';
   position: absolute;
@@ -6159,13 +6169,13 @@ li .form-field-notification-number {
             transform: translateX(0px);
   }
 }
-/* line 211, sass/components-v2/_highcharts.scss */
+/* line 219, sass/components-v2/_highcharts.scss */
 .event-icon--launch.is-animating {
   -webkit-animation: launch-hover 0.2s infinite forwards, launch 0.5s 0.6s ease-in forwards;
           animation: launch-hover 0.2s infinite forwards, launch 0.5s 0.6s ease-in forwards;
 }
 
-/* line 215, sass/components-v2/_highcharts.scss */
+/* line 223, sass/components-v2/_highcharts.scss */
 .event-icon--flag {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
@@ -6173,7 +6183,7 @@ li .form-field-notification-number {
   -webkit-transition: -webkit-transform 0.2s ease-in;
           transition: transform 0.2s ease-in;
 }
-/* line 218, sass/components-v2/_highcharts.scss */
+/* line 226, sass/components-v2/_highcharts.scss */
 .event-icon--flag.is-animating {
   -webkit-transform: translateY(-12px);
       -ms-transform: translateY(-12px);
@@ -6182,104 +6192,104 @@ li .form-field-notification-number {
           transition: transform 0.3s ease-in;
 }
 
-/* line 223, sass/components-v2/_highcharts.scss */
+/* line 231, sass/components-v2/_highcharts.scss */
 .custom-chart-key {
   z-index: 0;
 }
-/* line 225, sass/components-v2/_highcharts.scss */
+/* line 233, sass/components-v2/_highcharts.scss */
 .custom-chart-key .checkboxLabelVisible {
   padding-top: 1px;
   padding-left: calc(17px + 1rem);
   font-size: 1.4rem;
 }
-/* line 230, sass/components-v2/_highcharts.scss */
+/* line 238, sass/components-v2/_highcharts.scss */
 .custom-chart-key li {
   margin-right: 1.5rem;
   margin-bottom: 0.5rem;
 }
-/* line 235, sass/components-v2/_highcharts.scss */
+/* line 243, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.revenue-key input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #f5c943 !important;
 }
-/* line 240, sass/components-v2/_highcharts.scss */
+/* line 248, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.downloads-key input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #918edf !important;
 }
-/* line 245, sass/components-v2/_highcharts.scss */
+/* line 253, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.series-1 input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #beb9db;
 }
-/* line 250, sass/components-v2/_highcharts.scss */
+/* line 258, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.series-2 input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #fd7f6e;
 }
-/* line 255, sass/components-v2/_highcharts.scss */
+/* line 263, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.series-3 input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #7fb1d5;
 }
-/* line 260, sass/components-v2/_highcharts.scss */
+/* line 268, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.series-4 input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #f2bdd8;
 }
-/* line 265, sass/components-v2/_highcharts.scss */
+/* line 273, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.series-5 input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #c7b299;
 }
-/* line 270, sass/components-v2/_highcharts.scss */
+/* line 278, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.series-6 input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #bd7ebf;
 }
-/* line 275, sass/components-v2/_highcharts.scss */
+/* line 283, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.series-7 input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #8bd4c7;
 }
-/* line 280, sass/components-v2/_highcharts.scss */
+/* line 288, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.series-8 input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #ffb55a;
 }
-/* line 285, sass/components-v2/_highcharts.scss */
+/* line 293, sass/components-v2/_highcharts.scss */
 .custom-chart-key li.series-9 input[type="checkbox"]:checked + .checkboxLabel {
   background-color: #d9d9d9;
 }
 
-/* line 290, sass/components-v2/_highcharts.scss */
+/* line 298, sass/components-v2/_highcharts.scss */
 .revenue-key-combined-chart {
   vertical-align: top;
 }
-/* line 292, sass/components-v2/_highcharts.scss */
+/* line 300, sass/components-v2/_highcharts.scss */
 .revenue-key-combined-chart .checkboxLabel:after {
   content: "2";
   top: 0;
   left: -1px;
   font-size: 17px;
 }
-/* line 298, sass/components-v2/_highcharts.scss */
+/* line 306, sass/components-v2/_highcharts.scss */
 .revenue-key-combined-chart .checkboxLabelVisible {
   display: none;
 }
 
-/* line 302, sass/components-v2/_highcharts.scss */
+/* line 310, sass/components-v2/_highcharts.scss */
 .downloads-key-combined-chart {
   vertical-align: top;
 }
-/* line 304, sass/components-v2/_highcharts.scss */
+/* line 312, sass/components-v2/_highcharts.scss */
 .downloads-key-combined-chart .checkboxLabel:after {
   content: "A";
   top: 2px;
   font-size: 13px;
 }
 
-/* line 312, sass/components-v2/_highcharts.scss */
+/* line 320, sass/components-v2/_highcharts.scss */
 .chart-event-label text tspan {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
   fill: #fcfdfd;
 }
-/* line 316, sass/components-v2/_highcharts.scss */
+/* line 324, sass/components-v2/_highcharts.scss */
 .chart-event-label text tspan:first-child {
   font-weight: 600;
 }
-/* line 319, sass/components-v2/_highcharts.scss */
+/* line 327, sass/components-v2/_highcharts.scss */
 .chart-event-label text tspan:last-child {
   font-size: 13px;
 }
@@ -10084,34 +10094,40 @@ li .form-field-notification-number {
 }
 
 /* line 24, sass/components-v2/_search-global.scss */
+header .search__results-container__heading,
+header .search__results-container__heading:first-child,
+header .search__results-container__heading:last-child {
+  margin-bottom: 10px;
+}
+
+/* line 29, sass/components-v2/_search-global.scss */
 .search__results-container {
   position: relative;
   width: 100%;
   overflow: visible;
 }
 
-/* line 29, sass/components-v2/_search-global.scss */
+/* line 34, sass/components-v2/_search-global.scss */
 .search__results-section {
   position: relative;
   min-height: 30px;
   padding-top: 9px;
-  display: none;
   overflow: auto;
   text-align: left;
 }
-/* line 36, sass/components-v2/_search-global.scss */
+/* line 40, sass/components-v2/_search-global.scss */
 .search__results-section:first-child {
   padding-top: 0;
 }
-/* line 39, sass/components-v2/_search-global.scss */
+/* line 43, sass/components-v2/_search-global.scss */
 .search__results-section:last-child {
   border-top: 1px solid #e1e5e8;
 }
-/* line 41, sass/components-v2/_search-global.scss */
+/* line 45, sass/components-v2/_search-global.scss */
 .search__results-section:last-child .search-results-none-container {
   padding-top: 1px;
 }
-/* line 45, sass/components-v2/_search-global.scss */
+/* line 49, sass/components-v2/_search-global.scss */
 .search__results-section li {
   padding-top: 6px;
   padding-left: 20px;
@@ -10119,7 +10135,7 @@ li .form-field-notification-number {
   display: block;
   border-top: 1px solid #e1e5e8;
 }
-/* line 51, sass/components-v2/_search-global.scss */
+/* line 55, sass/components-v2/_search-global.scss */
 .search__results-section li img {
   width: 40px;
   height: 40px;
@@ -10127,7 +10143,7 @@ li .form-field-notification-number {
   vertical-align: top;
   border-radius: 7px;
 }
-/* line 58, sass/components-v2/_search-global.scss */
+/* line 62, sass/components-v2/_search-global.scss */
 .search__results-section li .search-result__text-container {
   width: calc(100% - 55px);
   padding-top: 2px;
@@ -10135,7 +10151,7 @@ li .form-field-notification-number {
   float: right;
   vertical-align: top;
 }
-/* line 65, sass/components-v2/_search-global.scss */
+/* line 69, sass/components-v2/_search-global.scss */
 .search__results-section li .search-result__app-name,
 .search__results-section li .search-result__publisher-name {
   padding-right: 15px;
@@ -10144,7 +10160,7 @@ li .form-field-notification-number {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-/* line 73, sass/components-v2/_search-global.scss */
+/* line 77, sass/components-v2/_search-global.scss */
 .search__results-section li .search-result__app-name {
   padding-bottom: 5px;
   font-family: "Source Sans Pro", sans-serif;
@@ -10152,23 +10168,23 @@ li .form-field-notification-number {
   font-weight: 600;
   color: #6d69c5;
 }
-/* line 79, sass/components-v2/_search-global.scss */
+/* line 83, sass/components-v2/_search-global.scss */
 .search__results-section li .search-result__app-name:hover {
   color: #4b46b5;
 }
-/* line 83, sass/components-v2/_search-global.scss */
+/* line 87, sass/components-v2/_search-global.scss */
 .search__results-section li .search-result__publisher-name {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 13px;
   color: #81879d;
 }
-/* line 90, sass/components-v2/_search-global.scss */
+/* line 94, sass/components-v2/_search-global.scss */
 .search__results-section.search__results-section--developers li {
   padding-top: 0;
   border-top: 0;
   padding-bottom: 8px;
 }
-/* line 95, sass/components-v2/_search-global.scss */
+/* line 99, sass/components-v2/_search-global.scss */
 .search__results-section.search__results-section--developers .search-results--developer__publisher-name {
   display: block;
   font-family: "Source Sans Pro", sans-serif;
@@ -10176,17 +10192,17 @@ li .form-field-notification-number {
   color: #6d69c5;
   line-height: 1.5;
 }
-/* line 101, sass/components-v2/_search-global.scss */
+/* line 105, sass/components-v2/_search-global.scss */
 .search__results-section.search__results-section--developers .search-results--developer__publisher-name:hover {
   color: #4b46b5;
 }
 
-/* line 107, sass/components-v2/_search-global.scss */
+/* line 111, sass/components-v2/_search-global.scss */
 .search-results-none-container {
   padding: 7px 0 19px 19px;
   display: none;
 }
-/* line 110, sass/components-v2/_search-global.scss */
+/* line 114, sass/components-v2/_search-global.scss */
 .search-results-none-container span {
   vertical-align: middle;
   font-size: 14px;
@@ -13552,12 +13568,13 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
 /* line 1, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard {
   padding-top: 2.3rem;
+  overflow: visible;
 }
-/* line 3, sass/templates-v2/_data-dashboard.scss */
+/* line 4, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard > .grid-container:first-child {
   overflow: visible;
 }
-/* line 6, sass/templates-v2/_data-dashboard.scss */
+/* line 7, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .page-title {
   margin-left: -2px;
   margin-right: 3.9rem;
@@ -13568,13 +13585,13 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   line-height: 1;
   letter-spacing: -0.01em;
 }
-/* line 15, sass/templates-v2/_data-dashboard.scss */
+/* line 16, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .page-title span {
   margin-left: 5px;
   font-size: 2.2rem;
   font-weight: 400;
 }
-/* line 20, sass/templates-v2/_data-dashboard.scss */
+/* line 21, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .page-title.is-loading {
   min-width: 98px;
   height: 25px;
@@ -13582,16 +13599,16 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   margin-bottom: calc(3rem - 6px);
   background-color: #e9e9ed;
 }
-/* line 27, sass/templates-v2/_data-dashboard.scss */
+/* line 28, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .page-title + .secondary-filter {
   margin-right: 1rem;
 }
-/* line 31, sass/templates-v2/_data-dashboard.scss */
+/* line 32, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .page-header__page-toggle {
   margin-left: 1rem;
   float: right;
 }
-/* line 35, sass/templates-v2/_data-dashboard.scss */
+/* line 36, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .page-header__data-info-text {
   padding-top: 12px;
   padding-right: 5px;
@@ -13602,50 +13619,50 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   color: #5a5a68;
 }
 @media (min-width: 1280px) {
-  /* line 35, sass/templates-v2/_data-dashboard.scss */
+  /* line 36, sass/templates-v2/_data-dashboard.scss */
   .page-data-dashboard .page-header__data-info-text {
     display: inline-block;
   }
 }
-/* line 47, sass/templates-v2/_data-dashboard.scss */
+/* line 48, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .page-header__data-info-icon {
   vertical-align: top;
   padding-top: 9px;
 }
-/* line 51, sass/templates-v2/_data-dashboard.scss */
+/* line 52, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .page-header_action-button {
   float: right;
 }
-/* line 56, sass/templates-v2/_data-dashboard.scss */
+/* line 57, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .secondary-filters-container .secondary-filter .form-field--select__box {
   min-width: inherit;
 }
-/* line 59, sass/templates-v2/_data-dashboard.scss */
+/* line 60, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .secondary-filters-container .secondary-filter:nth-child(1), .page-data-dashboard .secondary-filters-container .secondary-filter:nth-child(2), .page-data-dashboard .secondary-filters-container .secondary-filter:nth-child(3) {
   margin-right: 1rem;
 }
-/* line 64, sass/templates-v2/_data-dashboard.scss */
+/* line 65, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .secondary-filters-container .secondary-filter .form-field--select__box {
   width: 70px;
 }
 @media (min-width: 1280px) {
-  /* line 64, sass/templates-v2/_data-dashboard.scss */
+  /* line 65, sass/templates-v2/_data-dashboard.scss */
   .page-data-dashboard .secondary-filters-container .secondary-filter .form-field--select__box {
     width: inherit;
     min-width: 94px;
   }
 }
-/* line 72, sass/templates-v2/_data-dashboard.scss */
+/* line 73, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .secondary-filters-container .form-field--checkbox-list {
   margin-left: 1rem;
   padding-top: 0.9rem;
 }
-/* line 77, sass/templates-v2/_data-dashboard.scss */
+/* line 78, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .toggle-container--chart-type {
   margin-left: 1rem;
   float: right;
 }
-/* line 81, sass/templates-v2/_data-dashboard.scss */
+/* line 82, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container {
   position: relative;
   width: 100%;
@@ -13658,45 +13675,45 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   background-color: #f2f2f5;
   border-top: 1px solid #e1e5e8;
 }
-/* line 92, sass/templates-v2/_data-dashboard.scss */
+/* line 93, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container.chart-container--split {
   width: 50%;
 }
-/* line 95, sass/templates-v2/_data-dashboard.scss */
+/* line 96, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container.chart-container--single {
   padding-top: 18px;
 }
-/* line 99, sass/templates-v2/_data-dashboard.scss */
+/* line 100, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container:first-child {
   border-right: 1px solid #e1e5e8;
 }
-/* line 102, sass/templates-v2/_data-dashboard.scss */
+/* line 103, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container__header {
   position: relative;
   padding-left: 20px;
   padding-right: 20px;
   overflow: visible;
 }
-/* line 108, sass/templates-v2/_data-dashboard.scss */
+/* line 109, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-heading {
   margin: 0;
   display: inline-block;
 }
-/* line 111, sass/templates-v2/_data-dashboard.scss */
+/* line 112, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-heading span {
   font-weight: 400;
 }
-/* line 115, sass/templates-v2/_data-dashboard.scss */
+/* line 116, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-summary {
   display: inline-block;
   vertical-align: top;
 }
-/* line 119, sass/templates-v2/_data-dashboard.scss */
+/* line 120, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .total-for-period-container {
   display: inline-block;
   vertical-align: top;
 }
-/* line 123, sass/templates-v2/_data-dashboard.scss */
+/* line 124, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .total-for-period-title {
   display: inline-block;
   vertical-align: bottom;
@@ -13704,40 +13721,40 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   font-size: 1.4rem;
   color: #363a47;
 }
-/* line 130, sass/templates-v2/_data-dashboard.scss */
+/* line 131, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .total-for-period,
 .page-data-dashboard .growth-on-last-period {
   vertical-align: bottom;
   font-family: "Lato", sans-serif;
   line-height: 1.1;
 }
-/* line 136, sass/templates-v2/_data-dashboard.scss */
+/* line 137, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .total-for-period {
   display: inline-block;
   font-size: 2rem;
 }
-/* line 140, sass/templates-v2/_data-dashboard.scss */
+/* line 141, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .growth-on-last-period {
   display: inline-block;
   font-size: 1.6rem;
   font-weight: 700;
 }
-/* line 145, sass/templates-v2/_data-dashboard.scss */
+/* line 146, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .growth-on-last-period-container {
   display: inline-block;
   vertical-align: top;
 }
-/* line 149, sass/templates-v2/_data-dashboard.scss */
+/* line 150, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .growth-on-last-period {
   font-weight: 700;
 }
-/* line 152, sass/templates-v2/_data-dashboard.scss */
+/* line 153, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .growth-on-last-period-title {
   position: relative;
   padding-right: 25px;
   overflow: visible;
 }
-/* line 156, sass/templates-v2/_data-dashboard.scss */
+/* line 157, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .growth-on-last-period-title:after {
   position: absolute;
   right: 0;
@@ -13745,60 +13762,60 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   font-size: 18px;
   color: #c4c7d0;
 }
-/* line 165, sass/templates-v2/_data-dashboard.scss */
+/* line 166, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--split .chart-summary {
   position: absolute;
   top: 5px;
   right: 0%;
 }
-/* line 170, sass/templates-v2/_data-dashboard.scss */
+/* line 171, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--split .total-for-period-container {
   padding-right: 22px;
 }
-/* line 173, sass/templates-v2/_data-dashboard.scss */
+/* line 174, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--split .total-for-period-title {
   padding-right: 1rem;
 }
-/* line 176, sass/templates-v2/_data-dashboard.scss */
+/* line 177, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--split .growth-on-last-period {
   padding-left: 0.5rem;
   padding-bottom: 1px;
 }
-/* line 182, sass/templates-v2/_data-dashboard.scss */
+/* line 183, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--single .chart-summary {
   position: relative;
   margin-right: 42px;
 }
-/* line 186, sass/templates-v2/_data-dashboard.scss */
+/* line 187, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--single .total-for-period-container {
   vertical-align: top;
 }
-/* line 189, sass/templates-v2/_data-dashboard.scss */
+/* line 190, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--single .total-for-period-title {
   padding-right: 10px;
   vertical-align: top;
 }
-/* line 193, sass/templates-v2/_data-dashboard.scss */
+/* line 194, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--single .total-for-period {
   margin-top: -2px;
   vertical-align: top;
 }
-/* line 197, sass/templates-v2/_data-dashboard.scss */
+/* line 198, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--single .growth-on-last-period {
   padding-left: 5px;
 }
-/* line 200, sass/templates-v2/_data-dashboard.scss */
+/* line 201, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart-container--single .chart {
   margin-top: 69px;
 }
-/* line 204, sass/templates-v2/_data-dashboard.scss */
+/* line 205, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .chart {
   height: 306px;
   width: 100%;
   margin-top: 32px;
   overflow: visible;
 }
-/* line 210, sass/templates-v2/_data-dashboard.scss */
+/* line 211, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard .custom-chart-key {
   position: relative;
   width: calc(100% - 44px);
@@ -13807,59 +13824,59 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   border-bottom: 1px solid #e1e5e8;
 }
 
-/* line 218, sass/templates-v2/_data-dashboard.scss */
+/* line 219, sass/templates-v2/_data-dashboard.scss */
 .data-table-section {
   position: relative;
   padding: 0;
 }
 @media screen and (max-width: 1100px) {
-  /* line 222, sass/templates-v2/_data-dashboard.scss */
+  /* line 223, sass/templates-v2/_data-dashboard.scss */
   .data-table-section.grid__column--three-quarters {
     width: 100%;
   }
 }
 @media (min-width: 1100px) {
-  /* line 218, sass/templates-v2/_data-dashboard.scss */
+  /* line 219, sass/templates-v2/_data-dashboard.scss */
   .data-table-section {
     padding: 0 2% 0 0;
   }
 }
-/* line 229, sass/templates-v2/_data-dashboard.scss */
+/* line 230, sass/templates-v2/_data-dashboard.scss */
 .page-data-dashboard--country .data-table-section {
   padding: 0;
 }
-/* line 232, sass/templates-v2/_data-dashboard.scss */
+/* line 233, sass/templates-v2/_data-dashboard.scss */
 .data-table-section .section-title {
   width: 70px;
   margin: 0;
   line-height: 1.2;
   display: inline-block;
 }
-/* line 237, sass/templates-v2/_data-dashboard.scss */
+/* line 238, sass/templates-v2/_data-dashboard.scss */
 .data-table-section .section-title span {
   display: block;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
   color: #363a47;
 }
-/* line 243, sass/templates-v2/_data-dashboard.scss */
+/* line 244, sass/templates-v2/_data-dashboard.scss */
 .data-table-section .section-title span:first-child {
   margin-bottom: 2px;
 }
-/* line 246, sass/templates-v2/_data-dashboard.scss */
+/* line 247, sass/templates-v2/_data-dashboard.scss */
 .data-table-section .section-title span:last-child {
   font-family: "Lato", sans-serif;
   font-size: 20px;
 }
 
-/* line 252, sass/templates-v2/_data-dashboard.scss */
+/* line 253, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__header {
   padding-bottom: 1.3rem;
   overflow: visible;
   border-bottom: 1px solid #e1e5e8;
 }
 
-/* line 257, sass/templates-v2/_data-dashboard.scss */
+/* line 258, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__filters {
   width: calc(100% - 80px);
   padding-top: 3px;
@@ -13868,27 +13885,27 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   overflow: visible;
   font-size: 0;
 }
-/* line 264, sass/templates-v2/_data-dashboard.scss */
+/* line 265, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__filters .secondary-filter {
   width: 18.1%;
   margin-right: 12px;
   float: right;
 }
-/* line 268, sass/templates-v2/_data-dashboard.scss */
+/* line 269, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__filters .secondary-filter:first-child {
   width: 22.2%;
   margin-right: 0;
   margin-left: 9px;
 }
-/* line 273, sass/templates-v2/_data-dashboard.scss */
+/* line 274, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__filters .secondary-filter:last-of-type {
   width: 19.5%;
 }
-/* line 276, sass/templates-v2/_data-dashboard.scss */
+/* line 277, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__filters .secondary-filter .form-field--select__box {
   min-width: inherit;
 }
-/* line 280, sass/templates-v2/_data-dashboard.scss */
+/* line 281, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__filters > label {
   margin-left: 0.6rem;
   padding-top: 12px;
@@ -13901,31 +13918,31 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   color: #727686;
 }
 
-/* line 292, sass/templates-v2/_data-dashboard.scss */
+/* line 293, sass/templates-v2/_data-dashboard.scss */
 .data-aside-bar {
   padding: 0;
   margin-top: 2px;
 }
 @media screen and (max-width: 1100px) {
-  /* line 296, sass/templates-v2/_data-dashboard.scss */
+  /* line 297, sass/templates-v2/_data-dashboard.scss */
   .data-aside-bar.grid__column--one-quarter {
     width: 100%;
     font-size: 0;
   }
 }
 
-/* line 302, sass/templates-v2/_data-dashboard.scss */
+/* line 303, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary {
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 0.6rem;
   border-bottom: 1px solid #e1e5e8;
 }
-/* line 307, sass/templates-v2/_data-dashboard.scss */
+/* line 308, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary .form-field--checkbox-list {
   padding: 4px 0 0 15px;
 }
-/* line 310, sass/templates-v2/_data-dashboard.scss */
+/* line 311, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary .checkboxLabelVisible {
   padding-left: calc(21px + 1rem);
   font-size: 1.6rem;
@@ -13933,46 +13950,46 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   color: #363a47;
 }
 
-/* line 317, sass/templates-v2/_data-dashboard.scss */
+/* line 318, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary__figures {
   display: inline-block;
   float: right;
 }
-/* line 320, sass/templates-v2/_data-dashboard.scss */
+/* line 321, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary__figures span, .data-table-section__summary__figures a {
   display: inline-block;
   vertical-align: top;
 }
-/* line 324, sass/templates-v2/_data-dashboard.scss */
+/* line 325, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary__figures .data-table-section__summary__total-revenue,
 .data-table-section__summary__figures .data-table-section__summary__total-downloads {
   padding: 0 7px 0 8px;
   font-size: 1.4rem;
   color: #363a47;
 }
-/* line 329, sass/templates-v2/_data-dashboard.scss */
+/* line 330, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary__figures .data-table-section__summary__total-revenue span,
 .data-table-section__summary__figures .data-table-section__summary__total-downloads span {
   padding-top: 0.5rem;
 }
-/* line 333, sass/templates-v2/_data-dashboard.scss */
+/* line 334, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary__figures .data-table-section__summary__total-downloads {
   padding-left: 17px;
 }
-/* line 336, sass/templates-v2/_data-dashboard.scss */
+/* line 337, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary__figures .data-table-section__summary__total-revenue:before,
 .data-table-section__summary__figures .data-table-section__summary__total-downloads:before {
   padding-right: 0.6rem;
   font-size: 2.4rem;
   color: #727686;
 }
-/* line 342, sass/templates-v2/_data-dashboard.scss */
+/* line 343, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary__figures .data-table-section__summary__growth {
   padding: 0.4rem 1.7rem 0 0;
   font-weight: 700;
   font-size: 1.2rem;
 }
-/* line 347, sass/templates-v2/_data-dashboard.scss */
+/* line 348, sass/templates-v2/_data-dashboard.scss */
 .data-table-section__summary__figures .data-table-section__summary__more-link {
   padding: 0.4rem 1.6rem 0 0;
   font-size: 1.2rem;

@@ -931,7 +931,7 @@
 
 	      var customIconRect;
 	      H.wrap(H.Tooltip.prototype, 'refresh', function (proceed) {
-
+	      	
 	        proceed.apply(this, Array.prototype.slice.call(arguments, 1));
 
 	        if(this.chart.customIconRect !== undefined) {
@@ -1513,7 +1513,7 @@
 	          series: {
 	            events: {
 	              click: function() { // clicking on a series selects it and highlights it
-
+	              	console.log("click");
 	              	// on selecting a series, previously selected series need to be set to unselected, on all charts
 	                var that = this,
 	                		indexToSelect = that.refseriesindex;
@@ -1604,7 +1604,6 @@
 	        	shared: true,
 	          formatter: function() {	          	
 	          	Highcharts.charts[0].series[0].test = "something";
-	          	console.log(Highcharts);
 	            var instance = this;
 	            var s = "";
 	            var thisPointIndex = instance.points[0].point.index;

@@ -10,6 +10,14 @@
 .highcharts-container > svg rect:nth-of-type(3) {
 	display: none;
 }
+// fix highcharts container showing before load
+.chart__loading + .highcharts-container {
+    visibility: hidden;
+}
+// fix highcharts container showing before load
+.chart__loading[aria-hidden="true"] + .highcharts-container {
+    visibility: visible;
+}
 .highcharts-series {
 	opacity: 1;
 	transition: opacity 0.3s;
