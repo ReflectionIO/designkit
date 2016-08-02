@@ -37,7 +37,7 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-lab-base grid-container">
+			<div class="page-lab-base data-vis-making-top-charts grid-container is-loading js-page-container">
 				
 				<div class="grid__row grid__row--heading-row">
 					<div class="grid__row--heading-row__left">
@@ -75,199 +75,230 @@
 							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
 								<select class="js-select-box">
 							    <option value="mar">March 2016</option>
-							    <option value="apr">USA</option>
-							    <option value="may">France</option>
-							    <option value="jun">Italy</option>
-							    <option value="jul" selected>Germany</option>
+							    <option value="apr">April 2016</option>
+							    <option value="may">May 2016</option>
+							    <option value="jun">June 2016</option>
+							    <option value="jul" selected>July 2016</option>
 								</select>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="grid__row data-vis-top-downloads__main">
-					<!-- <div class="chart__loading">
+				<div class="grid__row data-vis-making-top-charts__main">
+
+					<div class="data-vis-making-top-charts__categories">
+						<h2>Categories</h2>
+						<ul class="js-category-list">
+							<li class="data-vis-making-top-charts__category">Overall</li>
+							<li class="data-vis-making-top-charts__category">
+								Games
+								<ul>
+									<li class="data-vis-making-top-charts__sub-category">Action</li>
+									<li class="data-vis-making-top-charts__sub-category">Adventure</li>
+									<li class="data-vis-making-top-charts__sub-category">Arcade</li>
+									<li class="data-vis-making-top-charts__sub-category">Board</li>
+									<li class="data-vis-making-top-charts__sub-category">Card</li>
+									<li class="data-vis-making-top-charts__sub-category">Casino</li>
+									<li class="data-vis-making-top-charts__sub-category">Dice</li>
+									<li class="data-vis-making-top-charts__sub-category">Educational</li>
+									<li class="data-vis-making-top-charts__sub-category">Family</li>
+									<li class="data-vis-making-top-charts__sub-category">Music Games</li>
+									<li class="data-vis-making-top-charts__sub-category">Puzzle</li>
+									<li class="data-vis-making-top-charts__sub-category">Racing</li>
+									<li class="data-vis-making-top-charts__sub-category">Role Playing</li>
+									<li class="data-vis-making-top-charts__sub-category">Simulation</li>
+									<li class="data-vis-making-top-charts__sub-category">Sports Games</li>
+									<li class="data-vis-making-top-charts__sub-category">Strategy</li>
+									<li class="data-vis-making-top-charts__sub-category">Trivia</li>
+									<li class="data-vis-making-top-charts__sub-category">Word</li>
+								</ul>
+							</li>
+							<li class="data-vis-making-top-charts__category">Books</li>
+							<li class="data-vis-making-top-charts__category">Business</li>
+							<li class="data-vis-making-top-charts__category">Catalogs</li>
+							<li class="data-vis-making-top-charts__category">Education</li>
+							<li class="data-vis-making-top-charts__category">Entertainment</li>
+							<li class="data-vis-making-top-charts__category">Finance</li>
+							<li class="data-vis-making-top-charts__category">Food &amp; Drink</li>
+							<li class="data-vis-making-top-charts__category">Health &amp; Fitness</li>
+							<li class="data-vis-making-top-charts__category">Lifestyle</li>
+							<li class="data-vis-making-top-charts__category">Medical</li>
+							<li class="data-vis-making-top-charts__category">Music</li>
+							<li class="data-vis-making-top-charts__category">Navigation</li>
+							<li class="data-vis-making-top-charts__category">Newsstand</li>
+							<li class="data-vis-making-top-charts__category">News</li>
+							<li class="data-vis-making-top-charts__category">Photo &amp; Video</li>
+							<li class="data-vis-making-top-charts__category">Productivity</li>
+							<li class="data-vis-making-top-charts__category">Reference</li>
+							<li class="data-vis-making-top-charts__category">Shopping</li>
+							<li class="data-vis-making-top-charts__category">Social Networking</li>
+							<li class="data-vis-making-top-charts__category">Sports</li>
+							<li class="data-vis-making-top-charts__category">Travel</li>
+							<li class="data-vis-making-top-charts__category">Utilities</li>
+							<li class="data-vis-making-top-charts__category">Weather</li>
+						</ul>
+					</div>
+					<div class="chart__loading">
 						<div class="hamster-wheel">
 							<img src="images/hamster-wheel-dark.png" alt="hamster wheel">
 						</div>
 						<div class="animation-hamster"></div>
-					</div> -->
-
-					<div class="data-vis-top-downloads__categories">
-						<h2>Categories</h2>
-						<ul>
-							<!-- ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Overall</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Games</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Books</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Fi0ce</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Photo &amp; Video</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Education</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Health &amp; Fitness</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Entertainment</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Reference</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Utilities</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Productivity</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Food &amp; Drink</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Lifestyle</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Social Networking</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Navigation</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Business</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Travel</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Weather</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Medical</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">News</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Shopping</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Newsstand</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Catalogs</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Sports</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__category ng-binding ng-scope" ng-repeat="dataItem in dataList.phoneData.PAID.categories">Music</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories -->
-						</ul>
 					</div>
-					<div class="data-vis-top-downloads__data-container">
-						<div class="data-vis-top-downloads__data-column">
+					<div class="data-vis-making-top-charts__data-container">
+						<div class="data-vis-making-top-charts__data-column">
 							<h2>Downloads To Be in Free List</h2>
-								<ul>
-								<!-- ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 100%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">14.58 <span style="display: none;" class="ng-binding">Overall</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 36.35116598079561%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">5.3 <span style="display: none;" class="ng-binding">Games</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 15.500685871056241%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">2.26 <span style="display: none;" class="ng-binding">Books</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 14.67764060356653%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">2.14 <span style="display: none;" class="ng-binding">Fi0ce</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 11.454046639231825%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">1.67 <span style="display: none;" class="ng-binding">Photo &amp; Video</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 8.29903978052126%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">1.21 <span style="display: none;" class="ng-binding">Education</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 7.475994513031551%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">1.09 <span style="display: none;" class="ng-binding">Health &amp; Fitness</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 6.721536351165981%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.98 <span style="display: none;" class="ng-binding">Entertainment</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 6.584362139917695%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.96 <span style="display: none;" class="ng-binding">Reference</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 5.8984910836762685%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.86 <span style="display: none;" class="ng-binding">Utilities</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 5.006858710562414%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.73 <span style="display: none;" class="ng-binding">Productivity</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 4.046639231824417%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.59 <span style="display: none;" class="ng-binding">Food &amp; Drink</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 3.635116598079561%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.53 <span style="display: none;" class="ng-binding">Lifestyle</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 2.4691358024691357%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.36 <span style="display: none;" class="ng-binding">Social Networking</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 2.400548696844993%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.35 <span style="display: none;" class="ng-binding">Navigation</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 2.1262002743484225%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.31 <span style="display: none;" class="ng-binding">Business</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 1.5775034293552814%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.23 <span style="display: none;" class="ng-binding">Travel</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0.8916323731138546%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.13 <span style="display: none;" class="ng-binding">Weather</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0.7544581618655692%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.11 <span style="display: none;" class="ng-binding">Medical</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">News</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Shopping</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Newsstand</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Catalogs</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Sports</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Music</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories -->
+							<ul class="js-downloads-free-list">
+								<li class="data-vis-making-top-charts__item" id="free-ove"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-gam">
+									<span class="data-bar"></span>
+									<ul>
+										<li class="data-vis-making-top-charts__item" id="free-sub_act"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_adv"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_arc"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_boa"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_car"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_cas"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_dic"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_edu"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_fam"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_mus"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_puz"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_rac"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_rol"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_sim"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_spo"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_str"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_tri"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="free-sub_wor"><span class="data-bar"></span></li>
+									</ul>
+								<li class="data-vis-making-top-charts__item" id="free-boo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-bus"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-cat"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-edu" ><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-ent"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-fin"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-foo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-hea"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-lif"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-med"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-mus"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-nav"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-nws"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-new"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-pho"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-pro"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-red"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-sho"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-soc"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-spo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-tra"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-uti"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="free-wea"><span class="data-bar"></span></li>
 							</ul>
 						</div>
 
-						<div class="data-vis-top-downloads__data-column">
+						<div class="data-vis-making-top-charts__data-column">
 							<h2>Downloads To Be in Paid List</h2>
-								<ul>
-								<!-- ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 100%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">14.58 <span style="display: none;" class="ng-binding">Overall</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 36.35116598079561%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">5.3 <span style="display: none;" class="ng-binding">Games</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 15.500685871056241%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">2.26 <span style="display: none;" class="ng-binding">Books</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 14.67764060356653%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">2.14 <span style="display: none;" class="ng-binding">Fi0ce</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 11.454046639231825%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">1.67 <span style="display: none;" class="ng-binding">Photo &amp; Video</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 8.29903978052126%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">1.21 <span style="display: none;" class="ng-binding">Education</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 7.475994513031551%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">1.09 <span style="display: none;" class="ng-binding">Health &amp; Fitness</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 6.721536351165981%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.98 <span style="display: none;" class="ng-binding">Entertainment</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 6.584362139917695%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.96 <span style="display: none;" class="ng-binding">Reference</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 5.8984910836762685%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.86 <span style="display: none;" class="ng-binding">Utilities</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 5.006858710562414%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.73 <span style="display: none;" class="ng-binding">Productivity</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 4.046639231824417%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.59 <span style="display: none;" class="ng-binding">Food &amp; Drink</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 3.635116598079561%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.53 <span style="display: none;" class="ng-binding">Lifestyle</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 2.4691358024691357%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.36 <span style="display: none;" class="ng-binding">Social Networking</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 2.400548696844993%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.35 <span style="display: none;" class="ng-binding">Navigation</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 2.1262002743484225%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.31 <span style="display: none;" class="ng-binding">Business</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 1.5775034293552814%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.23 <span style="display: none;" class="ng-binding">Travel</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0.8916323731138546%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.13 <span style="display: none;" class="ng-binding">Weather</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0.7544581618655692%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0.11 <span style="display: none;" class="ng-binding">Medical</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">News</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Shopping</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Newsstand</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Catalogs</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Sports</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">0 <span style="display: none;" class="ng-binding">Music</span></span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories -->
+							<ul class="js-downloads-paid-list">
+								<li class="data-vis-making-top-charts__item" id="paid-ove"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-gam">
+									Games
+									<ul>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_act"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_adv"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_arc"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_boa"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_car"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_cas"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_dic"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_edu"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_fam"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_mus"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_puz"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_rac"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_rol"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_sim"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_spo"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_str"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_tri"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="paid-sub_wor"><span class="data-bar"></span></li>
+									</ul>
+								<li class="data-vis-making-top-charts__item" id="paid-boo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-bus"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-cat"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-edu"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-ent"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-fin"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-foo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-hea"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-lif"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-med"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-mus"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-nav"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-nws"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-new"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-pho"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-pro"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-red"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-sho"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-soc"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-spo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-tra"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-uti"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="paid-wea"><span class="data-bar"></span></li>
 							</ul>
 						</div>
 
-						<div class="data-vis-top-downloads__data-column data-vis-top-downloads__data-column--revenue">
-							<h2>Downloads to be in the free list</h2>
-								<ul>
-								<!-- ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 100%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£620.57</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 60.13503714327151%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£373.18</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 20.64392413426366%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£128.11</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0.9362360410590261%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£5.81</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 1.8547464427864702%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£11.51</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0.40446686111155866%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£2.51</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 9.919912338656395%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£61.56</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-top-downloads__item ng-scope" style="width: 0%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
-									<span class="ng-binding">£0</span>
-								</li><!-- end ngRepeat: dataItem in dataList.phoneData.PAID.categories -->
+						<div class="data-vis-making-top-charts__data-column data-vis-making-top-charts__data-column--revenue">
+							<h2>Revenue To Be in Grossing List</h2>
+							<ul class="js-revenue-grossing-list">
+								<li class="data-vis-making-top-charts__item" id="gros-ove"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-gam">
+									Games
+									<ul>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_act"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_adv"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_arc"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_boa"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_car"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_cas"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_dic"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_edu"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_fam"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_mus"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_puz"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_rac"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_rol"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_sim"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_spo"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_str"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_tri"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" id="gros-sub_wor"><span class="data-bar"></span></li>
+									</ul>
+								<li class="data-vis-making-top-charts__item" id="gros-boo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-bus"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-cat"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-edu"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-ent"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-fin"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-foo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-hea"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-lif"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-med"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-mus"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-nav"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-nws"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-new"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-pho"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-pro"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-red"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-sho"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-soc"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-spo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-tra"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-uti"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" id="gros-wea"><span class="data-bar"></span></li>
 							</ul>
 						</div>
 					</div>
@@ -390,6 +421,43 @@
 		  $('.js-select-box').each(function() {
   			new FilterDropDown($(this));
   		});
+
+		  function getMaxValueFromArray(list) {
+				var mx = 0;
+				for(var x = 0; x < list.length; x++) {
+					if(list[x].value > mx) {
+						mx = list[x].value;
+					}
+				}
+
+				return mx;
+			}
+
+  		// get default data
+			$.getJSON( "js/data-lab/200-uk-mar.json", function( data ) {
+				console.log("data");
+				console.log(data);
+				setTimeout(function(){
+					$('.js-page-container').removeClass('is-loading');
+					if(data["GROSSING"].categories.length > 0) {
+						console.log(data.GROSSING.length);
+						var maxGrossing = getMaxValueFromArray(data["GROSSING"].categories);
+						console.log(maxGrossing);
+						$.each(data["GROSSING"].categories, function(){
+							console.log(this);
+							var id = this.id;
+							var spanWidth = (this.value / maxGrossing) * 100;
+							var valueSpan = $("<span>").text(this.value).addClass("data-value");
+							valueSpan.append($("<span>").text(this.name).addClass("data-name"));
+							$('#gros-' + id + " .data-bar").width(spanWidth + "%");
+							$('#gros-' + id).append(valueSpan);
+						});
+					}
+					// <!-- ngRepeat: dataItem in dataList.phoneData.PAID.categories --><li class="data-vis-making-top-charts__item ng-scope" style="width: 100%" ng-repeat="dataItem in dataList.phoneData.PAID.categories">
+					// 				<span class="ng-binding">14.58 <span style="display: none;" class="ng-binding">Overall</span></span>
+					// 			</li>
+				}, 1000);				
+			});
 
   	});
   </script>

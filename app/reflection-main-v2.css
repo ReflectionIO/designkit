@@ -18054,20 +18054,30 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   margin-top: 2.1rem;
 }
 
-/* line 1, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__main {
-  min-height: 800px;
+/* line 2, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts .chart__loading {
+  width: calc(100% - 196px);
+  display: none;
+}
+/* line 7, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts.is-loading .chart__loading {
+  display: inline-block;
+}
+
+/* line 12, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__main {
+  margin-bottom: 6rem;
   font-size: 0;
 }
 
-/* line 5, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__categories {
+/* line 16, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__categories {
   width: 196px;
   display: inline-block;
   vertical-align: top;
 }
-/* line 9, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__categories h2 {
+/* line 20, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__categories h2 {
   position: relative;
   top: -2px;
   margin-bottom: 17px;
@@ -18079,8 +18089,8 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   display: block;
   text-align: center;
 }
-/* line 21, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__categories .data-vis-top-downloads__category {
+/* line 32, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__categories .data-vis-making-top-charts__category {
   height: 34px;
   width: 100%;
   padding-top: 9px;
@@ -18092,28 +18102,37 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   text-align: left;
   border-bottom: 1px solid #29292c;
 }
-/* line 32, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__categories .data-vis-top-downloads__category:nth-child(even) {
+/* line 43, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__categories .data-vis-making-top-charts__category:nth-child(even) {
   background-color: #343438;
 }
 
-/* line 37, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__data-container {
+/* line 48, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__data-container {
   width: calc(100% - 196px);
   display: inline-block;
   vertical-align: top;
+  opacity: 1;
+  -webkit-transition: opacity 0.3s;
+          transition: opacity 0.3s;
+  visibility: visible;
+}
+/* line 55, sass/templates-v2/_top-downloads__main.scss */
+.is-loading .data-vis-making-top-charts__data-container {
+  opacity: 0;
+  visibility: hidden;
 }
 
-/* line 42, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__data-column {
+/* line 60, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__data-column {
   width: 33.3%;
   padding-left: 5px;
   padding-right: 5px;
   display: inline-block;
   vertical-align: top;
 }
-/* line 48, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__data-column h2 {
+/* line 66, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__data-column h2 {
   position: relative;
   top: -2px;
   margin-bottom: 17px;
@@ -18126,8 +18145,8 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   text-align: center;
 }
 
-/* line 61, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__item {
+/* line 79, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__item {
   position: relative;
   height: 34px;
   width: 0;
@@ -18136,8 +18155,12 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   border-bottom: 1px solid #29292c;
   background-color: #6d69c5;
 }
-/* line 69, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__item span {
+/* line 87, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__item .data-bar {
+  height: 34px;
+}
+/* line 90, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__item .data-value {
   padding: 9px 9px 0 9px;
   display: inline-block;
   float: right;
@@ -18145,8 +18168,20 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   font-weight: 700;
   color: #fcfdfd;
 }
-/* line 77, sass/templates-v2/_top-downloads__main.scss */
-.data-vis-top-downloads__data-column--revenue .data-vis-top-downloads__item {
+/* line 98, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__item .data-name {
+  display: none;
+}
+/* line 101, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__item ul {
+  position: absolute;
+}
+/* line 104, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__item ul li span {
+  color: #81879d;
+}
+/* line 109, sass/templates-v2/_top-downloads__main.scss */
+.data-vis-making-top-charts__data-column--revenue .data-vis-making-top-charts__item {
   background-color: #ffb44a;
 }
 
