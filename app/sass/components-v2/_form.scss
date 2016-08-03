@@ -191,7 +191,7 @@ textarea {
 	textarea:focus + label {
 		color: #494490;
 		.reflection-form--theme-dark & {
-			color: #9f9bff;
+			color: $reflection-purple--dark;
 		}
 	}
 	input, textarea {
@@ -355,6 +355,22 @@ textarea {
 			padding-top: 40px;
 			padding-left: 20px;
 			padding-right: 20px;
+		}
+	}
+	.theme-dark & {
+		border: 1px solid #000;
+		background-color: #242426;
+		li {
+			color: $reflection-purple--dark;
+			&:hover {
+				color: $reflection-purple--dark--hover;
+			}
+			&.is-selected {
+				color: #5a5a68;
+				&:hover {
+					color: #5a5a68;
+				}
+			}
 		}
 	}
 }
@@ -895,9 +911,9 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 				font-size: 16px;
 			}
 			@include breakpoint($desktop-wide) {
-				border-right: 1px solid #c4c7d0;
+				border-right: 1px solid $light-grey-2;
 				&.is-open {
-					border-right: 1px solid #c4c7d0;
+					border-right: 1px solid $light-grey-2;
 				}
 			}
 		}
@@ -908,7 +924,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	max-width: 100%;
 	.form-field--select__box {
 		min-width: 85px;
-		padding: 10px 42px 10px 15px;    
+		padding: 10px 42px 10px 15px;
 		display: block;
 		font-family: $brand-heading-font;
 		font-size: 14px;
@@ -916,6 +932,17 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 		border: 1px solid $light-grey-2;
 		border-radius: 3px;
 		background-color: #f2f7f7;
+		.theme-dark & {
+			color: $light-grey-2;
+			border: 1px solid #000;
+			background-color: #343438;
+			&:after {
+				color: $light-grey-2;
+			}
+			&:hover{
+				background-color: #242426;
+			}			
+		}
 		@include ellipses();
 		&:after {
 			position: absolute;
@@ -962,6 +989,18 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 			&.ref-icon-before--ios,
 			&.ref-icon-before--play-store {
 				padding-bottom: 3px;
+			}
+			.theme-dark & {
+				color: $reflection-white;
+				border: 1px solid #000;
+				border-top: 2px solid #1d1b36;
+				background-color: #47447c;
+				&:after {
+					color: $light-grey-2;
+				}
+				&:hover{
+					background-color: #47447c;
+				}			
 			}
 		}
 	}
