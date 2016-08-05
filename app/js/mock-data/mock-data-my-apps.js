@@ -12,71 +12,71 @@ var chartData = [
             },
             {
                 "date": new Date(1420243200000),
-                "value": null
+                "value": 3434
             },
             {
                 "date": new Date(1420329600000),
-                "value": 17465
+                "value": 7465
             },
             {
                 "date": new Date(1420416000000),
-                "value": 20104
+                "value": 7104
             },
             {
                 "date": new Date(1420502400000),
-                "value": 16811
+                "value": 7811
             },
             {
                 "date": new Date(1420588800000),
-                "value": 15655
+                "value": 6655
             },
             {
                 "date": new Date(1420675200000),
-                "value": 14961
+                "value": 5961
             },
             {
                 "date": new Date(1420761600000),
-                "value": 22229
+                "value": 5229
             },
             {
                 "date": new Date(1420848000000),
-                "value": 17230
+                "value": 4230
             },
             {
                 "date": new Date(1420934400000),
-                "value": 28280
+                "value": 5280
             },
             {
                 "date": new Date(1421020800000),
-                "value": 18888
+                "value": 6888
             },
             {
                 "date": new Date(1421107200000),
-                "value": 18787
+                "value": 5787
             },
             {
                 "date": new Date(1421193600000),
-                "value": 14093
+                "value": 4093
             },
             {
                 "date": new Date(1421280000000),
-                "value": 12642
+                "value": 2642
             },
             {
                 "date": new Date(1421366400000),
-                "value": 11451
+                "value": 1451
             },
             {
                 "date": new Date(1421452800000),
-                "value": 20283
+                "value": 2983
             },
             {
                 "date": new Date(1421539200000),
-                "value": 17853
+                "value": 7853
             },
             {
                 "date": new Date(1421625600000),
-                "value": 20563
+                "value": 2563
             },
             {
                 "date": new Date(1421712000000),
@@ -84,11 +84,11 @@ var chartData = [
             },
             {
                 "date": new Date(1421798400000),
-                "value": 11809
+                "value": 1809
             },
             {
                 "date": new Date(1421884800000),
-                "value": 9516
+                "value": 5516
             },
             {
                 "date": new Date(1421971200000),
@@ -144,51 +144,51 @@ var chartData = [
         "data": [
             {
                 "date": new Date(1420070400000),
-                "value": 1518
+                "value": 8518
             },
             {
                 "date": new Date(1420156800000),
-                "value": 38070
+                "value": 8070
             },
             {
                 "date": new Date(1420243200000),
-                "value": 36557
+                "value": 6557
             },
             {
                 "date": new Date(1420329600000),
-                "value": 45341
+                "value": 5341
             },
             {
                 "date": new Date(1420416000000),
-                "value": 46266
+                "value": 6266
             },
             {
                 "date": new Date(1420502400000),
-                "value": 41637
+                "value": 8637
             },
             {
                 "date": new Date(1420588800000),
-                "value": 32079
+                "value": 9079
             },
             {
                 "date": new Date(1420675200000),
-                "value": 44305
+                "value": 11305
             },
             {
                 "date": new Date(1420761600000),
-                "value": 28901
+                "value": 12901
             },
             {
                 "date": new Date(1420848000000),
-                "value": 29747
+                "value": 14747
             },
             {
                 "date": new Date(1420934400000),
-                "value": 31715
+                "value": 15715
             },
             {
                 "date": new Date(1421020800000),
-                "value": 41810
+                "value": 16110
             },
             {
                 "date": new Date(1421107200000),
@@ -196,47 +196,47 @@ var chartData = [
             },
             {
                 "date": new Date(1421193600000),
-                "value": 15638
+                "value": 16638
             },
             {
                 "date": new Date(1421280000000),
-                "value": 16558
+                "value": 15558
             },
             {
                 "date": new Date(1421366400000),
-                "value": 21292
+                "value": 14292
             },
             {
                 "date": new Date(1421452800000),
-                "value": 21251
+                "value": 11951
             },
             {
                 "date": new Date(1421539200000),
-                "value": 23791
+                "value": 11991
             },
             {
                 "date": new Date(1421625600000),
-                "value": 20006
+                "value": 2006
             },
             {
                 "date": new Date(1421712000000),
-                "value": 18600
+                "value": 8600
             },
             {
                 "date": new Date(1421798400000),
-                "value": 18387
+                "value": 8387
             },
             {
                 "date": new Date(1421884800000),
-                "value": 20407
+                "value": 2407
             },
             {
                 "date": new Date(1421971200000),
-                "value": 20399
+                "value": 2399
             },
             {
                 "date": new Date(1422057600000),
-                "value": 14262
+                "value": 1262
             },
             {
                 "date": new Date(1422144000000),
@@ -612,27 +612,27 @@ var chartData = [
         "data": [
             {
                 "date": new Date(1420070400000),
-                "value": 5442
+                "value": 19907
             },
             {
                 "date": new Date(1420156800000),
-                "value": 11517
+                "value": 18517
             },
             {
                 "date": new Date(1420243200000),
-                "value": 13380
+                "value": 18273
             },
             {
                 "date": new Date(1420329600000),
-                "value": 11968
+                "value": 17968
             },
             {
                 "date": new Date(1420416000000),
-                "value": 17042
+                "value": 15515
             },
             {
                 "date": new Date(1420502400000),
-                "value": 18665
+                "value": 14665
             },
             {
                 "date": new Date(1420675200000),
@@ -640,19 +640,19 @@ var chartData = [
             },
             {
                 "date": new Date(1420761600000),
-                "value": 15253
+                "value": 13253
             },
             {
                 "date": new Date(1420848000000),
-                "value": 16764
+                "value": 15764
             },
             {
                 "date": new Date(1420934400000),
-                "value": 15835
+                "value": 18835
             },
             {
                 "date": new Date(1421020800000),
-                "value": 18576
+                "value": 17576
             },
             {
                 "date": new Date(1421107200000),
@@ -660,7 +660,7 @@ var chartData = [
             },
             {
                 "date": new Date(1421193600000),
-                "value": 18032
+                "value": 16032
             },
             {
                 "date": new Date(1421280000000),
@@ -668,23 +668,23 @@ var chartData = [
             },
             {
                 "date": new Date(1421366400000),
-                "value": 19900
+                "value": 14900
             },
             {
                 "date": new Date(1421452800000),
-                "value": 19716
+                "value": 13716
             },
             {
                 "date": new Date(1421539200000),
-                "value": 18411
+                "value": 13411
             },
             {
                 "date": new Date(1421625600000),
-                "value": 16025
+                "value": 13025
             },
             {
                 "date": new Date(1421712000000),
-                "value": 18506
+                "value": 14506
             },
             {
                 "date": new Date(1421798400000),
@@ -700,7 +700,7 @@ var chartData = [
             },
             {
                 "date": new Date(1422057600000),
-                "value": 14571
+                "value": 15835
             },
             {
                 "date": new Date(1422144000000),
@@ -992,67 +992,67 @@ var chartData = [
         "data": [
             {
                 "date": new Date(1420070400000),
-                "value": 1119
+                "value": 21119
             },
             {
                 "date": new Date(1420156800000),
-                "value": 1382
+                "value": 21382
             },
             {
                 "date": new Date(1420243200000),
-                "value": 10855
+                "value": 20855
             },
             {
                 "date": new Date(1420329600000),
-                "value": 14357
+                "value": 18357
             },
             {
                 "date": new Date(1420416000000),
-                "value": 23246
+                "value": 18246
             },
             {
                 "date": new Date(1420502400000),
-                "value": 17468
+                "value": 19468
             },
             {
                 "date": new Date(1420588800000),
-                "value": 7438
+                "value": 17438
             },
             {
                 "date": new Date(1420675200000),
-                "value": 10425
+                "value": 15425
             },
             {
                 "date": new Date(1420761600000),
-                "value": 8986
+                "value": 12986
             },
             {
                 "date": new Date(1420848000000),
-                "value": 6372
+                "value": 13372
             },
             {
                 "date": new Date(1420934400000),
-                "value": 7428
+                "value": 14428
             },
             {
                 "date": new Date(1421020800000),
-                "value": 6339
+                "value": 15339
             },
             {
                 "date": new Date(1421107200000),
-                "value": 5100
+                "value": 15100
             },
             {
                 "date": new Date(1421193600000),
-                "value": 4724
+                "value": 14724
             },
             {
                 "date": new Date(1421280000000),
-                "value": 4754
+                "value": 14754
             },
             {
                 "date": new Date(1421366400000),
-                "value": 4967
+                "value": 14967
             }
         ],
         "Average_per_day_since_release": 7103.1578947368425,
@@ -1068,123 +1068,123 @@ var chartData = [
         "data": [
             {
                 "date": new Date(1420070400000),
-                "value": 719
+                "value": 9409
             },
             {
                 "date": new Date(1420156800000),
-                "value": 3755
+                "value": 10668
             },
             {
                 "date": new Date(1420243200000),
-                "value": 29618
+                "value": 9618
             },
             {
                 "date": new Date(1420329600000),
-                "value": 65424
+                "value": 7424
             },
             {
                 "date": new Date(1420416000000),
-                "value": 66841
+                "value": 6841
             },
             {
                 "date": new Date(1420502400000),
-                "value": 72409
+                "value": 2409
             },
             {
                 "date": new Date(1420588800000),
-                "value": 30668
+                "value": 3668
             },
             {
                 "date": new Date(1420675200000),
-                "value": 25323
+                "value": 3668
             },
             {
                 "date": new Date(1420761600000),
-                "value": 407
+                "value": 2603
             },
             {
                 "date": new Date(1420848000000),
-                "value": 21603
+                "value": 2209
             },
             {
                 "date": new Date(1420934400000),
-                "value": 27519
+                "value": 2519
             },
             {
                 "date": new Date(1421020800000),
-                "value": 27209
+                "value": 2209
             },
             {
                 "date": new Date(1421107200000),
-                "value": 25656
+                "value": 2656
             },
             {
                 "date": new Date(1421193600000),
-                "value": 21784
+                "value": 1784
             },
             {
                 "date": new Date(1421280000000),
-                "value": 7317
+                "value": 717
             },
             {
                 "date": new Date(1421366400000),
-                "value": 22985
+                "value": 985
             },
             {
                 "date": new Date(1421452800000),
-                "value": 21685
+                "value": 685
             },
             {
                 "date": new Date(1421539200000),
-                "value": 19175
+                "value": 175
             },
             {
                 "date": new Date(1421625600000),
-                "value": 19659
+                "value": 659
             },
             {
                 "date": new Date(1421712000000),
-                "value": 17639
+                "value": 639
             },
             {
                 "date": new Date(1421798400000),
-                "value": 16551
+                "value": 551
             },
             {
                 "date": new Date(1421884800000),
-                "value": 15846
+                "value": 846
             },
             {
                 "date": new Date(1421971200000),
-                "value": 14966
+                "value": 966
             },
             {
                 "date": new Date(1422057600000),
-                "value": 9272
+                "value": 972
             },
             {
                 "date": new Date(1422144000000),
-                "value": 10150
+                "value": 1050
             },
             {
                 "date": new Date(1422230400000),
-                "value": 9882
+                "value": 988
             },
             {
                 "date": new Date(1422316800000),
-                "value": 8997
+                "value": 899
             },
             {
                 "date": new Date(1422403200000),
-                "value": 8258
+                "value": 825
             },
             {
                 "date": new Date(1422489600000),
-                "value": 7692
+                "value": 769
             },
             {
                 "date": new Date(1422576000000),
-                "value": 8015
+                "value": 801
             },
             {
                 "date": new Date(1422662400000),
@@ -1712,7 +1712,7 @@ var chartData = [
             },
             {
                 "date": new Date(1420156800000),
-                "value": 37876
+                "value": 30876
             },
             {
                 "date": new Date(1420243200000),
@@ -2236,11 +2236,11 @@ var chartData = [
             },
             {
                 "date": new Date(1420156800000),
-                "value": 23103
+                "value": 7103
             },
             {
                 "date": new Date(1420243200000),
-                "value": 24490
+                "value": 12490
             },
             {
                 "date": new Date(1420329600000),
@@ -2260,11 +2260,11 @@ var chartData = [
             },
             {
                 "date": new Date(1420675200000),
-                "value": 22327
+                "value": 17327
             },
             {
                 "date": new Date(1420761600000),
-                "value": 22171
+                "value": 16171
             },
             {
                 "date": new Date(1420848000000),
@@ -2296,27 +2296,27 @@ var chartData = [
             },
             {
                 "date": new Date(1421452800000),
-                "value": 12124
+                "value": 2124
             },
             {
                 "date": new Date(1421539200000),
-                "value": null
+                "value": 1424
             },
             {
                 "date": new Date(1421625600000),
-                "value": 8135
+                "value": 3135
             },
             {
                 "date": new Date(1421712000000),
-                "value": 8062
+                "value": 4062
             },
             {
                 "date": new Date(1421798400000),
-                "value": 9334
+                "value": 3334
             },
             {
                 "date": new Date(1421884800000),
-                "value": 8279
+                "value": 2279
             },
             {
                 "date": new Date(1421971200000),
@@ -2536,59 +2536,59 @@ var chartData = [
         "data": [
             {
                 "date": new Date(1420070400000),
-                "value": 241
+                "value": 15241
             },
             {
                 "date": new Date(1420156800000),
-                "value": 372
+                "value": 13372
             },
             {
                 "date": new Date(1420243200000),
-                "value": 519
+                "value": 12519
             },
             {
                 "date": new Date(1420329600000),
-                "value": 598
+                "value": 12598
             },
             {
                 "date": new Date(1420416000000),
-                "value": 471
+                "value": 11471
             },
             {
                 "date": new Date(1420502400000),
-                "value": 431
+                "value": 14431
             },
             {
                 "date": new Date(1420588800000),
-                "value": 795
+                "value": 15795
             },
             {
                 "date": new Date(1420675200000),
-                "value": 1587
+                "value": 18587
             },
             {
                 "date": new Date(1420761600000),
-                "value": 3160
+                "value": 20160
             },
             {
                 "date": new Date(1420848000000),
-                "value": 7709
+                "value": 25709
             },
             {
                 "date": new Date(1420934400000),
-                "value": 15929
+                "value": 25929
             },
             {
                 "date": new Date(1421020800000),
-                "value": 15502
+                "value": 27502
             },
             {
                 "date": new Date(1421107200000),
-                "value": 12127
+                "value": 29127
             },
             {
                 "date": new Date(1421193600000),
-                "value": 15873
+                "value": 25873
             },
             {
                 "date": new Date(1421280000000),
@@ -2608,7 +2608,7 @@ var chartData = [
             },
             {
                 "date": new Date(1421625600000),
-                "value": null
+                "value": 23330
             },
             {
                 "date": new Date(1421712000000),
@@ -2884,51 +2884,51 @@ var chartData = [
             },
             {
                 "date": new Date(1420934400000),
-                "value": 7858
+                "value": 3858
             },
             {
                 "date": new Date(1421020800000),
-                "value": 7274
+                "value": 2274
             },
             {
                 "date": new Date(1421107200000),
-                "value": 5531
+                "value": 1531
             },
             {
                 "date": new Date(1421193600000),
-                "value": 3885
+                "value": 1885
             },
             {
                 "date": new Date(1421280000000),
-                "value": 4523
+                "value": 1523
             },
             {
                 "date": new Date(1421366400000),
-                "value": 3131
+                "value": 1131
             },
             {
                 "date": new Date(1421452800000),
-                "value": 2615
+                "value": 1615
             },
             {
                 "date": new Date(1421539200000),
-                "value": 2833
+                "value": 1833
             },
             {
                 "date": new Date(1421625600000),
-                "value": 3686
+                "value": 1686
             },
             {
                 "date": new Date(1421712000000),
-                "value": 3446
+                "value": 1446
             },
             {
                 "date": new Date(1421798400000),
-                "value": 4115
+                "value": 1115
             },
             {
                 "date": new Date(1421884800000),
-                "value": 4721
+                "value": 1721
             },
             {
                 "date": new Date(1421971200000),
@@ -2960,7 +2960,7 @@ var chartData = [
         "data": [
             {
                 "date": new Date(1420070400000),
-                "value": 21547
+                "value": 10547
             },
             {
                 "date": new Date(1420156800000),
@@ -2968,31 +2968,31 @@ var chartData = [
             },
             {
                 "date": new Date(1420243200000),
-                "value": 31008
+                "value": 18008
             },
             {
                 "date": new Date(1420329600000),
-                "value": 37063
+                "value": 17063
             },
             {
                 "date": new Date(1420416000000),
-                "value": 33626
+                "value": 15626
             },
             {
                 "date": new Date(1420502400000),
-                "value": 37688
+                "value": 17688
             },
             {
                 "date": new Date(1420588800000),
-                "value": 34201
+                "value": 14201
             },
             {
                 "date": new Date(1420675200000),
-                "value": 66168
+                "value": 16168
             },
             {
                 "date": new Date(1420761600000),
-                "value": 21420
+                "value": 16420
             },
             {
                 "date": new Date(1420848000000),
@@ -3012,11 +3012,11 @@ var chartData = [
             },
             {
                 "date": new Date(1421193600000),
-                "value": 16503
+                "value": 10503
             },
             {
                 "date": new Date(1421280000000),
-                "value": 14973
+                "value": 9973
             },
             {
                 "date": new Date(1421366400000),
