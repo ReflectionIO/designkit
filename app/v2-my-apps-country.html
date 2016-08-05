@@ -37,6 +37,12 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
+			<div class="alert-urgent js-alert-urgent">
+ 				<div>
+ 					<span class="ref-icon-before--warning-filled"></span><span class="alert-urgent_description"> This is a demo displaying mock data. Sign up to see live data for your own apps.</span>
+ 					<a href="#" class="alert-urgent_cta ref-icon-after--angle-right">Sign up for Free</a>
+ 				</div>
+ 			</div>
 			<div class="page-data-dashboard page-data-dashboard--country">
 				<div class="grid-container">
 					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">My Apps</h1>
@@ -89,14 +95,6 @@
 						</div>
 						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
-						    <option value="all" selected>All Countries</option>
-						    <option value="uni">United Kingdom</option>
-						    <option value="fra">France</option>
-						    <option value="ger">Germany</option>
-							</select>
-						</div>
-						<div class="primary-filter form-field--select">
-							<select class="js-select-box">
 						    <option value="all" selected>All Categories</option>
 						    <option value="uni">Games</option>
 						    <option value="fra">Lifestyle</option>
@@ -114,16 +112,11 @@
 				</div>
 
 				<aside class="grid-container secondary-filters-container">
-					<div class="secondary-filter form-field--select">
-						<select class="js-select-box">
-					    <option value="allapps" selected>All My Apps</option>
-					    <option value="clash">Clash of Clans</option>
-					    <option value="boom">Boom Beach</option>
-					    <option value="hay">Hay Day</option>
-					    <option value="royale">Clash Royale</option>
-						</select>
-					</div>
 
+					<div class="secondary-filter form-field--select js-form-field--group">
+						<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger">Overlaid Countries (4)</span>
+					</div>
+					
 					<div class="secondary-filter form-field--select">
 						<select class="js-select-box">
 					    <option value="allrev" selected>All Revenue</option>
@@ -134,18 +127,6 @@
 						</select>
 					</div>
 
-					<div class="secondary-filter form-field--select">
-						<select class="js-select-box">
-					    <option value="more" selected>More (0/6)</option>
-					    <option value="device">Device Breakdown</option>
-					    <option value="redownloads">Re-downloads</option>
-					    <option value="installed">Installed Updates</option>
-					    <option value="compare">Revenue/Download Comparison</option>
-					    <option value="split">Revenue Split</option>
-					    <option value="cumulative">Cumulative</option>
-						</select>
-					</div>
-
 					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
 						<ul>
 							<li>
@@ -153,11 +134,13 @@
 								<label for="checkboxOne" class="checkboxLabel">Show Events</label>
 								<label for="checkboxOne" class="checkboxLabelVisible">Show Events</label>
 							</li>
+
+							<li> <span class=""><input type="checkbox" value="on" id="gwt-uid-279" tabindex="0"><label for="gwt-uid-279" class="checkboxLabel">Cumulative</label><label for="gwt-uid-279" class="checkboxLabelVisible">Cumulative</label></span> </li>
 						</ul>
 					</div>
 
-					<button href="#" class="ref-button--secondary--small page-header_action-button js-add-series">Add Test</button>
-					<button href="#" class="ref-button--secondary--small page-header_action-button js-remove-series">Remove Test</button>					
+					<!-- <button href="#" class="ref-button--secondary--small page-header_action-button js-add-series">Add Test</button>
+					<button href="#" class="ref-button--secondary--small page-header_action-button js-remove-series">Remove Test</button>			 -->		
 
 					<div class="filter-toggle toggle-container--chart-type">
 						<div class="toggle">
@@ -247,23 +230,23 @@
 										</li>
 										<li class="series-1">
 											<input type="checkbox" name="showhideUSArev" id="showhideUSArev" class="js-toggle-series" data-chart-index="0" data-series-index="1" checked>
-											<label for="showhideUSArev" class="checkboxLabel">Spotify</label>
-											<label for="showhideUSArev" class="checkboxLabelVisible js-hover-series">Spotify</label>
+											<label for="showhideUSArev" class="checkboxLabel">USA</label>
+											<label for="showhideUSArev" class="checkboxLabelVisible js-hover-series">USA</label>
 										</li>
 										<li class="series-2">
 											<input type="checkbox" name="showhideUKrev" id="showhideUKrev" class="js-toggle-series" data-chart-index="0" data-series-index="2" checked>
-											<label for="showhideUKrev" class="checkboxLabel">Tinder</label>
-											<label for="showhideUKrev" class="checkboxLabelVisible js-hover-series">Tinder</label>
+											<label for="showhideUKrev" class="checkboxLabel">United Kingdom</label>
+											<label for="showhideUKrev" class="checkboxLabelVisible js-hover-series">United Kingdom</label>
 										</li>
 										<li class="series-3">
 											<input type="checkbox" name="showhideChinarev" id="showhideChinarev" class="js-toggle-series" data-chart-index="0" data-series-index="3" checked>
-											<label for="showhideChinarev" class="checkboxLabel">Clash Royale</label>
-											<label for="showhideChinarev" class="checkboxLabelVisible js-hover-series">Clash Royale</label>
+											<label for="showhideChinarev" class="checkboxLabel">China</label>
+											<label for="showhideChinarev" class="checkboxLabelVisible js-hover-series">China</label>
 										</li>
 										<li class="series-4">
 											<input type="checkbox" name="showhideFrancerev" id="showhideFrancerev" class="js-toggle-series" data-chart-index="0" data-series-index="4" checked>
-											<label for="showhideFrancerev" class="checkboxLabel">Minecraft</label>
-											<label for="showhideFrancerev" class="checkboxLabelVisible js-hover-series">Minecraft</label>
+											<label for="showhideFrancerev" class="checkboxLabel">France</label>
+											<label for="showhideFrancerev" class="checkboxLabelVisible js-hover-series">France</label>
 										</li>
 									</ul>
 								</div>
@@ -391,15 +374,7 @@
 							</div>
 						</header>
 						<div class="data-table-section__summary">
-							<div class="form-field--checkbox-list form-field--checkbox-list--inline">
-								<ul>
-									<li>
-										<input type="checkbox" name="checkboxTotals" id="checkboxTotals" checked>
-										<label for="checkboxTotals" class="checkboxLabel">All Countries Total</label>
-										<label for="checkboxTotals" class="checkboxLabelVisible">All Countries Total</label>
-									</li>
-								</ul>
-							</div>
+							<span class="data-table-section--totals-title">Totals</span>
 							<div class="data-table-section__summary__figures">
 								<span class="data-table-section__summary__total-revenue ref-icon-before--revenue">
 									<span>£18,028,173</span>
@@ -416,7 +391,6 @@
 						<table class="ref-table ref-table--apps ref-table--apps--country">
 							<thead>
 								<tr>
-									<th><a href="#">Clear</a></th>
 									<th></th>
 									<th>
 										<span>Country</span>
@@ -445,7 +419,6 @@
 								</tr>
 							</thead>
 							<colgroup>
-								<col class="column-row-selector" />
 								<col class="column-store-icon" />
 								<col class="column-app-name" />
 								<col class="column-revenue" />
@@ -455,17 +428,6 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow1" id="checkboxShowRow1" checked>
-													<label for="checkboxShowRow1" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow1" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
@@ -488,19 +450,6 @@
 										</div>										
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -515,17 +464,6 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow2" id="checkboxShowRow2" checked>
-													<label for="checkboxShowRow2" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow2" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
@@ -548,19 +486,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -575,17 +500,6 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow3" id="checkboxShowRow3" checked>
-													<label for="checkboxShowRow3" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow3" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--play-store"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
@@ -608,19 +522,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -635,17 +536,6 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow4" id="checkboxShowRow4" checked>
-													<label for="checkboxShowRow4" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow4" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
@@ -668,19 +558,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -695,17 +572,6 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow5" id="checkboxShowRow5">
-													<label for="checkboxShowRow5" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow5" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
@@ -728,19 +594,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -755,17 +608,6 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow6" id="checkboxShowRow6">
-													<label for="checkboxShowRow6" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow6" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
@@ -788,19 +630,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -826,6 +655,183 @@
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+
+	<!-- Custom Country Picker -->
+	<div class="group-picker js-group-picker">
+		
+		<div class="group-picker__main-container"> 							
+			<!-- <div class="filter-toggle filter-toggle--with-text">
+				<div class="toggle">
+					<input id="toggle--show-popular" name="toggle--show-picker" checked="" type="radio">
+					<label for="toggle--show-popular" class="js-mock-toggle-group-selectors" data-show="group-selector-container--popular">
+						Popular
+					</label>
+				</div>
+				<div class="toggle">
+					<input id="toggle--show-regions" name="toggle--show-picker" type="radio">
+					<label for="toggle--show-regions" class="js-mock-toggle-group-selectors" data-show="regions">
+						Regions
+					</label>
+				</div>
+				<div class="toggle">
+					<input id="toggle--show-countries" name="toggle--show-picker" type="radio">
+					<label for="toggle--show-countries" class="js-mock-toggle-group-selectors" data-show="countries">
+						Countries
+					</label>
+				</div>
+				<div class="toggle">
+					<input id="toggle--show-my-groups" name="toggle--show-picker" type="radio">
+					<label for="toggle--show-my-groups" class="js-mock-toggle-group-selectors" data-show="group-selector-container--groups">
+						My Groups
+					</label>
+				</div>
+			</div> -->
+
+			<div class="group-selector-container js-group-selector-container" id="group-selector-container--popular">
+				<div class="secondary-filter form-field--search js-form-field-search">
+					<input type="text" placeholder="Find Country" name="findapp" id="findapp">
+					<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+					<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+				</div>
+
+				<ul class="form-field--checkbox-list js-mock-group-item-results">
+					<li>
+						<input type="checkbox" name="checkboxCountryUK" id="checkboxCountryUK"/>
+						<label for="checkboxCountryUK" class="checkboxLabel">United Kingdom</label>
+						<label for="checkboxCountryUK" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--GB"></div>
+							<span>United Kingdom</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryFr" id="checkboxCountryFr" />
+						<label for="checkboxCountryFr" class="checkboxLabel">France</label>
+						<label for="checkboxCountryFr" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--FR"></div>
+							<span>France</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryIt" id="checkboxCountryIt" />
+						<label for="checkboxCountryIt" class="checkboxLabel">Germany</label>
+						<label for="checkboxCountryIt" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--DE"></div>
+							<span>Germany</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryCh" id="checkboxCountryCh" />
+						<label for="checkboxCountryCh" class="checkboxLabel">China</label>
+						<label for="checkboxCountryCh" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--CH"></div>
+							<span>China</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryUSA" id="checkboxCountryUSA" />
+						<label for="checkboxCountryUSA" class="checkboxLabel">USA</label>
+						<label for="checkboxCountryUSA" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--US"></div>
+							<span>USA</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryUK" id="checkboxCountryNe"/>
+						<label for="checkboxCountryNe" class="checkboxLabel">Netherlands</label>
+						<label for="checkboxCountryNe" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--NE"></div>
+							<span>Netherlands</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryFr" id="checkboxCountryPo" />
+						<label for="checkboxCountryPo" class="checkboxLabel">Portugal</label>
+						<label for="checkboxCountryPo" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--PO"></div>
+							<span>Portugal</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountrySp" id="checkboxCountrySp" />
+						<label for="checkboxCountrySp" class="checkboxLabel">Spain</label>
+						<label for="checkboxCountrySp" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--SP"></div>
+							<span>Spain</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryCh" id="checkboxCountryJa" />
+						<label for="checkboxCountryJa" class="checkboxLabel">Japan</label>
+						<label for="checkboxCountryJa" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--JP"></div>
+							<span>Japan</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryUSA" id="checkboxCountryInd" />
+						<label for="checkboxCountryInd" class="checkboxLabel">India</label>
+						<label for="checkboxCountryInd" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--IN"></div>
+							<span>India</span>
+						</label>
+					</li>
+				</ul>
+
+				<a href="#" class="ref-button--primary--small is-disabled group-picker__apply-link js-mock-group-picker-apply">Apply</a>
+			</div>
+
+			<div class="group-selector-container js-group-selector-container" id="group-selector-container--groups" style="display: none;">
+				<div class="secondary-filter form-field--search js-form-field-search">
+					<input type="text" placeholder="Find" name="findgroup" id="findgroup" class="js-mock-find-group">
+					<label for="findgroup" class="ref-icon-after--search"><span>Search</span></label>
+					<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+				</div>
+				<ul class="form-field--radio-list js-mock-group-results">
+					<li>
+						<input type="radio" name="radioButtons" id="radioButtonOne">
+						<label for="radioButtonOne" class="radioButtonLabel">My Group</label>
+						<label for="radioButtonOne" class="radioButtonLabelVisible">My Group</label>
+						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
+					</li>
+					<li>
+						<input type="radio" name="radioButtons" id="radioButtonTwo">
+						<label for="radioButtonTwo" class="radioButtonLabel">Main Competitors</label>
+						<label for="radioButtonTwo" class="radioButtonLabelVisible">Main Competitors</label>
+						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
+					</li>
+					<li>
+						<input type="radio" name="radioButtons" id="radioButtonThree">
+						<label for="radioButtonThree" class="radioButtonLabel">Another Group</label>
+						<label for="radioButtonThree" class="radioButtonLabelVisible">Another Group</label>
+						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
+					</li>
+				</ul>
+				<a href="#" class="ref-button--primary--small is-disabled group-picker__apply-link js-mock-group-picker-apply">Apply</a>
+			</div>
+
+		</div>
+
+		<div class="group-picker__selections-container">
+			<span class="group-picker__selections__number-selected"><span class="js-mock-picker-number-selected">0</span> Selected</span>
+			<a href="#" class="group-picker__selections__clear-link js-mock-clear-selected-countries">Clear All</a>
+			<div class="group-picker__selections js-group-picker__selections">				
+			</div>
+			<!-- <a href="#" class="group-picker__selections__save-to-groups-link ref-button--secondary--small js-mock-save-to-groups-link">Save Selection to New Group</a> -->
+			<form class="group-picker__create-group-container js-create-group-form">
+				<div class="form-field">
+					<input type="text" name="groupname" id="groupname" autocomplete="off" />
+					<label for="groupname">Group Name</label>
+				</div>
+				<a href="#" class="ref-button--secondary--small group-picker__create-group__cancel-button js-mock-create-group-cancel">Cancel</a>
+				<a href="#" class="ref-button--primary--small group-picker__create-group__save-button js-mock-create-group-apply">Create Group</a>
+			</form>
+			<form class="group-picker__amend-group-container js-amend-group-form">
+				<a href="#" class="ref-button--primary--small group-picker__create-group__save-button js-mock-save-group">Save Changes</a>
+			</form>
+		</div>
+	</div> <!-- end country picker -->
+
 
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
@@ -1621,14 +1627,10 @@
 	                	valueString = "$ ";
 	                }
 	                if(chartSeries.name == "revenueseries-total") {
+	                	valueString = "$ ";
 	                	imgString = "<img src=images/v2/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
 	                } else if(chartSeries.name == "downloadsseries-total") {
 	                	imgString = "<img src=images/v2/icon-chart-tt-downloads@2x.png alt='Rank icon' class=icon-downloads />";	
-	                } else { // output app and store icon from data
-	                	var appIcon = chartSeries.appIcon;
-	                	var store = chartSeries.appStore;
-	                	imgString = "<img src=" + appIcon + " class='chart-tooltip-app-icon' />";
-	                	storeString = "<span class='ref-icon-before--" + store + "'></span>"
 	                }
 	                
 	                var seriesClassName = chartSeries.name;
@@ -2725,63 +2727,47 @@
 
 			var seriesAppIcons = [
 				{ 
-					icon: "images/v2/placeholder-app-icon-clash.png",
+					icon: "images/demo-icon-clash-of-hamsters.jpg",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-icon-spotify.png",
+					icon: "images/demo-icon-clash-of-hamsters.jpg",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-icon-tinder.png",
+					icon: "images/demo-icon-angry-hamsters.jpg",
 					store: "play-store"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon.jpg",
+					icon: "images/demo-icon-five-hamsters-at-freddies.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-crossy-hamster.jpg",
 					store: "play-store"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-minecraft.png",
+					icon: "images/demo-icon-hamster-crush.jpg",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-drift.png",
+					icon: "images/demo-icon-hamsters-vs-zombies.jpg",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-delta.png",
-					store: "ios"
-				},
-				{ 
-					icon: "images/v2/placeholder-app-icon-deezer.png",
+					icon: "images/demo-icon-hamster-ninja.jpg",
 					store: "play-store"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-8ball.png",
+					icon: "images/demo-icon-8-ball-hamster.jpg",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-bridge.png",
+					icon: "images/demo-icon-flappy-hamster.jpg",
 					store: "ios"
 				},
 				{ 
-					icon: "images/icon-cc.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/icon-ccjs.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/icon-ccss.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/icon-ccam.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/icon-bws.jpg",
+					icon: "images/demo-icon-geometry-hamster.jpg",
 					store: "ios"
 				}
 			];
@@ -2864,9 +2850,311 @@
 				Highcharts.Chart.prototype.setGraphCSSClasses();
         Highcharts.Chart.prototype.resetLineStyling();
 			}, 500);
+			
+			setTimeout(function(){
+				$('.js-alert-urgent').addClass("is-open");
+			}, 1000);
 
+			mockCountryPicker();
+  	}
+
+  	function mockCountryPicker() {
+  		// MOCK COUNTRY SELECTOR
+			$('.js-group-trigger').on("click", function(){ // to open the country selector
+				var $this = $(this),
+						thisPositionTop = $this.offset().top,
+						thisPositionLeft = $this.offset().left,
+						thisHeight = $this.innerHeight(),
+						thisWidth = $this.innerWidth(),
+						offsetTop = 10,
+						isAlreadyOpen = $this.parent('.js-form-field--group').hasClass("is-open"),
+						groupPickerWidth = 650;
+				
+				if(!isAlreadyOpen) {
+					setTimeout(function(){ // setTimeout is to wait for all other popups to close first
+						
+						$('.js-group-picker').show().css({ "top" : thisPositionTop + thisHeight + offsetTop, "left" : thisPositionLeft});
+						$this.parent(".js-form-field--group").addClass("is-open");
+						
+					}, 100);
+				} else {
+					$this.parent(".js-form-field--group").addClass("is-open");
+				}
+			});
+
+			$('.js-mock-group-picker-apply').on("click", function(e){
+				e.preventDefault();
+				$('.js-group-picker').hide();
+				$('.js-group-trigger').parent(".is-open").removeClass("is-open");
+				var numberOfCountriesValue = $('.js-mock-picker-number-selected').text();
+				var countryText = "Overlaid Countries (" + numberOfCountriesValue + ")";
+				$('.js-group-trigger').text(countryText);
+			});
+
+			$('.js-mock-toggle-group-selectors').on("click", function(){ // this is the popular, regions, countries and my groups toggle
+				var contentIdToShow = $(this).data("show");
+				$('.js-group-selector-container').hide();
+				$('#' + contentIdToShow).show();
+				if(contentIdToShow == "group-selector-container--popular") {
+					synchCheckboxesWithCurrentSelection();
+					unselectRadioGroupsSelection();
+					toggleAmendGroupForm(true);
+				} else {
+					unselectRadioGroupsSelection();
+					toggleAmendGroupForm(true);
+				}
+			});
+
+			function setNumberSelected() {
+				var numberSelected = $('.js-group-picker__selections .group-picker__selection').length;
+	  		$('.js-mock-picker-number-selected').text(numberSelected);
+
+	  		if(numberSelected > 0) {
+	  			toggleSaveToGroupsLink(false);
+	  		} else {
+	  			toggleSaveToGroupsLink(true);
+	  		}
+			}
+			
+			function closeCreateGroupContainer() {
+				if($createGroupForm.hasClass("is-showing")) {
+					$createGroupFormCancel.show();
+					$createGroupForm.removeClass("is-showing");
+					$createGroupFormApply.removeClass("is-success is-disabled").text("Create Group");	
+				}				
+			}
+
+			function synchCheckboxesWithCurrentSelection() {
+				
+				// for instance, if a user goes from my groups to popular, selections need to synch
+				$('.js-mock-group-item-results input:checked').each(function(){
+					$(this)[0].checked = false;
+				});
+				
+				$('.js-group-picker__selections .group-picker__remove-group-link').each(function(){
+					var idOfCheckboxToTurnOn = $(this).attr("for");
+					$('#' + idOfCheckboxToTurnOn)[0].checked = true;
+				});
+			}
+
+			function unselectRadioGroupsSelection() {
+				$('.js-mock-group-results input:checked').each(function(){
+					$(this)[0].checked = false;
+				});				
+			}
+
+			function toggleSaveToGroupsLink(isHide) {
+				if(isHide) {
+					$saveToGroupsLink.css("display", "none");
+				} else {
+					$saveToGroupsLink.css("display", "block");
+				}
+			}
+
+			function toggleAmendGroupForm(isHide) {
+				if(isHide) {
+					$('.js-amend-group-form').hide();
+				} else {
+					$('.js-amend-group-form').show();
+				}
+			}
+
+			function showSaveIfRadioGroupSelected() {
+				var isAGroupSelected = false;
+				$('.js-mock-group-results input').each(function(){
+					if($(this)[0].checked == true) {
+						isAGroupSelected = true;						
+					}
+					if(isAGroupSelected) {
+						toggleAmendGroupForm(false);
+					} else {
+						toggleAmendGroupForm(true);
+					}
+				});
+			}
+
+			var $createGroupForm = $('.js-create-group-form'),
+					$createGroupFormApply = $('.js-mock-create-group-apply'),
+					$createGroupFormCancel = $('.js-mock-create-group-cancel'),
+					$saveToGroupsLink = $('.js-mock-save-to-groups-link');
+
+					// popular countries list item checkbox change
+	  	$('.js-mock-group-item-results input[type=checkbox]').on("change", function() {
+	  		var selectionContainer = $('.js-group-picker__selections'),
+	  				$this = $(this),
+	  				selectedLabel = $this.siblings(".checkboxLabelVisible"),
+	  				selectedText = selectedLabel.find("span").text(),
+	  				selectedFlag = selectedLabel.find(".icon-flag-sm").attr("class"),
+	  				selectedCheckboxId = $this.attr("id");
+	  				closeCreateGroupContainer();
+
+	  		if($this[0].checked == true) {
+	  			var newSelection = $("<div>").addClass("group-picker__selection")
+	  																		.attr("id", "picker-id-" + selectedCheckboxId)
+	  																		.append($("<div>").addClass(selectedFlag))
+	  																		.append($("<span>").text(selectedText))
+	  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+	  																										.attr("for", selectedCheckboxId)
+	  																										.text("Clear")
+	  																										.on("click", function(){
+	  																											$(this).parent(".group-picker__selection").remove();
+	  																											closeCreateGroupContainer();
+	  																										})
+	  																						);
+
+					selectionContainer.append(newSelection);
+
+	  		} else {
+	  			selectionContainer.find("#picker-id-" + selectedCheckboxId).remove();
+	  		}
+
+	  		setNumberSelected();
+
+	  		$('.js-mock-group-picker-apply').removeClass('is-disabled');
+	  	});
+
+				// My groups radio button change
+			$('.js-mock-group-results input[type=radio]').on("change", function() {
+	  		var selectionContainer = $('.js-group-picker__selections'),
+	  				$this = $(this),
+	  				selectedCheckboxId = $this.attr("id");
+	  				closeCreateGroupContainer();
+
+	  				selectionContainer.empty();
+	  				$('.js-mock-picker-number-selected').text("0");
+	  				toggleAmendGroupForm(true);
+
+	  				// Add Mock Data to results
+	  				if(selectedCheckboxId == "radioButtonOne") {
+	  					// fill country selection with mock results (as if it were a saved group)
+		  				var ukSelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryUK")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--GB"))
+		  																		.append($("<span>").text("United Kingdom"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryUK")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+		  				var germanySelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryIt")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--DE"))
+		  																		.append($("<span>").text("Germany"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryIt")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+							selectionContainer.append(ukSelection);
+							selectionContainer.append(germanySelection);
+	  				} else {
+	  					// fill country selection with mock results (as if it were a saved group)
+		  				var franceSelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryFr")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--FR"))
+		  																		.append($("<span>").text("France"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryFr")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+		  				var germanySelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryIt")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--DE"))
+		  																		.append($("<span>").text("Germany"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryIt")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+		  				var usaSelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryUSA")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--US"))
+		  																		.append($("<span>").text("USA"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryUSA")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+							selectionContainer.append(franceSelection);
+							selectionContainer.append(germanySelection);
+							selectionContainer.append(usaSelection);
+	  				}
+
+	  				setNumberSelected();	  				
+	  				synchCheckboxesWithCurrentSelection();
+	  				toggleSaveToGroupsLink(true);
+	  				$('.js-mock-group-picker-apply').removeClass("is-disabled");
+	  	});
+
+			$saveToGroupsLink.on("click", function(){
+				$(this).hide();
+				$createGroupForm.addClass("is-showing");
+				$('.js-amend-group-form').hide();
+				$createGroupForm.find("input[type=text]").focus();
+			});
+
+			$createGroupFormCancel.on("click", function(){
+				$saveToGroupsLink.css("display", "block");
+				$createGroupForm.removeClass("is-showing");
+
+				showSaveIfRadioGroupSelected()
+			});			
+
+			$createGroupFormApply.on("click", function(){
+				$createGroupFormApply.addClass("is-success is-disabled").text("Group Created!");
+				$createGroupFormCancel.hide();
+				unselectRadioGroupsSelection();
+
+				// mock add to my groups
+				var nameForNewGroup = $('.js-create-group-form input[type=text]').val();
+				if(nameForNewGroup.length == 0) {
+					nameForNewGroup = "New Group";
+				}
+				var mockListItem = $('<li><input type="radio" name="radioButtons" id="radioButtonNew"><label for="radioButtonNew" class="radioButtonLabel">' + nameForNewGroup + '</label><label for="radioButtonNew" class="radioButtonLabelVisible">' + nameForNewGroup + '</label><span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span></li>'); // Obviously add this element in a better way, just for mock!!
+
+				$('.js-mock-group-results').append(mockListItem);
+					
+			});
+			
+			$('.js-mock-clear-selected-countries').on("click", function(){
+				unselectRadioGroupsSelection();
+				showSaveIfRadioGroupSelected();
+				$('.js-group-picker__selections').find(".js-remove-selected-group").trigger("click");
+				closeCreateGroupContainer();
+			});
+
+			$('.js-remove-group').on("click", function(){
+				$(this).parents("li").remove();
+			});
+
+			// end country picker
   	}
 
   	window.onready = initScripts();
   </script>
-</body>xml
+</body>

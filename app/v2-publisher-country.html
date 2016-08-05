@@ -37,46 +37,66 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="alert-urgent js-alert-urgent">
- 				<div>
- 					<span class="ref-icon-before--warning-filled"></span><span class="alert-urgent_description"> This is a demo displaying mock data. Sign up to see live data for your own apps.</span>
- 					<a href="#" class="alert-urgent_cta ref-icon-after--angle-right">Sign up for Free</a>
- 				</div>
- 			</div>
-			<div class="page-data-dashboard page-data-dashboard--country">
+			<div class="page-data-dashboard page-data-dashboard--country page-publisher">
+				
 				<div class="grid-container">
-					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">Store Data - Apps</h1>
 
-					<div class="secondary-filter form-field--select js-mock-show-for-my-apps-view-only">
-						<select class="js-select-box">
-					    <option value="iphone" data-icon-class="ref-icon-before--ios" selected>iPhone</option>
-					    <option value="ipad" data-icon-class="ref-icon-before--ios">iPad</option>
-					    <option value="google" data-icon-class="ref-icon-before--play-store">Google Play</option>
-						</select>
-					</div>
-
-					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
-
-					<div class="toggle-container page-header__page-toggle">
-						<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
-							<div class="toggle">
-								<input id="toggle--show-overview" name="overview-country" type="radio">
-								<label for="toggle--show-overview" onclick="location.replace('v2-store-data-apps.html');">
-									Overview
-								</label>
+					<div class="page-header--left">
+						<h1 class="heading-style--heading-two page-title">Reflection</h1>
+						
+						<div class="toggle-container page-header__page-toggle">
+							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+								<div class="toggle">
+									<input id="toggle--show-apps" name="publisher-page" checked type="radio">
+									<label for="toggle--show-apps">
+										Developer's Apps
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-news-events" name="publisher-page" type="radio">
+									<label for="toggle--show-news-events">
+										News &amp; Events
+									</label>
+								</div>
 							</div>
-							<div class="toggle">
-								<input id="toggle--show-country" name="overview-country" type="radio" checked>
-								<label for="toggle--show-country" onclick="location.replace('v2-store-data-apps-country.html');">
-									By Country
-								</label>
+						</div>
+
+					</div>					
+
+					<div class="page-header--right">
+						<div>
+							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button">Follow Publisher</button>
+							<div class="toggle-container page-header__page-toggle">
+								<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+									<div class="toggle">
+										<input id="toggle--show-overview" name="overview-country" type="radio">
+										<label for="toggle--show-overview" onclick="location.replace('v2-publisher.html');">
+											Overview
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--show-country" name="overview-country" checked type="radio">
+										<label for="toggle--show-country" onclick="location.replace('v2-publisher-country.html');">
+											By Country
+										</label>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
 
 				<div class="grid__row overflow-visible">
 					<aside class="primary-filters-container">
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Stores</option>
+						    <option value="allIos">iOS</option>
+						    <option value="allGoogle">Google Play</option>
+							</select>
+						</div>
 						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
 						    <option value="jan" selected>01/01/16 - 01/02/16</option>
@@ -2780,10 +2800,6 @@
 				Highcharts.Chart.prototype.setGraphCSSClasses();
         Highcharts.Chart.prototype.resetLineStyling();
 			}, 500);
-			
-			setTimeout(function(){
-				$('.js-alert-urgent').addClass("is-open");
-			}, 1000);
 
 			mockCountryPicker();
   	}

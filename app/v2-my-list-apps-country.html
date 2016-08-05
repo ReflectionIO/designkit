@@ -37,23 +37,12 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="alert-urgent js-alert-urgent">
- 				<div>
- 					<span class="ref-icon-before--warning-filled"></span><span class="alert-urgent_description"> This is a demo displaying mock data. Sign up to see live data for your own apps.</span>
- 					<a href="#" class="alert-urgent_cta ref-icon-after--angle-right">Sign up for Free</a>
- 				</div>
- 			</div>
-			<div class="page-data-dashboard page-data-dashboard--country">
+			<div class="page-data-dashboard page-data-dashboard--country page-data-dashboard--list-page">
 				<div class="grid-container">
-					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">Store Data - Apps</h1>
+					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">Apps I Follow <span>(10 Apps)</span></h1>
 
-					<div class="secondary-filter form-field--select js-mock-show-for-my-apps-view-only">
-						<select class="js-select-box">
-					    <option value="iphone" data-icon-class="ref-icon-before--ios" selected>iPhone</option>
-					    <option value="ipad" data-icon-class="ref-icon-before--ios">iPad</option>
-					    <option value="google" data-icon-class="ref-icon-before--play-store">Google Play</option>
-						</select>
-					</div>
+					<span class="page-header__data-info-text">Estimated Data</span>
+					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Estimated Data?" data-whatsthis="In the Store data section revenue and download data displayed are accurate estimates, including any data for your own apps. This may result in variations on actual data in your My Data dashboard"></span>
 
 					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
 
@@ -61,13 +50,13 @@
 						<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
 							<div class="toggle">
 								<input id="toggle--show-overview" name="overview-country" type="radio">
-								<label for="toggle--show-overview" onclick="location.replace('v2-store-data-apps.html');">
+								<label for="toggle--show-overview" onclick="location.replace('v2-my-list-apps.html');">
 									Overview
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-country" name="overview-country" type="radio" checked>
-								<label for="toggle--show-country" onclick="location.replace('v2-store-data-apps-country.html');">
+								<label for="toggle--show-country">
 									By Country
 								</label>
 							</div>
@@ -77,6 +66,13 @@
 
 				<div class="grid__row overflow-visible">
 					<aside class="primary-filters-container">
+						<div class="primary-filter form-field--select">
+							<select class="js-select-box">
+						    <option value="all" selected>All Stores</option>
+						    <option value="allIos">iOS</option>
+						    <option value="allGoogle">Google Play</option>
+							</select>
+						</div>
 						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
 						    <option value="jan" selected>01/01/16 - 01/02/16</option>
@@ -793,7 +789,7 @@
 
   	function initScripts() {
   		// mock menu select
-  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-store-data-apps.html"]');
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-my-lists.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
 
   		new Page();
@@ -2780,10 +2776,6 @@
 				Highcharts.Chart.prototype.setGraphCSSClasses();
         Highcharts.Chart.prototype.resetLineStyling();
 			}, 500);
-			
-			setTimeout(function(){
-				$('.js-alert-urgent').addClass("is-open");
-			}, 1000);
 
 			mockCountryPicker();
   	}
