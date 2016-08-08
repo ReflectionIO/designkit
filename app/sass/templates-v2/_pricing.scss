@@ -1,5 +1,5 @@
 .page-pricing {
-	padding-top: 2rem;
+	padding-top: 2rem;	
 	.page-title,
 	.page-sub-title,
 	.page-pricing__header__links {
@@ -33,10 +33,13 @@
 		background-color: $panel-grey;
 	}
 	.pricing-info-container {
-		max-width: 1200px;
+		max-width: 850px;		
 		padding-top: 3rem;		
     margin: 0 auto;
 		font-size: 0;
+		@include breakpoint($laptop-plus) {
+			max-width: 980px;
+		}
 		background-color: $panel-grey;
 		&:last-child {
 			padding-top: 0;
@@ -53,13 +56,16 @@
 		float: left;
 	}
 	.pricing-column__small {
-		width: 20%;
+		width: 196px;
 	}
 	.pricing-column__small--push-two {
-		margin-left: 20%;
+		margin-left: 196px;
 	}
 	.pricing-column__large {
-		width: 30%;
+		width: 325px;
+		@include breakpoint($laptop-plus) {
+			width: 392px;
+		}		
 	}
 	.pricing-header {
 		padding-top: 18px;
@@ -67,9 +73,6 @@
 		text-align: center;
 		&:nth-child(2) {
 			border-radius: 7px 0 0;
-			background-color: $light-grey-1;			
-		}
-		&:nth-child(3) {
 			background-color: $reflection-green;
 			.pricing-cost {
 		    margin-top: -5px;
@@ -81,7 +84,7 @@
 				color: #a8f8e5;	
 			}
 		}
-		&:nth-child(4) {
+		&:nth-child(3) {
 			border-radius: 0 7px 0 0;
 			background-color: $reflection-purple;
 			.pricing-cost {
@@ -100,20 +103,6 @@
 	.pricing-footer {		
 		&:nth-child(2) {
 			.pricing-sign-up-container {
-				background-color: #616679;
-				a {
-					background-color: $light-grey-1;
-					&:hover {
-						background-color: darken($light-grey-1, 5%);
-					}
-					&:active {
-						border-top: 2px solid darken($light-grey-1, 20%)
-					}
-				}
-			}
-		}
-		&:nth-child(3) {
-			.pricing-sign-up-container {
 				background-color: #1c8c72;
 				a {
 					background-color: $reflection-green;
@@ -126,7 +115,7 @@
 				}
 			}
 		}
-		&:nth-child(4) {
+		&:nth-child(3) {
 			.pricing-sign-up-container {
 				background-color: #4b488b;
 				a {
@@ -270,11 +259,45 @@
 				font-size: 26px;
 			}
 		}
-	}	
+	}
+	.home-section-content-container {
+		max-width: 1065px;
+	}
+	.home-section.home-section--three {
+		padding-top: 0;
+		background-color: $panel-grey;
+		.home-section-content-container {
+	    padding-top: 35px;
+		}
+	}
+	.home-section-content-left.networks-illustration {
+    left: 0;
+    width: 360px;
+    @include breakpoint($laptop-mid) {
+    	left: 50px;
+    }
+    @include breakpoint($desktop) {
+	    left: 38px;
+	    width: 425px;
+	    max-width: 425px;
+	  }
+	  @include breakpoint($desktop-wide) {
+	    left: 38px;
+	    width: 425px;
+	    max-width: 425px;
+	  }
+	}
+	.home-section-content-right.home-section-text-content {
+    padding-top: 22px;
+    padding-bottom: 50px;    
+    @include breakpoint($desktop) {
+    	padding-bottom: 88px;
+    }    	
+	}
 }
 .pricing-page__text-content {
   max-width: 1400px;
-  margin: 5rem auto 5.3rem;
+  margin: 7rem auto 5.3rem;
 }
 .current-subscription-text {
 	font-family: $brand-heading-font;
