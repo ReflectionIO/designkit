@@ -1,0 +1,129 @@
+.chart__no-data,
+.chart__loading {
+	position: relative;
+  min-height: 200px;
+	width: 100%;
+  padding-bottom: 10px;
+	margin-top: 109px;
+	text-align: center;
+	svg, div {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	svg {
+		position: relative;
+		top: 3px;    
+    width: 104px;
+    margin-right: 29px;
+	}
+	h2 {
+		margin-bottom: 1rem;
+		font-size: 2.4rem;
+		font-weight: 600;
+		color: $light-grey-1;
+	}
+	p {
+		font-size: 1.4rem;
+		color: $light-grey-1;
+	}
+	.hamster-wheel,
+	.animation-hamster {
+		width: 110px;
+    height: 110px;
+	}
+	.animation-hamster {
+		background-size: 330px auto;
+		-webkit-animation: hamsterrunsm 0.2s infinite steps(3);
+   	animation: hamsterrunsm 0.2s infinite steps(3);
+	}
+}
+.chart__loading {
+	margin-top: 100px;
+	padding-left: 22px;
+	.is-error-message {
+    position: absolute;
+    top: 136px;
+    width: 250px;
+    left: 50%;
+    margin-left: -136px;
+    opacity: 0;
+		visibility: hidden;
+    h2 {
+    	font-size: 2.2rem;
+    	margin-bottom: 0.5rem;
+    }
+	}
+	&.is-error {
+		.is-error-message {
+			opacity: 1;
+			visibility: visible;
+			transition: opacity 0.3s;
+		}
+	}
+}
+.chart__no-data {
+	.animation-hamster-no-data {
+		margin-right: 20px;
+	}
+}
+.no-data-message-container {
+	text-align: center;
+	svg, div {
+		display: inline-block;
+		vertical-align: top;
+	}
+	svg {
+		width: 170px;
+		margin-top: 7px;
+		margin-right: 36px;
+		.page-my-account--billing & {
+			width: 106px;
+		}
+	}
+	h2 {
+		font-size: 2.4rem;
+		color: #81879d;
+	}
+	p {
+		font-size: 1.4rem;
+		color: #81879d;
+	}
+	button {
+		margin-top: 10px;
+	}
+}
+.linked-accounts-screenshot {
+	width: 529px;
+	margin-top: 44px;
+	float: left;
+}
+.no-data-message-content {
+	width: 600px;
+	margin: 100px auto;
+	display: inline-block;
+	text-align: left;
+	.page-my-account--billing & {
+		width: 536px;
+	}
+	div {
+		width: 392px;
+	}
+}
+.upgrade-content {
+	width: 380px;
+	margin: 4.1rem 6% 7rem 4.7%;
+	display: inline-block;
+	float: left;
+	@include breakpoint($laptop-mid) {
+		margin-right: 11%;
+	}
+	.page-linked-accounts {
+		margin-top: 3.1rem;
+	}
+}
+.page-linked-accounts--upgrade {
+	padding-bottom: 0;
+	> .grid-container {
+		position: relative;
+	}
+}

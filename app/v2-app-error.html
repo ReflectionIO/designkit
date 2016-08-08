@@ -79,11 +79,11 @@
 						<span class="page-header__app-price-details">Free + IAP</span>
 						<span class="page-header__app-store ref-icon-before--ios">iPhone</span>
 						<div>
-							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--error">Test Error Popup</button>
 							<button href="#" class="ref-button--secondary--small page-header_action-button">Follow App</button>
 						</div>
 					</div>
-
+					
 				</div>
 
 				<div class="grid__row overflow-visible">
@@ -216,11 +216,14 @@
 									</div>
 								</aside> -->
 								<div class="chart" id="chart-revenue">
-									<div class="chart__no-data">
-										<div class="animation-hamster-no-data"></div>
-    								<div>
-											<h2>No Available Data</h2>
-											<p>Please try refining your filters</p>
+									<div class="chart__loading">
+										<div class="hamster-wheel">
+											<img src="images/hamster-wheel.png" alt="hamster wheel" />
+										</div>
+										<div class="animation-hamster"></div>
+										<div class="is-error-message">
+											<h2>Something Went Wrong...</h2>
+											<p>Sorry about that, please try again</p>
 										</div>
 									</div>
 								</div>
@@ -247,11 +250,14 @@
 									</div>
 								</aside> -->
 								<div class="chart" id="chart-downloads">
-									<div class="chart__no-data">
-										<div class="animation-hamster-no-data"></div>
-    								<div>
-											<h2>No Available Data</h2>
-											<p>Please try refining your filters</p>
+									<div class="chart__loading">
+										<div class="hamster-wheel">
+											<img src="images/hamster-wheel.png" alt="hamster wheel" />
+										</div>
+										<div class="animation-hamster"></div>
+										<div class="is-error-message">
+											<h2>Something Went Wrong...</h2>
+											<p>Sorry about that, please try again</p>
 										</div>
 									</div>
 								</div>
@@ -536,7 +542,7 @@
 								</tr>
 							</tbody>
 						</table>
-						<span class="table-no-data-message ref-icon-before--warning">No Available Data <span>Please try refining your filters</span></span>
+						<span class="table-no-data-message ref-icon-before--warning">Something Went Wrong <span>Please try again</span></span>
 					</section>
 
 					<aside class="data-aside-bar grid__column--one-quarter">
@@ -556,18 +562,18 @@
 
 										<div class="summary-widget--no-tabs">
 			 								<h2 class="summary-widget__data-title">Actual Revenue</h2>
-			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">No Available Data</h3>
+			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">Something Went Wrong</h3>
 
 			 								<h2 class="summary-widget__data-title">Revenue % Growth</h2>
-			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">No Available Data</h3>
+			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">Something Went Wrong</h3>
 			 							</div>
 
 			 							<div class="summary-widget--no-tabs">
 			 								<h2 class="summary-widget__data-title">Actual Downloads</h2>
-			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">No Available Data</h3>
+			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">Something Went Wrong</h3>
 
 			 								<h2 class="summary-widget__data-title">Downloads % Growth</h2>
-			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">No Available Data</h3>
+			 								<h3 class="summary-widget__no-data-title ref-icon-before--warning">Something Went Wrong</h3>
 			 							</div>
 		 							</li>
 		 							<li class="summary-widget" id="bottomCountries">
@@ -688,6 +694,35 @@
 		<div class="grid-container" id="js-component-import--global-footer"></div>
 	</div>
 
+	<div class="page-overlay js-page-overlay js-page-overlay--error">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<a href="#" class="popup-close js-popup-close"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+				<div class="popup-sections-container">					
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+
+								<div class="popup-error-illustration js-popup-error-illustration">
+									<div class="hamster-wheel">
+										<img src="images/hamster-wheel.png" alt="hamster wheel">
+									</div>
+									<div class="animation-hamster"></div>
+								</div>
+
+								<h2 class="heading-style--heading-four multi-step-section__heading">Something Went Wrong...</h2>
+								<p>Sorry about that, please try again</p>
+								
+								<button type="button" class="ref-button--primary--large button-full-width js-popup-close">Please Try Again</button>
+
+								<p class="popup-text-link"><a class="js-open-login" href="v2-contact.html">Contact us for Help</a></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
 
@@ -729,6 +764,38 @@
   		$('.js-tabs').each(function() {
   			new Tabs($(this));
   		});
+
+  		$('.js-open-modal--error').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--error').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--error .js-popup-content').addClass("is-showing");
+					setTimeout(function(){
+						$('.js-popup-error-illustration').addClass("is-error");
+					}, 1000);
+				}, 100);
+			});
+
+			$('.js-page-overlay').on("click", function(e){
+				var parentIsPopupContent = false;
+				$(e.target).parents("div").each(function(){
+					if($(this).hasClass("js-popup-content")) {
+						parentIsPopupContent = true;
+					}
+				});
+				if(!parentIsPopupContent) {
+					$('.js-page-overlay').fadeOut(100);
+					$('.js-popup-content').removeClass("is-showing");
+					$('.js-popup-error-illustration').removeClass("is-error");
+				}
+			});
+
+			$('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay').fadeOut(100);
+				$('.js-popup-content').removeClass("is-showing");
+				$('.js-popup-error-illustration').removeClass("is-error");
+			});
 
   		// Mock function for template
   		$('#topAppsDownloads').hide();
@@ -783,6 +850,10 @@
 	  			}
   			}, 100);
   		}
+
+  		setTimeout(function(){
+  			$('.chart__loading').addClass("is-error");
+  		}, 2000);
   	}
 
   	window.onready = initScripts();
