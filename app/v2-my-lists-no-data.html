@@ -38,41 +38,40 @@
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
 			
-			<div class="page-my-account page-linked-accounts page-linked-accounts--upgrade">
-				<div class="grid-container">
+			<div class="page-my-account page-my-lists">
+				<div class="grid-container overflow-visible">
 					<header class="common-page-header">
 						<div class="common-summary-actions">
-							<div class="secondary-filter form-field--search js-form-field-search">
-								<input type="text" placeholder="Find App in List" name="findapp" id="findapp">
-								<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
-								<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
-							</div>
-		 					<div class="account-summary-action__license-info">
-		 						<span>4</span><span>App Stores</span>
-		 					</div>
+							<a href="#" class="ref-button--secondary--small js-open-modal--create-list">
+									Create New List
+								</a>
+								<div class="account-summary-action__license-info">
+									<span>0</span><span>Lists</span>
+								</div>
 						</div>
-						<h1 class="page-title heading-style--heading-two">Linked Accounts</h1>
-						<h2 class="page-sub-title">Manage the external accounts you have linked with Reflection</h1>
+						<h1 class="page-title heading-style--heading-two">My Lists</h1>
+						<h2 class="page-sub-title">View and manage lists of apps and publishers that you follow</h1>
 					</header>
 
 					<div class="upgrade-content-container">
 						<div class="upgrade-content">
 							<h2 class="heading-style--heading-two">Sign Up to Follow Apps and Developers for Free</h2>
 							<ul class="content-list accordion-list">
-								<li class="js-accordion-item is-on">
-									<h3>All Your Data in One Place</h3>
-									<p>Be alerted to key events such as app launches or price changes simply by following apps or publishers. Customise these alerts for an effortless way to receive the specific insight you need.</p>
+								<li class="js-accordion-item is-on" data-assoc-image="js-assoc-image-track">
+									<h3>Track and Compare More Easily in a Single Dashboard</h3>
+									<p>Easily compare the performance of apps or developers you want to follow against each other and overlay important events to analyse their impact.</p>
 								</li>
-								<li class="js-accordion-item">
-									<h3>Powerful Charting Tools</h3>
+								<li class="js-accordion-item" data-assoc-image="js-assoc-image-alerts">
+									<h3>Automated Alerts: Stay Up to Date with Key Events   </h3>
 									<p>Be alerted to key events such as app launches or price changes simply by following apps or publishers. Customise these alerts for an effortless way to receive the specific insight you need.</p>
 								</li>
 							</ul>
-							<button class="ref-button--primary--large js-open-modal--link-store-account">Link an Account to Get Started</button>
+							<button class="ref-button--primary--large js-open-modal--create-list">Start Following Apps Now</button>
 						</div>
 
-						<div class="accordion-list-assoc-images">
-							<img src="images/v2/screenshot-example.jpg" class="is-showing" />
+						<div class="accordion-list-assoc-images js-accordion-list-assoc-images">
+							<img src="images/sign-up-messaging-app-alerts.png" class="js-assoc-image-track is-showing" />
+							<img src="images/sign-up-messaging-chart.png" class="js-assoc-image-alerts" />
 						</div>
 					</div>
 				</div>
@@ -86,74 +85,32 @@
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
 
-	<div class="page-overlay js-page-overlay js-page-overlay--link-store-account">
+	<div class="page-overlay js-page-overlay js-page-overlay--create-list">
 		<div class="page-popup">
-			<div class="popup-content js-popup-content">				
-				<div class="popup-sections-container js-popup-sections-container show-popup-alert-message">
+			<div class="popup-content js-popup-content">
+				<div class="popup-sections-container js-popup-sections-container">
+
 					<div class="multi-step-section is-viewed-step">
-						<h2 class="heading-style--heading-five multi-step-section__heading">Link App Store Account <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Link App Store Account" data-whatsthis="Link an App Store account to get started. You can link further App Store or Ad Network accounts later on in Account settings."><span>What's this?</span></a></h2>
+						<h2 class="heading-style--heading-five multi-step-section__heading">Create List</h2>
+						<p>Create a new list of apps or publishers you want to track.</p>
 						<form>
-							<div class="secondary-filter secondary-filter--large form-field--select">
-								<select class="js-select-box">
-							    <option value="ios" selected>iTunes Connect</option>
-							    <option value="goo">Google Play</option>
-							    <option value="ama">Amazon App Store</option>
-								</select>
+							<div class="form-field">
+								<input type="text" name="listName" id="listName" autocomplete="off" />
+								<label for="listName">Name for this List</label>
 							</div>
-							<div class="reflection-form">								
-								<div class="form-field">
-									<input type="text" name="accountName" id="accountName" autocomplete="off" />
-									<label for="uname">Create Name for Account</label>
-									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Create Name" data-whatsthis="Some helpful content here"><span>What's this?</span></a>
-								</div>
-			 					<div class="form-field">						
-									<input type="text" name="appleid" id="appleid" autocomplete="off" />
-									<label for="uname">Apple ID</label>
-									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Apple ID" data-whatsthis="Some helpful content here"><span>What's this?</span></a>
-								</div>
-								<div class="form-field">
-									<input type="password" name="accountpassword" id="accountpassword" autocomplete="off" />
-									<label for="accountpassword">
-										Account Password
-									</label>
-									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="Account Password" data-whatsthis="Some helpful content here"><span>What's this?</span></a>
-								</div>
+							<div class="secondary-filter secondary-filter--large js-form-field--group">
+								<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger">App Selector Here</span>
 							</div>
-							<p class="popup-text-link"><a href="#">Help Linking an iTunes Connect Account</a></p>
-							<button class="ref-button--secondary--large button-medium-width js-popup-close">
-								Cancel
-							</button>
-							<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1" data-fake-loading="1">
-		 						Link Account
-		 					</button>
 						</form>
-					</div>
-					<div class="multi-step-section multi-step-section--link-account-loading">
-						<div class="hamster-wheel">
-							<img src="images/hamster-wheel.png" alt="hamster wheel" />
-						</div>
-						<div class="animation-hamster"></div>
-						<button class="ref-button--primary--large button-full-width is-loading link-account-multi-step__loading-button" disabled>
-	 						Linking Account...
+						<button class="ref-button--secondary--large button-medium-width js-popup-close">
+							Cancel
+						</button>
+						<button class="ref-button--primary--large button-medium-width js-popup-close">
+	 						Create List
 	 					</button>
 					</div>
-					<div class="multi-step-section js-multi-step-section-confirmation">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 61 54" enable-background="new 0 0 61 54" xml:space="preserve" class="success-tick"><path fill="#1BC79F" d="M60.6,7.4l-8.1-7.1C52.2,0.1,51.9,0,51.6,0c-0.3,0-0.6,0.2-0.9,0.4L21.3,33.8L10.9,20
-						c-0.2-0.3-0.5-0.4-0.8-0.5c-0.3,0-0.7,0-0.9,0.2l-8.6,6.5c-0.6,0.4-0.7,1.2-0.2,1.7l19.4,25.5c0.2,0.3,0.6,0.5,1,0.5c0,0,0,0,0,0
-						c0.4,0,0.7-0.2,0.9-0.4L60.7,9.2C61.2,8.7,61.1,7.9,60.6,7.4z"></path></svg>
-						<h2 class="heading-style--heading-five">Account Linked</h2>
-						<p>We're just compiling your apps and will let you know when they're are ready to view in 'My Data'. It will only take a few minutes.</p>
-						<a href="#" class="ref-button--secondary--medium js-popup-close">
-	 						Back to site
-	 					</a>
-	 					<p class="popup-text-link"><a href="#" class="js-mock-next-step" data-move-to-section="0">Link Another Store Account</a></p>
-					</div>
+
 				</div>
-				<aside class="popup-alert-message">
-					<p class="p-with-inline-svg-img">
-						<img src="images/v2/icon-padlock@2x.png" alt="Padlock icon" />
-						<span>Linked account credentials are securely stored by Reflection and your data is never shared</span></p>
-				</aside>
 			</div>
 		</div>
 	</div>
@@ -163,7 +120,7 @@
  	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
  	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
 
-	<!--[if IE 9]>
+	<!--[if IE 9]>c
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 	<![endif]-->
 
@@ -175,7 +132,7 @@
   <script>
   	function initScripts() {
   		// mock menu select
-  		var thisPageLinkLeftNav = $('#js-component-import--panel-left').find('a[href="v2-linked-accounts.html"]');
+  		var thisPageLinkLeftNav = $('#js-component-import--panel-left').find('a[href="v2-my-lists.html"]');
 		  thisPageLinkLeftNav.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
 		  var thisPageLink = $('#js-component-import--account-container').find('a[href="v2-linked-accounts.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
@@ -188,14 +145,18 @@
 
   		$('.js-accordion-item').on("click", function(){
   			$('.js-accordion-item').removeClass("is-on");
+  			var $this = $(this);
+  			var itemClassToShow = $this.data("assoc-image");
   			$(this).toggleClass("is-on");
+  			$('.accordion-list-assoc-images .is-showing').removeClass("is-showing");
+  			$('.' + itemClassToShow).addClass("is-showing");
   		});
 
-  		$('.js-open-modal--link-store-account').on("click", function(e){
+			$('.js-open-modal--create-list').on("click", function(e){
 				e.preventDefault();
-				$('.js-page-overlay--link-store-account').fadeIn(200);
+				$('.js-page-overlay--create-list').fadeIn(200);
 				setTimeout(function(){
-					$('.js-page-overlay--link-store-account .js-popup-content').addClass("is-showing");
+					$('.js-page-overlay--create-list .js-popup-content').addClass("is-showing");
 				}, 100);
 			});
 
@@ -264,4 +225,4 @@
   	}
   	window.onready = initScripts();
   </script>
-</body>]
+</body>
