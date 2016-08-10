@@ -41,29 +41,24 @@
 			<div class="page-my-account page-my-lists">
 				<div class="grid-container overflow-visible">
 					<header class="common-page-header">
-						<div class="common-summary-actions">
-							<a href="#" class="ref-button--secondary--small js-open-modal--create-list">
-								Create New List
-							</a>
-						</div>
 						<h1 class="page-title heading-style--heading-two">My Lists</h1>
 						<h2 class="page-sub-title">View and manage lists of apps and publishers that you follow</h1>
 					</header>
 
 					<div class="upgrade-content-container">
 						<div class="upgrade-content">
-							<h2 class="heading-style--heading-two">Sign Up to Follow Apps and Developers for Free</h2>
+							<h2 class="heading-style--heading-two">Sign Up to Follow Apps and Developers</h2>
 							<ul class="content-list accordion-list">
 								<li class="js-accordion-item is-on" data-assoc-image="js-assoc-image-track">
 									<h3>Track and Compare More Easily in a Single Dashboard</h3>
 									<p>Easily compare the performance of apps or developers you want to follow against each other and overlay important events to analyse their impact.</p>
 								</li>
 								<li class="js-accordion-item" data-assoc-image="js-assoc-image-alerts">
-									<h3>Automated Alerts: Stay Up to Date with Key Events   </h3>
-									<p>Be alerted to key events such as app launches or price changes simply by following apps or publishers. Customise these alerts for an effortless way to receive the specific insight you need.</p>
+									<h3>Automated Alerts: Stay Up to Date with Key Events</h3>
+									<p>Be alerted to key events such as app launches or price changes simply by following apps or developers. Customise these alerts for an effortless way to receive the specific insight you need.</p>
 								</li>
 							</ul>
-							<button class="ref-button--primary--large js-open-search-panel">Start Following Apps Now</button>
+							<button class="ref-button--primary--large" onclick="location.replace('v2-sign-up.html')">Sign up to Start Following Now</button>
 						</div>
 
 						<div class="accordion-list-assoc-images js-accordion-list-assoc-images">
@@ -81,36 +76,6 @@
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
-
-	<div class="page-overlay js-page-overlay js-page-overlay--create-list">
-		<div class="page-popup">
-			<div class="popup-content js-popup-content">
-				<div class="popup-sections-container js-popup-sections-container">
-
-					<div class="multi-step-section is-viewed-step">
-						<h2 class="heading-style--heading-five multi-step-section__heading">Create List</h2>
-						<p>Create a new list of apps or publishers you want to track.</p>
-						<form>
-							<div class="form-field">
-								<input type="text" name="listName" id="listName" autocomplete="off" />
-								<label for="listName">Name for this List</label>
-							</div>
-							<div class="secondary-filter secondary-filter--large js-form-field--group">
-								<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger">App Selector Here</span>
-							</div>
-						</form>
-						<button class="ref-button--secondary--large button-medium-width js-popup-close">
-							Cancel
-						</button>
-						<button class="ref-button--primary--large button-medium-width js-popup-close">
-	 						Create List
-	 					</button>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
 
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
@@ -149,14 +114,6 @@
   			$('.' + itemClassToShow).addClass("is-showing");
   		});
 
-			$('.js-open-modal--create-list').on("click", function(e){
-				e.preventDefault();
-				$('.js-page-overlay--create-list').fadeIn(200);
-				setTimeout(function(){
-					$('.js-page-overlay--create-list .js-popup-content').addClass("is-showing");
-				}, 100);
-			});
-
 			$('.js-page-overlay').on("click", function(e){
 				var parentIsPopupContent = false;
 				$(e.target).parents("div").each(function(){
@@ -174,10 +131,6 @@
 				e.preventDefault();
 				$('.js-page-overlay').fadeOut(100);
 				$('.js-popup-content').removeClass("is-showing");
-			});
-
-			$('.js-open-search-panel').on("click", function(){
-				$('.js-get-items').focus();
 			});
 
 			$('.js-whats-this-tooltip').each(function(){

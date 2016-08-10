@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection V2, Alert Settings</title>
+	<title>Reflection V2, Account Details</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
@@ -38,68 +38,67 @@
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
 			
-			<div class="page-my-account page-manage-notifications">
+			<div class="page-my-account page-my-account--details">
 				<div class="grid-container">
 					<header class="common-page-header">
 						<div>
 							<h1 class="page-title heading-style--heading-three">My Account</h1>
-							<h2 class="page-sub-title">Manage the type and frequency of notifications you receive for your account and apps you follow</h1>
+							<h2 class="page-sub-title">Review or update your account details and settings</h1>
 						</div>
 						<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--large">
 							<div class="toggle">
-								<input id="toggle--show-popla" name="radiolarge" type="radio">
-								<label for="toggle--show-popla" onclick="location.replace('v2-account-details-no-data.html');">
+								<input id="toggle--show-popla" name="radiolarge" checked="" type="radio">
+								<label for="toggle--show-popla">
 									Account Details
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-users" name="radiolarge" type="radio">
-								<label for="toggle--show-users" onclick="location.replace('v2-account-licenses-no-data.html');">
+								<label for="toggle--show-users">
 									Licenses
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-share" name="radiolarge" type="radio">
-								<label for="toggle--show-share" onclick="location.replace('v2-account-share-none.html');">
+								<label for="toggle--show-share">
 									Sharing My Data
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-subscriptions" name="radiolarge" type="radio">
-								<label for="toggle--show-subscriptions" onclick="location.replace('v2-account-billing.html');">
+								<label for="toggle--show-subscriptions">
 									Billing Details
 								</label>
 							</div>
 							<div class="toggle">
-								<input id="toggle--show-notifications" name="radiolarge" checked type="radio">
-								<label for="toggle--show-notifications" onclick="location.replace('v2-account-manage-notifications-no-data.html');">
+								<input id="toggle--show-notifications" name="radiolarge" type="radio">
+								<label for="toggle--show-notifications">
 									Alert Settings
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-linked" name="radiolarge" type="radio">
-								<label for="toggle--show-linked" onclick="location.replace('v2-linked-accounts-none.html');">
+								<label for="toggle--show-linked" onclick="location.replace('v2-linked-accounts-guest.html');">
 									Linked Accounts
 								</label>
 							</div>
 						</div>
 					</header>
-
 					<div class="upgrade-content-container">
 						<div class="upgrade-content">
-							<h2 class="heading-style--heading-two">Why Upgrade to Pro?</h2>
+							<h2 class="heading-style--heading-two">Why Should I Use Reflection?</h2>
 							<ol class="content-list accordion-list">
 								<li class="js-accordion-item is-on" data-assoc-image="js-assoc-image-data">
-									<h3>Build a Picture of the Entire App Market</h3>
-									<p>Use the Store Data dashboard to get an overview of the entire app market. Track the revenue and downloads for apps and publishers across app stores, categories and countries for any time period.</p>
+									<h3>Build a Picture of the App Market</h3>
+									<p>Track revenue and downloads for apps and developers across app stores, categories and countries for any time period.</p>
 								</li>
-								<li class="js-accordion-item" data-assoc-image="js-assoc-image-charting">
+								<li class="js-accordion-item" data-assoc-image="js-assoc-image-chart">
 									<h3>Powerful Charting Tools</h3>
-									<p>Easily compare the performance of apps, publishers or countries against each other and overlay important events to analyse their impact.</p>
+									<p>Easily compare the performance of apps, developers or countries against each other and overlay important events to analyse their impact.</p>
 								</li>
 								<li class="js-accordion-item" data-assoc-image="js-assoc-image-track">
-									<h3>Automated Alerts: Stay Up to Date with Key Events</h3>
-									<p>Be alerted to key events such as app launches or price changes simply by following apps or publishers. Customise these alerts for an effortless way to receive the specific insight you need. </p>
+									<h3>Automated Alerts: Stay Up to Date with Key Events </h3>
+									<p>Be alerted to key events such as app launches or price changes simply by following apps or developers.<br />Customise these alerts for an effortless way to receive the specific insight you need.</p>
 								</li>
 							</ol>
 							<button class="ref-button--primary--large" onclick="location.replace('v2-sign-up.html')">Sign up for Free</button>
@@ -107,7 +106,7 @@
 
 						<div class="accordion-list-assoc-images js-accordion-list-assoc-images">
 							<img src="images/sign-up-messaging-app-data.png" class="js-assoc-image-data is-showing" style="left: -8%;" />			
-							<img src="images/sign-up-messaging-app-charting.png" class="js-assoc-image-charting" />
+							<img src="images/sign-up-messaging-chart.png" class="js-assoc-image-chart" />
 							<img src="images/sign-up-messaging-app-alerts.png" class="js-assoc-image-track" />
 						</div>
 					</div>
@@ -117,7 +116,7 @@
 		</div>
 
 		<div class="grid-container" id="js-component-import--global-footer"></div>
-	</div>	
+	</div>
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
@@ -139,11 +138,11 @@
   <script>
   	function initScripts() {
   		// mock menu select
-  		var thisPageLink = $('#js-component-import--account-container').find('a[href="v2-account-manage-notifications.html"]');
+  		var thisPageLink = $('#js-component-import--account-container').find('a[href="v2-account-details.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
 
   		new Page();
-  		
+
   		$('.js-accordion-item').on("click", function(){
   			$('.js-accordion-item').removeClass("is-on");
   			var $this = $(this);

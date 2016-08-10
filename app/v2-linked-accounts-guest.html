@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection V2, Account Details</title>
+	<title>Reflection V2, Linked Accounts</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
@@ -38,76 +38,70 @@
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
 			
-			<div class="page-my-account page-my-account--details">
+			<div class="page-my-account page-linked-accounts page-linked-accounts--upgrade">
 				<div class="grid-container">
 					<header class="common-page-header">
-						<div>
-							<h1 class="page-title heading-style--heading-three">My Account</h1>
-							<h2 class="page-sub-title">Review or update your account details and settings</h1>
-						</div>
+						<h1 class="page-title heading-style--heading-two">Linked Accounts</h1>
+						<h2 class="page-sub-title">Manage the external accounts you have linked with Reflection</h1>
+
 						<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--large">
 							<div class="toggle">
-								<input id="toggle--show-popla" name="radiolarge" checked="" type="radio">
-								<label for="toggle--show-popla" onclick="location.replace('v2-account-details-no-data.html');">
+								<input id="toggle--show-popla" name="radiolarge" type="radio">
+								<label for="toggle--show-popla" onclick="location.replace('v2-account-details-guest.html');">
 									Account Details
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-users" name="radiolarge" type="radio">
-								<label for="toggle--show-users" onclick="location.replace('v2-account-licenses-no-data.html');">
+								<label for="toggle--show-users" onclick="location.replace('v2-account-details-guest.html');">
 									Licenses
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-share" name="radiolarge" type="radio">
-								<label for="toggle--show-share" onclick="location.replace('v2-account-share-none.html');">
+								<label for="toggle--show-share" onclick="location.replace('v2-account-details-guest.html');">
 									Sharing My Data
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-subscriptions" name="radiolarge" type="radio">
-								<label for="toggle--show-subscriptions" onclick="location.replace('v2-account-billing.html');">
+								<label for="toggle--show-subscriptions" onclick="location.replace('v2-account-details-guest.html');">
 									Billing Details
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-notifications" name="radiolarge" type="radio">
-								<label for="toggle--show-notifications" onclick="location.replace('v2-account-manage-notifications-no-data.html');">
+								<label for="toggle--show-notifications" onclick="location.replace('v2-account-details-guest.html');">
 									Alert Settings
 								</label>
 							</div>
 							<div class="toggle">
-								<input id="toggle--show-linked" name="radiolarge" type="radio">
-								<label for="toggle--show-linked" onclick="location.replace('v2-linked-accounts-none.html');">
+								<input id="toggle--show-linked" name="radiolarge" checked type="radio">
+								<label for="toggle--show-linked">
 									Linked Accounts
 								</label>
 							</div>
 						</div>
 					</header>
+
 					<div class="upgrade-content-container">
 						<div class="upgrade-content">
-							<h2 class="heading-style--heading-two">Why Upgrade to Pro?</h2>
-							<ol class="content-list accordion-list">
-								<li class="js-accordion-item is-on" data-assoc-image="js-assoc-image-data">
-									<h3>Build a Picture of the Entire App Market</h3>
-									<p>Use the Store Data dashboard to get an overview of the entire app market. Track the revenue and downloads for apps and publishers across app stores, categories and countries for any time period.</p>
+							<h2 class="heading-style--heading-three">Why Should I Link My Accounts?</h2>
+							<ul class="content-list accordion-list">
+								<li class="js-accordion-item is-on">
+									<h3>Get All Your Data in One Place</h3>
+									<p>Link multiple app store or ad network accounts to analyse all the data you need for your own apps in one interactive dashboard. Get live feedback on how you’re performing with automatic alerts.</p>
 								</li>
-								<li class="js-accordion-item" data-assoc-image="js-assoc-image-charting">
+								<li class="js-accordion-item">
 									<h3>Powerful Charting Tools</h3>
-									<p>Easily compare the performance of apps, publishers or countries against each other and overlay important events to analyse their impact.</p>
+									<p>Your sales data, visualised. Easily track and analyse the performance of your own apps in various countries for any time period.</p>
 								</li>
-								<li class="js-accordion-item" data-assoc-image="js-assoc-image-track">
-									<h3>Automated Alerts: Stay Up to Date with Key Events</h3>
-									<p>Be alerted to key events such as app launches or price changes simply by following apps or publishers. Customise these alerts for an effortless way to receive the specific insight you need. </p>
-								</li>
-							</ol>
-							<button class="ref-button--primary--large" onclick="location.replace('v2-sign-up.html')">Sign up for Free</button>
+							</ul>
+							<button class="ref-button--primary--large" onclick="location.replace('v2-sign-up.html')">Sign up for Free to Get Started</button>
 						</div>
 
-						<div class="accordion-list-assoc-images js-accordion-list-assoc-images">
-							<img src="images/sign-up-messaging-app-data.png" class="js-assoc-image-data is-showing" style="left: -8%;" />			
-							<img src="images/sign-up-messaging-app-charting.png" class="js-assoc-image-charting" />
-							<img src="images/sign-up-messaging-app-alerts.png" class="js-assoc-image-track" />
+						<div class="accordion-list-assoc-images" style="margin-top: 30px;">
+							<img src="images/sign-up-messaging-my-apps.png" class="is-showing" />
 						</div>
 					</div>
 				</div>
@@ -138,20 +132,21 @@
   <script>
   	function initScripts() {
   		// mock menu select
-  		var thisPageLink = $('#js-component-import--account-container').find('a[href="v2-account-details.html"]');
+  		var thisPageLinkLeftNav = $('#js-component-import--panel-left').find('a[href="v2-linked-accounts.html"]');
+		  thisPageLinkLeftNav.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
+		  var thisPageLink = $('#js-component-import--account-container').find('a[href="v2-linked-accounts.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
 
   		new Page();
+  		;
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
 
   		$('.js-accordion-item').on("click", function(){
   			$('.js-accordion-item').removeClass("is-on");
-  			var $this = $(this);
-  			var itemClassToShow = $this.data("assoc-image");
   			$(this).toggleClass("is-on");
-  			$('.accordion-list-assoc-images .is-showing').removeClass("is-showing");
-  			$('.' + itemClassToShow).addClass("is-showing");
   		});
-  		
   	}
   	window.onready = initScripts();
   </script>
