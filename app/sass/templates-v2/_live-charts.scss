@@ -236,8 +236,12 @@
 	text-align: right;
 	overflow: visible;
 	.ref-icon-after--up,
-	.ref-icon-after--down {
-		vertical-align: top;
+	.ref-icon-after--down,
+	.ref-icon-after--equals {
+		position: relative;
+    top: 1px;
+    margin-right: 3px;
+    vertical-align: top;
 		&:after {
 			position: relative;
 			top: -6px;
@@ -251,6 +255,12 @@
 	.ref-icon-after--down,
 	.ref-icon-after--down:after {
 		color: $reflection-red;
+	}
+	.ref-icon-after--equals:after {
+		top: 3px;
+    left: -8px;
+    font-size: 10px;
+		color: $light-grey-2;
 	}
 	&.is-loading {
 		float: right;
