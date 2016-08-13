@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Account Licenses</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			
+			<div class="page-my-account page-my-account--licenses">
+				<div class="grid-container">
+					<header class="common-page-header">
+						<div>
+							<h1 class="page-title heading-style--heading-three">My Account</h1>
+							<h2 class="page-sub-title">Manage the licensed users of your Reflection account</h1>
+						</div>
+						<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--large">
+							<div class="toggle">
+								<input id="toggle--show-popla" name="radiolarge" type="radio">
+								<label for="toggle--show-popla" onclick="location.replace('v2-account-details.html');">
+									Account Details
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-users" name="radiolarge" checked type="radio">
+								<label for="toggle--show-users">
+									Licenses
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-share" name="radiolarge" type="radio">
+								<label for="toggle--show-share" onclick="location.replace('v2-account-share.html');">
+									Sharing My Data
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-subscriptions" name="radiolarge" type="radio">
+								<label for="toggle--show-subscriptions" onclick="location.replace('v2-account-billing.html');">
+									Billing Details
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-notifications" name="radiolarge" type="radio">
+								<label for="toggle--show-notifications" onclick="location.replace('v2-account-manage-notifications.html');">
+									Alert Settings
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-linked" name="radiolarge" type="radio">
+								<label for="toggle--show-linked" onclick="location.replace('v2-linked-accounts.html');">
+									Linked Accounts
+								</label>
+							</div>
+						</div>
+					</header>
+
+					<div class="upgrade-content-container">
+						<div class="upgrade-content">
+							<h2 class="heading-style--heading-two">Why Should I Go Pro?</h2>
+							<p>Go Pro to get full, unrestricted access to all of Reflection's market data to build a more detailed picture of the app market.<br />
+							Follow unlimited apps and developers to track your competition more effectively.</p>
+							<button class="ref-button--primary--large">Upgrade to Pro Now</button>
+						</div>
+
+						<div class="accordion-list-assoc-images js-accordion-list-assoc-images" style="margin-top: 50px;">
+							<img src="images/sign-up-messaging-app-data.png" class="is-showing" style="left: -8%;" />
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="grid-container" id="js-component-import--global-footer"></div>
+	</div>	
+
+	<div class="page-overlay page-overlay--overflow-visible js-page-overlay js-page-overlay--edit-user">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">				
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+
+								<h2 class="heading-style--heading-five multi-step-section__heading">Edit User Details</h2>
+								<p>Manage the access level and role of this user</p>
+								
+								<div class="secondary-filter secondary-filter--large form-field--select">
+									<select class="js-select-box">
+								    <option value="myandstore" selected>My Data &amp; Store Data (Full access to linked account sales data and all other market data)</option>
+								    <option value="my">My Data Only</option>
+								    <option value="store">Store Data Only</option>
+									</select>
+								</div>
+
+								<div class="secondary-filter secondary-filter--large form-field--select">
+									<select class="js-select-box">
+								    <option value="teamuser" selected>Team User</option>
+								    <option value="admin">Admin User</option>
+									</select>
+								</div>
+
+								<p>Manage which of your linked accounts this user had access to</p>
+
+								<div class="secondary-filter secondary-filter--large secondary-filter--multi-select js-multi-select-box" data-title="Select an Account" data-title-plural="Accounts">
+									<label for="">Country</label>
+									<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+									<div class="dropdown-summary">
+										<span><span class="js-number-selected">0 </span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
+									</div>
+									<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">			
+										<li>
+											<input type="checkbox" name="accountName" id="accountName" />
+											<label for="accountName" class="checkboxLabel">All Linked Accounts</label>
+											<label for="accountName" class="checkboxLabelVisible">All Linked Accounts</label>
+										</li>
+										<li>
+											<input type="checkbox" name="accountNameTwo" id="accountNameTwo" />
+											<label for="accountNameTwo" class="checkboxLabel">iOS Account Two</label>
+											<label for="accountNameTwo" class="checkboxLabelVisible">iOS Account Two</label>
+										</li>
+										<li>
+											<input type="checkbox" name="accountNameThe" id="accountNameThe" />
+											<label for="accountNameThe" class="checkboxLabel">Account Three</label>
+											<label for="accountNameThe" class="checkboxLabelVisible">Account Three</label>
+										</li>
+									</ul>
+								</div>
+
+								<button class="ref-button--secondary--large button-medium-width js-popup-close">
+			 						Cancel
+			 					</button>
+								<button class="ref-button--primary--large button-medium-width js-popup-close">
+			 						Update
+			 					</button>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--assign">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">				
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+
+								<h2 class="heading-style--heading-five multi-step-section__heading">Assign License to New User</h2>
+								<form class="reflection-form">
+			 						<div class="form-field--split">
+					 					<div class="form-field">
+											<input type="text" name="firstname" id="firstname" autocomplete="off"/>
+											<label for="firstname">User's First Name</label>
+										</div>
+										<div class="form-field">						
+											<input type="text" name="lastname" id="lastname" autocomplete="off"/>
+											<label for="lastname">User's Last Name</label>
+										</div>
+									</div>
+									<div class="form-field">						
+										<input type="email" name="email" id="email" autocomplete="off"/>
+										<label for="email">User's Email</label>
+									</div>
+									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+										<ul>
+											<li>
+												<input type="checkbox" name="shareSalesData" id="shareSalesData" checked="">
+												<label for="shareSalesData" class="checkboxLabel">Share my sales data with this user</label>
+												<label for="shareSalesData" class="checkboxLabelVisible">Share my sales data with this user</label>
+											</li>
+										</ul>
+									</div>
+								</form>
+						
+								<button class="ref-button--secondary--large button-medium-width js-popup-close">
+			 						Cancel
+			 					</button>
+								<button class="ref-button--primary--large button-medium-width js-mock-next-step" data-move-to-section="1">
+			 						Next
+			 					</button>
+
+						</div>
+
+						<div class="multi-step-section js-multi-step-section-confirmation">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 61 54" enable-background="new 0 0 61 54" xml:space="preserve" class="success-tick"><path fill="#1BC79F" d="M60.6,7.4l-8.1-7.1C52.2,0.1,51.9,0,51.6,0c-0.3,0-0.6,0.2-0.9,0.4L21.3,33.8L10.9,20
+							c-0.2-0.3-0.5-0.4-0.8-0.5c-0.3,0-0.7,0-0.9,0.2l-8.6,6.5c-0.6,0.4-0.7,1.2-0.2,1.7l19.4,25.5c0.2,0.3,0.6,0.5,1,0.5c0,0,0,0,0,0
+							c0.4,0,0.7-0.2,0.9-0.4L60.7,9.2C61.2,8.7,61.1,7.9,60.6,7.4z"></path></svg>
+							<h2 class="heading-style--heading-five">License Assigned to New User</h2>
+							<p>You can manage their access level and role in Account Settings</p>
+							<a href="#" class="ref-button--secondary--medium js-popup-close">
+		 						Return to Licenses
+		 					</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--remove">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">				
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+
+								<h2 class="heading-style--heading-five multi-step-section__heading">Remove User</h2>
+								<p>Once this user is removed you will be able to re-assign this license to a new user</p>
+						
+								<button class="ref-button--secondary--large button-medium-width js-popup-close">
+			 						Cancel
+			 					</button>
+								<button class="ref-button--primary--large button-medium-width js-popup-close">
+			 						Remove User
+			 					</button>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--delete">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">				
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+
+								<h2 class="heading-style--heading-five multi-step-section__heading">Delete License</h2>
+								<p>This license will be removed from your account at the end of the billing period. There are <strong>26 days</strong> remaining.</p>
+						
+								<button class="ref-button--secondary--large button-medium-width js-popup-close">
+			 						Cancel
+			 					</button>
+								<button class="ref-button--primary--large button-medium-width js-popup-close">
+			 						Delete License
+			 					</button>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--add-license">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">				
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+
+								<h2 class="heading-style--heading-five multi-step-section__heading">Add Licenses</h2>
+
+								<aside>
+									<ul class="multi-step-breadcrumb">
+										<li class="multi-step-breadcrumb__one-half multi-step-breadcrumb__current-item"><a href="#" onclick="return false;">Licenses</a></li>
+										<li class="multi-step-breadcrumb__one-half multi-step-breadcrumb__disabled"><a href="#" onclick="return false;">Payment</a></li>
+									</ul>
+								</aside>
+
+								<h3 class="heading-style--heading-six">How many team members need access?</h3>
+								<form class="reflection-form">
+									<div class="range-input">
+										<button class="ref-button--set-range ref-button--set-range--down js-license-set js-license-set--down" onclick="return false;">
+											<span class="ref-icon-before--minus-two"></span>
+										</button>
+										<input type="text" class="range-input-box js-license-number" name="numberOfLicenses" id="numberOfLicenses" autocomplete="off" value="1" />
+										<button class="ref-button--set-range ref-button--set-range--up js-license-set js-license-set--up" onclick="return false;">
+											<span class="ref-icon-before--plus"></span>
+										</button>
+									</div>
+									<div class="cost-container">
+										<span class="cost-container__cost">$<span class="js-license-cost">149.99</span></span>
+										<span class="cost-container__frequency">Per Month</span>
+									</div>
+									<p class="cost-maximum-warning js-maximum-warning"><strong>That's a lot of folks... please <a href="#">get in touch</a> so we can help set up your account.</strong></p>
+									<p>Each user receives an individual license giving them full access to Reflection's Store Data</p>
+			 						<button class="ref-button--secondary--large button-medium-width js-popup-close">
+			 							Cancel
+			 						</button>
+									<button class="ref-button--primary--large button-medium-width js-mock-next-step js-licenses-next-button" data-move-to-section="1">
+				 						Next
+				 					</button>
+								</form>
+
+						</div>
+
+						<div class="multi-step-section">
+
+								<h2 class="heading-style--heading-five multi-step-section__heading">Payment</h2>
+
+								<aside>
+									<ul class="multi-step-breadcrumb">
+										<li class="multi-step-breadcrumb__one-third"><a href="#" onclick="return false;" class="js-mock-next-step" data-move-to-section="0" placeholder-icon-app-bundle--sm.png>Licenses</a></li>
+										<li class="multi-step-breadcrumb__one-third multi-step-breadcrumb__current-item"><a href="#" onclick="return false;">Payment</a></li>
+									</ul>
+								</aside>
+								
+								<form class="reflection-form">
+									
+									<span class="number-of-licenses-chosen">5 x Pro Licenses</span>
+									<div class="cost-container">
+										<span class="cost-container__cost">$<span class="js-license-cost">149.99</span></span>
+										<span class="cost-container__frequency">Per Month</span>
+									</div>
+									<h3 class="heading-style--heading-six payment-details-heading">Payment Details</h3>
+									<div class="form-field--checkbox-list form-field--checkbox-list--inline payment-save-for-later">
+										<ul>
+											<li>
+												<input type="checkbox" name="checkboxSave" id="checkboxSave" checked="">
+												<label for="checkboxSave" class="checkboxLabel">Save for Later</label>
+												<label for="checkboxSave" class="checkboxLabelVisible">Save for Later</label>
+											</li>
+										</ul>
+									</div>
+									<img src="images/placeholder-payment.jpg" alt="Payment Placeholder" />
+			 						<button class="ref-button--secondary--large button-medium-width js-mock-next-step" data-move-to-section="0" placeholder-icon-app-bundle--sm.png>
+			 							Back
+			 						</button>
+									<button class="ref-button--primary--large button-medium-width js-mock-next-step js-licenses-next-button" data-move-to-section="2">
+				 						Pay Now
+				 					</button>
+								</form>
+
+						</div>
+
+						<div class="multi-step-section js-multi-step-section-confirmation">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 61 54" enable-background="new 0 0 61 54" xml:space="preserve" class="success-tick"><path fill="#1BC79F" d="M60.6,7.4l-8.1-7.1C52.2,0.1,51.9,0,51.6,0c-0.3,0-0.6,0.2-0.9,0.4L21.3,33.8L10.9,20
+							c-0.2-0.3-0.5-0.4-0.8-0.5c-0.3,0-0.7,0-0.9,0.2l-8.6,6.5c-0.6,0.4-0.7,1.2-0.2,1.7l19.4,25.5c0.2,0.3,0.6,0.5,1,0.5c0,0,0,0,0,0
+							c0.4,0,0.7-0.2,0.9-0.4L60.7,9.2C61.2,8.7,61.1,7.9,60.6,7.4z"></path></svg>
+							<h2 class="heading-style--heading-four">Licenses Purchased</h2>
+							<p>You can now assign licenses by clicking "Assign" in the Unassigned Licenses table</p>
+							<a href="#" class="ref-button--secondary--medium js-popup-close">
+		 						Back to Licenses
+		 					</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script>
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-account-licenses-no-data.html"]');
+  		console.log(thisPageLink);
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected");
+
+  		new Page();
+
+  		$('.js-accordion-item').on("click", function(){
+  			$('.js-accordion-item').removeClass("is-on");
+  			var $this = $(this);
+  			var itemClassToShow = $this.data("assoc-image");
+  			$(this).toggleClass("is-on");
+  			$('.accordion-list-assoc-images .is-showing').removeClass("is-showing");
+  			$('.' + itemClassToShow).addClass("is-showing");
+  		});
+  	
+  	}
+  	window.onready = initScripts();
+  </script>
+</body>

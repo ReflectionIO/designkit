@@ -10,6 +10,25 @@
   border-radius: 5px;
   border: 1px solid #c4c7d0;
   background-color: $reflection-white;
+  .group-selector-container {
+  	.checkboxLabelVisible {
+    	span {
+    		width: 200px;
+    		overflow: hidden;
+    		text-overflow: ellipsis;
+		    white-space: nowrap;
+		    &.group-picker__app-result__store {
+		    	width: 26px;
+		    }  
+    	}
+    	.icon-flag-sm {
+    		top: 0;
+    	}
+  	}
+  	.checkboxLabel {
+  		top: 2px;
+  	}
+  }
   .filter-toggle {
   	margin: 0 auto;
   	float: none;
@@ -95,8 +114,7 @@
 	font-size: 14px;
 	border: 1px solid $light-grey-2;
 	border-radius: 4px;
-	img {
-		width: 19px;
+	.icon-flag-sm {
 		float: left;
 	}
 	span {    
@@ -180,7 +198,7 @@
   width: 26px;  
   height: 26px;
   margin-top: 9px;
-  display: inline-block;
+  display: inline-block;  
   vertical-align: top;
   font-size: 0;
   &:after {
@@ -196,11 +214,16 @@
   }
 }
 .group-picker__app-result {
+	width: 155px;
 	display: inline-block;
+	overflow: hidden !important;
 }
 .group-picker__app-result__name {
 	padding-bottom: 5px;
 	display: block;
+  overflow: hidden !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 15px;
   font-weight: 600;

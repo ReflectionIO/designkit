@@ -53,7 +53,8 @@ $reflection-icons-name: "reflection-icons-1";
 .ref-icon-before--minus-two,
 .ref-icon-before--warning,
 .ref-icon-before--warning-filled,
-.ref-icon-before--ios {
+.ref-icon-before--ios,
+.ref-icon-before--equals {
 	@extend .ref-icon-before;
 }
 .ref-icon-after--search,
@@ -73,7 +74,8 @@ $reflection-icons-name: "reflection-icons-1";
 .ref-icon-after--revenue,
 .ref-icon-after--calendar,
 .ref-icon-after--dollar,
-.ref-icon-after--angle-right {
+.ref-icon-after--angle-right,
+.ref-icon-after--equals {
 	@extend .ref-icon-after;
 }
 .ref-icon-before--search:before,
@@ -179,6 +181,10 @@ $reflection-icons-name: "reflection-icons-1";
 .ref-icon-after--angle-right:after {
 	content: "l";
 }
+.ref-icon-before--equals:before,
+.ref-icon-after--equals:after {
+	content: "4";
+}
 
 
 #{headings()}, p, li, a, blockquote, time, span, cite {
@@ -195,6 +201,9 @@ $reflection-icons-name: "reflection-icons-1";
 	color: $dark-grey-1;
 	&:first-child {
 		margin-top: 0;
+	}
+	.theme-dark & {
+		color: $reflection-white;
 	}
 }
 h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
@@ -333,6 +342,9 @@ p {
 	strong {
 		color: $dark-grey-1;
 		font-weight: 700;
+	}
+	.theme-dark & {
+		color: $light-grey-2;
 	}
 }
 .page-footer-link-text {	
@@ -507,6 +519,11 @@ figcaption {
 				display: none;
 			}
 		}
+	}
+	.theme-dark & {
+		li {
+			color: $light-grey-2;
+		}		
 	}
 }
 h1 + .content-list,

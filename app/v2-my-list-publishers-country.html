@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection V2, My List - Developer, by Country</title>
+	<title>Reflection V2, Store Data - Apps, by Country</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
 		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
@@ -37,47 +37,40 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-data-dashboard page-data-dashboard--country">
+			<div class="page-data-dashboard page-data-dashboard--country page-data-dashboard--list-page">
 				<div class="grid-container">
-					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">Publishers I Follow <span>(4 Apps)</span></h1>
-					
+					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">Developers I Follow <span>(6)</span></h1>
+
+					<span class="page-header__data-info-text">Estimated Data</span>
+					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Estimated Data?" data-whatsthis="In the Store data section revenue and download data displayed are accurate estimates, including any data for your own apps. This may result in variations on actual data in your My Data dashboard"></span>
+
+					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+
 					<div class="toggle-container page-header__page-toggle">
 						<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
 							<div class="toggle">
 								<input id="toggle--show-overview" name="overview-country" type="radio">
-								<label for="toggle--show-overview" onclick="location.replace('v2-data-template.html#show-list');">
+								<label for="toggle--show-overview" onclick="location.replace('v2-my-list-publishers.html');">
 									Overview
 								</label>
 							</div>
 							<div class="toggle">
 								<input id="toggle--show-country" name="overview-country" type="radio" checked>
-								<label for="toggle--show-country" onclick="location.replace('v2-my-list-publishers-country.html');">
+								<label for="toggle--show-country">
 									By Country
 								</label>
 							</div>
 						</div>
 					</div>
-
-					<span class="page-header__data-info-text">All Estimated Data</span>
-					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Estimated Data?" data-whatsthis="Info"></span>
-
-					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
-					<a href="v2-my-lists.html" class="page-header__text-link js-mock-show-for-my-list-view-only">Back to My Lists</a>
 				</div>
 
 				<div class="grid__row overflow-visible">
 					<aside class="primary-filters-container">
- 						<div class="primary-filter form-field--select">
+						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
-						    <option value="all" selected>All Stores &amp; Accounts</option>
-						    <option value="allIos" class="js-parent-option">All iOS Accounts</option>
-						    <option value="iosOne" class="js-child-option">iOS Account One</option>
-						    <option value="iosTwo" class="js-child-option">iOS Account Two</option>
-						    <option value="iosThree" class="js-child-option">iOS Account Three</option>
-						    <option value="allGoogle" class="js-parent-option">All Google Play Accounts</option>
-						    <option value="googleOne" class="js-child-option">Google Account One</option>
-						    <option value="googleTwo" class="js-child-option">Google Account Two</option>
-						    <option value="googleThree" class="js-child-option">Google Account Three</option>
+						    <option value="all" selected>All Stores</option>
+						    <option value="allIos">iOS</option>
+						    <option value="allGoogle">Google Play</option>
 							</select>
 						</div>
 						<div class="primary-filter form-field--select">
@@ -86,14 +79,6 @@
 						    <option value="feb">01/02/16 - 01/03/16</option>
 						    <option value="mar">01/03/16 - 01/04/16</option>
 						    <option value="apr">01/04/16 - 01/05/16</option>
-							</select>
-						</div>
-						<div class="primary-filter form-field--select">
-							<select class="js-select-box">
-						    <option value="all" selected>All Countries</option>
-						    <option value="uni">United Kingdom</option>
-						    <option value="fra">France</option>
-						    <option value="ger">Germany</option>
 							</select>
 						</div>
 						<div class="primary-filter form-field--select">
@@ -115,123 +100,38 @@
 				</div>
 
 				<aside class="grid-container secondary-filters-container">
-					<div class="secondary-filter form-field--select">
-						<select class="js-select-box">
-					    <option value="allapps" selected>All Publishers in List</option>
-					    <option value="clash">ustwo</option>
-					    <option value="boom">Miniclip</option>
-					    <option value="hay">Spacehopper Studios</option>
-					    <option value="royale">Martin Ollivere</option>
-						</select>
+
+					<div class="secondary-filter form-field--select js-form-field--group">
+						<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger">Overlaid Countries (4)</span>
 					</div>
 
 					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
 						<ul>
 							<li>
-								<input type="checkbox" name="checkboxOne" id="checkboxOne">
-								<label for="checkboxOne" class="checkboxLabel">Events</label>
-								<label for="checkboxOne" class="checkboxLabelVisible">Events</label>
+								<input type="checkbox" name="checkboxOne" id="checkboxOne" class="js-toggle-events">
+								<label for="checkboxOne" class="checkboxLabel">Show Events</label>
+								<label for="checkboxOne" class="checkboxLabelVisible">Show Events</label>
 							</li>
-							<li>
-								<input type="checkbox" name="checkboxThree" id="checkboxThree">
-								<label for="checkboxThree" class="checkboxLabel">Cumulative</label>
-								<label for="checkboxThree" class="checkboxLabelVisible">Cumulative</label>
-							</li>
+
+							<li> <span class=""><input type="checkbox" value="on" id="gwt-uid-279" tabindex="0"><label for="gwt-uid-279" class="checkboxLabel">Cumulative</label><label for="gwt-uid-279" class="checkboxLabelVisible">Cumulative</label></span> </li>
 						</ul>
-					</div>
-
-					<div class="secondary-filter form-field--select">
-						<select class="js-select-box">
-					    <option value="overlayapps" selected>More (0/2)</option>
-					    <option value="clash">Re-downloads</option>
-					    <option value="soccerstars">Installed Updates</option>
-						</select>
-					</div>
-
-					<div class="filter-toggle toggle-container--chart-type">
-						<div class="toggle">
-							<input id="toggle--show-stacked" name="graphtype" checked type="radio">
-							<label for="toggle--show-stacked">
-								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M3.6,9.1L7,10.7l3.4-6.2L14,6.1l2.9-3.2v4
-	l-3,4.5l-3.2-1.1l-3.7,3.4L3.7,13l-2.6,1.4v-1.5L3.6,9.1z M14.1,16.9h-0.6h-2.8h-0.6H7.3H6.8H3.9H3.4H1.1V15l2.7-1.5l3.3,0.9
-	l3.7-3.4l3.3,1.1l2.8-4.2v9H14.1z"/></svg>
-							</label>
-						</div>
-						<div class="toggle">
-							<input id="toggle--show-map" name="graphtype" type="radio">
-							<label for="toggle--show-map">
-								<svg x="0px" y="0px" viewBox="0 0 18 18" enable-background="new 0 0 18 18" xml:space="preserve"><path d="M9,0C9,0,9,0,9,0C8.9,0,8.9,0,8.9,0C8.7,0,8.6,0,8.4,0c-0.1,0-0.3,0-0.4,0c-0.1,0-0.2,0-0.3,0.1
-	C3.4,0.7,0,4.5,0,9c0,5,4,9,9,9s9-4,9-9C18,4,14,0,9,0z M15.5,6.3c-0.3-0.1-0.3-0.3-0.6-0.4c-0.5-0.2-1.4-0.2-2,0
-	c-0.5,0.2-0.6,0.3-1,0.7c-0.1,0.1-0.1,0.3-0.2,0.4c-0.1,0.1-0.1,0.2-0.1,0.3c-0.1,0.6-0.4,1.3-0.1,1.8c0.1,0.2,0.4,0.3,0.6,0.5
-	c0.3,0.2,0.4,0.4,0.8,0.5c0.2,0,0.5,0,0.7,0c0.3,0,0.6,0.1,0.8,0.2c-0.2,0.4-0.2,1.1-0.2,1.3c0,0.2,0.1,0.2,0.1,0.4
-	c0.1,0.6-0.9,1-0.7,1.6c0,0.1,0.1,0.3,0.1,0.4c0,0.5-0.4,0.7-0.5,1.1c0,0.2,0,0.4,0,0.6c0,0.1,0,0.2,0,0.3c-1.3,0.8-2.8,1.3-4.4,1.3
-	c-4.5,0-8.2-3.7-8.2-8.2c0-1.6,0.5-3.1,1.3-4.4c0,0,0.1,0,0.1,0.1c0,0.1,0,0.3,0,0.4C2.2,5.6,2.5,6.1,3,6.1c0,0.3-0.1,0.3,0.2,0.7
-	c0,0.1,0,0.2,0.1,0.2c0.1,0.1,0.2,0.1,0.3,0.1C3.7,7.4,3.7,7.8,3.6,8S3.2,8.5,3.1,8.8c-0.2,0.4-0.1,1,0.2,1.4
-	c0.1,0.1,0.3,0.5,0.5,0.6S4,10.8,4,11c0.1,0.3,0.1,0.5,0.2,0.7c0,0.2-0.1,0.6-0.1,0.8c0,0.2,0.1,0.2,0.1,0.3c0,0.1-0.1,0-0.1,0.2
-	c0,0.3,0,1,0.1,1.2c0.1,0.8,0.6,1.5,1.1,1.4c0.2-0.4-0.2-0.8-0.1-1.2c0.1-0.2,0.1-0.3,0.3-0.4c0.6-0.4,1-0.8,1.3-1.4
-	c0-0.1,0.1-0.3,0.2-0.3c0.1,0,0.2,0,0.3-0.1c0.4-0.1,0.6-0.3,0.8-0.6s0.2-0.6,0.5-1c0.1-0.1,0.1-0.3,0.2-0.3
-	c0.2-0.3-0.1-0.7-0.4-0.8S7.8,9.4,7.5,9.2C7.2,9,7.2,8.6,7,8.3C6.7,8,6.4,7.8,6,7.7C5.6,7.5,5.7,7.3,5,7C4.9,7,4.7,7,4.6,7
-	C4.5,7,4.5,7.1,4.4,7.1C4.2,7.4,3.7,7.2,3.6,6.9c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.4-0.2-0.4C3.3,5.9,3.7,6.1,3.7,5.8
-	c0-0.3-0.2-0.1-0.4-0.2C3,5.5,3.1,5.1,3.1,4.9c0.1-0.3,0.2-0.2,0.3-0.3c0.3-0.2,0.7-0.3,1-0.2c0.3,0.1,0.2,0.7,0.3,0.7
-	c0.1,0.1,0.3-0.1,0.3-0.2s0-0.3,0-0.4c0-0.1,0.1-0.1,0.2-0.2c0.6-0.4,1.3-0.7,2.1-0.8c0.1,0,0.2,0,0.3,0c0.1-0.1,0.1-0.3,0.2-0.3
-	c0.1,0,0.2,0.2,0.4,0.2C8.4,3.5,8.6,3.2,8.6,3c0-0.2-0.1-0.4,0-0.6c0-0.1,0.1-0.1,0.1-0.2c0,0-0.1-0.1-0.1-0.1
-	C8.4,2.1,8.4,1.9,8.1,1.9C7.9,2,7.7,2,7.5,2.2C7.3,2.3,7.2,2.4,7,2.5C6.8,2.3,7,2,7.2,1.8c0.2-0.1,0.4-0.1,0.7-0.2
-	c0.1,0,0.2,0,0.3,0c0.1,0,0.2,0.1,0.2,0.1c0.2,0.1,0.3,0,0.4-0.1C9,1.5,9.1,1.4,8.9,1.2c0-0.1,0.2-0.1,0.2,0s0,0.2-0.1,0.4
-	C8.8,2.2,9.3,2.7,9.5,2.7c0.3,0,0.5-0.6,0.9-0.8c0.1,0,0.2-0.1,0.3-0.1c0.1-0.1,0.1-0.2,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2
-	c0.8,0.2,1.5,0.5,2.1,1c0,0,0,0,0,0c0,0-0.1,0-0.2,0c-0.4-0.1-0.5,0.3-0.4,0.7c0.1,0.3,0.3,0.5,0.6,0.6c0.1,0,0.3,0.1,0.4,0.2
-	c0,0,0,0.2,0,0.2c0,0.3,0,0.5-0.3,0.6c-0.2,0.2-0.6,0.1-0.8,0.3c-0.2,0.2,0.1,0.6,0.4,0.8c0.2,0.2,0.7,0.2,0.9-0.1
-	C14.1,5.3,14,5.1,14,5c0.3,0,0.5,0.2,0.6,0.4c0,0,0.1,0.1,0.2,0.1c0.1,0,0.2-0.2,0.3-0.1c0,0.1,0,0.2,0.1,0.2s0.1-0.1,0.2,0
-	s0.2,0.3,0.3,0.3c0.1,0,0.3,0,0.4,0.1c0.1,0.1,0.1,0.2,0.1,0.3C16.3,6.4,15.8,6.4,15.5,6.3z"></path></svg>
-							</label>
-						</div>
 					</div>
 
 				</aside>
 
-				<div class="grid__row">
+				<div class="grid__row chart-section">
 					<ul class="tabs-content-list">
-						<li class="is-active" id="split-chart-container">
+						<li class="is-active js-twin-chart-container">
 							<section class="chart-container chart-container--split">
 								<header class="chart-container__header">
 									<h2 class="chart-heading heading-style--heading-three">Revenue</h2>
 									<dl class="chart-summary">
 										<div class="total-for-period-container">
-											<dd class="total-for-period-title">Total for Period / % Growth</dd>
+											<dd class="total-for-period-title">Total for Period</dd>
 											<dt class="total-for-period">$7,501,876 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
 										</div>
 									</dl>
 								</header>
-								<aside class="custom-chart-key">
-									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
-										<ul>
-											<li class="revenue-key">
-												<input type="checkbox" name="showhiderevenue" id="showhiderevenue" class="js-toggle-total-series" data-chart-index="0" data-series-index="0" checked>
-												<label for="showhiderevenue" class="checkboxLabel">Total</label>
-												<label for="showhiderevenue" class="checkboxLabelVisible">Total</label>
-											</li>
-											<li>
-												<input type="checkbox" name="showhideUSA" id="showhideUSA" class="js-toggle-total-series" data-chart-index="0" data-series-index="1" checked>
-												<label for="showhideUSA" class="checkboxLabel">USA</label>
-												<label for="showhideUSA" class="checkboxLabelVisible">USA</label>
-											</li>
-											<li>
-												<input type="checkbox" name="showhideUK" id="showhideUK" class="js-toggle-total-series" data-chart-index="0" data-series-index="2" checked>
-												<label for="showhideUK" class="checkboxLabel">UK</label>
-												<label for="showhideUK" class="checkboxLabelVisible">UK</label>
-											</li>
-											<li>
-												<input type="checkbox" name="showhideChina" id="showhideChina" class="js-toggle-total-series" data-chart-index="0" data-series-index="3" checked>
-												<label for="showhideChina" class="checkboxLabel">China</label>
-												<label for="showhideChina" class="checkboxLabelVisible">China</label>
-											</li>
-											<li>
-												<input type="checkbox" name="showhideFrance" id="showhideFrance" class="js-toggle-total-series" data-chart-index="0" data-series-index="4" checked>
-												<label for="showhideFrance" class="checkboxLabel">France</label>
-												<label for="showhideFrance" class="checkboxLabelVisible">France</label>
-											</li>
-										</ul>
-									</div>
-								</aside>
 								<div class="chart" id="chart-revenue"></div>
 							</section>
 							<section class="chart-container chart-container--split">
@@ -239,44 +139,126 @@
 									<h2 class="chart-heading heading-style--heading-three">Downloads</h2>
 									<dl class="chart-summary">
 										<div class="total-for-period-container">
-											<dd class="total-for-period-title">Total for Period / % Growth</dd>
+											<dd class="total-for-period-title">Total for Period</dd>
 											<dt class="total-for-period">3,578,160 <span class="growth-on-last-period negative-colour"> - 100%</span></dt>
 										</div>
 									</dl>
 								</header>
-								<aside class="custom-chart-key">
-									<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+								<div class="chart" id="chart-downloads"></div>
+							</section>
+
+							<aside class="custom-chart-key js-custom-chart-key">
+								<div class="form-field--checkbox-list form-field--checkbox-list--medium form-field--checkbox-list--inline">
+									<ul>
+										<li class="revenue-key">
+											<input type="checkbox" name="showhiderevenue" id="showhiderevenue" class="js-toggle-series" data-chart-index="0" data-series-index="0" checked>
+											<label for="showhiderevenue" class="checkboxLabel">Total Revenue</label>
+											<label for="showhiderevenue" class="checkboxLabelVisible js-hover-series">Total Revenue</label>
+										</li>
+										<li class="downloads-key">
+											<input type="checkbox" name="showhidedownloads" id="showhidedownloads" class="js-toggle-series" data-chart-index="0" data-series-index="0" checked>
+											<label for="showhidedownloads" class="checkboxLabel">Total Downloads</label>
+											<label for="showhidedownloads" class="checkboxLabelVisible js-hover-series">Total Downloads</label>
+										</li>
+										<li class="series-1">
+											<input type="checkbox" name="showhideUSArev" id="showhideUSArev" class="js-toggle-series" data-chart-index="0" data-series-index="1" checked>
+											<label for="showhideUSArev" class="checkboxLabel">USA</label>
+											<label for="showhideUSArev" class="checkboxLabelVisible js-hover-series">USA</label>
+										</li>
+										<li class="series-2">
+											<input type="checkbox" name="showhideUKrev" id="showhideUKrev" class="js-toggle-series" data-chart-index="0" data-series-index="2" checked>
+											<label for="showhideUKrev" class="checkboxLabel">United Kingdom</label>
+											<label for="showhideUKrev" class="checkboxLabelVisible js-hover-series">United Kingdom</label>
+										</li>
+										<li class="series-3">
+											<input type="checkbox" name="showhideChinarev" id="showhideChinarev" class="js-toggle-series" data-chart-index="0" data-series-index="3" checked>
+											<label for="showhideChinarev" class="checkboxLabel">China</label>
+											<label for="showhideChinarev" class="checkboxLabelVisible js-hover-series">China</label>
+										</li>
+										<li class="series-4">
+											<input type="checkbox" name="showhideFrancerev" id="showhideFrancerev" class="js-toggle-series" data-chart-index="0" data-series-index="4" checked>
+											<label for="showhideFrancerev" class="checkboxLabel">France</label>
+											<label for="showhideFrancerev" class="checkboxLabelVisible js-hover-series">France</label>
+										</li>
+									</ul>
+								</div>
+							</aside>
+						</li>
+						<li class="js-combined-chart-container">
+							<section class="chart-container chart-container--single">
+								<header class="chart-container__header">
+									<dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Revenue for Period</dd>
+											<dt class="total-for-period">$7,501,876 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
+										</div>
+									</dl>
+									<dl class="chart-summary">
+										<div class="total-for-period-container">
+											<dd class="total-for-period-title">Downloads for Period</dd>
+											<dt class="total-for-period">3,578,160 <span class="growth-on-last-period positive-colour"> + 100%</span></dt>
+										</div>
+									</dl>
+								</header>
+								<div class="chart" id="chart-combined"></div>
+							</section>
+
+							<aside class="custom-chart-key js-custom-chart-key">
+									<div class="form-field--checkbox-list form-field--checkbox-list--medium form-field--checkbox-list--inline">
 										<ul>
+											<li class="revenue-key">
+												<input type="checkbox" name="showhiderevenuecomb" id="showhiderevenuecomb" class="js-toggle-series" data-chart-index="2" data-series-index="0" checked>
+												<label for="showhiderevenuecomb" class="checkboxLabel">Total Revenue</label>
+												<label for="showhiderevenuecomb" class="checkboxLabelVisible js-hover-series">Total Revenue</label>
+											</li>
 											<li class="downloads-key">
-												<input type="checkbox" name="showhidedownloads" id="showhidedownloads" class="js-toggle-total-series" data-chart-index="1" data-series-index="0" checked>
-												<label for="showhidedownloads" class="checkboxLabel">Total</label>
-												<label for="showhidedownloads" class="checkboxLabelVisible">Total</label>
+												<input type="checkbox" name="showhidedownloadscomb" id="showhidedownloadscomb" class="js-toggle-series" data-chart-index="2" data-series-index="1" checked>
+												<label for="showhidedownloadscomb" class="checkboxLabel">Total Downloads</label>
+												<label for="showhidedownloadscomb" class="checkboxLabelVisible js-hover-series">Total Downloads</label>
 											</li>
-											<li>
-												<input type="checkbox" name="showhideUSA" id="showhideUSA" class="js-toggle-total-series" data-chart-index="0" data-series-index="1" checked>
-												<label for="showhideUSA" class="checkboxLabel">USA</label>
-												<label for="showhideUSA" class="checkboxLabelVisible">USA</label>
+											<li class="revenue-key-combined-chart series-1">
+												<input type="checkbox" name="showhiderevenuesusacomb" id="showhiderevenuesusacomb" class="js-toggle-series" data-chart-index="2" data-series-index="2" checked>
+												<label for="showhiderevenuesusacomb" class="checkboxLabel">Spotify</label>
+												<label for="showhiderevenuesusacomb" class="checkboxLabelVisible">Spotify</label>
 											</li>
-											<li>
-												<input type="checkbox" name="showhideUK" id="showhideUK" class="js-toggle-total-series" data-chart-index="0" data-series-index="2" checked>
-												<label for="showhideUK" class="checkboxLabel">UK</label>
-												<label for="showhideUK" class="checkboxLabelVisible">UK</label>
+											<li class="downloads-key-combined-chart series-1">
+												<input type="checkbox" name="showhidedownloadsusacomb" id="showhidedownloadsusacomb" class="js-toggle-series" data-chart-index="2" data-series-index="3" checked>
+												<label for="showhidedownloadsusacomb" class="checkboxLabel">Spotify</label>
+												<label for="showhidedownloadsusacomb" class="checkboxLabelVisible js-hover-series">Spotify</label>
 											</li>
-											<li>
-												<input type="checkbox" name="showhideChina" id="showhideChina" class="js-toggle-total-series" data-chart-index="0" data-series-index="3" checked>
-												<label for="showhideChina" class="checkboxLabel">China</label>
-												<label for="showhideChina" class="checkboxLabelVisible">China</label>
+											<li class="revenue-key-combined-chart series-2">
+												<input type="checkbox" name="showhiderevenuesukcomb" id="showhiderevenuesukcomb" class="js-toggle-series" data-chart-index="2" data-series-index="4" checked>
+												<label for="showhiderevenuesukcomb" class="checkboxLabel">Tinder</label>
+												<label for="showhiderevenuesukcomb" class="checkboxLabelVisible">Tinder</label>
 											</li>
-											<li>
-												<input type="checkbox" name="showhideFrance" id="showhideFrance" class="js-toggle-total-series" data-chart-index="0" data-series-index="4" checked>
-												<label for="showhideFrance" class="checkboxLabel">France</label>
-												<label for="showhideFrance" class="checkboxLabelVisible">France</label>
+											<li class="downloads-key-combined-chart series-2">
+												<input type="checkbox" name="showhidedownloadsukcomb" id="showhidedownloadsukcomb" class="js-toggle-series" data-chart-index="2" data-series-index="5" checked>
+												<label for="showhidedownloadsukcomb" class="checkboxLabel">Tinder</label>
+												<label for="showhidedownloadsukcomb" class="checkboxLabelVisible js-hover-series">Tinder</label>
+											</li>
+											<li class="revenue-key-combined-chart series-3">
+												<input type="checkbox" name="showhiderevenueschinacomb" id="showhiderevenueschinacomb" class="js-toggle-series" data-chart-index="2" data-series-index="6" checked>
+												<label for="showhiderevenueschinacomb" class="checkboxLabel">Clash Royale</label>
+												<label for="showhiderevenueschinacomb" class="checkboxLabelVisible">Clash Royale</label>
+											</li>
+											<li class="downloads-key-combined-chart series-3">
+												<input type="checkbox" name="showhidedownloadschinacomb" id="showhidedownloadschinacomb" class="js-toggle-series" data-chart-index="2" data-series-index="7" checked>
+												<label for="showhidedownloadschinacomb" class="checkboxLabel">Clash Royale</label>
+												<label for="showhidedownloadschinacomb" class="checkboxLabelVisible js-hover-series">Clash Royale</label>
+											</li>
+											<li class="revenue-key-combined-chart series-4">
+												<input type="checkbox" name="showhiderevenuesfrancecomb" id="showhiderevenuesfrancecomb" class="js-toggle-series" data-chart-index="2" data-series-index="8" checked>
+												<label for="showhiderevenuesfrancecomb" class="checkboxLabel">France</label>
+												<label for="showhiderevenuesfrancecomb" class="checkboxLabelVisible">France</label>
+											</li>
+											<li class="downloads-key-combined-chart series-4">
+												<input type="checkbox" name="showhidedownloadsfrancecomb" id="showhidedownloadsfrancecomb" class="js-toggle-series" data-chart-index="2" data-series-index="9" checked>
+												<label for="showhidedownloadsfrancecomb" class="checkboxLabel">Minecraft</label>
+												<label for="showhidedownloadsfrancecomb" class="checkboxLabelVisible js-hover-series">Minecraft</label>
 											</li>
 										</ul>
 									</div>
 								</aside>
-								<div class="chart" id="chart-downloads"></div>
-							</section>
 						</li>
 					</ul>
 				</div>
@@ -307,13 +289,10 @@
 								<label>Show</label>
 								<div class="secondary-filter form-field--select">
 									<select class="js-select-box">
-								    <option value="nam">Name</option>
-								    <option value="rat">Average Rating</option>
-								    <option value="rel">Release Date</option>
-								    <option value="las">Last Updated</option>
+								    <option value="nam">Country</option>
 								    <option value="rev" selected>Revenue Actual</option>
 								    <option value="revgro">Revenue - % Growth</option>
-								    <option value="dow">Downloads - Actual</option>
+								    <option value="dow">Downloads Actual</option>
 								    <option value="dowgro">Downloads - % Growth</option>
 								    <option value="perrev">% of Revenue for Period</option>
 								    <option value="perdow">% of Downloads for Period</option>
@@ -324,15 +303,7 @@
 							</div>
 						</header>
 						<div class="data-table-section__summary">
-							<div class="form-field--checkbox-list form-field--checkbox-list--inline">
-								<ul>
-									<li>
-										<input type="checkbox" name="checkboxTotals" id="checkboxTotals" checked>
-										<label for="checkboxTotals" class="checkboxLabel">All Countries Total</label>
-										<label for="checkboxTotals" class="checkboxLabelVisible">All Countries Total</label>
-									</li>
-								</ul>
-							</div>
+							<span class="data-table-section--totals-title">Totals</span>
 							<div class="data-table-section__summary__figures">
 								<span class="data-table-section__summary__total-revenue ref-icon-before--revenue">
 									<span>£18,028,173</span>
@@ -349,7 +320,6 @@
 						<table class="ref-table ref-table--apps ref-table--apps--country">
 							<thead>
 								<tr>
-									<th><a href="#">Clear</a></th>
 									<th></th>
 									<th>
 										<span>Country</span>
@@ -378,7 +348,6 @@
 								</tr>
 							</thead>
 							<colgroup>
-								<col class="column-row-selector" />
 								<col class="column-store-icon" />
 								<col class="column-app-name" />
 								<col class="column-revenue" />
@@ -388,23 +357,12 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow1" id="checkboxShowRow1" checked>
-													<label for="checkboxShowRow1" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow1" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-usa.png" alt="USA Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">USA</a></h2>
+											<div class="icon-flag icon-flag--US"></div>
+											<div class="data-table__app-details-container">
+												<h2 class="data-table__app-summary__app-name">USA</h2>
 											</div>
 										</div>
 									</td>
@@ -421,19 +379,6 @@
 										</div>										
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -448,23 +393,12 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow2" id="checkboxShowRow2" checked>
-													<label for="checkboxShowRow2" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow2" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-gb.png" alt="UK Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">United Kingdom</a></h2>
+											<div class="icon-flag icon-flag--GB"></div>
+											<div class="data-table__app-details-container">
+												<h2 class="data-table__app-summary__app-name">United Kingdom</h2>
 											</div>
 										</div>
 									</td>
@@ -481,19 +415,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -508,23 +429,12 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow3" id="checkboxShowRow3" checked>
-													<label for="checkboxShowRow3" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow3" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--play-store"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-china.png" alt="China Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">China</a></h2>
+											<div class="icon-flag icon-flag--CN"></div>
+											<div class="data-table__app-details-container">
+												<h2 class="data-table__app-summary__app-name">China</h2>
 											</div>
 										</div>
 									</td>
@@ -541,19 +451,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -568,23 +465,12 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow4" id="checkboxShowRow4" checked>
-													<label for="checkboxShowRow4" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow4" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-fra.png" alt="France Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">France</a></h2>
+											<div class="icon-flag icon-flag--FR"></div>
+											<div class="data-table__app-details-container">
+												<h2 class="data-table__app-summary__app-name">France</h2>
 											</div>
 										</div>
 									</td>
@@ -601,19 +487,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -628,23 +501,12 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow5" id="checkboxShowRow5">
-													<label for="checkboxShowRow5" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow5" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-ger.png" alt="Germany Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">Germany</a></h2>
+											<div class="icon-flag icon-flag--DE"></div>
+											<div class="data-table__app-details-container">
+												<h2 class="data-table__app-summary__app-name">Germany</h2>
 											</div>
 										</div>
 									</td>
@@ -661,19 +523,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -688,23 +537,12 @@
 								</tr>
 
 								<tr>
-									<td class="app-data-cell-show-hide">
-										<div class="form-field--checkbox-list form-field--checkbox-list--inline form-field--checkbox--hide-label">
-											<ul>
-												<li>
-													<input type="checkbox" name="checkboxShowRow6" id="checkboxShowRow6">
-													<label for="checkboxShowRow6" class="checkboxLabel">Show</label>
-													<label for="checkboxShowRow6" class="checkboxLabelVisible">Show</label>
-												</li>
-											</ul>
-										</div>										
-									</td>
 									<td><span class="data-table__store ref-icon-after--apple"></span></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
-											<img src="images/icon-flag-ita.png" alt="Italy Flag" />
-											<div>
-												<h2 class="data-table__app-summary__app-name"><a href="#">Italy</a></h2>
+											<div class="icon-flag icon-flag--IT"></div>
+											<div class="data-table__app-details-container">
+												<h2 class="data-table__app-summary__app-name">Italy</h2>
 											</div>
 										</div>
 									</td>
@@ -721,19 +559,6 @@
 										</div>
 									</td>
 									<td class="app-data-cell-more">
-										<a href="#" class="more-data-link">More</a>
-										<div class="more-app-data">
-											<dl>
-												<div>
-													<dt>Installed Updates</dt>
-													<dd>4,578 <span>+ 15%</span></dd>
-												</div>
-												<div>
-													<dt>Re-downloads</dt>
-													<dd>2,001 <span>- 3%</span></dd>
-												</div>
-											</dl>
-										</div>
 									</td>
 									<td>
 										<div class="data-table__value-bar">
@@ -750,7 +575,7 @@
 						</table>
 					</section>
 				</div>
-			</div>			
+			</div>
 			
 		</div>
 
@@ -759,6 +584,183 @@
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+
+	<!-- Custom Country Picker -->
+	<div class="group-picker js-group-picker">
+		
+		<div class="group-picker__main-container"> 							
+			<!-- <div class="filter-toggle filter-toggle--with-text">
+				<div class="toggle">
+					<input id="toggle--show-popular" name="toggle--show-picker" checked="" type="radio">
+					<label for="toggle--show-popular" class="js-mock-toggle-group-selectors" data-show="group-selector-container--popular">
+						Popular
+					</label>
+				</div>
+				<div class="toggle">
+					<input id="toggle--show-regions" name="toggle--show-picker" type="radio">
+					<label for="toggle--show-regions" class="js-mock-toggle-group-selectors" data-show="regions">
+						Regions
+					</label>
+				</div>
+				<div class="toggle">
+					<input id="toggle--show-countries" name="toggle--show-picker" type="radio">
+					<label for="toggle--show-countries" class="js-mock-toggle-group-selectors" data-show="countries">
+						Countries
+					</label>
+				</div>
+				<div class="toggle">
+					<input id="toggle--show-my-groups" name="toggle--show-picker" type="radio">
+					<label for="toggle--show-my-groups" class="js-mock-toggle-group-selectors" data-show="group-selector-container--groups">
+						My Groups
+					</label>
+				</div>
+			</div> -->
+
+			<div class="group-selector-container js-group-selector-container" id="group-selector-container--popular">
+				<div class="secondary-filter form-field--search js-form-field-search">
+					<input type="text" placeholder="Find Country" name="findapp" id="findapp">
+					<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+					<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+				</div>
+
+				<ul class="form-field--checkbox-list js-mock-group-item-results">
+					<li>
+						<input type="checkbox" name="checkboxCountryUK" id="checkboxCountryUK"/>
+						<label for="checkboxCountryUK" class="checkboxLabel">United Kingdom</label>
+						<label for="checkboxCountryUK" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--GB"></div>
+							<span>United Kingdom</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryFr" id="checkboxCountryFr" />
+						<label for="checkboxCountryFr" class="checkboxLabel">France</label>
+						<label for="checkboxCountryFr" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--FR"></div>
+							<span>France</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryIt" id="checkboxCountryIt" />
+						<label for="checkboxCountryIt" class="checkboxLabel">Germany</label>
+						<label for="checkboxCountryIt" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--DE"></div>
+							<span>Germany</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryCh" id="checkboxCountryCh" />
+						<label for="checkboxCountryCh" class="checkboxLabel">China</label>
+						<label for="checkboxCountryCh" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--CH"></div>
+							<span>China</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryUSA" id="checkboxCountryUSA" />
+						<label for="checkboxCountryUSA" class="checkboxLabel">USA</label>
+						<label for="checkboxCountryUSA" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--US"></div>
+							<span>USA</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryUK" id="checkboxCountryNe"/>
+						<label for="checkboxCountryNe" class="checkboxLabel">Netherlands</label>
+						<label for="checkboxCountryNe" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--NE"></div>
+							<span>Netherlands</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryFr" id="checkboxCountryPo" />
+						<label for="checkboxCountryPo" class="checkboxLabel">Portugal</label>
+						<label for="checkboxCountryPo" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--PO"></div>
+							<span>Portugal</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountrySp" id="checkboxCountrySp" />
+						<label for="checkboxCountrySp" class="checkboxLabel">Spain</label>
+						<label for="checkboxCountrySp" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--SP"></div>
+							<span>Spain</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryCh" id="checkboxCountryJa" />
+						<label for="checkboxCountryJa" class="checkboxLabel">Japan</label>
+						<label for="checkboxCountryJa" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--JP"></div>
+							<span>Japan</span>
+						</label>
+					</li>
+					<li>
+						<input type="checkbox" name="checkboxCountryUSA" id="checkboxCountryInd" />
+						<label for="checkboxCountryInd" class="checkboxLabel">India</label>
+						<label for="checkboxCountryInd" class="checkboxLabelVisible">
+							<div class="icon-flag-sm icon-flag--IN"></div>
+							<span>India</span>
+						</label>
+					</li>
+				</ul>
+
+				<a href="#" class="ref-button--primary--small is-disabled group-picker__apply-link js-mock-group-picker-apply">Apply</a>
+			</div>
+
+			<div class="group-selector-container js-group-selector-container" id="group-selector-container--groups" style="display: none;">
+				<div class="secondary-filter form-field--search js-form-field-search">
+					<input type="text" placeholder="Find" name="findgroup" id="findgroup" class="js-mock-find-group">
+					<label for="findgroup" class="ref-icon-after--search"><span>Search</span></label>
+					<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+				</div>
+				<ul class="form-field--radio-list js-mock-group-results">
+					<li>
+						<input type="radio" name="radioButtons" id="radioButtonOne">
+						<label for="radioButtonOne" class="radioButtonLabel">My Group</label>
+						<label for="radioButtonOne" class="radioButtonLabelVisible">My Group</label>
+						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
+					</li>
+					<li>
+						<input type="radio" name="radioButtons" id="radioButtonTwo">
+						<label for="radioButtonTwo" class="radioButtonLabel">Main Competitors</label>
+						<label for="radioButtonTwo" class="radioButtonLabelVisible">Main Competitors</label>
+						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
+					</li>
+					<li>
+						<input type="radio" name="radioButtons" id="radioButtonThree">
+						<label for="radioButtonThree" class="radioButtonLabel">Another Group</label>
+						<label for="radioButtonThree" class="radioButtonLabelVisible">Another Group</label>
+						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
+					</li>
+				</ul>
+				<a href="#" class="ref-button--primary--small is-disabled group-picker__apply-link js-mock-group-picker-apply">Apply</a>
+			</div>
+
+		</div>
+
+		<div class="group-picker__selections-container">
+			<span class="group-picker__selections__number-selected"><span class="js-mock-picker-number-selected">0</span> Selected</span>
+			<a href="#" class="group-picker__selections__clear-link js-mock-clear-selected-countries">Clear All</a>
+			<div class="group-picker__selections js-group-picker__selections">				
+			</div>
+			<!-- <a href="#" class="group-picker__selections__save-to-groups-link ref-button--secondary--small js-mock-save-to-groups-link">Save Selection to New Group</a> -->
+			<form class="group-picker__create-group-container js-create-group-form">
+				<div class="form-field">
+					<input type="text" name="groupname" id="groupname" autocomplete="off" />
+					<label for="groupname">Group Name</label>
+				</div>
+				<a href="#" class="ref-button--secondary--small group-picker__create-group__cancel-button js-mock-create-group-cancel">Cancel</a>
+				<a href="#" class="ref-button--primary--small group-picker__create-group__save-button js-mock-create-group-apply">Create Group</a>
+			</form>
+			<form class="group-picker__amend-group-container js-amend-group-form">
+				<a href="#" class="ref-button--primary--small group-picker__create-group__save-button js-mock-save-group">Save Changes</a>
+			</form>
+		</div>
+	</div> <!-- end country picker -->
+
 
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
@@ -774,7 +776,9 @@
 	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
 
+  <script src="js/vendor/snap.svg.js"></script> <!-- snap used for animating event flags on charts -->
   <script src="js/vendor/highcharts-custom.js"></script>
+  <script src="js/vendor/highslide-software/rounded-corners.js"></script>
   <script src="js/data-vis/data-vis-release.js"></script> <!-- mock data -->
   <script>
   	// Utility function
@@ -784,6 +788,9 @@
     }
 
   	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-my-lists.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
 
   		new Page();
   		new AllDropDowns();
@@ -816,6 +823,32 @@
   		$('.js-mock-remove-row').on("click", function(e){
   			e.preventDefault();
   			$(this).parents('.chart-key-full__row').remove();
+  		});
+
+  		// chart toggles
+  		$('.js-mock-show-split-chart').on("click", function(){
+  			
+  			$('.js-toggle--show-stacked.is-disabled').removeClass("is-disabled")
+																							.siblings("input").removeAttr("disabled", "disabled");
+				$('.js-toggle--show-bar.is-disabled').removeClass("is-disabled")
+																							.siblings("input").removeAttr("disabled", "disabled");
+
+  			$('.js-twin-chart-container').addClass("is-active");
+  			$('.js-combined-chart-container').removeClass("is-active");
+  			Highcharts.charts[0].reflow(); // reflow in case of window width change before making visible again
+  			Highcharts.charts[1].reflow();
+  		});
+
+  		$('.js-mock-show-single-chart').on("click", function(){
+  			if(!$(this).hasClass("is-disabled")) {
+
+					$('.js-toggle--show-stacked').addClass("is-disabled")
+																				.siblings("input").attr("disabled", "disabled");
+
+  				$('.js-twin-chart-container').removeClass("is-active");
+	  			$('.js-combined-chart-container').addClass("is-active");
+	  			Highcharts.charts[2].reflow();
+  			}
   		});
 
   		// HIGHCHARTS
@@ -879,137 +912,454 @@
 	        .add();
 
 
-	        // MIRROR A SPLIT GRAPH HOVER
-	        // TODO - try this for better tooltip synchronize - http://www.highcharts.com/demo/synchronized-charts
-	        if(pageCharts.length > 1) {
-	        	if(arguments[1][0].series.name == 'grossingrank') {
-	        		chartIndexToHover = 1;
-	        	} else if(arguments[1][0].series.name == 'downloadsrank') {
-	        		chartIndexToHover = 0;
+	        // Mirror the tooltip on twin charts
+	        if(H.charts.length > 1) {
+	        
+	        	var chartIndexToHover = (arguments[1][0].series.chart.index == 0) ? 1 : 0;
+	        	
+	        	if(chartIndexToHover < 2) { // using twin chart to want to mirror the tooltip
+	        		
+	        		// find line index of currently selected line
+		        	var seriesIndexToHover = 0;
+		        	$.each(H.charts[chartIndexToHover].series, function(key, series){
+		        		if(series.selected) {
+		        			seriesIndexToHover = key;
+		        		}
+		        	});
+
+		        	// set the hover on the other graph
+		        	var pointIndex = arguments[1][0].index;
+		        	if(!hasBeenSet) {
+		        		hasBeenSet = true;
+		        		// not sure why this if statement is here but there must have been an associated bug
+		        		// could try removing to see if there is any lasting effect
+		        		if(lastPoint) {
+		        			if(H.charts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint] != undefined) { // check if data series are present on the chart
+		        				H.charts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint].setState();
+	            			H.charts[chartIndexToHover].tooltip.hide();
+		        			}		        			
+		        		}
+		        		lastPoint = pointIndex;
+								var arrayOfPointsToHover = [];
+								for(var s = 0; s < H.charts[chartIndexToHover].series.length; s++) {
+									if(Highcharts.charts[chartIndexToHover].series[s].visible) {
+										arrayOfPointsToHover.push(H.charts[chartIndexToHover].series[s].points[pointIndex]);
+									}								
+								}
+		        		H.charts[chartIndexToHover].tooltip.refresh(arrayOfPointsToHover);
+			        		
+			        	setTimeout(function(){
+			        		hasBeenSet = false;
+			        	}, 10);
+			        }
 	        	}
-
-	        	// find line index of currently selected line
-	        	var seriesIndexToHover = 0;
-	        	$('.chart').each(function(){
-	        		var $chart = $(this);
-	        		if($(this).attr("data-highcharts-chart") == chartIndexToHover) {
-	        			var counter = 0;
-	        			$chart.find('.highcharts-series path:nth-child(2)').each(function(){
-	        				if($(this).attr("stroke-width") == 3.1) {
-	        					seriesIndexToHover = counter;
-	        				}
-	        				counter ++;
-	        			});
-	        		}
-	        	});
-
-	        	// set the hover on the other graph
-	        	var pointIndex = arguments[1][0].index;
-	        	if(!hasBeenSet) {
-	        		hasBeenSet = true;
-	        		if(lastPoint) {
-	        			pageCharts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint].setState();
-            		pageCharts[chartIndexToHover].tooltip.hide();	        			
-	        		}
-	        		lastPoint = pointIndex;
-							var arrayOfPointsToHover = [];
-							for(var s = 0; s < pageCharts[chartIndexToHover].series.length; s++) {
-								if(pageCharts[chartIndexToHover].series[s].visible) {
-									arrayOfPointsToHover.push(pageCharts[chartIndexToHover].series[s].points[pointIndex]);
-								}								
-							}
-	        		pageCharts[chartIndexToHover].tooltip.refresh(arrayOfPointsToHover);
-		        		
-		        	setTimeout(function(){
-		        		hasBeenSet = false;
-		        	}, 10);
-		        }
 	        }
+
+	        // Add Event Labels
+	        	// destroy any existing labels
+	        var thisPlotX = arguments[1][0].plotX,
+	        		eventTooltip;
+
+	        		if(this.chart.eventTooltips) {
+	        			for (var t = 0; t < this.chart.eventTooltips.length; t++) {
+	        				this.chart.eventTooltips[t].destroy();
+	        			}
+	        		}
+	        		this.chart.eventTooltips = [];
+
+	        	// remove existing animating CSS class for icons
+	        $(".event-icon--launch.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--launch");
+	        });
+	        $(".event-icon--flag.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--flag");
+	        });
+	        
+        	// create tooltip on event hover
+        	var eventsCounter = 0,
+	        			previousEventPlotX;
+	        			window.animatingFlags = false;
+
+	        if(this.chart.refEvents) {
+			      for (var e = 0; e < this.chart.refEvents.length; e++) {
+			      	if(this.chart.refEvents[e].plotX == thisPlotX) {
+			      		// check if previous event plotX is the same as this plotX, to calculate event details label spacing
+			      		if(previousEventPlotX) {
+			      			if(previousEventPlotX == this.chart.refEvents[e].plotX) {
+			      				eventsCounter++;
+			      			} else {
+			      				eventsCounter = 0;
+			      			}
+			      		}
+			      		
+			      		previousEventPlotX = this.chart.refEvents[e].plotX;
+			      		var eventLabelOffset = 80;
+			      		if(parseInt(previousEventPlotX) < 100) {
+			      			eventLabelOffset = 30;
+			      		}
+			      		var labelTopSpace = axisLabelYPos + 29 + (eventsCounter * 57);
+			      		var eventIcon = this.chart.refEvents[e].icon.element;
+			        	eventTooltip = this.chart.renderer.label($(eventIcon).data("tooltip"), this.chart.series[0].data[$(eventIcon).data("datapoint")].plotX - eventLabelOffset, labelTopSpace, 'callout')
+			            .css({
+			                color: $(eventIcon).data("tooltipcolour")
+			            })
+			            .attr({
+			            		width: 139,
+			                fill: $(eventIcon).data("tooltipfill"),
+			                padding: 10,
+			                r: 5,
+			                zIndex: 6
+			            })
+			            .addClass("chart-event-label")
+			            .add();
+
+			         	this.chart.eventTooltips.push(eventTooltip);
+
+			         	// add event icon animate CSS class
+			         	var currentCSSClass = $(this.chart.refEvents[e].icon.element).attr("class");
+		      			$(this.chart.refEvents[e].icon.element).attr("class", "is-animating " + currentCSSClass);
+		      			if(currentCSSClass.indexOf("event-icon--flag") > -1) {
+		      				this.chart.refEvents[e].flag = null;
+			      			window.animatingFlags = true;
+			      			animateSquash = function(flagToAnimate) {
+		      					flagToAnimate.animate({width: 15}, 100, function(){
+		      						flagToAnimate.animate({width: 18}, 100, function() {
+		      							if(window.animatingFlags) {
+		      								animateSquash(flagToAnimate);
+		      							}      							
+		      						});
+		      					});
+			      			}
+			      			animateSquash(Snap(this.chart.refEvents[e].icon.element)); // makes the flag "flap" (uses snap.js)
+		      			}
+			        }
+			      }
+			    }
 	      });
 
 				H.wrap(H.Series.prototype, 'hide', function (proceed) {
 
 				  // Before the hide function
-				  var par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent-fade");
+				  var t = $(this),
+				  				par;
+
+				  if(t[0].type == "area") {
+				  	if(this.graph != undefined) {
+				  		par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent-fade");
+				  	}				  	
+				  }
+
 				  var instance = this;
-				  // Now apply the original function with the original arguments, 
-				  // which are sliced off this function's arguments
+				
 				  setTimeout(function() {
 				  	proceed.apply(instance, Array.prototype.slice.call(arguments, 1));
-				  	par.attr("class", "highcharts-series");				  	
+				  	if(t[0].type == "area" && par != undefined) {
+				  		par.attr("class", "highcharts-series");
+				  	}
 				  }, 200);
 				});
 
+				H.Chart.prototype.animateSelectedLines = function(containerId, indexToSelect, previousSelectedIndex) {
+	    		$(containerId + ' .highcharts-series path:nth-child(2)').each(function(){
+	          var $this = $(this);
+	          if($this.attr("data-index") == indexToSelect) {
+	            $this.css("opacity", "0.3");
+	            $this.animate({ "opacity": 1 }, 250);
+	            $this.siblings("path").css("opacity", "0");
+	            $this.siblings("path").animate({ "opacity": 1 }, 250);
+
+	          } else if($this.attr("data-index") == previousSelectedIndex) {
+	          	$this.css("opacity", 1);
+	            $this.animate({ "opacity": 0.3 }, 250);
+	            $this.siblings("path").css("opacity", 1);
+	            $this.siblings("path").animate({ "opacity": 0 }, 250);
+	          }
+	        });
+	    	}
+
+	    	H.Chart.prototype.setSeriesToSelected = function(chartIndex, seriesIndex) {
+	    		H.charts[chartIndex].series[seriesIndex].selected = true;
+	    		if(H.charts[chartIndex].series[seriesIndex].graph) {
+	    			H.charts[chartIndex].series[seriesIndex].graph.element.setAttribute("data-selected", "selected");
+	    		}	      	
+	    	}
+
+	    	H.Chart.prototype.setSeriesToUnselected = function(chartIndex, seriesIndex) {
+	    		$('.chart[data-highcharts-chart="' + chartIndex + '"] .highcharts-series path[data-selected]').removeAttr("data-selected");
+	      	H.charts[chartIndex].series[seriesIndex].selected = false;
+	    	}
+
+	    	H.Chart.prototype.setGraphCSSClasses = function() {
+	   			$.each(H.charts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							series.refseriesindex = key;
+							if(series.graph) {
+								series.graph.element.setAttribute("class", "series-class-" + key);
+					    	series.graph.element.setAttribute("data-index", key);
+							}
+						});
+
+						// set CSS classes on the area fills
+						$('.chart[data-highcharts-chart="' + key + '"] .highcharts-series path:nth-child(2)').each(function(){
+		          var lineIndex = $(this).attr("data-index");
+		          $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + lineIndex);
+		        });
+					});
+	   		}
+
+	   		H.Chart.prototype.resetLineStyling = function() {
+					$.each(H.charts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							if(series.graph != undefined) {
+								if(series.selected) {
+									series.graph.element.setAttribute("style", "opacity: 1");
+		        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 1");
+								} else {
+									series.graph.element.setAttribute("style", "opacity: 0.3");
+		        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 0");
+								}						
+							}							
+						});  	
+					});
+				}
+
+				H.Chart.prototype.setFirstVisibleSeriesToSelected = function() {
+					// set first visible line of each chart to be selected
+					$.each(H.charts, function(key, chart) {
+						for(var s = 0; s < chart.series.length; s++) {
+							if(chart.series[s].visible == true) {
+								chart.series[s].graph.element.setAttribute("data-selected", "selected");
+	      				chart.series[s].selected = true;
+								break;
+							}
+						}
+					});
+				}
+
+				H.Chart.prototype.setGraphFillsTransparency = function() {
+					$.each(H.charts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							if(series.graph != undefined) {
+		        		series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 0.25");
+							}
+						});  	
+					});
+				}
+
+				H.Chart.prototype.highlightAChartSeries = function(chartContainerId, seriesToHighlight) {
+				$('#' + chartContainerId + ' .series-class-' + seriesToHighlight).each(function(){
+					var $this = $(this);
+					$this.css("opacity", 0.3);
+          $this.animate({ "opacity": 1 }, 100);
+				});
+			}
+
+			H.Chart.prototype.unhighlightAChartSeries = function(chartContainerId, seriesToUnhighlight) {
+				$('#' + chartContainerId + ' .series-class-' + seriesToUnhighlight).each(function(){
+					var $this = $(this);
+					$this.css("opacity", "1");
+          $this.animate({ "opacity": 0.3 }, 100);
+				});
+			}
+
 	    }(Highcharts));
 
-	    pageCharts = [];
-
-	    function generateChart(containerId, dataType, seriesData, seriesColour) {
+	    // generateChart is template only to speed up generating three charts in the template
+	    function generateChart(containerId, dataType, seriesData, seriesColour, chartType, isMerged) {
 
 	    	var seriesColour,
 	    			seriesArray = [],
 	    			yAxesSettings; // Mock only
 
-	    	
-    		yAxesSettings = [{
-    			reversed: true,
-          offset: -27,
-          showFirstLabel: false,
-          showLastLabel: true,
-          gridLineWidth: 0,
-          labels: {
-          	align: 'left',
-          	style: {
-          		color: '#81879d',
-          		fontSize: "12px"
-          	}
-          },
-          title: {
-          	text: null
-          }            
-        }];
+	    	if(isMerged) { // Mock only
+	    		yAxesSettings = [{
+	          offset: -27,
+	          showFirstLabel: false,
+	          showLastLabel: true,
+	          gridLineWidth: 0,
+	          labels: {
+	          	align: 'left',
+	          	style: {
+	          		color: '#81879d',
+	          		fontSize: "12px"
+	          	}
+	          },
+	          title: {
+	          	text: null
+	          }            
+	        },
+	        {
+	          offset: -25,
+	          showFirstLabel: false,
+	          showLastLabel: true,
+	          gridLineWidth: 0,
+	          opposite: true,
+	          labels: {
+	          	align: 'right',
+	          	style: {
+	          		color: '#6d69c5',
+	          		fontSize: "12px"
+	          	}
+	          },
+	          title: {
+	          	text: null
+	          }            
+	        }];
 
-        for(var a = 0; a < seriesData.length; a++) {
-        	seriesArray.push({
-	         	yAxis: 0,
-	          name: dataType,
-	          id : dataType,
-	          color: (dataType == "downloadsrank" && a == 0) ? "#6d69c5" : seriesColour[a],
-	          data: seriesData[a],
-	          pointStart: Date.UTC(2016, 0, 1),
-	          pointInterval: 24 * 3600 * 1000, // one day
-	          lineColor: (dataType == "downloadsrank" && a == 0) ? "#6d69c5" : seriesColour[a],
-	          lineWidth: 3,
-	          lineWidthPlus: 0,
-	          fillOpacity: 0,
-	          marker: {
-	            enabled: false,
-	            states: {
-	              hover: {
-	                enabled: true,
-	                lineWidth: 0,
-	                lineWidthPlus: 0,
-	                radius: 4,
-	                radiusPlus: 0,
-	              }
-	            }
-	          }
-	        });
-        }
+	        // TEMPLATE ONLY, structuring the data for the combined chart. Create the combined chart by adding a revenue series, followed by the download series, for each app
+	        for(var a = 0; a < seriesData[0].length * 2; a++) {
+	        	var isRevenue = (a % 2 == 1) ? false : true;
+	        	var thisSeriesColour, seriesColourIndex;
+	        	if(isRevenue) {
+	        		seriesColourIndex = a/2;
+	        		thisSeriesColour = seriesColour[seriesColourIndex];
+	        	} else {
+	        		if(a != 1) {
+	        			seriesColourIndex = (a-1) / 2;
+	        			thisSeriesColour = seriesColour[seriesColourIndex];
+	        		} else {
+	        			thisSeriesColour = "#918edf";
+	        		}
+	        	}
 
-	    	// Generate Demo Chart
+	        	// TEMPLATE ONLY: for creating the series data - get the index for the mock data array
+	        	var dataIndex;
+	        	if(a != 1) { // not the downloads total line
+	        		dataIndex = (isRevenue) ? (a / 2) : (a-1) / 2;
+	        	} else {
+	        		dataIndex = 0;
+	        	}
+
+	        	var seriesName = "";
+	        	if(isRevenue) {
+	        		if(a == 0) {
+	        			seriesName = "revenueseries-total";
+	        		} else {
+	        			seriesName = "revenueseries";
+	        		}
+	        	} else {
+	        		if(a == 1) {
+	        			seriesName = "downloadsseries-total";
+	        		} else {
+	        			seriesName = "downloadsseries";
+	        		}
+	        	}
+
+	        	// TEMPLATE ONLY: Create mock series
+	        	seriesArray.push({
+		         	yAxis: (isRevenue) ? 0 : 1,
+		          name: seriesName,
+	            id : seriesName,
+		          color: thisSeriesColour,
+		          data: (isRevenue) ? seriesData[0][dataIndex] : seriesData[1][dataIndex],
+		          borderRadiusTopLeft: 3,
+        			borderRadiusTopRight: 3,
+		          pointStart: Date.UTC(2016, 0, 1),
+		          pointInterval: 24 * 3600 * 1000, // one day
+		          lineColor: thisSeriesColour,
+		          lineWidth: 3,
+		          lineWidthPlus: 0,
+		          fillOpacity: 0,
+		          fillColor: {
+	              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+	              stops: [
+	                [0, 'rgba(109,105,197,0.1)'],
+	                [1, 'rgba(27,199,159,0.1)']
+	              ]
+	            },
+	            dashStyle: (isRevenue || a == 1) ? 'line' : 'shortdash',
+		          marker: {
+		            enabled: false,
+		            states: {
+		              hover: {
+		                enabled: true,
+		                lineWidth: 0,
+		                lineWidthPlus: 0,
+		                radius: 4,
+		                radiusPlus: 0,
+		              }
+		            }
+		          }		          
+		        });
+	        }
+
+	      } else { // else single chart, so one yaxis
+	      	yAxesSettings = [{
+	    			reversed: false,
+	          offset: -27,
+	          showFirstLabel: false,
+	          showLastLabel: true,
+	          gridLineWidth: 0,
+	          labels: {
+	          	align: 'left',
+	          	style: {
+	          		color: '#81879d',
+	          		fontSize: "12px"
+	          	}
+	          },
+	          title: {
+	          	text: null
+	          }         
+	        }];
+
+	        // TEMPLATE ONLY: Create mock series
+	        for(var a = 0; a < seriesData.length; a++) {
+
+	        	var seriesName = dataType;
+	        	if(a == 0) {
+	        		seriesName += "-total";
+        		}
+
+	        	seriesArray.push({
+		         	yAxis: 0,
+		          name: seriesName,
+		          id : seriesName,
+		          color: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
+		          data: seriesData[a],
+		          borderRadiusTopLeft: 3,
+        			borderRadiusTopRight: 3,
+		          pointStart: Date.UTC(2016, 0, 1),
+		          pointInterval: 24 * 3600 * 1000, // one day
+		          lineColor: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
+		          lineWidth: 3,
+		          lineWidthPlus: 0,
+		          fillOpacity: 0,
+		          fillColor: {
+	              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+	              stops: [
+	                [0, 'rgba(109,105,197,0.1)'],
+	                [1, 'rgba(27,199,159,0.1)']
+	              ]
+	            },
+		          marker: {
+		            enabled: false,
+		            states: {
+		              hover: {
+		                enabled: true,
+		                lineWidth: 0,
+		                lineWidthPlus: 0,
+		                radius: 4,
+		                radiusPlus: 0,
+		              }
+		            }
+		          }
+		        });
+	        }
+	      }
+
+	    	// Generate Demo Chart, using the properties set above
 				var chart = new Highcharts.Chart({
 					chart: {
 	          renderTo: containerId,
 						marginLeft: 0,
 						marginRight: 0,
-						marginBottom: 24,
+						marginBottom: 0,
 						marginTop: 0,
 						spacing: [0,0,0,0],
-						height: 285,
+						height: 306,
 						backgroundColor: '#fcfdfd',
 						plotBackgroundColor: '#f2f2f5',
-			   		type: 'area',
+			   		type: chartType,
 			   		animation: false,
 			   		style: {
 	            fontFamily: 'Source Sans Pro'
@@ -1019,11 +1369,12 @@
 	                var countIndex = 0;
 	                var graphPointAnimationDelay = 20;
 
-	                // set the series opacity's on load
+	                // set the all series opacity on load
 	                var countIndex = 0;
-	                $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function() {
-	                  if (countIndex > 0) {                  	
+	                $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function() { // gets each series line
+	                  if (countIndex > 0) { // first series is set to visible
 	                    $(this).attr("style", "opacity: 0.3");
+	                    $(this).siblings("path").attr("style", "opacity: 0");
 	                  } else {
 	                    $(this).attr("style", "opacity: 1");
 	                  }
@@ -1040,6 +1391,8 @@
 	        },
 	        yAxis: yAxesSettings,
 	        xAxis: {
+	        	lineColor: '#e1e5e8',
+            lineWidth: 1,
 	        	startOnTick: false,
 	        	endOnTick: false,
 	        	showFirstLabel: false,
@@ -1056,12 +1409,12 @@
 	          	align: 'center',
 	            x: 0,
 	            y: 18,
-	            step: 4,
+	            step: 2,
 	            style: {
 	              color: '#81879d',
 	              fontSize: "12px"
 	            }
-	          }
+	          },
 	        },
 	        plotOptions: {
 	        	area: {
@@ -1076,114 +1429,101 @@
 	        				},
 	        				lineWidthPlus: 0
 	        			}
-	        		}        		
+	        		},
+	        		marker: {
+	        			symbol: "circle"
+	        		}		
+	        	},
+	        	bar: {
+	        		borderColor: "#f2f2f5",
+	        		borderWidth: 1,
+	        		groupPadding: 0.08,
+	        		pointPadding: 0,
+	        		states: {
+	        			hover : {
+	        				brightness: 0.1
+	        			}
+	        		}
 	        	},
 	          series: {
 	            events: {
-	              click: function() {
-	                var that = this;
+	              click: function() { // clicking on a series selects it and highlights it
 
-                  var count = 0;
-                  $('#' + containerId + ' .highcharts-series').each(function(){
-                  	if(count != that.index) {
-	                    var thisFillPath = $(this).find('path:nth-child(2)');                        
-	                    if(thisFillPath.attr("stroke-width") == 3.1) {
-	                      that.chart.series[count].update({
-	                        lineWidth: 3
-	                      });           
-	                      var counterTwo = 0;
-	                      $('#' + containerId + ' .highcharts-series').each(function(){
-	                        if(counterTwo == count) {
-	                          thisFillPath = $(this).find('path:nth-child(2)');
-	                        }
-	                        counterTwo++;
-	                      });                          
-	                      thisFillPath.css("opacity", "1");
-	                      thisFillPath.animate({ "opacity": 0.3 }, 250);
-	                      thisFillPath.siblings("path").css("opacity", "1");
-	                      thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
-	                    }
-	                  }
-                    count++;
-                  });
+	              	// on selecting a series, previously selected series need to be set to unselected, on all charts
+	                var that = this,
+	                		indexToSelect = that.refseriesindex;
 
-	                this.update({
-	                  lineWidth: 3.1
-	                });	                
+	                if(!that.selected) { // if user clicked on a line that isn't currently selected
 
-	                // update the graph line CSS class's after this.udpate
-	                setGraphCSSClasses(containerId);
+	                	// get the index of the previously selected line
+	                	var previousSelectedIndex = $('#' + containerId + ' .highcharts-series path[data-selected]').attr("data-index");
 
-	                var $selectedLine;
-	                $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
-	                  var $this = $(this);
-	                  if($this.attr("stroke-width") == 3.1) { // TODO, this isn't fading in - nice to have            	
-	                    $this.css("opacity", "0.3");
-	                    $this.animate({ "opacity": 1 }, 250);
-	                    $this.siblings("path").css("opacity", "0.1");
-	                    $this.siblings("path").animate({ "opacity": 1 }, 250);
-	                    $selectedLine = $this;
-	                  }
-	                });
+	                		// set the previously selected line to unselected
+	                		if(previousSelectedIndex != undefined) {
+	                			that.chart.setSeriesToUnselected(that.chart.index, previousSelectedIndex);
+	                		}
 
-	                // UPDATE THE MIRRORED CHART
-	                // click the mirroring chart line
-	                if($selectedLine) {
-	                	$("." + $selectedLine.attr("class")).each(function(){
-                    	if(!$(this).is($selectedLine)) {
-                    		var mirrorChartContainer = $(this).parents('.chart'),
-                    				mirrorChartIndex = mirrorChartContainer.attr("data-highcharts-chart"),
-                    				mirrorContainerId = mirrorChartContainer.attr("id");
+		                	// set the clicked line to selected
+		                	that.selected = true;
+		                	that.graph.element.setAttribute("data-selected", "selected");
 
-                    		// uodate the mirrored chart
-                    		for(var i = 0; i < pageCharts[mirrorChartIndex].series.length; i++) {
+		                	// animate the selected line change
+		                	that.chart.animateSelectedLines('#' + containerId, indexToSelect, previousSelectedIndex);
 
-			                    var count = 0;
-			                    $('#' + mirrorContainerId + ' .highcharts-series').each(function(){
-			                      if(count == i) {
-			                        var thisFillPath = $(this).find('path:nth-child(2)');                        
-			                        if(thisFillPath.attr("stroke-width") == 3.1) {
-			                          pageCharts[mirrorChartIndex].series[i].update({
-			                            lineWidth: 3
-			                          });           
-			                          var counterTwo = 0;
-			                          $('#' + mirrorContainerId + ' .highcharts-series').each(function(){
-			                            if(counterTwo == count) {
-			                              thisFillPath = $(this).find('path:nth-child(2)');
-			                            }
-			                            counterTwo++;
-			                          });                          
-			                          thisFillPath.css("opacity", "1");
-			                          thisFillPath.animate({ "opacity": 0.3 }, 250);
-			                          thisFillPath.siblings("path").css("opacity", "1");
-			                          thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
-			                        }
-			                      }
-			                      count++;
-			                    });
-				              	};
+			                // Update all other charts with the selection
+			                if(that.chart.index < 2) { // currently viewing the twin charts
+			                	
+			                	// get the index of the other twin chart
+			                	var mirrorChartIndex = (that.chart.index == 0) ? 1 : 0;
 
-				              	pageCharts[mirrorChartIndex].series[that.index].update({
-				                  lineWidth: 3.1
-				                });	 
+			                	// remove previously selected from twin chart
+			                	if(previousSelectedIndex != undefined) {
+			                		that.chart.setSeriesToUnselected(mirrorChartIndex, previousSelectedIndex);                	
+				                }
 
-				                // update the graph line CSS class's after this.udpate
-				                setGraphCSSClasses(mirrorContainerId);
+			                	// get the previously selected line on the combined chart
+			                	// and remove previously selected state from combined chart
+			                	var previousSelectedIndexOnCombined = $('.chart[data-highcharts-chart="2"] .highcharts-series path[data-selected]').attr("data-index");
 
-				                var $selectedLine;
-				                $('#' + mirrorContainerId + ' .highcharts-series path:nth-child(2)').each(function(){
-				                  var $this = $(this);
-				                  if($this.attr("stroke-width") == 3.1) {	                  	
-				                    $this.css("opacity", "1");
-				                    $this.siblings("path").css("opacity", "0.1");
-				                    $this.siblings("path").animate({ "opacity": 1 }, 250);
-				                    $selectedLine = $this;
-				                  }
-				                });
-                    	}
-                    });
-	                }
+			                	if(previousSelectedIndexOnCombined != undefined) {
+			                		that.chart.setSeriesToUnselected(2, previousSelectedIndexOnCombined);
+			                	}
 
+			                	// set the clicked line to selected on the twin chart
+			                	that.chart.setSeriesToSelected(mirrorChartIndex, indexToSelect);
+
+			                	// set the clicked line to selected on the combined chart
+			                	var indexToSelectOnCombinedChart = indexToSelect * 2;
+
+			                	that.chart.setSeriesToSelected(2, indexToSelectOnCombinedChart);
+
+			                	// animate the selected line change on the mirrored and combined charts
+			                	that.chart.animateSelectedLines('.chart[data-highcharts-chart="' + mirrorChartIndex + '"]', indexToSelect, previousSelectedIndex);
+			                	that.chart.animateSelectedLines('.chart[data-highcharts-chart="2"]', indexToSelectOnCombinedChart, previousSelectedIndexOnCombined);
+			                
+			                } else { 
+												
+												// using the combined chart, so select the same for the twin charts
+												if(previousSelectedIndex != undefined) {
+			                		var correspondingIndexOfPreviouslySelectedOnTwinCharts = Math.floor(previousSelectedIndex / 2); // (combined has twice the series lines as a twin chart)
+
+			                		// unselect the previously selected line on twin charts
+			                		that.chart.setSeriesToUnselected(0, correspondingIndexOfPreviouslySelectedOnTwinCharts);
+			                		that.chart.setSeriesToUnselected(1, correspondingIndexOfPreviouslySelectedOnTwinCharts);
+				                }
+
+				                var correspondingIndexToSelectOnTwinCharts = Math.floor(indexToSelect/2);
+
+			                	// set the clicked line to selected on the twin charts
+			                	that.chart.setSeriesToSelected(0, correspondingIndexToSelectOnTwinCharts);
+			                	that.chart.setSeriesToSelected(1, correspondingIndexToSelectOnTwinCharts);
+
+			                	// animate the selected line change on the mirrored chart
+			                	that.chart.animateSelectedLines('.chart[data-highcharts-chart="0"]', correspondingIndexToSelectOnTwinCharts, correspondingIndexOfPreviouslySelectedOnTwinCharts);
+
+			                	that.chart.animateSelectedLines('.chart[data-highcharts-chart="1"]', correspondingIndexToSelectOnTwinCharts, correspondingIndexOfPreviouslySelectedOnTwinCharts);
+			                }
+	                	}
 	              },
 	            },
 	            cursor: 'pointer',
@@ -1196,11 +1536,42 @@
 	        	shared: true,
 	          formatter: function() {
 	            var instance = this;
-	            var s = "";            
+	            var s = "";
+	            var thisPointIndex = instance.points[0].point.index;
+	            // for stacked percentage
+	            // TO DO - bug if first line is off
+	            var thisPointTotalValue = instance.points[0].series.chart.series[0].data[thisPointIndex].y;
+
 	            $.each(instance.points, function (index, value) {
 	                var chartSeries = value.series;
-	                var imgString = "<img src=images/icon-chart-tooltip-downloads.png alt='Rank icon' class=icon-downloads />";
-	                s += '<div class="custom-tooltip ' + chartSeries.name + '" style="background-color: ' + chartSeries.color + '">' + imgString + value.y + '</div>';
+	                var imgString = "",
+	                		storeString = ""
+	                		valueString = "",
+	                		stackedString = "";
+
+	                if(chartSeries.name == "revenueseries") {
+	                	valueString = "$ ";
+	                }
+	                if(chartSeries.name == "revenueseries-total") {
+	                	valueString = "$ ";
+	                	imgString = "<img src=images/v2/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
+	                } else if(chartSeries.name == "downloadsseries-total") {
+	                	imgString = "<img src=images/v2/icon-chart-tt-downloads@2x.png alt='Rank icon' class=icon-downloads />";	
+	                }
+	                
+	                var seriesClassName = chartSeries.name;
+	                if(seriesClassName == "revenueseries-total") {
+	                	seriesClassName = "revenueseries";
+	                } else if(seriesClassName == "downloadsseries-total") {
+	                	seriesClassName = "downloadsseries";
+	                }
+
+	                if($('#toggle--show-stacked').is(":checked") && thisPointTotalValue != undefined) {
+	                	var percentageOfTotal = parseInt(value.y / thisPointTotalValue * 100);
+	                	stackedString = "<span class='chart-tooltip-percentage' style='background-color: " + chartSeries.color + "'>" + percentageOfTotal + "%</span>";
+	                }
+
+	                s += '<div class="custom-tooltip ' + seriesClassName + '" style="background-color: ' + chartSeries.color + '">' + imgString + storeString + '<span class="chart-tooltip-value">' + valueString + value.y + '</span>' + stackedString + '</div>';
 	            });
 	            return s;
 	          },
@@ -1208,7 +1579,7 @@
 	          borderWidth: 0,
 	          borderColor: '#dae3ed',
 				    crosshairs: [{
-	            width: 0,
+	            width: 1,
 	            color: '#9ea7c4'
 	          }],
 	          shadow: {
@@ -1217,164 +1588,1157 @@
 	            offsetX: 1,
 	            offsetY: 1
 	        	},
-	        	snap: 25
+	        	snap: 25,
+	        	// the positioner callback could be used in future for the combined chart where it goes off the left of the graph
+	        	// positioner: function (labelWidth, labelHeight, point) {
+          //     console.log("labelWidth = " + labelWidth);
+          //     console.log("labelHeight = " + labelHeight);
+          //     console.log(point);
+          //     return { x: point.plotX, y: 0 };
+          //   },
 	        }
 		    });
 
-	      pageCharts.push(chart);
-			} // end generateChart()			
+			} // end generateChart()
 
+			function addAppDataToSeries() {
+				// add the app icon and store to the Highcharts series objects for the tooltip
 
-   		function setGraphCSSClasses(containerId) {
-   			var counter = 0;
+				// template only, mock data
+				for(var k = 0; k < 2; k++) {
+					$.each(Highcharts.charts[k].series, function (key, series) { // twin chart
+				    series.appIcon = seriesAppIcons[key].icon;
+				    series.appStore = seriesAppIcons[key].store;
+					});
+				}
 
-        $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function(){
-          $(this).attr("class", "series-class-" + counter);
-          $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + counter);
-          counter++;
-        });
-   		} // end setGraphCSSClasses
+				$.each(Highcharts.charts[2].series, function (key, series) { // combined chart
+			    // combined chart, use the same icon for rev and downloads
+			    var combinedSeriesIndex = Math.floor(key / 2);
+			    series.appIcon = seriesAppIcons[combinedSeriesIndex].icon;
+			    series.appStore = seriesAppIcons[combinedSeriesIndex].store;
+				});
+			}
 
+			function handleCustomLegendInteraction() {
 
-   		function handleHideGraphLine(seriesIndexOfLineBeingHidden) {
-   			
-   			pageCharts[0].series[seriesIndexOfLineBeingHidden].update({
-          lineWidth: 3
-        });
-        pageCharts[1].series[seriesIndexOfLineBeingHidden].update({
-          lineWidth: 3
-        });
+				// Hide/show series from custom legend
+				$('.js-custom-chart-key').on("click", '.js-toggle-series', function(){ // for each current or new '.js-toggle-series' (checkbox in the legend)
 
-        $('.highcharts-series path:nth-child(2)').each(function(){
-          var $this = $(this);
-          if($this.attr("stroke-width") == 3) {
-          	$this.css("opacity", "0.3");
-            $this.siblings("path").css("opacity", "0.1");
-          }
-        });
-
-				for(var i = 0; i < pageCharts[0].series.length; i++) {
-          if(i != seriesIndexOfLineBeingHidden) {
-          	if(pageCharts[0].series[i].visible) {
-          		pageCharts[0].series[i].update({
-			          lineWidth: 3.1
-			        });
-			        pageCharts[1].series[i].update({
-			          lineWidth: 3.1
-			        });
-
-			        // set CSS classes on lines and fills
-			        setGraphCSSClasses("chart-revenue");
-			        setGraphCSSClasses("chart-downloads");
-
-			        $('.highcharts-series path:nth-child(2)').each(function(){
-			          var $this = $(this);
-			          if($this.attr("stroke-width") == 3.1) {	                  	
-			            $this.css("opacity", "1");
-			            $this.siblings("path").css("opacity", "0.1");
-			            $this.siblings("path").animate({ "opacity": 1 }, 250);
-			          }
-			        });
-
-          		break;
-          	}
-          }
-        };
-			} // end handleHideGraphLine
-
-
-			function handleChartInteraction() {
-				
-				// Hide/show series from key
-				$('.js-toggle-total-series').click(function(){
 					var $this = $(this);
-					var chartIndex = $this.data("chart-index");
-					var seriesIndex = $this.data("series-index");
-					if($(this).is(":checked")) {
-						// turn off same series on both charts
-						pageCharts[0].series[seriesIndex].show();
-						pageCharts[1].series[seriesIndex].show();
-					} else {
-						setTimeout(function(){
-							// CHECK IF LINE IS SELECTED AND SELECT NEXT LINE
-							if(pageCharts[0].series[seriesIndex].graph.strokeWidth == 3.1) {
-								handleHideGraphLine(seriesIndex)
+					var chartIndex = $this.attr("data-chart-index");
+					var seriesIndex = $this.attr("data-series-index");					
+
+					var currentChartType = "area";
+					$('.toggle input[type=radio][name=charttype]').each(function(){
+						if($(this).is(":checked")) {
+							currentChartType = $(this).attr("data-chart-type");
+						}
+					});
+
+					if(chartIndex < 2) { // user is using the twin chart
+
+						if($(this).is(":checked")) {
+							// turn on same series on both twin charts
+							Highcharts.charts[0].series[seriesIndex].show();
+							Highcharts.charts[1].series[seriesIndex].show();
+
+							// turn on the combined chart corresponding series
+							Highcharts.charts[2].series[seriesIndex * 2].show();
+							Highcharts.charts[2].series[(seriesIndex * 2) + 1].show();
+
+							// only reset styles for non-stacked area chart
+							setTimeout(function(){
+								if(!$('#toggle--show-stacked').is(":checked") && currentChartType == "area") {
+									Highcharts.Chart.prototype.setGraphCSSClasses();
+									Highcharts.Chart.prototype.resetLineStyling();
+								} else {
+									Highcharts.Chart.prototype.setGraphCSSClasses();
+									Highcharts.Chart.prototype.setGraphFillsTransparency();
+								}
+							}, 200);
+
+							// turn off other checkboxes in mirror chart key
+							$('.js-twin-chart-container .js-toggle-series').each(function(){
+								var $thisToggle = $(this);
+								if(!$thisToggle.is($this)) {
+									if($thisToggle.attr("data-series-index") == seriesIndex) {
+										$thisToggle[0].checked = true;
+									}
+								}
+							});
+
+							// combined chart turn on/off corresponding series
+							$('.js-combined-chart-container .js-toggle-series').each(function(){
+								var $thisToggle = $(this);
+								if(!$thisToggle.is($this)) {
+									if($thisToggle.attr("data-series-index") == seriesIndex * 2 || $thisToggle.attr("data-series-index") == (seriesIndex * 2) + 1) {
+										$thisToggle[0].checked = true;
+									}
+								}
+							});
+
+						} else { // turn off the series on all charts
+							setTimeout(function(){
+								
+								var isStackedChart = true;
+								if(currentChartType == "area") {
+
+									// If the line being turned off is selected then unselect, and select first visible line
+									if(Highcharts.charts[0].series[seriesIndex].selected == true) {
+										
+										isStackedChart = false;
+
+										// unselect for twin charts
+										Highcharts.Chart.prototype.setSeriesToUnselected(0, seriesIndex);
+										Highcharts.Chart.prototype.setSeriesToUnselected(1, seriesIndex);
+
+										// unselect for combined chart
+										var previousSelectedIndexOnCombined = $('.chart[data-highcharts-chart="2"] .highcharts-series path[data-selected]').attr("data-index");
+
+										Highcharts.Chart.prototype.setSeriesToUnselected(2, previousSelectedIndexOnCombined);
+									}
+								}
+
+								// Hide the series
+								Highcharts.charts[0].series[seriesIndex].hide();
+								Highcharts.charts[1].series[seriesIndex].hide();
+
+								// hide on the combined chart
+								Highcharts.charts[2].series[seriesIndex * 2].hide();
+								Highcharts.charts[2].series[(seriesIndex * 2) + 1].hide();
+
+								setTimeout(function(){
+									if(!isStackedChart) {
+										Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+										Highcharts.Chart.prototype.setGraphCSSClasses();
+						        Highcharts.Chart.prototype.resetLineStyling();
+									}
+								}, 200);
+							}, 200);
+
+							// turn off other checkboxes in mirror chart key
+							$('.js-twin-chart-container .js-toggle-series').each(function(){
+								var $thisToggle = $(this);
+								if(!$thisToggle.is($this)) {
+									if($thisToggle.attr("data-series-index") == seriesIndex) {
+										$thisToggle[0].checked = false;
+									}
+								}
+							});
+
+							// combined chart turn on/off corresponding series
+							$('.js-combined-chart-container .js-toggle-series').each(function(){
+								var $thisToggle = $(this);
+								if(!$thisToggle.is($this)) {
+									if($thisToggle.attr("data-series-index") == seriesIndex * 2 || $thisToggle.attr("data-series-index") == (seriesIndex * 2) + 1) {
+										$thisToggle[0].checked = false;
+									}
+								}
+							});
+
+						}
+
+					} else { // user is using combined chart
+
+						if($(this).is(":checked")) {
+							Highcharts.charts[2].series[seriesIndex].show();
+
+							// if both rev and dloads are selected on combined, turn that series on on the twin charts
+								
+							// get the corresponding series to see if it's visible
+							var correspondingSeriesIndex,
+									isDownloadsSeriesBeingTurnedOn = seriesIndex % 2 == 1;
+
+							if(isDownloadsSeriesBeingTurnedOn) {
+								correspondingSeriesIndex = seriesIndex - 1;
+							} else {
+								correspondingSeriesIndex = parseInt(seriesIndex) + 1;
 							}
 
-							// Hide the series
-							pageCharts[0].series[seriesIndex].hide();
-							pageCharts[1].series[seriesIndex].hide();
-						}, 200);
-					}
-					// turn off other checkboxes in other chart key
-					$('.js-toggle-total-series').each(function(){
-						var $thisToggle = $(this);
-						if(!$thisToggle.is($this)) {
-							if($thisToggle.data("series-index") == seriesIndex) {
-								if($thisToggle[0].checked) {
-									$thisToggle[0].checked = false;
+							var isCorrespondingSeriesVisible = Highcharts.charts[2].series[correspondingSeriesIndex].visible;
+
+							if(isCorrespondingSeriesVisible) {
+
+								// make sure correspondingTwinIndex is set to corresponding twin chart index
+								var correspondingTwinIndex;
+								if(isDownloadsSeriesBeingTurnedOn) {
+									correspondingTwinIndex = (seriesIndex - 1) / 2;
 								} else {
-									$thisToggle[0].checked = true;
+									correspondingTwinIndex = seriesIndex / 2
+								}
+
+								// turn it on on the twin chart
+								Highcharts.charts[0].series[correspondingTwinIndex].show();
+								Highcharts.charts[1].series[correspondingTwinIndex].show();
+
+								// set the key toggle
+								$('.js-twin-chart-container .js-toggle-series').each(function(){
+									var $thisToggle = $(this);
+									if(!$thisToggle.is($this)) {
+										if($thisToggle.attr("data-series-index") == correspondingTwinIndex) {
+											$thisToggle[0].checked = true;
+										}
+									}
+								});
+							}
+
+							// if non-stacked area chart, reset CSS styles/classes
+							if(!$('#toggle--show-stacked').is(":checked") && currentChartType == "area") {
+								Highcharts.Chart.prototype.setGraphCSSClasses();
+								Highcharts.Chart.prototype.resetLineStyling();
+							} else {
+								Highcharts.Chart.prototype.setGraphCSSClasses();
+								Highcharts.Chart.prototype.setGraphFillsTransparency();
+							}
+
+						} else {
+							setTimeout(function(){
+
+								// If series is selected, select next visible series
+								var isStackedChart = true;
+
+								var correspondingTwinIndex;
+								if(seriesIndex % 2 == 1) {
+									correspondingTwinIndex = (seriesIndex - 1) / 2;
+								} else {
+									correspondingTwinIndex = seriesIndex / 2
+								}
+
+								if(currentChartType == "area") {
+
+									if(Highcharts.charts[2].series[seriesIndex].selected == true) {
+										
+										isStackedChart = false;
+
+										Highcharts.Chart.prototype.setSeriesToUnselected(2, seriesIndex);
+
+										// Deselect the equivalent line on the twin charts
+										Highcharts.Chart.prototype.setSeriesToUnselected(0, correspondingTwinIndex);
+										Highcharts.Chart.prototype.setSeriesToUnselected(1, correspondingTwinIndex);
+									}
+								}
+
+								// Hide the series
+								Highcharts.charts[2].series[seriesIndex].hide();
+								Highcharts.charts[0].series[correspondingTwinIndex].hide();
+								Highcharts.charts[1].series[correspondingTwinIndex].hide();
+
+								// set the key toggle
+								$('.js-twin-chart-container .js-toggle-series').each(function(){
+									var $thisToggle = $(this);
+									if(!$thisToggle.is($this)) {
+										if($thisToggle.attr("data-series-index") == correspondingTwinIndex) {
+											$thisToggle[0].checked = false;
+										}
+									}
+								});
+
+								setTimeout(function(){
+									if(!isStackedChart) {
+										Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+										Highcharts.Chart.prototype.setGraphCSSClasses();
+						        Highcharts.Chart.prototype.resetLineStyling();					
+									}
+								}, 200);
+							}, 200);
+						}
+					}		
+				});
+
+				// hover on/off key to highlight lines
+				$('.js-hover-series').on("mouseenter", function(){					
+					handleMouseEnterChartKeyLabel($(this));
+				}).on("mouseleave", function(){
+					handleMouseLeaveChartKeyLabel($(this));
+				});
+			}
+
+			function handleShowBarChart() {
+
+				// change chart type
+				$('.js-toggle--show-bar').on("click", function(){
+
+					if(!$(this).hasClass("is-disabled")) {
+
+						$('.js-mock-show-single-chart.is-disabled').removeClass("is-disabled")
+																					.siblings("input").removeAttr("disabled", "disabled");
+
+						$.each(Highcharts.charts, function(key, chart) {
+							$.each(chart.series, function (key, series) {
+						    series.update({
+						    	type: 'bar',
+						    	stacking: null
+						    });
+							});
+						});
+					}
+
+					addAppDataToSeries();
+					redrawChartEvents();
+				});
+			}
+
+			function handleShowAreaChart() {
+				// change chart type
+				$('.js-toggle--show-area').on("click", function(){
+
+					// disabled the toggle for combined chart
+					$('.js-mock-show-single-chart.is-disabled').removeClass("is-disabled")
+																					.siblings("input").removeAttr("disabled", "disabled");
+
+					$.each(Highcharts.charts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+					    series.update({
+					    	type: 'area',
+					    	stacking: null,
+					    	fillColor: {
+		              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+		              stops: [
+		                [0, 'rgba(109,105,197,0.1)'],
+		                [1, 'rgba(27,199,159,0.1)']
+		              ]
+		            },
+		            lineWidth: 3
+					    });
+						});
+					});
+
+					Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+					Highcharts.Chart.prototype.setGraphCSSClasses();
+	        Highcharts.Chart.prototype.resetLineStyling();
+
+	        addAppDataToSeries();
+	        redrawChartEvents();
+				});
+			}
+
+			function handleShowStackedAreaChart() {
+
+				// change chart type
+				$('.js-toggle--show-stacked').on("click", function(){
+
+					if(!$(this).hasClass("is-disabled")) {
+						// disabled the toggle for combined chart
+						$('.js-mock-show-single-chart').addClass("is-disabled")
+																						.siblings("input").attr("disabled", "disabled");
+
+						$.each(Highcharts.charts, function(key, chart) {
+							$.each(chart.series, function (key, series) {
+								if(key > 0) { // all lines other than the first line (the total line) are stacked - the total does not make up the stacked chart and stays with stacking: null
+									series.update({
+										type: 'area',
+							    	stacking: 'normal',
+							    	fillColor: seriesFills[key],
+							    	lineWidth: 2
+							    });
+								} else { // the first line is the total line for the stacked chart and should not be part of the stacked area
+									series.update({
+										type: 'area',
+										stacking: null,
+										fillColor: seriesFills[key],
+										lineWidth: 2
+									});
+								}				    
+							});
+						});
+
+						Highcharts.Chart.prototype.setGraphCSSClasses();
+						Highcharts.Chart.prototype.setGraphFillsTransparency();
+
+						addAppDataToSeries();
+						redrawChartEvents()
+					}
+				});
+			}
+
+			function handleAddSeriesTest() {
+
+				// mock, just for index when you add a series
+				// not needed in app
+				Highcharts.charts[0].numberofSeriesAdded = Highcharts.charts[0].series.length - 1; 
+
+				$('.js-add-series').on("click", function(e){
+
+					e.preventDefault();
+
+					// set stacking to normal if currently viewing stacked chart
+					var stackingValue = null;
+					if($('#toggle--show-stacked').is(":checked")) {
+						stackingValue = 'normal';
+					}
+
+					var chartType = "area";
+					if($('#toggle--show-bar').is(":checked")) {
+						chartType = "bar";
+					}
+
+					var mockSeries = [];
+					for(var d = 0; d < 12; d++) {
+						var randomNumber = Math.floor((Math.random() * 50000) + 30000);				
+						mockSeries.push(randomNumber);
+					}
+					var mockSeriesDownloads = [];
+					for(var d = 0; d < 12; d++) {
+						var randomNumber = Math.floor((Math.random() * 50000) + 30000);		
+						mockSeriesDownloads.push(randomNumber);
+					}
+
+					// get a series colour that's not in use
+					var availableColour = "#1bc79f";
+					for(var c = 1; c < seriesColours.length; c++) { // (0 is used by revenue total)
+						colourInUse = (usedSeriesColours.indexOf(seriesColours[c]) > -1) ? true : false;
+						if(!colourInUse) {
+							availableColour = seriesColours[c];
+							availableColourIndex = c;
+							break;
+						}
+					}
+
+					usedSeriesColours.push(availableColour);
+
+					var fillColourForNewSeries = {
+							linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+              stops: [
+                [0, 'rgba(109,105,197,0.1)'],
+                [1, 'rgba(27,199,159,0.1)']
+              ]
+          };
+
+					if(stackingValue == 'normal') {
+						fillColourForNewSeries = seriesFills[availableColourIndex];
+					}
+
+					Highcharts.charts[0].addSeries({
+          	yAxis: 0,
+	          name: "revenueseries",
+            id : "revenueseries",
+            type: chartType,
+	          color: availableColour,
+	          data: mockSeries,
+	          pointStart: Date.UTC(2016, 0, 1),
+	          pointInterval: 24 * 3600 * 1000, // one day
+	          lineColor: availableColour,
+	          lineWidth: (stackingValue == null) ? 3 : 2,
+	          lineWidthPlus: 0,
+	          fillOpacity: 0,
+	          fillColor: fillColourForNewSeries,
+            stacking: stackingValue,
+	          marker: {
+	            enabled: false,
+	            states: {
+	              hover: {
+	                enabled: true,
+	                lineWidth: 0,
+	                lineWidthPlus: 0,
+	                radius: 4,
+	                radiusPlus: 0,
+	              }
+	            }
+	          }
+         	});
+
+         	Highcharts.charts[1].addSeries({
+          	yAxis: 0,
+	          name: "downloadsseries",
+            id : "downloads",
+            type: chartType,
+	          color: availableColour,
+	          data: mockSeriesDownloads,
+	          pointStart: Date.UTC(2016, 0, 1),
+	          pointInterval: 24 * 3600 * 1000, // one day
+	          lineColor: availableColour,
+	          lineWidth: (stackingValue == null) ? 3 : 2,
+	          lineWidthPlus: 0,
+	          fillOpacity: 0,
+	          fillColor: fillColourForNewSeries,
+            stacking: stackingValue,
+	          marker: {
+	            enabled: false,
+	            states: {
+	              hover: {
+	                enabled: true,
+	                lineWidth: 0,
+	                lineWidthPlus: 0,
+	                radius: 4,
+	                radiusPlus: 0,
+	              }
+	            }
+	          }
+         	});
+
+         	Highcharts.charts[2].addSeries({
+          	yAxis: 0,
+	          name: "revenueseries",
+            id : "revenueseries",
+            type: chartType,
+	          color: availableColour,
+	          data: mockSeries,
+	          pointStart: Date.UTC(2016, 0, 1),
+	          pointInterval: 24 * 3600 * 1000, // one day
+	          lineColor: availableColour,
+	          lineWidth: 3,
+	          lineWidthPlus: 0,
+	          fillOpacity: 0,
+	          fillColor: fillColourForNewSeries,
+	          marker: {
+	            enabled: false,
+	            states: {
+	              hover: {
+	                enabled: true,
+	                lineWidth: 0,
+	                lineWidthPlus: 0,
+	                radius: 4,
+	                radiusPlus: 0,
+	              }
+	            }
+	          }
+         	});
+
+         	Highcharts.charts[2].addSeries({
+          	yAxis: 1,
+	          name: "downloadsseries",
+            id : "downloads",
+            type: chartType,
+	          color: availableColour,
+	          data: mockSeriesDownloads,
+	          pointStart: Date.UTC(2016, 0, 1),
+	          pointInterval: 24 * 3600 * 1000, // one day
+	          lineColor: availableColour,
+	          lineWidth: 3,
+	          lineWidthPlus: 0,
+	          fillOpacity: 0,
+	          fillColor: fillColourForNewSeries,
+            dashStyle: 'shortdash',
+	          marker: {
+	            enabled: false,
+	            states: {
+	              hover: {
+	                enabled: true,
+	                lineWidth: 0,
+	                lineWidthPlus: 0,
+	                radius: 4,
+	                radiusPlus: 0,
+	              }
+	            }
+	          }
+         	});
+
+         	// reset lines CSS and styling if not viewing stacked chart
+					if(stackingValue == null) {
+						setTimeout(function(){
+							Highcharts.Chart.prototype.setGraphCSSClasses();
+		      		Highcharts.Chart.prototype.resetLineStyling();
+		      	}, 200);
+					} else {
+						Highcharts.Chart.prototype.setGraphCSSClasses();
+						Highcharts.Chart.prototype.setGraphFillsTransparency();
+					}
+
+					Highcharts.charts[0].numberofSeriesAdded++; // MOCK, just to generate index
+
+					// in the app, ("showhiderevenue-" + Highcharts.charts[0].numberofSeriesAdded) should be replaced with an id for that series
+					// the (Highcharts.charts[0].numberofSeriesAdded) index should be the same as the series index
+					addASeriesToggle(Highcharts.charts[0].series.length - 1, "showhiderevenue-" + Highcharts.charts[0].numberofSeriesAdded, availableColourIndex);
+
+					addAppDataToSeries();
+
+				});
+
+			}
+
+			function handleRemoveSeriesTest() {
+				$('.js-remove-series').on("click", function(e){
+
+					e.preventDefault();
+
+					var isStackedChart = true;
+					if($('.chart[data-highcharts-chart="0"] .highcharts-series path[data-selected]').length) {
+						isStackedChart = false;
+					}
+
+					var removedLineWasSelected = false;
+					if(Highcharts.charts[0].series[2].selected == true) {
+						removedLineWasSelected = true;
+					}
+
+					// mock removal of series 2
+					Highcharts.charts[0].series[2].remove(true);
+					Highcharts.charts[1].series[2].remove(true);
+
+					// remove from combined chart - the indexes are the same, because after the first [4] has been removed, the next line becomes [4], which is also removed (the download line for [4], was [5])
+					Highcharts.charts[2].series[4].remove(true);
+					Highcharts.charts[2].series[4].remove(true);
+
+					if(!isStackedChart) {
+						setTimeout(function(){
+							if(removedLineWasSelected) {
+								Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+							}							
+							Highcharts.Chart.prototype.setGraphCSSClasses();
+		      		Highcharts.Chart.prototype.resetLineStyling();
+		      	}, 200);
+					}					
+
+					removeASeriesToggle(2);
+				});
+			}
+			
+			function handleChartEvents() {
+
+				// Use Highcharts.charts[0].refEvents[] to hold the event objects, which consist of an icon, line and tooltip content and tooltip colour
+				Highcharts.charts[0].refEvents = [];
+
+				if($('.js-toggle-events:checked').length > 0) {
+					addEventsToGraph();
+				}
+
+				$('.js-toggle-events').change(function(){
+					if($(this).is(":checked")) {
+						if(Highcharts.charts[0].refEvents.length == 0) {
+							addEventsToGraph();
+						} else { // otherwise show existing events
+							for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+								if(Highcharts.charts[0].refEvents[e].icon) {
+									$(Highcharts.charts[0].refEvents[e].icon.element).fadeIn(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].line) {
+									$(Highcharts.charts[0].refEvents[e].line.element).fadeIn(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].area) {
+									$(Highcharts.charts[0].refEvents[e].area.element).fadeIn(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].label) {
+									$(Highcharts.charts[0].refEvents[e].label.element).fadeIn(200);
 								}
 							}
 						}
-					});				
-				});
-
-				// toggle a row on/off in the key
-				$('.js-toggle-row-off').click(function(){
-					var counter = 0,
-							toggleAllValue = $(this)[0].checked;
-					$(this).parents('.chart-key-full__row').find('input[type=checkbox]').each(function(){
-						var $checkbox = $(this);
-						if(counter > 0) {
-							if(toggleAllValue && !$checkbox[0].checked) {
-								$checkbox.trigger("click");
-							} else if(!toggleAllValue && $checkbox[0].checked) {
-								$checkbox.trigger("click");
+					} else {
+						if(Highcharts.charts[0].refEvents.length > 0) {
+							// hide existing events
+							for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+								if(Highcharts.charts[0].refEvents[e].icon) {
+									$(Highcharts.charts[0].refEvents[e].icon.element).fadeOut(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].line) {
+									$(Highcharts.charts[0].refEvents[e].line.element).fadeOut(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].area) {
+									$(Highcharts.charts[0].refEvents[e].area.element).fadeOut(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].label) {
+									$(Highcharts.charts[0].refEvents[e].label.element).fadeOut(200);
+								}
 							}
 						}
-						counter++;
-					});
+					}
 				});
 
-				// set first line to have larger width for interaction functionality
-				pageCharts[0].series[0].update({
-          lineWidth: 3.1
-        });
-        pageCharts[1].series[0].update({
-          lineWidth: 3.1
-        });
+				// Events - Redraw events for window width change
+				$(window).on("resize", function(){
+					setTimeout(function(){
+						redrawChartEvents();
+					}, 1500);
+				});
+			}
 
-        // set CSS classes on lines and fills
-        setGraphCSSClasses("chart-revenue");
-        setGraphCSSClasses("chart-downloads");
+			function redrawChartEvents() {
+				if(Highcharts.charts[0].refEvents.length > 0) {
+						// redraw events
+						for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+							if(Highcharts.charts[0].refEvents[e].icon) {
+								Highcharts.charts[0].refEvents[e].icon.destroy();
+							}
+							if(Highcharts.charts[0].refEvents[e].line) {
+								Highcharts.charts[0].refEvents[e].line.destroy();
+							}
+							if(Highcharts.charts[0].refEvents[e].area) {
+								Highcharts.charts[0].refEvents[e].area.destroy();
+							}
+							if(Highcharts.charts[0].refEvents[e].label) {
+								Highcharts.charts[0].refEvents[e].label.destroy();
+							}
+						}
+						Highcharts.charts[0].refEvents = [];						
+						if(Highcharts.charts[0].refEvents.length == 0) {
+							if($('.js-toggle-events:checked').length > 0) {
+								addEventsToGraph();
+							}
+						}
+					}
+			}
 
-			} // end handleChartInteraction();
+			// Add events to the graph function
+			function addEventsToGraph() {
+
+				var chart = Highcharts.charts[0];
+				var numberOfChartItems = chart.series[0].data.length - 1;
+			  var chartWidth = $(chart.container).width();
+
+			  Highcharts.charts[0].refEvents = [];
+
+	      Highcharts.charts[0].refEvents.push({
+	      	icon: chart.renderer.image('images/icon-chart-event-launch@2x.png', chart.series[0].data[2].plotX - 11, chart.chartHeight - 36, 22, 36)
+		            .attr({		            	
+		              zIndex: 15
+		            })
+		            .addClass("event-icon--launch")
+		            .add(),
+		    	plotX: chart.series[0].data[2].plotX,
+	      },{
+	      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[6].plotX - 1, chart.chartHeight - 38, 18, 12)
+		            .attr({
+		              zIndex: 9		              
+		            })
+		            .addClass("event-icon--flag")
+		            .add(),
+		      line: chart.renderer.path(['M', chart.series[0].data[6].plotX, chart.chartHeight, 'L', chart.series[0].data[6].plotX, chart.chartHeight - 38])
+		            .attr({
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 8
+		            })
+		            .add(),
+					plotX: chart.series[0].data[6].plotX,
+	      },{
+	      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
+		            .attr({
+		              zIndex: 9
+		            })
+		            .addClass("event-icon--flag")
+		            .add(),
+		      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
+		            .attr({
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 8
+		            })
+		            .add(),
+					plotX: chart.series[0].data[8].plotX,
+		      },{
+		      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
+			            .attr({
+			            	visibility: "hidden", // duplicate event flags are hidden but are needed to caluclate no of events for a given date
+			              zIndex: 9
+			            })
+			            .addClass("event-icon--flag")
+			            .add(),
+			      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
+			            .attr({
+			            	visibility: "hidden",
+		                'stroke-width': 1,
+		                stroke: '#81879d',
+		                zIndex: 8
+			            })
+			            .add(),
+						plotX: chart.series[0].data[8].plotX,
+				});
+
+				// Events - Add tooltip data
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltip", "<span>App Launch</span><br /><span>02/01/2016</span>");				
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("datapoint", 2);
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltip", "<span>App Name Change</span><br /><span>'Splashy Crossy Copy...'</span>");
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("datapoint", 6);
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltip", "<span>Price Change</span><br /><span>$0.99 - Free</span>");
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("datapoint", 8);
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltip", "<span>App Update</span><br /><span>Version 1.1.3.1</span>");
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("datapoint", 8);
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+	      // if there are more than one events on one date, calculate and add number of events label
+		      // find which plotX has more than one event and add to plotXDuplicates[]
+		      var plotXDuplicates = [];
+		      for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+		      	var thisPlotX = Highcharts.charts[0].refEvents[e].plotX;
+		      	for (var a = e+1; a < Highcharts.charts[0].refEvents.length; a++) {
+		      		if(Highcharts.charts[0].refEvents[a].plotX == thisPlotX) {
+		      			var alreadyExists = false;
+		      			if(plotXDuplicates.length > 0) {	      				
+			      			for (var x = 0; x < plotXDuplicates.length; x++) {
+			      				if(plotXDuplicates[x] == thisPlotX) {
+			      					alreadyExists = true;
+			      				}
+			      			}
+		      			}
+		      			if(!alreadyExists) {
+		      				plotXDuplicates.push(Highcharts.charts[0].refEvents[a].plotX);
+		      			}	      			
+		      		}
+		      	}
+		      }
+
+	      	// iterate plotXDuplicates and find number of events on the same date
+		      var eventIndexesForDuplicateEventDate = [],
+		      		counterOfDuplicates = [];
+		      for(var p = 0; p < plotXDuplicates.length; p++) {
+		      	var counter = 0;
+		      	for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+			      	if(plotXDuplicates[p] == Highcharts.charts[0].refEvents[e].plotX) {
+			      		eventIndexesForDuplicateEventDate.push(e);
+			      		counter++;
+			      	}
+			      }
+			      counterOfDuplicates.push(counter);
+		      }
+		      
+	      	// add label to chart for number of events on the same data
+		      for(var p = 0; p < plotXDuplicates.length; p++) {
+		      	if(Highcharts.charts[0].refEvents[eventIndexesForDuplicateEventDate[p]]) {
+		      		Highcharts.charts[0].refEvents[eventIndexesForDuplicateEventDate[p]].label = chart.renderer.text('<span>' + counterOfDuplicates[p] + '</span>', plotXDuplicates[p] + 4, 265)
+		          .attr({
+		          	zIndex: 10
+		          })
+		          .css({
+		            color: '#ff496a',
+		            fontSize: '13px',
+		            fontFamily: 'Source Sans Pro',
+		            fontWeight: 'bold',
+		            pointerEvents: 'none'
+		          })
+		          .add();
+		      	}
+		      }
+			}
+
+			function handleChartInteraction() {
+				
+				handleCustomLegendInteraction();
+				handleShowBarChart();
+				handleShowAreaChart();
+				handleShowStackedAreaChart();
+
+				handleAddSeriesTest();
+				handleRemoveSeriesTest();
+
+				handleChartEvents();
+			}
+
+			function handleMouseEnterChartKeyLabel($label) {
+				if($('html.no-touch').length) {
+					var $this = $label.siblings("input");
+					var chartToHoverIndex = $this.attr("data-chart-index");
+					var seriesToHover = $this.attr("data-series-index");
+
+					var seriesToHoverArray = [seriesToHover];
+
+					if(chartToHoverIndex < 2) { // if it's the twin chart
+
+						for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
+
+							var chartContainerId = Highcharts.charts[ch].container.id;
+
+							var selectedLine = $('#' + chartContainerId + ' .highcharts-series path[data-selected]').attr("data-index");
+
+							for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
+
+								if(selectedLine != undefined) { // if there is a selected line, it's the area chart, just highlight the line
+									if(!Highcharts.charts[ch].series[seriesToHoverArray[i]].selected) {
+										Highcharts.Chart.prototype.highlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+									}
+
+								} else { // otherwise it's the stacked chart, just highlight the fill
+
+									$('#' + chartContainerId + ' .series-fill-' + seriesToHoverArray[i]).each(function(){
+										var $this = $(this);
+										$this.css("opacity", 0.25);
+				            $this.animate({ "opacity": 0.6 }, 100);
+									});
+								}
+							}
+						}
+					} else { // user is hovering over combined chart key label
+						// get the corresponding line to hover
+						if(seriesToHover != 0 && seriesToHover != 1) {
+							seriesToHoverArray.push(seriesToHover - 1);
+						}
+						var chartContainerId = Highcharts.charts[chartToHoverIndex].container.id;
+
+						for(var i = 0; i < seriesToHoverArray.length; i++) {
+							if(!Highcharts.charts[2].series[seriesToHoverArray[i]].selected) {
+								Highcharts.Chart.prototype.highlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+							}
+						}
+					}
+				}
+			}
+
+			function handleMouseLeaveChartKeyLabel($label) {
+				if($('html.no-touch').length) {
+					var $this = $label.siblings("input");
+					var chartToHoverIndex = $this.attr("data-chart-index");
+					var seriesToHover = $this.attr("data-series-index");
+					var seriesToHoverArray = [seriesToHover];
+
+					if(chartToHoverIndex < 2) { // if it's the twin chart
+						for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
+
+							var chartContainerId = Highcharts.charts[ch].container.id;
+							var selectedLine = $('#' + chartContainerId + ' .highcharts-series path[data-selected]').attr("data-index");
+
+							for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
+								if(selectedLine != undefined) { // if there is a selected line, it's the area chart, just highlight the line
+									if(!Highcharts.charts[ch].series[seriesToHoverArray[i]].selected) {
+										Highcharts.Chart.prototype.unhighlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+									}
+								} else { // otherwise it's the stacked chart, just highlight the fill
+
+									$('#' + chartContainerId + ' .series-fill-' + seriesToHoverArray[i]).each(function(){
+										var $this = $(this);
+										$this.css("opacity", 0.6);
+				            $this.animate({ "opacity": 0.25 }, 100);
+									});
+								}
+							}
+						}
+					} else { // it's the combined chart
+						
+						// get the corresponding line to hover
+						if(seriesToHover != 0 && seriesToHover != 1) {
+							seriesToHoverArray.push(seriesToHover - 1);
+						}
+						var chartContainerId = Highcharts.charts[chartToHoverIndex].container.id;
+
+							for(var i = 0; i < seriesToHoverArray.length; i++) {
+								if(!Highcharts.charts[2].series[seriesToHoverArray[i]].selected) {
+									Highcharts.Chart.prototype.unhighlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+								}
+							}
+					}
+				}
+			}
+
+			function addASeriesToggle(seriesIndex, seriesName, availableColourIndex) {
+
+				// Add a new toggle to the chart key
+				var newToggle = $('<li>').addClass("series-" + availableColourIndex);
+				var newCheckbox = $('<input>').attr("type", "checkbox")
+																			.attr("name", seriesName)
+																			.attr("id", seriesName)
+																			.addClass("js-toggle-series")
+																			.attr("data-chart-index", "0")
+																			.attr("data-series-index", seriesIndex)
+																			.attr("checked", "checked");
+				
+				var newCheckboxLabel = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabel")
+																						.text("Another App");
+
+				var newCheckboxLabelVisible = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabelVisible")
+																						.attr("data-chart-index", "0")
+																						.text("Another App")
+																						.on("mouseenter", function(){
+																							handleMouseEnterChartKeyLabel($(this));
+																						})
+																						.on("mouseleave", function(){
+																							handleMouseLeaveChartKeyLabel($(this));
+																						});
+
+				newToggle.append(newCheckbox)
+									.append(newCheckboxLabel)
+									.append(newCheckboxLabelVisible);
+
+				$('.js-twin-chart-container .js-custom-chart-key ul').append(newToggle);
 
 
-			// Generate Charts
+				// Add a new toggle to the chart key on the combined chart
+				// combined revenue checkbox
+				seriesName += "-combined";
+				var newToggle = $('<li>').addClass("revenue-key-combined-chart series-" + availableColourIndex);
+				var newCheckbox = $('<input>').attr("type", "checkbox")
+																			.attr("name", seriesName)
+																			.attr("id", seriesName)
+																			.addClass("js-toggle-series")
+																			.attr("data-chart-index", "2")
+																			.attr("data-series-index", seriesIndex * 2)
+																			.attr("checked", "checked");
+				
+				var newCheckboxLabel = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabel")
+																						.text("Another App");
+
+				var newCheckboxLabelVisible = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabelVisible js-hover-series");
+
+				newToggle.append(newCheckbox)
+									.append(newCheckboxLabel)
+									.append(newCheckboxLabelVisible);
+
+				// combined downloads checkbox
+				seriesName += "--downloads";
+				var newToggleDownloads = $('<li>').addClass("downloads-key-combined-chart series-" + availableColourIndex);
+				var newCheckbox = $('<input>').attr("type", "checkbox")
+																			.attr("name", seriesName)
+																			.attr("id", seriesName)
+																			.addClass("js-toggle-series")
+																			.attr("data-chart-index", "2")
+																			.attr("data-series-index", (seriesIndex * 2) + 1)
+																			.attr("checked", "checked");
+				
+				var newCheckboxLabel = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabel")
+																						.text("Another App");
+
+				var seriesIndexPlusOne = (seriesIndex * 2) + 1;
+				var newCheckboxLabelVisible = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabelVisible js-hover-series")
+																						.text("Another App")
+																						.on("mouseenter", function(){
+																							handleMouseEnterChartKeyLabel($(this));
+																						})
+																						.on("mouseleave", function(){
+																							handleMouseLeaveChartKeyLabel($(this));
+																						});
+
+				newToggleDownloads.append(newCheckbox)
+									.append(newCheckboxLabel)
+									.append(newCheckboxLabelVisible);
+
+				$('.js-combined-chart-container .js-custom-chart-key ul').append(newToggle);
+				$('.js-combined-chart-container .js-custom-chart-key ul').append(newToggleDownloads);
+			}
+
+			function removeASeriesToggle(seriesIndex) {
+
+				// remove from the twin chart legend
+				var toggleToRemove = $('.js-twin-chart-container .js-custom-chart-key input[data-series-index="' + seriesIndex + '"').parent("li");
+				toggleToRemove.remove();
+
+				// remove from the combined chart legend
+				var combinedSeriesIndex = seriesIndex * 2;
+				var toggleToRemove = $('.js-combined-chart-container .js-custom-chart-key input[data-series-index="' + combinedSeriesIndex + '"').parent("li");
+				toggleToRemove.remove();
+
+				var combinedSeriesIndexTwo = seriesIndex * 2 + 1;
+				var toggleToRemove = $('.js-combined-chart-container .js-custom-chart-key input[data-series-index="' + combinedSeriesIndexTwo + '"').parent("li");
+				toggleToRemove.remove();
+
+				// recalculate the toggle data series indexes
+				$('.js-twin-chart-container .js-custom-chart-key input').each(function(){
+					var thisSeriesIndex = $(this).attr("data-series-index");		
+					if(thisSeriesIndex > seriesIndex) {
+						$(this).attr("data-series-index", thisSeriesIndex - 1);
+					}
+				});
+
+				// recalculate the toggle data series indexes
+				$('.js-combined-chart-container .js-custom-chart-key input').each(function(){
+					var thisSeriesIndex = $(this).attr("data-series-index");	
+					if($(this).attr("data-series-index") >= seriesIndex * 3) {
+						$(this).attr("data-series-index", thisSeriesIndex - 2);
+					}
+				});
+
+				// remove from colours in use array				
+				usedSeriesColours.splice(seriesIndex, 1);
+			}
+
+			// Generate Demo Charts
+			var mockDataRevenue = [],
+					mockDataDownloads = [];
+
+			var seriesColours = ["#f5c943", "#beb9db", "#fd7f6e", "#7fb1d5", "#f2bdd8", "#c7b299", "#bd7ebf", "#8bd4c7", "#ffb55a", "#d9d9d9", "#918edf"];
+
+			var seriesFills = ["rgba(245,201,67,0)", "rgba(190,185,219,1)", "rgba(253,127,110,1)", "rgba(127,177,213,1)", "rgba(242,189,216,1)", "rgba(199,178,153,1)", "rgba(189,126,191,1)", "rgba(139,212,199,1)", "rgba(255,181,90,1)", "rgba(217,217,217,1)", "rgba(145,142,223,1)"];
+
+			var seriesAppIcons = [
+				{ 
+					icon: "images/demo-icon-clash-of-hamsters.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-clash-of-hamsters.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-angry-hamsters.jpg",
+					store: "play-store"
+				},
+				{ 
+					icon: "images/demo-icon-five-hamsters-at-freddies.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-crossy-hamster.jpg",
+					store: "play-store"
+				},
+				{ 
+					icon: "images/demo-icon-hamster-crush.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-hamsters-vs-zombies.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-hamster-ninja.jpg",
+					store: "play-store"
+				},
+				{ 
+					icon: "images/demo-icon-8-ball-hamster.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-flappy-hamster.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-geometry-hamster.jpg",
+					store: "ios"
+				}
+			];
+			
+			var usedSeriesColours = [];
+
 			setTimeout(function() {
 
-				var mockDataRevenue = [],
-						mockDataDownloads = [];
-
-				// create mock data
+				// CREATE MOCK DATA FOR CHART
 				// chartData var comes from external js/data-vis/data-vis-release.js
-				for(var s = 0; s < 5; s++) {
+				
+					// MOCK REVENUE DATA
+				mockDataRevenue.push([]); // mock only, first item in array placeholder for totals calculated later
+				usedSeriesColours.push(seriesColours[0]);
+
+				for(var s = 0; s < 4; s++) {
 					var mockSeries = [];
-					for(var d = 0; d < 20; d++) {
+					for(var d = 0; d < 12; d++) {						
 						if(chartData[s].data[d]) {
 							mockSeries.push(chartData[s].data[d].value);
 						} else {
-							mockSeries.push(50);
+							mockSeries.push(30000);
 						}
 					}
 					mockDataRevenue.push(mockSeries);
+					usedSeriesColours.push(seriesColours[s + 1]);
+				}				
+
+				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
+				for(var d = 0; d < 12; d++) {
+					var totalOfSeriesForDataPoint = 0;
+					for(var s = 1; s < 5; s++) {
+						if(mockDataRevenue[s][d] != null) {
+							totalOfSeriesForDataPoint = totalOfSeriesForDataPoint + parseInt(mockDataRevenue[s][d]);
+						}						
+					}
+					mockSeriesTotal.push(totalOfSeriesForDataPoint);
 				}
-				for(var s = 5; s < 10; s++) {
+				mockDataRevenue[0] = mockSeriesTotal; // TOTAL IS THE FIRST LINE ON THE GRAPH
+
+					// MOCK DOWNLOADS DATA
+				mockDataDownloads.push([]);
+				for(var s = 5; s < 9; s++) {
 					var mockSeries = [];
-					for(var d = 0; d < 20; d++) {
+					for(var d = 0; d < 12; d++) {
 						if(chartData[s].data[d]) {
 							mockSeries.push(chartData[s].data[d].value);
 						} else {
@@ -1384,13 +2748,333 @@
 					mockDataDownloads.push(mockSeries);
 				}
 
-				var seriesColours = ["#f5c943", "#a5c0d8", "#0f9fbd", "#df8092", "#dbbca4"];
-				generateChart('chart-revenue', "grossingrank", mockDataRevenue, seriesColours);
-				generateChart('chart-downloads', "downloadsrank", mockDataDownloads, seriesColours);
+				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
+				for(var d = 0; d < 12; d++) {
+					var totalOfSeriesForDataPoint = 0;
+					for(var s = 1; s < 5; s++) {
+						if(mockDataDownloads[s][d] != null) {
+							totalOfSeriesForDataPoint = totalOfSeriesForDataPoint + parseInt(mockDataDownloads[s][d]);
+						}
+					}
+					mockSeriesTotal.push(totalOfSeriesForDataPoint);
+				}
+				mockDataDownloads[0] = mockSeriesTotal;
+
+
+				revAndDownData = new Array(); 				
+				revAndDownData.push(mockDataRevenue);
+				revAndDownData.push(mockDataDownloads);				
+
+				generateChart('chart-revenue', "revenueseries", mockDataRevenue, seriesColours, "area", false);
+				generateChart('chart-downloads', "downloadsseries", mockDataDownloads, seriesColours, "area", false);
+				generateChart('chart-combined', "split", revAndDownData, seriesColours, "area", true);
 				$('.chart-container').addClass('is-animated');
 				handleChartInteraction();
+
+				addAppDataToSeries();
+				Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+				Highcharts.Chart.prototype.setGraphCSSClasses();
+        Highcharts.Chart.prototype.resetLineStyling();
 			}, 500);
 
+			mockCountryPicker();
+  	}
+
+  	function mockCountryPicker() {
+  		// MOCK COUNTRY SELECTOR
+			$('.js-group-trigger').on("click", function(){ // to open the country selector
+				var $this = $(this),
+						thisPositionTop = $this.offset().top,
+						thisPositionLeft = $this.offset().left,
+						thisHeight = $this.innerHeight(),
+						thisWidth = $this.innerWidth(),
+						offsetTop = 10,
+						isAlreadyOpen = $this.parent('.js-form-field--group').hasClass("is-open"),
+						groupPickerWidth = 650;
+				
+				if(!isAlreadyOpen) {
+					setTimeout(function(){ // setTimeout is to wait for all other popups to close first
+						
+						$('.js-group-picker').show().css({ "top" : thisPositionTop + thisHeight + offsetTop, "left" : thisPositionLeft});
+						$this.parent(".js-form-field--group").addClass("is-open");
+						
+					}, 100);
+				} else {
+					$this.parent(".js-form-field--group").addClass("is-open");
+				}
+			});
+
+			$('.js-mock-group-picker-apply').on("click", function(e){
+				e.preventDefault();
+				$('.js-group-picker').hide();
+				$('.js-group-trigger').parent(".is-open").removeClass("is-open");
+				var numberOfCountriesValue = $('.js-mock-picker-number-selected').text();
+				var countryText = "Overlaid Countries (" + numberOfCountriesValue + ")";
+				$('.js-group-trigger').text(countryText);
+			});
+
+			$('.js-mock-toggle-group-selectors').on("click", function(){ // this is the popular, regions, countries and my groups toggle
+				var contentIdToShow = $(this).data("show");
+				$('.js-group-selector-container').hide();
+				$('#' + contentIdToShow).show();
+				if(contentIdToShow == "group-selector-container--popular") {
+					synchCheckboxesWithCurrentSelection();
+					unselectRadioGroupsSelection();
+					toggleAmendGroupForm(true);
+				} else {
+					unselectRadioGroupsSelection();
+					toggleAmendGroupForm(true);
+				}
+			});
+
+			function setNumberSelected() {
+				var numberSelected = $('.js-group-picker__selections .group-picker__selection').length;
+	  		$('.js-mock-picker-number-selected').text(numberSelected);
+
+	  		if(numberSelected > 0) {
+	  			toggleSaveToGroupsLink(false);
+	  		} else {
+	  			toggleSaveToGroupsLink(true);
+	  		}
+			}
+			
+			function closeCreateGroupContainer() {
+				if($createGroupForm.hasClass("is-showing")) {
+					$createGroupFormCancel.show();
+					$createGroupForm.removeClass("is-showing");
+					$createGroupFormApply.removeClass("is-success is-disabled").text("Create Group");	
+				}				
+			}
+
+			function synchCheckboxesWithCurrentSelection() {
+				
+				// for instance, if a user goes from my groups to popular, selections need to synch
+				$('.js-mock-group-item-results input:checked').each(function(){
+					$(this)[0].checked = false;
+				});
+				
+				$('.js-group-picker__selections .group-picker__remove-group-link').each(function(){
+					var idOfCheckboxToTurnOn = $(this).attr("for");
+					$('#' + idOfCheckboxToTurnOn)[0].checked = true;
+				});
+			}
+
+			function unselectRadioGroupsSelection() {
+				$('.js-mock-group-results input:checked').each(function(){
+					$(this)[0].checked = false;
+				});				
+			}
+
+			function toggleSaveToGroupsLink(isHide) {
+				if(isHide) {
+					$saveToGroupsLink.css("display", "none");
+				} else {
+					$saveToGroupsLink.css("display", "block");
+				}
+			}
+
+			function toggleAmendGroupForm(isHide) {
+				if(isHide) {
+					$('.js-amend-group-form').hide();
+				} else {
+					$('.js-amend-group-form').show();
+				}
+			}
+
+			function showSaveIfRadioGroupSelected() {
+				var isAGroupSelected = false;
+				$('.js-mock-group-results input').each(function(){
+					if($(this)[0].checked == true) {
+						isAGroupSelected = true;						
+					}
+					if(isAGroupSelected) {
+						toggleAmendGroupForm(false);
+					} else {
+						toggleAmendGroupForm(true);
+					}
+				});
+			}
+
+			var $createGroupForm = $('.js-create-group-form'),
+					$createGroupFormApply = $('.js-mock-create-group-apply'),
+					$createGroupFormCancel = $('.js-mock-create-group-cancel'),
+					$saveToGroupsLink = $('.js-mock-save-to-groups-link');
+
+					// popular countries list item checkbox change
+	  	$('.js-mock-group-item-results input[type=checkbox]').on("change", function() {
+	  		var selectionContainer = $('.js-group-picker__selections'),
+	  				$this = $(this),
+	  				selectedLabel = $this.siblings(".checkboxLabelVisible"),
+	  				selectedText = selectedLabel.find("span").text(),
+	  				selectedFlag = selectedLabel.find(".icon-flag-sm").attr("class"),
+	  				selectedCheckboxId = $this.attr("id");
+	  				closeCreateGroupContainer();
+
+	  		if($this[0].checked == true) {
+	  			var newSelection = $("<div>").addClass("group-picker__selection")
+	  																		.attr("id", "picker-id-" + selectedCheckboxId)
+	  																		.append($("<div>").addClass(selectedFlag))
+	  																		.append($("<span>").text(selectedText))
+	  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+	  																										.attr("for", selectedCheckboxId)
+	  																										.text("Clear")
+	  																										.on("click", function(){
+	  																											$(this).parent(".group-picker__selection").remove();
+	  																											closeCreateGroupContainer();
+	  																										})
+	  																						);
+
+					selectionContainer.append(newSelection);
+
+	  		} else {
+	  			selectionContainer.find("#picker-id-" + selectedCheckboxId).remove();
+	  		}
+
+	  		setNumberSelected();
+
+	  		$('.js-mock-group-picker-apply').removeClass('is-disabled');
+	  	});
+
+				// My groups radio button change
+			$('.js-mock-group-results input[type=radio]').on("change", function() {
+	  		var selectionContainer = $('.js-group-picker__selections'),
+	  				$this = $(this),
+	  				selectedCheckboxId = $this.attr("id");
+	  				closeCreateGroupContainer();
+
+	  				selectionContainer.empty();
+	  				$('.js-mock-picker-number-selected').text("0");
+	  				toggleAmendGroupForm(true);
+
+	  				// Add Mock Data to results
+	  				if(selectedCheckboxId == "radioButtonOne") {
+	  					// fill country selection with mock results (as if it were a saved group)
+		  				var ukSelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryUK")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--GB"))
+		  																		.append($("<span>").text("United Kingdom"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryUK")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+		  				var germanySelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryIt")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--DE"))
+		  																		.append($("<span>").text("Germany"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryIt")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+							selectionContainer.append(ukSelection);
+							selectionContainer.append(germanySelection);
+	  				} else {
+	  					// fill country selection with mock results (as if it were a saved group)
+		  				var franceSelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryFr")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--FR"))
+		  																		.append($("<span>").text("France"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryFr")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+		  				var germanySelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryIt")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--DE"))
+		  																		.append($("<span>").text("Germany"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryIt")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+		  				var usaSelection = $("<div>").addClass("group-picker__selection")
+		  																		.attr("id", "picker-id-checkboxCountryUSA")
+		  																		.append($("<div>").addClass("icon-flag-sm icon-flag--US"))
+		  																		.append($("<span>").text("USA"))
+		  																		.append($("<label>").addClass("group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click")
+		  																										.attr("for", "checkboxCountryUSA")
+		  																										.text("Clear")
+		  																										.on("click", function(){
+		  																											$(this).parent(".group-picker__selection").remove();
+		  																											closeCreateGroupContainer();
+		  																											showSaveIfRadioGroupSelected();
+		  																										})
+		  																						);
+
+							selectionContainer.append(franceSelection);
+							selectionContainer.append(germanySelection);
+							selectionContainer.append(usaSelection);
+	  				}
+
+	  				setNumberSelected();	  				
+	  				synchCheckboxesWithCurrentSelection();
+	  				toggleSaveToGroupsLink(true);
+	  				$('.js-mock-group-picker-apply').removeClass("is-disabled");
+	  	});
+
+			$saveToGroupsLink.on("click", function(){
+				$(this).hide();
+				$createGroupForm.addClass("is-showing");
+				$('.js-amend-group-form').hide();
+				$createGroupForm.find("input[type=text]").focus();
+			});
+
+			$createGroupFormCancel.on("click", function(){
+				$saveToGroupsLink.css("display", "block");
+				$createGroupForm.removeClass("is-showing");
+
+				showSaveIfRadioGroupSelected()
+			});			
+
+			$createGroupFormApply.on("click", function(){
+				$createGroupFormApply.addClass("is-success is-disabled").text("Group Created!");
+				$createGroupFormCancel.hide();
+				unselectRadioGroupsSelection();
+
+				// mock add to my groups
+				var nameForNewGroup = $('.js-create-group-form input[type=text]').val();
+				if(nameForNewGroup.length == 0) {
+					nameForNewGroup = "New Group";
+				}
+				var mockListItem = $('<li><input type="radio" name="radioButtons" id="radioButtonNew"><label for="radioButtonNew" class="radioButtonLabel">' + nameForNewGroup + '</label><label for="radioButtonNew" class="radioButtonLabelVisible">' + nameForNewGroup + '</label><span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span></li>'); // Obviously add this element in a better way, just for mock!!
+
+				$('.js-mock-group-results').append(mockListItem);
+					
+			});
+			
+			$('.js-mock-clear-selected-countries').on("click", function(){
+				unselectRadioGroupsSelection();
+				showSaveIfRadioGroupSelected();
+				$('.js-group-picker__selections').find(".js-remove-selected-group").trigger("click");
+				closeCreateGroupContainer();
+			});
+
+			$('.js-remove-group').on("click", function(){
+				$(this).parents("li").remove();
+			});
+
+			// end country picker
   	}
 
   	window.onready = initScripts();

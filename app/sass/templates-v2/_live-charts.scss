@@ -39,6 +39,11 @@
 	+ div .global-footer {
 		border-top: none;
 	}
+	.sign-up-link {
+		display: inline-block;
+		color: $reflection-purple;
+		cursor: pointer;
+	}
 }
 .live-chart-container {
 	padding-left: 19px;
@@ -54,7 +59,7 @@
 	col {
 		width: 33.333333333%;
 	}
-	th {		
+	th {
 		padding: 13px 0 10px 17px;
 		font-family: $brand-heading-font;
 		font-weight: 600;
@@ -227,15 +232,20 @@
 	vertical-align: top;
 	font-size: 13.6px;
 	font-weight: 700;
-	color: $light-grey-1;
+	color: $dark-grey-1;
 	text-align: right;
 	overflow: visible;
 	.ref-icon-after--up,
-	.ref-icon-after--down {
-		vertical-align: top;
+	.ref-icon-after--down,
+	.ref-icon-after--equals {
+		position: relative;
+    top: 1px;
+    margin-right: 3px;
+    vertical-align: top;
 		&:after {
 			position: relative;
 			top: -6px;
+			left: -2px;
 		}
 	}
 	.ref-icon-after--up,
@@ -245,6 +255,12 @@
 	.ref-icon-after--down,
 	.ref-icon-after--down:after {
 		color: $reflection-red;
+	}
+	.ref-icon-after--equals:after {
+		top: 3px;
+    left: -8px;
+    font-size: 10px;
+		color: $light-grey-2;
 	}
 	&.is-loading {
 		float: right;

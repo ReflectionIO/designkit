@@ -9,12 +9,10 @@
 	}
 	.chart-container--single.chart-container--ad-revenue {
 		.chart-container__header {
-			width: 45%;
-		  display: inline-block;
-		  float: right;
-		  text-align: right;
+			width: 100%;
 	  	.chart-summary {
-				margin-right: 0
+				margin-right: 0;
+				float: right;
 			}
 		}
 		.custom-chart-key {
@@ -26,12 +24,15 @@
 			display: inline-block;
 		}
 		.chart {
-			height: 315px;
-			margin-top: 30px;
+			height: 306px;
+			margin-top: 32px;
 		}
 	}
 	.data-table-section {
 		padding: 0;
+	}
+	.secondary-filters-container .filter-toggle--with-text {
+		margin-right: 10px;
 	}
 }
 .ref-table--ad-network {
@@ -71,7 +72,7 @@
 	.data-cell-ad-total-for-period {
 		display: none;
 		@include breakpoint($desktop) {
-			display: block;
+			display: table-cell;
 		}
 	}
 	col {
@@ -92,7 +93,7 @@
 		width: 7%;
 	}
 	.column-ad-platform {		
-		width: 12%;
+		width: 14%;
 	}
 	.column-total-for-period {
 		width: 15%;
@@ -107,7 +108,7 @@
 		width: 13%;
 	}
 	.column-clicks {
-		width: 9%;
+		width: 10%;
 	}
 	.column-fill-rate {
 		width: 9%
@@ -130,7 +131,7 @@
 		img {
 			display: none;
 			@include breakpoint($desktop) {
-				width: 28px;
+				width: 42px;
 				display: inline-block;
 				border-radius: 5px;
 			}			
@@ -139,12 +140,13 @@
 			width: 100%;
 			@include breakpoint($desktop) {
 				width: calc(100% - 55px);
-				margin-left: 10px;
-				float: none;
+		    margin-top: 10px;
+		    margin-left: 12px;
+				float: none;				
 			}			
 			h2 {
 				padding-right: 0.7rem;
-				font-weight: 400;
+				font-weight: 700;
 				@include ellipses();
 			}
 		}

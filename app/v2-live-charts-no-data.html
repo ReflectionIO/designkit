@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Live App Charts</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+<script src="js/vendor/angular.js"></script>
+<script src="js/mock-data/mockLiveAppChartApps.js"></script>
+<script>
+	// STATIC TEMPLATE ONLY - USING ANGULAR TO POPULATE THE DATA TABLE
+		'use strict';
+
+		/* Controllers */
+
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function() {
+				var dataList = this;
+				dataList.data = mockLiveAppChartApps;
+			});
+</script>
+</head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container" ng-controller="DataController as dataList"> <!-- ng-controller is static template only -->
+		<div id="main" class="l-main" role="main">
+			<div class="page-live-charts">
+				<header class="grid-container">
+					<h1 class="heading-style--heading-two page-title">Live App Charts</h1>
+					<div class="secondary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="iphone" data-icon-class="ref-icon-before--ios" selected>iPhone</option>
+					    <option value="ipad" data-icon-class="ref-icon-before--ios">iPad</option>
+					    <option value="google" data-icon-class="ref-icon-before--play-store">Google Play</option>
+						</select>
+					</div>
+					<div class="page-header__page-actions">
+						
+						<div class="filter-toggle">
+							<div class="toggle">
+								<input id="toggle--show-full-view" name="viewtype" checked type="radio">
+								<label for="toggle--show-full-view" class="js-mock-show-full-view">
+									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M1,1h3v2H1V1z M6,3h11V1H6V3z M1,10h3V8H1V10z M6,10h11V8H6V10z M1,17h3v-2H1V17z M6,17h11v-2H6V17z"/></svg>
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-compact-view" name="viewtype" type="radio">
+								<label for="toggle--show-compact-view" class="js-mock-show-compact-view">
+									<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M1,4h3v2H1V4z M6,6h11V4H6V6z M1,10h3V8H1V10z M6,10h11V8H6V10z M1,14h3v-2H1V14z M6,14h11v-2H6V14z"/></svg>
+								</label>
+							</div>
+						</div>
+
+						<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--sign-up">Download CSV</button>
+
+						<div class="secondary-filter form-field--search js-form-field-search">
+							<input type="text" placeholder="Find App in List" name="findapp" id="findapp" class="js-mock-find-app">
+							<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
+							<a href="#" class="clear-search ref-icon-after--close js-clear-search js-mock-clear-find-app">Clear</a>
+						</div>
+
+						<div class="form-field--checkbox-list form-field--checkbox-list--inline">
+							<ul>
+								<li>
+									<input type="checkbox" name="checkboxOne" id="checkboxOne" class="js-mock-toggle-new">
+									<label for="checkboxOne" class="checkboxLabel">Only New Entries</label>
+									<label for="checkboxOne" class="checkboxLabelVisible">Only New Entries</label>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</header>
+
+				<aside class="primary-filters-container">
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="jan" selected>01/01/16 - 01/02/16</option>
+					    <option value="feb">01/02/16 - 01/03/16</option>
+					    <option value="mar">01/03/16 - 01/04/16</option>
+					    <option value="apr">01/04/16 - 01/05/16</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="allcountries" selected>All Countries</option>
+					    <option value="uni">United Kingdom</option>
+					    <option value="fra">France</option>
+					    <option value="ger">Germany</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					  	<option>All Categories</option><option>Business</option><option>Weather</option><option>Utilities</option><option>Travel</option><option>Sports</option><option>Social Networking</option><option>Reference</option><option>Productivity</option><option>Photo &amp; Video</option><option>News</option><option>Navigation</option><option>Music</option><option>Lifestyle</option><option>Health &amp; Fitness</option><option selected="">Games</option><option>Finance</option><option>Entertainment</option><option>Education</option><option>Books</option><option>Medical</option><option>Magazines &amp; Newspapers</option><option>Catalogs</option><option>Food &amp; Drink</option><option>Shopping</option>
+					  </select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box js-mock-price-select-box">
+					    <option value="allprices" selected>All Prices</option>
+					    <option value="free">Free</option>
+					    <option value="tier1">$0.99</option>
+					    <option value="tier2">$1.49</option>
+					    <option value="tier3">$1.99</option>
+					    <option value="tier4">$2.49</option>
+						</select>
+					</div>
+					<div class="primary-filter form-field--select">
+						<select class="js-select-box">
+					    <option value="alliap" selected>All IAP Status</option>
+					    <option value="withiap">With IAP</option>
+					    <option value="noiap">No IAP</option>
+						</select>
+					</div>
+				</aside>
+
+ 				<div class="live-chart-container">
+ 					<table class="live-chart js-live-chart">
+ 						<thead>
+ 							<tr>
+ 								<th>
+ 									<svg x=0px y=0px viewBox="0 0 24 24"enable-background="new 0 0 24 24"xml:space=preserve><path d="M7.2,23L0,10.6l16.8-9.7L24,5v8.3L7.2,23z M2.1,11.1L7.7,21l14.7-8.5V5.9l-5.7-3.2L2.1,11.1z
+	 M18.3,10.7c-0.2,0-0.4,0-0.6-0.1c-0.6-0.2-1.2-0.6-1.5-1.1c-0.7-1.2-0.3-2.7,0.9-3.4c0.6-0.3,1.2-0.4,1.9-0.2
+	c0.6,0.2,1.2,0.6,1.5,1.1c0.3,0.6,0.4,1.2,0.2,1.9c-0.2,0.6-0.6,1.2-1.1,1.5C19.2,10.6,18.8,10.7,18.3,10.7z M18.3,7
+	c-0.2,0-0.5,0.1-0.7,0.2C17,7.5,16.8,8.3,17.2,9c0.2,0.3,0.5,0.5,0.8,0.6c0.3,0.1,0.7,0,1-0.1c0.3-0.2,0.5-0.5,0.6-0.8
+	c0.1-0.3,0-0.7-0.1-1v0C19.3,7.3,19,7.1,18.7,7C18.6,7,18.4,7,18.3,7z M10.9,18.2L10,16.6c-0.4,0.1-0.7,0.2-1,0.1
+	c-0.3,0-0.5-0.1-0.8-0.3l-0.6,0.3L7.2,16l1.2-0.7l0,0.1l0,0c0.2,0.3,0.4,0.4,0.6,0.5s0.6-0.1,0.9-0.3c0.3-0.2,0.6-0.4,0.7-0.6
+	c0.1-0.2,0.1-0.5,0-0.7c-0.1-0.1-0.2-0.2-0.3-0.3c-0.1,0-0.2-0.1-0.4-0.1s-0.3,0-0.4,0.1c-0.1,0-0.3,0.1-0.4,0.1l-1,0.3
+	c-0.2,0.1-0.4,0.1-0.6,0.1c-0.2,0-0.4,0-0.6-0.1c-0.2-0.1-0.4-0.1-0.5-0.3c-0.2-0.1-0.3-0.3-0.4-0.5c-0.1-0.2-0.2-0.4-0.2-0.6
+	c0-0.2,0-0.4,0.1-0.6c0.1-0.2,0.2-0.4,0.3-0.6c0.1-0.2,0.3-0.4,0.6-0.6l-1-1.7l1-0.6l1,1.7c0.3-0.1,0.6-0.2,0.9-0.2
+	c0.3,0,0.5,0.1,0.8,0.2l0.5-0.3l0.5,0.9l-1,0.6l-0.1,0.1l0,0l0,0l-0.1-0.1c-0.2-0.2-0.4-0.3-0.6-0.3c-0.3,0-0.5,0-0.8,0.2
+	C7.4,11.8,7.2,12,7,12.2c-0.1,0.2-0.1,0.4,0,0.6c0.1,0.1,0.2,0.2,0.3,0.3c0.1,0,0.2,0.1,0.3,0.1s0.2,0,0.4-0.1
+	c0.1,0,0.3-0.1,0.4-0.1l1-0.2c0.3-0.1,0.5-0.1,0.7-0.1c0.2,0,0.4,0,0.6,0s0.4,0.1,0.5,0.2c0.2,0.1,0.3,0.3,0.4,0.5
+	c0.1,0.2,0.2,0.4,0.2,0.6c0,0.2,0,0.4-0.1,0.7c-0.1,0.2-0.2,0.4-0.3,0.7c-0.1,0.2-0.3,0.4-0.5,0.6l0.9,1.6L10.9,18.2z"/></svg>
+ 									<span>Paid</span>
+ 									<a href="#" class="live-chart__head-cell__clear-link js-mock-clear-search-results-link">Clear</a>
+ 								</th>
+ 								<th>
+ 									<svg x=0px y=0px viewBox="0 0 24 24"enable-background="new 0 0 24 24"xml:space=preserve><path fill=#5A5A68 d="M7.2,23L0,10.5l16.8-9.7L24,5v8.3L7.2,23z M2.1,11.1l5.7,9.8l14.7-8.5V5.8l-5.7-3.2L2.1,11.1z
+	 M18.3,10.7c-0.2,0-0.4,0-0.6-0.1c-0.6-0.2-1.2-0.6-1.5-1.1c-0.7-1.2-0.3-2.7,0.9-3.4c0.6-0.3,1.2-0.4,1.9-0.2
+	C19.6,6,20.1,6.4,20.5,7c0.3,0.6,0.4,1.2,0.2,1.9c-0.2,0.6-0.6,1.2-1.1,1.5C19.2,10.6,18.8,10.7,18.3,10.7z M18.3,6.9
+	c-0.2,0-0.5,0.1-0.7,0.2c-0.6,0.4-0.8,1.2-0.5,1.8c0.2,0.3,0.5,0.5,0.8,0.6c0.3,0.1,0.7,0,1-0.1c0.3-0.2,0.5-0.5,0.6-0.8
+	c0.1-0.3,0-0.7-0.1-1v0C19.3,7.3,19,7.1,18.7,7C18.6,6.9,18.4,6.9,18.3,6.9z"/></svg>
+ 									<span>Free</span>
+ 									<a href="#" class="live-chart__head-cell__clear-link js-mock-clear-search-results-link">Clear</a>
+ 								</th>
+ 								<th>
+ 									<svg x=0px y=0px viewBox="0 0 24 24"enable-background="new 0 0 24 24"xml:space=preserve><path fill=#5A5A68 d="M18,8.5l-3,0.6V2L9,0.3L0,1.9v15.5l6.5,2.8L9,19.4v1.9l6.5,2.8l8.5-3.1V10.1L18,8.5z M1.5,3.2
+	L9,1.8l4.5,1.3v0.1L6.6,5.1L1.5,3.5V3.2z M1.5,4.2l5.1,1.6L13.5,4v1.5L6.6,7.3L1.5,5.7V4.2z M1.5,6.5l5.1,1.6l6.9-1.9v1.5L6.6,9.6
+	L1.5,8V6.5z M1.5,8.7l5.1,1.6l6.9-1.9v1L9,10.3v0.8l-2.4,0.7l-5.1-1.6V8.7z M1.5,11l5.1,1.6L9,11.9v1.5l-2.4,0.8l-5.1-1.8V11z
+	 M1.5,13.2L6.6,15L9,14.2v1.6l-2.4,0.9l-5.1-2V13.2z M6.6,18.6l-5.1-2.2v-1l5.1,2L9,16.6v1.2L6.6,18.6z M22.5,19.9l-6.9,2.5
+	l-5.1-2.2v-1l5.1,2l6.9-2.4V19.9z M22.5,18l-6.9,2.4l-5.1-2V17l5.1,1.8l6.9-2.2V18z M22.5,15.8L15.6,18l-5.1-1.8v-1.4l5.1,1.6
+	l6.9-1.9V15.8z M22.5,13.7l-6.9,1.9L10.5,14v-1.5l5.1,1.6l6.9-1.9V13.7z M22.5,11.4l-6.9,1.9l-5.1-1.6v-0.2l7.5-1.5l4.5,1.2V11.4z"/></svg>
+ 									<span>Top Grossing</span>
+ 									<a href="#" class="live-chart__head-cell__clear-link js-mock-clear-search-results-link">Clear</a>
+ 								</th>
+ 							</tr>
+ 						</thead>
+ 						<colgroup>
+ 							<col>
+ 							<col>
+ 							<col>
+ 						</colgroup>
+ 						<tbody style="display: none;">
+ 							<tr ng-repeat="dataItem in dataList.data" class="js-mock-all-data">
+ 								<td data-price-tier="{{dataItem.appPrice1}}" data-is-new="{{dataItem.appNewDisplay1}}">
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="{{dataItem.appIcon1}}" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="v2-app.html" class="live-chart__cell__app-name">{{dataItem.appName1}}</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style='display: {{dataItem.appNewDisplay1}}'>NEW</div>
+	 											<span class='{{dataItem.appPositionChange1 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style='display: {{dataItem.appPositionChangeDisplay1}}'>{{dataItem.appPositionChange1}}</span>{{$index + 1}}</span>
+	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name">{{dataItem.appPublisher1}}</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings1}}</span>
+	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice1}}</span>
+	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth1}}</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>{{dataItem.appRevDow1}}</span></span>
+ 										</div> 										
+ 									</div> 									
+ 								</td>
+ 								<td data-price-tier="{{dataItem.appPrice2}}" data-is-new="{{dataItem.appNewDisplay2}}">
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="{{dataItem.appIcon2}}" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="v2-app.html" class="live-chart__cell__app-name">{{dataItem.appName2}}</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style='display: {{dataItem.appNewDisplay2}}'>NEW</div>
+	 											<span class='{{dataItem.appPositionChange2 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style='display: {{dataItem.appPositionChangeDisplay2}}'>{{dataItem.appPositionChange2}}</span>{{$index + 1}}</span>
+	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name">{{dataItem.appPublisher2}}</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings2}}</span>
+	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice2}}</span>
+	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth2}}</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>{{dataItem.appRevDow2}}</span></span>
+ 										</div> 										
+ 									</div> 	
+ 								</td>
+ 								<td data-price-tier="{{dataItem.appPrice3}}" data-is-new="{{dataItem.appNewDisplay3}}">
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="{{dataItem.appIcon3}}" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="v2-app.html" class="live-chart__cell__app-name">{{dataItem.appName3}}</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style='display: {{dataItem.appNewDisplay3}}'>NEW</div>
+	 											<span class='{{dataItem.appPositionChange3 > 0 ? "ref-icon-after--up" : "ref-icon-after--down"}}' style='display: {{dataItem.appPositionChangeDisplay3}}'>{{dataItem.appPositionChange3}}</span>{{$index + 1}}</span>
+	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name">{{dataItem.appPublisher3}}</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings3}}</span>
+	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice3}}</span>
+	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth3}}</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--revenue"><span>  <a class="sign-up-link" data-tooltip="Sign up and link your app store account to see this data">Sign Up</a></span></span>
+ 										</div>
+ 									</div>
+ 								</td>
+ 							</tr>
+ 							<tr class="js-mock-search-results">
+ 								<td>
+ 									<div class="live-chart__cell__no-results">No Matching Apps in this Chart</div>
+ 								</td>
+ 								<td>
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/placeholder-app-icon-minecraft.png" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="#" class="live-chart__cell__app-name">Minecraft: Pocket Edition</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class='ref-icon-after--down'>1</span>4</span>
+	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name">Mojang</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">(3,234)</span>
+	 										<span class="live-chart__cell__app-price">Free</span>
+	 										<span class="live-chart__cell__growth positive-colour">+4%</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>156,038</span></span>
+ 										</div>
+ 									</div> 	
+ 								</td>
+ 								<td data-price-tier="{{dataItem.appPrice3}}" data-is-new="{{dataItem.appNewDisplay3}}">
+ 									<div class="live-chart__cell__disabled-overlay"></div>
+ 									<div class="live-chart__cell">
+	 									<img src="images/v2/placeholder-app-icon-minecraft.png" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<div class="live-chart__cell__app-details-container">
+	 										<a href="v2-app.html" class="live-chart__cell__app-name">Minecraft: Pocket Edition</a>
+	 										<span class="live-chart__cell__rank">
+	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
+	 											<span class='ref-icon-after--down'>1</span>4</span>
+	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name">Mojang</a>
+	 										<div class="ratings-container">
+												<div class="ratings-full" style="width:60%"></div>
+											</div>
+	 										<span class="live-chart__cell__number-of-ratings">(3,234)</span>
+	 										<span class="live-chart__cell__app-price">Free</span>
+	 										<span class="live-chart__cell__growth positive-colour">+4%</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>156,038</span></span>
+ 										</div>
+ 									</div>
+ 								</td>
+ 							</tr>
+ 						</tbody>
+ 					</table>
+
+ 					<a href="#" class="ref-button--secondary--medium live-chart__show-more-button" style="display: none;">Show Next 100 Apps</a>
+
+ 					<div class="chart__no-data no-data-page-message">
+						<div class="animation-hamster-no-data"></div>
+						<div>
+							<h2>No Data Available for This Date</h2>
+							<p>Sorry but there is currently no data available for the date you've selected. Please select another date from the picker</p>
+						</div>
+					</div>
+ 				</div>
+
+			</div>			
+			
+		</div>
+
+		<div class="grid-container" id="js-component-import--global-footer"></div>
+	</div>	
+
+	<div class="page-overlay js-page-overlay js-page-overlay--sign-up">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<a href="#" class="popup-close js-popup-close"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+				<div class="popup-sections-container">					
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">
+
+								<svg class="link-to-reflection-svg" enable-background="new 0 0 150.3 100.6"viewBox="0 0 150.3 100.6"x=0px xml:space=preserve y=0px><path d="M130.5,15.6c0-0.4-0.2-0.9-0.8-1.4c-0.4-0.4-1.2-0.7-2.1-1.1c-0.1-0.9-0.7-1.8-1.6-2.1
+	c0.8-0.2,1.4-0.8,1.5-1.5c0,0,0,0,0.1,0c1.2,0,2.1-0.9,2.1-2.1c0-1.1-0.7-2.1-1.8-2.4l-0.3-0.1c0-0.1,0-0.2,0-0.3
+	c0-1.1-0.7-2.1-1.8-2.4l-7.8-2.1C117.9,0,117.8,0,117.6,0h0c-1.1,0-2,0.9-2,2.1c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1
+	c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1c0,0.4,0.1,0.7,0.3,1.1
+	c-0.2,0.3-0.3,0.6-0.3,1c0,0.5,0.2,0.9,0.4,1.3L93.1,28.5v59.1l23.8,13.1l33.3-8.4v-70L130.5,15.6z M117.6,1.6c0,0,0.1,0,0.1,0
+	l7.8,2.1c0.3,0.1,0.5,0.4,0.6,0.7c0,0,0,0.1,0,0.1c0,0.3-0.2,0.5-0.5,0.5c0,0-0.1,0-0.2,0l-7.8-2.2c-0.3-0.1-0.5-0.4-0.6-0.7
+	c0,0,0,0,0,0C117.1,1.8,117.3,1.6,117.6,1.6z M117.6,3.7c0,0,0.1,0,0.1,0l9.1,2.6l0.7,0.2c0.3,0.1,0.6,0.5,0.6,0.8
+	c0,0.3-0.2,0.5-0.5,0.5c-0.1,0-0.1,0-0.2,0l-0.1,0L117.7,5c-0.2-0.1-0.5-0.3-0.5-0.6c0,0,0-0.1,0-0.1c0,0,0,0,0-0.1
+	C117.1,3.9,117.3,3.7,117.6,3.7z M117.6,5.8c0,0,0.1,0,0.1,0l7.8,2.3c0.3,0.1,0.6,0.5,0.6,0.8c0,0,0,0.1,0,0.1
+	c0,0.2-0.2,0.4-0.4,0.4c-0.1,0-0.1,0-0.2,0l-0.1,0l-7.7-2.3c-0.2-0.1-0.5-0.3-0.5-0.6c0,0,0-0.1,0-0.2c0,0,0,0,0-0.1
+	C117.1,6,117.3,5.8,117.6,5.8z M117.6,7.9c0,0,0.1,0,0.1,0l5.8,1.8c0.3,0.1,0.5,0.4,0.6,0.7c0,0.1,0,0.1,0,0.2c0,0.1,0,0.1,0,0.1
+	c-0.1,0.2-0.2,0.3-0.4,0.3c-0.1,0-0.1,0-0.2,0l-5.8-1.8c-0.2-0.1-0.4-0.3-0.5-0.6c0-0.1,0-0.1,0-0.2c0,0,0,0,0-0.1
+	C117.1,8.1,117.3,7.9,117.6,7.9z M117.6,10c0,0,0.1,0,0.2,0l5.1,1.6l2,0.6l0.7,0.2c0.3,0.1,0.6,0.5,0.6,0.8c0,0.3-0.2,0.5-0.4,0.5
+	c-0.1,0-0.1,0-0.2,0l-7.6-2.5l-0.1,0c-0.2-0.1-0.4-0.3-0.5-0.6c0-0.1,0-0.1,0-0.2C117.1,10.2,117.3,10,117.6,10z M95.1,29.5
+	l21.5-15.8v84.5L95.1,86.4V29.5z M148.3,90.6l-30.6,7.7V13.5l30.6,10.1V90.6z M137.7,45.5l-6.1-0.7v7.6l6.1,0.3V45.5z M136.7,51.6
+	l-4.1-0.2v-5.5l4.1,0.5V51.6z M137.7,35.4l-6.1-1.2v7.6l6.1,0.8V35.4z M136.7,41.4l-4.1-0.6v-5.5l4.1,0.8V41.4z M137.7,65.7
+	l-6.1,0.4v7.6l6.1-0.8V65.7z M136.7,72l-4.1,0.6v-5.5l4.1-0.3V72z M137.7,55.6l-6.1-0.1V63l6.1-0.3V55.6z M136.7,61.8l-4.1,0.2v-5.5
+	l4.1,0.1V61.8z M145.3,74.6l-5.3,0.9v7l5.3-1.2V74.6z M144.3,80.5l-3.3,0.7v-4.9l3.3-0.5V80.5z M137.7,25.2l-6.1-1.8V31l6.1,1.4
+	V25.2z M136.7,31.1l-4.1-0.9v-5.4l4.1,1.2V31.1z M128.9,22.6l-7.2-2.1v8.2l7.2,1.6V22.6z M127.9,29.1l-5.2-1.2v-6.1l5.2,1.5V29.1z
+	 M128.9,66.4l-7.2,0.5v8.2l7.2-1V66.4z M127.9,73.2l-5.2,0.7v-6.1l5.2-0.4V73.2z M137.7,75.9l-6.1,1v7.6l6.1-1.4V75.9z M136.7,82.2
+	l-4.1,0.9v-5.5l4.1-0.7V82.2z M128.9,55.4l-7.2-0.1v8.2l7.2-0.3V55.4z M127.9,62.2l-5.2,0.2v-6.1l5.2,0.1V62.2z M128.9,85v-7.7
+	l-7.2,1.2v8.2L128.9,85z M122.7,79.3l5.2-0.8v5.8l-5.2,1.2V79.3z M128.9,44.5l-7.2-0.8v8.2l7.2,0.3V44.5z M127.9,51.2l-5.2-0.2v-6.1
+	l5.2,0.6V51.2z M145.3,65.2l-5.3,0.4v7l5.3-0.7V65.2z M144.3,71l-3.3,0.4v-4.9l3.3-0.2V71z M128.9,33.6l-7.2-1.5v8.2l7.2,1V33.6z
+	 M127.9,40.1l-5.2-0.7v-6.1l5.2,1V40.1z M145.3,46.3l-5.3-0.6v7l5.3,0.2V46.3z M144.3,52l-3.3-0.2v-4.9l3.3,0.4V52z M145.3,27.5
+	l-5.3-1.6v7l5.3,1.2V27.5z M144.3,32.9l-3.3-0.8v-4.9l3.3,1V32.9z M145.3,36.9l-5.3-1.1v7l5.3,0.7V36.9z M144.3,42.4l-3.3-0.5v-4.9
+	l3.3,0.7V42.4z M145.3,55.8l-5.3-0.1v7l5.3-0.2V55.8z M144.3,61.5l-3.3,0.1v-4.9l3.3,0.1V61.5z M108.3,83.9l5.6,2.1v-8l-5.6-1.4
+	V83.9z M109.3,78l3.6,0.9v5.7l-3.6-1.4V78z M96.8,79.5l3.5,1.3v-6.2l-3.5-0.9V79.5z M97.8,75.1l1.5,0.4v4l-1.5-0.6V75.1z
+	 M101.9,72.4l4.4,0.9v-7l-4.4-0.3V72.4z M102.9,67.1l2.4,0.2v4.8l-2.4-0.5V67.1z M108.3,53.3l5.6-0.9v-8l-5.6,1.7V53.3z M109.3,46.8
+	l3.6-1.1v5.8l-3.6,0.6V46.8z M108.3,63.5l5.6,0.1v-8l-5.6,0.6V63.5z M109.3,57.1l3.6-0.4v5.8l-3.6-0.1V57.1z M108.3,25.6v7.2l5.6-3
+	v-8L108.3,25.6z M112.9,29.2l-3.6,1.9v-5l3.6-2.4V29.2z M108.3,43l5.6-2v-8l-5.6,2.7V43z M109.3,36.4l3.6-1.7v5.7l-3.6,1.3V36.4z
+	 M96.8,71.4l3.5,0.7v-6.2l-3.5-0.2V71.4z M97.8,66.7l1.5,0.1v4l-1.5-0.3V66.7z M108.3,73.7l5.6,1.1v-8l-5.6-0.4V73.7z M109.3,67.5
+	l3.6,0.3v5.8l-3.6-0.7V67.5z M101.9,45.3l4.4-1.5v-7l-4.4,2.1V45.3z M102.9,39.5l2.4-1.1V43l-2.4,0.8V39.5z M96.8,47.1l3.5-1.2v-6.2
+	l-3.5,1.7V47.1z M97.8,41.9l1.5-0.7v3.9l-1.5,0.5V41.9z M101.9,81.5l4.4,1.7v-7l-4.4-1.1V81.5z M102.9,76.3l2.4,0.6v4.7l-2.4-0.9
+	V76.3z M101.9,36.2l4.4-2.3v-7l-4.4,2.9V36.2z M102.9,30.4l2.4-1.6v4.5l-2.4,1.3V30.4z M101.9,54.3l4.4-0.7v-7l-4.4,1.3V54.3z
+	 M102.9,48.7l2.4-0.7v4.8l-2.4,0.4V48.7z M96.8,38.9l3.5-1.9v-6.2l-3.5,2.3V38.9z M97.8,33.7l1.5-1v3.7l-1.5,0.8V33.7z M96.8,55.2
+	l3.5-0.6v-6.2l-3.5,1V55.2z M97.8,50.2l1.5-0.4v4L97.8,54V50.2z M96.8,63.3l3.5,0.1v-6.2l-3.5,0.4V63.3z M97.8,58.4l1.5-0.2v4.1
+	l-1.5,0V58.4z M101.9,63.4l4.4,0.1v-7l-4.4,0.5V63.4z M102.9,57.9l2.4-0.3v4.8l-2.4,0V57.9z M82.6,65.1v-2.6c0-1.2-0.8-2.4-2.4-2.4
+	h-4.7v-0.2c0-0.7-0.5-1.2-1.2-1.2h-1.9c-0.2,0-0.3,0-0.5,0.1c-0.1-0.1-0.3-0.1-0.5-0.1h-1.9c-0.7,0-1.2,0.5-1.2,1.2v0.2h-1.6
+	c-1.3,0-2.1,0.9-2.7,1.6c-0.2,0.3-0.6,0.7-0.8,0.7c-1.2,0-2.5,0.3-2.7,2.7H49.3V52.7c0-2-1.5-3.5-3.4-3.5H27H8
+	c-1.9,0-3.4,1.5-3.4,3.5v25l-4,4L0,82.3v0.8v1.5v0.3l0.1,0.3c0.6,2,4.1,2.1,4.1,2.1H27h22.8c0,0,3.5-0.1,4.1-2.1l0.1-0.3v-0.3v-1.5
+	v-0.8l-0.6-0.6l-4-4V66.4h11.2c0.2,2.4,1.5,2.7,2.7,2.7c0.2,0,0.6,0.4,0.8,0.7c0.6,0.7,1.4,1.6,2.7,1.6h1.6v0.2
+	c0,0.7,0.5,1.2,1.2,1.2h1.9c0.2,0,0.3,0,0.5-0.1c0.1,0.1,0.3,0.1,0.5,0.1h1.9c0.7,0,1.2-0.5,1.2-1.2v-0.2h4.7c1.1,0,2.4-0.4,2.4-2.4
+	v-2.6h12.2v-1.3H82.6z M6.6,52.7c0-0.8,0.6-1.5,1.4-1.5c0.8,0,18.8,0,18.9,0c0,0,0,0,0,0c0.2,0,18.2,0,18.9,0c0.9,0,1.4,0.7,1.4,1.5
+	c0,0.7,0,23.2,0,24.9h-39l0,0l0,0H6.6C6.6,75.9,6.6,53.4,6.6,52.7z M9.2,78.4h35.5l2.4,2.9H6.6L9.2,78.4L9.2,78.4z M51.9,83.1
+	c0,0,0,1.4,0,1.5c-0.1,0.2-1.3,0.7-2.2,0.7c-0.5,0-22.3,0-22.8,0h0c-0.2,0-22.2,0-22.8,0c-0.9,0-2.1-0.5-2.2-0.7c0-0.1,0-1.5,0-1.5
+	l4.7-4.7h0.9l-3.7,4.1h45.8l-3.4-4.1h0.9L51.9,83.1z M69,70h-2.2c-0.7,0-1.2-0.5-1.7-1.1c-0.5-0.6-1.1-1.2-1.8-1.2
+	c-0.8,0-1.3,0-1.3-2c0-1.9,0.5-1.9,1.3-1.9c0.8,0,1.3-0.6,1.8-1.2c0.5-0.6,1-1.1,1.7-1.1H69V70z M71.2,71.4h-1.4V60.1h1.4V71.4z
+	 M74.1,71.4h-1.4V60.1h1.4V71.4z M81.2,69c0,0.6,0,1-1,1h-5.3v-8.5h5.3c1,0,1,0.9,1,1V69z M46.4,52.4H7.5v24h38.9V52.4z M13.2,75.4
+	H8.5v-5.5l4.7-3.9V75.4z M18.6,75.4h-4.9v-9.5l4.9,2.7V75.4z M24,75.4h-4.9v-6.7l4.9-5.2V75.4z M29.4,75.4h-4.9V62.9l0.3-0.3
+	l4.6,3.6V75.4z M34.8,75.4h-4.9v-9.2l4.9-1.8V75.4z M40.2,75.4h-4.9V64.3l0,0l4.9-5.3V75.4z M45.4,75.4h-4.7V58.6l4.7,2.3V75.4z
+	 M45.4,59.8l-5-2.5l-5.6,6.1l-5,1.8l-5-3.9L24,62h0v0l-5.3,5.6l-5.4-3l-4.9,4V53.4h36.9V59.8z"fill=#81879D /></svg>
+
+								<h2 class="heading-style--heading-four multi-step-section__heading">Sign up or Log In to See This Data</h2>
+								<p>Create a Free Reflection account to dig deeper into this data. It'll take seconds and no payment details are required, it’s free!</p>
+								
+								<button type="button" class="ref-button--primary--large button-full-width" onclick="location.replace('v2-sign-up.html');">Create Free Account</button>
+
+								<p class="popup-text-link"><a class="js-open-login js-popup-close" href="#">Already a Member, Log in</a></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+
+	<div class="MHXTE6C-ob-a"><a class="is-showing"><span class="ref-icon-before--angle-up"></span> <span class="OOWHQGD-a-jf">Back to Top</span></a></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script>
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-live-charts-no-data.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+  		new Page();
+  		new AllDropDowns();
+  		;
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  		$('.js-form-field-search').each(function(){
+  			new FormFieldSearch($(this));
+  		});
+
+  		$('.js-open-modal--sign-up').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--sign-up').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--sign-up .js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
+			$('.js-page-overlay').on("click", function(e){
+				var parentIsPopupContent = false;
+				$(e.target).parents("div").each(function(){
+					if($(this).hasClass("js-popup-content")) {
+						parentIsPopupContent = true;
+					}
+				});
+				if(!parentIsPopupContent) {
+					$('.js-page-overlay').fadeOut(100);
+					$('.js-popup-content').removeClass("is-showing");
+				}
+			});
+
+			$('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay').fadeOut(100);
+				$('.js-popup-content').removeClass("is-showing");
+			});
+
+			$('.js-open-login').on("click", function(){
+				$('.link-log-in').trigger("click");
+			});
+
+  		// Mock JS for static template only
+  		$('.js-mock-show-full-view').on("click", function(){
+  			$('.live-chart').removeClass("live-chart--compact-view");
+  		});
+  		$('.js-mock-show-compact-view').on("click", function(){
+  			$('.live-chart').addClass("live-chart--compact-view");
+  		});
+
+  		$('.js-mock-toggle-new').on("change", function(){
+  			if($(this).is(':checked')) {
+  				$('.live-chart td').each(function(){
+  					var $this = $(this);
+  					if($this.data("is-new") !== "inline-block") {
+  						$this.addClass("live-chart__cell--disabled");
+  					}
+  				});
+  			} else {
+  				$('.live-chart__cell--disabled').removeClass("live-chart__cell--disabled");
+  			}
+  		});
+
+  		$('.js-dropdown-option').on("click", function(){
+	  			$('.live-chart__cell--disabled').removeClass("live-chart__cell--disabled");
+	  			var clickedText = $(this).text();
+	  			var selectedValue = "";
+	  			if(clickedText !== "All Prices") {
+	  				$(this).parents(".primary-filter").find("option").each(function(){
+	  				var thisText = $(this).text();
+	  				if(thisText == clickedText) {
+	  					selectedValue = thisText;
+	  				}
+	  			});
+	  			if(selectedValue) {
+	  				$('.live-chart td').each(function(){
+	  					var $this = $(this);
+	  					if($this.data("price-tier") !== selectedValue) {
+	  						$this.addClass("live-chart__cell--disabled");
+	  					}
+	  				});
+	  			}
+  			}
+  		});
+
+  		$('.js-mock-search-results').hide();
+  		$('.js-mock-find-app').keyup(function(){
+  			if($(this).val().length > 0) {
+  				$('.js-mock-search-results').show();
+  				$('.js-mock-all-data').hide();
+  				$('.js-live-chart').addClass("is-showing-search-results");
+  			}
+  		});
+
+  		$('.js-mock-clear-find-app').on("click", function(){
+  			$('.js-mock-search-results').hide();
+				$('.js-mock-all-data').show();
+				$('.js-live-chart').removeClass("is-showing-search-results");
+  		});
+
+  		$('.js-mock-clear-search-results-link').on("click", function(){
+  			$('.js-mock-clear-find-app').trigger("click");
+  		});
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>
