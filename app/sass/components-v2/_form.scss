@@ -249,6 +249,12 @@ textarea {
 			.no-touch & {
 				transition: font-size 0.06s;
 			}
+			+ .form-field-error-text {
+		    position: relative;
+	    	top: 6px;
+  	    margin-bottom: 20px;
+    		display: block;
+			}
 		}
 		input, textarea {
 			bottom: 14px;
@@ -312,6 +318,8 @@ textarea {
 	color: $error-orange-text;
 	font-size: 14px;
 	font-family: $brand-heading-font;
+	text-align: left;
+	float: left;
 }
 .form-field--select {
 	position: relative;
@@ -604,6 +612,11 @@ input[type="checkbox"]:disabled + .checkboxLabel,
 input[type="radio"]:disabled + .radioButtonLabel {
 	background-color: $divider-grey;
 	overflow: visible;
+}
+.reflection-form--theme-dark {
+	input[type="checkbox"]:disabled + .checkboxLabel {
+		background-color: #333338;
+	}
 }
 input[type="checkbox"]:disabled + .checkboxLabel:active,
 input[type="radio"]:disabled + .radioButtonLabel:active,
