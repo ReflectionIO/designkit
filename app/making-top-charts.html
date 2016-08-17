@@ -50,7 +50,7 @@
 					</div>
 					<div class="filters-row">
 						<span class="filter-label">To Break Into</span>
-						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
+						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-rank">
 							<select class="js-select-box">
 						    <option value="200" selected>Top 200 Apps</option>
 						    <option value="150">Top 150 Apps</option>
@@ -60,7 +60,7 @@
 						    <option value="10">Top 10 Apps</option>
 							</select>
 						</div>
-						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
+						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
 							<select class="js-select-box">
 						    <option value="GB" selected>United Kingdom</option>
 						    <option value="US">USA</option>
@@ -72,7 +72,7 @@
 						<span class="filter-label"><a href="#" class="js-onboarding-link">What's This Showing Me?</a></span>
 						<div class="filters-right">
 							<span class="filter-label">Show Data For</span>
-							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
 								<select class="js-select-box">
 							    <option value="PHONE" selected>iPhone</option>
 							    <option value="TABLET">iPad</option>
@@ -353,21 +353,39 @@
 																					.addClass(selectedClass)
 																					.attr('data-value', $thisOption.attr('value'))
 																					.on("click", function() {
-																						$thisSelectBox.find("option").removeAttr("selected");
-																						$thisOption.attr("selected", "selected");
-																						$currentValue.text($thisOption.text());
-																						$dropDownContainer.toggle();
-																						$thisSelectBox.parent("div").toggleClass("is-open");
-																						$thisSelectBox.parent("div").removeClass("nothing-selected");
-																						$dropDownContainer.find(".is-selected").removeClass("is-selected");
-																						$(this).addClass("is-selected");
 
 																						// check the user role
 
-																						// request data based on filters
-																						$('.js-dropdown-option.is-selected').each(function(){
-																		  				console.log($(this).data("value"));
-																		  			});
+																						// if user has permission
+																							// $('.js-page-container').addClass('is-loading');
+																							$('.data-value').remove();
+
+																							$thisSelectBox.find("option").removeAttr("selected");
+																							$thisOption.attr("selected", "selected");
+																							$currentValue.text($thisOption.text());
+																							$dropDownContainer.toggle();
+																							$thisSelectBox.parent("div").toggleClass("is-open");
+																							$thisSelectBox.parent("div").removeClass("nothing-selected");
+																							$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																							$(this).addClass("is-selected");																						
+
+																							// request data based on filters
+																							var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");
+																							var selectedRank = $('.js-dropdown-rank .js-dropdown-option.is-selected').data("value");
+																							var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
+
+																							console.log(selectedCountry);
+																							console.log(selectedRank);
+																							console.log(selectedDevice);
+
+																							var fileToRequest = "js/data-lab/whatyouneed_" + selectedCountry + "_July.json";
+																							console.log(fileToRequest);
+
+																							loadData(fileToRequest, selectedRank, selectedDevice);
+
+																						// else
+																							//show sign up popup																						
+
 																					})
 																					.append($("<span>").text($thisOption.text()))
 																		);
@@ -461,46 +479,48 @@
 
 			}
 
-  		// get default data
-			$.getJSON( "js/data-lab/whatyouneed_GB_July.json", function( data ) {
+			function loadData(fileToRequest, selectedRank, selectedDevice) {
+				// get default data
+				$.getJSON( fileToRequest, function( data ) {
 
-				console.log(data);
+					console.log(data);
 
-				setTimeout(function(){
 					$('.js-page-container').removeClass('is-loading');
 					
-					if(data["200"]["PHONE"]["GROSSING"].categories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["200"]["PHONE"]["GROSSING"].categories);
-						outputResults(data["200"]["PHONE"]["GROSSING"].categories, "js-revenue-grossing-list", "$", maxGrossing);
+					if(data[selectedRank][selectedDevice]["GROSSING"].categories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedRank][selectedDevice]["GROSSING"].categories);
+						outputResults(data[selectedRank][selectedDevice]["GROSSING"].categories, "js-revenue-grossing-list", "$", maxGrossing);
 					}
 
-					if(data["200"]["PHONE"]["GROSSING"].subcategories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["200"]["PHONE"]["GROSSING"].categories);
-						outputResults(data["200"]["PHONE"]["GROSSING"].subcategories, "js-revenue-grossing-list", "$", maxGrossing);
+					if(data[selectedRank][selectedDevice]["GROSSING"].subcategories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedRank][selectedDevice]["GROSSING"].categories);
+						outputResults(data[selectedRank][selectedDevice]["GROSSING"].subcategories, "js-revenue-grossing-list", "$", maxGrossing);
 					}
 
-					if(data["200"]["PHONE"]["FREE"].categories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["200"]["PHONE"]["FREE"].categories);
-						outputResults(data["200"]["PHONE"]["FREE"].categories, "js-downloads-free-list", "", maxGrossing);
+					if(data[selectedRank][selectedDevice]["FREE"].categories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedRank][selectedDevice]["FREE"].categories);
+						outputResults(data[selectedRank][selectedDevice]["FREE"].categories, "js-downloads-free-list", "", maxGrossing);
 					}
 
-					if(data["200"]["PHONE"]["FREE"].subcategories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["200"]["PHONE"]["FREE"].categories);
-						outputResults(data["200"]["PHONE"]["FREE"].subcategories, "js-downloads-free-list", "", maxGrossing);
+					if(data[selectedRank][selectedDevice]["FREE"].subcategories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedRank][selectedDevice]["FREE"].categories);
+						outputResults(data[selectedRank][selectedDevice]["FREE"].subcategories, "js-downloads-free-list", "", maxGrossing);
 					}
 
-					if(data["200"]["PHONE"]["PAID"].categories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["200"]["PHONE"]["PAID"].categories);
-						outputResults(data["200"]["PHONE"]["PAID"].categories, "js-downloads-paid-list", "", maxGrossing);
+					if(data[selectedRank][selectedDevice]["PAID"].categories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedRank][selectedDevice]["PAID"].categories);
+						outputResults(data[selectedRank][selectedDevice]["PAID"].categories, "js-downloads-paid-list", "", maxGrossing);
 					}
 
-					if(data["200"]["PHONE"]["PAID"].subcategories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["200"]["PHONE"]["PAID"].categories);
-						outputResults(data["200"]["PHONE"]["PAID"].subcategories, "js-downloads-paid-list", "", maxGrossing);
+					if(data[selectedRank][selectedDevice]["PAID"].subcategories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedRank][selectedDevice]["PAID"].categories);
+						outputResults(data[selectedRank][selectedDevice]["PAID"].subcategories, "js-downloads-paid-list", "", maxGrossing);
 					}
 
-				}, 1000);
-			});
+				});
+			}
+
+			setTimeout(function(){ loadData("js/data-lab/whatyouneed_GB_July.json", "200", "PHONE"); }, 1000);
 
   	});
   </script>
