@@ -9528,12 +9528,12 @@ li .form-field-notification-number {
 }
 
 /* line 1, sass/components-v2/_no-data.scss */
-.table-no-data-message {
-  position: absolute;
-  top: 210px;
-  left: 50%;
-  width: 400px;
-  margin-left: -200px;
+.table-no-data-message,
+.table-no-data-message:last-child {
+  position: relative;
+  width: 100%;
+  margin-bottom: 4rem;
+  display: block;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.6rem;
   font-weight: 600;
@@ -9541,13 +9541,15 @@ li .form-field-notification-number {
   text-align: center;
 }
 /* line 12, sass/components-v2/_no-data.scss */
-.table-no-data-message:before {
+.table-no-data-message:before,
+.table-no-data-message:last-child:before {
   top: -4px;
   margin-right: 11px;
   font-size: 24px;
 }
 /* line 17, sass/components-v2/_no-data.scss */
-.table-no-data-message span {
+.table-no-data-message span,
+.table-no-data-message:last-child span {
   margin-left: 16px;
   display: inline;
   font-family: "Lato", sans-serif;
@@ -10975,73 +10977,69 @@ a:hover .summary-widget__data-item__app-name {
 .ref-table tbody td:first-child {
   padding-left: 1.5rem;
 }
-/* line 40, sass/components-v2/_tables.scss */
-.ref-table.ref-table--is-no-data {
-  margin-bottom: 15rem;
-}
-/* line 42, sass/components-v2/_tables.scss */
+/* line 41, sass/components-v2/_tables.scss */
 .ref-table.ref-table--is-no-data tbody {
   display: none;
 }
 
-/* line 47, sass/components-v2/_tables.scss */
+/* line 46, sass/components-v2/_tables.scss */
 .ref-table--apps,
 .ref-table--publishers {
   margin-bottom: 2rem;
 }
 @media (min-width: 1100px) {
-  /* line 47, sass/components-v2/_tables.scss */
+  /* line 46, sass/components-v2/_tables.scss */
   .ref-table--apps,
   .ref-table--publishers {
     margin-bottom: 4rem;
   }
 }
-/* line 53, sass/components-v2/_tables.scss */
+/* line 52, sass/components-v2/_tables.scss */
 .ref-table--apps tr,
 .ref-table--publishers tr {
   border-bottom: 1px solid #fcfdfd;
 }
-/* line 56, sass/components-v2/_tables.scss */
+/* line 55, sass/components-v2/_tables.scss */
 .ref-table--apps .column-row-selector,
 .ref-table--publishers .column-row-selector {
   width: 4.9%;
 }
-/* line 59, sass/components-v2/_tables.scss */
+/* line 58, sass/components-v2/_tables.scss */
 .ref-table--apps .column-store-icon,
 .ref-table--publishers .column-store-icon {
   width: 4%;
 }
-/* line 62, sass/components-v2/_tables.scss */
+/* line 61, sass/components-v2/_tables.scss */
 .ref-table--apps .column-app-name,
 .ref-table--publishers .column-app-name {
   width: 25.2%;
 }
-/* line 65, sass/components-v2/_tables.scss */
+/* line 64, sass/components-v2/_tables.scss */
 .ref-table--apps .column-released,
 .ref-table--publishers .column-released {
   width: 8%;
 }
-/* line 68, sass/components-v2/_tables.scss */
+/* line 67, sass/components-v2/_tables.scss */
 .ref-table--apps .column-revenue,
 .ref-table--publishers .column-revenue {
   width: 12%;
 }
-/* line 71, sass/components-v2/_tables.scss */
+/* line 70, sass/components-v2/_tables.scss */
 .ref-table--apps .column-downloads,
 .ref-table--publishers .column-downloads {
   width: 14%;
 }
-/* line 74, sass/components-v2/_tables.scss */
+/* line 73, sass/components-v2/_tables.scss */
 .ref-table--apps .column-more,
 .ref-table--publishers .column-more {
   width: 4%;
 }
-/* line 77, sass/components-v2/_tables.scss */
+/* line 76, sass/components-v2/_tables.scss */
 .ref-table--apps .column-percentage-of-total,
 .ref-table--publishers .column-percentage-of-total {
   width: 23.3%;
 }
-/* line 80, sass/components-v2/_tables.scss */
+/* line 79, sass/components-v2/_tables.scss */
 .ref-table--apps .revenue-head-cell,
 .ref-table--apps .downloads-head-cell,
 .ref-table--publishers .revenue-head-cell,
@@ -11049,19 +11047,19 @@ a:hover .summary-widget__data-item__app-name {
   text-align: right;
   font-size: 1.5rem;
 }
-/* line 86, sass/components-v2/_tables.scss */
+/* line 85, sass/components-v2/_tables.scss */
 .ref-table--apps .total-for-period-head-cell span,
 .ref-table--publishers .total-for-period-head-cell span {
   display: inline-block;
 }
 @media (min-width: 2300px) {
-  /* line 86, sass/components-v2/_tables.scss */
+  /* line 85, sass/components-v2/_tables.scss */
   .ref-table--apps .total-for-period-head-cell span,
   .ref-table--publishers .total-for-period-head-cell span {
     display: inline;
   }
 }
-/* line 92, sass/components-v2/_tables.scss */
+/* line 91, sass/components-v2/_tables.scss */
 .ref-table--apps .total-for-period-head-cell span:first-child,
 .ref-table--publishers .total-for-period-head-cell span:first-child {
   margin-bottom: 0.4rem;
@@ -11069,32 +11067,32 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 1.4rem;
 }
 @media (min-width: 2300px) {
-  /* line 92, sass/components-v2/_tables.scss */
+  /* line 91, sass/components-v2/_tables.scss */
   .ref-table--apps .total-for-period-head-cell span:first-child,
   .ref-table--publishers .total-for-period-head-cell span:first-child {
     padding-right: 7px;
     display: inline;
   }
 }
-/* line 101, sass/components-v2/_tables.scss */
+/* line 100, sass/components-v2/_tables.scss */
 .ref-table--apps .total-for-period-head-cell span:nth-child(2),
 .ref-table--publishers .total-for-period-head-cell span:nth-child(2) {
   color: #ee9063;
   font-size: 1.3rem;
 }
-/* line 105, sass/components-v2/_tables.scss */
+/* line 104, sass/components-v2/_tables.scss */
 .ref-table--apps .total-for-period-head-cell span:nth-child(3),
 .ref-table--publishers .total-for-period-head-cell span:nth-child(3) {
   margin-left: 1.5rem;
   color: #6d69c5;
   font-size: 1.3rem;
 }
-/* line 111, sass/components-v2/_tables.scss */
+/* line 110, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-show-hide,
 .ref-table--publishers .app-data-cell-show-hide {
   padding-left: 1.5rem;
 }
-/* line 113, sass/components-v2/_tables.scss */
+/* line 112, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-show-hide .form-field--checkbox-list,
 .ref-table--publishers .app-data-cell-show-hide .form-field--checkbox-list {
   width: 17px;
@@ -11102,7 +11100,7 @@ a:hover .summary-widget__data-item__app-name {
   padding-top: 3px;
   vertical-align: top;
 }
-/* line 120, sass/components-v2/_tables.scss */
+/* line 119, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store,
 .ref-table--publishers .data-table__store {
   position: relative;
@@ -11112,24 +11110,24 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   vertical-align: top;
 }
-/* line 127, sass/components-v2/_tables.scss */
+/* line 126, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store:after,
 .ref-table--publishers .data-table__store:after {
   font-size: 20px;
   color: #81879d;
 }
-/* line 131, sass/components-v2/_tables.scss */
+/* line 130, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store.ref-icon-after--play-store,
 .ref-table--publishers .data-table__store.ref-icon-after--play-store {
   padding-top: 1px;
   padding-left: 1px;
 }
-/* line 134, sass/components-v2/_tables.scss */
+/* line 133, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store.ref-icon-after--play-store:after,
 .ref-table--publishers .data-table__store.ref-icon-after--play-store:after {
   font-size: 18px;
 }
-/* line 138, sass/components-v2/_tables.scss */
+/* line 137, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__store.is-loading,
 .ref-table--publishers .data-table__store.is-loading {
   position: relative;
@@ -11138,19 +11136,19 @@ a:hover .summary-widget__data-item__app-name {
   height: 18px;
   background-color: #e9e9ed;
 }
-/* line 146, sass/components-v2/_tables.scss */
+/* line 145, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-app-details,
 .ref-table--publishers .app-data-cell-app-details {
   padding-top: 7px;
   padding-bottom: 5px;
 }
-/* line 150, sass/components-v2/_tables.scss */
+/* line 149, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-released-date,
 .ref-table--publishers .app-data-cell-released-date {
   padding-top: 1.7rem;
   vertical-align: top;
 }
-/* line 153, sass/components-v2/_tables.scss */
+/* line 152, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-released-date.is-loading span,
 .ref-table--publishers .app-data-cell-released-date.is-loading span {
   position: relative;
@@ -11160,7 +11158,7 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   background-color: #e9e9ed;
 }
-/* line 162, sass/components-v2/_tables.scss */
+/* line 161, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-revenue,
 .ref-table--apps .app-data-downloads,
 .ref-table--publishers .app-data-revenue,
@@ -11168,14 +11166,14 @@ a:hover .summary-widget__data-item__app-name {
   float: right;
   text-align: right;
 }
-/* line 166, sass/components-v2/_tables.scss */
+/* line 165, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-revenue.is-loading,
 .ref-table--apps .app-data-downloads.is-loading,
 .ref-table--publishers .app-data-revenue.is-loading,
 .ref-table--publishers .app-data-downloads.is-loading {
   width: 100%;
 }
-/* line 168, sass/components-v2/_tables.scss */
+/* line 167, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-revenue.is-loading span,
 .ref-table--apps .app-data-downloads.is-loading span,
 .ref-table--publishers .app-data-revenue.is-loading span,
@@ -11185,20 +11183,20 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   background-color: #e9e9ed;
 }
-/* line 173, sass/components-v2/_tables.scss */
+/* line 172, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-revenue.is-loading span.data-table__growth,
 .ref-table--apps .app-data-downloads.is-loading span.data-table__growth,
 .ref-table--publishers .app-data-revenue.is-loading span.data-table__growth,
 .ref-table--publishers .app-data-downloads.is-loading span.data-table__growth {
   width: 25%;
 }
-/* line 179, sass/components-v2/_tables.scss */
+/* line 178, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-downloads,
 .ref-table--publishers .app-data-downloads {
   display: inline-block;
   vertical-align: top;
 }
-/* line 183, sass/components-v2/_tables.scss */
+/* line 182, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__growth,
 .ref-table--publishers .data-table__growth {
   margin-top: 0.4rem;
@@ -11207,14 +11205,14 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 1.2rem;
 }
 @media (min-width: 1600px) {
-  /* line 183, sass/components-v2/_tables.scss */
+  /* line 182, sass/components-v2/_tables.scss */
   .ref-table--apps .data-table__growth,
   .ref-table--publishers .data-table__growth {
     padding-left: 5px;
     display: inline;
   }
 }
-/* line 193, sass/components-v2/_tables.scss */
+/* line 192, sass/components-v2/_tables.scss */
 .ref-table--apps .more-app-data,
 .ref-table--publishers .more-app-data {
   position: absolute;
@@ -11228,18 +11226,18 @@ a:hover .summary-widget__data-item__app-name {
   background-color: #f2f2f5;
   border-radius: 5px;
 }
-/* line 204, sass/components-v2/_tables.scss */
+/* line 203, sass/components-v2/_tables.scss */
 .ref-table--apps .more-app-data dt, .ref-table--apps .more-app-data dd,
 .ref-table--publishers .more-app-data dt,
 .ref-table--publishers .more-app-data dd {
   display: block;
 }
-/* line 207, sass/components-v2/_tables.scss */
+/* line 206, sass/components-v2/_tables.scss */
 .ref-table--apps .more-app-data dd,
 .ref-table--publishers .more-app-data dd {
   margin-bottom: 0.5rem;
 }
-/* line 211, sass/components-v2/_tables.scss */
+/* line 210, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-more,
 .ref-table--publishers .app-data-cell-more {
   position: relative;
@@ -11248,13 +11246,13 @@ a:hover .summary-widget__data-item__app-name {
   vertical-align: top;
 }
 @media (min-width: 1600px) {
-  /* line 211, sass/components-v2/_tables.scss */
+  /* line 210, sass/components-v2/_tables.scss */
   .ref-table--apps .app-data-cell-more,
   .ref-table--publishers .app-data-cell-more {
     padding-top: 17px;
   }
 }
-/* line 219, sass/components-v2/_tables.scss */
+/* line 218, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-more .more-data-link,
 .ref-table--publishers .app-data-cell-more .more-data-link {
   margin-left: 10%;
@@ -11262,7 +11260,7 @@ a:hover .summary-widget__data-item__app-name {
   font-size: 1.2rem;
   display: none;
 }
-/* line 228, sass/components-v2/_tables.scss */
+/* line 227, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-more.is-loading span,
 .ref-table--publishers .app-data-cell-more.is-loading span {
   position: relative;
@@ -11273,17 +11271,17 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   background-color: #e9e9ed;
 }
-/* line 238, sass/components-v2/_tables.scss */
+/* line 237, sass/components-v2/_tables.scss */
 .ref-table--apps .app-data-cell-more .more-data-link:hover + .more-app-data,
 .ref-table--publishers .app-data-cell-more .more-data-link:hover + .more-app-data {
   display: inline-block;
 }
-/* line 242, sass/components-v2/_tables.scss */
+/* line 241, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar,
 .ref-table--publishers .data-table__value-bar {
   max-width: 300px;
 }
-/* line 244, sass/components-v2/_tables.scss */
+/* line 243, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar > span,
 .ref-table--publishers .data-table__value-bar > span {
   width: 35px;
@@ -11293,7 +11291,7 @@ a:hover .summary-widget__data-item__app-name {
   color: #6d69c5;
   text-align: center;
 }
-/* line 252, sass/components-v2/_tables.scss */
+/* line 251, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar div,
 .ref-table--publishers .data-table__value-bar div {
   width: calc(100% - 53px);
@@ -11301,29 +11299,29 @@ a:hover .summary-widget__data-item__app-name {
   display: inline-block;
   background-color: #e6e6eb;
 }
-/* line 258, sass/components-v2/_tables.scss */
+/* line 257, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar div span,
 .ref-table--publishers .data-table__value-bar div span {
   height: 10px;
   display: block;
   background-color: #918edf;
 }
-/* line 263, sass/components-v2/_tables.scss */
+/* line 262, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar:first-child,
 .ref-table--publishers .data-table__value-bar:first-child {
   margin-bottom: 4px;
 }
-/* line 265, sass/components-v2/_tables.scss */
+/* line 264, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar:first-child > span,
 .ref-table--publishers .data-table__value-bar:first-child > span {
   color: #ee9063;
 }
-/* line 268, sass/components-v2/_tables.scss */
+/* line 267, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar:first-child div span,
 .ref-table--publishers .data-table__value-bar:first-child div span {
   background-color: #f5c943;
 }
-/* line 273, sass/components-v2/_tables.scss */
+/* line 272, sass/components-v2/_tables.scss */
 .ref-table--apps .data-table__value-bar.is-loading span,
 .ref-table--publishers .data-table__value-bar.is-loading span {
   width: 22px;
@@ -11332,12 +11330,12 @@ a:hover .summary-widget__data-item__app-name {
   background-color: #e9e9ed;
 }
 
-/* line 282, sass/components-v2/_tables.scss */
+/* line 281, sass/components-v2/_tables.scss */
 tr:nth-child(odd) .app-data-cell-more.is-loading {
   background-color: #f2f2f5;
 }
 
-/* line 288, sass/components-v2/_tables.scss */
+/* line 287, sass/components-v2/_tables.scss */
 .ref-table--apps .ratings-container,
 .ref-table--apps .ratings-full,
 .ref-table--publishers .ratings-container,
@@ -11346,46 +11344,46 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
 .ref-table--home-chart .ratings-full {
   background-size: 65px 10px;
 }
-/* line 292, sass/components-v2/_tables.scss */
+/* line 291, sass/components-v2/_tables.scss */
 .ref-table--apps .ratings-container,
 .ref-table--publishers .ratings-container,
 .ref-table--home-chart .ratings-container {
   width: 65px;
 }
 
-/* line 297, sass/components-v2/_tables.scss */
+/* line 296, sass/components-v2/_tables.scss */
 .ref-table--publishers tbody td:first-child {
   padding-top: 17px;
   padding-bottom: 17px;
 }
-/* line 301, sass/components-v2/_tables.scss */
+/* line 300, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-row-selector {
   width: 7%;
 }
-/* line 304, sass/components-v2/_tables.scss */
+/* line 303, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-app-name {
   width: 25%;
 }
-/* line 307, sass/components-v2/_tables.scss */
+/* line 306, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-apps-number {
   width: 5%;
 }
-/* line 310, sass/components-v2/_tables.scss */
+/* line 309, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-revenue {
   width: 15%;
 }
-/* line 313, sass/components-v2/_tables.scss */
+/* line 312, sass/components-v2/_tables.scss */
 .ref-table--publishers .column-downloads {
   width: 15%;
 }
 
-/* line 317, sass/components-v2/_tables.scss */
+/* line 316, sass/components-v2/_tables.scss */
 .ref-table--apps,
 .ref-table--apps * {
   overflow: visible;
 }
 
-/* line 322, sass/components-v2/_tables.scss */
+/* line 321, sass/components-v2/_tables.scss */
 .ref-table--apps.ref-table--apps--country .data-table__app-summary img,
 .ref-table--apps.ref-table--apps--country .data-table__app-summary .icon-flag {
   margin-top: 2px;
@@ -11394,13 +11392,13 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   float: left;
   border-radius: 0;
 }
-/* line 330, sass/components-v2/_tables.scss */
+/* line 329, sass/components-v2/_tables.scss */
 .ref-table--apps.ref-table--apps--country .ratings-container {
   margin-top: 2px;
   margin-bottom: 0;
 }
 
-/* line 336, sass/components-v2/_tables.scss */
+/* line 335, sass/components-v2/_tables.scss */
 .data-table__app-summary img {
   width: 42px;
   max-height: 42px;
@@ -11408,7 +11406,7 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   float: left;
   border-radius: 9px;
 }
-/* line 343, sass/components-v2/_tables.scss */
+/* line 342, sass/components-v2/_tables.scss */
 .data-table__app-summary .data-table__app-details-container {
   width: calc(100% - 55px);
   max-width: 170px;
@@ -11418,18 +11416,18 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   float: left;
   text-align: left;
 }
-/* line 351, sass/components-v2/_tables.scss */
+/* line 350, sass/components-v2/_tables.scss */
 .page-data-dashboard--country .data-table__app-summary .data-table__app-details-container {
   width: calc(100% - 50px);
 }
 @media (min-width: 1600px) {
-  /* line 343, sass/components-v2/_tables.scss */
+  /* line 342, sass/components-v2/_tables.scss */
   .data-table__app-summary .data-table__app-details-container {
     max-width: 300px;
   }
 }
 
-/* line 359, sass/components-v2/_tables.scss */
+/* line 358, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name {
   margin: 0;
   padding-top: 1px;
@@ -11441,15 +11439,15 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 369, sass/components-v2/_tables.scss */
+/* line 368, sass/components-v2/_tables.scss */
 .page-data-dashboard--country .data-table__app-summary__app-name {
   margin-top: 9px;
 }
-/* line 372, sass/components-v2/_tables.scss */
+/* line 371, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name a {
   padding-bottom: 0.5rem;
 }
-/* line 376, sass/components-v2/_tables.scss */
+/* line 375, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name.is-loading {
   width: 80%;
   max-width: 200px;
@@ -11459,44 +11457,44 @@ tr:nth-child(odd) .app-data-cell-more.is-loading {
   background-color: #e9e9ed;
 }
 
-/* line 385, sass/components-v2/_tables.scss */
+/* line 384, sass/components-v2/_tables.scss */
 .cellTableSortableHeader {
   outline: none;
 }
-/* line 387, sass/components-v2/_tables.scss */
+/* line 386, sass/components-v2/_tables.scss */
 .cellTableSortableHeader:focus {
   outline: none;
 }
-/* line 390, sass/components-v2/_tables.scss */
+/* line 389, sass/components-v2/_tables.scss */
 .cellTableSortableHeader span {
   cursor: pointer;
 }
-/* line 392, sass/components-v2/_tables.scss */
+/* line 391, sass/components-v2/_tables.scss */
 .cellTableSortableHeader span:active {
   position: relative;
   top: 2px;
 }
-/* line 400, sass/components-v2/_tables.scss */
+/* line 399, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-ascending-first-child span:first-child .sort-svg .ascending {
   fill: #6d69c5;
 }
-/* line 408, sass/components-v2/_tables.scss */
+/* line 407, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-ascending-first-child.total-for-period-head-cell span:nth-child(2) .sort-svg .ascending {
   fill: #6d69c5;
 }
-/* line 418, sass/components-v2/_tables.scss */
+/* line 417, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-ascending-last-child span:last-child .sort-svg .ascending {
   fill: #6d69c5;
 }
-/* line 427, sass/components-v2/_tables.scss */
+/* line 426, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-descending-first-child span:first-child .sort-svg .descending {
   fill: #6d69c5;
 }
-/* line 435, sass/components-v2/_tables.scss */
+/* line 434, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-descending-first-child.total-for-period-head-cell span:nth-child(2) .sort-svg .descending {
   fill: #6d69c5;
 }
-/* line 445, sass/components-v2/_tables.scss */
+/* line 444, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-descending-last-child span:last-child .sort-svg .descending {
   fill: #6d69c5;
 }
@@ -18856,6 +18854,21 @@ span.live-chart__cell__publisher-name:hover {
   opacity: 1;
   -webkit-transition: opacity 0s;
           transition: opacity 0s;
+}
+
+/* line 246, sass/templates-v2/_top-downloads__main.scss */
+.onboarding-overlay {
+  position: absolute;
+  z-index: 10100;
+  opacity: 0;
+  visibility: hidden;
+}
+/* line 251, sass/templates-v2/_top-downloads__main.scss */
+.onboarding-overlay.is-showing {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s;
+          transition: opacity 0.3s;
 }
 
 /* Browser fixes */
