@@ -272,7 +272,7 @@
 		margin-top: 2px;
 		margin-right: 15px;		
 		display: inline-block;
-		background-color: $light-grey-2;
+		background-color: $divider-grey;
 		border-radius: 5px;
 		@include breakpoint($desktop) {
 			margin-right: 28px;
@@ -287,6 +287,8 @@
 		@include ellipses;
 		width: calc(100% - 70px);
 		max-width: 300px;
+    padding-right: 20px;
+    box-sizing: border-box;
 		font-size: 14px;
 		font-weight: 700;
 		line-height: 1.5;
@@ -294,23 +296,62 @@
 		&:hover {
 			color: $reflection-purple--hover;
 		}
-		@include breakpoint($desktop) {
-			font-size: 16px;
-		}
+		@include breakpoint($desktop-wide) {
+	    max-width: 400px;
+    }
 	}
 	span {
 		@include ellipses;
 		width: calc(100% - 70px);
 		max-width: 300px;
+		padding-right: 20px;
+    box-sizing: border-box;
 		font-size: 14px;
 		font-weight: 700;
 		line-height: 1.5;
 		font-weight: 600;
+		@include breakpoint($desktop-wide) {
+	    max-width: 400px;
+    }
+	}
+}
+.ref-table--home-chart__app-cell,
+.ref-table--home-chart__publisher-cell,
+.ref-table--home-chart__revenue-cell {
+	span.is-loading {
+		height: 10px;
+	  width: 60%;
+	  display: inline-block;
+	  background-color: #e9e9ed;
+		background: linear-gradient(90deg, #f2f2f5, #f2f2f5, #e4e4e6, #f2f2f5, #f2f2f5);
+		background-size: 200% 100%;
+		animation: BackgroundGradientPulse 1.5s linear infinite;
+	}
+}
+.ref-table--home-chart__publisher-cell,
+.ref-table--home-chart__revenue-cell {
+	span.is-loading {
+		width: 80%;
+	}
+}
+.ref-table--home-chart__price-cell {
+	span.is-loading {
+		color: $light-grey-1;
+	}
+}
+.ref-table--home-chart__revenue-cell {
+	span.is-loading {
+		width: 50%;
 	}
 }
 .ref-table--home-chart__revenue-cell--head {
 	padding-right: 21px;	
 	text-align: right;
+	a {
+		padding-right: 5px;
+		font-size: 1.2rem;
+		font-weight: 400;
+	}
 	.whats-this-tooltip-icon {
 		margin-top: -2px;
     margin-left: 2px;
@@ -324,6 +365,20 @@
 		&:hover {
 			color: $reflection-purple--hover;
 		}
+	}
+	a, span {		
+    width: 100%;
+    max-width: 200px;
+    padding-right: 10px;
+    display: block;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include breakpoint($desktop-wide) {
+	    max-width: 450px;
+	    padding-right: 50px;
+    }      
 	}
 }
 .ref-table--home-chart__price-cell {

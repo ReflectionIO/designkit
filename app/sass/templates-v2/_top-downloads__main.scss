@@ -211,10 +211,20 @@
 		padding: 9px 10px 0 9px;
 		display: inline-block;
 		float: right;
+		opacity: 1;
 		font-size: 14px;
 		color: $reflection-white;
+		transition: opacity 0.5s;
 		&.is-no-data {
 			color: #727686;
+			cursor: pointer;
+			&:hover {
+				color: lighten(#727686, 10%);
+			}
+		}
+		.is-data-requested & {
+			opacity: 0;
+			transition: opacity 0.2s;
 		}
 	}
 	.data-name {
@@ -251,6 +261,6 @@
   &.is-showing {
   	opacity: 1;
   	visibility: visible;
-  	transition: opacity 0.3s;
+  	transition: opacity 0.3s 0.4s;
   }
 }

@@ -21,7 +21,7 @@
 	position: relative;
 	max-height: 100vh;	
 	width: 402px;
-	padding: 28px 30px 30px 30px;	
+	padding: 28px 30px 30px 30px;
 	overflow-x: hidden;
 	opacity: 0;
 	font-size: 0;
@@ -40,6 +40,35 @@
 	.form-field--select__box {
 		width: 100%;
     box-sizing: border-box;
+	}
+}
+$help-popup-transition-duration: 0.35s;
+.page-overlay--help {
+	.popup-content {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 0;
+		height: 0;
+		padding: 10px;
+		transform: scale(1);
+		transition: width $help-popup-transition-duration ease-out, height $help-popup-transition-duration ease-out, padding $help-popup-transition-duration ease-out, margin $help-popup-transition-duration ease-out, top $help-popup-transition-duration ease-out, left $help-popup-transition-duration ease-out, opacity $help-popup-transition-duration ease-out;
+		&.is-showing {
+			transition: width $help-popup-transition-duration ease-in, height $help-popup-transition-duration ease-in, padding $help-popup-transition-duration ease-in, margin $help-popup-transition-duration ease-in, top $help-popup-transition-duration ease-in, left $help-popup-transition-duration ease-in, opacity $help-popup-transition-duration - 0.1s ease-in;
+			.help-popup-content {
+				opacity: 1;
+				transition: opacity 0.2s $help-popup-transition-duration;
+			}
+		}
+		.help-popup-content {
+			opacity: 0;	
+		}
+		&:before {
+			display: none;
+		}		
+		h2 {
+			margin-top: 0;
+		}
 	}		
 }
 .popup-close {
@@ -108,5 +137,10 @@
   margin-top: 1rem;
 	+ h2 {
 		margin-top: 1.5rem;
+	}
+}
+.page-overlay--whats-this {
+	.page-popup {
+		position: fixed;
 	}
 }
