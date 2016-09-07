@@ -1384,12 +1384,12 @@
 							<span>France</span>
 						</label>
 					</li>
-					<li>
+					<li class="group-item-unavailable">
 						<input type="checkbox" name="checkboxCountryIt" id="checkboxCountryIt" />
 						<label for="checkboxCountryIt" class="checkboxLabel">Germany</label>
 						<label for="checkboxCountryIt" class="checkboxLabelVisible">
 							<img src="images/icon-flag-ger.png" alt="Germany flag" class="checkbox-label-img">
-							<span>Germany</span>
+							<span class="js-tooltip js-tooltip--instant js-tooltip--left" data-tooltip="Currently no estimates available for this country">Germany</span>
 						</label>
 					</li>
 					<li>
@@ -1535,6 +1535,7 @@
 
   		new TooltipsBase();
   		$('.js-tooltip').each(function(){
+  			console.log($(this));
   			new ToolTip($(this));
   		});
   		$('.js-whats-this-tooltip').each(function(){

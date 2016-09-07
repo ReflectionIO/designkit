@@ -343,22 +343,37 @@ function handleappsearch(data) {
 	for(var i = 0; i < searchResultsDevs.length && i < 6; i++) {
 		$devList.append($('<li>').append($('<a>').attr("href", "#").addClass("search-results--developer__publisher-name").text(searchResultsDevs[i].artistName)));
 	}
+
+	$('.js-search-loading-indicator').hide();
 }
 
 SearchContainer.prototype.initSearch = function() {
 	
+	var typingTimer;
+
 	// on key up loop through object and search - for implentation, amend to call service to return results in json and display
 	$('.js-get-items').keyup(function(){
 		
-		$('#scriptsearch').remove();
-    $('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + $(this).val() + "&media=software&limit=10&callback=handleappsearch"));
+		$('.js-search-loading-indicator').hide();
 
-		var $searchButtonMobile = $('.panel-right .form-field .search-button-mobile');
-		if($(this).val().length > 0) {
-			$searchButtonMobile.addClass('is-highlighted');
-		} else {
-			$searchButtonMobile.removeClass('is-highlighted');
-		}
+		if(typingTimer) {
+			clearTimeout(typingTimer);
+		}		
+
+		var valueToSearch = $(this).val();
+		typingTimer = setTimeout(function(){
+			$('.js-search-loading-indicator').show();
+			$('#scriptsearch').remove();
+	    $('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + valueToSearch + "&media=software&limit=10&callback=handleappsearch"));
+
+			var $searchButtonMobile = $('.panel-right .form-field .search-button-mobile');
+			if(valueToSearch.length > 0) {
+				$searchButtonMobile.addClass('is-highlighted');
+			} else {
+				$searchButtonMobile.removeClass('is-highlighted');
+			}
+		}, 500);
+
 	});
 };
 
