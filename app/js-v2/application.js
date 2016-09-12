@@ -28,8 +28,11 @@ Page.prototype.customScrollbars = function() {
 	}
 
 	if($('.ie10').length == 0 && $('.ie8').length == 0) {
+		console.log("cheese");
 		$(".js-custom-scrollbar").mCustomScrollbar({
-	  	scrollInertia: 200
+	  	scrollInertia: 200,
+	  	autoHideScrollbar: false,
+	  	alwaysShowScrollbar: 2
 	  });
 	}
 };
