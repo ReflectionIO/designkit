@@ -7,10 +7,32 @@
 	padding-top: 9.5rem;
 	padding-bottom: 10rem;
 }
-.data-lab-illustration {
-	width: 435px;
+@keyframes risingTubeBubbles {
+	0% { background-position: 0 0; }
+	100% { background-position: 0 -235px; }
+}
+@keyframes liquidSway {
+	0% { transform: rotateZ(-10deg); fill: #6c69c5; }
+	50% { transform: rotateZ(10deg); fill: #7a77d5; }
+	100% { transform: rotateZ(-10deg); fill: #6c69c5; }
+}
+.grid-column-lab-welcome.data-lab-illustration {
+	position: absolute;
+	width: 476px;
 	margin-top: 41px;
-  margin-left: 7.6%;
+  margin-left: 3.7%;
+  background-image: url(images/lab-bubbles@2x.png);
+  background-repeat: no-repeat;
+  background-size: 476px 538px;
+  animation: risingTubeBubbles 6s linear infinite;
+  img {
+  	width: 100%;
+  	float: left;
+  }
+}
+.lab-bottle-liquid {
+	transform-origin: 50% 0%;
+	animation: liquidSway 2s ease-in-out infinite;
 }
 .grid-column-lab-welcome {
 	width: percentage(578/1176);
@@ -95,7 +117,7 @@
 	}
 	.lab-brewing {
 		padding-top: 9.2rem;
-		img {
+		img, svg {
 			width: 68px;
 			margin-bottom: 7px;
 		}
