@@ -1619,6 +1619,7 @@
 	            $.each(instance.points, function (index, value) {
 	                var chartSeries = value.series;
 	                var imgString = "",
+	                		countryCode = "",
 	                		storeString = ""
 	                		valueString = "",
 	                		stackedString = "";
@@ -1630,7 +1631,17 @@
 	                	valueString = "$ ";
 	                	imgString = "<img src=images/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
 	                } else if(chartSeries.name == "downloadsseries-total") {
-	                	imgString = "<img src=images/icon-chart-tt-downloads@2x.png alt='Rank icon' class=icon-downloads />";	
+	                	imgString = "<img src=images/icon-chart-tt-downloads@2x.png alt='Downloads icon' class=icon-downloads />";	
+	                } else { // output app and store icon from data
+	                	var appIcon = chartSeries.appIcon;
+	                	var store = chartSeries.appStore;
+	                	storeString = "<span class='ref-icon-before--" + store + "'></span>"
+	                	if(chartSeries.countryCode) {
+	                		imgString = "<span class='icon-flag-sm icon-flag--" + chartSeries.countryCode + "'></span>";
+	                		storeString = "";
+	                	} else {
+	                		imgString = "<img src=" + appIcon + " class='chart-tooltip-app-icon' />";
+	                	}
 	                }
 	                
 	                var seriesClassName = chartSeries.name;
@@ -1683,6 +1694,7 @@
 					$.each(Highcharts.charts[k].series, function (key, series) { // twin chart
 				    series.appIcon = seriesAppIcons[key].icon;
 				    series.appStore = seriesAppIcons[key].store;
+				    series.countryCode = seriesAppIcons[key].countryCode;
 					});
 				}
 
@@ -2728,47 +2740,58 @@
 			var seriesAppIcons = [
 				{ 
 					icon: "images/demo-icon-clash-of-hamsters.jpg",
-					store: "ios"
+					store: "ios",
+					countryCode: "GB"
 				},
 				{ 
 					icon: "images/demo-icon-clash-of-hamsters.jpg",
-					store: "ios"
+					store: "ios",
+					countryCode: "US"
 				},
 				{ 
 					icon: "images/demo-icon-angry-hamsters.jpg",
-					store: "play-store"
+					store: "play-store",
+					countryCode: "TT"
 				},
 				{ 
 					icon: "images/demo-icon-five-hamsters-at-freddies.jpg",
-					store: "ios"
+					store: "ios",
+					countryCode: "SE"
 				},
 				{ 
 					icon: "images/demo-icon-crossy-hamster.jpg",
-					store: "play-store"
+					store: "play-store",
+					countryCode: "ES"
 				},
 				{ 
 					icon: "images/demo-icon-hamster-crush.jpg",
-					store: "ios"
+					store: "ios",
+					countryCode: "IT"
 				},
 				{ 
 					icon: "images/demo-icon-hamsters-vs-zombies.jpg",
-					store: "ios"
+					store: "ios",
+					countryCode: "FR"
 				},
 				{ 
 					icon: "images/demo-icon-hamster-ninja.jpg",
-					store: "play-store"
+					store: "play-store",
+					countryCode: "JM"
 				},
 				{ 
 					icon: "images/demo-icon-8-ball-hamster.jpg",
-					store: "ios"
+					store: "ios",
+					countryCode: "JP"
 				},
 				{ 
 					icon: "images/demo-icon-flappy-hamster.jpg",
-					store: "ios"
+					store: "ios",
+					countryCode: "DE"
 				},
 				{ 
 					icon: "images/demo-icon-geometry-hamster.jpg",
-					store: "ios"
+					store: "ios",
+					countryCode: "DK"
 				}
 			];
 			

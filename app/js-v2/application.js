@@ -28,7 +28,6 @@ Page.prototype.customScrollbars = function() {
 	}
 
 	if($('.ie10').length == 0 && $('.ie8').length == 0) {
-		console.log("cheese");
 		$(".js-custom-scrollbar").mCustomScrollbar({
 	  	scrollInertia: 200,
 	  	autoHideScrollbar: false,
@@ -424,7 +423,8 @@ var FormFieldSelect = function($domElement) {
 	$thisSelectBox.find('option').each(function(){
 		
 		var $thisOption = $(this),
-				selectedClass = "";
+				selectedClass = "",
+				unavailableClass = "";
 
 		if($thisOption.val() != "") {
 
@@ -454,7 +454,9 @@ var FormFieldSelect = function($domElement) {
 			$dropDownContainer.append($newListItem
 																		.addClass("js-dropdown-option")																		
 																		.addClass(selectedClass)
+																		.addClass("group-item-unavailable js-tooltip js-tooltip--instant js-tooltip--left")
 																		.attr('data-value', $thisOption.attr('value'))
+																		.data("tooltip", "Currently no estimates available for this country")
 																		.on("click", function() {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");

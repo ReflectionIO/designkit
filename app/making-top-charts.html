@@ -306,6 +306,15 @@
 					</div>
 				</div>
 
+				<div class="idc-comments-container">
+					<script>
+						var idcomments_acct = 'c4a0cfaab22f16bc5e847b0d1398bb91';
+						var idcomments_post_id;
+						var idcomments_post_url;
+						</script>
+						<span id="IDCommentsPostTitle" style="display:none"></span>
+					<script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+				</div>				
 			</div>
 		</div>
 	</div>
@@ -514,7 +523,7 @@
 				setTimeout(function(){
 					$('.js-page-overlay--no-data .js-popup-content').addClass("is-showing");
 				}, 100);
-		  }		  
+		  }
 
 		  function minifyHelpPopup(timeoutSecs) {
 		  	setTimeout(function(){
@@ -735,7 +744,10 @@
 						}
 						var spanWidth = (this.value / maxGrossing) * 100;
 						var formattedValue = this.value;
-						if(this.value != undefined && this.value !== "NAN" && this.value <= 0) {
+						if(this.value != undefined && this.value !== "NAN" && this.value > 0) {
+							if(this.value > 1) {
+								this.value = Math.round(this.value);
+							}
 							formattedValue = formatNumbers(this.value);
 						}
 						var thisValue = valuePrefix + formatNumbers(this.value);
@@ -812,7 +824,7 @@
 			// if the key exists it forms the dir of the ajax request for the json file
 			// if it is null then the user gets the sign up popup message
 			function getUserRole() {
-				return "js/data-lab";
+				return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b";
 			}
 
 			setTimeout(function(){
