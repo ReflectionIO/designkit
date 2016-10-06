@@ -264,3 +264,60 @@
   	transition: opacity 0.3s 0.4s;
   }
 }
+.data-vis-making-top-charts__rank-distribution {
+	margin-bottom: 9rem;
+	ul {
+		height: 600px;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		li {
+			position: relative;
+			height: 0;
+			flex-grow: 1;
+			overflow: visible;
+			border: 1px solid $dark-grey-1;
+			background-color: $reflection-purple;
+			transition: height 0.5s;
+			&.is-grossing {
+				background-color: $reflection-green;
+			}
+			.rank-distribution-value {
+				position: absolute;
+				bottom: 10px;
+				left: 0;
+				width: 100%;
+				display: block;
+				color: $reflection-white;
+				font-size: 1.4rem;
+				font-weight: bold;
+				text-align: center;
+				opacity: 1;
+				transition: opacity 0.3s;
+			}
+			&.is-loading {
+				height: 0 !important;
+				.rank-distribution-value {
+					opacity: 0;
+				}
+			}
+		}
+	}	
+	.rank-labels {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		.rank-label {
+			display: block;
+			width: 100%;
+			margin-top: 3rem;
+			display: block;
+			color: $reflection-white;
+			font-size: 1.2rem;
+			font-weight: bold;
+			text-align: center;
+		}
+	}
+}

@@ -1420,7 +1420,7 @@
 	              day: '%e %b'
 	          },
 	          tickmarkPlacement: 'on',
-	          tickPixelInterval: 30,
+	          tickPixelInterval: 10,
 	          tickLength: 0,
 	          labels: {
 	          	align: 'center',
@@ -1974,7 +1974,7 @@
 							    });
 								} else { // the first line is the total line for the stacked chart and should not be part of the stacked area
 									series.update({
-										type: 'area',
+										type: 'line',
 										stacking: null,
 										fillColor: seriesFills[key],
 										lineWidth: 2
@@ -2767,7 +2767,7 @@
 
 				for(var s = 0; s < 4; s++) {
 					var mockSeries = [];
-					for(var d = 0; d < 12; d++) {						
+					for(var d = 0; d < 31; d++) {						
 						if(chartData[s].data[d]) {
 							mockSeries.push(chartData[s].data[d].value);
 						} else {
@@ -2779,7 +2779,7 @@
 				}				
 
 				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
-				for(var d = 0; d < 12; d++) {
+				for(var d = 0; d < 31; d++) {
 					var totalOfSeriesForDataPoint = 0;
 					for(var s = 1; s < 5; s++) {
 						if(mockDataRevenue[s][d] != null) {
@@ -2794,7 +2794,7 @@
 				mockDataDownloads.push([]);
 				for(var s = 5; s < 9; s++) {
 					var mockSeries = [];
-					for(var d = 0; d < 12; d++) {
+					for(var d = 0; d < 31; d++) {
 						if(chartData[s].data[d]) {
 							mockSeries.push(chartData[s].data[d].value);
 						} else {
@@ -2809,7 +2809,7 @@
 				mockDataDownloads[2][5] = null;
 
 				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
-				for(var d = 0; d < 12; d++) {
+				for(var d = 0; d < 31; d++) {
 					var totalOfSeriesForDataPoint = 0;
 					for(var s = 1; s < 5; s++) {
 						if(mockDataDownloads[s][d] != null) {
