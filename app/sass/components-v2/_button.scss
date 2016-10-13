@@ -215,6 +215,67 @@ button::-moz-focus-inner {
     }
   }
 }
+.ref-button--dark {
+  color: $light-grey-2;
+  border: 1px solid #000000;
+  border-radius: 0.35714285714285715em;
+  background-color: #343438;
+  .no-touch & {
+    &:hover {
+      background-color: #2e2e31;
+    }
+    &:active {
+      border-top: 2px solid #000000;
+    }
+  }
+  &.is-success {
+    color: $reflection-white;
+    border-color: $reflection-green;
+    background-color: $reflection-green;
+    .no-touch & {
+      &:hover {
+        color: $reflection-white;
+        background-color: $reflection-green;
+      }
+    }
+  }
+}
+.ref-button--dark--small {
+  @extend .ref-button;
+  @extend .ref-button--dark;
+  padding: calc(1rem - 1px) 1.4rem calc(1.2rem - 1px) 1.39rem;
+  font-size: 1.4rem;
+  letter-spacing: -0.01rem;
+  .no-touch & {
+    &:active {    
+      padding-bottom: calc(1.2rem - 2px);
+    }
+  }
+}
+.ref-button--dark--medium {
+  @extend .ref-button;
+  @extend .ref-button--dark;
+  padding: calc(1.3rem - 1px) 1.5rem calc(1.3rem - 1px) 1.39rem;
+  font-size: 1.5rem;
+  letter-spacing: -0.01rem;
+  .no-touch & {
+    &:active {    
+      padding-bottom: calc(1.3rem - 2px);
+    }
+  }
+}
+.ref-button--dark--large {
+  @extend .ref-button;
+  @extend .ref-button--dark;
+  padding: calc(1.6rem - 1px) 2rem calc(1.7rem - 1px) 2rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.01rem;
+  .no-touch & {
+    &:active {    
+      padding-bottom: calc(1.7rem - 2px);
+    }
+  }
+}
 .button-full-width {
   width: 100%;
   margin-left: 0;
