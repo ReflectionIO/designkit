@@ -125,3 +125,30 @@
 		z-index: 2;
 	}
 }
+.site-loading__panel-left {
+	position: fixed;
+	top: 0;
+	width: 60px;
+	height: 100vh;
+	display: inline-block;
+	overflow: hidden;
+	z-index: 10;
+	float: left;
+	vertical-align: top;
+	border-right: 1px solid #000;
+	background-color: $dark-grey-1;
+}
+.site-loading-container {
+	height: calc(100vh - 50px);
+	.hamster-wheel,
+	.animation-hamster {
+		top: 41vh;
+	}
+	&.is-loaded {
+		.hamster-wheel,
+		.animation-hamster {
+			opacity: 0;
+			transition: opacity 0.3s;
+		}
+	}
+}

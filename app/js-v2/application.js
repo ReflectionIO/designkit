@@ -454,9 +454,7 @@ var FormFieldSelect = function($domElement) {
 			$dropDownContainer.append($newListItem
 																		.addClass("js-dropdown-option")																		
 																		.addClass(selectedClass)
-																		.addClass("group-item-unavailable js-tooltip js-tooltip--instant js-tooltip--left")
 																		.attr('data-value', $thisOption.attr('value'))
-																		.data("tooltip", "Currently no estimates available for this country")
 																		.on("click", function() {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");

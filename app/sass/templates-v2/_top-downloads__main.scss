@@ -418,19 +418,23 @@
 	}
 }
 .data-vis-making-top-charts__number-of-downloads {
-	padding: 9.1rem 4rem 9.8rem;
+	padding: 9.1rem 0rem 9.8rem;
 	border-top: 1px solid #161617;
 	border-bottom: 1px solid #161617;
 }
+.data-vis-making-top-charts__number-of-downloads__center {
+	width: 100%;
+  max-width: 985px;
+  margin: 0 auto;
+}
 .data-vis-making-top-charts__number-of-downloads__left {
 	width: 390px;
-	margin-left: 5.2%;
 	display: inline-block;
 	vertical-align: top;
 }
 .data-vis-making-top-charts__number-of-downloads__right {
 	width: 500px;
-  margin-right: 5%;
+	margin-top: 7px;
 	display: inline-block;
 	float: right;
 	font-size: 0;
@@ -443,31 +447,44 @@
   vertical-align: middle;
 }
 .number-of-downloads__colunm-one {
-	width: percentage(258/500);
-	padding-left: 73px;
-  padding-top: 5px;
+	width: 258px;
+  padding-left: 18px;
 	span {
+		display: inline-block;
+    vertical-align: middle;
 		font-family: $brand-heading-font;
 		font-size: 1.6rem;
 		font-weight: 600;
 	}
+	svg {
+  	width: 36px;
+  	margin-right: 19px;
+    display: inline-block;
+    vertical-align: middle;    
+  }
 }
 .number-of-downloads__colunm-two {
-	width: percentage(122/500);
+	width: 122px;
 }
 .number-of-downloads__colunm-three {
-	width: percentage(120/500);
+	width: 120px;
 }	
 .number-of-downloads__colunm-two,
 .number-of-downloads__colunm-three {
-	padding-top: 10px;
+  padding-top: 7px;
   padding-left: 5px;
-	.icon-flag,
-	.icon-flag + span {
+	.flag-img-container,
+	.flag-img-container + span {
 		display: inline-block;
 		vertical-align: middle;
 	}
-	.icon-flag + span {
+	.flag-img-container {
+		img {
+			width: 27px;
+		}
+	}
+	.flag-img-container + span {
+		margin-top: -3px;
 		margin-left: 8px;
 		font-family: $brand-heading-font;
 		font-size: 1.8rem;
@@ -491,15 +508,41 @@
 	display: table;
 	background-color: #343438;
 	&:first-child {
-		height: 44px;
+		height: 37px;
 		background-color: transparent;
 		.number-of-downloads__colunm-two {
 			padding: 0;
 		}
 		.number-of-downloads__colunm-three {
 			padding: 0;
-			.icon-flag {
-				margin-left: 8px;
+			.flag-img-container {
+				margin-left: 13px;
+			}
+		}
+	}
+	&:nth-child(2) {
+		.number-of-downloads__colunm-one {
+			svg {
+				position: relative;
+				top: 1px;
+			}			    
+		}
+	}
+	&:nth-child(3) {
+		.number-of-downloads__colunm-one {
+			svg {
+				width: 32px;
+    		margin-left: 3px;
+			}
+		}
+	}
+	&:nth-child(4) {
+		.number-of-downloads__colunm-one {
+			svg {
+				position: relative;
+				top: 0;
+				width: 33px;
+		    margin-left: 3px;
 			}
 		}
 	}
@@ -514,6 +557,11 @@
 .data-vis-making-top-charts__country-comparison {
 	border-bottom: 1px solid #161617;
 }
+.data-vis-making-top-charts__country-comparison__center {
+	width: 100%;
+	max-width: 1012px;
+	margin: 0 auto;
+}
 .country-comparison__right,
 .country-comparison__left,
 .rank-levels__right,
@@ -522,22 +570,26 @@
 	vertical-align: top;
 }
 .country-comparison__left {
-	width: 540px;
-	margin-left: 6.9%;
+	position: relative;
+  height: 363px;
+  width: 540px;
 	padding-top: 2.6rem;
 }
 .country-comparison__right {
 	width: 396px;
-	margin-left: 5.3%;
+	margin-right: 1.2%;
+	float: right;
 }
 .rank-levels__left {
 	width: 396px;
-	margin-left: 8.3%;
+  margin-left: 3.5%;
 }
 .rank-levels__right {
+	position: relative;
 	width: 525px;
+	height: 390px;
 	padding-top: 3.1rem;
-	margin-left: 8%;
+	float: right;
 }
 .data-vis-making-top-charts__tabs {
 	margin-bottom: 16px;
@@ -568,13 +620,18 @@
 		width: 108px;
 	}
 	.data-vis-making-top-charts__bar-chart {
+		position: absolute;
+		width: calc(100% - 2px);
 		height: 220px;
 		margin-left: 2px;
-		display: none;
+		display: flex;
 		flex-direction: row;
 		align-items: flex-end;
+		opacity: 0;
+		transition: opacity 0.5s;
 		&.is-active {
-			display: flex;
+			opacity: 1;
+			transition: opacity 0.5s;
 		}
 		li {
 			position: relative;
@@ -592,31 +649,19 @@
 				background-color: #ffb53d;
 			}
 			.rank-distribution-value {
-				position: absolute;
-				bottom: 20px;
-				left: 0;
-				width: 100%;
-				display: block;
-				color: $reflection-white;
-				font-size: 1.3rem;
-				font-weight: bold;
-				text-align: center;
-				opacity: 1;
-				transform: rotate(-90deg);
-				transition: opacity 0.3s;
+				opacity: 0;
 			}
 			&.is-loading {
 				height: 0 !important;
-				.rank-distribution-value {
-					opacity: 0;
-				}
 			}
 			&:last-child {
 				margin-right: 0;
 			}
 		}
-	}	
+	}
 	.rank-labels {
+		position: relative;
+    top: 220px;
 		margin-left: 2px;
 		display: flex;
 		flex-direction: row;
@@ -637,6 +682,11 @@
 		}
 	}
 }
+.data-vis-making-top-charts__country-comparison {
+	.rank-labels {
+		width: calc(100% - 2px);
+	}
+}
 .data-vis-making-top-charts__rank-distribution {
 	padding-top: 2.2rem;
 	border-bottom: 1px solid #161617;
@@ -644,6 +694,7 @@
 		margin-bottom: 4.7rem;
 	}
 	.data-vis-making-top-charts__bar-chart {
+		width: calc(100% - 18px);
 		margin-left: 18px;
 		li {
 			margin-right: 2px;
@@ -651,8 +702,26 @@
 				margin-right: 0;
 			}
 			.rank-distribution-value {
-				bottom: 44px;
-				text-align: left;
+				position: absolute;
+				bottom: 16px;
+				left: 0;
+				width: 100%;
+				display: block;
+				color: $reflection-white;
+				font-size: 1.3rem;
+				font-weight: bold;
+				text-align: center;
+				opacity: 1;
+				transition: opacity 0.3s;
+				span {
+			    display: block;
+    			font-size: 1.1rem;
+				}
+			}
+			&.is-loading {
+				.rank-distribution-value {
+					opacity: 0;
+				}
 			}
 		}
 	}
@@ -662,6 +731,11 @@
 			margin-right: 2px;
 		}
 	}
+}
+.data-vis-making-top-charts__rank-distribution__center {
+	width: 100%;
+	max-width: 1054px;
+	margin: 0 auto;
 }
 .data-vis-making-top-charts__foot-content {
 	padding-bottom: 10rem;
