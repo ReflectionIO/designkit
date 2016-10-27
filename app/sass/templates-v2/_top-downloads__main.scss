@@ -187,6 +187,7 @@
 	width: 33.3%;
 	padding-top: 1.3rem;
 	padding-left: 10px;
+	line-height: 1.1;
 	display: inline-block;
   vertical-align: top;
   &:nth-child(2) {
@@ -341,8 +342,17 @@
 }
 .data-vis-making-top-charts__grossing-downloads-section__right {
 	width: 393px;
+	margin-right: 4%;
 	display: inline-block;
 	float: right;
+	@media screen and (max-width: $desktop) {
+    h2 {
+    	font-size: 2.6rem;
+    }
+	}
+	@include breakpoint($desktop) {
+		margin-right: 0;
+	}
 }
 .grossing-downloads-visual-container__left {
 	width: 182px;
@@ -422,23 +432,48 @@
 	border-top: 1px solid #161617;
 	border-bottom: 1px solid #161617;
 }
-.data-vis-making-top-charts__number-of-downloads__center {
+.data-vis-making-top-charts__number-of-downloads__center {  
 	width: 100%;
   max-width: 985px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  @include breakpoint(1080px) {
+  	display: block;
+  }
 }
 .data-vis-making-top-charts__number-of-downloads__left {
-	width: 390px;
+	width: 570px;
+	margin: 0 auto 50px;
 	display: inline-block;
 	vertical-align: top;
+	@media screen and (max-width: $desktop) {
+    h2 {
+    	font-size: 2.6rem;
+    }
+	}
+	@include breakpoint(1080px) {
+		width: 390px;
+		margin: 0 0 0 2.5%;
+	}
+	@include breakpoint($desktop) {
+		margin: 0;
+	}
 }
 .data-vis-making-top-charts__number-of-downloads__right {
-	width: 500px;
-	margin-top: 7px;
+	position: relative;
+	left: -10px;
+	width: 560px;	
+	margin: 0 auto;
 	display: inline-block;
 	float: right;
 	font-size: 0;
 	color: $reflection-white;
+	@include breakpoint(1080px) {
+		left: 0;
+		width: 500px;
+		margin: 7px 0 0;
+	}
 }
 .number-of-downloads__colunm-one,
 .number-of-downloads__colunm-two,
@@ -561,6 +596,16 @@
 	width: 100%;
 	max-width: 1012px;
 	margin: 0 auto;
+	overflow: visible;
+  display: flex;
+  flex-direction: column-reverse;
+	@include breakpoint(1080px) {
+    padding-left: 50px;
+    display: block;
+	}
+	@include breakpoint($desktop) {
+		padding-left: 0;
+	}
 }
 .country-comparison__right,
 .country-comparison__left,
@@ -570,26 +615,61 @@
 	vertical-align: top;
 }
 .country-comparison__left {
+	@media screen and (max-width: 1080px) {
+  	margin: 40px auto 0;
+	}
 	position: relative;
   height: 363px;
   width: 540px;
 	padding-top: 2.6rem;
+	overflow: visible;
 }
 .country-comparison__right {
-	width: 396px;
-	margin-right: 1.2%;
-	float: right;
+  margin: 0px auto;
+  width: 570px;
+	@include breakpoint(1080px) {
+  	width: 330px;
+  	margin: 0 1.2% 0 0;
+		float: right;
+	}
+	@include breakpoint($desktop) {
+		width: 396px;
+	}	
+	@media screen and (max-width: $desktop) {
+		h2 {
+			font-size: 2.6rem;
+		}
+	}	
 }
 .rank-levels__left {
-	width: 396px;
-  margin-left: 3.5%;
+	width: 570px;
+	margin: 0 auto;
+	@media screen and (max-width: $desktop) {
+    h2 {
+    	font-size: 2.6rem;
+    }
+	}	
+	@include breakpoint(1080px) {
+		width: 340px;		
+  	margin: 0 0 0 3.5%;
+  }
+  @include breakpoint($desktop) {
+  	width: 396px;
+  }
 }
 .rank-levels__right {
 	position: relative;
+	left: -20px;
 	width: 525px;
 	height: 390px;
-	padding-top: 3.1rem;
-	float: right;
+	padding-top: 2.6rem;
+	margin: 40px auto 0;
+	float: right;	
+  @include breakpoint(1080px) {
+  	margin: 0;
+  	left: 0;
+  	padding-top: 3.1rem;
+  }
 }
 .data-vis-making-top-charts__tabs {
 	margin-bottom: 16px;
@@ -605,7 +685,40 @@
 		&.is-active {
 			color: $reflection-white;
 			transition: color 0.3s;
-		}		
+		}
+		&.ref-icon-before--download,
+		&.ref-icon-before--revenue {
+			&:before {				
+				font-size: 19px;
+				color: #727686;
+				transition: color 0.3s;
+			}
+		}
+		&.ref-icon-before--download {
+			&:before {	
+				padding-right: 7px;
+			}
+		}
+		&.ref-icon-before--revenue {
+			&:before {	
+				padding-right: 10px;
+			}
+		}
+		&:first-child {
+			&.is-active:before {
+				color: $reflection-purple;
+			}
+		}
+		&:nth-child(2) {
+			&.is-active:before {
+				color: #6b99bc;
+			}
+		}
+		&:nth-child(3) {
+			&.is-active:before {
+				color: #ffb53d;
+			}	
+		}
 	}
 }
 .data-vis-making-top-charts__country-comparison,
@@ -624,16 +737,24 @@
 		width: calc(100% - 2px);
 		height: 220px;
 		margin-left: 2px;
-		display: flex;
-		flex-direction: row;
-		align-items: flex-end;
+		overflow: visible;
 		opacity: 0;
 		transition: opacity 0.5s;
+		pointer-events: none;
 		&.is-active {
 			opacity: 1;
 			transition: opacity 0.5s;
+			pointer-events: auto;
+		}		
+		.data-vis-making-top-charts__bar-chart__bar-container {
+			width: calc(100% - 2px);
+			height: 220px;
+			margin-left: 2px;
+			display: flex;
+			flex-direction: row;
+			align-items: flex-end;
 		}
-		li {
+		.data-vis-making-top-charts__bar {
 			position: relative;
 			height: 0;
 			margin-right: 12px;
@@ -647,9 +768,6 @@
 			}
 			&.is-grossing {
 				background-color: #ffb53d;
-			}
-			.rank-distribution-value {
-				opacity: 0;
 			}
 			&.is-loading {
 				height: 0 !important;
@@ -681,11 +799,56 @@
 			}
 		}
 	}
+	.rank-y-axis {
+		position: absolute;
+    left: -59px;
+    bottom: 0px;
+    width: 50px;
+    height: 220px;
+    text-align: right;
+	}
+	.rank-y-axis__labels {
+    font-family: $brand-heading-font;
+    font-size: 1.2rem;
+    color: $light-grey-1;
+    li {
+    	position: absolute;
+    	right: 0;
+    }
+    li:nth-child(2) {
+    	top: 51px;
+    }
+    li:nth-child(3) {
+    	top: 102px;
+    }
+    li:nth-child(4) {
+    	top: 153px;
+    }
+    li:last-child {    	
+    	bottom: 0;
+    }
+	}
 }
 .data-vis-making-top-charts__country-comparison {
 	.rank-labels {
 		width: calc(100% - 2px);
 	}
+	.rank-distribution-value {
+		position: absolute;
+    bottom: -2px;
+    left: -2%;
+    width: 107%;
+    display: block;
+    font-family: $brand-heading-font;
+    font-weight: 600;
+    font-size: 11px;
+    text-align: center;
+    color: $light-grey-1;
+    &:hover {
+    	color: lighten($light-grey-1, 15%);
+    	transition: color 0.2s;
+    }
+  }
 }
 .data-vis-making-top-charts__rank-distribution {
 	padding-top: 2.2rem;
@@ -696,7 +859,7 @@
 	.data-vis-making-top-charts__bar-chart {
 		width: calc(100% - 18px);
 		margin-left: 18px;
-		li {
+		.data-vis-making-top-charts__bar {
 			margin-right: 2px;
 			&:last-child {
 				margin-right: 0;
@@ -736,6 +899,53 @@
 	width: 100%;
 	max-width: 1054px;
 	margin: 0 auto;
+	display: flex;
+  flex-direction: column;
+  @include breakpoint(1080px) {
+  	display: block;
+  }
+}
+.data-vis-making-top-charts__country-comparison,
+.data-vis-making-top-charts__rank-distribution {
+	.data-vis-making-top-charts__bar-chart.is-no-data {
+		.rank-y-axis,
+		.rank-distribution-value {
+			display: none;
+		}
+	}
+	.rank-distribution-value.is-no-data {
+		cursor: pointer;
+	}
+}
+.data-vis-making-top-charts__bar-chart__no-data {
+  position: absolute;
+  top: 29px;
+  left: 100px;
+  z-index: 100;
+  display: none;
+  .is-no-data & {
+  	display: block;
+  }
+  .chart__no-data {
+  	margin-top: 0;
+  }
+  .animation-hamster-no-data + div {
+    width: 200px;
+    text-align: left;
+    h2 {
+    	color: $light-grey-1;
+    	font-weight: 600;
+    }
+    p {
+    	color: $light-grey-2;
+    }
+    a {
+    	color: #9f9bff;
+    	&:hover {
+    		color: lighten(#9f9bff, 10%);
+    	}
+    }
+  }
 }
 .data-vis-making-top-charts__foot-content {
 	padding-bottom: 10rem;
@@ -753,4 +963,9 @@
   p {
   	text-align: left;
   }
+  @media screen and (max-width: $desktop) {
+    h2 {
+    	font-size: 2.6rem;
+    }
+	}
 }

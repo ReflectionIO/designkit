@@ -80,7 +80,9 @@
 						<span class="page-header__app-store ref-icon-before--play-store">Google Play</span>
 						<div>
 							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
-							<button href="#" class="ref-button--secondary--small page-header_action-button js-follow-app">Follow App</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button ref-button--follow-app">Follow App</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button ref-button--follow-app is-loading"></button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button ref-button--follow-app is-following">Following</button>
 						</div>
 						<ul class="form-field--checkbox-list form-field--select__dropdown checkbox-dropdown-from-button js-checkbox-dropdown">
 							<li>
@@ -1178,7 +1180,7 @@
   			var $this = $(this),
   					$checkboxDropdown = $('.js-checkbox-dropdown');
   					$checkboxDropdown.toggle();
-  			if(!$this.hasClass("is-success") && $('.js-checkbox-dropdown').is(":visible")) {
+  			if(!$this.hasClass("is-following") && $('.js-checkbox-dropdown').is(":visible")) {
   				$('.js-checkbox-dropdown li:first-child input[type=checkbox]').trigger("click");
   				setFollowButton();
   			}
@@ -1195,10 +1197,10 @@
   		function setFollowButton() {
   			setTimeout(function(){
   				if($(".js-checkbox-dropdown").find("input").is(":checked")) {
-	  				$('.js-follow-app').addClass("is-success");
+	  				$('.js-follow-app').addClass("is-following");
 	  				$('.js-follow-app').text("Following");
 	  			} else {
-	  				$('.js-follow-app').removeClass("is-success");
+	  				$('.js-follow-app').removeClass("is-following");
 	  				$('.js-follow-app').text("Follow App");
 	  			}
   			}, 100);

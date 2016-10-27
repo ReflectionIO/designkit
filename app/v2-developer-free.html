@@ -37,24 +37,50 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-data-dashboard">
+			<div class="page-data-dashboard page-publisher">
 				<div class="grid-container">
-					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">Apps I Follow <span>(10 Apps)</span></h1>
-
-					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
-
-					<div class="toggle-container page-header__page-toggle filter-toggle filter-toggle--with-text filter-toggle--small">
-						<div class="toggle">
-							<input id="toggle--show-overview" name="overview-country" checked type="radio">
-							<label for="toggle--show-overview">
-								Overview
-							</label>
+					<div class="page-header--left">
+						<h1 class="heading-style--heading-two page-title">Reflection</h1>
+						
+						<div class="toggle-container page-header__page-toggle">
+							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+								<div class="toggle">
+									<input id="toggle--show-apps" name="publisher-page" checked type="radio">
+									<label for="toggle--show-apps">
+										Developer's Apps
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-news-events" name="publisher-page" type="radio">
+									<label for="toggle--show-news-events">
+										News &amp; Events
+									</label>
+								</div>
+							</div>
 						</div>
-						<div class="toggle">
-							<input id="toggle--show-country" name="overview-country" type="radio">
-							<label for="toggle--show-country" onclick="location.replace('v2-my-list-apps-country.html');">
-								By Country
-							</label>
+
+					</div>					
+
+					<div class="page-header--right">
+						<div>
+							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button">Follow Publisher</button>
+							<div class="toggle-container page-header__page-toggle">
+								<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+									<div class="toggle">
+										<input id="toggle--show-overview" name="overview-country" checked type="radio">
+										<label for="toggle--show-overview">
+											Overview
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--show-country" name="overview-country" type="radio">
+										<label for="toggle--show-country" onclick="location.replace('v2-publisher-country.html');">
+											By Country
+										</label>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -105,15 +131,15 @@
 				<div class="grid-container">
 					<div class="upgrade-content-container">
 						<div class="upgrade-content">
-							<h2 class="heading-style--heading-two">Go Pro to Track Revenue &amp; Downloads for Apps you Follow</h2>
+							<h2 class="heading-style--heading-two">Go Pro &amp; Track the Performance of Competing Developers</h2>
 							<ul class="content-list accordion-list">
 								<li class="js-accordion-item is-on" data-assoc-image="js-assoc-image-track">
-									<h3>Track and Compare More Easily in a Single Dashboard</h3>
-									<p>Easily compare the performance of apps or developers you want to follow against each other and overlay important events to analyse their impact.</p>
+									<h3>Powerful Charting Tools</h3>
+									<p>Easily compare the performance of developers and their apps against each other, overlaying important events to analyse their impact.</p>
 								</li>
 								<li class="js-accordion-item" data-assoc-image="js-assoc-image-alerts">
 									<h3>Automated Alerts: Stay Up to Date with Key Events</h3>
-									<p>Be alerted to key events such as app launches or price changes simply by following apps or developers. Customise these alerts for an effortless way to receive the specific insight you need.</p>
+									<p>Be alerted to key events such as app launches or price changes simply by following the developers you’re interested in. Customise these alerts for an effortless way to receive the specific insight you need.</p>
 								</li>
 							</ul>
 							<button class="ref-button--primary--large" onclick="location.replace('v2-sign-up.html')">Upgrade to Get Full Access</button>
@@ -1352,7 +1378,7 @@
 
   	function initScripts() {
   		// mock menu select
-  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-my-lists.html"]');
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-developer-free.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
 
   		new Page();

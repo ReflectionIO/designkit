@@ -106,7 +106,7 @@
 						<span class="page-header__app-store ref-icon-before--play-store">Google Play</span>
 						<div>
 							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
-							<button href="#" class="ref-button--secondary--small page-header_action-button js-follow-app">Follow App</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button js-follow-app ref-button--follow-app">Follow App</button>
 						</div>
 						<ul class="form-field--checkbox-list form-field--select__dropdown checkbox-dropdown-from-button js-checkbox-dropdown">
 							<li>
@@ -3454,6 +3454,35 @@
 				$(this).parents("li").remove();
 			});
 
+			$('.js-follow-app').on("click", function(){
+  			var $this = $(this),
+  					$checkboxDropdown = $('.js-checkbox-dropdown');
+  					$checkboxDropdown.toggle();
+  			if(!$this.hasClass("is-following") && $('.js-checkbox-dropdown').is(":visible")) {
+  				$('.js-checkbox-dropdown li:first-child input[type=checkbox]').trigger("click");
+  				setFollowButton();
+  			}
+  		});
+
+  		$('.js-checkbox-dropdown-close').on("click", function(){
+  			$('.js-checkbox-dropdown').hide();
+  		});
+
+  		$('.js-follow-app-checkbox').on("click", function(){
+  			setFollowButton();
+  		});
+
+  		function setFollowButton() {
+  			setTimeout(function(){
+  				if($(".js-checkbox-dropdown").find("input").is(":checked")) {
+	  				$('.js-follow-app').addClass("is-following");
+	  				$('.js-follow-app').text("Following");
+	  			} else {
+	  				$('.js-follow-app').removeClass("is-following");
+	  				$('.js-follow-app').text("Follow App");
+	  			}
+  			}, 100);
+  		}
 			// end country picker
   	}
 
