@@ -707,16 +707,16 @@
 						<p>We are constantly striving to compile and make sense of as much app market data as we can and you can help us; tell us what you'd like to see explored here in the Reflection Data Lab. If there are any tools or specific insights that would make your life easier, we want to know. Please comment freely below, positive, negative or withering, it all helps.</p>
 						<p>By signing up and linking an app store account you’ll also help us expand our data sets meaning we can offer ever deeper insight. We’ll also alert you when we have another visualisation to share here in the lab.</p>
 						<p>To learn more how we calculate our estimates and the accuracy level of our data read <a href="#">this article</a> in our blog.</p>
-						<button href="https://twitter.com/share?url=http://bit.ly/2bAXH1D&amp;via=reflectionio&amp;hashtags=datavis&amp;text=What Downloads or Revenue are Needed to Break into the Top Charts?" class="ref-button--dark--large">
+						<a href="https://twitter.com/share?url=http://bit.ly/2bAXH1D&amp;via=reflectionio&amp;hashtags=datavis&amp;text=What Downloads or Revenue are Needed to Break into the Top Charts?" class="ref-button--dark--large">
 	 						Share This
-	 					</button>
-	 					<button class="ref-button--primary--large">
+	 					</a>
+	 					<a class="ref-button--primary--large">
 	 						Sign Up for Free
-	 					</button>
+	 					</a>
 	 				</div>
 				</div>
 
-				<div class="idc-comments-container">
+				<!-- <div class="idc-comments-container">
 					<script>
 						var idcomments_acct = 'c4a0cfaab22f16bc5e847b0d1398bb91';
 						var idcomments_post_id;
@@ -724,7 +724,7 @@
 						</script>
 						<span id="IDCommentsPostTitle" style="display:none"></span>
 					<script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
-				</div>				
+				</div>		 -->		
 			</div>
 		</div>
 	</div>
@@ -912,18 +912,6 @@
 	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
 
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_CH_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_DE_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_DK_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_ES_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_FR_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_GB_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_IE_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_IT_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_NL_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_SE_July_Country.json"></script>
-  <script src="js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_US_July_Country.json"></script>
-
   <script>
 
   	function formatNumbers(text) {  		
@@ -965,6 +953,8 @@
 				$('.js-page-overlay').fadeOut(100);
 				$('.js-popup-content').removeClass("is-showing");
 				$('.js-onboarding-overlay').removeClass("is-showing");
+
+				// @io.reflection.gae.webapp.client.activities.labarticle.view.LabArticleView::minifyHelpPopup()();
 		  }
 
 		  $('.js-open-modal--help').on("click", function(e){
@@ -1049,7 +1039,6 @@
 																						var userId = getUserRole();
 																						var checkPermissions = doPermissionsCheck($this, chartType, $this.attr("data-value"));
 
-																						console.log("doPermissionsCheck = " + checkPermissions);
 																						if(userId != null || (userId == null && checkPermissions)) {
 
 																							if(userId == null) {
@@ -1073,9 +1062,13 @@
 																								var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");
 																								var selectedRank = $('.js-dropdown-rank .js-dropdown-option.is-selected').data("value");
 																								var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
+																								var fileNameToRequest = "whatyouneed_main.json";
+																								if(userId != null) {
+																									fileNameToRequest = "whatyouneed_all.json";
+																								}
 
-																								var fileToRequest = userId + "/whatyouneed_" + selectedCountry + "_July.json";																							
-																								loadData(fileToRequest, selectedRank, selectedDevice);
+																								var fileToRequest = userId + "/" + fileNameToRequest;																						
+																								loadData(fileToRequest, selectedRank, selectedDevice, selectedCountry);
 
 																							} else if(chartType == "dataRankDistribution") {
 
@@ -1083,17 +1076,27 @@
 																								var selectedCountry = $('.js-dropdown-category-country .js-dropdown-option.is-selected').data("value");
 																								var selectedDevice = $('.js-dropdown-category-device .js-dropdown-option.is-selected').data("value");
 																								var listType = $('.js-dropdown-category-list-type .js-dropdown-option.is-selected').data("value");
+																								var fileNameToRequest = "whatyouneed_ranking.json";
+																								if(userId != null) {
+																									fileNameToRequest = "whatyouneed_all.json";
+																								}
 
-																								var fileToRequest = userId + "/whatyouneed_" + selectedCountry + "_July.json";																							
-																								loadRankData(fileToRequest, selectedCategory, selectedDevice);
+																								var fileToRequest = userId + "/" + fileNameToRequest;																					
+																								loadRankData(fileToRequest, selectedCategory, selectedDevice, selectedCountry);
 
 																							} else if(chartType == "dataCountryDistribution") {
 
 																								var selectedCategory = $('.js-dropdown-country-category .js-dropdown-option.is-selected').data("value");
 																								var selectedRank = $('.js-dropdown-country-rank .js-dropdown-option.is-selected').data("value");
 																								var selectedDevice = $('.js-dropdown-country-device .js-dropdown-option.is-selected').data("value");
+																								var fileNameToRequest = "whatyouneed_countries.json";
+																								if(userId != null) {
+																									fileNameToRequest = "whatyouneed_all.json";
+																								}
+
+																								var fileToRequest = userId + "/" + fileNameToRequest;
 																						
-																								loadCountryData(selectedCategory, selectedRank, selectedDevice);
+																								loadCountryData(fileToRequest, selectedCategory, selectedRank, selectedDevice);
 
 																							}
 																							
@@ -1220,22 +1223,22 @@
 					});
 			}
 
-			function populateMainChart(data, selectedRank, selectedDevice, listType, listContainer, currency) {
+			function populateMainChart(data, selectedRank, selectedDevice, selectedCountry, listType, listContainer, currency) {
 
 					// categories
-					if(data[selectedRank][selectedDevice][listType].categories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data[selectedRank][selectedDevice][listType].categories);
-						outputResults(data[selectedRank][selectedDevice][listType].categories, listContainer, currency, maxGrossing);
+					if(data[selectedCountry][selectedRank][selectedDevice][listType].categories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedCountry][selectedRank][selectedDevice][listType].categories);
+						outputResults(data[selectedCountry][selectedRank][selectedDevice][listType].categories, listContainer, currency, maxGrossing);
 					}
 
 					// subcategories
-					if(data[selectedRank][selectedDevice][listType].subcategories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data[selectedRank][selectedDevice][listType].categories);
-						outputResults(data[selectedRank][selectedDevice][listType].subcategories, listContainer, currency, maxGrossing);
+					if(data[selectedCountry][selectedRank][selectedDevice][listType].subcategories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedCountry][selectedRank][selectedDevice][listType].categories);
+						outputResults(data[selectedCountry][selectedRank][selectedDevice][listType].subcategories, listContainer, currency, maxGrossing);
 					}
 			}
 
-			function loadData(fileToRequest, selectedRank, selectedDevice) {
+			function loadData(fileToRequest, selectedRank, selectedDevice, selectedCountry) {
 
 				$('.js-page-container').addClass('is-data-requested');
 
@@ -1244,9 +1247,9 @@
 
 					$('.js-page-container').removeClass('is-loading');
 					
-					populateMainChart(data, selectedRank, selectedDevice, "GROSSING", "js-revenue-grossing-list", "$");
-					populateMainChart(data, selectedRank, selectedDevice, "FREE", "js-downloads-free-list", "");
-					populateMainChart(data, selectedRank, selectedDevice, "PAID", "js-downloads-paid-list", "");
+					populateMainChart(data, selectedRank, selectedDevice, selectedCountry, "GROSSING", "js-revenue-grossing-list", "$");
+					populateMainChart(data, selectedRank, selectedDevice, selectedCountry, "FREE", "js-downloads-free-list", "");
+					populateMainChart(data, selectedRank, selectedDevice, selectedCountry, "PAID", "js-downloads-paid-list", "");
 					
 					$("body").addClass("data-is-loaded");
 					setTimeout(function(){
@@ -1255,11 +1258,11 @@
 				});
 			}
 
-			function populateRankDistributionChart(data, listType, $chartContainer, selectedCategory, selectedDevice) {
+			function populateRankDistributionChart(data, listType, $chartContainer, selectedCategory, selectedDevice, selectedCountry) {
 
 				var rankDistributionData = [];
-					if(data["10"][selectedDevice][listType].categories) {
-						var list = data["10"][selectedDevice][listType].categories;
+					if(data[selectedCountry]["10"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["10"][selectedDevice][listType].categories;
 						for(var x = 0; x < list.length; x++) {
 							if(list[x].id == selectedCategory) {
 								rankDistributionData.push(list[x].value);
@@ -1267,8 +1270,8 @@
 							}
 						}
 					}
-					if(data["20"][selectedDevice][listType].categories) {
-						var list = data["20"][selectedDevice][listType].categories;
+					if(data[selectedCountry]["20"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["20"][selectedDevice][listType].categories;
 						for(var x = 0; x < list.length; x++) {
 							if(list[x].id == selectedCategory) {
 								rankDistributionData.push(list[x].value);
@@ -1276,8 +1279,8 @@
 							}
 						}
 					}
-					if(data["50"][selectedDevice][listType].categories) {
-						var list = data["50"][selectedDevice][listType].categories;
+					if(data[selectedCountry]["50"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["50"][selectedDevice][listType].categories;
 						for(var x = 0; x < list.length; x++) {
 							if(list[x].id == selectedCategory) {
 								rankDistributionData.push(list[x].value);
@@ -1285,8 +1288,8 @@
 							}
 						}
 					}
-					if(data["100"][selectedDevice][listType].categories) {
-						var list = data["100"][selectedDevice][listType].categories;
+					if(data[selectedCountry]["100"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["100"][selectedDevice][listType].categories;
 						for(var x = 0; x < list.length; x++) {
 							if(list[x].id == selectedCategory) {
 								rankDistributionData.push(list[x].value);
@@ -1294,8 +1297,8 @@
 							}
 						}
 					}
-					if(data["150"][selectedDevice][listType].categories) {
-						var list = data["150"][selectedDevice][listType].categories;
+					if(data[selectedCountry]["150"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["150"][selectedDevice][listType].categories;
 						for(var x = 0; x < list.length; x++) {
 							if(list[x].id == selectedCategory) {
 								rankDistributionData.push(list[x].value);
@@ -1303,8 +1306,8 @@
 							}
 						}
 					}
-					if(data["200"][selectedDevice][listType].categories) {
-						var list = data["200"][selectedDevice][listType].categories;
+					if(data[selectedCountry]["200"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["200"][selectedDevice][listType].categories;
 						for(var x = 0; x < list.length; x++) {
 							if(list[x].id == selectedCategory) {
 								rankDistributionData.push(list[x].value);
@@ -1372,13 +1375,13 @@
 					}
 			}
 
-			function loadRankData(fileToRequest, selectedCategory, selectedDevice) {
+			function loadRankData(fileToRequest, selectedCategory, selectedDevice, selectedCountry) {
 
-				$.getJSON( fileToRequest, function( data ) {					
+				$.getJSON( fileToRequest, function( data ) {							
 
-					populateRankDistributionChart(data, "FREE", $('.js-rank-distribution-chart--free'), selectedCategory, selectedDevice);
-					populateRankDistributionChart(data, "PAID", $('.js-rank-distribution-chart--paid'), selectedCategory, selectedDevice);
-					populateRankDistributionChart(data, "GROSSING", $('.js-rank-distribution-chart--grossing'), selectedCategory, selectedDevice);
+					populateRankDistributionChart(data, "FREE", $('.js-rank-distribution-chart--free'), selectedCategory, selectedDevice, selectedCountry);
+					populateRankDistributionChart(data, "PAID", $('.js-rank-distribution-chart--paid'), selectedCategory, selectedDevice, selectedCountry);
+					populateRankDistributionChart(data, "GROSSING", $('.js-rank-distribution-chart--grossing'), selectedCategory, selectedDevice, selectedCountry);
 
 					setTimeout(function(){
 						$('.js-rank-distribution-chart li').removeClass('is-loading');
@@ -1387,13 +1390,12 @@
 				});
 			}
 
-			function populateCountryDataArray(selectedRank, selectedDevice, selectedCategory, listType) {
+			function populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, listType) {
 
 				var countryDistributionDataList = [];
 
-				// TODO: Change this structure to the new countries format
-				if(data_US[selectedRank][selectedDevice][listType].categories) {
-					var list = data_US[selectedRank][selectedDevice][listType].categories;
+				if(data["US"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["US"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1401,8 +1403,8 @@
 						}
 					}
 				}
-				if(data_GB[selectedRank][selectedDevice][listType].categories) {
-					var list = data_GB[selectedRank][selectedDevice][listType].categories;
+				if(data["GB"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["GB"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1410,8 +1412,8 @@
 						}
 					}
 				}
-				if(data_FR[selectedRank][selectedDevice][listType].categories) {
-					var list = data_FR[selectedRank][selectedDevice][listType].categories;
+				if(data["FR"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["FR"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1419,8 +1421,8 @@
 						}
 					}
 				}
-				if(data_DE[selectedRank][selectedDevice][listType].categories) {
-					var list = data_DE[selectedRank][selectedDevice][listType].categories;
+				if(data["DE"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["DE"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1428,8 +1430,8 @@
 						}
 					}
 				}
-				if(data_ES[selectedRank][selectedDevice][listType].categories) {
-					var list = data_ES[selectedRank][selectedDevice][listType].categories;
+				if(data["ES"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["ES"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1437,8 +1439,8 @@
 						}
 					}
 				}
-				if(data_IT[selectedRank][selectedDevice][listType].categories) {
-					var list = data_IT[selectedRank][selectedDevice][listType].categories;
+				if(data["IT"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["IT"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1446,8 +1448,8 @@
 						}
 					}
 				}
-				if(data_NL[selectedRank][selectedDevice][listType].categories) {
-					var list = data_NL[selectedRank][selectedDevice][listType].categories;
+				if(data["NL"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["NL"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1455,8 +1457,8 @@
 						}
 					}
 				}
-				if(data_SE[selectedRank][selectedDevice][listType].categories) {
-					var list = data_SE[selectedRank][selectedDevice][listType].categories;
+				if(data["SE"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["SE"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1464,8 +1466,8 @@
 						}
 					}
 				}
-				if(data_IE[selectedRank][selectedDevice][listType].categories) {
-					var list = data_IE[selectedRank][selectedDevice][listType].categories;
+				if(data["IE"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["IE"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1473,8 +1475,8 @@
 						}
 					}
 				}
-				if(data_DK[selectedRank][selectedDevice][listType].categories) {
-					var list = data_DK[selectedRank][selectedDevice][listType].categories;
+				if(data["DK"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["DK"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1482,8 +1484,8 @@
 						}
 					}
 				}
-				if(data_CH[selectedRank][selectedDevice][listType].categories) {
-					var list = data_CH[selectedRank][selectedDevice][listType].categories;
+				if(data["CH"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["CH"][selectedRank][selectedDevice][listType].categories;
 					for(var x = 0; x < list.length; x++) {
 						if(list[x].id == selectedCategory) {
 							countryDistributionDataList.push(list[x].value);
@@ -1496,7 +1498,7 @@
 			}
 
 			function populateCountryAxis($chartLabels, maxValue, labelPrefix) {
-				console.log(maxValue);
+
 				// Populate axis values
 				var labelsCounter = 0;
 				$chartLabels.each(function(){
@@ -1526,101 +1528,104 @@
 				return true;
 			}
 
-			function loadCountryData(selectedCategory, selectedRank, selectedDevice) {
+			function loadCountryData(fileToRequest, selectedCategory, selectedRank, selectedDevice) {
 				
-				// TODO data_CH etc currently loaded on page load, not ideal
-				var countryDistributionDataFreeList = populateCountryDataArray(selectedRank, selectedDevice, selectedCategory, "FREE");
-				var countryDistributionDataPaidList = populateCountryDataArray(selectedRank, selectedDevice, selectedCategory, "PAID");
-				var countryDistributionDataGrossingList = populateCountryDataArray(selectedRank, selectedDevice, selectedCategory, "GROSSING");
-				
+				$.getJSON( fileToRequest, function( data ) {
 
-				var maxValueFreeList = getMaxFromArray(countryDistributionDataFreeList),
-						maxValuePaidList = getMaxFromArray(countryDistributionDataPaidList),
-						maxValueGrossingList = getMaxFromArray(countryDistributionDataGrossingList),
-						staticMaxHeight = 220;
-
-				var countryDistributionChart = $('.js-country-distribution-chart--free').empty();
-				var countryDistributionChartPaid = $('.js-country-distribution-chart--paid').empty();
-				var countryDistributionChartGrossing = $('.js-country-distribution-chart--grossing').empty();
-				var heightRelativeToMaxArray = [];
-
-				// check for no data states
-				var isNoDataFree = isNoDataInArray(countryDistributionDataFreeList);
-				var isNoDataPaid = isNoDataInArray(countryDistributionDataPaidList);
-				var isNoDataGrossing = isNoDataInArray(countryDistributionDataGrossingList);
-
-				$('.js-country-distribution-chart.is-no-data').removeClass("is-no-data");
-
-				if(isNoDataFree) {
-					$('.js-country-distribution-chart[data-id=country-comparison-free]').addClass("is-no-data");
-				}
-				if(isNoDataPaid) {
-					$('.js-country-distribution-chart[data-id=country-comparison-paid]').addClass("is-no-data");
-				}
-				if(isNoDataGrossing) {
-					$('.js-country-distribution-chart[data-id=country-comparison-grossing]').addClass("is-no-data");
-				}
-
-				for(var i = 0; i < countryDistributionDataFreeList.length; i++) {
+					console.log(data);
+					var countryDistributionDataFreeList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "FREE");
+					var countryDistributionDataPaidList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "PAID");
+					var countryDistributionDataGrossingList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "GROSSING");
 					
-					// Add Free List Value to Chart
-					var heightRelativeToMax = (countryDistributionDataFreeList[i] / maxValueFreeList) * staticMaxHeight;
-					var formattedValue = Math.round(countryDistributionDataFreeList[i]);
-							formattedValue = formatNumbers(formattedValue);
 
-					var isNaNFree = (countryDistributionDataFreeList[i] == "NAN");
-					var valueText = (isNaNFree) ? "No Data" : "";
-					var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
-					if(isNaNFree) {
-						dataValueSpan.addClass("is-no-data").on("click", function(){
-							openNoDataPopup();
-						});
+					var maxValueFreeList = getMaxFromArray(countryDistributionDataFreeList),
+							maxValuePaidList = getMaxFromArray(countryDistributionDataPaidList),
+							maxValueGrossingList = getMaxFromArray(countryDistributionDataGrossingList),
+							staticMaxHeight = 220;
+
+					var countryDistributionChart = $('.js-country-distribution-chart--free').empty();
+					var countryDistributionChartPaid = $('.js-country-distribution-chart--paid').empty();
+					var countryDistributionChartGrossing = $('.js-country-distribution-chart--grossing').empty();
+					var heightRelativeToMaxArray = [];
+
+					// check for no data states
+					var isNoDataFree = isNoDataInArray(countryDistributionDataFreeList);
+					var isNoDataPaid = isNoDataInArray(countryDistributionDataPaidList);
+					var isNoDataGrossing = isNoDataInArray(countryDistributionDataGrossingList);
+
+					$('.js-country-distribution-chart.is-no-data').removeClass("is-no-data");
+
+					if(isNoDataFree) {
+						$('.js-country-distribution-chart[data-id=country-comparison-free]').addClass("is-no-data");
+					}
+					if(isNoDataPaid) {
+						$('.js-country-distribution-chart[data-id=country-comparison-paid]').addClass("is-no-data");
+					}
+					if(isNoDataGrossing) {
+						$('.js-country-distribution-chart[data-id=country-comparison-grossing]').addClass("is-no-data");
 					}
 
-					countryDistributionChart.append($('<li>').attr("style", "height: " + heightRelativeToMax + "px").addClass('is-free is-loading data-vis-making-top-charts__bar').append(dataValueSpan));
+					for(var i = 0; i < countryDistributionDataFreeList.length; i++) {
+						
+						// Add Free List Value to Chart
+						var heightRelativeToMax = (countryDistributionDataFreeList[i] / maxValueFreeList) * staticMaxHeight;
+						var formattedValue = Math.round(countryDistributionDataFreeList[i]);
+								formattedValue = formatNumbers(formattedValue);
 
-					populateCountryAxis($('.js-country-distribution-chart[data-id=country-comparison-free] .js-rank-y-axis li'), maxValueFreeList, "");
+						var isNaNFree = (countryDistributionDataFreeList[i] == "NAN");
+						var valueText = (isNaNFree) ? "No Data" : "";
+						var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
+						if(isNaNFree) {
+							dataValueSpan.addClass("is-no-data").on("click", function(){
+								openNoDataPopup();
+							});
+						}
 
-					// Add Paid List Value to Chart
-					var heightRelativeToMaxPaid = (countryDistributionDataPaidList[i] / maxValuePaidList) * staticMaxHeight;
-					var formattedValue = Math.round(countryDistributionDataPaidList[i]);
-							formattedValue = formatNumbers(formattedValue);					
+						countryDistributionChart.append($('<li>').attr("style", "height: " + heightRelativeToMax + "px").addClass('is-free is-loading data-vis-making-top-charts__bar').append(dataValueSpan));
 
-					var isNaNPaid = (countryDistributionDataPaidList[i] == "NAN");
-					var valueText = (isNaNPaid) ? "No Data" : "";
-					var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
-					if(isNaNPaid) {
-						dataValueSpan.addClass("is-no-data").on("click", function(){
-							openNoDataPopup();
-						});
+						populateCountryAxis($('.js-country-distribution-chart[data-id=country-comparison-free] .js-rank-y-axis li'), maxValueFreeList, "");
+
+						// Add Paid List Value to Chart
+						var heightRelativeToMaxPaid = (countryDistributionDataPaidList[i] / maxValuePaidList) * staticMaxHeight;
+						var formattedValue = Math.round(countryDistributionDataPaidList[i]);
+								formattedValue = formatNumbers(formattedValue);					
+
+						var isNaNPaid = (countryDistributionDataPaidList[i] == "NAN");
+						var valueText = (isNaNPaid) ? "No Data" : "";
+						var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
+						if(isNaNPaid) {
+							dataValueSpan.addClass("is-no-data").on("click", function(){
+								openNoDataPopup();
+							});
+						}
+
+						countryDistributionChartPaid.append($('<li>').attr("style", "height: " + heightRelativeToMaxPaid + "px").addClass('is-paid is-loading data-vis-making-top-charts__bar').append(dataValueSpan));
+
+						populateCountryAxis($('.js-country-distribution-chart[data-id=country-comparison-paid] .js-rank-y-axis li'), maxValuePaidList, "");
+
+						// Add Grossing List Value to Chart
+						var heightRelativeToMaxGrossing = (countryDistributionDataGrossingList[i] / maxValueGrossingList) * staticMaxHeight;
+						var formattedValue = Math.round(countryDistributionDataGrossingList[i]);
+								formattedValue = formatNumbers(formattedValue);
+
+						var isNaNGrossing = (countryDistributionDataGrossingList[i] == "NAN");
+						var valueText = (isNaNGrossing) ? "No Data" : "";
+						var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
+						if(isNaNGrossing) {
+							dataValueSpan.addClass("is-no-data").on("click", function(){
+								openNoDataPopup();
+							});
+						}
+
+						countryDistributionChartGrossing.append($('<li>').attr("style", "height: " + heightRelativeToMaxGrossing + "px").addClass('is-grossing is-loading data-vis-making-top-charts__bar').append(dataValueSpan));
+
+						populateCountryAxis($('.js-country-distribution-chart[data-id=country-comparison-grossing] .js-rank-y-axis li'), maxValueGrossingList, "$");
 					}
 
-					countryDistributionChartPaid.append($('<li>').attr("style", "height: " + heightRelativeToMaxPaid + "px").addClass('is-paid is-loading data-vis-making-top-charts__bar').append(dataValueSpan));
-
-					populateCountryAxis($('.js-country-distribution-chart[data-id=country-comparison-paid] .js-rank-y-axis li'), maxValuePaidList, "");
-
-					// Add Grossing List Value to Chart
-					var heightRelativeToMaxGrossing = (countryDistributionDataGrossingList[i] / maxValueGrossingList) * staticMaxHeight;
-					var formattedValue = Math.round(countryDistributionDataGrossingList[i]);
-							formattedValue = formatNumbers(formattedValue);
-
-					var isNaNGrossing = (countryDistributionDataGrossingList[i] == "NAN");
-					var valueText = (isNaNGrossing) ? "No Data" : "";
-					var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
-					if(isNaNGrossing) {
-						dataValueSpan.addClass("is-no-data").on("click", function(){
-							openNoDataPopup();
-						});
-					}
-
-					countryDistributionChartGrossing.append($('<li>').attr("style", "height: " + heightRelativeToMaxGrossing + "px").addClass('is-grossing is-loading data-vis-making-top-charts__bar').append(dataValueSpan));
-
-					populateCountryAxis($('.js-country-distribution-chart[data-id=country-comparison-grossing] .js-rank-y-axis li'), maxValueGrossingList, "$");
-				}
-
-				setTimeout(function(){
-					$('.js-country-distribution-chart li, .js-country-distribution-chart--paid li, .js-country-distribution-chart--grossing li').removeClass('is-loading');
-				}, 300);
+					setTimeout(function(){
+						$('.js-country-distribution-chart li, .js-country-distribution-chart--paid li, .js-country-distribution-chart--grossing li').removeClass('is-loading');
+					}, 300);
+				});
 			}
 
 			// this function will return a key if the user is registered which will be checked
@@ -1641,9 +1646,9 @@
 			}
 
 			setTimeout(function(){
-				loadData("js/data-lab/whatyouneed_GB_July.json", "200", "PHONE");
-				loadRankData("js/data-lab/whatyouneed_GB_July.json", "Overall", "PHONE", "FREE");
-				loadCountryData("Overall", "200", "PHONE");
+				loadData("js/data-lab/whatyouneed_main.json", "200", "PHONE", "GB");
+				loadRankData("js/data-lab/whatyouneed_ranking.json", "Overall", "PHONE", "GB");
+				loadCountryData("js/data-lab/whatyouneed_countries.json", "Overall", "200", "PHONE");
 			}, 1000);
 
   	});
