@@ -1063,7 +1063,7 @@
 																								var selectedRank = $('.js-dropdown-rank .js-dropdown-option.is-selected').data("value");
 																								var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
 																								var fileNameToRequest = "whatyouneed_main.json";
-																								if(userId != null) {
+																								if(userId != null && userId != "js/data-lab") {
 																									fileNameToRequest = "whatyouneed_all.json";
 																								}
 
@@ -1077,7 +1077,7 @@
 																								var selectedDevice = $('.js-dropdown-category-device .js-dropdown-option.is-selected').data("value");
 																								var listType = $('.js-dropdown-category-list-type .js-dropdown-option.is-selected').data("value");
 																								var fileNameToRequest = "whatyouneed_ranking.json";
-																								if(userId != null) {
+																								if(userId != null && userId != "js/data-lab") {
 																									fileNameToRequest = "whatyouneed_all.json";
 																								}
 
@@ -1090,7 +1090,7 @@
 																								var selectedRank = $('.js-dropdown-country-rank .js-dropdown-option.is-selected').data("value");
 																								var selectedDevice = $('.js-dropdown-country-device .js-dropdown-option.is-selected').data("value");
 																								var fileNameToRequest = "whatyouneed_countries.json";
-																								if(userId != null) {
+																								if(userId != null && userId != "js/data-lab") {
 																									fileNameToRequest = "whatyouneed_all.json";
 																								}
 
@@ -1532,7 +1532,6 @@
 				
 				$.getJSON( fileToRequest, function( data ) {
 
-					console.log(data);
 					var countryDistributionDataFreeList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "FREE");
 					var countryDistributionDataPaidList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "PAID");
 					var countryDistributionDataGrossingList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "GROSSING");
