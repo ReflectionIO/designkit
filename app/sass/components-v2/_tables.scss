@@ -36,6 +36,22 @@ $table-gold: #ee9063;
 				padding-left: 1.5rem;
 			}
 		}
+		&.ref-table__body--loading {
+			> tr {
+				background-color: transparent;
+				> td:first-child {
+					padding: 0;
+				}
+			}
+			table {
+				width: 100%;
+			}
+			tbody {
+				tr:nth-child(odd) {
+					background-color: $panel-grey;
+				}
+			}
+		}
 	}
 	&.ref-table--is-no-data {
 		tbody {
@@ -260,7 +276,6 @@ $table-gold: #ee9063;
 			display: none;
 		}
 		&.is-loading {
-
 			span {
 				position: relative;
 	    	top: 2px;
@@ -329,9 +344,6 @@ $table-gold: #ee9063;
 			text-align: right;
 		}
 	}
-}
-tr:nth-child(odd) .app-data-cell-more.is-loading { // fixes strange background colour white bug
-	background-color: $panel-grey;
 }
 .ref-table--apps,
 .ref-table--publishers,
