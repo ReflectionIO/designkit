@@ -977,6 +977,9 @@
 	        $(".event-icon--flag.is-animating").each(function() {
 	        	$(this).attr("class", "event-icon--flag");
 	        });
+	        $(".event-icon--reversedflag.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--reversedflag");
+	        });
 	        
         	// create tooltip on event hover
         	var eventsCounter = 0,
@@ -1198,7 +1201,8 @@
 	          },
 	          title: {
 	          	text: null
-	          }            
+	          },
+	          floor: 100
 	        },
 	        {
 	          offset: -25,
@@ -1297,7 +1301,7 @@
 
 	      } else { // else single chart, so one yaxis
 	      	yAxesSettings = [{
-	    			reversed: false,
+	    			reversed: true,
 	          offset: -37,
 	          showFirstLabel: false,
 	          showLastLabel: true,
@@ -1311,7 +1315,9 @@
 	          },
 	          title: {
 	          	text: null
-	          }         
+	          },
+	          floor: 0,
+	          max: 10000
 	        }];
 
 	        // TEMPLATE ONLY: Create mock series
@@ -1435,9 +1441,10 @@
 	        },
 	        plotOptions: {
 	        	area: {
-	            trackByArea: true,
+	            trackByArea: false,
 	        		tooltip: {
-	        			followPointer: true
+	        			followPointer: false,
+	        			followTouchMove: false
 	        		},
 	        		states: {
 	        			hover: {
@@ -1630,12 +1637,13 @@
 	        	},
 	        	snap: 25,
 	        	// the positioner callback could be used in future for the combined chart where it goes off the left of the graph
-	        	// positioner: function (labelWidth, labelHeight, point) {
-          //     console.log("labelWidth = " + labelWidth);
-          //     console.log("labelHeight = " + labelHeight);
-          //     console.log(point);
-          //     return { x: point.plotX, y: 0 };
-          //   },
+	        	positioner: function (labelWidth, labelHeight, point) {
+              // console.log("labelWidth = " + labelWidth);
+              // console.log("labelHeight = " + labelHeight);
+              var chartWidth = $(this.chart.container).innerWidth();
+              var plotX = (point.plotX > ((chartWidth + (labelWidth/2)) / 2)) ? point.plotX - labelWidth : point.plotX ;
+              return { x: plotX, y: 150 };
+            },
 	        }
 		    });
 
@@ -2317,6 +2325,8 @@
 
 			  Highcharts.charts[0].refEvents = [];
 
+			  var lastDataIndex = chart.series[0].data.length - 1;
+
 	      Highcharts.charts[0].refEvents.push({
 	      	icon: chart.renderer.image('images/icon-chart-event-launch@2x.png', chart.series[0].data[2].plotX - 11, chart.chartHeight - 36, 22, 36)
 		            .attr({		            	
@@ -2356,26 +2366,26 @@
 		            .add(),
 					plotX: chart.series[0].data[8].plotX,
 		      },{
-		      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
+		      	icon: chart.renderer.image('images/icon-chart-event-flag-reversed@2x.png', chart.series[0].data[30].plotX - 1 - 17, chart.chartHeight - 38, 18, 12)
 			            .attr({
-			            	visibility: "hidden", // duplicate event flags are hidden but are needed to caluclate no of events for a given date
+			            	// visibility: "hidden", // duplicate event flags are hidden but are needed to caluclate no of events for a given date
 			              zIndex: 9
 			            })
-			            .addClass("event-icon--flag")
+			            .addClass("event-icon--reversedflag")
 			            .add(),
-			      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
+			      line: chart.renderer.path(['M', chart.series[0].data[30].plotX, chart.chartHeight, 'L', chart.series[0].data[30].plotX, chart.chartHeight - 38])
 			            .attr({
-			            	visibility: "hidden",
+			            	// visibility: "hidden",
 		                'stroke-width': 1,
 		                stroke: '#81879d',
 		                zIndex: 8
 			            })
 			            .add(),
-						plotX: chart.series[0].data[8].plotX,
+						plotX: chart.series[0].data[30].plotX,
 				});
 
 				// Events - Add tooltip data
-				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltip", "<span>App Launch</span><br /><span>02/01/2016</span>");				
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltip", "<span>App Launch</span><br /><span>02/01/2016</span>");
 				$(Highcharts.charts[0].refEvents[0].icon.element).data("datapoint", 2);
 				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipcolour", "#FFFFFF");
 				$(Highcharts.charts[0].refEvents[0].icon.element).data("seriesName", "Spotify");
@@ -2391,7 +2401,7 @@
 				$(Highcharts.charts[0].refEvents[2].icon.element).data("seriesName", "Clash Royale");
 
 				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltip", "<span>App Update</span><br /><span>Version 1.1.3.1</span>");
-				$(Highcharts.charts[0].refEvents[3].icon.element).data("datapoint", 8);
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("datapoint", 30);
 				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipcolour", "#FFFFFF");
 				$(Highcharts.charts[0].refEvents[3].icon.element).data("seriesName", "Tinder");
 
@@ -2804,9 +2814,15 @@
 					mockDataDownloads.push(mockSeries);
 				}
 
-				mockDataDownloads[2][3] = null;
-				mockDataDownloads[2][4] = null;
-				mockDataDownloads[2][5] = null;
+				mockDataDownloads[2][3] = -200;
+				mockDataDownloads[2][4] = -200;
+				mockDataDownloads[2][5] = -200;
+				mockDataDownloads[2][6] = -200;
+				mockDataDownloads[2][7] = -200;
+				mockDataDownloads[2][8] = -200;
+				mockDataDownloads[2][9] = -200;
+				mockDataDownloads[2][10] = -200;
+				mockDataDownloads[2][11] = -200;
 
 				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
 				for(var d = 0; d < 31; d++) {

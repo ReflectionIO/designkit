@@ -78,7 +78,7 @@
 .custom-tooltip {
 	position: relative;
 	width: 126px;
-  min-height: 24px;
+  min-height: 26px;
 	padding: 3px 7px 3px 3px;
 	margin-bottom: 2px;
 	display: block;
@@ -188,6 +188,7 @@
     width: 82px;
     padding-left: 3px;
     display: inline-block;
+  	float: left;
     overflow: hidden;
     font-size: 13px;
     white-space: nowrap;
@@ -244,12 +245,25 @@
 		animation: launch-hover 0.2s infinite forwards, launch 0.5s 0.6s ease-in forwards;
 	}
 }
-.event-icon--flag {
+.event-icon--flag,
+.event-icon--reversedflag {
 	transform: translateY(0);
 	transition: transform 0.2s ease-in;
 	&.is-animating {
 		transform: translateY(-12px);
 		transition: transform 0.3s ease-in;
+	}
+}
+@keyframes reverseFlagFlap {
+	0% { transform: translateY(-12px) translateX(0); }
+	50% { transform: translateY(-12px) translateX(3px); }
+	100% { transform: translateY(-12px) translateX(0); }
+}
+.event-icon--reversedflag {
+	transform: translateY(0);
+	transition: transform 0.2s ease-in;
+	&.is-animating {
+		animation: reverseFlagFlap infinite 0.25s;
 	}
 }
 .custom-chart-key {
