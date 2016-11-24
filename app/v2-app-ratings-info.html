@@ -335,6 +335,7 @@
   	}
 
   	function handlereviews(data) {
+  		console.log(data);
   		if(data.feed.entry) {
   			if(data.feed.entry.length > 0) {
 	  			var customerReviewsListContainer = $('.js-customer-reviews ul');
@@ -350,6 +351,7 @@
 		  				customerReviewsListContainer.append($('<li>')
 		  																								.append($('<article>').addClass("customer-review")
 		  																														.append(ratingsString)
+		  																														.append($('<h3>').addClass("customer-review__author").text(data.feed.entry[e].author.name.label))
 		  																														.append($('<h3>').addClass("customer-review__title").text(data.feed.entry[e].title.label))
 		  																														.append($('<p>').addClass("customer-review__content").text(data.feed.entry[e].content.label))
 		  																						));
@@ -400,18 +402,26 @@
   				if($(window).width() < 720) {
   					imageWidth = 180;
   				}
-  				if(data.results[0].screenshotUrls[0].indexOf("320x320") > 0) {
+  				var screenshotsArray;
+  				if(data.results[0].screenshotUrls.length) {
+  					screenshotsArray = data.results[0].screenshotUrls;
+  				} else if(data.results[0].ipadScreenshotUrls.length) {
+  					screenshotsArray = data.results[0].ipadScreenshotUrls;
+  				}
+
+  				if(data.results[0].screenshotUrls.length && data.results[0].screenshotUrls[0].indexOf("320x320") > 0) {
   					imageWidth = 588;
   					isLandscape = true;
   					if($(window).width() < 720) {
 	  					imageWidth = 340;
 	  				}
   				}
-  				$('.app-image-list').width((data.results[0].screenshotUrls.length * imageWidth) - 20);
 
-  				for(var s = 0; s < data.results[0].screenshotUrls.length; s++) {
+					$('.app-image-list').width((screenshotsArray.length * imageWidth) - 20);
+
+  				for(var s = 0; s < screenshotsArray.length; s++) {
   					//change the image size
-  					var srcString = data.results[0].screenshotUrls[s];
+  					var srcString = screenshotsArray[s];
   					var imageCSSClass = "image-portrait";
   					if(isLandscape) {
   						srcString = srcString.replace("320x320", "640x640");

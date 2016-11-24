@@ -675,13 +675,21 @@
 	margin-bottom: 16px;
 	overflow: visible;
 	li {
+    padding-right: 18px;
 		margin-right: 18px;
 		display: inline-block;
 		font-family: $brand-heading-font;
 		font-size: 1.8rem;
-		color: #727686;
+		color: $reflection-purple;
 		cursor: pointer;
 		overflow: visible;
+		border-right: 1px solid #000;
+		&:hover {
+			color: lighten($reflection-purple, 10%);
+		}
+		&:last-child {
+			border-right: none;
+		}
 		&.is-active {
 			color: $reflection-white;
 			transition: color 0.3s;
@@ -690,7 +698,7 @@
 		&.ref-icon-before--revenue {
 			&:before {				
 				font-size: 19px;
-				color: #727686;
+				color: $reflection-purple;
 				transition: color 0.3s;
 			}
 		}
@@ -760,6 +768,7 @@
 			margin-right: 12px;
 			flex-grow: 1;
 			overflow: visible;
+			box-sizing: content-box;
 			border: 1px solid $dark-grey-1;
 			background-color: $reflection-purple;
 			transition: height 0.5s;
@@ -931,7 +940,7 @@
   }
   .animation-hamster-no-data-dark + div {
     width: 200px;
-    margin-right: 13px;
+    margin-left: 13px;
     text-align: left;
     h2 {
     	color: $light-grey-1;

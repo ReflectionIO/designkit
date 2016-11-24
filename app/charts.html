@@ -154,6 +154,7 @@
 									</dl>
 								</header>
 								<div class="chart" id="chart-revenue"></div>
+								<img src="images/icon-loading.svg" class="icon-chart-loading" />
 							</section>
 							<section class="chart-container chart-container--split">
 								<header class="chart-container__header">
@@ -166,6 +167,7 @@
 									</dl>
 								</header>
 								<div class="chart" id="chart-downloads"></div>
+								<img src="images/icon-loading.svg" class="icon-chart-loading" />
 							</section>
 
 							<aside class="custom-chart-key js-custom-chart-key">
@@ -1201,8 +1203,7 @@
 	          },
 	          title: {
 	          	text: null
-	          },
-	          floor: 100
+	          }
 	        },
 	        {
 	          offset: -25,
@@ -1301,7 +1302,7 @@
 
 	      } else { // else single chart, so one yaxis
 	      	yAxesSettings = [{
-	    			reversed: true,
+	    			reversed: false,
 	          offset: -37,
 	          showFirstLabel: false,
 	          showLastLabel: true,
@@ -1315,9 +1316,7 @@
 	          },
 	          title: {
 	          	text: null
-	          },
-	          floor: 0,
-	          max: 10000
+	          }
 	        }];
 
 	        // TEMPLATE ONLY: Create mock series
@@ -2813,16 +2812,6 @@
 					}
 					mockDataDownloads.push(mockSeries);
 				}
-
-				mockDataDownloads[2][3] = -200;
-				mockDataDownloads[2][4] = -200;
-				mockDataDownloads[2][5] = -200;
-				mockDataDownloads[2][6] = -200;
-				mockDataDownloads[2][7] = -200;
-				mockDataDownloads[2][8] = -200;
-				mockDataDownloads[2][9] = -200;
-				mockDataDownloads[2][10] = -200;
-				mockDataDownloads[2][11] = -200;
 
 				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
 				for(var d = 0; d < 31; d++) {
