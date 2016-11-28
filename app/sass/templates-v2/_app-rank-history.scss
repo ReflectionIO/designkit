@@ -57,6 +57,16 @@
 			}
 	  }
 	}
+	.ref-table__body--loading {
+		td:first-child {
+			span {
+				width: 85%;
+		    height: 10px;
+		    display: block;
+		    @extend .is-loading-background;
+			}
+		}
+	}
 }
 .column-rank-history--date {
 	width: percentage(210/870);
@@ -82,6 +92,13 @@
 			top: -2px;
     	left: 4px;
 		}
+		.ref-table__body--loading & {	    
+	    width: 20%; 
+	    height: 10px;
+	    margin-right: 10px;
+	    vertical-align: middle;
+	    background: $loading-colour;
+		}
 	}
 	.data-table__revenue-rank-growth,
 	.data-table__download-rank-growth {
@@ -105,4 +122,11 @@
 	font-size: 12px;
 	font-weight: 700;
 	vertical-align: baseline;
+	.ref-table__body--loading & {
+		width: 85%;
+    height: 10px;
+    display: block;
+    float: right;
+    @extend .is-loading-background;
+	}
 }

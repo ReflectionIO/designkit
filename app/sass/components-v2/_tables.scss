@@ -1,5 +1,4 @@
 $table-gold: #ee9063;
-
 .ref-table {
 	position: relative;
 	width: 100%;
@@ -37,12 +36,6 @@ $table-gold: #ee9063;
 			}
 		}
 		&.ref-table__body--loading {
-			> tr {
-				background-color: transparent;
-				> td:first-child {
-					padding: 0;
-				}
-			}
 			table {
 				width: 100%;
 			}
@@ -50,6 +43,14 @@ $table-gold: #ee9063;
 				tr:nth-child(odd) {
 					background-color: $panel-grey;
 				}
+			}
+			.app-data-cell-number-of-apps span {
+				width: 30px;
+		    height: 10px;
+		    margin-right: 10px;
+        display: inline-block;
+		    vertical-align: middle;
+		    background: #e9e9ed;
 			}
 		}
 	}
@@ -205,7 +206,10 @@ $table-gold: #ee9063;
 				width: 80%;
 	    	height: 10px;
 	    	display: inline-block;
-				background-color: $loading-colour;
+	    	background-color: $loading-colour;
+	    	&:first-child {
+	    		@extend .is-loading-background;
+	    	}
 				&.data-table__growth {
 					width: 25%;
 				}
@@ -321,6 +325,9 @@ $table-gold: #ee9063;
 			}
 		}
 		&.is-loading {
+			div {
+				@extend .is-loading-background;
+			}			
 			span {
 				width: 22px;
 		    height: 10px;
@@ -442,7 +449,12 @@ $table-gold: #ee9063;
     height: 10px;
     margin-top: 7px;
     margin-bottom: 9px;
-    background-color: $loading-colour;    
+    background-color: $loading-colour;
+	}
+}
+.data-table__app-summary__app-name {
+	&.is-loading {
+		@extend .is-loading-background;
 	}
 }
 .cellTableSortableHeader {
