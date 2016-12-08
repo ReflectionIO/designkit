@@ -11,6 +11,11 @@
 	50% { transform: rotateZ(10deg); fill: #7a77d5; }
 	100% { transform: rotateZ(-10deg); fill: #6c69c5; }
 }
+@keyframes liquidGlow {
+	0% { fill: #6c69c5; }
+	50% { fill: #7a77d5; }
+	100% { fill: #6c69c5; }
+}
 .grid-column-lab-welcome.data-lab-illustration {
 	position: absolute;
 	width: 476px;
@@ -28,6 +33,9 @@
 .lab-bottle-liquid {
 	transform-origin: 50% 0%;
 	animation: liquidSway 2s ease-in-out infinite;
+	.is-firefox & {
+		animation: liquidGlow 2s ease-in-out infinite;
+	}
 }
 .grid-column-lab-welcome {
 	width: percentage(578/1176);

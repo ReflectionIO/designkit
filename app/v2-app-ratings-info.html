@@ -335,7 +335,6 @@
   	}
 
   	function handlereviews(data) {
-  		console.log(data);
   		if(data.feed.entry) {
   			if(data.feed.entry.length > 0) {
 	  			var customerReviewsListContainer = $('.js-customer-reviews ul');
@@ -397,38 +396,51 @@
   		if(data.results && data.results.length > 0) {
   			if(data.results[0].screenshotUrls) {
 
-  				// set app-image-list width
-  				var isLandscape = false, imageWidth = 340; // (320 + 20 margin)
-  				if($(window).width() < 720) {
-  					imageWidth = 180;
-  				}
-  				var screenshotsArray;
+  				var screenshotsArray,
+  						isTabletScreenshots = false;
+
   				if(data.results[0].screenshotUrls.length) {
   					screenshotsArray = data.results[0].screenshotUrls;
   				} else if(data.results[0].ipadScreenshotUrls.length) {
   					screenshotsArray = data.results[0].ipadScreenshotUrls;
+  					isTabletScreenshots = true;
   				}
-
-  				if(data.results[0].screenshotUrls.length && data.results[0].screenshotUrls[0].indexOf("320x320") > 0) {
-  					imageWidth = 588;
-  					isLandscape = true;
-  					if($(window).width() < 720) {
-	  					imageWidth = 340;
-	  				}
-  				}
-
-					$('.app-image-list').width((screenshotsArray.length * imageWidth) - 20);
+					
+					var containerWidth = 0;
 
   				for(var s = 0; s < screenshotsArray.length; s++) {
   					//change the image size
+  					var isLandscape = false, imageWidth = 340; // (320 + 20 margin)
+	  				if($(window).width() < 720) {
+	  					imageWidth = 180;
+	  				}
   					var srcString = screenshotsArray[s];
-  					var imageCSSClass = "image-portrait";
+						
+						var imageCSSClass = "image-portrait";
+
+  					if(srcString.length && (srcString.indexOf("320x320") > 0 || srcString.indexOf("406x722") > 0)) {
+	  					imageWidth = 588;
+	  					isLandscape = true;
+	  					if($(window).width() < 720) {
+		  					imageWidth = 340;
+		  				}
+	  				}
+
   					if(isLandscape) {
   						srcString = srcString.replace("320x320", "640x640");
+  						srcString = srcString.replace("406x722", "520x924");
   						imageCSSClass = "image-landscape";
   					}
+  					if(isTabletScreenshots) {
+  						imageWidth = 500;
+  						imageCSSClass = "image-tablet";
+  					}
   					$('.app-image-list').append($('<li>').append($('<img>').attr("src", srcString).addClass(imageCSSClass)));
+
+  					containerWidth += imageWidth;
   				}
+
+  				$('.app-image-list').width(containerWidth - 20);
   			}
 
   			var appDescription = htmlForTextWithEmbeddedNewlines(data.results[0].description);

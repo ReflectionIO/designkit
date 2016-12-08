@@ -240,7 +240,7 @@
 		}
 
 		// hide panel on content click/tap
-		if($('html.touch').length && $(window).width() < 940) {
+		if($('html.touchevents').length && $(window).width() < 940) {
 			$('.l-main').on("click", function() {
 				if($('.panel-left-open').length) {
 					$('.js-hamburger-button').trigger("click");
@@ -381,7 +381,7 @@
 			if($('.js-account-container').hasClass('is-showing')) {
 				$('.js-account-container').removeClass('is-showing');
 				$('html, body').removeClass('no-scroll');
-				if($('.no-touch').length) {
+				if($('.no-touchevents').length) {
 					$('.js-account-container').addClass('is-animating-out');
 					window.setTimeout(function(){
 						$('.js-account-container').removeClass('is-animating-out');
@@ -394,7 +394,7 @@
 				}
 				$('.js-account-container').addClass('is-showing');
 				$('html, body').addClass('no-scroll');
-				if($('.no-touch').length) {
+				if($('.no-touchevents').length) {
 					$('.js-account-container').addClass('is-animating-in');
 					window.setTimeout(function(){
 						$('.js-account-container').removeClass('is-animating-in');
@@ -422,7 +422,7 @@
 		if($('.js-search-container').hasClass('is-showing')) {
 			$('.js-search-container').removeClass('is-showing');
 			$('html, body').removeClass('no-scroll');
-			if($('.no-touch').length) {
+			if($('.no-touchevents').length) {
 				$('.js-search-container').addClass('is-animating-out');
 				window.setTimeout(function(){
 					$('.js-search-container').removeClass('is-animating-out');
@@ -441,7 +441,7 @@
 			$('.js-search-container').addClass('is-showing');
 			$('html, body').addClass('no-scroll');
 			$('.search__form .js-get-items').select();
-			if($('.no-touch').length) {
+			if($('.no-touchevents').length) {
 				$('.js-search-container').addClass('is-animating-in');
 				window.setTimeout(function(){
 					$('.js-search-container').removeClass('is-animating-in');
@@ -641,7 +641,7 @@
 				e.preventDefault();
 				instance.$moduleContainer.removeClass('is-open');
 				if($(window).width() < 720) {
-					$('html.touch body, html.touch').removeClass('no-scroll');
+					$('html.touchevents body, html.touchevents').removeClass('no-scroll');
 				}
 			});
 		}
@@ -985,7 +985,7 @@
 						$('.reflection-select').removeClass('is-open');
 						$('.form-field--select').removeClass('is-open');
 						if($(window).width() < 720) {
-							$('html.touch body, html.touch').removeClass('no-scroll');
+							$('html.touchevents body, html.touchevents').removeClass('no-scroll');
 						}							
 					}));
 					refSelectContainer.addClass('reflection-select--filter');
@@ -1097,15 +1097,15 @@
 			refSelectContainer.addClass('is-open');
 			refSelectContainer.parents('.form-field--select').addClass('is-open');
 			optionsList.css('margin-top', "9px");
-			if($('.touch').length) {
+			if($('.touchevents').length) {
 				refSelectContainer.siblings('.js-field--select').focus();
 			}
 		}
 		if($(window).width() < 720) {
 			if(refSelectContainer.hasClass('reflection-select--filter') && refSelectContainer.hasClass('is-open')) {
-				$('html.touch body, html.touch').addClass('no-scroll');
+				$('html.touchevents body, html.touchevents').addClass('no-scroll');
 			} else {
-				$('html.touch body, html.touch').removeClass('no-scroll');
+				$('html.touchevents body, html.touchevents').removeClass('no-scroll');
 			}
 		}
 	};
@@ -1283,7 +1283,7 @@
 
 	var ToolTip = function() {
 		var instance = this;
-		$('.touch body').on("click", function(e){ // remove all tooltips on body touch
+		$('.touchevents body').on("click", function(e){ // remove all tooltips on body touch
 			if($('.tooltip').length) {			
 				$('.tooltip').remove();
 			}
@@ -1292,7 +1292,7 @@
 		$('.js-tooltip').each(function(){
 			var $this = $(this);
 			var tooltip;
-			if($('html.no-touch').length) {
+			if($('html.no-touchevents').length) {
 				$this.on("mouseenter", function(){
 					if($this.hasClass("js-tooltip--info")) {
 						tooltip = instance.generateTooltip($this, true);
@@ -1311,7 +1311,7 @@
 						tooltip.remove();
 					}					
 				});
-			} else if($('html.touch').length) {
+			} else if($('html.touchevents').length) {
 				$this.on("click", function(e){
 					if(!$this.hasClass("form-field--select")) {
 						if($this.attr("href") != undefined) {
@@ -1497,7 +1497,7 @@
 	}
 
 	var reflectionMap = function() {	
-		var isDraggable = $('html.touch').length == 0;
+		var isDraggable = $('html.touchevents').length == 0;
 		var mapStyles = [{
 	      featureType: "poi",
 	      elementType: "labels",

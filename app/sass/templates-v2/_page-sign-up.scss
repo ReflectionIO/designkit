@@ -35,8 +35,23 @@
 	.list-partners {
 		position: relative;
 		bottom: 0;
+		min-width: 960px;
 		margin-top: 55px;
 		margin-bottom: 100px;
+		@media (min-height: 1200px) {
+			position: fixed;
+			left: 60px;
+			bottom: 0px;
+			width: calc(100% - 60px);
+			margin-top: 0px;
+		}
+		@media (min-height: 1200px) and (min-width: $leftnav-wide) {
+			position: fixed;
+			left: 200px;
+			bottom: 0px;
+			width: calc(100% - 200px);
+			margin-top: 0px;
+		}
 	}
 }
 .page-sign-up__main {

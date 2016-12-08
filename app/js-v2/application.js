@@ -103,6 +103,9 @@ BrowserDetection.prototype.detectIE = function() {
 
 BrowserDetection.prototype.setFireFoxClass = function() {
 	var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	if(typeof InstallTrigger !== 'undefined') {
+		is_firefox = true;
+	}
 	if(is_firefox) { $('html').addClass('is-firefox'); }
 }
 
@@ -137,7 +140,7 @@ var LeftPanelAndHamburger = function() {
 		}
 	});
 
-	if($(".touch").length > 0) {
+	if($(".touchevents").length > 0) {
 		window.setTimeout(function() {
 			topLevelNavItems.each(function(){
 				if($(this).hasClass('is-selected')) {
@@ -180,7 +183,7 @@ var LeftPanelAndHamburger = function() {
 	});
 
 	// hide panel on content click/tap
-	if($('html.touch').length) {
+	if($('html.touchevents').length) {
 		$('.l-main').on("click", function() {
 			if($('.panel-left-open').length) {
 				$('.js-hamburger-button').trigger("click");
@@ -424,7 +427,8 @@ var FormFieldSelect = function($domElement) {
 		
 		var $thisOption = $(this),
 				selectedClass = "",
-				unavailableClass = "";
+				unavailableClass = "",
+				warningClass = "";
 
 		if($thisOption.val() != "") {
 
@@ -451,10 +455,15 @@ var FormFieldSelect = function($domElement) {
 			if($thisOption.data("app-icon") != undefined) {
 				$newListItem.append($("<img>").attr("src", $thisOption.data("app-icon")).attr("alt", $thisOption.text() + " icon"));
 			}
+			if($thisOption.data("warning") != undefined) {
+				warningClass = "group-item-unavailable js-tooltip js-tooltip--instant js-tooltip--left";
+			}
 			$dropDownContainer.append($newListItem
 																		.addClass("js-dropdown-option")																		
 																		.addClass(selectedClass)
+																		.addClass(warningClass)
 																		.attr('data-value', $thisOption.attr('value'))
+																		.data("tooltip", "Currently no estimates available for this category")
 																		.on("click", function() {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");
@@ -680,7 +689,7 @@ var Tabs = function($domElement) {
 
 // Global settings for all Tooltips
 var TooltipsBase = function() {
-	$('.touch body').on("click", function(e){ // remove all tooltips on body touch
+	$('.touchevents body').on("click", function(e){ // remove all tooltips on body touch
 		if($('.tooltip').length) {			
 			$('.tooltip').remove();
 		}
@@ -711,7 +720,7 @@ var ToolTip = function($domElement) {
 				tooltip.remove();
 			}					
 		});
-	} else if($('html.touch').length) {
+	} else if($('html.touchevents').length) {
 		$this.on("click", function(e){
 			if(!$this.hasClass("form-field--select")) {
 				if($this.attr("href") != undefined) {
@@ -874,7 +883,7 @@ var ArticleIntro = function($domElement, charCount) {
 }
 
 var reflectionMap = function() {	
-	var isDraggable = $('html.touch').length == 0;
+	var isDraggable = $('html.touchevents').length == 0;
 	var mapStyles = [{
       featureType: "poi",
       elementType: "labels",

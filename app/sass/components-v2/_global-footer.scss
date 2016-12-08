@@ -9,17 +9,20 @@
 	font-size: 1.6rem;
 	line-height: 1.3;
 	border-top: 1px solid $divider-grey;
+	.global-footer--no-border & {
+		border-top: none;
+	}
 	@include breakpoint($tablet) {
 		padding-left: 0;
 		padding-right: 0;
 	}
 	@include breakpoint($laptop) {
-		.no-touch & {
+		.no-touchevents & {
 			width: calc(100% - 60px);
 		}
 	}
 	@include breakpoint($leftnav-wide) {
-		.no-touch & {
+		.no-touchevents & {
 			width: calc(100% - 200px);
 		}
 	}
@@ -65,7 +68,7 @@
 				}
 			}
 		}
-		.touch & {
+		.touchevents & {
 			padding-bottom: 0.82rem;
 		}		
 	}
