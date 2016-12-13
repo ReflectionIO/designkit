@@ -4,8 +4,7 @@
 	<meta charset="utf-8" />
 	<title>Reflection V2, Data Lab, Top Downloads</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />		
-	<link rel="stylesheet" type="text/css" href="data-vis-daily-releases.css" />
+	<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 <script>
@@ -83,19 +82,40 @@
 						</select>
 					</div>
 
+					<div class="heatmap-key">
+						<span class="heatmap-key__label">Less</span>
+						<span class="heatmap-key__label">More</span>
+						<div class="heatmap-key__gradient-bar"></div>
+					</div>
+
 					<div class="data-day-labels">
-							<span>Mon</span>
-							<span>Tue</span>
-							<span>Wed</span>
-							<span>Thu</span>
-							<span>Fri</span>
-							<span class="data-day-label-weekend">Sat</span>
-							<span class="data-day-label-weekend">Sun</span>
+						<span>Mon</span>
+						<span>Tue</span>
+						<span>Wed</span>
+						<span>Thu</span>
+						<span>Fri</span>
+						<span class="data-day-label-weekend">Sat</span>
+						<span class="data-day-label-weekend">Sun</span>
 					</div>
 				</div>
 
-				<div class="data-heatmap data-heatmap--downloads js-data-heatmap">
+				<div class="data-heatmap js-data-heatmap">
 					
+					<div class="data-month-labels">
+						<span>January '16</span>
+						<span>February '16</span>
+						<span>March '16</span>
+						<span>April '16</span>
+						<span>May '16</span>
+						<span>June '16</span>
+						<span>July '16</span>
+						<span>August '16</span>
+						<span>September '16</span>
+						<span>October '16</span>
+						<span>November '16</span>
+						<span>December '16</span>
+					</div>
+
 					<svg class="data-heatmap__pointer data-heatmap__pointer--left js-data-heatmap__pointer" enable-background="new 0 0 11 14"viewBox="0 0 11 14"x=0px xml:space=preserve y=0px><path d="M10.8,6.7L0.6,0.1C0.4,0,0.3,0,0.2,0C0.1,0.1,0,0.2,0,0.3v13.3c0,0.1,0.1,0.2,0.2,0.3c0.1,0,0.1,0,0.2,0
 	c0.1,0,0.1,0,0.2-0.1l10.3-6.7C10.9,7.2,11,7.1,11,7C11,6.9,10.9,6.8,10.8,6.7z" fill="#1BC79F" /></svg>
 					
@@ -173,7 +193,17 @@
 
 			var emptyWeeksData = [];
 			
-			for(var i = 0; i < 364; i++) {
+			for(var i = 0; i < 4; i++) {
+				mockData.games.data.push({
+					date: Date.now(),
+					value: 0
+				});
+				mockDataTwo.games.data.push({
+					date: Date.now(),
+					value: 0
+				});
+			}
+			for(var i = 0; i < 360; i++) {
 				mockData.games.data.push({
 					date: Date.now(),
 					value: Math.floor(Math.random() * (maxnum - minnum) + minnum)
@@ -238,7 +268,7 @@
 	        		$('.js-data-container').removeClass("flip");
 	        		animateBarChartHeights();
 	        	}, 100);	        	
-					}, 400);					
+					}, 300);					
 				});
 
 				dataList.getAppOpacity = function(listIndex) {
