@@ -391,3 +391,52 @@
 		padding: 0;
 	}
 }
+.chart-container__chart-message {
+	position: absolute;
+	top: 73px;
+	left: calc(50% - 150px);
+	width: 300px;
+	padding: 10px 10px 11px 11px;
+	visibility: hidden;
+	border: 1px solid $light-grey-2;
+	border-radius: 7px;
+	background: $reflection-white;
+	transform: scale(0.8);
+	&.is-showing {
+		visibility: visible;
+		transform: scale(1);
+		transition: transform 0.2s, visibility 0s;
+	}
+	.popup-close {
+    top: 9px;
+    right: 8px;
+		.ref-icon-after--close:after {
+			font-size: 1.5rem;
+		}
+	}
+}
+.chart-container__chart-message__title {
+	margin: 0 0 1px;
+	color: $mid-grey-1;
+	font-size: 14px;
+	font-weight: 600;
+	overflow: visible;
+	&:before {
+		top: -1px;
+		margin-right: 9px;
+		font-size: 18px;
+		color: $light-grey-1;
+	}
+}
+.chart-container__chart-message__content {
+	margin-left: 28px;
+	display: block;
+	color: $mid-grey-2;
+	font-size: 12px;
+	a {
+		color: $reflection-purple;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+	}
+}

@@ -253,6 +253,11 @@
 									</dl>
 								</header>
 								<div class="chart" id="chart-revenue"></div>
+								<div class="chart-container__chart-message js-chart-container__chart-message is-showing">
+									<h2 class="chart-container__chart-message__title ref-icon-before--info-no-fill">No Events for the Selected Period</h2>
+									<span class="chart-container__chart-message__content"><a href="v2-app-events.html">Visit 'Events'</a> to see everything that's happened</span>
+									<a href="#" class="popup-close js-popup-close"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+								</div>
 								<img src="images/icon-loading.svg" class="icon-chart-loading" />
 							</section>
 							<section class="chart-container chart-container--split">
@@ -1319,6 +1324,7 @@
 				e.preventDefault();
 				$('.page-overlay').fadeOut(100);
 				$('.page-overlay .popup-content').removeClass("is-showing");
+				$('.js-chart-container__chart-message').removeClass("is-showing");
 			});
 
   		// HIGHCHARTS
@@ -2667,7 +2673,8 @@
 				}
 
 				$('.js-toggle-events').change(function(){
-					if($(this).is(":checked")) {
+					$('.js-chart-container__chart-message').addClass("is-showing");
+					if($(this).is(":checked")) {						
 						if(Highcharts.charts[0].refEvents.length == 0) {
 							addEventsToGraph();
 						} else { // otherwise show existing events
