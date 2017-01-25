@@ -1,5 +1,6 @@
 .chart__no-data,
-.chart__loading {
+.chart__loading,
+.no-data-small {
 	position: relative;
   min-height: 200px;
 	width: 100%;
@@ -61,7 +62,8 @@
 		}
 	}
 }
-.chart__no-data {
+.chart__no-data,
+.no-data-small {
 	.animation-hamster-no-data {
 		margin-right: 20px;
 	}
@@ -172,15 +174,15 @@
     right: 4%;
 	}
 }
-.chart__no-data.no-data-page-message {
-	margin-top: 10rem;
-	margin-bottom: 10rem;
+.no-data-page-message {
+	overflow: visible;
 	h2 {
 		margin-bottom: 2rem;
 	}
 	div {
 		max-width: 380px;
 		text-align: left;
+		overflow: visible;
 	}
 	.animation-hamster-no-data {
     margin-top: 17px;
@@ -190,6 +192,20 @@
 	button {
 		margin-top: 1rem;
 	}
+	.secondary-filter .form-field--select__box {
+		width: 225px;
+	}
+}
+.no-data-page-message {
+	padding-top: 16rem;
+  padding-bottom: 28rem;
+  margin: 0;
+  background-color: $panel-grey;
+}
+.chart__no-data.no-data-page-message {
+	margin-top: 10rem;
+	margin-bottom: 10rem;
+	padding: 0;
 }
 .coming-soon-img {
 	width: 116px;

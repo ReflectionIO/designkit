@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<title>Reflection V2, Data Lab, Top Downloads</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<link rel="stylesheet" type="text/css" href="design-kit-v2.css" />
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 <script>
@@ -47,38 +47,55 @@
 
 				<div class="grid__row overflow-visible">
 					<div class="filters-row filters-row-main-chart js-filters-main-chart">
-						<h2 class="filter-row__heading">Concentration of New App Releases: 2016</h2>			
+						<h2 class="filter-row__heading">Concentration of New App Releases: 2016</h2>
 					</div>
 				</div>
 
 				<div class="daily-releases-filters-container js-daily-releases-filters-container">
 					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-category">
 						<select class="js-select-box js-change-category">
-					    <option value="Overall" selected>All Categories</option>
-					    <option value="Business" data-access="key">Business</option>
+							<option value="All categories" selected>All Categories</option>
+							<option value="Games">Games</option>
+							<option value="Action">Games - Action</option>
+							<option value="Adventure">Games - Adventure</option>
+							<option value="Arcade">Games - Arcade</option>
+							<option value="Board">Games - Board</option>
+							<option value="Card">Games - Card</option>
+							<option value="Dice">Games - Dice</option>
+							<option value="Educational">Games - Educational</option>
+							<option value="Family">Games - Family</option>
+							<option value="Music Games">Games - Music</option>
+							<option value="Puzzle">Games - Puzzle</option>
+							<option value="Racing">Games - Racing</option>
+							<option value="Role Playing">Games - Role Playing</option>
+							<option value="Simulation">Games - Simulation</option>
+							<option value="Sports Games">Games - Sports</option>
+							<option value="Strategy">Games - Strategy</option>
+							<option value="Trivia">Games - Trivia</option>
+							<option value="Word">Games - Word</option>
+							<option value="Books">Books</option>
+					    <option value="Business">Business</option>
+					    <option value="Catalogs">Catalogs</option>
+					    <option value="Education">Education</option>
+							<option value="Entertainment">Entertainment</option>
+							<option value="Finance">Finance</option>
+							<option value="Food & Drink">Food &amp; Drink</option>
+							<option value="Health & Fitness">Health &amp; Fitness</option>
+							<option value="Lifestyle">Lifestyle</option>
+							<option value="Medical">Medical</option>
+							<option value="Music">Music</option>
+							<option value="Navigation">Navigation</option>
+							<option value="News">News</option>
+							<option value="Newsstand">Newsstand</option>
+							<option value="Photo & Video">Photo &amp; Video</option>
+							<option value="Productivity">Productivity</option>
+							<option value="Reference">Reference</option>
+							<option value="Shopping">Shopping</option>
+							<option value="Social Networking">Social Networking</option>
+							<option value="Sports">Sports</option>
+							<option value="Travel">Travel</option>
+							<option value="Utilities">Utilities</option>
 					    <option value="Weather" data-access="key">Weather</option>
-					    <option value="Utilities" data-access="key">Utilities</option>
-					    <option value="Travel" data-access="key">Travel</option>
-					    <option value="Sports" data-access="key">Sports</option>
-					    <option value="SocialNetworking" data-access="key">Social Networking</option>
-					    <option value="Reference" data-access="key">Reference</option>
-					    <option value="Productivity" data-access="key">Productivity</option>
-					    <option value="Photo&Video" data-access="key">Photo &amp; Video</option>
-					    <option value="News" data-access="key">News</option>
-					    <option value="Navigation" data-access="key">Navigation</option>
-					    <option value="Music" data-access="key">Music</option>
-					    <option value="Lifestyle" data-access="key">Lifestyle</option>
-					    <option value="Health&Fitness" data-access="key">Health &amp; Fitness</option>
-					    <option value="Games" data-access="key">Games</option>
-					    <option value="Finance" data-access="key">Finance</option>
-					    <option value="Entertainment" data-access="key">Entertainment</option>
-					    <option value="Education" data-access="key">Education</option>
-					    <option value="Books" data-access="key">Books</option>
-					    <option value="Medical" data-access="key">Medical</option>
-					    <option value="Newsstand" data-access="key">Newsstand</option>
-					    <option value="Catalogs" data-access="key">Catalogs</option>
-					    <option value="Food&Drink" data-access="key">Food &amp; Drink</option>
-					    <option value="Shopping" data-access="key">Shopping</option>
 						</select>
 					</div>
 
@@ -133,6 +150,7 @@
 							</div>
 						</li>
 					</ul>
+					<div class="chart-bottom-spacing"></div>
 				</div>
 
 				<div class="footer-chart js-footer-chart">
@@ -165,115 +183,72 @@
 
 	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
+  <script src="js/data-lab/daily-releases.js"></script>
 
   <script>
+		
+		function getMaxValueFromArray(list) {
+			var mx = 0;
+			for(var x = 0; x < list.length; x++) {
+				if(list[x].value > mx) {
+					mx = list[x].value;
+				}
+			}
+			return mx;
+		}
+
+		var currentDataCategory;
+		var currentIndex = 1;
 
   	$(window).on("load", function(){
-			
-			var minnum = 1000,
-					maxnum = 2000;
-
-			var mockData = {
-				games: {
-					min: minnum,
-					max: maxnum,
-					data: [],
-					weeks: []
-				},
-			};
-
-			var mockDataTwo = {
-				games: {
-					min: minnum,
-					max: maxnum,
-					data: [],
-					weeks: []
-				},
-			};
 
 			var emptyWeeksData = [];
-			
-			for(var i = 0; i < 4; i++) {
-				mockData.games.data.push({
-					date: Date.now(),
-					value: 0
-				});
-				mockDataTwo.games.data.push({
-					date: Date.now(),
-					value: 0
-				});
-			}
-			for(var i = 0; i < 360; i++) {
-				mockData.games.data.push({
-					date: Date.now(),
-					value: Math.floor(Math.random() * (maxnum - minnum) + minnum)
-				});
-				mockDataTwo.games.data.push({
-					date: Date.now(),
-					value: Math.floor(Math.random() * (maxnum - minnum) + minnum)
-				});
-			}
-			for(var i = 0; i < 52; i++) {
-				var today = new Date();
-				var tomorrow = new Date();
-				tomorrow.setDate(today.getDate() + i*7);
-				mockData.games.weeks.push({
-					date: tomorrow,
-					value: Math.floor((Math.random() * (maxnum - minnum) + minnum) * 7)
-				});
-				mockDataTwo.games.weeks.push({
-					date: tomorrow,
-					value: Math.floor((Math.random() * (maxnum - minnum) + minnum) * 7)
-				});
-				emptyWeeksData.push({
-					date: tomorrow,
-					value: 0
-				});
-			}
 			
   		var reflectionApp = angular.module('reflectionApp', [])
 			.controller('DataController', function($scope, $http) {
 				
 				var dataIndex = 0;
 				var dataList = this;
+				console.log(dailyReleasesData);
 				dataList.toggle = 1;
-				dataList.category = mockData.games;
-				dataList.appData = mockData.games.data;
-				dataList.weeksData = mockData.games.weeks;
+				dataList.category = dailyReleasesData["All categories"];
+				dataList.appData = dailyReleasesData["All categories"].data;
+				dataList.weeksData = dailyReleasesData["All categories"].weeks;
+				dataList.getWeeksMax = getMaxValueFromArray(dataList.weeksData);
+				currentDataCategory = dataList.category;
 
 				$('.js-change-category').on("change", function(){
-					
+					var categoryToShow = this.value;
+					console.log(categoryToShow);
 					// animate charts and then apply new data
 					$('.js-data-container').addClass("flip");
 					
 					$scope.$apply(function () {
+						// for animation of the weeks bar chart
 						dataList.weeksData = emptyWeeksData;
 					});
 					
 					setTimeout(function(){
 						$('.js-data-container li.is-hotter').removeClass("is-hotter");
+						console.log(dailyReleasesData[categoryToShow]);
 						$scope.$apply(function () {
-							if(dataList.toggle == 1) {
-								dataList.category = mockDataTwo.games;
-								dataList.appData = mockDataTwo.games.data;
-								dataList.weeksData = mockDataTwo.games.weeks;	
-							} else {
-								dataList.category = mockData.games;
-								dataList.appData = mockData.games.data;
-								dataList.weeksData = mockData.games.weeks;	
-							}
-	            dataList.toggle *= -1
+							dataList.category = dailyReleasesData[categoryToShow];
+							dataList.appData = dailyReleasesData[categoryToShow].data;
+							dataList.weeksData = dailyReleasesData[categoryToShow].weeks;
+							dataList.getWeeksMax = getMaxValueFromArray(dataList.weeksData);
+							currentDataCategory = dataList.category;							
 	        	});
+	        	setWeeksLabels();
 	        	setTimeout(function(){
 	        		$('.js-data-container').removeClass("flip");
 	        		animateBarChartHeights();
-	        	}, 100);	        	
-					}, 300);					
+	        	}, 100);
+					}, 300);
 				});
 
 				dataList.getAppOpacity = function(listIndex) {
-		    	var min = 1000,
-		    			max = 2000;
+		    	var min = this.category.min,
+		    			max = this.category.max;
 		    	var range = max - min;
 		    	var valueFromMin;
 		    	valueFromMin = dataList.appData[listIndex].value - min;
@@ -309,7 +284,7 @@
 				}
 
 				dataList.setBarHeight = function(listIndex) {
-					return (dataList.weeksData[listIndex].value / (dataList.category.max * 7)) * 100;
+					return (dataList.weeksData[listIndex].value / dataList.getWeeksMax) * 100;
 				}
 
 				dataList.timeConverter = function(UNIX_timestamp){
@@ -465,6 +440,13 @@
   			new FilterDropDown($(this), "dataOverview");
   		});
 
+  		function setWeeksLabels() {
+  			$('.js-week-number').text(currentIndex);
+				var formattedDate = timeConverter(currentDataCategory.weeks[currentIndex-1].date);
+				$('.js-date-value').text(formattedDate);
+				$('.js-apps-released-value').text(currentDataCategory.weeks[currentIndex-1].value);
+  		}
+
   		$(window).on("scroll", function(){  			
   			var marginWhenFiltersAreFixed = 484;
 				if($(window).scrollTop() > marginWhenFiltersAreFixed) {
@@ -478,8 +460,7 @@
 				var marginWhenBarChartShows = 340;
 				var marginWhenArrowsMove = marginWhenFiltersAreFixed - 30;
 				var scrollTopValue = $(window).scrollTop();
-				var dataContainerOffsetTop = $('.js-data-container').offset().top;
-				var currentIndex = 1;
+				var dataContainerOffsetTop = $('.js-data-container').offset().top;				
 				var heightOfDataScrolled = (scrollTopValue + offsetTopFromWindowTop) - dataContainerOffsetTop;
 				if(scrollTopValue + offsetTopFromWindowTop > dataContainerOffsetTop) {					
 					currentIndex = Math.floor((heightOfDataScrolled + 32) / rowHeight) + 1;
@@ -500,10 +481,7 @@
 				
 				$('.js-daily-releases-bar-chart li.is-on').removeClass("is-on");
 				$('.js-daily-releases-bar-chart li:nth-child(' + currentIndex + ')').addClass("is-on");
-				$('.js-week-number').text(currentIndex);
-				var formattedDate = timeConverter(mockData.games.weeks[currentIndex-1].date);
-				$('.js-date-value').text(formattedDate);
-				$('.js-apps-released-value').text(mockData.games.weeks[currentIndex-1].value);
+				setWeeksLabels();
   		});
 
   		setTimeout(function(){

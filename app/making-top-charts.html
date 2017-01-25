@@ -940,7 +940,7 @@
 
 		  function showOnboardingOverlay() {
 		  	var filtersOffset = $('.js-dropdown-rank').offset();
-				$('.js-onboarding-overlay-filters').css({"top": (filtersOffset.top + 50) + "px", "left": (filtersOffset.left - 125) + "px", });
+				$('.js-onboarding-overlay-filters').css({"top": (filtersOffset.top + 50) + "px", "left": (filtersOffset.left - 225) + "px", });
 
 				var subcategoriesOffset = $('.js-has-subcategories').offset();
 				$('.js-onboarding-overlay-subcategories').css({"top": (subcategoriesOffset.top + 40) + "px", "left": (subcategoriesOffset.left - 10) + "px", });
@@ -1252,7 +1252,7 @@
 				$('.js-page-container').addClass('is-data-requested');
 
 				// get default data
-				$.getJSON( fileToRequest, function( data ) {
+				$.getJSON( fileToRequest, function( data ) {					
 
 					$('.js-page-container').removeClass('is-loading');
 					
@@ -1386,7 +1386,7 @@
 
 			function loadRankData(fileToRequest, selectedCategory, selectedDevice, selectedCountry) {
 
-				$.getJSON( fileToRequest, function( data ) {							
+				$.getJSON( fileToRequest, function( data ) {					
 
 					populateRankDistributionChart(data, "FREE", $('.js-rank-distribution-chart--free'), selectedCategory, selectedDevice, selectedCountry);
 					populateRankDistributionChart(data, "PAID", $('.js-rank-distribution-chart--paid'), selectedCategory, selectedDevice, selectedCountry);
@@ -1539,7 +1539,7 @@
 
 			function loadCountryData(fileToRequest, selectedCategory, selectedRank, selectedDevice) {
 				
-				$.getJSON( fileToRequest, function( data ) {
+				$.getJSON( fileToRequest, function( data ) {					
 
 					var countryDistributionDataFreeList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "FREE");
 					var countryDistributionDataPaidList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "PAID");

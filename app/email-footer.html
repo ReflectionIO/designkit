@@ -1,24 +1,50 @@
 <html>
-<body>
-	<table cellpadding="0" cellspacing="0" border="0" style="text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+
+				var qs = (function(a) {
+			    if (a == "") return {};
+			    var b = {};
+			    for (var i = 0; i < a.length; ++i)
+			    {
+			        var p=a[i].split('=', 2);
+			        if (p.length == 1)
+			            b[p[0]] = "";
+			        else
+			            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+			    }
+			    return b;
+				})(window.location.search.substr(1).split('&'));
+
+		    $scope.firstName = qs["firstName"];
+		    $scope.fullName = qs["fullName"];
+		    $scope.job = qs["job"];
+		});
+	</script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<table width="550" cellpadding="0" cellspacing="0" border="0" style="text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
 		<tr>
 			<td style="width: 70px; height: 56px; padding-bottom: 15px; vertical-align: top;">
-				<img src="https://www.reflection.io/images/email-gustaf.png" alt="Gustaf Leksell" />
+				<img src="https://www.reflection.io/images/email-{{firstName}}.png" alt="{{fullName}}" style="width: 56px; height: 56px;" />
 			</td>
 			<td style="vertical-align: top;">
-				<h2 style="width: 100%; margin: 12px 0 3px; font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14px; line-height: 1.2; font-weight: 700; color: #29292c;">Gustaf Leksell</h2>
-				<h3 style="width: 100%; margin: 0; font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 12px; line-height: 1.2; font-weight: 400; color: #5a5a68;">Founder &amp; CEO</h3>
+				<h2 style="width: 100%; margin: 12px 0 3px; font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14px; line-height: 1.2; font-weight: 700; color: #29292c;">{{fullName}}</h2>
+				<h3 style="width: 100%; margin: 0; font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 12px; line-height: 1.2; font-weight: 400; color: #5a5a68;">{{job}}</h3>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="padding-bottom: 13px;">
-				<img src="https://www.reflection.io/images/email-logo-reflection.png" alt="Reflection Logo" />
+				<img src="https://www.reflection.io/images/email-logo-reflection.png" alt="Reflection Logo" style="width: 96px; height: 21px;" />
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="padding-right: 53px; padding-bottom: 12px; border-bottom: 1px solid #e1e5e8;">
 				<span style="margin: 0 0 7px; display: block; width: 100%; font-size: 0;">
-					<a href="mailto:gustaf@reflection.io" style="margin: 0 10px 0 0; padding-right: 11px; font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 11.9px; font-weight: 400; color: #6d69c5; text-decoration: none; border-right: 1px solid #9997d4;">gustaf@reflection.io</a>
+					<a href="mailto:{{firstName}}@reflection.io" style="margin: 0 10px 0 0; padding-right: 11px; font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 11.9px; font-weight: 400; color: #6d69c5; text-decoration: none; border-right: 1px solid #9997d4;">{{firstName}}@reflection.io</a>
 					<span style="margin: 0 10px 0 0; font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 11.9px; font-weight: 400; color: #6d69c5;">40-44 Newman Street, London, W1T 1QD</span>
 				</span>
 				<span style="margin: 0; display: block; width: 100%; font-size: 0;">
@@ -33,6 +59,11 @@
 		<tr>
 			<td colspan="2" style="padding-top: 12px; padding-bottom: 26px; padding-left: 2px;">
 				<span style="width: 100%; margin: 0; font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 13.9px; line-height: 1.2; font-weight: 700; color: #29292c;">See What's Happening in the App Market <a href="http://www.reflection.io" style="text-decoration: none; color: #6d69c5;">Right Now</a></span>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="padding-top: 0px; padding-bottom: 26px; padding-left: 2px;">
+				<span style="width: 100%; margin: 0; font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 11px; line-height: 1.2; color: #727686; letter-spacing: -0.2px; line-height: 1.4;">Offers contained within this communication are valid for 7 days from the date of the original correspondence. All offers subject to acceptance of Reflection.io terms and conditions, and Reflection.io accepting an offer to buy.</span>
 			</td>
 		</tr>
 	</table>
