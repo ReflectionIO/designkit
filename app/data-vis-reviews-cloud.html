@@ -24,7 +24,10 @@
 	}
 	.page-data-vis-reviews-cloud .toggle-container {
 		margin: 0 auto;
-		float: none;
+		float: none;		
+	}
+	.page-data-vis-reviews-cloud .toggle-container label {
+		font-size: 10px;
 	}
 	.tag-cloud li {
 		cursor: pointer;
@@ -155,6 +158,7 @@
 		text-align: right;
 		cursor: pointer;
 		background-color: #f2f2f5;
+		z-index: 1000;
 	}
 	.app-selector.is-open {
 		height: auto;
@@ -196,15 +200,16 @@
 				<h1 class="heading-style--heading-three">Reviews Tag Cloud</h1>
 				<div class="grid_row filters-row">
 					<div class="app-title">
-						<h2 class="heading-style--heading-four js-app-name">Clash of Clans, Supercell</h2>
+						<h2 class="heading-style--heading-four js-app-name">Pokemon Go</h2>
 					</div>
 					<div class="app-selector">
 						<ul>
 							<li>Change selected app</li>
-							<li><a href="data-vis-reviews-cloud.html">Clash of Clans</a></li>
+							<li><a href="data-vis-reviews-cloud.html">Pokemon Go</a></li>
 							<li><a href="data-vis-reviews-cloud.html?id=0">Bloons TD 5</a></li>
 							<li><a href="data-vis-reviews-cloud.html?id=1">Twist</a></li>
 							<li><a href="data-vis-reviews-cloud.html?id=2">Spring Ninja</a></li>
+							<li><a href="data-vis-reviews-cloud.html?id=3">Clash of Clans</a></li>
 						</ul>
 					</div>
 					<div class="toggle-container">
@@ -315,9 +320,12 @@
 				} else if(qs["id"] == 2) {
 					$('.js-app-name').text("Spring Ninja, Ketchapp");
 					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-spring-ninja.js")); // load spring ninja data
+				} else if(qs["id"] == 3) {
+					$('.js-app-name').text("Clash of Clans, Supercell");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-coc.js")); // load spring ninja data
 				}
 			} else {
-				$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-coc.js")); // load default
+				$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-pokemon.js")); // load default
 			}		  
 
 		  function shuffle(array) {
@@ -347,7 +355,7 @@
 			for(var t = 0; t < 100; t++) {
 				topResultsArray.push(cloudData[t]);
 			}
-
+			console.log(cloudData);
 			// shuffle the sorted results
 			shuffle(topResultsArray);
 			var highestFrequency = cloudData[0].freq.freq_overall;

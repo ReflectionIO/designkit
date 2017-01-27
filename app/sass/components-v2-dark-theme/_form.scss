@@ -4,7 +4,10 @@
 			color: $light-grey-2;
 			border-color: #000;
 			.form-field--select__box {
-				background-color: #242426;
+				background-color: #29292c;
+				&:hover {
+					background-color: #242426;
+				}
 				&:after {
 					color: #727686;
 				}
@@ -24,6 +27,64 @@
 	.form-field--select__dropdown {
 		.form-field--select__dropdown__parent-option {
 			border-color: #5a5a68;
+		}
+	}
+	.filter-toggle {
+		label {
+			font-weight: 400;
+			color: #c4c7d0;
+			border-color: #000000;
+			background-color: #343438;
+			&:after {
+				display: none !important;
+			}
+		}
+		input:checked ~ label {
+			color: #fcfdfd;
+			border-color: #000000;
+			background-color: #47447c;
+		}
+		.toggle:last-child label {
+			border-right: 1px solid #000;
+		}
+	}
+	.secondary-filters-container {
+		background-color: #29292c;
+	}
+	.checkboxLabelVisible,
+	.radioButtonLabelVisible {
+		color: $light-grey-1;
+	}
+	input[type="checkbox"]:checked + .checkboxLabel,
+	input[type="radio"]:checked + .radioButtonLabel {
+		&:after {
+			color: $dark-grey-1;
+		}
+	}
+	.checkboxLabel,
+	.radioButtonLabel {
+		background-color: #333338;
+		&:hover {
+			background-color: #3d3d43;
+		}
+		&:active {
+			border-color: #313136;
+		}
+	}
+	.form-field--search {
+		border-color: #000;
+		background-color: #343438;
+		input {
+			color: $light-grey-2;
+		}
+		.ref-icon-after--search:after,
+		.clear-search:after {
+			color: $light-grey-1;
+		}
+		&.is-open {
+			.ref-icon-after--search:after {
+				color: #343438;
+			}
 		}
 	}
 }
