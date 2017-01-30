@@ -112,13 +112,24 @@ button::-moz-focus-inner {
 	@extend .ref-button;
   @extend .ref-button--primary;
   padding: 1rem 1.5rem 1.2rem 1.5rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   letter-spacing: -0.01rem;
   &:not(.is-disabled) {
     .no-touchevents & {
       &:active {
         padding-top: calc(1rem - 1px);  
         padding-bottom: calc(1.2rem - 1px);
+      }
+    }
+  }
+  .ref-table & {
+    padding: 0.9rem 1rem 0.9rem 1rem;
+      &:not(.is-disabled) {
+      .no-touchevents & {
+        &:active {
+          padding-top: calc(0.9rem - 1px);  
+          padding-bottom: calc(0.9rem - 1px);
+        }
       }
     }
   }
@@ -186,11 +197,28 @@ button::-moz-focus-inner {
   @extend .ref-button;
   @extend .ref-button--secondary;
   padding: calc(1rem - 1px) 1.4rem calc(1.2rem - 1px) 1.39rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   letter-spacing: -0.01rem;
   .no-touchevents & {
-    &:active {    
+    &:active {      
       padding-bottom: calc(1.2rem - 2px);
+    }
+  }
+  &.ref-button--secondary--small--link {
+    padding: 1rem 1.4rem 1.2rem 1.39rem;
+    border: none;
+    background-color: transparent;
+    .no-touchevents & {
+      &:hover,
+      &:active {
+        background-color: transparent;
+      }
+      &:active {
+        position: relative;
+        top: 2px;
+        border: none;
+        padding-bottom: 1.2rem;
+      }
     }
   }
 }

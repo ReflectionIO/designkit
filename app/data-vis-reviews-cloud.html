@@ -182,6 +182,10 @@
 	.app-selector li a:hover {
 		color: #4b46b5;
 	}
+	.reviews-content-list li {
+		margin-bottom: 30px;
+		font-size: 14px;
+	}
 </style>
 <body>
 	<!--[if (lt IE 9)]>
@@ -200,16 +204,22 @@
 				<h1 class="heading-style--heading-three">Reviews Tag Cloud</h1>
 				<div class="grid_row filters-row">
 					<div class="app-title">
-						<h2 class="heading-style--heading-four js-app-name">Pokemon Go</h2>
+						<h2 class="heading-style--heading-four js-app-name">Pokemon Go, Niantic, Inc.</h2>
 					</div>
 					<div class="app-selector">
 						<ul>
 							<li>Change selected app</li>
 							<li><a href="data-vis-reviews-cloud.html">Pokemon Go</a></li>
-							<li><a href="data-vis-reviews-cloud.html?id=0">Bloons TD 5</a></li>
+							<!-- <li><a href="data-vis-reviews-cloud.html?id=0">Bloons TD 5</a></li>
 							<li><a href="data-vis-reviews-cloud.html?id=1">Twist</a></li>
 							<li><a href="data-vis-reviews-cloud.html?id=2">Spring Ninja</a></li>
-							<li><a href="data-vis-reviews-cloud.html?id=3">Clash of Clans</a></li>
+							<li><a href="data-vis-reviews-cloud.html?id=3">Clash of Clans</a></li> -->
+							<li><a href="data-vis-reviews-cloud.html?id=4">8 Ball Pool</a></li>
+							<li><a href="data-vis-reviews-cloud.html?id=5">Reigns</a></li>
+							<!-- <li><a href="data-vis-reviews-cloud.html?id=6">WhatsApp</a></li> -->
+							<li><a href="data-vis-reviews-cloud.html?id=7">Facebook Messenger</a></li>
+							<!-- <li><a href="data-vis-reviews-cloud.html?id=8">Amazon</a></li> -->
+							<li><a href="data-vis-reviews-cloud.html?id=9">Top Eleven</a></li>
 						</ul>
 					</div>
 					<div class="toggle-container">
@@ -281,7 +291,10 @@
 					<ul class="tag-cloud tag-cloud--positive"></ul>
 					<ul class="tag-cloud tag-cloud--average"></ul>
 					<ul class="tag-cloud tag-cloud--negative"></ul>
-				</div>
+					<div style="margin-top: 500px; font-size: 15px;">
+						<ul class="js-reviews-content reviews-content-list"></ul>
+					</div>
+				</div>				
 			</div>
 
 		</div>
@@ -313,19 +326,39 @@
 			if(qs["id"]) {
 				if(qs["id"] == 0) {
 					$('.js-app-name').text("Bloons TD 5, Ninja Kiwi");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-bloons.js")); // load bloons data
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-bloons.js")); 
 				} else if(qs["id"] == 1) {
 					$('.js-app-name').text("Twist, Ketchapp");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-twist.js")); // load twist data
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-twist.js")); 
 				} else if(qs["id"] == 2) {
 					$('.js-app-name').text("Spring Ninja, Ketchapp");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-spring-ninja.js")); // load spring ninja data
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-spring-ninja.js"));
 				} else if(qs["id"] == 3) {
 					$('.js-app-name').text("Clash of Clans, Supercell");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-coc.js")); // load spring ninja data
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-coc.js")); 
+				} else if(qs["id"] == 4) {
+					$('.js-app-name').text("8 Ball Pool, Miniclip");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-8-ball.js")); 
+					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-8-ball.js"));
+				} else if(qs["id"] == 5) {
+					$('.js-app-name').text("Reigns, Devolver Digital");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-reigns.js"));
+					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-reigns.js"));
+				} else if(qs["id"] == 6) {
+					$('.js-app-name').text("WhatsApp, WhatsApp Inc.");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-whatsapp.js"));
+				} else if(qs["id"] == 7) {
+					$('.js-app-name').text("Facebook Messenger, Facebook Inc.");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-facebook-messenger.js"));
+					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-facebook-messenger.js"));
+				} else if(qs["id"] == 9) {
+					$('.js-app-name').text("Top Eleven");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-top-eleven.js"));
+					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-top-eleven.js"));
 				}
 			} else {
-				$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-pokemon.js")); // load default
+				$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-pokemon.js"));
+				$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-pokemon.js"));
 			}		  
 
 		  function shuffle(array) {
@@ -355,7 +388,7 @@
 			for(var t = 0; t < 100; t++) {
 				topResultsArray.push(cloudData[t]);
 			}
-			console.log(cloudData);
+
 			// shuffle the sorted results
 			shuffle(topResultsArray);
 			var highestFrequency = cloudData[0].freq.freq_overall;
@@ -379,6 +412,7 @@
 										.data("index", t)
 										.data("total", total)
 										.data("average", topResultsArray[t].freq.average_rating)
+										.attr("data-term", topResultsArray[t].term)
 										.on("mouseenter", function(){
 											var thisIndex = $(this).data("index");
 											var totalFromTag = $(this).data("total");
@@ -402,11 +436,54 @@
 
 											$('.tag-cloud-reviews-container').show();
 										})
+										.on("click", function(){
+											populateReviewsContent($(this).attr("data-term"));
+										})
 				);
 
 				positiveReviewTotals.push(topResultsArray[t].freq.freq_5stars + topResultsArray[t].freq.freq_4stars);
 				averageReviewTotals.push(topResultsArray[t].freq.freq_3stars);
 				negativeReviewTotals.push(topResultsArray[t].freq.freq_2stars + topResultsArray[t].freq.freq_1stars);
+			}
+
+			if (!String.prototype.splice) {
+			    /**
+			     * {JSDoc}
+			     *
+			     * The splice() method changes the content of a string by removing a range of
+			     * characters and/or adding new characters.
+			     *
+			     * @this {String}
+			     * @param {number} start Index at which to start changing the string.
+			     * @param {number} delCount An integer indicating the number of old chars to remove.
+			     * @param {string} newSubStr The String that is spliced in.
+			     * @return {string} A new string with the spliced substring.
+			     */
+			    String.prototype.splice = function(start, delCount, newSubStr) {
+			        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+			    };
+			}
+
+			function populateReviewsContent(term) {
+				console.log(term);
+				// find reviews that contain the term
+				var reviewsToOutput = [];
+				for(var i = 0; i < rawReviews.length; i++) {
+					if(rawReviews[i].content.indexOf(term) > -1) {
+						var contentString = rawReviews[i].content;
+						var indexOfString = rawReviews[i].content.indexOf(term);
+						var wordLength = term.length;
+						var result = contentString.splice(indexOfString + wordLength, 0, "</strong>");
+						result = result.splice(indexOfString, 0, "<strong style=color:blue>");
+						reviewsToOutput.push(result);
+					}
+				}
+				
+				$('.js-reviews-content').empty();
+
+				for(var i = 0; i < reviewsToOutput.length; i++) {
+					$('.js-reviews-content').append($("<li>").html(reviewsToOutput[i]));
+				}
 			}
 
 			positiveReviewTotals.sort(function(a, b){return b-a});
@@ -423,6 +500,7 @@
 												.data("font-size", fontSize + "rem")
 												.data("index", t)
 												.data("total", total)
+												.attr("data-term", topResultsArray[t].term)
 												.on("mouseenter", function(){
 													var thisIndex = $(this).data("index");
 													var totalFromTag = $(this).data("total");
@@ -445,6 +523,9 @@
 													$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
 
 													$('.tag-cloud-reviews-container').show();
+												})
+												.on("click", function(){
+													populateReviewsContent($(this).attr("data-term"));
 												})
 						);
 				}
@@ -460,6 +541,7 @@
 												.data("font-size", fontSize + "rem")
 												.data("index", t)
 												.data("total", total)
+												.attr("data-term", topResultsArray[t].term)
 												.on("mouseenter", function(){
 													var thisIndex = $(this).data("index");
 													var totalFromTag = $(this).data("total");
@@ -483,6 +565,9 @@
 
 													$('.tag-cloud-reviews-container').show();
 												})
+												.on("click", function(){
+													populateReviewsContent($(this).attr("data-term"));
+												})
 						);
 				}
 			}
@@ -497,6 +582,7 @@
 												.data("font-size", fontSize + "rem")
 												.data("index", t)
 												.data("total", total)
+												.attr("data-term", topResultsArray[t].term)
 												.on("mouseenter", function(){
 													var thisIndex = $(this).data("index");
 													var totalFromTag = $(this).data("total");
@@ -519,6 +605,9 @@
 													$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
 
 													$('.tag-cloud-reviews-container').show();
+												})
+												.on("click", function(){
+													populateReviewsContent($(this).attr("data-term"));
 												})
 						);
 				}
