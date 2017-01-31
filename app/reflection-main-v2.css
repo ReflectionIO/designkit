@@ -80,7 +80,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* line 33, sass/ui/_colours.scss */
 .neutral-colour {
-  color: #5674b9;
+  color: #81879d;
 }
 
 /* Base */
@@ -1848,7 +1848,7 @@ input::-ms-clear {
 
 /* line 33, sass/ui/_colours.scss */
 .neutral-colour {
-  color: #5674b9;
+  color: #81879d;
 }
 
 /* line 1, sass/ui/_icons.scss */
@@ -2108,7 +2108,7 @@ input::-ms-clear {
 
 /* line 33, sass/ui/_colours.scss */
 .neutral-colour {
-  color: #5674b9;
+  color: #81879d;
 }
 
 /* Base */
@@ -2491,27 +2491,28 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
 /* line 62, sass/components-v2/_alerts.scss */
 .alert-warning,
 .alert-notice {
+  position: relative;
   width: 100%;
   padding: 12px 16px 15px;
   margin-bottom: 1rem;
   border-radius: 6px;
 }
 
-/* line 69, sass/components-v2/_alerts.scss */
+/* line 70, sass/components-v2/_alerts.scss */
 .alert-warning {
   color: #8e5715;
   border: 1px solid #f7941d;
   background-color: #fef7be;
 }
 
-/* line 74, sass/components-v2/_alerts.scss */
+/* line 75, sass/components-v2/_alerts.scss */
 .alert-notice {
   color: #454288;
   border: 1px solid #6d69c5;
   background-color: #e8e7ff;
 }
 
-/* line 79, sass/components-v2/_alerts.scss */
+/* line 80, sass/components-v2/_alerts.scss */
 .alert-warning__title,
 .alert-notice__title {
   float: left;
@@ -2520,7 +2521,7 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
   font-weight: 600;
   font-size: 16px;
 }
-/* line 86, sass/components-v2/_alerts.scss */
+/* line 87, sass/components-v2/_alerts.scss */
 .alert-warning__title:before,
 .alert-notice__title:before {
   position: relative;
@@ -2529,28 +2530,27 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
   font-size: 16px;
 }
 
-/* line 94, sass/components-v2/_alerts.scss */
+/* line 95, sass/components-v2/_alerts.scss */
 .alert-warning__title:before {
   color: #f7941d;
 }
 
-/* line 98, sass/components-v2/_alerts.scss */
+/* line 99, sass/components-v2/_alerts.scss */
 .alert-notice__title {
   position: relative;
   top: 1px;
 }
-/* line 101, sass/components-v2/_alerts.scss */
+/* line 102, sass/components-v2/_alerts.scss */
 .alert-notice__title:before {
   top: 0;
   font-size: 18px;
   color: #454288;
 }
 
-/* line 107, sass/components-v2/_alerts.scss */
+/* line 108, sass/components-v2/_alerts.scss */
 .alert-warning__warning-content,
 .alert-notice__notice-content {
   padding-left: 164px;
-  margin-bottom: 1rem;
   display: block;
   font-size: 14px;
   line-height: 1.3;
@@ -2572,21 +2572,31 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
   color: #623c0e;
 }
 
-/* line 129, sass/components-v2/_alerts.scss */
-.alert-notice__notice-content a {
+/* line 128, sass/components-v2/_alerts.scss */
+.alert-notice__notice-content a,
+.alert-notice-cta {
   color: #454288;
 }
 /* line 131, sass/components-v2/_alerts.scss */
-.alert-notice__notice-content a:hover {
+.alert-notice__notice-content a:hover,
+.alert-notice-cta:hover {
   color: #343166;
 }
 
-/* line 136, sass/components-v2/_alerts.scss */
+/* line 135, sass/components-v2/_alerts.scss */
+.alert-notice-cta {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* line 140, sass/components-v2/_alerts.scss */
 li.alert-warning__warning-content,
 li.alert-notice__notice-content {
   position: relative;
+  margin-top: 1rem;
 }
-/* line 139, sass/components-v2/_alerts.scss */
+/* line 144, sass/components-v2/_alerts.scss */
 li.alert-warning__warning-content:before,
 li.alert-notice__notice-content:before {
   content: "\2022";
@@ -2595,30 +2605,38 @@ li.alert-notice__notice-content:before {
   font-family: "Lato", sans-serif;
   font-size: 1.6rem;
 }
-/* line 146, sass/components-v2/_alerts.scss */
+/* line 151, sass/components-v2/_alerts.scss */
 li.alert-warning__warning-content span,
 li.alert-notice__notice-content span {
   padding-left: 2.8rem;
   display: inline-block;
 }
-/* line 150, sass/components-v2/_alerts.scss */
+/* line 155, sass/components-v2/_alerts.scss */
 li.alert-warning__warning-content a,
 li.alert-notice__notice-content a {
   padding-left: 1rem;
   display: inline-block;
 }
 
-/* line 156, sass/components-v2/_alerts.scss */
+/* line 161, sass/components-v2/_alerts.scss */
 li.alert-warning__warning-content:before {
   color: #f7941d;
 }
 
-/* line 161, sass/components-v2/_alerts.scss */
+/* line 166, sass/components-v2/_alerts.scss */
 li.alert-notice__notice-content:before {
   color: #6d69c5;
 }
 
-/* line 165, sass/components-v2/_alerts.scss */
+/* line 170, sass/components-v2/_alerts.scss */
+.alert-notice-cta {
+  position: absolute;
+  top: 15px;
+  right: 16px;
+  font-size: 14px;
+}
+
+/* line 176, sass/components-v2/_alerts.scss */
 .popup-toast-container {
   -webkit-perspective: 1300px;
   perspective: 1300px;
@@ -2635,19 +2653,19 @@ li.alert-notice__notice-content:before {
   -webkit-transform: rotateX(0deg);
           transform: rotateX(0deg);
 }
-/* line 178, sass/components-v2/_alerts.scss */
+/* line 189, sass/components-v2/_alerts.scss */
 .popup-toast-container .ref-icon-after--close {
   position: absolute;
   top: 10px;
   right: 10px;
 }
-/* line 182, sass/components-v2/_alerts.scss */
+/* line 193, sass/components-v2/_alerts.scss */
 .popup-toast-container .ref-icon-after--close:after {
   font-size: 18px;
   color: #4b488f;
 }
 
-/* line 188, sass/components-v2/_alerts.scss */
+/* line 199, sass/components-v2/_alerts.scss */
 .popup-toast {
   position: relative;
   width: 100%;
@@ -2656,43 +2674,43 @@ li.alert-notice__notice-content:before {
   border-radius: 3px 3px 0 0;
   background-color: #6d69c5;
 }
-/* line 195, sass/components-v2/_alerts.scss */
+/* line 206, sass/components-v2/_alerts.scss */
 .popup-toast.popup-toast--save {
   height: 51px;
   padding: 13px 0px 0 13px;
   background-color: #1bc79f;
 }
-/* line 199, sass/components-v2/_alerts.scss */
+/* line 210, sass/components-v2/_alerts.scss */
 .popup-toast.popup-toast--save span {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: #fcfdfd;
 }
-/* line 204, sass/components-v2/_alerts.scss */
+/* line 215, sass/components-v2/_alerts.scss */
 .popup-toast.popup-toast--save span:before {
   margin-right: 6px;
   font-size: 20px;
   color: #25f9c8;
 }
-/* line 210, sass/components-v2/_alerts.scss */
+/* line 221, sass/components-v2/_alerts.scss */
 .popup-toast.popup-toast--save span:last-child {
   position: relative;
   top: 1px;
 }
-/* line 215, sass/components-v2/_alerts.scss */
+/* line 226, sass/components-v2/_alerts.scss */
 .popup-toast h2 {
   margin-bottom: 16px;
   font-size: 18px;
   color: #fcfdfd;
 }
-/* line 220, sass/components-v2/_alerts.scss */
+/* line 231, sass/components-v2/_alerts.scss */
 .popup-toast p {
   font-family: "Lato", sans-serif;
   font-size: 14px;
   color: #d6d8fb;
 }
-/* line 225, sass/components-v2/_alerts.scss */
+/* line 236, sass/components-v2/_alerts.scss */
 .popup-toast.is-closed {
   -ms-transform-origin: center bottom;
   -webkit-transform-origin: center bottom;
@@ -2703,12 +2721,12 @@ li.alert-notice__notice-content:before {
   -webkit-transition: -webkit-transform 0.35s ease-in;
           transition: transform 0.35s ease-in;
 }
-/* line 234, sass/components-v2/_alerts.scss */
+/* line 245, sass/components-v2/_alerts.scss */
 .popup-toast a {
   font-weight: 600;
   color: #fcfdfd;
 }
-/* line 237, sass/components-v2/_alerts.scss */
+/* line 248, sass/components-v2/_alerts.scss */
 .popup-toast a:hover {
   color: #dde9e9 !important;
 }
@@ -18347,7 +18365,7 @@ span.live-chart__cell__publisher-name:hover {
 }
 /* line 316, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--status .ref-icon-before--cog {
-  color: #5674b9;
+  color: #81879d;
 }
 /* line 318, sass/templates-v2/_my-account--my-list.scss */
 .ref-table--my-account .linked-accounts-cell--status .ref-icon-before--cog:before {
