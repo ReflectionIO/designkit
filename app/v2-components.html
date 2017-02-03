@@ -115,7 +115,7 @@
 								<span class="form-field--select__box ref-icon-after--angle-down js-date-trigger">01/01/16 - 01/02/16</span>
 							</div>
 							<div class="primary-filter js-form-field--group">
-								<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger">United Kingdom</span>
+								<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger js-left-align-group-picker">United Kingdom</span>
 							</div>
 							<div class="primary-filter form-field--select">
 								<select class="js-select-box">
@@ -1582,11 +1582,18 @@
 						offsetTop = 5,
 						isAlreadyOpen = $this.parent('.js-form-field--group').hasClass("is-open"),
 						groupPickerWidth = 650;
+						
+						var offsetLeft  = thisPositionLeft + thisWidth / 2 - groupPickerWidth / 2;
+						if($this.hasClass("js-right-align-group-picker")) {
+							offsetLeft = (thisPositionLeft - groupPickerWidth) + thisWidth;
+						} else if($this.hasClass("js-left-align-group-picker")) {
+							offsetLeft = thisPositionLeft;
+						}
 				
 				if(!isAlreadyOpen) {
 					setTimeout(function(){ // setTimeout is to wait for all other popups to close first
-						
-						$('.js-group-picker').show().css({ "top" : thisPositionTop + thisHeight + offsetTop, "left" : thisPositionLeft + thisWidth / 2 - groupPickerWidth / 2 });
+
+						$('.js-group-picker').show().css({ "top" : thisPositionTop + thisHeight + offsetTop, "left" : offsetLeft });
 						$this.parent(".js-form-field--group").addClass("is-open");
 						
 					}, 100);

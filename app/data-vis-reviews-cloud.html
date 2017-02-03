@@ -353,7 +353,7 @@
 		}
 
 		function handleData(cloudData) {
-			
+			console.log(cloudData);
 			$('.tag-cloud--all').empty();			
 			$('.tag-cloud--positive').empty();
 			$('.tag-cloud--average').empty();
@@ -400,27 +400,27 @@
 											var thisIndex = $(this).data("index");
 											var totalFromTag = $(this).data("total");
 											
-											var percFiveStars = parseInt((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+											var percFiveStars = Math.round((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
 											$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFiveStars + "%");
 											$('.js-five-stars-percent').text(percFiveStars + "%");
 
-											var percFourStars = parseInt((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+											var percFourStars = Math.round((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
 											$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFourStars + "%");
 											$('.js-four-stars-percent').text(percFourStars + "%");
 											
-											var percThreeStars = parseInt((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+											var percThreeStars = Math.round((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
 											$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percThreeStars + "%");
 											$('.js-three-stars-percent').text(percThreeStars + "%");
 											
-											var percTwoStars = parseInt((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+											var percTwoStars = Math.round((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
 											$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percTwoStars + "%");
 											$('.js-two-stars-percent').text(percTwoStars + "%");
 											
-											var percOneStars = parseInt((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+											var percOneStars = Math.round((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
 											$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percOneStars + "%");
 											$('.js-one-stars-percent').text(percOneStars + "%");
@@ -460,27 +460,27 @@
 													var thisIndex = $(this).data("index");
 													var totalFromTag = $(this).data("total");
 
-													var percFiveStars = parseInt((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percFiveStars = Math.round((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
 													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFiveStars + "%");
 													$('.js-five-stars-percent').text(percFiveStars + "%");
 
-													var percFourStars = parseInt((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percFourStars = Math.round((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
 													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFourStars + "%");
 													$('.js-four-stars-percent').text(percFourStars + "%");
 													
-													var percThreeStars = parseInt((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percThreeStars = Math.round((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
 													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percThreeStars + "%");
 													$('.js-three-stars-percent').text(percThreeStars + "%");
 													
-													var percTwoStars = parseInt((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percTwoStars = Math.round((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
 													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percTwoStars + "%");
 													$('.js-two-stars-percent').text(percTwoStars + "%");
 													
-													var percOneStars = parseInt((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percOneStars = Math.round((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
 													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percOneStars + "%");
 													$('.js-one-stars-percent').text(percOneStars + "%");
@@ -515,27 +515,27 @@
 													var thisIndex = $(this).data("index");
 													var totalFromTag = $(this).data("total");
 
-													var percFiveStars = parseInt((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percFiveStars = Math.round((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
 													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFiveStars + "%");
 													$('.js-five-stars-percent').text(percFiveStars + "%");
 
-													var percFourStars = parseInt((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percFourStars = Math.round((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
 													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFourStars + "%");
 													$('.js-four-stars-percent').text(percFourStars + "%");
 													
-													var percThreeStars = parseInt((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percThreeStars = Math.round((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
 													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percThreeStars + "%");
 													$('.js-three-stars-percent').text(percThreeStars + "%");
 													
-													var percTwoStars = parseInt((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percTwoStars = Math.round((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
 													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percTwoStars + "%");
 													$('.js-two-stars-percent').text(percTwoStars + "%");
 													
-													var percOneStars = parseInt((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percOneStars = Math.round((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
 													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percOneStars + "%");
 													$('.js-one-stars-percent').text(percOneStars + "%");
@@ -570,27 +570,27 @@
 													var thisIndex = $(this).data("index");
 													var totalFromTag = $(this).data("total");
 
-													var percFiveStars = parseInt((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percFiveStars = Math.round((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
 													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFiveStars + "%");
 													$('.js-five-stars-percent').text(percFiveStars + "%");
 
-													var percFourStars = parseInt((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percFourStars = Math.round((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
 													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFourStars + "%");
 													$('.js-four-stars-percent').text(percFourStars + "%");
 													
-													var percThreeStars = parseInt((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percThreeStars = Math.round((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
 													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percThreeStars + "%");
 													$('.js-three-stars-percent').text(percThreeStars + "%");
 													
-													var percTwoStars = parseInt((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percTwoStars = Math.round((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
 													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percTwoStars + "%");
 													$('.js-two-stars-percent').text(percTwoStars + "%");
 													
-													var percOneStars = parseInt((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
+													var percOneStars = Math.round((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
 													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percOneStars + "%");
 													$('.js-one-stars-percent').text(percOneStars + "%");
@@ -632,28 +632,28 @@
 		function loadReviews(appId) {
 			if(appId == "8ballpool") {					
 					
-					populateAppContent("8 Ball Pool", "Miniclip", "images/data-vis/reviews/app-icon-8-ball-pool.jpg", "js/data-vis/review-cloud-8-ball.json");
-					
-				} else if(appId == "reigns") {
-					
-					populateAppContent("Reigns", "Devolver Digital", "images/data-vis/reviews/app-icon-reigns.jpg", "js/data-vis/review-cloud-reigns.json");
-					
-				} else if(appId == "facebookmessenger") {
-					
-					populateAppContent("Facebook Messenger", "Facebook Inc.", "images/data-vis/reviews/app-icon-facebook-messenger.jpg", "js/data-vis/review-cloud-facebook-messenger.json");
+				populateAppContent("8 Ball Pool", "Miniclip", "images/data-vis/reviews/app-icon-8-ball-pool.jpg", "js/data-vis/review-cloud-8-ball.json");
+				
+			} else if(appId == "reigns") {
+				
+				populateAppContent("Reigns", "Devolver Digital", "images/data-vis/reviews/app-icon-reigns.jpg", "js/data-vis/review-cloud-reigns.json");
+				
+			} else if(appId == "facebookmessenger") {
+				
+				populateAppContent("Facebook Messenger", "Facebook Inc.", "images/data-vis/reviews/app-icon-facebook-messenger.jpg", "js/data-vis/review-cloud-facebook-messenger.json");
 
-				} else if(appId == "topeleven") {
+			} else if(appId == "topeleven") {
 
-					populateAppContent("Top Eleven 2017", "Nordeus", "images/data-vis/reviews/app-icon-top-eleven.jpg", "js/data-vis/review-cloud-top-eleven.json");
+				populateAppContent("Top Eleven 2017", "Nordeus", "images/data-vis/reviews/app-icon-top-eleven.jpg", "js/data-vis/review-cloud-top-eleven.json");
 
-				} else if(appId == "pokemongo") {
+			} else if(appId == "pokemongo") {
 
-					populateAppContent("Pokémon GO", "Niantic, Inc.", "images/data-vis/reviews/app-icon-pokemon-go.jpg", "js/data-vis/review-cloud-pokemon.json");
+				populateAppContent("Pokémon GO", "Niantic, Inc.", "images/data-vis/reviews/app-icon-pokemon-go.jpg", "js/data-vis/review-cloud-pokemon.json");
 
-				} else if(appId == "supermario") {
+			} else if(appId == "supermario") {
 
-						populateAppContent("Super Mario Run", "Nintendo Co., Ltd", "images/data-vis/reviews/app-icon-super-mario.jpg", "js/data-vis/review-cloud-super-mario.json");
-				}
+					populateAppContent("Super Mario Run", "Nintendo Co., Ltd", "images/data-vis/reviews/app-icon-super-mario.jpg", "js/data-vis/review-cloud-super-mario.json");
+			}
 		}
 
 		function loadRawReviews(dataUrl) {
