@@ -2,7 +2,7 @@
 <html lang="en" class="no-js" ng-app="reflectionApp">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection Design Kit - Buttons</title>
+	<title>Reflection Data Lab, App Reviews Analysis</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
@@ -50,11 +50,12 @@
 					<div class="filters-row">
 						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-selected-app">
 							<select class="js-select-box">
-						    <option value="pokemongo" selected>Pokemon Go</option>
+								<option value="supermario" selected>Super Mario Run</option>
+						    <option value="pokemongo">Pokémon GO</option>
 						    <option value="8ballpool">8 Ball Pool</option>
 						    <option value="reigns">Reigns</option>
 						    <option value="facebookmessenger">Facebook Messenger</option>
-						    <option value="topeleven">Top Eleven</option>
+						    <option value="topeleven">Top Eleven 2017</option>
 							</select>
 						</div>
 
@@ -89,10 +90,13 @@
 					<div class="page-data-vis-reviews-cloud__main-content-container">
 						<aside class="page-data-vis-reviews-cloud__app-column">
 							<div class="page-data-vis-reviews-cloud__app-column__app-icon-container">
-								<img src="images/data-vis-reviews-cloud-app-icon-placeholder.jpg" alt="App Name" />
+								<img 
+									src="images/data-vis-reviews-cloud-app-icon-placeholder.jpg"
+									alt="App Name"
+									class="js-app-icon" />
 							</div>
-							<h2 class="page-data-vis-reviews-cloud__app-name heading-style--heading-three">App Title Lorem Ipsum</h2>
-							<h3 class="page-data-vis-reviews-cloud__developer-name">Developer Name</h3>
+							<h2 class="page-data-vis-reviews-cloud__app-name heading-style--heading-three js-app-name">App Title Lorem Ipsum</h2>
+							<h3 class="page-data-vis-reviews-cloud__developer-name js-developer-name">Developer Name</h3>
 
 							<div class="page-data-vis-reviews-cloud__reviews-widget">
 								<h4>Times <span class="js-keyword-hover">'Keyword'</span> Appears in Recent Reviews</h4>
@@ -200,65 +204,161 @@
   <script src="js-v2/application.js"></script>
 
   <script>
-  	
-		$(window).on("load", function(){
-		  new Page();
+		
+		var rawReviews = {};
 
-		  var qs = (function(a) {
-		    if (a == "") return {};
-		    var b = {};
-		    for (var i = 0; i < a.length; ++i)
-		    {
-		        var p=a[i].split('=', 2);
-		        if (p.length == 1)
-		            b[p[0]] = "";
-		        else
-		            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-		    }
-		    return b;
-			})(window.location.search.substr(1).split('&'));
+		if (!String.prototype.splice) {
+		    String.prototype.splice = function(start, delCount, newSubStr) {
+		        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+		    };
+		}
 
-			if(qs["id"]) {
-				if(qs["id"] == "8ballpool") {
-					$('.js-app-name').text("8 Ball Pool, Miniclip");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-8-ball.js")); 
-					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-8-ball.js"));
-				} else if(qs["id"] == "reigns") {
-				 	$('.js-app-name').text("Reigns, Devolver Digital");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-reigns.js"));
-					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-reigns.js"));
-				} else if(qs["id"] == "facebookmessenger") {
-					$('.js-app-name').text("Facebook Messenger, Facebook Inc.");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-facebook-messenger.js"));
-					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-facebook-messenger.js"));
-				} else if(qs["id"] == "topeleven") {
-					$('.js-app-name').text("Top Eleven");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-top-eleven.js"));
-					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-top-eleven.js"));
+		function shuffle(array) {
+		  var currentIndex = array.length, temporaryValue, randomIndex;
+
+		  // While there remain elements to shuffle...
+		  while (0 !== currentIndex) {
+
+		    // Pick a remaining element...
+		    randomIndex = Math.floor(Math.random() * currentIndex);
+		    currentIndex -= 1;
+
+		    // And swap it with the current element.
+		    temporaryValue = array[currentIndex];
+		    array[currentIndex] = array[randomIndex];
+		    array[randomIndex] = temporaryValue;
+		  }
+
+		  return array;
+		}
+
+		function populateReviewsContent(term) {
+			// find reviews that contain the term
+
+			var reviewsToOutput = [];
+			for(var i = 0; i < rawReviews.length; i++) {
+				if(rawReviews[i].content.indexOf(term) > -1) {
+					reviewsToOutput.push(rawReviews[i]);
 				}
-			} else {
-				$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-pokemon.js"));
-				$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-pokemon.js"));
-			}		  
-
-		  function shuffle(array) {
-			  var currentIndex = array.length, temporaryValue, randomIndex;
-
-			  // While there remain elements to shuffle...
-			  while (0 !== currentIndex) {
-
-			    // Pick a remaining element...
-			    randomIndex = Math.floor(Math.random() * currentIndex);
-			    currentIndex -= 1;
-
-			    // And swap it with the current element.
-			    temporaryValue = array[currentIndex];
-			    array[currentIndex] = array[randomIndex];
-			    array[randomIndex] = temporaryValue;
-			  }
-
-			  return array;
 			}
+			
+			$('.js-reviews-content').empty();
+			$('.js-keyword').text("'" + term + "'");
+
+			for(var i = 0; i < reviewsToOutput.length; i++) {
+
+				var contentString = reviewsToOutput[i].content;
+				var indexOfString = reviewsToOutput[i].content.indexOf(term);
+				var wordLength = term.length;
+				var formattedContent = contentString.splice(indexOfString + wordLength, 0, "</strong>");
+				formattedContent = formattedContent.splice(indexOfString, 0, "<strong>");
+
+				var ratingsContainer = $("<div>").addClass("ratings-container").append($("<div>").addClass("ratings-full").css("width", ((reviewsToOutput[i].rating / 5) * 100) + "%"));
+				var reviewTitle = $("<h2>").addClass("reviews-content__title").text(reviewsToOutput[i].title);
+				var reviewDate = new Date(reviewsToOutput[i].date);
+				var formattedReviewDate = reviewDate.getDate() + "/" + (reviewDate.getMonth()+1) + "/" + reviewDate.getFullYear();
+				var reviewDate = $("<span>").addClass("reviews-content__date").text(formattedReviewDate);
+				var reviewContent = $("<p>").html(formattedContent);
+
+				$('.js-reviews-content').append($("<li>").append(ratingsContainer)
+																									.append(reviewTitle)
+																									.append(reviewDate)
+																									.append(reviewContent)
+																				);
+			}
+		}
+
+		var FilterDropDown = function($domElement) {
+
+			var $thisSelectBox = $domElement,
+					$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
+					$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+
+			$thisSelectBox.find('option').each(function(){
+				
+				var $thisOption = $(this),
+						selectedClass = "";
+
+						if($thisOption.is(":selected")) {
+							if($thisOption.val() != "") {
+								selectedClass = "is-selected";
+								$currentValue.text($thisOption.text());
+							}
+						}
+
+				if($thisOption.val() != "") {
+
+					var accessClass = "";
+					if($thisOption.data("access")) {
+						accessClass = "ref-icon-after--key";
+					}
+
+					var $newListItem = $("<li>");
+					$dropDownContainer.append($newListItem
+																				.addClass("js-dropdown-option")
+																				.addClass(selectedClass)
+																				.addClass(accessClass)
+																				.attr('data-value', $thisOption.attr('value'))
+																				.on("click", function() {
+																					var $this = $(this);
+																					loadReviews($this.attr('data-value'));
+																					loadRawReviews("js/data-vis/reviews-raw-" + $this.attr('data-value') + ".json");
+																					closeAllFilters();
+																					$('.js-dropdown-option.is-selected').removeClass("is-selected");
+																					$this.addClass("is-selected");
+																					$('.js-dropdown-trigger').text($this.text());
+																				})
+																				.append($("<span>").text($thisOption.text()))
+																	);
+				}
+			});
+
+			$currentValue.on("click", function(){
+				if(!$thisSelectBox.attr("disabled")) {
+					var $parentDiv = $thisSelectBox.parent("div");
+					if($parentDiv.hasClass("is-open")) {
+						$dropDownContainer.toggle();	
+						$parentDiv.toggleClass("is-open");
+					} else {
+						setTimeout(function(){
+							if(!$parentDiv.hasClass("is-open")) {
+								closeAllFilters();
+							}
+							var parentWidth = $parentDiv.width();
+							var parentHeight = $parentDiv.height();
+							$dropDownContainer.css({"min-width": parentWidth + "px"});
+							$dropDownContainer.toggle();	
+							$parentDiv.toggleClass("is-open");
+						}, 50); // allow time for instance.closeAllFilters() to close other filters first
+					}
+				}
+			});
+
+			if($currentValue.text() == "") {
+				$thisSelectBox.parent("div").addClass("nothing-selected");
+			}
+
+			$thisSelectBox.parent("div").append($currentValue)
+																	.append($dropDownContainer);
+		}
+
+		function closeAllFilters() {
+			$('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
+			$('.js-secondary-filter.is-open').removeClass("is-open");
+		}
+
+		function scrollToReviews() {
+			var scrollTo = $('.reviews-content-container').offset().top;
+			$("window, body").animate({scrollTop: scrollTo - 100}, '500');
+		}
+
+		function handleData(cloudData) {
+			
+			$('.tag-cloud--all').empty();			
+			$('.tag-cloud--positive').empty();
+			$('.tag-cloud--average').empty();
+			$('.tag-cloud--negative').empty();
+			$('.js-reviews-content').empty().append($('<li><h2 class="reviews-content__title">Click a term above to see the reviews it appears in</h2></li>'));
 		
 			var minFontSize = 1,
 					maxFontSize = 7;
@@ -327,68 +427,15 @@
 											
 											$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
 										})
-										.on("click", function(){
+										.on("click", function(){											
 											populateReviewsContent($(this).attr("data-term"));
+											scrollToReviews();
 										})
 				);
 
 				positiveReviewTotals.push(topResultsArray[t].freq.freq_5stars + topResultsArray[t].freq.freq_4stars);
 				averageReviewTotals.push(topResultsArray[t].freq.freq_3stars);
 				negativeReviewTotals.push(topResultsArray[t].freq.freq_2stars + topResultsArray[t].freq.freq_1stars);
-			}
-
-			if (!String.prototype.splice) {
-			    /**
-			     * {JSDoc}
-			     *
-			     * The splice() method changes the content of a string by removing a range of
-			     * characters and/or adding new characters.
-			     *
-			     * @this {String}
-			     * @param {number} start Index at which to start changing the string.
-			     * @param {number} delCount An integer indicating the number of old chars to remove.
-			     * @param {string} newSubStr The String that is spliced in.
-			     * @return {string} A new string with the spliced substring.
-			     */
-			    String.prototype.splice = function(start, delCount, newSubStr) {
-			        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
-			    };
-			}
-
-			function populateReviewsContent(term) {
-				// find reviews that contain the term
-
-				var reviewsToOutput = [];
-				for(var i = 0; i < rawReviews.length; i++) {
-					if(rawReviews[i].content.indexOf(term) > -1) {
-						reviewsToOutput.push(rawReviews[i]);
-					}
-				}
-				
-				$('.js-reviews-content').empty();
-				$('.js-keyword').text("'" + term + "'");
-
-				for(var i = 0; i < reviewsToOutput.length; i++) {
-
-					var contentString = reviewsToOutput[i].content;
-					var indexOfString = reviewsToOutput[i].content.indexOf(term);
-					var wordLength = term.length;
-					var formattedContent = contentString.splice(indexOfString + wordLength, 0, "</strong>");
-					formattedContent = formattedContent.splice(indexOfString, 0, "<strong>");
-
-					var ratingsContainer = $("<div>").addClass("ratings-container").append($("<div>").addClass("ratings-full").css("width", ((reviewsToOutput[i].rating / 5) * 100) + "%"));
-					var reviewTitle = $("<h2>").addClass("reviews-content__title").text(reviewsToOutput[i].title);
-					var reviewDate = new Date(reviewsToOutput[i].date);
-					var formattedReviewDate = reviewDate.getDate() + "/" + (reviewDate.getMonth()+1) + "/" + reviewDate.getFullYear();
-					var reviewDate = $("<span>").addClass("reviews-content__date").text(formattedReviewDate);
-					var reviewContent = $("<p>").html(formattedContent);
-
-					$('.js-reviews-content').append($("<li>").append(ratingsContainer)
-																										.append(reviewTitle)
-																										.append(reviewDate)
-																										.append(reviewContent)
-																					);
-				}
 			}
 
 			positiveReviewTotals.sort(function(a, b){return b-a});
@@ -443,6 +490,7 @@
 												})
 												.on("click", function(){
 													populateReviewsContent($(this).attr("data-term"));
+													scrollToReviews();
 												})
 						);
 				}
@@ -497,6 +545,7 @@
 												})
 												.on("click", function(){
 													populateReviewsContent($(this).attr("data-term"));
+													scrollToReviews();
 												})
 						);
 				}
@@ -551,6 +600,7 @@
 												})
 												.on("click", function(){
 													populateReviewsContent($(this).attr("data-term"));
+													scrollToReviews();
 												})
 						);
 				}
@@ -567,6 +617,56 @@
 					$(this).css("font-size", $this.data("font-size"));
 				});
 			}, 500);
+		}
+
+		function populateAppContent(appName, devName, appIconUrl, dataUrl) {
+			$.getJSON(dataUrl, function( data ) {
+			  handleData(data.data);
+			});
+
+			$('.js-app-name').text(appName);
+			$('.js-developer-name').text(devName);
+			$('.js-app-icon').attr("src", appIconUrl);
+		}
+
+		function loadReviews(appId) {
+			if(appId == "8ballpool") {					
+					
+					populateAppContent("8 Ball Pool", "Miniclip", "images/data-vis/reviews/app-icon-8-ball-pool.jpg", "js/data-vis/review-cloud-8-ball.json");
+					
+				} else if(appId == "reigns") {
+					
+					populateAppContent("Reigns", "Devolver Digital", "images/data-vis/reviews/app-icon-reigns.jpg", "js/data-vis/review-cloud-reigns.json");
+					
+				} else if(appId == "facebookmessenger") {
+					
+					populateAppContent("Facebook Messenger", "Facebook Inc.", "images/data-vis/reviews/app-icon-facebook-messenger.jpg", "js/data-vis/review-cloud-facebook-messenger.json");
+
+				} else if(appId == "topeleven") {
+
+					populateAppContent("Top Eleven 2017", "Nordeus", "images/data-vis/reviews/app-icon-top-eleven.jpg", "js/data-vis/review-cloud-top-eleven.json");
+
+				} else if(appId == "pokemongo") {
+
+					populateAppContent("Pokémon GO", "Niantic, Inc.", "images/data-vis/reviews/app-icon-pokemon-go.jpg", "js/data-vis/review-cloud-pokemon.json");
+
+				} else if(appId == "supermario") {
+
+						populateAppContent("Super Mario Run", "Nintendo Co., Ltd", "images/data-vis/reviews/app-icon-super-mario.jpg", "js/data-vis/review-cloud-super-mario.json");
+				}
+		}
+
+		function loadRawReviews(dataUrl) {
+			$.getJSON(dataUrl, function( data ) {
+			  rawReviews = data.data;
+			});
+		}
+
+		$(window).on("load", function(){
+		  new Page();
+			
+			loadReviews("supermario");
+			loadRawReviews("js/data-vis/reviews-raw-supermario.json");
 
 			$('.js-toggle input').each(function(){				
 				var cloudToToggle = $(this).data("cloudtotoggle");
@@ -585,91 +685,17 @@
 				}
 			});
 
-			var FilterDropDown = function($domElement, chartType) {
-
-				var $thisSelectBox = $domElement,
-						$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
-						$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
-
-				$thisSelectBox.find('option').each(function(){
-					
-					var $thisOption = $(this),
-							selectedClass = "";
-
-					if($thisOption.val() != "") {
-
-						if($thisOption.is(":selected")) {
-							if($thisOption.val() != "") {
-								selectedClass = "is-selected";
-								$currentValue.text($thisOption.text());
-							}
-						}
-
-						var accessClass = "";
-						if($thisOption.data("access")) {
-							accessClass = "ref-icon-after--key";
-						}
-
-						var $newListItem = $("<li>");
-						$dropDownContainer.append($newListItem
-																					.addClass("js-dropdown-option")
-																					.addClass(selectedClass)
-																					.addClass(accessClass)
-																					.attr('data-value', $thisOption.attr('value'))
-																					.on("click", function() {
-
-																						var $this = $(this);
-																						var location = "http://" + document.location.hostname + document.location.pathname + "?id=" + $this.attr("data-value");
-																						window.location.href = location;
-
-																					})
-																					.append($("<span>").text($thisOption.text()))
-																		);
-					} else {
-						// no option value means placeholder text before option is selected
-						$currentValue.text($thisOption.text());
-					}
-				});
-
-				$currentValue.on("click", function(){
-					if(!$thisSelectBox.attr("disabled")) {
-						var $parentDiv = $thisSelectBox.parent("div");
-						if($parentDiv.hasClass("is-open")) {
-							$dropDownContainer.toggle();	
-							$parentDiv.toggleClass("is-open");
-						} else {
-							setTimeout(function(){
-								if(!$parentDiv.hasClass("is-open")) {
-									closeAllFilters();
-								}
-								var parentWidth = $parentDiv.width();
-								var parentHeight = $parentDiv.height();
-								$dropDownContainer.css({"min-width": parentWidth + "px"});
-								$dropDownContainer.toggle();	
-								$parentDiv.toggleClass("is-open");
-							}, 50); // allow time for instance.closeAllFilters() to close other filters first
-						}
-					}
-				});
-
-				if($currentValue.text() == "") {
-					$thisSelectBox.parent("div").addClass("nothing-selected");
-				}
-
-				$thisSelectBox.parent("div").append($currentValue)
-																		.append($dropDownContainer);
-			}
-
-			function closeAllFilters() {
-				$('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
-				$('.js-secondary-filter.is-open').removeClass("is-open");
-			}
-
 			$('.js-select-box').each(function() {
   			new FilterDropDown($(this), "dataOverview");
   		});
 
+  		$("html").on("click", function(e){
+				if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
+					closeAllFilters();
+				}
+			});
 		});
+
   </script>
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script> 
 </body>
