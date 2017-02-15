@@ -69,10 +69,8 @@ textarea {
 		}
 	}
 	&.form-field--with-error {
-		> label {
-			top: 25px;
-		}
 		.form-field--select__box {
+			padding-top: 42px;
 			border-color: $error-orange-border;
 			background-color: #fdf5ee;
 			z-index: 10;
@@ -82,7 +80,7 @@ textarea {
 		}
 		.form-field-error-text {
 			position: absolute;
-			top: 7px;
+			top: 23px;
 			left: 20px;		
 			display: block;
 			z-index: 11;
@@ -335,6 +333,9 @@ textarea {
 	.dropdown__list {
 		max-height: 300px;
 		overflow: auto;
+		.form-filter & {
+			max-height: 140px;
+		}
 		.icon-flag-sm {
 			margin-right: 11px;
 			vertical-align: middle;
@@ -1125,7 +1126,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 			&.ref-icon-before--play-store {				
 				overflow: visible;
 				&:before {
-					margin-left: -8px;
+					margin-left: 0;
 					margin-right: 9px;
 				}
 				&.is-selected {
@@ -1136,7 +1137,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 			}
 			&.ref-icon-before--play-store {
 				&:before {
-					margin-left: -7px;
+					margin-left: 0;
 				}
 			}
 		}
@@ -1278,7 +1279,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
     padding: 3px 20px 18px 20px;
     overflow: auto;
 		border-top: 0;
-		border-radius: 0 0 4px 4px;
+		border-radius: 0;
 		background-color: #f2f7f7;
 		li {
 			margin-bottom: 6px;
@@ -1549,4 +1550,18 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	span:after {
 		color: $reflection-red;
 	}
+}
+.form-field--standalone {
+	margin-top: 1.4rem;
+}
+.form-field--three-quarters {
+  display: inline-block;
+  width: 78%;
+  + .form-field-cta {
+  	width: 22%;
+  	margin: 0;
+    display: inline-block;    
+    vertical-align: top;
+    text-align: right;
+  }
 }

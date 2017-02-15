@@ -485,26 +485,39 @@
 
 						<div class="multi-step-section is-viewed-step">
 
-								<h2 class="heading-style--heading-five multi-step-section__heading">Sign Up as Pro Member</h2>
+								<h2 class="heading-style--heading-five multi-step-section__heading">You're Going Pro</h2>
 
 								<aside>
 									<ul class="multi-step-breadcrumb">
 										<li class="multi-step-breadcrumb__one-third multi-step-breadcrumb__current-item"><a href="#" onclick="return false;">Details</a></li>
-										<li class="multi-step-breadcrumb__one-third multi-step-breadcrumb__disabled"><a href="#" onclick="return false;">Licenses</a></li>
+										<li class="multi-step-breadcrumb__one-third multi-step-breadcrumb__disabled"><a href="#" onclick="return false;">Address</a></li>
 										<li class="multi-step-breadcrumb__one-third multi-step-breadcrumb__disabled"><a href="#" onclick="return false;">Payment</a></li>
 									</ul>
 								</aside>
+								
+								<div class="toggle-container filter-toggle filter-toggle--with-text go-pro-payment-toggle">
+									<div class="toggle">
+										<input id="toggle--show-popxs" name="radioxsmall" checked type="radio">
+										<label for="toggle--show-popxs">
+											Individual
+										</label>
+									</div>
+									<div class="toggle">
+										<input id="toggle--show-regxs" name="radioxsmall" type="radio">
+										<label for="toggle--show-regxs">
+											Company
+										</label>
+									</div>
+								</div>
 
 								<form class="reflection-form">
-			 						<div class="form-field--split">
-					 					<div class="form-field">
-											<input type="text" name="firstname" id="firstname" autocomplete="off" class="js-edit-details" />
-											<label for="firstname">First Name</label>
-										</div>
-										<div class="form-field">						
-											<input type="text" name="lastname" id="lastname" autocomplete="off" class="js-edit-details"/>
-											<label for="lastname">Last Name</label>
-										</div>
+				 					<div class="form-field">
+										<input type="text" name="firstname" id="firstname" autocomplete="off" class="js-edit-details" />
+										<label for="firstname">First Name</label>
+									</div>
+									<div class="form-field">						
+										<input type="text" name="lastname" id="lastname" autocomplete="off" class="js-edit-details"/>
+										<label for="lastname">Last Name</label>
 									</div>
 									<div class="form-field">						
 										<input type="text" name="company" id="company" autocomplete="off" class="js-edit-details"/>
@@ -517,7 +530,7 @@
 									<div class="form-field">
 										<input type="password" name="passwordtest" id="passwordtest" autocomplete="off" />
 										<label for="passwordtest">
-											Password
+											Create Password
 											<div class="password-strength-indicator-container">
 												<span class="password-strength-description">Ok</span>
 												<div class="password-strength-indicator"><span class="is-ok"></span></div>
@@ -527,39 +540,66 @@
 									<button class="ref-button--primary--large button-full-width js-mock-next-step" data-move-to-section="1">
 				 						Next
 				 					</button>
+
+				 					<p class="popup-text-link"><a class="#" href="#">Already a Member? Log in</a></p>
 								</form>
 
 						</div>
 
 						<div class="multi-step-section">
 
-								<h2 class="heading-style--heading-five multi-step-section__heading">Select Licenses</h2>
+								<h2 class="heading-style--heading-five multi-step-section__heading">You're Going Pro</h2>
 
 								<aside>
 									<ul class="multi-step-breadcrumb">
 										<li class="multi-step-breadcrumb__one-third"><a href="#" onclick="return false;" class="js-mock-next-step" data-move-to-section="0"  >Details</a></li>
-										<li class="multi-step-breadcrumb__one-third multi-step-breadcrumb__current-item"><a href="#" onclick="return false;">Licenses</a></li>
+										<li class="multi-step-breadcrumb__one-third multi-step-breadcrumb__current-item"><a href="#" onclick="return false;">Address</a></li>
 										<li class="multi-step-breadcrumb__one-third multi-step-breadcrumb__disabled"><a href="#" onclick="return false;">Payment</a></li>
 									</ul>
 								</aside>
 
-								<h3 class="heading-style--heading-six">How many team members need access?</h3>
 								<form class="reflection-form">
-									<div class="range-input">
-										<button class="ref-button--set-range ref-button--set-range--down js-license-set js-license-set--down" onclick="return false;">
-											<span class="ref-icon-before--minus-two"></span>
-										</button>
-										<input type="text" class="range-input-box js-license-number" name="numberOfLicenses" id="numberOfLicenses" autocomplete="off" value="1" />
-										<button class="ref-button--set-range ref-button--set-range--up js-license-set js-license-set--up" onclick="return false;">
-											<span class="ref-icon-before--plus"></span>
-										</button>
+									<div class="form-field">
+										<input type="text" name="street" id="street" autocomplete="off" class="js-edit-details" />
+										<label for="street">Street</label>
 									</div>
-									<div class="cost-container">
-										<span class="cost-container__cost">$<span class="js-license-cost">149.99</span></span>
-										<span class="cost-container__frequency">Per Month</span>
+									<div class="form-field">
+										<input type="text" name="city" id="city" autocomplete="off" class="js-edit-details" />
+										<label for="city">City</label>
 									</div>
-									<p class="cost-maximum-warning js-maximum-warning"><strong>That's a lot of folks... please <a href="#">get in touch</a> so we can help set up your account.</strong></p>
-									<p>Each user receives an individual license giving them full access to Reflection's Store Data</p>
+									<div class="form-filter form-field--select nothing-selected" data-title="Select a Country">
+										<label for="">Country</label>
+										<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+										<div class="form-field--select__dropdown">
+											<div class="secondary-filter form-field--search">
+												<input type="text" placeholder="Find A Country" />
+												<label class="ref-icon-after--search">
+													<span>Search</span>
+												</label>
+												<a class="clear-search ref-icon-after--close" href="#">Clear</a>
+											</div>
+											<ul class="dropdown__list">
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+												<li><span>Country Name</span></li>
+											</ul>
+										</div>
+									</div>
+									<div class="form-field">
+										<input type="text" name="vat" id="vat" autocomplete="off" class="js-edit-details" />
+										<label for="vat">VAT No. (Optional)</label>
+									</div>
 			 						<button class="ref-button--secondary--large button-medium-width js-mock-next-step" data-move-to-section="0"  >
 			 							Back
 			 						</button>
@@ -572,7 +612,7 @@
 
 						<div class="multi-step-section">
 
-								<h2 class="heading-style--heading-five multi-step-section__heading">Payment</h2>
+								<h2 class="heading-style--heading-five multi-step-section__heading">You're Going Pro</h2>
 
 								<aside>
 									<ul class="multi-step-breadcrumb">
@@ -582,24 +622,80 @@
 									</ul>
 								</aside>
 								
-								<form class="reflection-form">
-									
-									<span class="number-of-licenses-chosen">5 x Pro Licenses</span>
-									<div class="cost-container">
-										<span class="cost-container__cost">$<span class="js-license-cost">149.99</span></span>
-										<span class="cost-container__frequency">Per Month</span>
+								<form>
+									<div class="reflection-form">
+										<div class="form-field">
+											<input type="text" name="street" id="street" autocomplete="off" class="js-edit-details" />
+											<label for="street">Card Number</label>
+										</div>
+										<div class="form-field">
+											<input type="text" name="city" id="city" autocomplete="off" class="js-edit-details" />
+											<label for="city">CVC</label>
+										</div>
+										<div class="form-filter form-field--select nothing-selected">
+											<label for="">Expiry Month</label>
+											<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+											<div class="form-field--select__dropdown">
+												<ul class="dropdown__list">
+													<li><span>Jan</span></li>
+													<li><span>Feb</span></li>
+													<li><span>Mar</span></li>
+													<li><span>Apr</span></li>
+													<li><span>May</span></li>
+													<li><span>Jun</span></li>
+													<li><span>Jul</span></li>
+													<li><span>Aug</span></li>
+													<li><span>Sep</span></li>
+													<li><span>Oct</span></li>
+													<li><span>Nov</span></li>
+													<li><span>Dec</span></li>
+												</ul>
+											</div>
+										</div>
+										<div class="form-filter form-field--select nothing-selected">
+											<label for="">Expiry Year</label>
+											<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
+											<div class="form-field--select__dropdown">
+												<ul class="dropdown__list">
+													<li><span>2017</span></li>
+													<li><span>2018</span></li>
+													<li><span>2019</span></li>
+													<li><span>2020</span></li>
+													<li><span>2021</span></li>
+													<li><span>2022</span></li>
+													<li><span>2023</span></li>
+													<li><span>2024</span></li>
+													<li><span>2025</span></li>
+													<li><span>2026</span></li>
+													<li><span>2027</span></li>
+													<li><span>2028</span></li>
+												</ul>
+											</div>
+										</div>										
 									</div>
-									<h3 class="heading-style--heading-six payment-details-heading">Payment Details</h3>
-									<div class="form-field--checkbox-list form-field--checkbox-list--inline payment-save-for-later">
-										<ul>
-											<li>
-												<input type="checkbox" name="checkboxSave" id="checkboxSave" checked="">
-												<label for="checkboxSave" class="checkboxLabel">Save for Later</label>
-												<label for="checkboxSave" class="checkboxLabelVisible">Save for Later</label>
-											</li>
-										</ul>
+									<div class="form-field form-field--standalone form-field--three-quarters">
+										<input type="text" name="companytext" id="companytext" autocomplete="off"/>
+										<label for="companytext">Promo Code (Optional)</label>
 									</div>
-									<img src="images/placeholder-payment.jpg" alt="Payment Placeholder" />
+									<div class="form-field-cta">
+										<button class="ref-button--secondary--medium">
+		 									Apply
+		 								</button>
+		 							</div>
+		 							<div class="pro-payment-summary">
+		 								<dl>
+		 									<dt>Pro Subscription</dt>
+		 									<dd>$199</dd>
+		 									<dt>Taxes</dt>
+		 									<dd>$199</dd>
+		 									<dt>Discount</dt>
+		 									<dd>$199</dd>
+		 									<div class="hr"></div>
+		 									<dt class="pro-payment-summary__total">Monthly Total to Pay</dt>
+		 									<dd class="pro-payment-summary__total">$239</dd>
+		 								</dl>
+		 								<p>*For your first month, $199 thereafter</p>
+		 							</div>
 			 						<button class="ref-button--secondary--large button-medium-width js-mock-next-step" data-move-to-section="1"  >
 			 							Back
 			 						</button>
@@ -613,12 +709,12 @@
 							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 61 54" enable-background="new 0 0 61 54" xml:space="preserve" class="success-tick"><path fill="#1BC79F" d="M60.6,7.4l-8.1-7.1C52.2,0.1,51.9,0,51.6,0c-0.3,0-0.6,0.2-0.9,0.4L21.3,33.8L10.9,20
 							c-0.2-0.3-0.5-0.4-0.8-0.5c-0.3,0-0.7,0-0.9,0.2l-8.6,6.5c-0.6,0.4-0.7,1.2-0.2,1.7l19.4,25.5c0.2,0.3,0.6,0.5,1,0.5c0,0,0,0,0,0
 							c0.4,0,0.7-0.2,0.9-0.4L60.7,9.2C61.2,8.7,61.1,7.9,60.6,7.4z"></path></svg>
-							<h2 class="heading-style--heading-four">Welcome Aboard Jan!</h2>
-							<p>You are now a free member and can start exploring Reflection</p>
-							<a href="v2-live-charts.html" class="ref-button--primary--medium sign-up-steps-container__link-store-button">
-		 						Continue to the Live App Charts
+							<h2 class="heading-style--heading-four">Shrewd Decision Jan</h2>
+							<p>You are now a fully fledged Pro user and as such have full access to all of Reflection's features.</p>
+							<a href="v2-live-charts.html" class="ref-button--secondary--medium">
+		 						Return to Site as a Pro
 		 					</a>
-		 					<p class="popup-text-link"><a href="#" class=" js-mock-next-step" data-move-to-section="4">You can link an App Store account now to get access to your own data if you have one</a></p>
+		 					<p class="popup-text-link"><a href="v2-linked-accounts.html">Link app store accounts to view your <br />data in one place</a></p>
 						</div>
 
 						<div class="multi-step-section">
@@ -818,6 +914,11 @@
   		new AllDropDowns();
   		
   		new scrollToSection($('.js-scroll-to-anchor'), 500);
+
+  		$('.js-dropdown-trigger').on("click", function() {
+  			$(this).next(".form-field--select__dropdown").toggle();
+  			$(this).parent(".form-field--select").toggleClass("is-open");
+  		});
 
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));

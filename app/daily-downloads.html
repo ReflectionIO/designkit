@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Data Lab, Top Downloads</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="design-kit-v2.css" />
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+</head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			<div class="page-lab-base page-daily-releases grid-container theme-dark" ng-controller="DataController as dataList">
+				
+				<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
+
+				<div class="grid__row">
+					<div class="grid__row--heading-row__right">
+	 					<div class="sharing-container">
+	 						<div class="addthis_sharing_toolbox"></div>
+	 					</div>
+					</div>
+				</div>
+
+				<div class="data-lab-article-intro">
+					<h1 class="data-lab-article-intro__heading">What is the Best Time of Year to Release a New App?</h1>
+					<p class="data-lab-article-intro__paragraph">Discover the estimated daily downloads required to propel an app into the top 200 iOS charts and beyond. Compare categories and countries to assess the potential of acheiving a high rank in the Free, Paid or Grossing lists.</p>
+				</div>
+
+				<div class="grid__row overflow-visible">
+					<div class="filters-row filters-row-main-chart js-filters-main-chart" style="margin-top: 8.1rem !important;">
+						<h2 class="filter-row__heading">Estimated Downloads/Day to Make pos 200: UK, Free, Games, iPhone</h2>
+					</div>
+				</div>
+
+				<div class="daily-releases-filters-container js-daily-releases-filters-container">
+					<!-- <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-category">
+						<select class="js-select-box js-change-category">
+							<option value="All categories" selected>All Categories</option>
+							<option value="Games">Games</option>
+							<option value="Action">Games - Action</option>
+							<option value="Adventure">Games - Adventure</option>
+							<option value="Arcade">Games - Arcade</option>
+							<option value="Board">Games - Board</option>
+							<option value="Card">Games - Card</option>
+							<option value="Dice">Games - Dice</option>
+							<option value="Educational">Games - Educational</option>
+							<option value="Family">Games - Family</option>
+							<option value="Music Games">Games - Music</option>
+							<option value="Puzzle">Games - Puzzle</option>
+							<option value="Racing">Games - Racing</option>
+							<option value="Role Playing">Games - Role Playing</option>
+							<option value="Simulation">Games - Simulation</option>
+							<option value="Sports Games">Games - Sports</option>
+							<option value="Strategy">Games - Strategy</option>
+							<option value="Trivia">Games - Trivia</option>
+							<option value="Word">Games - Word</option>
+							<option value="Books">Books</option>
+					    <option value="Business">Business</option>
+					    <option value="Catalogs">Catalogs</option>
+					    <option value="Education">Education</option>
+							<option value="Entertainment">Entertainment</option>
+							<option value="Finance">Finance</option>
+							<option value="Food & Drink">Food &amp; Drink</option>
+							<option value="Health & Fitness">Health &amp; Fitness</option>
+							<option value="Lifestyle">Lifestyle</option>
+							<option value="Medical">Medical</option>
+							<option value="Music">Music</option>
+							<option value="Navigation">Navigation</option>
+							<option value="News">News</option>
+							<option value="Newsstand">Newsstand</option>
+							<option value="Photo & Video">Photo &amp; Video</option>
+							<option value="Productivity">Productivity</option>
+							<option value="Reference">Reference</option>
+							<option value="Shopping">Shopping</option>
+							<option value="Social Networking">Social Networking</option>
+							<option value="Sports">Sports</option>
+							<option value="Travel">Travel</option>
+							<option value="Utilities">Utilities</option>
+					    <option value="Weather" data-access="key">Weather</option>
+						</select>
+					</div> -->
+
+					<div class="heatmap-key">
+						<span class="heatmap-key__label">Less</span>
+						<span class="heatmap-key__label">More</span>
+						<div class="heatmap-key__gradient-bar"></div>
+					</div>
+
+					<div class="data-day-labels">
+						<span>Mon</span>
+						<span>Tue</span>
+						<span>Wed</span>
+						<span>Thu</span>
+						<span>Fri</span>
+						<span class="data-day-label-weekend">Sat</span>
+						<span class="data-day-label-weekend">Sun</span>
+					</div>
+				</div>
+
+				<div class="data-heatmap js-data-heatmap">
+					
+					<div class="data-month-labels">
+						<span>January '16</span>
+						<span>February '16</span>
+						<span>March '16</span>
+						<span>April '16</span>
+						<span>May '16</span>
+						<span>June '16</span>
+						<span>July '16</span>
+						<span>August '16</span>
+						<span>September '16</span>
+						<span>October '16</span>
+						<span>November '16</span>
+						<span>December '16</span>
+					</div>
+
+					<svg class="data-heatmap__pointer data-heatmap__pointer--left js-data-heatmap__pointer" enable-background="new 0 0 11 14"viewBox="0 0 11 14"x=0px xml:space=preserve y=0px><path d="M10.8,6.7L0.6,0.1C0.4,0,0.3,0,0.2,0C0.1,0.1,0,0.2,0,0.3v13.3c0,0.1,0.1,0.2,0.2,0.3c0.1,0,0.1,0,0.2,0
+	c0.1,0,0.1,0,0.2-0.1l10.3-6.7C10.9,7.2,11,7.1,11,7C11,6.9,10.9,6.8,10.8,6.7z" fill="#1BC79F" /></svg>
+					
+					<svg class="data-heatmap__pointer data-heatmap__pointer--right js-data-heatmap__pointer" enable-background="new 0 0 11 14"viewBox="0 0 11 14"x=0px xml:space=preserve y=0px><path d="M10.8,6.7L0.6,0.1C0.4,0,0.3,0,0.2,0C0.1,0.1,0,0.2,0,0.3v13.3c0,0.1,0.1,0.2,0.2,0.3c0.1,0,0.1,0,0.2,0
+	c0.1,0,0.1,0,0.2-0.1l10.3-6.7C10.9,7.2,11,7.1,11,7C11,6.9,10.9,6.8,10.8,6.7z" fill="#1BC79F" /></svg>
+
+					<ul class="data-container js-data-container">
+						<li class='data-cell {{dataList.setCSSClass($index)}}' ng-repeat="dataItem in dataList.appData">
+							<span class="data-cell-colour" style='opacity: {{dataList.getOpacity($index)}}'></span>
+							<span class="data-cell-colour--off-state"></span>
+							<div class="data-hover">
+								<span class="data-hover__data-date">{{dataList.timeConverter(dataItem.date)}}</span>
+								<span class="data-hover__data-value">{{dataItem.value}}</span>
+								<span class="data-hover__title">Downloads</span>
+							</div>
+						</li>
+					</ul>
+					<div class="chart-bottom-spacing"></div>
+				</div>
+
+				<div class="footer-chart js-footer-chart">
+					<div class="footer-chart__labels">
+						<h2 class="footer-chart__week-title">Week <span class="js-week-number">1</span></h2>
+						<span class="footer-chart__date js-date-value"></span>
+						<h2 class="footer-chart__apps-released js-apps-released-value">-</h2>
+						<span class="footer-chart__released-title">Downloads</span>
+					</div>
+					<ul class="js-daily-releases-bar-chart">
+						<li ng-repeat="dataItem in dataList.weeksData" data-height='{{dataList.setBarHeight($index)}}'></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+  <script src="js/data-lab/daily-downloads_UK_Free_Games_200_iPhone_2016.json"></script>
+
+  <script>
+		
+		function getMaxValueFromArray(list) {
+			var mx = 0;
+			for(var x = 0; x < list.length; x++) {
+				if(list[x].value > mx) {
+					mx = list[x].value;
+				}
+			}
+			return mx;
+		}
+
+		var currentDataCategory;
+		var currentIndex = 1;
+
+  	$(window).on("load", function(){
+
+			var emptyWeeksData = [];
+			
+  		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function($scope, $http) {
+				
+				var dataIndex = 0;
+				var dataList = this;
+				console.log(dailyReleasesData);
+				dataList.toggle = 1;
+				dataList.category = dailyReleasesData;
+				dataList.appData = dailyReleasesData.data;
+				dataList.weeksData = dailyReleasesData.weeks;
+				dataList.getWeeksMax = getMaxValueFromArray(dataList.weeksData);
+				currentDataCategory = dataList.category;
+
+				$('.js-change-category').on("change", function(){
+					var categoryToShow = this.value;
+					console.log(categoryToShow);
+					// animate charts and then apply new data
+					$('.js-data-container').addClass("flip");
+					
+					$scope.$apply(function () {
+						// for animation of the weeks bar chart
+						dataList.weeksData = emptyWeeksData;
+					});
+					
+					setTimeout(function(){
+						$('.js-data-container li.is-hotter').removeClass("is-hotter");
+						console.log(dailyReleasesData[categoryToShow]);
+						$scope.$apply(function () {
+							dataList.category = dailyReleasesData[categoryToShow];
+							dataList.appData = dailyReleasesData[categoryToShow].data;
+							dataList.weeksData = dailyReleasesData[categoryToShow].weeks;
+							dataList.getWeeksMax = getMaxValueFromArray(dataList.weeksData);
+							currentDataCategory = dataList.category;							
+	        	});
+	        	setWeeksLabels();
+	        	setTimeout(function(){
+	        		$('.js-data-container').removeClass("flip");
+	        		animateBarChartHeights();
+	        	}, 100);
+					}, 300);
+				});
+
+				dataList.getAppOpacity = function(listIndex) {
+		    	var min = this.category.min,
+		    			max = this.category.max;
+		    	var range = max - min;
+		    	var valueFromMin;
+		    	valueFromMin = dataList.appData[listIndex].value - min;
+		    	var opacity = 1 / (range / valueFromMin);
+		    	return opacity;
+		    }
+
+		    dataList.setCSSClass = function(listIndex) {
+					var opacity = dataList.getAppOpacity(listIndex);
+					if(opacity > 0.5) {
+						return "is-hotter";
+					}
+
+					return "";
+		    }
+				
+				dataList.getOpacity = function(listIndex) {
+					// Heat map is purple to red
+					// At 0% is purple #6d69c5 opacity 0, background #343438
+					// At 50% is purple #6d69c5 opacity 1
+					// Add a class above 50% to change background to red
+					// At 50.01% is red #ff496a opacity 0, background #6d69c5
+					// At 100% is red #ff496a opacity 1
+
+					var opacity = dataList.getAppOpacity(listIndex);
+					if(opacity <= 0.5) {
+						opacity = opacity / 0.5;
+					} else {
+						opacity = (opacity - 0.5) / 0.5;
+					}
+
+					return opacity;
+				}
+
+				dataList.setBarHeight = function(listIndex) {
+					return (dataList.weeksData[listIndex].value / dataList.getWeeksMax) * 100;
+				}
+
+				dataList.timeConverter = function(UNIX_timestamp){
+				  return timeConverter(UNIX_timestamp);
+				}
+
+			});
+
+			window.angular.element(document).ready(function() {
+		    window.angular.bootstrap(document, ["reflectionApp"]);
+			});
+
+		  new Page();
+			
+			function animateBarChartHeights() {
+				$('.js-daily-releases-bar-chart li').each(function(){
+					$(this).css("height", $(this).attr("data-height") + "%");
+				});
+			}
+
+			function timeConverter(UNIX_timestamp){
+			  var a = new Date(UNIX_timestamp);
+			  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+			  var year = a.getFullYear();
+			  var month = months[a.getMonth()];
+			  var date = a.getDate();
+			  var hour = a.getHours();
+			  var min = a.getMinutes();
+			  var sec = a.getSeconds();
+			  var time = date + ' ' + month + ' ' + year;
+			  return time;
+			}
+
+			var FilterDropDown = function($domElement, chartType) {
+
+				var $thisSelectBox = $domElement,
+						$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
+						$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+
+				$thisSelectBox.find('option').each(function(){
+					
+					var $thisOption = $(this),
+							selectedClass = "";
+
+					if($thisOption.val() != "") {
+
+						if($thisOption.is(":selected")) {
+							if($thisOption.val() != "") {
+								selectedClass = "is-selected";
+								$currentValue.text($thisOption.text());
+							}
+						}
+
+						var accessClass = "";
+						if($thisOption.data("access")) {
+							accessClass = "ref-icon-after--key";
+						}
+
+						var $newListItem = $("<li>");
+						$dropDownContainer.append($newListItem
+																					.addClass("js-dropdown-option")
+																					.addClass(selectedClass)
+																					.addClass(accessClass)
+																					.attr('data-value', $thisOption.attr('value'))
+																					.on("click", function() {
+
+																						// check the user role
+																						// allow time for li select
+																						var $this = $(this);
+																						
+																						var userId = getUserRole();
+																						
+																						if(userId != null || userId == null) {
+
+																							if(userId == null) {
+																								userId = "js/data-lab";
+																							}
+
+																							$thisSelectBox.find("option").removeAttr("selected");
+																							$thisOption.attr("selected", "selected");
+																							$thisSelectBox.trigger("change");
+																							$currentValue.text($thisOption.text());
+																							$dropDownContainer.toggle();
+																							$thisSelectBox.parent("div").toggleClass("is-open");
+																							$thisSelectBox.parent("div").removeClass("nothing-selected");
+																							$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																							$(this).addClass("is-selected");
+
+																							// request data based on filters
+																							if(chartType == "dataOverview") {
+
+																							}
+																							
+																						} else {
+																							openSignUpPopup();
+																						}
+
+																					})
+																					.append($("<span>").text($thisOption.text()))
+																		);
+					} else {
+						// no option value means placeholder text before option is selected
+						$currentValue.text($thisOption.text());
+					}
+				});
+
+				$currentValue.on("click", function(){
+					if(!$thisSelectBox.attr("disabled")) {
+						var $parentDiv = $thisSelectBox.parent("div");
+						if($parentDiv.hasClass("is-open")) {
+							$dropDownContainer.toggle();	
+							$parentDiv.toggleClass("is-open");
+						} else {
+							setTimeout(function(){
+								if(!$parentDiv.hasClass("is-open")) {
+									closeAllFilters();
+								}
+								var parentWidth = $parentDiv.width();
+								var parentHeight = $parentDiv.height();
+								$dropDownContainer.css({"min-width": parentWidth + "px"});
+								$dropDownContainer.toggle();	
+								$parentDiv.toggleClass("is-open");
+							}, 50); // allow time for instance.closeAllFilters() to close other filters first
+						}
+					}
+				});
+
+				if($currentValue.text() == "") {
+					$thisSelectBox.parent("div").addClass("nothing-selected");
+				}
+
+				$thisSelectBox.parent("div").append($currentValue)
+																		.append($dropDownContainer);
+			};
+
+		  function closeAllFilters() {
+				$('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
+				$('.js-secondary-filter.is-open').removeClass("is-open");
+			}
+
+			function getUserRole() {
+				return null;
+				// return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b";
+			}
+
+			$("html").on("click", function(e){
+				if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
+					closeAllFilters();
+				}
+			});
+
+		  $('.js-select-box').each(function() {
+  			new FilterDropDown($(this), "dataOverview");
+  		});
+
+  		function setWeeksLabels() {
+  			$('.js-week-number').text(currentIndex);
+				var formattedDate = timeConverter(currentDataCategory.weeks[currentIndex-1].date);
+				$('.js-date-value').text(formattedDate);
+				$('.js-apps-released-value').text(currentDataCategory.weeks[currentIndex-1].value);
+  		}
+
+  		$(window).on("scroll", function(){  			
+  			var marginWhenFiltersAreFixed = 484;
+				if($(window).scrollTop() > marginWhenFiltersAreFixed) {
+					$('.js-daily-releases-filters-container').addClass("is-fixed");
+				} else {
+					$('.js-daily-releases-filters-container.is-fixed').removeClass("is-fixed");
+				}
+				
+				var rowHeight = 60;
+				var offsetTopFromWindowTop = 206;
+				var marginWhenBarChartShows = 340;
+				var marginWhenArrowsMove = marginWhenFiltersAreFixed - 30;
+				var scrollTopValue = $(window).scrollTop();
+				var dataContainerOffsetTop = $('.js-data-container').offset().top;
+				var heightOfDataScrolled = (scrollTopValue + offsetTopFromWindowTop) - dataContainerOffsetTop;
+				if(scrollTopValue + offsetTopFromWindowTop > dataContainerOffsetTop) {
+					currentIndex = Math.floor((heightOfDataScrolled + 32) / rowHeight) + 1;
+				}
+				if(scrollTopValue > marginWhenBarChartShows) {
+					$('.js-footer-chart').addClass("is-showing");
+					$('.js-data-heatmap').addClass("is-showing");
+				} else {
+					$('.js-footer-chart').removeClass("is-showing");
+					$('.js-data-heatmap').removeClass("is-showing");
+				}
+
+				if(scrollTopValue > marginWhenArrowsMove) {
+					$('.js-data-heatmap__pointer').css("top", heightOfDataScrolled + 21 + "px");
+				} else {
+					$('.js-data-heatmap__pointer').css("top", "21px");
+				}
+				
+				$('.js-daily-releases-bar-chart li.is-on').removeClass("is-on");
+				$('.js-daily-releases-bar-chart li:nth-child(' + currentIndex + ')').addClass("is-on");
+				setWeeksLabels();
+  		});
+
+  		setTimeout(function(){
+  			animateBarChartHeights();
+  		}, 500);
+
+		});
+
+	</script>
+</body>
+</html>
