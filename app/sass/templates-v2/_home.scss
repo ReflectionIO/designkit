@@ -27,6 +27,7 @@
 	source, img {
 		position: relative;
     width: 100%;
+    max-width: 1352px;
     display: block;
   }
 }
@@ -156,25 +157,40 @@
 	font-size: 2.4rem;
 	font-weight: 400;
 	text-align: center;
-	+ .home-section-content {
+	+ .home-section-content-container .home-section-content {
 		padding-top: 75px;
 	}
 }
 .home-section {
 	position: relative;
-	min-height: 446px;
 	background-color: $reflection-white;
+	text-align: center;
 	&.home-section--right-image {
 		background-color: $panel-grey;
 	}
 }
+.home-section-content-container {
+	position: relative;
+	width: 100%;
+	max-width: 1240px;
+  margin: 0 auto;  
+  display: inline-block;  
+  overflow: visible;
+}
 .home-section-content {	
-	width: 390px;
+	width: 35%;
   padding-top: 109px;
-	padding-bottom: 75px;
-	margin-right: 103px;
+	padding-bottom: 83px;
+	margin-right: 5%;
   float: right;
 	overflow: visible;
+	text-align: left;
+	@include breakpoint($laptop-plus) {
+		width: 390px;		
+	}
+	@include breakpoint($desktop) {
+		margin-right: 103px;
+	}
 	> h2 {
   	margin-bottom: 2.5rem;
 	}
@@ -184,25 +200,29 @@
     overflow: visible;
     line-height: 1.6;
 	}
-	.ref-icon-before--tick:before {
+	.ref-icon-before--ref-tick:before {
 		position: absolute;
-    left: -53px;
-    top: 9px;
-    font-size: 32px;    
+    left: -52px;
+    top: 7px;
+    font-size: 29px;    
     color: $reflection-purple;
 	}
 	.ref-before-coming-soon:before {
 		content: "Coming Soon";
 		position: absolute;
-    left: -121px;    
+		left: -108px;
     padding: 1px 10px 1px 9px;
     top: 7px;
 		font-family: $brand-heading-font;
 		font-weight: 700;
-		font-size: 14px;
+		font-size: 12px;
 		color: $reflection-white;
 		background-color: $reflection-green;
 		border-radius: 14px;
+		@include breakpoint($desktop) {
+			left: -121px;
+			font-size: 14px;
+		}
 	}
 	.home-section--right-image & {
 		margin-left: 12.4%;
@@ -210,16 +230,20 @@
 		float: left;
 	}
 	.home-section--one & {
-		padding-bottom: 92px;
+		padding-bottom: 85px;
 	}
 }
 .home-section-image-container {
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	width: 525px;
+	width: 43%;
 	height: 367px;
+	margin-bottom: -3px;
 	overflow: visible;
+	@include breakpoint($desktop) {
+		width: 525px;
+	}
 	img {
 		float: right;
 	}
