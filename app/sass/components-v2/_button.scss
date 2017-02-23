@@ -43,7 +43,7 @@ button::-moz-focus-inner {
   @extend %font-smoothing;
   transition: background-color $base-transition-speed-off, color $base-transition-speed-off, border-color $base-transition-speed-off;
   .no-touchevents & {
-  	&:hover {
+  	&:hover:not(:disabled) {
     	transition: background-color $base-transition-speed-on, color $base-transition-speed-on, border-color $base-transition-speed-on;
     }
     &:active {
@@ -72,14 +72,18 @@ button::-moz-focus-inner {
   border-radius: 0.35714285714285715em;
   background-color: $reflection-purple;
   .no-touchevents & {
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: darken($reflection-purple, 5%);
+    }
+    &.is-disabled:hover {
+      background-color: $reflection-purple;
     }
     &:active {
       border-top: 2px solid #47447e;
     }
   }
-  &.is-disabled {
+  &.is-disabled,
+  &[disabled=disabled] {
     background-color: $divider-grey;
     cursor: default;
     .no-touchevents & {
@@ -114,7 +118,8 @@ button::-moz-focus-inner {
   padding: 1rem 1.5rem 1.2rem 1.5rem;
   font-size: 1.3rem;
   letter-spacing: -0.01rem;
-  &:not(.is-disabled) {
+  &:not(.is-disabled),
+  &:not(:disabled) {
     .no-touchevents & {
       &:active {
         padding-top: calc(1rem - 1px);  
@@ -171,8 +176,11 @@ button::-moz-focus-inner {
   border-radius: 0.35714285714285715em;
   background-color: #f5f9f9;
   .no-touchevents & {
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: #ebf2f2;
+    }
+    &.is-disabled:hover {
+      background-color: #f5f9f9;
     }
     &:active {
       border-top: 2px solid #c8cece;
@@ -189,7 +197,8 @@ button::-moz-focus-inner {
       }
     }
   }
-  &[disabled=disabled] {
+  &[disabled=disabled],
+  &.is-disabled {
     opacity: 0.5;
   }
 }
@@ -252,8 +261,11 @@ button::-moz-focus-inner {
   border-radius: 0.35714285714285715em;
   background-color: #343438;
   .no-touchevents & {
-    &:hover {
+    &:hover:not(:disabled), {
       background-color: #2e2e31;
+    }
+    &.is-disabled:hover {
+      background-color: #343438;
     }
     &:active {
       border-top: 2px solid #000000;

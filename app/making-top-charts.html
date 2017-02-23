@@ -38,7 +38,7 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-lab-base data-vis-making-top-charts grid-container is-loading js-page-container theme-dark">
+			<div class="page-lab-base data-vis-making-top-charts grid-container is-loading js-page-container theme-dark is-showing-subcategories">
 				
 				<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
 
@@ -57,7 +57,24 @@
 
 				<div class="grid__row overflow-visible">
 					<div class="filters-row filters-row-main-chart js-filters-main-chart">
-						<h2 class="filter-row__heading">Average Daily Totals Required to Chart:</h2>			
+						<h2 class="filter-row__heading">Average Daily Totals Required to Chart:</h2>
+						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-date">
+							<select class="js-select-box">
+						    <option value="2017_January" selected>January 2017</option>
+						    <option value="2016_December" data-access="key">December 2016</option>
+						    <option value="2016_November" data-access="key">November 2016</option>
+						    <option value="2016_October" data-access="key">October 2016</option>
+						    <option value="2016_September" data-access="key">September 2016</option>
+						    <option value="2016_August" data-access="key">August 2016</option>
+						    <option value="2016_July" data-access="key">July 2016</option>
+						    <option value="2016_June" data-access="key">June 2016</option>
+						    <option value="2016_May" data-access="key">May 2016</option>
+						    <option value="2016_April" data-access="key">April 2016</option>
+						    <option value="2016_March" data-access="key">March 2016</option>
+						    <option value="2016_February" data-access="key">February 2016</option>
+						    <option value="2016_January" data-access="key">January 2016</option>
+							</select>
+						</div>	
 						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-rank">
 							<select class="js-select-box">
 						    <option value="200" selected>Top 200 Apps</option>
@@ -1068,12 +1085,14 @@
 
 																								$('.data-value').remove();
 
-																								var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");
+																								var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
+																								var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");																								
 																								var selectedRank = $('.js-dropdown-rank .js-dropdown-option.is-selected').data("value");
 																								var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
-																								var fileNameToRequest = "whatyouneed_main.json";
+																								
+																								var fileNameToRequest = "whatyouneed_full2017_January.json";
 																								if(userId != null && userId != "js/data-lab") {
-																									fileNameToRequest = "whatyouneed_all.json";
+																									fileNameToRequest = "whatyouneed_full" + selectedDate + ".json";
 																								}
 
 																								var fileToRequest = userId + "/" + fileNameToRequest;																						
@@ -1081,13 +1100,15 @@
 
 																							} else if(chartType == "dataRankDistribution") {
 
+																								var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
 																								var selectedCategory = $('.js-dropdown-category .js-dropdown-option.is-selected').data("value");
 																								var selectedCountry = $('.js-dropdown-category-country .js-dropdown-option.is-selected').data("value");
 																								var selectedDevice = $('.js-dropdown-category-device .js-dropdown-option.is-selected').data("value");
 																								var listType = $('.js-dropdown-category-list-type .js-dropdown-option.is-selected').data("value");
-																								var fileNameToRequest = "whatyouneed_ranking.json";
+
+																								var fileNameToRequest = "whatyouneed_full2017_January.json";
 																								if(userId != null && userId != "js/data-lab") {
-																									fileNameToRequest = "whatyouneed_all.json";
+																									fileNameToRequest = "whatyouneed_full" + selectedDate + ".json";
 																								}
 
 																								var fileToRequest = userId + "/" + fileNameToRequest;																					
@@ -1095,12 +1116,13 @@
 
 																							} else if(chartType == "dataCountryDistribution") {
 
+																								var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
 																								var selectedCategory = $('.js-dropdown-country-category .js-dropdown-option.is-selected').data("value");
 																								var selectedRank = $('.js-dropdown-country-rank .js-dropdown-option.is-selected').data("value");
 																								var selectedDevice = $('.js-dropdown-country-device .js-dropdown-option.is-selected').data("value");
-																								var fileNameToRequest = "whatyouneed_countries.json";
+																								var fileNameToRequest = "whatyouneed_full2017_January.json";
 																								if(userId != null && userId != "js/data-lab") {
-																									fileNameToRequest = "whatyouneed_all.json";
+																									fileNameToRequest = "whatyouneed_full" + selectedDate + ".json";
 																								}
 
 																								var fileToRequest = userId + "/" + fileNameToRequest;
@@ -1206,7 +1228,7 @@
 						}
 						var spanWidth = (this.value / maxGrossing) * 100;
 						var formattedValue = this.value;
-						if(this.value != undefined && this.value !== "NAN" && this.value > 0) {
+						if(this.value != undefined && this.value !== "NaN" && this.value > 0) {
 							if(this.value > 1) {
 								this.value = Math.round(this.value);
 							}
@@ -1214,7 +1236,7 @@
 						}
 						var thisValue = valuePrefix + formatNumbers(this.value);
 						var noDataCSSClass = "";
-						if(this.value == undefined || this.value <= 0 || this.value == "NAN") {
+						if(this.value == undefined || this.value <= 0 || this.value == "NaN") {
 							thisValue = "No data"
 							noDataCSSClass = "is-no-data";
 							spanWidth = 0;
@@ -1253,6 +1275,8 @@
 
 				// get default data
 				$.getJSON( fileToRequest, function( data ) {
+					
+					console.log(data);
 
 					$('.js-page-container').removeClass('is-loading');
 					
@@ -1363,7 +1387,7 @@
 					for(var i = 0; i < rankDistributionData.length; i++) {
 						var heightRelativeToMax = (rankDistributionData[i] / maxValue) * staticMaxHeight;
 						var formattedValue = rankDistributionData[i];
-						var isNaN = (rankDistributionData[i] == "NAN");
+						var isNaN = (rankDistributionData[i] == "NaN");
 						if(!isNaN) {
 							formattedValue = rankDistributionData[i].toFixed(2);
 						}
@@ -1529,7 +1553,7 @@
 			function isNoDataInArray(dataArray) {
 
 				for(var i = 0; i < dataArray.length; i++) {
-					if(dataArray[i] != "NAN") {
+					if(dataArray[i] != "NaN") {
 						return false;
 					}
 				}
@@ -1580,7 +1604,7 @@
 						var formattedValue = Math.round(countryDistributionDataFreeList[i]);
 								formattedValue = formatNumbers(formattedValue);
 
-						var isNaNFree = (countryDistributionDataFreeList[i] == "NAN");
+						var isNaNFree = (countryDistributionDataFreeList[i] == "NaN");
 						var valueText = (isNaNFree) ? "No Data" : "";
 						var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
 						if(isNaNFree) {
@@ -1602,7 +1626,7 @@
 						var formattedValue = Math.round(countryDistributionDataPaidList[i]);
 								formattedValue = formatNumbers(formattedValue);					
 
-						var isNaNPaid = (countryDistributionDataPaidList[i] == "NAN");
+						var isNaNPaid = (countryDistributionDataPaidList[i] == "NaN");
 						var valueText = (isNaNPaid) ? "No Data" : "";
 						var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
 						if(isNaNPaid) {
@@ -1624,7 +1648,7 @@
 						var formattedValue = Math.round(countryDistributionDataGrossingList[i]);
 								formattedValue = formatNumbers(formattedValue);
 
-						var isNaNGrossing = (countryDistributionDataGrossingList[i] == "NAN");
+						var isNaNGrossing = (countryDistributionDataGrossingList[i] == "NaN");
 						var valueText = (isNaNGrossing) ? "No Data" : "";
 						var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
 						if(isNaNGrossing) {
@@ -1652,13 +1676,13 @@
 			// if the key exists it forms the dir of the ajax request for the json file
 			// if it is null then the user gets the sign up popup message
 			function getUserRole() {
-				return null;
-				// return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b";
+				// return null;
+				return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b";
 			}
 
 			function doPermissionsCheck($filter, chartType, dataValue) {
 
-				if(dataValue == "200" || dataValue == "150" || dataValue == "100" || dataValue == "50" || dataValue == "PHONE" || dataValue == "TABLET") {
+				if(dataValue == "2017_January" || dataValue == "200" || dataValue == "150" || dataValue == "100" || dataValue == "50" || dataValue == "PHONE" || dataValue == "TABLET") {
 					return true;
 				}
 
@@ -1666,9 +1690,9 @@
 			}
 
 			setTimeout(function(){
-				loadData("js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/whatyouneed_full2016_September.json", "200", "PHONE", "GB");
-				loadRankData("js/data-lab/whatyouneed_ranking.json", "Overall", "PHONE", "GB");
-				loadCountryData("js/data-lab/whatyouneed_countries.json", "Overall", "200", "PHONE");
+				loadData("js/data-lab/whatyouneed_full2017_January.json", "200", "PHONE", "GB");
+				//loadRankData("js/data-lab/whatyouneed_full2017_January.json", "Overall", "PHONE", "GB");
+				//loadCountryData("js/data-lab/whatyouneed_full2017_January.json", "Overall", "200", "PHONE");
 			}, 1000);
 
   	});

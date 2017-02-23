@@ -28,26 +28,22 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-lab-base page-daily-releases grid-container theme-dark" ng-controller="DataController as dataList">
+			<div class="page-lab-base page-daily-releases grid-container theme-dark js-page-lab-base" ng-controller="DataController as dataList">
 				
 				<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
 
-				<div class="grid__row">
-					<div class="grid__row--heading-row__right">
-	 					<div class="sharing-container">
-	 						<div class="addthis_sharing_toolbox"></div>
-	 					</div>
-					</div>
+				<div class="sharing-container">
+					<div class="addthis_sharing_toolbox"></div>
 				</div>
 
 				<div class="data-lab-article-intro">
-					<h1 class="data-lab-article-intro__heading">What is the Best Time of Year to Release a New App?</h1>
-					<p class="data-lab-article-intro__paragraph">Discover the estimated daily downloads required to propel an app into the top 200 iOS charts and beyond. Compare categories and countries to assess the potential of acheiving a high rank in the Free, Paid or Grossing lists.</p>
+					<h1 class="data-lab-article-intro__heading">What Time of Year Is Best for Hitting My Desired Chart Position?</h1>
+					<p class="data-lab-article-intro__paragraph">The heatmap below clearly shows which days of the year require more or less daily downloads to hit a specific position in the top 200 iOS charts. Use this insight to plan the optimal time to acquire new users.</p>
 				</div>
 
 				<div class="grid__row overflow-visible">
 					<div class="filters-row filters-row-main-chart js-filters-main-chart">
-						<h2 class="filter-row__heading">Estimated Downloads per Day</h2>
+						<h2 class="filter-row__heading">Daily Downloads Required to Rank</h2>
 					</div>
 				</div>
 					
@@ -55,9 +51,9 @@
 
 					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-chart-type">
 						<select class="js-select-box">
-							<option value="free" selected>FREE</option>
-							<option value="paid">PAID</option>
-							<option value="grossing">GROSSING</option>
+							<option value="FREE" selected>Free Chart</option>
+							<option value="PAID">Paid Chart</option>
+							<option value="GROSSING">Grossing Chart</option>
 						</select>
 					</div>
 
@@ -74,28 +70,24 @@
 
 					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
 						<select class="js-select-box">
-							<option value="UK" selected>United Kingdom</option>
-							<option value="USA" data-access="key">USA</option>
-							<option value="FR" data-access="key">France</option>
-							<option value="DE" data-access="key">Germany</option>
-							<option value="IT" data-access="key">Italy</option>
-							<option value="ES" data-access="key">Spain</option>
+							<option value="GB" selected>United Kingdom</option>
+							<option value="US" data-access="key">USA</option>
 						</select>
 					</div>
 
 					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-category">
 						<select class="js-select-box">
-							<option value="All categories" data-access="key">Overall</option>
-							<option value="Games" selected>Games</option>
+							<option value="Overall" selected>Overall</option>
+							<option value="Games" data-access="key">Games</option>
 							<option value="Action" data-access="key">Games - Action</option>
 							<option value="Adventure" data-access="key">Games - Adventure</option>
 							<option value="Arcade" data-access="key">Games - Arcade</option>
-							<option value="Board data-access="key"">Games - Board</option>
+							<option value="Board" data-access="key"">Games - Board</option>
 							<option value="Card" data-access="key">Games - Card</option>
 							<option value="Dice" data-access="key">Games - Dice</option>
 							<option value="Educational" data-access="key">Games - Educational</option>
 							<option value="Family" data-access="key">Games - Family</option>
-							<option value="Music Games" data-access="key">Games - Music</option>
+							<!-- <option value="Music Games" data-access="key">Games - Music</option> -->
 							<option value="Puzzle" data-access="key">Games - Puzzle</option>
 							<option value="Racing" data-access="key">Games - Racing</option>
 							<option value="Role Playing" data-access="key">Games - Role Playing</option>
@@ -104,7 +96,7 @@
 							<option value="Strategy" data-access="key">Games - Strategy</option>
 							<option value="Trivia" data-access="key">Games - Trivia</option>
 							<option value="Word" data-access="key">Games - Word</option>
-							<option value="Books" data-access="key">Books</option>
+							<!-- <option value="Books" data-access="key">Books</option>
 					    <option value="Business" data-access="key">Business</option>
 					    <option value="Catalogs" data-access="key">Catalogs</option>
 					    <option value="Education" data-access="key">Education</option>
@@ -126,14 +118,14 @@
 							<option value="Sports" data-access="key">Sports</option>
 							<option value="Travel" data-access="key">Travel</option>
 							<option value="Utilities" data-access="key">Utilities</option>
-					    <option value="Weather" data-access="key">Weather</option>
+					    <option value="Weather" data-access="key">Weather</option> -->
 						</select>
 					</div>
 
 					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
 						<select class="js-select-box">
-							<option value="iPhone" selected>iPhone</option>
-							<option value="iPad">iPad</option>
+							<option value="PHONE" selected>iPhone</option>
+							<option value="TABLET">iPad</option>
 						</select>
 					</div>
 
@@ -153,9 +145,19 @@
 						<span class="data-day-label-weekend">Sun</span>
 					</div>
 				</div>
+				
+				<div class="data-heatmap-no-data">
+					<div class="chart__no-data">
+						<div class="animation-hamster-no-data-dark"></div>
+						<div>
+							<h2>No Available Data</h2>
+							<p><a class="js-open-no-data" href="#">Help us offer ever deeper insight</a></p>
+						</div>
+					</div>
+				</div>
 
 				<div class="data-heatmap js-data-heatmap">
-					
+
 					<div class="data-month-labels">
 						<span>January '16</span>
 						<span>February '16</span>
@@ -183,12 +185,38 @@
 							<span class="data-cell-colour--off-state"></span>
 							<div class="data-hover">
 								<span class="data-hover__data-date">{{dataList.timeConverter(dataItem.date)}}</span>
-								<span class="data-hover__data-value">{{dataItem.value}}</span>
-								<span class="data-hover__title">Downloads</span>
+								<span class="data-hover__data-value">{{dataList.formatValue(dataItem.value)}}</span>
+								<span class="data-hover__title">Daily {{dataList.getTerm()}}</span>
 							</div>
 						</li>
-					</ul>
+					</ul>		
 					<div class="chart-bottom-spacing"></div>
+				</div>
+
+				<div class="feedback-container">
+										<svg x="0px" y="0px"
+     viewBox="0 0 58.4 99.6" enable-background="new 0 0 58.4 99.6" xml:space="preserve">
+<path fill="#6D69C5" d="M51.6,70.4c0,12.3-10,22.4-22.4,22.4S6.8,82.8,6.8,70.4H51.6z" class="lab-bottle-liquid" />
+<path fill="#5A5A68" d="M40.6,43.5V8.8h1.7c2.4,0,4.4-2,4.4-4.4S44.7,0,42.3,0H16.1c-2.4,0-4.4,2-4.4,4.4s2,4.4,4.4,4.4h1.1v35
+    C6.7,48.5,0,58.8,0,70.4c0,16.1,13.1,29.2,29.2,29.2c16.1,0,29.2-13.1,29.2-29.2C58.4,58.7,51.3,48,40.6,43.5z M16.1,3h26.1
+    c0.8,0,1.4,0.6,1.4,1.4c0,0.7-0.5,1.2-1.1,1.4H15.9c-0.6-0.1-1.1-0.7-1.1-1.4C14.7,3.6,15.4,3,16.1,3z M29.2,96.6
+    C14.8,96.6,3,84.9,3,70.4c0-10.7,6.4-20.2,16.3-24.3l0.9-0.4V7h17.3v38.6l1,0.4c10.1,3.8,16.9,13.7,16.9,24.5
+    C55.4,84.9,43.7,96.6,29.2,96.6z"/>
+</svg>
+										<div>
+											<h2 class="heading-style--heading-three">Would You Use This Feature?</h2>
+											<p>Let us know with this <a href="">quick 2 question survey</a> so we can improve it with your help.</p>
+										</div>
+									</div>
+
+									<div class="idc-comments-container">
+					<script>
+						var idcomments_acct = 'c4a0cfaab22f16bc5e847b0d1398bb91';
+						var idcomments_post_id = 'datavisdailydownloadscomments';
+						var idcomments_post_url;
+						</script>
+						<span id="IDCommentsPostTitle" style="display:none"></span>
+					<script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
 				</div>
 
 				<div class="footer-chart js-footer-chart">
@@ -196,7 +224,7 @@
 						<h2 class="footer-chart__week-title">Week <span class="js-week-number">1</span></h2>
 						<span class="footer-chart__date js-date-value"></span>
 						<h2 class="footer-chart__apps-released js-apps-released-value">-</h2>
-						<span class="footer-chart__released-title">Downloads</span>
+						<span class="footer-chart__released-title">Week Total {{dataList.getTerm()}}</span>
 					</div>
 					<ul class="js-daily-releases-bar-chart">
 						<li ng-repeat="dataItem in dataList.weeksData" data-height='{{dataList.setBarHeight($index)}}'></li>
@@ -239,7 +267,7 @@
 
 	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
-  <script src="js/data-lab/daily-downloads_UK_Free_Games_200_iPhone_2016.json"></script>
+  <script src="js/data-lab/daily-downloads-default.json"></script>
 
   <script>
 		
@@ -272,54 +300,68 @@
 				dataList.weeksData = dailyReleasesData.weeks;
 				dataList.getWeeksMax = getMaxValueFromArray(dataList.weeksData);
 				currentDataCategory = dataList.category;
+				this.hasPermission = false;
 				
 				// TODO: Make this selector change reflect all available filters
 				$('.js-select-box').on("change", function(){
 					
-					console.log("attempt to select = " + this.value);
-					
-					var fileNameToRequest = getFileToNameRequest();
-					console.log(fileNameToRequest);
+					var thisSelect = this;
 
-					var userId = getUserRole();
-					
-					// HERE HERE HERE - make sure userId can be null for free data
-					// try and check if you can call reflectionApp.function
-					
-					if(!userId == null) {
-						// animate charts and then apply new data
-						$('.js-data-container').addClass("flip");
+					setTimeout(function(){
+						console.log("attempt to select = " + thisSelect.value);
+						var hasPermission = hasPermissions(thisSelect.value);
 						
-						$scope.$apply(function () {
-							// for animation of the weeks bar chart
-							dataList.weeksData = emptyWeeksData;
-						});
-						
-						var fileNameToRequest = "daily-downloads_test.js"; // this should be made up from the selected filters
+						var fileNameToRequest = getFileToNameRequest();
+						console.log(fileNameToRequest);
 
-						setTimeout(function(){
-							$('.js-data-container li.is-hotter').removeClass("is-hotter");
+						var userId = getUserRole();
+						console.log(userId);
+						
+						if(userId != null || (userId == null && hasPermission)) {
 							
-							console.log("getJSON url = " + userId + fileNameToRequest);
-							$.getJSON(userId + fileNameToRequest, function( data ) {
-								console.log("getJSON success");
-								console.log(data);
-								$scope.$apply(function () {
-									dataList.category = data;
-									dataList.appData = data.data;
-									dataList.weeksData = data.weeks;
-									dataList.getWeeksMax = getMaxValueFromArray(dataList.weeksData);
-									currentDataCategory = dataList.category;							
-			        	});
-			        	setWeeksLabels();
-			        	setTimeout(function(){
-			        		$('.js-data-container').removeClass("flip");
-			        		animateBarChartHeights();
-			        	}, 100);
-			        });
-			      
-						}, 300);
-					}
+							if(userId == null) {
+								userId = "js/data-lab";
+							}
+
+							// animate charts and then apply new data
+							$('.js-data-container').addClass("flip");
+							
+							$scope.$apply(function () {
+								// for animation of the weeks bar chart
+								dataList.weeksData = emptyWeeksData;
+							});
+
+							setTimeout(function(){
+								$('.js-data-container li.is-hotter').removeClass("is-hotter");
+								
+								console.log("getJSON url = " + userId + "/" + fileNameToRequest);
+								$.getJSON(userId + "/" + fileNameToRequest, function( data ) {
+									console.log(data);
+									$('.page-no-data').removeClass('page-no-data');
+									$scope.$apply(function () {
+										dataList.category = data;
+										dataList.appData = data.data;
+										dataList.weeksData = data.weeks;
+										dataList.getWeeksMax = getMaxValueFromArray(dataList.weeksData);
+										currentDataCategory = dataList.category;							
+				        	});
+				        	setWeeksLabels();
+				        	setTimeout(function(){
+				        		$('.js-data-container').removeClass("flip");
+				        		animateBarChartHeights();
+				        	}, 100);
+				        })
+				        .error(function() {
+									$('.js-page-lab-base').addClass('page-no-data');
+				        });
+				      
+							}, 300);
+						} else {
+
+							console.log("user is null and doesn't have permission");
+
+						}
+					}, 10);
 				});
 
 				dataList.getAppOpacity = function(listIndex) {
@@ -365,6 +407,22 @@
 
 				dataList.timeConverter = function(UNIX_timestamp){
 				  return timeConverter(UNIX_timestamp);
+				}
+
+				dataList.formatValue = function(value) {
+					var returnString = ($('.js-dropdown-chart-type .js-dropdown-option.is-selected').attr("data-value") == ("GROSSING")) ? "$" : "";
+
+					var formattedValue = this.formatToNumberWithCommas(value);
+
+					return returnString + formattedValue;
+				}
+
+				dataList.getTerm = function() {
+					return ($('.js-dropdown-chart-type .js-dropdown-option.is-selected').attr("data-value") == ("GROSSING")) ? "Revenue" : "Downloads";
+				}
+
+				dataList.formatToNumberWithCommas = function(x) {
+			  	return (x != null) ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-";
 				}
 
 			});
@@ -449,10 +507,8 @@
 																					.on("click", function() {																						
 																						
 																						var thisValue = $(this).attr("data-value");
-																						console.log("thisValue = " + thisValue);
 																						var userId = getUserRole();
 																						var permissionsValid = hasPermissions(thisValue);
-																						console.log("permissionsValid = " + permissionsValid);
 																						if(userId != null || (userId == null && permissionsValid)) {
 
 																							$thisSelectBox.find("option").removeAttr("selected");
@@ -514,13 +570,13 @@
 			}
 
 			function getUserRole() {
-				return null;
-				// return "js/46546s5d46546s8d4f8sefes833sdfr6s8/";
+				// return null;
+				return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b";
 			}
 
 			function hasPermissions(dropDownValue) {
 
-				if(dropDownValue == "UK" || dropDownValue == "200" || dropDownValue == "Games" || dropDownValue == "iPhone" || dropDownValue == "iPad" || dropDownValue == "free" || dropDownValue == "paid" || dropDownValue == "grossing") {
+				if(dropDownValue == "GB" || dropDownValue == "200" || dropDownValue == "Overall" || dropDownValue == "PHONE" || dropDownValue == "TABLET" || dropDownValue == "FREE" || dropDownValue == "PAID" || dropDownValue == "GROSSING") {
 					return true;
 				}
 
@@ -528,8 +584,6 @@
 			}
 
 			function getFileToNameRequest() {
-				
-				console.log("getFileToNameRequest");
 
 				var selectedPosition = $('.js-dropdown-position .js-dropdown-option.is-selected').data("value");
 				var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");				
@@ -537,11 +591,9 @@
 				var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
 				var selectedChartType = $('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value");
 
-				console.log(selectedPosition);
-				console.log(selectedCountry);
-				console.log(selectedCategory);
+				console.log(selectedChartType);
 
-				return "daily-downloads_" + selectedCountry + "_" + selectedChartType + "_" + selectedCategory + "_" + selectedPosition + "_" + selectedDevice + "_2016.js";
+				return "daily-downloads_" + selectedCountry + "_" + selectedChartType + "_" + selectedCategory + "_" + selectedPosition + "_" + selectedDevice + "_2016.json";
 			}
 
 			$("html").on("click", function(e){
@@ -555,10 +607,17 @@
   		});
 
   		function setWeeksLabels() {
-  			$('.js-week-number').text(currentIndex);
-				var formattedDate = timeConverter(currentDataCategory.weeks[currentIndex-1].date);
-				$('.js-date-value').text(formattedDate);
-				$('.js-apps-released-value').text(currentDataCategory.weeks[currentIndex-1].value);
+  			if(currentDataCategory.weeks[currentIndex-1]) {
+					$('.js-week-number').text(currentIndex);
+					var formattedDate = timeConverter(currentDataCategory.weeks[currentIndex-1].date);
+					$('.js-date-value').text(formattedDate);
+					
+					var valueString = ($('.js-dropdown-chart-type .js-dropdown-option.is-selected').attr("data-value") == ("GROSSING")) ? "$" : "";
+
+					var formattedValue = currentDataCategory.weeks[currentIndex-1].value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+					$('.js-apps-released-value').text(valueString + formattedValue);
+  			}  			
   		}
 
   		$(window).on("scroll", function(){  			
@@ -579,7 +638,7 @@
 				if(scrollTopValue + offsetTopFromWindowTop > dataContainerOffsetTop) {
 					currentIndex = Math.floor((heightOfDataScrolled + 32) / rowHeight) + 1;
 				}
-				if(scrollTopValue > marginWhenBarChartShows) {
+				if(scrollTopValue > marginWhenBarChartShows && currentDataCategory.weeks[currentIndex-1]) {
 					$('.js-footer-chart').addClass("is-showing");
 					$('.js-data-heatmap').addClass("is-showing");
 				} else {
@@ -605,5 +664,7 @@
 		});
 
 	</script>
+
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script> 
 </body>
 </html>
