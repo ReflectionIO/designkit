@@ -28,7 +28,7 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-lab-base page-daily-releases grid-container theme-dark js-page-lab-base" ng-controller="DataController as dataList">
+			<div class="page-lab-base page-daily-releases grid-container theme-dark js-page-lab-base is-loading" ng-controller="DataController as dataList">
 				
 				<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
 
@@ -660,6 +660,8 @@
   		setTimeout(function(){
   			animateBarChartHeights();
   		}, 500);
+
+  		$('.js-page-lab-base.is-loading').removeClass('is-loading');
 
 		});
 

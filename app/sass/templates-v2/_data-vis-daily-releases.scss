@@ -26,10 +26,12 @@
     left: 30px;
 		width: 100%;
 		padding-top: 15px;
+		opacity: 1;
 		overflow: visible;
 		z-index: 1000;		
 		text-align: center;		
 		background-color: $dark-grey-1;
+		transition: opacity 0.2s;
 		&.is-fixed {
 			position: fixed;
 			top: 50px;
@@ -74,6 +76,8 @@
 		width: 840px;
 		margin: 0 auto 6rem;
 		overflow: visible;
+		opacity: 1;
+		transition: opacity 0.2s;
 	}
 	.data-container {
     overflow: visible;
@@ -290,6 +294,9 @@
 		@include breakpoint($leftnav-wide) {
 			padding-left: 220px;
 		}
+		.touchevents & {
+			padding-left: 20px;
+		}
 		&.is-showing {
 			bottom: 0px;
 			transition: bottom 0.3s;
@@ -378,6 +385,12 @@
 		position: absolute;
     top: 80px;
     right: 22px;
+	}
+	&.is-loading {
+		.daily-releases-filters-container,
+		.data-heatmap {
+			opacity: 0;
+		}
 	}
 }
 .data-heatmap-no-data {
