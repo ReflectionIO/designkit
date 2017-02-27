@@ -181,7 +181,7 @@
 
 					<ul class="data-container js-data-container">
 						<li class='data-cell {{dataList.setCSSClass($index)}}' ng-repeat="dataItem in dataList.appData">
-							<span class="data-cell-colour" style='opacity: {{dataList.getOpacity($index)}}'></span>
+							<span class="data-cell-colour" ng-style="{opacity: dataList.getOpacity($index)}"></span>
 							<span class="data-cell-colour--off-state"></span>
 							<div class="data-hover">
 								<span class="data-hover__data-date">{{dataList.timeConverter(dataItem.date)}}</span>
@@ -267,7 +267,7 @@
 
 	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
-  <script src="js/data-lab/daily-downloads-default.json"></script>
+  <script src="js/data-lab/dailydownloads/GB/daily-downloads-default.json"></script>
 
   <script>
 		
@@ -375,6 +375,7 @@
 		    }
 
 		    dataList.setCSSClass = function(listIndex) {
+
 					var opacity = dataList.getAppOpacity(listIndex);
 					if(opacity > 0.5) {
 						return "is-hotter";
@@ -389,9 +390,9 @@
 					// At 50% is purple #6d69c5 opacity 1
 					// Add a class above 50% to change background to red
 					// At 50.01% is red #ff496a opacity 0, background #6d69c5
-					// At 100% is red #ff496a opacity 1
-
+					// At 100% is red #ff496a opacity 1					
 					var opacity = dataList.getAppOpacity(listIndex);
+
 					if(opacity <= 0.5) {
 						opacity = opacity / 0.5;
 					} else {
@@ -465,7 +466,7 @@
 			  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 			  var year = a.getFullYear();
 			  var month = months[a.getMonth()];
-			  var date = a.getDate();
+			  var date = a.getUTCDate();
 			  var hour = a.getHours();
 			  var min = a.getMinutes();
 			  var sec = a.getSeconds();
@@ -593,7 +594,7 @@
 
 				console.log(selectedChartType);
 
-				return "daily-downloads_" + selectedCountry + "_" + selectedChartType + "_" + selectedCategory + "_" + selectedPosition + "_" + selectedDevice + "_2016.json";
+				return "dailydownloads/" + selectedCountry + "/daily-downloads_" + selectedCountry + "_" + selectedChartType + "_" + selectedCategory + "_" + selectedPosition + "_" + selectedDevice + "_2016.json";
 			}
 
 			$("html").on("click", function(e){
