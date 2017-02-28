@@ -41,13 +41,13 @@ button::-moz-focus-inner {
   outline: none;
   cursor: pointer;
   @extend %font-smoothing;
-  transition: background-color $base-transition-speed-off, color $base-transition-speed-off, border-color $base-transition-speed-off;
+  transition: background-color $base-transition-speed-off, color $base-transition-speed-off;
   .no-touchevents & {
   	&:hover:not(:disabled) {
-    	transition: background-color $base-transition-speed-on, color $base-transition-speed-on, border-color $base-transition-speed-on;
+    	transition: background-color $base-transition-speed-on, color $base-transition-speed-on;
     }
     &:active {
-			transition: border 0s;
+			transition: none;
 		}
   }
   &.is-loading {
@@ -79,7 +79,7 @@ button::-moz-focus-inner {
       background-color: $reflection-purple;
     }
     &:active {
-      border-top: 2px solid #47447e;
+      border-top: 2px solid rgba(0,0,0,0.3);
     }
   }
   &.is-disabled,
@@ -341,10 +341,15 @@ button::-moz-focus-inner {
   &.is-following {
     color: $reflection-white;
     background-color: $light-grey-1;
+    border-color: $light-grey-1;
     &:hover,
+    &:hover:not(:disabled),
     &:active {
       color: $reflection-white;
-      background-color: $light-grey-1;
+      background-color: darken($light-grey-1, 10%);
+    }
+    &:active {
+      border-top: 2px solid rgba(0,0,0,0.3);
     }
   }
 }
