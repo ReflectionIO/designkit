@@ -21,20 +21,34 @@
 	position: absolute;
 	left: 0;
   top: 0;
-	height: auto;
+	height: 572px;
+	width: 100%;
 	display: block;
 	pointer-events: none;
-	source, img {
-		position: relative;
-    width: 100%;
-    max-width: 1352px;
-    display: block;
+	text-align: center;    
+	img {
+    position: absolute;
+    left: 50%;
+    margin-left: -1364px;    
+    margin-top: -220px;
+    @include breakpoint($desktop) {
+    	margin-left: -1264px;
+    }
   }
 }
 .home-section-head__text {	
-	width: 525px;
+	width: 960px;
+  margin-top: 98px;
+  margin-left: 70px;
+  padding-right: calc(960px - 525px);
 	margin-top: 98px;
-	margin-left: 110px;
+	@include breakpoint($desktop) {
+		margin: 98px auto;
+	}
+	@include breakpoint($desktop) {
+		width: 1040px;
+		padding-right: calc(1040px - 525px);
+	}
 }
 .home-section-quote {
 	width: 100%;
