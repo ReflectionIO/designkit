@@ -45,13 +45,12 @@
 				</div>				
 				
 				<div class="page-data-vis-reviews-cloud__center-column">
-					<h2 class="data-vis-reviews-cloud__content-title">Most Commonly Appearing Words</h2>
-					
+
 					<div class="filters-row">
 						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-selected-app">
 							<select class="js-select-box">
-								<option value="supermario" selected>Super Mario Run</option>
-						    <option value="pokemongo">Pokémon GO</option>
+						    <option value="pokemongo" selected>Pokémon GO</option>
+						    <option value="supermario">Super Mario Run</option>
 						    <option value="8ballpool">8 Ball Pool</option>
 						    <option value="reigns">Reigns</option>
 						    <option value="facebookmessenger">Facebook Messenger</option>
@@ -89,6 +88,11 @@
 								</label>
 							</div>
 						</div>
+						
+						<div>
+							<h2 class="cloud-key-instruction">Click a word to read reviews featuring it</h2>
+							<h3 class="cloud-key">Size = Frequency, Colour = Sentiment</h3>
+						</div>
 					</div>
 
 					<div class="page-data-vis-reviews-cloud__main-content-container">
@@ -104,7 +108,7 @@
 
 							<div class="page-data-vis-reviews-cloud__reviews-widget">
 								<h4>Times <span class="js-keyword-hover">'Keyword'</span> Appears in Recent Reviews</h4>
-								<h5>Total: <span class="js-all-stars">-</span></h5>
+								<h5>Total (UK): <span class="js-all-stars">-</span></h5>
 								<ul>
 									<li>
 										<span class="number-of-stars-label ref-icon-after--star">5</span>
@@ -685,8 +689,8 @@
 		$(window).on("load", function(){
 		  new Page();
 			
-			loadReviews("supermario");
-			loadRawReviews("js/data-vis/reviews-raw-supermario.json");
+			loadReviews("pokemongo");
+			loadRawReviews("js/data-vis/reviews-raw-pokemongo.json");
 
 			$('.js-toggle input').each(function(){				
 				var cloudToToggle = $(this).data("cloudtotoggle");
