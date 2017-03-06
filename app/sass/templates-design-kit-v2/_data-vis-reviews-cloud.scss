@@ -26,12 +26,22 @@
 		}
 	}	
 	.page-data-vis-reviews-cloud__app-column {
-		width: 248px;
+		width: 220px;
 		display: inline-block;
 		float: left;
+		@include breakpoint($desktop) {
+			margin-top: -135px;
+			width: 248px;
+		}
 	}
 	.page-data-vis-reviews-cloud__app-name {
 		margin: 0 0 0.6rem;
+		a {
+			color: #9f9bff;
+			&:hover {
+				color: darken(#9f9bff, 10%);
+			}
+		}
 	}
 	.page-data-vis-reviews-cloud__developer-name {
 		margin: 0 0 1.7rem;
@@ -77,13 +87,44 @@
 		}
 	}
 	.page-data-vis-reviews-cloud__cloud-section {
-		width: calc(100% - 250px);
+		width: calc(100% - 290px);
 		min-height: 300px;
-		padding-left: 50px;
+		padding-right: 20px;
 		display: inline-block;
+		@include breakpoint($desktop) {
+			width: calc(100% - 250px);
+			padding-left: 50px;
+			padding-right: 0;
+		}
 	}
 	.filters-row {
-		margin-bottom: 8rem;
+    margin: 0 auto 6rem;
+    + div {
+    	overflow: visible;
+    }
+    @include breakpoint($desktop) {
+    	margin-left: 31rem;
+    	text-align: left;
+    }
+	}
+	.secondary-filter {
+		.form-field--select__box {
+	    width: 170px;
+	    > img {
+	    	position: absolute;
+	    	top: 12px;
+	    	left: 10px;
+	    }
+	    > b {
+	    	padding-left: 32px;
+	    }
+		}
+		.form-field--select__dropdown {
+			padding: 15px 10px 5px 9px;
+			li {
+				margin-bottom: 10px;
+			}
+		}
 	}
 	.tag-cloud-container {
 		position: relative;
@@ -150,10 +191,14 @@
 		}
 	}
 	.rating-number {
-		width: 36px;
+    width: 32px;
     margin-top: 1px;			
-		font-size: 14px;
+		font-size: 13px;
 		color: $reflection-white;
+		@include breakpoint($desktop) {
+			width: 36px;
+			font-size: 14px;
+		}
 	}
 	.rating-percentage-text {
     margin-top: 1px;
@@ -162,13 +207,16 @@
 		color: $light-grey-1;
 	}
 	.rating-percentage-container {
-		width: 93px;
+		width: 70px;
 		height: 9px;
 		margin-top: 5px;
 		display: inline-block;
 		vertical-align: top;
 		border-radius: 5px;
 		background-color: #2e313c;
+		@include breakpoint($desktop) {
+			width: 93px;
+		}
 	}
 	.rating-percentage {
 		width: 0%;
@@ -207,10 +255,15 @@
 		background-image: url(images/rating-stars-lab@2x.png);
 	}
 	.reviews-content-container {
-		width: 635px;
-    margin-top: 9rem;
-    margin-bottom: 1rem;
+		width: 100%;
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+    display: none;
 		text-align: left;
+		@include breakpoint($desktop) {
+			width: 635px;
+			margin-top: 9rem;
+		}
 		> h2 {
     	padding-bottom: 2.4rem;
 			font-weight: 400;
@@ -264,17 +317,60 @@
 			}
 		}
 	}
-	.cloud-key-instruction {		
+	.cloud-key-instruction-container {		
+    margin: 0;
+    @include breakpoint($desktop) {
+			width: 625px;
+    }
+  }
+	.cloud-key-instruction {
 		margin-top: 12px;
+		margin-bottom: 0;
 		display: inline-block;
+		vertical-align: middle;
 		font-size: 16px;
 		font-weight: 400;
-		color: $light-grey-1;
+		color: $light-grey-2;
 	}
 	.cloud-key {
-		margin-top: 12px;
+		margin: 14px 0 0 92px;
 		display: inline-block;
-		float: right;
+		vertical-align: middle;
 		font-size: 14px;
+		font-weight: 400;
+		color: $light-grey-2;
+		.size-key {
+			font-size: 16px;
+			color: $light-grey-1;
+			&:first-letter {
+				font-size: 22px;
+			}
+			b {
+				font-size: 13px;
+			}
+		}
+		&:last-child {
+			margin-top: 16px;
+			margin-left: 15px;
+		}
+		.colour-key {
+			font-weight: 600;
+			@include gradient-text('linear-gradient(to right, #12a76a, #727686, #ff496a)', 'dark');
+		}
+	}
+	.feedback-container,
+	.idc-comments-container {
+		width: 100%;
+		@include breakpoint($desktop) {
+			width: 635px;
+		}
+	}
+	.feedback-container {
+		margin: 8rem 0 7rem;
+		padding-left: 3%;
+		@include breakpoint($desktop) {			
+			padding-left: 80px;
+			margin-top: 9rem;
+		}
 	}
 }
