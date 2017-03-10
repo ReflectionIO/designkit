@@ -12,423 +12,677 @@
     }
   });
 </script>
-<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
-
-<script src="js/vendor/jquery-1.11.1.min.js"></script>
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="js/vendor/jquery.tipsy.js"></script>
 <link rel="stylesheet" href="css/tipsy.css" />
-<link rel="stylesheet" href="data-lab-category-revenue.css" />
+<link rel="stylesheet" href="reflection-main-v2.css" />
 </head>
 
-<body>
+<body class="page-data-vis-category-share">
 
-<div class="grid-container data-vis-container">
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+	<header id="js-component-import--global-header" class="global-header"></header>
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
 
-	<header class="header">
-		<div class="data-vis-title-container">
-			<img src="images/data-vis-logo.png" alt="Reflection logo" class="reflection-logo" />
-			<h1 class="data-vis-title">UK App Store (iOS) Top Grossing by Category</h1>
-			<h2 class="data-vis-date">4th - 10th Jan 2016</h2>
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			<div class="page-lab-base theme-dark">
+				<div class="grid-container data-vis-container">
+					
+					<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
+
+					<div class="grid__row">
+						<div class="grid__row--heading-row__right">
+								<div class="sharing-container">
+									<div class="addthis_sharing_toolbox"></div>
+								</div>
+						</div>
+					</div>
+
+					<div class="data-lab-article-intro">
+						<h1 class="data-lab-article-intro__heading">Which Apps Perform Best in Which Categories?</h1>
+						<p class="data-lab-article-intro__paragraph">Discover the breakdown of iOS app store revenue or downloads by category and drill down to see which apps are the star performers in each. Discover which mechanics or monetisation strategies are most effective in your category and identify which new markets offer the most potential growth for you.</p>
+					</div>
+
+					<div class="grid__row overflow-visible">
+					<div class="filters-row filters-row-main-chart js-filters-main-chart">
+						<h2 class="filter-row__heading">Average Daily Totals Required to Chart:</h2>
+
+						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-date">
+							<select class="js-select-box">
+						    <option value="2017_March" selected>Mar 2017</option>
+						    <option value="2017_February" data-access="key">Feb 2017</option>
+						    <option value="2017_January" data-access="key">Jan 2017</option>
+						    <option value="2016_December" data-access="key">December 2016</option>
+						    <option value="2016_November" data-access="key">November 2016</option>
+						    <option value="2016_October" data-access="key">October 2016</option>
+						    <option value="2016_September" data-access="key">September 2016</option>
+						    <option value="2016_August" data-access="key">August 2016</option>
+						    <option value="2016_July" data-access="key">July 2016</option>
+						    <option value="2016_June" data-access="key">June 2016</option>
+						    <option value="2016_May" data-access="key">May 2016</option>
+						    <option value="2016_April" data-access="key">April 2016</option>
+						    <option value="2016_March" data-access="key">March 2016</option>
+						    <option value="2016_February" data-access="key">February 2016</option>
+						    <option value="2016_January" data-access="key">January 2016</option>
+							</select>
+						</div>
+
+						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
+							<select class="js-select-box">
+						    <option value="GB" selected>United Kingdom</option>
+						    <option value="US" data-access="key">USA</option>
+						    <option value="FR" data-access="key">France</option>
+						    <option value="IT" data-access="key">Italy</option>
+						    <option value="DE" data-access="key">Germany</option>
+						    <option value="DK" data-access="key">Denmark</option>
+						    <option value="CH" data-access="key">Switzerland</option>
+						    <option value="ES" data-access="key">Spain</option>
+						    <option value="IE" data-access="key">Ireland</option>
+						    <option value="NL" data-access="key">Netherlands</option>
+						    <option value="SE" data-access="key">Sweden</option>
+							</select>
+						</div>
+
+						<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--medium">
+								<div class="toggle js-toggle">
+									<input id="toggle--show-all" name="radiomedium" data-cloudtotoggle="tag-cloud--all" type="radio">
+									<label for="toggle--show-all">
+										Revenue
+									</label>
+								</div>
+								<div class="toggle js-toggle">
+									<input id="toggle--show-five" name="radiomedium" data-cloudtotoggle="tag-cloud--positive" checked="" type="radio">
+									<label for="toggle--show-five">
+										Downloads
+									</label>
+								</div>
+							</div>
+
+					</div>
+				</div>
+
+					<header class="treemap-header">
+						<div class="treemap-header__total-container">
+							<h2>Total for <span>Overall</span></h2>
+							<h3 class="js-total"> <span class="js-total-growth is-negative">-0.3%</span></h3>
+						</div>
+						<div class="treemap-header__total-container">
+							<h2>Total for <span class="js-category-growth__category-name">Category</span></h2>
+							<h3><b class="js-category-total"></b> <span class="js-category-growth__growth"></span></h3>
+						</div>
+					</header>
+
+					<div id="chart"></div>
+
+				</div>
+			</div>
 		</div>
-		<div class="total-revenue-container">
-			<h3>Total Revenue:</h3>
-			<span class="js-total-revenue"></span>
-		</div>
-	</header>
-	<div id="chart">
-		<!-- <form>
-			<label><input type="radio" name="mode" value="size" checked=""> Size</label>
-			<label><input type="radio" name="mode" value="count"> Count</label>
-		</form> -->
 	</div>
+	
+	<div class="grid-container global-footer-dark global-footer-dark--lab" id="js-component-import--global-footer"></div>
 
-</div>
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+	
+	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+	<script src="//d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.tipsy.js"></script>
+	<script src="js-v2/application.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
 
-<script>
+	<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
 
-	var margin = {top: 35, right: 0, bottom: 0, left: 0},
-	    width = 1280,
-	    height = 800 - margin.top - margin.bottom,
-	    formatNumber = d3.format(",.0f"),
-	    transitioning;
+	<div id="js-appendScriptsContainer"></div>
 
-	var x = d3.scale.linear()
-	    .domain([0, width])
-	    .range([0, width]);
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
 
-	var y = d3.scale.linear()
-	    .domain([0, height])
-	    .range([0, height]);
+	<script>
 
-	var treemap = d3.layout.treemap()
-	    .children(function(d, depth) { return depth ? null : d._children; })
-	    .sort(function(a, b) { return a.value - b.value; })
-	    .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
-	    .round(false);
+		var margin = {top: 45, right: 0, bottom: 0, left: 0},
+		    width = 1176,
+		    height = 750 - margin.top - margin.bottom,
+		    formatNumber = d3.format(",.0f"),
+		    transitioning;
 
-	var svg = d3.select("#chart").append("svg")
-	    .attr("width", width + margin.left + margin.right)
-	    .attr("height", height + margin.bottom + margin.top)
-	    .style("margin-left", -margin.left + "px")
-	    .style("margin.right", -margin.right + "px")
-	  .append("g")
-	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-	    .style("shape-rendering", "crispEdges");
+		var x = d3.scale.linear()
+		    .domain([0, width])
+		    .range([0, width]);
 
-	var grandparent = svg.append("g")
-	    .attr("class", "grandparent");
+		var y = d3.scale.linear()
+		    .domain([0, height])
+		    .range([0, height]);
 
-	grandparent.append("rect")
-	    .attr("y", -margin.top)
-	    .attr("width", width)
-	    .attr("height", margin.top);
+		var treemap = d3.layout.treemap()
+		    .children(function(d, depth) { return depth ? null : d._children; })
+		    .sort(function(a, b) { return a.value - b.value; })
+		    .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
+		    .round(false);
 
-	grandparent.append("text")
-	    .attr("x", 19)
-	    .attr("y",11 - margin.top)
-	    .attr("dy", ".75em");
+		var svg = d3.select("#chart").append("svg")
+		    .attr("width", width + margin.left + margin.right)
+		    .attr("height", height + margin.bottom + margin.top)
+		    .style("margin-left", -margin.left + "px")
+		    .style("margin.right", -margin.right + "px")
+		  .append("g")
+		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+		    .style("shape-rendering", "crispEdges");
 
-	var baseFillColour = "#363a47";
+		var grandparent = svg.append("g")
+		    .attr("class", "grandparent");
 
-	d3.json("js/category-revenue-data-with-growth.json", function(root) {
-	  initialize(root);
-	  accumulate(root);
-	  layout(root);
-	  display(root);						  
+		grandparent.append("rect")
+		    .attr("y", -margin.top)
+		    .attr("width", width)
+		    .attr("height", margin.top);
 
-	  function initialize(root) {
-	    root.x = root.y = 0;
-	    root.dx = width;
-	    root.dy = height;
-	    root.depth = 0;
-	  }
+		grandparent.append("text")
+		    .attr("x", 19)
+		    .attr("y",11 - margin.top)
+		    .attr("dy", ".75em");
 
-	  // Aggregate the values for internal nodes. This is normally done by the
-	  // treemap layout, but not here because of our custom implementation.
-	  // We also take a snapshot of the original children (_children) to avoid
-	  // the children being overwritten when when layout is computed.
-	  function accumulate(d) {
-	    return (d._children = d.children)
-	        ? d.value = d.children.reduce(function(p, v) { return p + accumulate(v); }, 0)
-	        : d.value;
-	  }
+		var baseFillColour = "#363a47";
 
-	  // Compute the treemap layout recursively such that each group of siblings
-	  // uses the same size (1×1) rather than the dimensions of the parent cell.
-	  // This optimizes the layout for the current zoom state. Note that a wrapper
-	  // object is created for the parent node for each group of siblings so that
-	  // the parent’s dimensions are not discarded as we recurse. Since each group
-	  // of sibling was laid out in 1×1, we must rescale to fit using absolute
-	  // coordinates. This lets us use a viewport to zoom.
-	  function layout(d) {
-	    if (d._children) {
-	      treemap.nodes({_children: d._children});
-	      d._children.forEach(function(c) {
-	        c.x = d.x + c.x * d.dx;
-	        c.y = d.y + c.y * d.dy;
-	        c.dx *= d.dx;
-	        c.dy *= d.dy;
-	        c.parent = d;
-	        layout(c);
-	      });
-	    }
-	  }
+		d3.json("js/data-vis/category-treemap/treemap_data_cat_GB_COMBINED_PAID_2016-02.json", function(root) {
+		  initialize(root);
+		  accumulate(root);
+		  layout(root);
+		  display(root);						  
 
-	  function display(d) {
-	    grandparent
-	        .datum(d.parent)
-	        .on("click", transition)
-	      .select("text")
-	        .text(name(d));
-
-	    var g1 = svg.insert("g", ".grandparent")
-	        .datum(d)
-	        .attr("class", "depth");
-
-	    var g = g1.selectAll("g")
-	        .data(d._children)
-	      .enter().append("g");
-
-	    g.filter(function(d) { return d._children; })
-	        .classed("children", true)
-	        .on("click", transition);
-
-	    g.selectAll(".child")
-	        .data(function(d) { return d._children || [d]; })
-	      .enter().append("rect")
-	        .attr("class", "child")
-	        .call(rect);
-
-	    g.append("rect")
-	        .attr("class", "parent")						        
-	        .call(rect)
-	      .append("title")
-	        .text(function(d) {
-	        	var val = d.value / 100;
-	        	var formattedNumber = formatNumber(val);
-	        	return "£" + formattedNumber;
-	        });
-
-	    g.append("text")
-	        .attr("dy", "20px")
-	        .text(function(d, i) { 
-	        	if(d.area > 0.02)  { 
-		        	if(d.name.length > 20) { 
-		        		return d.name.substring(0, 20) + "..." ;
-		        	} else {
-		        		return d.name;
-		        	}
-		        } else {
-		        		return "";
-		        }
-		      })
-	        .attr("class", "text-title")
-	        .call(text);
-
-	    g.append("text")
-	        .attr("dy", "45px")
-	        .text(function(d, i) { if(d.area > 0.02)  { return "£" + formatNumber(d.value/100); } else return ""; })
-	        .call(text);
-	    
-    	// g.append("image")
-    	// .attr("xlink:href", function(d) { return d.image; })
-    	// .attr("height", "32")
-    	// .attr("width", "32")
-    	// .call(image);
-
-	    function transition(d) {
-	      if (transitioning || !d) return;
-	      transitioning = true;
-
-	      var g2 = display(d),
-	          t1 = g1.transition().duration(750),
-	          t2 = g2.transition().duration(750);
-
-	      // Update the domain only after entering new elements.
-	      x.domain([d.x, d.x + d.dx]);
-	      y.domain([d.y, d.y + d.dy]);
-
-	      // Enable anti-aliasing during the transition.
-	      svg.style("shape-rendering", null);
-
-	      // Draw child nodes on top of parent nodes.
-	      svg.selectAll(".depth").sort(function(a, b) { return a.depth - b.depth; });
-
-	      // Fade-in entering text.
-	      g2.selectAll("text").style("fill-opacity", 0);
-
-	      // Transition to the new view.
-	      t1.selectAll("text").call(text).style("fill-opacity", 0);
-	      t2.selectAll("text").call(text).style("fill-opacity", 1);
-	      t1.selectAll("rect").call(rect);
-	      t2.selectAll("rect").call(rect);
-	      t1.selectAll("image").call(image);
-	      t2.selectAll("image").call(image);
-
-	      // Remove the old node when the transition is finished.
-	      t1.remove().each("end", function() {
-	        svg.style("shape-rendering", "crispEdges");
-	        transitioning = false;
-	      });
-	    }
-
-	    $('svg g.depth g.children').tipsy = null;
-	    $('svg g.depth rect').tipsy = null;
-	    $('.tipsy').remove();
-
-	    $('svg g.depth g.children').tipsy({ // group tooltip
-        gravity: 'n',
-        html: true, 
-        title: function() {
-          var d = this.__data__;
-          if(d != null && d.value != null) {
-          	return '<h2 class="tt-category-title">' + d.name + '</h2><h3 class="tt-category-value">Total Revenue:<br />£' + formatNumber(d.value/100) + '</h3><h4>GROWTH: ' + d.growth + '%</h4>';
-          }
-          return '';
-        }
-      });
-			
-      setTimeout(function() {
-      	var groupMaxMin = [];
-      	$('svg g.depth > g').each(function(){
-					var d = this.__data__;
-					groupMaxMin.push(d.growth);
-      	});
-
-      	var minMaxObject = getMinMaxFromArray(groupMaxMin);
-
-      	$('svg g.depth > g').each(function(){ // group children tooltip      		
-		    	var d = this.__data__;
-          if(d != null && d._children != null && d._children.length > 0) {
-          	
-						if(d._children != null) {
-							var i = 0;          		
-	          	$(this).find('rect').each(function(){
-	          		if(d._children[i] != null) {
-		        			createSubTipsy($(this), d._children[i]);
-		        			var growth = (d.growth != null) ? d.growth : 0;
-		        			var fillColour = getFillForGrowth(growth, minMaxObject);
-		      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
-		        		}
-		        		i++;
-	          	});
-	          }
-
-          } else if(d != null && d.value != null) {
-          	console.log(d);
-          	$(this).find('rect.child').each(function(){
-          		createSubTipsy($(this), d); 
-          		var growth = (d.growth != null) ? d.growth : 0;
-        			var fillColour = getFillForGrowth(growth, minMaxObject);
-      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
-          	});
-          }
-		    });
-
-   		}, 1000);
-
-	    return g;
-	  }
-		
-		function getMinMaxFromArray(list) {
-
-			var mx = 0, mn = 0;
-			for(var x = 0; x < list.length; x++) {
-				if(list[x] > mx) {
-					mx = list[x];
-				} 
-				if(list[x] < mn) {
-					mn = list[x];
-				}
-			}
-			return {
-				min: mn,
-				max: mx
-			};
-		}
-
-	  function getFillForGrowth(growth, minMaxObject) {
-			
-			// work out opacity (positive growth)
-			var range = minMaxObject.max;
-			var numRelativeToMin = growth;
-			if(minMaxObject.min > 0) { // work out correct opacity
-				range = minMaxObject.max - minMaxObject.min;
-				var numRelativeToMin = growth - minMaxObject.min;
-			}
-			var fillColour = "#1bc79f";	
-			
-			// if negative, work out opacity
-	  	if(growth < 0) {
-				fillColour = "#ff496a";
-				var range = minMaxObject.min * -1;
-				var numRelativeToMin = growth * -1;
-				if(minMaxObject.max < 0) { // work out correct opacity
-					range = minMaxObject.max - minMaxObject.min;
-					var numRelativeToMin = growth - minMaxObject.max;
-				}			 				
-	  	}
-
-	  	var opacity = 1/range * numRelativeToMin;
-
-			return {
-				fillColour: fillColour,
-				fillOpacity: opacity
-			};
-	  }
-
-	  function createSubTipsy($domElement, dataForTooltip) {
-	  	$domElement.tipsy({
-        gravity: 's', 
-        html: true, 
-        title: function() {
-        	var imageString = "";
-        	if(dataForTooltip.image != null) {
-        		imageString = '<img src="' + dataForTooltip.image + '" class="tt-image"/><br />';
-        	}
-        	return imageString + '<h2>' + dataForTooltip.name + '</h2><h3>£' + formatNumber(dataForTooltip.value/100) + '</h3><h4>GROWTH: ' + dataForTooltip.growth + '%</h4>';
-        }
-      });
-	  }
-
-	  function text(text) {
-	    text.attr("x", function(d) { return x(d.x) + 15; })
-	        .attr("y", function(d) { return y(d.y) + 6; });
-	  }
-
-	  function image(image) {
-	    image.attr("x", function(d) { return x(d.x) + 10; })
-	        .attr("y", function(d) { return y(d.y) + 10; });
-	  }
-
-	  function rect(rect) {						  	
-	    rect.attr("x", function(d) { return x(d.x); })
-	        .attr("y", function(d) { return y(d.y); })
-	        .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
-	        .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
-	        .style("fill", function(d) { return baseFillColour; });
-	  }
-
-	  function name(d) {
-	    return d.parent
-	        ? name(d.parent) + " | " + d.name
-	        : d.name;
-	  }
-
-	  d3.selectAll("input").on("change", function change() {
-
-	  });
-	});
-
-	function LightenDarkenColor(col, amt) {
-
-	    var usePound = false;
-	  
-	    if (col[0] == "#") {
-	        col = col.slice(1);
-	        usePound = true;
-	    }
-	 
-	    var num = parseInt(col,16);
-	 
-	    var r = (num >> 16) + amt;
-	 
-	    if (r > 255) r = 255;
-	    else if  (r < 0) r = 0;
-	 
-	    var b = ((num >> 8) & 0x00FF) + amt;
-	 
-	    if (b > 255) b = 255;
-	    else if  (b < 0) b = 0;
-	 
-	    var g = (num & 0x0000FF) + amt;
-	 
-	    if (g > 255) g = 255;
-	    else if (g < 0) g = 0;
-	 
-	    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
-	  
-	}
-
-	function aggregateAllValues(dataSource) {
-		var data = dataSource;		
-		var aggregate = 0;
-		$.getJSON(dataSource, function( data ) {
-		  for(var i = 0; i < data.children.length; i++) {
-		  	//console.log(data.children[i].children);
-		  	for(var j = 0; j < data.children[i].children.length; j++) {
-		  		aggregate += data.children[i].children[j].value;
-		  	}
+		  function initialize(root) {
+		    root.x = root.y = 0;
+		    root.dx = width;
+		    root.dy = height;
+		    root.depth = 0;
 		  }
 
-			if(aggregate > 0) {
-				$('.js-total-revenue').text("£" + formatNumber(aggregate/100));
-			}
-		});
-	}
+		  function accumulate(d) {
+		    return (d._children = d.children)
+		        ? d.value = d.children.reduce(function(p, v) { return p + accumulate(v); }, 0)
+		        : d.value;
+		  }
 
-	aggregateAllValues("js/category-revenue-data.json");
-</script>
+		  function layout(d) {
+		    if (d._children) {
+		      treemap.nodes({_children: d._children});
+		      d._children.forEach(function(c) {
+		        c.x = d.x + c.x * d.dx;
+		        c.y = d.y + c.y * d.dy;
+		        c.dx *= d.dx;
+		        c.dy *= d.dy;
+		        c.parent = d;
+		        layout(c);
+		      });
+		    }
+		  }
+
+		  function display(d) {
+		    grandparent
+		        .datum(d.parent)
+		        .on("click", transition)
+		      .select("text")
+		        .html(name(d));
+
+		    var g1 = svg.insert("g", ".grandparent")
+		        .datum(d)
+		        .attr("class", "depth");
+
+		    var g = g1.selectAll("g")
+		        .data(d._children)
+		      .enter().append("g");
+
+		    g.filter(function(d) { return d._children; })
+		        .classed("children", true)
+		        .on("click", transition);
+
+		    g.selectAll(".child")
+		        .data(function(d) { return d._children || [d]; })
+		      .enter().append("rect")
+		        .attr("class", "child")
+		        .call(rect);
+
+		    g.append("rect")
+		        .attr("class", "parent")						        
+		        .call(rect)
+		      .append("title")
+		        .text(function(d) {
+		        	var val = d.value;
+		        	var formattedNumber = formatNumber(val);
+		        	return "" + formattedNumber;
+		        });
+
+		    g.append("text")
+		        .attr("dy", "20px")
+		        .text(function(d, i) { 
+		        	if(d.area > 0.02)  { 
+			        	if(d.name.length > 20) { 
+			        		return d.name.substring(0, 20) + "..." ;
+			        	} else {
+			        		return d.name;
+			        	}
+			        } else {
+			        		return "";
+			        }
+			      })
+		        .attr("class", "text-title")
+		        .call(text);
+
+		    g.append("text")
+		        .attr("dy", "45px")
+		        .text(function(d, i) { if(d.area > 0.02)  { return "" + formatNumber(d.value); } else return ""; })
+		        .call(text);
+
+		    function transition(d) {
+		      if (transitioning || !d) return;
+		      transitioning = true;
+
+		      var g2 = display(d),
+		          t1 = g1.transition().duration(750),
+		          t2 = g2.transition().duration(750);
+
+		      // Update the domain only after entering new elements.
+		      x.domain([d.x, d.x + d.dx]);
+		      y.domain([d.y, d.y + d.dy]);
+
+		      // Enable anti-aliasing during the transition.
+		      svg.style("shape-rendering", null);
+
+		      // Draw child nodes on top of parent nodes.
+		      svg.selectAll(".depth").sort(function(a, b) { return a.depth - b.depth; });
+
+		      // Fade-in entering text.
+		      g2.selectAll("text").style("fill-opacity", 0);
+
+		      // Transition to the new view.
+		      t1.selectAll("text").call(text).style("fill-opacity", 0);
+		      t2.selectAll("text").call(text).style("fill-opacity", 1);
+		      t1.selectAll("rect").call(rect);
+		      t2.selectAll("rect").call(rect);
+		      t1.selectAll("image").call(image);
+		      t2.selectAll("image").call(image);
+
+		      // Remove the old node when the transition is finished.
+		      t1.remove().each("end", function() {
+		        svg.style("shape-rendering", "crispEdges");
+		        transitioning = false;
+		      });
+		    }
+
+		    $('svg g.depth g.children').tipsy = null;
+		    $('svg g.depth rect').tipsy = null;
+		    $('.tipsy').remove();
+
+		    // $('svg g.depth g.children').tipsy({ // group tooltip
+	     //    gravity: 'n',
+	     //    html: true, 
+	     //    title: function() {
+	     //      var d = this.__data__;
+	     //      if(d != null && d.value != null) {
+
+	     //      	return '<div class="category-growth">Growth for <span class="category-growth__category-name">' + d.name + '</span>: <span class="category-growth__growth">' + d.growth + '%</span></div>';
+	     //      }
+	     //      return '';
+	     //    }
+	     //  });
+				
+	      setTimeout(function() {
+	      	var groupMaxMin = [];
+	      	$('svg g.depth > g').each(function(){
+						var d = this.__data__;
+						groupMaxMin.push(d.growth);
+	      	});
+
+	      	var minMaxObject = getMinMaxFromArray(groupMaxMin);
+
+	      	$('svg g.depth > g').each(function(){ // group children tooltip      		
+			    	var d = this.__data__;
+			    	console.log(d);
+	          if(d != null && d._children != null && d._children.length > 0) {
+	          	console.log(d);
+							if(d._children != null) {
+								var i = 0;          		
+		          	$(this).find('rect').each(function(){
+		          		if(d._children[i] != null) {
+			        			createSubTipsy($(this), d._children[i]);
+			        			var growth = (d.growth != null) ? d.growth : 0;
+			        			var fillColour = getFillForGrowth(growth, minMaxObject);
+			      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
+			      				$(this).attr("data-growth", d.growth);
+										$(this).attr("data-name", d.name);
+										$(this).attr("data-cat-total", d.total);
+
+			      				 $(this).on("mouseenter", function(){
+			      				 		var formattedTotal = formatNumber($(this).attr("data-cat-total"));
+												var posNegSign = "+ ";
+												var dataGrowth = $(this).attr("data-growth");
+
+			      				 		if($(this).attr("data-growth") < 0) {
+			      				 			$('.js-category-growth__growth').addClass("is-negative");
+			      				 			posNegSign = "- ";
+			      				 			dataGrowth *= -1;
+			      				 		} else {
+			      				 		 $('.js-category-growth__growth').removeClass("is-negative");
+			      				 		}
+
+			      				 		$('.js-category-growth__category-name').text($(this).attr("data-name"));
+			      				 		$('.js-category-total').text(formattedTotal);
+						          	$('.js-category-growth__growth').text(posNegSign + dataGrowth + "%");
+						         });
+			        		}
+			        		i++;
+		          	});
+		          }
+
+	          } else if(d != null && d.value != null) {
+	          	$(this).find('rect.child').each(function(){
+	          		createSubTipsy($(this), d); 
+	          		var growth = (d.growth != null) ? d.growth : 0;
+	        			var fillColour = getFillForGrowth(growth, minMaxObject);
+	      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
+	          	});
+	          }
+			    });
+
+	   		}, 1000);
+
+		    return g;
+		  }
+			
+			function getMinMaxFromArray(list) {
+
+				var mx = 0, mn = 0;
+				for(var x = 0; x < list.length; x++) {
+					if(list[x] > mx) {
+						mx = list[x];
+					} 
+					if(list[x] < mn) {
+						mn = list[x];
+					}
+				}
+				return {
+					min: mn,
+					max: mx
+				};
+			}
+
+		  function getFillForGrowth(growth, minMaxObject) {
+				
+				var fillColour = "#1bc79f",
+						opacity = 0;	
+
+				if(growth == "N/A") {
+					opacity = 1;
+					fillColour = "#47447c";
+				} else {
+					// work out opacity (positive growth)
+					var range = minMaxObject.max;
+					var numRelativeToMin = growth;
+					if(minMaxObject.min > 0) { // work out correct opacity
+						range = minMaxObject.max - minMaxObject.min;
+						var numRelativeToMin = growth - minMaxObject.min;
+					}
+					
+					// if negative, work out opacity
+			  	if(growth < 0) {
+						fillColour = "#ff496a";
+						var range = minMaxObject.min * -1;
+						var numRelativeToMin = growth * -1;
+						if(minMaxObject.max < 0) { // work out correct opacity
+							range = minMaxObject.max - minMaxObject.min;
+							var numRelativeToMin = growth - minMaxObject.max;
+						}			 				
+			  	}
+
+			  	opacity = 1/range * numRelativeToMin;
+			  }
+				
+				return {
+					fillColour: fillColour,
+					fillOpacity: opacity
+				};
+		  }
+
+		  function createSubTipsy($domElement, dataForTooltip) {
+		  	$domElement.tipsy({
+	        gravity: 's', 
+	        html: true,
+	        title: function() {
+	        	var imageString = "";
+	        	var posNegSign = "+ ";
+	        	var negativeCSSClass = "";
+	        	var dataGrowth = dataForTooltip.growth;        	
+
+	        	if(dataGrowth < 0) {
+							posNegSign = "- ";
+							negativeCSSClass = " is-negative";
+							dataGrowth *= -1;
+	        	}
+
+	        	if(dataForTooltip.image != null) {
+	        		imageString = '<img src="' + dataForTooltip.image + '" class="tt-image"/>';
+	        	}
+	        	return imageString + '<h2 class="tt-app-name">' + dataForTooltip.name + '</h2><h3 class="tt-value">' + formatNumber(dataForTooltip.value) + '<span class="tt-category-growth' + negativeCSSClass + '">' + posNegSign + dataGrowth + '%</span></h3>';
+	        }
+	      });
+		  }
+
+		  function text(text) {
+		    text.attr("x", function(d) { return x(d.x) + 15; })
+		        .attr("y", function(d) { return y(d.y) + 6; });
+		  }
+
+		  function image(image) {
+		    image.attr("x", function(d) { return x(d.x) + 10; })
+		        .attr("y", function(d) { return y(d.y) + 10; });
+		  }
+
+		  function rect(rect) {						  	
+		    rect.attr("x", function(d) { return x(d.x); })
+		        .attr("y", function(d) { return y(d.y); })
+		        .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
+		        .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
+		        .style("fill", function(d) { return baseFillColour; });
+		  }
+
+		  function name(d) {
+		    return d.parent
+		        ? name(d.parent) + " &nbsp;/ &nbsp;<tspan>" + d.name + "</tspan>"
+		        : d.name;
+		  }
+		});
+
+		function LightenDarkenColor(col, amt) {
+
+		    var usePound = false;
+		  
+		    if (col[0] == "#") {
+		        col = col.slice(1);
+		        usePound = true;
+		    }
+		 
+		    var num = parseInt(col,16);
+		 
+		    var r = (num >> 16) + amt;
+		 
+		    if (r > 255) r = 255;
+		    else if  (r < 0) r = 0;
+		 
+		    var b = ((num >> 8) & 0x00FF) + amt;
+		 
+		    if (b > 255) b = 255;
+		    else if  (b < 0) b = 0;
+		 
+		    var g = (num & 0x0000FF) + amt;
+		 
+		    if (g > 255) g = 255;
+		    else if (g < 0) g = 0;
+		 
+		    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+		  
+		}
+
+		function aggregateAllValues(dataSource) {
+			var data = dataSource;		
+			var aggregate = 0;
+			$.getJSON(dataSource, function( data ) {
+			  for(var i = 0; i < data.children.length; i++) {
+			  	//console.log(data.children[i].children);
+			  	for(var j = 0; j < data.children[i].children.length; j++) {
+			  		aggregate += data.children[i].children[j].value;
+			  	}
+			  }
+
+				if(aggregate > 0) {
+					$('.js-total').text("" + formatNumber(aggregate));
+				}
+			});
+		}
+
+		aggregateAllValues("js/data-vis/category-treemap/treemap_data_cat_GB_COMBINED_PAID_2016-02.json");
+
+		$(window).on("load", function(){
+		  new Page();
+			
+			var FilterDropDown = function($domElement, chartType) {
+
+				var $thisSelectBox = $domElement,
+						$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
+						$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+
+				$thisSelectBox.find('option').each(function(){
+					
+					var $thisOption = $(this),
+							selectedClass = "";
+
+					if($thisOption.val() != "") {
+
+						if($thisOption.is(":selected")) {
+							if($thisOption.val() != "") {
+								selectedClass = "is-selected";
+								$currentValue.text($thisOption.text());
+							}
+						}
+
+						var accessClass = "";
+						if($thisOption.data("access")) {
+							accessClass = "ref-after-pro";
+						}
+
+						var $newListItem = $("<li>");
+						$dropDownContainer.append($newListItem
+																					.addClass("js-dropdown-option")
+																					.addClass(selectedClass)
+																					.addClass(accessClass)
+																					.attr('data-value', $thisOption.attr('value'))
+																					.on("click", function() {
+
+																						// check the user role
+																						// allow time for li select
+																						var $this = $(this);
+																						
+																						var userId = getUserRole();
+																						var checkPermissions = doPermissionsCheck($this, chartType, $this.attr("data-value"));
+
+																						if(userId != null || (userId == null && checkPermissions)) {
+
+																							if(userId == null) {
+																								userId = "js/data-vis";
+																							}
+
+																							$thisSelectBox.find("option").removeAttr("selected");
+																							$thisOption.attr("selected", "selected");
+																							$currentValue.text($thisOption.text());
+																							$dropDownContainer.toggle();
+																							$thisSelectBox.parent("div").toggleClass("is-open");
+																							$thisSelectBox.parent("div").removeClass("nothing-selected");
+																							$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																							$(this).addClass("is-selected");
+
+																							$('.data-value').remove();
+
+																							var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
+																							var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");																								
+																							var selectedRank = $('.js-dropdown-rank .js-dropdown-option.is-selected').data("value");
+																							var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
+																							
+																							var fileNameToRequest = "whatyouneed_full2017_January.json";
+																							if(userId != null && userId != "js/data-lab") {
+																								fileNameToRequest = "whatyouneed_full" + selectedDate + ".json";
+																							}
+
+																							var fileToRequest = userId + "/" + fileNameToRequest;																						
+																							loadData(fileToRequest, selectedRank, selectedDevice, selectedCountry);
+																							
+																						} else {
+																							openSignUpPopup();
+																						}
+
+																					})
+																					.append($("<span>").text($thisOption.text()))
+																		);
+					} else {
+						// no option value means placeholder text before option is selected
+						$currentValue.text($thisOption.text());
+					}
+				});
+
+				$currentValue.on("click", function(){
+					if(!$thisSelectBox.attr("disabled")) {
+						var $parentDiv = $thisSelectBox.parent("div");
+						if($parentDiv.hasClass("is-open")) {
+							$dropDownContainer.toggle();	
+							$parentDiv.toggleClass("is-open");
+						} else {
+							setTimeout(function(){
+								if(!$parentDiv.hasClass("is-open")) {
+									closeAllFilters();
+								}
+								var parentWidth = $parentDiv.width();
+								var parentHeight = $parentDiv.height();
+								$dropDownContainer.css({"min-width": parentWidth + "px"});
+								$dropDownContainer.toggle();	
+								$parentDiv.toggleClass("is-open");
+							}, 50); // allow time for instance.closeAllFilters() to close other filters first
+						}
+					}
+				});
+
+				if($currentValue.text() == "") {
+					$thisSelectBox.parent("div").addClass("nothing-selected");
+				}
+
+				$thisSelectBox.parent("div").append($currentValue)
+																		.append($dropDownContainer);
+			};
+
+			function getUserRole() {
+				return null;
+				// return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b";
+			}
+
+			function doPermissionsCheck($filter, chartType, dataValue) {
+
+				if(dataValue == "2017_January" || dataValue == "200" || dataValue == "150" || dataValue == "100" || dataValue == "50" || dataValue == "PHONE" || dataValue == "TABLET") {
+					return true;
+				}
+
+				return false;
+			}
+
+			function closeAllFilters() {
+				$('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
+				$('.js-secondary-filter.is-open').removeClass("is-open");
+			}
+
+		  $('.js-select-box').each(function() {
+  			new FilterDropDown($(this));
+  		});
+	 	});
+
+	</script>
 
 </body>

@@ -41,7 +41,7 @@
 
 				<div class="data-lab-article-intro">
 					<h1 class="data-lab-article-intro__heading">App Store Reviews Hold the Key to Improving User Sentiment</h1>
-					<p class="data-lab-article-intro__paragraph">The ability to quickly see what people are saying about an app and why is essential in helping weed out issues or exploit opportunities. Enter Reflection’s Review Investigator tool: See the most commonly used words in the last 500 reviews (positive and negative) then click on them to see the context in which they were used.</p>
+					<p class="data-lab-article-intro__paragraph">The ability to quickly see what people are saying about an app and why is essential in helping weed out issues or exploit opportunities. Enter Reflection’s Review Investigator tool: See the most commonly used words in a snapshot of reviews (positive and negative) then click on them to see the context in which they were used.</p>
 				</div>				
 				
 				<div class="page-data-vis-reviews-cloud__center-column">
@@ -51,12 +51,12 @@
 								<select class="js-select-box">
 							    <option value="pokemon" selected>Pokémon GO</option>
 							    <option value="supermario">Super Mario Run</option>
-							    <option value="8ballpool">8 Ball Pool</option>
-							    <option value="reigns">Reigns</option>
+							    <option value="clashofclans">Clash of Clans</option>							    
+							    <option value="whatsapp">WhatsApp Messenger</option>
+							    <option value="snapchat">Snapchat</option>
 							    <option value="facebookmessenger">Facebook Messenger</option>
-							    <option value="topeleven">Top Eleven 2017</option>
-							    <option value="scorehero">Score Hero!</option>
-							    <option value="hillclimb2">Hill Climb Racing 2</option>
+							    <option value="tinder">Tinder</option>
+							    <option value="bumble">Bumble</option>
 								</select>
 							</div>
 
@@ -150,7 +150,7 @@
 									<ul class="tag-cloud tag-cloud--average"></ul>
 									<ul class="tag-cloud tag-cloud--negative"></ul>
 									<div class="reviews-content-container js-reviews-content-container">
-										<h2 class="heading-style--heading-five">Latest Reviews Featuring <span class="js-keyword">...</span></h2>
+										<h2 class="heading-style--heading-five">Latest Reviews Featuring <span class="reviews-content-container__keyword js-keyword">...</span></h2>
 										<div class="ratings-list js-custom-scrollbar" data-mcs-theme="minimal-dark">
 											<ul class="js-reviews-content">
 												<li>
@@ -185,7 +185,7 @@
 												<span id="IDCommentsPostTitle" style="display:none"></span>
 											<script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
 										</div>
-										
+
 								</div>
 							</div>
 						</div>
@@ -264,17 +264,22 @@
 			}
 			
 			var reviewsToOutput = [];
+			var counter = 0;
 			for(var i = 0; i < rawReviews.length; i++) {
-				if(rawReviews[i].content.indexOf(term) > -1) {
+				if(rawReviews[i].content.toLowerCase().indexOf(term.toLowerCase()) > -1) {
 					if(filterByRating == null) {
 						reviewsToOutput.push(rawReviews[i]);
+						counter++;
 					} else {
 						if(rawReviews[i].rating >= filterByRatingMin && rawReviews[i].rating <= filterByRatingMax) {
 							reviewsToOutput.push(rawReviews[i]);
+							counter++;
 						}
 					}
 				}
 			}
+
+			console.log("counter = "+ counter);
 			
 			$('.js-reviews-content').empty();
 			$('.js-keyword').text("'" + term + "'");
@@ -282,7 +287,7 @@
 			for(var i = 0; i < reviewsToOutput.length; i++) {
 
 				var contentString = reviewsToOutput[i].content;
-				var indexOfString = reviewsToOutput[i].content.indexOf(term);
+				var indexOfString = reviewsToOutput[i].content.toLowerCase().indexOf(term);
 				var wordLength = term.length;
 				var formattedContent = contentString.splice(indexOfString + wordLength, 0, "</strong>");
 				formattedContent = formattedContent.splice(indexOfString, 0, "<strong>");
@@ -705,6 +710,26 @@
 
 					populateAppContent("Hill Climb Racing 2", "Fingersoft", "images/data-vis/reviews/app-icon-hillclimb2.jpg", "js/data-vis/review-cloud-hill-climb-2.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%221146465836%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
 
+			} else if(appId == "tinder") {
+
+					populateAppContent("Tinder", "Tinder Inc.", "images/data-vis/reviews/app-icon-tinder.jpg", "js/data-vis/review-cloud-tinder.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22547702041%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "clashofclans") {
+
+					populateAppContent("Clash of Clans", "Supercell", "images/data-vis/reviews/app-icon-clashofclans.jpg", "js/data-vis/review-cloud-clashofclans.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22529479190%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+ 
+			} else if(appId == "whatsapp") {
+
+					populateAppContent("WhatsApp Messenger", "WhatsApp Inc.", "images/data-vis/reviews/app-icon-whatsapp.jpg", "js/data-vis/review-cloud-whatsapp.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22310633997%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "snapchat") {
+
+					populateAppContent("Snapchat", "Snap, Inc.", "images/data-vis/reviews/app-icon-snapchat.jpg", "js/data-vis/review-cloud-snapchat.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22447188370%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "bumble") {
+
+					populateAppContent("Bumble", "Bumble Holding Limited", "images/data-vis/reviews/app-icon-bumble.jpg", "js/data-vis/review-cloud-bumble.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22930441707%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
 			}
 		}
 
@@ -718,7 +743,7 @@
 		  new Page();
 			
 			loadReviews("pokemon");
-			loadRawReviews("js/data-vis/reviews-raw-pokemongo.json");
+			loadRawReviews("js/data-vis/reviews-raw-pokemon.json");
 
 			$('.js-toggle input').each(function(){				
 				var cloudToToggle = $(this).data("cloudtotoggle");
