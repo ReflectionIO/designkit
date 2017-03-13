@@ -47,62 +47,37 @@
 					</div>
 
 					<div class="grid__row overflow-visible">
-					<div class="filters-row filters-row-main-chart js-filters-main-chart">
-						<h2 class="filter-row__heading">Average Daily Totals Required to Chart:</h2>
-
-						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-date">
-							<select class="js-select-box">
-						    <option value="2017_March" selected>Mar 2017</option>
-						    <option value="2017_February" data-access="key">Feb 2017</option>
-						    <option value="2017_January" data-access="key">Jan 2017</option>
-						    <option value="2016_December" data-access="key">December 2016</option>
-						    <option value="2016_November" data-access="key">November 2016</option>
-						    <option value="2016_October" data-access="key">October 2016</option>
-						    <option value="2016_September" data-access="key">September 2016</option>
-						    <option value="2016_August" data-access="key">August 2016</option>
-						    <option value="2016_July" data-access="key">July 2016</option>
-						    <option value="2016_June" data-access="key">June 2016</option>
-						    <option value="2016_May" data-access="key">May 2016</option>
-						    <option value="2016_April" data-access="key">April 2016</option>
-						    <option value="2016_March" data-access="key">March 2016</option>
-						    <option value="2016_February" data-access="key">February 2016</option>
-						    <option value="2016_January" data-access="key">January 2016</option>
-							</select>
-						</div>
-
-						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
-							<select class="js-select-box">
-						    <option value="GB" selected>United Kingdom</option>
-						    <option value="US" data-access="key">USA</option>
-						    <option value="FR" data-access="key">France</option>
-						    <option value="IT" data-access="key">Italy</option>
-						    <option value="DE" data-access="key">Germany</option>
-						    <option value="DK" data-access="key">Denmark</option>
-						    <option value="CH" data-access="key">Switzerland</option>
-						    <option value="ES" data-access="key">Spain</option>
-						    <option value="IE" data-access="key">Ireland</option>
-						    <option value="NL" data-access="key">Netherlands</option>
-						    <option value="SE" data-access="key">Sweden</option>
-							</select>
-						</div>
-
-						<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--medium">
-								<div class="toggle js-toggle">
-									<input id="toggle--show-all" name="radiomedium" data-cloudtotoggle="tag-cloud--all" type="radio">
-									<label for="toggle--show-all">
-										Revenue
-									</label>
-								</div>
-								<div class="toggle js-toggle">
-									<input id="toggle--show-five" name="radiomedium" data-cloudtotoggle="tag-cloud--positive" checked="" type="radio">
-									<label for="toggle--show-five">
-										Downloads
-									</label>
-								</div>
+						<div class="filters-row filters-row-main-chart js-filters-main-chart">
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-date">
+								<select class="js-select-box">
+							    <option value="2016-02" selected="selected">February 2016</option>
+								</select>
 							</div>
 
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
+								<select class="js-select-box">
+							    <option value="GB" selected="selected">United Kingdom</option>
+								</select>
+							</div>
+
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-list">
+								<select class="js-select-box">
+							    <option value="FREE" selected="selected">Free List</option>
+							    <option value="PAID">Paid List</option>
+							    <option value="GROSSING">Grossing List</option>
+								</select>
+							</div>
+
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
+								<select class="js-select-box">
+							    <option value="PHONE" selected>iPhone</option>
+							    <option value="TABLET">iPad</option>
+							    <option value="COMBINED">All iOS</option>
+								</select>
+							</div>
+
+						</div>
 					</div>
-				</div>
 
 					<header class="treemap-header">
 						<div class="treemap-header__total-container">
@@ -110,12 +85,38 @@
 							<h3 class="js-total"> <span class="js-total-growth is-negative">-0.3%</span></h3>
 						</div>
 						<div class="treemap-header__total-container">
-							<h2>Total for <span class="js-category-growth__category-name">Category</span></h2>
-							<h3><b class="js-category-total"></b> <span class="js-category-growth__growth"></span></h3>
+							<h2>Total for <span class="js-chart-category-growth__category-name">Category</span></h2>
+							<h3><b class="js-chart-category-total"></b> <span class="js-chart-category-growth__growth"></span></h3>
 						</div>
 					</header>
 
-					<div id="chart"></div>
+					<div id="chart" class="chart">
+						<div class="chart__loading">
+							<div class="hamster-wheel">
+								<img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+							</div>
+							<div class="animation-hamster animation-hamster--dark"></div>
+						</div>
+					</div>
+
+					<div class="grid__row">
+						<h2 class="treemap__subheading">Games Subcategories:</h2>
+					</div>
+					
+					<header class="treemap-header">
+						<div class="treemap-header__total-container">
+							<h2>Total for <span class="js-sub-chart-category-growth__category-name">Category</span></h2>
+							<h3><b class="js-sub-chart-category-total"></b> <span class="js-sub-chart-category-growth__growth"></span></h3>
+						</div>
+					</header>
+					<div id="sub-chart" class="chart">
+						<div class="chart__loading">
+							<div class="hamster-wheel">
+								<img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+							</div>
+							<div class="animation-hamster animation-hamster--dark"></div>
+						</div>
+					</div>
 
 				</div>
 			</div>
@@ -142,358 +143,354 @@
 	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
 
 	<script>
+		
+		var formatNumber = d3.format(",.0f");
 
-		var margin = {top: 45, right: 0, bottom: 0, left: 0},
-		    width = 1176,
-		    height = 750 - margin.top - margin.bottom,
-		    formatNumber = d3.format(",.0f"),
+		function createTreemap(dataUrl, containerId) {
+			
+			var margin = {top: 45, right: 0, bottom: 0, left: 0},
+		    width = 1100,
+		    height = 650 - margin.top - margin.bottom,
 		    transitioning;
 
-		var x = d3.scale.linear()
-		    .domain([0, width])
-		    .range([0, width]);
+			var x = d3.scale.linear()
+			    .domain([0, width])
+			    .range([0, width]);
 
-		var y = d3.scale.linear()
-		    .domain([0, height])
-		    .range([0, height]);
+			var y = d3.scale.linear()
+			    .domain([0, height])
+			    .range([0, height]);
 
-		var treemap = d3.layout.treemap()
-		    .children(function(d, depth) { return depth ? null : d._children; })
-		    .sort(function(a, b) { return a.value - b.value; })
-		    .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
-		    .round(false);
+			var treemap = d3.layout.treemap()
+			    .children(function(d, depth) { return depth ? null : d._children; })
+			    .sort(function(a, b) { return a.value - b.value; })
+			    .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
+			    .round(false);
 
-		var svg = d3.select("#chart").append("svg")
-		    .attr("width", width + margin.left + margin.right)
-		    .attr("height", height + margin.bottom + margin.top)
-		    .style("margin-left", -margin.left + "px")
-		    .style("margin.right", -margin.right + "px")
-		  .append("g")
-		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-		    .style("shape-rendering", "crispEdges");
+			var svg = d3.select("#" + containerId).append("svg")
+			    .attr("width", width + margin.left + margin.right)
+			    .attr("height", height + margin.bottom + margin.top)
+			    .style("margin-left", -margin.left + "px")
+			    .style("margin.right", -margin.right + "px")
+			  .append("g")
+			    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+			    .style("shape-rendering", "crispEdges");
 
-		var grandparent = svg.append("g")
-		    .attr("class", "grandparent");
+			var grandparent = svg.append("g")
+			    .attr("class", "grandparent");
 
-		grandparent.append("rect")
-		    .attr("y", -margin.top)
-		    .attr("width", width)
-		    .attr("height", margin.top);
+			grandparent.append("rect")
+			    .attr("y", -margin.top)
+			    .attr("width", width)
+			    .attr("height", margin.top);
 
-		grandparent.append("text")
-		    .attr("x", 19)
-		    .attr("y",11 - margin.top)
-		    .attr("dy", ".75em");
+			grandparent.append("text")
+			    .attr("x", 19)
+			    .attr("y",11 - margin.top)
+			    .attr("dy", ".75em");
 
-		var baseFillColour = "#363a47";
+			var baseFillColour = "#363a47";
 
-		d3.json("js/data-vis/category-treemap/treemap_data_cat_GB_COMBINED_PAID_2016-02.json", function(root) {
-		  initialize(root);
-		  accumulate(root);
-		  layout(root);
-		  display(root);						  
+			d3.json(dataUrl, function(root) {				
 
-		  function initialize(root) {
-		    root.x = root.y = 0;
-		    root.dx = width;
-		    root.dy = height;
-		    root.depth = 0;
-		  }
+			  initialize(root);
+			  accumulate(root);
+			  layout(root);
+			  display(root);
 
-		  function accumulate(d) {
-		    return (d._children = d.children)
-		        ? d.value = d.children.reduce(function(p, v) { return p + accumulate(v); }, 0)
-		        : d.value;
-		  }
+			  function initialize(root) {
+			    root.x = root.y = 0;
+			    root.dx = width;
+			    root.dy = height;
+			    root.depth = 0;
+			  }
 
-		  function layout(d) {
-		    if (d._children) {
-		      treemap.nodes({_children: d._children});
-		      d._children.forEach(function(c) {
-		        c.x = d.x + c.x * d.dx;
-		        c.y = d.y + c.y * d.dy;
-		        c.dx *= d.dx;
-		        c.dy *= d.dy;
-		        c.parent = d;
-		        layout(c);
-		      });
-		    }
-		  }
+			  function accumulate(d) {
+			    return (d._children = d.children)
+			        ? d.value = d.children.reduce(function(p, v) { return p + accumulate(v); }, 0)
+			        : d.value;
+			  }
 
-		  function display(d) {
-		    grandparent
-		        .datum(d.parent)
-		        .on("click", transition)
-		      .select("text")
-		        .html(name(d));
+			  function layout(d) {
+			    if (d._children) {
+			      treemap.nodes({_children: d._children});
+			      d._children.forEach(function(c) {
+			        c.x = d.x + c.x * d.dx;
+			        c.y = d.y + c.y * d.dy;
+			        c.dx *= d.dx;
+			        c.dy *= d.dy;
+			        c.parent = d;
+			        layout(c);
+			      });
+			    }
+			  }
 
-		    var g1 = svg.insert("g", ".grandparent")
-		        .datum(d)
-		        .attr("class", "depth");
+			  function display(d) {
+			    grandparent
+			        .datum(d.parent)
+			        .on("click", transition)
+			      .select("text")
+			        .html(name(d));
 
-		    var g = g1.selectAll("g")
-		        .data(d._children)
-		      .enter().append("g");
+			    var g1 = svg.insert("g", ".grandparent")
+			        .datum(d)
+			        .attr("class", "depth");
 
-		    g.filter(function(d) { return d._children; })
-		        .classed("children", true)
-		        .on("click", transition);
+			    var g = g1.selectAll("g")
+			        .data(d._children)
+			      .enter().append("g");
 
-		    g.selectAll(".child")
-		        .data(function(d) { return d._children || [d]; })
-		      .enter().append("rect")
-		        .attr("class", "child")
-		        .call(rect);
+			    g.filter(function(d) { return d._children; })
+			        .classed("children", true)
+			        .on("click", transition);
 
-		    g.append("rect")
-		        .attr("class", "parent")						        
-		        .call(rect)
-		      .append("title")
-		        .text(function(d) {
-		        	var val = d.value;
-		        	var formattedNumber = formatNumber(val);
-		        	return "" + formattedNumber;
-		        });
+			    g.selectAll(".child")
+			        .data(function(d) { return d._children || [d]; })
+			      .enter().append("rect")
+			        .attr("class", "child")
+			        .call(rect);
 
-		    g.append("text")
-		        .attr("dy", "20px")
-		        .text(function(d, i) { 
-		        	if(d.area > 0.02)  { 
-			        	if(d.name.length > 20) { 
-			        		return d.name.substring(0, 20) + "..." ;
-			        	} else {
-			        		return d.name;
-			        	}
-			        } else {
-			        		return "";
-			        }
-			      })
-		        .attr("class", "text-title")
-		        .call(text);
+			    g.append("rect")
+			        .attr("class", "parent")						        
+			        .call(rect)
+			      .append("title")
+			        .text(function(d) {
+			        	var val = d.value;
+			        	var formattedNumber = formatNumber(val);
+			        	return "" + formattedNumber;
+			        });
 
-		    g.append("text")
-		        .attr("dy", "45px")
-		        .text(function(d, i) { if(d.area > 0.02)  { return "" + formatNumber(d.value); } else return ""; })
-		        .call(text);
+			    g.append("text")
+			        .attr("dy", "20px")
+			        .text(function(d, i) { 
+			        	if(d.area > 0.02)  { 
+				        	if(d.name.length > 20) { 
+				        		return d.name.substring(0, 20) + "..." ;
+				        	} else {
+				        		return d.name;
+				        	}
+				        } else {
+				        		return "";
+				        }
+				      })
+			        .attr("class", "text-title")
+			        .call(text);
 
-		    function transition(d) {
-		      if (transitioning || !d) return;
-		      transitioning = true;
+			    g.append("text")
+			        .attr("dy", "45px")
+			        .text(function(d, i) { if(d.area > 0.02)  { return "" + formatNumber(d.value); } else return ""; })
+			        .call(text);
 
-		      var g2 = display(d),
-		          t1 = g1.transition().duration(750),
-		          t2 = g2.transition().duration(750);
+			    function transition(d) {
+			      if (transitioning || !d) return;
+			      transitioning = true;
 
-		      // Update the domain only after entering new elements.
-		      x.domain([d.x, d.x + d.dx]);
-		      y.domain([d.y, d.y + d.dy]);
+			      var g2 = display(d),
+			          t1 = g1.transition().duration(600),
+			          t2 = g2.transition().duration(600);
 
-		      // Enable anti-aliasing during the transition.
-		      svg.style("shape-rendering", null);
+			      // Update the domain only after entering new elements.
+			      x.domain([d.x, d.x + d.dx]);
+			      y.domain([d.y, d.y + d.dy]);
 
-		      // Draw child nodes on top of parent nodes.
-		      svg.selectAll(".depth").sort(function(a, b) { return a.depth - b.depth; });
+			      // Enable anti-aliasing during the transition.
+			      svg.style("shape-rendering", null);
 
-		      // Fade-in entering text.
-		      g2.selectAll("text").style("fill-opacity", 0);
+			      // Draw child nodes on top of parent nodes.
+			      svg.selectAll(".depth").sort(function(a, b) { return a.depth - b.depth; });
 
-		      // Transition to the new view.
-		      t1.selectAll("text").call(text).style("fill-opacity", 0);
-		      t2.selectAll("text").call(text).style("fill-opacity", 1);
-		      t1.selectAll("rect").call(rect);
-		      t2.selectAll("rect").call(rect);
-		      t1.selectAll("image").call(image);
-		      t2.selectAll("image").call(image);
+			      // Fade-in entering text.
+			      g2.selectAll("text").style("fill-opacity", 0);
 
-		      // Remove the old node when the transition is finished.
-		      t1.remove().each("end", function() {
-		        svg.style("shape-rendering", "crispEdges");
-		        transitioning = false;
-		      });
-		    }
+			      // Transition to the new view.
+			      t1.selectAll("text").call(text).style("fill-opacity", 0);
+			      t2.selectAll("text").call(text).style("fill-opacity", 1);
+			      t1.selectAll("rect").call(rect);
+			      t2.selectAll("rect").call(rect);
+			      t1.selectAll("image").call(image);
+			      t2.selectAll("image").call(image);
 
-		    $('svg g.depth g.children').tipsy = null;
-		    $('svg g.depth rect').tipsy = null;
-		    $('.tipsy').remove();
+			      // Remove the old node when the transition is finished.
+			      t1.remove().each("end", function() {
+			        svg.style("shape-rendering", "crispEdges");
+			        transitioning = false;
+			      });
+			    }
 
-		    // $('svg g.depth g.children').tipsy({ // group tooltip
-	     //    gravity: 'n',
-	     //    html: true, 
-	     //    title: function() {
-	     //      var d = this.__data__;
-	     //      if(d != null && d.value != null) {
+			    $('svg g.depth g.children').tipsy = null;
+			    $('svg g.depth rect').tipsy = null;
+			    $('.tipsy').remove();
+					
+		      setTimeout(function() {
+		      	var groupMaxMin = [];
+		      	$('#' + containerId + ' svg g.depth > g').each(function(){
+							var d = this.__data__;
+							groupMaxMin.push(d.growth);
+		      	});
 
-	     //      	return '<div class="category-growth">Growth for <span class="category-growth__category-name">' + d.name + '</span>: <span class="category-growth__growth">' + d.growth + '%</span></div>';
-	     //      }
-	     //      return '';
-	     //    }
-	     //  });
-				
-	      setTimeout(function() {
-	      	var groupMaxMin = [];
-	      	$('svg g.depth > g').each(function(){
-						var d = this.__data__;
-						groupMaxMin.push(d.growth);
-	      	});
+		      	var minMaxObject = getMinMaxFromArray(groupMaxMin);
 
-	      	var minMaxObject = getMinMaxFromArray(groupMaxMin);
+		      	$('#' + containerId + ' svg g.depth > g').each(function(){ // group children tooltip      		
+				    	var d = this.__data__;
+		          if(d != null && d._children != null && d._children.length > 0) {
+								if(d._children != null) {
+									var i = 0;          		
+			          	$(this).find('rect').each(function(){
+			          		if(d._children[i] != null) {
+				        			createSubTipsy($(this), d._children[i]);
+				        			var growth = (d.growth != null) ? d.growth : 0;
+				        			var fillColour = getFillForGrowth(growth, minMaxObject);
+				      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
+				      				$(this).attr("data-growth", d.growth);
+											$(this).attr("data-name", d.name);
+											$(this).attr("data-cat-total", d.total);
 
-	      	$('svg g.depth > g').each(function(){ // group children tooltip      		
-			    	var d = this.__data__;
-			    	console.log(d);
-	          if(d != null && d._children != null && d._children.length > 0) {
-	          	console.log(d);
-							if(d._children != null) {
-								var i = 0;          		
-		          	$(this).find('rect').each(function(){
-		          		if(d._children[i] != null) {
-			        			createSubTipsy($(this), d._children[i]);
-			        			var growth = (d.growth != null) ? d.growth : 0;
-			        			var fillColour = getFillForGrowth(growth, minMaxObject);
-			      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
-			      				$(this).attr("data-growth", d.growth);
-										$(this).attr("data-name", d.name);
-										$(this).attr("data-cat-total", d.total);
+				      				 $(this).on("mouseenter", function(){
+				      				 		var formattedTotal = formatNumber($(this).attr("data-cat-total"));
+													var posNegSign = "+ ";
+													var dataGrowth = $(this).attr("data-growth");
+													var containerClass = $(this).parents('.chart').attr("id");
 
-			      				 $(this).on("mouseenter", function(){
-			      				 		var formattedTotal = formatNumber($(this).attr("data-cat-total"));
-												var posNegSign = "+ ";
-												var dataGrowth = $(this).attr("data-growth");
+				      				 		if($(this).attr("data-growth") < 0) {
+				      				 			$('.js-' + containerClass + '-category-growth__growth').addClass("is-negative");
+				      				 			posNegSign = "- ";
+				      				 			dataGrowth *= -1;
+				      				 		} else {
+				      				 		 $('.js-' + containerClass + '-category-growth__growth').removeClass("is-negative");
+				      				 		}
 
-			      				 		if($(this).attr("data-growth") < 0) {
-			      				 			$('.js-category-growth__growth').addClass("is-negative");
-			      				 			posNegSign = "- ";
-			      				 			dataGrowth *= -1;
-			      				 		} else {
-			      				 		 $('.js-category-growth__growth').removeClass("is-negative");
-			      				 		}
+				      				 		$('.js-' + containerClass + '-category-growth__category-name').text($(this).attr("data-name"));
+				      				 		$('.js-' + containerClass + '-category-total').text(formattedTotal);
+							          	$('.js-' + containerClass + '-category-growth__growth').text(posNegSign + dataGrowth + "%");
+							         });
+				        		}
+				        		i++;
+			          	});
+			          }
 
-			      				 		$('.js-category-growth__category-name').text($(this).attr("data-name"));
-			      				 		$('.js-category-total').text(formattedTotal);
-						          	$('.js-category-growth__growth').text(posNegSign + dataGrowth + "%");
-						         });
-			        		}
-			        		i++;
+		          } else if(d != null && d.value != null) {
+		          	$(this).find('rect.child').each(function(){
+		          		createSubTipsy($(this), d); 
+		          		var growth = (d.growth != null) ? d.growth : 0;
+		        			var fillColour = getFillForGrowth(growth, minMaxObject);
+		      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
 		          	});
 		          }
+				    });
 
-	          } else if(d != null && d.value != null) {
-	          	$(this).find('rect.child').each(function(){
-	          		createSubTipsy($(this), d); 
-	          		var growth = (d.growth != null) ? d.growth : 0;
-	        			var fillColour = getFillForGrowth(growth, minMaxObject);
-	      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
-	          	});
-	          }
-			    });
+		   		}, 750);
 
-	   		}, 1000);
-
-		    return g;
-		  }
-			
-			function getMinMaxFromArray(list) {
-
-				var mx = 0, mn = 0;
-				for(var x = 0; x < list.length; x++) {
-					if(list[x] > mx) {
-						mx = list[x];
-					} 
-					if(list[x] < mn) {
-						mn = list[x];
-					}
-				}
-				return {
-					min: mn,
-					max: mx
-				};
-			}
-
-		  function getFillForGrowth(growth, minMaxObject) {
-				
-				var fillColour = "#1bc79f",
-						opacity = 0;	
-
-				if(growth == "N/A") {
-					opacity = 1;
-					fillColour = "#47447c";
-				} else {
-					// work out opacity (positive growth)
-					var range = minMaxObject.max;
-					var numRelativeToMin = growth;
-					if(minMaxObject.min > 0) { // work out correct opacity
-						range = minMaxObject.max - minMaxObject.min;
-						var numRelativeToMin = growth - minMaxObject.min;
-					}
-					
-					// if negative, work out opacity
-			  	if(growth < 0) {
-						fillColour = "#ff496a";
-						var range = minMaxObject.min * -1;
-						var numRelativeToMin = growth * -1;
-						if(minMaxObject.max < 0) { // work out correct opacity
-							range = minMaxObject.max - minMaxObject.min;
-							var numRelativeToMin = growth - minMaxObject.max;
-						}			 				
-			  	}
-
-			  	opacity = 1/range * numRelativeToMin;
+			    return g;
 			  }
 				
-				return {
-					fillColour: fillColour,
-					fillOpacity: opacity
-				};
-		  }
+				function getMinMaxFromArray(list) {
 
-		  function createSubTipsy($domElement, dataForTooltip) {
-		  	$domElement.tipsy({
-	        gravity: 's', 
-	        html: true,
-	        title: function() {
-	        	var imageString = "";
-	        	var posNegSign = "+ ";
-	        	var negativeCSSClass = "";
-	        	var dataGrowth = dataForTooltip.growth;        	
+					var mx = 0, mn = 0;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x] > mx) {
+							mx = list[x];
+						} 
+						if(list[x] < mn) {
+							mn = list[x];
+						}
+					}
+					return {
+						min: mn,
+						max: mx
+					};
+				}
 
-	        	if(dataGrowth < 0) {
-							posNegSign = "- ";
-							negativeCSSClass = " is-negative";
-							dataGrowth *= -1;
-	        	}
+			  function getFillForGrowth(growth, minMaxObject) {
+					
+					var fillColour = "#1bc79f",
+							opacity = 0;	
 
-	        	if(dataForTooltip.image != null) {
-	        		imageString = '<img src="' + dataForTooltip.image + '" class="tt-image"/>';
-	        	}
-	        	return imageString + '<h2 class="tt-app-name">' + dataForTooltip.name + '</h2><h3 class="tt-value">' + formatNumber(dataForTooltip.value) + '<span class="tt-category-growth' + negativeCSSClass + '">' + posNegSign + dataGrowth + '%</span></h3>';
-	        }
-	      });
-		  }
+					if(growth == "N/A") {
+						opacity = 1;
+						fillColour = "#47447c";
+					} else {
+						// work out opacity (positive growth)
+						var range = minMaxObject.max;
+						var numRelativeToMin = growth;
+						if(minMaxObject.min > 0) { // work out correct opacity
+							range = minMaxObject.max - minMaxObject.min;
+							var numRelativeToMin = growth - minMaxObject.min;
+						}
+						
+						// if negative, work out opacity
+				  	if(growth < 0) {
+							fillColour = "#ff496a";
+							var range = minMaxObject.min * -1;
+							var numRelativeToMin = growth * -1;
+							if(minMaxObject.max < 0) { // work out correct opacity
+								range = minMaxObject.max - minMaxObject.min;
+								var numRelativeToMin = growth - minMaxObject.max;
+							}			 				
+				  	}
 
-		  function text(text) {
-		    text.attr("x", function(d) { return x(d.x) + 15; })
-		        .attr("y", function(d) { return y(d.y) + 6; });
-		  }
+				  	opacity = 1/range * numRelativeToMin;
+				  }
+					
+					return {
+						fillColour: fillColour,
+						fillOpacity: opacity
+					};
+			  }
 
-		  function image(image) {
-		    image.attr("x", function(d) { return x(d.x) + 10; })
-		        .attr("y", function(d) { return y(d.y) + 10; });
-		  }
+			  function createSubTipsy($domElement, dataForTooltip) {
+			  	$domElement.tipsy({
+		        gravity: 's', 
+		        html: true,
+		        title: function() {
+		        	var imageString = "";
+		        	var posNegSign = "+ ";
+		        	var negativeCSSClass = "";
+		        	var dataGrowth = dataForTooltip.growth;        	
 
-		  function rect(rect) {						  	
-		    rect.attr("x", function(d) { return x(d.x); })
-		        .attr("y", function(d) { return y(d.y); })
-		        .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
-		        .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
-		        .style("fill", function(d) { return baseFillColour; });
-		  }
+		        	if(dataGrowth < 0) {
+								posNegSign = "- ";
+								negativeCSSClass = " is-negative";
+								dataGrowth *= -1;
+		        	}
 
-		  function name(d) {
-		    return d.parent
-		        ? name(d.parent) + " &nbsp;/ &nbsp;<tspan>" + d.name + "</tspan>"
-		        : d.name;
-		  }
-		});
+		        	if(dataForTooltip.image != null) {
+		        		imageString = '<img src="' + dataForTooltip.image + '" class="tt-image"/>';
+		        	}
+		        	return imageString + '<h2 class="tt-app-name">' + dataForTooltip.name + '</h2><h3 class="tt-value">' + formatNumber(dataForTooltip.value) + '<span class="tt-category-growth' + negativeCSSClass + '">' + posNegSign + dataGrowth + '%</span></h3>';
+		        }
+		      });
+			  }
+
+			  function text(text) {
+			    text.attr("x", function(d) { return x(d.x) + 15; })
+			        .attr("y", function(d) { return y(d.y) + 6; });
+			  }
+
+			  function image(image) {
+			    image.attr("x", function(d) { return x(d.x) + 10; })
+			        .attr("y", function(d) { return y(d.y) + 10; });
+			  }
+
+			  function rect(rect) {						  	
+			    rect.attr("x", function(d) { return x(d.x); })
+			        .attr("y", function(d) { return y(d.y); })
+			        .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
+			        .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
+			        .style("fill", function(d) { return baseFillColour; });
+			  }
+
+			  function name(d) {
+			    return d.parent
+			        ? name(d.parent) + " &nbsp;/ &nbsp;<tspan>" + d.name + "</tspan>"
+			        : d.name;
+			  }
+			});
+			
+			if(containerId == "chart") {
+				aggregateAllValues(dataUrl);
+			}			
+		
+		} /* end createTreemap() */
 
 		function LightenDarkenColor(col, amt) {
 
@@ -530,7 +527,6 @@
 			var aggregate = 0;
 			$.getJSON(dataSource, function( data ) {
 			  for(var i = 0; i < data.children.length; i++) {
-			  	//console.log(data.children[i].children);
 			  	for(var j = 0; j < data.children[i].children.length; j++) {
 			  		aggregate += data.children[i].children[j].value;
 			  	}
@@ -541,8 +537,6 @@
 				}
 			});
 		}
-
-		aggregateAllValues("js/data-vis/category-treemap/treemap_data_cat_GB_COMBINED_PAID_2016-02.json");
 
 		$(window).on("load", function(){
 		  new Page();
@@ -600,25 +594,33 @@
 																							$thisSelectBox.parent("div").toggleClass("is-open");
 																							$thisSelectBox.parent("div").removeClass("nothing-selected");
 																							$dropDownContainer.find(".is-selected").removeClass("is-selected");
-																							$(this).addClass("is-selected");
-
-																							$('.data-value').remove();
+																							$(this).addClass("is-selected");																							
 
 																							var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
 																							var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");																								
-																							var selectedRank = $('.js-dropdown-rank .js-dropdown-option.is-selected').data("value");
+																							var selectedList = $('.js-dropdown-list .js-dropdown-option.is-selected').data("value");
 																							var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
 																							
-																							var fileNameToRequest = "whatyouneed_full2017_January.json";
-																							if(userId != null && userId != "js/data-lab") {
-																								fileNameToRequest = "whatyouneed_full" + selectedDate + ".json";
-																							}
+																							var fileNameToRequest = userId + "treemap_data_cat_" + selectedCountry + "_" + selectedDevice + "_" + selectedList + "_" + selectedDate + ".json";
 
-																							var fileToRequest = userId + "/" + fileNameToRequest;																						
-																							loadData(fileToRequest, selectedRank, selectedDevice, selectedCountry);
+																							var fileNameToRequestSubCategories = userId + "treemap_data_sub_" + selectedCountry + "_" + selectedDevice + "_" + selectedList + "_" + selectedDate + ".json";
+																							
+																							$('.js-chart-category-growth__category-name, .js-sub-chart-category-growth__category-name').text("Category");
+
+																							$('.js-chart-category-total, .js-sub-chart-category-total, .js-chart-category-growth__growth, .js-sub-chart-category-growth__growth').text("");
+																							$('#chart svg').remove();
+																							$('#sub-chart svg').remove();
+
+																							setTimeout(function(){
+																								createTreemap(fileNameToRequest, "chart");
+																							}, 1000);
+
+																							setTimeout(function(){
+																								createTreemap(fileNameToRequestSubCategories, "sub-chart");
+																							}, 1500);
 																							
 																						} else {
-																							openSignUpPopup();
+																							console.log("open signup");
 																						}
 
 																					})
@@ -660,17 +662,18 @@
 			};
 
 			function getUserRole() {
-				return null;
-				// return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b";
+				// return null;
+				return "js/data-vis/category-treemap/";
 			}
 
 			function doPermissionsCheck($filter, chartType, dataValue) {
-
+				
+				// TODO: set correct permissions
 				if(dataValue == "2017_January" || dataValue == "200" || dataValue == "150" || dataValue == "100" || dataValue == "50" || dataValue == "PHONE" || dataValue == "TABLET") {
 					return true;
 				}
 
-				return false;
+				return true;
 			}
 
 			function closeAllFilters() {
@@ -681,6 +684,9 @@
 		  $('.js-select-box').each(function() {
   			new FilterDropDown($(this));
   		});
+
+  		createTreemap("js/data-vis/category-treemap/treemap_data_cat_GB_PHONE_FREE_2016-02.json", "chart");
+  		createTreemap("js/data-vis/category-treemap/treemap_data_sub_GB_PHONE_FREE_2016-02.json", "sub-chart");
 	 	});
 
 	</script>

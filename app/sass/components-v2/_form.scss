@@ -362,6 +362,13 @@ textarea {
     padding-left: 15px;
     padding-bottom: 5px;
     display: none;
+    .checkboxLabelVisible {
+	    max-width: 180px;
+	    padding-right: 10px;
+	    overflow: hidden;
+    	text-overflow: ellipsis;
+    	white-space: nowrap;
+    }
 	}
 	.is-open .dropdown__sublist {
 		display: block;
@@ -462,6 +469,7 @@ textarea {
 	span {
 		display: inline-block;
 		vertical-align: middle;
+    line-height: 1.5;
 	}
 	.whats-this-tooltip-icon {
 		margin: 2px 0 0 5px;
@@ -865,7 +873,8 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	.parent-option__number {
 		position: absolute;
 		top: 2px;
-    right: 25px;
+    right: 3px;
+    padding-right: 22px;
 		font-size: 13px;
 		font-family: $brand-body-font;
 		font-weight: 700;
@@ -878,6 +887,7 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	    top: 0px;
 	    color: #9fa1d5;
 	    font-size: 20px;
+	    pointer-events: none;
 		}
 		&.is-open:after {
 			transform: rotate(180deg);
@@ -956,6 +966,13 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 			}
 			> span {
 				float: left;
+			}
+			> .icon-flag-sm {
+				position: absolute;
+    		left: 14px;
+    		+ span {
+    			padding-left: 21px;
+    		}
 			}
 		}
 		&.is-open {
@@ -1537,8 +1554,8 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	span {		
 		@extend .ref-icon-after--warning-filled;
 		&:after {
-			top: 2px;
-			padding-left: 9px;
+	    position: absolute;
+			top: 4px;
 			font-size: 14px;
 			color: #b3b1ed;
 			opacity: 0.6;
@@ -1547,8 +1564,9 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 }
 .group-item-error {
 	span,
-	span:after {
-		color: $reflection-red;
+	span:after,
+	label {
+		color: $reflection-red !important;
 	}
 }
 .form-field--standalone {
