@@ -18,6 +18,7 @@
 
 <body class="page-data-vis-category-share">
 
+<!-- TEST TIPSY <div class="tipsy tipsy-s" style="top: 663px; left: 746.231px; visibility: visible; display: block; opacity: 0.8;"><div class="tipsy-arrow tipsy-arrow-s"></div><div class="tipsy-inner"><img src="http://is1.mzstatic.com/image/thumb/Purple60/v4/49/dd/0d/49dd0d7e-131a-7284-fd5f-3509da2ac211/source/100x100bb.jpg" class="tt-image"><h2 class="tt-app-name">Stack</h2><h3 class="tt-value">861,924<span class="tt-category-growth"></span></h3><div class="tipsy-new-label">NEW</div></div></div> -->
 	<!--[if (lt IE 9)]>
       <div class="window-warning">
   			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
@@ -50,7 +51,7 @@
 						<div class="filters-row filters-row-main-chart js-filters-main-chart">
 							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-date">
 								<select class="js-select-box">
-							    <option value="2016-02" selected="selected">February 2016</option>
+							    <option value="2016-02" selected="selected">Feb 2016</option>
 								</select>
 							</div>
 
@@ -108,7 +109,7 @@
 					</div>
 
 					<div class="grid__row">
-						<h2 class="treemap__subheading">Games Subcategories:</h2>
+						<h2 class="treemap__subheading">Games Subcategories <span>(<b class="js-filter-date-value"></b>, <b class="js-filter-country-value"></b>, <b class="js-filter-list-value"></b>, <b class="js-filter-device-value"></b>)</span></h2>
 					</div>
 					
 					<header class="treemap-header">
@@ -197,7 +198,7 @@
 			    .attr("y",11 - margin.top)
 			    .attr("dy", ".75em");
 
-			var baseFillColour = "#363a47";
+			var baseFillColour = "#343438";
 
 			d3.json(dataUrl, function(root) {				
 
@@ -327,7 +328,7 @@
 
 			    $('svg g.depth g.children').tipsy = null;
 			    $('svg g.depth rect').tipsy = null;
-			    $('.tipsy').remove();
+			    //$('.tipsy').remove();
 					
 		      setTimeout(function() {
 		      	var groupMaxMin = [];
@@ -454,18 +455,27 @@
 		        	var imageString = "";
 		        	var posNegSign = "+ ";
 		        	var negativeCSSClass = "";
-		        	var dataGrowth = dataForTooltip.growth;        	
+		        	var dataGrowth = dataForTooltip.growth;
+		        	var newString = "";
 
 		        	if(dataGrowth < 0) {
 								posNegSign = "- ";
 								negativeCSSClass = " is-negative";
 								dataGrowth *= -1;
 		        	}
+							
+		        	if(dataGrowth == "N/A") {
+		        		posNegSign = "";
+								dataGrowth = "";
+								newString = "<div class='tipsy-new-label'>NEW</div>";
+		        	} else {
+		        		dataGrowth = dataGrowth + "%";
+		        	}
 
 		        	if(dataForTooltip.image != null) {
 		        		imageString = '<img src="' + dataForTooltip.image + '" class="tt-image"/>';
 		        	}
-		        	return imageString + '<h2 class="tt-app-name">' + dataForTooltip.name + '</h2><h3 class="tt-value">' + formatNumber(dataForTooltip.value) + '<span class="tt-category-growth' + negativeCSSClass + '">' + posNegSign + dataGrowth + '%</span></h3>';
+		        	return imageString + '<h2 class="tt-app-name">' + dataForTooltip.name + '</h2><h3 class="tt-value">' + formatNumber(dataForTooltip.value) + '<span class="tt-category-growth' + negativeCSSClass + '">' + posNegSign + dataGrowth + '</span></h3>' + newString;
 		        }
 		      });
 			  }
@@ -610,6 +620,8 @@
 																							var selectedList = $('.js-dropdown-list .js-dropdown-option.is-selected').data("value");
 																							var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
 																							
+																							setSubCatChartHeading();
+
 																							var fileNameToRequest = userId + "treemap_data_cat_" + selectedCountry + "_" + selectedDevice + "_" + selectedList + "_" + selectedDate + ".json";
 
 																							var fileNameToRequestSubCategories = userId + "treemap_data_sub_" + selectedCountry + "_" + selectedDevice + "_" + selectedList + "_" + selectedDate + ".json";
@@ -693,6 +705,15 @@
 		  $('.js-select-box').each(function() {
   			new FilterDropDown($(this));
   		});
+
+  		function setSubCatChartHeading() {
+  			$('.js-filter-date-value').text($('.js-dropdown-date .js-dropdown-trigger').text());
+				$('.js-filter-country-value').text($('.js-dropdown-country .js-dropdown-trigger').text());
+				$('.js-filter-list-value').text($('.js-dropdown-list .js-dropdown-trigger').text());
+				$('.js-filter-device-value').text($('.js-dropdown-device .js-dropdown-trigger').text());
+  		}
+
+  		setSubCatChartHeading();
 
   		createTreemap("js/data-vis/category-treemap/treemap_data_cat_GB_PHONE_FREE_2016-02.json", "chart");
   		createTreemap("js/data-vis/category-treemap/treemap_data_sub_GB_PHONE_FREE_2016-02.json", "sub-chart");
