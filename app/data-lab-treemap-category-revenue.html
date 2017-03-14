@@ -76,6 +76,14 @@
 								</select>
 							</div>
 
+							<div class="treemap-key__gradient">
+								<h2><span>Shrinking</span><span>Growing</span></h2>
+								<div></div>
+							</div>
+							
+							<div class="treemap-key__new-entries">
+								<h2>New or Returning Entries</h2>
+							</div>
 						</div>
 					</div>
 
@@ -329,6 +337,7 @@
 		      	});
 
 		      	var minMaxObject = getMinMaxFromArray(groupMaxMin);
+		      	console.log(minMaxObject);
 
 		      	$('#' + containerId + ' svg g.depth > g').each(function(){ // group children tooltip      		
 				    	var d = this.__data__;
@@ -385,7 +394,14 @@
 				
 				function getMinMaxFromArray(list) {
 
-					var mx = 0, mn = 0;
+					var mx, mn;
+					for(var i = 0; i < list.length; i++) {
+						if(list[i] != "N/A" && list[i] != undefined) {
+							mn = list[i];
+							mx = list[i];
+							break;
+						}
+					}
 					for(var x = 0; x < list.length; x++) {
 						if(list[x] > mx) {
 							mx = list[x];
@@ -394,6 +410,7 @@
 							mn = list[x];
 						}
 					}
+
 					return {
 						min: mn,
 						max: mx
@@ -412,20 +429,12 @@
 						// work out opacity (positive growth)
 						var range = minMaxObject.max;
 						var numRelativeToMin = growth;
-						if(minMaxObject.min > 0) { // work out correct opacity
-							range = minMaxObject.max - minMaxObject.min;
-							var numRelativeToMin = growth - minMaxObject.min;
-						}
 						
 						// if negative, work out opacity
 				  	if(growth < 0) {
 							fillColour = "#ff496a";
 							var range = minMaxObject.min * -1;
 							var numRelativeToMin = growth * -1;
-							if(minMaxObject.max < 0) { // work out correct opacity
-								range = minMaxObject.max - minMaxObject.min;
-								var numRelativeToMin = growth - minMaxObject.max;
-							}			 				
 				  	}
 
 				  	opacity = 1/range * numRelativeToMin;
