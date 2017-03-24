@@ -397,7 +397,7 @@ var AllDropDowns = function() {
 
 		var parentIsGroupPicker = false;
 		$(e.target).parents("div").each(function(){
-			if($(this).hasClass("js-group-picker")) {
+			if($(this).hasClass("js-group-picker") || $(this).hasClass("js-app-selector")) {
 				parentIsGroupPicker = true;
 			}
 		});
@@ -413,6 +413,8 @@ AllDropDowns.prototype.closeAllFilters = function() {
 	$('.primary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 	$('.js-date-picker').hide();
 	$('.js-group-picker').hide();
+	$('.js-app-selector').hide();
+	$('.js-group-selector-overlay').hide();
 	$('.secondary-filter.is-open .form-field--select__dropdown').hide();
 	$('.secondary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 };
