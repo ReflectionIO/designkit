@@ -214,6 +214,11 @@
 										</div>
 									</dl>
 								</header>
+								<div class="chart-key-estimates">
+									<img src="images/chart-key-estimated.png" alt="Estimated icon" />
+									<span>Incl. Min Estimates</span>
+									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-right" data-whatsthis-title="Includes Minimum Estimates" data-whatsthis="If an app drops out of the top 1000 we fill in with the minimum revenue or downloads that an app would get if it were in position 1000 in the selected country and category. These periods are represented by a dashed line in the graph and are included in the total."><span>What's this?</span></a>
+								</div>
 								<div class="chart" id="chart-revenue"></div>
 							</section>
 							<section class="chart-container chart-container--split">
@@ -226,6 +231,11 @@
 										</div>
 									</dl>
 								</header>
+								<div class="chart-key-estimates">
+									<img src="images/chart-key-estimated.png" alt="Estimated icon" />
+									<span>Incl. Min Estimates</span>
+									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-left" data-whatsthis-title="Includes Minimum Estimates" data-whatsthis="If an app drops out of the top 1000 we fill in with the minimum revenue or downloads that an app would get if it were in position 1000 in the selected country and category. These periods are represented by a dashed line in the graph and are included in the total."><span>What's this?</span></a>
+								</div>
 								<div class="chart" id="chart-downloads"></div>
 							</section>
 
@@ -1507,7 +1517,7 @@
   <script src="js-v2/application.js"></script>
 
   <script src="js/vendor/snap.svg.js"></script> <!-- snap used for animating event flags on charts -->
-  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="js/vendor/highcharts.5.0.9.js"></script>
   <script src="js/vendor/highslide-software/rounded-corners.js"></script>
   <script src="js/mock-data/mock-data-my-apps.js"></script> <!-- mock data -->
   <script>
@@ -1671,7 +1681,7 @@
 	            xAxisDate = new Date(timeStampString*1000).addHours(12),
 	            formattedDate = xAxisDate.getDate() + " " + monthNames[xAxisDate.getMonth()];
 
-	        if($axisLabel.length > 0) {       
+	        if($axisLabel.length > 0) {
 
 	          var labelYPos = axisLabelYPos + 18,
 	              labelXPos = axisLabelXPos + 7;
