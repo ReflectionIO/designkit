@@ -41,19 +41,95 @@
 
 				<div class="data-lab-article-intro">
 					<h1 class="data-lab-article-intro__heading">What Are the Average Downloads or Revenue by Day of the Week</h1>
-					<p class="data-lab-article-intro__paragraph">Discover the average daily downloads or revenue required to propel an app into the top 200 iOS charts and beyond. Compare categories and countries to assess the potential of acheiving a high rank in the Free, Paid or Grossing lists.</p>
+					<p class="data-lab-article-intro__paragraph">Discover the average daily downloads or revenue distribution by week day over the course of a particular month. Compare categories and countries to assess the time to plan app launch and live ops.</p>
 				</div>
 
 				<div class="weekday-chart">
+
 					<div class="weekday-chart-item">
 						<label>Monday</label>
-						<div class="weekday-chart-item__bar__min-value">1,232</div>
-						<div class="weekday-chart-item__bar__max-value">6,498</div>						
-						<div class="weekday-chart-item__bar-container">
-						<div class="weekday-chart-item__bar">							
+						<div class="weekday-chart-item__container">
+							<div class="weekday-chart-item__bar-container">
+								<div class="weekday-chart-item__bar"></div>
+								<div class="weekday-average-marker"></div>
+								<div class="weekday-chart-item__bar__mean-value"></div>
+								<div class="weekday-chart-item__bar__min-value"></div>
+								<div class="weekday-chart-item__bar__max-value"></div>	
+							</div>
 						</div>
-						<div class="weekday-average-marker"></div>
-						<div class="weekday-chart-item__bar__mean-value">2,698</div>
+					</div>
+
+					<div class="weekday-chart-item">
+						<label>Tuesday</label>
+						<div class="weekday-chart-item__container">
+							<div class="weekday-chart-item__bar-container">
+								<div class="weekday-chart-item__bar"></div>
+								<div class="weekday-average-marker"></div>
+								<div class="weekday-chart-item__bar__mean-value"></div>
+								<div class="weekday-chart-item__bar__min-value"></div>
+								<div class="weekday-chart-item__bar__max-value"></div>	
+							</div>
+						</div>
+					</div>
+					<div class="weekday-chart-item">
+						<label>Wednesday</label>
+						<div class="weekday-chart-item__container">
+							<div class="weekday-chart-item__bar-container">
+								<div class="weekday-chart-item__bar"></div>
+								<div class="weekday-average-marker"></div>
+								<div class="weekday-chart-item__bar__mean-value"></div>
+								<div class="weekday-chart-item__bar__min-value"></div>
+								<div class="weekday-chart-item__bar__max-value"></div>	
+							</div>
+						</div>
+					</div>
+					<div class="weekday-chart-item">
+						<label>Thursday</label>
+						<div class="weekday-chart-item__container">
+							<div class="weekday-chart-item__bar-container">
+								<div class="weekday-chart-item__bar"></div>
+								<div class="weekday-average-marker"></div>
+								<div class="weekday-chart-item__bar__mean-value"></div>
+								<div class="weekday-chart-item__bar__min-value"></div>
+								<div class="weekday-chart-item__bar__max-value"></div>	
+							</div>
+						</div>
+					</div>
+					<div class="weekday-chart-item">
+						<label>Friday</label>
+						<div class="weekday-chart-item__container">
+							<div class="weekday-chart-item__bar-container">
+								<div class="weekday-chart-item__bar"></div>
+								<div class="weekday-average-marker"></div>
+								<div class="weekday-chart-item__bar__mean-value"></div>
+								<div class="weekday-chart-item__bar__min-value"></div>
+								<div class="weekday-chart-item__bar__max-value"></div>	
+							</div>
+						</div>
+					</div>
+					<div class="weekday-chart-item">
+						<label>Saturday</label>
+						<div class="weekday-chart-item__container">
+							<div class="weekday-chart-item__bar-container">
+								<div class="weekday-chart-item__bar"></div>
+								<div class="weekday-average-marker"></div>
+								<div class="weekday-chart-item__bar__mean-value"></div>
+								<div class="weekday-chart-item__bar__min-value"></div>
+								<div class="weekday-chart-item__bar__max-value"></div>	
+							</div>
+						</div>
+					</div>
+					<div class="weekday-chart-item">
+						<label>Sunday</label>
+						<div class="weekday-chart-item__container">
+							<div class="weekday-chart-item__bar-container">
+								<div class="weekday-chart-item__bar"></div>
+								<div class="weekday-average-marker"></div>
+								<div class="weekday-chart-item__bar__mean-value"></div>
+								<div class="weekday-chart-item__bar__min-value"></div>
+								<div class="weekday-chart-item__bar__max-value"></div>	
+							</div>
+						</div>												
 					</div>
 				</div>
 
@@ -83,9 +159,16 @@
 					
 					console.log(data);
 					
+					var minMaxDifference = data.max - data.min;
+
 					$('.weekday-chart-item').each(function(index) {
 						var $this = $(this);
-						var markerLeft = (data.weekdays.mean[index].value - data.min) / (data.max - data.min) * 100;
+						var thisMinMaxDifference = data.weekdays.max[index].value - data.weekdays.min[index].value;
+						var thisContainerWidth = thisMinMaxDifference / minMaxDifference * 100;
+						var markerLeft = (data.weekdays.mean[index].value - data.weekdays.min[index].value) / (data.weekdays.max[index].value - data.weekdays.min[index].value) * 100;
+						var containerLeft = (data.weekdays.min[index].value - data.min) / minMaxDifference * 100;
+						
+						$this.find('.weekday-chart-item__bar-container').css({ "width": thisContainerWidth + "%", "left" : containerLeft + "%"});
 						$this.find('.weekday-average-marker').css("left", "calc(" + markerLeft + "% - 11px)");
 						$this.find('.weekday-chart-item__bar__min-value').text(data.weekdays.min[index].value);
 						$this.find('.weekday-chart-item__bar__max-value').text(data.weekdays.max[index].value);
@@ -101,7 +184,9 @@
 		  
 		  new Page();
 			
-			loadData("js/data-vis/weekly-averages/daily-downloads_GB_FREE_Games_200_PHONE_2016.json");
+			setTimeout(function(){
+				loadData("js/data-vis/weekly-averages/daily-downloads_GB_FREE_Games_200_PHONE_2016.json");
+			}, 1000);
 
 		});
 
