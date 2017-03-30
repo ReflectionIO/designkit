@@ -28,7 +28,7 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-lab-base page-lab-weekly-averages">
+			<div class="page-lab-base page-lab-weekly-averages theme-dark">
 				<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
 
 				<div class="grid__row">
@@ -41,7 +41,46 @@
 
 				<div class="data-lab-article-intro">
 					<h1 class="data-lab-article-intro__heading">What Are the Average Downloads or Revenue by Day of the Week</h1>
-					<p class="data-lab-article-intro__paragraph">Discover the average daily downloads or revenue distribution by week day over the course of a particular month. Compare categories and countries to assess the time to plan app launch and live ops.</p>
+					<p class="data-lab-article-intro__paragraph">Discover the average daily downloads or revenue distribution by week day over the course of 2016. Compare categories and countries to assess the time to plan app launches and live ops.</p>
+				</div>
+				
+				<div class="filters-container overflow-visible">
+
+					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-chart-type">
+						<select class="js-select-box">
+							<option value="FREE" selected>Free Chart</option>
+							<option value="PAID">Paid Chart</option>
+							<option value="GROSSING">Grossing Chart</option>
+						</select>
+					</div>
+
+					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-position">
+						<select class="js-select-box">
+							<option value="200" selected>Top 200</option>
+						</select>
+					</div>
+
+					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
+						<select class="js-select-box">
+							<option value="GB" selected>United Kingdom</option>
+							<option value="US">USA</option>
+						</select>
+					</div>
+
+					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-category">
+						<select class="js-select-box">
+							<option value="Overall" selected>Overall</option>
+							<option value="Games">Games</option>
+						</select>
+					</div>
+
+					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
+						<select class="js-select-box">
+							<option value="PHONE" selected>iPhone</option>
+							<option value="TABLET">iPad</option>
+						</select>
+					</div>
+				
 				</div>
 
 				<div class="weekday-chart">
@@ -153,6 +192,146 @@
 
 	<script>
 		
+		var FilterDropDown = function($domElement) {
+
+			var $thisSelectBox = $domElement,
+					$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
+					$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+
+			$thisSelectBox.find('option').each(function(){
+				
+				var $thisOption = $(this),
+						selectedClass = "";
+
+				if($thisOption.val() != "") {
+
+					if($thisOption.is(":selected")) {
+						if($thisOption.val() != "") {
+							selectedClass = "is-selected";
+							$currentValue.text($thisOption.text());
+						}
+					}
+
+					var accessClass = "";
+					if($thisOption.data("access")) {
+						accessClass = "ref-after-pro";
+					}
+
+					var $newListItem = $("<li>");
+					$dropDownContainer.append($newListItem
+																				.addClass("js-dropdown-option")
+																				.addClass(selectedClass)
+																				.addClass(accessClass)
+																				.attr('data-value', $thisOption.attr('value'))
+																				.on("click", function() {																						
+																					
+																					var thisValue = $(this).attr("data-value");
+																					var userId = getUserRole();
+																					var permissionsValid = hasPermissions(thisValue);
+																					if(userId != null || (userId == null && permissionsValid)) {
+
+																						$thisSelectBox.find("option").removeAttr("selected");
+																						$thisOption.attr("selected", "selected");
+																						$thisSelectBox.trigger("change");
+																						$currentValue.text($thisOption.text());
+																						$dropDownContainer.toggle();
+																						$thisSelectBox.parent("div").toggleClass("is-open");
+																						$thisSelectBox.parent("div").removeClass("nothing-selected");
+																						$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																						$(this).addClass("is-selected");
+
+																						if(userId == null) {
+																							userId = "js/data-vis/";
+																						}
+
+																						var fileNameToRequest = getFileToNameRequest();
+																						loadData(userId + fileNameToRequest);
+																						
+																					} else {
+																						$dropDownContainer.toggle();
+																						openSignUpPopup();																							
+																					}
+
+																				})
+																				.append($("<span>").text($thisOption.text()))
+																	);
+				} else {
+					// no option value means placeholder text before option is selected
+					$currentValue.text($thisOption.text());
+				}
+			});
+
+			$currentValue.on("click", function(){
+				if(!$thisSelectBox.attr("disabled")) {
+					var $parentDiv = $thisSelectBox.parent("div");
+					if($parentDiv.hasClass("is-open")) {
+						$dropDownContainer.toggle();	
+						$parentDiv.toggleClass("is-open");
+					} else {
+						setTimeout(function(){
+							if(!$parentDiv.hasClass("is-open")) {
+								closeAllFilters();
+							}
+							var parentWidth = $parentDiv.width();
+							var parentHeight = $parentDiv.height();
+							$dropDownContainer.css({"min-width": parentWidth + "px"});
+							$dropDownContainer.toggle();	
+							$parentDiv.toggleClass("is-open");
+						}, 50); // allow time for instance.closeAllFilters() to close other filters first
+					}
+				}
+			});
+
+			if($currentValue.text() == "") {
+				$thisSelectBox.parent("div").addClass("nothing-selected");
+			}
+
+			$thisSelectBox.parent("div").append($currentValue)
+																	.append($dropDownContainer);
+		};
+
+		function closeAllFilters() {
+			$('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
+			$('.js-secondary-filter.is-open').removeClass("is-open");
+		}
+
+		function getUserRole() {
+			return null;
+			//return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b";
+		}
+
+		function hasPermissions(dropDownValue) {
+
+			if(dropDownValue == "GB" || dropDownValue == "200" || dropDownValue == "Overall" || dropDownValue == "PHONE" || dropDownValue == "TABLET" || dropDownValue == "FREE" || dropDownValue == "PAID" || dropDownValue == "GROSSING") {
+				return true;
+			}
+
+			return true;
+		}
+
+		function getFileToNameRequest() {
+
+			var selectedPosition = $('.js-dropdown-position .js-dropdown-option.is-selected').data("value");
+			var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");				
+			var selectedCategory = $('.js-dropdown-category .js-dropdown-option.is-selected').data("value");
+			var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
+			var selectedChartType = $('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value");
+
+			console.log(selectedChartType);
+
+			return "weekly-averages/" + selectedCountry + "/daily-downloads_" + selectedCountry + "_" + selectedChartType + "_" + selectedCategory + "_" + selectedPosition + "_" + selectedDevice + "_2016.json";
+		}
+
+		$("html").on("click", function(e){
+			if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
+				closeAllFilters();
+			}
+		});
+
+	  $('.js-select-box').each(function() {
+			new FilterDropDown($(this));
+		});
+
 		function loadData(dataUrl) {
 
 			$.getJSON( dataUrl, function( data ) {
@@ -185,7 +364,7 @@
 		  new Page();
 			
 			setTimeout(function(){
-				loadData("js/data-vis/weekly-averages/daily-downloads_GB_FREE_Games_200_PHONE_2016.json");
+				loadData("js/data-vis/weekly-averages/GB/daily-downloads_GB_FREE_Games_200_PHONE_2016.json");
 			}, 1000);
 
 		});
