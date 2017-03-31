@@ -1,0 +1,2196 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Data Template</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+</head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			<div class="page-data-dashboard" style="padding-top: 0;">				
+				
+				<aside class="grid-container secondary-filters-container">
+					<div class="filter-toggle toggle-container--chart-type">
+						<div class="toggle">
+							<input id="toggle--show-area" name="charttype" type="radio" data-chart-type="area">
+							<label for="toggle--show-area" class="js-toggle--show-area">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M16.9,16.9h-2.8h-0.6h-2.8h-0.6H7.3
+	H6.8H3.9H3.4H1.1v-4l2.5-3.8L7,10.7l3.4-6.2L14,6.1l2.9-3.2V16.9z"/></svg>
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-stacked" name="charttype" checked type="radio" data-chart-type="stacked">
+							<label for="toggle--show-stacked" class="js-toggle--show-stacked">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M3.6,9.1L7,10.7l3.4-6.2L14,6.1l2.9-3.2v4
+	l-3,4.5l-3.2-1.1l-3.7,3.4L3.7,13l-2.6,1.4v-1.5L3.6,9.1z M14.1,16.9h-0.6h-2.8h-0.6H7.3H6.8H3.9H3.4H1.1V15l2.7-1.5l3.3,0.9
+	l3.7-3.4l3.3,1.1l2.8-4.2v9H14.1z"/></svg>
+							</label>
+						</div>
+						<div class="toggle">
+							<input id="toggle--show-bar" name="charttype" type="radio" data-chart-type="bar">
+							<label for="toggle--show-bar" class="js-toggle--show-bar">
+								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M11.2,0v5.6H5.6v3.9H0V18h18V0H11.2z M6.8,6.8h5.1v10.1H6.8V6.8z M1.1,10.7h5.1v6.2H1.1V10.7z
+	 M16.9,16.9h-4.5V1.1h4.5V16.9z"/></svg>
+							</label>
+						</div>
+					</div>
+				</aside>
+
+				<div class="grid__row chart-section">
+					<ul class="tabs-content-list">
+						<li class="is-active js-twin-chart-container">
+							<section class="chart-container chart-container--split" style="width: 100%; height: 530px">
+								<header class="chart-container__header">
+									<h2 class="chart-heading heading-style--heading-three">Category Downloads Over 2016</h2>
+								</header>
+								<div class="chart" id="chart-revenue"></div>
+							</section>
+
+							<aside class="custom-chart-key js-custom-chart-key">
+								<div class="form-field--checkbox-list form-field--checkbox-list--medium form-field--checkbox-list--inline">
+									<ul>
+										<li class="revenue-key">
+											<input type="checkbox" name="showhiderevenue" id="showhiderevenue" class="js-toggle-series" data-chart-index="0" data-series-index="0" checked>
+											<label for="showhiderevenue" class="checkboxLabel">Total Revenue</label>
+											<label for="showhiderevenue" class="checkboxLabelVisible js-hover-series">Total Revenue</label>
+										</li>
+										<!-- <li class="downloads-key">
+											<input type="checkbox" name="showhidedownloads" id="showhidedownloads" class="js-toggle-series" data-chart-index="0" data-series-index="0" checked>
+											<label for="showhidedownloads" class="checkboxLabel">Total Downloads</label>
+											<label for="showhidedownloads" class="checkboxLabelVisible js-hover-series">Total Downloads</label>
+										</li> -->
+										<li class="series-1">
+											<input type="checkbox" name="showhideClash" id="showhideClash" class="js-toggle-series" data-chart-index="0" data-series-index="1" checked>
+											<label for="showhideClash" class="checkboxLabel">Overall</label>
+											<label for="showhideClash" class="checkboxLabelVisible js-hover-series">Overall</label>
+										</li>
+										<li class="series-2">
+											<input type="checkbox" name="showhideAngry" id="showhideAngry" class="js-toggle-series" data-chart-index="0" data-series-index="2" checked>
+											<label for="showhideAngry" class="checkboxLabel">Games</label>
+											<label for="showhideAngry" class="checkboxLabelVisible js-hover-series">Games</label>
+										</li>
+										<li class="series-3">
+											<input type="checkbox" name="showhideCrossy" id="showhideCrossy" class="js-toggle-series" data-chart-index="0" data-series-index="3" checked>
+											<label for="showhideCrossy" class="checkboxLabel">Photo &amp; Video</label>
+											<label for="showhideCrossy" class="checkboxLabelVisible js-hover-series">Photo &amp; Video</label>
+										</li>
+										<li class="series-4">
+											<input type="checkbox" name="showhideFive" id="showhideFive" class="js-toggle-series" data-chart-index="0" data-series-index="4" checked>
+											<label for="showhideFive" class="checkboxLabel">Social Networking</label>
+											<label for="showhideFive" class="checkboxLabelVisible js-hover-series">Social Networking</label>
+										</li>
+										<li class="series-5">
+											<input type="checkbox" name="showhideCrush" id="showhideCrush" class="js-toggle-series" data-chart-index="0" data-series-index="5" checked>
+											<label for="showhideCrush" class="checkboxLabel">Education</label>
+											<label for="showhideCrush" class="checkboxLabelVisible js-hover-series">Education</label>
+										</li>
+										<li class="series-6">
+											<input type="checkbox" name="showhideZombies" id="showhideZombies" class="js-toggle-series" data-chart-index="0" data-series-index="6" checked>
+											<label for="showhideZombies" class="checkboxLabel">Productivity</label>
+											<label for="showhideZombies" class="checkboxLabelVisible js-hover-series">Productivity</label>
+										</li>
+										<li class="series-7">
+											<input type="checkbox" name="showhideNinja" id="showhideNinja" class="js-toggle-series" data-chart-index="0" data-series-index="7" checked>
+											<label for="showhideNinja" class="checkboxLabel">Music</label>
+											<label for="showhideNinja" class="checkboxLabelVisible js-hover-series">Music</label>
+										</li>
+										<li class="series-8">
+											<input type="checkbox" name="showhidePool" id="showhidePool" class="js-toggle-series" data-chart-index="0" data-series-index="8" checked>
+											<label for="showhidePool" class="checkboxLabel">Books</label>
+											<label for="showhidePool" class="checkboxLabelVisible js-hover-series">Books</label>
+										</li>
+										<li class="series-9">
+											<input type="checkbox" name="showhideFlappy" id="showhideFlappy" class="js-toggle-series" data-chart-index="0" data-series-index="9" checked>
+											<label for="showhideFlappy" class="checkboxLabel">Business</label>
+											<label for="showhideFlappy" class="checkboxLabelVisible js-hover-series">Business</label>
+										</li>
+									</ul>
+								</div>
+							</aside>
+						</li>
+					</ul>
+				</div>
+	
+		</div>
+	</div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script src="js/vendor/snap.svg.js"></script> <!-- snap used for animating event flags on charts -->
+  <script src="js/vendor/highcharts.5.0.9.js"></script>
+  <script src="js/vendor/highslide-software/rounded-corners.js"></script>
+  <script src="js/data-vis/category-per-month.js"></script> <!-- mock data -->
+  <script>
+  	// Utility function
+		Date.prototype.addHours= function(h){
+      this.setHours(this.getHours()+h);
+      return this;
+    }
+
+  	function initScripts() {
+  		// mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-data-template.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+  		new Page();
+  		new AllDropDowns();
+  		;
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  		$('.js-multi-select-box').each(function() {
+  			new FormFieldMultipleSelect($(this));
+  		});
+  		$('.js-tabs').each(function() {
+  			new Tabs($(this));
+  		});
+
+  		$('.js-open-modal--go-pro').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay--go-pro').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--go-pro .js-popup-content').addClass("is-showing");
+				}, 100);
+			});
+
+			$('.js-page-overlay').on("click", function(e){
+				var parentIsPopupContent = false;
+				$(e.target).parents("div").each(function(){
+					if($(this).hasClass("js-popup-content")) {
+						parentIsPopupContent = true;
+					}
+				});
+				if(!parentIsPopupContent) {
+					$('.js-page-overlay').fadeOut(100);
+					$('.js-popup-content').removeClass("is-showing");
+				}
+			});
+
+			$('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay').fadeOut(100);
+				$('.js-popup-content').removeClass("is-showing");
+			});
+
+  		// Mock function for template
+  		$('#topAppsDownloads').hide();
+  		$('.js-mock-switch-revenue').on("click", function(){
+  			$('#topAppsDownloads').hide();
+  			$('#topAppsRevenue').show();
+  		});
+  		$('.js-mock-switch-downloads').on("click", function(){
+  			$('#topAppsDownloads').show();
+  			$('#topAppsRevenue').hide();
+  		});
+
+  		$('#topAppsDownloads-bottom').hide();
+  		$('.js-mock-switch-revenue-bottom').on("click", function(){
+  			$('#topAppsDownloads-bottom').hide();
+  			$('#topAppsRevenue-bottom').show();
+  		});
+  		$('.js-mock-switch-downloads-bottom').on("click", function(){
+  			$('#topAppsDownloads-bottom').show();
+  			$('#topAppsRevenue-bottom').hide();
+  		});
+
+
+  		$('#topCountriesDownloads').hide();
+  		$('.js-mock-switch-revenue-country').on("click", function(){
+  			$('#topCountriesDownloads').hide();
+  			$('#topCountriesRevenue').show();
+  		});
+  		$('.js-mock-switch-downloads-country').on("click", function(){
+  			$('#topCountriesDownloads').show();
+  			$('#topCountriesRevenue').hide();
+  		});
+
+  		$('#topCountriesDownloads-bottom').hide();
+  		$('.js-mock-switch-revenue-country-bottom').on("click", function(){
+  			$('#topCountriesDownloads-bottom').hide();
+  			$('#topCountriesRevenue-bottom').show();
+  		});
+  		$('.js-mock-switch-downloads-country-bottom').on("click", function(){
+  			$('#topCountriesDownloads-bottom').show();
+  			$('#topCountriesRevenue-bottom').hide();
+  		});
+
+  		$('.js-whats-this-tooltip').each(function(){
+  			new WhatsThisPopup($(this));
+  		});
+
+  		$('.js-mock-remove-row').on("click", function(e){
+  			e.preventDefault();
+  			$(this).parents('.chart-key-full__row').remove();
+  		});
+
+  		// chart toggles
+  		$('.js-mock-show-split-chart').on("click", function(){
+  			
+  			$('.js-toggle--show-stacked.is-disabled').removeClass("is-disabled")
+																							.siblings("input").removeAttr("disabled", "disabled");
+				$('.js-toggle--show-bar.is-disabled').removeClass("is-disabled")
+																							.siblings("input").removeAttr("disabled", "disabled");
+
+  			$('.js-twin-chart-container').addClass("is-active");
+  			$('.js-combined-chart-container').removeClass("is-active");
+  			Highcharts.charts[0].reflow(); // reflow in case of window width change before making visible again
+  			Highcharts.charts[1].reflow();
+  		});
+
+  		$('.js-mock-show-single-chart').on("click", function(){
+  			if(!$(this).hasClass("is-disabled")) {
+
+					$('.js-toggle--show-stacked').addClass("is-disabled")
+																				.siblings("input").attr("disabled", "disabled");
+
+  				$('.js-twin-chart-container').removeClass("is-active");
+	  			$('.js-combined-chart-container').addClass("is-active");
+	  			Highcharts.charts[2].reflow();
+  			}
+  		});
+
+  		// HIGHCHARTS
+  		var monthNames = [
+        "Jan", "Feb", "Mar",
+        "Apr", "May", "Jun", "Jul",
+        "Aug", "Sep", "Oct",
+        "Nov", "Dec"
+      ];
+
+      var hasBeenSet = false,
+      		lastPoint;
+
+	    (function (H) {
+
+	      var customIconRect;
+	      H.wrap(H.Tooltip.prototype, 'refresh', function (proceed) {
+	      	
+	        proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+
+	        if(this.chart.customIconRect !== undefined) {
+	          this.chart.customIconRect.destroy();
+	        }
+
+	        var $axisLabel = $(this.chart.container).find('.highcharts-axis-label'),
+	            leftOffset = 29,
+	            axisLabelYPos = $("#" + arguments[1][0].series.chart.container.id + "").height() - arguments[1][0].series.xAxis.bottom,
+	            //axisLabelYPos = arguments[1][0].series.chart.containerHeight - arguments[1][0].series.xAxis.bottom,
+	            axisLabelXPos = arguments[1][0].plotX - leftOffset,
+	            timeStampString = arguments[1][0].x + "",
+	            timeStampString = timeStampString.substring(0,10),
+	            xAxisDate = new Date(timeStampString*1000).addHours(12),
+	            formattedDate = xAxisDate.getDate() + " " + monthNames[xAxisDate.getMonth()];
+
+	        if($axisLabel.length > 0) {
+
+	          var labelYPos = axisLabelYPos + 18,
+	              labelXPos = axisLabelXPos + 7;
+
+	          $axisLabel.attr("transform", "translate(" + labelXPos + "," + labelYPos + ")");
+	          $axisLabel.find("text").text(formattedDate);
+
+	        } else {
+	          this.chart.renderer.label(formattedDate, axisLabelXPos+7, axisLabelYPos + 18, 'callout', 0, 0, false, true, "axis-label")
+	          .css({
+	            color: '#fcfdfd',
+	            fontSize: '12px',
+	            fontFamily: 'Source Sans Pro',
+	            fontWeight: 600
+	          })
+	          .attr({
+	            zIndex: 100
+	          })
+	          .add();
+	        }
+
+	        this.chart.customIconRect = this.chart.renderer.image('images/axis-label-background.png', axisLabelXPos, axisLabelYPos + 4, 54, 20)
+	        .attr({
+	          zIndex: 99
+	        })
+	        .add();
+
+
+	        // Mirror the tooltip on twin charts
+	        if(H.charts.length > 1) {
+	        
+	        	var chartIndexToHover = (arguments[1][0].series.chart.index == 0) ? 1 : 0;
+	        	
+	        	if(chartIndexToHover < 2) { // using twin chart to want to mirror the tooltip
+	        		
+	        		// find line index of currently selected line
+		        	var seriesIndexToHover = 0;
+		        	$.each(H.charts[chartIndexToHover].series, function(key, series){
+		        		if(series.selected) {
+		        			seriesIndexToHover = key;
+		        		}
+		        	});
+
+		        	// set the hover on the other graph
+		        	var pointIndex = arguments[1][0].index;
+		        	if(!hasBeenSet) {
+		        		hasBeenSet = true;
+		        		// not sure why this if statement is here but there must have been an associated bug
+		        		// could try removing to see if there is any lasting effect
+		        		if(lastPoint) {
+		        			if(H.charts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint] != undefined) { // check if data series are present on the chart
+		        				H.charts[chartIndexToHover].series[seriesIndexToHover].data[lastPoint].setState();
+	            			H.charts[chartIndexToHover].tooltip.hide();
+		        			}		        			
+		        		}
+		        		lastPoint = pointIndex;
+								var arrayOfPointsToHover = [];
+								for(var s = 0; s < H.charts[chartIndexToHover].series.length; s++) {
+									if(Highcharts.charts[chartIndexToHover].series[s].visible) {
+										arrayOfPointsToHover.push(H.charts[chartIndexToHover].series[s].points[pointIndex]);
+									}								
+								}
+		        		H.charts[chartIndexToHover].tooltip.refresh(arrayOfPointsToHover);
+			        		
+			        	setTimeout(function(){
+			        		hasBeenSet = false;
+			        	}, 10);
+			        }
+	        	}
+	        }
+
+	        // Add Event Labels
+	        	// destroy any existing labels
+	        var thisPlotX = arguments[1][0].plotX,
+	        		eventTooltip;
+
+	        		if(this.chart.eventTooltips) {
+	        			for (var t = 0; t < this.chart.eventTooltips.length; t++) {
+	        				this.chart.eventTooltips[t].destroy();
+	        			}
+	        		}
+	        		this.chart.eventTooltips = [];
+
+	        	// remove existing animating CSS class for icons
+	        $(".event-icon--launch.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--launch");
+	        });
+	        $(".event-icon--flag.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--flag");
+	        });
+	        
+        	// create tooltip on event hover
+        	var eventsCounter = 0,
+	        			previousEventPlotX;
+	        			window.animatingFlags = false;
+
+	        if(this.chart.refEvents) {
+			      for (var e = 0; e < this.chart.refEvents.length; e++) {
+			      	if(this.chart.refEvents[e].plotX == thisPlotX) {
+			      		// check if previous event plotX is the same as this plotX, to calculate event details label spacing
+			      		if(previousEventPlotX) {
+			      			if(previousEventPlotX == this.chart.refEvents[e].plotX) {
+			      				eventsCounter++;
+			      			} else {
+			      				eventsCounter = 0;
+			      			}
+			      		}
+			      		
+			      		previousEventPlotX = this.chart.refEvents[e].plotX;
+			      		var eventLabelOffset = 80;
+			      		if(parseInt(previousEventPlotX) < 100) {
+			      			eventLabelOffset = 30;
+			      		}
+			      		var labelTopSpace = axisLabelYPos + 29 + (eventsCounter * 57);
+			      		var eventIcon = this.chart.refEvents[e].icon.element;
+			        	eventTooltip = this.chart.renderer.label($(eventIcon).data("tooltip"), this.chart.series[0].data[$(eventIcon).data("datapoint")].plotX - eventLabelOffset, labelTopSpace, 'callout')
+			            .css({
+			                color: $(eventIcon).data("tooltipcolour")
+			            })
+			            .attr({
+			            		width: 139,
+			                fill: $(eventIcon).data("tooltipfill"),
+			                padding: 10,
+			                r: 5,
+			                zIndex: 6
+			            })
+			            .addClass("chart-event-label")
+			            .add();
+
+			         	this.chart.eventTooltips.push(eventTooltip);
+
+			         	// add event icon animate CSS class
+			         	var currentCSSClass = $(this.chart.refEvents[e].icon.element).attr("class");
+		      			$(this.chart.refEvents[e].icon.element).attr("class", "is-animating " + currentCSSClass);
+		      			if(currentCSSClass.indexOf("event-icon--flag") > -1) {
+		      				this.chart.refEvents[e].flag = null;
+			      			window.animatingFlags = true;
+			      			animateSquash = function(flagToAnimate) {
+		      					flagToAnimate.animate({width: 15}, 100, function(){
+		      						flagToAnimate.animate({width: 18}, 100, function() {
+		      							if(window.animatingFlags) {
+		      								animateSquash(flagToAnimate);
+		      							}      							
+		      						});
+		      					});
+			      			}
+			      			animateSquash(Snap(this.chart.refEvents[e].icon.element)); // makes the flag "flap" (uses snap.js)
+		      			}
+			        }
+			      }
+			    }
+	      });
+
+				H.wrap(H.Series.prototype, 'hide', function (proceed) {
+
+				  // Before the hide function
+				  var t = $(this),
+				  				par;
+
+				  if(t[0].type == "area") {
+				  	if(this.graph != undefined) {
+				  		par = $(this.graph.element).parents('.highcharts-series').attr("class", "highcharts-series is-transparent-fade");
+				  	}				  	
+				  }
+
+				  var instance = this;
+				
+				  setTimeout(function() {
+				  	proceed.apply(instance, Array.prototype.slice.call(arguments, 1));
+				  	if(t[0].type == "area" && par != undefined) {
+				  		par.attr("class", "highcharts-series");
+				  	}
+				  }, 200);
+				});
+
+				H.Chart.prototype.animateSelectedLines = function(containerId, indexToSelect, previousSelectedIndex) {
+	    		$(containerId + ' .highcharts-series').each(function(){
+	          var $this = $(this);
+	          if($this.attr("data-index") == indexToSelect) {
+	            $this.find("path.highcharts-graph").css("opacity", "0.7");
+	            $this.find("path.highcharts-graph").animate({ "opacity": 1 }, 250);
+	            $this.find("path.highcharts-area").css("opacity", "0");
+	            $this.find("path.highcharts-area").animate({ "opacity": 1 }, 250);
+
+	          } else if($this.attr("data-index") == previousSelectedIndex) {
+	          	$this.find("path.highcharts-graph").css("opacity", 1);
+	            $this.find("path.highcharts-graph").animate({ "opacity": 0.7 }, 250);
+	            $this.find("path.highcharts-area").css("opacity", 1);
+	            $this.find("path.highcharts-area").animate({ "opacity": 0 }, 250);
+	          }
+	        });
+	    	}
+
+	    	H.Chart.prototype.setSeriesToSelected = function(chartIndex, seriesIndex) {
+	    		H.charts[chartIndex].series[seriesIndex].selected = true;
+	    		if(H.charts[chartIndex].series[seriesIndex].graph) {
+	    			H.charts[chartIndex].series[seriesIndex].graph.element.setAttribute("data-selected", "selected");
+	    		}	      	
+	    	}
+
+	    	H.Chart.prototype.setSeriesToUnselected = function(chartIndex, seriesIndex) {
+	    		$('.chart[data-highcharts-chart="' + chartIndex + '"] .highcharts-series path[data-selected]').removeAttr("data-selected");
+	      	H.charts[chartIndex].series[seriesIndex].selected = false;
+	    	}
+
+	    	H.Chart.prototype.setGraphCSSClasses = function() {
+	   			$.each(H.charts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							series.refseriesindex = key;
+							if(series.graph) {
+								series.graph.element.setAttribute("data-series-class", key);
+					    	series.graph.element.setAttribute("data-index", key);
+					    	series.graph.parentGroup.element.setAttribute("data-index", key);
+							}
+						});
+
+						// set CSS classes on the area fills
+						$('.chart[data-highcharts-chart="' + key + '"] .highcharts-series path:nth-child(2)').each(function(){
+		          var lineIndex = $(this).attr("data-index");
+		          // $(this).parent('.highcharts-series').find('.highcharts-area').attr("class", "series-fill-" + lineIndex);
+		        });
+					});
+	   		}
+
+	   		H.Chart.prototype.resetLineStyling = function() {
+					$.each(H.charts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							if(series.graph != undefined) {
+								if(series.selected) {
+		        			$(series.graph.parentGroup.element).find('.highcharts-graph').css("opacity", "1");
+									$(series.graph.parentGroup.element).find('.highcharts-area').css("opacity", "1");
+								} else {
+									$(series.graph.parentGroup.element).find('.highcharts-graph').css("opacity", "0.7");
+									$(series.graph.parentGroup.element).find('.highcharts-area').css("opacity", "0");
+								}						
+							}							
+						});  	
+					});
+				}
+
+				H.Chart.prototype.setFirstVisibleSeriesToSelected = function() {
+					// set first visible line of each chart to be selected
+					$.each(H.charts, function(key, chart) {
+						for(var s = 0; s < chart.series.length; s++) {
+							if(chart.series[s].visible == true) {
+								chart.series[s].graph.element.setAttribute("data-selected", "selected");
+	      				chart.series[s].selected = true;
+								break;
+							}
+						}
+					});
+				}
+
+				H.Chart.prototype.setGraphFillsTransparency = function() {
+					$.each(H.charts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+							if(series.graph != undefined) {
+		        		series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 0.7");
+							}
+						});  	
+					});
+				}
+
+				H.Chart.prototype.highlightAChartSeries = function(chartContainerId, seriesToHighlight) {
+				$('#' + chartContainerId + ' path[data-series-class=' + seriesToHighlight).each(function(){
+					var $this = $(this);
+					$this.css("opacity", 0.7);
+          $this.animate({ "opacity": 1 }, 100);
+				});
+			}
+
+			H.Chart.prototype.unhighlightAChartSeries = function(chartContainerId, seriesToUnhighlight) {
+				$('#' + chartContainerId + ' path[data-series-class=' + seriesToUnhighlight).each(function(){
+					var $this = $(this);
+					$this.css("opacity", "1");
+          $this.animate({ "opacity": 0.7 }, 100);
+				});
+			}
+
+	    }(Highcharts));
+
+	    // generateChart is template only to speed up generating three charts in the template
+	    function generateChart(containerId, dataType, seriesData, seriesColour, chartType, isMerged) {
+
+	    	var seriesColour,
+	    			seriesArray = [],
+	    			yAxesSettings; // Mock only
+
+	    	if(isMerged) { // Mock only
+	    		yAxesSettings = [{
+	          offset: -27,
+	          showFirstLabel: false,
+	          showLastLabel: true,
+	          gridLineWidth: 0,
+	          labels: {
+	          	align: 'left',
+	          	style: {
+	          		color: '#81879d',
+	          		fontSize: "12px"
+	          	}
+	          },
+	          title: {
+	          	text: null
+	          }            
+	        },
+	        {
+	          offset: -25,
+	          showFirstLabel: false,
+	          showLastLabel: true,
+	          gridLineWidth: 0,
+	          opposite: true,
+	          labels: {
+	          	align: 'right',
+	          	style: {
+	          		color: '#6d69c5',
+	          		fontSize: "12px"
+	          	}
+	          },
+	          title: {
+	          	text: null
+	          }            
+	        }];
+
+	        // TEMPLATE ONLY, structuring the data for the combined chart. Create the combined chart by adding a revenue series, followed by the download series, for each app
+	        for(var a = 0; a < seriesData[0].length * 2; a++) {
+	        	var isRevenue = (a % 2 == 1) ? false : true;
+	        	var thisSeriesColour, seriesColourIndex;
+	        	if(isRevenue) {
+	        		seriesColourIndex = a/2;
+	        		thisSeriesColour = seriesColour[seriesColourIndex];
+	        	} else {
+	        		if(a != 1) {
+	        			seriesColourIndex = (a-1) / 2;
+	        			thisSeriesColour = seriesColour[seriesColourIndex];
+	        		} else {
+	        			thisSeriesColour = "#918edf";
+	        		}
+	        	}
+
+	        	// TEMPLATE ONLY: for creating the series data - get the index for the mock data array
+	        	var dataIndex;
+	        	if(a != 1) { // not the downloads total line
+	        		dataIndex = (isRevenue) ? (a / 2) : (a-1) / 2;
+	        	} else {
+	        		dataIndex = 0;
+	        	}
+
+	        	var seriesName = "";
+	        	if(isRevenue) {
+	        		if(a == 0) {
+	        			seriesName = "revenueseries-total";
+	        		} else {
+	        			seriesName = "revenueseries";
+	        		}
+	        	} else {
+	        		if(a == 1) {
+	        			seriesName = "downloadsseries-total";
+	        		} else {
+	        			seriesName = "downloadsseries";
+	        		}
+	        	}
+
+	        	// TEMPLATE ONLY: Create mock series
+	        	seriesArray.push({
+		         	yAxis: (isRevenue) ? 0 : 1,
+		          name: seriesName,
+	            id : seriesName,
+		          color: thisSeriesColour,
+		          data: (isRevenue) ? seriesData[0][dataIndex] : seriesData[1][dataIndex],
+		          borderRadiusTopLeft: 3,
+        			borderRadiusTopRight: 3,
+		          pointStart: Date.UTC(2016, 0, 1),
+		          pointInterval: 24 * 3600 * 1000, // one day
+		          lineColor: thisSeriesColour,
+		          lineWidth: 3,
+		          lineWidthPlus: 0,
+		          fillOpacity: 0,
+		          fillColor: {
+	              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+	              stops: [
+	                [0, 'rgba(109,105,197,0.1)'],
+	                [1, 'rgba(27,199,159,0.1)']
+	              ]
+	            },
+	            dashStyle: (isRevenue || a == 1) ? 'line' : 'shortdash',
+		          marker: {
+		            enabled: false,
+		            states: {
+		              hover: {
+		                enabled: true,
+		                lineWidth: 0,
+		                lineWidthPlus: 0,
+		                radius: 4,
+		                radiusPlus: 0,
+		              }
+		            }
+		          }      
+		        });
+	        }
+
+	      } else { // else single chart, so one yaxis
+	      	yAxesSettings = [{
+	    			reversed: false,
+	          offset: -37,
+	          showFirstLabel: false,
+	          showLastLabel: true,
+	          gridLineWidth: 0,
+	          labels: {
+	          	align: 'left',
+	          	style: {
+	          		color: '#81879d',
+	          		fontSize: "12px"
+	          	}
+	          },
+	          title: {
+	          	text: null
+	          }         
+	        }];
+
+	        // TEMPLATE ONLY: Create mock series
+	        for(var a = 0; a < seriesData.length; a++) {
+
+	        	var seriesName = dataType;
+	        	if(a == 0) {
+	        		seriesName += "-total";
+        		}
+
+	        	seriesArray.push({
+		         	yAxis: 0,
+		          name: seriesName,
+		          id : seriesName,
+		          color: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
+		          data: seriesData[a],
+		          borderRadiusTopLeft: 3,
+        			borderRadiusTopRight: 3,
+		          pointStart: Date.UTC(2016, 0, 1),
+		          pointInterval: 24 * 3600 * 1000, // one day
+		          lineColor: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
+		          lineWidthPlus: 0,
+		          marker: {
+		            enabled: false,
+		            states: {
+		              hover: {
+		                enabled: true,
+		                lineWidth: 0,
+		                lineWidthPlus: 0,
+		                radius: 4,
+		                radiusPlus: 0,
+		              }
+		            }
+		          },
+			        type: 'area',
+				    	stacking: (a == 0) ? null : 'normal',
+				    	fillColor: seriesFills[a],
+				    	lineWidth: 2
+		        });
+	        }
+	      }
+
+	    	// Generate Demo Chart, using the properties set above
+				var chart = new Highcharts.Chart({
+					chart: {
+	          renderTo: containerId,
+						marginLeft: 0,
+						marginRight: 0,
+						marginBottom: 0,
+						marginTop: 0,
+						spacing: [0,0,0,0],
+						height: 450,
+						backgroundColor: '#fcfdfd',
+						plotBackgroundColor: '#f2f2f5',
+			   		type: chartType,
+			   		animation: false,
+			   		style: {
+	            fontFamily: 'Source Sans Pro'
+	          },
+	          events: {
+	            load: function() {
+	                var countIndex = 0;
+	                var graphPointAnimationDelay = 20;
+
+	                // set the all series opacity on load
+	                var countIndex = 0;
+	                $('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function() { // gets each series line
+	                  if (countIndex > 0) { // first series is set to visible
+	                    $(this).attr("style", "opacity: 1");
+	                    $(this).siblings("path").attr("style", "opacity: 0.7");
+	                  } else {
+	                    $(this).attr("style", "opacity: 1");
+	                  }
+	                  countIndex++;
+	                });
+	            }
+	          }
+				  },
+				  legend: {
+				  	enabled: false
+				  },
+				  title: {
+	            text: ''
+	        },
+	        yAxis: yAxesSettings,
+	        xAxis: {
+	        	lineColor: '#e1e5e8',
+            lineWidth: 1,
+	        	startOnTick: true,
+	        	endOnTick: true,
+	        	showFirstLabel: false,
+	          maxPadding: 0,
+	          minPadding: 0,
+	          type: 'datetime',
+	          dateTimeLabelFormats: {
+	              day: '%e %b'
+	          },
+	          tickmarkPlacement: 'on',
+	          tickPixelInterval: 30,
+	          tickLength: 0,
+	          labels: {
+	          	align: 'center',
+	            x: 0,
+	            y: 18,
+	            step: 2,
+	            style: {
+	              color: '#81879d',
+	              fontSize: "12px"
+	            }
+	          },
+	        },
+	        plotOptions: {
+	        	area: {
+	            trackByArea: true,
+	        		tooltip: {
+	        			followPointer: true
+	        		},
+	        		states: {
+	        			hover: {
+	        				halo: {
+	        					size: 0
+	        				},
+	        				lineWidthPlus: 0
+	        			}
+	        		},
+	        		marker: {
+	        			symbol: "circle"
+	        		}		
+	        	},
+	        	bar: {
+	        		borderColor: "#f2f2f5",
+	        		borderWidth: 1,
+	        		groupPadding: 0.08,
+	        		pointPadding: 0,
+	        		states: {
+	        			hover : {
+	        				brightness: 0.1
+	        			}
+	        		}
+	        	},
+	          series: {
+	            animation: false
+	          },
+	      	},
+	        series: seriesArray,
+	        tooltip: {
+	        	useHTML: true,
+	        	shared: true,
+	          formatter: function() {	          	
+	            var instance = this;
+	            var s = "";
+	            var thisPointIndex = instance.points[0].point.index;
+	            // for stacked percentage
+	            // TO DO - bug if first line is off
+	            var thisPointTotalValue = instance.points[0].series.chart.series[0].data[thisPointIndex].y;
+
+	            $.each(instance.points, function (index, value) {
+	                var chartSeries = value.series;
+	                var imgString = "",
+	                		storeString = "",
+	                		valueString = "",
+	                		stackedString = "";
+
+	                if(chartSeries.name == "revenueseries") {
+	                	valueString = "$ ";
+	                }
+	                if(chartSeries.name == "revenueseries-total") {
+	                	valueString = "$ ";
+	                	imgString = "<img src=images/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
+	                } else if(chartSeries.name == "downloadsseries-total") {
+	                	imgString = "<img src=images/icon-chart-tt-downloads@2x.png alt='Downloads icon' class=icon-downloads />";	
+	                } else { // output app and store icon from data
+	                	var appIcon = chartSeries.appIcon;
+	                	var store = chartSeries.appStore;
+	                	imgString = "<img src=" + appIcon + " class='chart-tooltip-app-icon' />";
+	                	storeString = "<span class='ref-icon-before--" + store + "'></span>"
+	                }
+	                
+	                var seriesClassName = chartSeries.name;
+	                if(seriesClassName == "revenueseries-total") {
+	                	seriesClassName = "revenueseries";
+	                } else if(seriesClassName == "downloadsseries-total") {
+	                	seriesClassName = "downloadsseries";
+	                }
+
+	                if($('#toggle--show-stacked').is(":checked") && thisPointTotalValue != undefined) {
+	                	var percentageOfTotal = parseInt(value.y / thisPointTotalValue * 100);
+	                	stackedString = "<span class='chart-tooltip-percentage' style='background-color: " + chartSeries.color + "'>" + percentageOfTotal + "%</span>";
+	                }
+
+	                s += '<div class="custom-tooltip ' + seriesClassName + '" style="background-color: ' + chartSeries.color + '">' + imgString + storeString + '<span class="chart-tooltip-value">' + valueString + value.y + '</span>' + stackedString + '</div>';
+	            });
+	            return s;
+	          },
+	        	backgroundColor: 'transparent',
+	          borderWidth: 0,
+	          borderColor: '#dae3ed',
+				    crosshairs: [{
+	            width: 1,
+	            color: '#9ea7c4'
+	          }],
+	          shadow: {
+	            color: 'rgba(0,0,0,0.24)',
+	            width: 0,
+	            offsetX: 1,
+	            offsetY: 1
+	        	},
+	        	snap: 25,
+	        	// the positioner callback could be used in future for the combined chart where it goes off the left of the graph
+	        	// positioner: function (labelWidth, labelHeight, point) {
+          //     console.log("labelWidth = " + labelWidth);
+          //     console.log("labelHeight = " + labelHeight);
+          //     console.log(point);
+          //     return { x: point.plotX, y: 0 };
+          //   },
+	        }
+		    });
+
+			} // end generateChart()
+
+			function addAppDataToSeries() {
+				// add the app icon and store to the Highcharts series objects for the tooltip
+
+				// template only, mock data
+				for(var k = 0; k < 2; k++) {
+					$.each(Highcharts.charts[k].series, function (key, series) { // twin chart
+				    series.appIcon = seriesAppIcons[key].icon;
+				    series.appStore = seriesAppIcons[key].store;
+					});
+				}
+
+				$.each(Highcharts.charts[2].series, function (key, series) { // combined chart
+			    // combined chart, use the same icon for rev and downloads
+			    var combinedSeriesIndex = Math.floor(key / 2);
+			    series.appIcon = seriesAppIcons[combinedSeriesIndex].icon;
+			    series.appStore = seriesAppIcons[combinedSeriesIndex].store;
+				});
+			}
+
+			function handleCustomLegendInteraction() {
+
+				// Hide/show series from custom legend
+				$('.js-custom-chart-key').on("click", '.js-toggle-series', function(){ // for each current or new '.js-toggle-series' (checkbox in the legend)
+
+					var $this = $(this);
+					var chartIndex = $this.attr("data-chart-index");
+					var seriesIndex = $this.attr("data-series-index");					
+
+					var currentChartType = "area";
+					$('.toggle input[type=radio][name=charttype]').each(function(){
+						if($(this).is(":checked")) {
+							currentChartType = $(this).attr("data-chart-type");
+						}
+					});
+
+					if(chartIndex < 2) { // user is using the twin chart
+
+						if($(this).is(":checked")) {
+
+							// turn on same series on both twin charts
+							Highcharts.charts[0].series[seriesIndex].show();
+							Highcharts.charts[1].series[seriesIndex].show();
+
+							// turn on the combined chart corresponding series
+							Highcharts.charts[2].series[seriesIndex * 2].show();
+							Highcharts.charts[2].series[(seriesIndex * 2) + 1].show();
+
+							// only reset styles for non-stacked area chart
+							setTimeout(function(){
+								if(!$('#toggle--show-stacked').is(":checked") && currentChartType == "area") {
+									Highcharts.Chart.prototype.setGraphCSSClasses();
+									Highcharts.Chart.prototype.resetLineStyling();
+								} else {									
+									Highcharts.Chart.prototype.setGraphCSSClasses();
+									Highcharts.Chart.prototype.setGraphFillsTransparency();
+								}
+							}, 200);
+
+							// turn off other checkboxes in mirror chart key
+							$('.js-twin-chart-container .js-toggle-series').each(function(){
+								var $thisToggle = $(this);
+								if(!$thisToggle.is($this)) {
+									if($thisToggle.attr("data-series-index") == seriesIndex) {
+										$thisToggle[0].checked = true;
+									}
+								}
+							});
+
+							// combined chart turn on/off corresponding series
+							$('.js-combined-chart-container .js-toggle-series').each(function(){
+								var $thisToggle = $(this);
+								if(!$thisToggle.is($this)) {
+									if($thisToggle.attr("data-series-index") == seriesIndex * 2 || $thisToggle.attr("data-series-index") == (seriesIndex * 2) + 1) {
+										$thisToggle[0].checked = true;
+									}
+								}
+							});
+
+						} else { // turn off the series on all charts
+							setTimeout(function(){
+								
+								var isStackedChart = true;
+								if(currentChartType == "area") {
+
+									// If the line being turned off is selected then unselect, and select first visible line
+									if(Highcharts.charts[0].series[seriesIndex].selected == true) {
+										isStackedChart = false;
+
+										// unselect for twin charts
+										Highcharts.Chart.prototype.setSeriesToUnselected(0, seriesIndex);
+										Highcharts.Chart.prototype.setSeriesToUnselected(1, seriesIndex);
+
+										// unselect for combined chart
+										var previousSelectedIndexOnCombined = $('.chart[data-highcharts-chart="2"] .highcharts-series path[data-selected]').attr("data-index");
+
+										Highcharts.Chart.prototype.setSeriesToUnselected(2, previousSelectedIndexOnCombined);
+									}
+								}
+
+								// Hide the series
+								Highcharts.charts[0].series[seriesIndex].hide();
+								Highcharts.charts[1].series[seriesIndex].hide();
+
+								// hide on the combined chart
+								Highcharts.charts[2].series[seriesIndex * 2].hide();
+								Highcharts.charts[2].series[(seriesIndex * 2) + 1].hide();
+
+								setTimeout(function(){
+									if(!isStackedChart) {
+										Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+										Highcharts.Chart.prototype.setGraphCSSClasses();
+						        Highcharts.Chart.prototype.resetLineStyling();
+									}
+								}, 200);
+							}, 200);
+
+							// turn off other checkboxes in mirror chart key
+							$('.js-twin-chart-container .js-toggle-series').each(function(){
+								var $thisToggle = $(this);
+								if(!$thisToggle.is($this)) {
+									if($thisToggle.attr("data-series-index") == seriesIndex) {
+										$thisToggle[0].checked = false;
+									}
+								}
+							});
+
+							// combined chart turn on/off corresponding series
+							$('.js-combined-chart-container .js-toggle-series').each(function(){
+								var $thisToggle = $(this);
+								if(!$thisToggle.is($this)) {
+									if($thisToggle.attr("data-series-index") == seriesIndex * 2 || $thisToggle.attr("data-series-index") == (seriesIndex * 2) + 1) {
+										$thisToggle[0].checked = false;
+									}
+								}
+							});
+
+						}
+
+					} else { // user is using combined chart
+
+						if($(this).is(":checked")) {
+							Highcharts.charts[2].series[seriesIndex].show();
+
+							// if both rev and dloads are selected on combined, turn that series on on the twin charts
+								
+							// get the corresponding series to see if it's visible
+							var correspondingSeriesIndex,
+									isDownloadsSeriesBeingTurnedOn = seriesIndex % 2 == 1;
+
+							if(isDownloadsSeriesBeingTurnedOn) {
+								correspondingSeriesIndex = seriesIndex - 1;
+							} else {
+								correspondingSeriesIndex = parseInt(seriesIndex) + 1;
+							}
+
+							var isCorrespondingSeriesVisible = Highcharts.charts[2].series[correspondingSeriesIndex].visible;
+
+							if(isCorrespondingSeriesVisible) {
+
+								// make sure correspondingTwinIndex is set to corresponding twin chart index
+								var correspondingTwinIndex;
+								if(isDownloadsSeriesBeingTurnedOn) {
+									correspondingTwinIndex = (seriesIndex - 1) / 2;
+								} else {
+									correspondingTwinIndex = seriesIndex / 2
+								}
+
+								// turn it on on the twin chart
+								Highcharts.charts[0].series[correspondingTwinIndex].show();
+								Highcharts.charts[1].series[correspondingTwinIndex].show();
+
+								// set the key toggle
+								$('.js-twin-chart-container .js-toggle-series').each(function(){
+									var $thisToggle = $(this);
+									if(!$thisToggle.is($this)) {
+										if($thisToggle.attr("data-series-index") == correspondingTwinIndex) {
+											$thisToggle[0].checked = true;
+										}
+									}
+								});
+							}
+
+							// if non-stacked area chart, reset CSS styles/classes
+							if(!$('#toggle--show-stacked').is(":checked") && currentChartType == "area") {
+								Highcharts.Chart.prototype.setGraphCSSClasses();
+								Highcharts.Chart.prototype.resetLineStyling();
+							} else {
+								Highcharts.Chart.prototype.setGraphCSSClasses();
+								Highcharts.Chart.prototype.setGraphFillsTransparency();
+							}
+
+						} else {
+							setTimeout(function(){
+
+								// If series is selected, select next visible series
+								var isStackedChart = true;
+
+								var correspondingTwinIndex;
+								if(seriesIndex % 2 == 1) {
+									correspondingTwinIndex = (seriesIndex - 1) / 2;
+								} else {
+									correspondingTwinIndex = seriesIndex / 2
+								}
+
+								if(currentChartType == "area") {
+
+									if(Highcharts.charts[2].series[seriesIndex].selected == true) {
+										
+										isStackedChart = false;
+
+										Highcharts.Chart.prototype.setSeriesToUnselected(2, seriesIndex);
+
+										// Deselect the equivalent line on the twin charts
+										Highcharts.Chart.prototype.setSeriesToUnselected(0, correspondingTwinIndex);
+										Highcharts.Chart.prototype.setSeriesToUnselected(1, correspondingTwinIndex);
+									}
+								}
+
+								// Hide the series
+								Highcharts.charts[2].series[seriesIndex].hide();
+								Highcharts.charts[0].series[correspondingTwinIndex].hide();
+								Highcharts.charts[1].series[correspondingTwinIndex].hide();
+
+								// set the key toggle
+								$('.js-twin-chart-container .js-toggle-series').each(function(){
+									var $thisToggle = $(this);
+									if(!$thisToggle.is($this)) {
+										if($thisToggle.attr("data-series-index") == correspondingTwinIndex) {
+											$thisToggle[0].checked = false;
+										}
+									}
+								});
+
+								setTimeout(function(){
+									if(!isStackedChart) {
+										Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+										Highcharts.Chart.prototype.setGraphCSSClasses();
+						        Highcharts.Chart.prototype.resetLineStyling();					
+									}
+								}, 200);
+							}, 200);
+						}
+					}		
+				});
+
+				// hover on/off key to highlight lines
+				$('.js-hover-series').on("mouseenter", function(){					
+					handleMouseEnterChartKeyLabel($(this));
+				}).on("mouseleave", function(){
+					handleMouseLeaveChartKeyLabel($(this));
+				});
+			}
+
+			function handleShowBarChart() {
+
+				// change chart type
+				$('.js-toggle--show-bar').on("click", function(){
+
+					if(!$(this).hasClass("is-disabled")) {
+
+						$('.js-mock-show-single-chart.is-disabled').removeClass("is-disabled")
+																					.siblings("input").removeAttr("disabled", "disabled");
+
+						$.each(Highcharts.charts, function(key, chart) {
+							$.each(chart.series, function (key, series) {
+						    series.update({
+						    	type: 'bar',
+						    	stacking: null
+						    });
+							});
+						});
+					}
+
+					addAppDataToSeries();
+					redrawChartEvents();
+				});
+			}
+
+			function handleShowAreaChart() {
+				// change chart type
+				$('.js-toggle--show-area').on("click", function(){
+
+					// disabled the toggle for combined chart
+					$('.js-mock-show-single-chart.is-disabled').removeClass("is-disabled")
+																					.siblings("input").removeAttr("disabled", "disabled");
+
+					$.each(Highcharts.charts, function(key, chart) {
+						$.each(chart.series, function (key, series) {
+					    series.update({
+					    	type: 'area',
+					    	stacking: null,
+					    	fillColor: {
+		              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+		              stops: [
+		                [0, 'rgba(109,105,197,0.1)'],
+		                [1, 'rgba(27,199,159,0.1)']
+		              ]
+		            },
+		            lineWidth: 3
+					    });
+						});
+					});
+
+					Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+					Highcharts.Chart.prototype.setGraphCSSClasses();
+	        Highcharts.Chart.prototype.resetLineStyling();
+
+	        addAppDataToSeries();
+	        redrawChartEvents();
+				});
+			}
+
+			function handleShowStackedAreaChart() {
+
+				// change chart type
+				$('.js-toggle--show-stacked').on("click", function(){
+
+					if(!$(this).hasClass("is-disabled")) {
+						// disabled the toggle for combined chart
+						$('.js-mock-show-single-chart').addClass("is-disabled")
+																						.siblings("input").attr("disabled", "disabled");
+
+						$.each(Highcharts.charts, function(key, chart) {
+							$.each(chart.series, function (key, series) {
+								if(key > 0) { // all lines other than the first line (the total line) are stacked - the total does not make up the stacked chart and stays with stacking: null
+									series.update({
+										type: 'area',
+							    	stacking: 'normal',
+							    	fillColor: seriesFills[key],
+							    	lineWidth: 2
+							    });
+								} else { // the first line is the total line for the stacked chart and should not be part of the stacked area
+									series.update({
+										type: 'area',
+										stacking: null,
+										fillColor: seriesFills[key],
+										lineWidth: 2
+									});
+								}				    
+							});
+						});
+
+						Highcharts.Chart.prototype.setGraphCSSClasses();
+						Highcharts.Chart.prototype.setGraphFillsTransparency();
+
+						addAppDataToSeries();
+						redrawChartEvents()
+					}
+				});
+			}
+
+			function handleAddSeriesTest() {
+
+				// mock, just for index when you add a series
+				// not needed in app
+				Highcharts.charts[0].numberofSeriesAdded = Highcharts.charts[0].series.length - 1; 
+
+				$('.js-add-series').on("click", function(e){
+
+					e.preventDefault();
+
+					// set stacking to normal if currently viewing stacked chart
+					var stackingValue = null;
+					if($('#toggle--show-stacked').is(":checked")) {
+						stackingValue = 'normal';
+					}
+
+					var chartType = "area";
+					if($('#toggle--show-bar').is(":checked")) {
+						chartType = "bar";
+					}
+
+					var mockSeries = [];
+					for(var d = 0; d < 12; d++) {
+						var randomNumber = Math.floor((Math.random() * 50000) + 30000);				
+						mockSeries.push(randomNumber);
+					}
+					var mockSeriesDownloads = [];
+					for(var d = 0; d < 12; d++) {
+						var randomNumber = Math.floor((Math.random() * 50000) + 30000);		
+						mockSeriesDownloads.push(randomNumber);
+					}
+
+					// get a series colour that's not in use
+					var availableColour = "#1bc79f";
+					for(var c = 1; c < seriesColours.length; c++) { // (0 is used by revenue total)
+						colourInUse = (usedSeriesColours.indexOf(seriesColours[c]) > -1) ? true : false;
+						if(!colourInUse) {
+							availableColour = seriesColours[c];
+							availableColourIndex = c;
+							break;
+						}
+					}
+
+					usedSeriesColours.push(availableColour);
+
+					var fillColourForNewSeries = {
+							linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+              stops: [
+                [0, 'rgba(109,105,197,0.1)'],
+                [1, 'rgba(27,199,159,0.1)']
+              ]
+          };
+
+					if(stackingValue == 'normal') {
+						fillColourForNewSeries = seriesFills[availableColourIndex];
+					}
+
+					Highcharts.charts[0].addSeries({
+          	yAxis: 0,
+	          name: "revenueseries",
+            id : "revenueseries",
+            type: chartType,
+	          color: availableColour,
+	          data: mockSeries,
+	          pointStart: Date.UTC(2016, 0, 1),
+	          pointInterval: 24 * 3600 * 1000, // one day
+	          lineColor: availableColour,
+	          lineWidth: (stackingValue == null) ? 3 : 2,
+	          lineWidthPlus: 0,
+	          fillOpacity: 0,
+	          fillColor: fillColourForNewSeries,
+            stacking: stackingValue,
+	          marker: {
+	            enabled: false,
+	            states: {
+	              hover: {
+	                enabled: true,
+	                lineWidth: 0,
+	                lineWidthPlus: 0,
+	                radius: 4,
+	                radiusPlus: 0,
+	              }
+	            }
+	          }
+         	});
+
+         	Highcharts.charts[1].addSeries({
+          	yAxis: 0,
+	          name: "downloadsseries",
+            id : "downloads",
+            type: chartType,
+	          color: availableColour,
+	          data: mockSeriesDownloads,
+	          pointStart: Date.UTC(2016, 0, 1),
+	          pointInterval: 24 * 3600 * 1000, // one day
+	          lineColor: availableColour,
+	          lineWidth: (stackingValue == null) ? 3 : 2,
+	          lineWidthPlus: 0,
+	          fillOpacity: 0,
+	          fillColor: fillColourForNewSeries,
+            stacking: stackingValue,
+	          marker: {
+	            enabled: false,
+	            states: {
+	              hover: {
+	                enabled: true,
+	                lineWidth: 0,
+	                lineWidthPlus: 0,
+	                radius: 4,
+	                radiusPlus: 0,
+	              }
+	            }
+	          }
+         	});
+
+         	Highcharts.charts[2].addSeries({
+          	yAxis: 0,
+	          name: "revenueseries",
+            id : "revenueseries",
+            type: chartType,
+	          color: availableColour,
+	          data: mockSeries,
+	          pointStart: Date.UTC(2016, 0, 1),
+	          pointInterval: 24 * 3600 * 1000, // one day
+	          lineColor: availableColour,
+	          lineWidth: 3,
+	          lineWidthPlus: 0,
+	          fillOpacity: 0,
+	          fillColor: fillColourForNewSeries,
+	          marker: {
+	            enabled: false,
+	            states: {
+	              hover: {
+	                enabled: true,
+	                lineWidth: 0,
+	                lineWidthPlus: 0,
+	                radius: 4,
+	                radiusPlus: 0,
+	              }
+	            }
+	          }
+         	});
+
+         	Highcharts.charts[2].addSeries({
+          	yAxis: 1,
+	          name: "downloadsseries",
+            id : "downloads",
+            type: chartType,
+	          color: availableColour,
+	          data: mockSeriesDownloads,
+	          pointStart: Date.UTC(2016, 0, 1),
+	          pointInterval: 24 * 3600 * 1000, // one day
+	          lineColor: availableColour,
+	          lineWidth: 3,
+	          lineWidthPlus: 0,
+	          fillOpacity: 0,
+	          fillColor: fillColourForNewSeries,
+            dashStyle: 'shortdash',
+	          marker: {
+	            enabled: false,
+	            states: {
+	              hover: {
+	                enabled: true,
+	                lineWidth: 0,
+	                lineWidthPlus: 0,
+	                radius: 4,
+	                radiusPlus: 0,
+	              }
+	            }
+	          }
+         	});
+
+         	// reset lines CSS and styling if not viewing stacked chart
+					if(stackingValue == null) {
+						setTimeout(function(){
+							Highcharts.Chart.prototype.setGraphCSSClasses();
+		      		Highcharts.Chart.prototype.resetLineStyling();
+		      	}, 200);
+					} else {
+						Highcharts.Chart.prototype.setGraphCSSClasses();
+						Highcharts.Chart.prototype.setGraphFillsTransparency();
+					}
+
+					Highcharts.charts[0].numberofSeriesAdded++; // MOCK, just to generate index
+
+					// in the app, ("showhiderevenue-" + Highcharts.charts[0].numberofSeriesAdded) should be replaced with an id for that series
+					// the (Highcharts.charts[0].numberofSeriesAdded) index should be the same as the series index
+					addASeriesToggle(Highcharts.charts[0].series.length - 1, "showhiderevenue-" + Highcharts.charts[0].numberofSeriesAdded, availableColourIndex);
+
+					addAppDataToSeries();
+
+				});
+
+			}
+
+			function handleRemoveSeriesTest() {
+				$('.js-remove-series').on("click", function(e){
+
+					e.preventDefault();
+
+					var isStackedChart = true;
+					if($('.chart[data-highcharts-chart="0"] .highcharts-series path[data-selected]').length) {
+						isStackedChart = false;
+					}
+
+					var removedLineWasSelected = false;
+					if(Highcharts.charts[0].series[2].selected == true) {
+						removedLineWasSelected = true;
+					}
+
+					// mock removal of series 2
+					Highcharts.charts[0].series[2].remove(true);
+					Highcharts.charts[1].series[2].remove(true);
+
+					// remove from combined chart - the indexes are the same, because after the first [4] has been removed, the next line becomes [4], which is also removed (the download line for [4], was [5])
+					Highcharts.charts[2].series[4].remove(true);
+					Highcharts.charts[2].series[4].remove(true);
+
+					if(!isStackedChart) {
+						setTimeout(function(){
+							if(removedLineWasSelected) {
+								Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+							}							
+							Highcharts.Chart.prototype.setGraphCSSClasses();
+		      		Highcharts.Chart.prototype.resetLineStyling();
+		      	}, 200);
+					}					
+
+					removeASeriesToggle(2);
+				});
+			}
+			
+			function handleChartEvents() {
+
+				// Use Highcharts.charts[0].refEvents[] to hold the event objects, which consist of an icon, line and tooltip content and tooltip colour
+				Highcharts.charts[0].refEvents = [];
+
+				if($('.js-toggle-events:checked').length > 0) {
+					addEventsToGraph();
+				}
+
+				$('.js-toggle-events').change(function(){
+					if($(this).is(":checked")) {
+						if(Highcharts.charts[0].refEvents.length == 0) {
+							addEventsToGraph();
+						} else { // otherwise show existing events
+							for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+								if(Highcharts.charts[0].refEvents[e].icon) {
+									$(Highcharts.charts[0].refEvents[e].icon.element).fadeIn(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].line) {
+									$(Highcharts.charts[0].refEvents[e].line.element).fadeIn(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].area) {
+									$(Highcharts.charts[0].refEvents[e].area.element).fadeIn(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].label) {
+									$(Highcharts.charts[0].refEvents[e].label.element).fadeIn(200);
+								}
+							}
+						}
+					} else {
+						if(Highcharts.charts[0].refEvents.length > 0) {
+							// hide existing events
+							for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+								if(Highcharts.charts[0].refEvents[e].icon) {
+									$(Highcharts.charts[0].refEvents[e].icon.element).fadeOut(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].line) {
+									$(Highcharts.charts[0].refEvents[e].line.element).fadeOut(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].area) {
+									$(Highcharts.charts[0].refEvents[e].area.element).fadeOut(200);
+								}
+								if(Highcharts.charts[0].refEvents[e].label) {
+									$(Highcharts.charts[0].refEvents[e].label.element).fadeOut(200);
+								}
+							}
+						}
+					}
+				});
+
+				// Events - Redraw events for window width change
+				$(window).on("resize", function(){
+					setTimeout(function(){
+						redrawChartEvents();
+					}, 1500);
+				});
+			}
+
+			function redrawChartEvents() {
+				if(Highcharts.charts[0].refEvents.length > 0) {
+						// redraw events
+						for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+							if(Highcharts.charts[0].refEvents[e].icon) {
+								Highcharts.charts[0].refEvents[e].icon.destroy();
+							}
+							if(Highcharts.charts[0].refEvents[e].line) {
+								Highcharts.charts[0].refEvents[e].line.destroy();
+							}
+							if(Highcharts.charts[0].refEvents[e].area) {
+								Highcharts.charts[0].refEvents[e].area.destroy();
+							}
+							if(Highcharts.charts[0].refEvents[e].label) {
+								Highcharts.charts[0].refEvents[e].label.destroy();
+							}
+						}
+						Highcharts.charts[0].refEvents = [];						
+						if(Highcharts.charts[0].refEvents.length == 0) {
+							if($('.js-toggle-events:checked').length > 0) {
+								addEventsToGraph();
+							}
+						}
+					}
+			}
+
+			// Add events to the graph function
+			function addEventsToGraph() {
+
+				var chart = Highcharts.charts[0];
+				var numberOfChartItems = chart.series[0].data.length - 1;
+			  var chartWidth = $(chart.container).width();
+
+			  Highcharts.charts[0].refEvents = [];
+
+	      Highcharts.charts[0].refEvents.push({
+	      	icon: chart.renderer.image('images/icon-chart-event-launch@2x.png', chart.series[0].data[2].plotX - 11, chart.chartHeight - 36, 22, 36)
+		            .attr({		            	
+		              zIndex: 15
+		            })
+		            .addClass("event-icon--launch")
+		            .add(),
+		    	plotX: chart.series[0].data[2].plotX,
+	      },{
+	      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[6].plotX - 1, chart.chartHeight - 38, 18, 12)
+		            .attr({
+		              zIndex: 9		              
+		            })
+		            .addClass("event-icon--flag")
+		            .add(),
+		      line: chart.renderer.path(['M', chart.series[0].data[6].plotX, chart.chartHeight, 'L', chart.series[0].data[6].plotX, chart.chartHeight - 38])
+		            .attr({
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 8
+		            })
+		            .add(),
+					plotX: chart.series[0].data[6].plotX,
+	      },{
+	      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
+		            .attr({
+		              zIndex: 9
+		            })
+		            .addClass("event-icon--flag")
+		            .add(),
+		      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
+		            .attr({
+	                'stroke-width': 1,
+	                stroke: '#81879d',
+	                zIndex: 8
+		            })
+		            .add(),
+					plotX: chart.series[0].data[8].plotX,
+		      },{
+		      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
+			            .attr({
+			            	visibility: "hidden", // duplicate event flags are hidden but are needed to caluclate no of events for a given date
+			              zIndex: 9
+			            })
+			            .addClass("event-icon--flag")
+			            .add(),
+			      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
+			            .attr({
+			            	visibility: "hidden",
+		                'stroke-width': 1,
+		                stroke: '#81879d',
+		                zIndex: 8
+			            })
+			            .add(),
+						plotX: chart.series[0].data[8].plotX,
+				});
+
+				// Events - Add tooltip data
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltip", "<span>App Launch</span><br /><span>02/01/2016</span>");				
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("datapoint", 2);
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltip", "<span>App Name Change</span><br /><span>'Splashy Crossy Copy...'</span>");
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("datapoint", 6);
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltip", "<span>Price Change</span><br /><span>$0.99 - Free</span>");
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("datapoint", 8);
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltip", "<span>App Update</span><br /><span>Version 1.1.3.1</span>");
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("datapoint", 8);
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipcolour", "#FFFFFF");
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+
+	      // if there are more than one events on one date, calculate and add number of events label
+		      // find which plotX has more than one event and add to plotXDuplicates[]
+		      var plotXDuplicates = [];
+		      for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+		      	var thisPlotX = Highcharts.charts[0].refEvents[e].plotX;
+		      	for (var a = e+1; a < Highcharts.charts[0].refEvents.length; a++) {
+		      		if(Highcharts.charts[0].refEvents[a].plotX == thisPlotX) {
+		      			var alreadyExists = false;
+		      			if(plotXDuplicates.length > 0) {	      				
+			      			for (var x = 0; x < plotXDuplicates.length; x++) {
+			      				if(plotXDuplicates[x] == thisPlotX) {
+			      					alreadyExists = true;
+			      				}
+			      			}
+		      			}
+		      			if(!alreadyExists) {
+		      				plotXDuplicates.push(Highcharts.charts[0].refEvents[a].plotX);
+		      			}	      			
+		      		}
+		      	}
+		      }
+
+	      	// iterate plotXDuplicates and find number of events on the same date
+		      var eventIndexesForDuplicateEventDate = [],
+		      		counterOfDuplicates = [];
+		      for(var p = 0; p < plotXDuplicates.length; p++) {
+		      	var counter = 0;
+		      	for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
+			      	if(plotXDuplicates[p] == Highcharts.charts[0].refEvents[e].plotX) {
+			      		eventIndexesForDuplicateEventDate.push(e);
+			      		counter++;
+			      	}
+			      }
+			      counterOfDuplicates.push(counter);
+		      }
+		      
+	      	// add label to chart for number of events on the same data
+		      for(var p = 0; p < plotXDuplicates.length; p++) {
+		      	if(Highcharts.charts[0].refEvents[eventIndexesForDuplicateEventDate[p]]) {
+		      		Highcharts.charts[0].refEvents[eventIndexesForDuplicateEventDate[p]].label = chart.renderer.text('<span>' + counterOfDuplicates[p] + '</span>', plotXDuplicates[p] + 4, 265)
+		          .attr({
+		          	zIndex: 10
+		          })
+		          .css({
+		            color: '#ff496a',
+		            fontSize: '13px',
+		            fontFamily: 'Source Sans Pro',
+		            fontWeight: 'bold',
+		            pointerEvents: 'none'
+		          })
+		          .add();
+		      	}
+		      }
+			}
+
+			function handleChartInteraction() {
+				
+				handleCustomLegendInteraction();
+				handleShowBarChart();
+				handleShowAreaChart();
+				handleShowStackedAreaChart();
+
+				handleAddSeriesTest();
+				handleRemoveSeriesTest();
+
+				handleChartEvents();
+			}
+
+			function handleMouseEnterChartKeyLabel($label) {
+				if($('html.no-touch').length) {
+					var $this = $label.siblings("input");
+					var chartToHoverIndex = $this.attr("data-chart-index");
+					var seriesToHover = $this.attr("data-series-index");
+
+					var seriesToHoverArray = [seriesToHover];
+
+					if(chartToHoverIndex < 2) { // if it's the twin chart
+
+						for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
+
+							var chartContainerId = Highcharts.charts[ch].container.id;
+
+							var selectedLine = $('#' + chartContainerId + ' .highcharts-series path[data-selected]').attr("data-index");
+
+							for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
+
+								if(selectedLine != undefined) { // if there is a selected line, it's the area chart, just highlight the line
+									if(!Highcharts.charts[ch].series[seriesToHoverArray[i]].selected) {
+										Highcharts.Chart.prototype.highlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+									}
+
+								} else { // otherwise it's the stacked chart, just highlight the fill
+
+									$('#' + chartContainerId + ' .series-fill-' + seriesToHoverArray[i]).each(function(){
+										var $this = $(this);
+										$this.css("opacity", 0.25);
+				            $this.animate({ "opacity": 0.6 }, 100);
+									});
+								}
+							}
+						}
+					} else { // user is hovering over combined chart key label
+						// get the corresponding line to hover
+						if(seriesToHover != 0 && seriesToHover != 1) {
+							seriesToHoverArray.push(seriesToHover - 1);
+						}
+						var chartContainerId = Highcharts.charts[chartToHoverIndex].container.id;
+
+						for(var i = 0; i < seriesToHoverArray.length; i++) {
+							if(!Highcharts.charts[2].series[seriesToHoverArray[i]].selected) {
+								Highcharts.Chart.prototype.highlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+							}
+						}
+					}
+				}
+			}
+
+			function handleMouseLeaveChartKeyLabel($label) {
+				if($('html.no-touch').length) {
+					var $this = $label.siblings("input");
+					var chartToHoverIndex = $this.attr("data-chart-index");
+					var seriesToHover = $this.attr("data-series-index");
+					var seriesToHoverArray = [seriesToHover];
+
+					if(chartToHoverIndex < 2) { // if it's the twin chart
+						for (var ch = 0; ch < 2; ch++) { // for each of the twin charts
+
+							var chartContainerId = Highcharts.charts[ch].container.id;
+							var selectedLine = $('#' + chartContainerId + ' .highcharts-series path[data-selected]').attr("data-index");
+
+							for(var i = 0; i < seriesToHoverArray.length; i++) { // highlight one or more lines on same chart
+								if(selectedLine != undefined) { // if there is a selected line, it's the area chart, just highlight the line
+									if(!Highcharts.charts[ch].series[seriesToHoverArray[i]].selected) {
+										Highcharts.Chart.prototype.unhighlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+									}
+								} else { // otherwise it's the stacked chart, just highlight the fill
+
+									$('#' + chartContainerId + ' .series-fill-' + seriesToHoverArray[i]).each(function(){
+										var $this = $(this);
+										$this.css("opacity", 0.6);
+				            $this.animate({ "opacity": 0.25 }, 100);
+									});
+								}
+							}
+						}
+					} else { // it's the combined chart
+						
+						// get the corresponding line to hover
+						if(seriesToHover != 0 && seriesToHover != 1) {
+							seriesToHoverArray.push(seriesToHover - 1);
+						}
+						var chartContainerId = Highcharts.charts[chartToHoverIndex].container.id;
+
+							for(var i = 0; i < seriesToHoverArray.length; i++) {
+								if(!Highcharts.charts[2].series[seriesToHoverArray[i]].selected) {
+									Highcharts.Chart.prototype.unhighlightAChartSeries(chartContainerId, seriesToHoverArray[i]);
+								}
+							}
+					}
+				}
+			}
+
+			function addASeriesToggle(seriesIndex, seriesName, availableColourIndex) {
+
+				// Add a new toggle to the chart key
+				var newToggle = $('<li>').addClass("series-" + availableColourIndex);
+				var newCheckbox = $('<input>').attr("type", "checkbox")
+																			.attr("name", seriesName)
+																			.attr("id", seriesName)
+																			.addClass("js-toggle-series")
+																			.attr("data-chart-index", "0")
+																			.attr("data-series-index", seriesIndex)
+																			.attr("checked", "checked");
+				
+				var newCheckboxLabel = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabel")
+																						.text("Another App");
+
+				var newCheckboxLabelVisible = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabelVisible")
+																						.attr("data-chart-index", "0")
+																						.text("Another App")
+																						.on("mouseenter", function(){
+																							handleMouseEnterChartKeyLabel($(this));
+																						})
+																						.on("mouseleave", function(){
+																							handleMouseLeaveChartKeyLabel($(this));
+																						});
+
+				newToggle.append(newCheckbox)
+									.append(newCheckboxLabel)
+									.append(newCheckboxLabelVisible);
+
+				$('.js-twin-chart-container .js-custom-chart-key ul').append(newToggle);
+
+				// Add a new toggle to the chart key on the combined chart
+				// combined revenue checkbox
+				seriesName += "-combined";
+				var newToggle = $('<li>').addClass("revenue-key-combined-chart series-" + availableColourIndex);
+				var newCheckbox = $('<input>').attr("type", "checkbox")
+																			.attr("name", seriesName)
+																			.attr("id", seriesName)
+																			.addClass("js-toggle-series")
+																			.attr("data-chart-index", "2")
+																			.attr("data-series-index", seriesIndex * 2)
+																			.attr("checked", "checked");
+				
+				var newCheckboxLabel = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabel")
+																						.text("Another App");
+
+				var newCheckboxLabelVisible = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabelVisible js-hover-series");
+
+				newToggle.append(newCheckbox)
+									.append(newCheckboxLabel)
+									.append(newCheckboxLabelVisible);
+
+				// combined downloads checkbox
+				seriesName += "--downloads";
+				var newToggleDownloads = $('<li>').addClass("downloads-key-combined-chart series-" + availableColourIndex);
+				var newCheckbox = $('<input>').attr("type", "checkbox")
+																			.attr("name", seriesName)
+																			.attr("id", seriesName)
+																			.addClass("js-toggle-series")
+																			.attr("data-chart-index", "2")
+																			.attr("data-series-index", (seriesIndex * 2) + 1)
+																			.attr("checked", "checked");
+				
+				var newCheckboxLabel = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabel")
+																						.text("Another App");
+
+				var seriesIndexPlusOne = (seriesIndex * 2) + 1;
+				var newCheckboxLabelVisible = $('<label>').attr("for", seriesName)
+																						.addClass("checkboxLabelVisible js-hover-series")
+																						.text("Another App")
+																						.on("mouseenter", function(){
+																							handleMouseEnterChartKeyLabel($(this));
+																						})
+																						.on("mouseleave", function(){
+																							handleMouseLeaveChartKeyLabel($(this));
+																						});
+
+				newToggleDownloads.append(newCheckbox)
+									.append(newCheckboxLabel)
+									.append(newCheckboxLabelVisible);
+
+				$('.js-combined-chart-container .js-custom-chart-key ul').append(newToggle);
+				$('.js-combined-chart-container .js-custom-chart-key ul').append(newToggleDownloads);
+			}
+
+			function removeASeriesToggle(seriesIndex) {
+
+				// remove from the twin chart legend
+				var toggleToRemove = $('.js-twin-chart-container .js-custom-chart-key input[data-series-index="' + seriesIndex + '"').parent("li");
+				toggleToRemove.remove();
+
+				// remove from the combined chart legend
+				var combinedSeriesIndex = seriesIndex * 2;
+				var toggleToRemove = $('.js-combined-chart-container .js-custom-chart-key input[data-series-index="' + combinedSeriesIndex + '"').parent("li");
+				toggleToRemove.remove();
+
+				var combinedSeriesIndexTwo = seriesIndex * 2 + 1;
+				var toggleToRemove = $('.js-combined-chart-container .js-custom-chart-key input[data-series-index="' + combinedSeriesIndexTwo + '"').parent("li");
+				toggleToRemove.remove();
+
+				// recalculate the toggle data series indexes
+				$('.js-twin-chart-container .js-custom-chart-key input').each(function(){
+					var thisSeriesIndex = $(this).attr("data-series-index");		
+					if(thisSeriesIndex > seriesIndex) {
+						$(this).attr("data-series-index", thisSeriesIndex - 1);
+					}
+				});
+
+				// recalculate the toggle data series indexes
+				$('.js-combined-chart-container .js-custom-chart-key input').each(function(){
+					var thisSeriesIndex = $(this).attr("data-series-index");	
+					if($(this).attr("data-series-index") >= seriesIndex * 3) {
+						$(this).attr("data-series-index", thisSeriesIndex - 2);
+					}
+				});
+
+				// remove from colours in use array				
+				usedSeriesColours.splice(seriesIndex, 1);
+			}
+
+			// Generate Demo Charts
+			var mockDataRevenue = [],
+					mockDataDownloads = [];
+
+			var seriesColours = ["#f5c943", "#beb9db", "#fd7f6e", "#7fb1d5", "#f2bdd8", "#c7b299", "#bd7ebf", "#8bd4c7", "#ffb55a", "#d9d9d9", "#918edf"];
+
+			var seriesFills = ["rgba(245,201,67,0)", "rgba(190,185,219,1)", "rgba(253,127,110,1)", "rgba(127,177,213,1)", "rgba(242,189,216,1)", "rgba(199,178,153,1)", "rgba(189,126,191,1)", "rgba(139,212,199,1)", "rgba(255,181,90,1)", "rgba(217,217,217,1)", "rgba(145,142,223,1)"];
+
+			var seriesAppIcons = [
+				{ 
+					icon: "images/demo-icon-clash-of-hamsters.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-clash-of-hamsters.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-angry-hamsters.jpg",
+					store: "play-store"
+				},				
+				{ 
+					icon: "images/demo-icon-crossy-hamster.jpg",
+					store: "play-store"
+				},
+				{ 
+					icon: "images/demo-icon-five-hamsters-at-freddies.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-hamster-crush.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-hamsters-vs-zombies.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-hamster-ninja.jpg",
+					store: "play-store"
+				},
+				{ 
+					icon: "images/demo-icon-8-ball-hamster.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-flappy-hamster.jpg",
+					store: "ios"
+				},
+				{ 
+					icon: "images/demo-icon-hamster-dash.jpg",
+					store: "ios"
+				}
+			];
+			
+			var usedSeriesColours = [];
+
+			setTimeout(function() {
+
+				// CREATE MOCK DATA FOR CHART
+				// chartData var comes from external js/data-vis/data-vis-release.js
+				
+					// MOCK REVENUE DATA
+				mockDataRevenue.push([]); // mock only, first item in array placeholder for totals calculated later
+				usedSeriesColours.push(seriesColours[0]);
+
+				for(var s = 0; s < 9; s++) {
+					var mockSeries = [];					
+					for(var d = 0; d < 14; d++) {						
+						if(chartData[s].data[d]) {
+							mockSeries.push(chartData[s].data[d].value);
+						} else {
+							mockSeries.push(30000);
+						}
+					}
+					mockDataRevenue.push(mockSeries);
+					usedSeriesColours.push(seriesColours[s + 1]);
+				}				
+
+				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
+				for(var d = 0; d < 14; d++) {
+					var totalOfSeriesForDataPoint = 0;
+					for(var s = 1; s < 10; s++) {
+						if(mockDataRevenue[s][d] != null) {
+							totalOfSeriesForDataPoint = totalOfSeriesForDataPoint + parseInt(mockDataRevenue[s][d]);
+						}						
+					}
+					mockSeriesTotal.push(totalOfSeriesForDataPoint);
+				}
+				mockDataRevenue[0] = mockSeriesTotal; // TOTAL IS THE FIRST LINE ON THE GRAPH
+
+					// MOCK DOWNLOADS DATA
+				mockDataDownloads.push([]);
+				for(var s = 0; s < 9; s++) {
+					var mockSeries = [];
+					for(var d = 0; d < 14; d++) {
+						if(chartData[s].data[d]) {
+							var randomRatio = Math.round(Math.random() * 2.65) + 2.55;
+							var randomisedValue = Math.round(chartData[s].data[d].value / randomRatio);
+							mockSeries.push(randomisedValue);
+						} else {
+							mockSeries.push(1);
+						}
+					}
+					mockDataDownloads.push(mockSeries);
+				}
+
+				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
+				for(var d = 0; d < 14; d++) {
+					var totalOfSeriesForDataPoint = 0;
+					for(var s = 1; s < 10; s++) {
+						if(mockDataDownloads[s][d] != null) {
+							totalOfSeriesForDataPoint = totalOfSeriesForDataPoint + parseInt(mockDataDownloads[s][d]);
+						}
+					}
+					mockSeriesTotal.push(totalOfSeriesForDataPoint);
+				}
+				mockDataDownloads[0] = mockSeriesTotal;
+
+				// var dateStampArrayForOutput = [1420070400000, 1420156800000, 1420243200000, 1420329600000, 1420416000000, 1420502400000, 1420588800000, 1420675200000, 1420761600000, 1420848000000, 1420.74400000, 1421020800000, 1421107200000, 1421193600000];
+
+				// for(var s = 1; s < mockDataRevenue.length; s++) {
+				// 	var outputTable = $("<table>");
+				// 	for(var i = 0; i < mockDataRevenue[s].length; i++) {
+				// 		console.log(i);
+				// 		var outputRow = $("<tr>");
+				// 		outputRow.append($("<td>").text(dateStampArrayForOutput[i]));
+				// 		outputRow.append($("<td>").text(mockDataRevenue[s][i]));
+				// 		outputRow.append($("<td>").text(mockDataDownloads[s][i]));
+				// 		outputTable.append(outputRow);
+				// 	}
+				// 	$('.js-data-output').append(outputTable);
+				// }
+
+				revAndDownData = new Array();
+				revAndDownData.push(mockDataRevenue);
+				revAndDownData.push(mockDataDownloads);
+
+				generateChart('chart-revenue', "revenueseries", mockDataRevenue, seriesColours, "area", false);
+				// generateChart('chart-downloads', "downloadsseries", mockDataDownloads, seriesColours, "area", false);
+				// generateChart('chart-combined', "split", revAndDownData, seriesColours, "area", true);
+				$('.chart-container').addClass('is-animated');
+				handleChartInteraction();
+
+				addAppDataToSeries();
+
+				Highcharts.Chart.prototype.setGraphCSSClasses();
+				// Highcharts.Chart.prototype.setGraphFillsTransparency();
+
+				// Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
+				// Highcharts.Chart.prototype.setGraphCSSClasses();
+    //     Highcharts.Chart.prototype.resetLineStyling();
+			}, 500);
+			
+			setTimeout(function(){
+				$('.js-alert-urgent').addClass("is-open");
+			}, 1000);
+
+			mockAppPicker();
+  	}
+
+  	function mockAppPicker() {
+			$('.js-group-trigger').on("click", function(){ // to open the country selector
+				var $this = $(this),
+						thisPositionTop = $this.offset().top,
+						thisPositionLeft = $this.offset().left,
+						thisHeight = $this.innerHeight(),
+						thisWidth = $this.innerWidth(),
+						offsetTop = 10,
+						isAlreadyOpen = $this.parent('.js-form-field--group').hasClass("is-open"),
+						groupPickerWidth = 650;
+				
+				if(!isAlreadyOpen) {
+					setTimeout(function(){ // setTimeout is to wait for all other popups to close first
+						
+						$('.js-group-selector-overlay').show();
+						$('.js-app-selector').show().css({ "top" : thisPositionTop + thisHeight + offsetTop, "left" : thisPositionLeft});
+						$this.parent(".js-form-field--group").addClass("is-open");
+						
+					}, 100);
+				} else {
+					$('.js-group-selector-overlay').hide();
+					$('.js-app-selector').hide();
+					$this.parent(".js-form-field--group").removeClass("is-open");
+				}
+			});
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>
