@@ -1,0 +1,129 @@
+.page-overlay {
+	position: fixed;
+	top: 0;
+	right: 0;	
+	bottom: 0;
+	left: 0;	
+	width: 100%;
+	min-height: 100%;
+	/* @alternate */ min-height: 100vh;
+	display: none;
+	text-align: center;
+	background: rgba(41,41,43,0.7);
+	z-index: 10000;	
+}
+.page-popup {
+	position: relative;
+	display: block;
+	@extend %vertical-centre-content;
+}
+.popup-content {
+	position: relative;
+	max-height: 100vh;	
+	width: 402px;
+	padding: 28px 30px 30px 30px;
+	overflow: auto;
+	overflow-x: hidden;
+	opacity: 0;
+	font-size: 0;
+	text-align: center;
+	border-radius: 4px;
+	background-color: #F2F2F5;
+	transform: scale(0.8);
+	.page-overlay--overflow-visible & {
+		overflow: visible;
+	}
+	&.is-showing {
+		opacity: 1;
+		transform: scale(1);
+		transition: transform 0.15s, opacity 0.15s;
+	}
+	.form-field--select__box {
+		width: 100%;
+    box-sizing: border-box;
+	}
+}
+.page-overlay--help {
+	.popup-content {
+		h2 {
+			margin-top: 0;
+		}
+	}
+}
+.popup-close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	z-index: 10;
+	font-size: 0;	
+	span{
+		&:after {
+			font-size: 1.8rem;
+			color: $light-grey-2;
+			transition: color 0.1s;	
+		}
+		&:hover {
+			&:after {
+				color: darken($light-grey-2, 7%);
+				transition: color 0.2s;
+			}				
+		}
+		&:active {
+			&:after {
+				top: 2px;
+			}
+		}
+	}
+}
+.popup-alert-message {
+	position: relative;
+	top: 25px;
+  width: calc(100% + 60px);
+  padding: 20px 38px 22px;
+  margin-left: -30px;
+  margin-bottom: -5px;
+  display: none;
+  background-color: $light-grey-1;
+  border-radius: 0 0 4px 4px;  
+  p {
+  	margin-bottom: 0;
+  	font-family: $brand-body-font;
+  	font-weight: 700;
+  	font-size: 13px;
+  	color: $reflection-white;
+  }
+}
+.show-popup-alert-message + .popup-alert-message {
+	display: block;
+}
+.popup-sections-container,
+.sign-up-steps-container {
+	position: relative;
+	width: 5000px;
+	overflow: visible;
+	text-align: left;
+	left: 0;
+	transition: left 0.3s;
+	.multi-step-section {
+		margin-right: 30px;
+		width: 342px;
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+		.filter-toggle {
+			margin-bottom: 10px;
+		}
+	}
+}
+.link-to-reflection-svg {
+	width: 183px;
+  margin-top: 1rem;
+	+ h2 {
+		margin-top: 1.5rem;
+	}
+}
+.page-overlay--whats-this {
+	.page-popup {
+		position: fixed;
+	}
+}

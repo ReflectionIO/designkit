@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<title>Reflection V2, Data Lab, Top Downloads</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" href="design-kit-v2.css" />
+	<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 <script>
@@ -40,23 +40,30 @@
 				</div>
 
 				<div class="data-lab-article-intro">
-					<h1 class="data-lab-article-intro__heading">What Are the Average Downloads or Revenue by Day of the Week</h1>
-					<p class="data-lab-article-intro__paragraph">Discover the average daily downloads or revenue distribution by week day over the course of 2016. Compare categories and countries to assess the time to plan app launches and live ops.</p>
+					<h1 class="data-lab-article-intro__heading">On What Day of the Week Can I Hit the Top 200 with the Least Downloads?</h1>
+					<p class="data-lab-article-intro__paragraph">The green dots show the average downloads required to chart on each day of the week using data from the whole of 2016. See which will be most efficient for soft launches or user acquisition campaigns.</p>
 				</div>
 				
 				<div class="filters-container overflow-visible">
+					
+					<h2 class="filter-row__heading">Average <span class="js-data-unit-value">Downloads</span> by Week Day</h2>
+
+					<div class="page-lab-weekly-averages__key">
+						<span class="page-lab-weekly-averages__key__label-main">Key:</span>
+						<span class="page-lab-weekly-averages__key__label">Least <span class="js-data-unit-value">Downloads</span></span>
+						<div class="page-lab-weekly-averages__key__diagram-container">
+							<span class="page-lab-weekly-averages__key__label">Average</span>
+							<div class="page-lab-weekly-averages__key__bar"></div>
+							<div class="page-lab-weekly-averages__key__average-marker"></div>
+						</div>
+						<span class="page-lab-weekly-averages__key__label">Most <span class="js-data-unit-value">Downloads</span></span>
+					</div>
 
 					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-chart-type">
 						<select class="js-select-box">
 							<option value="FREE" selected>Free Chart</option>
 							<option value="PAID">Paid Chart</option>
 							<option value="GROSSING">Grossing Chart</option>
-						</select>
-					</div>
-
-					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-position">
-						<select class="js-select-box">
-							<option value="200" selected>Top 200</option>
 						</select>
 					</div>
 
@@ -244,8 +251,16 @@
 																							userId = "js/data-vis/";
 																						}
 
-																						var fileNameToRequest = getFileToNameRequest();
+																						var fileNameToRequest = getFileNameToRequest();
 																						loadData(userId + fileNameToRequest);
+
+																						var selectedChartType = $('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value");
+
+																						if(selectedChartType == "GROSSING") {
+																							$('.js-data-unit-value').text("Revenue");
+																						} else {
+																							$('.js-data-unit-value').text("Downloads");
+																						}
 																						
 																					} else {
 																						$dropDownContainer.toggle();
@@ -309,9 +324,8 @@
 			return true;
 		}
 
-		function getFileToNameRequest() {
+		function getFileNameToRequest() {
 
-			var selectedPosition = $('.js-dropdown-position .js-dropdown-option.is-selected').data("value");
 			var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");				
 			var selectedCategory = $('.js-dropdown-category .js-dropdown-option.is-selected').data("value");
 			var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
@@ -319,7 +333,7 @@
 
 			console.log(selectedChartType);
 
-			return "weekly-averages/" + selectedCountry + "/daily-downloads_" + selectedCountry + "_" + selectedChartType + "_" + selectedCategory + "_" + selectedPosition + "_" + selectedDevice + "_2016.json";
+			return "weekly-averages/" + selectedCountry + "/daily-downloads_" + selectedCountry + "_" + selectedChartType + "_" + selectedCategory + "_200_" + selectedDevice + "_2016.json";
 		}
 
 		$("html").on("click", function(e){
@@ -347,11 +361,16 @@
 						var markerLeft = (data.weekdays.mean[index].value - data.weekdays.min[index].value) / (data.weekdays.max[index].value - data.weekdays.min[index].value) * 100;
 						var containerLeft = (data.weekdays.min[index].value - data.min) / minMaxDifference * 100;
 						
+						var outputPrefix = "";
+						if($('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value") == "GROSSING") {
+							outputPrefix = "£";
+						}
+																						
 						$this.find('.weekday-chart-item__bar-container').css({ "width": thisContainerWidth + "%", "left" : containerLeft + "%"});
 						$this.find('.weekday-average-marker').css("left", "calc(" + markerLeft + "% - 11px)");
-						$this.find('.weekday-chart-item__bar__min-value').text(data.weekdays.min[index].value);
-						$this.find('.weekday-chart-item__bar__max-value').text(data.weekdays.max[index].value);
-						$this.find('.weekday-chart-item__bar__mean-value').text(data.weekdays.mean[index].value);
+						$this.find('.weekday-chart-item__bar__min-value').text(outputPrefix + data.weekdays.min[index].value);
+						$this.find('.weekday-chart-item__bar__max-value').text(outputPrefix + data.weekdays.max[index].value);
+						$this.find('.weekday-chart-item__bar__mean-value').text(outputPrefix + data.weekdays.mean[index].value);
 						$this.find('.weekday-chart-item__bar__mean-value').css("left", markerLeft + "%");
 					});
 
@@ -364,7 +383,7 @@
 		  new Page();
 			
 			setTimeout(function(){
-				loadData("js/data-vis/weekly-averages/GB/daily-downloads_GB_FREE_Games_200_PHONE_2016.json");
+				loadData("js/data-vis/weekly-averages/GB/daily-downloads_GB_FREE_Overall_200_PHONE_2016.json");
 			}, 1000);
 
 		});

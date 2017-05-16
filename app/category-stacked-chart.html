@@ -24,6 +24,11 @@
     }
   });
 </script>
+<style>
+	.highcharts-legend {
+    transform: translateY(482px);
+	}
+</style>
 </head>
 <body>
 	<!--[if (lt IE 9)]>
@@ -38,7 +43,7 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-data-dashboard" style="padding-top: 0;">				
+			<div class="page-data-dashboard" style="padding-top: 0;">
 				
 				<aside class="grid-container secondary-filters-container">
 					<div class="filter-toggle toggle-container--chart-type">
@@ -76,68 +81,6 @@
 								</header>
 								<div class="chart" id="chart-revenue"></div>
 							</section>
-
-							<aside class="custom-chart-key js-custom-chart-key">
-								<div class="form-field--checkbox-list form-field--checkbox-list--medium form-field--checkbox-list--inline">
-									<ul>
-										<li class="revenue-key">
-											<input type="checkbox" name="showhiderevenue" id="showhiderevenue" class="js-toggle-series" data-chart-index="0" data-series-index="0" checked>
-											<label for="showhiderevenue" class="checkboxLabel">Total Revenue</label>
-											<label for="showhiderevenue" class="checkboxLabelVisible js-hover-series">Total Revenue</label>
-										</li>
-										<!-- <li class="downloads-key">
-											<input type="checkbox" name="showhidedownloads" id="showhidedownloads" class="js-toggle-series" data-chart-index="0" data-series-index="0" checked>
-											<label for="showhidedownloads" class="checkboxLabel">Total Downloads</label>
-											<label for="showhidedownloads" class="checkboxLabelVisible js-hover-series">Total Downloads</label>
-										</li> -->
-										<li class="series-1">
-											<input type="checkbox" name="showhideClash" id="showhideClash" class="js-toggle-series" data-chart-index="0" data-series-index="1" checked>
-											<label for="showhideClash" class="checkboxLabel">Overall</label>
-											<label for="showhideClash" class="checkboxLabelVisible js-hover-series">Overall</label>
-										</li>
-										<li class="series-2">
-											<input type="checkbox" name="showhideAngry" id="showhideAngry" class="js-toggle-series" data-chart-index="0" data-series-index="2" checked>
-											<label for="showhideAngry" class="checkboxLabel">Games</label>
-											<label for="showhideAngry" class="checkboxLabelVisible js-hover-series">Games</label>
-										</li>
-										<li class="series-3">
-											<input type="checkbox" name="showhideCrossy" id="showhideCrossy" class="js-toggle-series" data-chart-index="0" data-series-index="3" checked>
-											<label for="showhideCrossy" class="checkboxLabel">Photo &amp; Video</label>
-											<label for="showhideCrossy" class="checkboxLabelVisible js-hover-series">Photo &amp; Video</label>
-										</li>
-										<li class="series-4">
-											<input type="checkbox" name="showhideFive" id="showhideFive" class="js-toggle-series" data-chart-index="0" data-series-index="4" checked>
-											<label for="showhideFive" class="checkboxLabel">Social Networking</label>
-											<label for="showhideFive" class="checkboxLabelVisible js-hover-series">Social Networking</label>
-										</li>
-										<li class="series-5">
-											<input type="checkbox" name="showhideCrush" id="showhideCrush" class="js-toggle-series" data-chart-index="0" data-series-index="5" checked>
-											<label for="showhideCrush" class="checkboxLabel">Education</label>
-											<label for="showhideCrush" class="checkboxLabelVisible js-hover-series">Education</label>
-										</li>
-										<li class="series-6">
-											<input type="checkbox" name="showhideZombies" id="showhideZombies" class="js-toggle-series" data-chart-index="0" data-series-index="6" checked>
-											<label for="showhideZombies" class="checkboxLabel">Productivity</label>
-											<label for="showhideZombies" class="checkboxLabelVisible js-hover-series">Productivity</label>
-										</li>
-										<li class="series-7">
-											<input type="checkbox" name="showhideNinja" id="showhideNinja" class="js-toggle-series" data-chart-index="0" data-series-index="7" checked>
-											<label for="showhideNinja" class="checkboxLabel">Music</label>
-											<label for="showhideNinja" class="checkboxLabelVisible js-hover-series">Music</label>
-										</li>
-										<li class="series-8">
-											<input type="checkbox" name="showhidePool" id="showhidePool" class="js-toggle-series" data-chart-index="0" data-series-index="8" checked>
-											<label for="showhidePool" class="checkboxLabel">Books</label>
-											<label for="showhidePool" class="checkboxLabelVisible js-hover-series">Books</label>
-										</li>
-										<li class="series-9">
-											<input type="checkbox" name="showhideFlappy" id="showhideFlappy" class="js-toggle-series" data-chart-index="0" data-series-index="9" checked>
-											<label for="showhideFlappy" class="checkboxLabel">Business</label>
-											<label for="showhideFlappy" class="checkboxLabelVisible js-hover-series">Business</label>
-										</li>
-									</ul>
-								</div>
-							</aside>
 						</li>
 					</ul>
 				</div>
@@ -162,7 +105,7 @@
   <script src="js/vendor/snap.svg.js"></script> <!-- snap used for animating event flags on charts -->
   <script src="js/vendor/highcharts.5.0.9.js"></script>
   <script src="js/vendor/highslide-software/rounded-corners.js"></script>
-  <script src="js/data-vis/category-per-month.js"></script> <!-- mock data -->
+  <script src="js/data-vis/stack_data_GB_PHONE_FREE.js"></script> <!-- mock data -->
   <script>
   	// Utility function
 		Date.prototype.addHours= function(h){
@@ -172,7 +115,7 @@
 
   	function initScripts() {
   		// mock menu select
-  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-data-template.html"]');
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="category-stacked-chart.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
 
   		new Page();
@@ -607,123 +550,13 @@
 	    }(Highcharts));
 
 	    // generateChart is template only to speed up generating three charts in the template
-	    function generateChart(containerId, dataType, seriesData, seriesColour, chartType, isMerged) {
+	    function generateChart(containerId, dataType, seriesData, seriesNames, chartType, isMerged) {
 
 	    	var seriesColour,
 	    			seriesArray = [],
 	    			yAxesSettings; // Mock only
 
-	    	if(isMerged) { // Mock only
-	    		yAxesSettings = [{
-	          offset: -27,
-	          showFirstLabel: false,
-	          showLastLabel: true,
-	          gridLineWidth: 0,
-	          labels: {
-	          	align: 'left',
-	          	style: {
-	          		color: '#81879d',
-	          		fontSize: "12px"
-	          	}
-	          },
-	          title: {
-	          	text: null
-	          }            
-	        },
-	        {
-	          offset: -25,
-	          showFirstLabel: false,
-	          showLastLabel: true,
-	          gridLineWidth: 0,
-	          opposite: true,
-	          labels: {
-	          	align: 'right',
-	          	style: {
-	          		color: '#6d69c5',
-	          		fontSize: "12px"
-	          	}
-	          },
-	          title: {
-	          	text: null
-	          }            
-	        }];
-
-	        // TEMPLATE ONLY, structuring the data for the combined chart. Create the combined chart by adding a revenue series, followed by the download series, for each app
-	        for(var a = 0; a < seriesData[0].length * 2; a++) {
-	        	var isRevenue = (a % 2 == 1) ? false : true;
-	        	var thisSeriesColour, seriesColourIndex;
-	        	if(isRevenue) {
-	        		seriesColourIndex = a/2;
-	        		thisSeriesColour = seriesColour[seriesColourIndex];
-	        	} else {
-	        		if(a != 1) {
-	        			seriesColourIndex = (a-1) / 2;
-	        			thisSeriesColour = seriesColour[seriesColourIndex];
-	        		} else {
-	        			thisSeriesColour = "#918edf";
-	        		}
-	        	}
-
-	        	// TEMPLATE ONLY: for creating the series data - get the index for the mock data array
-	        	var dataIndex;
-	        	if(a != 1) { // not the downloads total line
-	        		dataIndex = (isRevenue) ? (a / 2) : (a-1) / 2;
-	        	} else {
-	        		dataIndex = 0;
-	        	}
-
-	        	var seriesName = "";
-	        	if(isRevenue) {
-	        		if(a == 0) {
-	        			seriesName = "revenueseries-total";
-	        		} else {
-	        			seriesName = "revenueseries";
-	        		}
-	        	} else {
-	        		if(a == 1) {
-	        			seriesName = "downloadsseries-total";
-	        		} else {
-	        			seriesName = "downloadsseries";
-	        		}
-	        	}
-
-	        	// TEMPLATE ONLY: Create mock series
-	        	seriesArray.push({
-		         	yAxis: (isRevenue) ? 0 : 1,
-		          name: seriesName,
-	            id : seriesName,
-		          color: thisSeriesColour,
-		          data: (isRevenue) ? seriesData[0][dataIndex] : seriesData[1][dataIndex],
-		          borderRadiusTopLeft: 3,
-        			borderRadiusTopRight: 3,
-		          pointStart: Date.UTC(2016, 0, 1),
-		          pointInterval: 24 * 3600 * 1000, // one day
-		          lineColor: thisSeriesColour,
-		          lineWidth: 3,
-		          lineWidthPlus: 0,
-		          fillOpacity: 0,
-		          fillColor: {
-	              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-	              stops: [
-	                [0, 'rgba(109,105,197,0.1)'],
-	                [1, 'rgba(27,199,159,0.1)']
-	              ]
-	            },
-	            dashStyle: (isRevenue || a == 1) ? 'line' : 'shortdash',
-		          marker: {
-		            enabled: false,
-		            states: {
-		              hover: {
-		                enabled: true,
-		                lineWidth: 0,
-		                lineWidthPlus: 0,
-		                radius: 4,
-		                radiusPlus: 0,
-		              }
-		            }
-		          }      
-		        });
-	        }
+	    	if(isMerged) {
 
 	      } else { // else single chart, so one yaxis
 	      	yAxesSettings = [{
@@ -743,27 +576,26 @@
 	          	text: null
 	          }         
 	        }];
+					
+					var hiddenSeries = ["Sports", "Food & Drink", "Book", "Finance", "Business", "News", "Lifestyle", "Medical", "Catalogs", "Reference", "Weather"];
 
 	        // TEMPLATE ONLY: Create mock series
 	        for(var a = 0; a < seriesData.length; a++) {
-
-	        	var seriesName = dataType;
-	        	if(a == 0) {
-	        		seriesName += "-total";
-        		}
+						
+						var visibility = true;
+						if(hiddenSeries.includes(seriesNames[a])) {
+							visibility = false;
+						}
 
 	        	seriesArray.push({
 		         	yAxis: 0,
-		          name: seriesName,
-		          id : seriesName,
-		          color: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
+		          name: seriesNames[a],
+		          id : seriesNames[a],
 		          data: seriesData[a],
 		          borderRadiusTopLeft: 3,
         			borderRadiusTopRight: 3,
-		          pointStart: Date.UTC(2016, 0, 1),
-		          pointInterval: 24 * 3600 * 1000, // one day
-		          lineColor: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
 		          lineWidthPlus: 0,
+		          visible: visibility,
 		          marker: {
 		            enabled: false,
 		            states: {
@@ -778,7 +610,6 @@
 		          },
 			        type: 'area',
 				    	stacking: (a == 0) ? null : 'normal',
-				    	fillColor: seriesFills[a],
 				    	lineWidth: 2
 		        });
 	        }
@@ -821,7 +652,7 @@
 	          }
 				  },
 				  legend: {
-				  	enabled: false
+				  	enabled: true
 				  },
 				  title: {
 	            text: ''
@@ -855,9 +686,9 @@
 	        },
 	        plotOptions: {
 	        	area: {
-	            trackByArea: true,
+	            trackByArea: false,
 	        		tooltip: {
-	        			followPointer: true
+	        			followPointer: false
 	        		},
 	        		states: {
 	        			hover: {
@@ -902,7 +733,7 @@
 	                var chartSeries = value.series;
 	                var imgString = "",
 	                		storeString = "",
-	                		valueString = "",
+	                		valueString = chartSeries.name.substring(0, 8) + ": ",
 	                		stackedString = "";
 
 	                if(chartSeries.name == "revenueseries") {
@@ -910,14 +741,6 @@
 	                }
 	                if(chartSeries.name == "revenueseries-total") {
 	                	valueString = "$ ";
-	                	imgString = "<img src=images/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
-	                } else if(chartSeries.name == "downloadsseries-total") {
-	                	imgString = "<img src=images/icon-chart-tt-downloads@2x.png alt='Downloads icon' class=icon-downloads />";	
-	                } else { // output app and store icon from data
-	                	var appIcon = chartSeries.appIcon;
-	                	var store = chartSeries.appStore;
-	                	imgString = "<img src=" + appIcon + " class='chart-tooltip-app-icon' />";
-	                	storeString = "<span class='ref-icon-before--" + store + "'></span>"
 	                }
 	                
 	                var seriesClassName = chartSeries.name;
@@ -928,11 +751,11 @@
 	                }
 
 	                if($('#toggle--show-stacked').is(":checked") && thisPointTotalValue != undefined) {
-	                	var percentageOfTotal = parseInt(value.y / thisPointTotalValue * 100);
+	                	var percentageOfTotal = (value.y / thisPointTotalValue * 100).toFixed(1);
 	                	stackedString = "<span class='chart-tooltip-percentage' style='background-color: " + chartSeries.color + "'>" + percentageOfTotal + "%</span>";
 	                }
 
-	                s += '<div class="custom-tooltip ' + seriesClassName + '" style="background-color: ' + chartSeries.color + '">' + imgString + storeString + '<span class="chart-tooltip-value">' + valueString + value.y + '</span>' + stackedString + '</div>';
+	                s += '<div class="custom-tooltip ' + seriesClassName + '" style="background-color: ' + chartSeries.color + '"><span class="chart-tooltip-value">' + valueString + value.y + '</span>' + stackedString + '</div>';
 	            });
 	            return s;
 	          },
@@ -951,12 +774,17 @@
 	        	},
 	        	snap: 25,
 	        	// the positioner callback could be used in future for the combined chart where it goes off the left of the graph
-	        	// positioner: function (labelWidth, labelHeight, point) {
-          //     console.log("labelWidth = " + labelWidth);
-          //     console.log("labelHeight = " + labelHeight);
-          //     console.log(point);
-          //     return { x: point.plotX, y: 0 };
-          //   },
+	        	positioner: function (labelWidth, labelHeight, point) {
+              console.log("labelWidth = " + labelWidth);
+              console.log("labelHeight = " + labelHeight);
+              console.log(point);
+              var chartWidth = $('.highcharts-container').width();
+              var xPlot = point.plotX;
+              if(point.plotX > chartWidth / 2) {
+								xPlot -= 200;
+              }
+              return { x: xPlot, y: 0 };
+            },
 	        }
 		    });
 
@@ -966,19 +794,19 @@
 				// add the app icon and store to the Highcharts series objects for the tooltip
 
 				// template only, mock data
-				for(var k = 0; k < 2; k++) {
-					$.each(Highcharts.charts[k].series, function (key, series) { // twin chart
-				    series.appIcon = seriesAppIcons[key].icon;
-				    series.appStore = seriesAppIcons[key].store;
-					});
-				}
+				// for(var k = 0; k < 2; k++) {
+				// 	$.each(Highcharts.charts[k].series, function (key, series) { // twin chart
+				//     series.appIcon = seriesAppIcons[key].icon;
+				//     series.appStore = seriesAppIcons[key].store;
+				// 	});
+				// }
 
-				$.each(Highcharts.charts[2].series, function (key, series) { // combined chart
-			    // combined chart, use the same icon for rev and downloads
-			    var combinedSeriesIndex = Math.floor(key / 2);
-			    series.appIcon = seriesAppIcons[combinedSeriesIndex].icon;
-			    series.appStore = seriesAppIcons[combinedSeriesIndex].store;
-				});
+				// $.each(Highcharts.charts[2].series, function (key, series) { // combined chart
+			 //    // combined chart, use the same icon for rev and downloads
+			 //    var combinedSeriesIndex = Math.floor(key / 2);
+			 //    series.appIcon = seriesAppIcons[combinedSeriesIndex].icon;
+			 //    series.appStore = seriesAppIcons[combinedSeriesIndex].store;
+				// });
 			}
 
 			function handleCustomLegendInteraction() {
@@ -1968,193 +1796,56 @@
 				$('.js-combined-chart-container .js-custom-chart-key ul').append(newToggleDownloads);
 			}
 
-			function removeASeriesToggle(seriesIndex) {
-
-				// remove from the twin chart legend
-				var toggleToRemove = $('.js-twin-chart-container .js-custom-chart-key input[data-series-index="' + seriesIndex + '"').parent("li");
-				toggleToRemove.remove();
-
-				// remove from the combined chart legend
-				var combinedSeriesIndex = seriesIndex * 2;
-				var toggleToRemove = $('.js-combined-chart-container .js-custom-chart-key input[data-series-index="' + combinedSeriesIndex + '"').parent("li");
-				toggleToRemove.remove();
-
-				var combinedSeriesIndexTwo = seriesIndex * 2 + 1;
-				var toggleToRemove = $('.js-combined-chart-container .js-custom-chart-key input[data-series-index="' + combinedSeriesIndexTwo + '"').parent("li");
-				toggleToRemove.remove();
-
-				// recalculate the toggle data series indexes
-				$('.js-twin-chart-container .js-custom-chart-key input').each(function(){
-					var thisSeriesIndex = $(this).attr("data-series-index");		
-					if(thisSeriesIndex > seriesIndex) {
-						$(this).attr("data-series-index", thisSeriesIndex - 1);
-					}
-				});
-
-				// recalculate the toggle data series indexes
-				$('.js-combined-chart-container .js-custom-chart-key input').each(function(){
-					var thisSeriesIndex = $(this).attr("data-series-index");	
-					if($(this).attr("data-series-index") >= seriesIndex * 3) {
-						$(this).attr("data-series-index", thisSeriesIndex - 2);
-					}
-				});
-
-				// remove from colours in use array				
-				usedSeriesColours.splice(seriesIndex, 1);
-			}
-
 			// Generate Demo Charts
-			var mockDataRevenue = [],
-					mockDataDownloads = [];
-
-			var seriesColours = ["#f5c943", "#beb9db", "#fd7f6e", "#7fb1d5", "#f2bdd8", "#c7b299", "#bd7ebf", "#8bd4c7", "#ffb55a", "#d9d9d9", "#918edf"];
-
-			var seriesFills = ["rgba(245,201,67,0)", "rgba(190,185,219,1)", "rgba(253,127,110,1)", "rgba(127,177,213,1)", "rgba(242,189,216,1)", "rgba(199,178,153,1)", "rgba(189,126,191,1)", "rgba(139,212,199,1)", "rgba(255,181,90,1)", "rgba(217,217,217,1)", "rgba(145,142,223,1)"];
-
-			var seriesAppIcons = [
-				{ 
-					icon: "images/demo-icon-clash-of-hamsters.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/demo-icon-clash-of-hamsters.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/demo-icon-angry-hamsters.jpg",
-					store: "play-store"
-				},				
-				{ 
-					icon: "images/demo-icon-crossy-hamster.jpg",
-					store: "play-store"
-				},
-				{ 
-					icon: "images/demo-icon-five-hamsters-at-freddies.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/demo-icon-hamster-crush.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/demo-icon-hamsters-vs-zombies.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/demo-icon-hamster-ninja.jpg",
-					store: "play-store"
-				},
-				{ 
-					icon: "images/demo-icon-8-ball-hamster.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/demo-icon-flappy-hamster.jpg",
-					store: "ios"
-				},
-				{ 
-					icon: "images/demo-icon-hamster-dash.jpg",
-					store: "ios"
-				}
-			];
+			var mockDataRevenue = [[]],
+					seriesNames = ["Total"];
 			
 			var usedSeriesColours = [];
 
 			setTimeout(function() {
 
-				// CREATE MOCK DATA FOR CHART
-				// chartData var comes from external js/data-vis/data-vis-release.js
-				
-					// MOCK REVENUE DATA
-				mockDataRevenue.push([]); // mock only, first item in array placeholder for totals calculated later
-				usedSeriesColours.push(seriesColours[0]);
-
-				for(var s = 0; s < 9; s++) {
-					var mockSeries = [];					
-					for(var d = 0; d < 14; d++) {						
+				for(var s = 0; s < chartData.length; s++) {
+					seriesNames.push(chartData[s].name);
+					var mockSeries = [];				
+					for(var d = 0; d < chartData[s].data.length; d++) {
 						if(chartData[s].data[d]) {
-							mockSeries.push(chartData[s].data[d].value);
-						} else {
-							mockSeries.push(30000);
+							var dataDate = new Date(chartData[s].data[d].date * 1000);
+							var dataDay = dataDate.getDate();
+							var dataMonth = dataDate.getMonth();
+							var dataYear = dataDate.getFullYear();
+							mockSeries.push([Date.UTC(dataYear, dataMonth, dataDay), chartData[s].data[d].value]);
 						}
 					}
 					mockDataRevenue.push(mockSeries);
-					usedSeriesColours.push(seriesColours[s + 1]);
 				}				
-
+				
+				// TODO AWAITING ORDERED DATA FROM NIC
 				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
+				console.log(mockDataRevenue.length);
 				for(var d = 0; d < 14; d++) {
 					var totalOfSeriesForDataPoint = 0;
-					for(var s = 1; s < 10; s++) {
-						if(mockDataRevenue[s][d] != null) {
-							totalOfSeriesForDataPoint = totalOfSeriesForDataPoint + parseInt(mockDataRevenue[s][d]);
-						}						
-					}
-					mockSeriesTotal.push(totalOfSeriesForDataPoint);
-				}
-				mockDataRevenue[0] = mockSeriesTotal; // TOTAL IS THE FIRST LINE ON THE GRAPH
-
-					// MOCK DOWNLOADS DATA
-				mockDataDownloads.push([]);
-				for(var s = 0; s < 9; s++) {
-					var mockSeries = [];
-					for(var d = 0; d < 14; d++) {
-						if(chartData[s].data[d]) {
-							var randomRatio = Math.round(Math.random() * 2.65) + 2.55;
-							var randomisedValue = Math.round(chartData[s].data[d].value / randomRatio);
-							mockSeries.push(randomisedValue);
-						} else {
-							mockSeries.push(1);
+					for(var s = 0; s < mockDataRevenue.length; s++) {
+						
+						if(mockDataRevenue[s][d] && mockDataRevenue[s][d][1]) {
+							totalOfSeriesForDataPoint = totalOfSeriesForDataPoint + parseInt(mockDataRevenue[s][d][1]);
 						}
 					}
-					mockDataDownloads.push(mockSeries);
+
+					mockSeriesTotal.push([mockDataRevenue[1][d][0], totalOfSeriesForDataPoint]);					
 				}
 
-				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
-				for(var d = 0; d < 14; d++) {
-					var totalOfSeriesForDataPoint = 0;
-					for(var s = 1; s < 10; s++) {
-						if(mockDataDownloads[s][d] != null) {
-							totalOfSeriesForDataPoint = totalOfSeriesForDataPoint + parseInt(mockDataDownloads[s][d]);
-						}
-					}
-					mockSeriesTotal.push(totalOfSeriesForDataPoint);
-				}
-				mockDataDownloads[0] = mockSeriesTotal;
+ 				mockDataRevenue[0] = mockSeriesTotal;
 
-				// var dateStampArrayForOutput = [1420070400000, 1420156800000, 1420243200000, 1420329600000, 1420416000000, 1420502400000, 1420588800000, 1420675200000, 1420761600000, 1420848000000, 1420.74400000, 1421020800000, 1421107200000, 1421193600000];
+				console.log(mockSeriesTotal);
 
-				// for(var s = 1; s < mockDataRevenue.length; s++) {
-				// 	var outputTable = $("<table>");
-				// 	for(var i = 0; i < mockDataRevenue[s].length; i++) {
-				// 		console.log(i);
-				// 		var outputRow = $("<tr>");
-				// 		outputRow.append($("<td>").text(dateStampArrayForOutput[i]));
-				// 		outputRow.append($("<td>").text(mockDataRevenue[s][i]));
-				// 		outputRow.append($("<td>").text(mockDataDownloads[s][i]));
-				// 		outputTable.append(outputRow);
-				// 	}
-				// 	$('.js-data-output').append(outputTable);
-				// }
+				generateChart('chart-revenue', "revenueseries", mockDataRevenue, seriesNames, "area", false);
 
-				revAndDownData = new Array();
-				revAndDownData.push(mockDataRevenue);
-				revAndDownData.push(mockDataDownloads);
-
-				generateChart('chart-revenue', "revenueseries", mockDataRevenue, seriesColours, "area", false);
-				// generateChart('chart-downloads', "downloadsseries", mockDataDownloads, seriesColours, "area", false);
-				// generateChart('chart-combined', "split", revAndDownData, seriesColours, "area", true);
 				$('.chart-container').addClass('is-animated');
 				handleChartInteraction();
 
 				addAppDataToSeries();
 
 				Highcharts.Chart.prototype.setGraphCSSClasses();
-				// Highcharts.Chart.prototype.setGraphFillsTransparency();
-
-				// Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
-				// Highcharts.Chart.prototype.setGraphCSSClasses();
-    //     Highcharts.Chart.prototype.resetLineStyling();
 			}, 500);
 			
 			setTimeout(function(){

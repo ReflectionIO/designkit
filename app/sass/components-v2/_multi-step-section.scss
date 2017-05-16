@@ -6,10 +6,12 @@
 	font-size: 0;
 	text-align: left;
 	transition: left 0.3s;
+	.ref-button--stacked-button + .popup-text-link {
+		margin-top: 10px;
+	}
 }
 .multi-step-section {
 	position: relative;
-	margin-right: 30px;
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
@@ -33,7 +35,7 @@
 	&.is-viewed-step .animation-hamster,
 	&.is-viewed-step .hamster-wheel {
 		position: absolute;
-		top: 40px;
+		top: 102px;
 	}
 	.heading-style--heading-five {
 		margin-bottom: 1.7rem;
@@ -52,8 +54,17 @@
 		margin-bottom: 2.4rem;
 	}
 	p {
-		margin-bottom: 2.9rem;
-		font-size: 1.4rem;    
+		margin-bottom: 2.3rem;
+		font-size: 1.6rem;
+		&.multi-step-small-text {
+			margin-top: 15px;
+	    margin-bottom: 0;
+    	padding: 0 10px;
+    	font-size: 13px;
+		}
+	}
+	p + .button-full-width {
+		margin-top: 1.8rem;
 	}
 	.secondary-filter {
 		width: 100%;
@@ -109,6 +120,9 @@
 			margin-top: 0;
 		}
 	}
+	.heading-style--heading-four + .success-tick {
+		margin-top: 3px;
+	}
 	&.is-viewed-step {
 		.success-tick {
 			@include opacity(1);
@@ -117,8 +131,13 @@
 		}
 	}
 }
+.multi-step-section--min-height {
+	min-height: 458px;
+}
 .multi-step-breadcrumb {
-	margin-bottom: 2rem;
+	max-width: 450px;
+  margin: 0 auto 3rem;
+  overflow: visible;
 	.page-overlay--pro & {
 		margin-bottom: 1.4rem;
 	}
@@ -212,7 +231,7 @@
 		a {
 			color: #bbbfc8;
 			cursor: default;
-		}		
+		}
 	}
 }
 .multi-step-breadcrumb__one-half {
@@ -220,4 +239,12 @@
 }
 .multi-step-breadcrumb__one-third {
 	width: 33.3%;
+}
+.multi-step-section__loading {
+	padding: 132px 0 89px;
+	h2 {
+		margin-top: 13.5rem;
+		margin-bottom: 0;
+		color: $mid-grey-2;
+	}
 }
