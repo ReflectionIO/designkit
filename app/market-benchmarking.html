@@ -23,9 +23,31 @@
 		/* Controllers */
 
 		var reflectionApp = angular.module('reflectionApp', [])
-			.controller('DataController', function() {
+			.controller('DataController', function($scope, $http) {
 				var dataList = this;
 				dataList.data = chartData;
+
+				$('.js-select-box').on("change", function(){
+					
+					var thisSelect = this;
+
+					setTimeout(function(){
+						var filters = getFilterValues();						
+						var fileName = "js/data-vis/market-benchmarking/dataset_" + filters.device + "_" + filters.list + ".json";
+
+						console.log(fileName);
+
+						$.getJSON(fileName, function( data ) {
+
+							console.log(data);
+							$scope.$apply(function () {
+								dataList.data = data;
+							});
+
+						});
+
+					}, 10);
+				});
 
 				dataList.getClass = function(listIndex, columnName, columnIndex) {
 					var data = this.data.marketData;
@@ -94,13 +116,6 @@
 							<option value="FREE" selected>Free Apps</option>
 							<option value="PAID">Paid Apps</option>
 							<option value="GROSSING">Revenue</option>
-						</select>
-					</div>
-
-					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-category">
-						<select class="js-select-box">
-							<option value="Overall" selected>Overall</option>
-							<option value="Games">Games</option>
 						</select>
 					</div>
 
@@ -175,10 +190,10 @@
 								ng-mouseover="dataList.onListItemHover($event)">
 								<div ng-class="dataList.getClass($index, 'appColumn', 1)"></div>
 								<div class="market-benchmarking-chart__data-bar-container">
-									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value}}%">
+									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value.toFixed(1)}}%">
 									</div>
 								</div>
-								<span class="market-benchmarking-chart__value">{{dataItem.value}}%</span>
+								<span class="market-benchmarking-chart__value">{{dataItem.value.toFixed(1)}}%</span>
 							</li>
 						</ul>
 					</div>
@@ -198,10 +213,10 @@
 								ng-mouseover="dataList.onListItemHover($event)">
 								<div ng-class="dataList.getClass($index, 'appColumn', 2)"></div>
 								<div class="market-benchmarking-chart__data-bar-container">
-									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value}}%">
+									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value.toFixed(1)}}%">
 									</div>
 								</div>
-								<span class="market-benchmarking-chart__value">{{dataItem.value}}%</span>
+								<span class="market-benchmarking-chart__value">{{dataItem.value.toFixed(1)}}%</span>
 							</li>
 						</ul>
 					</div>
@@ -225,11 +240,34 @@
 
 	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
-	
-	<script src="js/mock-data/mock-data-market-benchmarking.js"></script>
+
+  <script src="js/data-vis/market-benchmarking/default_dataset_PHONE_FREE.json"></script>
 
 	<script>
 		
+		var qs = (function(a) {
+		    if (a == "") return {};
+		    var b = {};
+		    for (var i = 0; i < a.length; ++i)
+		    {
+		        var p=a[i].split('=', 2);
+		        if (p.length == 1)
+		            b[p[0]] = "";
+		        else
+		            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+		    }
+		    return b;
+			})(window.location.search.substr(1).split('&'));
+
+			if(!qs.device) {
+				qs.device = "PHONE";
+			}
+			if(!qs['list']) {
+				qs.list = "FREE";
+			}
+
+		// $('body').append($('<script>').attr("src", "js/data-vis/market-benchmarking/dataset_" + qs['device'] + "_" + qs['list'] + ".json"));
+
 		var FilterDropDown = function($domElement) {
 
 			var $thisSelectBox = $domElement,
@@ -261,42 +299,17 @@
 																				.addClass(selectedClass)
 																				.addClass(accessClass)
 																				.attr('data-value', $thisOption.attr('value'))
-																				.on("click", function() {																						
-																					
-																					// var thisValue = $(this).attr("data-value");
-																					// var userId = getUserRole();
-																					// var permissionsValid = hasPermissions(thisValue);
-																					// if(userId != null || (userId == null && permissionsValid)) {
+																				.on("click", function() {
 
-																					// 	$thisSelectBox.find("option").removeAttr("selected");
-																					// 	$thisOption.attr("selected", "selected");
-																					// 	$thisSelectBox.trigger("change");
-																					// 	$currentValue.text($thisOption.text());
-																					// 	$dropDownContainer.toggle();
-																					// 	$thisSelectBox.parent("div").toggleClass("is-open");
-																					// 	$thisSelectBox.parent("div").removeClass("nothing-selected");
-																					// 	$dropDownContainer.find(".is-selected").removeClass("is-selected");
-																					// 	$(this).addClass("is-selected");
-
-																					// 	if(userId == null) {
-																					// 		userId = "js/data-vis/";
-																					// 	}
-
-																					// 	var fileNameToRequest = getFileNameToRequest();
-																					// 	loadData(userId + fileNameToRequest);
-
-																					// 	var selectedChartType = $('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value");
-
-																					// 	if(selectedChartType == "GROSSING") {
-																					// 		$('.js-data-unit-value').text("Revenue");
-																					// 	} else {
-																					// 		$('.js-data-unit-value').text("Downloads");
-																					// 	}
-																						
-																					// } else {
-																					// 	$dropDownContainer.toggle();
-																					// 	openSignUpPopup();																							
-																					// }
+																						$thisSelectBox.find("option").removeAttr("selected");
+																						$thisOption.attr("selected", "selected");
+																						$thisSelectBox.trigger("change");
+																						$currentValue.text($thisOption.text());
+																						$dropDownContainer.toggle();
+																						$thisSelectBox.parent("div").toggleClass("is-open");
+																						$thisSelectBox.parent("div").removeClass("nothing-selected");
+																						$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																						$(this).addClass("is-selected");
 
 																				})
 																				.append($("<span>").text($thisOption.text()))
@@ -341,16 +354,17 @@
 			$('.js-secondary-filter.is-open').removeClass("is-open");
 		}
 
-		function getFileNameToRequest() {
+		function getFilterValues() {
 
-			// var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");				
-			// var selectedCategory = $('.js-dropdown-category .js-dropdown-option.is-selected').data("value");
-			// var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
-			// var selectedChartType = $('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value");
+			var selectedList = $('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value");				
+			var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
 
-			// console.log(selectedChartType);
+			filters = {
+				list: selectedList,
+				device: selectedDevice
+			}
 
-			// return "weekly-averages/" + selectedCountry + "/daily-downloads_" + selectedCountry + "_" + selectedChartType + "_" + selectedCategory + "_200_" + selectedDevice + "_2016.json";
+			return filters;
 		}
 
 		$("html").on("click", function(e){
@@ -362,46 +376,10 @@
 	  $('.js-select-box').each(function() {
 			new FilterDropDown($(this));
 		});
-
-		function loadData(dataUrl) {
-
-			// $.getJSON( dataUrl, function( data ) {
-					
-			// 		console.log(data);
-					
-			// 		var minMaxDifference = data.max - data.min;
-
-			// 		$('.weekday-chart-item').each(function(index) {
-			// 			var $this = $(this);
-			// 			var thisMinMaxDifference = data.weekdays.max[index].value - data.weekdays.min[index].value;
-			// 			var thisContainerWidth = thisMinMaxDifference / minMaxDifference * 100;
-			// 			var markerLeft = (data.weekdays.mean[index].value - data.weekdays.min[index].value) / (data.weekdays.max[index].value - data.weekdays.min[index].value) * 100;
-			// 			var containerLeft = (data.weekdays.min[index].value - data.min) / minMaxDifference * 100;
-						
-			// 			var outputPrefix = "";
-			// 			if($('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value") == "GROSSING") {
-			// 				outputPrefix = "£";
-			// 			}
-																						
-			// 			$this.find('.weekday-chart-item__bar-container').css({ "width": thisContainerWidth + "%", "left" : containerLeft + "%"});
-			// 			$this.find('.weekday-average-marker').css("left", "calc(" + markerLeft + "% - 11px)");
-			// 			$this.find('.weekday-chart-item__bar__min-value').text(outputPrefix + data.weekdays.min[index].value);
-			// 			$this.find('.weekday-chart-item__bar__max-value').text(outputPrefix + data.weekdays.max[index].value);
-			// 			$this.find('.weekday-chart-item__bar__mean-value').text(outputPrefix + data.weekdays.mean[index].value);
-			// 			$this.find('.weekday-chart-item__bar__mean-value').css("left", markerLeft + "%");
-			// 		});
-
-			// });
-
-		}
 		
 		$(window).on("load", function(){
 		  
 		  new Page();
-			
-			setTimeout(function(){
-				// loadData("js/data-vis/weekly-averages/GB/daily-downloads_GB_FREE_Overall_200_PHONE_2016.json");
-			}, 1000);
 
 			$('.js-market-benchmarking-chart').on('mouseleave', function(){
 				$('.js-market-benchmarking-chart').removeClass('is-hovered');
