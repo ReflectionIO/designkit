@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, Data Lab, Top Downloads</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="design-kit-v2.css" />
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script src="js/vendor/angular.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+
+<script>
+	// populate the data table
+		'use strict';
+
+		/* Controllers */
+
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function($scope, $http) {
+				var dataList = this;
+				dataList.data = chartData;
+
+				$('.js-select-box').on("change", function(){
+					
+					var thisSelect = this;
+
+					setTimeout(function(){
+						var filters = getFilterValues();						
+						var fileName = "js/data-vis/market-benchmarking/dataset_" + filters.device + "_" + filters.list + ".json";
+
+						console.log(fileName);
+
+						$.getJSON(fileName, function( data ) {
+
+							console.log(data);
+							$scope.$apply(function () {
+								dataList.data = data;
+							});
+
+						});
+
+					}, 10);
+				});
+
+				dataList.getClass = function(listIndex, columnName, columnIndex) {
+					var data = this.data.marketData;
+					if(columnName == "appColumn") {
+						data = this.data.appData[columnIndex].data;
+					}
+		    	
+		    	return "icon-flag-sm icon-flag--" + data[listIndex].countryCode;
+		    }
+
+		    dataList.getVisibilityClass = function(listIndex, columnName, columnIndex) {
+					var data = this.data.marketData;
+					if(columnName == "appColumn") {
+						data = this.data.appData[columnIndex].data;
+					}
+		    	
+		    	return "list-item-country--" + data[listIndex].countryCode;
+		    }
+
+		    dataList.onListItemHover = function(event) {
+
+		    	if(event.target.className.indexOf("list-item-country") > 0) {
+		    		$('.is-on').removeClass('is-on');
+		    		$('.' + event.target.className.substring(event.target.className.indexOf("list-item-country"), event.target.className.length)).addClass('is-on');
+		    		$('.js-market-benchmarking-chart').addClass('is-hovered');
+		    	}
+		    }
+
+			});
+</script>
+
+</head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			<div class="page-lab-base page-lab-weekly-averages theme-dark" ng-controller="DataController as dataList">
+				<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
+
+				<div class="grid__row">
+					<div class="grid__row--heading-row__right">
+	 					<div class="sharing-container">
+	 						<div class="addthis_sharing_toolbox"></div>
+	 					</div>
+					</div>
+				</div>
+
+				<div class="data-lab-article-intro">
+					<h1 class="data-lab-article-intro__heading">In Which Markets Are Apps over or Underperforming In?</h1>
+					<p class="data-lab-article-intro__paragraph">See the markets an app's revenue and downloads are coming from and compare how well (or badly) they are doing compared to the average for their category. Analyse what apps are doing to achieve success in a given country and whether it can be emulated.</p>
+				</div>
+				
+				<div class="filters-container overflow-visible">
+
+					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-chart-type">
+						<select class="js-select-box">
+							<option value="FREE" selected>Free Apps</option>
+							<option value="PAID">Paid Apps</option>
+							<option value="GROSSING">Revenue</option>
+						</select>
+					</div>
+
+					<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
+						<select class="js-select-box">
+							<option value="PHONE" selected>iPhone</option>
+							<option value="TABLET">iPad</option>
+						</select>
+					</div>
+				
+				</div>
+
+				<div class="market-benchmarking-chart js-market-benchmarking-chart">
+					<div class="market-benchmarking-chart__rank-column">
+						<ul>
+							<li ng-repeat="dataItem in dataList.data.marketData">{{$index + 1}}</li>
+						</ul>
+					</div>				
+					<div class="market-benchmarking-chart__data-column">
+						<header class="market-benchmarking-chart__column__header">
+							<h2>Category Share</h2>
+						</header>
+						<ul>
+							<li
+								ng-repeat="dataItem in dataList.data.marketData" ng-class="dataList.getVisibilityClass($index)"
+								ng-mouseover="dataList.onListItemHover($event)">
+								<div ng-class="dataList.getClass($index)"></div>
+								<div class="market-benchmarking-chart__data-bar-container">
+									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value}}%">
+									</div>
+								</div>
+								<span class="market-benchmarking-chart__value">{{(dataItem.value).toFixed(1)}}%</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="market-benchmarking-chart__data-column">
+						<header class="market-benchmarking-chart__column__header">
+							<div class="market-benchmarking-chart__column__header__app-details">
+								<img src={{dataList.data.appData[0].appIcon}} alt="App Icon" />
+								<h2>{{dataList.data.appData[0].appName}}</h2>
+								<h3>{{dataList.data.appData[0].developerName}}</h3>
+							</div>
+						</header>
+						<ul>
+							<li 
+								ng-repeat="dataItem in dataList.data.appData[0].data"
+								ng-class="dataList.getVisibilityClass($index, 'appColumn', 0)"
+								ng-mouseover="dataList.onListItemHover($event)">
+								<div ng-class="dataList.getClass($index, 'appColumn', 0)"></div>
+								<div class="market-benchmarking-chart__data-bar-container">
+									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value}}%">
+									</div>
+								</div>
+								<span class="market-benchmarking-chart__value">{{dataItem.value.toFixed(1)}}%</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="market-benchmarking-chart__data-column">
+						<header class="market-benchmarking-chart__column__header">
+							<div class="market-benchmarking-chart__column__header__app-details">
+								<img src={{dataList.data.appData[1].appIcon}} alt="App Icon" />
+								<h2>{{dataList.data.appData[1].appName}}</h2>
+								<h3>{{dataList.data.appData[1].developerName}}</h3>
+							</div>
+						</header>
+						<ul>
+							<li
+								ng-repeat="dataItem in dataList.data.appData[1].data"
+								ng-class="dataList.getVisibilityClass($index, 'appColumn', 1)"
+								ng-mouseover="dataList.onListItemHover($event)">
+								<div ng-class="dataList.getClass($index, 'appColumn', 1)"></div>
+								<div class="market-benchmarking-chart__data-bar-container">
+									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value.toFixed(1)}}%">
+									</div>
+								</div>
+								<span class="market-benchmarking-chart__value">{{dataItem.value.toFixed(1)}}%</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="market-benchmarking-chart__data-column">
+						<header class="market-benchmarking-chart__column__header">
+							<div class="market-benchmarking-chart__column__header__app-details">
+								<img src={{dataList.data.appData[2].appIcon}} alt="App Icon" />
+								<h2>{{dataList.data.appData[2].appName}}</h2>
+								<h3>{{dataList.data.appData[2].developerName}}</h3>
+							</div>
+						</header>
+						<ul>
+							<li
+								ng-repeat="dataItem in dataList.data.appData[2].data"
+								ng-class="dataList.getVisibilityClass($index, 'appColumn', 2)"
+								ng-mouseover="dataList.onListItemHover($event)">
+								<div ng-class="dataList.getClass($index, 'appColumn', 2)"></div>
+								<div class="market-benchmarking-chart__data-bar-container">
+									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value.toFixed(1)}}%">
+									</div>
+								</div>
+								<span class="market-benchmarking-chart__value">{{dataItem.value.toFixed(1)}}%</span>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script src="js/data-vis/market-benchmarking/default_dataset_PHONE_FREE.json"></script>
+
+	<script>
+		
+		var qs = (function(a) {
+		    if (a == "") return {};
+		    var b = {};
+		    for (var i = 0; i < a.length; ++i)
+		    {
+		        var p=a[i].split('=', 2);
+		        if (p.length == 1)
+		            b[p[0]] = "";
+		        else
+		            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+		    }
+		    return b;
+			})(window.location.search.substr(1).split('&'));
+
+			if(!qs.device) {
+				qs.device = "PHONE";
+			}
+			if(!qs['list']) {
+				qs.list = "FREE";
+			}
+
+		// $('body').append($('<script>').attr("src", "js/data-vis/market-benchmarking/dataset_" + qs['device'] + "_" + qs['list'] + ".json"));
+
+		var FilterDropDown = function($domElement) {
+
+			var $thisSelectBox = $domElement,
+					$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
+					$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+
+			$thisSelectBox.find('option').each(function(){
+				
+				var $thisOption = $(this),
+						selectedClass = "";
+
+				if($thisOption.val() != "") {
+
+					if($thisOption.is(":selected")) {
+						if($thisOption.val() != "") {
+							selectedClass = "is-selected";
+							$currentValue.text($thisOption.text());
+						}
+					}
+
+					var accessClass = "";
+					if($thisOption.data("access")) {
+						accessClass = "ref-after-pro";
+					}
+
+					var $newListItem = $("<li>");
+					$dropDownContainer.append($newListItem
+																				.addClass("js-dropdown-option")
+																				.addClass(selectedClass)
+																				.addClass(accessClass)
+																				.attr('data-value', $thisOption.attr('value'))
+																				.on("click", function() {
+
+																						$thisSelectBox.find("option").removeAttr("selected");
+																						$thisOption.attr("selected", "selected");
+																						$thisSelectBox.trigger("change");
+																						$currentValue.text($thisOption.text());
+																						$dropDownContainer.toggle();
+																						$thisSelectBox.parent("div").toggleClass("is-open");
+																						$thisSelectBox.parent("div").removeClass("nothing-selected");
+																						$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																						$(this).addClass("is-selected");
+
+																				})
+																				.append($("<span>").text($thisOption.text()))
+																	);
+				} else {
+					// no option value means placeholder text before option is selected
+					$currentValue.text($thisOption.text());
+				}
+			});
+
+			$currentValue.on("click", function(){
+				if(!$thisSelectBox.attr("disabled")) {
+					var $parentDiv = $thisSelectBox.parent("div");
+					if($parentDiv.hasClass("is-open")) {
+						$dropDownContainer.toggle();	
+						$parentDiv.toggleClass("is-open");
+					} else {
+						setTimeout(function(){
+							if(!$parentDiv.hasClass("is-open")) {
+								closeAllFilters();
+							}
+							var parentWidth = $parentDiv.width();
+							var parentHeight = $parentDiv.height();
+							$dropDownContainer.css({"min-width": parentWidth + "px"});
+							$dropDownContainer.toggle();	
+							$parentDiv.toggleClass("is-open");
+						}, 50); // allow time for instance.closeAllFilters() to close other filters first
+					}
+				}
+			});
+
+			if($currentValue.text() == "") {
+				$thisSelectBox.parent("div").addClass("nothing-selected");
+			}
+
+			$thisSelectBox.parent("div").append($currentValue)
+																	.append($dropDownContainer);
+		};
+
+		function closeAllFilters() {
+			$('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
+			$('.js-secondary-filter.is-open').removeClass("is-open");
+		}
+
+		function getFilterValues() {
+
+			var selectedList = $('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value");				
+			var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
+
+			filters = {
+				list: selectedList,
+				device: selectedDevice
+			}
+
+			return filters;
+		}
+
+		$("html").on("click", function(e){
+			if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
+				closeAllFilters();
+			}
+		});
+
+	  $('.js-select-box').each(function() {
+			new FilterDropDown($(this));
+		});
+		
+		$(window).on("load", function(){
+		  
+		  new Page();
+
+			$('.js-market-benchmarking-chart').on('mouseleave', function(){
+				$('.js-market-benchmarking-chart').removeClass('is-hovered');
+			});
+
+		});
+
+	</script>
+</body>
+</html>

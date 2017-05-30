@@ -1,5 +1,4 @@
 $table-gold: #ee9063;
-
 .ref-table {
 	position: relative;
 	width: 100%;
@@ -36,11 +35,51 @@ $table-gold: #ee9063;
 				padding-left: 1.5rem;
 			}
 		}
+		&.ref-table__body--loading {
+			table {
+				width: 100%;
+			}
+			tbody {
+				tr:nth-child(odd) {
+					background-color: $panel-grey;
+				}
+			}
+			.app-data-cell-number-of-apps span {
+				width: 30px;
+		    height: 10px;
+		    margin-right: 10px;
+        display: inline-block;
+		    vertical-align: middle;
+		    background: #e9e9ed;
+			}
+		}
 	}
 	&.ref-table--is-no-data {
-		margin-bottom: 15rem;
 		tbody {
 			display: none;
+		}
+	}
+	.sign-up-link {
+		color: $reflection-purple;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+	}
+}
+.ref-table__row-with-error {
+	border: 1px solid $reflection-red !important;
+	color: $reflection-red;
+	td {
+		font-weight: bold;
+	}
+	:after,
+	:before {
+		color: $reflection-red !important;
+	}
+	.ref-button--primary--small {
+		color: $reflection-white;
+		&:hover {
+			color: $reflection-white;
 		}
 	}
 }
@@ -58,21 +97,36 @@ $table-gold: #ee9063;
 	}
 	.column-store-icon {
 		width: 4%;
+		.page-app.page-data-dashboard & { // app rev & down
+			width: 6%;
+		}
 	}
 	.column-app-name {
 		width: 25.2%;
+		.page-app.page-data-dashboard & { // app rev & down
+			width: 28%;
+		}
 	}
 	.column-released {
 		width: 8%;
 	}	
 	.column-revenue {
 		width: 12%;
+		.page-app.page-data-dashboard & { // app rev & down
+			width: 14%;
+		}
 	}
 	.column-downloads {
 		width: 14%;
+		.page-app.page-data-dashboard & { // app rev & down
+			width: 17%;
+		}
 	}
 	.column-more {
 		width: 4%;
+		.page-app.page-data-dashboard & { // app rev & down
+			width: 6%;
+		}
 	}
 	.column-percentage-of-total {
 		width: 23.3%;
@@ -169,10 +223,22 @@ $table-gold: #ee9063;
 				width: 80%;
 	    	height: 10px;
 	    	display: inline-block;
-				background-color: $loading-colour;
+	    	background-color: $loading-colour;
+	    	&:first-child {
+	    		@extend .is-loading-background;
+	    	}
 				&.data-table__growth {
 					width: 25%;
 				}
+			}
+		}
+		a {
+			font-family: $brand-heading-font;
+			font-size: 1.4rem;
+			font-weight: 600;
+			color: $reflection-purple;
+			&:hover {
+				color: $reflection-purple--hover;
 			}
 		}
 	}
@@ -185,9 +251,16 @@ $table-gold: #ee9063;
 		display: block;
 		font-weight: 700;
 		font-size: 1.2rem;
+		color: $light-grey-2;
 		@include breakpoint($desktop-wide) {
 			padding-left: 5px;
 			display: inline;
+		}
+		&.positive-colour {
+			color: $reflection-green;
+		}
+		&.negative-colour {
+			color: $reflection-red;
 		}
 	}
 	.more-app-data {
@@ -224,7 +297,6 @@ $table-gold: #ee9063;
 			display: none;
 		}
 		&.is-loading {
-
 			span {
 				position: relative;
 	    	top: 2px;
@@ -270,6 +342,9 @@ $table-gold: #ee9063;
 			}
 		}
 		&.is-loading {
+			div {
+				@extend .is-loading-background;
+			}			
 			span {
 				width: 22px;
 		    height: 10px;
@@ -277,10 +352,22 @@ $table-gold: #ee9063;
 				background-color: $loading-colour;
 			}
 		}
+		a {
+			margin-left: 10px;
+			font-family: $brand-heading-font;
+			font-size: 1.4rem;
+			font-weight: 600;
+			color: $reflection-purple;
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+		}
+		.data-table__value-bar__upgrade {
+			margin-left: 26px;
+			color: $light-grey-2;
+			text-align: right;
+		}
 	}
-}
-tr:nth-child(odd) .app-data-cell-more.is-loading { // fixes strange background colour white bug
-	background-color: $panel-grey;
 }
 .ref-table--apps,
 .ref-table--publishers,
@@ -379,7 +466,16 @@ tr:nth-child(odd) .app-data-cell-more.is-loading { // fixes strange background c
     height: 10px;
     margin-top: 7px;
     margin-bottom: 9px;
-    background-color: $loading-colour;    
+    background-color: $loading-colour;
+    .ref-table--publishers & {
+    	margin-top: 5px;
+    	margin-bottom: 6px;
+    }
+	}
+}
+.data-table__app-summary__app-name {
+	&.is-loading {
+		@extend .is-loading-background;
 	}
 }
 .cellTableSortableHeader {
@@ -448,4 +544,18 @@ tr:nth-child(odd) .app-data-cell-more.is-loading { // fixes strange background c
 			}
 		}
 	}
+}
+.ref-table:not(.ref-table--home-chart) {
+	.ref-icon-after--equals {
+		&:after {
+			top: 0px;
+	    left: 2px;
+	    font-size: 12px;
+	    color: #c4c7d0;
+		}
+	}
+}
+.data-coming-soon {
+	color: $light-grey-1;
+	cursor: pointer;
 }

@@ -54,7 +54,13 @@ $reflection-icons-name: "reflection-icons-1";
 .ref-icon-before--warning,
 .ref-icon-before--warning-filled,
 .ref-icon-before--ios,
-.ref-icon-before--equals {
+.ref-icon-before--equals,
+.ref-icon-before--info-no-fill,
+.ref-icon-before--key,
+.ref-icon-before--star,
+.ref-icon-before--hourglass,
+.ref-icon-before--ref-tick,
+.ref-icon-before--profile {
 	@extend .ref-icon-before;
 }
 .ref-icon-after--search,
@@ -75,7 +81,14 @@ $reflection-icons-name: "reflection-icons-1";
 .ref-icon-after--calendar,
 .ref-icon-after--dollar,
 .ref-icon-after--angle-right,
-.ref-icon-after--equals {
+.ref-icon-after--equals,
+.ref-icon-after--ios,
+.ref-icon-after--unavailable,
+.ref-icon-after--info-no-fill,
+.ref-icon-after--key,
+.ref-icon-after--warning-filled,
+.ref-icon-after--star,
+.ref-icon-after--hourglass {
 	@extend .ref-icon-after;
 }
 .ref-icon-before--search:before,
@@ -132,7 +145,8 @@ $reflection-icons-name: "reflection-icons-1";
 .ref-icon-after--notification:after {
 	content: "Y";
 }
-.ref-icon-after--profile:after {
+.ref-icon-after--profile:after,
+.ref-icon-before--profile:before {
 	content: "X";
 }
 .ref-icon-after--close:after {
@@ -166,10 +180,12 @@ $reflection-icons-name: "reflection-icons-1";
 .ref-icon-before--warning:before {
 	content: "0";
 }
-.ref-icon-before--warning-filled:before {
+.ref-icon-before--warning-filled:before,
+.ref-icon-after--warning-filled:after {
 	content: "3";
 }
-.ref-icon-before--ios:before {
+.ref-icon-before--ios:before,
+.ref-icon-after--ios:after {
 	content: "1";
 }
 .ref-icon-after--calendar:after {
@@ -184,6 +200,37 @@ $reflection-icons-name: "reflection-icons-1";
 .ref-icon-before--equals:before,
 .ref-icon-after--equals:after {
 	content: "4";
+}
+.ref-icon-after--unavailable:after {
+	content: "5";	
+}
+.ref-icon-before--info-no-fill:before,
+.ref-icon-after--info-no-fill:after {
+	content: "6";	
+}
+.ref-icon-before--key:before,
+.ref-icon-after--key:after {
+	content: "7";	
+}
+.ref-icon-before--hourglass:before,
+.ref-icon-after--hourglass:after {
+	content: "8";
+}
+.ref-icon-before--star:before,
+.ref-icon-after--star:after {
+	content: "9";
+}
+.ref-icon-before--ref-tick:before {
+	content: "!";
+}
+.ref-after-pro:after {
+	position: relative;
+  top: 0;
+  left: 8px;
+  font-size: 11px;
+  color: #1bc69f;
+  content: "PRO";
+  font-weight: 700;
 }
 
 
@@ -204,6 +251,7 @@ $reflection-icons-name: "reflection-icons-1";
 	}
 	.theme-dark & {
 		color: $reflection-white;
+		font-weight: 400;
 	}
 }
 h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
@@ -329,7 +377,7 @@ p {
 	a {
 		text-decoration: none;
 		color: $reflection-purple;
-		.no-touch & {
+		.no-touchevents & {
 			&:hover {
 				color: $reflection-purple--hover;
 			}
@@ -500,7 +548,7 @@ figcaption {
 		a {
 			text-decoration: none;
 			color: $reflection-purple;
-			.no-touch & {
+			.no-touchevents & {
 				&:hover {
 					color: $reflection-purple--hover;
 				}
@@ -509,6 +557,13 @@ figcaption {
 					top: 2px;
 				}
 			}			
+		}
+		strong {
+			color: $dark-grey-1;
+			font-weight: 700;
+		}
+		em {
+			font-style: italic;
 		}
 	}
 	&.content-list--no-bullets {

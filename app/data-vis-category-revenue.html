@@ -18,7 +18,7 @@
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript" src="js/vendor/jquery.tipsy.js"></script>
 <link rel="stylesheet" href="css/tipsy.css" />
-<link rel="stylesheet" href="data-vis-categories.css" />
+<link rel="stylesheet" href="reflection-main-v2.css" />
 </head>
 
 <body>
@@ -369,9 +369,10 @@
 	}
 
 	function aggregateAllValues(dataSource) {
-		var data = dataSource;
+		var data = dataSource;		
 		var aggregate = 0;
 		$.getJSON(dataSource, function( data ) {
+			console.log(data);
 		  for(var i = 0; i < data.children.length; i++) {
 		  	//console.log(data.children[i].children);
 		  	for(var j = 0; j < data.children[i].children.length; j++) {

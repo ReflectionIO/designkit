@@ -1,5 +1,6 @@
 .chart__no-data,
-.chart__loading {
+.chart__loading,
+.no-data-small {
 	position: relative;
   min-height: 200px;
 	width: 100%;
@@ -61,7 +62,8 @@
 		}
 	}
 }
-.chart__no-data {
+.chart__no-data,
+.no-data-small {
 	.animation-hamster-no-data {
 		margin-right: 20px;
 	}
@@ -134,6 +136,9 @@
 			font-size: 1.8rem;
 		}
 	}
+	.ref-button--primary--large {
+		margin-bottom: 1rem;
+	}
 }
 .upgrade-content {
 	width: 320px;	
@@ -169,15 +174,15 @@
     right: 4%;
 	}
 }
-.chart__no-data.no-data-page-message {
-	margin-top: 10rem;
-	margin-bottom: 10rem;
+.no-data-page-message {
+	overflow: visible;
 	h2 {
 		margin-bottom: 2rem;
 	}
 	div {
 		max-width: 380px;
 		text-align: left;
+		overflow: visible;
 	}
 	.animation-hamster-no-data {
     margin-top: 17px;
@@ -187,6 +192,20 @@
 	button {
 		margin-top: 1rem;
 	}
+	.secondary-filter .form-field--select__box {
+		width: 225px;
+	}
+}
+.no-data-page-message {
+	padding-top: 16rem;
+  padding-bottom: 28rem;
+  margin: 0;
+  background-color: $panel-grey;
+}
+.chart__no-data.no-data-page-message {
+	margin-top: 10rem;
+	margin-bottom: 10rem;
+	padding: 0;
 }
 .coming-soon-img {
 	width: 116px;
@@ -194,4 +213,64 @@
 	+ h2 {
 		margin-top: 1.5rem;
 	}
+}
+.upgrade-content-container--v2 {
+  max-width: 650px;
+  margin: 60px auto 80px;
+  overflow: visible;
+  text-align: center;
+  > h2 {
+    margin-bottom: 4rem;
+  }
+	.video-open-link-container {
+		width: 342px;
+		height: 192px;
+		display: inline-block;
+		box-sizing: border-box;
+		text-align: center;
+		border-radius: 3px 3px 0 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #c0c2c6;
+    cursor: pointer;
+    img {
+    	width: 60px;
+    	height: 60px;
+    	display: inline-block;
+    	margin-top: 66px;
+    	transition: transform 0.2s;
+    }
+    &:hover {
+    	img {
+    		transform: scale(1.2);
+    	}
+    }    
+	}
+	h3 {
+		margin-top: 1.8rem;
+		margin-bottom: 3rem;
+		a {
+			color: $reflection-purple;
+			&:hover {
+				color: $reflection-purple--hover;
+			}
+		}
+  }
+	.video-open-link-container--follow {
+		background-image: url(images/videothumbnails/follow.png); 
+	}
+	.ref-button--primary--large,
+	.ref-button--secondary--medium {
+		width: 342px;
+		margin-bottom: 1rem;
+		box-sizing: border-box;
+	}
+	.sm-text {
+    margin-top: 0.1rem;
+  	font-size: 13px;
+  	font-weight: bold;
+	}
+}
+.upgrade-content-container--v2__screenshot {
+	margin-bottom: 3rem;
 }

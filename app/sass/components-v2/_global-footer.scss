@@ -9,17 +9,20 @@
 	font-size: 1.6rem;
 	line-height: 1.3;
 	border-top: 1px solid $divider-grey;
+	.global-footer--no-border & {
+		border-top: none;
+	}
 	@include breakpoint($tablet) {
 		padding-left: 0;
 		padding-right: 0;
 	}
 	@include breakpoint($laptop) {
-		.no-touch & {
+		.no-touchevents & {
 			width: calc(100% - 60px);
 		}
 	}
 	@include breakpoint($leftnav-wide) {
-		.no-touch & {
+		.no-touchevents & {
 			width: calc(100% - 200px);
 		}
 	}
@@ -65,7 +68,7 @@
 				}
 			}
 		}
-		.touch & {
+		.touchevents & {
 			padding-bottom: 0.82rem;
 		}		
 	}
@@ -177,12 +180,18 @@
 	width: 105px;
 	height: 23px;
 	display: inline-block;
-	background-image: url(images/v2/logo-reflection-footer@2x.png);
+	background-image: url(images/logo-reflection-footer@2x.png);
 	background-size: 105px 23px;
 }
 .global-footer-dark {
 	background-color: #363a47;
 	.logo-footer {
-		background-image: url(images/v2/logo-reflection-light.png);
+		background-image: url(images/logo-reflection-light.png);
+	}
+	&.global-footer-dark--lab {		
+		background-color: $dark-grey-1;
+		.global-footer {
+			border-top: 1px solid $dark-grey-2;
+		}
 	}
 }

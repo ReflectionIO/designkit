@@ -77,7 +77,7 @@
 	color: $reflection-purple;
 	text-transform: uppercase;
 	transition: color $base-transition-speed-on;
-	.no-touch & {
+	.no-touchevents & {
 		&:hover {
 			span {
 				color: darken($reflection-purple, 20%);
@@ -97,8 +97,8 @@
 			}
 		}
 	}
-	.no-touch .is-active &,
-	.touch .is-active & {
+	.no-touchevents .is-active &,
+	.touchevents .is-active & {
 		&:hover {
 			span {
 				color: $dark-grey-2;
@@ -108,12 +108,12 @@
 			}
 		}
 	}
-	.no-touch .tabs__tab:active & {
+	.no-touchevents .tabs__tab:active & {
 		> span {
 			margin-top: 6px;
 		}
 	}
-	.no-touch .tabs__tab.is-disabled:active & {
+	.no-touchevents .tabs__tab.is-disabled:active & {
 		cursor: default;
 		> span {
 			margin-top: 0;
@@ -271,7 +271,7 @@
 		height: 24px;
 	}
 }
-.no-touch .is-ie .tabs__link {
+.no-touchevents .is-ie .tabs__link {
 	&:active {
 		position: relative;
 		top: 4px;
@@ -290,7 +290,7 @@
 		background-color: $panel-grey;
 		transition: width 0.2s ease-out;
 	}
-	.no-touch .is-active & {
+	.no-touchevents .is-active & {
 		span {
 			width: 100%;
 			transition: width 0.2s 0.2s ease-in;

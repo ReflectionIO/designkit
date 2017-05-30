@@ -154,6 +154,7 @@
 									</dl>
 								</header>
 								<div class="chart" id="chart-revenue"></div>
+								<img src="images/icon-loading.svg" class="icon-chart-loading" />
 							</section>
 							<section class="chart-container chart-container--split">
 								<header class="chart-container__header">
@@ -166,6 +167,7 @@
 									</dl>
 								</header>
 								<div class="chart" id="chart-downloads"></div>
+								<img src="images/icon-loading.svg" class="icon-chart-loading" />
 							</section>
 
 							<aside class="custom-chart-key js-custom-chart-key">
@@ -866,6 +868,8 @@
 	    (function (H) {
 
 	      var customIconRect;
+	      console.log(H);
+
 	      H.wrap(H.Tooltip.prototype, 'refresh', function (proceed) {
 	      	
 	        proceed.apply(this, Array.prototype.slice.call(arguments, 1));
@@ -975,6 +979,9 @@
 	        $(".event-icon--flag.is-animating").each(function() {
 	        	$(this).attr("class", "event-icon--flag");
 	        });
+	        $(".event-icon--reversedflag.is-animating").each(function() {
+	        	$(this).attr("class", "event-icon--reversedflag");
+	        });
 	        
         	// create tooltip on event hover
         	var eventsCounter = 0,
@@ -998,18 +1005,27 @@
 			      		if(parseInt(previousEventPlotX) < 100) {
 			      			eventLabelOffset = 30;
 			      		}
-			      		var labelTopSpace = axisLabelYPos + 29 + (eventsCounter * 57);
+			      		var labelTopSpace = axisLabelYPos + 29 + (eventsCounter * 55);
 			      		var eventIcon = this.chart.refEvents[e].icon.element;
+			      		var seriesName = $(eventIcon).data("seriesName");
+			      		var seriesColour = "#6d69c5";
+			      		$('.custom-chart-key li label.checkboxLabel').each(function(){
+			      			if($(this).text() == seriesName) {
+			      				seriesColour = $(this).css("background-color");
+			      			}
+			      		});
 			        	eventTooltip = this.chart.renderer.label($(eventIcon).data("tooltip"), this.chart.series[0].data[$(eventIcon).data("datapoint")].plotX - eventLabelOffset, labelTopSpace, 'callout')
 			            .css({
-			                color: $(eventIcon).data("tooltipcolour")
+			                color: $(eventIcon).data("tooltipcolour"),
+			                stroke: seriesColour,
+			                strokeWidth: "2px"
 			            })
 			            .attr({
 			            		width: 139,
-			                fill: $(eventIcon).data("tooltipfill"),
-			                padding: 10,
+			                fill: "#fcfdfd",
+			                padding: 8,
 			                r: 5,
-			                zIndex: 6
+			                zIndex: 6			                
 			            })
 			            .addClass("chart-event-label")
 			            .add();
@@ -1187,7 +1203,7 @@
 	          },
 	          title: {
 	          	text: null
-	          }            
+	          }
 	        },
 	        {
 	          offset: -25,
@@ -1300,7 +1316,7 @@
 	          },
 	          title: {
 	          	text: null
-	          }         
+	          }
 	        }];
 
 	        // TEMPLATE ONLY: Create mock series
@@ -1343,7 +1359,12 @@
 		                radiusPlus: 0,
 		              }
 		            }
-		          }
+		          },
+		          // events: {
+            //     click: function () {
+            //       alert('ValueTest: ' + this);
+            //     }
+            //   }
 		        });
 	        }
 	      }
@@ -1404,7 +1425,7 @@
 	              day: '%e %b'
 	          },
 	          tickmarkPlacement: 'on',
-	          tickPixelInterval: 30,
+	          tickPixelInterval: 10,
 	          tickLength: 0,
 	          labels: {
 	          	align: 'center',
@@ -1419,9 +1440,10 @@
 	        },
 	        plotOptions: {
 	        	area: {
-	            trackByArea: true,
+	            trackByArea: false,
 	        		tooltip: {
-	        			followPointer: true
+	        			followPointer: false,
+	        			followTouchMove: false
 	        		},
 	        		states: {
 	        			hover: {
@@ -1433,7 +1455,7 @@
 	        		},
 	        		marker: {
 	        			symbol: "circle"
-	        		}		
+	        		},
 	        	},
 	        	bar: {
 	        		borderColor: "#f2f2f5",
@@ -1446,14 +1468,15 @@
 	        			}
 	        		}
 	        	},
-	          series: {
+	          series: {              
 	            events: {
 	              click: function() { // clicking on a series selects it and highlights it
-	              	console.log("click");
+
 	              	// on selecting a series, previously selected series need to be set to unselected, on all charts
 	                var that = this,
 	                		indexToSelect = that.refseriesindex;
-
+	                console.log("click");
+	                console.log(this);
 	                if(!that.selected) { // if user clicked on a line that isn't currently selected
 
 	                	// get the index of the previously selected line
@@ -1529,7 +1552,22 @@
 	                	}
 	                }
 	              },
+	              mouseOut: function (event) {
+                  $('.highcharts-tooltip').hide();
+	              },
+	              mouseOver: function (event) {
+                  $('.highcharts-tooltip').show();
+	              }
 	            },
+	            stickyTracking: true,
+	           	// cursor: 'pointer',
+             //  point: {
+             //      events: {
+             //          click: function () {
+             //              alert('Value: ' + this.y);
+             //          }
+             //      }
+             //  },
 	            animation: false
 	          },
 	      	},
@@ -1557,9 +1595,9 @@
 	                	valueString = "$ ";
 	                }
 	                if(chartSeries.name == "revenueseries-total") {
-	                	imgString = "<img src=images/v2/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
+	                	imgString = "<img src=images/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
 	                } else if(chartSeries.name == "downloadsseries-total") {
-	                	imgString = "<img src=images/v2/icon-chart-tt-downloads@2x.png alt='Downloads icon' class=icon-downloads />";	
+	                	imgString = "<img src=images/icon-chart-tt-downloads@2x.png alt='Downloads icon' class=icon-downloads />";	
 	                } else { // output app and store icon from data
 	                	var appIcon = chartSeries.appIcon;
 	                	var store = chartSeries.appStore;
@@ -1598,12 +1636,13 @@
 	        	},
 	        	snap: 25,
 	        	// the positioner callback could be used in future for the combined chart where it goes off the left of the graph
-	        	// positioner: function (labelWidth, labelHeight, point) {
-          //     console.log("labelWidth = " + labelWidth);
-          //     console.log("labelHeight = " + labelHeight);
-          //     console.log(point);
-          //     return { x: point.plotX, y: 0 };
-          //   },
+	        	positioner: function (labelWidth, labelHeight, point) {
+              // console.log("labelWidth = " + labelWidth);
+              // console.log("labelHeight = " + labelHeight);
+              var chartWidth = $(this.chart.container).innerWidth();
+              var plotX = (point.plotX > ((chartWidth + (labelWidth/2)) / 2)) ? point.plotX - labelWidth : point.plotX ;
+              return { x: plotX, y: 150 };
+            },
 	        }
 		    });
 
@@ -1942,7 +1981,7 @@
 							    });
 								} else { // the first line is the total line for the stacked chart and should not be part of the stacked area
 									series.update({
-										type: 'area',
+										type: 'line',
 										stacking: null,
 										fillColor: seriesFills[key],
 										lineWidth: 2
@@ -2140,7 +2179,7 @@
 		      	}, 200);
 					} else {
 						Highcharts.Chart.prototype.setGraphCSSClasses();
-						Highcharts.Chart.prototype.setGraphFillsTransparency();
+						Highcharts.Chart.prototype.setGraphFillsTransparency(); // NOTE
 					}
 
 					Highcharts.charts[0].numberofSeriesAdded++; // MOCK, just to generate index
@@ -2285,6 +2324,8 @@
 
 			  Highcharts.charts[0].refEvents = [];
 
+			  var lastDataIndex = chart.series[0].data.length - 1;
+
 	      Highcharts.charts[0].refEvents.push({
 	      	icon: chart.renderer.image('images/icon-chart-event-launch@2x.png', chart.series[0].data[2].plotX - 11, chart.chartHeight - 36, 22, 36)
 		            .attr({		            	
@@ -2324,44 +2365,44 @@
 		            .add(),
 					plotX: chart.series[0].data[8].plotX,
 		      },{
-		      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
+		      	icon: chart.renderer.image('images/icon-chart-event-flag-reversed@2x.png', chart.series[0].data[30].plotX - 1 - 17, chart.chartHeight - 38, 18, 12)
 			            .attr({
-			            	visibility: "hidden", // duplicate event flags are hidden but are needed to caluclate no of events for a given date
+			            	// visibility: "hidden", // duplicate event flags are hidden but are needed to caluclate no of events for a given date
 			              zIndex: 9
 			            })
-			            .addClass("event-icon--flag")
+			            .addClass("event-icon--reversedflag")
 			            .add(),
-			      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
+			      line: chart.renderer.path(['M', chart.series[0].data[30].plotX, chart.chartHeight, 'L', chart.series[0].data[30].plotX, chart.chartHeight - 38])
 			            .attr({
-			            	visibility: "hidden",
+			            	// visibility: "hidden",
 		                'stroke-width': 1,
 		                stroke: '#81879d',
 		                zIndex: 8
 			            })
 			            .add(),
-						plotX: chart.series[0].data[8].plotX,
+						plotX: chart.series[0].data[30].plotX,
 				});
 
 				// Events - Add tooltip data
-				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltip", "<span>App Launch</span><br /><span>02/01/2016</span>");				
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltip", "<span>App Launch</span><br /><span>02/01/2016</span>");
 				$(Highcharts.charts[0].refEvents[0].icon.element).data("datapoint", 2);
 				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipcolour", "#FFFFFF");
-				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+				$(Highcharts.charts[0].refEvents[0].icon.element).data("seriesName", "Spotify");
 
 				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltip", "<span>App Name Change</span><br /><span>'Splashy Crossy Copy...'</span>");
 				$(Highcharts.charts[0].refEvents[1].icon.element).data("datapoint", 6);
 				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipcolour", "#FFFFFF");
-				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+				$(Highcharts.charts[0].refEvents[1].icon.element).data("seriesName", "Tinder");
 
 				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltip", "<span>Price Change</span><br /><span>$0.99 - Free</span>");
 				$(Highcharts.charts[0].refEvents[2].icon.element).data("datapoint", 8);
 				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipcolour", "#FFFFFF");
-				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+				$(Highcharts.charts[0].refEvents[2].icon.element).data("seriesName", "Clash Royale");
 
 				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltip", "<span>App Update</span><br /><span>Version 1.1.3.1</span>");
-				$(Highcharts.charts[0].refEvents[3].icon.element).data("datapoint", 8);
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("datapoint", 30);
 				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipcolour", "#FFFFFF");
-				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
+				$(Highcharts.charts[0].refEvents[3].icon.element).data("seriesName", "Tinder");
 
 	      // if there are more than one events on one date, calculate and add number of events label
 		      // find which plotX has more than one event and add to plotXDuplicates[]
@@ -2661,43 +2702,43 @@
 
 			var seriesAppIcons = [
 				{ 
-					icon: "images/v2/placeholder-app-icon-clash.png",
+					icon: "images/placeholder-app-icon-clash.png",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-icon-spotify.png",
+					icon: "images/placeholder-icon-spotify.png",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-icon-tinder.png",
+					icon: "images/placeholder-icon-tinder.png",
 					store: "play-store"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon.jpg",
+					icon: "images/placeholder-app-icon.jpg",
 					store: "play-store"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-minecraft.png",
+					icon: "images/placeholder-app-icon-minecraft.png",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-drift.png",
+					icon: "images/placeholder-app-icon-drift.png",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-delta.png",
+					icon: "images/placeholder-app-icon-delta.png",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-deezer.png",
+					icon: "images/placeholder-app-icon-deezer.png",
 					store: "play-store"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-8ball.png",
+					icon: "images/placeholder-app-icon-8ball.png",
 					store: "ios"
 				},
 				{ 
-					icon: "images/v2/placeholder-app-icon-bridge.png",
+					icon: "images/placeholder-app-icon-bridge.png",
 					store: "ios"
 				},
 				{ 
@@ -2735,7 +2776,7 @@
 
 				for(var s = 0; s < 4; s++) {
 					var mockSeries = [];
-					for(var d = 0; d < 12; d++) {						
+					for(var d = 0; d < 31; d++) {						
 						if(chartData[s].data[d]) {
 							mockSeries.push(chartData[s].data[d].value);
 						} else {
@@ -2747,7 +2788,7 @@
 				}				
 
 				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
-				for(var d = 0; d < 12; d++) {
+				for(var d = 0; d < 31; d++) {
 					var totalOfSeriesForDataPoint = 0;
 					for(var s = 1; s < 5; s++) {
 						if(mockDataRevenue[s][d] != null) {
@@ -2762,7 +2803,7 @@
 				mockDataDownloads.push([]);
 				for(var s = 5; s < 9; s++) {
 					var mockSeries = [];
-					for(var d = 0; d < 12; d++) {
+					for(var d = 0; d < 31; d++) {
 						if(chartData[s].data[d]) {
 							mockSeries.push(chartData[s].data[d].value);
 						} else {
@@ -2773,7 +2814,7 @@
 				}
 
 				var mockSeriesTotal = []; // MOCK TOTAL COMES BY ADDING UP REST OF THE DATA - TEMPLATE ONLY
-				for(var d = 0; d < 12; d++) {
+				for(var d = 0; d < 31; d++) {
 					var totalOfSeriesForDataPoint = 0;
 					for(var s = 1; s < 5; s++) {
 						if(mockDataDownloads[s][d] != null) {

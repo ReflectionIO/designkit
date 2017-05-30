@@ -60,7 +60,7 @@
 	}
 	.form-field--date {
 		width: 115px;
-		padding: 9px 34px 10px 15px;	
+		padding: 9px 10px 10px 15px;	
 		margin-bottom: 1.4rem;
 		display: inline-block;
 		vertical-align: top;
@@ -72,8 +72,9 @@
 	    right: 14px;
 			color: $light-grey-1;
 	    font-size: 16px;
+	    pointer-events: none;
 		}
-		.no-touch & {
+		.no-touchevents & {
 			transition: none !important;
 		}
 		label {
@@ -81,16 +82,15 @@
     	top: 10px;
 			display: none;
 			pointer-events: none;			
-			.no-touch & {
+			.no-touchevents & {
 				transition: none;
 			}
 		}
 		&.is-closed {
-			padding: 9px 34px 10px 15px;
 			label {
 				display: inline-block;
 				font-size: 14px;
-				.no-touch & {
+				.no-touchevents & {
 					transition: none;
 				}
 			}
@@ -103,7 +103,8 @@
 			border: 1px solid #5551a4;
 			border-top: 2px solid #5551a4;
 			background-color: $reflection-purple;
-			label {
+			label,
+			input[type="text"] {
 				color: $reflection-white;
 			}
 			&:after {
@@ -121,7 +122,7 @@
 			}
 		}
 		* {
-			.no-touch & {
+			.no-touchevents & {
 				transition: none !important;
 			}
 		}
@@ -175,6 +176,11 @@
 	.secondary-filter {
 		margin-bottom: 1.5rem;
 	}
+	.datePickerPreviousButton,
+	.datePickerNextButton {
+    position: relative;
+    top: -7px;
+	}
 }
 .filter-toggle + .date-selector-container {
 	display: block;	
@@ -222,7 +228,7 @@
 			outline: none;
 			cursor: pointer;
 			&:active, &:hover {
-				.no-touch & {
+				.no-touchevents & {
 					color: #363a47;
 					background-color: #ededf1;
 				}
@@ -236,7 +242,7 @@
 			color: $reflection-white;
 			background-color: $reflection-green;
 			&:hover, &:active {
-				.no-touch & {
+				.no-touchevents & {
 					color: $reflection-white;
 					background-color: $reflection-green;
 				}
@@ -248,7 +254,7 @@
 		.datePickerDayIsDisabled {
 			color: #e1e5e8;
 			&:hover, &:active {
-				.no-touch &, .touch & {
+				.no-touchevents &, .touchevents & {
 					color: #e1e5e8;
 					background-color: transparent;
 				}

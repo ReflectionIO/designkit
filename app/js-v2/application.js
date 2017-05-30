@@ -29,7 +29,9 @@ Page.prototype.customScrollbars = function() {
 
 	if($('.ie10').length == 0 && $('.ie8').length == 0) {
 		$(".js-custom-scrollbar").mCustomScrollbar({
-	  	scrollInertia: 200
+	  	scrollInertia: 200,
+	  	autoHideScrollbar: false,
+	  	alwaysShowScrollbar: 2
 	  });
 	}
 };
@@ -101,6 +103,9 @@ BrowserDetection.prototype.detectIE = function() {
 
 BrowserDetection.prototype.setFireFoxClass = function() {
 	var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	if(typeof InstallTrigger !== 'undefined') {
+		is_firefox = true;
+	}
 	if(is_firefox) { $('html').addClass('is-firefox'); }
 }
 
@@ -135,7 +140,7 @@ var LeftPanelAndHamburger = function() {
 		}
 	});
 
-	if($(".touch").length > 0) {
+	if($(".touchevents").length > 0) {
 		window.setTimeout(function() {
 			topLevelNavItems.each(function(){
 				if($(this).hasClass('is-selected')) {
@@ -178,7 +183,7 @@ var LeftPanelAndHamburger = function() {
 	});
 
 	// hide panel on content click/tap
-	if($('html.touch').length) {
+	if($('html.touchevents').length) {
 		$('.l-main').on("click", function() {
 			if($('.panel-left-open').length) {
 				$('.js-hamburger-button').trigger("click");
@@ -331,11 +336,13 @@ function handleappsearch(data) {
 	// output results to screen
 	$appsList.empty();
 	for(var i = 0; i < searchResultsApps.length && i < 5; i++) {
-		$appsList.append($('<li>').append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + ""))
+		$appsList.append($('<li>')
+				.append($('<a>').attr("href", "v2-app.html?id=" + searchResultsApps[i].trackId)
+				.append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + ""))
 															.append($('<div>').addClass("search-result__text-container")
-																.append($('<a>').addClass("search-result__app-name").attr("href", "v2-app.html?id=" + searchResultsApps[i].trackId).text(searchResultsApps[i].trackCensoredName))
+																.append($('<span>').addClass("search-result__app-name").text(searchResultsApps[i].trackCensoredName))
 																.append($('<span>').addClass("search-result__publisher-name").text(searchResultsApps[i].artistName))
-															)
+															))
 										);
 	}
 
@@ -343,22 +350,37 @@ function handleappsearch(data) {
 	for(var i = 0; i < searchResultsDevs.length && i < 6; i++) {
 		$devList.append($('<li>').append($('<a>').attr("href", "#").addClass("search-results--developer__publisher-name").text(searchResultsDevs[i].artistName)));
 	}
+
+	$('.js-search-loading-indicator').hide();
 }
 
 SearchContainer.prototype.initSearch = function() {
 	
+	var typingTimer;
+
 	// on key up loop through object and search - for implentation, amend to call service to return results in json and display
 	$('.js-get-items').keyup(function(){
 		
-		$('#scriptsearch').remove();
-    $('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + $(this).val() + "&media=software&limit=10&callback=handleappsearch"));
+		$('.js-search-loading-indicator').hide();
 
-		var $searchButtonMobile = $('.panel-right .form-field .search-button-mobile');
-		if($(this).val().length > 0) {
-			$searchButtonMobile.addClass('is-highlighted');
-		} else {
-			$searchButtonMobile.removeClass('is-highlighted');
-		}
+		if(typingTimer) {
+			clearTimeout(typingTimer);
+		}		
+
+		var valueToSearch = $(this).val();
+		typingTimer = setTimeout(function(){
+			$('.js-search-loading-indicator').show();
+			$('#scriptsearch').remove();
+	    $('body').append($("<script>").attr("id", "scriptsearch").attr("src", "https://itunes.apple.com/search?term=" + valueToSearch + "&media=software&limit=10&callback=handleappsearch"));
+
+			var $searchButtonMobile = $('.panel-right .form-field .search-button-mobile');
+			if(valueToSearch.length > 0) {
+				$searchButtonMobile.addClass('is-highlighted');
+			} else {
+				$searchButtonMobile.removeClass('is-highlighted');
+			}
+		}, 500);
+
 	});
 };
 
@@ -377,7 +399,7 @@ var AllDropDowns = function() {
 
 		var parentIsGroupPicker = false;
 		$(e.target).parents("div").each(function(){
-			if($(this).hasClass("js-group-picker")) {
+			if($(this).hasClass("js-group-picker") || $(this).hasClass("js-app-selector")) {
 				parentIsGroupPicker = true;
 			}
 		});
@@ -393,6 +415,8 @@ AllDropDowns.prototype.closeAllFilters = function() {
 	$('.primary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 	$('.js-date-picker').hide();
 	$('.js-group-picker').hide();
+	$('.js-app-selector').hide();
+	$('.js-group-selector-overlay').hide();
 	$('.secondary-filter.is-open .form-field--select__dropdown').hide();
 	$('.secondary-filter.is-open:not(".js-form-field-search")').removeClass("is-open");
 };
@@ -406,7 +430,9 @@ var FormFieldSelect = function($domElement) {
 	$thisSelectBox.find('option').each(function(){
 		
 		var $thisOption = $(this),
-				selectedClass = "";
+				selectedClass = "",
+				unavailableClass = "",
+				warningClass = "";
 
 		if($thisOption.val() != "") {
 
@@ -433,10 +459,15 @@ var FormFieldSelect = function($domElement) {
 			if($thisOption.data("app-icon") != undefined) {
 				$newListItem.append($("<img>").attr("src", $thisOption.data("app-icon")).attr("alt", $thisOption.text() + " icon"));
 			}
+			if($thisOption.data("warning") != undefined) {
+				warningClass = "group-item-unavailable js-tooltip js-tooltip--instant js-tooltip--left";
+			}
 			$dropDownContainer.append($newListItem
 																		.addClass("js-dropdown-option")																		
 																		.addClass(selectedClass)
+																		.addClass(warningClass)
 																		.attr('data-value', $thisOption.attr('value'))
+																		.data("tooltip", "Currently no estimates available for this category")
 																		.on("click", function() {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");
@@ -662,7 +693,7 @@ var Tabs = function($domElement) {
 
 // Global settings for all Tooltips
 var TooltipsBase = function() {
-	$('.touch body').on("click", function(e){ // remove all tooltips on body touch
+	$('body').on("click", function(e){ // remove all tooltips on body touch
 		if($('.tooltip').length) {			
 			$('.tooltip').remove();
 		}
@@ -674,7 +705,7 @@ var ToolTip = function($domElement) {
 	var instance = this;
 	var $this = $domElement;
 	var tooltip;
-	if($('html.no-touch').length) {
+	if($('html.no-touchevents').length) {
 		$this.on("mouseenter", function(){
 			if($this.hasClass("js-tooltip--instant")) {
 				tooltip = instance.generateTooltip($this, true);
@@ -683,7 +714,13 @@ var ToolTip = function($domElement) {
 			}					
 		});
 		$this.on("mouseleave", function(){
-			tooltip.remove();
+			if($this.hasClass("js-tooltip--delay-remove")) {
+				setTimeout(function(){
+					tooltip.remove();
+				}, 1000);
+			} else {
+				tooltip.remove();
+			}			
 		});
 		$this.on("click", function(e){
 			if($this.attr("href") == "#") {
@@ -693,7 +730,7 @@ var ToolTip = function($domElement) {
 				tooltip.remove();
 			}					
 		});
-	} else if($('html.touch').length) {
+	} else if($('html.touchevents').length) {
 		$this.on("click", function(e){
 			if(!$this.hasClass("form-field--select")) {
 				if($this.attr("href") != undefined) {
@@ -714,10 +751,11 @@ var ToolTip = function($domElement) {
 };
 
 ToolTip.prototype.generateTooltip = function($tooltipParent, isInstantTooltip) {
+
 	var $this = $tooltipParent,
 			tooltipText = $tooltipParent.data("tooltip");
 
-	var tooltip = $('<div>').addClass("tooltip").append($('<div>').addClass("tooltip-text").text(tooltipText));
+	var tooltip = $('<div>').addClass("tooltip").append($('<div>').addClass("tooltip-text").html(tooltipText));
 	
 	$('body').append(tooltip);
 	var topPosition = $this.offset().top;
@@ -731,13 +769,23 @@ ToolTip.prototype.generateTooltip = function($tooltipParent, isInstantTooltip) {
 	tooltip.hide();
 	if($this.hasClass('js-tooltip--right')) {
 		var tooltipWidth = tooltip.innerWidth();
-		var componentWidth = $this.innerWidth();	
+		var componentWidth = $this.innerWidth();
 		leftPosition = componentOffsetLeft + componentWidth - tooltipWidth;
 		tooltip.addClass("tooltip-right");
 	}
 	if($this.hasClass('js-tooltip--left')) {
 		leftPosition = componentOffsetLeft;
 		tooltip.addClass("tooltip-left");
+	}
+	if($this.hasClass('js-tooltip--open-left')) {
+		leftPosition = componentOffsetLeft - tooltipWidth - 10;
+		tooltipHeight = (tooltipHeight / 2) - componentHeight;
+		tooltip.addClass("tooltip-open-left");
+	}
+	if($this.hasClass('js-tooltip--bottom')) {
+		topPosition += 67;
+		tooltipHeight = 0;
+		tooltip.addClass("tooltip-bottom");
 	}
 	if($this.hasClass('js-tooltip--precise-pointer')) {
 		if($this.hasClass('js-tooltip--left')) {
@@ -856,7 +904,7 @@ var ArticleIntro = function($domElement, charCount) {
 }
 
 var reflectionMap = function() {	
-	var isDraggable = $('html.touch').length == 0;
+	var isDraggable = $('html.touchevents').length == 0;
 	var mapStyles = [{
       featureType: "poi",
       elementType: "labels",

@@ -1,0 +1,223 @@
+.multi-step-container {
+	position: relative;
+	left: 0;
+	width: 5000px;
+	overflow: visible;
+	font-size: 0;
+	text-align: left;
+	transition: left 0.3s;
+}
+.multi-step-section {
+	position: relative;
+	margin-right: 30px;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	.page-overlay--overflow-visible & {
+		overflow: visible;
+	}
+	> * {
+		position: absolute;
+	}
+	&.is-viewed-step {
+		> * {
+			position: relative;
+			overflow: visible;
+		}
+		> .form-field--with-error {
+			overflow: hidden;
+		}
+	}
+	.animation-hamster,
+	.hamster-wheel,
+	&.is-viewed-step .animation-hamster,
+	&.is-viewed-step .hamster-wheel {
+		position: absolute;
+		top: 40px;
+	}
+	.heading-style--heading-five {
+		margin-bottom: 1.7rem;
+		.whats-this-tooltip-icon {
+			margin-left: 5px;
+    	margin-top: -3px;
+		}
+	}
+	.heading-style--heading-six {
+    margin-top: 0rem;
+    margin-bottom: 1.6rem;
+    font-size: 1.6rem;
+	}
+	.multi-step-section__heading,
+	.heading-style--heading-five.multi-step-section__heading {
+		margin-bottom: 2.4rem;
+	}
+	p {
+		margin-bottom: 2.9rem;
+		font-size: 1.4rem;    
+	}
+	.secondary-filter {
+		width: 100%;
+    margin-bottom: 1.5rem;
+    .form-field--select__dropdown li {
+    	white-space: normal;
+    }
+	}
+	.popup-text-link {
+		width: 100%;
+	  margin-top: 18px;
+	  margin-bottom: 20px;
+	  display: block;
+	  font-family: $brand-heading-font;
+	  font-size: 14px;
+	  font-weight: 600;
+	  line-height: 1.2;
+	  text-align: center;
+	  &:last-child {
+	  	margin-bottom: 0;
+	  }
+	}
+	input, label {
+		text-align: left;
+	}
+	button, input[type=submit] {
+		margin-top: 2rem;
+		text-align: center;		
+	}
+	.button-medium-width {
+		margin-left: 0;
+		margin-right: 0;
+		display: inline-block;
+		vertical-align: top;
+		&:first-of-type {
+			margin-right: 10px;
+		}
+	}
+	p + button, p + button + button {
+		margin-top: 0;
+	}
+	.form-field--checkbox-list {
+		text-align: left;
+	}
+	.success-tick {
+		width: 50px;
+		margin-top: 35px;
+    margin-bottom: 18px;
+    @include transform(scale(0.7));
+		@include opacity(0);
+		+ .heading-style--heading-four,
+		+ .heading-style--heading-five {
+			margin-top: 0;
+		}
+	}
+	&.is-viewed-step {
+		.success-tick {
+			@include opacity(1);
+			@include transform(scale(1));
+			transition: opacity 0.4s 0.3s, transform 0.4s 0.3s;
+		}
+	}
+}
+.multi-step-breadcrumb {
+	margin-bottom: 2rem;
+	.page-overlay--pro & {
+		margin-bottom: 1.4rem;
+	}
+	li {
+		position: relative;
+		display: inline-block;
+		overflow: visible;
+		font-family: $brand-heading-font;
+		font-size: 13px;
+		border: 1px solid $light-grey-2;
+		border-right: 0;
+		&:first-child {
+			border-radius: 4px 0 0 4px;
+			z-index: 10;
+			a {
+				border-radius: 4px 0 0 4px;
+			}
+		}
+		&:last-child {
+			border-radius: 0 4px 4px 0;
+			border-right: 1px solid $light-grey-2;
+			a {
+				border-radius: 0 4px 4px 0;
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+	a {
+		position: relative;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		display: block;
+		overflow: visible;
+		width: 100%;
+		color: #5a5a68;
+		background-color: #f2f7f7;
+		&:after {
+			content:'';
+			position:absolute;
+		  top: 0px;
+			right: -6px;
+			width: 6px;
+			height: 30px;
+			background: url('images/multi-section-bread-arrow-light-light.jpg') no-repeat;
+			z-index: 1000;
+		}
+	}
+	.multi-step-breadcrumb__current-item {
+		font-weight: 600;
+		border: 1px solid #71778c;
+		border-right: 0;
+		a {
+			color: #fcfdfd;
+			background-color: #8c93ab;
+			cursor: default;			
+			&:after {
+				background: url('images/multi-section-bread-arrow-grey-light.jpg') no-repeat;
+			}
+			&:before {
+				content:'';
+				position:absolute;
+			  top: 0px;
+				left: 0px;
+				width: 6px;
+				height: 30px;
+				background: url('images/multi-section-bread-arrow-light-grey.jpg') no-repeat;
+				z-index: 1001;
+			}
+		}
+		&:first-child {
+			a {
+				border-radius: 0;
+				&:before {
+					display: none;
+				}
+			}
+		}
+		&:last-child {
+			border-right: 1px solid #71778c;
+			a {
+				border-radius: 0;
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+	.multi-step-breadcrumb__disabled {
+		a {
+			color: #bbbfc8;
+			cursor: default;
+		}		
+	}
+}
+.multi-step-breadcrumb__one-half {
+	width: 50%;
+}
+.multi-step-breadcrumb__one-third {
+	width: 33.3%;
+}

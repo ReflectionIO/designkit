@@ -17,10 +17,16 @@
 .page-header__app-title-links {
 	width: 50%;
 	padding-left: 1.7rem;
+	.filter-toggle input:disabled ~ label {
+		opacity: 0.4;
+	}
 }
 .page-app,
 .page-data-dashboard.page-app {
 	padding-top: 1.8rem;
+	&.is-my-app {
+		padding-top: 6.1rem;
+	}
 	> .grid-container {
 		font-size: 0;
 	}
@@ -130,13 +136,10 @@
 		}
 	}
 	.page-header__app-info-and-actions {
-		width: 302px;
+		width: 322px;
 	}
 	.page-header__app-title-links {
-		width: calc(100% - 380px);
-		.is-ie & {
-			width: calc(100% - 400px);
-		}
+		width: calc(100% - 410px);
 	}
 	.app-developer-name {		
     margin-right: 8px;
@@ -183,23 +186,11 @@
 	&:hover {
 		color: $reflection-purple--hover;
 	}
+	&.is-disabled {
+		color: $purple-pale;
+	}
 }
 .page-header__text-link--top {
 	padding-top: 0;
 	margin-left: 20px;
-}
-.label-my-app {
-	position: relative;
-	top: -3px;    
-	padding: 6px 10px 7px 11px;
-	margin-right: 5px;
-	margin-left: 10px;
-	display: inline-block;
-	font-family: $brand-heading-font;
-	font-weight: 600;
-	font-size: 13px;
-	line-height: 1;
-	color: $reflection-white;
-	border-radius: 13.5px;
-	background-color: $light-grey-1;    
 }

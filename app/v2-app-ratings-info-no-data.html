@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection V2, App Ratings &amp; Info</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
+		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<!--<![endif]-->
+	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
+		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
+	<![endif]-->
+	<!--[if (lt IE 9)]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script></head>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			
+			<div class="page-app">
+				<div class="grid-container">
+
+					<div class="page-header__app-icon-container"></div>
+
+					<div class="page-header__app-title-links">
+						<h1 class="heading-style--heading-three app-title"><span class="app-developer-name"></span></h1>
+						<div class="toggle-container page-header__page-toggle">
+							<div class="filter-toggle filter-toggle--with-text filter-toggle--small">
+								<div class="toggle">
+									<input id="toggle--show-downloads" name="app-info" type="radio">
+									<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
+										Revenue &amp; Downloads
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ranks" name="app-info" type="radio">
+									<label for="toggle--show-ranks" onclick="location.replace('v2-app-rank.html');">
+										Rank History
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-ratings" name="app-info" checked type="radio">
+									<label for="toggle--show-ratings" onclick="location.replace('v2-app-ratings-info.html');">
+										Ratings &amp; Info
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--show-events" name="app-info" type="radio">
+									<label for="toggle--show-events" onclick="location.replace('v2-app-events.html');">
+										Events
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="page-header__app-info-and-actions">
+						<a href="#" class="page-header__text-link page-header__text-link--top is-disabled">View in Appstore</a>
+						<span class="page-header__app-price-details"></span>
+						<span class="page-header__app-store"></span>
+						<div>
+							<button disabled="disabled" href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+							<button disabled="disabled" href="#" class="ref-button--secondary--small page-header_action-button">Follow App</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="no-data-small no-data-page-message">
+					<div class="animation-hamster-no-data"></div>
+					<div>
+						<h2>No Details Found For This App</h2>
+						<p>This may be because this app has only been released in a specific country. Select from the list below to see details from that country.</p>
+						<div class="secondary-filter form-field--select js-country-selector">
+							<select class="js-select-box">
+						    <option value="gb" selected>United Kingdom</option>
+						    <option value="fr">France</option>
+						    <option value="de">Germany</option>
+						    <option value="it">Italy</option>
+						    <option value="ca">Canada</option>
+						    <option value="se">Sweden</option>
+						    <option value="us">USA</option>
+						    <option value="jp">Japan</option>
+						    <option value="pl">Poland</option>
+								<option value="kz">Kazakhstan</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="grid-container" id="js-component-import--global-footer"></div>
+	</div>
+
+	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+ 	<script src="js/language-codes.js"></script>
+
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+	<script>
+  	function initScripts() {
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-app-ratings-info-no-data.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+  		new Page();
+
+  		$('.js-select-box').each(function() {
+  			new FormFieldSelect($(this));
+  		});
+  	}
+
+  	window.onready = initScripts();
+  </script>
+</body>

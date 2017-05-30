@@ -56,6 +56,9 @@
 							</ul>
 						</div>
 						<a href="v2-account-manage-notifications.html" class="ref-button--secondary--small">Manage Alert Settings</a>
+
+						<a href="#" class="ref-button--secondary--small page-header_action-button js-tooltip js-tooltip--open-left js-tooltip--instant" data-tooltip="Download all current table data as a CSV file">Download CSV</a>
+
 					</div>
 				</header>
 
@@ -109,8 +112,8 @@
 						<li class="article-list__item">
 							<article class="is-new">
 								<div class="article-list__item__icons-container">
-									<img src="images/v2/placeholder-app-icon-8ball.png" alt="App icon" class="article-list__item__type-icon" />
-									<span class="article-list__item__store ref-icon-after--apple">iOS</span>
+									<img src="images/placeholder-app-icon-8ball.png" alt="App icon" class="article-list__item__type-icon" />
+									<span class="article-list__item__store ref-icon-before--ios">iOS</span>
 								</div>
 								<div class="article-list__item__summary-container">
 									<h2 class="article-list__item__title"><a href="#">8 Ball Pool</a></h2>
@@ -131,7 +134,7 @@
 						<li class="article-list__item">
 							<article>
 								<div class="article-list__item__icons-container">
-									<img src="images/v2/placeholder-app-icon-episode.png" alt="App icon" class="article-list__item__type-icon" />
+									<img src="images/placeholder-app-icon-episode.png" alt="App icon" class="article-list__item__type-icon" />
 									<span class="article-list__item__store ref-icon-after--play-store">iOS</span>
 								</div>
 								<div class="article-list__item__summary-container">
@@ -153,8 +156,8 @@
 						<li class="article-list__item">
 							<article>
 								<div class="article-list__item__icons-container">
-									<img src="images/v2/placeholder-app-icon-delta.png" alt="App icon" class="article-list__item__type-icon" />
-									<span class="article-list__item__store ref-icon-after--apple">iOS</span>
+									<img src="images/placeholder-app-icon-delta.png" alt="App icon" class="article-list__item__type-icon" />
+									<span class="article-list__item__store ref-icon-before--ios">iOS</span>
 								</div>
 								<div class="article-list__item__summary-container">
 									<h2 class="article-list__item__title"><a href="#">Delta-V Racing</a></h2>
@@ -235,7 +238,7 @@
 									<a href="#" class="ref-button--secondary--small">Share</a>
 								</div>
 								<div class="article-list__item__image">
-									<img src="images/v2/placeholder-news-item.jpg" alt="App Screenshot" />
+									<img src="images/placeholder-news-item.jpg" alt="App Screenshot" />
 								</div>
 							</article>
 						</li>
@@ -273,7 +276,11 @@
 
   		new Page();
   		new AllDropDowns();
-  		;
+
+  		new TooltipsBase();
+  		$('.js-tooltip').each(function(){
+  			new ToolTip($(this));
+  		});
   		
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));

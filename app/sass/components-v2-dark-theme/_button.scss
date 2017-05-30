@@ -1,0 +1,25 @@
+// Preferably a dark-theme class would extend each component
+// For example button-name--dark-theme
+// For ease of integration and separation however we'll have a containing CSS class
+// .theme-dark which will overwrite all elements within to their dark theme counterparts
+
+.theme-dark {
+	.ref-button--secondary--small,
+	.ref-button--secondary--medium,
+	.ref-button--secondary--large {
+    font-weight: 400;
+		color: #c4c7d0;
+		background-color: #343438;
+		border-color: #000;
+		&:hover {
+			background-color: #2e2e31;
+		}
+		&:not(.is-disabled) {
+	    .no-touchevents & {
+	      &:active {
+	        border-top-color: #000;
+	      }
+	    }
+	  }
+	}
+}

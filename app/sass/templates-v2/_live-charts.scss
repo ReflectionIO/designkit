@@ -225,6 +225,18 @@
 		vertical-align: top;
 	}
 }
+span.live-chart__cell__app-name {
+	color: $dark-grey-2;
+	&:hover {
+		color: $dark-grey-2;
+	}
+}
+span.live-chart__cell__publisher-name {
+	color: $mid-grey-1;
+	&:hover {
+		color: $mid-grey-1;
+	}
+}
 .live-chart__cell__rank {
 	width: 85px;
 	height: 15px;
@@ -330,10 +342,10 @@
 }
 .live-chart__cell__app-price {
 	padding-top: 2px;
-	@include breakpoint($desktop) {
-		padding-top: 0;
-		padding-left: 8px;
-	}
+	// @include breakpoint($desktop) {
+	// 	padding-top: 0;
+	// 	padding-left: 8px;
+	// }
 }
 .live-chart__cell__growth,
 .live-chart__cell__app-downloads-revenue {
@@ -342,7 +354,7 @@
 	vertical-align: top;
 	font-size: 12px;
 	font-weight: 700;
-	color: $dark-grey-2;
+	color: $dark-grey-2;	
 	.live-chart--compact-view & {
 	  padding-top: 4px;
 	  &.is-loading,
@@ -360,7 +372,7 @@
 		color: $reflection-red;
 	}
 	span {
-		padding-top: 2px;
+		padding-top: 3px;
 		display: inline-block;
 		vertical-align: top;
 	}
@@ -379,6 +391,8 @@
 	}
 }
 .live-chart__cell__growth {
+	position: relative;
+	top: 1px;
 	padding-left: 7px;
 	&.is-loading {
 		display: none;
@@ -393,4 +407,14 @@
 	line-height: 1.3;
 	color: $light-grey-1;
 	text-align: center;
+}
+.is-unavailable {
+	color: $light-grey-2 !important;
+	&:before,
+	&:after {
+		color: $light-grey-2 !important;
+	}
+}
+.live-chart__cell__app-downloads-revenue {
+	cursor: pointer;
 }

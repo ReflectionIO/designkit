@@ -39,7 +39,31 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-data-dashboard page-app">
+			<div class="page-data-dashboard page-app is-my-app">
+				<div class="my-app-header js-my-app-header">
+					<h2 class="my-app-header__info ref-icon-before--info-no-fill">One of My Apps</h2>
+
+					<div class="my-app-header__right">
+						<span class="my-app-header__data-info-link">Viewing Estimated Data</span>		
+
+						<span class="ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span>					
+
+						<div class="toggle-container filter-toggle filter-toggle--with-text">
+							<div class="toggle">
+								<input id="toggle--show-popxs" name="radioxsmall" checked type="radio">
+								<label for="toggle--show-popxs">
+									Estimated
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-regxs" name="radioxsmall" type="radio">
+								<label for="toggle--show-regxs">
+									Actual
+								</label>
+							</div>
+						</div>
+					</div>			
+				</div>
 				<div class="grid-container">
 
 					<div class="page-header__app-icon-container">
@@ -47,7 +71,7 @@
 					</div>
 
 					<div class="page-header__app-title-links">
-						<h1 class="heading-style--heading-three app-title">Clash of Hamsters <span class="app-developer-name">By <a href="v2-publisher.html">Reflection</a></span><span class="label-my-app">My App</span><span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span></h1>
+						<h1 class="heading-style--heading-three app-title">Clash of Hamsters <span class="app-developer-name">By <a href="v2-publisher.html">Reflection</a></span></h1>
 						<div class="toggle-container page-header__page-toggle filter-toggle filter-toggle--with-text filter-toggle--small">
 							<div class="toggle">
 								<input id="toggle--show-downloads" name="app-info" checked type="radio">
@@ -82,7 +106,7 @@
 						<span class="page-header__app-store ref-icon-before--play-store">Google Play</span>
 						<div>
 							<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
-							<button href="#" class="ref-button--secondary--small page-header_action-button js-follow-app">Follow App</button>
+							<button href="#" class="ref-button--secondary--small page-header_action-button js-follow-app ref-button--follow-app">Follow App</button>
 						</div>
 						<ul class="form-field--checkbox-list form-field--select__dropdown checkbox-dropdown-from-button js-checkbox-dropdown">
 							<li>
@@ -129,36 +153,6 @@
 						</div>
 						<div class="primary-filter js-multi-select-box" data-title="All Countries">
 							<span class="form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"></span>
-							<div class="dropdown-summary">
-								<span><span class="js-number-selected">0</span> Selected</span> <a href="#" class="js-clear-all">Clear All</a>
-							</div>
-							<ul class="form-field--checkbox-list form-field--select__dropdown js-form-field--select__dropdown">
-								<li>
-									<input type="checkbox" name="checkboxUKFaB" id="checkboxUKFaB" class="js-no-close-on-click" />
-									<label for="checkboxUKFaB" class="checkboxLabel js-no-close-on-click">United Kingdom</label>
-									<label for="checkboxUKFaB" class="checkboxLabelVisible js-no-close-on-click">United Kingdom</label>
-								</li>
-								<li>
-									<input type="checkbox" name="checkboxFraFaB" id="checkboxFraFaB" class="js-no-close-on-click" />
-									<label for="checkboxFraFaB" class="checkboxLabel js-no-close-on-click">France</label>
-									<label for="checkboxFraFaB" class="checkboxLabelVisible js-no-close-on-click">France</label>
-								</li>
-								<li>
-									<input type="checkbox" name="checkboxItaFaB" id="checkboxItaFaB" class="js-no-close-on-click" />
-									<label for="checkboxItaFaB" class="checkboxLabel js-no-close-on-click">Italy</label>
-									<label for="checkboxItaFaB" class="checkboxLabelVisible js-no-close-on-click">Italy</label>
-								</li>
-								<li>
-									<input type="checkbox" name="checkboxGeFaB" id="checkboxGeFaB" class="js-no-close-on-click" />
-									<label for="checkboxGeFaB" class="checkboxLabel js-no-close-on-click">Germany</label>
-									<label for="checkboxGeFaB" class="checkboxLabelVisible js-no-close-on-click">Germany</label>
-								</li>
-								<li>
-									<input type="checkbox" name="checkboxSpFaB" id="checkboxSpFaB" class="js-no-close-on-click" />
-									<label for="checkboxSpFaB" class="checkboxLabel js-no-close-on-click">Spain</label>
-									<label for="checkboxSpFaB" class="checkboxLabelVisible js-no-close-on-click">Spain</label>
-								</li>
-							</ul>
 						</div>
 						<div class="primary-filter form-field--select">
 							<select class="js-select-box">
@@ -185,6 +179,8 @@
 							</li>
 
 							<li> <span class=""><input type="checkbox" value="on" id="gwt-uid-279" tabindex="0"><label for="gwt-uid-279" class="checkboxLabel">Cumulative</label><label for="gwt-uid-279" class="checkboxLabelVisible">Cumulative</label></span> </li>
+
+							<li> <span class=""><input type="checkbox" value="on" checked id="js-confidence-scores-checkbox" tabindex="0"><label for="js-confidence-scores-checkbox" class="checkboxLabel">Confidence Scores</label><label for="js-confidence-scores-checkbox" class="checkboxLabelVisible">Confidence Scores</label></span> <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-right" data-whatsthis-title="What Are Confidence Scores?" data-whatsthis="A scoring system that denotes our level of confidence in the accuracy of the revenue and download estimates. Data is graded from B up to A++<br /><a href='#'>Learn more in this article</a>"><span>What's this?</span></a></li>
 						</ul>
 					</div>
 
@@ -218,6 +214,7 @@
 					<ul class="tabs-content-list">
 						<li class="is-active js-twin-chart-container">
 							<section class="chart-container chart-container--split">
+								<img src="images/chart-watermark.png" alt="Reflection logo" class="chart-watermark" />
 								<header class="chart-container__header">
 									<h2 class="chart-heading heading-style--heading-three">Revenue</h2>
 									<dl class="chart-summary">
@@ -228,8 +225,15 @@
 									</dl>
 								</header>
 								<div class="chart" id="chart-revenue"></div>
+								<div class="chart-container__chart-message js-chart-container__chart-message is-showing">
+									<h2 class="chart-container__chart-message__title ref-icon-before--info-no-fill">No Events for the Selected Period</h2>
+									<span class="chart-container__chart-message__content"><a href="v2-app-events.html">Visit 'Events'</a> to see everything that's happened</span>
+									<a href="#" class="popup-close js-popup-close"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+								</div>
+								<img src="images/icon-loading.svg" class="icon-chart-loading" />
 							</section>
 							<section class="chart-container chart-container--split">
+								<img src="images/chart-watermark.png" alt="Reflection logo" class="chart-watermark" />
 								<header class="chart-container__header">
 									<h2 class="chart-heading heading-style--heading-three">Downloads</h2>
 									<dl class="chart-summary">
@@ -240,6 +244,7 @@
 									</dl>
 								</header>
 								<div class="chart" id="chart-downloads"></div>
+								<img src="images/icon-loading.svg" class="icon-chart-loading" />
 							</section>
 
 							<aside class="custom-chart-key js-custom-chart-key">
@@ -347,14 +352,11 @@
 						<table class="ref-table ref-table--apps ref-table--apps--country">
 							<thead>
 								<tr>
+									<th colspan="1" class="cellTableHeader cellTableFirstColumnHeader" __gwt_column="column-gwt-uid-766" __gwt_header="header-gwt-uid-767"></th>
 									<th>
 										<span>Country</span>
 										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg> &nbsp;/&nbsp; 
 										<span>Av. Rating</span>
-										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
-									</th>
-									<th>
-										Released
 										<svg version="1.1" x="0px" y="0px" viewBox="0 0 7 10" enable-background="new 0 0 7 10" xml:space="preserve" class="sort-svg"><path class="ascending" d="M0.4,4.1h6.1c0.1,0,0.2,0,0.3-0.1C7,3.9,7,3.8,7,3.7c0-0.1,0-0.2-0.1-0.3L3.8,0.1C3.7,0,3.6,0,3.5,0C3.4,0,3.3,0,3.2,0.1L0.1,3.3C0,3.4,0,3.5,0,3.7C0,3.8,0,3.9,0.1,4C0.2,4.1,0.3,4.1,0.4,4.1z"></path><path class="descending" d="M6.6,5.9H0.4c-0.1,0-0.2,0-0.3,0.1C0,6.1,0,6.2,0,6.3c0,0.1,0,0.2,0.1,0.3l3.1,3.2C3.3,10,3.4,10,3.5,10c0.1,0,0.2,0,0.3-0.1l3.1-3.2C7,6.6,7,6.5,7,6.3C7,6.2,7,6.1,6.9,6C6.8,5.9,6.7,5.9,6.6,5.9z"></path></svg>
 									</th>
 									<th class="revenue-head-cell">
@@ -380,8 +382,8 @@
 								</tr>
 							</thead>
 							<colgroup>
+								<col class="column-store-icon">
 								<col class="column-app-name" />
-								<col class="column-released" />
 								<col class="column-revenue" />
 								<col class="column-downloads" />
 								<col class="column-more" />
@@ -389,6 +391,7 @@
 							</colgroup>
 							<tbody>
 								<tr>
+								<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-778"><span class="data-table__store js-tooltip js-tooltip--instant js-tooltip--left ref-icon-after--ios" data-tooltip="iOS Store"></span></div></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
 											<div class="icon-flag icon-flag--US"></div>
@@ -399,9 +402,6 @@
 												</div>
 											</div>
 										</div>
-									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
 									</td>
 									<td>
 										<div class="app-data-revenue">
@@ -430,6 +430,7 @@
 								</tr>
 
 								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-778"><span class="data-table__store js-tooltip js-tooltip--instant js-tooltip--left ref-icon-after--ios" data-tooltip="iOS Store"></span></div></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
 											<div class="icon-flag icon-flag--GB"></div>
@@ -441,9 +442,6 @@
 											</div>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
-									</td>
 									<td>
 										<div class="app-data-revenue">
 											<span>£11,529,654</span>
@@ -471,6 +469,7 @@
 								</tr>
 
 								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-778"><span class="data-table__store js-tooltip js-tooltip--instant js-tooltip--left ref-icon-after--ios" data-tooltip="iOS Store"></span></div></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
 											<div class="icon-flag icon-flag--CN"></div>
@@ -482,9 +481,6 @@
 											</div>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
-									</td>
 									<td>
 										<div class="app-data-revenue">
 											<span>£11,529,654</span>
@@ -512,6 +508,7 @@
 								</tr>
 
 								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-778"><span class="data-table__store js-tooltip js-tooltip--instant js-tooltip--left ref-icon-after--ios" data-tooltip="iOS Store"></span></div></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
 											<div class="icon-flag icon-flag--FR"></div>
@@ -523,9 +520,6 @@
 											</div>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
-									</td>
 									<td>
 										<div class="app-data-revenue">
 											<span>£11,529,654</span>
@@ -553,6 +547,7 @@
 								</tr>
 
 								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-778"><span class="data-table__store js-tooltip js-tooltip--instant js-tooltip--left ref-icon-after--ios" data-tooltip="iOS Store"></span></div></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
 											<div class="icon-flag icon-flag--DE"></div>
@@ -564,9 +559,6 @@
 											</div>
 										</div>
 									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
-									</td>
 									<td>
 										<div class="app-data-revenue">
 											<span>£11,529,654</span>
@@ -607,6 +599,7 @@
 								</tr>
 
 								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-778"><span class="data-table__store js-tooltip js-tooltip--instant js-tooltip--left ref-icon-after--ios" data-tooltip="iOS Store"></span></div></td>
 									<td class="app-data-cell-app-details">
 										<div class="data-table__app-summary">
 											<div class="icon-flag icon-flag--is-loading"></div>
@@ -617,9 +610,6 @@
 												</div>
 											</div>
 										</div>
-									</td>
-									<td class="app-data-cell-released-date">
-										<span>10/01/12</span>
 									</td>
 									<td>
 										<div class="app-data-revenue">
@@ -658,6 +648,116 @@
 											<div><span style="width: 27%;"></span></div>
 										</div>
 									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<table class="ref-table ref-table--apps ref-table--apps--country">
+							<colgroup>
+								<col class="column-store-icon">
+								<col class="column-app-name">
+								<col class="column-revenue">
+								<col class="column-downloads">
+								<col class="column-more">
+								<col class="column-percentage-of-total">
+							</colgroup>
+
+							<tbody class="ref-table__body--loading">
+								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><span class="data-table__store is-loading"></span></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-app-details">
+										<div class="data-table__app-summary">
+										<div class="icon-flag icon-flag--is-loading"></div>
+										<div class="data-table__app-details-container"><h2 class="data-table__app-summary__app-name is-loading"></h2><div class="ratings-container"><div class="ratings-full" style="width:0%"></div></div></div></div>
+									</td>
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-revenue is-loading"><span></span><span class="data-table__growth negative-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-downloads is-loading"><span></span><span class="data-table__growth positive-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-more"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-2160"></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell cellTableLastColumn"><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div></td>
+								</tr>
+								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><span class="data-table__store is-loading"></span></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-app-details">
+										<div class="data-table__app-summary">
+										<div class="icon-flag icon-flag--is-loading"></div>
+										<div class="data-table__app-details-container"><h2 class="data-table__app-summary__app-name is-loading"></h2><div class="ratings-container"><div class="ratings-full" style="width:0%"></div></div></div></div>
+									</td>
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-revenue is-loading"><span></span><span class="data-table__growth negative-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-downloads is-loading"><span></span><span class="data-table__growth positive-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-more"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-2160"></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell cellTableLastColumn"><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div></td>
+								</tr>
+								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><span class="data-table__store is-loading"></span></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-app-details">
+										<div class="data-table__app-summary">
+										<div class="icon-flag icon-flag--is-loading"></div>
+										<div class="data-table__app-details-container"><h2 class="data-table__app-summary__app-name is-loading"></h2><div class="ratings-container"><div class="ratings-full" style="width:0%"></div></div></div></div>
+									</td>
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-revenue is-loading"><span></span><span class="data-table__growth negative-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-downloads is-loading"><span></span><span class="data-table__growth positive-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-more"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-2160"></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell cellTableLastColumn"><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div></td>
+								</tr>
+								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><span class="data-table__store is-loading"></span></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-app-details">
+										<div class="data-table__app-summary">
+										<div class="icon-flag icon-flag--is-loading"></div>
+										<div class="data-table__app-details-container"><h2 class="data-table__app-summary__app-name is-loading"></h2><div class="ratings-container"><div class="ratings-full" style="width:0%"></div></div></div></div>
+									</td>
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-revenue is-loading"><span></span><span class="data-table__growth negative-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-downloads is-loading"><span></span><span class="data-table__growth positive-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-more"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-2160"></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell cellTableLastColumn"><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div></td>
+								</tr>
+								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><span class="data-table__store is-loading"></span></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-app-details">
+										<div class="data-table__app-summary">
+										<div class="icon-flag icon-flag--is-loading"></div>
+										<div class="data-table__app-details-container"><h2 class="data-table__app-summary__app-name is-loading"></h2><div class="ratings-container"><div class="ratings-full" style="width:0%"></div></div></div></div>
+									</td>
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-revenue is-loading"><span></span><span class="data-table__growth negative-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-downloads is-loading"><span></span><span class="data-table__growth positive-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-more"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-2160"></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell cellTableLastColumn"><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div></td>
+								</tr>
+								<tr>
+									<td class="cellTableCell cellTableEvenRowCell cellTableFirstColumn"><span class="data-table__store is-loading"></span></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-app-details">
+										<div class="data-table__app-summary">
+										<div class="icon-flag icon-flag--is-loading"></div>
+										<div class="data-table__app-details-container"><h2 class="data-table__app-summary__app-name is-loading"></h2><div class="ratings-container"><div class="ratings-full" style="width:0%"></div></div></div></div>
+									</td>
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-revenue is-loading"><span></span><span class="data-table__growth negative-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell"><div class="app-data-downloads is-loading"><span></span><span class="data-table__growth positive-colour"></span></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell app-data-cell-more"><div style="outline-style:none;" __gwt_cell="cell-gwt-uid-2160"></div></td>
+
+									<td class="cellTableCell cellTableEvenRowCell cellTableLastColumn"><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div><div class="data-table__value-bar is-loading"><span></span><div><span style="width: 0%;"></span></div></div></td>
 								</tr>
 							</tbody>
 						</table>
@@ -903,180 +1003,23 @@
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
 
-	<!-- Custom Country Picker -->
-	<div class="group-picker js-group-picker">
-		
-		<div class="group-picker__main-container"> 							
-			<!-- <div class="filter-toggle filter-toggle--with-text">
-				<div class="toggle">
-					<input id="toggle--show-popular" name="toggle--show-picker" checked="" type="radio">
-					<label for="toggle--show-popular" class="js-mock-toggle-group-selectors" data-show="group-selector-container--popular">
-						Popular
-					</label>
+	<div class="page-overlay js-page-overlay">
+		<div class="page-popup">
+			<div class="popup-content">
+				<a href="#" class="popup-close js-popup-close"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+				<div class="popup-sections-container">
+					<div class="multi-step-container js-multi-step-container">
+						<div class="multi-step-section is-viewed-step">						
+							<img src="images/hamster_bouncer@2x.png" alt="No Access Illustration" class="illustration-no-access" />
+							<h2 class="heading-style--heading-four	">You've Reached Your Limit...</h2>				
+							<p>You can't follow unlimited apps as a Free user.<br />Go Pro now and follow as many apps and developers as you like.</p>
+							<button type="button" class="ref-button--primary--large button-full-width">Go Pro</button>
+						</div>
+					</div>
 				</div>
-				<div class="toggle">
-					<input id="toggle--show-regions" name="toggle--show-picker" type="radio">
-					<label for="toggle--show-regions" class="js-mock-toggle-group-selectors" data-show="regions">
-						Regions
-					</label>
-				</div>
-				<div class="toggle">
-					<input id="toggle--show-countries" name="toggle--show-picker" type="radio">
-					<label for="toggle--show-countries" class="js-mock-toggle-group-selectors" data-show="countries">
-						Countries
-					</label>
-				</div>
-				<div class="toggle">
-					<input id="toggle--show-my-groups" name="toggle--show-picker" type="radio">
-					<label for="toggle--show-my-groups" class="js-mock-toggle-group-selectors" data-show="group-selector-container--groups">
-						My Groups
-					</label>
-				</div>
-			</div> -->
-
-			<div class="group-selector-container js-group-selector-container" id="group-selector-container--popular">
-				<div class="secondary-filter form-field--search js-form-field-search">
-					<input type="text" placeholder="Find Country" name="findapp" id="findapp">
-					<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
-					<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
-				</div>
-
-				<ul class="form-field--checkbox-list js-mock-group-item-results">
-					<li>
-						<input type="checkbox" name="checkboxCountryUK" id="checkboxCountryUK"/>
-						<label for="checkboxCountryUK" class="checkboxLabel">United Kingdom</label>
-						<label for="checkboxCountryUK" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--GB"></div>
-							<span>United Kingdom</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" name="checkboxCountryFr" id="checkboxCountryFr" />
-						<label for="checkboxCountryFr" class="checkboxLabel">France</label>
-						<label for="checkboxCountryFr" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--FR"></div>
-							<span>France</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" name="checkboxCountryIt" id="checkboxCountryIt" />
-						<label for="checkboxCountryIt" class="checkboxLabel">Germany</label>
-						<label for="checkboxCountryIt" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--DE"></div>
-							<span>Germany</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" name="checkboxCountryCh" id="checkboxCountryCh" />
-						<label for="checkboxCountryCh" class="checkboxLabel">China</label>
-						<label for="checkboxCountryCh" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--CH"></div>
-							<span>China</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" name="checkboxCountryUSA" id="checkboxCountryUSA" />
-						<label for="checkboxCountryUSA" class="checkboxLabel">USA</label>
-						<label for="checkboxCountryUSA" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--US"></div>
-							<span>USA</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" name="checkboxCountryUK" id="checkboxCountryNe"/>
-						<label for="checkboxCountryNe" class="checkboxLabel">Netherlands</label>
-						<label for="checkboxCountryNe" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--NE"></div>
-							<span>Netherlands</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" name="checkboxCountryFr" id="checkboxCountryPo" />
-						<label for="checkboxCountryPo" class="checkboxLabel">Portugal</label>
-						<label for="checkboxCountryPo" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--PO"></div>
-							<span>Portugal</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" name="checkboxCountrySp" id="checkboxCountrySp" />
-						<label for="checkboxCountrySp" class="checkboxLabel">Spain</label>
-						<label for="checkboxCountrySp" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--SP"></div>
-							<span>Spain</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" name="checkboxCountryCh" id="checkboxCountryJa" />
-						<label for="checkboxCountryJa" class="checkboxLabel">Japan</label>
-						<label for="checkboxCountryJa" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--JP"></div>
-							<span>Japan</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" name="checkboxCountryUSA" id="checkboxCountryInd" />
-						<label for="checkboxCountryInd" class="checkboxLabel">India</label>
-						<label for="checkboxCountryInd" class="checkboxLabelVisible">
-							<div class="icon-flag-sm icon-flag--IN"></div>
-							<span>India</span>
-						</label>
-					</li>
-				</ul>
-
-				<a href="#" class="ref-button--primary--small is-disabled group-picker__apply-link js-mock-group-picker-apply">Apply</a>
 			</div>
-
-			<div class="group-selector-container js-group-selector-container" id="group-selector-container--groups" style="display: none;">
-				<div class="secondary-filter form-field--search js-form-field-search">
-					<input type="text" placeholder="Find" name="findgroup" id="findgroup" class="js-mock-find-group">
-					<label for="findgroup" class="ref-icon-after--search"><span>Search</span></label>
-					<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
-				</div>
-				<ul class="form-field--radio-list js-mock-group-results">
-					<li>
-						<input type="radio" name="radioButtons" id="radioButtonOne">
-						<label for="radioButtonOne" class="radioButtonLabel">My Group</label>
-						<label for="radioButtonOne" class="radioButtonLabelVisible">My Group</label>
-						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
-					</li>
-					<li>
-						<input type="radio" name="radioButtons" id="radioButtonTwo">
-						<label for="radioButtonTwo" class="radioButtonLabel">Main Competitors</label>
-						<label for="radioButtonTwo" class="radioButtonLabelVisible">Main Competitors</label>
-						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
-					</li>
-					<li>
-						<input type="radio" name="radioButtons" id="radioButtonThree">
-						<label for="radioButtonThree" class="radioButtonLabel">Another Group</label>
-						<label for="radioButtonThree" class="radioButtonLabelVisible">Another Group</label>
-						<span class="group-selector__remove-group-icon ref-icon-after--close js-remove-group js-no-close-on-click"></span>
-					</li>
-				</ul>
-				<a href="#" class="ref-button--primary--small is-disabled group-picker__apply-link js-mock-group-picker-apply">Apply</a>
-			</div>
-
 		</div>
-
-		<div class="group-picker__selections-container">
-			<span class="group-picker__selections__number-selected"><span class="js-mock-picker-number-selected">0</span> Selected</span>
-			<a href="#" class="group-picker__selections__clear-link js-mock-clear-selected-countries">Clear All</a>
-			<div class="group-picker__selections js-group-picker__selections">				
-			</div>
-			<!-- <a href="#" class="group-picker__selections__save-to-groups-link ref-button--secondary--small js-mock-save-to-groups-link">Save Selection to New Group</a> -->
-			<form class="group-picker__create-group-container js-create-group-form">
-				<div class="form-field">
-					<input type="text" name="groupname" id="groupname" autocomplete="off" />
-					<label for="groupname">Group Name</label>
-				</div>
-				<a href="#" class="ref-button--secondary--small group-picker__create-group__cancel-button js-mock-create-group-cancel">Cancel</a>
-				<a href="#" class="ref-button--primary--small group-picker__create-group__save-button js-mock-create-group-apply">Create Group</a>
-			</form>
-			<form class="group-picker__amend-group-container js-amend-group-form">
-				<a href="#" class="ref-button--primary--small group-picker__create-group__save-button js-mock-save-group">Save Changes</a>
-			</form>
-		</div>
-	</div> <!-- end country picker -->
+	</div>
 
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
@@ -1102,7 +1045,8 @@
       return this;
     }
 
-  	function initScripts() {
+  	function initScripts() {		
+
   		// mock menu select
   		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-data-template.html"]');
 		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
@@ -1118,6 +1062,11 @@
   		});
   		$('.js-tabs').each(function() {
   			new Tabs($(this));
+  		});
+
+  		new TooltipsBase();
+  		$('.js-tooltip').each(function(){
+  			new ToolTip($(this));
   		});
 
   		// Mock function for template
@@ -1165,6 +1114,20 @@
 	  			Highcharts.charts[2].reflow();
   			}
   		});
+
+  		$('.js-follow-app').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay .popup-content').addClass("is-showing");
+				}, 100);
+			});
+			$('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.page-overlay').fadeOut(100);
+				$('.page-overlay .popup-content').removeClass("is-showing");
+				$('.js-chart-container__chart-message').removeClass("is-showing");
+			});
 
   		// HIGHCHARTS
   		var monthNames = [
@@ -1872,9 +1835,9 @@
 	                }
 	                if(chartSeries.name == "revenueseries-total") {
 	                	valueString = "$ ";
-	                	imgString = "<img src=images/v2/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
+	                	imgString = "<img src=images/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
 	                } else if(chartSeries.name == "downloadsseries-total") {
-	                	imgString = "<img src=images/v2/icon-chart-tt-downloads@2x.png alt='Rank icon' class=icon-downloads />";	
+	                	imgString = "<img src=images/icon-chart-tt-downloads@2x.png alt='Rank icon' class=icon-downloads />";	
 	                }
 	                
 	                var seriesClassName = chartSeries.name;
@@ -1888,8 +1851,22 @@
 	                	var percentageOfTotal = parseInt(value.y / thisPointTotalValue * 100);
 	                	stackedString = "<span class='chart-tooltip-percentage' style='background-color: " + chartSeries.color + "'>" + percentageOfTotal + "%</span>";
 	                }
+									
+									var tooltipTwoColumnClass = "";
+	                if($('#js-confidence-scores-checkbox').is(":checked")) {
+	                	tooltipTwoColumnClass = "custom-tooltip--two-column"; // to add an offset left to tooltip for better viewing
 
-	                s += '<div class="custom-tooltip ' + seriesClassName + '" style="background-color: ' + chartSeries.color + '">' + imgString + storeString + '<span class="chart-tooltip-value">' + valueString + value.y + '</span>' + stackedString + '</div>';
+										var confidenceScore = chartSeries.confidenceScores[thisPointIndex];
+										var confidenceScoreClass = "";
+										if(chartSeries.name == "revenueseries-total" || chartSeries.name == "downloadsseries-total") {
+											confidenceScore = "Score:";
+											confidenceScoreClass = "chart-tooltip__confidence-score-label";
+										}
+
+	                	stackedString = "<span class='chart-tooltip-percentage " + confidenceScoreClass + "' style='background-color: " + chartSeries.color + "'>" + confidenceScore + "</span>";
+	                }
+
+	                s += '<div class="custom-tooltip ' + tooltipTwoColumnClass + ' ' + seriesClassName + '" style="background-color: ' + chartSeries.color + '">' + imgString + storeString + '<span class="chart-tooltip-value">' + valueString + value.y + '</span>' + stackedString + '</div>';
 	            });
 	            return s;
 	          },
@@ -1921,12 +1898,17 @@
 
 			function addAppDataToSeries() {
 				// add the app icon and store to the Highcharts series objects for the tooltip
+				
+				var confidenceScoresMockData = [
+					"B", "A+", "A+", "A++", "A+", "A", "B", "B", "A", "A", "A+", "A++", "B", "A+", "A+", "A++", "A+", "A", "B", "B", "A", "A", "A+", "A++"
+				];
 
 				// template only, mock data
 				for(var k = 0; k < 2; k++) {
 					$.each(Highcharts.charts[k].series, function (key, series) { // twin chart
 				    series.appIcon = seriesAppIcons[key].icon;
 				    series.appStore = seriesAppIcons[key].store;
+				    series.confidenceScores = confidenceScoresMockData;
 					});
 				}
 
@@ -1935,6 +1917,7 @@
 			    var combinedSeriesIndex = Math.floor(key / 2);
 			    series.appIcon = seriesAppIcons[combinedSeriesIndex].icon;
 			    series.appStore = seriesAppIcons[combinedSeriesIndex].store;
+			    series.confidenceScores = confidenceScoresMockData;
 				});
 			}
 
@@ -2512,7 +2495,8 @@
 				}
 
 				$('.js-toggle-events').change(function(){
-					if($(this).is(":checked")) {
+					$('.js-chart-container__chart-message').addClass("is-showing");
+					if($(this).is(":checked")) {						
 						if(Highcharts.charts[0].refEvents.length == 0) {
 							addEventsToGraph();
 						} else { // otherwise show existing events
@@ -2588,8 +2572,9 @@
 
 			// Add events to the graph function
 			function addEventsToGraph() {
-
+				
 				var chart = Highcharts.charts[0];
+				console.log(chart);
 				var numberOfChartItems = chart.series[0].data.length - 1;
 			  var chartWidth = $(chart.container).width();
 
@@ -3396,7 +3381,60 @@
 				$(this).parents("li").remove();
 			});
 
+			$('.js-follow-app').on("click", function(){
+  			var $this = $(this),
+  					$checkboxDropdown = $('.js-checkbox-dropdown');
+  					$checkboxDropdown.toggle();
+  			if(!$this.hasClass("is-following") && $('.js-checkbox-dropdown').is(":visible")) {
+  				$('.js-checkbox-dropdown li:first-child input[type=checkbox]').trigger("click");
+  				setFollowButton();
+  			}
+  		});
+
+  		$('.js-checkbox-dropdown-close').on("click", function(){
+  			$('.js-checkbox-dropdown').hide();
+  		});
+
+  		$('.js-follow-app-checkbox').on("click", function(){
+  			setFollowButton();
+  		});
+
+  		function setFollowButton() {
+  			setTimeout(function(){
+  				if($(".js-checkbox-dropdown").find("input").is(":checked")) {
+	  				$('.js-follow-app').addClass("is-following");
+	  				$('.js-follow-app').text("Following");
+	  			} else {
+	  				$('.js-follow-app').removeClass("is-following");
+	  				$('.js-follow-app').text("Follow App");
+	  			}
+  			}, 100);
+  		}
 			// end country picker
+
+
+			setTimeout(function(){
+
+				var popupToastContainer = $("<div>").addClass("popup-toast-container js-popup-toast-container");
+				var popupToast = $("<div>").addClass("popup-toast js-popup-toast").html('<h2 class="ref-icon-before--info-no-fill">Please Note</h2><p>Currently estimated data is available for 23 countries only. Further countries are being added continually as our data sets grow</p><p><a href=\'#\'>Don\'t Show This Again</a></p>');
+
+				var popupCloseButton = $("<button>").addClass("ref-icon-after--close").on("click", function(){
+					$(this).parent(".js-popup-toast").addClass("is-closed");
+					setTimeout(function(){
+						popupToastContainer.remove();
+					}, 500);
+				});
+
+				popupToast.append(popupCloseButton);
+				popupToastContainer.append(popupToast);
+				$('body').append(popupToastContainer);
+
+				var popupHeight = popupToast.innerHeight();
+				popupToastContainer.css("z-index", 10000);
+				popupHeight = popupHeight;
+				popupToastContainer.css("top", "calc(100% - " + popupHeight + "px)");
+
+			}, 500);
   	}
 
   	window.onready = initScripts();

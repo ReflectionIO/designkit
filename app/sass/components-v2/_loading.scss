@@ -6,6 +6,10 @@
 	0% { background-position: 0 0; }
 	100% { background-position: 470px 0; }
 }
+@keyframes BackgroundGradientPulse { 
+    0%{background-position:0% 50%}
+    100%{background-position: -200% 50%}
+}
 .page-loading {
 	position: fixed;
 	left: 0;
@@ -120,4 +124,37 @@
 		text-align: center;
 		z-index: 2;
 	}
+}
+.site-loading__panel-left {
+	position: fixed;
+	top: 0;
+	width: 60px;
+	height: 100vh;
+	display: inline-block;
+	overflow: hidden;
+	z-index: 10;
+	float: left;
+	vertical-align: top;
+	border-right: 1px solid #000;
+	background-color: $dark-grey-1;
+}
+.site-loading-container {
+	height: calc(100vh - 50px);
+	overflow: visible;
+	.hamster-wheel,
+	.animation-hamster {
+		top: 41vh;
+	}
+	&.is-loaded {
+		.hamster-wheel,
+		.animation-hamster {
+			opacity: 0;
+			transition: opacity 0.3s;
+		}
+	}
+}
+.icon-chart-loading {
+  position: absolute;
+  top: 63px;
+  left: 63px;
 }

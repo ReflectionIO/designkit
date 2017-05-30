@@ -1,748 +1,102 @@
 .home-section-head {
 	position: relative;
-	height: 422px;
-	background-image: url(images/v2/bg-home-head.jpg);
+	height: 572px;
+	background-image: url(images/bg-home-head.jpg);
 	background-size: cover;
-	@include breakpoint($desktop-wide) {
-		height: 460px;
-	}
 	.page-title {		
-		margin-bottom: 0.74em;
-    padding-right: 50px;
+		margin-bottom: 0.64em;
     text-align: left;
     color: $reflection-white;
-		@include breakpoint(1700px) {
-			font-size: 4.2rem;
-		}
 	}
 	p {
-		margin-bottom: 0.8em;
-		font-size: 1.7rem;
-		line-height: 1.5;
+		margin-bottom: 1.34em;
+		font-size: 1.8rem;
+		line-height: 1.45;
 		letter-spacing: -0.02px;
 		color: $light-grey-2;
 		text-align: left;
-		@include breakpoint($desktop) {
-			font-size: 1.8rem;
-		}
-		@include breakpoint(1700px) {
-			font-size: 2rem;
-		}
-	}
-	a {
-		font-family: $brand-heading-font;
-		font-weight: 600;
-		color: $reflection-purple--dark;
-		.no-touch & {
-			&:hover {
-				color: darken($reflection-purple--dark, 5%);
-			}
-		}
 	}
 }
 .home-section-head__illustration {
 	position: absolute;
-	right: -180px;
-  bottom: 0;
-	height: auto;
+	left: 0;
+  top: 0;
+	height: 572px;
+	width: 100%;
 	display: block;
 	pointer-events: none;
-	source, img {
-		position: relative;
-    left: 0;
-    width: 1220px;
-    min-width: inherit;
-    margin-left: 0;
-    display: block;
+	text-align: center;    
+	img {
+    position: absolute;
+    left: 50%;
+    margin-left: -1364px;    
+    margin-top: -220px;
+    @include breakpoint($desktop) {
+    	margin-left: -1264px;
+    }
   }
-	@include breakpoint($laptop-mid) {
-		left: -50px;
-		right: auto;
-	}
-	@media screen and (min-width: 1100px) {
-		left: 0;
-	}
-	@include breakpoint($desktop) {
-		left: inherit;
-		right: 0;
-    bottom: 0;
-		source, img {
-			width: 1098px;
-		}
-	}
-	@include breakpoint($desktop-wide) {
-		source, img {
-			width: 1237px;
-		}
-	}
 }
 .home-section-head__text {
-	width: 100%;
-	max-width: 460px;
-  padding-top: 68px;
-  padding-left: 0;
-	padding-right: 0;
-  margin: 0 auto 10px 9%;
+	width: 960px;
+  margin-top: 98px;
+  margin-left: 70px;
+  padding-right: calc(960px - 525px);
 	@include breakpoint($desktop) {
-		max-width: 515px;
-		margin-left: 70px;
+		margin: 98px auto;
 	}
-	@include breakpoint(1700px) {
-		max-width: 600px;
-		padding-top: 84px;
-		margin-left: 129px;
+	@include breakpoint($desktop) {
+		width: 1040px;
+		padding-right: calc(1040px - 525px);
 	}
-}
-.home-section-head__sm-text {
-	position: absolute;
-	bottom: 20px;
-	right: 22px;
-	font-family: $brand-heading-font;
-	font-size: 12px;
-	color: $light-grey-2;
-}
-.home-chart-filters-left {
-  margin-bottom: 0;
-	display: inline-block;
-	vertical-align: top;
-}
-.home-chart-filters-container {
-	height: 50px;
-	overflow: visible;
-	border-bottom: 1px solid $divider-grey;	
-	.filter-toggle {
-		float: right;
+	strong {
+		color: $reflection-white;
 	}
-	.form-field--select__dropdown li span,
-	.form-field--select__box span {
-		display: block;
-		text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-	}
-	.heading-style--heading-three {
-		font-size: 1.8rem;
-	}
-}
-.home-live-chart-heading-container {    
-  width: auto;
-	padding-top: 7px;
-	margin-top: 0;
-	margin-right: 30px;
-  display: inline-block;
-	vertical-align: middle;
-}
-.home-live-chart-container {  
-  padding-top: 15px;
-	padding-bottom: 30px;
-	overflow: visible;
-	background-color: $panel-grey;
-	.section-heading {
-    margin-top: 0;    
-    margin-right: 18px;
-    margin-bottom: 0;
-    display: inline-block;
-    vertical-align: middle;
-	}
-	.secondary-filter {
-		width: 15%;
-		max-width: 168px;
-		margin-left: 10px;
-		margin-bottom: 7px;
-		float: right;
-		&:last-child {
-			margin-left: 0;
-		}
-		.form-field--select__box {
-  		min-width: inherit;
-  	}
-	}
-	.home-live-chart__date {
-		margin-top: 1px;
-		display: inline-block;
-		vertical-align: middle;
-    font-family: $brand-heading-font;
-    font-size: 16px;
-	}
-}
-.ref-table.ref-table--home-chart {
-	margin-bottom: 18px;
-	font-size: 1.4rem;
-	th {
-		padding-bottom: 1.3rem;
-		font-size: 1.5rem;
-	}
-	th:first-child {
-		padding-left: 11px;
-	}
-	tbody tr:nth-child(odd),
-	tbody tr:nth-child(even) {
-		border-bottom: 2px solid $panel-grey;
-		background-color: $reflection-white;
-		td {
-			background-color: $reflection-white;
-		}
-	}
-	tbody td {
-		padding-top: 3px;
-    padding-bottom: 5px;    
-	}	
-	td:first-child {
-		padding-left: 11px;
-		font-size: 14px;
-		font-weight: 700;
-		color: $light-grey-1;
-	}
-	.ratings-container {
-		width: 65px;
-		margin-top: 7px;
-		margin-right: 5px;
-		margin-bottom: 0;
-		display: none;
-	  vertical-align: top;
-		+ span {
-			margin: 4px 0 0;
-	    padding: 0;
-	    display: none;
-	    vertical-align: top;
-	    font-size: 12px;
-		}
-	}
-	@include breakpoint($laptop-mid) {
-		.ratings-container {
-			display: inline-block;
-			+ span {
-				display: inline-block;
+	p a {
+		color: $reflection-purple--dark;
+		.no-touchevents & {
+			&:hover {
+				color: $reflection-purple--dark--hover;
 			}
-		}
-	}
-	@media screen and (max-width: $laptop-mid) {
-		tr {
-			height: 40px;
 		}		
-	}
-}
-.ref-table--home-chart__rank-col {
-	width: 42px;
-}
-.ref-table--home-chart__movement-col {
-	width: 52px;
-}
-.ref-table--home-chart__app-col {
-  width: 40%;
-  @include breakpoint($laptop-mid) {
-  	width: 28.4%;
-  }
-}
-.ref-table--home-chart__publisher-col {
-  width: 16.8%;
-}
-.ref-table--home-chart__rating-col {
-  width: 0;
-  @include breakpoint($laptop-mid) {
-  	width: 19%;
-  }  
-}
-.ref-table--home-chart__value-col {
-	width: 45%;
-  @include breakpoint($laptop-mid) {
-  	width: 25%;
-  }  	
-}
-.ref-table.ref-table--home-chart th.ref-table--home-chart__average-head-cell {
-	font-size: 0;
-	@include breakpoint($laptop-mid) {
-		font-size: 1.5rem;
-	}
-}
-.ref-table.ref-table--home-chart th.ref-table--home-chart__publisher-head-cell {
-	font-size: 1.5rem;
-}
-.ref-table.ref-table--home-chart th.ref-table--home-chart__price-head-cell {
-	font-size: 1.5rem;
-}
-.ref-table--home-chart__app-cell {
-	img, a, .icon-container {
-		display: inline-block;
-		vertical-align: middle;
-	}
-	.icon-container {
-		width: 36px;
-		height: 36px;
-		margin-top: 2px;
-		margin-right: 15px;		
-		display: inline-block;
-		background-color: $light-grey-2;
-		border-radius: 5px;
-		@include breakpoint($desktop) {
-			margin-right: 28px;
-		}
-	}
-	img {
-		width: 36px;
-		height: 36px;
-		border-radius: 5px;
-	}
-	a {
-		@include ellipses;
-		width: calc(100% - 70px);
-		font-size: 14px;
-		font-weight: 700;
-		line-height: 1.5;
-		color: $reflection-purple;
-		&:hover {
-			color: $reflection-purple--hover;
-		}
-		@include breakpoint($desktop) {
-			font-size: 16px;
-		}
-	}
-}
-.ref-table--home-chart__revenue-cell--head {
-	padding-right: 21px;	
-	text-align: right;
-	.whats-this-tooltip-icon {
-		margin-top: -2px;
-    margin-left: 2px;
-    vertical-align: top;
-	}
-}
-.ref-table--home-chart__publisher-cell {
-	font-size: 1.4rem;
-	a {
-		color: $reflection-purple;
-		&:hover {
-			color: $reflection-purple--hover;
-		}
-	}
-}
-.ref-table--home-chart__price-cell {
-	font-size: 1.4rem;
-}
-.ref-table--home-chart__movement-cell {	
-	span {
-		padding-top: 9px;
-    display: inline-block;
-    font-size: 14px;
-		font-weight: 700;
-		&:after {
-			top: -6px;
-		}
-	}
-}
-.ref-table--home-chart__revenue-cell {	
-	padding-right: 20px;
-	text-align: right;
-	span {
-		position: relative;
-  	top: 2px;
-		font-weight: 700;
-		font-size: 13px;
-	}
-	span:first-child {
-		margin-right: 5px;
-		font-size: 14px;		
-		color: #363a47;
-	}
-	@include breakpoint($laptop-mid) {
-		span {
-			top: 0;
-			font-size: 14px;
-		}
-		span:first-child {
-			font-size: 16px;
-		}
-	}
-}
-.home-chart-find-button {
-	width: auto;
-	float: left;	
-}
-.home-chart-table__foot {
-	text-align: right;
-}
-.home-chart-see-full-button {
-	width: auto;
-	margin-top: 0;
-	float: right;
-}
-.home-section {
-	min-height: 422px;
-	@include breakpoint($desktop-wide) {
-		min-height: 622px;
-	}
-}
-.home-section--one {
-	padding-top: 79px;
-	background-color: $reflection-white;
-	@include breakpoint($desktop-wide) {
-		padding-top: 147px;
-		.home-section-text-content {
-			padding-top: 1rem;
-		}
-	}
-}
-.home-section--two {
-	min-height: 422px;
-	padding-top: 95px;
-	background-color: $panel-grey;
-	@include breakpoint($desktop-wide) {
-		min-height: 546px;
-		padding-top: 108px;
-		.home-section-content-left {
-			padding-top: 12px;
-			margin-left: 0;
-		}
-	}
-	@include breakpoint($desktop-wide) {
-		padding-top: 145px;
-	}
-}
-.home-section--three {
-	min-height: inherit;
-	padding-top: 50px;
-	.home-section-content-container {
-		padding-top: 53px;
-	}
-	.home-section-content-left {
-		margin-left: 0;
-		padding: 0 0 0 19px;
-	}
-	.home-section-text-content {
-		padding-bottom: 93px;
-	}
-	@include breakpoint($desktop) {
-		padding-top: 65px;
-		.home-section-text-content {
-			padding-bottom: 120px;
-		}
-	}
-	@include breakpoint($desktop-wide) {
-		padding-top: 30px;
-		.home-section-content-container {
-			padding-top: 120px;
-		}
-		.home-section-text-content {
-			padding-bottom: 146px;
-		}
-	}
-}
-.home-section-content-container {
-	position: relative;
-	width: 90%;
-	max-width: 1064px;
-	padding: 0 40px;
-	margin: 0 auto;
-	display: block;
-	flex-direction: column;
-	text-align: left;
-	.home-section--one &,
-	.home-section--three & {
-		flex-direction: column-reverse;
-	}
-	.home-section--two & {
-		overflow: visible;
-	}
-	@include breakpoint($desktop-wide) {
-		max-width: 1284px;
-	}
-}
-.home-section-content-left,
-.home-section-content-right {
-	margin: 0 auto;
-	display: inline-block;
-	vertical-align: middle;
-	@include breakpoint($desktop) {
-		margin: 0;
-	}
-}
-.home-section-content-left {	
-	float: left;
-	padding-top: 19px;
-	margin-left: 2px;
-}
-.home-section-content-right {	
-	overflow: visible;
-	float: right;
-}
-.home-section-text-content {
-	width: 42%;
-	padding-bottom: 73px;
-	h2 {
-		margin-bottom: 0.8em;
-	}
-	p {
-		margin-bottom: 1em;
-		font-size: 16px;
-		line-height: 1.6;
-	}
-	.home-section__more-link {
-		font-family: $brand-heading-font;
-		font-weight: 600;
-		font-size: 16px;
-	}
-	@include breakpoint($desktop) {
-		width: 396px;
-		p {
-			font-size: 18px;
-		}
-	}
-	@include breakpoint($desktop-wide) {
-		width: 495px;
-		h2 {
-			width: 456px;
-			font-size: 3.4rem;
-		}
-		p {
-			font-size: 18px;
-			line-height: 1.8;
-		}
-		.home-section__more-link {
-			font-size: 19px;
-		}
-	}
-}
-.revenue-illustration {
-  width: 45%;
-  margin-bottom: 0;
-  text-align: left;
-  @include breakpoint($desktop) {
-		width: 390px;  	
-  }
-  @include breakpoint($desktop-wide) {
-  	width: 512px;
-  }
-}
-.revenue-tabs-list {
-	margin-bottom: 15px;
-	li {
-		padding: 7px 20px 6px 8px;
-		margin-bottom: 3px;
-		display: block;
-		border-radius: 7px;
-		background-color: $reflection-green;
-		&:nth-child(2) {
-			background-color: $reflection-purple;
-		}
-		&:nth-child(3) {
-			background-color: $reflection-red;
-		}
-		img {
-			width: 46px;
-			height: 46px;
-			margin-right: 13px;
-			display: inline-block;
-			vertical-align: middle;
-			border-radius: 7px;
-		}
-		div {
-			width: 50%;			
-			margin-top: -2px;
-			display: inline-block;
-			vertical-align: middle;
-			@include breakpoint($desktop) {
-				width: 200px;
-			}
-			h2 {
-				margin-bottom: 1px;
-				display: block;
-				font-family: $brand-body-font;
-				font-weight: 700;				
-				font-size: 17.9px;
-				color: $reflection-white;
-				@include ellipses;
-			}
-			h3 {
-				font-family: $brand-body-font;
-				font-weight: 400;
-				font-size: 13px;
-				color: $reflection-white;
-				@include ellipses;
-			}
-		}
-		.numeric-value {
-			padding-top: 15px;
-			display: inline-block;
-			float: right;
-			font-family: $brand-body-font;
-			font-weight: 700;
-			font-size: 18px;
-			color: $reflection-white;
-		}
-		@include breakpoint($desktop-wide) {
-			padding: 10px 20px 10px 8px;
-    	margin-bottom: 5px;
-    	img {
-    		width: 56px;
-    		height: 56px;
-    		border-radius: 11px;
-    	}
-    	div {
-    		h2 {
-    		font-size: 22px;
-	    	}
-	    	h3 {
-	    		font-size: 15px;
-	    	}	    	
-    	}
-    	.numeric-value {
-    		padding-top: 19px;
-    		font-size: 22px;
-    	}  	
-		}
-	}
-}
-.revenue-tabs-list-p {
-	margin-left: 2px;
-	font-family: $brand-heading-font;
-	font-size: 14px;
-	color: $mid-grey-2;
-	span {
-		padding-left: 7px;
-		font-weight: 400;
-	}
-}
-.home-section-notifications-content {
-	width: 50%;
-	max-width: 460px;
-	@include breakpoint($desktop-wide) {
-		max-width: 550px;
-	}
-}
-.notifications-tabs-list {
-	li {		
-		background-color: #fcfdfd;
-	}
-	@include breakpoint($desktop) {
-		li {
-			width: 525px;
-		}
-	}
-}
-.notifications-tabs-list {	
-	margin-bottom: 60px;
-	margin-right: -15px;
-	overflow: visible;
-	text-align: left;
-	li {
-		padding: 15px 15px 20px 20px;
-		margin-bottom: 10px;
-		display: block;
-		border: 1px solid $divider-grey;
-		img {
-			width: 46px;
-			height: 46px;
-			margin-top: 5px;
-			margin-right: 18px;
-			display: inline-block;
-			vertical-align: top;
-			border-radius: 7px;
-		}
-		div {
-			width: calc(100% - 185px);
-			display: inline-block;
-			vertical-align: top;
-
-			h2 {				
-    		margin-bottom: 4px;
-				font-family: $brand-heading-font;
-				font-weight: 600;
-				font-size: 20px;
-				color: $reflection-purple;
-			}
-			h3 {
-				margin: 0;
-				display: inline-block;
-				vertical-align: top;
-				font-family: $brand-heading-font;
-				font-weight: 600;
-				font-size: 16px;
-				color: #29292c;
-			}
-			span {
-				margin: 4px 0 0 11px;
-				display: none;
-				vertical-align: top;
-				font-size: 14px;
-				color: $light-grey-1;
-			}
-			@include breakpoint($laptop-plus) {				
-				span {
-					display: inline-block;
-				}
-			}
-			@include breakpoint($desktop) {
-				width: 290px;
-				h2 {
-					margin-top: -2px;
-					font-size: 24px;
-				}
-				h3 {
-					font-size: 18px;
-				}
-			}
-		}
-		.ref-button--secondary--small {
-			display: inline-block;
-			float: right;		
-		}
-	}
-	@include breakpoint($desktop-wide) {
-		li {
-			width: 590px;
-			padding: 20px 15px 28px 20px;
-			div span {
-				margin-top: 6px;
-			}
-		}
-	}
-}
-.networks-illustration {	
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 47%;
-	max-width: 404px;
-	padding: 0;
-	overflow: visible;
-	@include breakpoint($laptop-plus) {
-		left: 19px;
-		width: 404px;
-	}
-	source, img {		
-		width: 100%;
-		float: left;
-	}
-	@include breakpoint($desktop-wide) {
-		width: 470px;
-		max-width: 470px;
 	}
 }
 .home-section-quote {
 	width: 100%;
-	min-height: 422px;
-	background-image: url(images/v2/bg-home-quote.jpg);
+	min-height: 421px;
+	background-image: url(images/bg-home-quote.jpg);
 	background-size: cover;
 	blockquote {
     position: relative;
     left: 10px;
     width: 80%;
 		max-width: 610px;
-		padding-top: 103px;
+		padding-top: 67px;
 		padding-bottom: 80px;
 		margin: 0 auto;
 		&:before {
 			display: none;
 		}
+		header {
+	    margin-bottom: 1.8rem;
+		}
 		p {
-			margin-bottom: 4.2rem;
 			font-family: $brand-heading-font;
 			font-weight: 700;
 			font-size: 3.4rem;			
 			line-height: 1.3;
 			color: $reflection-white;
 		}
+		.blockquote-image {
+			width: 79px;
+			height: 79px;
+			margin-right: 1.8rem;
+			display: inline-block;
+			vertical-align: middle;
+		}
 		cite {
+			margin-top: 1px;
+			display: inline-block;
+			vertical-align: middle;
 			font-family: $brand-heading-font;
 			font-weight: 400;
 			font-size: 1.6rem;
@@ -756,31 +110,14 @@
 			}
 		}
 	}
-	@include breakpoint($desktop-wide) {
-		min-height: 580px;
-		blockquote {
-			left: -36px;
-			max-width: 785px;
-			padding-top: 160px;
-			p {
-		    font-size: 3.9rem;
-    		line-height: 1.4;
-			}
-			cite {
-				font-size: 1.8rem;
-				span {
-					margin-bottom: 1.9rem;
-    			font-size: 2.6rem;
-				}
-			}
-		}
-	}
 }
 .home-section-trusted-by {
-	padding-top: 7.1rem;
+	padding-top: 5.2rem;
 	padding-bottom: 6.5rem;
 	.section-title {
-		margin-bottom: 4rem;
+		margin-bottom: 2rem;
+		font-size: 2.4rem;
+		font-weight: 400;
 		text-align: center;
 	}
 	.logo-list {
@@ -798,85 +135,148 @@
 			}
 		}
 	}
-	@include breakpoint($desktop-wide) {
-		max-width: 1520px;
-		padding-top: 8rem;
-    padding-bottom: 8rem;
-    margin: 0 auto;
-    .section-title {
-    	margin-bottom: 6rem;
-    	font-size: 3.4rem;
-    }
-	}
-}
-.home-section-featured-in {
-	padding: 1.5rem 40px 4.1rem;
-	background-color: $panel-grey;
-	.section-title {
-		font-weight: 400;
-		font-size: 16px;
-		color: $light-grey-1;
-		text-align: center;
-		margin-bottom: 1rem;
-	}
-	.featured-in-list {
-		display: -webkit-box;
-	  /* @alternate */ display: -ms-flexbox;
-	  /* @alternate */ display: -webkit-flex;
-	  /* @alternate */ display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: space-between;
-		font-size: 0;
-		.no-flexbox & {
-			display: block;
-		}
-		li {
-			display: inline-block;
-			width: auto;
-			.no-flexbox & {
-				width: 16.6%;
-			}
-			img {
-				width: 100%;
-				max-width: 160px;
-			}
-		}
-	}
-	@include breakpoint($desktop-wide) {
-		padding-top: 2rem;
-		.section-title {
-			margin-bottom: 0rem;
-		}
-	}
 }
 .home-section-sign-up {
-	padding-top: 83px;
-  padding-bottom: 90px;
+	padding-top: 48px;
+  padding-bottom: 80px;
 	text-align: center;
 	background-color: #363a47;
 	.section-title {
 		width: 80%;
 		max-width: 590px;
-		margin: 0 auto 3.4rem;
-		font-weight: 400;
-		font-size: 22px;
+		margin: 0 auto 1.6rem;
+		font-weight: 600;
+		font-size: 3.4rem;
 		line-height: 1.5;
 		color: $reflection-white;
-		span {
-			color: $reflection-red;
+	}
+	p {
+		margin: 0 auto 3.7rem;
+		font-size: 1.8rem;
+		line-height: 1.5;
+		color: $light-grey-2;
+	}
+}
+.home-section-head__partners {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -450px;
+	width: 900px;
+	height: 86px;
+	text-align: center;
+	> span {
+		margin-bottom: 13px;
+		display: block;
+		font-size: 13px;
+		color: $light-grey-2;
+	}
+	img {
+		width: 638px;
+	}
+}
+.home-section__title,
+.home-section__title:first-child {
+  margin-top: 4.3rem;
+	font-size: 2.4rem;
+	font-weight: 400;
+	text-align: center;
+	+ .home-section-content-container .home-section-content {
+		padding-top: 75px;
+	}
+}
+.home-section {
+	position: relative;
+	background-color: $reflection-white;
+	text-align: center;
+	&.home-section--right-image {
+		background-color: $panel-grey;
+	}
+}
+.home-section-content-container {
+	position: relative;
+	width: 100%;
+	max-width: 1240px;
+	min-height: 425px;
+  margin: 0 auto;  
+  display: inline-block;  
+  overflow: visible;
+}
+.home-section-content {	
+	width: 35%;
+  padding-top: 109px;
+	padding-bottom: 83px;
+	margin-right: 5%;
+  float: right;
+	overflow: visible;
+	text-align: left;
+	@include breakpoint($laptop-plus) {
+		width: 390px;		
+	}
+	@include breakpoint($desktop) {
+		margin-right: 103px;
+	}
+	> h2 {
+  	margin-bottom: 2.5rem;
+	}
+	p {
+		position: relative;
+    margin-bottom: 2.8rem;
+    overflow: visible;
+    line-height: 1.6;
+	}
+	.ref-icon-before--ref-tick:before {
+		position: absolute;
+    left: -52px;
+    top: 7px;
+    font-size: 29px;    
+    color: $reflection-purple;
+	}
+	.ref-before-coming-soon:before {
+		content: "Coming Soon";
+		position: absolute;
+		left: -108px;
+    padding: 1px 10px 1px 9px;
+    top: 7px;
+		font-family: $brand-heading-font;
+		font-weight: 700;
+		font-size: 12px;
+		color: $reflection-white;
+		background-color: $reflection-green;
+		border-radius: 14px;
+		@include breakpoint($desktop) {
+			left: -121px;
+			font-size: 14px;
 		}
 	}
-	@include breakpoint($desktop-wide) {
-    padding-top: 100px;
-    padding-bottom: 110px;
-		.section-title {
-			max-width: 650px;
-			margin-bottom: 4.3rem;
-			font-size: 28px;
-		}	
-		.ref-button--primary--large {
-			font-size: 1.7rem;
-		}	
+	.home-section--right-image & {
+		margin-left: 12.4%;
+		margin-right: 0;
+		float: left;
+	}
+	.home-section--one & {
+		padding-bottom: 85px;
+	}
+}
+.home-section-image-container {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 43%;
+	height: 367px;
+	margin-bottom: -3px;
+	overflow: visible;
+	@include breakpoint($desktop) {
+		width: 525px;
+	}
+	img {
+		float: right;
+	}
+	.home-section--right-image & {
+		left: inherit;
+		right: 0;
+		img {
+			float: left;
+		}
 	}
 }

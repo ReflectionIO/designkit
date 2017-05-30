@@ -2,11 +2,12 @@
 <html lang="en" class="no-js" ng-app="reflectionApp">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection Design Kit - Buttons</title>
+	<title>Reflection Data Lab, App Reviews Analysis</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" media="screen, projection" type="text/css" href="designkit.css" />
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
 <script>
   WebFont.load({
     google: {
@@ -14,171 +15,6 @@
     }
   });
 </script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
-<style>
-	.page-data-vis-reviews-cloud {
-		height: 1000px;
-		padding-top: 3rem;
-	}
-	.filters-row {
-		text-align: center;
-	}
-	.page-data-vis-reviews-cloud .toggle-container {
-		margin: 0 auto;
-		float: none;
-	}
-	.tag-cloud li {
-		cursor: pointer;
-	}
-	.tag-cloud-container {
-		position: absolute;
-		right: 7%;
-		width: 65%;
-		margin: 3rem auto 6rem;
-		overflow: visible;
-	}
-	.tag-cloud-container .tag-cloud {
-		position: absolute;
-		display: none;
-		overflow: visible;
-	}
-	.tag-cloud-container .tag-cloud li {
-		display: inline-block;
-		font-family: 'Source Sans Pro', sans-serif;
-		padding: 0.3em;
-		overflow: visible;
-		transition: font-size 1s;
-	}
-	.tag-cloud-container .tag-cloud li.positive-average {
-		color: #1bc79f;
-	}
-	.tag-cloud-container .tag-cloud li.average-average {
-		color: #d07423;
-	}
-	.tag-cloud-container .tag-cloud li.negative-average {
-		color: #ff496a;
-	}
-	.tag-cloud--all li {
-		color: #363a47;
-		-webkit-transition: 0.2s color;
-		transition: 0.2s color;
-	}
-	.tag-cloud--all li:hover {
-		color: #727686;
-		-webkit-transition: 0.3s color;
-		transition: 0.3s color;
-	}
-	.tag-cloud-reviews-container {
-		position: absolute;
-		width: 20%;
-		margin-top: 4rem;
-		display: none;
-	}
-	.page-data-vis-reviews-cloud .ratings-container {
-		padding-top: 5px;
-		margin-bottom: 8px;
-		display: inline-block;
-		vertical-align: top;
-	}
-	.rating-number {
-		padding-top: 3px;
-		padding-left: 10px;
-		display: inline-block;
-		vertical-align: top;
-		font-family: "Source Sans Pro", sans-serif;
-		font-size: 16px;
-		line-height: 1.2;
-	}
-	.tag-cloud--positive li {
-		color: #1bc79f;
-	}
-	.tag-cloud--average li {
-		color: #d07423;
-	}
-	.tag-cloud--negative li {
-		color: #ff496a;
-	}	
-	.rating-percentage-container {
-		max-width: 140px;
-		margin-bottom: 15px;
-		border-radius: 2px;
-		background-color: #f2f2f5;
-	}
-	.rating-percentage {
-		width: 0%;
-		height: 4px;
-		transition: width 0.3s;
-	}
-	.rating-percentage--full {
-		width: 100%;
-		background-color: #6d69c5;
-	}
-	.js-five-stars + .rating-percentage-container .rating-percentage {
-		background-color: #1bc79f;
-	}
-	.js-four-stars + .rating-percentage-container .rating-percentage {
-		background-color: #1bc79f;
-	}
-	.js-three-stars + .rating-percentage-container .rating-percentage {
-		background-color: #d07423;
-	}
-	.js-two-stars + .rating-percentage-container .rating-percentage {
-		background-color: #ff496a;
-	}
-	.js-one-stars + .rating-percentage-container .rating-percentage {
-		background-color: #ff496a;
-	}
-	.total-ratings-container {
-		max-width: 140px;
-	}
-	.total-ratings-container h2 {
-		display: inline-block;
-		padding-top: 2px;
-	}
-	.total-ratings-container span {
-		margin-right: 7px;
-		float: right;		
-		font-weight: 600;
-	}
-	.app-title {		
-		position: absolute;
-		padding-top: 1.3rem;
-		text-align: left;
-	}
-	.app-selector {
-		position: absolute;
-		right: 20px;
-		top: 90px;
-		padding: 1rem 1.5rem;
-		width: 200px;
-		height: 38px;		
-		float: right;		
-		text-align: right;
-		cursor: pointer;
-		background-color: #f2f2f5;
-	}
-	.app-selector.is-open {
-		height: auto;
-	}
-	.app-selector li,
-	.app-selector li a {
-		display: block;
-		font-family: "Source Sans Pro", sans-serif;
-		font-size: 15px;
-	}
-	.app-selector li:first-child {
-		padding-bottom: 1.5rem;
-	}
-	.app-selector li {
-		color: #363a47;
-	}	
-	.app-selector li a {
-		padding-bottom: 0.5rem;
-		color: #6d69c5;
-	}
-	.app-selector li a:hover {
-		color: #4b46b5;
-	}
-</style>
 <body>
 	<!--[if (lt IE 9)]>
       <div class="window-warning">
@@ -191,153 +27,385 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
+			<div class="page-lab-base grid-container page-data-vis-reviews-cloud theme-dark">
 
-			<div class="grid-container page-data-vis-reviews-cloud">
-				<h1 class="heading-style--heading-three">Reviews Tag Cloud</h1>
-				<div class="grid_row filters-row">
-					<div class="app-title">
-						<h2 class="heading-style--heading-four js-app-name">Clash of Clans, Supercell</h2>
+				<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
+
+				<div class="grid__row">
+					<div class="grid__row--heading-row__right">
+	 					<div class="sharing-container">
+	 						<div class="addthis_sharing_toolbox"></div>
+	 					</div>
 					</div>
-					<div class="app-selector">
-						<ul>
-							<li>Change selected app</li>
-							<li><a href="data-vis-reviews-cloud.html">Clash of Clans</a></li>
-							<li><a href="data-vis-reviews-cloud.html?id=0">Bloons TD 5</a></li>
-							<li><a href="data-vis-reviews-cloud.html?id=1">Twist</a></li>
-							<li><a href="data-vis-reviews-cloud.html?id=2">Spring Ninja</a></li>
-						</ul>
-					</div>
-					<div class="toggle-container">
-						<div class="filter-toggle">
-							<div class="toggle">
-								<input id="toggle--show-all" data-cloudtotoggle="tag-cloud--all" name="radiogroupname" checked="" type="radio">
-								<label for="toggle--show-all">
-									All
-								</label>
+				</div>
+
+				<div class="data-lab-article-intro">
+					<h1 class="data-lab-article-intro__heading">App Store Reviews Hold the Key to Improving User Sentiment</h1>
+					<p class="data-lab-article-intro__paragraph">The ability to quickly see what people are saying about an app and why is essential in helping weed out issues or exploit opportunities. Enter Reflection’s Review Investigator tool: See the most commonly used words in a snapshot of reviews (positive and negative) then click on them to see the context in which they were used.</p>
+				</div>				
+				
+				<div class="page-data-vis-reviews-cloud__center-column">
+					<div class="page-data-vis-reviews-cloud__main-content-container">
+						<div class="filters-row js-reviews-cloud-filters-row">
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-selected-app">
+								<select class="js-select-box">
+							    <option value="pokemon" selected>Pokémon GO</option>
+							    <option value="supermario">Super Mario Run</option>
+							    <option value="clashofclans">Clash of Clans</option>							    
+							    <option value="whatsapp">WhatsApp Messenger</option>
+							    <option value="snapchat">Snapchat</option>
+							    <option value="facebookmessenger">Facebook Messenger</option>
+							    <option value="tinder">Tinder</option>
+							    <option value="bumble">Bumble</option>
+								</select>
 							</div>
-							<div class="toggle">
-								<input id="toggle--show-positive" data-cloudtotoggle="tag-cloud--positive" name="radiogroupname" type="radio">
-								<label for="toggle--show-positive">
-									4-5 Stars
-								</label>
+
+							<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--medium">
+								<div class="toggle js-toggle">
+									<input id="toggle--show-all" name="radiomedium" data-cloudtotoggle="tag-cloud--all" checked="" type="radio">
+									<label for="toggle--show-all">
+										All Reviews
+									</label>
+								</div>
+								<div class="toggle js-toggle">
+									<input id="toggle--show-five" name="radiomedium" data-cloudtotoggle="tag-cloud--positive" type="radio">
+									<label for="toggle--show-five">
+										4 - 5 Stars
+									</label>
+								</div>
+								<div class="toggle js-toggle">
+									<input id="toggle--show-three" name="radiomedium" data-cloudtotoggle="tag-cloud--average" type="radio">
+									<label for="toggle--show-three">
+										3 Stars
+									</label>
+								</div>
+								<div class="toggle js-toggle">
+									<input id="toggle--show-one" name="radiomedium" data-cloudtotoggle="tag-cloud--negative" type="radio">
+									<label for="toggle--show-one">
+										1 - 2 Stars
+									</label>
+								</div>
 							</div>
-							<div class="toggle">
-								<input id="toggle--show-average" data-cloudtotoggle="tag-cloud--average" name="radiogroupname" type="radio">
-								<label for="toggle--show-average">
-									3 Stars
-								</label>
+							
+							<div class="cloud-key-instruction-container">
+								<h2 class="cloud-key-instruction">Click a word to read reviews featuring it</h2>
+								<h3 class="cloud-key"><span class="size-key">Siz<b>e</b></span> = Frequency</h3>
+								<h3 class="cloud-key"><span class="colour-key">Colour</span> = Sentiment</h3>
 							</div>
-							<div class="toggle">
-								<input id="toggle--show-negative" data-cloudtotoggle="tag-cloud--negative" name="radiogroupname" type="radio">
-								<label for="toggle--show-negative">
-									1-2 Stars
-								</label>
+						</div>
+
+						<div>
+							<aside class="page-data-vis-reviews-cloud__app-column">
+								<div class="page-data-vis-reviews-cloud__app-column__app-icon-container">
+									<img 
+										src="images/data-vis-reviews-cloud-app-icon-placeholder.jpg"
+										alt="App Name"
+										class="js-app-icon" />
+								</div>
+								<h2 class="page-data-vis-reviews-cloud__app-name heading-style--heading-three js-app-name">App Title Lorem Ipsum</h2>
+								<h3 class="page-data-vis-reviews-cloud__developer-name js-developer-name">Developer Name</h3>
+
+								<div class="page-data-vis-reviews-cloud__reviews-widget">
+									<h4>Times <span class="js-keyword-hover">'Keyword'</span> Appears in Recent Reviews</h4>
+									<h5>Total (UK): <span class="js-all-stars">-</span></h5>
+									<ul>
+										<li>
+											<span class="number-of-stars-label ref-icon-after--star">5</span>
+											<span class="rating-number js-five-stars"></span>
+											<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+											<span class="rating-percentage-text js-five-stars-percent">%</span>
+										</li>
+										<li>
+											<span class="number-of-stars-label ref-icon-after--star">4</span>
+											<span class="rating-number js-four-stars"></span>
+											<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+											<span class="rating-percentage-text js-four-stars-percent">%</span>
+										</li>
+										<li>
+											<span class="number-of-stars-label ref-icon-after--star">3</span>
+											<span class="rating-number js-three-stars"></span>
+											<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+											<span class="rating-percentage-text js-three-stars-percent">%</span>
+										</li>
+										<li>
+											<span class="number-of-stars-label ref-icon-after--star">2</span>
+											<span class="rating-number js-two-stars"></span>
+											<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+											<span class="rating-percentage-text js-two-stars-percent">%</span>
+										</li>
+										<li>
+											<span class="number-of-stars-label ref-icon-after--star">1</span>
+											<span class="rating-number js-one-stars"></span>
+											<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+											<span class="rating-percentage-text js-one-stars-percent">%</span>
+										</li>
+									</ul>
+								</div>
+							</aside>
+
+							<div class="page-data-vis-reviews-cloud__cloud-section">
+								<div class="tag-cloud-container">
+									<ul class="tag-cloud tag-cloud--all"></ul>
+									<ul class="tag-cloud tag-cloud--positive"></ul>
+									<ul class="tag-cloud tag-cloud--average"></ul>
+									<ul class="tag-cloud tag-cloud--negative"></ul>
+									<div class="reviews-content-container js-reviews-content-container">
+										<h2 class="heading-style--heading-five">Latest Reviews Featuring <span class="reviews-content-container__keyword js-keyword">...</span></h2>
+										<div class="ratings-list js-custom-scrollbar" data-mcs-theme="minimal-dark">
+											<ul class="js-reviews-content">
+												<li>
+													<h2 class="reviews-content__title">Click a term above to see the reviews it appears in</h2>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="feedback-container">
+											<svg x="0px" y="0px"
+	     viewBox="0 0 58.4 99.6" enable-background="new 0 0 58.4 99.6" xml:space="preserve">
+	<path fill="#6D69C5" d="M51.6,70.4c0,12.3-10,22.4-22.4,22.4S6.8,82.8,6.8,70.4H51.6z" class="lab-bottle-liquid" />
+	<path fill="#5A5A68" d="M40.6,43.5V8.8h1.7c2.4,0,4.4-2,4.4-4.4S44.7,0,42.3,0H16.1c-2.4,0-4.4,2-4.4,4.4s2,4.4,4.4,4.4h1.1v35
+	    C6.7,48.5,0,58.8,0,70.4c0,16.1,13.1,29.2,29.2,29.2c16.1,0,29.2-13.1,29.2-29.2C58.4,58.7,51.3,48,40.6,43.5z M16.1,3h26.1
+	    c0.8,0,1.4,0.6,1.4,1.4c0,0.7-0.5,1.2-1.1,1.4H15.9c-0.6-0.1-1.1-0.7-1.1-1.4C14.7,3.6,15.4,3,16.1,3z M29.2,96.6
+	    C14.8,96.6,3,84.9,3,70.4c0-10.7,6.4-20.2,16.3-24.3l0.9-0.4V7h17.3v38.6l1,0.4c10.1,3.8,16.9,13.7,16.9,24.5
+	    C55.4,84.9,43.7,96.6,29.2,96.6z" />
+	</svg>
+											<div>
+												<h2 class="heading-style--heading-three">Would You Use This Feature?</h2>
+												<p>Let us know with this <a href="">quick 2 question survey</a> so we can build it with your help.</p>
+											</div>
+										</div>
+
+										<div class="idc-comments-container">
+											<script>
+												var idcomments_acct = 'c4a0cfaab22f16bc5e847b0d1398bb91';
+												var idcomments_post_id;
+												var idcomments_post_url;
+												</script>
+												<span id="IDCommentsPostTitle" style="display:none"></span>
+											<script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+										</div>
+
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="tag-cloud-reviews-container">
-					<h2 class="heading-style--heading-five">Ratings Frequency</h2>
-					<ul>
-						<li>
-							<div class="ratings-container"><div class="ratings-full" style="width:100%"></div></div>
-							<span class="rating-number js-five-stars"></span>
-							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
-						</li>
-						<li>
-							<div class="ratings-container"><div class="ratings-full" style="width:80%"></div></div>
-							<span class="rating-number js-four-stars"></span>
-							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
-						</li>
-						<li>
-							<div class="ratings-container"><div class="ratings-full" style="width:60%"></div></div>
-							<span class="rating-number js-three-stars"></span>
-							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
-						</li>
-						<li>
-							<div class="ratings-container"><div class="ratings-full" style="width:40%"></div></div>
-							<span class="rating-number js-two-stars"></span>
-							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
-						</li>
-						<li>
-							<div class="ratings-container"><div class="ratings-full" style="width:20%"></div></div>
-							<span class="rating-number js-one-stars"></span>
-							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
-						</li>
-						<li class="total-ratings-container">
-							<h2 class="heading-style--heading-six">Total</h2>
-							<span class="rating-number js-all-stars"></span>
-							<div class="rating-percentage-container"><div class="rating-percentage rating-percentage--full"></div></div>
-						</li>
-					</ul>
-				</div>
-				<div class="tag-cloud-container">
-					<ul class="tag-cloud tag-cloud--all"></ul>
-					<ul class="tag-cloud tag-cloud--positive"></ul>
-					<ul class="tag-cloud tag-cloud--average"></ul>
-					<ul class="tag-cloud tag-cloud--negative"></ul>
-				</div>
 			</div>
-
 		</div>
 	</div>
 
-	<div class="grid-container" id="js-component-import--global-footer"></div>
+	<div class="grid-container global-footer-dark global-footer-dark--lab" id="js-component-import--global-footer"></div>
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
 
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+ 	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+	<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
   <script>
-		$(document).on("ready", function(){
+		
+		var rawReviews = {};
 
-		  var qs = (function(a) {
-		    if (a == "") return {};
-		    var b = {};
-		    for (var i = 0; i < a.length; ++i)
-		    {
-		        var p=a[i].split('=', 2);
-		        if (p.length == 1)
-		            b[p[0]] = "";
-		        else
-		            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-		    }
-		    return b;
-			})(window.location.search.substr(1).split('&'));
+		if (!String.prototype.splice) {
+		    String.prototype.splice = function(start, delCount, newSubStr) {
+		        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+		    };
+		}
 
-			if(qs["id"]) {
-				if(qs["id"] == 0) {
-					$('.js-app-name').text("Bloons TD 5, Ninja Kiwi");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-bloons.js")); // load bloons data
-				} else if(qs["id"] == 1) {
-					$('.js-app-name').text("Twist, Ketchapp");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-twist.js")); // load twist data
-				} else if(qs["id"] == 2) {
-					$('.js-app-name').text("Spring Ninja, Ketchapp");
-					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-spring-ninja.js")); // load spring ninja data
-				}
-			} else {
-				$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-coc.js")); // load default
-			}		  
+		function shuffle(array) {
+		  var currentIndex = array.length, temporaryValue, randomIndex;
 
-		  function shuffle(array) {
-			  var currentIndex = array.length, temporaryValue, randomIndex;
+		  // While there remain elements to shuffle...
+		  while (0 !== currentIndex) {
 
-			  // While there remain elements to shuffle...
-			  while (0 !== currentIndex) {
+		    // Pick a remaining element...
+		    randomIndex = Math.floor(Math.random() * currentIndex);
+		    currentIndex -= 1;
 
-			    // Pick a remaining element...
-			    randomIndex = Math.floor(Math.random() * currentIndex);
-			    currentIndex -= 1;
+		    // And swap it with the current element.
+		    temporaryValue = array[currentIndex];
+		    array[currentIndex] = array[randomIndex];
+		    array[randomIndex] = temporaryValue;
+		  }
 
-			    // And swap it with the current element.
-			    temporaryValue = array[currentIndex];
-			    array[currentIndex] = array[randomIndex];
-			    array[randomIndex] = temporaryValue;
-			  }
+		  return array;
+		}
 
-			  return array;
+		function populateReviewsContent(term) {
+			// find reviews that contain the term
+			$('.js-reviews-content-container').show();
+			
+			var currentCloud = $('.js-reviews-cloud-filters-row .filter-toggle input:checked').attr("data-cloudtotoggle");
+			var filterByRating = null;
+			var filterByRatingMin = null;
+			var filterByRatingMax = null;
+			if(currentCloud == "tag-cloud--positive") {
+				filterByRating = true;
+				filterByRatingMin = 4;
+				filterByRatingMax = 5;
+			} else if(currentCloud == "tag-cloud--average") {
+				filterByRating = true;
+				filterByRatingMin = 3;
+				filterByRatingMax = 3;
+			} else if(currentCloud == "tag-cloud--negative") {
+				filterByRating = true;
+				filterByRatingMin = 0;
+				filterByRatingMax = 2;
 			}
+			
+			var reviewsToOutput = [];
+			var counter = 0;
+			for(var i = 0; i < rawReviews.length; i++) {
+				if(rawReviews[i].content.toLowerCase().indexOf(term.toLowerCase()) > -1) {
+					if(filterByRating == null) {
+						reviewsToOutput.push(rawReviews[i]);
+						counter++;
+					} else {
+						if(rawReviews[i].rating >= filterByRatingMin && rawReviews[i].rating <= filterByRatingMax) {
+							reviewsToOutput.push(rawReviews[i]);
+							counter++;
+						}
+					}
+				}
+			}
+
+			console.log("counter = "+ counter);
+			
+			$('.js-reviews-content').empty();
+			$('.js-keyword').text("'" + term + "'");
+
+			for(var i = 0; i < reviewsToOutput.length; i++) {
+
+				var contentString = reviewsToOutput[i].content;
+				var indexOfString = reviewsToOutput[i].content.toLowerCase().indexOf(term);
+				var wordLength = term.length;
+				var formattedContent = contentString.splice(indexOfString + wordLength, 0, "</strong>");
+				formattedContent = formattedContent.splice(indexOfString, 0, "<strong>");
+
+				var ratingsContainer = $("<div>").addClass("ratings-container").append($("<div>").addClass("ratings-full").css("width", ((reviewsToOutput[i].rating / 5) * 100) + "%"));
+				var reviewTitle = $("<h2>").addClass("reviews-content__title").text(reviewsToOutput[i].title);
+				var reviewDate = new Date(reviewsToOutput[i].date);
+				var formattedReviewDate = reviewDate.getDate() + "/" + (reviewDate.getMonth()+1) + "/" + reviewDate.getFullYear();
+				var reviewDate = $("<span>").addClass("reviews-content__date").text(formattedReviewDate);
+				var reviewContent = $("<p>").html(formattedContent);
+
+				$('.js-reviews-content').append($("<li>").append(ratingsContainer)
+																									.append(reviewTitle)
+																									.append(reviewDate)
+																									.append(reviewContent)
+																				);
+			}
+		}
+
+		var FilterDropDown = function($domElement) {
+
+			var $thisSelectBox = $domElement,
+					$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
+					$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+
+			$thisSelectBox.find('option').each(function(){
+				
+				var $thisOption = $(this),
+						selectedClass = "";
+
+						if($($thisOption).is(":selected")) {
+							if($thisOption.val() != "") {
+
+								selectedClass = "is-selected";
+								var triggerImg = $("<img>").attr("src", "images/data-vis/reviews/app-icon-" + $thisOption.val() + ".jpg");
+								var triggerText = $("<b>").text($thisOption.text());
+								$currentValue.append(triggerImg).append(triggerText);
+							}
+						}
+
+				if($thisOption.val() != "") {
+
+					var accessClass = "";
+					if($thisOption.data("access")) {
+						accessClass = "ref-icon-after--key";
+					}
+
+					var $newListItem = $("<li>");
+					$dropDownContainer.append($newListItem
+																				.addClass("js-dropdown-option")
+																				.addClass(selectedClass)
+																				.addClass(accessClass)
+																				.attr('data-value', $thisOption.attr('value'))
+																				.on("click", function() {
+																					var $this = $(this);
+																					loadReviews($this.attr('data-value'));
+																					loadRawReviews("js/data-vis/reviews-raw-" + $this.attr('data-value') + ".json");
+																					closeAllFilters();
+
+																					$('.js-dropdown-option.is-selected').removeClass("is-selected");
+																					$this.addClass("is-selected");
+																					$('.js-dropdown-trigger').empty();
+																					var triggerImg = $("<img>").attr("src", "images/data-vis/reviews/app-icon-" + $thisOption.attr('value') + ".jpg");
+																					var triggerText = $("<b>").text($thisOption.text());
+																					$('.js-dropdown-trigger').append(triggerImg).append(triggerText);
+																				})
+																				.append($("<img>").attr("src", "images/data-vis/reviews/app-icon-" + $thisOption.attr('value') + ".jpg"))
+																				.append($("<span>").text($thisOption.text()))
+																	);
+				}
+			});
+
+			$currentValue.on("click", function(){
+				if(!$thisSelectBox.attr("disabled")) {
+					var $parentDiv = $thisSelectBox.parent("div");
+					if($parentDiv.hasClass("is-open")) {
+						$dropDownContainer.toggle();	
+						$parentDiv.toggleClass("is-open");
+					} else {
+						setTimeout(function(){
+							if(!$parentDiv.hasClass("is-open")) {
+								closeAllFilters();
+							}
+							var parentWidth = $parentDiv.width();
+							var parentHeight = $parentDiv.height();
+							$dropDownContainer.css({"min-width": parentWidth + "px"});
+							$dropDownContainer.toggle();	
+							$parentDiv.toggleClass("is-open");
+						}, 50); // allow time for instance.closeAllFilters() to close other filters first
+					}
+				}
+			});
+
+			if($currentValue.text() == "") {
+				$thisSelectBox.parent("div").addClass("nothing-selected");
+			}
+
+			$thisSelectBox.parent("div").append($currentValue)
+																	.append($dropDownContainer);
+		}
+
+		function closeAllFilters() {
+			$('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
+			$('.js-secondary-filter.is-open').removeClass("is-open");
+		}
+
+		function scrollToReviews() {
+			var scrollTo = $('.js-reviews-content-container').offset().top;
+			$("html, body").animate({scrollTop: scrollTo - 100}, '500');
+		}
+
+		function handleData(cloudData) {
+
+			$('.tag-cloud--all').empty();			
+			$('.tag-cloud--positive').empty();
+			$('.tag-cloud--average').empty();
+			$('.tag-cloud--negative').empty();
+			$('.js-reviews-content').empty().append($('<li><h2 class="reviews-content__title">Click a term above to see the reviews it appears in</h2></li>'));
 		
 			var minFontSize = 1,
 					maxFontSize = 7;
@@ -371,28 +439,44 @@
 										.data("index", t)
 										.data("total", total)
 										.data("average", topResultsArray[t].freq.average_rating)
+										.attr("data-term", topResultsArray[t].term)
 										.on("mouseenter", function(){
+											var thisTerm = $(this).text();
+											$('.js-keyword-hover').text("'" + thisTerm + "'");
+
 											var thisIndex = $(this).data("index");
 											var totalFromTag = $(this).data("total");
-
+											
+											var percFiveStars = Math.round((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
-											$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_5stars / totalFromTag * 100 + "%");
+											$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFiveStars + "%");
+											$('.js-five-stars-percent').text(percFiveStars + "%");
 
+											var percFourStars = Math.round((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
-											$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_4stars / totalFromTag * 100 + "%");
+											$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFourStars + "%");
+											$('.js-four-stars-percent').text(percFourStars + "%");
 											
+											var percThreeStars = Math.round((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
-											$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_3stars / totalFromTag * 100 + "%");
+											$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percThreeStars + "%");
+											$('.js-three-stars-percent').text(percThreeStars + "%");
 											
+											var percTwoStars = Math.round((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
-											$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_2stars / totalFromTag * 100 + "%");
+											$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percTwoStars + "%");
+											$('.js-two-stars-percent').text(percTwoStars + "%");
 											
+											var percOneStars = Math.round((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 											$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
-											$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_1stars / totalFromTag * 100 + "%");
+											$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percOneStars + "%");
+											$('.js-one-stars-percent').text(percOneStars + "%");
 											
 											$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
-
-											$('.tag-cloud-reviews-container').show();
+										})
+										.on("click", function(){											
+											populateReviewsContent($(this).attr("data-term"));
+											scrollToReviews();
 										})
 				);
 
@@ -415,28 +499,45 @@
 												.data("font-size", fontSize + "rem")
 												.data("index", t)
 												.data("total", total)
+												.attr("data-term", topResultsArray[t].term)
 												.on("mouseenter", function(){
+													var thisTerm = $(this).text();
+													$('.js-keyword-hover').text("'" + thisTerm + "'");
+
 													var thisIndex = $(this).data("index");
 													var totalFromTag = $(this).data("total");
 
+													var percFiveStars = Math.round((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
-													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_5stars / totalFromTag * 100 + "%");
+													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFiveStars + "%");
+													$('.js-five-stars-percent').text(percFiveStars + "%");
 
+													var percFourStars = Math.round((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
-													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_4stars / totalFromTag * 100 + "%");
+													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFourStars + "%");
+													$('.js-four-stars-percent').text(percFourStars + "%");
 													
+													var percThreeStars = Math.round((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
-													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_3stars / totalFromTag * 100 + "%");
+													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percThreeStars + "%");
+													$('.js-three-stars-percent').text(percThreeStars + "%");
 													
+													var percTwoStars = Math.round((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
-													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_2stars / totalFromTag * 100 + "%");
+													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percTwoStars + "%");
+													$('.js-two-stars-percent').text(percTwoStars + "%");
 													
+													var percOneStars = Math.round((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
-													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_1stars / totalFromTag * 100 + "%");
+													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percOneStars + "%");
+													$('.js-one-stars-percent').text(percOneStars + "%");
 													
 													$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
 
-													$('.tag-cloud-reviews-container').show();
+												})
+												.on("click", function(){
+													populateReviewsContent($(this).attr("data-term"));
+													scrollToReviews();
 												})
 						);
 				}
@@ -452,28 +553,46 @@
 												.data("font-size", fontSize + "rem")
 												.data("index", t)
 												.data("total", total)
+												.attr("data-term", topResultsArray[t].term)
 												.on("mouseenter", function(){
+
+													var thisTerm = $(this).text();
+													$('.js-keyword-hover').text("'" + thisTerm + "'");
+
 													var thisIndex = $(this).data("index");
 													var totalFromTag = $(this).data("total");
 
+													var percFiveStars = Math.round((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
-													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_5stars / totalFromTag * 100 + "%");
+													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFiveStars + "%");
+													$('.js-five-stars-percent').text(percFiveStars + "%");
 
+													var percFourStars = Math.round((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
-													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_4stars / totalFromTag * 100 + "%");
+													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFourStars + "%");
+													$('.js-four-stars-percent').text(percFourStars + "%");
 													
+													var percThreeStars = Math.round((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
-													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_3stars / totalFromTag * 100 + "%");
+													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percThreeStars + "%");
+													$('.js-three-stars-percent').text(percThreeStars + "%");
 													
+													var percTwoStars = Math.round((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
-													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_2stars / totalFromTag * 100 + "%");
+													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percTwoStars + "%");
+													$('.js-two-stars-percent').text(percTwoStars + "%");
 													
+													var percOneStars = Math.round((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
-													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_1stars / totalFromTag * 100 + "%");
+													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percOneStars + "%");
+													$('.js-one-stars-percent').text(percOneStars + "%");
 													
 													$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
 
-													$('.tag-cloud-reviews-container').show();
+												})
+												.on("click", function(){
+													populateReviewsContent($(this).attr("data-term"));
+													scrollToReviews();
 												})
 						);
 				}
@@ -489,28 +608,46 @@
 												.data("font-size", fontSize + "rem")
 												.data("index", t)
 												.data("total", total)
+												.attr("data-term", topResultsArray[t].term)
 												.on("mouseenter", function(){
+
+													var thisTerm = $(this).text();
+													$('.js-keyword-hover').text("'" + thisTerm + "'");
+
 													var thisIndex = $(this).data("index");
 													var totalFromTag = $(this).data("total");
 
+													var percFiveStars = Math.round((topResultsArray[thisIndex].freq.freq_5stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
-													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_5stars / totalFromTag * 100 + "%");
+													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFiveStars + "%");
+													$('.js-five-stars-percent').text(percFiveStars + "%");
 
+													var percFourStars = Math.round((topResultsArray[thisIndex].freq.freq_4stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
-													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_4stars / totalFromTag * 100 + "%");
+													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percFourStars + "%");
+													$('.js-four-stars-percent').text(percFourStars + "%");
 													
+													var percThreeStars = Math.round((topResultsArray[thisIndex].freq.freq_3stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
-													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_3stars / totalFromTag * 100 + "%");
+													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percThreeStars + "%");
+													$('.js-three-stars-percent').text(percThreeStars + "%");
 													
+													var percTwoStars = Math.round((topResultsArray[thisIndex].freq.freq_2stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
-													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_2stars / totalFromTag * 100 + "%");
+													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percTwoStars + "%");
+													$('.js-two-stars-percent').text(percTwoStars + "%");
 													
+													var percOneStars = Math.round((topResultsArray[thisIndex].freq.freq_1stars / topResultsArray[thisIndex].freq.freq_overall) * 100);
 													$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
-													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_1stars / totalFromTag * 100 + "%");
+													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", percOneStars + "%");
+													$('.js-one-stars-percent').text(percOneStars + "%");
 													
 													$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
 
-													$('.tag-cloud-reviews-container').show();
+												})
+												.on("click", function(){
+													populateReviewsContent($(this).attr("data-term"));
+													scrollToReviews();
 												})
 						);
 				}
@@ -518,26 +655,8 @@
 
 
 			$('.tag-cloud--all').on("mouseleave", function(){
-				$('.tag-cloud-reviews-container').hide();
+				//TODO empty ratings widget
 			});
-
-			// for(var t = 0; t < cloudDataPositive.length; t++) {
-			// 	cloudDataPositive[t].freq = Math.floor((Math.random() * 100) + 1);
-			// 	var fontSize = cloudDataPositive[t].freq / 100 * Math.floor((Math.random() * maxFontSize) + minFontSize) + 1;
-			// 	$('.tag-cloud--positive').append($("<li>").text(cloudDataPositive[t].text).data("font-size", fontSize + "rem"));
-			// }
-
-			// for(var t = 0; t < cloudDataAverage.length; t++) {
-			// 	cloudDataAverage[t].freq = Math.floor((Math.random() * 100) + 1);
-			// 	var fontSize = cloudDataAverage[t].freq / 100 * Math.floor((Math.random() * maxFontSize) + minFontSize) + 1;
-			// 	$('.tag-cloud--average').append($("<li>").text(cloudDataAverage[t].text).data("font-size", fontSize + "rem"));
-			// }
-
-			// for(var t = 0; t < cloudDataNegative.length; t++) {
-			// 	cloudDataNegative[t].freq = Math.floor((Math.random() * 100) + 1);
-			// 	var fontSize = cloudDataNegative[t].freq / 100 * Math.floor((Math.random() * maxFontSize) + minFontSize) + 1;
-			// 	$('.tag-cloud--negative').append($("<li>").text(cloudDataNegative[t].text).data("font-size", fontSize + "rem"));
-			// }
 
 			setTimeout(function() {
 				$('.tag-cloud li').each(function(){
@@ -545,27 +664,115 @@
 					$(this).css("font-size", $this.data("font-size"));
 				});
 			}, 500);
+		}
 
-			$('.toggle input').each(function(){				
+		function populateAppContent(appName, devName, appIconUrl, dataUrl, appLink) {
+			$.getJSON(dataUrl, function( data ) {
+			  handleData(data.data);
+			});
+			
+			var appLink = $("<a>").attr("href", appLink).text(appName);
+			$('.js-app-name').html(appLink);
+			$('.js-developer-name').text(devName);
+			$('.js-app-icon').attr("src", appIconUrl);
+		}
+
+		function loadReviews(appId) {
+			if(appId == "8ballpool") {					
+					
+				populateAppContent("8 Ball Pool", "Miniclip", "images/data-vis/reviews/app-icon-8ballpool.jpg", "js/data-vis/review-cloud-8-ball.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22543186831%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+				
+			} else if(appId == "reigns") {
+				
+				populateAppContent("Reigns", "Devolver Digital", "images/data-vis/reviews/app-icon-reigns.jpg", "js/data-vis/review-cloud-reigns.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%221114127463%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+				
+			} else if(appId == "facebookmessenger") {
+				
+				populateAppContent("Facebook Messenger", "Facebook Inc.", "images/data-vis/reviews/app-icon-facebookmessenger.jpg", "js/data-vis/review-cloud-facebook-messenger.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22454638411%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "topeleven") {
+
+				populateAppContent("Top Eleven 2017", "Nordeus", "images/data-vis/reviews/app-icon-topeleven.jpg", "js/data-vis/review-cloud-top-eleven.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22459035295%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "pokemon") {
+
+				populateAppContent("Pokémon GO", "Niantic, Inc.", "images/data-vis/reviews/app-icon-pokemon.jpg", "js/data-vis/review-cloud-pokemon.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%221094591345%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "supermario") {
+
+					populateAppContent("Super Mario Run", "Nintendo Co., Ltd", "images/data-vis/reviews/app-icon-supermario.jpg", "js/data-vis/review-cloud-super-mario.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%221145275343%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "scorehero") {
+
+					populateAppContent("Score Hero!", "First Touch Games Ltd.", "images/data-vis/reviews/app-icon-scorehero.jpg", "js/data-vis/review-cloud-score-hero.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22847492141%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "hill-climb-2") {
+
+					populateAppContent("Hill Climb Racing 2", "Fingersoft", "images/data-vis/reviews/app-icon-hillclimb2.jpg", "js/data-vis/review-cloud-hill-climb-2.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%221146465836%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "tinder") {
+
+					populateAppContent("Tinder", "Tinder Inc.", "images/data-vis/reviews/app-icon-tinder.jpg", "js/data-vis/review-cloud-tinder.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22547702041%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "clashofclans") {
+
+					populateAppContent("Clash of Clans", "Supercell", "images/data-vis/reviews/app-icon-clashofclans.jpg", "js/data-vis/review-cloud-clashofclans.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22529479190%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+ 
+			} else if(appId == "whatsapp") {
+
+					populateAppContent("WhatsApp Messenger", "WhatsApp Inc.", "images/data-vis/reviews/app-icon-whatsapp.jpg", "js/data-vis/review-cloud-whatsapp.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22310633997%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "snapchat") {
+
+					populateAppContent("Snapchat", "Snap, Inc.", "images/data-vis/reviews/app-icon-snapchat.jpg", "js/data-vis/review-cloud-snapchat.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22447188370%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			} else if(appId == "bumble") {
+
+					populateAppContent("Bumble", "Bumble Holding Limited", "images/data-vis/reviews/app-icon-bumble.jpg", "js/data-vis/review-cloud-bumble.json", "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22930441707%22,%22endDate%22:%221488153600000%22,%22startDate%22:%221485475200000%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");
+
+			}
+		}
+
+		function loadRawReviews(dataUrl) {
+			$.getJSON(dataUrl, function( data ) {
+			  rawReviews = data.data;
+			});
+		}
+
+		$(window).on("load", function(){
+		  new Page();
+			
+			loadReviews("pokemon");
+			loadRawReviews("js/data-vis/reviews-raw-pokemon.json");
+
+			$('.js-toggle input').each(function(){				
 				var cloudToToggle = $(this).data("cloudtotoggle");
 				if($(this).is(":checked")) {
 					$('.' + cloudToToggle).fadeIn();
 				} else {
-					$('.' + cloudToToggle).fadeOut();
+					$('.' + cloudToToggle).hide();
 				}
 			});
 
-			$('.toggle input').change(function(){
+			$('.js-toggle input').change(function(){
 				var cloudToToggle = $(this).data("cloudtotoggle");
 				if($(this).is(":checked")) {
-					$('.tag-cloud').fadeOut();
+					$('.tag-cloud').hide();
 					$('.' + cloudToToggle).fadeIn();
 				}
 			});
 
-			$('.app-selector').click(function(){
-				$(this).toggleClass("is-open");
+			$('.js-dropdown-selected-app .js-select-box').each(function() {
+  			new FilterDropDown($(this), "dataOverview");
+  		});
+
+  		$("html").on("click", function(e){
+				if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
+					closeAllFilters();
+				}
 			});
 		});
+
   </script>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script> 
 </body>

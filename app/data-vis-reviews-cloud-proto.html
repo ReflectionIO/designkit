@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Design Kit - Buttons</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<style>
+	.page-data-vis-reviews-cloud {
+		height: 1000px;
+		padding-top: 3rem;
+	}
+	.filters-row {
+		text-align: center;
+	}
+	.page-data-vis-reviews-cloud .toggle-container {
+		margin: 0 auto;
+		float: none;		
+	}
+	.page-data-vis-reviews-cloud .toggle-container label {
+		font-size: 10px;
+	}
+	.tag-cloud li {
+		cursor: pointer;
+	}
+	.tag-cloud-container {
+		position: absolute;
+		right: 7%;
+		width: 65%;
+		margin: 3rem auto 6rem;
+		overflow: visible;
+	}
+	.tag-cloud-container .tag-cloud {
+		position: absolute;
+		display: none;
+		overflow: visible;
+	}
+	.tag-cloud-container .tag-cloud li {
+		display: inline-block;
+		font-family: 'Source Sans Pro', sans-serif;
+		padding: 0.3em;
+		overflow: visible;
+		transition: font-size 1s;
+	}
+	.tag-cloud-container .tag-cloud li.positive-average {
+		color: #1bc79f;
+	}
+	.tag-cloud-container .tag-cloud li.average-average {
+		color: #d07423;
+	}
+	.tag-cloud-container .tag-cloud li.negative-average {
+		color: #ff496a;
+	}
+	.tag-cloud--all li {
+		color: #363a47;
+		-webkit-transition: 0.2s color;
+		transition: 0.2s color;
+	}
+	.tag-cloud--all li:hover {
+		color: #727686;
+		-webkit-transition: 0.3s color;
+		transition: 0.3s color;
+	}
+	.tag-cloud-reviews-container {
+		position: absolute;
+		width: 20%;
+		margin-top: 4rem;
+		display: none;
+	}
+	.page-data-vis-reviews-cloud .ratings-container {
+		padding-top: 5px;
+		margin-bottom: 8px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.rating-number {
+		padding-top: 3px;
+		padding-left: 10px;
+		display: inline-block;
+		vertical-align: top;
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 16px;
+		line-height: 1.2;
+	}
+	.tag-cloud--positive li {
+		color: #1bc79f;
+	}
+	.tag-cloud--average li {
+		color: #d07423;
+	}
+	.tag-cloud--negative li {
+		color: #ff496a;
+	}	
+	.rating-percentage-container {
+		max-width: 140px;
+		margin-bottom: 15px;
+		border-radius: 2px;
+		background-color: #f2f2f5;
+	}
+	.rating-percentage {
+		width: 0%;
+		height: 4px;
+		transition: width 0.3s;
+	}
+	.rating-percentage--full {
+		width: 100%;
+		background-color: #6d69c5;
+	}
+	.js-five-stars + .rating-percentage-container .rating-percentage {
+		background-color: #1bc79f;
+	}
+	.js-four-stars + .rating-percentage-container .rating-percentage {
+		background-color: #1bc79f;
+	}
+	.js-three-stars + .rating-percentage-container .rating-percentage {
+		background-color: #d07423;
+	}
+	.js-two-stars + .rating-percentage-container .rating-percentage {
+		background-color: #ff496a;
+	}
+	.js-one-stars + .rating-percentage-container .rating-percentage {
+		background-color: #ff496a;
+	}
+	.total-ratings-container {
+		max-width: 140px;
+	}
+	.total-ratings-container h2 {
+		display: inline-block;
+		padding-top: 2px;
+	}
+	.total-ratings-container span {
+		margin-right: 7px;
+		float: right;		
+		font-weight: 600;
+	}
+	.app-title {		
+		position: absolute;
+		padding-top: 1.3rem;
+		text-align: left;
+	}
+	.app-selector {
+		position: absolute;
+		right: 20px;
+		top: 90px;
+		padding: 1rem 1.5rem;
+		width: 200px;
+		height: 38px;		
+		float: right;		
+		text-align: right;
+		cursor: pointer;
+		background-color: #f2f2f5;
+		z-index: 1000;
+	}
+	.app-selector.is-open {
+		height: auto;
+	}
+	.app-selector li,
+	.app-selector li a {
+		display: block;
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 15px;
+	}
+	.app-selector li:first-child {
+		padding-bottom: 1.5rem;
+	}
+	.app-selector li {
+		color: #363a47;
+	}	
+	.app-selector li a {
+		padding-bottom: 0.5rem;
+		color: #6d69c5;
+	}
+	.app-selector li a:hover {
+		color: #4b46b5;
+	}
+	.reviews-content-list li {
+		margin-bottom: 30px;
+		font-size: 14px;
+	}
+</style>
+<body>
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+
+			<div class="grid-container page-data-vis-reviews-cloud">
+				<h1 class="heading-style--heading-three">Reviews Tag Cloud</h1>
+				<div class="grid_row filters-row">
+					<div class="app-title">
+						<h2 class="heading-style--heading-four js-app-name">Pokemon Go, Niantic, Inc.</h2>
+					</div>
+					<div class="app-selector">
+						<ul>
+							<li>Change selected app</li>
+							<li><a href="data-vis-reviews-cloud.html">Pokemon Go</a></li>
+							<!-- <li><a href="data-vis-reviews-cloud.html?id=0">Bloons TD 5</a></li>
+							<li><a href="data-vis-reviews-cloud.html?id=1">Twist</a></li>
+							<li><a href="data-vis-reviews-cloud.html?id=2">Spring Ninja</a></li>
+							<li><a href="data-vis-reviews-cloud.html?id=3">Clash of Clans</a></li> -->
+							<li><a href="data-vis-reviews-cloud.html?id=4">8 Ball Pool</a></li>
+							<li><a href="data-vis-reviews-cloud.html?id=5">Reigns</a></li>
+							<!-- <li><a href="data-vis-reviews-cloud.html?id=6">WhatsApp</a></li> -->
+							<li><a href="data-vis-reviews-cloud.html?id=7">Facebook Messenger</a></li>
+							<!-- <li><a href="data-vis-reviews-cloud.html?id=8">Amazon</a></li> -->
+							<li><a href="data-vis-reviews-cloud.html?id=9">Top Eleven</a></li>
+						</ul>
+					</div>
+					<div class="toggle-container">
+						<div class="filter-toggle">
+							<div class="toggle">
+								<input id="toggle--show-all" data-cloudtotoggle="tag-cloud--all" name="radiogroupname" checked="" type="radio">
+								<label for="toggle--show-all">
+									All
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-positive" data-cloudtotoggle="tag-cloud--positive" name="radiogroupname" type="radio">
+								<label for="toggle--show-positive">
+									4-5 Stars
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-average" data-cloudtotoggle="tag-cloud--average" name="radiogroupname" type="radio">
+								<label for="toggle--show-average">
+									3 Stars
+								</label>
+							</div>
+							<div class="toggle">
+								<input id="toggle--show-negative" data-cloudtotoggle="tag-cloud--negative" name="radiogroupname" type="radio">
+								<label for="toggle--show-negative">
+									1-2 Stars
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tag-cloud-reviews-container">
+					<h2 class="heading-style--heading-five">Ratings Frequency</h2>
+					<ul>
+						<li>
+							<div class="ratings-container"><div class="ratings-full" style="width:100%"></div></div>
+							<span class="rating-number js-five-stars"></span>
+							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+						</li>
+						<li>
+							<div class="ratings-container"><div class="ratings-full" style="width:80%"></div></div>
+							<span class="rating-number js-four-stars"></span>
+							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+						</li>
+						<li>
+							<div class="ratings-container"><div class="ratings-full" style="width:60%"></div></div>
+							<span class="rating-number js-three-stars"></span>
+							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+						</li>
+						<li>
+							<div class="ratings-container"><div class="ratings-full" style="width:40%"></div></div>
+							<span class="rating-number js-two-stars"></span>
+							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+						</li>
+						<li>
+							<div class="ratings-container"><div class="ratings-full" style="width:20%"></div></div>
+							<span class="rating-number js-one-stars"></span>
+							<div class="rating-percentage-container"><div class="rating-percentage"></div></div>
+						</li>
+						<li class="total-ratings-container">
+							<h2 class="heading-style--heading-six">Total</h2>
+							<span class="rating-number js-all-stars"></span>
+							<div class="rating-percentage-container"><div class="rating-percentage rating-percentage--full"></div></div>
+						</li>
+					</ul>
+				</div>
+				<div class="tag-cloud-container">
+					<ul class="tag-cloud tag-cloud--all"></ul>
+					<ul class="tag-cloud tag-cloud--positive"></ul>
+					<ul class="tag-cloud tag-cloud--average"></ul>
+					<ul class="tag-cloud tag-cloud--negative"></ul>
+					<div style="margin-top: 500px; font-size: 15px;">
+						<ul class="js-reviews-content reviews-content-list"></ul>
+					</div>
+				</div>				
+			</div>
+
+		</div>
+	</div>
+
+	<div class="grid-container" id="js-component-import--global-footer"></div>
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+  <script>
+		$(document).on("ready", function(){
+
+		  var qs = (function(a) {
+		    if (a == "") return {};
+		    var b = {};
+		    for (var i = 0; i < a.length; ++i)
+		    {
+		        var p=a[i].split('=', 2);
+		        if (p.length == 1)
+		            b[p[0]] = "";
+		        else
+		            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+		    }
+		    return b;
+			})(window.location.search.substr(1).split('&'));
+
+			if(qs["id"]) {
+				if(qs["id"] == 0) {
+					$('.js-app-name').text("Bloons TD 5, Ninja Kiwi");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-bloons.js")); 
+				} else if(qs["id"] == 1) {
+					$('.js-app-name').text("Twist, Ketchapp");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-twist.js")); 
+				} else if(qs["id"] == 2) {
+					$('.js-app-name').text("Spring Ninja, Ketchapp");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-spring-ninja.js"));
+				} else if(qs["id"] == 3) {
+					$('.js-app-name').text("Clash of Clans, Supercell");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-coc.js")); 
+				} else if(qs["id"] == 4) {
+					$('.js-app-name').text("8 Ball Pool, Miniclip");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-8-ball.js")); 
+					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-8-ball.js"));
+				} else if(qs["id"] == 5) {
+					$('.js-app-name').text("Reigns, Devolver Digital");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-reigns.js"));
+					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-reigns.js"));
+				} else if(qs["id"] == 6) {
+					$('.js-app-name').text("WhatsApp, WhatsApp Inc.");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-whatsapp.js"));
+				} else if(qs["id"] == 7) {
+					$('.js-app-name').text("Facebook Messenger, Facebook Inc.");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-facebook-messenger.js"));
+					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-facebook-messenger.js"));
+				} else if(qs["id"] == 9) {
+					$('.js-app-name').text("Top Eleven");
+					$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-top-eleven.js"));
+					$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-top-eleven.js"));
+				}
+			} else {
+				$("body").append($("<script>").attr("src", "js/data-vis/review-cloud-pokemon.js"));
+				$("body").append($("<script>").attr("src", "js/data-vis/reviews-raw-pokemon.js"));
+			}		  
+
+		  function shuffle(array) {
+			  var currentIndex = array.length, temporaryValue, randomIndex;
+
+			  // While there remain elements to shuffle...
+			  while (0 !== currentIndex) {
+
+			    // Pick a remaining element...
+			    randomIndex = Math.floor(Math.random() * currentIndex);
+			    currentIndex -= 1;
+
+			    // And swap it with the current element.
+			    temporaryValue = array[currentIndex];
+			    array[currentIndex] = array[randomIndex];
+			    array[randomIndex] = temporaryValue;
+			  }
+
+			  return array;
+			}
+		
+			var minFontSize = 1,
+					maxFontSize = 7;
+
+			var topResultsArray = [];
+
+			for(var t = 0; t < 100; t++) {
+				topResultsArray.push(cloudData[t]);
+			}
+
+			// shuffle the sorted results
+			shuffle(topResultsArray);
+			var highestFrequency = cloudData[0].freq.freq_overall;
+			var positiveReviewTotals = [],
+				averageReviewTotals = [],
+				negativeReviewTotals = [];
+
+			for(var t = 0; t < topResultsArray.length; t++) {
+				var fontSize = topResultsArray[t].freq.freq_overall / highestFrequency * maxFontSize + 0.5;
+				var total = topResultsArray[t].freq.freq_overall;
+				var cssClass = "negative-average";
+				if(topResultsArray[t].freq.average_rating > 2.5 && topResultsArray[t].freq.average_rating < 3.5) {
+					cssClass = "average-average";
+				} else if(topResultsArray[t].freq.average_rating > 3.5) {
+					cssClass = "positive-average";
+				}
+				$('.tag-cloud--all').append(
+					$("<li>").addClass(cssClass)
+										.text(topResultsArray[t].term)
+										.data("font-size", fontSize + "rem")
+										.data("index", t)
+										.data("total", total)
+										.data("average", topResultsArray[t].freq.average_rating)
+										.attr("data-term", topResultsArray[t].term)
+										.on("mouseenter", function(){
+											var thisIndex = $(this).data("index");
+											var totalFromTag = $(this).data("total");
+
+											$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
+											$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_5stars / totalFromTag * 100 + "%");
+
+											$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
+											$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_4stars / totalFromTag * 100 + "%");
+											
+											$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
+											$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_3stars / totalFromTag * 100 + "%");
+											
+											$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
+											$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_2stars / totalFromTag * 100 + "%");
+											
+											$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
+											$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_1stars / totalFromTag * 100 + "%");
+											
+											$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
+
+											$('.tag-cloud-reviews-container').show();
+										})
+										.on("click", function(){
+											populateReviewsContent($(this).attr("data-term"));
+										})
+				);
+
+				positiveReviewTotals.push(topResultsArray[t].freq.freq_5stars + topResultsArray[t].freq.freq_4stars);
+				averageReviewTotals.push(topResultsArray[t].freq.freq_3stars);
+				negativeReviewTotals.push(topResultsArray[t].freq.freq_2stars + topResultsArray[t].freq.freq_1stars);
+			}
+
+			if (!String.prototype.splice) {
+			    /**
+			     * {JSDoc}
+			     *
+			     * The splice() method changes the content of a string by removing a range of
+			     * characters and/or adding new characters.
+			     *
+			     * @this {String}
+			     * @param {number} start Index at which to start changing the string.
+			     * @param {number} delCount An integer indicating the number of old chars to remove.
+			     * @param {string} newSubStr The String that is spliced in.
+			     * @return {string} A new string with the spliced substring.
+			     */
+			    String.prototype.splice = function(start, delCount, newSubStr) {
+			        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+			    };
+			}
+
+			function populateReviewsContent(term) {
+				console.log(term);
+				// find reviews that contain the term
+				var reviewsToOutput = [];
+				for(var i = 0; i < rawReviews.length; i++) {
+					if(rawReviews[i].content.indexOf(term) > -1) {
+						var contentString = rawReviews[i].content;
+						var indexOfString = rawReviews[i].content.indexOf(term);
+						var wordLength = term.length;
+						var result = contentString.splice(indexOfString + wordLength, 0, "</strong>");
+						result = result.splice(indexOfString, 0, "<strong style=color:blue>");
+						reviewsToOutput.push(result);
+					}
+				}
+				
+				$('.js-reviews-content').empty();
+
+				for(var i = 0; i < reviewsToOutput.length; i++) {
+					$('.js-reviews-content').append($("<li>").html(reviewsToOutput[i]));
+				}
+			}
+
+			positiveReviewTotals.sort(function(a, b){return b-a});
+			averageReviewTotals.sort(function(a, b){return b-a});
+			negativeReviewTotals.sort(function(a, b){return b-a});
+
+			var highestPositiveReviewTotal = positiveReviewTotals[0];
+			for(var t = 0; t < topResultsArray.length; t++) {
+				if(topResultsArray[t].freq.freq_5stars > 0 || topResultsArray[t].freq.freq_4stars > 0) { // create cloud for positive reviews
+						var fontSize = (topResultsArray[t].freq.freq_5stars + topResultsArray[t].freq.freq_4stars) / highestPositiveReviewTotal * maxFontSize + 0.5;
+						var total = topResultsArray[t].freq.freq_overall;
+						$('.tag-cloud--positive').append(
+							$("<li>").text(topResultsArray[t].term)
+												.data("font-size", fontSize + "rem")
+												.data("index", t)
+												.data("total", total)
+												.attr("data-term", topResultsArray[t].term)
+												.on("mouseenter", function(){
+													var thisIndex = $(this).data("index");
+													var totalFromTag = $(this).data("total");
+
+													$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
+													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_5stars / totalFromTag * 100 + "%");
+
+													$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
+													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_4stars / totalFromTag * 100 + "%");
+													
+													$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
+													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_3stars / totalFromTag * 100 + "%");
+													
+													$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
+													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_2stars / totalFromTag * 100 + "%");
+													
+													$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
+													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_1stars / totalFromTag * 100 + "%");
+													
+													$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
+
+													$('.tag-cloud-reviews-container').show();
+												})
+												.on("click", function(){
+													populateReviewsContent($(this).attr("data-term"));
+												})
+						);
+				}
+			}
+
+			var highestAverageReviewTotal = averageReviewTotals[0];
+			for(var t = 0; t < topResultsArray.length; t++) {
+				if(topResultsArray[t].freq.freq_3stars > 0) { // create cloud for average reviews
+						var fontSize = (topResultsArray[t].freq.freq_3stars) / highestAverageReviewTotal * maxFontSize + 0.5;
+						var total = topResultsArray[t].freq.freq_overall;
+						$('.tag-cloud--average').append(
+							$("<li>").text(topResultsArray[t].term)
+												.data("font-size", fontSize + "rem")
+												.data("index", t)
+												.data("total", total)
+												.attr("data-term", topResultsArray[t].term)
+												.on("mouseenter", function(){
+													var thisIndex = $(this).data("index");
+													var totalFromTag = $(this).data("total");
+
+													$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
+													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_5stars / totalFromTag * 100 + "%");
+
+													$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
+													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_4stars / totalFromTag * 100 + "%");
+													
+													$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
+													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_3stars / totalFromTag * 100 + "%");
+													
+													$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
+													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_2stars / totalFromTag * 100 + "%");
+													
+													$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
+													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_1stars / totalFromTag * 100 + "%");
+													
+													$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
+
+													$('.tag-cloud-reviews-container').show();
+												})
+												.on("click", function(){
+													populateReviewsContent($(this).attr("data-term"));
+												})
+						);
+				}
+			}
+
+			var highestNegativeReviewTotal = negativeReviewTotals[0];
+			for(var t = 0; t < topResultsArray.length; t++) {
+				if(topResultsArray[t].freq.freq_2stars > 0 || topResultsArray[t].freq.freq_1stars > 0) { // create cloud for negative reviews
+						var fontSize = (topResultsArray[t].freq.freq_2stars + topResultsArray[t].freq.freq_1stars) / highestNegativeReviewTotal * maxFontSize + 0.5;
+						var total = topResultsArray[t].freq.freq_overall;
+						$('.tag-cloud--negative').append(
+							$("<li>").text(topResultsArray[t].term)
+												.data("font-size", fontSize + "rem")
+												.data("index", t)
+												.data("total", total)
+												.attr("data-term", topResultsArray[t].term)
+												.on("mouseenter", function(){
+													var thisIndex = $(this).data("index");
+													var totalFromTag = $(this).data("total");
+
+													$('.js-five-stars').text(topResultsArray[thisIndex].freq.freq_5stars);
+													$('.js-five-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_5stars / totalFromTag * 100 + "%");
+
+													$('.js-four-stars').text(topResultsArray[thisIndex].freq.freq_4stars);
+													$('.js-four-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_4stars / totalFromTag * 100 + "%");
+													
+													$('.js-three-stars').text(topResultsArray[thisIndex].freq.freq_3stars);
+													$('.js-three-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_3stars / totalFromTag * 100 + "%");
+													
+													$('.js-two-stars').text(topResultsArray[thisIndex].freq.freq_2stars);
+													$('.js-two-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_2stars / totalFromTag * 100 + "%");
+													
+													$('.js-one-stars').text(topResultsArray[thisIndex].freq.freq_1stars);
+													$('.js-one-stars').next(".rating-percentage-container").find(".rating-percentage").css("width", topResultsArray[thisIndex].freq.freq_1stars / totalFromTag * 100 + "%");
+													
+													$('.js-all-stars').text(topResultsArray[thisIndex].freq.freq_overall);
+
+													$('.tag-cloud-reviews-container').show();
+												})
+												.on("click", function(){
+													populateReviewsContent($(this).attr("data-term"));
+												})
+						);
+				}
+			}
+
+
+			$('.tag-cloud--all').on("mouseleave", function(){
+				$('.tag-cloud-reviews-container').hide();
+			});
+
+			// for(var t = 0; t < cloudDataPositive.length; t++) {
+			// 	cloudDataPositive[t].freq = Math.floor((Math.random() * 100) + 1);
+			// 	var fontSize = cloudDataPositive[t].freq / 100 * Math.floor((Math.random() * maxFontSize) + minFontSize) + 1;
+			// 	$('.tag-cloud--positive').append($("<li>").text(cloudDataPositive[t].text).data("font-size", fontSize + "rem"));
+			// }
+
+			// for(var t = 0; t < cloudDataAverage.length; t++) {
+			// 	cloudDataAverage[t].freq = Math.floor((Math.random() * 100) + 1);
+			// 	var fontSize = cloudDataAverage[t].freq / 100 * Math.floor((Math.random() * maxFontSize) + minFontSize) + 1;
+			// 	$('.tag-cloud--average').append($("<li>").text(cloudDataAverage[t].text).data("font-size", fontSize + "rem"));
+			// }
+
+			// for(var t = 0; t < cloudDataNegative.length; t++) {
+			// 	cloudDataNegative[t].freq = Math.floor((Math.random() * 100) + 1);
+			// 	var fontSize = cloudDataNegative[t].freq / 100 * Math.floor((Math.random() * maxFontSize) + minFontSize) + 1;
+			// 	$('.tag-cloud--negative').append($("<li>").text(cloudDataNegative[t].text).data("font-size", fontSize + "rem"));
+			// }
+
+			setTimeout(function() {
+				$('.tag-cloud li').each(function(){
+					var $this = $(this);
+					$(this).css("font-size", $this.data("font-size"));
+				});
+			}, 500);
+
+			$('.toggle input').each(function(){				
+				var cloudToToggle = $(this).data("cloudtotoggle");
+				if($(this).is(":checked")) {
+					$('.' + cloudToToggle).fadeIn();
+				} else {
+					$('.' + cloudToToggle).fadeOut();
+				}
+			});
+
+			$('.toggle input').change(function(){
+				var cloudToToggle = $(this).data("cloudtotoggle");
+				if($(this).is(":checked")) {
+					$('.tag-cloud').fadeOut();
+					$('.' + cloudToToggle).fadeIn();
+				}
+			});
+
+			$('.app-selector').click(function(){
+				$(this).toggleClass("is-open");
+			});
+		});
+  </script>
+</body>

@@ -1,0 +1,76 @@
+.my-app-header {
+	position: fixed;
+	top: 50px;
+	width: calc(100% - 60px);
+  z-index: 10000;
+	height: 46px;
+	margin-bottom: 1.5rem;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: $reflection-purple;
+	@include breakpoint($leftnav-wide) {
+		width: calc(100% - 200px);
+	}
+	.filter-toggle {
+		margin-top: 5px;
+	}
+	.filter-toggle label {
+		width: 102px;
+		color: $reflection-white;
+		border-top: 1px solid #3a3777;
+    border-bottom: 1px solid #3a3777;
+    border-left: 1px solid #3a3777;
+    background-color: $reflection-purple;
+    cursor: pointer;
+    &:hover {
+    	background-color: #6662bb;
+    	transition: background-color 0.2s;
+    }
+	}
+	.filter-toggle input:checked ~ label {
+		color: #c6cbf7;
+    border-color: #3a3777;
+    background-color: #454390;
+    &:hover {
+    	background-color: #454390;
+    }
+    &:after {
+    	border-right: 1px solid #3a3777;
+    }
+	}	
+	.filter-toggle .toggle:last-child label {
+		border-right: 1px solid #3a3777;
+	}
+}
+.my-app-header__right {
+	float: right;
+	.whats-this-tooltip-icon {
+    margin-right: 18px;
+    margin-top: 12px;
+    &.is-open:after,
+    &:hover:after {
+    	color: darken($light-grey-2, 10%);
+    }
+	}
+}
+.my-app-header__info {
+	padding-top: 13px;
+	margin-bottom: 0;
+	display: inline-block;
+	font-weight: 600;
+	font-size: 1.6rem;
+	color: $reflection-white;
+	&:before {
+		padding-right: 10px;
+		font-size: 18px;
+	}
+}
+.my-app-header__data-info-link {
+	margin-top: 15px;
+  margin-right: 5px;
+  display: inline-block;
+	vertical-align: middle;
+	font-size: 1.4rem;
+	font-family: $brand-heading-font;
+	color: $reflection-white;
+}

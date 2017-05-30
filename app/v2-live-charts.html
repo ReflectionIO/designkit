@@ -79,7 +79,7 @@
 							</div>
 						</div>
 
-						<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--sign-up">Download CSV</button>
+						<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--sign-up js-tooltip js-tooltip--open-left js-tooltip--instant" data-tooltip="Download all current table data as a CSV file">Download CSV</button>
 
 						<div class="secondary-filter form-field--search js-form-field-search">
 							<input type="text" placeholder="Find App in List" name="findapp" id="findapp" class="js-mock-find-app">
@@ -206,9 +206,11 @@
 	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings1}}</span>
 	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice1}}</span>
 	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth1}}</span>
-	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>{{dataItem.appRevDow1}}</span></span>
- 										</div> 										
- 									</div> 									
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download">
+	 											<span class="js-tooltip js-tooltip--instant js-tooltip--delay-remove"  data-tooltip="Downloads on this day<br /><a href='#'><span>Confidence Score:</span> A++</a>">{{dataItem.appRevDow1}}</span>
+	 										</span>
+ 										</div>
+ 									</div>
  								</td>
  								<td data-price-tier="{{dataItem.appPrice2}}" data-is-new="{{dataItem.appNewDisplay2}}">
  									<div class="live-chart__cell__disabled-overlay"></div>
@@ -226,7 +228,7 @@
 	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings2}}</span>
 	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice2}}</span>
 	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth2}}</span>
-	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>{{dataItem.appRevDow2}}</span></span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span class="js-tooltip js-tooltip--instant js-tooltip--delay-remove"  data-tooltip="Downloads on this day<br /><a href='#'><span>Confidence Score:</span> A++</a>">{{dataItem.appRevDow2}}</span></span>
  										</div> 										
  									</div> 	
  								</td>
@@ -258,27 +260,25 @@
  								<td>
  									<div class="live-chart__cell__disabled-overlay"></div>
  									<div class="live-chart__cell">
-	 									<img src="images/v2/placeholder-app-icon-minecraft.png" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<img src="images/icon-no-app-image.png" class="live-chart__cell__app-icon" alt="App Unavailable icon" />
 	 									<div class="live-chart__cell__app-details-container">
-	 										<a href="#" class="live-chart__cell__app-name">Minecraft: Pocket Edition</a>
-	 										<span class="live-chart__cell__rank">
-	 											<div class="live-chart__cell__new-entry" style="display: none">NEW</div>
-	 											<span class='ref-icon-after--down'>1</span>4</span>
-	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name">Mojang</a>
+	 										<a href="#" class="live-chart__cell__app-name is-unavailable">App Name Unavailable</a>
+	 										<span class="live-chart__cell__rank is-unavailable">-</span>
+	 										<a href="v2-publisher.html" class="live-chart__cell__publisher-name is-unavailable">Developer Unavailable</a>
 	 										<div class="ratings-container">
-												<div class="ratings-full" style="width:60%"></div>
+												<div class="ratings-full" style="width:0"></div>
 											</div>
-	 										<span class="live-chart__cell__number-of-ratings">(3,234)</span>
-	 										<span class="live-chart__cell__app-price">Free</span>
-	 										<span class="live-chart__cell__growth positive-colour">+4%</span>
-	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>156,038</span></span>
+	 										<span class="live-chart__cell__number-of-ratings is-unavailable">-</span>
+	 										<span class="live-chart__cell__app-price is-unavailable">$-</span>
+	 										<span class="live-chart__cell__growth is-unavailable">-%</span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download is-unavailable"><span>-</span></span>
  										</div>
  									</div> 	
  								</td>
  								<td data-price-tier="{{dataItem.appPrice3}}" data-is-new="{{dataItem.appNewDisplay3}}">
  									<div class="live-chart__cell__disabled-overlay"></div>
  									<div class="live-chart__cell">
-	 									<img src="images/v2/placeholder-app-icon-minecraft.png" class="live-chart__cell__app-icon" alt="App Title icon" />
+	 									<img src="images/placeholder-app-icon-minecraft.png" class="live-chart__cell__app-icon" alt="App Title icon" />
 	 									<div class="live-chart__cell__app-details-container">
 	 										<a href="v2-app.html" class="live-chart__cell__app-name">Minecraft: Pocket Edition</a>
 	 										<span class="live-chart__cell__rank">
@@ -306,7 +306,41 @@
 			
 		</div>
 
-		<div class="grid-container" id="js-component-import--global-footer"></div>
+		<div class="grid-container global-footer--no-border">
+			<footer id="js-component-import--global-header" class="global-footer">
+				<div class="grid__column grid__column--one-sixth">
+					<div class="logo-footer"></div>
+				</div>
+				<ul class="grid__column grid__column--one-sixth">
+					<li><a href="v2-about.html">Our Story</a></li>
+					<li><a href="v2-product.html">Product</a></li>
+					<li><a href="v2-pricing.html">Pricing</a></li>
+					<li><a href="v2-careers.html">Careers</a></li>
+					<li><a href="v2-faq.html">FAQs</a></li>
+					<li><a href="v2-contact.html">Contact Us</a></li>
+					<li><a href="v2-terms.html">Terms &amp; Conditions</a></li>
+				</ul>
+				<ul class="grid__column grid__column--one-sixth">
+					<li><a href="v2-live-charts.html">Live App Charts</a></li>
+					<li><a href="v2-blog.html">Blog</a></li>
+					<li><a href="#">Lab</a></li>
+					<li><a href="v2-store-data-apps.html">Store Data - Apps</a></li>
+					<li><a href="v2-store-data-publishers.html">Store Data - Developers</a></li>
+				</ul>
+				<ul class="grid__column grid__column--one-sixth">
+					<li><a href="v2-data-template.html">My Apps</a></li>
+					<li><a href="v2-news.html">My News</a></li>
+					<li><a href="v2-my-lists.html">My Lists</a></li>
+				</ul>
+				<ul class="grid__column grid__column--one-third">
+					<li class="social-link"><a href="https://twitter.com/reflectionio" class="ref-icon-before--twitter" target=_"blank"><span>Twitter</span></a></li>
+					<li class="social-link"><a href="https://www.linkedin.com/company/reflection-io-ltd" class="ref-icon-before--linkedin" target=_"blank"><span>LinkedIn</span></a></li>
+					<li class="social-link"><a href="#" class="ref-icon-before--facebook" target=_"blank"><span>Facebook</span></a></li>
+					<li class="social-link"><a href="#" class="ref-icon-before--google-plus" target=_"blank"><span>Google Plus</span></a></li>
+				</ul>
+				<p>&copy; 2016 Reflection.io</p>
+			</footer>
+		</div>
 	</div>	
 
 	<div class="page-overlay js-page-overlay js-page-overlay--sign-up">
@@ -411,13 +445,20 @@
 
   		new Page();
   		new AllDropDowns();
-  		;
+  		
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});
   		$('.js-form-field-search').each(function(){
   			new FormFieldSearch($(this));
   		});
+
+  		new TooltipsBase();
+  		setTimeout(function(){
+				$('.js-tooltip').each(function(){
+					new ToolTip($(this));
+				});
+  		}, 1000);
 
   		$('.js-open-modal--sign-up').on("click", function(e){
 				e.preventDefault();

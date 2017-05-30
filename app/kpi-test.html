@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello Analytics Reporting API V4</title>
+  <meta name="google-signin-client_id" content="266076039186-7lb2qvqfls9jn3kpvpsbv8kembnncf8u.apps.googleusercontent.com">
+  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
+  <style>
+  .g-signin2 {
+    display: inline-block;
+  }
+    #results-list {      
+      width: calc(100% - 60px);
+      margin: 30px;
+      padding: 0;     
+    }
+    #results-list li {
+      width: 200px;
+      height: 200px;
+      padding-top: 30px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+      font-family: sans-serif;
+      border: 9px solid #9765b8;
+      border-radius: 5px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    #results-list h2 {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: grey;
+    }
+    #results-list span {
+      font-size: 60px;
+    }    
+    .text-lists {
+      margin: 0 30px;
+    }
+    .text-list {
+      width: 200px;
+      margin-right: 20px;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .text-list h2 {
+      font-size: 18px;
+    }
+    .text-list ul {
+      padding: 0;
+      list-style: none;
+    }
+    .text-list ul h2,
+    .text-list ul span {
+      margin: 0 10px 10px;
+      display: inline-block;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- The Sign-in button. This will run `queryReports()` on success. -->
+<div class="g-signin2" data-onsuccess="queryReports"></div>
+
+<!-- The API response will be printed here. -->
+<ul id="results-list">
+</ul>
+<div class="text-lists">
+  <div class="text-list">
+    <h2>Users per Country</h2>
+    <ul id="results-list--session-country"></ul>
+  </div>
+  <div class="text-list">
+    <h2>Users by Source</h2>
+    <ul id="results-list--users-source"></ul>
+  </div>
+  <div class="text-list">
+    <h2>Users by Device</h2>
+    <ul id="results-list--users-device-category"></ul>
+  </div>
+ <!--  <div class="text-list">
+    <h2>Users by Browser</h2>
+    <ul id="results-list--users-browser"></ul>
+  </div> -->
+  <div class="text-list">
+    <h2>Users/Page</h2>
+    <ul id="results-list--users-exit"></ul>
+  </div>
+</div>
+
+<!-- Load the JavaScript API client and Sign-in library. -->
+<script src="https://apis.google.com/js/client:platform.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+<script>
+
+    var VIEW_ID = '100477624';
+
+    function queryReports() {
+      gapi.client.request({
+        path: '/v4/reports:batchGet',
+        root: 'https://analyticsreporting.googleapis.com/',
+        method: 'POST',
+        body: {
+          reportRequests: [
+            {
+              viewId: VIEW_ID,
+              dateRanges: [
+                {
+                  startDate: '7daysAgo',
+                  endDate: 'today'
+                }
+              ],
+              metrics: [
+                {"expression": 'ga:users'},
+                {"expression": 'ga:newUsers'},
+                {"expression": 'ga:percentNewSessions'},
+                {"expression": "ga:pageviews"},
+                {"expression": 'ga:sessions'},
+                {"expression": 'ga:bounceRate'},
+                {"expression": 'ga:avgSessionDuration'},
+                {"expression": 'ga:pageViews'},
+                {"expression": 'ga:avgTimeOnPage'},
+                {"expression": 'ga:avgPageLoadTime'},        
+              ]
+            },
+            {
+              "viewId": VIEW_ID,
+              "dateRanges":
+              [
+                {
+                  startDate: '7daysAgo',
+                          endDate: 'today'
+                }
+              ],
+              "metrics":
+              [
+                {
+                  "expression": "ga:users"
+                }
+              ],
+              "dimensions":
+              [
+                {
+                  "name": "ga:country"
+                }
+              ],
+              "orderBys":
+              [
+                {"fieldName": "ga:users", "sortOrder": "DESCENDING"},
+              ],
+            },
+            {
+              "viewId": VIEW_ID,
+              "dateRanges":
+              [
+                {
+                  startDate: '7daysAgo',
+                          endDate: 'today'
+                }
+              ],
+              "metrics":
+              [
+                {
+                  "expression": "ga:users"
+                }
+              ],
+              "dimensions":
+              [
+                {
+                  "name": "ga:source"
+                }
+              ],
+              "orderBys":
+              [
+                {"fieldName": "ga:users", "sortOrder": "DESCENDING"},
+              ],
+            },
+            {
+              "viewId": VIEW_ID,
+              "dateRanges":
+              [
+                {
+                  startDate: '7daysAgo',
+                          endDate: 'today'
+                }
+              ],
+              "metrics":
+              [
+                {
+                  "expression": "ga:users"
+                }
+              ],
+              "dimensions":
+              [
+                {
+                  "name": "ga:deviceCategory"
+                }
+              ],
+              "orderBys":
+              [
+                {"fieldName": "ga:users", "sortOrder": "DESCENDING"},
+              ],
+            },
+            // {
+            //   "viewId": VIEW_ID,
+            //   "dateRanges":
+            //   [
+            //     {
+            //       startDate: '7daysAgo',
+            //               endDate: 'today'
+            //     }
+            //   ],
+            //   "metrics":
+            //   [
+            //     {
+            //       "expression": "ga:users"
+            //     }
+            //   ],
+            //   "dimensions":
+            //   [
+            //     {
+            //       "name": "ga:browserSize"
+            //     }
+            //   ],
+            //   "orderBys":
+            //   [
+            //     {"fieldName": "ga:users", "sortOrder": "DESCENDING"},
+            //   ],
+            // },
+            {
+              "viewId": VIEW_ID,
+              "dateRanges":
+              [
+                {
+                  startDate: '7daysAgo',
+                          endDate: 'today'
+                }
+              ],
+              "metrics":
+              [
+                {
+                  "expression": "ga:users"
+                }
+              ],
+              "dimensions":
+              [
+                {
+                  "name": "ga:pagePath"
+                }
+              ],
+              "orderBys":
+              [
+                {"fieldName": "ga:users", "sortOrder": "DESCENDING"},
+              ],
+            }
+          ]
+        }
+      }).then(displayResults, console.error.bind(console));
+    }
+
+    function displayResults(response) {
+      console.log(response);
+      var dataSet = response.result.reports[0].data.rows[0].metrics[0].values,
+          resultsList = $("#results-list"),
+          resultsListSessionCountry = $("#results-list--session-country"),
+          resultsListUsersSource = $("#results-list--users-source"),
+          resultsListUsersDeviceCategory = $("#results-list--users-device-category"),
+          resultsListUsersBrowser = $("#results-list--users-browser"),
+          resultsListUsersExit = $("#results-list--users-exit");
+
+      $.each(response.result.reports[0].columnHeader.metricHeader.metricHeaderEntries, function( index, value ) {
+        var dataItem = $("<li>").append($("<h2>").text(value.name))
+                                    .append($("<span></span>").text(parseInt(dataSet[index])));
+        resultsList.append(dataItem);
+      });
+
+      $.each(response.result.reports[1].data.rows, function( index, value ) {
+        var dataItem = $("<li>").append($("<h2>").text(value.dimensions[0]))
+                                    .append($("<span></span>").text(value.metrics[0].values[0]));
+        resultsListSessionCountry.append(dataItem);
+      });
+
+      $.each(response.result.reports[2].data.rows, function( index, value ) {
+        var dataItem = $("<li>").append($("<h2>").text(value.dimensions[0]))
+                                    .append($("<span></span>").text(value.metrics[0].values[0]));
+        resultsListUsersSource.append(dataItem);
+      });
+
+      $.each(response.result.reports[3].data.rows, function( index, value ) {
+        var dataItem = $("<li>").append($("<h2>").text(value.dimensions[0]))
+                                    .append($("<span></span>").text(value.metrics[0].values[0]));
+        resultsListUsersDeviceCategory.append(dataItem);
+      });
+
+      // $.each(response.result.reports[4].data.rows, function( index, value ) {
+      //   var dataItem = $("<li>").append($("<h2>").text(value.dimensions[0]))
+      //                               .append($("<span></span>").text(value.metrics[0].values[0]));
+      //   resultsListUsersBrowser.append(dataItem);
+      // });
+
+      $.each(response.result.reports[4].data.rows, function( index, value ) {
+        var dataItem = $("<li>").append($("<h2>").text(value.dimensions[0]))
+                                    .append($("<span></span>").text(value.metrics[0].values[0]));
+        resultsListUsersExit.append(dataItem);
+      });
+    }
+  
+</script>
+
+</body>
+</html>

@@ -38,20 +38,16 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="alert-urgent js-alert-urgent">
- 				<div>
- 					<span class="ref-icon-before--warning-filled"></span><span class="alert-urgent_description"> This is a demo displaying mock data. Sign up to see live data for your own apps.</span>
- 					<a href="#" class="alert-urgent_cta ref-icon-after--angle-right">Sign up for Free</a>
- 				</div>
- 			</div>
-			<div class="page-data-dashboard">
+			<div class="page-data-dashboard">				
+
 				<div class="grid-container">
+
 					<h1 class="heading-style--heading-two page-title js-mock-change-heading-for-list-page">My Apps</h1>
 
-					<span class="page-header__data-info-text js-mock-show-for-my-apps-view-only">All Actual Data</span>
-					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip js-mock-show-for-my-apps-view-only" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span>
+					<span class="page-header__data-info-text js-mock-show-for-my-apps-view-only">Analyse the performance of your own apps</span>
+					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip js-mock-show-for-my-apps-view-only" data-whatsthis-title="What's This?" data-whatsthis="The data displayed in the My Data section is your actual sales data for any accounts you have linked, not estimates. No-one else can see your actual data."></span>
 
-					<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--go-pro">Download CSV</button>
+					<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--go-pro js-tooltip js-tooltip--open-left js-tooltip--instant" data-tooltip="Download all current table data as a CSV file">Download CSV</button>
 
 					<div class="toggle-container page-header__page-toggle filter-toggle filter-toggle--with-text filter-toggle--small">
 						<div class="toggle">
@@ -69,6 +65,25 @@
 					</div>
 
 					<a href="v2-my-lists.html" class="page-header__text-link js-mock-show-for-my-list-view-only">Back to My Lists</a>
+				</div>
+				
+				<div class="grid-container">
+					<div class="alert-warning">
+						<a href="#" class="alert-warning__close ref-icon-after--close">Close</a>
+						<span class="alert-warning__title ref-icon-before--warning-filled">Action Required</span>
+						<span class="alert-warning__warning-content">The password for the linked account(s) highlighted below has been changed, please update the details here too so we can continue to gather data</span>
+						<ul>
+							<li class="alert-warning__warning-content"><span>iOS Account: Accountnamegoeshere <a href="#">Update Details Now</a></span></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="grid-container">
+					<div class="alert-notice">
+						<span class="alert-notice__title ref-icon-before--info-no-fill">Please Note</span>
+						<span class="alert-notice__notice-content">It may take a short time for the data from a recently re-linked account to be displayed below</span>
+						<a href="#" class="alert-notice-cta">OK, Got it thanks</a>
+					</div>
 				</div>
 
 				<div class="grid__row overflow-visible">
@@ -121,19 +136,13 @@
 				</div>
 
 				<aside class="grid-container secondary-filters-container">
+					<div class="group-selector-label">
+						<span>Overlay Apps: </span>
+						<img src="images/icon-chart-overlay@2x.png" alt="Chart Overlay Icon" />
+					</div>
 					<div class="secondary-filter form-field--select js-form-field--group">
-						<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger">Overlaid Apps (4)</span>
-					</div>	
-
-					<div class="secondary-filter form-field--select js-mock-show-for-my-apps-view-only">
-						<select class="js-select-box">
-					    <option value="allrev" selected>All Revenue</option>
-					    <option value="pairev">Paid Revenue</option>
-					    <option value="iaprev">IAP Revenue</option>
-					    <option value="adrev">Ad Revenue</option>
-					    <option value="subrev">Subscription Revenue</option>
-						</select>
-					</div>			
+						<span class="form-field--select__box ref-icon-after--angle-down js-group-trigger">Showing (0)</span>
+					</div>
 
 					<div class="form-field--checkbox-list form-field--checkbox-list--inline">
 						<ul>
@@ -205,6 +214,11 @@
 										</div>
 									</dl>
 								</header>
+								<div class="chart-key-estimates">
+									<img src="images/chart-key-estimated.png" alt="Estimated icon" />
+									<span>Incl. Min Estimates</span>
+									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-right" data-whatsthis-title="Includes Minimum Estimates" data-whatsthis="If an app drops out of the top 1000 we fill in with the minimum revenue or downloads that an app would get if it were in position 1000 in the selected country and category. These periods are represented by a dashed line in the graph and are included in the total."><span>What's this?</span></a>
+								</div>
 								<div class="chart" id="chart-revenue"></div>
 							</section>
 							<section class="chart-container chart-container--split">
@@ -217,6 +231,11 @@
 										</div>
 									</dl>
 								</header>
+								<div class="chart-key-estimates">
+									<img src="images/chart-key-estimated.png" alt="Estimated icon" />
+									<span>Incl. Min Estimates</span>
+									<a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-left" data-whatsthis-title="Includes Minimum Estimates" data-whatsthis="If an app drops out of the top 1000 we fill in with the minimum revenue or downloads that an app would get if it were in position 1000 in the selected country and category. These periods are represented by a dashed line in the graph and are included in the total."><span>What's this?</span></a>
+								</div>
 								<div class="chart" id="chart-downloads"></div>
 							</section>
 
@@ -236,7 +255,7 @@
 										<li class="series-1">
 											<input type="checkbox" name="showhideClash" id="showhideClash" class="js-toggle-series" data-chart-index="0" data-series-index="1" checked>
 											<label for="showhideClash" class="checkboxLabel">Clash of Hamsters</label>
-											<label for="showhideClash" class="checkboxLabelVisible js-hover-series">Clash of Hamsters</label>
+											<label for="showhideClash" class="checkboxLabelVisible js-hover-series">Clash of Hamsters <span class="js-tooltip js-tooltip--instant label-estimated" data-tooltip="This is displaying estimated data for one of your own apps">(est.)</span></label>
 										</li>
 										<li class="series-2">
 											<input type="checkbox" name="showhideAngry" id="showhideAngry" class="js-toggle-series" data-chart-index="0" data-series-index="2" checked>
@@ -924,6 +943,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-hamsters-vs-zombies.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--play-store"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Hamsters vs Zombies</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">&pound;320,292</span>
@@ -931,6 +951,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-8-ball-hamster.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">8 Ball Hamster</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">&pound;268,314</span>
@@ -938,6 +959,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-five-hamsters-at-freddies.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Five Hamsters at Freddies</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">&pound;238,239</span>
@@ -949,6 +971,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-crossy-hamster.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Crossy Hamster</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data positive-colour">+12%</span>
@@ -956,6 +979,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-hamsters-vs-zombies.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Hamsters vs Zombies</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data positive-colour">+6%</span>
@@ -963,6 +987,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-five-hamsters-at-freddies.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Five Hamsters at Freddies</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data positive-colour">+4%</span>
@@ -976,6 +1001,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-hamsters-vs-zombies.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Hamsters vs Zombies</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">92,133</span>
@@ -983,6 +1009,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-five-hamsters-at-freddies.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Five Hamsters at Freddies</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">69,070</span>
@@ -990,6 +1017,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-crossy-hamster.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Crossy Hamster</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">66,681</span>
@@ -1001,6 +1029,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-angry-hamsters.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Angry Hamsters</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data positive-colour">+5%</span>
@@ -1008,6 +1037,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-hamsters-vs-zombies.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Hamster vs Zombies</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data positive-colour">+5%</span>
@@ -1015,6 +1045,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-crossy-hamster.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Crossy Hamster</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data positive-colour">+4%</span>
@@ -1045,6 +1076,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-hamster-crush.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Hamster Crush</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">&pound;67,685</span>
@@ -1052,6 +1084,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-clash-of-hamsters.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Clash of Hamsters</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">&pound;75,013</span>
@@ -1059,6 +1092,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-flappy-hamster.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Flappy Hamster</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">&pound;81,069</span>
@@ -1070,6 +1104,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-hamster-dash.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Hamster Dash</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data negative-colour">-2%</span>
@@ -1077,6 +1112,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-flappy-hamster.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Flappy Hamster</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data negative-colour">-2%</span>
@@ -1084,6 +1120,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-hamster-crush.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Hamster Crush</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data positive-colour">+1%</span>
@@ -1097,6 +1134,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-hamster-crush.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Hamster Crush</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">19,377</span>
@@ -1104,6 +1142,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-flappy-hamster.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Flappy Hamster</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">24,270</span>
@@ -1111,6 +1150,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-clash-of-hamsters.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Clash of Hamsters</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data">26,059</span>
@@ -1122,6 +1162,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-hamster-dash.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Hamster Dash</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data negative-colour">-3%</span>
@@ -1129,6 +1170,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-flappy-hamster.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">Flappy Hamster</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data positive-colour">+1%</span>
@@ -1136,6 +1178,7 @@
 			 									<li class="summary-widget__data-item">
 			 										<a href="v2-app.html">
 			 											<img src="images/demo-icon-8-ball-hamster.jpg" alt="app icon" />
+			 											<span class="ref-icon-after--ios"></span>
 			 											<h3 class="summary-widget__data-item__app-name">8 Ball Hamster</h3>
 			 										</a>
 			 										<span class="summary-widget__data-item__data positive-colour">+2%</span>
@@ -1415,162 +1458,6 @@
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
 
-
-	<!-- Custom App Picker -->
-	<div class="group-picker group-picker--apps js-group-picker">
-							
-				<div class="group-picker__main-container">
-
-					<div class="group-selector-container">
-						<div class="secondary-filter form-field--search js-form-field-search">
-							<input type="text" placeholder="Find" name="findapp" id="findapp">
-							<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
-							<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
-						</div>
-
-						<ul class="form-field--checkbox-list js-mock-group-item-results">
-							<li>
-								<input type="checkbox" name="checkboxCC" id="checkboxCC" checked/>
-								<label for="checkboxCC" class="checkboxLabel">Clash of Hamsters</label>
-								<label for="checkboxCC" class="checkboxLabelVisible">
-									<span class="group-picker__app-result__store ref-icon-after--apple">iOS Store</span>
-									<img src="images/demo-icon-clash-of-hamsters.jpg" alt="App Icon" class="checkbox-label-img">
-									<div class="group-picker__app-result">
-										<span class="group-picker__app-result__name">Clash of Hamsters</span>
-										<span class="group-picker__app-result__publisher">Reflection</span>
-									</div>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxCCSS" id="checkboxCCSS" />
-								<label for="checkboxCCSS" class="checkboxLabel">Angry Hamsters</label>
-								<label for="checkboxCCSS" class="checkboxLabelVisible">
-									<span class="group-picker__app-result__store ref-icon-after--play-store">Google Play Store</span>
-									<img src="images/demo-icon-angry-hamsters.jpg" alt="App Icon" class="checkbox-label-img">
-									<div class="group-picker__app-result">
-										<span class="group-picker__app-result__name">Angry Hamsters</span>
-										<span class="group-picker__app-result__publisher">Reflection</span>
-									</div>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxCCam" id="checkboxCCam" />
-								<label for="checkboxCCam" class="checkboxLabel">Crossy Hamster</label>
-								<label for="checkboxCCam" class="checkboxLabelVisible">
-									<span class="group-picker__app-result__store ref-icon-after--apple">iOS Store</span>
-									<img src="images/demo-icon-crossy-hamster.jpg" alt="App Icon" class="checkbox-label-img">
-									<div class="group-picker__app-result">
-										<span class="group-picker__app-result__name">Crossy Hamster</span>
-										<span class="group-picker__app-result__publisher">Reflection</span>
-									</div>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxCCJS" id="checkboxCCJS" />
-								<label for="checkboxCCJS" class="checkboxLabel">Five Hamsters at Freddies</label>
-								<label for="checkboxCCJS" class="checkboxLabelVisible">
-									<span class="group-picker__app-result__store ref-icon-after--apple">iOS Store</span>
-									<img src="images/demo-icon-five-hamsters-at-freddies.jpg" alt="App Icon" class="checkbox-label-img">
-									<div class="group-picker__app-result">
-										<span class="group-picker__app-result__name">Five Hamsters at Freddies</span>
-										<span class="group-picker__app-result__publisher">Reflection</span>
-									</div>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxCC2" id="checkboxCC2" />
-								<label for="checkboxCC2" class="checkboxLabel">Hamster Crush</label>
-								<label for="checkboxCC2" class="checkboxLabelVisible">
-									<span class="group-picker__app-result__store ref-icon-after--apple">iOS Store</span>
-									<img src="images/demo-icon-hamster-crush.jpg" alt="App Icon" class="checkbox-label-img">
-									<div class="group-picker__app-result">
-										<span class="group-picker__app-result__name">Hamster Crush</span>
-										<span class="group-picker__app-result__publisher">Reflection</span>
-									</div>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxCC3" id="checkboxCC3"/>
-								<label for="checkboxCC3" class="checkboxLabel">Hamsters vs Zombies</label>
-								<label for="checkboxCC3" class="checkboxLabelVisible">
-									<span class="group-picker__app-result__store ref-icon-after--apple">iOS Store</span>
-									<img src="images/demo-icon-hamsters-vs-zombies.jpg" alt="App Icon" class="checkbox-label-img">
-									<div class="group-picker__app-result">
-										<span class="group-picker__app-result__name">Hamsters vs Zombies</span>
-										<span class="group-picker__app-result__publisher">Reflection</span>
-									</div>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxCC4" id="checkboxCC4" />
-								<label for="checkboxCC4" class="checkboxLabel">Hamster Ninja</label>
-								<label for="checkboxCC4" class="checkboxLabelVisible">
-									<span class="group-picker__app-result__store ref-icon-after--apple">iOS Store</span>
-									<img src="images/demo-icon-hamster-ninja.jpg" alt="App Icon" class="checkbox-label-img">
-									<div class="group-picker__app-result">
-										<span class="group-picker__app-result__name">Hamster Ninja</span>
-										<span class="group-picker__app-result__publisher">Reflection</span>
-									</div>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxCC5" id="checkboxCC5" />
-								<label for="checkboxCC5" class="checkboxLabel">8 Ball Hamster</label>
-								<label for="checkboxCC5" class="checkboxLabelVisible">
-									<span class="group-picker__app-result__store ref-icon-after--apple">iOS Store</span>
-									<img src="images/demo-icon-8-ball-hamster.jpg" alt="App Icon" class="checkbox-label-img">
-									<div class="group-picker__app-result">
-										<span class="group-picker__app-result__name">8 Ball Hamster</span>
-										<span class="group-picker__app-result__publisher">Reflection</span>
-									</div>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox" name="checkboxCC6" id="checkboxCC6" />
-								<label for="checkboxCC6" class="checkboxLabel">Flappy Hamster</label>
-								<label for="checkboxCC6" class="checkboxLabelVisible">
-									<span class="group-picker__app-result__store ref-icon-after--apple">iOS Store</span>
-									<img src="images/demo-icon-flappy-hamster.jpg" alt="App Icon" class="checkbox-label-img">
-									<div class="group-picker__app-result">
-										<span class="group-picker__app-result__name">Flappy Hamster</span>
-										<span class="group-picker__app-result__publisher">Reflection</span>
-									</div>
-								</label>
-							</li>
-						</ul>
-
-						<a href="#" class="ref-button--primary--small is-disabled group-picker__apply-link js-mock-group-picker-apply">Apply</a>
-					</div>
-
-				</div>
-
-				<div class="group-picker__selections-container">
-					<span class="group-picker__selections__number-selected"><span>0</span> Selected</span>
-					<a href="#" class="group-picker__selections__clear-link">Clear All</a>
-					<div class="group-picker__selections">
-						<div class="group-picker__selection" id="picker-id-checkboxCountryCC">
-							<span class="group-picker__app-result__store ref-icon-after--apple">iOS Store</span>
-							<img src="images/demo-icon-angry-hamsters.jpg" alt="App Icon" class="checkbox-label-img">
-							<div class="group-picker__app-result">
-								<span class="group-picker__app-result__name">Angry Hamsters</span>
-								<span class="group-picker__app-result__publisher">Reflection</span>
-							</div>
-							<label class="group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click" for="checkboxCountryCC">Clear</label>
-						</div>
-						<div class="group-picker__selection" id="picker-id-checkboxCountryBW">
-							<span class="group-picker__app-result__store ref-icon-after--play-store">iOS Store</span>
-							<img src="images/demo-icon-hamsters-vs-zombies.jpg" alt="App Icon" class="checkbox-label-img">
-							<div class="group-picker__app-result">
-								<span class="group-picker__app-result__name">Hamsters vs Zombies</span>
-								<span class="group-picker__app-result__publisher">King</span>
-							</div>
-							<label class="group-picker__remove-group-link ref-icon-after--close js-remove-selected-group js-no-close-on-click" for="checkboxCountryBW">Clear</label>
-						</div>
-					</div>
-				</div>
-	</div> <!-- end app picker -->
-
-
 	<div class="page-overlay js-page-overlay js-page-overlay--go-pro">
 		<div class="page-popup">
 			<div class="popup-content js-popup-content">
@@ -1594,6 +1481,26 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="page-overlay page-overlay--group-selector js-group-selector-overlay"></div>
+
+	<div class="group-picker group-picker--apps ADWBFQD-tb-a js-app-selector" style="display: none; top: 382px; left: 219px;"><div class="group-picker__main-container"><div>
+							<h2 class="group-picker__main-container__title">Compare Apps in Graph</h2>
+							<div class="toggle-container filter-toggle filter-toggle--with-text">
+								<div class="toggle">
+									<input id="toggle--filter-my-apps" name="radiogroupselectorapps" checked="" type="radio">
+									<label for="toggle--filter-my-apps">
+										My Apps
+									</label>
+								</div>
+								<div class="toggle">
+									<input id="toggle--filter-follow" name="radiogroupselectorapps" type="radio">
+									<label for="toggle--filter-follow">
+										Apps I Follow
+									</label>
+								</div>
+							</div>
+			 				<div class="secondary-filter form-field--search"><input type="text" class="" id="gwt-uid-966" name="gwt-uid-966" placeholder="Find App"> <label class="ref-icon-after--search" for="gwt-uid-966"> <span>Search</span> </label> <a class="clear-search ref-icon-after--close" href="#">Clear</a></div> <ul class="form-field--checkbox-list"><li><span class=""><input type="checkbox" value="on" id="gwt-uid-1544" tabindex="0"><label for="gwt-uid-1544" class="checkboxLabel"></label><label for="gwt-uid-1544" class="checkboxLabelVisible"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-clash-of-hamsters.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">Clash of Hamsters</span><span class="group-picker__app-result__publisher">Reflection</span></div></label></span></li><li><span class=""><input type="checkbox" value="on" id="gwt-uid-1545" tabindex="0"><label for="gwt-uid-1545" class="checkboxLabel"></label><label for="gwt-uid-1545" class="checkboxLabelVisible"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-8-ball-hamster.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">8 Ball Hamsters</span><span class="group-picker__app-result__publisher">Reflection</span></div></label></span></li><li><span class=""><input type="checkbox" value="on" id="gwt-uid-1546" tabindex="0"><label for="gwt-uid-1546" class="checkboxLabel"></label><label for="gwt-uid-1546" class="checkboxLabelVisible"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-five-hamsters-at-freddies.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">Five Hamsters at Freddies</span><span class="group-picker__app-result__publisher">Reflection</span></div></label></span></li><li><span class=""><input type="checkbox" value="on" id="gwt-uid-1547" tabindex="0"><label for="gwt-uid-1547" class="checkboxLabel"></label><label for="gwt-uid-1547" class="checkboxLabelVisible"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-crossy-hamster.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">Crossy Hamster</span><span class="group-picker__app-result__publisher">Reflection</span></div></label></span></li><li><span class=""><input type="checkbox" value="on" id="gwt-uid-1548" tabindex="0"><label for="gwt-uid-1548" class="checkboxLabel"></label><label for="gwt-uid-1548" class="checkboxLabelVisible"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-hamsters-vs-zombies.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">Hamsters vs Zombies</span><span class="group-picker__app-result__publisher">Reflection</span></div></label></span></li><li><span class=""><input type="checkbox" value="on" id="gwt-uid-1549" tabindex="0"><label for="gwt-uid-1549" class="checkboxLabel"></label><label for="gwt-uid-1549" class="checkboxLabelVisible"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-angry-hamsters.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">Angry Hamsters</span><span class="group-picker__app-result__publisher">Reflection</span></div></label></span></li><li><span class=""><input type="checkbox" value="on" id="gwt-uid-1550" tabindex="0"><label for="gwt-uid-1550" class="checkboxLabel"></label><label for="gwt-uid-1550" class="checkboxLabelVisible"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-flappy-hamster.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">Flappy Hamster</span><span class="group-picker__app-result__publisher">Reflection</span></div></label></span></li><li><span class=""><input type="checkbox" value="on" id="gwt-uid-1551" tabindex="0"><label for="gwt-uid-1551" class="checkboxLabel"></label><label for="gwt-uid-1551" class="checkboxLabelVisible"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-hamster-crush.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">Hamster Crush</span><span class="group-picker__app-result__publisher">Reflection</span></div></label></span></li><li><span class=""><input type="checkbox" value="on" id="gwt-uid-1552" tabindex="0"><label for="gwt-uid-1552" class="checkboxLabel"></label><label for="gwt-uid-1552" class="checkboxLabelVisible"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-hamster-dash.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">Hamster Dash</span><span class="group-picker__app-result__publisher">Reflection</span></div></label></span></li></ul> <button type="button" class="ref-button--primary--small group-picker__apply-link">Apply</button></div></div> <div class="group-picker__selections-container"><span class="group-picker__selections__number-selected"> <span>2 / 9</span> Selected </span> <a class="group-picker__selections__clear-link" href="#">Clear All</a> <div class="group-picker__selections"><div class="group-picker__selection"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-clash-of-hamsters.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">Clash of Hamsters</span><span class="group-picker__app-result__publisher">Reflection</span></div><label class="group-picker__remove-group-link ref-icon-after--close">Clear</label></div><div class="group-picker__selection"><span class="group-picker__app-result__store ref-icon-before--ios">iOS</span><img src="images/demo-icon-8-ball-hamster.jpg" alt="App Icon" class="checkbox-label-img" onerror="this.onerror=null;this.src='/images/app-icon-loading.png';"><div class="group-picker__app-result"><span class="group-picker__app-result__name">8 Ball Hamsters</span><span class="group-picker__app-result__publisher">Reflection</span></div><label class="group-picker__remove-group-link ref-icon-after--close">Clear</label></div></div> <button type="button" class="group-picker__selections__save-to-groups-link ref-button--secondary--small" aria-hidden="true" style="display: none;">Save Selection to New Group</button></div></div>
 
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
@@ -1610,7 +1517,7 @@
   <script src="js-v2/application.js"></script>
 
   <script src="js/vendor/snap.svg.js"></script> <!-- snap used for animating event flags on charts -->
-  <script src="js/vendor/highcharts-custom.js"></script>
+  <script src="js/vendor/highcharts.5.0.9.js"></script>
   <script src="js/vendor/highslide-software/rounded-corners.js"></script>
   <script src="js/mock-data/mock-data-my-apps.js"></script> <!-- mock data -->
   <script>
@@ -1636,6 +1543,10 @@
   		});
   		$('.js-tabs').each(function() {
   			new Tabs($(this));
+  		});
+  		new TooltipsBase();
+  		$('.js-tooltip').each(function(){
+  			new ToolTip($(this));
   		});
 
   		$('.js-open-modal--go-pro').on("click", function(e){
@@ -1774,7 +1685,7 @@
 	            xAxisDate = new Date(timeStampString*1000).addHours(12),
 	            formattedDate = xAxisDate.getDate() + " " + monthNames[xAxisDate.getMonth()];
 
-	        if($axisLabel.length > 0) {       
+	        if($axisLabel.length > 0) {
 
 	          var labelYPos = axisLabelYPos + 18,
 	              labelXPos = axisLabelXPos + 7;
@@ -1951,19 +1862,19 @@
 				});
 
 				H.Chart.prototype.animateSelectedLines = function(containerId, indexToSelect, previousSelectedIndex) {
-	    		$(containerId + ' .highcharts-series path:nth-child(2)').each(function(){
+	    		$(containerId + ' .highcharts-series').each(function(){
 	          var $this = $(this);
 	          if($this.attr("data-index") == indexToSelect) {
-	            $this.css("opacity", "0.3");
-	            $this.animate({ "opacity": 1 }, 250);
-	            $this.siblings("path").css("opacity", "0");
-	            $this.siblings("path").animate({ "opacity": 1 }, 250);
+	            $this.find("path.highcharts-graph").css("opacity", "0.3");
+	            $this.find("path.highcharts-graph").animate({ "opacity": 1 }, 250);
+	            $this.find("path.highcharts-area").css("opacity", "0");
+	            $this.find("path.highcharts-area").animate({ "opacity": 1 }, 250);
 
 	          } else if($this.attr("data-index") == previousSelectedIndex) {
-	          	$this.css("opacity", 1);
-	            $this.animate({ "opacity": 0.3 }, 250);
-	            $this.siblings("path").css("opacity", 1);
-	            $this.siblings("path").animate({ "opacity": 0 }, 250);
+	          	$this.find("path.highcharts-graph").css("opacity", 1);
+	            $this.find("path.highcharts-graph").animate({ "opacity": 0.3 }, 250);
+	            $this.find("path.highcharts-area").css("opacity", 1);
+	            $this.find("path.highcharts-area").animate({ "opacity": 0 }, 250);
 	          }
 	        });
 	    	}
@@ -1985,15 +1896,16 @@
 						$.each(chart.series, function (key, series) {
 							series.refseriesindex = key;
 							if(series.graph) {
-								series.graph.element.setAttribute("class", "series-class-" + key);
+								series.graph.element.setAttribute("data-series-class", key);
 					    	series.graph.element.setAttribute("data-index", key);
+					    	series.graph.parentGroup.element.setAttribute("data-index", key);
 							}
 						});
 
 						// set CSS classes on the area fills
 						$('.chart[data-highcharts-chart="' + key + '"] .highcharts-series path:nth-child(2)').each(function(){
 		          var lineIndex = $(this).attr("data-index");
-		          $(this).parent('.highcharts-series').find('path:first-child').attr("class", "series-fill-" + lineIndex);
+		          // $(this).parent('.highcharts-series').find('.highcharts-area').attr("class", "series-fill-" + lineIndex);
 		        });
 					});
 	   		}
@@ -2003,11 +1915,11 @@
 						$.each(chart.series, function (key, series) {
 							if(series.graph != undefined) {
 								if(series.selected) {
-									series.graph.element.setAttribute("style", "opacity: 1");
-		        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 1");
+		        			$(series.graph.parentGroup.element).find('.highcharts-graph').css("opacity", "1");
+									$(series.graph.parentGroup.element).find('.highcharts-area').css("opacity", "1");
 								} else {
-									series.graph.element.setAttribute("style", "opacity: 0.3");
-		        			series.graph.parentGroup.element.children[0].setAttribute("style", "opacity: 0");
+									$(series.graph.parentGroup.element).find('.highcharts-graph').css("opacity", "0.3");
+									$(series.graph.parentGroup.element).find('.highcharts-area').css("opacity", "0");
 								}						
 							}							
 						});  	
@@ -2038,7 +1950,7 @@
 				}
 
 				H.Chart.prototype.highlightAChartSeries = function(chartContainerId, seriesToHighlight) {
-				$('#' + chartContainerId + ' .series-class-' + seriesToHighlight).each(function(){
+				$('#' + chartContainerId + ' path[data-series-class=' + seriesToHighlight).each(function(){
 					var $this = $(this);
 					$this.css("opacity", 0.3);
           $this.animate({ "opacity": 1 }, 100);
@@ -2046,7 +1958,7 @@
 			}
 
 			H.Chart.prototype.unhighlightAChartSeries = function(chartContainerId, seriesToUnhighlight) {
-				$('#' + chartContainerId + ' .series-class-' + seriesToUnhighlight).each(function(){
+				$('#' + chartContainerId + ' path[data-series-class=' + seriesToUnhighlight).each(function(){
 					var $this = $(this);
 					$this.css("opacity", "1");
           $this.animate({ "opacity": 0.3 }, 100);
@@ -2170,7 +2082,7 @@
 		                radiusPlus: 0,
 		              }
 		            }
-		          }		          
+		          }          
 		        });
 	        }
 
@@ -2191,6 +2103,14 @@
 	          title: {
 	          	text: null
 	          }         
+	        }];
+					
+					var zoneProperties = [{
+	            value: Date.UTC(2016, 0, 8),
+	            dashStyle: "solid"
+	        }, {
+	            value: Date.UTC(2016, 0, 11),
+	            dashStyle: "ShortDash"
 	        }];
 
 	        // TEMPLATE ONLY: Create mock series
@@ -2233,7 +2153,9 @@
 		                radiusPlus: 0,
 		              }
 		            }
-		          }
+		          },
+		          zoneAxis: 'x',
+			        zones: (a == 0 ? zoneProperties : [])
 		        });
 	        }
 	      }
@@ -2428,7 +2350,6 @@
 	        	useHTML: true,
 	        	shared: true,
 	          formatter: function() {	          	
-	          	Highcharts.charts[0].series[0].test = "something";
 	            var instance = this;
 	            var s = "";
 	            var thisPointIndex = instance.points[0].point.index;
@@ -2439,7 +2360,7 @@
 	            $.each(instance.points, function (index, value) {
 	                var chartSeries = value.series;
 	                var imgString = "",
-	                		storeString = ""
+	                		storeString = "",
 	                		valueString = "",
 	                		stackedString = "";
 
@@ -2448,9 +2369,9 @@
 	                }
 	                if(chartSeries.name == "revenueseries-total") {
 	                	valueString = "$ ";
-	                	imgString = "<img src=images/v2/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
+	                	imgString = "<img src=images/icon-chart-tt-revenue@2x.png alt='Rank icon' class=icon-revenue />";
 	                } else if(chartSeries.name == "downloadsseries-total") {
-	                	imgString = "<img src=images/v2/icon-chart-tt-downloads@2x.png alt='Downloads icon' class=icon-downloads />";	
+	                	imgString = "<img src=images/icon-chart-tt-downloads@2x.png alt='Downloads icon' class=icon-downloads />";	
 	                } else { // output app and store icon from data
 	                	var appIcon = chartSeries.appIcon;
 	                	var store = chartSeries.appStore;
@@ -2538,6 +2459,7 @@
 					if(chartIndex < 2) { // user is using the twin chart
 
 						if($(this).is(":checked")) {
+
 							// turn on same series on both twin charts
 							Highcharts.charts[0].series[seriesIndex].show();
 							Highcharts.charts[1].series[seriesIndex].show();
@@ -2551,7 +2473,7 @@
 								if(!$('#toggle--show-stacked').is(":checked") && currentChartType == "area") {
 									Highcharts.Chart.prototype.setGraphCSSClasses();
 									Highcharts.Chart.prototype.resetLineStyling();
-								} else {
+								} else {									
 									Highcharts.Chart.prototype.setGraphCSSClasses();
 									Highcharts.Chart.prototype.setGraphFillsTransparency();
 								}
@@ -2585,7 +2507,6 @@
 
 									// If the line being turned off is selected then unselect, and select first visible line
 									if(Highcharts.charts[0].series[seriesIndex].selected == true) {
-										
 										isStackedChart = false;
 
 										// unselect for twin charts
@@ -3449,7 +3370,6 @@
 
 				$('.js-twin-chart-container .js-custom-chart-key ul').append(newToggle);
 
-
 				// Add a new toggle to the chart key on the combined chart
 				// combined revenue checkbox
 				seriesName += "-combined";
@@ -3676,9 +3596,9 @@
 				// 	$('.js-data-output').append(outputTable);
 				// }
 
-				revAndDownData = new Array(); 				
+				revAndDownData = new Array();
 				revAndDownData.push(mockDataRevenue);
-				revAndDownData.push(mockDataDownloads);				
+				revAndDownData.push(mockDataDownloads);
 
 				generateChart('chart-revenue', "revenueseries", mockDataRevenue, seriesColours, "area", false);
 				generateChart('chart-downloads', "downloadsseries", mockDataDownloads, seriesColours, "area", false);
@@ -3700,7 +3620,6 @@
   	}
 
   	function mockAppPicker() {
-  		// MOCK COUNTRY SELECTOR
 			$('.js-group-trigger').on("click", function(){ // to open the country selector
 				var $this = $(this),
 						thisPositionTop = $this.offset().top,
@@ -3714,30 +3633,17 @@
 				if(!isAlreadyOpen) {
 					setTimeout(function(){ // setTimeout is to wait for all other popups to close first
 						
-						$('.js-group-picker').show().css({ "top" : thisPositionTop + thisHeight + offsetTop, "left" : thisPositionLeft});
+						$('.js-group-selector-overlay').show();
+						$('.js-app-selector').show().css({ "top" : thisPositionTop + thisHeight + offsetTop, "left" : thisPositionLeft});
 						$this.parent(".js-form-field--group").addClass("is-open");
 						
 					}, 100);
 				} else {
-					$this.parent(".js-form-field--group").addClass("is-open");
+					$('.js-group-selector-overlay').hide();
+					$('.js-app-selector').hide();
+					$this.parent(".js-form-field--group").removeClass("is-open");
 				}
-
-				$('.js-mock-group-item-results input[type=checkbox]').on("change", function() {
-
-		  		$('.js-mock-group-picker-apply').removeClass('is-disabled');
-		  	});
-
-				$('.js-mock-group-picker-apply').on("click", function(e){
-					e.preventDefault();
-					$('.js-group-picker').hide();
-					$('.js-group-trigger').parent(".is-open").removeClass("is-open");
-					var numberOfAppsValue = $('.js-mock-group-item-results input[checked]').length;
-					var numberText = "Overlaid Apps (5)";
-					$('.js-group-trigger').text(numberText);
-				});
 			});
-
-			// end app picker
   	}
 
   	window.onready = initScripts();

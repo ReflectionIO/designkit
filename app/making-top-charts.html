@@ -23,7 +23,8 @@
       families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
     }
   });
-</script></head>
+</script>
+</head>
 <body>
 	<!--[if (lt IE 9)]>
       <div class="window-warning">
@@ -37,51 +38,77 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-lab-base data-vis-making-top-charts grid-container is-loading js-page-container theme-dark">
+			<div class="page-lab-base data-vis-making-top-charts grid-container is-loading js-page-container theme-dark is-showing-subcategories">
 				
-				<div class="grid__row grid__row--heading-row">
-					<div class="grid__row--heading-row__left">
-						<h1 class="heading-style--heading-three page-title">What Downloads or Revenue are Needed to Break into the Top Charts?</h1>
-					</div>
+				<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
+
+				<div class="grid__row">
 					<div class="grid__row--heading-row__right">
-						<button class="ref-button--primary--medium">
-	 						Share This
-	 					</button>
+	 					<div class="sharing-container">
+	 						<div class="addthis_sharing_toolbox"></div>
+	 					</div>
 					</div>
-					<div class="filters-row">
-						<span class="filter-label">To Break Into</span>
-						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
+				</div>
+
+				<div class="data-lab-article-intro">
+					<h1 class="data-lab-article-intro__heading">What Downloads or Revenue does an App Need to Climb the iOS Charts?</h1>
+					<p class="data-lab-article-intro__paragraph">Discover the average daily downloads or revenue required to propel an app into the top 200 iOS charts and beyond. Compare categories and countries to assess the potential of acheiving a high rank in the Free, Paid or Grossing lists.</p>
+				</div>
+
+				<div class="grid__row overflow-visible">
+					<div class="filters-row filters-row-main-chart js-filters-main-chart">
+						<h2 class="filter-row__heading">Average Daily Totals Required to Chart:</h2>
+						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-date">
 							<select class="js-select-box">
-						    <option value="top200" selected>Top 200 Apps</option>
-						    <option value="top150">Top 150 Apps</option>
-						    <option value="top100">Top 100 Apps</option>
-						    <option value="top50">Top 50 Apps</option>
-						    <option value="top20">Top 20 Apps</option>
-						    <option value="top10">Top 10 Apps</option>
+						    <option value="2017_January" selected>January 2017</option>
+						    <option value="2016_December" data-access="key">December 2016</option>
+						    <option value="2016_November" data-access="key">November 2016</option>
+						    <option value="2016_October" data-access="key">October 2016</option>
+						    <option value="2016_September" data-access="key">September 2016</option>
+						    <option value="2016_August" data-access="key">August 2016</option>
+						    <option value="2016_July" data-access="key">July 2016</option>
+						    <option value="2016_June" data-access="key">June 2016</option>
+						    <option value="2016_May" data-access="key">May 2016</option>
+						    <option value="2016_April" data-access="key">April 2016</option>
+						    <option value="2016_March" data-access="key">March 2016</option>
+						    <option value="2016_February" data-access="key">February 2016</option>
+						    <option value="2016_January" data-access="key">January 2016</option>
+							</select>
+						</div>	
+						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-rank">
+							<select class="js-select-box">
+						    <option value="200" selected>Top 200 Apps</option>
+						    <option value="150">Top 150 Apps</option>
+						    <option value="100">Top 100 Apps</option>
+						    <option value="50">Top 50 Apps</option>
+						    <option value="20" data-access="key">Top 20 Apps</option>
+						    <option value="10" data-access="key">Top 10 Apps</option>
 							</select>
 						</div>
-						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
+						<span class="filter-label">In:</span>
+						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
 							<select class="js-select-box">
-						    <option value="uk" selected>United Kingdom</option>
-						    <option value="usa">USA</option>
-						    <option value="fra">France</option>
-						    <option value="ita">Italy</option>
-						    <option value="ger">Germany</option>
+						    <option value="GB" selected>United Kingdom</option>
+						    <option value="US" data-access="key">USA</option>
+						    <option value="FR" data-access="key">France</option>
+						    <option value="IT" data-access="key">Italy</option>
+						    <option value="DE" data-access="key">Germany</option>
+						    <option value="DK" data-access="key">Denmark</option>
+						    <option value="CH" data-access="key">Switzerland</option>
+						    <option value="ES" data-access="key">Spain</option>
+						    <option value="IE" data-access="key">Ireland</option>
+						    <option value="NL" data-access="key">Netherlands</option>
+						    <option value="SE" data-access="key">Sweden</option>
 							</select>
 						</div>
-						<span class="filter-label"><a href="#" class="js-onboarding-link">What's This Showing Me?</a></span>
-						<div class="filters-right">
-							<span class="filter-label">Show Data For</span>
-							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter">
-								<select class="js-select-box">
-							    <option value="mar">March 2016</option>
-							    <option value="apr">April 2016</option>
-							    <option value="may">May 2016</option>
-							    <option value="jun">June 2016</option>
-							    <option value="jul" selected>July 2016</option>
-								</select>
-							</div>
+						<span class="filter-label">Device:</span>
+						<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
+							<select class="js-select-box">
+						    <option value="PHONE" selected>iPhone</option>
+						    <option value="TABLET">iPad</option>
+							</select>
 						</div>
+						<span class="filter-label"><a href="#" class=js-open-modal--help>Show Tips</a></span>
 					</div>
 				</div>
 
@@ -90,7 +117,7 @@
 					<div class="data-vis-making-top-charts__categories">
 						<h2>Category</h2>
 						<ul class="js-category-list">
-							<li class="data-vis-making-top-charts__category"><span>Overall</span></li>
+							<li class="data-vis-making-top-charts__category"><span>All Categories</span></li>
 							<li class="data-vis-making-top-charts__category data-vis-making-top-charts__category--has-subcategories js-has-subcategories">
 								<span class="ref-icon-after--angle-down">Games</span>
 								<ul>
@@ -147,169 +174,749 @@
 					</div>
 					<div class="data-vis-making-top-charts__data-container">
 						<div class="data-vis-making-top-charts__data-column">
-							<h2 class="ref-icon-before--download">Downloads To Be in Free List</h2>
+							<h2 class="ref-icon-before--download">Daily Downloads - Free List</h2>
 							<ul class="js-downloads-free-list">
-								<li class="data-vis-making-top-charts__item" data-id="free-ove"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item data-vis-making-top-charts__item--has-sub-items" data-id="free-gam">
+								<li class="data-vis-making-top-charts__item" data-id="Overall"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item data-vis-making-top-charts__item--has-sub-items" data-id="Games">
 									<span class="data-bar"></span>
 									<ul>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_act"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_adv"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_arc"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_boa"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_car"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_cas"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_dic"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_edu"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_fam"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_mus"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_puz"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_rac"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_rol"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_sim"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_spo"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_str"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_tri"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="free-sub_wor"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Action"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Adventure"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Arcade"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Board"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Card"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Casino"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Dice"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Educational"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Family"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="MusicGames"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Puzzle"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Racing"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="RolePlaying"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Simulation"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="SportsGames"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Strategy"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Trivia"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Word"><span class="data-bar"></span></li>
 									</ul>
-								<li class="data-vis-making-top-charts__item" data-id="free-boo"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-bus"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-cat"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-edu" ><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-ent"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-fin"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-foo"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-hea"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-lif"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-med"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-mus"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-nav"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-nws"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-new"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-pho"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-pro"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-red"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-sho"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-soc"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-spo"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-tra"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-uti"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="free-wea"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Books"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Business"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Catalogs"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Education" ><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Entertainment"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Finance"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="FoodDrink"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="HealthFitness"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Lifestyle"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Medical"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Music"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Navigation"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Newsstand"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="News"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="PhotoVideo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Productivity"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Reference"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Shopping"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="SocialNetworking"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Sports"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Travel"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Utilities"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Weather"><span class="data-bar"></span></li>
 							</ul>
 						</div>
 
 						<div class="data-vis-making-top-charts__data-column">
-							<h2 class="ref-icon-before--download">Downloads To Be in Paid List</h2>
+							<h2 class="ref-icon-before--download">Daily Downloads - Paid List</h2>
 							<ul class="js-downloads-paid-list">
-								<li class="data-vis-making-top-charts__item" data-id="paid-ove"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item data-vis-making-top-charts__item--has-sub-items" data-id="paid-gam">
+								<li class="data-vis-making-top-charts__item" data-id="Overall"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item data-vis-making-top-charts__item--has-sub-items" data-id="Games">
 									<span class="data-bar"></span>
 									<ul>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_act"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_adv"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_arc"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_boa"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_car"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_cas"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_dic"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_edu"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_fam"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_mus"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_puz"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_rac"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_rol"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_sim"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_spo"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_str"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_tri"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="paid-sub_wor"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Action"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Adventure"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Arcade"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Board"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Card"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Casino"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Dice"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Educational"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Family"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="MusicGames"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Puzzle"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Racing"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="RolePlaying"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Simulation"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="SportsGames"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Strategy"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Trivia"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Word"><span class="data-bar"></span></li>
 									</ul>
-								<li class="data-vis-making-top-charts__item" data-id="paid-boo"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-bus"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-cat"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-edu"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-ent"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-fin"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-foo"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-hea"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-lif"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-med"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-mus"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-nav"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-nws"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-new"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-pho"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-pro"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-red"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-sho"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-soc"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-spo"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-tra"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-uti"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="paid-wea"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Books"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Business"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Catalogs"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Education" ><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Entertainment"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Finance"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="FoodDrink"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="HealthFitness"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Lifestyle"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Medical"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Music"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Navigation"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Newsstand"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="News"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="PhotoVideo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Productivity"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Reference"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Shopping"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="SocialNetworking"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Sports"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Travel"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Utilities"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Weather"><span class="data-bar"></span></li>
 							</ul>
 						</div>
 
 						<div class="data-vis-making-top-charts__data-column data-vis-making-top-charts__data-column--revenue">
-							<h2 class="ref-icon-before--revenue">Revenue To Be in Grossing List</h2>
-							<ul class="js-revenue-grossing-list">
-								<li class="data-vis-making-top-charts__item" data-id="gros-ove"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item data-vis-making-top-charts__item--has-sub-items" data-id="gros-gam">
+							<h2 class="ref-icon-before--revenue">Daily Revenue - Grossing List</h2>
+							<ul class="js-revenue-grossing-list js-onboarding-numbers">
+								<li class="data-vis-making-top-charts__item" data-id="Overall"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item data-vis-making-top-charts__item--has-sub-items" data-id="Games">
 									<span class="data-bar"></span>
 									<ul>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_act"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_adv"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_arc"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_boa"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_car"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_cas"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_dic"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_edu"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_fam"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_mus"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_puz"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_rac"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_rol"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_sim"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_spo"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_str"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_tri"><span class="data-bar"></span></li>
-										<li class="data-vis-making-top-charts__item" data-id="gros-sub_wor"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Action"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Adventure"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Arcade"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Board"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Card"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Casino"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Dice"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Educational"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Family"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="MusicGames"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Puzzle"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Racing"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="RolePlaying"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Simulation"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="SportsGames"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Strategy"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Trivia"><span class="data-bar"></span></li>
+										<li class="data-vis-making-top-charts__item" data-id="Word"><span class="data-bar"></span></li>
 									</ul>
-								<li class="data-vis-making-top-charts__item" data-id="gros-boo"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-bus"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-cat"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-edu"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-ent"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-fin"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-foo"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-hea"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-lif"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-med"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-mus"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-nav"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-nws"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-new"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-pho"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-pro"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-red"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-sho"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-soc"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-spo"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-tra"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-uti"><span class="data-bar"></span></li>
-								<li class="data-vis-making-top-charts__item" data-id="gros-wea"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Books"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Business"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Catalogs"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Education" ><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Entertainment"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Finance"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="FoodDrink"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="HealthFitness"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Lifestyle"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Medical"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Music"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Navigation"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Newsstand"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="News"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="PhotoVideo"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Productivity"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Reference"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Shopping"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="SocialNetworking"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Sports"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Travel"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Utilities"><span class="data-bar"></span></li>
+								<li class="data-vis-making-top-charts__item" data-id="Weather"><span class="data-bar"></span></li>
 							</ul>
+						</div>
+					</div>
+					<footer class="data-vis-making-top-charts__main-chart-footer">
+						Based on data for July 2016
+					</footer>
+				</div>
+
+				<div class="grid__row data-vis-making-top-charts__grossing-downloads-section">
+					<div class="data-vis-making-top-charts__grossing-downloads-section__left">
+						<div class="grossing-downloads-visual-container__left">
+							<h2>USA iPhone</h2>
+							<ul>
+								<li class="ref-icon-before--download">Free Downloads</li>
+								<li class="ref-icon-before--download">Paid Downloads</li>
+								<li class="ref-icon-before--revenue">Grossing ($)</li>
+							</ul>
+						</div>
+						<div class="grossing-downloads-visual-container__right">
+							<div class="grossing-downloads-visual-group">
+								<h2><span>Games /</span> Action</h2>
+								<div class="grossing-downloads-bar grossing-downloads-bar--free"></div>
+								<div class="grossing-downloads-bar grossing-downloads-bar--paid"></div>
+								<div class="grossing-downloads-bar grossing-downloads-bar--grossing"></div>
+							</div>
+							<div class="grossing-downloads-visual-group">
+								<h2><span>Games /</span> Casino</h2>
+								<div class="grossing-downloads-bar grossing-downloads-bar--free"></div>
+								<div class="grossing-downloads-bar grossing-downloads-bar--paid"></div>
+								<div class="grossing-downloads-bar grossing-downloads-bar--grossing"></div>
+							</div>
+						</div>
+					</div>
+					<div class="data-vis-making-top-charts__grossing-downloads-section__right">
+						<h2>More Money, Fewer Downloads</h2>
+						<p>Armed with the average download or revenue numbers required to hit a certain chart position in a specific country, you can better plan:</p>
+						<ul class="content-list">
+							<li>What type of app to make</li>
+							<li>Where in the world to release</li>
+							<li>What app store category or sub-category to release an app in</li>
+						</ul>
+						<p>For instance, the 'Casino' game subcategory generates higher revenue from fewer downloads than many others  (see left)</p>
+						<p>It's important to note when planning monetisation strategies that the iOS Top Grossing chart is comprised of paid download and in-app purchase revenue only, advertising revenue is not included.</p>
+					</div>
+				</div>
+
+				<div class="grid__row data-vis-making-top-charts__number-of-downloads">
+					<div class="data-vis-making-top-charts__number-of-downloads__center">
+						<div class="data-vis-making-top-charts__number-of-downloads__left">
+							<h2>Ease into the Paid Charts</h2>
+							<p>It takes a remarkably small number of daily downloads to break into the top 200 Paid app chart in almost all categories. Some are particularly astonishing; 'Weather' and 'News' for example require only a single download per day in the USA on average (the largest market). This falls to mere fractions of a download (based on the average) for smaller markets like the UK.</p>
+						</div>
+						<div class="data-vis-making-top-charts__number-of-downloads__right">
+							<div class="number-of-downloads__row">
+								<div class="number-of-downloads__colunm-one"></div>
+								<div class="number-of-downloads__colunm-two">
+									<div class="flag-img-container">
+										<img src="images/data-vis-flag-USA@2x.png" alt="USA" />
+									</div>
+									<span>USA</span>
+								</div>
+								<div class="number-of-downloads__colunm-three">
+									<div class="flag-img-container">
+										<img src="images/data-vis-flag-UK@2x.png" alt="UK" />
+									</div><span>UK</span>
+								</div>
+							</div>
+							<div class="number-of-downloads__row">
+								<div class="number-of-downloads__colunm-one">
+									<svg enable-background="new 0 0 36 32.6"viewBox="0 0 36 32.6"x=0px xml:space=preserve y=0px><path d="M13.8,0.9l0.4,2.4c0.1,0.6-0.3,1.2-0.9,1.3c-0.1,0-0.1,0-0.2,0c-0.6,0-1-0.4-1.1-0.9l-0.4-2.4
+		c-0.1-0.6,0.3-1.2,0.9-1.3C13.1-0.1,13.7,0.3,13.8,0.9z M1.3,18.2l2.4-0.4c0.6-0.1,1-0.7,0.9-1.3c-0.1-0.6-0.7-1-1.3-0.9L1,16
+		c-0.6,0.1-1,0.7-0.9,1.3c0.1,0.5,0.6,0.9,1.1,0.9C1.2,18.2,1.3,18.2,1.3,18.2z M22.3,2.9l-1.5,2c-0.4,0.5-0.2,1.2,0.3,1.6
+		c0.2,0.1,0.4,0.2,0.7,0.2c0.4,0,0.7-0.2,0.9-0.5l1.5-2c0.4-0.5,0.2-1.2-0.3-1.6C23.4,2.3,22.6,2.4,22.3,2.9z M6.5,8.9
+		c0.4-0.5,0.2-1.2-0.3-1.6L4.2,5.9C3.7,5.5,2.9,5.6,2.6,6.2C2.2,6.7,2.3,7.4,2.8,7.7l2.1,1.4c0.2,0.1,0.4,0.2,0.7,0.2
+		C5.9,9.4,6.3,9.2,6.5,8.9z M35.8,29.2c-0.8,2.5-3.2,3.4-5.2,3.4l0,0c-0.1,0-0.2,0-0.2,0H12.8C11,32.6,8.5,31.8,7,30
+		c-0.9-1.1-1.8-3-1.2-5.9c0.5-2.4,1.8-4.1,3.6-4.9C8.5,17.9,8,16.5,8,14.9c0-3.9,3.2-7,7.1-7c2.5,0,4.9,1.3,6.1,3.5
+		c0,0,0,0.1,0.1,0.1c0.2,0,0.4,0,0.6,0c1,0,2,0.1,3,0.5c7.4,2.2,7.6,8.2,7.4,10.5C34.3,23.5,36.8,25.7,35.8,29.2z M11.8,18.4
+		c0.3,0,0.6-0.1,0.9-0.1c0.3,0,0.5,0,0.7,0c0.7-2.2,2.4-5.2,5.4-6.4c-0.9-1.2-2.3-1.9-3.8-1.9c-2.6,0-4.8,2.1-4.8,4.8
+		c0,1.3,0.5,2.5,1.4,3.3C11.7,18.3,11.8,18.4,11.8,18.4z M32.6,25.4c-0.9-0.8-1.9-1.1-1.9-1.2c-0.6-0.2-0.9-0.7-0.7-1.3
+		c0.1-0.3,1.4-6.7-5.7-8.8c-0.8-0.2-1.6-0.4-2.4-0.4c-5,0-6.4,6.1-6.4,6.2c-0.1,0.3-0.2,0.6-0.5,0.7c-0.3,0.2-0.6,0.2-0.9,0.1
+		c0,0-0.6-0.1-1.3-0.1c-2.6,0-4.2,1.3-4.7,3.9c-0.3,1.6-0.1,3,0.7,4c1,1.3,2.8,1.8,4,1.8h17.5c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0
+		c0.7,0,2.5-0.2,3-1.9C33.9,27.3,33.6,26.3,32.6,25.4z"fill=#81879D /></svg>
+									<span>Weather</span>
+								</div>
+								<div class="number-of-downloads__colunm-two">
+									<span class=ref-icon-before--download>1</span>
+								</div>
+								<div class="number-of-downloads__colunm-three">
+									<span class=ref-icon-before--download>0.07</span>
+								</div>
+							</div>
+							<div class="number-of-downloads__row">
+								<div class="number-of-downloads__colunm-one">
+									<svg enable-background="new 0 0 31.9 33.2"viewBox="0 0 31.9 33.2"x=0px xml:space=preserve y=0px><path d="M30.9,22.6c0.7-0.9,1-1.8,1-2.8c0-1.1-0.5-1.9-0.9-2.4c0.4-1.1,0.6-2.9-0.9-4.3c-1.1-1-2.9-1.5-5.5-1.3
+		c-1.8,0.1-3.3,0.4-3.4,0.4h0c-0.3,0.1-0.7,0.1-1.1,0.2c0-0.4,0-1.5,0.9-4c1-3,0.9-5.2-0.2-6.7c-1.1-1.6-3-1.7-3.5-1.7
+		c-0.5,0-1,0.2-1.3,0.6c-0.8,0.9-0.7,2.5-0.6,3.3c-0.9,2.5-3.4,8.5-5.6,10.2c0,0-0.1,0.1-0.1,0.1c-0.6,0.7-1.1,1.4-1.3,2
+		C8,16,7.5,15.9,7,15.9H2.9c-1.6,0-2.9,1.3-2.9,2.9V30c0,1.6,1.3,2.9,2.9,2.9H7c0.6,0,1.2-0.2,1.6-0.5l1.6,0.2c0.2,0,4.6,0.6,9.1,0.5
+		c0.8,0.1,1.6,0.1,2.3,0.1c1.2,0,2.3-0.1,3.2-0.3c2.1-0.5,3.5-1.4,4.3-2.7c0.6-1,0.6-2,0.5-2.7c1.4-1.2,1.6-2.6,1.6-3.6
+		C31.2,23.4,31,22.9,30.9,22.6z M2.9,31c-0.6,0-1-0.5-1-1V18.7c0-0.6,0.5-1,1-1H7c0.6,0,1,0.5,1,1V30c0,0.6-0.5,1-1,1L2.9,31L2.9,31z
+		 M29.2,21.7c-0.3,0.3-0.3,0.8-0.1,1.1c0,0,0.3,0.5,0.3,1.2c0,0.9-0.4,1.7-1.3,2.4c-0.3,0.2-0.5,0.7-0.3,1.1c0,0,0.3,0.9-0.2,1.8
+		c-0.5,0.8-1.5,1.4-3,1.8c-1.2,0.3-2.9,0.3-5,0.2c0,0-0.1,0-0.1,0c-4.4,0.1-8.9-0.5-8.9-0.5h0l-0.7-0.1c0-0.2,0.1-0.4,0.1-0.6V18.7
+		c0-0.3,0-0.6-0.1-0.9c0.1-0.5,0.5-1.5,1.3-2.4c3.1-2.5,6.1-10.8,6.2-11.2c0.1-0.1,0.1-0.3,0-0.5c-0.1-0.8-0.1-1.7,0.1-2
+		c0.4,0,1.3,0.1,1.9,0.9c0.7,1,0.7,2.7-0.1,5c-1.2,3.5-1.2,5.4-0.3,6.2c0.5,0.4,1.1,0.4,1.5,0.3c0.4-0.1,0.8-0.2,1.2-0.2
+		c0,0,0.1,0,0.1,0c2.1-0.5,5.9-0.7,7.2,0.5c1.1,1,0.3,2.4,0.2,2.5c-0.3,0.4-0.2,0.9,0.2,1.2c0,0,0.7,0.7,0.8,1.6
+		C30,20.5,29.8,21.1,29.2,21.7z"fill=#81879D /></svg>
+									<span>Social Networking</span>
+								</div>
+								<div class="number-of-downloads__colunm-two">
+									<span class=ref-icon-before--download>1</span>
+								</div>
+								<div class="number-of-downloads__colunm-three">
+									<span class=ref-icon-before--download>0.15</span>
+								</div>
+							</div>
+							<div class="number-of-downloads__row">
+								<div class="number-of-downloads__colunm-one">
+									<svg enable-background="new 0 0 33.6 27.4"viewBox="0 0 33.6 27.4"x=0px xml:space=preserve y=0px><path d="M29.7,4.5h-5.5l-0.1-0.6C23.6,1.6,21.6,0,19.2,0h-4.9C12,0,10,1.6,9.5,3.9L9.4,4.5H3.9C1.8,4.5,0,6.2,0,8.4
+		v14.9c0,2.3,1.8,4.1,4.1,4.1h25.4c2.3,0,4.1-1.8,4.1-4.1V8.4C33.6,6.2,31.9,4.5,29.7,4.5z M32,23.2c0,1.3-1.1,2.4-2.4,2.4H4.1
+		c-1.3,0-2.4-1.1-2.4-2.4V8.4c0-1.2,1-2.2,2.2-2.2H10c0.4,0,0.7-0.3,0.8-0.7l0.3-1.2c0.4-1.5,1.7-2.6,3.2-2.6h4.9
+		c1.6,0,2.9,1.1,3.2,2.6l0.3,1.2c0.1,0.4,0.4,0.7,0.8,0.7h6.1c1.2,0,2.2,1,2.2,2.2V23.2z M5.7,8.6c0.6,0,1.1,0.5,1.1,1.1
+		c0,0.6-0.5,1.1-1.1,1.1s-1.1-0.5-1.1-1.1C4.6,9.1,5.1,8.6,5.7,8.6z M16.8,8.9c-3.9,0-7.1,3.2-7.1,7.1c0,3.9,3.2,7.1,7.1,7.1
+		c3.9,0,7.1-3.2,7.1-7.1S20.7,8.9,16.8,8.9z M16.8,21.4c-3,0-5.4-2.4-5.4-5.4c0-3,2.4-5.4,5.4-5.4c3,0,5.4,2.4,5.4,5.4
+		C22.2,18.9,19.8,21.4,16.8,21.4z M13,6.4c0,0,0.2-3.2,1.6-3.2s3.2,0,4.3,0c1.2,0,1.6,3.2,1.6,3.2H13z"fill=#81879D /></svg>
+									<span>Photo &amp; Video</span>
+								</div>
+								<div class="number-of-downloads__colunm-two">
+									<span class=ref-icon-before--download>12</span>
+								</div>
+								<div class="number-of-downloads__colunm-three">
+									<span class=ref-icon-before--download>1</span>
+								</div>
+							</div>
+							<footer class=number-of-downloads__footer>
+								Average Paid Downloads per day to enter Top 200
+							</footer>
+						</div>
+					</div>					
+				</div>
+
+				<div class="grid__row data-vis-making-top-charts__country-comparison">
+					<div class="data-vis-making-top-charts__country-comparison__center">
+						<div class="country-comparison__left">
+							<ul class="data-vis-making-top-charts__tabs js-chart-tabs">
+								<li class="is-active ref-icon-before--download" data-tab=country-comparison-free data-current-chart=js-country-distribution-chart>Free List</li>
+								<li data-tab=country-comparison-paid data-current-chart=js-country-distribution-chart class="ref-icon-before--download">Paid List</li>
+								<li data-tab=country-comparison-grossing data-current-chart=js-country-distribution-chart class="ref-icon-before--revenue">Grossing List</li>
+							</ul>
+							<div class="filters-row js-filters-country-rank">
+								<div class="secondary-filter secondary-filter--small form-field--select js-secondary-filter js-dropdown-country-rank">
+									<select class="js-select-box--country-chart-dropdown">
+								    <option value="200" selected>Top 200 Apps</option>
+								    <option value="150">Top 150 Apps</option>
+								    <option value="100">Top 100 Apps</option>
+								    <option value="50">Top 50 Apps</option>
+								    <option value="20" data-access="key">Top 20 Apps</option>
+								    <option value="10" data-access="key">Top 10 Apps</option>
+									</select>
+								</div>
+								<div class="secondary-filter secondary-filter--small form-field--select js-secondary-filter js-dropdown-country-category">
+									<select class="js-select-box--country-chart-dropdown">
+								    <option value="Overall" selected>All Categories</option>
+								    <option value="Business" data-access="key">Business</option>
+								    <option value="Weather" data-access="key">Weather</option>
+								    <option value="Utilities" data-access="key">Utilities</option>
+								    <option value="Travel" data-access="key">Travel</option>
+								    <option value="Sports" data-access="key">Sports</option>
+								    <option value="SocialNetworking" data-access="key">Social Networking</option>
+								    <option value="Reference" data-access="key">Reference</option>
+								    <option value="Productivity" data-access="key">Productivity</option>
+								    <option value="Photo&Video" data-access="key">Photo &amp; Video</option>
+								    <option value="News" data-access="key">News</option>
+								    <option value="Navigation" data-access="key">Navigation</option>
+								    <option value="Music" data-access="key">Music</option>
+								    <option value="Lifestyle" data-access="key">Lifestyle</option>
+								    <option value="Health&Fitness" data-access="key">Health &amp; Fitness</option>
+								    <option value="Games" data-access="key">Games</option>
+								    <option value="Finance" data-access="key">Finance</option>
+								    <option value="Entertainment" data-access="key">Entertainment</option>
+								    <option value="Education" data-access="key">Education</option>
+								    <option value="Books" data-access="key">Books</option>
+								    <option value="Medical" data-access="key">Medical</option>
+								    <option value="Newsstand" data-access="key">Newsstand</option>
+								    <option value="Catalogs" data-access="key">Catalogs</option>
+								    <option value="Food&Drink" data-access="key">Food &amp; Drink</option>
+								    <option value="Shopping" data-access="key">Shopping</option>
+									</select>
+								</div>
+								<div class="secondary-filter secondary-filter--small form-field--select js-secondary-filter js-dropdown-country-device">
+									<select class="js-select-box--country-chart-dropdown">
+								    <option value="PHONE" selected>iPhone</option>
+								    <option value="TABLET">iPad</option>
+									</select>
+								</div>
+							</div>
+							<div class="data-vis-making-top-charts__bar-chart is-active js-country-distribution-chart" data-id=country-comparison-free>
+								<ul class="data-vis-making-top-charts__bar-chart__bar-container js-country-distribution-chart--free">
+								</ul>
+								<div class="rank-y-axis js-rank-y-axis">
+									<ul class="rank-y-axis__labels js-rank-y-axis">
+										<li></li>
+										<li></li>
+										<li></li>
+										<li></li>
+										<li></li>
+									</ul>
+								</div>
+								<div class="data-vis-making-top-charts__bar-chart__no-data">
+									<div class="chart__no-data">
+										<div class="animation-hamster-no-data-dark"></div>
+    								<div>
+											<h2>No Available Data</h2>
+											<p><a href="">Sign up and link an app store account</a> to help us offer ever deeper insight</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="data-vis-making-top-charts__bar-chart js-country-distribution-chart" data-id=country-comparison-paid>
+								<ul class="data-vis-making-top-charts__bar-chart__bar-container js-country-distribution-chart--paid">
+								</ul>
+								<div class="rank-y-axis js-rank-y-axis">
+									<ul class="rank-y-axis__labels js-rank-y-axis">
+										<li></li>
+										<li></li>
+										<li></li>
+										<li></li>
+										<li></li>
+									</ul>
+								</div>
+								<div class="data-vis-making-top-charts__bar-chart__no-data">
+									<div class="chart__no-data">
+										<div class="animation-hamster-no-data-dark"></div>
+    								<div>
+											<h2>No Available Data</h2>
+											<p><a href="">Sign up and link an app store account</a> to help us offer ever deeper insight</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="data-vis-making-top-charts__bar-chart js-country-distribution-chart" data-id=country-comparison-grossing>
+								<ul class="data-vis-making-top-charts__bar-chart__bar-container js-country-distribution-chart--grossing">
+								</ul>
+								<div class="rank-y-axis js-rank-y-axis">
+									<ul class="rank-y-axis__labels js-rank-y-axis">
+										<li></li>
+										<li></li>
+										<li></li>
+										<li></li>
+										<li></li>
+									</ul>
+								</div>
+								<div class="data-vis-making-top-charts__bar-chart__no-data">
+									<div class="chart__no-data">
+										<div class="animation-hamster-no-data-dark"></div>
+    								<div>
+											<h2>No Available Data</h2>
+											<p><a href="">Sign up and link an app store account</a> to help us offer ever deeper insight</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="rank-labels">
+								<span class="rank-label">USA</span>
+								<span class="rank-label">UK</span>
+								<span class="rank-label">FRA</span>
+								<span class="rank-label">DEU</span>
+								<span class="rank-label">ESP</span>
+								<span class="rank-label">ITA</span>
+								<span class="rank-label">NED</span>
+								<span class="rank-label">SWE</span>
+								<span class="rank-label">IRL</span>
+								<span class="rank-label">DNK</span>
+								<span class="rank-label">CHE</span>
+							</div>
+						</div>
+						<div class="country-comparison__right">
+							<h2>How do Countries Compare?</h2>
+							<p>Data compiled from the USA and major European countries (see left) reveals some interesting trends when compared per capita. Whilst the USA clearly dominates the sample group in market size and spending power, revenue generated by ‘Productivity’ apps spikes in Germany, where it is nearly double that of the UK.</p>
+							<p>German users also turn out to have the deepest pockets on Navigation apps, out-spending even the Americans. The theme continues into Weather apps where again the Germans are free spending; double the average of the UK or France, Europe’s other large markets.</p>
 						</div>
 					</div>
 				</div>
 
+				<div class="grid__row data-vis-making-top-charts__rank-distribution">
+					<div class="data-vis-making-top-charts__rank-distribution__center">
+						<div class="rank-levels__left">
+							<h2>How to Move Through the Ranks</h2>
+							<p>It's invaluable to know the gap between ranking at say position 200 and position 10 for your chosen category in a specific country (e.g Games, USA). With this information it’s possible to plan exactly what marketing is necessary to acquire enough downloads or revenue to climb to the desired level.</p>
+							<p>Smaller gaps between adjacent bars on the right indicate a category or country in which it may be easier to climb to a higher rank with fewer downloads and thus less marketing effort.</p>
+						</div>
+						<div class="rank-levels__right">
+							<ul class="data-vis-making-top-charts__tabs js-chart-tabs">
+								<li class="is-active ref-icon-before--download" data-tab=rank-distribution-free data-current-chart=js-rank-distribution-chart>Free List</li>
+								<li class="ref-icon-before--download" data-tab=rank-distribution-paid data-current-chart=js-rank-distribution-chart>Paid List</li>
+								<li class="ref-icon-before--revenue" data-tab=rank-distribution-grossing data-current-chart=js-rank-distribution-chart>Grossing List</li>
+							</ul>
+							<div class="filters-row js-filters-rank-chart">
+								<div class="secondary-filter secondary-filter--small form-field--select js-secondary-filter js-dropdown-category-country">
+									<select class="js-select-box--rank-chart-dropdown">
+								    <option value="GB" selected>United Kingdom</option>
+								    <option value="US" data-access="key">USA</option>
+								    <option value="FR" data-access="key">France</option>
+								    <option value="IT" data-access="key">Italy</option>
+								    <option value="DE" data-access="key">Germany</option>
+								    <option value="DK" data-access="key">Denmark</option>
+								    <option value="CH" data-access="key">Switzerland</option>
+								    <option value="ES" data-access="key">Spain</option>
+								    <option value="IE" data-access="key">Ireland</option>
+								    <option value="NL" data-access="key">Netherlands</option>
+								    <option value="SE" data-access="key">Sweden</option>
+									</select>
+								</div>
+								<div class="secondary-filter secondary-filter--small form-field--select js-secondary-filter js-dropdown-category">
+									<select class="js-select-box--rank-chart-dropdown">
+								    <option value="Overall" selected>All Categories</option>
+								    <option value="Business" data-access="key">Business</option>
+								    <option value="Weather" data-access="key">Weather</option>
+								    <option value="Utilities" data-access="key">Utilities</option>
+								    <option value="Travel" data-access="key">Travel</option>
+								    <option value="Sports" data-access="key">Sports</option>
+								    <option value="SocialNetworking" data-access="key">Social Networking</option>
+								    <option value="Reference" data-access="key">Reference</option>
+								    <option value="Productivity" data-access="key">Productivity</option>
+								    <option value="Photo&Video" data-access="key">Photo &amp; Video</option>
+								    <option value="News" data-access="key">News</option>
+								    <option value="Navigation" data-access="key">Navigation</option>
+								    <option value="Music" data-access="key">Music</option>
+								    <option value="Lifestyle" data-access="key">Lifestyle</option>
+								    <option value="Health&Fitness" data-access="key">Health &amp; Fitness</option>
+								    <option value="Games" data-access="key">Games</option>
+								    <option value="Finance" data-access="key">Finance</option>
+								    <option value="Entertainment" data-access="key">Entertainment</option>
+								    <option value="Education" data-access="key">Education</option>
+								    <option value="Books" data-access="key">Books</option>
+								    <option value="Medical" data-access="key">Medical</option>
+								    <option value="Newsstand" data-access="key">Newsstand</option>
+								    <option value="Catalogs" data-access="key">Catalogs</option>
+								    <option value="Food&Drink" data-access="key">Food &amp; Drink</option>
+								    <option value="Shopping" data-access="key">Shopping</option>
+									</select>
+								</div>
+								<div class="secondary-filter secondary-filter--small form-field--select js-secondary-filter js-dropdown-category-device">
+									<select class="js-select-box--rank-chart-dropdown">
+								    <option value="PHONE" selected>iPhone</option>
+								    <option value="TABLET">iPad</option>
+									</select>
+								</div>
+							</div>
+							<div class="data-vis-making-top-charts__bar-chart is-active js-rank-distribution-chart" data-id=rank-distribution-free>
+								<ul class="data-vis-making-top-charts__bar-chart__bar-container js-rank-distribution-chart--free"></ul>
+								<div class="data-vis-making-top-charts__bar-chart__no-data">
+									<div class="chart__no-data">
+										<div class="animation-hamster-no-data-dark"></div>
+    								<div>
+											<h2>No Available Data</h2>
+											<p><a href="">Sign up and link an app store account</a> to help us offer ever deeper insight</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="data-vis-making-top-charts__bar-chart js-rank-distribution-chart" data-id=rank-distribution-paid>
+								<ul class="data-vis-making-top-charts__bar-chart__bar-container js-rank-distribution-chart--paid"></ul>
+								<div class="data-vis-making-top-charts__bar-chart__no-data">
+									<div class="chart__no-data">
+										<div class="animation-hamster-no-data-dark"></div>
+    								<div>
+											<h2>No Available Data</h2>
+											<p><a href="">Sign up and link an app store account</a> to help us offer ever deeper insight</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="data-vis-making-top-charts__bar-chart js-rank-distribution-chart" data-id=rank-distribution-grossing>
+								<ul class="data-vis-making-top-charts__bar-chart__bar-container js-rank-distribution-chart--grossing"></ul>
+								<div class="data-vis-making-top-charts__bar-chart__no-data">
+									<div class="chart__no-data">
+										<div class="animation-hamster-no-data-dark"></div>
+    								<div>
+											<h2>No Available Data</h2>
+											<p><a href="">Sign up and link an app store account</a> to help us offer ever deeper insight</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="rank-labels">
+								<span class="rank-label">Top 10</span>
+								<span class="rank-label">Top 20</span>
+								<span class="rank-label">Top 50</span>
+								<span class="rank-label">Top 100</span>
+								<span class="rank-label">Top 150</span>
+								<span class="rank-label">Top 200</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="data-vis-making-top-charts__foot-content">
+					<div>
+						<h2>Knowledge is Power</h2>
+						<p>We are constantly striving to compile and make sense of as much app market data as we can and you can help us; tell us what you'd like to see explored here in the Reflection Data Lab. If there are any tools or specific insights that would make your life easier, we want to know. Please comment freely below, positive, negative or withering, it all helps.</p>
+						<p>By signing up and linking an app store account you'll also help us expand our data sets meaning we can offer ever deeper insight. We’ll also alert you when we have another visualisation to share here in the lab.</p>
+						<p>To learn more how we calculate our estimates and the accuracy level of our data read <a href="#">this article</a> in our blog.</p>
+	 					<a class="ref-button--primary--large">
+	 						Sign Up for Free
+	 					</a>
+	 					<div class="sharing-container">
+	 						<div class="addthis_sharing_toolbox"></div>
+	 					</div>
+	 				</div>
+				</div>
+
+				<!-- <div class="idc-comments-container">
+					<script>
+						var idcomments_acct = 'c4a0cfaab22f16bc5e847b0d1398bb91';
+						var idcomments_post_id;
+						var idcomments_post_url;
+						</script>
+						<span id="IDCommentsPostTitle" style="display:none"></span>
+					<script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+				</div>		 -->		
 			</div>
 		</div>
 	</div>
 
 	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
 	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--sign-up">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<a href="#" class="popup-close js-popup-close"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+				<div class="popup-sections-container js-popup-sections-container">
+					<div class="multi-step-section is-viewed-step">
+						<svg class="link-to-reflection-svg" enable-background="new 0 0 150.3 100.6" viewBox="0 0 150.3 100.6" x="0px" xml:space="preserve" y="0px"><path d="M130.5,15.6c0-0.4-0.2-0.9-0.8-1.4c-0.4-0.4-1.2-0.7-2.1-1.1c-0.1-0.9-0.7-1.8-1.6-2.1
+	c0.8-0.2,1.4-0.8,1.5-1.5c0,0,0,0,0.1,0c1.2,0,2.1-0.9,2.1-2.1c0-1.1-0.7-2.1-1.8-2.4l-0.3-0.1c0-0.1,0-0.2,0-0.3
+	c0-1.1-0.7-2.1-1.8-2.4l-7.8-2.1C117.9,0,117.8,0,117.6,0h0c-1.1,0-2,0.9-2,2.1c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1
+	c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1c0,0.4,0.1,0.7,0.3,1.1
+	c-0.2,0.3-0.3,0.6-0.3,1c0,0.5,0.2,0.9,0.4,1.3L93.1,28.5v59.1l23.8,13.1l33.3-8.4v-70L130.5,15.6z M117.6,1.6c0,0,0.1,0,0.1,0
+	l7.8,2.1c0.3,0.1,0.5,0.4,0.6,0.7c0,0,0,0.1,0,0.1c0,0.3-0.2,0.5-0.5,0.5c0,0-0.1,0-0.2,0l-7.8-2.2c-0.3-0.1-0.5-0.4-0.6-0.7
+	c0,0,0,0,0,0C117.1,1.8,117.3,1.6,117.6,1.6z M117.6,3.7c0,0,0.1,0,0.1,0l9.1,2.6l0.7,0.2c0.3,0.1,0.6,0.5,0.6,0.8
+	c0,0.3-0.2,0.5-0.5,0.5c-0.1,0-0.1,0-0.2,0l-0.1,0L117.7,5c-0.2-0.1-0.5-0.3-0.5-0.6c0,0,0-0.1,0-0.1c0,0,0,0,0-0.1
+	C117.1,3.9,117.3,3.7,117.6,3.7z M117.6,5.8c0,0,0.1,0,0.1,0l7.8,2.3c0.3,0.1,0.6,0.5,0.6,0.8c0,0,0,0.1,0,0.1
+	c0,0.2-0.2,0.4-0.4,0.4c-0.1,0-0.1,0-0.2,0l-0.1,0l-7.7-2.3c-0.2-0.1-0.5-0.3-0.5-0.6c0,0,0-0.1,0-0.2c0,0,0,0,0-0.1
+	C117.1,6,117.3,5.8,117.6,5.8z M117.6,7.9c0,0,0.1,0,0.1,0l5.8,1.8c0.3,0.1,0.5,0.4,0.6,0.7c0,0.1,0,0.1,0,0.2c0,0.1,0,0.1,0,0.1
+	c-0.1,0.2-0.2,0.3-0.4,0.3c-0.1,0-0.1,0-0.2,0l-5.8-1.8c-0.2-0.1-0.4-0.3-0.5-0.6c0-0.1,0-0.1,0-0.2c0,0,0,0,0-0.1
+	C117.1,8.1,117.3,7.9,117.6,7.9z M117.6,10c0,0,0.1,0,0.2,0l5.1,1.6l2,0.6l0.7,0.2c0.3,0.1,0.6,0.5,0.6,0.8c0,0.3-0.2,0.5-0.4,0.5
+	c-0.1,0-0.1,0-0.2,0l-7.6-2.5l-0.1,0c-0.2-0.1-0.4-0.3-0.5-0.6c0-0.1,0-0.1,0-0.2C117.1,10.2,117.3,10,117.6,10z M95.1,29.5
+	l21.5-15.8v84.5L95.1,86.4V29.5z M148.3,90.6l-30.6,7.7V13.5l30.6,10.1V90.6z M137.7,45.5l-6.1-0.7v7.6l6.1,0.3V45.5z M136.7,51.6
+	l-4.1-0.2v-5.5l4.1,0.5V51.6z M137.7,35.4l-6.1-1.2v7.6l6.1,0.8V35.4z M136.7,41.4l-4.1-0.6v-5.5l4.1,0.8V41.4z M137.7,65.7
+	l-6.1,0.4v7.6l6.1-0.8V65.7z M136.7,72l-4.1,0.6v-5.5l4.1-0.3V72z M137.7,55.6l-6.1-0.1V63l6.1-0.3V55.6z M136.7,61.8l-4.1,0.2v-5.5
+	l4.1,0.1V61.8z M145.3,74.6l-5.3,0.9v7l5.3-1.2V74.6z M144.3,80.5l-3.3,0.7v-4.9l3.3-0.5V80.5z M137.7,25.2l-6.1-1.8V31l6.1,1.4
+	V25.2z M136.7,31.1l-4.1-0.9v-5.4l4.1,1.2V31.1z M128.9,22.6l-7.2-2.1v8.2l7.2,1.6V22.6z M127.9,29.1l-5.2-1.2v-6.1l5.2,1.5V29.1z
+	 M128.9,66.4l-7.2,0.5v8.2l7.2-1V66.4z M127.9,73.2l-5.2,0.7v-6.1l5.2-0.4V73.2z M137.7,75.9l-6.1,1v7.6l6.1-1.4V75.9z M136.7,82.2
+	l-4.1,0.9v-5.5l4.1-0.7V82.2z M128.9,55.4l-7.2-0.1v8.2l7.2-0.3V55.4z M127.9,62.2l-5.2,0.2v-6.1l5.2,0.1V62.2z M128.9,85v-7.7
+	l-7.2,1.2v8.2L128.9,85z M122.7,79.3l5.2-0.8v5.8l-5.2,1.2V79.3z M128.9,44.5l-7.2-0.8v8.2l7.2,0.3V44.5z M127.9,51.2l-5.2-0.2v-6.1
+	l5.2,0.6V51.2z M145.3,65.2l-5.3,0.4v7l5.3-0.7V65.2z M144.3,71l-3.3,0.4v-4.9l3.3-0.2V71z M128.9,33.6l-7.2-1.5v8.2l7.2,1V33.6z
+	 M127.9,40.1l-5.2-0.7v-6.1l5.2,1V40.1z M145.3,46.3l-5.3-0.6v7l5.3,0.2V46.3z M144.3,52l-3.3-0.2v-4.9l3.3,0.4V52z M145.3,27.5
+	l-5.3-1.6v7l5.3,1.2V27.5z M144.3,32.9l-3.3-0.8v-4.9l3.3,1V32.9z M145.3,36.9l-5.3-1.1v7l5.3,0.7V36.9z M144.3,42.4l-3.3-0.5v-4.9
+	l3.3,0.7V42.4z M145.3,55.8l-5.3-0.1v7l5.3-0.2V55.8z M144.3,61.5l-3.3,0.1v-4.9l3.3,0.1V61.5z M108.3,83.9l5.6,2.1v-8l-5.6-1.4
+	V83.9z M109.3,78l3.6,0.9v5.7l-3.6-1.4V78z M96.8,79.5l3.5,1.3v-6.2l-3.5-0.9V79.5z M97.8,75.1l1.5,0.4v4l-1.5-0.6V75.1z
+	 M101.9,72.4l4.4,0.9v-7l-4.4-0.3V72.4z M102.9,67.1l2.4,0.2v4.8l-2.4-0.5V67.1z M108.3,53.3l5.6-0.9v-8l-5.6,1.7V53.3z M109.3,46.8
+	l3.6-1.1v5.8l-3.6,0.6V46.8z M108.3,63.5l5.6,0.1v-8l-5.6,0.6V63.5z M109.3,57.1l3.6-0.4v5.8l-3.6-0.1V57.1z M108.3,25.6v7.2l5.6-3
+	v-8L108.3,25.6z M112.9,29.2l-3.6,1.9v-5l3.6-2.4V29.2z M108.3,43l5.6-2v-8l-5.6,2.7V43z M109.3,36.4l3.6-1.7v5.7l-3.6,1.3V36.4z
+	 M96.8,71.4l3.5,0.7v-6.2l-3.5-0.2V71.4z M97.8,66.7l1.5,0.1v4l-1.5-0.3V66.7z M108.3,73.7l5.6,1.1v-8l-5.6-0.4V73.7z M109.3,67.5
+	l3.6,0.3v5.8l-3.6-0.7V67.5z M101.9,45.3l4.4-1.5v-7l-4.4,2.1V45.3z M102.9,39.5l2.4-1.1V43l-2.4,0.8V39.5z M96.8,47.1l3.5-1.2v-6.2
+	l-3.5,1.7V47.1z M97.8,41.9l1.5-0.7v3.9l-1.5,0.5V41.9z M101.9,81.5l4.4,1.7v-7l-4.4-1.1V81.5z M102.9,76.3l2.4,0.6v4.7l-2.4-0.9
+	V76.3z M101.9,36.2l4.4-2.3v-7l-4.4,2.9V36.2z M102.9,30.4l2.4-1.6v4.5l-2.4,1.3V30.4z M101.9,54.3l4.4-0.7v-7l-4.4,1.3V54.3z
+	 M102.9,48.7l2.4-0.7v4.8l-2.4,0.4V48.7z M96.8,38.9l3.5-1.9v-6.2l-3.5,2.3V38.9z M97.8,33.7l1.5-1v3.7l-1.5,0.8V33.7z M96.8,55.2
+	l3.5-0.6v-6.2l-3.5,1V55.2z M97.8,50.2l1.5-0.4v4L97.8,54V50.2z M96.8,63.3l3.5,0.1v-6.2l-3.5,0.4V63.3z M97.8,58.4l1.5-0.2v4.1
+	l-1.5,0V58.4z M101.9,63.4l4.4,0.1v-7l-4.4,0.5V63.4z M102.9,57.9l2.4-0.3v4.8l-2.4,0V57.9z M82.6,65.1v-2.6c0-1.2-0.8-2.4-2.4-2.4
+	h-4.7v-0.2c0-0.7-0.5-1.2-1.2-1.2h-1.9c-0.2,0-0.3,0-0.5,0.1c-0.1-0.1-0.3-0.1-0.5-0.1h-1.9c-0.7,0-1.2,0.5-1.2,1.2v0.2h-1.6
+	c-1.3,0-2.1,0.9-2.7,1.6c-0.2,0.3-0.6,0.7-0.8,0.7c-1.2,0-2.5,0.3-2.7,2.7H49.3V52.7c0-2-1.5-3.5-3.4-3.5H27H8
+	c-1.9,0-3.4,1.5-3.4,3.5v25l-4,4L0,82.3v0.8v1.5v0.3l0.1,0.3c0.6,2,4.1,2.1,4.1,2.1H27h22.8c0,0,3.5-0.1,4.1-2.1l0.1-0.3v-0.3v-1.5
+	v-0.8l-0.6-0.6l-4-4V66.4h11.2c0.2,2.4,1.5,2.7,2.7,2.7c0.2,0,0.6,0.4,0.8,0.7c0.6,0.7,1.4,1.6,2.7,1.6h1.6v0.2
+	c0,0.7,0.5,1.2,1.2,1.2h1.9c0.2,0,0.3,0,0.5-0.1c0.1,0.1,0.3,0.1,0.5,0.1h1.9c0.7,0,1.2-0.5,1.2-1.2v-0.2h4.7c1.1,0,2.4-0.4,2.4-2.4
+	v-2.6h12.2v-1.3H82.6z M6.6,52.7c0-0.8,0.6-1.5,1.4-1.5c0.8,0,18.8,0,18.9,0c0,0,0,0,0,0c0.2,0,18.2,0,18.9,0c0.9,0,1.4,0.7,1.4,1.5
+	c0,0.7,0,23.2,0,24.9h-39l0,0l0,0H6.6C6.6,75.9,6.6,53.4,6.6,52.7z M9.2,78.4h35.5l2.4,2.9H6.6L9.2,78.4L9.2,78.4z M51.9,83.1
+	c0,0,0,1.4,0,1.5c-0.1,0.2-1.3,0.7-2.2,0.7c-0.5,0-22.3,0-22.8,0h0c-0.2,0-22.2,0-22.8,0c-0.9,0-2.1-0.5-2.2-0.7c0-0.1,0-1.5,0-1.5
+	l4.7-4.7h0.9l-3.7,4.1h45.8l-3.4-4.1h0.9L51.9,83.1z M69,70h-2.2c-0.7,0-1.2-0.5-1.7-1.1c-0.5-0.6-1.1-1.2-1.8-1.2
+	c-0.8,0-1.3,0-1.3-2c0-1.9,0.5-1.9,1.3-1.9c0.8,0,1.3-0.6,1.8-1.2c0.5-0.6,1-1.1,1.7-1.1H69V70z M71.2,71.4h-1.4V60.1h1.4V71.4z
+	 M74.1,71.4h-1.4V60.1h1.4V71.4z M81.2,69c0,0.6,0,1-1,1h-5.3v-8.5h5.3c1,0,1,0.9,1,1V69z M46.4,52.4H7.5v24h38.9V52.4z M13.2,75.4
+	H8.5v-5.5l4.7-3.9V75.4z M18.6,75.4h-4.9v-9.5l4.9,2.7V75.4z M24,75.4h-4.9v-6.7l4.9-5.2V75.4z M29.4,75.4h-4.9V62.9l0.3-0.3
+	l4.6,3.6V75.4z M34.8,75.4h-4.9v-9.2l4.9-1.8V75.4z M40.2,75.4h-4.9V64.3l0,0l4.9-5.3V75.4z M45.4,75.4h-4.7V58.6l4.7,2.3V75.4z
+	 M45.4,59.8l-5-2.5l-5.6,6.1l-5,1.8l-5-3.9L24,62h0v0l-5.3,5.6l-5.4-3l-4.9,4V53.4h36.9V59.8z" fill="#81879D"></path></svg>
+						<h2 class="heading-style--heading-four multi-step-section__heading">Sign up or Log In to See This Data</h2>
+						<p>Create a Free Reflection account to dig deeper into this data. It’ll take seconds and no payment details are required, it's free!</p>
+						<button class="ref-button--primary--large button-full-width js-popup-close">
+							Create Free Account
+						</button>
+						<p class="popup-text-link"><a href="#">Already a Member, Log In</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--no-data">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<a href="#" class="popup-close js-popup-close"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+				<div class="popup-sections-container js-popup-sections-container">
+					<div class="multi-step-section is-viewed-step">
+						<svg class="link-to-reflection-svg" enable-background="new 0 0 150.3 100.6" viewBox="0 0 150.3 100.6" x="0px" xml:space="preserve" y="0px"><path d="M130.5,15.6c0-0.4-0.2-0.9-0.8-1.4c-0.4-0.4-1.2-0.7-2.1-1.1c-0.1-0.9-0.7-1.8-1.6-2.1
+	c0.8-0.2,1.4-0.8,1.5-1.5c0,0,0,0,0.1,0c1.2,0,2.1-0.9,2.1-2.1c0-1.1-0.7-2.1-1.8-2.4l-0.3-0.1c0-0.1,0-0.2,0-0.3
+	c0-1.1-0.7-2.1-1.8-2.4l-7.8-2.1C117.9,0,117.8,0,117.6,0h0c-1.1,0-2,0.9-2,2.1c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1
+	c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1c0,0.4,0.1,0.7,0.3,1.1
+	c-0.2,0.3-0.3,0.6-0.3,1c0,0.5,0.2,0.9,0.4,1.3L93.1,28.5v59.1l23.8,13.1l33.3-8.4v-70L130.5,15.6z M117.6,1.6c0,0,0.1,0,0.1,0
+	l7.8,2.1c0.3,0.1,0.5,0.4,0.6,0.7c0,0,0,0.1,0,0.1c0,0.3-0.2,0.5-0.5,0.5c0,0-0.1,0-0.2,0l-7.8-2.2c-0.3-0.1-0.5-0.4-0.6-0.7
+	c0,0,0,0,0,0C117.1,1.8,117.3,1.6,117.6,1.6z M117.6,3.7c0,0,0.1,0,0.1,0l9.1,2.6l0.7,0.2c0.3,0.1,0.6,0.5,0.6,0.8
+	c0,0.3-0.2,0.5-0.5,0.5c-0.1,0-0.1,0-0.2,0l-0.1,0L117.7,5c-0.2-0.1-0.5-0.3-0.5-0.6c0,0,0-0.1,0-0.1c0,0,0,0,0-0.1
+	C117.1,3.9,117.3,3.7,117.6,3.7z M117.6,5.8c0,0,0.1,0,0.1,0l7.8,2.3c0.3,0.1,0.6,0.5,0.6,0.8c0,0,0,0.1,0,0.1
+	c0,0.2-0.2,0.4-0.4,0.4c-0.1,0-0.1,0-0.2,0l-0.1,0l-7.7-2.3c-0.2-0.1-0.5-0.3-0.5-0.6c0,0,0-0.1,0-0.2c0,0,0,0,0-0.1
+	C117.1,6,117.3,5.8,117.6,5.8z M117.6,7.9c0,0,0.1,0,0.1,0l5.8,1.8c0.3,0.1,0.5,0.4,0.6,0.7c0,0.1,0,0.1,0,0.2c0,0.1,0,0.1,0,0.1
+	c-0.1,0.2-0.2,0.3-0.4,0.3c-0.1,0-0.1,0-0.2,0l-5.8-1.8c-0.2-0.1-0.4-0.3-0.5-0.6c0-0.1,0-0.1,0-0.2c0,0,0,0,0-0.1
+	C117.1,8.1,117.3,7.9,117.6,7.9z M117.6,10c0,0,0.1,0,0.2,0l5.1,1.6l2,0.6l0.7,0.2c0.3,0.1,0.6,0.5,0.6,0.8c0,0.3-0.2,0.5-0.4,0.5
+	c-0.1,0-0.1,0-0.2,0l-7.6-2.5l-0.1,0c-0.2-0.1-0.4-0.3-0.5-0.6c0-0.1,0-0.1,0-0.2C117.1,10.2,117.3,10,117.6,10z M95.1,29.5
+	l21.5-15.8v84.5L95.1,86.4V29.5z M148.3,90.6l-30.6,7.7V13.5l30.6,10.1V90.6z M137.7,45.5l-6.1-0.7v7.6l6.1,0.3V45.5z M136.7,51.6
+	l-4.1-0.2v-5.5l4.1,0.5V51.6z M137.7,35.4l-6.1-1.2v7.6l6.1,0.8V35.4z M136.7,41.4l-4.1-0.6v-5.5l4.1,0.8V41.4z M137.7,65.7
+	l-6.1,0.4v7.6l6.1-0.8V65.7z M136.7,72l-4.1,0.6v-5.5l4.1-0.3V72z M137.7,55.6l-6.1-0.1V63l6.1-0.3V55.6z M136.7,61.8l-4.1,0.2v-5.5
+	l4.1,0.1V61.8z M145.3,74.6l-5.3,0.9v7l5.3-1.2V74.6z M144.3,80.5l-3.3,0.7v-4.9l3.3-0.5V80.5z M137.7,25.2l-6.1-1.8V31l6.1,1.4
+	V25.2z M136.7,31.1l-4.1-0.9v-5.4l4.1,1.2V31.1z M128.9,22.6l-7.2-2.1v8.2l7.2,1.6V22.6z M127.9,29.1l-5.2-1.2v-6.1l5.2,1.5V29.1z
+	 M128.9,66.4l-7.2,0.5v8.2l7.2-1V66.4z M127.9,73.2l-5.2,0.7v-6.1l5.2-0.4V73.2z M137.7,75.9l-6.1,1v7.6l6.1-1.4V75.9z M136.7,82.2
+	l-4.1,0.9v-5.5l4.1-0.7V82.2z M128.9,55.4l-7.2-0.1v8.2l7.2-0.3V55.4z M127.9,62.2l-5.2,0.2v-6.1l5.2,0.1V62.2z M128.9,85v-7.7
+	l-7.2,1.2v8.2L128.9,85z M122.7,79.3l5.2-0.8v5.8l-5.2,1.2V79.3z M128.9,44.5l-7.2-0.8v8.2l7.2,0.3V44.5z M127.9,51.2l-5.2-0.2v-6.1
+	l5.2,0.6V51.2z M145.3,65.2l-5.3,0.4v7l5.3-0.7V65.2z M144.3,71l-3.3,0.4v-4.9l3.3-0.2V71z M128.9,33.6l-7.2-1.5v8.2l7.2,1V33.6z
+	 M127.9,40.1l-5.2-0.7v-6.1l5.2,1V40.1z M145.3,46.3l-5.3-0.6v7l5.3,0.2V46.3z M144.3,52l-3.3-0.2v-4.9l3.3,0.4V52z M145.3,27.5
+	l-5.3-1.6v7l5.3,1.2V27.5z M144.3,32.9l-3.3-0.8v-4.9l3.3,1V32.9z M145.3,36.9l-5.3-1.1v7l5.3,0.7V36.9z M144.3,42.4l-3.3-0.5v-4.9
+	l3.3,0.7V42.4z M145.3,55.8l-5.3-0.1v7l5.3-0.2V55.8z M144.3,61.5l-3.3,0.1v-4.9l3.3,0.1V61.5z M108.3,83.9l5.6,2.1v-8l-5.6-1.4
+	V83.9z M109.3,78l3.6,0.9v5.7l-3.6-1.4V78z M96.8,79.5l3.5,1.3v-6.2l-3.5-0.9V79.5z M97.8,75.1l1.5,0.4v4l-1.5-0.6V75.1z
+	 M101.9,72.4l4.4,0.9v-7l-4.4-0.3V72.4z M102.9,67.1l2.4,0.2v4.8l-2.4-0.5V67.1z M108.3,53.3l5.6-0.9v-8l-5.6,1.7V53.3z M109.3,46.8
+	l3.6-1.1v5.8l-3.6,0.6V46.8z M108.3,63.5l5.6,0.1v-8l-5.6,0.6V63.5z M109.3,57.1l3.6-0.4v5.8l-3.6-0.1V57.1z M108.3,25.6v7.2l5.6-3
+	v-8L108.3,25.6z M112.9,29.2l-3.6,1.9v-5l3.6-2.4V29.2z M108.3,43l5.6-2v-8l-5.6,2.7V43z M109.3,36.4l3.6-1.7v5.7l-3.6,1.3V36.4z
+	 M96.8,71.4l3.5,0.7v-6.2l-3.5-0.2V71.4z M97.8,66.7l1.5,0.1v4l-1.5-0.3V66.7z M108.3,73.7l5.6,1.1v-8l-5.6-0.4V73.7z M109.3,67.5
+	l3.6,0.3v5.8l-3.6-0.7V67.5z M101.9,45.3l4.4-1.5v-7l-4.4,2.1V45.3z M102.9,39.5l2.4-1.1V43l-2.4,0.8V39.5z M96.8,47.1l3.5-1.2v-6.2
+	l-3.5,1.7V47.1z M97.8,41.9l1.5-0.7v3.9l-1.5,0.5V41.9z M101.9,81.5l4.4,1.7v-7l-4.4-1.1V81.5z M102.9,76.3l2.4,0.6v4.7l-2.4-0.9
+	V76.3z M101.9,36.2l4.4-2.3v-7l-4.4,2.9V36.2z M102.9,30.4l2.4-1.6v4.5l-2.4,1.3V30.4z M101.9,54.3l4.4-0.7v-7l-4.4,1.3V54.3z
+	 M102.9,48.7l2.4-0.7v4.8l-2.4,0.4V48.7z M96.8,38.9l3.5-1.9v-6.2l-3.5,2.3V38.9z M97.8,33.7l1.5-1v3.7l-1.5,0.8V33.7z M96.8,55.2
+	l3.5-0.6v-6.2l-3.5,1V55.2z M97.8,50.2l1.5-0.4v4L97.8,54V50.2z M96.8,63.3l3.5,0.1v-6.2l-3.5,0.4V63.3z M97.8,58.4l1.5-0.2v4.1
+	l-1.5,0V58.4z M101.9,63.4l4.4,0.1v-7l-4.4,0.5V63.4z M102.9,57.9l2.4-0.3v4.8l-2.4,0V57.9z M82.6,65.1v-2.6c0-1.2-0.8-2.4-2.4-2.4
+	h-4.7v-0.2c0-0.7-0.5-1.2-1.2-1.2h-1.9c-0.2,0-0.3,0-0.5,0.1c-0.1-0.1-0.3-0.1-0.5-0.1h-1.9c-0.7,0-1.2,0.5-1.2,1.2v0.2h-1.6
+	c-1.3,0-2.1,0.9-2.7,1.6c-0.2,0.3-0.6,0.7-0.8,0.7c-1.2,0-2.5,0.3-2.7,2.7H49.3V52.7c0-2-1.5-3.5-3.4-3.5H27H8
+	c-1.9,0-3.4,1.5-3.4,3.5v25l-4,4L0,82.3v0.8v1.5v0.3l0.1,0.3c0.6,2,4.1,2.1,4.1,2.1H27h22.8c0,0,3.5-0.1,4.1-2.1l0.1-0.3v-0.3v-1.5
+	v-0.8l-0.6-0.6l-4-4V66.4h11.2c0.2,2.4,1.5,2.7,2.7,2.7c0.2,0,0.6,0.4,0.8,0.7c0.6,0.7,1.4,1.6,2.7,1.6h1.6v0.2
+	c0,0.7,0.5,1.2,1.2,1.2h1.9c0.2,0,0.3,0,0.5-0.1c0.1,0.1,0.3,0.1,0.5,0.1h1.9c0.7,0,1.2-0.5,1.2-1.2v-0.2h4.7c1.1,0,2.4-0.4,2.4-2.4
+	v-2.6h12.2v-1.3H82.6z M6.6,52.7c0-0.8,0.6-1.5,1.4-1.5c0.8,0,18.8,0,18.9,0c0,0,0,0,0,0c0.2,0,18.2,0,18.9,0c0.9,0,1.4,0.7,1.4,1.5
+	c0,0.7,0,23.2,0,24.9h-39l0,0l0,0H6.6C6.6,75.9,6.6,53.4,6.6,52.7z M9.2,78.4h35.5l2.4,2.9H6.6L9.2,78.4L9.2,78.4z M51.9,83.1
+	c0,0,0,1.4,0,1.5c-0.1,0.2-1.3,0.7-2.2,0.7c-0.5,0-22.3,0-22.8,0h0c-0.2,0-22.2,0-22.8,0c-0.9,0-2.1-0.5-2.2-0.7c0-0.1,0-1.5,0-1.5
+	l4.7-4.7h0.9l-3.7,4.1h45.8l-3.4-4.1h0.9L51.9,83.1z M69,70h-2.2c-0.7,0-1.2-0.5-1.7-1.1c-0.5-0.6-1.1-1.2-1.8-1.2
+	c-0.8,0-1.3,0-1.3-2c0-1.9,0.5-1.9,1.3-1.9c0.8,0,1.3-0.6,1.8-1.2c0.5-0.6,1-1.1,1.7-1.1H69V70z M71.2,71.4h-1.4V60.1h1.4V71.4z
+	 M74.1,71.4h-1.4V60.1h1.4V71.4z M81.2,69c0,0.6,0,1-1,1h-5.3v-8.5h5.3c1,0,1,0.9,1,1V69z M46.4,52.4H7.5v24h38.9V52.4z M13.2,75.4
+	H8.5v-5.5l4.7-3.9V75.4z M18.6,75.4h-4.9v-9.5l4.9,2.7V75.4z M24,75.4h-4.9v-6.7l4.9-5.2V75.4z M29.4,75.4h-4.9V62.9l0.3-0.3
+	l4.6,3.6V75.4z M34.8,75.4h-4.9v-9.2l4.9-1.8V75.4z M40.2,75.4h-4.9V64.3l0,0l4.9-5.3V75.4z M45.4,75.4h-4.7V58.6l4.7,2.3V75.4z
+	 M45.4,59.8l-5-2.5l-5.6,6.1l-5,1.8l-5-3.9L24,62h0v0l-5.3,5.6l-5.4-3l-4.9,4V53.4h36.9V59.8z" fill="#81879D"></path></svg>
+						<h2 class="heading-style--heading-four multi-step-section__heading">Help us provide more data</h2>
+						<p>Interested in this particular category? Link your app store accounts if you have them and help us to provide even more data for every store.</p>
+						<div class="sharing-container">
+	 						<div class="addthis_sharing_toolbox"></div>
+	 					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-overlay js-page-overlay page-overlay--help js-page-overlay--help">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<div class="help-popup-content">
+					<a href="#" class="popup-close js-close-help"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+					<h2 class="heading-style--heading-four multi-step-section__heading">What's This Showing Me?</h2>
+					<p>How many daily downloads and revenue on average an iOS app needs in order to rank inside the top 200 Paid, Free or Grossing charts.</p>
+					<p>These estimates are calculated as a daily average over one month.</p>
+					<br />
+					<button class="ref-button--primary--large button-full-width js-close-help">
+						Close &amp; Explore Page
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="onboarding-overlay js-onboarding-overlay js-onboarding-overlay-filters">
+		<img src="images/onboarding-making-filters.png" alt="See what's needed to rank in a chart from top 200 to top 10" />
+	</div>
+
+	<div class="onboarding-overlay js-onboarding-overlay js-onboarding-overlay-subcategories">
+		<img src="images/onboarding-subcategories.png" alt="Explore Game subcategories too" />
+	</div>
+
+	<div class="onboarding-overlay js-onboarding-overlay js-onboarding-overlay-numbers">
+		<img src="images/onboarding-numbers.png" alt="Numbers are the average downloads and revenue over 1 Month" />
+	</div>	
 
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
@@ -327,10 +934,98 @@
 
   <script>
 
+  	function formatNumbers(text) {  		
+  		return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");  		
+		}
+
   	$(window).on("load", function(){
 		  new Page();
 
-		  var FilterDropDown = function($domElement) {
+		  function openSignUpPopup() {
+		  	$('.js-page-overlay--sign-up').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--sign-up .js-popup-content').addClass("is-showing");
+				}, 100);
+		  }
+
+		  function openNoDataPopup() {
+		  	$('.js-page-overlay--no-data').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--no-data .js-popup-content').addClass("is-showing");
+				}, 100);
+		  }
+
+		  function showOnboardingOverlay() {
+		  	var filtersOffset = $('.js-dropdown-rank').offset();
+				$('.js-onboarding-overlay-filters').css({"top": (filtersOffset.top + 50) + "px", "left": (filtersOffset.left - 225) + "px", });
+
+				var subcategoriesOffset = $('.js-has-subcategories').offset();
+				$('.js-onboarding-overlay-subcategories').css({"top": (subcategoriesOffset.top + 40) + "px", "left": (subcategoriesOffset.left - 10) + "px", });
+
+				var numbersOffset = $('.js-onboarding-numbers').offset();
+
+				$('.js-onboarding-overlay-numbers').css({"top": (numbersOffset.top + 30) + "px", "right": "34px", });
+
+				$('.js-onboarding-overlay').addClass("is-showing");
+		  }
+
+		  function closeAllHelp() {
+				$('.js-page-overlay').fadeOut(100);
+				$('.js-popup-content').removeClass("is-showing");
+				$('.js-onboarding-overlay').removeClass("is-showing");
+
+				// @io.reflection.gae.webapp.client.activities.labarticle.view.LabArticleView::minifyHelpPopup()();
+		  }
+
+		  $('.js-open-modal--help').on("click", function(e){
+		  	e.preventDefault();
+		  	$('.js-popup-content').removeClass("is-showing");
+			  $('.js-page-overlay--help').fadeIn(200);
+
+				setTimeout(function(){
+
+					$('.js-page-overlay--help .js-popup-content').addClass("is-showing");
+
+					showOnboardingOverlay();
+				}, 200);
+			});
+
+			$('.js-page-overlay').on("click", function(e){
+				var parentIsPopupContent = false;
+				$(e.target).parents("div").each(function(){
+					if($(this).hasClass("js-popup-content")) {
+						parentIsPopupContent = true;
+					}
+				});
+				if(!parentIsPopupContent) {					
+					closeAllHelp();
+				}				
+			});
+
+			$('.js-close-help').on("click", function(e){
+				e.preventDefault();				
+				closeAllHelp();
+			});
+		  
+			$('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay').fadeOut(100);
+				$('.js-popup-content').removeClass("is-showing");
+			});
+
+			$('.js-chart-tabs li').on("click", function(){
+				var $this = $(this);
+				if(!$this.hasClass("is-active")) {
+					$this.siblings('li').removeClass("is-active");
+					$this.addClass("is-active");
+				}
+				var contentToShow = $this.attr("data-tab");
+				var currentChartClass = $this.attr("data-current-chart")
+				$('.' + currentChartClass + '.is-active').removeClass('is-active');
+				$('.' + currentChartClass + '[data-id=' + contentToShow + ']').addClass('is-active');
+			});
+
+		  var FilterDropDown = function($domElement, chartType) {
 
 				var $thisSelectBox = $domElement,
 						$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
@@ -350,24 +1045,96 @@
 							}
 						}
 
+						var accessClass = "";
+						if($thisOption.data("access")) {
+							accessClass = "ref-after-pro";
+						}
+
 						var $newListItem = $("<li>");
 						$dropDownContainer.append($newListItem
-																					.addClass("js-dropdown-option")																		
+																					.addClass("js-dropdown-option")
 																					.addClass(selectedClass)
+																					.addClass(accessClass)
 																					.attr('data-value', $thisOption.attr('value'))
 																					.on("click", function() {
-																						$thisSelectBox.find("option").removeAttr("selected");
-																						$thisOption.attr("selected", "selected");
-																						$currentValue.text($thisOption.text());
-																						$dropDownContainer.toggle();
-																						$thisSelectBox.parent("div").toggleClass("is-open");
-																						$thisSelectBox.parent("div").removeClass("nothing-selected");
-																						$dropDownContainer.find(".is-selected").removeClass("is-selected");
-																						$(this).addClass("is-selected");
 
 																						// check the user role
+																						// allow time for li select
+																						var $this = $(this);
+																						
+																						var userId = getUserRole();
+																						var checkPermissions = doPermissionsCheck($this, chartType, $this.attr("data-value"));
 
-																						// request data based on filters
+																						if(userId != null || (userId == null && checkPermissions)) {
+
+																							if(userId == null) {
+																								userId = "js/data-lab";
+																							}
+
+																							$thisSelectBox.find("option").removeAttr("selected");
+																							$thisOption.attr("selected", "selected");
+																							$currentValue.text($thisOption.text());
+																							$dropDownContainer.toggle();
+																							$thisSelectBox.parent("div").toggleClass("is-open");
+																							$thisSelectBox.parent("div").removeClass("nothing-selected");
+																							$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																							$(this).addClass("is-selected");
+
+																							// request data based on filters
+																							if(chartType == "dataOverview") {
+
+																								$('.data-value').remove();
+
+																								var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
+																								var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");																								
+																								var selectedRank = $('.js-dropdown-rank .js-dropdown-option.is-selected').data("value");
+																								var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
+																								
+																								var fileNameToRequest = "whatyouneed_full2017_January.json";
+																								if(userId != null && userId != "js/data-lab") {
+																									fileNameToRequest = "whatyouneed_full" + selectedDate + ".json";
+																								}
+
+																								var fileToRequest = userId + "/" + fileNameToRequest;																						
+																								loadData(fileToRequest, selectedRank, selectedDevice, selectedCountry);
+
+																							} else if(chartType == "dataRankDistribution") {
+
+																								var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
+																								var selectedCategory = $('.js-dropdown-category .js-dropdown-option.is-selected').data("value");
+																								var selectedCountry = $('.js-dropdown-category-country .js-dropdown-option.is-selected').data("value");
+																								var selectedDevice = $('.js-dropdown-category-device .js-dropdown-option.is-selected').data("value");
+																								var listType = $('.js-dropdown-category-list-type .js-dropdown-option.is-selected').data("value");
+
+																								var fileNameToRequest = "whatyouneed_full2017_January.json";
+																								if(userId != null && userId != "js/data-lab") {
+																									fileNameToRequest = "whatyouneed_full" + selectedDate + ".json";
+																								}
+
+																								var fileToRequest = userId + "/" + fileNameToRequest;																					
+																								loadRankData(fileToRequest, selectedCategory, selectedDevice, selectedCountry);
+
+																							} else if(chartType == "dataCountryDistribution") {
+
+																								var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
+																								var selectedCategory = $('.js-dropdown-country-category .js-dropdown-option.is-selected').data("value");
+																								var selectedRank = $('.js-dropdown-country-rank .js-dropdown-option.is-selected').data("value");
+																								var selectedDevice = $('.js-dropdown-country-device .js-dropdown-option.is-selected').data("value");
+																								var fileNameToRequest = "whatyouneed_full2017_January.json";
+																								if(userId != null && userId != "js/data-lab") {
+																									fileNameToRequest = "whatyouneed_full" + selectedDate + ".json";
+																								}
+
+																								var fileToRequest = userId + "/" + fileNameToRequest;
+																						
+																								loadCountryData(fileToRequest, selectedCategory, selectedRank, selectedDevice);
+
+																							}
+																							
+																						} else {
+																							openSignUpPopup();
+																						}
+
 																					})
 																					.append($("<span>").text($thisOption.text()))
 																		);
@@ -375,7 +1142,6 @@
 						// no option value means placeholder text before option is selected
 						$currentValue.text($thisOption.text());
 					}
-
 				});
 
 				$currentValue.on("click", function(){
@@ -414,12 +1180,20 @@
 
 			$("html").on("click", function(e){
 				if(!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
-					closeAllFilters();	
+					closeAllFilters();
 				}
 			});
 
 		  $('.js-select-box').each(function() {
-  			new FilterDropDown($(this));
+  			new FilterDropDown($(this), "dataOverview");
+  		});
+
+  		$('.js-select-box--rank-chart-dropdown').each(function() {
+  			new FilterDropDown($(this), "dataRankDistribution");
+  		});
+
+  		$('.js-select-box--country-chart-dropdown').each(function() {
+  			new FilterDropDown($(this), "dataCountryDistribution");
   		});
 
   		$('.js-has-subcategories').on("click", function(){
@@ -433,69 +1207,496 @@
 						mx = list[x].value;
 					}
 				}
-
 				return mx;
 			}
 
-			function outputResults(dataArray, resultItemIdPrefix, valuePrefix, maxGrossing) {
+			function getMaxFromArray(list) {
+				var mx = 0;
+				for(var x = 0; x < list.length; x++) {
+					if(list[x] > mx) {
+						mx = list[x];
+					}
+				}
+				return mx;
+			}
+
+			function outputResults(dataArray, outputContainerClass, valuePrefix, maxGrossing) {
 					$.each(dataArray, function(){
 						var id = this.id;
+						if(id.indexOf("&") != -1) {
+							id = id.replace("&", "");
+						}
 						var spanWidth = (this.value / maxGrossing) * 100;
-						var thisValue = valuePrefix + this.value;
+						var formattedValue = this.value;
+						if(this.value != undefined && this.value !== "NaN" && this.value > 0) {
+							if(this.value > 1) {
+								this.value = Math.round(this.value);
+							}
+							formattedValue = formatNumbers(this.value);
+						}
+						var thisValue = valuePrefix + formatNumbers(this.value);
 						var noDataCSSClass = "";
-						if(this.value == undefined || this.value <= 0) {
-							console.log(this.value);
+						if(this.value == undefined || this.value <= 0 || this.value == "NaN") {
 							thisValue = "No data"
 							noDataCSSClass = "is-no-data";
+							spanWidth = 0;
 						}
 						var valueSpan = $("<span>").text(thisValue).addClass("data-value").addClass(noDataCSSClass);
 						valueSpan.append($("<span>").text(this.name).addClass("data-name"));
-						$('.data-vis-making-top-charts__item[data-id=' + resultItemIdPrefix + id + '] > .data-bar').width(spanWidth + "%");
+						if(thisValue == "No data") {
+							valueSpan.on("click", function(){
+								openNoDataPopup();
+							});
+						}
+						$('.' + outputContainerClass + ' .data-vis-making-top-charts__item[data-id=' + id + '] > .data-bar').width(spanWidth + "%");
 
-						$('.data-vis-making-top-charts__item[data-id=' + resultItemIdPrefix + id + ']').append(valueSpan);
+						$('.' + outputContainerClass + ' .data-vis-making-top-charts__item[data-id=' + id + ']').append(valueSpan);
 					});
-
-
 			}
 
-  		// get default data
-			$.getJSON( "js/data-lab/200-uk-mar.json", function( data ) {
-				setTimeout(function(){
+			function populateMainChart(data, selectedRank, selectedDevice, selectedCountry, listType, listContainer, currency) {
+
+					// categories
+					if(data[selectedCountry][selectedRank][selectedDevice][listType].categories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedCountry][selectedRank][selectedDevice][listType].categories);
+						outputResults(data[selectedCountry][selectedRank][selectedDevice][listType].categories, listContainer, currency, maxGrossing);
+					}
+
+					// subcategories
+					if(data[selectedCountry][selectedRank][selectedDevice][listType].subcategories.length > 0) {
+						var maxGrossing = getMaxValueFromArray(data[selectedCountry][selectedRank][selectedDevice][listType].categories);
+						outputResults(data[selectedCountry][selectedRank][selectedDevice][listType].subcategories, listContainer, currency, maxGrossing);
+					}
+			}
+
+			function loadData(fileToRequest, selectedRank, selectedDevice, selectedCountry) {
+
+				$('.js-page-container').addClass('is-data-requested');
+
+				// get default data
+				$.getJSON( fileToRequest, function( data ) {
+					
+					console.log(data);
+
 					$('.js-page-container').removeClass('is-loading');
 					
-					if(data["GROSSING"].categories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["GROSSING"].categories);
-						outputResults(data["GROSSING"].categories, "gros-", "$", maxGrossing);
+					populateMainChart(data, selectedRank, selectedDevice, selectedCountry, "GROSSING", "js-revenue-grossing-list", "$");
+					populateMainChart(data, selectedRank, selectedDevice, selectedCountry, "FREE", "js-downloads-free-list", "");
+					populateMainChart(data, selectedRank, selectedDevice, selectedCountry, "PAID", "js-downloads-paid-list", "");
+					
+					$("body").addClass("data-is-loaded");
+					setTimeout(function(){
+						$('.js-page-container').removeClass('is-data-requested');
+					}, 1000);
+				});
+			}
+
+			function populateRankDistributionChart(data, listType, $chartContainer, selectedCategory, selectedDevice, selectedCountry) {
+
+				var rankDistributionData = [];
+					if(data[selectedCountry]["10"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["10"][selectedDevice][listType].categories;
+						for(var x = 0; x < list.length; x++) {
+							if(list[x].id == selectedCategory) {
+								rankDistributionData.push(list[x].value);
+								break;
+							}
+						}
+					}
+					if(data[selectedCountry]["20"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["20"][selectedDevice][listType].categories;
+						for(var x = 0; x < list.length; x++) {
+							if(list[x].id == selectedCategory) {
+								rankDistributionData.push(list[x].value);
+								break;
+							}
+						}
+					}
+					if(data[selectedCountry]["50"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["50"][selectedDevice][listType].categories;
+						for(var x = 0; x < list.length; x++) {
+							if(list[x].id == selectedCategory) {
+								rankDistributionData.push(list[x].value);
+								break;
+							}
+						}
+					}
+					if(data[selectedCountry]["100"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["100"][selectedDevice][listType].categories;
+						for(var x = 0; x < list.length; x++) {
+							if(list[x].id == selectedCategory) {
+								rankDistributionData.push(list[x].value);
+								break;
+							}
+						}
+					}
+					if(data[selectedCountry]["150"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["150"][selectedDevice][listType].categories;
+						for(var x = 0; x < list.length; x++) {
+							if(list[x].id == selectedCategory) {
+								rankDistributionData.push(list[x].value);
+								break;
+							}
+						}
+					}
+					if(data[selectedCountry]["200"][selectedDevice][listType].categories) {
+						var list = data[selectedCountry]["200"][selectedDevice][listType].categories;
+						for(var x = 0; x < list.length; x++) {
+							if(list[x].id == selectedCategory) {
+								rankDistributionData.push(list[x].value);
+								break;
+							}
+						}
 					}
 
-					if(data["GROSSING"].subcategories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["GROSSING"].categories);
-						outputResults(data["GROSSING"].subcategories, "gros-", "$", maxGrossing);
+					// check for no data states
+					var isNoData = isNoDataInArray(rankDistributionData);
+					if(isNoData) {
+						if(listType == "FREE") {
+							$('.js-rank-distribution-chart[data-id=rank-distribution-free]').addClass("is-no-data");
+						} else if(listType == "PAID") {
+							$('.js-rank-distribution-chart[data-id=rank-distribution-paid]').addClass("is-no-data");
+						} else if(listType == "GROSSING") {
+							$('.js-rank-distribution-chart[data-id=rank-distribution-grossing]').addClass("is-no-data");
+						}
+					} else {
+						if(listType == "FREE") {
+							$('.js-rank-distribution-chart[data-id=rank-distribution-free]').removeClass("is-no-data");
+						} else if(listType == "PAID") {
+							$('.js-rank-distribution-chart[data-id=rank-distribution-paid]').removeClass("is-no-data");
+						} else if(listType == "GROSSING") {
+							$('.js-rank-distribution-chart[data-id=rank-distribution-grossing]').removeClass("is-no-data");
+						}
 					}
 
-					if(data["FREE"].categories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["FREE"].categories);
-						outputResults(data["FREE"].categories, "free-", "", maxGrossing);
+					var maxValue = getMaxFromArray(rankDistributionData),
+							staticMaxHeight = 220;					
+					var heightRelativeToMaxArray = [];
+					var isTypeClass = "is-free";
+					if(listType == "GROSSING") {
+						isTypeClass = "is-grossing";
+					} else if(listType == "PAID") {
+						isTypeClass = "is-paid";
 					}
 
-					if(data["FREE"].subcategories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["FREE"].categories);
-						outputResults(data["FREE"].subcategories, "free-", "", maxGrossing);
+					var isGrossing = (listType == "GROSSING") ? "is-grossing" : "";
+					var grossingText = (isGrossing.length) ? "$" : "";
+
+					$chartContainer.empty();
+
+					for(var i = 0; i < rankDistributionData.length; i++) {
+						var heightRelativeToMax = (rankDistributionData[i] / maxValue) * staticMaxHeight;
+						var formattedValue = rankDistributionData[i];
+						var isNaN = (rankDistributionData[i] == "NaN");
+						if(!isNaN) {
+							formattedValue = rankDistributionData[i].toFixed(2);
+						}
+						if(formattedValue > 5) {
+							formattedValue = Math.round(rankDistributionData[i]);
+						}
+						formattedValue = formatNumbers(formattedValue);
+						
+						var valueText = (!isNaN) ? grossingText + formattedValue + "<span>/ day</span>" : "No Data";
+						var dataValueSpan = $('<span>').html(valueText).addClass('rank-distribution-value');
+						if(isNaN) {
+							dataValueSpan.addClass("is-no-data").on("click", function(){
+								openNoDataPopup();
+							});
+						}
+
+						$chartContainer.append($('<li>').attr("style", "height: " + heightRelativeToMax + "px").addClass('is-loading data-vis-making-top-charts__bar').append(dataValueSpan).addClass(isTypeClass));
+					}
+			}
+
+			function loadRankData(fileToRequest, selectedCategory, selectedDevice, selectedCountry) {
+
+				$.getJSON( fileToRequest, function( data ) {					
+
+					populateRankDistributionChart(data, "FREE", $('.js-rank-distribution-chart--free'), selectedCategory, selectedDevice, selectedCountry);
+					populateRankDistributionChart(data, "PAID", $('.js-rank-distribution-chart--paid'), selectedCategory, selectedDevice, selectedCountry);
+					populateRankDistributionChart(data, "GROSSING", $('.js-rank-distribution-chart--grossing'), selectedCategory, selectedDevice, selectedCountry);
+
+					setTimeout(function(){
+						$('.js-rank-distribution-chart li').removeClass('is-loading');
+					}, 300);
+
+				});
+			}
+
+			function populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, listType) {
+
+				var countryDistributionDataList = [];
+
+				if(data["US"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["US"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["GB"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["GB"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["FR"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["FR"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["DE"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["DE"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["ES"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["ES"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["IT"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["IT"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["NL"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["NL"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["SE"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["SE"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["IE"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["IE"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["DK"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["DK"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+				if(data["CH"][selectedRank][selectedDevice][listType].categories) {
+					var list = data["CH"][selectedRank][selectedDevice][listType].categories;
+					for(var x = 0; x < list.length; x++) {
+						if(list[x].id == selectedCategory) {
+							countryDistributionDataList.push(list[x].value);
+							break;
+						}
+					}
+				}
+
+				return countryDistributionDataList;
+			}
+
+			function populateCountryAxis($chartLabels, maxValue, labelPrefix) {
+
+				// Populate axis values
+				var labelsCounter = 0;
+				$chartLabels.each(function(){
+					var labelValue = maxValue - ((maxValue/4) * labelsCounter);
+					if(maxValue == 0) {
+						labelValue = "";
+					} else if (maxValue <= 4 && (labelsCounter > 0) && (labelsCounter < 4)) {
+						labelValue = "";
+					} else if(maxValue < 1 && labelsCounter == 0) {
+						labelValue = labelValue.toFixed(2);
+					} else {
+						labelValue = Math.round(labelValue);
+					}
+					$(this).text(labelPrefix + labelValue);
+					labelsCounter++;
+				});
+			}
+
+			function isNoDataInArray(dataArray) {
+
+				for(var i = 0; i < dataArray.length; i++) {
+					if(dataArray[i] != "NaN") {
+						return false;
+					}
+				}
+
+				return true;
+			}
+
+			function loadCountryData(fileToRequest, selectedCategory, selectedRank, selectedDevice) {
+				
+				$.getJSON( fileToRequest, function( data ) {					
+
+					var countryDistributionDataFreeList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "FREE");
+					var countryDistributionDataPaidList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "PAID");
+					var countryDistributionDataGrossingList = populateCountryDataArray(data, selectedRank, selectedDevice, selectedCategory, "GROSSING");
+					
+
+					var maxValueFreeList = getMaxFromArray(countryDistributionDataFreeList),
+							maxValuePaidList = getMaxFromArray(countryDistributionDataPaidList),
+							maxValueGrossingList = getMaxFromArray(countryDistributionDataGrossingList),
+							staticMaxHeight = 220;
+
+					var countryDistributionChart = $('.js-country-distribution-chart--free').empty();
+					var countryDistributionChartPaid = $('.js-country-distribution-chart--paid').empty();
+					var countryDistributionChartGrossing = $('.js-country-distribution-chart--grossing').empty();
+					var heightRelativeToMaxArray = [];
+
+					// check for no data states
+					var isNoDataFree = isNoDataInArray(countryDistributionDataFreeList);
+					var isNoDataPaid = isNoDataInArray(countryDistributionDataPaidList);
+					var isNoDataGrossing = isNoDataInArray(countryDistributionDataGrossingList);
+
+					$('.js-country-distribution-chart.is-no-data').removeClass("is-no-data");
+
+					if(isNoDataFree) {
+						$('.js-country-distribution-chart[data-id=country-comparison-free]').addClass("is-no-data");
+					}
+					if(isNoDataPaid) {
+						$('.js-country-distribution-chart[data-id=country-comparison-paid]').addClass("is-no-data");
+					}
+					if(isNoDataGrossing) {
+						$('.js-country-distribution-chart[data-id=country-comparison-grossing]').addClass("is-no-data");
 					}
 
-					if(data["PAID"].categories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["PAID"].categories);
-						outputResults(data["PAID"].categories, "paid-", "", maxGrossing);
+					for(var i = 0; i < countryDistributionDataFreeList.length; i++) {
+						
+						// Add Free List Value to Chart
+						var heightRelativeToMax = (countryDistributionDataFreeList[i] / maxValueFreeList) * staticMaxHeight;
+						var formattedValue = Math.round(countryDistributionDataFreeList[i]);
+								formattedValue = formatNumbers(formattedValue);
+
+						var isNaNFree = (countryDistributionDataFreeList[i] == "NaN");
+						var valueText = (isNaNFree) ? "No Data" : "";
+						var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
+						if(isNaNFree) {
+							dataValueSpan.addClass("is-no-data").on("click", function(){
+								openNoDataPopup();
+							});
+						}
+
+						if(heightRelativeToMax < 1 && heightRelativeToMax > 0) {
+							heightRelativeToMax = 1;
+						}
+
+						countryDistributionChart.append($('<li>').attr("style", "height: " + heightRelativeToMax + "px").addClass('is-free is-loading data-vis-making-top-charts__bar').append(dataValueSpan));
+
+						populateCountryAxis($('.js-country-distribution-chart[data-id=country-comparison-free] .js-rank-y-axis li'), maxValueFreeList, "");
+
+						// Add Paid List Value to Chart
+						var heightRelativeToMaxPaid = (countryDistributionDataPaidList[i] / maxValuePaidList) * staticMaxHeight;
+						var formattedValue = Math.round(countryDistributionDataPaidList[i]);
+								formattedValue = formatNumbers(formattedValue);					
+
+						var isNaNPaid = (countryDistributionDataPaidList[i] == "NaN");
+						var valueText = (isNaNPaid) ? "No Data" : "";
+						var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
+						if(isNaNPaid) {
+							dataValueSpan.addClass("is-no-data").on("click", function(){
+								openNoDataPopup();
+							});
+						}
+
+						if(heightRelativeToMaxPaid < 1 && heightRelativeToMaxPaid > 0) {
+							heightRelativeToMaxPaid = 1;
+						}
+
+						countryDistributionChartPaid.append($('<li>').attr("style", "height: " + heightRelativeToMaxPaid + "px").addClass('is-paid is-loading data-vis-making-top-charts__bar').append(dataValueSpan));
+
+						populateCountryAxis($('.js-country-distribution-chart[data-id=country-comparison-paid] .js-rank-y-axis li'), maxValuePaidList, "");
+
+						// Add Grossing List Value to Chart
+						var heightRelativeToMaxGrossing = (countryDistributionDataGrossingList[i] / maxValueGrossingList) * staticMaxHeight;
+						var formattedValue = Math.round(countryDistributionDataGrossingList[i]);
+								formattedValue = formatNumbers(formattedValue);
+
+						var isNaNGrossing = (countryDistributionDataGrossingList[i] == "NaN");
+						var valueText = (isNaNGrossing) ? "No Data" : "";
+						var dataValueSpan = $('<span>').text(valueText).addClass('rank-distribution-value');
+						if(isNaNGrossing) {
+							dataValueSpan.addClass("is-no-data").on("click", function(){
+								openNoDataPopup();
+							});
+						}
+
+						if(heightRelativeToMaxGrossing < 1 && heightRelativeToMaxGrossing > 0) {
+							heightRelativeToMaxGrossing = 1;
+						}
+
+						countryDistributionChartGrossing.append($('<li>').attr("style", "height: " + heightRelativeToMaxGrossing + "px").addClass('is-grossing is-loading data-vis-making-top-charts__bar').append(dataValueSpan));
+
+						populateCountryAxis($('.js-country-distribution-chart[data-id=country-comparison-grossing] .js-rank-y-axis li'), maxValueGrossingList, "$");
 					}
 
-					if(data["PAID"].subcategories.length > 0) {
-						var maxGrossing = getMaxValueFromArray(data["PAID"].categories);
-						outputResults(data["PAID"].subcategories, "paid-", "", maxGrossing);
-					}
+					setTimeout(function(){
+						$('.js-country-distribution-chart li, .js-country-distribution-chart--paid li, .js-country-distribution-chart--grossing li').removeClass('is-loading');
+					}, 300);
+				});
+			}
 
-				}, 1000);
-			});
+			// this function will return a key if the user is registered which will be checked
+			// if the key exists it forms the dir of the ajax request for the json file
+			// if it is null then the user gets the sign up popup message
+			function getUserRole() {
+				// return null;
+				return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b";
+			}
+
+			function doPermissionsCheck($filter, chartType, dataValue) {
+
+				if(dataValue == "2017_January" || dataValue == "200" || dataValue == "150" || dataValue == "100" || dataValue == "50" || dataValue == "PHONE" || dataValue == "TABLET") {
+					return true;
+				}
+
+				return false;
+			}
+
+			setTimeout(function(){
+				loadData("js/data-lab/whatyouneed_full2017_January.json", "200", "PHONE", "GB");
+				//loadRankData("js/data-lab/whatyouneed_full2017_January.json", "Overall", "PHONE", "GB");
+				//loadCountryData("js/data-lab/whatyouneed_full2017_January.json", "Overall", "200", "PHONE");
+			}, 1000);
 
   	});
   </script>
+
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script> 
 </body>

@@ -20,8 +20,9 @@
 .popup-content {
 	position: relative;
 	max-height: 100vh;	
-	width: 402px;
-	padding: 28px 30px 30px 30px;	
+	width: 804px;
+	padding: 28px 0 30px;
+	overflow: auto;
 	overflow-x: hidden;
 	opacity: 0;
 	font-size: 0;
@@ -29,6 +30,9 @@
 	border-radius: 4px;
 	background-color: #F2F2F5;
 	transform: scale(0.8);
+	&.popup-content--small {
+		width: 402px;
+	}
 	.page-overlay--overflow-visible & {
 		overflow: visible;
 	}
@@ -40,7 +44,40 @@
 	.form-field--select__box {
 		width: 100%;
     box-sizing: border-box;
-	}		
+	}
+}
+.page-overlay--help {
+	.popup-content {
+		h2 {
+			margin-top: 0;
+		}
+	}
+}
+.popup-content__content-right,
+.popup-content__content-left {
+	width: 342px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.popup-content__content-left,
+.popup-content__text-centre {
+	text-align: centre;       
+}
+.popup-content__content-left {
+  margin-right: 45px;
+  .popup-illustration {
+  	margin-bottom: 30px;
+  }
+  img + h2 {
+  	margin-top: 3rem;
+  }
+}
+.popup-content__content--extra-padding {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+.popup-content__content-image-with-overflow {
+	width: 372px;
 }
 .popup-close {
 	position: absolute;
@@ -70,9 +107,8 @@
 .popup-alert-message {
 	position: relative;
 	top: 25px;
-  width: calc(100% + 60px);
+  width: 100%;
   padding: 20px 38px 22px;
-  margin-left: -30px;
   margin-bottom: -5px;
   display: none;
   background-color: $light-grey-1;
@@ -88,20 +124,32 @@
 .show-popup-alert-message + .popup-alert-message {
 	display: block;
 }
-.popup-sections-container {
+.popup-sections-container,
+.sign-up-steps-container {
 	position: relative;
 	width: 5000px;
 	overflow: visible;
 	text-align: left;
 	left: 0;
 	transition: left 0.3s;
-	.multi-step-section {
-		margin-right: 30px;
-		width: 342px;
+	.multi-step-section {		
+		width: 804px;
+		padding: 0 30px 0 45px;
 		display: inline-block;
 		vertical-align: top;
 		text-align: center;
+    align-items: center;
+    flex-direction: row;
+		.filter-toggle {
+			margin-bottom: 10px;
+		}
 	}
+}
+.popup-content.popup-content--small {
+  .multi-step-section {		
+  	width: 402px;
+  	padding: 0 30px;
+  }
 }
 .link-to-reflection-svg {
 	width: 183px;
@@ -109,4 +157,12 @@
 	+ h2 {
 		margin-top: 1.5rem;
 	}
+}
+.page-overlay--whats-this {
+	.page-popup {
+		position: fixed;
+	}
+}
+.img-negative-offset-top {
+	margin-top: -40px;
 }

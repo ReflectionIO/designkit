@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Data Visualisation - Top 200 Overall chart by Category</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+<link rel="stylesheet" href="css/tipsy.css" />
+<link rel="stylesheet" href="reflection-main-v2.css" />
+</head>
+
+<body class="">
+
+<!-- TEST TIPSY <div class="tipsy tipsy-s" style="top: 663px; left: 746.231px; visibility: visible; display: block; opacity: 0.8;"><div class="tipsy-arrow tipsy-arrow-s"></div><div class="tipsy-inner"><img src="http://is1.mzstatic.com/image/thumb/Purple60/v4/49/dd/0d/49dd0d7e-131a-7284-fd5f-3509da2ac211/source/100x100bb.jpg" class="tt-image"><h2 class="tt-app-name">Stack</h2><h3 class="tt-value">861,924<span class="tt-category-growth"></span></h3><div class="tipsy-new-label">NEW</div></div></div> -->
+	<!--[if (lt IE 9)]>
+      <div class="window-warning">
+  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
+  		</div>
+  <![endif]-->
+	<header id="js-component-import--global-header" class="global-header"></header>
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			<div class="page-data-vis-category-share page-lab-base theme-dark">
+				<div class="grid-container data-vis-container">
+					
+					<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
+
+					<div class="grid__row">
+						<div class="grid__row--heading-row__right">
+								<div class="sharing-container">
+									<div class="addthis_sharing_toolbox"></div>
+								</div>
+						</div>
+					</div>
+
+					<div class="data-lab-article-intro">
+						<h1 class="data-lab-article-intro__heading">How Is the App Market Broken down by Category?</h1>
+						<p class="data-lab-article-intro__paragraph">Discover the breakdown of iOS app store revenue or downloads by category and drill down to see which apps are the star performers in each. Discover which mechanics or monetisation strategies are most effective in your category and identify which new markets offer the most potential growth for you.</p>
+					</div>
+
+					<div class="grid__row">
+						<h2 class="treemap__subheading">iOS App Store Categories</h2>
+					</div>
+
+					<div class="grid__row overflow-visible">
+						<div class="filters-row filters-row-main-chart js-filters-main-chart">
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-date">
+								<select class="js-select-box">
+							    <option value="2017-02" selected="selected">Feb 2017</option>
+						      <option value="2017-01" data-access="key">Jan 2017</option>
+						      <option value="2016-12" data-access="key">Dec 2016</option>
+						      <option value="2016-11" data-access="key">Nov 2016</option>
+						      <option value="2016-10" data-access="key">Oct 2016</option>
+						      <option value="2016-09" data-access="key">Sep 2016</option>
+						      <option value="2016-08" data-access="key">Aug 2016</option>
+						      <option value="2016-07" data-access="key">Jul 2016</option>
+						      <option value="2016-06" data-access="key">Jun 2016</option>
+						      <option value="2016-05" data-access="key">May 2016</option>
+						      <option value="2016-04" data-access="key">Apr 2016</option>
+						      <option value="2016-03" data-access="key">Mar 2016</option>
+						      <option value="2016-02" data-access="key">Feb 2016</option>
+								</select>
+							</div>
+
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
+								<select class="js-select-box">
+							    <option value="GB" selected="selected">United Kingdom</option>
+							    <option value="US" data-access="key">USA</option>
+								</select>
+							</div>
+
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-list">
+								<select class="js-select-box">
+							    <option value="FREE" selected="selected">Free List</option>
+							    <option value="PAID">Paid List</option>
+							    <option value="GROSSING">Grossing List</option>
+								</select>
+							</div>
+
+							<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
+								<select class="js-select-box">
+							    <option value="PHONE" selected>iPhone</option>
+							    <option value="TABLET">iPad</option>
+							    <option value="COMBINED">All iOS</option>
+								</select>
+							</div>
+
+							<div class="treemap-key__gradient">
+								<h2><span>Shrinking</span><span>Growing</span></h2>
+								<div></div>
+							</div>
+							
+							<div class="treemap-key__new-entries">
+								<h2>New or Returning Entries</h2>
+							</div>
+						</div>
+					</div>
+
+					<header class="treemap-header">
+						<div class="treemap-header__total-container">
+							<h2>Total for <span>Overall (iOS)</span></h2>
+							<h3 class="js-total"> <span class="js-total-growth">-</span></h3>
+						</div>
+						<div class="treemap-header__total-container">
+							<h2>Total for <span class="js-chart-category-growth__category-name">Category</span></h2>
+							<h3><b class="js-chart-category-total"></b> <span class="js-chart-category-growth__growth"></span></h3>
+						</div>
+					</header>
+
+					<div id="chart" class="chart">
+						<div class="chart__loading">
+							<div class="hamster-wheel">
+								<img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+							</div>
+							<div class="animation-hamster animation-hamster--dark"></div>
+						</div>
+					</div>
+
+					<div class="grid__row">
+						<h2 class="treemap__subheading treemap__subheading--two">iOS Games - Sub Categories</h2>
+						<p>Only the Games category is divided into further sub categories. See how each performs below.
+				      NB: Apps can be placed into 2 sub categories which is why they appear twice in the chart.</p>
+					</div>
+					
+					<header class="treemap-header">
+						<div class="treemap-header__total-container">
+							<h2>Total for <span>Overall (iOS)</span></h2>
+							<h3 class="js-total"> <span class="js-total-growth is-negative"></span></h3>
+						</div>
+						<div class="treemap-header__total-container">
+							<h2>Total for <span class="js-sub-chart-category-growth__category-name">Category</span></h2>
+							<h3><b class="js-sub-chart-category-total"></b> <span class="js-sub-chart-category-growth__growth"></span></h3>
+						</div>
+					</header>
+					<div id="sub-chart" class="chart">
+						<div class="chart__loading">
+							<div class="hamster-wheel">
+								<img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+							</div>
+							<div class="animation-hamster animation-hamster--dark"></div>
+						</div>
+					</div>
+					
+
+					<div class="feedback-container">
+											<svg x="0px" y="0px"
+	     viewBox="0 0 58.4 99.6" enable-background="new 0 0 58.4 99.6" xml:space="preserve">
+	<path fill="#6D69C5" d="M51.6,70.4c0,12.3-10,22.4-22.4,22.4S6.8,82.8,6.8,70.4H51.6z" class="lab-bottle-liquid" />
+	<path fill="#5A5A68" d="M40.6,43.5V8.8h1.7c2.4,0,4.4-2,4.4-4.4S44.7,0,42.3,0H16.1c-2.4,0-4.4,2-4.4,4.4s2,4.4,4.4,4.4h1.1v35
+	    C6.7,48.5,0,58.8,0,70.4c0,16.1,13.1,29.2,29.2,29.2c16.1,0,29.2-13.1,29.2-29.2C58.4,58.7,51.3,48,40.6,43.5z M16.1,3h26.1
+	    c0.8,0,1.4,0.6,1.4,1.4c0,0.7-0.5,1.2-1.1,1.4H15.9c-0.6-0.1-1.1-0.7-1.1-1.4C14.7,3.6,15.4,3,16.1,3z M29.2,96.6
+	    C14.8,96.6,3,84.9,3,70.4c0-10.7,6.4-20.2,16.3-24.3l0.9-0.4V7h17.3v38.6l1,0.4c10.1,3.8,16.9,13.7,16.9,24.5
+	    C55.4,84.9,43.7,96.6,29.2,96.6z" />
+	</svg>
+											<div>
+												<h2 class="heading-style--heading-three">Would You Use This Feature?</h2>
+												<p>Let us know with this <a href="">quick 2 question survey</a> so we can build it with your help.</p>
+											</div>
+										</div>
+
+										<div class="idc-comments-container">
+											<script>
+												var idcomments_acct = 'c4a0cfaab22f16bc5e847b0d1398bb91';
+												var idcomments_post_id;
+												var idcomments_post_url;
+												</script>
+												<span id="IDCommentsPostTitle" style="display:none"></span>
+											<script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+										</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="grid-container global-footer-dark global-footer-dark--lab" id="js-component-import--global-footer"></div>
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+	<div class="page-overlay js-page-overlay js-page-overlay--sign-up">
+		<div class="page-popup">
+			<div class="popup-content js-popup-content">
+				<a href="#" class="popup-close js-popup-close"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+				<div class="popup-sections-container js-popup-sections-container">
+					<div class="multi-step-section is-viewed-step">
+						<svg class="link-to-reflection-svg" enable-background="new 0 0 150.3 100.6" viewBox="0 0 150.3 100.6" x="0px" xml:space="preserve" y="0px"><path d="M130.5,15.6c0-0.4-0.2-0.9-0.8-1.4c-0.4-0.4-1.2-0.7-2.1-1.1c-0.1-0.9-0.7-1.8-1.6-2.1
+	c0.8-0.2,1.4-0.8,1.5-1.5c0,0,0,0,0.1,0c1.2,0,2.1-0.9,2.1-2.1c0-1.1-0.7-2.1-1.8-2.4l-0.3-0.1c0-0.1,0-0.2,0-0.3
+	c0-1.1-0.7-2.1-1.8-2.4l-7.8-2.1C117.9,0,117.8,0,117.6,0h0c-1.1,0-2,0.9-2,2.1c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1
+	c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1c0,0.4,0.1,0.7,0.3,1.1c-0.2,0.3-0.3,0.6-0.3,1c0,0.4,0.1,0.7,0.3,1.1
+	c-0.2,0.3-0.3,0.6-0.3,1c0,0.5,0.2,0.9,0.4,1.3L93.1,28.5v59.1l23.8,13.1l33.3-8.4v-70L130.5,15.6z M117.6,1.6c0,0,0.1,0,0.1,0
+	l7.8,2.1c0.3,0.1,0.5,0.4,0.6,0.7c0,0,0,0.1,0,0.1c0,0.3-0.2,0.5-0.5,0.5c0,0-0.1,0-0.2,0l-7.8-2.2c-0.3-0.1-0.5-0.4-0.6-0.7
+	c0,0,0,0,0,0C117.1,1.8,117.3,1.6,117.6,1.6z M117.6,3.7c0,0,0.1,0,0.1,0l9.1,2.6l0.7,0.2c0.3,0.1,0.6,0.5,0.6,0.8
+	c0,0.3-0.2,0.5-0.5,0.5c-0.1,0-0.1,0-0.2,0l-0.1,0L117.7,5c-0.2-0.1-0.5-0.3-0.5-0.6c0,0,0-0.1,0-0.1c0,0,0,0,0-0.1
+	C117.1,3.9,117.3,3.7,117.6,3.7z M117.6,5.8c0,0,0.1,0,0.1,0l7.8,2.3c0.3,0.1,0.6,0.5,0.6,0.8c0,0,0,0.1,0,0.1
+	c0,0.2-0.2,0.4-0.4,0.4c-0.1,0-0.1,0-0.2,0l-0.1,0l-7.7-2.3c-0.2-0.1-0.5-0.3-0.5-0.6c0,0,0-0.1,0-0.2c0,0,0,0,0-0.1
+	C117.1,6,117.3,5.8,117.6,5.8z M117.6,7.9c0,0,0.1,0,0.1,0l5.8,1.8c0.3,0.1,0.5,0.4,0.6,0.7c0,0.1,0,0.1,0,0.2c0,0.1,0,0.1,0,0.1
+	c-0.1,0.2-0.2,0.3-0.4,0.3c-0.1,0-0.1,0-0.2,0l-5.8-1.8c-0.2-0.1-0.4-0.3-0.5-0.6c0-0.1,0-0.1,0-0.2c0,0,0,0,0-0.1
+	C117.1,8.1,117.3,7.9,117.6,7.9z M117.6,10c0,0,0.1,0,0.2,0l5.1,1.6l2,0.6l0.7,0.2c0.3,0.1,0.6,0.5,0.6,0.8c0,0.3-0.2,0.5-0.4,0.5
+	c-0.1,0-0.1,0-0.2,0l-7.6-2.5l-0.1,0c-0.2-0.1-0.4-0.3-0.5-0.6c0-0.1,0-0.1,0-0.2C117.1,10.2,117.3,10,117.6,10z M95.1,29.5
+	l21.5-15.8v84.5L95.1,86.4V29.5z M148.3,90.6l-30.6,7.7V13.5l30.6,10.1V90.6z M137.7,45.5l-6.1-0.7v7.6l6.1,0.3V45.5z M136.7,51.6
+	l-4.1-0.2v-5.5l4.1,0.5V51.6z M137.7,35.4l-6.1-1.2v7.6l6.1,0.8V35.4z M136.7,41.4l-4.1-0.6v-5.5l4.1,0.8V41.4z M137.7,65.7
+	l-6.1,0.4v7.6l6.1-0.8V65.7z M136.7,72l-4.1,0.6v-5.5l4.1-0.3V72z M137.7,55.6l-6.1-0.1V63l6.1-0.3V55.6z M136.7,61.8l-4.1,0.2v-5.5
+	l4.1,0.1V61.8z M145.3,74.6l-5.3,0.9v7l5.3-1.2V74.6z M144.3,80.5l-3.3,0.7v-4.9l3.3-0.5V80.5z M137.7,25.2l-6.1-1.8V31l6.1,1.4
+	V25.2z M136.7,31.1l-4.1-0.9v-5.4l4.1,1.2V31.1z M128.9,22.6l-7.2-2.1v8.2l7.2,1.6V22.6z M127.9,29.1l-5.2-1.2v-6.1l5.2,1.5V29.1z
+	 M128.9,66.4l-7.2,0.5v8.2l7.2-1V66.4z M127.9,73.2l-5.2,0.7v-6.1l5.2-0.4V73.2z M137.7,75.9l-6.1,1v7.6l6.1-1.4V75.9z M136.7,82.2
+	l-4.1,0.9v-5.5l4.1-0.7V82.2z M128.9,55.4l-7.2-0.1v8.2l7.2-0.3V55.4z M127.9,62.2l-5.2,0.2v-6.1l5.2,0.1V62.2z M128.9,85v-7.7
+	l-7.2,1.2v8.2L128.9,85z M122.7,79.3l5.2-0.8v5.8l-5.2,1.2V79.3z M128.9,44.5l-7.2-0.8v8.2l7.2,0.3V44.5z M127.9,51.2l-5.2-0.2v-6.1
+	l5.2,0.6V51.2z M145.3,65.2l-5.3,0.4v7l5.3-0.7V65.2z M144.3,71l-3.3,0.4v-4.9l3.3-0.2V71z M128.9,33.6l-7.2-1.5v8.2l7.2,1V33.6z
+	 M127.9,40.1l-5.2-0.7v-6.1l5.2,1V40.1z M145.3,46.3l-5.3-0.6v7l5.3,0.2V46.3z M144.3,52l-3.3-0.2v-4.9l3.3,0.4V52z M145.3,27.5
+	l-5.3-1.6v7l5.3,1.2V27.5z M144.3,32.9l-3.3-0.8v-4.9l3.3,1V32.9z M145.3,36.9l-5.3-1.1v7l5.3,0.7V36.9z M144.3,42.4l-3.3-0.5v-4.9
+	l3.3,0.7V42.4z M145.3,55.8l-5.3-0.1v7l5.3-0.2V55.8z M144.3,61.5l-3.3,0.1v-4.9l3.3,0.1V61.5z M108.3,83.9l5.6,2.1v-8l-5.6-1.4
+	V83.9z M109.3,78l3.6,0.9v5.7l-3.6-1.4V78z M96.8,79.5l3.5,1.3v-6.2l-3.5-0.9V79.5z M97.8,75.1l1.5,0.4v4l-1.5-0.6V75.1z
+	 M101.9,72.4l4.4,0.9v-7l-4.4-0.3V72.4z M102.9,67.1l2.4,0.2v4.8l-2.4-0.5V67.1z M108.3,53.3l5.6-0.9v-8l-5.6,1.7V53.3z M109.3,46.8
+	l3.6-1.1v5.8l-3.6,0.6V46.8z M108.3,63.5l5.6,0.1v-8l-5.6,0.6V63.5z M109.3,57.1l3.6-0.4v5.8l-3.6-0.1V57.1z M108.3,25.6v7.2l5.6-3
+	v-8L108.3,25.6z M112.9,29.2l-3.6,1.9v-5l3.6-2.4V29.2z M108.3,43l5.6-2v-8l-5.6,2.7V43z M109.3,36.4l3.6-1.7v5.7l-3.6,1.3V36.4z
+	 M96.8,71.4l3.5,0.7v-6.2l-3.5-0.2V71.4z M97.8,66.7l1.5,0.1v4l-1.5-0.3V66.7z M108.3,73.7l5.6,1.1v-8l-5.6-0.4V73.7z M109.3,67.5
+	l3.6,0.3v5.8l-3.6-0.7V67.5z M101.9,45.3l4.4-1.5v-7l-4.4,2.1V45.3z M102.9,39.5l2.4-1.1V43l-2.4,0.8V39.5z M96.8,47.1l3.5-1.2v-6.2
+	l-3.5,1.7V47.1z M97.8,41.9l1.5-0.7v3.9l-1.5,0.5V41.9z M101.9,81.5l4.4,1.7v-7l-4.4-1.1V81.5z M102.9,76.3l2.4,0.6v4.7l-2.4-0.9
+	V76.3z M101.9,36.2l4.4-2.3v-7l-4.4,2.9V36.2z M102.9,30.4l2.4-1.6v4.5l-2.4,1.3V30.4z M101.9,54.3l4.4-0.7v-7l-4.4,1.3V54.3z
+	 M102.9,48.7l2.4-0.7v4.8l-2.4,0.4V48.7z M96.8,38.9l3.5-1.9v-6.2l-3.5,2.3V38.9z M97.8,33.7l1.5-1v3.7l-1.5,0.8V33.7z M96.8,55.2
+	l3.5-0.6v-6.2l-3.5,1V55.2z M97.8,50.2l1.5-0.4v4L97.8,54V50.2z M96.8,63.3l3.5,0.1v-6.2l-3.5,0.4V63.3z M97.8,58.4l1.5-0.2v4.1
+	l-1.5,0V58.4z M101.9,63.4l4.4,0.1v-7l-4.4,0.5V63.4z M102.9,57.9l2.4-0.3v4.8l-2.4,0V57.9z M82.6,65.1v-2.6c0-1.2-0.8-2.4-2.4-2.4
+	h-4.7v-0.2c0-0.7-0.5-1.2-1.2-1.2h-1.9c-0.2,0-0.3,0-0.5,0.1c-0.1-0.1-0.3-0.1-0.5-0.1h-1.9c-0.7,0-1.2,0.5-1.2,1.2v0.2h-1.6
+	c-1.3,0-2.1,0.9-2.7,1.6c-0.2,0.3-0.6,0.7-0.8,0.7c-1.2,0-2.5,0.3-2.7,2.7H49.3V52.7c0-2-1.5-3.5-3.4-3.5H27H8
+	c-1.9,0-3.4,1.5-3.4,3.5v25l-4,4L0,82.3v0.8v1.5v0.3l0.1,0.3c0.6,2,4.1,2.1,4.1,2.1H27h22.8c0,0,3.5-0.1,4.1-2.1l0.1-0.3v-0.3v-1.5
+	v-0.8l-0.6-0.6l-4-4V66.4h11.2c0.2,2.4,1.5,2.7,2.7,2.7c0.2,0,0.6,0.4,0.8,0.7c0.6,0.7,1.4,1.6,2.7,1.6h1.6v0.2
+	c0,0.7,0.5,1.2,1.2,1.2h1.9c0.2,0,0.3,0,0.5-0.1c0.1,0.1,0.3,0.1,0.5,0.1h1.9c0.7,0,1.2-0.5,1.2-1.2v-0.2h4.7c1.1,0,2.4-0.4,2.4-2.4
+	v-2.6h12.2v-1.3H82.6z M6.6,52.7c0-0.8,0.6-1.5,1.4-1.5c0.8,0,18.8,0,18.9,0c0,0,0,0,0,0c0.2,0,18.2,0,18.9,0c0.9,0,1.4,0.7,1.4,1.5
+	c0,0.7,0,23.2,0,24.9h-39l0,0l0,0H6.6C6.6,75.9,6.6,53.4,6.6,52.7z M9.2,78.4h35.5l2.4,2.9H6.6L9.2,78.4L9.2,78.4z M51.9,83.1
+	c0,0,0,1.4,0,1.5c-0.1,0.2-1.3,0.7-2.2,0.7c-0.5,0-22.3,0-22.8,0h0c-0.2,0-22.2,0-22.8,0c-0.9,0-2.1-0.5-2.2-0.7c0-0.1,0-1.5,0-1.5
+	l4.7-4.7h0.9l-3.7,4.1h45.8l-3.4-4.1h0.9L51.9,83.1z M69,70h-2.2c-0.7,0-1.2-0.5-1.7-1.1c-0.5-0.6-1.1-1.2-1.8-1.2
+	c-0.8,0-1.3,0-1.3-2c0-1.9,0.5-1.9,1.3-1.9c0.8,0,1.3-0.6,1.8-1.2c0.5-0.6,1-1.1,1.7-1.1H69V70z M71.2,71.4h-1.4V60.1h1.4V71.4z
+	 M74.1,71.4h-1.4V60.1h1.4V71.4z M81.2,69c0,0.6,0,1-1,1h-5.3v-8.5h5.3c1,0,1,0.9,1,1V69z M46.4,52.4H7.5v24h38.9V52.4z M13.2,75.4
+	H8.5v-5.5l4.7-3.9V75.4z M18.6,75.4h-4.9v-9.5l4.9,2.7V75.4z M24,75.4h-4.9v-6.7l4.9-5.2V75.4z M29.4,75.4h-4.9V62.9l0.3-0.3
+	l4.6,3.6V75.4z M34.8,75.4h-4.9v-9.2l4.9-1.8V75.4z M40.2,75.4h-4.9V64.3l0,0l4.9-5.3V75.4z M45.4,75.4h-4.7V58.6l4.7,2.3V75.4z
+	 M45.4,59.8l-5-2.5l-5.6,6.1l-5,1.8l-5-3.9L24,62h0v0l-5.3,5.6l-5.4-3l-4.9,4V53.4h36.9V59.8z" fill="#81879D"></path></svg>
+						<h2 class="heading-style--heading-four multi-step-section__heading">Sign up or Log In to See This Data</h2>
+						<p>Create a Free Reflection account to dig deeper into this data. It’ll take seconds and no payment details are required, it's free!</p>
+						<button class="ref-button--primary--large button-full-width js-popup-close">
+							Create Free Account
+						</button>
+						<p class="popup-text-link"><a href="#">Already a Member, Log In</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+	<script src="//d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.tipsy.js"></script>
+	<script src="js-v2/application.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+
+	<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
+
+	<script>
+		
+		var formatNumber = d3.format(",.0f");
+
+		function createTreemap(dataUrl, containerId) {
+			
+			var margin = {top: 45, right: 0, bottom: 0, left: 0},
+		    width = 1100,
+		    height = 600 - margin.top - margin.bottom,
+		    transitioning;
+
+			var x = d3.scale.linear()
+			    .domain([0, width])
+			    .range([0, width]);
+
+			var y = d3.scale.linear()
+			    .domain([0, height])
+			    .range([0, height]);
+
+			var treemap = d3.layout.treemap()
+			    .children(function(d, depth) { return depth ? null : d._children; })
+			    .sort(function(a, b) { return a.value - b.value; })
+			    .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
+			    .round(false);
+
+			var svg = d3.select("#" + containerId).append("svg")
+			    .attr("width", width + margin.left + margin.right)
+			    .attr("height", height + margin.bottom + margin.top)
+			    .style("margin-left", -margin.left + "px")
+			    .style("margin.right", -margin.right + "px")
+			  .append("g")
+			    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+			    .style("shape-rendering", "crispEdges");
+
+			var grandparent = svg.append("g")
+			    .attr("class", "grandparent");
+
+			grandparent.append("rect")
+			    .attr("y", -margin.top)
+			    .attr("width", width)
+			    .attr("height", margin.top);
+
+			grandparent.append("text")
+			    .attr("x", 19)
+			    .attr("y",11 - margin.top)
+			    .attr("dy", ".75em");
+
+			var baseFillColour = "#343438";
+
+			d3.json(dataUrl, function(root) {				
+
+			  initialize(root);
+			  accumulate(root);
+			  layout(root);
+			  display(root);
+
+			  function initialize(root) {
+			    root.x = root.y = 0;
+			    root.dx = width;
+			    root.dy = height;
+			    root.depth = 0;
+			  }
+
+			  function accumulate(d) {
+			    return (d._children = d.children)
+			        ? d.value = d.children.reduce(function(p, v) { return p + accumulate(v); }, 0)
+			        : d.value;
+			  }
+
+			  function layout(d) {
+			    if (d._children) {
+			      treemap.nodes({_children: d._children});
+			      d._children.forEach(function(c) {
+			        c.x = d.x + c.x * d.dx;
+			        c.y = d.y + c.y * d.dy;
+			        c.dx *= d.dx;
+			        c.dy *= d.dy;
+			        c.parent = d;
+			        layout(c);
+			      });
+			    }
+			  }
+
+			  function display(d) {
+			    grandparent
+			        .datum(d.parent)
+			        .on("click", transition)
+			      .select("text")
+			        .html(name(d));
+
+			    var g1 = svg.insert("g", ".grandparent")
+			        .datum(d)
+			        .attr("class", "depth");
+
+			    var g = g1.selectAll("g")
+			        .data(d._children)
+			      .enter().append("g");
+
+			    g.filter(function(d) { return d._children; })
+			        .classed("children", true)
+			        .on("click", transition);
+
+			    g.selectAll(".child")
+			        .data(function(d) { return d._children || [d]; })
+			      .enter().append("rect")
+			        .attr("class", "child")
+			        .call(rect);
+
+			    g.append("rect")
+			        .attr("class", "parent")						        
+			        .call(rect)
+			      .append("title")
+			        .text(function(d) {
+			        	var val = d.value;
+			        	var formattedNumber = formatNumber(val);
+			        	return "" + formattedNumber;
+			        });
+
+			    g.append("text")
+			        .attr("dy", "20px")
+			        .text(function(d, i) { 
+			        	if(d.area > 0.02)  { 
+				        	if(d.name.length > 20) { 
+				        		return d.name.substring(0, 20) + "..." ;
+				        	} else {
+				        		return d.name;
+				        	}
+				        } else {
+				        		return "";
+				        }
+				      })
+			        .attr("class", "text-title")
+			        .call(text);
+
+			    g.append("text")
+			        .attr("dy", "45px")
+			        .text(function(d, i) { if(d.area > 0.02)  { return "" + formatNumber(d.value); } else return ""; })
+			        .call(text);
+
+			    function transition(d) {
+			      if (transitioning || !d) return;
+			      transitioning = true;
+
+			      var g2 = display(d),
+			          t1 = g1.transition().duration(600),
+			          t2 = g2.transition().duration(600);
+
+			      // Update the domain only after entering new elements.
+			      x.domain([d.x, d.x + d.dx]);
+			      y.domain([d.y, d.y + d.dy]);
+
+			      // Enable anti-aliasing during the transition.
+			      svg.style("shape-rendering", null);
+
+			      // Draw child nodes on top of parent nodes.
+			      svg.selectAll(".depth").sort(function(a, b) { return a.depth - b.depth; });
+
+			      // Fade-in entering text.
+			      g2.selectAll("text").style("fill-opacity", 0);
+
+			      // Transition to the new view.
+			      t1.selectAll("text").call(text).style("fill-opacity", 0);
+			      t2.selectAll("text").call(text).style("fill-opacity", 1);
+			      t1.selectAll("rect").call(rect);
+			      t2.selectAll("rect").call(rect);
+			      t1.selectAll("image").call(image);
+			      t2.selectAll("image").call(image);
+
+			      // Remove the old node when the transition is finished.
+			      t1.remove().each("end", function() {
+			        svg.style("shape-rendering", "crispEdges");
+			        transitioning = false;
+			      });
+			    }
+
+			    $('svg g.depth g.children').tipsy = null;
+			    $('svg g.depth rect').tipsy = null;
+			    $('.tipsy').remove();
+					
+		      setTimeout(function() {
+		      	var groupMaxMin = [];
+		      	$('#' + containerId + ' svg g.depth > g').each(function(){
+							var d = this.__data__;
+							groupMaxMin.push(d.growth);
+		      	});
+
+		      	var minMaxObject = getMinMaxFromArray(groupMaxMin);
+		      	console.log(minMaxObject);
+
+		      	$('#' + containerId + ' svg g.depth > g').each(function(){ // group children tooltip      		
+				    	var d = this.__data__;
+		          if(d != null && d._children != null && d._children.length > 0) {
+								if(d._children != null) {
+									var i = 0;          		
+			          	$(this).find('rect').each(function(){
+			          		if(d._children[i] != null) {
+				        			createSubTipsy($(this), d._children[i], "category");
+				        			var growth = (d.growth != null) ? d.growth : 0;
+				        			var fillColour = getFillForGrowth(growth, minMaxObject);
+				      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
+				      				$(this).attr("data-growth", d.growth);
+											$(this).attr("data-name", d.name);
+											$(this).attr("data-cat-total", d.total);
+
+				      				 $(this).on("mouseenter", function(){
+				      				 		var formattedTotal = formatNumber($(this).attr("data-cat-total"));
+				      				 		var valuePrefix = "";
+									      	if($('.js-dropdown-list .js-dropdown-option.is-selected').data("value") == "GROSSING") {
+									      		formattedTotal = "$" + formattedTotal;
+									      	}
+
+													var posNegSign = "+ ";
+													var dataGrowth = $(this).attr("data-growth");
+													var containerClass = $(this).parents('.chart').attr("id");
+
+				      				 		if($(this).attr("data-growth") < 0) {
+				      				 			$('.js-' + containerClass + '-category-growth__growth').addClass("is-negative");
+				      				 			posNegSign = "- ";
+				      				 			dataGrowth *= -1;
+				      				 		} else {
+				      				 		 $('.js-' + containerClass + '-category-growth__growth').removeClass("is-negative");
+				      				 		}
+
+				      				 		$('.js-' + containerClass + '-category-growth__category-name').text($(this).attr("data-name"));
+				      				 		$('.js-' + containerClass + '-category-total').text(formattedTotal);
+							          	$('.js-' + containerClass + '-category-growth__growth').text(posNegSign + dataGrowth + "%");
+							         });
+				        		}
+				        		i++;
+			          	});
+			          }
+
+		          } else if(d != null && d.value != null) {
+		          	$(this).find('rect.child').each(function(){
+		          		createSubTipsy($(this), d, "app"); 
+		          		var growth = (d.growth != null) ? d.growth : 0;
+		        			var fillColour = getFillForGrowth(growth, minMaxObject);
+		      				$(this).attr("style", "fill: " + fillColour.fillColour + "; fill-opacity: " + fillColour.fillOpacity);
+		          	});
+		          }
+				    });
+
+		   		}, 750);
+
+			    return g;
+			  }
+				
+				function getMinMaxFromArray(list) {
+
+					var mx, mn;
+					for(var i = 0; i < list.length; i++) {
+						if(list[i] != "N/A" && list[i] != undefined) {
+							mn = list[i];
+							mx = list[i];
+							break;
+						}
+					}
+					for(var x = 0; x < list.length; x++) {
+						if(list[x] > mx) {
+							mx = list[x];
+						} 
+						if(list[x] < mn) {
+							mn = list[x];
+						}
+					}
+
+					return {
+						min: mn,
+						max: mx
+					};
+				}
+
+			  function getFillForGrowth(growth, minMaxObject) {
+					
+					var fillColour = "#1bc79f",
+							opacity = 0;	
+
+					if(growth == "N/A") {
+						opacity = 1;
+						fillColour = "#47447c";
+					} else {
+						// work out opacity (positive growth)
+						var range = minMaxObject.max;
+						var numRelativeToMin = growth;
+						
+						// if negative, work out opacity
+				  	if(growth < 0) {
+							fillColour = "#ff496a";
+							var range = minMaxObject.min * -1;
+							var numRelativeToMin = growth * -1;
+				  	}
+
+				  	opacity = 1/range * numRelativeToMin;
+				  }
+					
+					return {
+						fillColour: fillColour,
+						fillOpacity: opacity
+					};
+			  }
+
+			  function createSubTipsy($domElement, dataForTooltip, treemapLevel) {
+			  	$domElement.tipsy({
+		        gravity: 's', 
+		        html: true,
+		        title: function() {
+		        	var imageString = "";
+		        	var posNegSign = "+ ";
+		        	var negativeCSSClass = "";
+		        	var dataGrowth = dataForTooltip.growth;
+		        	var newString = "";
+
+		        	if(dataGrowth < 0) {
+								posNegSign = "- ";
+								negativeCSSClass = " is-negative";
+								dataGrowth *= -1;
+		        	}
+							
+		        	if(dataGrowth == "N/A") {
+		        		posNegSign = "";
+								dataGrowth = "";
+								newString = "<div class='tipsy-new-label'>NEW</div>";
+		        	} else {
+		        		dataGrowth = dataGrowth + "%";
+		        	}
+
+		        	if(treemapLevel == "category") {
+		        		posNegSign = "";
+		        		dataGrowth = "";
+		        	}
+
+		        	var valuePrefix = "";
+		        	if($('.js-dropdown-list .js-dropdown-option.is-selected').data("value") == "GROSSING") {
+		        		valuePrefix = "$";
+		        	}
+
+		        	if(dataForTooltip.image != null) {
+		        		imageString = '<img src="' + dataForTooltip.image + '" class="tt-image"/>';
+		        	}
+		        	return imageString + '<h2 class="tt-app-name">' + dataForTooltip.name + '</h2><h3 class="tt-value">' + valuePrefix + formatNumber(dataForTooltip.value) + '<span class="tt-category-growth' + negativeCSSClass + '">' + posNegSign + dataGrowth + '</span></h3>' + newString;
+		        }
+		      });
+			  }
+
+			  function text(text) {
+			    text.attr("x", function(d) { return x(d.x) + 15; })
+			        .attr("y", function(d) { return y(d.y) + 6; });
+			  }
+
+			  function image(image) {
+			    image.attr("x", function(d) { return x(d.x) + 10; })
+			        .attr("y", function(d) { return y(d.y) + 10; });
+			  }
+
+			  function rect(rect) {						  	
+			    rect.attr("x", function(d) { return x(d.x); })
+			        .attr("y", function(d) { return y(d.y); })
+			        .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
+			        .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
+			        .style("fill", function(d) { return baseFillColour; });
+			  }
+
+			  function name(d) {
+			    return d.parent
+			        ? name(d.parent) + " &nbsp;/ &nbsp;<tspan>" + d.name + "</tspan>"
+			        : d.name;
+			  }
+			});
+			
+			if(containerId == "chart") {
+				aggregateAllValues(dataUrl);
+			}			
+		
+		} /* end createTreemap() */
+
+		function LightenDarkenColor(col, amt) {
+
+		    var usePound = false;
+		  
+		    if (col[0] == "#") {
+		        col = col.slice(1);
+		        usePound = true;
+		    }
+		 
+		    var num = parseInt(col,16);
+		 
+		    var r = (num >> 16) + amt;
+		 
+		    if (r > 255) r = 255;
+		    else if  (r < 0) r = 0;
+		 
+		    var b = ((num >> 8) & 0x00FF) + amt;
+		 
+		    if (b > 255) b = 255;
+		    else if  (b < 0) b = 0;
+		 
+		    var g = (num & 0x0000FF) + amt;
+		 
+		    if (g > 255) g = 255;
+		    else if (g < 0) g = 0;
+		 
+		    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+		  
+		}
+
+		function aggregateAllValues(dataSource) {
+			var data = dataSource;		
+			var aggregate = 0;
+			$.getJSON(dataSource, function( data ) {
+			  for(var i = 0; i < data.children.length; i++) {
+			  	for(var j = 0; j < data.children[i].children.length; j++) {
+			  		aggregate += data.children[i].children[j].value;
+			  	}
+			  }
+				
+				var valuePrefix = "";
+      	if($('.js-dropdown-list .js-dropdown-option.is-selected').data("value") == "GROSSING") {
+      		valuePrefix = "$";
+      	}
+
+				if(aggregate > 0) {
+					$('.js-total').text("" + valuePrefix + formatNumber(aggregate));
+				}
+			});
+		}
+
+		$(window).on("load", function(){
+		  new Page();
+
+		  function openSignUpPopup() {
+		  	$('.js-page-overlay--sign-up').fadeIn(200);
+				setTimeout(function(){
+					$('.js-page-overlay--sign-up .js-popup-content').addClass("is-showing");
+				}, 100);
+		  }
+
+		  $('.js-popup-close').on("click", function(e){
+				e.preventDefault();
+				$('.js-page-overlay').fadeOut(100);
+				$('.js-popup-content').removeClass("is-showing");
+			});
+			
+			var FilterDropDown = function($domElement, chartType) {
+
+				var $thisSelectBox = $domElement,
+						$dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
+						$currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+
+				$thisSelectBox.find('option').each(function(){
+					
+					var $thisOption = $(this),
+							selectedClass = "";
+
+					if($thisOption.val() != "") {
+
+						if($thisOption.is(":selected")) {
+							if($thisOption.val() != "") {
+								selectedClass = "is-selected";
+								$currentValue.text($thisOption.text());
+							}
+						}
+
+						var accessClass = "";
+						if($thisOption.data("access")) {
+							accessClass = "ref-after-pro";
+						}
+
+						var $newListItem = $("<li>");
+						$dropDownContainer.append($newListItem
+																					.addClass("js-dropdown-option")
+																					.addClass(selectedClass)
+																					.addClass(accessClass)
+																					.attr('data-value', $thisOption.attr('value'))
+																					.on("click", function() {
+
+																						// check the user role
+																						// allow time for li select
+																						var $this = $(this);
+																						
+																						var userId = getUserRole();
+																						var checkPermissions = doPermissionsCheck($this.attr("data-value"));
+
+																						if(userId != null || (userId == null && checkPermissions)) {
+
+																							if(userId == null) {
+																								userId = "js/data-vis/category-treemap/";
+																							}
+
+																							$thisSelectBox.find("option").removeAttr("selected");
+																							$thisOption.attr("selected", "selected");
+																							$currentValue.text($thisOption.text());
+																							$dropDownContainer.toggle();
+																							$thisSelectBox.parent("div").toggleClass("is-open");
+																							$thisSelectBox.parent("div").removeClass("nothing-selected");
+																							$dropDownContainer.find(".is-selected").removeClass("is-selected");
+																							$(this).addClass("is-selected");																							
+
+																							var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
+																							var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");																								
+																							var selectedList = $('.js-dropdown-list .js-dropdown-option.is-selected').data("value");
+																							var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
+
+																							var fileNameToRequest = userId + "treemap_data_cat_" + selectedCountry + "_" + selectedDevice + "_" + selectedList + "_" + selectedDate + ".json";
+
+																							var fileNameToRequestSubCategories = userId + "treemap_data_sub_" + selectedCountry + "_" + selectedDevice + "_" + selectedList + "_" + selectedDate + ".json";
+																							
+																							$('.js-chart-category-growth__category-name, .js-sub-chart-category-growth__category-name').text("Category");
+
+																							$('.js-chart-category-total, .js-sub-chart-category-total, .js-chart-category-growth__growth, .js-sub-chart-category-growth__growth').text("");
+																							$('#chart svg').remove();
+																							$('#sub-chart svg').remove();
+
+																							setTimeout(function(){
+																								createTreemap(fileNameToRequest, "chart");
+																							}, 1000);
+
+																							setTimeout(function(){
+																								createTreemap(fileNameToRequestSubCategories, "sub-chart");
+																							}, 1500);
+																							
+																						} else {
+																							$thisSelectBox.parent("div").toggleClass("is-open");
+																							$dropDownContainer.toggle();
+																							openSignUpPopup();
+																						}
+
+																					})
+																					.append($("<span>").text($thisOption.text()))
+																		);
+					} else {
+						// no option value means placeholder text before option is selected
+						$currentValue.text($thisOption.text());
+					}
+				});
+
+				$currentValue.on("click", function(){
+					if(!$thisSelectBox.attr("disabled")) {
+						var $parentDiv = $thisSelectBox.parent("div");
+						if($parentDiv.hasClass("is-open")) {
+							$dropDownContainer.toggle();	
+							$parentDiv.toggleClass("is-open");
+						} else {
+							setTimeout(function(){
+								if(!$parentDiv.hasClass("is-open")) {
+									closeAllFilters();
+								}
+								var parentWidth = $parentDiv.width();
+								var parentHeight = $parentDiv.height();
+								$dropDownContainer.css({"min-width": parentWidth + "px"});
+								$dropDownContainer.toggle();	
+								$parentDiv.toggleClass("is-open");
+							}, 50); // allow time for instance.closeAllFilters() to close other filters first
+						}
+					}
+				});
+
+				if($currentValue.text() == "") {
+					$thisSelectBox.parent("div").addClass("nothing-selected");
+				}
+
+				$thisSelectBox.parent("div").append($currentValue)
+																		.append($dropDownContainer);
+			};
+
+			function getUserRole() {
+				// return null;
+				return "js/8wehfi7wro8ywe8mryow73yrnoxwyonr7tw4ox7b/category-treemap/";
+			}
+
+			function doPermissionsCheck(dataValue) {
+				
+				if(dataValue == "2017-02" || dataValue == "FREE" || dataValue == "PAID" || dataValue == "GROSSING" || dataValue == "PHONE" || dataValue == "TABLET" || dataValue == "COMBINED" || dataValue == "GB") {
+					return true;
+				}
+
+				return false;
+			}
+
+			function closeAllFilters() {
+				$('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
+				$('.js-secondary-filter.is-open').removeClass("is-open");
+			}
+
+		  $('.js-select-box').each(function() {
+  			new FilterDropDown($(this));
+  		});
+
+  		createTreemap("js/data-vis/category-treemap/treemap_data_cat_GB_PHONE_FREE_2017-02.json", "chart");
+  		createTreemap("js/data-vis/category-treemap/treemap_data_sub_GB_PHONE_FREE_2017-02.json", "sub-chart");
+	 	});
+
+	</script>
+
+</body>

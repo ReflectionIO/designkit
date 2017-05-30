@@ -41,13 +41,13 @@ button::-moz-focus-inner {
   outline: none;
   cursor: pointer;
   @extend %font-smoothing;
-  transition: background-color $base-transition-speed-off, color $base-transition-speed-off, border-color $base-transition-speed-off;
-  .no-touch & {
-  	&:hover {
-    	transition: background-color $base-transition-speed-on, color $base-transition-speed-on, border-color $base-transition-speed-on;
+  transition: background-color $base-transition-speed-off, color $base-transition-speed-off;
+  .no-touchevents & {
+  	&:hover:not(:disabled) {
+    	transition: background-color $base-transition-speed-on, color $base-transition-speed-on;
     }
     &:active {
-			transition: border 0s;
+			transition: none;
 		}
   }
   &.is-loading {
@@ -70,19 +70,23 @@ button::-moz-focus-inner {
   color: $reflection-white;
   border: none;
   border-radius: 0.35714285714285715em;
-  background-color: $reflection-red;
-  .no-touch & {
-    &:hover {
-      background-color: #e73e5c;
+  background-color: $reflection-purple;
+  .no-touchevents & {
+    &:hover:not(:disabled) {
+      background-color: darken($reflection-purple, 5%);
+    }
+    &.is-disabled:hover {
+      background-color: $reflection-purple;
     }
     &:active {
-      border-top: 2px solid #96283c;
+      border-top: 2px solid rgba(0,0,0,0.3);
     }
   }
-  &.is-disabled {
+  &.is-disabled,
+  &[disabled=disabled] {
     background-color: $divider-grey;
     cursor: default;
-    .no-touch & {
+    .no-touchevents & {
       &:hover {
         background-color: $divider-grey;
       }
@@ -92,7 +96,7 @@ button::-moz-focus-inner {
     }
     &.is-success {
       background-color: $reflection-green;
-      .no-touch & {
+      .no-touchevents & {
         &:hover {
           background-color: $reflection-green;
         }
@@ -100,7 +104,7 @@ button::-moz-focus-inner {
     }
     &.is-error {
       background-color: $error-colour;
-      .no-touch & {
+      .no-touchevents & {
         &:hover {
           background-color: $error-colour;
         }
@@ -112,13 +116,25 @@ button::-moz-focus-inner {
 	@extend .ref-button;
   @extend .ref-button--primary;
   padding: 1rem 1.5rem 1.2rem 1.5rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   letter-spacing: -0.01rem;
-  &:not(.is-disabled) {
-    .no-touch & {
+  &:not(.is-disabled),
+  &:not(:disabled) {
+    .no-touchevents & {
       &:active {
         padding-top: calc(1rem - 1px);  
         padding-bottom: calc(1.2rem - 1px);
+      }
+    }
+  }
+  .ref-table & {
+    padding: 0.9rem 1rem 0.9rem 1rem;
+      &:not(.is-disabled) {
+      .no-touchevents & {
+        &:active {
+          padding-top: calc(0.9rem - 1px);  
+          padding-bottom: calc(0.9rem - 1px);
+        }
       }
     }
   }
@@ -130,7 +146,7 @@ button::-moz-focus-inner {
   font-size: 1.5rem;
   letter-spacing: -0.01rem;
   &:not(.is-disabled) {
-    .no-touch & {
+    .no-touchevents & {
       &:active {
         padding-top: calc(1.3rem - 1px);
         padding-bottom: calc(1.3rem - 1px);
@@ -145,7 +161,7 @@ button::-moz-focus-inner {
   font-size: 1.6rem;
   letter-spacing: -0.01rem;
   &:not(.is-disabled) {
-    .no-touch & {
+    .no-touchevents & {
       &:active {
         padding-top: calc(1.7rem - 1px);
         padding-bottom: calc(1.6rem - 1px);
@@ -154,14 +170,17 @@ button::-moz-focus-inner {
   }
 }
 
-.ref-button--secondary {  
+.ref-button--secondary {
   color: $reflection-purple;
   border: 1px solid $light-grey-2;
   border-radius: 0.35714285714285715em;
   background-color: #f5f9f9;
-  .no-touch & {
-    &:hover {
+  .no-touchevents & {
+    &:hover:not(:disabled) {
       background-color: #ebf2f2;
+    }
+    &.is-disabled:hover {
+      background-color: #f5f9f9;
     }
     &:active {
       border-top: 2px solid #c8cece;
@@ -171,23 +190,44 @@ button::-moz-focus-inner {
     color: $reflection-white;
     border-color: $reflection-green;
     background-color: $reflection-green;
-    .no-touch & {
+    .no-touchevents & {
       &:hover {
         color: $reflection-white;
         background-color: $reflection-green;
       }
     }
   }
+  &[disabled=disabled],
+  &.is-disabled {
+    opacity: 0.5;
+  }
 }
 .ref-button--secondary--small {
   @extend .ref-button;
   @extend .ref-button--secondary;
   padding: calc(1rem - 1px) 1.4rem calc(1.2rem - 1px) 1.39rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   letter-spacing: -0.01rem;
-  .no-touch & {
-    &:active {    
+  .no-touchevents & {
+    &:active {      
       padding-bottom: calc(1.2rem - 2px);
+    }
+  }
+  &.ref-button--secondary--small--link {
+    padding: 1rem 1.4rem 1.2rem 1.39rem;
+    border: none;
+    background-color: transparent;
+    .no-touchevents & {
+      &:hover,
+      &:active {
+        background-color: transparent;
+      }
+      &:active {
+        position: relative;
+        top: 2px;
+        border: none;
+        padding-bottom: 1.2rem;
+      }
     }
   }
 }
@@ -197,7 +237,7 @@ button::-moz-focus-inner {
   padding: calc(1.3rem - 1px) 1.5rem calc(1.3rem - 1px) 1.39rem;
   font-size: 1.5rem;
   letter-spacing: -0.01rem;
-  .no-touch & {
+  .no-touchevents & {
     &:active {    
       padding-bottom: calc(1.3rem - 2px);
     }
@@ -209,7 +249,71 @@ button::-moz-focus-inner {
   padding: calc(1.6rem - 1px) 2rem calc(1.7rem - 1px) 2rem;
   font-size: 1.6rem;
   letter-spacing: -0.01rem;
-  .no-touch & {
+  .no-touchevents & {
+    &:active {    
+      padding-bottom: calc(1.7rem - 2px);
+    }
+  }
+}
+.ref-button--dark {
+  color: $light-grey-2;
+  border: 1px solid #000000;
+  border-radius: 0.35714285714285715em;
+  background-color: #343438;
+  .no-touchevents & {
+    &:hover:not(:disabled), {
+      background-color: #2e2e31;
+    }
+    &.is-disabled:hover {
+      background-color: #343438;
+    }
+    &:active {
+      border-top: 2px solid #000000;
+    }
+  }
+  &.is-success {
+    color: $reflection-white;
+    border-color: $reflection-green;
+    background-color: $reflection-green;
+    .no-touchevents & {
+      &:hover {
+        color: $reflection-white;
+        background-color: $reflection-green;
+      }
+    }
+  }
+}
+.ref-button--dark--small {
+  @extend .ref-button;
+  @extend .ref-button--dark;
+  padding: calc(1rem - 1px) 1.4rem calc(1.2rem - 1px) 1.39rem;
+  font-size: 1.4rem;
+  letter-spacing: -0.01rem;
+  .no-touchevents & {
+    &:active {    
+      padding-bottom: calc(1.2rem - 2px);
+    }
+  }
+}
+.ref-button--dark--medium {
+  @extend .ref-button;
+  @extend .ref-button--dark;
+  padding: calc(1.3rem - 1px) 1.5rem calc(1.3rem - 1px) 1.39rem;
+  font-size: 1.5rem;
+  letter-spacing: -0.01rem;
+  .no-touchevents & {
+    &:active {    
+      padding-bottom: calc(1.3rem - 2px);
+    }
+  }
+}
+.ref-button--dark--large {
+  @extend .ref-button;
+  @extend .ref-button--dark;
+  padding: calc(1.6rem - 1px) 2rem calc(1.7rem - 1px) 2rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.01rem;
+  .no-touchevents & {
     &:active {    
       padding-bottom: calc(1.7rem - 2px);
     }
@@ -228,5 +332,35 @@ button::-moz-focus-inner {
   width: calc(50% - 5px);
   margin-left: 0;
   margin-right: 0;
+  box-sizing: border-box;
+}
+.ref-button--follow-app,
+.ref-button--follow-developer {
+  height: 15px;
+  font-size: 1.4rem !important;
+  &.is-following {
+    color: $reflection-white;
+    background-color: $light-grey-1;
+    border-color: $light-grey-1;
+    &:hover,
+    &:hover:not(:disabled),
+    &:active {
+      color: $reflection-white;
+      background-color: darken($light-grey-1, 10%);
+    }
+    &:active {
+      border-top: 2px solid rgba(0,0,0,0.3);
+    }
+  }
+}
+.ref-button--follow-app {
+  width: 70px;  
+}
+.ref-button--follow-developer {
+  width: 107px;
+}
+.ref-button--stacked-button {
+  width: 100%;
+  margin-bottom: 10px;
   box-sizing: border-box;
 }

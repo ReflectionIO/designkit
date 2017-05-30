@@ -56,13 +56,13 @@ $blur-opacity: 0.7;
 	background-color: #29292b;
 	@include opacity(0);
 	visibility: hidden;
-	.no-touch & {
+	.no-touchevents & {
 		transition: opacity 0.18s, visibility 0.01s 0.27s;
 	}
 	.is-showing & {
 		visibility: visible;
 		@include opacity(0.5);
-		.no-touch & {
+		.no-touchevents & {
 			transition: opacity 0.27s;
 		}
 	}
@@ -82,12 +82,12 @@ $blur-opacity: 0.7;
 	overflow: auto;
 	font-size: 10px;
 	background-color: $dark-grey-1;
-	.no-touch & {
+	.no-touchevents & {
 		transition: right 0.18s ease-in;
 	}	
 	.is-showing & {
 		right: 0;
-		.no-touch & {
+		.no-touchevents & {
 			transition: right 0.12s 0.12s ease-out;
 		}
 	}
