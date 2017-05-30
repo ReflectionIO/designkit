@@ -76,7 +76,8 @@
 						</div>
 					</div>
 
-					<button href="#" class="ref-button--secondary--small page-header_action-button">Download CSV</button>
+					<a href="#" class="ref-button--secondary--small page-header_action-button js-tooltip js-tooltip--open-left js-tooltip--instant" data-tooltip="Download all current table data as a CSV file">Download CSV</a>
+
 					<a href="v2-my-lists.html" class="page-header__text-link js-mock-show-for-my-list-view-only">Back to My Lists</a>
 				</div>
 
@@ -1266,6 +1267,11 @@
   		new AllDropDowns();
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
+  		});
+
+  		new TooltipsBase();
+  		$('.js-tooltip').each(function(){
+  			new ToolTip($(this));
   		});
   		
   		$('.js-data-select').on("click", function() {

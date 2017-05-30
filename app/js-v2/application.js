@@ -336,11 +336,13 @@ function handleappsearch(data) {
 	// output results to screen
 	$appsList.empty();
 	for(var i = 0; i < searchResultsApps.length && i < 5; i++) {
-		$appsList.append($('<li>').append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + ""))
+		$appsList.append($('<li>')
+				.append($('<a>').attr("href", "v2-app.html?id=" + searchResultsApps[i].trackId)
+				.append($('<img>').attr("src", "" + searchResultsApps[i].artworkUrl60 + ""))
 															.append($('<div>').addClass("search-result__text-container")
-																.append($('<a>').addClass("search-result__app-name").attr("href", "v2-app.html?id=" + searchResultsApps[i].trackId).text(searchResultsApps[i].trackCensoredName))
+																.append($('<span>').addClass("search-result__app-name").text(searchResultsApps[i].trackCensoredName))
 																.append($('<span>').addClass("search-result__publisher-name").text(searchResultsApps[i].artistName))
-															)
+															))
 										);
 	}
 
@@ -691,7 +693,7 @@ var Tabs = function($domElement) {
 
 // Global settings for all Tooltips
 var TooltipsBase = function() {
-	$('.touchevents body').on("click", function(e){ // remove all tooltips on body touch
+	$('body').on("click", function(e){ // remove all tooltips on body touch
 		if($('.tooltip').length) {			
 			$('.tooltip').remove();
 		}
@@ -703,7 +705,7 @@ var ToolTip = function($domElement) {
 	var instance = this;
 	var $this = $domElement;
 	var tooltip;
-	if($('html.no-touch').length) {
+	if($('html.no-touchevents').length) {
 		$this.on("mouseenter", function(){
 			if($this.hasClass("js-tooltip--instant")) {
 				tooltip = instance.generateTooltip($this, true);
@@ -712,7 +714,13 @@ var ToolTip = function($domElement) {
 			}					
 		});
 		$this.on("mouseleave", function(){
-			tooltip.remove();
+			if($this.hasClass("js-tooltip--delay-remove")) {
+				setTimeout(function(){
+					tooltip.remove();
+				}, 1000);
+			} else {
+				tooltip.remove();
+			}			
 		});
 		$this.on("click", function(e){
 			if($this.attr("href") == "#") {
@@ -743,10 +751,11 @@ var ToolTip = function($domElement) {
 };
 
 ToolTip.prototype.generateTooltip = function($tooltipParent, isInstantTooltip) {
+
 	var $this = $tooltipParent,
 			tooltipText = $tooltipParent.data("tooltip");
 
-	var tooltip = $('<div>').addClass("tooltip").append($('<div>').addClass("tooltip-text").text(tooltipText));
+	var tooltip = $('<div>').addClass("tooltip").append($('<div>').addClass("tooltip-text").html(tooltipText));
 	
 	$('body').append(tooltip);
 	var topPosition = $this.offset().top;
@@ -760,13 +769,23 @@ ToolTip.prototype.generateTooltip = function($tooltipParent, isInstantTooltip) {
 	tooltip.hide();
 	if($this.hasClass('js-tooltip--right')) {
 		var tooltipWidth = tooltip.innerWidth();
-		var componentWidth = $this.innerWidth();	
+		var componentWidth = $this.innerWidth();
 		leftPosition = componentOffsetLeft + componentWidth - tooltipWidth;
 		tooltip.addClass("tooltip-right");
 	}
 	if($this.hasClass('js-tooltip--left')) {
 		leftPosition = componentOffsetLeft;
 		tooltip.addClass("tooltip-left");
+	}
+	if($this.hasClass('js-tooltip--open-left')) {
+		leftPosition = componentOffsetLeft - tooltipWidth - 10;
+		tooltipHeight = (tooltipHeight / 2) - componentHeight;
+		tooltip.addClass("tooltip-open-left");
+	}
+	if($this.hasClass('js-tooltip--bottom')) {
+		topPosition += 67;
+		tooltipHeight = 0;
+		tooltip.addClass("tooltip-bottom");
 	}
 	if($this.hasClass('js-tooltip--precise-pointer')) {
 		if($this.hasClass('js-tooltip--left')) {

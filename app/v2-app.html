@@ -179,6 +179,8 @@
 							</li>
 
 							<li> <span class=""><input type="checkbox" value="on" id="gwt-uid-279" tabindex="0"><label for="gwt-uid-279" class="checkboxLabel">Cumulative</label><label for="gwt-uid-279" class="checkboxLabelVisible">Cumulative</label></span> </li>
+
+							<li> <span class=""><input type="checkbox" value="on" checked id="js-confidence-scores-checkbox" tabindex="0"><label for="js-confidence-scores-checkbox" class="checkboxLabel">Confidence Scores</label><label for="js-confidence-scores-checkbox" class="checkboxLabelVisible">Confidence Scores</label></span> <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-right" data-whatsthis-title="What Are Confidence Scores?" data-whatsthis="A scoring system that denotes our level of confidence in the accuracy of the revenue and download estimates. Data is graded from B up to A++<br /><a href='#'>Learn more in this article</a>"><span>What's this?</span></a></li>
 						</ul>
 					</div>
 
@@ -1062,6 +1064,11 @@
   			new Tabs($(this));
   		});
 
+  		new TooltipsBase();
+  		$('.js-tooltip').each(function(){
+  			new ToolTip($(this));
+  		});
+
   		// Mock function for template
   		$('#topAppsDownloads').hide();
   		$('.js-mock-switch-revenue').on("click", function(){
@@ -1844,8 +1851,22 @@
 	                	var percentageOfTotal = parseInt(value.y / thisPointTotalValue * 100);
 	                	stackedString = "<span class='chart-tooltip-percentage' style='background-color: " + chartSeries.color + "'>" + percentageOfTotal + "%</span>";
 	                }
+									
+									var tooltipTwoColumnClass = "";
+	                if($('#js-confidence-scores-checkbox').is(":checked")) {
+	                	tooltipTwoColumnClass = "custom-tooltip--two-column"; // to add an offset left to tooltip for better viewing
 
-	                s += '<div class="custom-tooltip ' + seriesClassName + '" style="background-color: ' + chartSeries.color + '">' + imgString + storeString + '<span class="chart-tooltip-value">' + valueString + value.y + '</span>' + stackedString + '</div>';
+										var confidenceScore = chartSeries.confidenceScores[thisPointIndex];
+										var confidenceScoreClass = "";
+										if(chartSeries.name == "revenueseries-total" || chartSeries.name == "downloadsseries-total") {
+											confidenceScore = "Score:";
+											confidenceScoreClass = "chart-tooltip__confidence-score-label";
+										}
+
+	                	stackedString = "<span class='chart-tooltip-percentage " + confidenceScoreClass + "' style='background-color: " + chartSeries.color + "'>" + confidenceScore + "</span>";
+	                }
+
+	                s += '<div class="custom-tooltip ' + tooltipTwoColumnClass + ' ' + seriesClassName + '" style="background-color: ' + chartSeries.color + '">' + imgString + storeString + '<span class="chart-tooltip-value">' + valueString + value.y + '</span>' + stackedString + '</div>';
 	            });
 	            return s;
 	          },
@@ -1877,12 +1898,17 @@
 
 			function addAppDataToSeries() {
 				// add the app icon and store to the Highcharts series objects for the tooltip
+				
+				var confidenceScoresMockData = [
+					"B", "A+", "A+", "A++", "A+", "A", "B", "B", "A", "A", "A+", "A++", "B", "A+", "A+", "A++", "A+", "A", "B", "B", "A", "A", "A+", "A++"
+				];
 
 				// template only, mock data
 				for(var k = 0; k < 2; k++) {
 					$.each(Highcharts.charts[k].series, function (key, series) { // twin chart
 				    series.appIcon = seriesAppIcons[key].icon;
 				    series.appStore = seriesAppIcons[key].store;
+				    series.confidenceScores = confidenceScoresMockData;
 					});
 				}
 
@@ -1891,6 +1917,7 @@
 			    var combinedSeriesIndex = Math.floor(key / 2);
 			    series.appIcon = seriesAppIcons[combinedSeriesIndex].icon;
 			    series.appStore = seriesAppIcons[combinedSeriesIndex].store;
+			    series.confidenceScores = confidenceScoresMockData;
 				});
 			}
 

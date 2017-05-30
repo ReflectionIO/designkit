@@ -56,6 +56,9 @@
 							</ul>
 						</div>
 						<a href="v2-account-manage-notifications.html" class="ref-button--secondary--small">Manage Alert Settings</a>
+
+						<a href="#" class="ref-button--secondary--small page-header_action-button js-tooltip js-tooltip--open-left js-tooltip--instant" data-tooltip="Download all current table data as a CSV file">Download CSV</a>
+
 					</div>
 				</header>
 
@@ -273,7 +276,11 @@
 
   		new Page();
   		new AllDropDowns();
-  		;
+
+  		new TooltipsBase();
+  		$('.js-tooltip').each(function(){
+  			new ToolTip($(this));
+  		});
   		
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));

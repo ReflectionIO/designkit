@@ -65,9 +65,6 @@ header .search__results-container__heading:last-child {
 		}
 	}
 	li {
-		padding-top: 6px;
-    padding-left: 20px;
-    padding-bottom: 6px;
 		display: block;
 		border-top: 1px solid $divider-grey;
 		img {
@@ -97,15 +94,25 @@ header .search__results-container__heading:last-child {
 			font-family: $brand-heading-font;
 			font-size: 15px;
 			font-weight: 600;
-			color: $reflection-purple;
-			&:hover {
-				color: $reflection-purple--hover;
-			}
+			color: $reflection-purple;			
 		}
 		.search-result__publisher-name {
 			font-family: $brand-heading-font;
 			font-size: 13px;
 			color: $light-grey-1;
+		}
+		> a {
+			padding-top: 6px;
+	    padding-left: 20px;
+	    padding-bottom: 6px;
+			display: block;
+			transition: none;
+			&:hover {
+				background-color: $panel-grey;
+				.search-result__app-name {
+					color: $reflection-purple--hover;
+				}
+			}
 		}
 	}
 	&.search__results-section--developers {

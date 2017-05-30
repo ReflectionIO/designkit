@@ -79,7 +79,7 @@
 							</div>
 						</div>
 
-						<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--sign-up">Download CSV</button>
+						<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--sign-up js-tooltip js-tooltip--open-left js-tooltip--instant" data-tooltip="Download all current table data as a CSV file">Download CSV</button>
 
 						<div class="secondary-filter form-field--search js-form-field-search">
 							<input type="text" placeholder="Find App in List" name="findapp" id="findapp" class="js-mock-find-app">
@@ -206,9 +206,11 @@
 	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings1}}</span>
 	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice1}}</span>
 	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth1}}</span>
-	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>{{dataItem.appRevDow1}}</span></span>
- 										</div> 										
- 									</div> 									
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download">
+	 											<span class="js-tooltip js-tooltip--instant js-tooltip--delay-remove"  data-tooltip="Downloads on this day<br /><a href='#'><span>Confidence Score:</span> A++</a>">{{dataItem.appRevDow1}}</span>
+	 										</span>
+ 										</div>
+ 									</div>
  								</td>
  								<td data-price-tier="{{dataItem.appPrice2}}" data-is-new="{{dataItem.appNewDisplay2}}">
  									<div class="live-chart__cell__disabled-overlay"></div>
@@ -226,7 +228,7 @@
 	 										<span class="live-chart__cell__number-of-ratings">{{dataItem.appNumberOfRatings2}}</span>
 	 										<span class="live-chart__cell__app-price">{{dataItem.appPrice2}}</span>
 	 										<span class="live-chart__cell__growth positive-colour">{{dataItem.appGrowth2}}</span>
-	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span>{{dataItem.appRevDow2}}</span></span>
+	 										<span class="live-chart__cell__app-downloads-revenue ref-icon-before--download"><span class="js-tooltip js-tooltip--instant js-tooltip--delay-remove"  data-tooltip="Downloads on this day<br /><a href='#'><span>Confidence Score:</span> A++</a>">{{dataItem.appRevDow2}}</span></span>
  										</div> 										
  									</div> 	
  								</td>
@@ -443,13 +445,20 @@
 
   		new Page();
   		new AllDropDowns();
-  		;
+  		
   		$('.js-select-box').each(function() {
   			new FormFieldSelect($(this));
   		});
   		$('.js-form-field-search').each(function(){
   			new FormFieldSearch($(this));
   		});
+
+  		new TooltipsBase();
+  		setTimeout(function(){
+				$('.js-tooltip').each(function(){
+					new ToolTip($(this));
+				});
+  		}, 1000);
 
   		$('.js-open-modal--sign-up').on("click", function(e){
 				e.preventDefault();

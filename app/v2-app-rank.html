@@ -48,8 +48,8 @@
 						<h1 class="heading-style--heading-three app-title">Clash of Hamsters <span class="app-developer-name">By <a href="v2-publisher.html">Reflection</a></span><span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip" data-whatsthis-title="What is Actual Data?" data-whatsthis="In the My Data section revenue and download data displayed are actual values taken from your real sales data. No-one else sees these numbers but you. The Store Data section is instead based on accurate estimates."></span></h1>
 						<div class="toggle-container page-header__page-toggle filter-toggle filter-toggle--with-text filter-toggle--small">
 							<div class="toggle">
-								<input id="toggle--show-downloads" name="app-info" type="radio">
-								<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');">
+								<input disabled="disabled" id="toggle--show-downloads" name="app-info" type="radio">
+								<label for="toggle--show-downloads" onclick="location.replace('v2-app.html');" class="js-tooltip js-tooltip--instant js-tooltip--bottom js-tooltip--delay-remove" data-tooltip="We'll let you know when we have enough data to open up Google Play revenue &amp; download estimates for paid apps. <a href=http://localhost/designkit/app/v2-linked-accountsapp.html>Help out, link your account.</a>">
 									Revenue &amp; Downloads
 								</label>
 							</div>
@@ -328,7 +328,7 @@
 									<td>Mon 1 Jan 2016</td>
 									<td class="rank-history-data-cell--rank"><span>10</span> <span class="data-table__revenue-rank-growth positive-colour ref-icon-after--up">15</span></td>
 									<td class="rank-history-data-cell--rank">25 <span class="data-table__download-rank-growth negative-colour ref-icon-after--down">15</span></td>
-									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down positive-colour">+100%</span></td>
+									<td class="rank-history-data-cell--revenue-downloads"><span class="data-coming-soon js-tooltip js-tooltip--instant js-tooltip--delay-remove" data-tooltip="We'll let you know when we have enough data to open up Google Play revenue &amp; download estimates for paid apps. <a href=http://localhost/designkit/app/v2-linked-accountsapp.html>Help out, link your account.</a>">Coming Soon</span> <span class="data-table__rank-history-rev-down"></span></td>
 									<td class="rank-history-data-cell--revenue-downloads">&pound;7,501,876 <span class="data-table__rank-history-rev-down negative-colour">-100%</span></td>
 								</tr>
 								<tr>
@@ -544,6 +544,11 @@ h-5.9V7.7h-9.2v2.4L6.7,5.5C9.2,3.3,12.4,2,16,2c7.7,0,14,6.3,14,14C30,19.6,28.7,2
   		});
   		$('.js-tabs').each(function() {
   			new Tabs($(this));
+  		});
+
+  		new TooltipsBase();
+  		$('.js-tooltip').each(function(){
+  			new ToolTip($(this));
   		});
 
   		// Mock function for template

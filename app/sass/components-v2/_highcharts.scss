@@ -60,6 +60,7 @@
 	stroke: #e1e5e8;
 }
 .highcharts-tooltip {
+  pointer-events: none;
 	> span {
 		overflow: visible;
 	}
@@ -89,6 +90,9 @@
 	color: #fcfdfd;
 	border-radius: 3px;
 	opacity: 0.9;
+	&.custom-tooltip--two-column {
+		left: -33px;
+	}
 	.icon-revenue,
 	.icon-downloads,
 	.icon-rank,
@@ -123,6 +127,14 @@
 				min-height: 28px;
 				padding-top: 7px;
 			}
+		}
+	}
+	.icon-downloads,
+	.icon-revenue {
+		+ span + .chart-tooltip-percentage.chart-tooltip__confidence-score-label {
+			min-height: 26px;
+	    padding-top: 5px;
+			font-size: 11px;
 		}
 	}
 	.icon-rank {
@@ -197,11 +209,11 @@
 }
 .chart-tooltip-percentage {	
   position: absolute;
-  right: -44px;
+  right: -49px;
   top: 0px;
-  width: 43px;
+  width: 48px;
   min-height: 24px;
-  padding-right: 5px;
+  padding-right: 8px;
   padding-top: 5px;
   padding-bottom: 5px;
   display: block;

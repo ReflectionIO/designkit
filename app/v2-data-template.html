@@ -47,7 +47,7 @@
 					<span class="page-header__data-info-text js-mock-show-for-my-apps-view-only">Analyse the performance of your own apps</span>
 					<span class="page-header__data-info-icon ref-icon-after--question whats-this-tooltip-icon js-whats-this-tooltip js-mock-show-for-my-apps-view-only" data-whatsthis-title="What's This?" data-whatsthis="The data displayed in the My Data section is your actual sales data for any accounts you have linked, not estimates. No-one else can see your actual data."></span>
 
-					<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--go-pro">Download CSV</button>
+					<button href="#" class="ref-button--secondary--small page-header_action-button js-open-modal--go-pro js-tooltip js-tooltip--open-left js-tooltip--instant" data-tooltip="Download all current table data as a CSV file">Download CSV</button>
 
 					<div class="toggle-container page-header__page-toggle filter-toggle filter-toggle--with-text filter-toggle--small">
 						<div class="toggle">
@@ -255,7 +255,7 @@
 										<li class="series-1">
 											<input type="checkbox" name="showhideClash" id="showhideClash" class="js-toggle-series" data-chart-index="0" data-series-index="1" checked>
 											<label for="showhideClash" class="checkboxLabel">Clash of Hamsters</label>
-											<label for="showhideClash" class="checkboxLabelVisible js-hover-series">Clash of Hamsters</label>
+											<label for="showhideClash" class="checkboxLabelVisible js-hover-series">Clash of Hamsters <span class="js-tooltip js-tooltip--instant label-estimated" data-tooltip="This is displaying estimated data for one of your own apps">(est.)</span></label>
 										</li>
 										<li class="series-2">
 											<input type="checkbox" name="showhideAngry" id="showhideAngry" class="js-toggle-series" data-chart-index="0" data-series-index="2" checked>
@@ -1543,6 +1543,10 @@
   		});
   		$('.js-tabs').each(function() {
   			new Tabs($(this));
+  		});
+  		new TooltipsBase();
+  		$('.js-tooltip').each(function(){
+  			new ToolTip($(this));
   		});
 
   		$('.js-open-modal--go-pro').on("click", function(e){

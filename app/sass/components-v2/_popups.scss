@@ -1,7 +1,7 @@
 $text-grey: $divider-grey;
 .tooltip {
 	position: absolute;
-	max-width: 185px;
+	max-width: 230px;
 	display: inline-block;
 	overflow: visible;
 	z-index: 10002;
@@ -29,6 +29,27 @@ $text-grey: $divider-grey;
 			left: 20px;
 		}
 	}
+	&.tooltip-bottom {
+		&:after {
+			top: -11px;
+			bottom: inherit;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 11px solid $light-grey-1;
+			border-top: 0;
+		}
+	}
+	&.tooltip-open-left {
+		&:after {
+			top: 50%;
+			left: calc(100% + 7px);
+			margin-top: -7px;
+			bottom: inherit;
+			border-top: 8px solid transparent;
+			border-bottom: 8px solid transparent;
+			border-left: 11px solid $light-grey-1;			
+		}
+	}
 	.tooltip-text {
 		padding: 8px 10px 10px;
 		display: block;
@@ -37,7 +58,17 @@ $text-grey: $divider-grey;
 		font-size: 12px;
 		line-height: 1.5;
 		color: #fcfdfd;
-		text-align: center;		
+		text-align: center;
+		a {
+			color: #fcfdfd;
+			text-decoration: underline;
+			&:hover {
+				color: darken(#fcfdfd, 5%);
+			}
+		}
+		span {
+			font-weight: 400;
+		}
 	}
 }
 .tooltip--info {
@@ -222,8 +253,8 @@ $text-grey: $divider-grey;
 		line-height: 1.69;
 		color: #f2f2f5;
 		a {
-			font-weight: 700;
 			color: #fff;
+			text-decoration: underline;
 			&:hover {
 				color: darken(#ffffff, 10%);
 			}
