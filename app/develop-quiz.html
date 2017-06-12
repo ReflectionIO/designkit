@@ -1,0 +1,222 @@
+<html>
+<head>
+	<title>Reflection.io App Market Quiz</title>
+	<link rel="stylesheet" href="develop-quiz.css" />
+</head>
+<body>
+	<div class="page-develop-quiz">
+		<div class="page-develop-quiz__main">
+			<ul class="page-develop-quiz__question-list">
+			</ul>
+			<div class="page-develop-quiz__progress">
+				<div class="page-develop-quiz__progress__bar">
+					<div class="page-develop-quiz__progress__bar__fill"></div>
+				</div>
+				<div class="page-develop-quiz__progress__hamster-nut">
+					<img src="images/develop-quiz/hamster-nut.png" alt="Hamster Nut" />
+				</div>
+				<div class="page-develop-quiz__progress__hamster">
+					<img src="images/develop-quiz/hamster-walking.png" alt="Walking hamster" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+	<script>
+		$(function(){
+			
+			var $slidesContainer = $('.page-develop-quiz__question-list');
+			var $progressBarFill = $('.page-develop-quiz__progress__bar__fill');
+			var $progressHamster = $('.page-develop-quiz__progress__hamster');
+			var numberOfQuestions = 5;
+			
+			var questions = {
+				data: [
+					{
+						question: "What % of Minecraft’s total revenue in May 2017 came from the USA?",
+						imageUrl: "images/develop-quiz/minecraft-logo@2x.png",
+						imageAlt: "Minecraft Logo",
+						answers: ["17%", "33%", "57%"],
+						correctIndex: 2
+					},
+					{
+						question: "How many UK downloads did ‘Top Eleven’ get in May 2017?",
+						imageUrl: "images/develop-quiz/top-eleven-logo@2x.png",
+						imageAlt: "Top Eleven Logo",
+						answers: ["7.8K", "20.5K", "349.2K"],
+						correctIndex: 1
+					},
+					{
+						question: "What % of King’s total UK revenue for May 2017 came from Candy Crush?",
+						imageUrl: "images/develop-quiz/king-logo@2x.png",
+						imageAlt: "King Logo",
+						answers: ["28%", "56%", "79%"],
+						correctIndex: 1
+					},
+					{
+						question: "What is the most common sub- category for a game to be in?",
+						imageUrl: "",
+						imageAlt: "",
+						answers: ["Action", "Simulation", "Arcade"],
+						correctIndex: 0,
+						isSmallerButtonStyle: true
+					},
+					{
+						question: "Which day of the week requires most downloads to hit the top 200 Free games chart? (UK / iOS)",
+						imageUrl: "",
+						imageAlt: "",
+						answers: ["Fri", "Sat", "Sun"],
+						correctIndex: 2
+					},
+					{
+						question: "How many downloads per day does it take to make the top 10, Free games chart? (UK / iOS)",
+						imageUrl: "",
+						imageAlt: "",
+						answers: ["6.3K", "10.6K", "128.7K "],
+						correctIndex: 0						
+					},
+					{
+						question: "How much total UK revenue did ‘Clash of Clans’ make in May 2017?",
+						imageUrl: "images/develop-quiz/clash-logo@2x.png",
+						imageAlt: "Clash of Clans  Logo",
+						answers: ["$938K", "$2.4M", "$18.6M"],
+						correctIndex: 1
+					},
+					{
+						question: "How many downloads per day does it take to make the top 200, Paid games chart? (UK / iOS)",
+						imageUrl: "",
+						imageAlt: "",
+						answers: ["16", "378", "1.2K"],
+						correctIndex: 0
+					},
+					{
+						question: "Of the UK iOS store’s total revenue for Feb 2017, what % came from the games category?",
+						imageUrl: "",
+						imageAlt: "",
+						answers: ["24%", "67%", "85%"],
+						correctIndex: 1
+					},
+					{
+						question: "Which day of the week requires fewest downloads to hit the top 200 Free games chart? (UK / iOS)",
+						imageUrl: "",
+						imageAlt: "",
+						answers: ["Mon", "Tue", "Wed"],
+						correctIndex: 1
+					},
+				]
+			}
+			
+			var scoresText = [
+				"Just back quietly away from the table, no one has to know...",
+				"What did you say your role was again...?",
+				"Hope no-one from the office saw that...",
+				"Almost, but not quite...",
+				"You know your onions...",
+				"Hand us a CV, you’re a market master..."
+			]
+			
+			
+			function shuffle(array) {
+				var currentIndex = array.length, temporaryValue, randomIndex;
+
+				// While there remain elements to shuffle...
+				while (0 !== currentIndex) {
+
+					// Pick a remaining element...
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex -= 1;
+
+					// And swap it with the current element.
+					temporaryValue = array[currentIndex];
+					array[currentIndex] = array[randomIndex];
+					array[randomIndex] = temporaryValue;
+				}
+
+				return array;
+			}
+
+			// Shuffle the array
+			questions.data = shuffle(questions.data);
+			
+			// populate the questions
+			for(var i = 0; i < numberOfQuestions; i++) {
+				
+				var questionData = questions.data[i];
+				var questionDOM = $("<li>").addClass("page-develop-quiz__question");
+				
+				if (questionData.imageUrl.length) {
+					questionDOM.append($("<img>").addClass("page-develop-quiz__question-image").attr("src", questionData.imageUrl).attr("alt", questionData.imageAlt));
+				}
+				
+				questionDOM.append($("<h2>").addClass("page-develop-quiz__question-text").html(questionData.question));
+				
+				var answersDOM = $("<ul>").addClass("page-develop-quiz__answers-list");
+				
+				for(var a = 0; a < questionData.answers.length; a++) {
+					var answerListItem = $("<li>").addClass("page-develop-quiz__answer");
+					var answerButton = $("<button>").addClass("page-develop-quiz__button").attr("data-question-index", i).attr("data-answer-index", a).text(questionData.answers[a]);
+					if(questionData.isSmallerButtonStyle) {
+						answerButton.addClass("quiz-button--small");
+					}
+					
+					answerListItem.append(answerButton);
+					answersDOM.append(answerListItem);
+				}
+				
+				questionDOM.append(answersDOM);
+				$slidesContainer.append(questionDOM);
+			}
+			
+			var correctAnswersCount = 0;			
+			
+			var slideWidth = $('.page-develop-quiz__question').width() + 200;
+			
+			var currentQuestionIndex = 1;
+			
+			$('.page-develop-quiz__button').on("click", function(){
+				var $this = $(this);
+				var questionIndex = $this.attr("data-question-index");
+				var answerIndex = $this.attr("data-answer-index");
+				var correctAnswerIndex = questions.data[questionIndex].correctIndex;
+				var $answerList = $this.parents(".page-develop-quiz__answers-list");
+				$answerList.find(".page-develop-quiz__button").attr("disabled", "disabled");
+				
+				if(correctAnswerIndex == answerIndex) {
+					correctAnswersCount++;
+					$this.addClass("is-correct");
+				} else {
+					$this.addClass("is-incorrect");
+					$answerList.find("li:nth-child(" + (correctAnswerIndex + 1) + ") .page-develop-quiz__button").addClass("is-correct");
+				}
+				
+				if(currentQuestionIndex == numberOfQuestions) {
+					// this was the last question
+					// populate the final score content
+					var scoreDOM = $("<li>").addClass("page-develop-quiz__question");
+					
+					scoreDOM.append($("<img>").addClass("page-develop-quiz__score-image").attr("src", "images/develop-quiz/score" + correctAnswersCount + ".gif").attr("alt", "Score gif"));
+					
+					scoreDOM.append($("<h2>").addClass("page-develop-quiz__question-text").text("You scored " + correctAnswersCount + "/" + numberOfQuestions));
+					
+					scoreDOM.append($("<p>").text(scoresText[correctAnswersCount]).addClass("page-develop-quiz__score-text"));
+					
+					scoreDOM.append($("<p>").text("Leave us your email address for your chance to win an iPad").addClass("page-develop-quiz__score-text"));
+					
+					$slidesContainer.append(scoreDOM);
+				}
+				
+				setTimeout(function(){
+					// slide to the next question
+					$slidesContainer.animate({ "left": slideWidth * currentQuestionIndex * -1 });
+					$progressBarFill.css({"width": currentQuestionIndex / numberOfQuestions * 100 + "%"});
+					$progressHamster.css({"left": currentQuestionIndex / numberOfQuestions * 100 + "%"});
+					
+					currentQuestionIndex++;
+				}, 2000);
+				
+			});
+			
+		});
+	</script>
+</body>
+</html>

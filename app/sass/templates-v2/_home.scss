@@ -7,14 +7,23 @@
 		margin-bottom: 0.64em;
     text-align: left;
     color: $reflection-white;
+		@include breakpoint($desktop-wide) {
+			font-size: 4.3rem;
+		}
+		@include breakpoint("1900px") {
+			font-size: 4.8rem;
+		}
 	}
 	p {
 		margin-bottom: 1.34em;
-		font-size: 1.8rem;
+		font-size: 1.6rem;
 		line-height: 1.45;
 		letter-spacing: -0.02px;
 		color: $light-grey-2;
 		text-align: left;
+		@include breakpoint($desktop) {
+			font-size: 1.8rem;
+		}
 	}
 }
 .home-section-head__illustration {
@@ -38,15 +47,22 @@
 }
 .home-section-head__text {
 	width: 960px;
-  margin-top: 98px;
-  margin-left: 70px;
-  padding-right: calc(960px - 525px);
-	@include breakpoint($desktop) {
-		margin: 98px auto;
+  margin-top: 50px;
+  margin-left: 60px;
+  padding-right: calc(960px - 385px);
+  @include breakpoint($desktop) {
+  	margin-top: 98px;
+  	margin-left: 70px;
+  	padding-right: calc(960px - 525px);
+  }
+	@include breakpoint($desktop-wide) {
+		width: 1140px;
+		margin: 78px auto;
+		padding-right: calc(1140px - 535px);
 	}
-	@include breakpoint($desktop) {
-		width: 1040px;
-		padding-right: calc(1040px - 525px);
+	@include breakpoint("1900px") {
+		width: 1550px;
+		padding-right: calc(1550px - 590px);
 	}
 	strong {
 		color: $reflection-white;

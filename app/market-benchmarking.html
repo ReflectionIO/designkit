@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<title>Reflection V2, Data Lab, Top Downloads</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" href="design-kit-v2.css" />
+	<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 <script src="js/vendor/angular.js"></script>
@@ -28,14 +28,10 @@
 				dataList.data = chartData;
 
 				$('.js-select-box').on("change", function(){
-					
-					var thisSelect = this;
 
 					setTimeout(function(){
 						var filters = getFilterValues();						
 						var fileName = "js/data-vis/market-benchmarking/dataset_" + filters.device + "_" + filters.list + ".json";
-
-						console.log(fileName);
 
 						$.getJSON(fileName, function( data ) {
 
@@ -58,20 +54,45 @@
 		    	return "icon-flag-sm icon-flag--" + data[listIndex].countryCode;
 		    }
 
+		    dataList.getPosNegClass = function(listIndex, dataItem) {
+					var marketData = this.data.marketData;
+		    	var countryBenchmark = 0;
+
+		    	$.each(marketData, function(key, value) {
+						if(this.countryCode == dataItem.countryCode) {
+							countryBenchmark = value.value;
+							return false;
+						}
+		    	});
+
+		    	var classNameToReturn = "is-positive";
+		    	if(countryBenchmark > dataItem.value) {
+		    		classNameToReturn = "is-negative";
+		    	}
+
+		    	return "market-benchmarking-chart__value " + classNameToReturn;
+		    }
+
 		    dataList.getVisibilityClass = function(listIndex, columnName, columnIndex) {
 					var data = this.data.marketData;
 					if(columnName == "appColumn") {
 						data = this.data.appData[columnIndex].data;
 					}
+
+					var dataIsNull = "";
+					if(data[listIndex].value == "NULL") {
+						dataIsNull = "is-null-value";
+					}
 		    	
-		    	return "list-item-country--" + data[listIndex].countryCode;
+		    	return "list-item-country--" + data[listIndex].countryCode + " " + dataIsNull;
 		    }
 
 		    dataList.onListItemHover = function(event) {
 
-		    	if(event.target.className.indexOf("list-item-country") > 0) {
+		    	if(event.target.className.indexOf("list-item-country") > -1) {
+		    		
 		    		$('.is-on').removeClass('is-on');
-		    		$('.' + event.target.className.substring(event.target.className.indexOf("list-item-country"), event.target.className.length)).addClass('is-on');
+		    		$('.' + event.target.className.substring(event.target.className.indexOf("list-item-country"), event.target.className.indexOf("list-item-country") + 21)).addClass('is-on');
 		    		$('.js-market-benchmarking-chart').addClass('is-hovered');
 		    	}
 		    }
@@ -93,7 +114,7 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-lab-base page-lab-weekly-averages theme-dark" ng-controller="DataController as dataList">
+			<div class="page-lab-base page-market-benchmarking theme-dark" ng-controller="DataController as dataList">
 				<img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;" />
 
 				<div class="grid__row">
@@ -106,7 +127,7 @@
 
 				<div class="data-lab-article-intro">
 					<h1 class="data-lab-article-intro__heading">In Which Markets Are Apps over or Underperforming In?</h1>
-					<p class="data-lab-article-intro__paragraph">See the markets an app's revenue and downloads are coming from and compare how well (or badly) they are doing compared to the average for their category. Analyse what apps are doing to achieve success in a given country and whether it can be emulated.</p>
+					<p class="data-lab-article-intro__paragraph">See the markets an app's revenue and downloads are coming from and compare how well (or badly) they are doing compared to the market share for their category. Analyse what apps are doing to achieve success in a given country and whether it can be emulated.</p>
 				</div>
 				
 				<div class="filters-container overflow-visible">
@@ -136,7 +157,7 @@
 					</div>				
 					<div class="market-benchmarking-chart__data-column">
 						<header class="market-benchmarking-chart__column__header">
-							<h2>Category Share</h2>
+							<h2>Category Share <a href="#" class="whats-this-tooltip-icon js-whats-this-tooltip position-tooltip-right" data-whatsthis-title="Category Share info..."><span>What's this?</span></a></h2>
 						</header>
 						<ul>
 							<li
@@ -147,7 +168,11 @@
 									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value}}%">
 									</div>
 								</div>
+								<span class="market-benchmarking-chart__null-value-label">
+									No Data - Rank Too Low
+								</span>
 								<span class="market-benchmarking-chart__value">{{(dataItem.value).toFixed(1)}}%</span>
+								<div class="tooltip-country">{{dataItem.countryName}}</div>
 							</li>
 						</ul>
 					</div>
@@ -170,7 +195,10 @@
 									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value}}%">
 									</div>
 								</div>
-								<span class="market-benchmarking-chart__value">{{dataItem.value.toFixed(1)}}%</span>
+								<span class="market-benchmarking-chart__null-value-label">
+									No Data - Rank Too Low
+								</span>
+								<span ng-class="dataList.getPosNegClass($index, dataItem)">{{dataItem.value.toFixed(1)}}%</span>
 							</li>
 						</ul>
 					</div>
@@ -193,7 +221,10 @@
 									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value.toFixed(1)}}%">
 									</div>
 								</div>
-								<span class="market-benchmarking-chart__value">{{dataItem.value.toFixed(1)}}%</span>
+								<span class="market-benchmarking-chart__null-value-label">
+									No Data - Rank Too Low
+								</span>
+								<span ng-class="dataList.getPosNegClass($index, dataItem)">{{dataItem.value.toFixed(1)}}%</span>
 							</li>
 						</ul>
 					</div>
@@ -216,7 +247,10 @@
 									<div class="market-benchmarking-chart__data-bar" style="width: {{dataItem.value.toFixed(1)}}%">
 									</div>
 								</div>
-								<span class="market-benchmarking-chart__value">{{dataItem.value.toFixed(1)}}%</span>
+								<span class="market-benchmarking-chart__null-value-label">
+									No Data - Rank Too Low
+								</span>
+								<span ng-class="dataList.getPosNegClass($index, dataItem)">{{dataItem.value.toFixed(1)}}%</span>
 							</li>
 						</ul>
 					</div>
@@ -383,6 +417,7 @@
 
 			$('.js-market-benchmarking-chart').on('mouseleave', function(){
 				$('.js-market-benchmarking-chart').removeClass('is-hovered');
+				$('.is-on').removeClass('is-on');
 			});
 
 		});
