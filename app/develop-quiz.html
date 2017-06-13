@@ -11,14 +11,14 @@
 			<div class="page-develop-quiz__progress">
 				<div class="page-develop-quiz__progress__bar">
 					<div class="page-develop-quiz__progress__bar__fill"></div>
+				</div>				
+				<div class="page-develop-quiz__progress__hamster">
 				</div>
 				<div class="page-develop-quiz__progress__hamster-nut">
 					<img src="images/develop-quiz/hamster-nut.png" alt="Hamster Nut" />
 				</div>
-				<div class="page-develop-quiz__progress__hamster">
-					<img src="images/develop-quiz/hamster-walking.png" alt="Walking hamster" />
-				</div>
 			</div>
+			<button class="page-develop-quiz__button page-develop-quiz__button--restart quiz-button--smaller" onclick="location.reload();">Restart</button>
 		</div>
 	</div>
 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
@@ -33,21 +33,21 @@
 			var questions = {
 				data: [
 					{
-						question: "What % of Minecraft’s total revenue in May 2017 came from the USA?",
+						question: "What % of Minecraft&#8217;s total revenue in May 2017 came from the USA?",
 						imageUrl: "images/develop-quiz/minecraft-logo@2x.png",
 						imageAlt: "Minecraft Logo",
 						answers: ["17%", "33%", "57%"],
 						correctIndex: 2
 					},
 					{
-						question: "How many UK downloads did ‘Top Eleven’ get in May 2017?",
+						question: "How many UK downloads did &#8216;Top Eleven&#8217; get in May 2017?",
 						imageUrl: "images/develop-quiz/top-eleven-logo@2x.png",
 						imageAlt: "Top Eleven Logo",
 						answers: ["7.8K", "20.5K", "349.2K"],
 						correctIndex: 1
 					},
 					{
-						question: "What % of King’s total UK revenue for May 2017 came from Candy Crush?",
+						question: "What % of King&#8217;s total UK revenue for May 2017 came from Candy Crush?",
 						imageUrl: "images/develop-quiz/king-logo@2x.png",
 						imageAlt: "King Logo",
 						answers: ["28%", "56%", "79%"],
@@ -76,7 +76,7 @@
 						correctIndex: 0						
 					},
 					{
-						question: "How much total UK revenue did ‘Clash of Clans’ make in May 2017?",
+						question: "How much total UK revenue did &#8216;Clash of Clans&#8217; make in May 2017?",
 						imageUrl: "images/develop-quiz/clash-logo@2x.png",
 						imageAlt: "Clash of Clans  Logo",
 						answers: ["$938K", "$2.4M", "$18.6M"],
@@ -90,7 +90,7 @@
 						correctIndex: 0
 					},
 					{
-						question: "Of the UK iOS store’s total revenue for Feb 2017, what % came from the games category?",
+						question: "Of the UK iOS store&#8217;s total revenue for Feb 2017, what % came from the games category?",
 						imageUrl: "",
 						imageAlt: "",
 						answers: ["24%", "67%", "85%"],
@@ -112,7 +112,7 @@
 				"Hope no-one from the office saw that...",
 				"Almost, but not quite...",
 				"You know your onions...",
-				"Hand us a CV, you’re a market master..."
+				"Hand us a CV, you&#8217;re a market master..."
 			]
 			
 			
@@ -167,13 +167,11 @@
 				$slidesContainer.append(questionDOM);
 			}
 			
-			var correctAnswersCount = 0;			
-			
-			var slideWidth = $('.page-develop-quiz__question').width() + 200;
-			
+			var correctAnswersCount = 0;
 			var currentQuestionIndex = 1;
 			
 			$('.page-develop-quiz__button').on("click", function(){
+				var slideWidth = $('.page-develop-quiz__question').width() + 200;
 				var $this = $(this);
 				var questionIndex = $this.attr("data-question-index");
 				var answerIndex = $this.attr("data-answer-index");
@@ -189,16 +187,18 @@
 					$answerList.find("li:nth-child(" + (correctAnswerIndex + 1) + ") .page-develop-quiz__button").addClass("is-correct");
 				}
 				
+				var isLastQuestion = false;
 				if(currentQuestionIndex == numberOfQuestions) {
 					// this was the last question
 					// populate the final score content
+					isLastQuestion = true;
 					var scoreDOM = $("<li>").addClass("page-develop-quiz__question");
 					
 					scoreDOM.append($("<img>").addClass("page-develop-quiz__score-image").attr("src", "images/develop-quiz/score" + correctAnswersCount + ".gif").attr("alt", "Score gif"));
 					
 					scoreDOM.append($("<h2>").addClass("page-develop-quiz__question-text").text("You scored " + correctAnswersCount + "/" + numberOfQuestions));
 					
-					scoreDOM.append($("<p>").text(scoresText[correctAnswersCount]).addClass("page-develop-quiz__score-text"));
+					scoreDOM.append($("<p>").html(scoresText[correctAnswersCount]).addClass("page-develop-quiz__score-text"));
 					
 					scoreDOM.append($("<p>").text("Leave us your email address for your chance to win an iPad").addClass("page-develop-quiz__score-text"));
 					
@@ -210,8 +210,19 @@
 					$slidesContainer.animate({ "left": slideWidth * currentQuestionIndex * -1 });
 					$progressBarFill.css({"width": currentQuestionIndex / numberOfQuestions * 100 + "%"});
 					$progressHamster.css({"left": currentQuestionIndex / numberOfQuestions * 100 + "%"});
+					$progressHamster.addClass("is-running");
 					
 					currentQuestionIndex++;
+					
+					setTimeout(function(){
+						$progressHamster.removeClass("is-running");
+						
+						if(isLastQuestion) {
+							$('.page-develop-quiz__progress__hamster-nut').css({"display": "none"});
+							$progressHamster.addClass("is-eating");
+							$('.page-develop-quiz__button--restart').addClass("is-showing");
+						}
+					}, 500);
 				}, 2000);
 				
 			});

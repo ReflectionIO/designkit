@@ -1,59 +1,88 @@
+$wide-breakpoint: 1460px;
+$hamster-timing-function: ease;
+
 .page-develop-quiz {
 	height: 100vh;
+	padding-top: 100px;
 	text-align: center;
 	background: #FCFDFD;
-	&:before {
-		content: '';
-		display: inline-block;
-		width: 0;
-		height: 100%;
-		vertical-align: middle;
-		margin-right: -0.35em
-	}
-	> * {
-		display: inline-block;
-  	vertical-align: middle;
+	@include breakpoint(1005px) {
+		padding-top: 0;
+		&:before {
+			content: '';
+			display: inline-block;
+			width: 0;
+			height: 100%;
+			vertical-align: middle;
+			margin-right: -0.35em
+		}
+		> * {
+			display: inline-block;
+			vertical-align: middle;
+		}
 	}
 }
 .page-develop-quiz__main {
 	position: relative;
-	width: 1338px;
-	height: 900px;
+	width: calc(1338/4 * 3px);
+	height: calc(900/4 * 3px);
 	display: inline-block;
 	overflow: hidden;
-	font-size: 0;	
+	font-size: 0;
+	@include breakpoint($wide-breakpoint) {
+		width: 1338px;
+		height: 900px;
+	}
 }
 .page-develop-quiz__question-list {
 	position: relative;
 	width: 10000px;
-	height: 568px;
+	height: calc(568/4* 3px);
 	display: inline-block;
 	overflow: visible;
 	text-align: left;
+	@include breakpoint($wide-breakpoint) {
+		height: 568px;
+	}
 }
 .page-develop-quiz__question {
 	position: relative;
-	width: 1338px;
-	height: 568px;
+	width: calc(1338/4 * 3px);
+	height: calc(568/4 * 3px);
 	margin: 0 200px 0 0;
 	padding: 0;
 	display: inline-block;
 	font-weight: 700;
+	@include breakpoint($wide-breakpoint) {
+		width: 1338px;
+		height: 568px;
+	}
 }
 .page-develop-quiz__question-text {
 	color: #29292C;
 	font-family: "Source Sans Pro", sans-serif;
-	font-size: 80px;
-	line-height: 100px;
+	font-size: 60px;
+	line-height: 80px;	
 	text-align: center;
+	@include breakpoint($wide-breakpoint) {
+		font-size: 80px;
+		line-height: 100px;
+	}
 }
 .page-develop-quiz__question-image {
-	width: 317px;
-	height: 317px;
+	width: calc(317/4 * 3px);
+	height: calc(317/4 * 3px);
 	float: left;
 	+ .page-develop-quiz__question-text {
-		padding-left: 110px;
+		padding-left: calc(110/4 * 3px);
 		text-align: left;
+	}
+	@include breakpoint($wide-breakpoint) {
+		width: 317px;
+		height: 317px;
+		+ .page-develop-quiz__question-text {
+			padding-left: 110px;
+		}
 	}
 }
 .page-develop-quiz__answers-list {
@@ -62,19 +91,22 @@
 	bottom: 0;
 }
 .page-develop-quiz__answer {
-	margin-left: 46px;
+	margin-left: calc(46/4 * 3px);
 	display: inline-block;
 	&:first-child {
 		margin-left: 0;
 	}
+	@include breakpoint($wide-breakpoint) {
+		margin-left: 46px;
+	}
 }
 .page-develop-quiz__button {
-	width: 415px;
-	height: 151px;
+	width: calc(415/4 * 3px);
+	height: calc(151/4 * 3px);
 	text-align: center;
 	font-family: "Lato", sans-serif;
 	font-weight: 700;
-	font-size: 80px;
+	font-size: 60px;
 	color: #6D69C5;
 	border: 5px solid #C4C7D0;
 	border-radius: 20px;
@@ -106,58 +138,140 @@
 		transition: all 0.3s;
 	}
 	&.quiz-button--small {
-		font-size: 65px;
+		font-size: 50px;
+		@include breakpoint($wide-breakpoint) {
+			font-size: 65px;	
+		}		
+	}
+	&.quiz-button--smaller {
+		width: calc(197/4*3px);
+		height: calc(85/4*3px);
+		font-size: 30px;
+		border-width: 3px;
+		border-radius: 10px;
+		@include breakpoint($wide-breakpoint) {
+			width: 197px;
+			height: 85px;
+			font-size: 40px;	
+		}
+	}
+	@include breakpoint($wide-breakpoint) {
+		width: 415px;
+		height: 151px;
+		font-size: 80px;
+	}
+}
+.page-develop-quiz__button--restart {
+	position: absolute;
+	bottom: 0;
+	right: calc(50% - 98px);
+	padding-bottom: 3px;
+	opacity: 0;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 600;
+	&.is-showing {
+		opacity: 1;
+		transition: 0.2s;
+	}
+	@include breakpoint($wide-breakpoint) {
+		bottom: 125px;
+		right: 0;
 	}
 }
 .page-develop-quiz__score-image {
-	width: 500px;
+	width: calc(500/4 * 3px);
 	float: left;
 	+ .page-develop-quiz__question-text {
 		padding-left: 110px;
 		text-align: left;
 	}
+	@include breakpoint($wide-breakpoint) {
+		width: 500px;
+	}
 }
 .page-develop-quiz__question-text + .page-develop-quiz__score-text {
-	margin-top: 42px;
+	margin-top: calc(42/4 * 3px);
+	@include breakpoint($wide-breakpoint) {
+		margin-top: 42px;
+	}
 }
 .page-develop-quiz__score-text {
 	margin: 32px 0 0 0;
-	padding-left: 110px;
+	padding-left: calc(110/4 * 3px);
 	font-family: "Lato", sans-serif;
 	font-size: 40px;
 	font-weight: 400;
 	line-height: 60px;
 	color: #63636B;
+	@include breakpoint($wide-breakpoint) {
+		padding-left: 110px;
+	}
 }
 .page-develop-quiz__progress {
 	position: absolute;
 	width: 723px;
-	left: 345px;
-	bottom: 149px;
+	left: 150px;
+	bottom: calc(149/4 * 3px);
 	overflow: visible;
+	@include breakpoint($wide-breakpoint) {
+		left: 345px;
+		bottom: 149px;	
+	}	
 }
 .page-develop-quiz__progress__bar {
 	width: 100%;
 	height: 27px;
 	background-color: #EBEBEB;
 }
+
 .page-develop-quiz__progress__bar__fill {
 	width: 0%;
 	height: 27px;
 	background-color: #36FED0;
-	transition: width 0.5s;
+	transition: width 0.5s $hamster-timing-function;
+}
+@-webkit-keyframes hamster-progress-run {
+   100% { background-position: -450px 0; }
+}
+@keyframes hamster-progress-run {
+   100% { background-position: -450px 0; }
+}
+@-webkit-keyframes hamster-progress-eating {
+   100% { background-position: -1400px 0; }
+}
+@keyframes hamster-progress-eating {
+   100% { background-position: -1400px 0; }
 }
 .page-develop-quiz__progress__hamster {
 	position: absolute;
-	top: -29px;
+	top: -39px;
 	left: 0;
+	width: 150px;
+	height: 87px;
+	background-image: url('images/develop-quiz/sprite-hamster-run@2x.png');
+	background-size: 450px 87px;
+	background-position: 0 0;
 	margin-left: -75px;
-	width: 149px;
-	height: 77px;
 	display: inline-block;
-	transition: left 0.5s;
-	img {
-		width: 100%;
+	transition: left 0.5s $hamster-timing-function;
+	&.is-running {
+		-webkit-animation: hamster-progress-run 0.25s infinite steps(3);
+		animation: hamster-progress-run 0.25s infinite steps(3);
+		-webkit-transition-timing-function: $hamster-timing-function;
+    transition-timing-function: $hamster-timing-function;
+		img {
+			display: none;
+		}
+	}
+	&.is-eating {
+		top: -70px;
+		width: 100px;
+		height: 126px;
+		background-image: url('images/develop-quiz/sprite-hamster-eating@2x.png');
+		background-size: 1400px 125px;
+		background-position: 0 0;
+		-webkit-animation: hamster-progress-eating 2s infinite steps(14);
+		animation: hamster-progress-eating 2s infinite steps(14);
 	}
 }
 .page-develop-quiz__progress__hamster-nut {
