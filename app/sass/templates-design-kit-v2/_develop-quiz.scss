@@ -1,3 +1,32 @@
+@font-face {
+  font-family: 'Lato-Local';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(fonts/offline-fonts/Lato-Regular.ttf) format("truetype");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Lato-Local';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(fonts/offline-fonts/Lato-Bold.ttf) format("truetype");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Source Sans Pro Local';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(fonts/offline-fonts/SourceSansPro-SemiBold.ttf) format("truetype");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Source Sans Pro Local';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(fonts/offline-fonts/SourceSansPro-Bold.ttf) format("truetype");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
 $wide-breakpoint: 1460px;
 $hamster-timing-function: ease;
 
@@ -60,8 +89,9 @@ $hamster-timing-function: ease;
 }
 .page-develop-quiz__question-text {
 	color: #29292C;
-	font-family: "Source Sans Pro", sans-serif;
+	font-family: "Source Sans Pro Local", sans-serif;
 	font-size: 60px;
+	font-weight: 700;
 	line-height: 80px;	
 	text-align: center;
 	@include breakpoint($wide-breakpoint) {
@@ -104,7 +134,7 @@ $hamster-timing-function: ease;
 	width: calc(415/4 * 3px);
 	height: calc(151/4 * 3px);
 	text-align: center;
-	font-family: "Lato", sans-serif;
+	font-family: "Lato-Local", sans-serif;
 	font-weight: 700;
 	font-size: 60px;
 	color: #6D69C5;
@@ -167,7 +197,7 @@ $hamster-timing-function: ease;
 	right: calc(50% - 98px);
 	padding-bottom: 3px;
 	opacity: 0;
-	font-family: "Source Sans Pro", sans-serif;
+	font-family: "Source Sans Pro Local", sans-serif;
 	font-weight: 600;
 	&.is-showing {
 		opacity: 1;
@@ -198,7 +228,7 @@ $hamster-timing-function: ease;
 .page-develop-quiz__score-text {
 	margin: 32px 0 0 0;
 	padding-left: calc(110/4 * 3px);
-	font-family: "Lato", sans-serif;
+	font-family: "Lato-Local", sans-serif;
 	font-size: 40px;
 	font-weight: 400;
 	line-height: 60px;
@@ -231,10 +261,10 @@ $hamster-timing-function: ease;
 	transition: width 0.5s $hamster-timing-function;
 }
 @-webkit-keyframes hamster-progress-run {
-   100% { background-position: -450px 0; }
+   100% { background-position: -600px 0; }
 }
 @keyframes hamster-progress-run {
-   100% { background-position: -450px 0; }
+   100% { background-position: -600px 0; }
 }
 @-webkit-keyframes hamster-progress-eating {
    100% { background-position: -1400px 0; }
@@ -247,16 +277,19 @@ $hamster-timing-function: ease;
 	top: -39px;
 	left: 0;
 	width: 150px;
-	height: 87px;
-	background-image: url('images/develop-quiz/sprite-hamster-run@2x.png');
-	background-size: 450px 87px;
-	background-position: 0 0;
+	height: 87px;	
 	margin-left: -75px;
 	display: inline-block;
 	transition: left 0.5s $hamster-timing-function;
+	img {
+		width: 100%;
+	}
 	&.is-running {
-		-webkit-animation: hamster-progress-run 0.25s infinite steps(3);
-		animation: hamster-progress-run 0.25s infinite steps(3);
+		background-image: url('images/develop-quiz/sprite-hamster-run@2x.png');
+		background-size: 600px 87px;
+		background-position: 0 0;
+		-webkit-animation: hamster-progress-run 0.4s infinite steps(4);
+		animation: hamster-progress-run 0.4s infinite steps(4);
 		-webkit-transition-timing-function: $hamster-timing-function;
     transition-timing-function: $hamster-timing-function;
 		img {
@@ -272,6 +305,9 @@ $hamster-timing-function: ease;
 		background-position: 0 0;
 		-webkit-animation: hamster-progress-eating 2s infinite steps(14);
 		animation: hamster-progress-eating 2s infinite steps(14);
+		img {
+			display: none;
+		}
 	}
 }
 .page-develop-quiz__progress__hamster-nut {
