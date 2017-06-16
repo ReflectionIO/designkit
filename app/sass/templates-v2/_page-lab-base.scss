@@ -1,8 +1,15 @@
 .page-lab-base {
+	min-height: calc(100vh - 50px);
 	background-color: $dark-grey-1;
 	#{headings()} {
 		font-weight: 400;
 		color: $reflection-white;
+	}
+	p a {
+		color: $reflection-purple--dark;
+		&:hover {
+			color: $reflection-purple--dark--hover;
+		}
 	}
 	.grid__row--heading-row {
 		position: relative;
@@ -63,4 +70,26 @@
 			width: 117px;			
 		}
 	}
+}
+.data-lab-article-intro {
+	width: 600px;
+	padding-top: 5.4rem;
+	margin: 0 auto;
+	overflow: visible;
+	text-align: center;
+	&:after {
+		content: "j";
+  	@extend %icon-font;
+  	position: relative;
+    top: 4rem;
+ 		font-size: 45px;
+ 		color: $reflection-purple;
+	}
+}
+.data-lab-article-intro__heading {
+	margin-bottom: 2.6rem;
+}
+.data-lab-article-intro__paragraph {
+	padding: 0 1rem;
+	font-size: 1.7rem;
 }

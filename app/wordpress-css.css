@@ -3,10 +3,32 @@ Welcome to Custom CSS!
 
 To learn how this works, see http://wp.me/PEmnE-Bt
 */
+/* Layout */
+@media screen and (max-width: 720px) {
+	.content-wrapper {
+		padding: 10px 30px;
+	}
+}
+
 /* Branding */
 .custom-logo {
-	width: 233px;
-	height: 37px;
+	width: 187px;
+}
+
+@media screen and (min-width: 720px) {
+	.custom-logo {
+		width: 233px;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.has-header-image #hero-header + .content-wrapper {
+		margin-top: 2em;
+	}
+	
+	.site-header {
+		margin-top: 1.5em;
+	}
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -42,10 +64,35 @@ body:not(.has-sidebar) .post-image-link img.size-big,
 
 .entry-title,
 .site .entry-header > :last-child {
-	margin-bottom: 2.5rem;
+	margin-bottom: 1rem;
 	color: #29292c;
-	font-size: 40px;
-	text-align: center;
+	font-size: 26px;
+	text-align: left;
+}
+
+@media screen and (min-width: 720px) {
+	.entry-title,
+			.site .entry-header > :last-child {
+		margin-bottom: 2.5rem;
+		font-size: 40px;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.entry-content,
+				.entry-header + .entry-content {
+		margin-top: 0;
+	}
+	
+	.post-image-link + .entry-content {
+		margin-top: .5rem;
+	}
+	
+	.post-image-link,
+				.post-image-link:not(:first-child) {
+		margin-top: 1rem;
+	}
 }
 
 .entry-header + .entry-meta {
@@ -80,11 +127,25 @@ body:not(.has-sidebar) .post-image-link img.size-big,
 .entry-content p {
 	margin-bottom: 1.7rem;
 	line-height: 1.6;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 400;
 	color: #5a5a68;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+.entry-content li {
+	line-height: 1.6;
+	font-size: 16px;
+	font-weight: 400;
+	color: #5a5a68;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and (min-width: 720px) {
+	.entry-content p {
+		font-size: 18px;
+	}
 }
 
 .entry-content img {
@@ -95,8 +156,18 @@ body:not(.has-sidebar) .post-image-link img.size-big,
 	display: none;
 }
 
+@media screen and (max-width: 720px) {
+	body:not(.single) .entry-content + .entry-footer, body:not(.single) .entry-summary + .entry-footer {
+		display: none;
+	}
+	
+	.entry-meta {
+		display: none;
+	}
+}
+
 body:not(.single) .entry-content + .entry-footer, body:not(.single) .entry-summary + .entry-footer {
-	margin-top: 2.2rem;
+	margin-top: 2rem;
 }
 
 /* comments */
@@ -105,21 +176,44 @@ body:not(.single) .entry-content + .entry-footer, body:not(.single) .entry-summa
 	font-size: 16px;
 }
 
+@media screen and (max-width: 720px) {
+	#respond h3 {
+		font-size: 20px;
+	}
+}
+
 /* footer*/
 .ref-footer-centre {
-	width: 50%;
+	width: 100%;
+	max-width: 540px;
 	margin: 0 auto;
 	text-align: center;
 }
+
+@media screen and (min-width: 720px) {
+	.ref-footer-centre {
+		width: 540px;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.site-footer {
+		padding-top: 0;
+	}
+}
+
 .ref-footer-centre h1.widget-title {
+	margin-bottom: 1.5rem;
 	font-size: 22px;
 }
+
 .ref-footer-centre p {
 	font-size: 16px;
 	color: #5a5a68;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 .ref-footer-centre em {
 	font-weight: 700;
 	font-style: normal;
