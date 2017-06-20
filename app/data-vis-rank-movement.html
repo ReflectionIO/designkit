@@ -2,15 +2,15 @@
 <html lang="en" class="no-js" ng-app="reflectionApp">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection Lab - Rank Movement</title>
+	<title>Reflection Research Tools - Experimental Tool, App Leaderboard Rank Movement</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="research-tools-experiments.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 <script>
   WebFont.load({
     google: {
-      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
     }
   });
 </script>
@@ -91,10 +91,13 @@
   			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
   		</div>
   <![endif]-->
-
+	<header id="js-component-import--global-header" class="global-header"></header>
+	
 	<div class="l-page-container">
-		<div id="main" class="l-main" role="main" ng-controller="DataController as dataList">
-
+		<div id="main" class="l-main page-research-tools-experiment" role="main" ng-controller="DataController as dataList">
+			
+			<div id="js-component-import--data-vis-banner" class="research-experiment__banner"></div>
+			
 			<div class="grid-container" >
 				<div class="grid__row grid__row--heading-row">
 					<div class="grid__column grid__row--heading-row__right">
@@ -243,4 +246,13 @@
 			$('body').addClass("page-loaded");
 		});
   </script>
+	
+	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+	<script src="js-v2/templates/templates.js"></script>
+	<script>
+		var surveyURL = "https://goo.gl/forms/V056kQKG6fe9zZVG3";
+	</script>
+	<script src="js-v2/app-include-data-vis-components.js"></script>
+	
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script>
 </body>
