@@ -27,7 +27,7 @@
 	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
 
 	<div class="l-page-container">
-		<div id="main" class="l-main page-research-tools-experiments" role="main">
+		<div id="main" class="l-main page-research-tools-experiment" role="main">
 			
 			<div id="js-component-import--data-vis-banner" class="research-experiment__banner"></div>
 			
@@ -58,7 +58,7 @@
 	<script src="js/vendor/handlebars-v2.0.0.js"></script>
 	<script src="js-v2/templates/templates.js"></script>
 	<script>
-		var surveyURL = "https://goo.gl/forms/5okVGdS3PbxTPEJt1";
+		var surveyURL = "https://goo.gl/forms/0oAvhN9XviLhlbhB3";
 	</script>
 	<script src="js-v2/app-include-data-vis-components.js"></script>
 	
@@ -720,7 +720,7 @@
 	                	seriesClassName = "downloadsseries";
 	                }
 
-	                if($('#toggle--show-stacked').is(":checked") && thisPointTotalValue != undefined) {
+	                if(thisPointTotalValue != undefined) {
 	                	var percentageOfTotal = (value.y / thisPointTotalValue * 100).toFixed(1);
 	                	stackedString = "<span class='chart-tooltip-percentage' style='background-color: " + chartSeries.color + "'>" + percentageOfTotal + "%</span>";
 	                }
@@ -986,8 +986,6 @@
 				generateChart('chart-revenue', "revenueseries", mockDataRevenue, seriesNames, "area", false);
 
 				$('.chart-container').addClass('is-animated');
-
-				addAppDataToSeries();
 
 				Highcharts.Chart.prototype.setGraphCSSClasses();
 			}, 500);

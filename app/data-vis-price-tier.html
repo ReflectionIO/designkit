@@ -2,19 +2,18 @@
 <html lang="en" class="no-js" ng-app="reflectionApp">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection Lab - Price Tier Distribution</title>
+	<title>Reflection Research Tools - Experimental Tool, Price Tier Distribution</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="research-tools-experiments.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
 <script>
-  WebFont.load({
+ 	WebFont.load({
     google: {
-      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
     }
   });
 </script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
-<!-- <script src="js/data-vis/making_the_top_200.js"></script> -->
 <script src="js/vendor/angular.js"></script>
 <script>
 	// populate the data table
@@ -60,30 +59,20 @@
 		    }
 		});
 </script>
-<body class="page-data-vis page-top-two-hundred page-price-tier">
-	<!--[if (lt IE 9)]>
-      <div class="window-warning">
-  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
-  		</div>
-  <![endif]-->
-  <header id="js-component-import--global-header" class="global-header">
-  	<div class="site-logo">
-			<a href="/">
-				<img src="images/logo-reflection-header.png" alt="Reflection logo" class="img-site-logo">
-			</a>
-		</div>
-  </header>
+<body class="page-price-tier">
+	<header id="js-component-import--global-header" class="global-header"></header>
   
 	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
 
 	<div class="l-page-container">
-		<div id="main" class="l-main" role="main">
-
+		<div id="main" class="l-main page-research-tools-experiment" role="main">
+			
+			<div id="js-component-import--data-vis-banner" class="research-experiment__banner"></div>
+			
 			<div class="grid-container" ng-controller="DataController as dataList">
 				
 				<div class="grid__row grid__row--heading-row">
-					<h1 class="heading-style--heading-three page-title">Price Tier Distribution <span>UK / iPhone / Top 200 Paid Apps / Games Category</span></h1>
-					<h2 class="page-subtitle">June 2016</h2>
+					<h1 class="heading-style--heading-one page-title">Price Tier Distribution <span>UK / iPhone / Top 200 Paid Apps / Games Category / June 2016</span></h1>
 				</div>
 
 				<!-- Bar Chart -->
@@ -95,17 +84,18 @@
 						<span class="number-of-apps-label">{{ dataItem.number_of_apps_per_day }}</span>
 					</li>
 				</ul>
+				
+				<div class="centre-content-container">				
+					<!-- Polar Chart -->
+					<h2 class="spider-chart-title">Price tiers that make the most revenue</h2>
+						<h4 class="bar-chart-sub-title">(Daily average for June 2016 -  revenue from downloads only, not IAPs)</h4>
+					<div id="polar-chart-container"></div>
 
-				<!-- Polar Chart -->
-				<h2 class="spider-chart-title">Price tiers that make the most revenue</h2>
-					<h4 class="bar-chart-sub-title">(Daily average for June 2016 -  revneue from downloads only)</h4>
-				<div id="polar-chart-container"></div>
-
-				<!-- Polar Chart -->
-				<h2 class="spider-chart-title">Revenue for the top ten apps in each price tier</h2>
-					<h4 class="bar-chart-sub-title">(Daily average for June 2016 -  revneue from downloads only)</h4>
-				<div id="polar-chart-container-two"></div>
-
+					<!-- Polar Chart -->
+					<h2 class="spider-chart-title">Revenue for the top ten apps in each price tier</h2>
+						<h4 class="bar-chart-sub-title">(Daily average for June 2016 -  revenue from downloads only, not IAPs)</h4>
+					<div id="polar-chart-container-two"></div>
+				</div>
 			</div>
 
 		</div>
@@ -290,4 +280,13 @@
 
 		});
   </script>
+	
+	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+	<script src="js-v2/templates/templates.js"></script>
+	<script>
+		var surveyURL = "https://goo.gl/forms/28rqaP43S1kqjr4H2";
+	</script>
+	<script src="js-v2/app-include-data-vis-components.js"></script>
+	
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script>
 </body>

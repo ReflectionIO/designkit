@@ -2,21 +2,21 @@
 <html lang="en" class="no-js" ng-app="reflectionApp">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection Lab - Price Tier Distribution</title>
+	<title>Reflection Research Tools - Experimental Tool, Market Share by Country</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="research-tools-experiments.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-<script>
-  WebFont.load({
-    google: {
-      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
-    }
-  });
-</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
-<!-- <script src="js/data-vis/making_the_top_200.js"></script> -->
-<script src="js/vendor/angular.js"></script>
-<script>
+	<script>
+		WebFont.load({
+			google: {
+				families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+			}
+		});
+	</script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	<!-- <script src="js/data-vis/making_the_top_200.js"></script> -->
+	<script src="js/vendor/angular.js"></script>
+	<script>
 		'use strict';
 
 		var appData = [{"country":"US","value":6164206.37},{"country":"CN","value":4068460.54},{"country":"GB","value":859738.0},{"country":"DE","value":492349.78},{"country":"AU","value":466711.2},{"country":"CA","value":416585.06},{"country":"FR","value":379243.67},{"country":"RU","value":197289.61},{"country":"IT","value":195904.74},{"country":"CH","value":178005.04},{"country":"KR","value":171823.02},{"country":"HK","value":108041.19},{"country":"DK","value":105521.98},{"country":"SE","value":105389.63},{"country":"NO","value":97923.19},{"country":"NL","value":95777.28},{"country":"ES","value":88473.89},{"country":"BR","value":85604.09},{"country":"TR","value":84003.34},{"country":"MX","value":78398.25},{"country":"SG","value":72474.82},{"country":"TH","value":57241.94},{"country":"AE","value":52561.24},{"country":"AT","value":51869.82},{"country":"BE","value":51251.85},{"country":"SA","value":51068.74},{"country":"MY","value":35636.29},{"country":"ID","value":34091.23},{"country":"NZ","value":31943.49},{"country":"IE","value":22018.39},{"country":"IN","value":21624.92},{"country":"ZA","value":18828.48},{"country":"KW","value":17583.51},{"country":"CL","value":15779.03},{"country":"IL","value":14909.65},{"country":"PH","value":13736.11},{"country":"FI","value":13641.68},{"country":"PL","value":13373.26},{"country":"AR","value":13086.43},{"country":"PT","value":11205.5},{"country":"GR","value":11080.88},{"country":"CZ","value":7985.71},{"country":"VN","value":7794.39},{"country":"LU","value":6418.8},{"country":"CO","value":6199.21},{"country":"HU","value":6170.63},{"country":"RO","value":5874.38},{"country":"SV","value":4815.82},{"country":"EG","value":4575.24},{"country":"UA","value":4365.39},{"country":"PE","value":4336.59},{"country":"LB","value":4212.39},{"country":"SK","value":4202.76},{"country":"QA","value":4154.9},{"country":"MO","value":3486.49},{"country":"CR","value":2808.23},{"country":"NG","value":2741.42},{"country":"HR","value":2569.47},{"country":"BW","value":2532.21},{"country":"OM","value":2435.64},{"country":"MW","value":2398.38},{"country":"GY","value":2321.94},{"country":"KG","value":2283.71},{"country":"LA","value":2226.22},{"country":"EC","value":2187.46},{"country":"DO","value":1910.48},{"country":"LV","value":1843.57},{"country":"MR","value":1796.14},{"country":"TM","value":1786.61},{"country":"NA","value":1777.08},{"country":"CY","value":1719.48},{"country":"PW","value":1719.05},{"country":"AZ","value":1690.57},{"country":"BG","value":1681.15},{"country":"IS","value":1662.2},{"country":"KZ","value":1652.56},{"country":"BH","value":1623.87},{"country":"GT","value":1566.59},{"country":"PA","value":1566.59},{"country":"EE","value":1499.78},{"country":"UY","value":1442.39},{"country":"JO","value":1413.7},{"country":"DZ","value":1394.96},{"country":"SI","value":1327.83},{"country":"PK","value":1318.19},{"country":"LT","value":1299.14},{"country":"MT","value":1280.08},{"country":"MZ","value":1222.91},{"country":"YE","value":1193.89},{"country":"BY","value":1174.94},{"country":"TT","value":1089.07},{"country":"BN","value":1088.97},{"country":"SN","value":1050.85},{"country":"ML","value":1041.32},{"country":"HN","value":983.93},{"country":"KH","value":974.3},{"country":"AO","value":955.24},{"country":"PY","value":945.6},{"country":"LC","value":821.41},{"country":"CV","value":812.09},{"country":"LK","value":811.88},{"country":"BZ","value":792.71},{"country":"KE","value":764.24},{"country":"MG","value":697.32},{"country":"BM","value":687.9},{"country":"JM","value":678.26},{"country":"TZ","value":659.1},{"country":"MU","value":640.04},{"country":"MK","value":639.93},{"country":"TJ","value":611.24},{"country":"NI","value":601.82},{"country":"VG","value":601.71},{"country":"SR","value":601.71},{"country":"AL","value":592.18},{"country":"UZ","value":563.59},{"country":"TN","value":496.68},{"country":"GH","value":477.62},{"country":"SC","value":467.98},{"country":"AM","value":448.93},{"country":"BB","value":401.28},{"country":"MD","value":353.42},{"country":"BS","value":343.9},{"country":"CG","value":334.37},{"country":"BO","value":315.2},{"country":"KY","value":315.2},{"country":"MN","value":315.2},{"country":"GD","value":276.98},{"country":"KN","value":219.7},{"country":"PG","value":171.95},{"country":"AG","value":171.95},{"country":"TC","value":171.95},{"country":"UG","value":133.73},{"country":"ZW","value":124.2},{"country":"VC","value":124.2},{"country":"DM","value":85.97},{"country":"LR","value":85.97},{"country":"BJ","value":85.97},{"country":"FJ","value":85.97}];
@@ -45,32 +45,24 @@
 	    	return barHeight;
 	    }
 		});
-</script>
+	</script>
+</head>
 <body class="page-data-vis page-data-vis-market-share">
-	<!--[if (lt IE 9)]>
-      <div class="window-warning">
-  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
-  		</div>
-  <![endif]-->
-  <header id="js-component-import--global-header" class="global-header">
-  	<div class="site-logo">
-			<a href="/">
-				<img src="images/logo-reflection-header.png" alt="Reflection logo" class="img-site-logo">
-			</a>
-		</div>
-  </header>
-  
-	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+	<header id="js-component-import--global-header" class="global-header"></header>
 
 	<div class="l-page-container">
-		<div id="main" class="l-main" role="main">
-
+		<div id="main" class="l-main page-research-tools-experiment theme-dark" role="main">
+			
+			<div id="js-component-import--data-vis-banner" class="research-experiment__banner"></div>
+			
 			<div class="grid-container" ng-controller="DataController as dataList">
 				
+				<div class="data-lab-article-intro">
+					<h1 class="data-lab-article-intro__heading">Global App Market Share</h1>
+					<p class="data-lab-article-intro__paragraph">Where in the world are most app revenues generated? A sum of the Top 200 Daily Grossing Chart (&pound;) averaged over Jan to June 2016, iPhone and iPad combined</p>
+				</div>
+				
 				<div class="grid__row grid__row--heading-row">
-					<h1 class="heading-style--heading-three page-title">Global App Market Share</span></h1>
-					<h2 class="page-subtitle">Where in the world are most app revenues generated?</h2>
-
 					<div class="filter-toggle dark-toggle">
 						<div class="toggle">
 							<input id="toggle--show-revenue" name="radiogroupname" type="radio" checked="">
@@ -87,7 +79,6 @@
 					</div>
 				</div>
 
-				<h3 class="market-share-chart-title"><span>Overall Revenue</span> <span>A sum of Top 200 Grossing Daily averaged over Jan to June 2016, iPhone and iPad combined, in &pound;</span></h3>
 				<div id="market-share-map-container"></div>
 				<ul id="market-share-bar-container" ng-controller="DataController as dataList">
 						<li ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.value)}}%' class="bar js-bar" data-index="{{$index}}"></li>
@@ -100,6 +91,13 @@
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
  	<script src="https://code.highcharts.com/maps/highmaps.js"></script>
 	<script src="https://code.highcharts.com/mapdata/custom/world-robinson-highres.js"></script>
+	
+	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+	<script src="js-v2/templates/templates.js"></script>
+	<script>
+		var surveyURL = "https://goo.gl/forms/fXrQ16d2K0tJTqVA2";
+	</script>
+	<script src="js-v2/app-include-data-vis-components.js"></script>
 
 	<!-- Flag sprites service provided by Martijn Lafeber, https://github.com/lafeber/world-flags-sprite/blob/master/LICENSE -->
 	<link rel="stylesheet" type="text/css" href="https://cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
@@ -151,7 +149,8 @@
           },
 
           mapNavigation: {
-              enabled: false,
+              enabled: true,
+							enableMouseWheelZoom: false,
               buttonOptions: {
                   verticalAlign: 'bottom'
               }
@@ -178,10 +177,6 @@
         			nullColor: '#343438'
         		}
         	},
-
-        	mapNavigation: {
-                    enabled: true
-                },
 
           colorAxis: {
               min: 85,
@@ -220,4 +215,6 @@
 		});
 
   </script>
+	
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script>
 </body>
