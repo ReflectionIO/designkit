@@ -1,4 +1,4 @@
-.page-data-vis-reviews-cloud {
+.page-data-vis-reviews-cloud {	
 	.page-data-vis-reviews-cloud__center-column {
 		margin-top: 100px;
 		text-align: center;
@@ -102,6 +102,39 @@
 			padding-right: 0;
 		}
 	}
+	.form-field--search .form-field--select__dropdown li span {
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+	.form-field--search {
+		width: 230px;
+		input {
+			font-size: 16px;
+		}
+		.form-field--select__dropdown {
+			min-height: 60px;
+		}
+	}
+	.app-search-loading-indicator {
+		position: relative;
+		margin-top: -6px;
+		span, .search-loading-indicator {
+			position: relative;
+		}
+		span {
+			color: #fcfdfd;
+			font-size: 15px;
+			display: inline-block;
+			left: 0;
+			line-height: 1.5;
+		}
+		.search-loading-indicator {
+			top: 5px;
+			right: -101px;
+			display: inline-block;
+		}
+	}
 	.filters-row {
     margin: 0 auto 6rem;
     + div {
@@ -120,16 +153,18 @@
 	    	top: 12px;
 	    	left: 10px;
 	    }
-	    > b {
-	    	padding-left: 32px;
-	    }
 		}
 		.form-field--select__dropdown {
-			padding: 15px 10px 5px 9px;
 			li {
 				margin-bottom: 10px;
+				&:hover {
+					cursor: pointer;
+				}
 			}
 		}
+	}
+	.form-field--search {
+		padding: 10px 13px 11px 15px;
 	}
 	.tag-cloud-container {
 		position: relative;
@@ -266,7 +301,6 @@
     display: none;
 		text-align: left;
 		@include breakpoint($desktop) {
-			width: 635px;
 			margin-top: 9rem;
 		}
 		> h2 {
@@ -281,7 +315,7 @@
 			vertical-align: top;			
 		}
 		.ratings-list {
-			max-height: 600px;
+			max-height: 700px;
 			padding-top: 2rem;
 			padding-bottom: 3rem;
 			padding-right: 20px;
@@ -326,7 +360,7 @@
 	.cloud-key-instruction-container {		
     margin: 0;
     @include breakpoint($desktop) {
-			width: 625px;
+			width: 100%;
     }
   }
 	.cloud-key-instruction {
@@ -339,7 +373,7 @@
 		color: $light-grey-2;
 	}
 	.cloud-key {
-		margin: 14px 0 0 92px;
+		margin: 14px 0 0 206px;
 		display: inline-block;
 		vertical-align: middle;
 		font-size: 14px;
@@ -377,6 +411,35 @@
 		@include breakpoint($desktop) {			
 			padding-left: 80px;
 			margin-top: 9rem;
+		}
+	}
+	.start-instruction {
+		margin-top: 20px;
+		display: none;
+	}
+	.chart__loading {
+		display: none;
+		.is-loading-data & {
+			display: block;
+		}	
+	}
+	.chart__no-data {	
+		display: none;
+		.is-no-data & {
+			display: inline-block;
+		}
+		.animation-hamster-no-data-dark + div {
+			width: 400px;
+			display: inline-block;
+		}
+	}
+	&.is-initial-state {
+		.cloud-key,
+		.cloud-key-instruction {
+			display: none;
+		}
+		.start-instruction {
+			display: inline-block;
 		}
 	}
 }
