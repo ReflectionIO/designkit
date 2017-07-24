@@ -18779,7 +18779,7 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   text-align: center;
 }
 
-/* line 1, sass/templates-v2/_home.scss */
+/* line 4, sass/templates-v2/_home.scss */
 .home-section-head {
   position: relative;
   height: 700px;
@@ -18787,7 +18787,18 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   text-align: center;
   background-color: #6d69c5;
 }
-/* line 7, sass/templates-v2/_home.scss */
+/* line 10, sass/templates-v2/_home.scss */
+.home-section-head .home-banner-animation-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.07;
+  -webkit-perspective: 1200px;
+          perspective: 1200px;
+}
+/* line 19, sass/templates-v2/_home.scss */
 .home-section-head .page-title {
   max-width: 600px;
   margin: 0 auto 2.9rem;
@@ -18796,32 +18807,67 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   font-weight: bold;
   line-height: 1.2;
 }
-/* line 15, sass/templates-v2/_home.scss */
+/* line 27, sass/templates-v2/_home.scss */
 .home-section-head .page-subtitle {
   margin-bottom: 3.9rem;
   font-size: 2.8rem;
   line-height: 1.45;
   color: #CECCFF;
 }
-/* line 21, sass/templates-v2/_home.scss */
+/* line 33, sass/templates-v2/_home.scss */
 .home-section-head .ref-button--primary--large {
   border-radius: 4px;
 }
-
-/* line 25, sass/templates-v2/_home.scss */
-.home-section-head__text {
-  width: 680px;
-  margin: 0 auto;
+/* line 36, sass/templates-v2/_home.scss */
+.home-section-head .star {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  opacity: 0;
+}
+/* line 43, sass/templates-v2/_home.scss */
+.home-section-head .star--travel {
+  width: 180px;
+  height: 180px;
+  margin-left: -90px;
+  border-radius: 6px;
+  background-image: url("images/banner-app-icons/1.png");
+  background-size: 180px 180px;
+  background-repeat: no-repeat;
+  -webkit-transform: translateZ(-10000px);
+          transform: translateZ(-10000px);
+  -webkit-transition: bottom 23s ease-out, left 23s ease-out, -webkit-transform 23s ease-out, opacity 0.5s;
+          transition: bottom 23s ease-out, left 23s ease-out, transform 23s ease-out, opacity 0.5s;
+}
+/* line 53, sass/templates-v2/_home.scss */
+.home-section-head .star--travel.is-travelling {
+  opacity: 1;
+}
+/* line 56, sass/templates-v2/_home.scss */
+.home-section-head .star--travel.is-original-star {
+  opacity: 1;
+  -webkit-transition: bottom 15s ease-out, left 15s ease-out, -webkit-transform 15s ease-out, opacity 0s;
+          transition: bottom 15s ease-out, left 15s ease-out, transform 15s ease-out, opacity 0s;
 }
 
-/* line 29, sass/templates-v2/_home.scss */
+/* line 62, sass/templates-v2/_home.scss */
+.home-section-head__text {
+  position: relative;
+  width: 680px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* line 68, sass/templates-v2/_home.scss */
 .home-section-quote {
   width: 100%;
   min-height: 421px;
   background-image: url(images/bg-home-quote.jpg);
   background-size: cover;
 }
-/* line 34, sass/templates-v2/_home.scss */
+/* line 73, sass/templates-v2/_home.scss */
 .home-section-quote blockquote {
   position: relative;
   left: 10px;
@@ -18831,15 +18877,15 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   padding-bottom: 80px;
   margin: 0 auto;
 }
-/* line 42, sass/templates-v2/_home.scss */
+/* line 81, sass/templates-v2/_home.scss */
 .home-section-quote blockquote:before {
   display: none;
 }
-/* line 45, sass/templates-v2/_home.scss */
+/* line 84, sass/templates-v2/_home.scss */
 .home-section-quote blockquote header {
   margin-bottom: 1.8rem;
 }
-/* line 48, sass/templates-v2/_home.scss */
+/* line 87, sass/templates-v2/_home.scss */
 .home-section-quote blockquote p {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
@@ -18847,7 +18893,7 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   line-height: 1.3;
   color: #fcfdfd;
 }
-/* line 55, sass/templates-v2/_home.scss */
+/* line 94, sass/templates-v2/_home.scss */
 .home-section-quote blockquote .blockquote-image {
   width: 79px;
   height: 79px;
@@ -18855,7 +18901,7 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 62, sass/templates-v2/_home.scss */
+/* line 101, sass/templates-v2/_home.scss */
 .home-section-quote blockquote cite {
   margin-top: 1px;
   display: inline-block;
@@ -18865,7 +18911,7 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   font-size: 1.6rem;
   color: #c4c7d0;
 }
-/* line 70, sass/templates-v2/_home.scss */
+/* line 109, sass/templates-v2/_home.scss */
 .home-section-quote blockquote cite span {
   margin-bottom: 1.6rem;
   display: block;
@@ -18874,45 +18920,45 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   color: #fcfdfd;
 }
 
-/* line 80, sass/templates-v2/_home.scss */
+/* line 119, sass/templates-v2/_home.scss */
 .home-section-trusted-by {
   padding-top: 5.2rem;
   padding-bottom: 6.5rem;
 }
-/* line 83, sass/templates-v2/_home.scss */
+/* line 122, sass/templates-v2/_home.scss */
 .home-section-trusted-by .section-title {
   margin-bottom: 2rem;
   font-size: 2.4rem;
   font-weight: 400;
   text-align: center;
 }
-/* line 89, sass/templates-v2/_home.scss */
+/* line 128, sass/templates-v2/_home.scss */
 .home-section-trusted-by .logo-list {
   width: 100%;
   font-size: 0;
 }
-/* line 92, sass/templates-v2/_home.scss */
+/* line 131, sass/templates-v2/_home.scss */
 .home-section-trusted-by .logo-list li {
   width: 25%;
   margin-bottom: 1.5rem;
   display: inline-block;
   text-align: center;
 }
-/* line 97, sass/templates-v2/_home.scss */
+/* line 136, sass/templates-v2/_home.scss */
 .home-section-trusted-by .logo-list li img {
   width: 80%;
   max-width: 170px;
   margin: 0 auto;
 }
 
-/* line 105, sass/templates-v2/_home.scss */
+/* line 144, sass/templates-v2/_home.scss */
 .home-section-sign-up {
   padding-top: 48px;
   padding-bottom: 80px;
   text-align: center;
   background-color: #363a47;
 }
-/* line 110, sass/templates-v2/_home.scss */
+/* line 149, sass/templates-v2/_home.scss */
 .home-section-sign-up .section-title {
   width: 80%;
   max-width: 590px;
@@ -18922,7 +18968,7 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   line-height: 1.5;
   color: #fcfdfd;
 }
-/* line 119, sass/templates-v2/_home.scss */
+/* line 158, sass/templates-v2/_home.scss */
 .home-section-sign-up p {
   margin: 0 auto 3.7rem;
   font-size: 1.8rem;
@@ -18930,7 +18976,7 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   color: #c4c7d0;
 }
 
-/* line 126, sass/templates-v2/_home.scss */
+/* line 165, sass/templates-v2/_home.scss */
 .home-section-head__partners {
   position: absolute;
   bottom: 70px;
@@ -18939,30 +18985,30 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   width: 900px;
   text-align: center;
 }
-/* line 133, sass/templates-v2/_home.scss */
+/* line 172, sass/templates-v2/_home.scss */
 .home-section-head__partners > span {
   margin-bottom: 16px;
   display: block;
   font-size: 13px;
   color: #CECCFF;
 }
-/* line 139, sass/templates-v2/_home.scss */
+/* line 178, sass/templates-v2/_home.scss */
 .home-section-head__partners img {
   width: 639px;
 }
 
-/* line 143, sass/templates-v2/_home.scss */
+/* line 182, sass/templates-v2/_home.scss */
 .home-section {
   position: relative;
   background-color: #f2f2f5;
   text-align: center;
 }
-/* line 147, sass/templates-v2/_home.scss */
+/* line 186, sass/templates-v2/_home.scss */
 .home-section.home-section--right-image {
   background-color: #fcfdfd;
 }
 
-/* line 151, sass/templates-v2/_home.scss */
+/* line 190, sass/templates-v2/_home.scss */
 .home-section-content-container {
   position: relative;
   width: 100%;
@@ -18972,12 +19018,12 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   display: inline-block;
   overflow: visible;
 }
-/* line 159, sass/templates-v2/_home.scss */
+/* line 198, sass/templates-v2/_home.scss */
 .home-section--taller-section .home-section-content-container {
   min-height: 565px;
 }
 
-/* line 163, sass/templates-v2/_home.scss */
+/* line 202, sass/templates-v2/_home.scss */
 .home-section-content {
   width: 35%;
   padding-top: 127px;
@@ -18988,23 +19034,23 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   text-align: left;
 }
 @media (min-width: 1150px) {
-  /* line 163, sass/templates-v2/_home.scss */
+  /* line 202, sass/templates-v2/_home.scss */
   .home-section-content {
     width: 490px;
   }
 }
 @media (min-width: 1280px) {
-  /* line 163, sass/templates-v2/_home.scss */
+  /* line 202, sass/templates-v2/_home.scss */
   .home-section-content {
     margin-right: 80px;
   }
 }
-/* line 177, sass/templates-v2/_home.scss */
+/* line 216, sass/templates-v2/_home.scss */
 .home-section-content > h2 {
   font-size: 3.2rem;
   margin-bottom: 3.7rem;
 }
-/* line 181, sass/templates-v2/_home.scss */
+/* line 220, sass/templates-v2/_home.scss */
 .home-section-content p {
   position: relative;
   max-width: 420px;
@@ -19013,14 +19059,14 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   font-size: 1.8rem;
   line-height: 1.6;
 }
-/* line 189, sass/templates-v2/_home.scss */
+/* line 228, sass/templates-v2/_home.scss */
 .home-section--right-image .home-section-content {
   margin-left: 9%;
   margin-right: 0;
   float: left;
 }
 
-/* line 195, sass/templates-v2/_home.scss */
+/* line 234, sass/templates-v2/_home.scss */
 .home-section-image-container {
   position: absolute;
   left: 0;
@@ -19031,25 +19077,25 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   overflow: visible;
 }
 @media (min-width: 1280px) {
-  /* line 195, sass/templates-v2/_home.scss */
+  /* line 234, sass/templates-v2/_home.scss */
   .home-section-image-container {
     width: 525px;
   }
 }
-/* line 206, sass/templates-v2/_home.scss */
+/* line 245, sass/templates-v2/_home.scss */
 .home-section-image-container img {
   float: right;
 }
-/* line 209, sass/templates-v2/_home.scss */
+/* line 248, sass/templates-v2/_home.scss */
 .home-section--right-image .home-section-image-container {
   left: inherit;
   right: 0;
 }
-/* line 212, sass/templates-v2/_home.scss */
+/* line 251, sass/templates-v2/_home.scss */
 .home-section--right-image .home-section-image-container img {
   float: left;
 }
-/* line 216, sass/templates-v2/_home.scss */
+/* line 255, sass/templates-v2/_home.scss */
 .home-section--taller-section .home-section-image-container {
   height: 490px;
 }

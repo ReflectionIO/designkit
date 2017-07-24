@@ -62,7 +62,21 @@
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
 			
-			<section class="home-section-head">				
+			<section class="home-section-head">
+				<div class="home-banner-animation-container js-space-container">
+					<div class="star star--travel js-star"></div>
+					
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99681; background-image: url(&quot;images/banner-app-icons/2.png&quot;); top: -518px; left: 67%; bottom: 6%; transform: translateZ(-3000px);"></div>
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99680; background-image: url(&quot;images/banner-app-icons/5.png&quot;); top: -787px; left: 153%; bottom: 104%; transform: translateZ(-6000px);"></div>
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99679; background-image: url(&quot;images/banner-app-icons/8.png&quot;); top: -464px; left: 83%; bottom: 95%; transform: translateZ(-2000px);"></div>
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99678; background-image: url(&quot;images/banner-app-icons/10.png&quot;); top: -296px; left: -73%; bottom: -65%; transform: translateZ(-5400px);"></div>
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99677; background-image: url(&quot;images/banner-app-icons/7.png&quot;); top: 638px; left: 119%; bottom: 179%; transform: translateZ(-7000px);"></div>
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99676; background-image: url(&quot;images/banner-app-icons/3.png&quot;); top: 54px; left: -25%; bottom: -17%; transform: translateZ(-4200px);"></div>
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99675; background-image: url(&quot;images/banner-app-icons/6.png&quot;); top: 711px; left: 26%; bottom: 43%; transform: translateZ(-3800px);"></div>
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99674; background-image: url(&quot;images/banner-app-icons/2.png&quot;); top: 407px; left: 130%; bottom: 142%; transform: translateZ(-9000px);"></div>
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99672; background-image: url(&quot;images/banner-app-icons/1.png&quot;); top: 527px; left: 9%; bottom: -42%; transform: translateZ(-1500px);"></div>
+					<div class="star star--travel is-original-star js-is-original-star" style="z-index: 99671; background-image: url(&quot;images/banner-app-icons/4.png&quot;); top: 752px; left: 91%; bottom: 103%; transform: translateZ(-1500px);"></div>
+				</div>
 				<div class="home-section-head__text">
 					<h1 class="page-title">Free Market Insights for App Developers</h1>
 					<h2 class="page-subtitle">Get the data you need to stay on top of the app market</h2>
@@ -71,7 +85,7 @@
 				<div class="home-section-head__partners">
 					<span>You'll Be in Good Company</span>
 					<img src="images/partner-logos-purple@2x.png" alt="Partner logos" />
-				</div>
+				</div>				
 			</section>
 
 			<section class="home-section home-section--right-image">
@@ -200,6 +214,92 @@
   			e.preventDefault();
   			$('.js-get-items').select();
   		});
+			
+			// banner apps animation
+			$('.js-is-original-star').each(function(){
+				fireOriginalStar($(this));
+			});
+			var $svgBit = $(".js-star");
+			
+			var zIndex = 100000;
+			var counter = 10;
+			function cloneAStar() {
+				if(counter < 100000) {
+					var randImageIndex = Math.floor(Math.random() * 10) + 1;
+					var $newSvgBit = $svgBit.clone();
+					$newSvgBit.css({
+						"z-index": zIndex-counter,
+						"background-image": "url(images/banner-app-icons/" + randImageIndex + ".png)"
+					});
+					$(".js-space-container").append($newSvgBit);
+					fireAStar($newSvgBit);
+
+					setTimeout(function() {
+						cloneAStar();
+					}, 500);
+				}
+
+				counter++;
+			}
+
+			setTimeout(function() {
+				cloneAStar();
+			}, 1);
+			
+			var fireCounter = 1;
+			function fireAStar($domElement, manualCount) {
+				var $this = $domElement,
+						directionNumber = 1,
+						randomXValue,
+						randomYValue,
+						randomZ;
+				
+				var randomTopStartValue = Math.floor((Math.random() * 1000) - 1000);
+				if(Math.random() < 0.5) {
+					randomTopStartValue *= -1;
+				}
+				$this.css({ "top": randomTopStartValue + "px"});
+				
+				if(manualCount) {
+					fireCounter = manualCount;
+				}
+				if(fireCounter % 3 == 0) {
+					directionNumber = 3;
+				} else if(fireCounter % 2 == 0) {
+					directionNumber = 2;
+				}
+
+				if(directionNumber == 1) {
+					randomXValue = Math.floor((Math.random() * 100) - 100);
+					randomYValue = Math.floor((Math.random() * 100) - 100);
+				} else if(directionNumber == 2) {
+					randomXValue = Math.floor((Math.random() * 100));
+					randomYValue = Math.floor((Math.random() * 100));
+				} else if(directionNumber == 3) {
+					randomXValue = Math.floor((Math.random() * 100) + 100);
+					randomYValue = Math.floor((Math.random() * 100) + 100);
+				}
+
+				fireCounter++;
+				
+				setTimeout(function(){ 
+					$this.css({"left" : randomXValue + "%", "bottom" : randomYValue + "%", "transform" : "translateZ(1500px)"}).addClass("is-travelling");
+
+					setTimeout(function(){
+						$this.remove();
+					}, 23000);
+				}, 1);
+			}
+			
+			function fireOriginalStar($this) {
+				setTimeout(function(){ 
+					$this.css({"transform" : "translateZ(1500px)"}).addClass("is-travelling");
+
+					setTimeout(function(){
+						$this.remove();
+					}, 15000);
+				}, 1);
+			}
   	});
 
   </script>  
