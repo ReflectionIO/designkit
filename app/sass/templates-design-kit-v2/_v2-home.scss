@@ -1,30 +1,80 @@
 .home-section-head {
 	position: relative;
-	height: 700px;
-	padding-top: 161px;
-	text-align: center;
-	background-color: $reflection-purple;
-	.page-title {
-		max-width: 600px;
-		margin: 0 auto 2.9rem;
+	height: 572px;
+	background-image: url(images/bg-home-head.jpg);
+	background-size: cover;
+	.page-title {		
+		margin-bottom: 0.64em;
+    text-align: left;
     color: $reflection-white;
-		font-size: 5rem;
-		font-weight: bold;
-		line-height: 1.2;
+		@include breakpoint($desktop-wide) {
+			font-size: 4.3rem;
+		}
+		@include breakpoint("1900px") {
+			font-size: 4.8rem;
+		}
 	}
-	.page-subtitle {
-		margin-bottom: 3.9rem;
-		font-size: 2.8rem;
+	p {
+		margin-bottom: 1.34em;
+		font-size: 1.6rem;
 		line-height: 1.45;
-		color: #CECCFF;
-	}
-	.ref-button--primary--large {
-		border-radius: 4px;
+		letter-spacing: -0.02px;
+		color: $light-grey-2;
+		text-align: left;
+		@include breakpoint($desktop) {
+			font-size: 1.8rem;
+		}
 	}
 }
+.home-section-head__illustration {
+	position: absolute;
+	left: 0;
+  top: 0;
+	height: 572px;
+	width: 100%;
+	display: block;
+	pointer-events: none;
+	text-align: center;    
+	img {
+    position: absolute;
+    left: 50%;
+    margin-left: -1364px;    
+    margin-top: -220px;
+    @include breakpoint($desktop) {
+    	margin-left: -1264px;
+    }
+  }
+}
 .home-section-head__text {
-	width: 680px;
-  margin: 0 auto;
+	width: 960px;
+  margin-top: 50px;
+  margin-left: 60px;
+  padding-right: calc(960px - 385px);
+  @include breakpoint($desktop) {
+  	margin-top: 98px;
+  	margin-left: 70px;
+  	padding-right: calc(960px - 525px);
+  }
+	@include breakpoint($desktop-wide) {
+		width: 1140px;
+		margin: 78px auto;
+		padding-right: calc(1140px - 535px);
+	}
+	@include breakpoint("1900px") {
+		width: 1550px;
+		padding-right: calc(1550px - 590px);
+	}
+	strong {
+		color: $reflection-white;
+	}
+	p a {
+		color: $reflection-purple--dark;
+		.no-touchevents & {
+			&:hover {
+				color: $reflection-purple--dark--hover;
+			}
+		}		
+	}
 }
 .home-section-quote {
 	width: 100%;
@@ -125,71 +175,103 @@
 }
 .home-section-head__partners {
 	position: absolute;
-	bottom: 70px;
+	bottom: 0;
 	left: 50%;
 	margin-left: -450px;
 	width: 900px;
+	height: 86px;
 	text-align: center;
 	> span {
-		margin-bottom: 16px;
+		margin-bottom: 13px;
 		display: block;
 		font-size: 13px;
-		color: #CECCFF;
+		color: $light-grey-2;
 	}
 	img {
-		width: 639px;
+		width: 638px;
+	}
+}
+.home-section__title,
+.home-section__title:first-child {
+  margin-top: 4.3rem;
+	font-size: 2.4rem;
+	font-weight: 400;
+	text-align: center;
+	+ .home-section-content-container .home-section-content {
+		padding-top: 75px;
 	}
 }
 .home-section {
 	position: relative;
-	background-color: $panel-grey;
+	background-color: $reflection-white;
 	text-align: center;
 	&.home-section--right-image {
-		background-color: $reflection-white;
+		background-color: $panel-grey;
 	}
 }
 .home-section-content-container {
 	position: relative;
 	width: 100%;
 	max-width: 1240px;
-	min-height: 440px;
+	min-height: 425px;
   margin: 0 auto;  
   display: inline-block;  
   overflow: visible;
-	.home-section--taller-section & {
-		min-height: 565px;	
-	}	
 }
 .home-section-content {	
 	width: 35%;
-  padding-top: 127px;
+  padding-top: 109px;
 	padding-bottom: 83px;
 	margin-right: 5%;
   float: right;
 	overflow: visible;
 	text-align: left;
 	@include breakpoint($laptop-plus) {
-		width: 490px;		
+		width: 390px;		
 	}
 	@include breakpoint($desktop) {
-		margin-right: 80px;
+		margin-right: 103px;
 	}
 	> h2 {
-		font-size: 3.2rem;
-  	margin-bottom: 3.7rem;
+  	margin-bottom: 2.5rem;
 	}
 	p {
 		position: relative;
-		max-width: 420px;
     margin-bottom: 2.8rem;
     overflow: visible;
-		font-size: 1.8rem;
     line-height: 1.6;
 	}
+	.ref-icon-before--ref-tick:before {
+		position: absolute;
+    left: -52px;
+    top: 7px;
+    font-size: 29px;    
+    color: $reflection-purple;
+	}
+	.ref-before-coming-soon:before {
+		content: "Coming Soon";
+		position: absolute;
+		left: -108px;
+    padding: 1px 10px 1px 9px;
+    top: 7px;
+		font-family: $brand-heading-font;
+		font-weight: 700;
+		font-size: 12px;
+		color: $reflection-white;
+		background-color: $reflection-green;
+		border-radius: 14px;
+		@include breakpoint($desktop) {
+			left: -121px;
+			font-size: 14px;
+		}
+	}
 	.home-section--right-image & {
-		margin-left: 9%;
+		margin-left: 12.4%;
 		margin-right: 0;
 		float: left;
+	}
+	.home-section--one & {
+		padding-bottom: 85px;
 	}
 }
 .home-section-image-container {
@@ -212,8 +294,5 @@
 		img {
 			float: left;
 		}
-	}
-	.home-section--taller-section & {
-		height: 490px;
 	}
 }
