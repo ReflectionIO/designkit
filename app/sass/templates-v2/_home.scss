@@ -6,15 +6,29 @@ $travel-transition-speed-original: 15s;
 	height: 700px;
 	padding-top: 161px;
 	text-align: center;
-	background-color: $reflection-purple;	
+	background-color: #404454;	
 	.home-banner-animation-container {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		opacity: 0.07;
-		perspective: 1200px;
+		perspective: 1200px;		
+		.touchevents & {
+			background-image: url(images/video-app-animation.jpg);
+    	background-position: 50% 50%;
+    	background-size: cover;
+		}
+	}
+	.video-background {
+		position: absolute;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+		.touchevents & {
+			display: none;
+		}
 	}
 	.page-title {
 		max-width: 600px;
@@ -28,7 +42,7 @@ $travel-transition-speed-original: 15s;
 		margin-bottom: 3.9rem;
 		font-size: 2.8rem;
 		line-height: 1.45;
-		color: #CECCFF;
+		color: $light-grey-2;
 	}
 	.ref-button--primary--large {
 		border-radius: 4px;
@@ -164,7 +178,7 @@ $travel-transition-speed-original: 15s;
 }
 .home-section-head__partners {
 	position: absolute;
-	bottom: 70px;
+	bottom: 66px;
 	left: 50%;
 	margin-left: -450px;
 	width: 900px;
@@ -173,7 +187,7 @@ $travel-transition-speed-original: 15s;
 		margin-bottom: 16px;
 		display: block;
 		font-size: 13px;
-		color: #CECCFF;
+		color: $light-grey-2;
 	}
 	img {
 		width: 639px;
@@ -191,45 +205,69 @@ $travel-transition-speed-original: 15s;
 	position: relative;
 	width: 100%;
 	max-width: 1240px;
-	min-height: 440px;
+	min-height: 447px;
   margin: 0 auto;  
   display: inline-block;  
   overflow: visible;
 	.home-section--taller-section & {
-		min-height: 565px;	
-	}	
+		min-height: 559px;
+	}
+	.home-section--content-two & {
+		min-height: 436px;
+	}
 }
 .home-section-content {	
 	width: 35%;
-  padding-top: 127px;
-	padding-bottom: 83px;
+	padding-top: 108px;  
+	padding-bottom: 80px;
 	margin-right: 5%;
   float: right;
 	overflow: visible;
 	text-align: left;
 	@include breakpoint($laptop-plus) {
-		width: 490px;		
-	}
-	@include breakpoint($desktop) {
-		margin-right: 80px;
+		width: 490px;
+		padding-top: 118px;
 	}
 	> h2 {
-		font-size: 3.2rem;
-  	margin-bottom: 3.7rem;
+		font-size: 3rem;
+  	margin-bottom: 3rem;
+		@include breakpoint($laptop-plus) {
+			font-size: 3.4rem;
+			margin-bottom: 3.7rem;
+		}
 	}
 	p {
 		position: relative;
 		max-width: 420px;
     margin-bottom: 2.8rem;
     overflow: visible;
-		font-size: 1.8rem;
+		font-size: 1.7rem;		
     line-height: 1.6;
+		@include breakpoint($laptop-plus) {
+			font-size: 1.8rem;
+		}
 	}
 	.home-section--right-image & {
-		margin-left: 9%;
+		margin-left: 8.7%;
 		margin-right: 0;
 		float: left;
 	}
+	.home-section--content-two & {
+		padding-top: 112px;
+		margin-right: 96px;
+		@include breakpoint($laptop-plus) {
+			margin-right: 5%;
+		}
+		@include breakpoint($desktop) {
+			margin-right: 96px;
+		}
+		@include breakpoint(1360px) {
+			margin-right: 5%;
+		}
+	}
+	.home-section--taller-section & {
+		padding-top: 137px;	
+	}	
 }
 .home-section-image-container {
 	position: absolute;
@@ -240,7 +278,7 @@ $travel-transition-speed-original: 15s;
 	margin-bottom: -3px;
 	overflow: visible;
 	@include breakpoint($desktop) {
-		width: 525px;
+		width: 512px;
 	}
 	img {
 		float: right;
