@@ -75,11 +75,18 @@
 			font-weight: 400;
 			color: $light-grey-2;
 			text-align: left;
-			span {
-				margin-left: 7px;
+			.selected-country-text,
+			.total-reviews-count {
 				font-family: $brand-body-font;
+			}
+			.total-reviews-count {
+				margin-left: 7px;				
 				font-weight: 700;
 				color: $reflection-white;
+			}
+			.selected-country-text {
+				margin-left: 2px;
+				font-size: 13px;
 			}
 		}
 		ul {
@@ -105,7 +112,7 @@
 	.form-field--search .form-field--select__dropdown li span {
 		position: relative;
 		top: 0;
-		left: 0;
+		left: 0;		
 	}
 	.form-field--search {
 		width: 230px;
@@ -114,6 +121,13 @@
 		}
 		.form-field--select__dropdown {
 			min-height: 60px;
+		}
+	}
+	.form-field--select__dropdown {
+		max-height: 300px;
+		overflow: auto;
+		.icon-flag-sm {
+			margin-right: 8px;
 		}
 	}
 	.app-search-loading-indicator {
@@ -148,6 +162,12 @@
 	&.page-lab-base .secondary-filter {
 		.form-field--select__box {
 	    width: 170px;
+			.icon-flag-sm {
+				top: 9px;
+				+ b {
+					padding-left: 28px;
+				}
+			}
 	    > img {
 	    	position: absolute;
 	    	top: 12px;

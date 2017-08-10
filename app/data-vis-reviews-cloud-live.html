@@ -61,13 +61,29 @@
 								
 								<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
 									<select class="js-select-box">
-										<option value="GB" selected="selected">United Kingdom</option>
-										<option value="US">USA</option>
-										<option value="ES">Spain</option>
-										<option value="IT">Italy</option>
-										<option value="FR">France</option>
-										<option value="DE">Germany</option>
-										<option value="SE">Sweden</option>
+										<option value="GB" selected="selected" class="icon-flag-sm icon-flag--GB">United Kingdom</option>
+										<option value="US" class="icon-flag-sm icon-flag--US">USA</option>
+										<option value="AU" class="icon-flag-sm icon-flag--AU">Australia</option>
+										<option value="BR" class="icon-flag-sm icon-flag--BR">Brazil</option>
+										<option value="CA" class="icon-flag-sm icon-flag--CA">Canada</option>
+										<option value="DK" class="icon-flag-sm icon-flag--DK">Denmark</option>
+										<option value="FR" class="icon-flag-sm icon-flag--FR">France</option>
+										<option value="DE" class="icon-flag-sm icon-flag--DE">Germany</option>
+										<option value="ID" class="icon-flag-sm icon-flag--ID">Indonesia</option>
+										<option value="IE" class="icon-flag-sm icon-flag--IE">Ireland</option>
+										<option value="IT" class="icon-flag-sm icon-flag--IT">Italy</option>
+										<option value="MY" class="icon-flag-sm icon-flag--MY">Malaysia</option>
+										<option value="MX" class="icon-flag-sm icon-flag--MX">Mexico</option>
+										<option value="NZ" class="icon-flag-sm icon-flag--NZ">New Zealand</option>
+										<option value="NO" class="icon-flag-sm icon-flag--NO">Norway</option>
+										<option value="PT" class="icon-flag-sm icon-flag--PT">Portugal</option>
+										<option value="RU" class="icon-flag-sm icon-flag--RU">Russia</option>
+										<option value="SA" class="icon-flag-sm icon-flag--SA">Saudi Arabia</option>
+										<option value="SG" class="icon-flag-sm icon-flag--SG">Singapore</option>
+										<option value="ES" class="icon-flag-sm icon-flag--ES">Spain</option>
+										<option value="SE" class="icon-flag-sm icon-flag--SE">Sweden</option>
+										<option value="TR" class="icon-flag-sm icon-flag--TR">Turkey</option>
+										<option value="AE" class="icon-flag-sm icon-flag--AE">United Arab Emirates</option>
 									</select>
 								</div>
 							</div>
@@ -119,7 +135,7 @@
 
 								<div class="page-data-vis-reviews-cloud__reviews-widget">
 									<h4>Times <span class="js-keyword-hover">'Keyword'</span> Appears in Recent Reviews</h4>
-									<h5>Total (UK): <span class="js-all-stars">-</span></h5>
+									<h5>Total <span class="selected-country-text js-selected-country-text"></span>: <span class="total-reviews-count js-all-stars">-</span></h5>
 									<ul>
 										<li>
 											<span class="number-of-stars-label ref-icon-after--star">5</span>
@@ -395,13 +411,16 @@
 			$thisSelectBox.find('option').each(function(){
 				
 				var $thisOption = $(this),
-						selectedClass = "";
+						selectedClass = "",
+						cssClass = $thisOption.attr("class");
 
 						if($($thisOption).is(":selected")) {
 							if($thisOption.val() != "") {
 
 								selectedClass = "is-selected";
+								var countryFlag = $("<span>").addClass(cssClass);
 								var triggerText = $("<b>").text($thisOption.text());
+								$currentValue.append(countryFlag);
 								$currentValue.append(triggerText);
 							}
 						}
@@ -418,6 +437,7 @@
 																				.addClass("js-dropdown-option")
 																				.addClass(selectedClass)
 																				.addClass(accessClass)
+																				.attr('data-icon-flag', cssClass)
 																				.attr('data-value', $thisOption.attr('value'))
 																				.on("click", function() {
 																					var $this = $(this);
@@ -430,9 +450,12 @@
 																					$('.js-dropdown-option.is-selected').removeClass("is-selected");
 																					$this.addClass("is-selected");
 																					$('.js-dropdown-trigger').empty();
+																					var countryIcon = $("<span>").addClass($this.attr("data-icon-flag"));
+																					$('.js-dropdown-trigger').append(countryIcon);
 																					var triggerText = $("<b>").text($thisOption.text());
 																					$('.js-dropdown-trigger').append(triggerText);
 																				})
+																				.append($("<span>").addClass(cssClass))
 																				.append($("<span>").text($thisOption.text()))
 																	);
 				}
@@ -757,7 +780,10 @@
 			}
 			if(appIconUrl != undefined) {
 				$('.js-app-icon').attr("src", appIconUrl);	
-			}			
+			}
+			
+			var selectedCountry = $('.js-secondary-filter .js-dropdown-trigger b').text();
+			$('.js-selected-country-text').text("(" + selectedCountry + ")");
 		}
 
 		$(window).on("load", function(){
