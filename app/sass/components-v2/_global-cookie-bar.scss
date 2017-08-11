@@ -14,6 +14,12 @@
 		bottom: 0;
 	}
 }
+@-webkit-keyframes hamster-cookie-eating {
+   100% { background-position: -616px 0; }
+}
+@keyframes hamster-cookie-eating {
+   100% { background-position: -616px 0; }
+}
 .global-cookie-notification {
 	position: fixed;
 	bottom: -46px;
@@ -23,12 +29,17 @@
 	z-index: 100;	
 	background-color: $reflection-purple;
 	animation: introduce-cookie-popup 0.8s 2s forwards;
-	img {
+	.hamster-cookie {
 		width: 44px;
-		height: 46px;
-		margin-right: 20px;
+		height: 41px;
+    margin-top: 5px;
+		margin-right: 19px;
 		display: inline-block;
 		vertical-align: middle;
+		background-image: url(images/sprite-cookie-hamster@2x.png);
+    background-size: 616px 41px;
+    background-position: 0 0;
+    animation: hamster-cookie-eating 2s infinite steps(14);
 	}
 	p {
 		margin: 0;
