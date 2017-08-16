@@ -170,8 +170,12 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
   -webkit-filter: none;
           filter: none;
 }
+/* line 40, sass/layout-v2/_layout.scss */
+.is-responsive .l-page-container {
+  min-width: auto;
+}
 
-/* line 41, sass/layout-v2/_layout.scss */
+/* line 44, sass/layout-v2/_layout.scss */
 .l-main {
   width: 100%;
   padding-top: 42px;
@@ -183,18 +187,18 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
           transition: width 0.15s ease-in;
 }
 @media (min-width: 480px) {
-  /* line 41, sass/layout-v2/_layout.scss */
+  /* line 44, sass/layout-v2/_layout.scss */
   .l-main {
     padding-top: 50px;
   }
 }
-/* line 52, sass/layout-v2/_layout.scss */
+/* line 55, sass/layout-v2/_layout.scss */
 .panel-left-open .l-main {
   width: 100%;
   overflow: visible;
 }
 @media (min-width: 960px) {
-  /* line 56, sass/layout-v2/_layout.scss */
+  /* line 59, sass/layout-v2/_layout.scss */
   .no-touchevents .l-main, .no-touchevents .panel-left-open .l-main {
     width: calc(100% - 60px);
     -webkit-transition: width 0.15s ease-out;
@@ -202,60 +206,60 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
   }
 }
 @media (min-width: 1360px) {
-  /* line 56, sass/layout-v2/_layout.scss */
+  /* line 59, sass/layout-v2/_layout.scss */
   .no-touchevents .l-main, .no-touchevents .panel-left-open .l-main {
     width: calc(100% - 200px);
   }
 }
 
-/* line 67, sass/layout-v2/_layout.scss */
+/* line 70, sass/layout-v2/_layout.scss */
 .l-full-screen-section {
   height: calc(100vh - 42px);
   background-color: #6d69c5;
 }
 @media (min-width: 480px) {
-  /* line 67, sass/layout-v2/_layout.scss */
+  /* line 70, sass/layout-v2/_layout.scss */
   .l-full-screen-section {
     height: calc(100vh - 50px);
   }
 }
 
-/* line 74, sass/layout-v2/_layout.scss */
+/* line 77, sass/layout-v2/_layout.scss */
 .components-row-with-border {
   padding-bottom: 2rem;
   margin-bottom: 4rem;
   border-bottom: 1px solid #e1e5e8;
 }
 
-/* line 79, sass/layout-v2/_layout.scss */
+/* line 82, sass/layout-v2/_layout.scss */
 .article-list--article {
   padding-bottom: 2.5rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid #e1e1e1;
 }
-/* line 83, sass/layout-v2/_layout.scss */
+/* line 86, sass/layout-v2/_layout.scss */
 .article-list--article:last-child {
   border-bottom: 0;
 }
 @media (min-width: 720px) {
-  /* line 79, sass/layout-v2/_layout.scss */
+  /* line 82, sass/layout-v2/_layout.scss */
   .article-list--article {
     padding-bottom: 2.5rem;
   }
 }
 
-/* line 90, sass/layout-v2/_layout.scss */
+/* line 93, sass/layout-v2/_layout.scss */
 .page-section {
   width: 100%;
   margin-bottom: 3rem;
 }
-/* line 93, sass/layout-v2/_layout.scss */
+/* line 96, sass/layout-v2/_layout.scss */
 .page-section.page-section--with-border {
   padding-bottom: 3rem;
   border-bottom: 1px solid #e1e5e8;
 }
 
-/* line 98, sass/layout-v2/_layout.scss */
+/* line 101, sass/layout-v2/_layout.scss */
 .page-header--left,
 .page-header--right {
   width: 50%;
@@ -263,49 +267,49 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
   vertical-align: top;
 }
 
-/* line 104, sass/layout-v2/_layout.scss */
+/* line 107, sass/layout-v2/_layout.scss */
 .page-header--left {
   float: left;
   clear: left;
 }
 
-/* line 108, sass/layout-v2/_layout.scss */
+/* line 111, sass/layout-v2/_layout.scss */
 .page-header--right {
   float: right;
   clear: right;
   text-align: right;
 }
 
-/* line 113, sass/layout-v2/_layout.scss */
+/* line 116, sass/layout-v2/_layout.scss */
 .content-centered-section {
   width: 80%;
   max-width: 590px;
   margin: 0 auto;
 }
 
-/* line 118, sass/layout-v2/_layout.scss */
+/* line 121, sass/layout-v2/_layout.scss */
 .aside-component {
   padding-bottom: 25px;
   margin: 6px 0 22px 0;
   border-bottom: 2px solid #e1e5e8;
 }
-/* line 122, sass/layout-v2/_layout.scss */
+/* line 125, sass/layout-v2/_layout.scss */
 .aside-component:last-child {
   border-bottom: none;
 }
 
-/* line 126, sass/layout-v2/_layout.scss */
+/* line 129, sass/layout-v2/_layout.scss */
 .desktop-only {
   display: none;
 }
 @media (min-width: 1280px) {
-  /* line 126, sass/layout-v2/_layout.scss */
+  /* line 129, sass/layout-v2/_layout.scss */
   .desktop-only {
     display: inline-block;
   }
 }
 
-/* line 132, sass/layout-v2/_layout.scss */
+/* line 135, sass/layout-v2/_layout.scss */
 .centred-content-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -3788,15 +3792,19 @@ li .form-field-notification-number {
 /* line 19, sass/components-v2/_global-header.scss */
 .global-header .site-logo {
   width: 25px;
-  margin-top: 11px;
-  margin-left: 9px;
+  height: 27px;
+  margin-top: 8px;
+  margin-left: 10px;
   display: inline-block;
   vertical-align: top;
+  background-image: url(images/logo-reflection-mobile@2x.png);
+  background-size: 25px 27px;
+  background-repeat: no-repeat;
 }
 @media (min-width: 480px) {
   /* line 19, sass/components-v2/_global-header.scss */
   .global-header .site-logo {
-    margin-top: 15px;
+    margin-top: 12px;
     margin-left: 16px;
   }
 }
@@ -3807,24 +3815,34 @@ li .form-field-notification-number {
     margin-top: 13px;
     margin-left: 22px;
     display: inline-block;
+    background: none;
   }
 }
-/* line 35, sass/components-v2/_global-header.scss */
+/* line 40, sass/components-v2/_global-header.scss */
 .global-header .site-logo img {
   width: 19px;
 }
 @media (min-width: 720px) {
-  /* line 35, sass/components-v2/_global-header.scss */
+  /* line 40, sass/components-v2/_global-header.scss */
   .global-header .site-logo img {
     width: 100%;
   }
 }
-/* line 42, sass/components-v2/_global-header.scss */
+/* line 47, sass/components-v2/_global-header.scss */
 .global-header .header__sign-up-button {
-  display: none;
+  margin-top: 5px;
+  margin-right: 10px;
+  padding: 0.8rem 1.2rem 0.9rem 1.2rem;
+  display: inline-block;
 }
-@media (min-width: 720px) {
-  /* line 42, sass/components-v2/_global-header.scss */
+@media screen and (max-width: 480px) {
+  /* line 53, sass/components-v2/_global-header.scss */
+  .global-header .header__sign-up-button:active {
+    padding: calc(0.8rem - 2px) 1.2rem 0.9rem 1.2rem !important;
+  }
+}
+@media (min-width: 480px) {
+  /* line 47, sass/components-v2/_global-header.scss */
   .global-header .header__sign-up-button {
     margin-top: 7px;
     margin-right: 26px;
@@ -3835,19 +3853,19 @@ li .form-field-notification-number {
     font-size: 14px;
   }
 }
-/* line 54, sass/components-v2/_global-header.scss */
+/* line 67, sass/components-v2/_global-header.scss */
 .global-header .help-link {
   padding-top: 13px;
   padding-right: 15px;
   display: inline-block;
 }
-/* line 58, sass/components-v2/_global-header.scss */
+/* line 71, sass/components-v2/_global-header.scss */
 .global-header .help-link svg {
   position: relative;
   width: 22px;
   cursor: pointer;
 }
-/* line 64, sass/components-v2/_global-header.scss */
+/* line 77, sass/components-v2/_global-header.scss */
 .global-header .link-log-in-container,
 .global-header .search-link-container,
 .global-header .notifications-link-container,
@@ -3861,7 +3879,7 @@ li .form-field-notification-number {
   border-left: 1px solid #1e2027;
 }
 @media (min-width: 480px) {
-  /* line 64, sass/components-v2/_global-header.scss */
+  /* line 77, sass/components-v2/_global-header.scss */
   .global-header .link-log-in-container,
   .global-header .search-link-container,
   .global-header .notifications-link-container,
@@ -3869,12 +3887,12 @@ li .form-field-notification-number {
     height: 50px;
   }
 }
-/* line 81, sass/components-v2/_global-header.scss */
+/* line 94, sass/components-v2/_global-header.scss */
 .global-header .notifications-link-container:hover,
 .global-header .my-account-link-container:hover {
   background-color: #323643;
 }
-/* line 85, sass/components-v2/_global-header.scss */
+/* line 98, sass/components-v2/_global-header.scss */
 .global-header .link-log-in {
   position: relative;
   height: 42px;
@@ -3892,38 +3910,38 @@ li .form-field-notification-number {
   background-color: #363a47;
   outline: none;
 }
-/* line 103, sass/components-v2/_global-header.scss */
+/* line 116, sass/components-v2/_global-header.scss */
 .no-touchevents .global-header .link-log-in:hover, .no-touchevents .global-header .link-log-in:active {
   color: #fcfdfd;
   background: #323643;
 }
-/* line 107, sass/components-v2/_global-header.scss */
+/* line 120, sass/components-v2/_global-header.scss */
 .no-touchevents .global-header .link-log-in:active {
   top: 2px;
 }
-/* line 111, sass/components-v2/_global-header.scss */
+/* line 124, sass/components-v2/_global-header.scss */
 .global-header .link-log-in.is-selected {
   color: #fcfdfd;
 }
 @media (min-width: 480px) {
-  /* line 85, sass/components-v2/_global-header.scss */
+  /* line 98, sass/components-v2/_global-header.scss */
   .global-header .link-log-in {
     height: 50px;
     padding-top: 16px;
   }
 }
-/* line 119, sass/components-v2/_global-header.scss */
+/* line 132, sass/components-v2/_global-header.scss */
 .global-header .search-link-container {
   position: relative;
   background-color: #f2f2f5;
   border: 1px solid #c4c7d0;
   border-left: 0;
 }
-/* line 124, sass/components-v2/_global-header.scss */
+/* line 137, sass/components-v2/_global-header.scss */
 .global-header .search-link-container input[type=text] {
-  width: 182px;
+  width: 42px;
   margin: 0;
-  padding: 0 75px 3px 15px;
+  padding: 0 0px 3px 15px;
   box-sizing: border-box;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 15px;
@@ -3940,23 +3958,23 @@ li .form-field-notification-number {
   cursor: pointer;
 }
 @media (min-width: 480px) {
-  /* line 124, sass/components-v2/_global-header.scss */
+  /* line 137, sass/components-v2/_global-header.scss */
   .global-header .search-link-container input[type=text] {
-    width: 202px;
-    padding-left: 19px;
-    padding-right: 20px;
+    width: 182px;
+    padding: 0 75px 3px 15px;
     height: 48px;
   }
-  /* line 148, sass/components-v2/_global-header.scss */
+  /* line 160, sass/components-v2/_global-header.scss */
   .is-ie .global-header .search-link-container input[type=text] {
     height: 51px;
   }
 }
-/* line 153, sass/components-v2/_global-header.scss */
+/* line 165, sass/components-v2/_global-header.scss */
 .global-header .search-link-container .search-stores-label {
   position: absolute;
   top: 0;
   left: 15px;
+  display: none;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
   color: #6d69c5;
@@ -3964,78 +3982,79 @@ li .form-field-notification-number {
   cursor: pointer;
 }
 @media (min-width: 480px) {
-  /* line 153, sass/components-v2/_global-header.scss */
+  /* line 165, sass/components-v2/_global-header.scss */
   .global-header .search-link-container .search-stores-label {
+    display: block;
     left: 19px;
     line-height: 47px;
   }
-  /* line 165, sass/components-v2/_global-header.scss */
+  /* line 179, sass/components-v2/_global-header.scss */
   .is-ie .global-header .search-link-container .search-stores-label {
     line-height: 49px;
   }
 }
-/* line 170, sass/components-v2/_global-header.scss */
+/* line 184, sass/components-v2/_global-header.scss */
 .global-header .search-link-container .search-icon {
   position: absolute;
   top: 12px;
   right: 11px;
 }
-/* line 174, sass/components-v2/_global-header.scss */
+/* line 188, sass/components-v2/_global-header.scss */
 .global-header .search-link-container .search-icon:after {
   width: 14px;
   font-size: 18px;
   color: #6d69c5;
 }
 @media (min-width: 480px) {
-  /* line 170, sass/components-v2/_global-header.scss */
+  /* line 184, sass/components-v2/_global-header.scss */
   .global-header .search-link-container .search-icon {
     top: 15px;
   }
 }
-/* line 183, sass/components-v2/_global-header.scss */
+/* line 197, sass/components-v2/_global-header.scss */
 .global-header .search-link-container .clear-search {
   position: absolute;
   top: 12px;
   right: 11px;
   display: none;
 }
-/* line 188, sass/components-v2/_global-header.scss */
+/* line 202, sass/components-v2/_global-header.scss */
 .global-header .search-link-container .clear-search:after {
   color: #727686;
   font-size: 18px;
 }
 @media (min-width: 480px) {
-  /* line 183, sass/components-v2/_global-header.scss */
+  /* line 197, sass/components-v2/_global-header.scss */
   .global-header .search-link-container .clear-search {
     top: 15px;
     right: 18px;
   }
 }
 @media (min-width: 720px) {
-  /* line 199, sass/components-v2/_global-header.scss */
+  /* line 213, sass/components-v2/_global-header.scss */
   .global-header .search-link-container.is-open input[type=text] {
     width: 318px;
     -webkit-transition: width 0.2s;
             transition: width 0.2s;
   }
 }
-/* line 204, sass/components-v2/_global-header.scss */
+/* line 218, sass/components-v2/_global-header.scss */
 .global-header .search-link-container.is-open .search-stores-label,
 .global-header .search-link-container.is-open .search-icon {
   display: none;
 }
-/* line 208, sass/components-v2/_global-header.scss */
+/* line 222, sass/components-v2/_global-header.scss */
 .global-header .search-link-container.is-open .clear-search {
   display: block;
 }
-/* line 213, sass/components-v2/_global-header.scss */
+/* line 227, sass/components-v2/_global-header.scss */
 .global-header .notifications-link,
 .global-header .my-account-link {
   width: 48px;
   display: block;
   text-align: center;
 }
-/* line 218, sass/components-v2/_global-header.scss */
+/* line 232, sass/components-v2/_global-header.scss */
 .global-header .notifications-link:after, .global-header .notifications-link:before,
 .global-header .my-account-link:after,
 .global-header .my-account-link:before {
@@ -4044,14 +4063,14 @@ li .form-field-notification-number {
   line-height: 42px;
 }
 @media (min-width: 480px) {
-  /* line 218, sass/components-v2/_global-header.scss */
+  /* line 232, sass/components-v2/_global-header.scss */
   .global-header .notifications-link:after, .global-header .notifications-link:before,
   .global-header .my-account-link:after,
   .global-header .my-account-link:before {
     line-height: 50px;
   }
 }
-/* line 228, sass/components-v2/_global-header.scss */
+/* line 242, sass/components-v2/_global-header.scss */
 .global-header .notifications-link:active:after, .global-header .notifications-link:active:before,
 .global-header .notifications-link:active span,
 .global-header .my-account-link:active:after,
@@ -4060,16 +4079,16 @@ li .form-field-notification-number {
   position: relative;
   top: 2px;
 }
-/* line 236, sass/components-v2/_global-header.scss */
+/* line 250, sass/components-v2/_global-header.scss */
 .global-header .my-account-link {
   width: auto;
 }
-/* line 238, sass/components-v2/_global-header.scss */
+/* line 252, sass/components-v2/_global-header.scss */
 .global-header .my-account-link:before {
   margin-left: 15px;
   margin-right: 15px;
 }
-/* line 242, sass/components-v2/_global-header.scss */
+/* line 256, sass/components-v2/_global-header.scss */
 .global-header .my-account-link span {
   padding: 17px 15px 0 0;
   display: inline-block;
@@ -4078,12 +4097,12 @@ li .form-field-notification-number {
   font-size: 14px;
   color: #c4c7d0;
 }
-/* line 251, sass/components-v2/_global-header.scss */
+/* line 265, sass/components-v2/_global-header.scss */
 .global-header .has-notifications.notifications-link-container {
   position: relative;
   background-color: #ff496a;
 }
-/* line 254, sass/components-v2/_global-header.scss */
+/* line 268, sass/components-v2/_global-header.scss */
 .global-header .has-notifications.notifications-link-container .notifications-link:after {
   top: 6px;
   width: 100%;
@@ -4095,19 +4114,19 @@ li .form-field-notification-number {
   -webkit-animation: bellring 6s infinite;
   animation: bellring 6s infinite;
 }
-/* line 263, sass/components-v2/_global-header.scss */
+/* line 277, sass/components-v2/_global-header.scss */
 .no-touchevents .global-header .has-notifications.notifications-link-container .notifications-link:after:hover {
   color: #fcfdfd;
 }
-/* line 269, sass/components-v2/_global-header.scss */
+/* line 283, sass/components-v2/_global-header.scss */
 .global-header .has-notifications.notifications-link-container .notifications-link:active:after {
   top: 8px;
 }
-/* line 272, sass/components-v2/_global-header.scss */
+/* line 286, sass/components-v2/_global-header.scss */
 .global-header .has-notifications.notifications-link-container .notifications-link:active + .notifications-link-container__notifications-number {
   top: 5px;
 }
-/* line 277, sass/components-v2/_global-header.scss */
+/* line 291, sass/components-v2/_global-header.scss */
 .global-header .notifications-link-container__notifications-number {
   position: absolute;
   top: 3px;
@@ -4121,7 +4140,7 @@ li .form-field-notification-number {
   text-align: center;
 }
 
-/* line 290, sass/components-v2/_global-header.scss */
+/* line 304, sass/components-v2/_global-header.scss */
 .global-header__actions {
   display: inline-block;
   float: right;

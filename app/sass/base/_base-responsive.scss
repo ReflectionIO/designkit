@@ -1,0 +1,51 @@
+// Set the legacy IE support variables. We override the default values set by
+// the compass/support partial, but let styles-ie8.scss override these values.
+$legacy-support-for-ie6 : false !default;
+$legacy-support-for-ie7 : false !default;
+$legacy-support-for-ie8 : false !default;
+
+// Add Compass' IE and vendor prefix support variables.
+// Docs at http://compass-style.org/reference/compass/support/
+@import "compass/support";
+// Docs at http://breakpoint-sass.com/
+@import "breakpoint";
+
+@import "compass/reset";
+@import "compass/css3/box-sizing";
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+@import "compass/css3/appearance";
+@import "compass/css3/opacity";
+@import "compass/css3/box-shadow";
+@import "../helpers/placeholders";
+@import "../ui/interaction";
+@import "../layout-v2/layout";
+@import "../ui-v2/*";
+@import "base/reset-v2";
+@import "../layout/grid";
+@import "../ui/colours";
+@import "../ui-v2/colours";
+@import "../ui/icons";
+@import "../helpers/*";
+
+/* Components */
+@import "../components/hamburger";
+@import "../components-v2/hamburger";
+@import "../components/logo";
+@import "../components/ratings";
+@import "../components-v2/*";
+@import "../components-v2-dark-theme/form";
+@import "../components-v2-dark-theme/button";
+
+/* Templates that include fully responsive styles */
+@import "../templates-v2/home";
+
+/* Browser fixes */
+@import "../support/*";
+
+p.browserupgrade {
+	width: 100%;
+	padding: 20px;
+	font-size: 16px;
+	font-weight: bold;
+}

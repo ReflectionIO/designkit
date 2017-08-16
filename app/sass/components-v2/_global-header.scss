@@ -18,12 +18,16 @@ $headerLinkBackgroundHoverColour: #323643;
 	}
 	.site-logo {
 		width: 25px;
-		margin-top: 11px;
-		margin-left: 9px;
+    height: 27px;
+    margin-top: 8px;
+    margin-left: 10px;
 		display: inline-block;
 		vertical-align: top;
+		background-image: url(images/logo-reflection-mobile@2x.png);
+		background-size: 25px 27px;
+		background-repeat: no-repeat;
 		@include breakpoint($phablet) {
-			margin-top: 15px;
+			margin-top: 12px;
 			margin-left: 16px;
 		}
 		@include breakpoint($tablet) {
@@ -31,6 +35,7 @@ $headerLinkBackgroundHoverColour: #323643;
 			margin-top: 13px;
 			margin-left: 22px;
 			display: inline-block;
+			background: none;
 		}
 		img {
 			width: 19px;
@@ -40,8 +45,16 @@ $headerLinkBackgroundHoverColour: #323643;
 		}
 	}
 	.header__sign-up-button {
-		display: none;
-		@include breakpoint($tablet) {
+		margin-top: 5px;
+    margin-right: 10px;
+		padding: 0.8rem 1.2rem 0.9rem 1.2rem;
+		display: inline-block;		
+		@media screen and (max-width: $phablet) {
+			&:active {
+				padding: calc(0.8rem - 2px) 1.2rem 0.9rem 1.2rem !important;
+			}
+		}
+		@include breakpoint($phablet) {
 			margin-top: 7px;
 			margin-right: 26px;
 			padding: 10px 20px 11px;
@@ -122,9 +135,9 @@ $headerLinkBackgroundHoverColour: #323643;
 		border: 1px solid $light-grey-2;
 		border-left: 0;
 		input[type=text] {
-			width: 182px;			
-			margin: 0;
-			padding: 0 75px 3px 15px;
+			width: 42px;
+    	margin: 0;
+    	padding: 0 0px 3px 15px;			
 			box-sizing: border-box;
 			font-family: $brand-heading-font;
 			font-size: 15px;
@@ -141,9 +154,8 @@ $headerLinkBackgroundHoverColour: #323643;
 			@extend %font-smoothing;
 			cursor: pointer;
 			@include breakpoint($phablet) {
-				width: 202px;
-				padding-left: 19px;
-				padding-right: 20px;
+				width: 182px;			
+				padding: 0 75px 3px 15px;
 				height: 48px;
 				.is-ie & {
 					height: 51px;
@@ -154,12 +166,14 @@ $headerLinkBackgroundHoverColour: #323643;
 			position: absolute;
 		  top: 0;
    		left: 15px;
+			display: none;
    		font-family: $brand-heading-font;
 			font-size: 14px;
 			color: $reflection-purple;
 			line-height: 42px;
 			cursor: pointer;
 			@include breakpoint($phablet) {
+				display: block;
 				left: 19px;
 				line-height: 47px;
 				.is-ie & {
