@@ -62,13 +62,10 @@
 	@include breakpoint(1100px) {
 		margin-bottom: 0;
 	}
-	@include breakpoint($desktop-super-wide) {
-		margin-bottom: 0.5rem;
-	}
 }
 .summary-widget__data-item {
 	width: 33%;
-	padding: 0 1rem 0.9rem 1rem;
+	padding: 0 3px 0.9rem;
 	display: inline-block;
 	vertical-align: top;
 	list-style: none;
@@ -80,13 +77,12 @@
 		text-align: center;
 		img, .icon-flag {
 			display: inline-block;
-			float: left;		
 		}
 		img {
 			width: 32px;
 			height: 32px;
+			margin-right: 3px;
 			display: inline-block;
-			float: left;
 			border-radius: 7px;
 		}
 		.icon-flag {
@@ -110,37 +106,13 @@
 	.ref-icon-after--play-store:after {
 		font-size: 18px;
 	}
-	@include breakpoint(1100px) {
-		padding: 0 3px 0.9rem;
-		a, .summary-widget__data-item__icon-title-container {
-			img, .icon-flag {
-				float: none;
-			}
-			img {
-				float: none;
-			}
-		}
-	}
-	@include breakpoint($desktop-super-wide) {
-		padding: 0 1rem 0.9rem 1rem;
-		a, .summary-widget__data-item__icon-title-container {
-			img {
-				display: inline-block;
-				float: left;
-			}
-			img, .icon-flag {
-				float: left;
-			}	
-		}
-	}
 }
 .summary-widget__data-item__app-name {
-	width: calc(100% - 50px);
-	margin-left: 8px;
+	width: 100%;
 	margin-top: -3px;
 	margin-bottom: 4px !important;
-	display: inline-block;
-	text-align: left;
+	display: block;
+	text-align: center;
 	font-family: $brand-body-font;
 	font-size: 1.39rem;
 	font-weight: 700;
@@ -155,35 +127,16 @@
 		transition: color $base-transition-speed-on;
 	}
 	&.is-loading {
-		width: calc(100% - 52px);		
+		width: 90%;
 		height: 10px;
 		margin: 2px auto 0;		
 		background-color: $loading-colour;
 	}
-	@include breakpoint(1100px) {
-		width: 100%;
-		margin-left: 0;    
-		display: block;
-		text-align: center;
-		&.is-loading {
-			width: 90%;
-		}
-	}
-	@include breakpoint($desktop-super-wide) {
-		width: calc(100% - 50px);
-		margin-left: 8px;    
-		display: inline-block;
-		text-align: left;
-		&.is-loading {
-			width: calc(100% - 52px);	
-		}
-	}
 }
 .summary-widget__data-item__data {
 	position: relative;
-	top: -14px;
-	padding-left: 45px;
-	display: block;
+	top: 0;
+	display: inline;
 	text-align: left;
 	font-family: $brand-body-font;
 	font-size: 1.2rem;
@@ -203,43 +156,23 @@
 		color: #ff496a;
 	}
 	&.is-loading {		
-		width: calc(100% - 52px);
+		width: 90%;
 		height: 10px;
-		margin: 6px 0 0 32px;
+		margin: 6px auto 0;
 		padding-left: 0;
 		display: inline-block;
 		background-color: $loading-colour;
 	}
-	@include breakpoint(1100px) {
-		top: 0;
-		padding-left: 0;
-		display: inline;
-		&.is-loading {
-			width: 90%;
-			padding-left: 0;
-			margin: 6px auto 0;
-		}
-	}
-	@include breakpoint($desktop-super-wide) {
-		top: -14px;
-		padding-left: 45px;
-  	display: block;
-  	&.is-loading {		
-			width: calc(100% - 52px);
-			padding-left: 0;
-			margin: 6px 0 0 32px;
-		}
-  }
 }
 .widget-title {
 	margin-bottom: 1.9rem;
 	font-size: 16px;
 }
 .summary-widget--highest-lowest__data-item {
-	width: 50%;
+	width: 100%;	
 	padding-left: 2px;
 	margin-bottom: 15px;
-	display: inline-block;
+	display: block;
 	vertical-align: top;
 	.icon-flag, svg {
 		+ div {
@@ -271,10 +204,6 @@
 	&:last-child {
 		padding-bottom: 7px;
 		border-bottom: none;
-	}
-	@include breakpoint(1100px) {
-		width: 100%;
-		display: block;
 	}
 	@include breakpoint($desktop-widest) {
 		width: 50%;

@@ -1666,6 +1666,7 @@
         "Aug", "Sep", "Oct",
         "Nov", "Dec"
       ];
+			var dayNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
       var hasBeenSet = false,
       		lastPoint;
@@ -1680,27 +1681,29 @@
 	        if(this.chart.customIconRect !== undefined) {
 	          this.chart.customIconRect.destroy();
 	        }
-
-	        var $axisLabel = $(this.chart.container).find('.highcharts-axis-label'),
-	            leftOffset = 29,
+					
+					var timeStampString = arguments[1][0].x + "",
+	            timeStampString = timeStampString.substring(0,10),
+							xAxisDate = new Date(timeStampString*1000).addHours(12),
+							thisDate = xAxisDate.getDate(),
+							formattedDateString = (thisDate.toString().length == 1) ? "0" + thisDate : thisDate,
+							$axisLabel = $(this.chart.container).find('.highcharts-axis-label'),							
+	            leftOffset = 39,
 	            axisLabelYPos = $("#" + arguments[1][0].series.chart.container.id + "").height() - arguments[1][0].series.xAxis.bottom,
 	            //axisLabelYPos = arguments[1][0].series.chart.containerHeight - arguments[1][0].series.xAxis.bottom,
 	            axisLabelXPos = arguments[1][0].plotX - leftOffset,
-	            timeStampString = arguments[1][0].x + "",
-	            timeStampString = timeStampString.substring(0,10),
-	            xAxisDate = new Date(timeStampString*1000).addHours(12),
-	            formattedDate = xAxisDate.getDate() + " " + monthNames[xAxisDate.getMonth()];
+	            formattedDate = dayNames[xAxisDate.getDay()] + " " + formattedDateString + " " + monthNames[xAxisDate.getMonth()];
 
 	        if($axisLabel.length > 0) {
 
 	          var labelYPos = axisLabelYPos + 18,
-	              labelXPos = axisLabelXPos + 7;
+	              labelXPos = axisLabelXPos + 8;
 
 	          $axisLabel.attr("transform", "translate(" + labelXPos + "," + labelYPos + ")");
 	          $axisLabel.find("text").text(formattedDate);
 
 	        } else {
-	          this.chart.renderer.label(formattedDate, axisLabelXPos+7, axisLabelYPos + 18, 'callout', 0, 0, false, true, "axis-label")
+	          this.chart.renderer.label(formattedDate, axisLabelXPos+8, axisLabelYPos + 18, 'callout', 0, 0, false, true, "axis-label")
 	          .css({
 	            color: '#fcfdfd',
 	            fontSize: '12px',
@@ -1713,7 +1716,7 @@
 	          .add();
 	        }
 
-	        this.chart.customIconRect = this.chart.renderer.image('images/axis-label-background.png', axisLabelXPos, axisLabelYPos + 4, 54, 20)
+	        this.chart.customIconRect = this.chart.renderer.image('images/axis-label-background.png', axisLabelXPos, axisLabelYPos + 4, 74, 20)
 	        .attr({
 	          zIndex: 99
 	        })

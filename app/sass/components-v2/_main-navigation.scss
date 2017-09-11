@@ -49,6 +49,23 @@ $navigation-purple: #47447c;
 					vertical-align: middle;
 					color: $mid-grey-2;					
 				}
+				.main-navigation__new-text {
+					position: absolute;
+					top: 3px;
+					right: 12px;
+					display: inline-block;
+					font-size: 12px;
+					font-weight: 700;	
+					font-family: $brand-heading-font;
+					color: $reflection-red;
+					letter-spacing: -.5px;
+					@include breakpoint($leftnav-wide) {
+						top: 1px;
+						right: 7px;
+						font-size: 11px;
+						letter-spacing: 0;
+					}
+				}
 				&:after {
 					position: absolute;
 					top: 15px;
@@ -88,12 +105,18 @@ $navigation-purple: #47447c;
 					span, &:after {
 						color: $light-grey-2;
 					}
+					.main-navigation__new-text {
+						color: $reflection-red;
+					}
 				}
 				&.is-selected:hover {
 					> a {
 						background-color: $navigation-purple;
 						span, &:after {
 							color: $reflection-white;
+						}
+						.main-navigation__new-text {
+							color: $reflection-red;
 						}
 						svg path, svg polygon {
 							fill: $reflection-white;
@@ -133,6 +156,9 @@ $navigation-purple: #47447c;
 					background-color: $navigation-purple;
 					span, &:after {
 						color: $reflection-white;
+					}
+					.main-navigation__new-text {
+						color: $reflection-red;
 					}
 					svg path, svg polygon {
 						fill: $reflection-white;
@@ -221,7 +247,7 @@ $navigation-purple: #47447c;
 			}
 			&.is-selected {
 				a {
-						span {
+					span {
 						color: $reflection-white;
 					}
 					svg path, svg polygon {

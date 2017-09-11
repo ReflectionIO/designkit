@@ -41,7 +41,7 @@
 
 				<div class="data-lab-article-intro">
 					<h1 class="data-lab-article-intro__heading">App Store Reviews Hold the Key to Improving User Sentiment</h1>
-					<p class="data-lab-article-intro__paragraph">The ability to quickly see what people are saying about an app and why is essential in helping weed out issues or exploit opportunities. Enter Reflection’s Review Investigator tool: Find an App to see the most commonly used words in the latest reviews (positive and negative) then click on them to see the context in which they were used.</p>
+					<p class="data-lab-article-intro__paragraph">Find an App to see the most commonly used words in the latest iOS App Store reviews (positive and negative) then click on them to see the context in which they were used.</p>
 				</div>				
 				
 				<div class="page-data-vis-reviews-cloud__center-column">
@@ -341,7 +341,7 @@
 				formattedContent = formattedContent.splice(indexOfString, 0, "<strong>");
 
 				var ratingsContainer = $("<div>").addClass("ratings-container").append($("<div>").addClass("ratings-full").css("width", ((reviewsToOutput[i].rating / 5) * 100) + "%"));
-				var reviewTitle = $("<h2>").addClass("reviews-content__title").text(reviewsToOutput[i].title);
+				var reviewTitle = $("<h2>").addClass("reviews-content__title").html(reviewsToOutput[i].title);
 				var reviewDate = new Date(reviewsToOutput[i].date);
 				var formattedReviewDate = reviewDate.getDate() + "/" + (reviewDate.getMonth()+1) + "/" + reviewDate.getFullYear();
 				var reviewDate = $("<span>").addClass("reviews-content__date").text(formattedReviewDate);
@@ -390,7 +390,7 @@
 
 						$('body').removeClass("is-loading-data");
 						$('body').removeClass("is-no-data");
-						populateAppContent(json.appName, json.devName, json.appIcon, reviewsCloud, "http://reflection.io/");	
+						handleData(reviewsCloud.data);
 					} else {
 						// show cannot find reviews
 						$('body').removeClass("is-loading-data");
@@ -513,7 +513,7 @@
 
 			var topResultsArray = [];
 
-			for(var t = 0; t < 100; t++) {
+			for(var t = 0; t < 100 && t < cloudData.length; t++) {
 				topResultsArray.push(cloudData[t]);
 			}
 
@@ -767,11 +767,9 @@
 			}, 500);
 		}
 
-		function populateAppContent(appName, devName, appIconUrl, cloudReviews, appLink) {
+		function populateAppContent(appName, devName, appIconUrl, appLink) {			
 			
-			handleData(cloudReviews.data);
-			
-			var appLink = $("<a>").attr("href", appLink).text(appName);
+			var appLink = $("<a>").attr("href", appLink).attr("target", "_blank").text(appName);
 			if(appName != undefined) {
 				$('.js-app-name').html(appLink);
 			}
@@ -779,7 +777,7 @@
 				$('.js-developer-name').text(devName);
 			}
 			if(appIconUrl != undefined) {
-				$('.js-app-icon').attr("src", appIconUrl);	
+				$('.js-app-icon').attr("src", appIconUrl);
 			}
 			
 			var selectedCountry = $('.js-secondary-filter .js-dropdown-trigger b').text();
@@ -810,7 +808,7 @@
 				var valueToSearch = $(this).val();
 				typingTimer = setTimeout(function(){
 					var myHeaders = new Headers();
-					myHeaders.append('Authorization', 'Basic ZWxhc3RpYzplWFBsSTUxeFU2Z29OOTI3');
+					// myHeaders.append('Authorization', 'Basic ZWxhc3RpYzplWFBsSTUxeFU2Z29OOTI3');
 					myHeaders.append('Content-Type', 'application/json');
 
 					 var myInit = { method: 'POST',
@@ -837,22 +835,31 @@
 								}
 							})
 					 };
-
-					fetch('https://es.reflection.io:9200/ios/_search', myInit).then(function(response) {
+					
+					var myInitNewSearchURL = { method: 'GET',
+						 headers: myHeaders,
+						 mode: 'cors',
+						 cache: 'default',
+					 };
+					// previous search URL https://es.reflection.io:9200/ios/_search
+					
+					fetch('https://oli-4395-dot-reflection-live.appspot.com/webapp/search/iosapp?term=' + valueToSearch, myInitNewSearchURL).then(function(response) {
+						console.log(response);
 						return response.json().then(function(json) {
 							console.log(json);
-							if(json && json.hits && json.hits.hits.length) {
+							if(json && json.data && json.data.length) {
 								
 								var searchResultsDropDown = $('.js-search-results-drop-down');
-								$.each(json.hits.hits, function(i, result){
-									console.log(result);
-									searchResultsDropDown.append($("<li>").attr("data-appid", result['_source'].application_id).attr("data-appDeveloper", result['_source'].developer_name).append($("<span>").text(result['_source'].application_name)).on("click", function(){
+								$.each(json.data, function(i, result){
+									// console.log(result);
+									searchResultsDropDown.append($("<li>").attr("data-appid", result.appId).attr("data-appDeveloper", result.developerName).append($("<img>").attr("src", result.appIcon)).append($("<span>").text(result.appName)).on("click", function(){
 										var $this = $(this);
 										var selectedAppId = $this.attr("data-appId");										
 										var selectedAppName = $this.text();
 										var selectedAppDeveloper = $this.attr("data-appDeveloper");
 										$('.js-app-search-input').val(selectedAppName).attr("data-appId", selectedAppId);
 										$('.js-search-results-drop-down').hide();
+										populateAppContent(result.appName, result.developerName, result.appIcon, "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22" + selectedAppId + "%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");	
 										generateReviewsCloud();
 									}));
 									

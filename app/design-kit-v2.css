@@ -2362,8 +2362,12 @@ textarea, .global-header .link-log-in, .global-header .search-link-container inp
   margin-top: 5px;
   background-image: url(images/rating-stars-grey@2x.png);
 }
+/* line 13, sass/components/_ratings.scss */
+.ref-table .ratings-container {
+  display: none;
+}
 
-/* line 14, sass/components/_ratings.scss */
+/* line 17, sass/components/_ratings.scss */
 .ratings-full {
   position: absolute;
   top: 0;
@@ -10364,6 +10368,27 @@ li .form-field-notification-number {
   color: #727686;
 }
 /* line 52, sass/components-v2/_main-navigation.scss */
+.main-navigation > ul > li > a .main-navigation__new-text {
+  position: absolute;
+  top: 3px;
+  right: 12px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #ff496a;
+  letter-spacing: -.5px;
+}
+@media (min-width: 1360px) {
+  /* line 52, sass/components-v2/_main-navigation.scss */
+  .main-navigation > ul > li > a .main-navigation__new-text {
+    top: 1px;
+    right: 7px;
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+}
+/* line 69, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > a:after {
   position: absolute;
   top: 15px;
@@ -10372,47 +10397,55 @@ li .form-field-notification-number {
   color: #727686;
 }
 @media (min-width: 960px) {
-  /* line 61, sass/components-v2/_main-navigation.scss */
+  /* line 78, sass/components-v2/_main-navigation.scss */
   .no-touchevents .panel-left .main-navigation > ul > li > a span {
     opacity: 0;
   }
-  /* line 66, sass/components-v2/_main-navigation.scss */
+  /* line 83, sass/components-v2/_main-navigation.scss */
   .no-touchevents .panel-left:hover .main-navigation > ul > li > a span {
     opacity: 1;
   }
 }
 @media (min-width: 1360px) {
-  /* line 74, sass/components-v2/_main-navigation.scss */
+  /* line 91, sass/components-v2/_main-navigation.scss */
   .no-touchevents .panel-left .main-navigation > ul > li > a span,
   .main-navigation > ul > li > a .no-touchevents .panel-left:hover span {
     opacity: 1;
   }
 }
-/* line 81, sass/components-v2/_main-navigation.scss */
+/* line 98, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li:hover > a {
   background-color: #222224;
 }
-/* line 84, sass/components-v2/_main-navigation.scss */
+/* line 101, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li:hover > a svg path, .no-touchevents .main-navigation > ul > li:hover > a svg polygon {
   fill: #c4c7d0;
 }
-/* line 88, sass/components-v2/_main-navigation.scss */
+/* line 105, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li:hover > a span, .no-touchevents .main-navigation > ul > li:hover > a:after {
   color: #c4c7d0;
 }
-/* line 93, sass/components-v2/_main-navigation.scss */
+/* line 108, sass/components-v2/_main-navigation.scss */
+.no-touchevents .main-navigation > ul > li:hover > a .main-navigation__new-text {
+  color: #ff496a;
+}
+/* line 113, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li.is-selected:hover > a {
   background-color: #47447c;
 }
-/* line 95, sass/components-v2/_main-navigation.scss */
+/* line 115, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li.is-selected:hover > a span, .no-touchevents .main-navigation > ul > li.is-selected:hover > a:after {
   color: #fcfdfd;
 }
-/* line 98, sass/components-v2/_main-navigation.scss */
+/* line 118, sass/components-v2/_main-navigation.scss */
+.no-touchevents .main-navigation > ul > li.is-selected:hover > a .main-navigation__new-text {
+  color: #ff496a;
+}
+/* line 121, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li.is-selected:hover > a svg path, .no-touchevents .main-navigation > ul > li.is-selected:hover > a svg polygon {
   fill: #fcfdfd;
 }
-/* line 104, sass/components-v2/_main-navigation.scss */
+/* line 127, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul {
   width: 100%;
   float: left;
@@ -10420,23 +10453,23 @@ li .form-field-notification-number {
   -webkit-transition: margin-top 0.16s ease-in;
           transition: margin-top 0.16s ease-in;
 }
-/* line 110, sass/components-v2/_main-navigation.scss */
+/* line 133, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li.is-open {
   background-color: #363a47;
 }
-/* line 112, sass/components-v2/_main-navigation.scss */
+/* line 135, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li.is-open > a {
   background-color: #222224;
 }
-/* line 115, sass/components-v2/_main-navigation.scss */
+/* line 138, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li.is-open > a svg path, .main-navigation > ul > li.is-open > a svg polygon {
   fill: #c4c7d0;
 }
-/* line 119, sass/components-v2/_main-navigation.scss */
+/* line 142, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li.is-open > a span, .main-navigation > ul > li.is-open > a:after {
   color: #c4c7d0;
 }
-/* line 123, sass/components-v2/_main-navigation.scss */
+/* line 146, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li.is-open > ul {
   position: relative;
   margin-top: 0;
@@ -10445,23 +10478,27 @@ li .form-field-notification-number {
   -webkit-transition: margin-top 0.2s ease-out;
           transition: margin-top 0.2s ease-out;
 }
-/* line 132, sass/components-v2/_main-navigation.scss */
+/* line 155, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li.is-selected > a {
   background-color: #47447c;
 }
-/* line 134, sass/components-v2/_main-navigation.scss */
+/* line 157, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li.is-selected > a span, .main-navigation > ul > li.is-selected > a:after {
   color: #fcfdfd;
 }
-/* line 137, sass/components-v2/_main-navigation.scss */
+/* line 160, sass/components-v2/_main-navigation.scss */
+.main-navigation > ul > li.is-selected > a .main-navigation__new-text {
+  color: #ff496a;
+}
+/* line 163, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li.is-selected > a svg path, .main-navigation > ul > li.is-selected > a svg polygon {
   fill: #fcfdfd;
 }
-/* line 144, sass/components-v2/_main-navigation.scss */
+/* line 170, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul {
   background-color: #363a47;
 }
-/* line 146, sass/components-v2/_main-navigation.scss */
+/* line 172, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul li {
   position: relative;
   width: 100%;
@@ -10471,15 +10508,15 @@ li .form-field-notification-number {
   background-color: #363a47;
   border-bottom: 0px;
 }
-/* line 154, sass/components-v2/_main-navigation.scss */
+/* line 180, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul li:first-child {
   padding-top: 13px;
 }
-/* line 157, sass/components-v2/_main-navigation.scss */
+/* line 183, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul li:last-child {
   padding-bottom: 12px;
 }
-/* line 160, sass/components-v2/_main-navigation.scss */
+/* line 186, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul li a {
   position: relative;
   width: 100%;
@@ -10492,90 +10529,90 @@ li .form-field-notification-number {
   background-color: #363a47;
   box-sizing: border-box;
 }
-/* line 171, sass/components-v2/_main-navigation.scss */
+/* line 197, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul li a span {
   padding-left: 16px;
   color: #81879d;
 }
-/* line 175, sass/components-v2/_main-navigation.scss */
+/* line 201, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul li a svg {
   width: 19px;
   height: 19px;
   vertical-align: middle;
 }
-/* line 179, sass/components-v2/_main-navigation.scss */
+/* line 205, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul li a svg path, .main-navigation > ul > li > ul li a svg polygon {
   fill: #5a5a68;
 }
 @media (min-width: 960px) {
-  /* line 185, sass/components-v2/_main-navigation.scss */
+  /* line 211, sass/components-v2/_main-navigation.scss */
   .no-touchevents .panel-left .main-navigation > ul > li > ul li a span {
     opacity: 0;
   }
-  /* line 190, sass/components-v2/_main-navigation.scss */
+  /* line 216, sass/components-v2/_main-navigation.scss */
   .no-touchevents .panel-left:hover .main-navigation > ul > li > ul li a span {
     opacity: 1;
   }
 }
 @media (min-width: 1360px) {
-  /* line 198, sass/components-v2/_main-navigation.scss */
+  /* line 224, sass/components-v2/_main-navigation.scss */
   .no-touchevents .panel-left .main-navigation > ul > li > ul li a span,
   .main-navigation > ul > li > ul li a .no-touchevents .panel-left:hover span {
     opacity: 1;
   }
 }
-/* line 206, sass/components-v2/_main-navigation.scss */
+/* line 232, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li > ul li:hover > a span {
   color: #949cb8;
 }
-/* line 209, sass/components-v2/_main-navigation.scss */
+/* line 235, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li > ul li:hover > a svg path, .no-touchevents .main-navigation > ul > li > ul li:hover > a svg polygon {
   fill: #949cb8;
 }
-/* line 214, sass/components-v2/_main-navigation.scss */
+/* line 240, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li > ul li.is-selected:hover > a span {
   color: #fcfdfd;
 }
-/* line 217, sass/components-v2/_main-navigation.scss */
+/* line 243, sass/components-v2/_main-navigation.scss */
 .no-touchevents .main-navigation > ul > li > ul li.is-selected:hover > a svg path, .no-touchevents .main-navigation > ul > li > ul li.is-selected:hover > a svg polygon {
   fill: #fcfdfd;
 }
-/* line 224, sass/components-v2/_main-navigation.scss */
+/* line 250, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul li.is-selected a span {
   color: #fcfdfd;
 }
-/* line 227, sass/components-v2/_main-navigation.scss */
+/* line 253, sass/components-v2/_main-navigation.scss */
 .main-navigation > ul > li > ul li.is-selected a svg path, .main-navigation > ul > li > ul li.is-selected a svg polygon {
   fill: #fcfdfd;
 }
 
-/* line 236, sass/components-v2/_main-navigation.scss */
+/* line 262, sass/components-v2/_main-navigation.scss */
 .main-navigation.main-navigation--account > ul {
   border-top: 1px solid #29292c;
 }
-/* line 239, sass/components-v2/_main-navigation.scss */
+/* line 265, sass/components-v2/_main-navigation.scss */
 .main-navigation.main-navigation--account > ul > li:first-child {
   border-top: 1px solid #161617;
 }
-/* line 242, sass/components-v2/_main-navigation.scss */
+/* line 268, sass/components-v2/_main-navigation.scss */
 .main-navigation.main-navigation--account > ul > li > a {
   padding: 15px 0px 15px 27px;
 }
-/* line 244, sass/components-v2/_main-navigation.scss */
+/* line 270, sass/components-v2/_main-navigation.scss */
 .main-navigation.main-navigation--account > ul > li > a span {
   padding-left: 11px;
   letter-spacing: 0.05em;
 }
-/* line 248, sass/components-v2/_main-navigation.scss */
+/* line 274, sass/components-v2/_main-navigation.scss */
 .main-navigation.main-navigation--account > ul > li > a svg {
   width: 18px;
   height: 18px;
 }
-/* line 251, sass/components-v2/_main-navigation.scss */
+/* line 277, sass/components-v2/_main-navigation.scss */
 .main-navigation.main-navigation--account > ul > li > a svg path, .main-navigation.main-navigation--account > ul > li > a svg polygon {
   fill: #5a5a68;
 }
-/* line 258, sass/components-v2/_main-navigation.scss */
+/* line 284, sass/components-v2/_main-navigation.scss */
 .main-navigation.main-navigation--account > ul > li.is-selected svg path, .main-navigation.main-navigation--account > ul > li.is-selected svg polygon {
   fill: #fcfdfd;
 }
@@ -10916,20 +10953,32 @@ li .form-field-notification-number {
 }
 /* line 252, sass/components-v2/_multi-step-section.scss */
 .multi-step-section__loading.is-error {
+  max-width: 460px;
+  margin: 0 auto;
   padding-bottom: 6px;
 }
-/* line 254, sass/components-v2/_multi-step-section.scss */
+/* line 256, sass/components-v2/_multi-step-section.scss */
+.multi-step-section__loading.is-error h2 {
+  margin-top: 7.8rem;
+  margin-bottom: 2rem;
+}
+/* line 260, sass/components-v2/_multi-step-section.scss */
+.multi-step-section__loading.is-error .hamster-wheel {
+  top: 40px;
+}
+/* line 263, sass/components-v2/_multi-step-section.scss */
 .multi-step-section__loading.is-error .animation-hamster {
+  top: 40px;
   width: 131px;
   height: 131px;
   margin-left: -66px;
   background-size: 131px 131px;
 }
-/* line 260, sass/components-v2/_multi-step-section.scss */
+/* line 270, sass/components-v2/_multi-step-section.scss */
 .multi-step-section__loading.is-error .ref-button--secondary--medium {
   margin-top: 3.6rem;
 }
-/* line 263, sass/components-v2/_multi-step-section.scss */
+/* line 273, sass/components-v2/_multi-step-section.scss */
 .multi-step-section__loading.is-error .popup-text-link {
   margin: 2.3rem auto 0;
 }
@@ -12424,48 +12473,41 @@ header .search__results-container__heading:last-child {
     margin-bottom: 0;
   }
 }
-@media (min-width: 1900px) {
-  /* line 58, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-row {
-    margin-bottom: 0.5rem;
-  }
-}
 
-/* line 69, sass/components-v2/_summary-widget.scss */
+/* line 66, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item {
   width: 33%;
-  padding: 0 1rem 0.9rem 1rem;
+  padding: 0 3px 0.9rem;
   display: inline-block;
   vertical-align: top;
   list-style: none;
   text-align: center;
 }
-/* line 76, sass/components-v2/_summary-widget.scss */
+/* line 73, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item a, .summary-widget__data-item .summary-widget__data-item__icon-title-container {
   width: 100%;
   display: block;
   float: left;
   text-align: center;
 }
-/* line 81, sass/components-v2/_summary-widget.scss */
+/* line 78, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item a img, .summary-widget__data-item a .icon-flag, .summary-widget__data-item .summary-widget__data-item__icon-title-container img, .summary-widget__data-item .summary-widget__data-item__icon-title-container .icon-flag {
   display: inline-block;
-  float: left;
 }
-/* line 85, sass/components-v2/_summary-widget.scss */
+/* line 81, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item a img, .summary-widget__data-item .summary-widget__data-item__icon-title-container img {
   width: 32px;
   height: 32px;
+  margin-right: 3px;
   display: inline-block;
-  float: left;
   border-radius: 7px;
 }
-/* line 92, sass/components-v2/_summary-widget.scss */
+/* line 88, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item a .icon-flag, .summary-widget__data-item .summary-widget__data-item__icon-title-container .icon-flag {
   width: 32px;
   height: 32px;
 }
-/* line 97, sass/components-v2/_summary-widget.scss */
+/* line 93, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item .ref-icon-after--ios,
 .summary-widget__data-item .ref-icon-after--play-store {
   position: relative;
@@ -12475,54 +12517,24 @@ header .search__results-container__heading:last-child {
   display: inline-block;
   vertical-align: top;
 }
-/* line 105, sass/components-v2/_summary-widget.scss */
+/* line 101, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item .ref-icon-after--ios:after,
 .summary-widget__data-item .ref-icon-after--play-store:after {
   font-size: 19px;
   color: #81879d;
 }
-/* line 110, sass/components-v2/_summary-widget.scss */
+/* line 106, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item .ref-icon-after--play-store:after {
   font-size: 18px;
 }
-@media (min-width: 1100px) {
-  /* line 69, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item {
-    padding: 0 3px 0.9rem;
-  }
-  /* line 116, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item a img, .summary-widget__data-item a .icon-flag, .summary-widget__data-item .summary-widget__data-item__icon-title-container img, .summary-widget__data-item .summary-widget__data-item__icon-title-container .icon-flag {
-    float: none;
-  }
-  /* line 119, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item a img, .summary-widget__data-item .summary-widget__data-item__icon-title-container img {
-    float: none;
-  }
-}
-@media (min-width: 1900px) {
-  /* line 69, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item {
-    padding: 0 1rem 0.9rem 1rem;
-  }
-  /* line 127, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item a img, .summary-widget__data-item .summary-widget__data-item__icon-title-container img {
-    display: inline-block;
-    float: left;
-  }
-  /* line 131, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item a img, .summary-widget__data-item a .icon-flag, .summary-widget__data-item .summary-widget__data-item__icon-title-container img, .summary-widget__data-item .summary-widget__data-item__icon-title-container .icon-flag {
-    float: left;
-  }
-}
 
-/* line 137, sass/components-v2/_summary-widget.scss */
+/* line 110, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__app-name {
-  width: calc(100% - 50px);
-  margin-left: 8px;
+  width: 100%;
   margin-top: -3px;
   margin-bottom: 4px !important;
-  display: inline-block;
-  text-align: left;
+  display: block;
+  text-align: center;
   font-family: "Lato", sans-serif;
   font-size: 1.39rem;
   font-weight: 700;
@@ -12533,188 +12545,126 @@ header .search__results-container__heading:last-child {
   -webkit-transition: color 0.2s;
           transition: color 0.2s;
 }
-/* line 150, sass/components-v2/_summary-widget.scss */
+/* line 122, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__icon-title-container .summary-widget__data-item__app-name {
   color: #29292c;
 }
-/* line 153, sass/components-v2/_summary-widget.scss */
+/* line 125, sass/components-v2/_summary-widget.scss */
 a:hover .summary-widget__data-item__app-name {
   color: #4b46b5;
   -webkit-transition: color 0.3s;
           transition: color 0.3s;
 }
-/* line 157, sass/components-v2/_summary-widget.scss */
+/* line 129, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__app-name.is-loading {
-  width: calc(100% - 52px);
+  width: 90%;
   height: 10px;
   margin: 2px auto 0;
   background-color: #e9e9ed;
 }
-@media (min-width: 1100px) {
-  /* line 137, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item__app-name {
-    width: 100%;
-    margin-left: 0;
-    display: block;
-    text-align: center;
-  }
-  /* line 168, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item__app-name.is-loading {
-    width: 90%;
-  }
-}
-@media (min-width: 1900px) {
-  /* line 137, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item__app-name {
-    width: calc(100% - 50px);
-    margin-left: 8px;
-    display: inline-block;
-    text-align: left;
-  }
-  /* line 177, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item__app-name.is-loading {
-    width: calc(100% - 52px);
-  }
-}
 
-/* line 182, sass/components-v2/_summary-widget.scss */
+/* line 136, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data {
   position: relative;
-  top: -14px;
-  padding-left: 45px;
-  display: block;
+  top: 0;
+  display: inline;
   text-align: left;
   font-family: "Lato", sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   color: #363a47;
 }
-/* line 192, sass/components-v2/_summary-widget.scss */
+/* line 145, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data a {
   font-size: 1.3rem;
   color: #6d69c5;
 }
-/* line 195, sass/components-v2/_summary-widget.scss */
+/* line 148, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data a:hover {
   color: #4b46b5;
 }
-/* line 199, sass/components-v2/_summary-widget.scss */
+/* line 152, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data.positive-colour {
   color: #12a76a;
 }
-/* line 202, sass/components-v2/_summary-widget.scss */
+/* line 155, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data.negative-colour {
   color: #ff496a;
 }
-/* line 205, sass/components-v2/_summary-widget.scss */
+/* line 158, sass/components-v2/_summary-widget.scss */
 .summary-widget__data-item__data.is-loading {
-  width: calc(100% - 52px);
+  width: 90%;
   height: 10px;
-  margin: 6px 0 0 32px;
+  margin: 6px auto 0;
   padding-left: 0;
   display: inline-block;
   background-color: #e9e9ed;
 }
-@media (min-width: 1100px) {
-  /* line 182, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item__data {
-    top: 0;
-    padding-left: 0;
-    display: inline;
-  }
-  /* line 217, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item__data.is-loading {
-    width: 90%;
-    padding-left: 0;
-    margin: 6px auto 0;
-  }
-}
-@media (min-width: 1900px) {
-  /* line 182, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item__data {
-    top: -14px;
-    padding-left: 45px;
-    display: block;
-  }
-  /* line 227, sass/components-v2/_summary-widget.scss */
-  .summary-widget__data-item__data.is-loading {
-    width: calc(100% - 52px);
-    padding-left: 0;
-    margin: 6px 0 0 32px;
-  }
-}
 
-/* line 234, sass/components-v2/_summary-widget.scss */
+/* line 167, sass/components-v2/_summary-widget.scss */
 .widget-title {
   margin-bottom: 1.9rem;
   font-size: 16px;
 }
 
-/* line 238, sass/components-v2/_summary-widget.scss */
+/* line 171, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item {
-  width: 50%;
+  width: 100%;
   padding-left: 2px;
   margin-bottom: 15px;
-  display: inline-block;
+  display: block;
   vertical-align: top;
 }
-/* line 245, sass/components-v2/_summary-widget.scss */
+/* line 178, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item .icon-flag + div, .summary-widget--highest-lowest__data-item svg + div {
   width: calc(100% - 112px);
   display: inline-block;
   vertical-align: top;
   color: #363a47;
 }
-/* line 252, sass/components-v2/_summary-widget.scss */
+/* line 185, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item .icon-flag {
   margin-top: 4px;
   margin-right: 8px;
   display: inline-block;
   vertical-align: top;
 }
-/* line 258, sass/components-v2/_summary-widget.scss */
+/* line 191, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item svg {
   width: 26px;
   display: inline-block;
   margin: 3px 11px 0 3px;
 }
-/* line 262, sass/components-v2/_summary-widget.scss */
+/* line 195, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item svg.svg-icon-out-of-rank {
   width: 32px;
   margin-left: 0;
 }
-/* line 267, sass/components-v2/_summary-widget.scss */
+/* line 200, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item:nth-of-type(even) {
   padding-bottom: 9px;
   border-bottom: 1px solid #c4c7d0;
 }
-/* line 271, sass/components-v2/_summary-widget.scss */
+/* line 204, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-item:last-child {
   padding-bottom: 7px;
   border-bottom: none;
 }
-@media (min-width: 1100px) {
-  /* line 238, sass/components-v2/_summary-widget.scss */
-  .summary-widget--highest-lowest__data-item {
-    width: 100%;
-    display: block;
-  }
-}
 @media (min-width: 2300px) {
-  /* line 238, sass/components-v2/_summary-widget.scss */
+  /* line 171, sass/components-v2/_summary-widget.scss */
   .summary-widget--highest-lowest__data-item {
     width: 50%;
     display: inline-block;
     vertical-align: top;
   }
-  /* line 283, sass/components-v2/_summary-widget.scss */
+  /* line 212, sass/components-v2/_summary-widget.scss */
   .summary-widget--highest-lowest__data-item:nth-of-type(odd), .summary-widget--highest-lowest__data-item:last-child {
     padding-bottom: 0;
     border-bottom: 0;
   }
 }
 
-/* line 290, sass/components-v2/_summary-widget.scss */
+/* line 219, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__country {
   padding-top: 3px;
   padding-bottom: 5px;
@@ -12728,7 +12678,7 @@ a:hover .summary-widget__data-item__app-name {
   white-space: nowrap;
 }
 
-/* line 302, sass/components-v2/_summary-widget.scss */
+/* line 231, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__data-heading {
   width: 65px;
   margin-bottom: 0;
@@ -12741,7 +12691,7 @@ a:hover .summary-widget__data-item__app-name {
   line-height: 1.3;
 }
 
-/* line 313, sass/components-v2/_summary-widget.scss */
+/* line 242, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__rank,
 .summary-widget--highest-lowest__category {
   margin-right: 6px;
@@ -12750,23 +12700,23 @@ a:hover .summary-widget__data-item__app-name {
   vertical-align: top;
   font-family: "Lato", sans-serif;
 }
-/* line 320, sass/components-v2/_summary-widget.scss */
+/* line 249, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__rank.ref-icon-after--down, .summary-widget--highest-lowest__rank.ref-icon-after--up,
 .summary-widget--highest-lowest__category.ref-icon-after--down,
 .summary-widget--highest-lowest__category.ref-icon-after--up {
   margin-right: 0;
 }
 
-/* line 325, sass/components-v2/_summary-widget.scss */
+/* line 254, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__rank {
   font-size: 14px;
   font-weight: 700;
 }
-/* line 328, sass/components-v2/_summary-widget.scss */
+/* line 257, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__rank:after {
   top: -5px;
 }
-/* line 332, sass/components-v2/_summary-widget.scss */
+/* line 261, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__rank.ref-icon-after--equals:after {
   position: relative;
   top: 2px;
@@ -12774,7 +12724,7 @@ a:hover .summary-widget__data-item__app-name {
   color: #81879d;
 }
 
-/* line 340, sass/components-v2/_summary-widget.scss */
+/* line 269, sass/components-v2/_summary-widget.scss */
 .summary-widget--highest-lowest__category {
   font-size: 12px;
 }
@@ -13390,12 +13340,13 @@ a:hover .summary-widget__data-item__app-name {
   width: calc(100% - 55px);
   max-width: 170px;
   margin-left: 11px;
+  padding-top: 7px;
   display: inline-block;
   vertical-align: top;
   float: left;
   text-align: left;
 }
-/* line 455, sass/components-v2/_tables.scss */
+/* line 456, sass/components-v2/_tables.scss */
 .page-data-dashboard--country .data-table__app-summary .data-table__app-details-container {
   width: calc(100% - 50px);
 }
@@ -13406,7 +13357,7 @@ a:hover .summary-widget__data-item__app-name {
   }
 }
 
-/* line 463, sass/components-v2/_tables.scss */
+/* line 464, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name {
   margin: 0;
   padding-top: 1px;
@@ -13418,15 +13369,11 @@ a:hover .summary-widget__data-item__app-name {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 473, sass/components-v2/_tables.scss */
-.page-data-dashboard--country .data-table__app-summary__app-name {
-  margin-top: 9px;
-}
-/* line 476, sass/components-v2/_tables.scss */
+/* line 474, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name a {
   padding-bottom: 0.5rem;
 }
-/* line 480, sass/components-v2/_tables.scss */
+/* line 478, sass/components-v2/_tables.scss */
 .data-table__app-summary__app-name.is-loading {
   width: 80%;
   max-width: 200px;
@@ -13435,55 +13382,55 @@ a:hover .summary-widget__data-item__app-name {
   margin-bottom: 9px;
   background-color: #e9e9ed;
 }
-/* line 487, sass/components-v2/_tables.scss */
+/* line 485, sass/components-v2/_tables.scss */
 .ref-table--publishers .data-table__app-summary__app-name.is-loading {
   margin-top: 5px;
   margin-bottom: 6px;
 }
 
-/* line 498, sass/components-v2/_tables.scss */
+/* line 496, sass/components-v2/_tables.scss */
 .cellTableSortableHeader {
   outline: none;
 }
-/* line 500, sass/components-v2/_tables.scss */
+/* line 498, sass/components-v2/_tables.scss */
 .cellTableSortableHeader:focus {
   outline: none;
 }
-/* line 503, sass/components-v2/_tables.scss */
+/* line 501, sass/components-v2/_tables.scss */
 .cellTableSortableHeader span {
   cursor: pointer;
 }
-/* line 505, sass/components-v2/_tables.scss */
+/* line 503, sass/components-v2/_tables.scss */
 .cellTableSortableHeader span:active {
   position: relative;
   top: 2px;
 }
-/* line 513, sass/components-v2/_tables.scss */
+/* line 511, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-ascending-first-child span:first-child .sort-svg .ascending {
   fill: #6d69c5;
 }
-/* line 521, sass/components-v2/_tables.scss */
+/* line 519, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-ascending-first-child.total-for-period-head-cell span:nth-child(2) .sort-svg .ascending {
   fill: #6d69c5;
 }
-/* line 531, sass/components-v2/_tables.scss */
+/* line 529, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-ascending-last-child span:last-child .sort-svg .ascending {
   fill: #6d69c5;
 }
-/* line 540, sass/components-v2/_tables.scss */
+/* line 538, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-descending-first-child span:first-child .sort-svg .descending {
   fill: #6d69c5;
 }
-/* line 548, sass/components-v2/_tables.scss */
+/* line 546, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-descending-first-child.total-for-period-head-cell span:nth-child(2) .sort-svg .descending {
   fill: #6d69c5;
 }
-/* line 558, sass/components-v2/_tables.scss */
+/* line 556, sass/components-v2/_tables.scss */
 .cellTableSortableHeader.is-descending-last-child span:last-child .sort-svg .descending {
   fill: #6d69c5;
 }
 
-/* line 567, sass/components-v2/_tables.scss */
+/* line 565, sass/components-v2/_tables.scss */
 .ref-table:not(.ref-table--home-chart) .ref-icon-after--equals:after {
   top: 0px;
   left: 2px;
@@ -13491,7 +13438,7 @@ a:hover .summary-widget__data-item__app-name {
   color: #c4c7d0;
 }
 
-/* line 575, sass/components-v2/_tables.scss */
+/* line 573, sass/components-v2/_tables.scss */
 .data-coming-soon {
   color: #81879d;
   cursor: pointer;
@@ -17131,7 +17078,7 @@ h3.tt-value span.is-negative {
 .page-data-vis-category-share .chart {
   position: relative;
   width: 1100px;
-  height: 600px;
+  height: 650px;
   margin: 0 auto;
   display: inline-block;
   background: #343438;
@@ -18099,18 +18046,22 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   bottom: inherit;
 }
 
-/* line 2, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 2, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
+.page-data-vis-reviews-cloud.page-lab-base {
+  min-height: auto;
+}
+/* line 5, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__center-column {
-  margin-top: 100px;
+  margin-top: 60px;
   text-align: center;
 }
-/* line 6, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 9, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .sharing-container {
   position: absolute;
   top: 80px;
   right: 22px;
 }
-/* line 11, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 14, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__main-content-container {
   min-width: 930px;
   max-width: 1180px;
@@ -18118,56 +18069,54 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   padding-right: 4rem;
   padding-left: 3rem;
 }
-/* line 18, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 21, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .data-vis-reviews-cloud__content-title {
   margin-top: 10rem;
   margin-bottom: 3rem;
   text-align: center;
 }
-/* line 23, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 26, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
+.page-data-vis-reviews-cloud .data-lab-article-intro:after {
+  display: none;
+}
+/* line 29, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-column__app-icon-container {
   width: 100px;
   height: 100px;
-  margin: 0 auto 1.4rem;
+  margin: 0 2rem 1.4rem;
+  display: inline-block;
   border-radius: 20px;
   background: #363a47;
 }
-/* line 29, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 36, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-column__app-icon-container img {
   width: 100%;
 }
-/* line 33, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 40, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-column {
-  width: 220px;
+  width: 248px;
   display: inline-block;
   float: left;
 }
-@media (min-width: 1280px) {
-  /* line 33, sass/templates-v2/_data-vis-reviews-cloud.scss */
-  .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-column {
-    margin-top: -135px;
-    width: 248px;
-  }
-}
-/* line 42, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 45, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-name {
   margin: 0 0 0.6rem;
 }
-/* line 44, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 47, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-name a {
   color: #9f9bff;
 }
-/* line 46, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 49, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-name a:hover {
   color: #6e68ff;
 }
-/* line 51, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 54, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__developer-name {
   margin: 0 0 1.7rem;
   color: #81879d;
   font-size: 14px;
 }
-/* line 56, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 59, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget {
   width: 100%;
   padding: 16px 22px 25px;
@@ -18175,19 +18124,19 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   border-radius: 10px;
   background-color: #363a47;
 }
-/* line 62, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 65, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h4 {
   margin-bottom: 1.8rem;
   font-size: 18px;
   font-weight: 400;
   text-align: left;
 }
-/* line 67, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 70, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h4 span {
   color: #54bee5;
   font-weight: 600;
 }
-/* line 72, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 75, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 {
   margin-bottom: 0.8rem;
   font-size: 16px;
@@ -18195,33 +18144,33 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   color: #c4c7d0;
   text-align: left;
 }
-/* line 78, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 81, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 .selected-country-text,
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 .total-reviews-count {
   font-family: "Lato", sans-serif;
 }
-/* line 82, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 85, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 .total-reviews-count {
   margin-left: 7px;
   font-weight: 700;
   color: #fcfdfd;
 }
-/* line 87, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 90, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 .selected-country-text {
   margin-left: 2px;
   font-size: 13px;
 }
-/* line 92, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 95, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget ul {
   padding-top: 0.8rem;
   text-align: left;
   border-top: 2px solid #2e313c;
 }
-/* line 96, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 99, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget ul li {
   margin-bottom: 5px;
 }
-/* line 101, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 104, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__cloud-section {
   width: calc(100% - 290px);
   min-height: 300px;
@@ -18229,50 +18178,51 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   display: inline-block;
 }
 @media (min-width: 1280px) {
-  /* line 101, sass/templates-v2/_data-vis-reviews-cloud.scss */
+  /* line 104, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
   .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__cloud-section {
     width: calc(100% - 250px);
     padding-left: 50px;
     padding-right: 0;
   }
 }
-/* line 112, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 115, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .form-field--search .form-field--select__dropdown li span {
   position: relative;
   top: 0;
   left: 0;
 }
-/* line 117, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 120, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .form-field--search {
-  width: 230px;
+  width: 406px;
+  display: inline-block;
 }
-/* line 119, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 123, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .form-field--search input {
   font-size: 16px;
 }
-/* line 122, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 126, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .form-field--search .form-field--select__dropdown {
   min-height: 60px;
 }
-/* line 126, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 130, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .form-field--select__dropdown {
   max-height: 300px;
   overflow: auto;
 }
-/* line 129, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 133, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .form-field--select__dropdown .icon-flag-sm {
   margin-right: 8px;
 }
-/* line 133, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 137, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .app-search-loading-indicator {
   position: relative;
   margin-top: -6px;
 }
-/* line 136, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 140, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .app-search-loading-indicator span, .page-data-vis-reviews-cloud .app-search-loading-indicator .search-loading-indicator {
   position: relative;
 }
-/* line 139, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 143, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .app-search-loading-indicator span {
   color: #fcfdfd;
   font-size: 15px;
@@ -18280,69 +18230,58 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   left: 0;
   line-height: 1.5;
 }
-/* line 146, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 150, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .app-search-loading-indicator .search-loading-indicator {
   top: 5px;
   right: -101px;
   display: inline-block;
 }
-/* line 152, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 156, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .filters-row {
-  margin: 0 auto 6rem;
+  text-align: left;
 }
-/* line 154, sass/templates-v2/_data-vis-reviews-cloud.scss */
-.page-data-vis-reviews-cloud .filters-row + div {
-  overflow: visible;
-}
-@media (min-width: 1280px) {
-  /* line 152, sass/templates-v2/_data-vis-reviews-cloud.scss */
-  .page-data-vis-reviews-cloud .filters-row {
-    margin-left: 31rem;
-    text-align: left;
-  }
-}
-/* line 163, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 160, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__box {
   width: 170px;
 }
-/* line 165, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 162, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__box .icon-flag-sm {
   top: 9px;
 }
-/* line 167, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 164, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__box .icon-flag-sm + b {
   padding-left: 28px;
 }
-/* line 171, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 168, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__box > img {
   position: absolute;
   top: 12px;
   left: 10px;
 }
-/* line 178, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 175, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__dropdown li {
   margin-bottom: 10px;
 }
-/* line 180, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 177, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__dropdown li:hover {
   cursor: pointer;
 }
-/* line 186, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 183, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .form-field--search {
   padding: 10px 13px 11px 15px;
 }
-/* line 189, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 186, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .tag-cloud-container {
   position: relative;
   overflow: visible;
 }
-/* line 193, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 190, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud {
   position: relative;
   display: none;
   overflow: visible;
 }
-/* line 198, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 195, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud li {
   padding: 0.5em;
   display: inline-block;
@@ -18354,41 +18293,41 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   -webkit-transition: font-size 0.5s;
           transition: font-size 0.5s;
 }
-/* line 208, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 205, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .tag-cloud li {
   -webkit-transition: 0.2s color;
   transition: 0.2s color;
 }
-/* line 211, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 208, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .tag-cloud li:hover {
   opacity: 0.3;
   underline: none;
   -webkit-transition: 0.2s opacity;
   transition: 0.2s opacity;
 }
-/* line 218, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 215, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud li.positive-average,
 .page-data-vis-reviews-cloud .tag-cloud--positive li {
   color: #12a76a;
 }
-/* line 222, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 219, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud li.average-average,
 .page-data-vis-reviews-cloud .tag-cloud--average li {
   color: #727686;
 }
-/* line 226, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 223, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud li.negative-average,
 .page-data-vis-reviews-cloud .tag-cloud--negative li {
   color: #ff496a;
 }
-/* line 230, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 227, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud .ratings-container {
   padding-top: 5px;
   margin-bottom: 8px;
   display: inline-block;
   vertical-align: top;
 }
-/* line 236, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 233, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .number-of-stars-label,
 .page-data-vis-reviews-cloud .rating-number,
 .page-data-vis-reviews-cloud .rating-percentage-text {
@@ -18396,19 +18335,19 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   vertical-align: top;
   font-family: "Lato", sans-serif;
 }
-/* line 243, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 240, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .number-of-stars-label {
   margin-right: 1rem;
   color: #54bee5;
   font-size: 16px;
 }
-/* line 247, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 244, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .number-of-stars-label:after {
   top: 2px;
   left: 3px;
   font-size: 13px;
 }
-/* line 253, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 250, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .rating-number {
   width: 32px;
   margin-top: 1px;
@@ -18416,20 +18355,20 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   color: #fcfdfd;
 }
 @media (min-width: 1280px) {
-  /* line 253, sass/templates-v2/_data-vis-reviews-cloud.scss */
+  /* line 250, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
   .page-data-vis-reviews-cloud .rating-number {
     width: 36px;
     font-size: 14px;
   }
 }
-/* line 263, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 260, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .rating-percentage-text {
   margin-top: 1px;
   float: right;
   font-size: 14px;
   color: #81879d;
 }
-/* line 269, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 266, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .rating-percentage-container {
   width: 70px;
   height: 9px;
@@ -18440,12 +18379,12 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   background-color: #2e313c;
 }
 @media (min-width: 1280px) {
-  /* line 269, sass/templates-v2/_data-vis-reviews-cloud.scss */
+  /* line 266, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
   .page-data-vis-reviews-cloud .rating-percentage-container {
     width: 93px;
   }
 }
-/* line 281, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 278, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .rating-percentage {
   width: 0%;
   height: 9px;
@@ -18453,46 +18392,46 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   -webkit-transition: width 0.3s;
           transition: width 0.3s;
 }
-/* line 287, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 284, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .js-five-stars + .rating-percentage-container .rating-percentage {
   background-color: #18a36c;
 }
-/* line 290, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 287, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .js-four-stars + .rating-percentage-container .rating-percentage {
   background-color: #18a36c;
 }
-/* line 293, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 290, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .js-three-stars + .rating-percentage-container .rating-percentage {
   background-color: #727686;
 }
-/* line 296, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 293, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .js-two-stars + .rating-percentage-container .rating-percentage {
   background-color: #ff496a;
 }
-/* line 299, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 296, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .js-one-stars + .rating-percentage-container .rating-percentage {
   background-color: #ff496a;
 }
-/* line 302, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 299, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .total-ratings-container {
   max-width: 140px;
 }
-/* line 305, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 302, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .total-ratings-container h2 {
   display: inline-block;
   padding-top: 2px;
 }
-/* line 309, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 306, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .total-ratings-container span {
   margin-right: 7px;
   float: right;
   font-weight: 600;
 }
-/* line 314, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 311, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .ratings-container {
   background-image: url(images/rating-stars-lab@2x.png);
 }
-/* line 317, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 314, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container {
   width: 100%;
   margin-top: 7rem;
@@ -18501,25 +18440,25 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   text-align: left;
 }
 @media (min-width: 1280px) {
-  /* line 317, sass/templates-v2/_data-vis-reviews-cloud.scss */
+  /* line 314, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
   .page-data-vis-reviews-cloud .reviews-content-container {
     margin-top: 9rem;
   }
 }
-/* line 326, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 323, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container > h2 {
   padding-bottom: 2.4rem;
   font-weight: 400;
   border-bottom: 1px solid #19191b;
 }
-/* line 331, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 328, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container .ratings-container {
   margin-right: 2rem;
   margin-bottom: 1rem;
   display: inline-block;
   vertical-align: top;
 }
-/* line 337, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 334, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container .ratings-list {
   max-height: 700px;
   padding-top: 2rem;
@@ -18527,18 +18466,18 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   padding-right: 20px;
   overflow: auto;
 }
-/* line 344, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 341, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container ul {
   position: relative;
   margin-bottom: 2rem;
   overflow: auto;
 }
-/* line 349, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 346, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container li {
   position: relative;
   margin-bottom: 3rem;
 }
-/* line 353, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 350, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container .reviews-content__title {
   position: relative;
   top: 2px;
@@ -18550,7 +18489,7 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   font-weight: 600;
   color: #fcfdfd;
 }
-/* line 364, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 361, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container .reviews-content__date {
   position: absolute;
   top: 6px;
@@ -18559,26 +18498,26 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
 }
-/* line 372, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 369, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container p {
   font-size: 14px;
 }
-/* line 374, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 371, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .reviews-content-container p strong {
   font-weight: 700;
   color: #54bee5;
 }
-/* line 380, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 377, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .cloud-key-instruction-container {
   margin: 0;
 }
 @media (min-width: 1280px) {
-  /* line 380, sass/templates-v2/_data-vis-reviews-cloud.scss */
+  /* line 377, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
   .page-data-vis-reviews-cloud .cloud-key-instruction-container {
     width: 100%;
   }
 }
-/* line 386, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 383, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .cloud-key-instruction {
   margin-top: 12px;
   margin-bottom: 0;
@@ -18588,7 +18527,7 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   font-weight: 400;
   color: #c4c7d0;
 }
-/* line 395, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 392, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .cloud-key {
   margin: 14px 0 0 206px;
   display: inline-block;
@@ -18597,30 +18536,30 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   font-weight: 400;
   color: #c4c7d0;
 }
-/* line 402, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 399, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .cloud-key .size-key {
   font-size: 16px;
   color: #81879d;
 }
-/* line 405, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 402, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .cloud-key .size-key:first-letter {
   font-size: 22px;
 }
-/* line 408, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 405, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .cloud-key .size-key b {
   font-size: 13px;
 }
-/* line 412, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 409, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .cloud-key:last-child {
   margin-top: 16px;
   margin-left: 15px;
 }
-/* line 416, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 413, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .cloud-key .colour-key {
   font-weight: 600;
 }
 @supports (mix-blend-mode: lighten) {
-  /* line 416, sass/templates-v2/_data-vis-reviews-cloud.scss */
+  /* line 413, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
   .page-data-vis-reviews-cloud .cloud-key .colour-key {
     display: inline-block;
     position: relative;
@@ -18646,67 +18585,67 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
     mix-blend-mode: multiply;
   }
 }
-/* line 421, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 418, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .feedback-container,
 .page-data-vis-reviews-cloud .idc-comments-container {
   width: 100%;
 }
 @media (min-width: 1280px) {
-  /* line 421, sass/templates-v2/_data-vis-reviews-cloud.scss */
+  /* line 418, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
   .page-data-vis-reviews-cloud .feedback-container,
   .page-data-vis-reviews-cloud .idc-comments-container {
     width: 635px;
   }
 }
-/* line 428, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 425, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .feedback-container {
   margin: 8rem 0 7rem;
   padding-left: 3%;
 }
 @media (min-width: 1280px) {
-  /* line 428, sass/templates-v2/_data-vis-reviews-cloud.scss */
+  /* line 425, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
   .page-data-vis-reviews-cloud .feedback-container {
     padding-left: 80px;
     margin-top: 9rem;
   }
 }
-/* line 436, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 433, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .start-instruction {
   margin-top: 20px;
   display: none;
 }
-/* line 440, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 437, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .chart__loading {
   display: none;
 }
-/* line 442, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 439, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .is-loading-data .page-data-vis-reviews-cloud .chart__loading {
   display: block;
 }
-/* line 446, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 443, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .chart__no-data {
   display: none;
 }
-/* line 448, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 445, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .is-no-data .page-data-vis-reviews-cloud .chart__no-data {
   display: inline-block;
 }
-/* line 451, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 448, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud .chart__no-data .animation-hamster-no-data-dark + div {
   width: 400px;
   display: inline-block;
 }
-/* line 457, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 454, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud.is-initial-state .cloud-key,
 .page-data-vis-reviews-cloud.is-initial-state .cloud-key-instruction {
   display: none;
 }
-/* line 461, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 458, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .page-data-vis-reviews-cloud.is-initial-state .start-instruction {
   display: inline-block;
 }
 
-/* line 466, sass/templates-v2/_data-vis-reviews-cloud.scss */
+/* line 463, sass/templates-v2/_data-vis-reviews-cloud-v2.scss */
 .reviews-content-container__keyword {
   font-weight: 600;
   color: #54bee5;
@@ -19344,33 +19283,37 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   width: 639px;
   display: none;
 }
+/* line 307, sass/templates-v2/_home.scss */
+.home-section-head__partners img {
+  max-width: 639px;
+}
 @media (min-width: 720px) {
   /* line 286, sass/templates-v2/_home.scss */
   .home-section-head__partners {
     bottom: 66px;
   }
-  /* line 309, sass/templates-v2/_home.scss */
+  /* line 312, sass/templates-v2/_home.scss */
   .home-section-head__partners .img-partners-mobile {
     display: none;
   }
-  /* line 312, sass/templates-v2/_home.scss */
+  /* line 315, sass/templates-v2/_home.scss */
   .home-section-head__partners .img-partners {
     display: inline-block;
   }
 }
 
-/* line 317, sass/templates-v2/_home.scss */
+/* line 320, sass/templates-v2/_home.scss */
 .home-section {
   position: relative;
   background-color: #f2f2f5;
   text-align: center;
 }
-/* line 321, sass/templates-v2/_home.scss */
+/* line 324, sass/templates-v2/_home.scss */
 .home-section.home-section--right-image {
   background-color: #fcfdfd;
 }
 
-/* line 325, sass/templates-v2/_home.scss */
+/* line 328, sass/templates-v2/_home.scss */
 .home-section-content-container {
   position: relative;
   width: 100%;
@@ -19380,21 +19323,21 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   overflow: visible;
 }
 @media (min-width: 720px) {
-  /* line 325, sass/templates-v2/_home.scss */
+  /* line 328, sass/templates-v2/_home.scss */
   .home-section-content-container {
     min-height: 447px;
   }
-  /* line 334, sass/templates-v2/_home.scss */
+  /* line 337, sass/templates-v2/_home.scss */
   .home-section--taller-section .home-section-content-container {
     min-height: 559px;
   }
-  /* line 337, sass/templates-v2/_home.scss */
+  /* line 340, sass/templates-v2/_home.scss */
   .home-section--content-two .home-section-content-container {
     min-height: 436px;
   }
 }
 
-/* line 342, sass/templates-v2/_home.scss */
+/* line 345, sass/templates-v2/_home.scss */
 .home-section-content {
   width: 100%;
   max-width: 400px;
@@ -19404,14 +19347,14 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   text-align: left;
 }
 @media (min-width: 480px) {
-  /* line 342, sass/templates-v2/_home.scss */
+  /* line 345, sass/templates-v2/_home.scss */
   .home-section-content {
     padding-top: 50px;
     padding-bottom: 20px;
   }
 }
 @media (min-width: 720px) {
-  /* line 342, sass/templates-v2/_home.scss */
+  /* line 345, sass/templates-v2/_home.scss */
   .home-section-content {
     width: 42%;
     max-width: inherit;
@@ -19421,32 +19364,32 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   }
 }
 @media (min-width: 1150px) {
-  /* line 342, sass/templates-v2/_home.scss */
+  /* line 345, sass/templates-v2/_home.scss */
   .home-section-content {
     width: 490px;
     padding-top: 118px;
   }
 }
-/* line 364, sass/templates-v2/_home.scss */
+/* line 367, sass/templates-v2/_home.scss */
 .home-section-content > h2 {
   font-size: 2.6rem;
   margin-bottom: 2rem;
 }
 @media (min-width: 720px) {
-  /* line 364, sass/templates-v2/_home.scss */
+  /* line 367, sass/templates-v2/_home.scss */
   .home-section-content > h2 {
     margin-bottom: 3rem;
     font-size: 3rem;
   }
 }
 @media (min-width: 1150px) {
-  /* line 364, sass/templates-v2/_home.scss */
+  /* line 367, sass/templates-v2/_home.scss */
   .home-section-content > h2 {
     font-size: 3.4rem;
     margin-bottom: 3.7rem;
   }
 }
-/* line 376, sass/templates-v2/_home.scss */
+/* line 379, sass/templates-v2/_home.scss */
 .home-section-content p {
   position: relative;
   max-width: 420px;
@@ -19456,57 +19399,57 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   line-height: 1.6;
 }
 @media (min-width: 720px) {
-  /* line 376, sass/templates-v2/_home.scss */
+  /* line 379, sass/templates-v2/_home.scss */
   .home-section-content p {
     font-size: 1.7rem;
   }
 }
 @media (min-width: 1150px) {
-  /* line 376, sass/templates-v2/_home.scss */
+  /* line 379, sass/templates-v2/_home.scss */
   .home-section-content p {
     font-size: 1.8rem;
   }
 }
 @media (min-width: 720px) {
-  /* line 390, sass/templates-v2/_home.scss */
+  /* line 393, sass/templates-v2/_home.scss */
   .home-section--right-image .home-section-content {
     margin-left: 8.7%;
     float: left;
   }
 }
 @media (min-width: 720px) {
-  /* line 396, sass/templates-v2/_home.scss */
+  /* line 399, sass/templates-v2/_home.scss */
   .home-section--content-two .home-section-content {
     padding-top: 112px;
     margin-right: 7%;
   }
 }
 @media (min-width: 1150px) {
-  /* line 396, sass/templates-v2/_home.scss */
+  /* line 399, sass/templates-v2/_home.scss */
   .home-section--content-two .home-section-content {
     margin-right: 5%;
   }
 }
 @media (min-width: 1280px) {
-  /* line 396, sass/templates-v2/_home.scss */
+  /* line 399, sass/templates-v2/_home.scss */
   .home-section--content-two .home-section-content {
     margin-right: 96px;
   }
 }
 @media (min-width: 1360px) {
-  /* line 396, sass/templates-v2/_home.scss */
+  /* line 399, sass/templates-v2/_home.scss */
   .home-section--content-two .home-section-content {
     margin-right: 5%;
   }
 }
 @media (min-width: 720px) {
-  /* line 411, sass/templates-v2/_home.scss */
+  /* line 414, sass/templates-v2/_home.scss */
   .home-section--taller-section .home-section-content {
     padding-top: 137px;
   }
 }
 
-/* line 417, sass/templates-v2/_home.scss */
+/* line 420, sass/templates-v2/_home.scss */
 .home-section-image-container {
   position: relative;
   width: 100%;
@@ -19515,7 +19458,7 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   overflow: hidden;
 }
 @media (min-width: 720px) {
-  /* line 417, sass/templates-v2/_home.scss */
+  /* line 420, sass/templates-v2/_home.scss */
   .home-section-image-container {
     position: absolute;
     left: 0;
@@ -19527,40 +19470,40 @@ li:nth-child(22) .tooltip-country, li:last-child .tooltip-country {
   }
 }
 @media (min-width: 1280px) {
-  /* line 417, sass/templates-v2/_home.scss */
+  /* line 420, sass/templates-v2/_home.scss */
   .home-section-image-container {
     width: 512px;
   }
 }
-/* line 435, sass/templates-v2/_home.scss */
+/* line 438, sass/templates-v2/_home.scss */
 .home-section-image-container img {
   float: right;
   height: 220px;
 }
 @media (min-width: 480px) {
-  /* line 435, sass/templates-v2/_home.scss */
+  /* line 438, sass/templates-v2/_home.scss */
   .home-section-image-container img {
     width: 100%;
     height: auto;
   }
 }
 @media (min-width: 720px) {
-  /* line 435, sass/templates-v2/_home.scss */
+  /* line 438, sass/templates-v2/_home.scss */
   .home-section-image-container img {
     width: auto;
   }
 }
-/* line 446, sass/templates-v2/_home.scss */
+/* line 449, sass/templates-v2/_home.scss */
 .home-section--right-image .home-section-image-container {
   left: inherit;
   right: 0;
 }
-/* line 449, sass/templates-v2/_home.scss */
+/* line 452, sass/templates-v2/_home.scss */
 .home-section--right-image .home-section-image-container img {
   float: left;
 }
 @media (min-width: 720px) {
-  /* line 453, sass/templates-v2/_home.scss */
+  /* line 456, sass/templates-v2/_home.scss */
   .home-section--taller-section .home-section-image-container {
     height: 490px;
   }
@@ -24077,6 +24020,619 @@ h3.tt-value span.is-negative {
   width: 100%;
   height: 60px;
   border-top: 1px solid #161617;
+}
+
+/* line 2, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__center-column {
+  margin-top: 100px;
+  text-align: center;
+}
+/* line 6, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .sharing-container {
+  position: absolute;
+  top: 80px;
+  right: 22px;
+}
+/* line 11, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__main-content-container {
+  min-width: 930px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-right: 4rem;
+  padding-left: 3rem;
+}
+/* line 18, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .data-vis-reviews-cloud__content-title {
+  margin-top: 10rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+/* line 23, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-column__app-icon-container {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.4rem;
+  border-radius: 20px;
+  background: #363a47;
+}
+/* line 29, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-column__app-icon-container img {
+  width: 100%;
+}
+/* line 33, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-column {
+  width: 220px;
+  display: inline-block;
+  float: left;
+}
+@media (min-width: 1280px) {
+  /* line 33, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-column {
+    margin-top: -135px;
+    width: 248px;
+  }
+}
+/* line 42, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-name {
+  margin: 0 0 0.6rem;
+}
+/* line 44, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-name a {
+  color: #9f9bff;
+}
+/* line 46, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__app-name a:hover {
+  color: #6e68ff;
+}
+/* line 51, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__developer-name {
+  margin: 0 0 1.7rem;
+  color: #81879d;
+  font-size: 14px;
+}
+/* line 56, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget {
+  width: 100%;
+  padding: 16px 22px 25px;
+  margin-bottom: 6rem;
+  border-radius: 10px;
+  background-color: #363a47;
+}
+/* line 62, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h4 {
+  margin-bottom: 1.8rem;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+}
+/* line 67, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h4 span {
+  color: #54bee5;
+  font-weight: 600;
+}
+/* line 72, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 {
+  margin-bottom: 0.8rem;
+  font-size: 16px;
+  font-weight: 400;
+  color: #c4c7d0;
+  text-align: left;
+}
+/* line 78, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 .selected-country-text,
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 .total-reviews-count {
+  font-family: "Lato", sans-serif;
+}
+/* line 82, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 .total-reviews-count {
+  margin-left: 7px;
+  font-weight: 700;
+  color: #fcfdfd;
+}
+/* line 87, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget h5 .selected-country-text {
+  margin-left: 2px;
+  font-size: 13px;
+}
+/* line 92, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget ul {
+  padding-top: 0.8rem;
+  text-align: left;
+  border-top: 2px solid #2e313c;
+}
+/* line 96, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__reviews-widget ul li {
+  margin-bottom: 5px;
+}
+/* line 101, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__cloud-section {
+  width: calc(100% - 290px);
+  min-height: 300px;
+  padding-right: 20px;
+  display: inline-block;
+}
+@media (min-width: 1280px) {
+  /* line 101, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .page-data-vis-reviews-cloud__cloud-section {
+    width: calc(100% - 250px);
+    padding-left: 50px;
+    padding-right: 0;
+  }
+}
+/* line 112, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .form-field--search .form-field--select__dropdown li span {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+/* line 117, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .form-field--search {
+  width: 230px;
+}
+/* line 119, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .form-field--search input {
+  font-size: 16px;
+}
+/* line 122, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .form-field--search .form-field--select__dropdown {
+  min-height: 60px;
+}
+/* line 126, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .form-field--select__dropdown {
+  max-height: 300px;
+  overflow: auto;
+}
+/* line 129, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .form-field--select__dropdown .icon-flag-sm {
+  margin-right: 8px;
+}
+/* line 133, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .app-search-loading-indicator {
+  position: relative;
+  margin-top: -6px;
+}
+/* line 136, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .app-search-loading-indicator span, .page-data-vis-reviews-cloud .app-search-loading-indicator .search-loading-indicator {
+  position: relative;
+}
+/* line 139, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .app-search-loading-indicator span {
+  color: #fcfdfd;
+  font-size: 15px;
+  display: inline-block;
+  left: 0;
+  line-height: 1.5;
+}
+/* line 146, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .app-search-loading-indicator .search-loading-indicator {
+  top: 5px;
+  right: -101px;
+  display: inline-block;
+}
+/* line 152, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .filters-row {
+  margin: 0 auto 6rem;
+}
+/* line 154, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .filters-row + div {
+  overflow: visible;
+}
+@media (min-width: 1280px) {
+  /* line 152, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .filters-row {
+    margin-left: 31rem;
+    text-align: left;
+  }
+}
+/* line 163, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__box {
+  width: 170px;
+}
+/* line 165, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__box .icon-flag-sm {
+  top: 9px;
+}
+/* line 167, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__box .icon-flag-sm + b {
+  padding-left: 28px;
+}
+/* line 171, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__box > img {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+}
+/* line 178, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__dropdown li {
+  margin-bottom: 10px;
+}
+/* line 180, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud.page-lab-base .secondary-filter .form-field--select__dropdown li:hover {
+  cursor: pointer;
+}
+/* line 186, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .form-field--search {
+  padding: 10px 13px 11px 15px;
+}
+/* line 189, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .tag-cloud-container {
+  position: relative;
+  overflow: visible;
+}
+/* line 193, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud {
+  position: relative;
+  display: none;
+  overflow: visible;
+}
+/* line 198, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud li {
+  padding: 0.5em;
+  display: inline-block;
+  font-weight: 600;
+  font-family: 'Source Sans Pro', sans-serif;
+  overflow: visible;
+  cursor: pointer;
+  text-decoration: underline;
+  -webkit-transition: font-size 0.5s;
+          transition: font-size 0.5s;
+}
+/* line 208, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .tag-cloud li {
+  -webkit-transition: 0.2s color;
+  transition: 0.2s color;
+}
+/* line 211, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .tag-cloud li:hover {
+  opacity: 0.3;
+  underline: none;
+  -webkit-transition: 0.2s opacity;
+  transition: 0.2s opacity;
+}
+/* line 218, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud li.positive-average,
+.page-data-vis-reviews-cloud .tag-cloud--positive li {
+  color: #12a76a;
+}
+/* line 222, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud li.average-average,
+.page-data-vis-reviews-cloud .tag-cloud--average li {
+  color: #727686;
+}
+/* line 226, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .tag-cloud-container .tag-cloud li.negative-average,
+.page-data-vis-reviews-cloud .tag-cloud--negative li {
+  color: #ff496a;
+}
+/* line 230, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .page-data-vis-reviews-cloud .ratings-container {
+  padding-top: 5px;
+  margin-bottom: 8px;
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 236, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .number-of-stars-label,
+.page-data-vis-reviews-cloud .rating-number,
+.page-data-vis-reviews-cloud .rating-percentage-text {
+  display: inline-block;
+  vertical-align: top;
+  font-family: "Lato", sans-serif;
+}
+/* line 243, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .number-of-stars-label {
+  margin-right: 1rem;
+  color: #54bee5;
+  font-size: 16px;
+}
+/* line 247, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .number-of-stars-label:after {
+  top: 2px;
+  left: 3px;
+  font-size: 13px;
+}
+/* line 253, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .rating-number {
+  width: 32px;
+  margin-top: 1px;
+  font-size: 13px;
+  color: #fcfdfd;
+}
+@media (min-width: 1280px) {
+  /* line 253, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .rating-number {
+    width: 36px;
+    font-size: 14px;
+  }
+}
+/* line 263, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .rating-percentage-text {
+  margin-top: 1px;
+  float: right;
+  font-size: 14px;
+  color: #81879d;
+}
+/* line 269, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .rating-percentage-container {
+  width: 70px;
+  height: 9px;
+  margin-top: 5px;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 5px;
+  background-color: #2e313c;
+}
+@media (min-width: 1280px) {
+  /* line 269, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .rating-percentage-container {
+    width: 93px;
+  }
+}
+/* line 281, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .rating-percentage {
+  width: 0%;
+  height: 9px;
+  background-color: #6d69c5;
+  -webkit-transition: width 0.3s;
+          transition: width 0.3s;
+}
+/* line 287, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .js-five-stars + .rating-percentage-container .rating-percentage {
+  background-color: #18a36c;
+}
+/* line 290, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .js-four-stars + .rating-percentage-container .rating-percentage {
+  background-color: #18a36c;
+}
+/* line 293, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .js-three-stars + .rating-percentage-container .rating-percentage {
+  background-color: #727686;
+}
+/* line 296, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .js-two-stars + .rating-percentage-container .rating-percentage {
+  background-color: #ff496a;
+}
+/* line 299, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .js-one-stars + .rating-percentage-container .rating-percentage {
+  background-color: #ff496a;
+}
+/* line 302, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .total-ratings-container {
+  max-width: 140px;
+}
+/* line 305, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .total-ratings-container h2 {
+  display: inline-block;
+  padding-top: 2px;
+}
+/* line 309, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .total-ratings-container span {
+  margin-right: 7px;
+  float: right;
+  font-weight: 600;
+}
+/* line 314, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .ratings-container {
+  background-image: url(images/rating-stars-lab@2x.png);
+}
+/* line 317, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container {
+  width: 100%;
+  margin-top: 7rem;
+  margin-bottom: 2rem;
+  display: none;
+  text-align: left;
+}
+@media (min-width: 1280px) {
+  /* line 317, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .reviews-content-container {
+    margin-top: 9rem;
+  }
+}
+/* line 326, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container > h2 {
+  padding-bottom: 2.4rem;
+  font-weight: 400;
+  border-bottom: 1px solid #19191b;
+}
+/* line 331, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container .ratings-container {
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 337, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container .ratings-list {
+  max-height: 700px;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  padding-right: 20px;
+  overflow: auto;
+}
+/* line 344, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container ul {
+  position: relative;
+  margin-bottom: 2rem;
+  overflow: auto;
+}
+/* line 349, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container li {
+  position: relative;
+  margin-bottom: 3rem;
+}
+/* line 353, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container .reviews-content__title {
+  position: relative;
+  top: 2px;
+  padding-right: 90px;
+  margin: 0 0 1.5rem;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fcfdfd;
+}
+/* line 364, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container .reviews-content__date {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  color: #81879d;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+/* line 372, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container p {
+  font-size: 14px;
+}
+/* line 374, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .reviews-content-container p strong {
+  font-weight: 700;
+  color: #54bee5;
+}
+/* line 380, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .cloud-key-instruction-container {
+  margin: 0;
+}
+@media (min-width: 1280px) {
+  /* line 380, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .cloud-key-instruction-container {
+    width: 100%;
+  }
+}
+/* line 386, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .cloud-key-instruction {
+  margin-top: 12px;
+  margin-bottom: 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 400;
+  color: #c4c7d0;
+}
+/* line 395, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .cloud-key {
+  margin: 14px 0 0 206px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 400;
+  color: #c4c7d0;
+}
+/* line 402, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .cloud-key .size-key {
+  font-size: 16px;
+  color: #81879d;
+}
+/* line 405, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .cloud-key .size-key:first-letter {
+  font-size: 22px;
+}
+/* line 408, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .cloud-key .size-key b {
+  font-size: 13px;
+}
+/* line 412, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .cloud-key:last-child {
+  margin-top: 16px;
+  margin-left: 15px;
+}
+/* line 416, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .cloud-key .colour-key {
+  font-weight: 600;
+}
+@supports (mix-blend-mode: lighten) {
+  /* line 416, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .cloud-key .colour-key {
+    display: inline-block;
+    position: relative;
+    color: #fff;
+    background: #000;
+    mix-blend-mode: lighten;
+  }
+  /* line 39, sass/helpers/_mixins.scss */
+  .page-data-vis-reviews-cloud .cloud-key .colour-key::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: -webkit-linear-gradient(left, #12a76a, #727686, #ff496a);
+    background: linear-gradient(to right, #12a76a, #727686, #ff496a);
+    pointer-events: none;
+  }
+  /* line 62, sass/helpers/_mixins.scss */
+  .page-data-vis-reviews-cloud .cloud-key .colour-key::before {
+    mix-blend-mode: multiply;
+  }
+}
+/* line 421, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .feedback-container,
+.page-data-vis-reviews-cloud .idc-comments-container {
+  width: 100%;
+}
+@media (min-width: 1280px) {
+  /* line 421, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .feedback-container,
+  .page-data-vis-reviews-cloud .idc-comments-container {
+    width: 635px;
+  }
+}
+/* line 428, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .feedback-container {
+  margin: 8rem 0 7rem;
+  padding-left: 3%;
+}
+@media (min-width: 1280px) {
+  /* line 428, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+  .page-data-vis-reviews-cloud .feedback-container {
+    padding-left: 80px;
+    margin-top: 9rem;
+  }
+}
+/* line 436, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .start-instruction {
+  margin-top: 20px;
+  display: none;
+}
+/* line 440, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .chart__loading {
+  display: none;
+}
+/* line 442, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.is-loading-data .page-data-vis-reviews-cloud .chart__loading {
+  display: block;
+}
+/* line 446, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .chart__no-data {
+  display: none;
+}
+/* line 448, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.is-no-data .page-data-vis-reviews-cloud .chart__no-data {
+  display: inline-block;
+}
+/* line 451, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud .chart__no-data .animation-hamster-no-data-dark + div {
+  width: 400px;
+  display: inline-block;
+}
+/* line 457, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud.is-initial-state .cloud-key,
+.page-data-vis-reviews-cloud.is-initial-state .cloud-key-instruction {
+  display: none;
+}
+/* line 461, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.page-data-vis-reviews-cloud.is-initial-state .start-instruction {
+  display: inline-block;
+}
+
+/* line 466, sass/templates-design-kit-v2/_data-vis-reviews-cloud-v1.scss */
+.reviews-content-container__keyword {
+  font-weight: 600;
+  color: #54bee5;
 }
 
 /* line 1, sass/templates-design-kit-v2/_data-vis-weekday-average.scss */
