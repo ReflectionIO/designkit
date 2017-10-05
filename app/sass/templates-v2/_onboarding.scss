@@ -1,0 +1,194 @@
+.global-onboarding-link {
+	margin: 17px 0 0 20px;
+	display: inline-block;
+  vertical-align: top;
+	font-family: "Source Sans Pro";
+	font-size: 14px;	
+	font-weight: 600;
+	a {
+		color: #918EDF;
+		transition: color 0.2s;
+		&:hover {
+			color: lighten(#918EDF, 10%);
+			transition: color 0.3s;
+		}
+	}
+}
+.onboarding-container {
+	position: absolute;
+	top: -245px;
+	left: 0;
+	margin-left: 0;
+	opacity: 0;
+	transform: scale(0.1);
+	transition: top 0.3s ease-out, left 0.3s ease-out, transform 0.3s ease-out, opacity 0.3s ease-out;
+	&.is-showing {
+		top: 0;
+		left: calc(50% - 300px);
+		opacity: 1;
+		transform: scale(1);
+		transition: top 0.3s ease-out, left 0.3s ease-out, transform 0.3s ease-out, opacity 0.15s ease-out;
+		.onboarding-content {
+			margin-top: 147px;
+			transition: margin-top 0.3s ease-out;
+		}
+	}
+}
+.onboarding-content {
+	position: relative;
+	width: 600px;
+	margin-top: 0;
+	display: inline-block;
+	text-align: left;
+	transition: margin-top 0.3s ease-out;
+}
+.onboarding-hamster {
+	position: absolute;
+	top: 1px;
+	right: 23px;
+	width: 73px;
+}
+.onboarding-content__title {
+	margin-bottom: 15px;
+	font-size: 34px;
+	color: #FCFDFD;
+}
+.onboarding__item {
+	width: 100%;
+	min-height: 118px;
+	margin-bottom: 10px;
+	font-size: 0;
+	background-color: #fff;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	&:hover {
+		background-color: #e6e4e4;
+		transition: background-color 0.3s;
+	}
+}
+.onboarding__item__thumb {
+	width: 183px;
+	height: 118px;
+	display: inline-block;
+	vertical-align: top;
+	background-position: 50% 50%;
+}
+.onboarding__item__thumb__link {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(54,58,71,.3);
+	transition: background-color 0.2s;
+	img {
+		display: inline-block;
+		width: 60px;
+		transition: transform 0.2s;
+	}
+	.onboarding__item:hover & {
+		background-color: rgba(54,58,71,.6);
+		transition: background-color 0.3s;
+		img {
+			transform: scale(1.1);
+    	transition: transform 0.3s;
+		}
+	}
+}
+.onboarding__item__link {
+	width: 417px;
+	height: 118px;
+	margin-top: -3px;
+	padding-left: 30px;
+	padding-right: 30px;
+	display: inline-flex;
+	align-items: center;
+	box-sizing: border-box;
+	vertical-align: top;
+	font-family: $brand-heading-font;
+	font-size: 22px;	
+	font-weight: 600;
+	line-height: 1.49;
+	color: $reflection-purple;
+	background-size: cover;
+	transition: color 0.2s;
+	.onboarding__item:hover & {
+		color: $reflection-purple--hover;
+		transition: color 0.3s;
+	}
+}
+@keyframes header-hamster-popup {
+	0% { top: 33px; }
+	100% { top: 9px; }
+}
+@keyframes header-hamster-popdown {
+	0% { top: 9px; }
+	100% { top: 33px; }
+}
+@keyframes header-hamster-blink {
+	100% {
+    background-position: -510px 0;
+  }
+}
+.onboarding-professor-hamster-head {
+	position: absolute;
+	top: 33px;
+	left: 259px;
+	width: 51px;
+	height: 43px;
+	display: inline-block;
+	display: none;
+	cursor: pointer;
+	background-image: url('images/onboarding-hamster-sprite@2x.png');
+	background-size: 510px 43px;
+	animation: header-hamster-blink 2.5s infinite steps(10), header-hamster-popup 2s 2s forwards;
+	img {
+		width: 100%;
+	}
+	.is-hiding-onboarding-header-hamster & {
+		animation: header-hamster-popdown 0.3s forwards;
+	}
+}
+.onboarding-professor-hamster-hands {
+	position: fixed;
+	top: 44px;
+	left: 260px;
+	width: 46px;	
+	display: none;
+	z-index: 2000;
+	img {
+		width: 100%;
+	}
+	.is-hiding-onboarding-header-hamster & {
+		opacity: 0;
+		transition: opacity 0.3s ease-in;
+	}
+}
+.is-showing-onboarding-header-hamster {
+	.onboarding-professor-hamster-head,
+	.onboarding-professor-hamster-hands {
+		display: block;
+	}
+}
+.touchevents .onboarding-professor-hamster-head {
+	left: 332px;
+}
+.touchevents .onboarding-professor-hamster-hands {
+	left: 333px;
+}
+@media screen and (max-width: $tablet) {
+	.is-showing-onboarding-header-hamster {
+		.global-onboarding-link {
+			display: none;
+		}
+	}
+}
+@media screen and (max-width: $laptop) {
+	.is-showing-onboarding-header-hamster {
+		.onboarding-professor-hamster-head,
+		.onboarding-professor-hamster-hands {
+			display: none;
+		}
+	}
+}
