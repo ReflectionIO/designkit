@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection, Contact</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+	<script>
+	  WebFont.load({
+	    google: {
+	      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+	    }
+	  });
+	</script>
+ <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<body>
+
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+  
+	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main" role="main">
+			<div class="page-data-dashboard page-ad-network">
+				<form id="request-analytics-form">
+					<input type="email" name="email" placeholder="email" value="jamie@reflection.io" />
+					<input type="password" name="password" value="" />
+					<input name="appId" placeholder="app id" value="999971868" />
+					<select name="metric" id="metricSelect">
+						<option data-return-value="installs">installs</option>
+						<option data-return-value="sessions">sessions</option>
+						<option data-return-value="pageViewCount">pageViews</option>
+						<option data-return-value="activeDevices">activeDevices</option>
+						<option data-return-value="crashes">crashes</option>
+						<option data-return-value="payingUsers">payingUsers</option>
+						<option data-return-value="units">units</option>
+						<option data-return-value="sales">sales</option>
+						<option data-return-value="iap">iap</option>
+						<option data-return-value="impressionsTotal">impressions</option>
+						<option value="impressionsTotalUnique">impressionsUnique</option>
+					</select>
+					<input name="datefrom" placeholder="date from yyyy-mm-dd" value="2017-01-01" />
+					<input name="dateto" placeholder="date to yyyy-mm-dd" value="2017-02-01" />
+					<button type="submit">Submit</button>
+				</form>
+				<div class="grid__row">
+					<ul class="tabs-content-list">
+						<li id="single-chart-container" class="is-active">
+							<section class="chart-container chart-container--single chart-container--ad-revenue">
+								<header class="chart-container__header">
+									<h2 class="chart-heading heading-style--heading-three">iTunes Analytics</h2>
+								</header>
+								<div class="chart" id="itunes-analytics-chart"></div>
+							</section>
+						</li>
+					</ul>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	<div id="js-component-import--account-container" class="panel-right-container js-account-container"></div>
+	<div id="js-component-import--search-container" class="panel-right-container js-search-container"></div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+ 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
+ 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
+	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+	 
+	<!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+	<div id="js-appendScriptsContainer"></div>
+
+	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script src="js/vendor/highcharts-custom.js"></script>
+	
+  <script>
+  	$(window).on("load", function(){
+		  // mock menu select
+  		var thisPageLink = $('#js-component-import--panel-left').find('a[href="v2-ad-revenue.html"]');
+		  thisPageLink.parent("li").addClass("is-selected").parents("li").addClass("is-selected is-open");
+
+		  // hide elements that should only show if you're viewing a list
+		  // if viewing my list get #from URL
+		  if(window.location.hash != "#show-list") {
+		  	$('.js-mock-show-for-my-list-view-only').hide();		  	
+		  } else {
+		  	$('.js-mock-change-heading-for-list-page').text("Football Games List (4 Apps)");
+		  }
+			
+  		new Page();
+  	});
+		
+		function generateChart(containerId, data) {
+			var formatDate = new Date(data[0][0]);
+			var firstDate = Date.UTC(formatDate.getFullYear(), formatDate.getMonth(), formatDate.getDate());
+			console.log(firstDate);
+			
+			if(chart) {
+					chart.series[0].update({data: data});
+					chart.series[0].pointStart = firstDate;
+			} else {
+	    	var seriesColour,
+	    			seriesGradient,
+	    			seriesData = data,
+	    			seriesArray = [],
+	    			yAxesSettings; // Mock only
+
+    		yAxesSettings = [{
+          offset: -37,
+          showFirstLabel: false,
+          showLastLabel: true,
+          gridLineWidth: 0,
+          labels: {
+          	align: 'left',
+          	style: {
+          		color: '#81879d',
+          		fontSize: "12px"
+          	}
+          },
+          title: {
+          	text: null
+          }            
+        },
+        {
+          offset: -37,
+          showFirstLabel: false,
+          showLastLabel: true,
+          gridLineWidth: 0,
+          opposite: true,
+          labels: {
+          	align: 'right',
+          	style: {
+          		color: '#81879d',
+          		fontSize: "12px"
+          	}
+          },
+          title: {
+          	text: null
+          }            
+        }];
+
+    		seriesArray = [{
+           	yAxis: 0,
+            name: "total",
+            id : "total",
+            color: "#f5c943",
+            data: seriesData,
+						pointStart: firstDate,
+            pointInterval: 24 * 3600 * 1000, // one day
+            lineColor: seriesColour,
+            lineWidth: 3.1,
+            lineWidthPlus: 0,
+            fillOpacity: 1,
+            fillColor: {
+	              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+	              stops: [
+	                [0, 'rgba(109,105,197,0.1)'],
+	                [1, 'rgba(27,199,159,0.1)']
+	              ]
+	            },
+            marker: {
+              enabled: false,
+              states: {
+                hover: {
+                  enabled: true,
+                  lineWidth: 0,
+                  lineWidthPlus: 0,
+                  radius: 4,
+                  radiusPlus: 0,
+                }
+              }
+            }
+          }
+        ];
+			
+	    	// Generate Demo Chart
+				var chart = new Highcharts.Chart({
+					chart: {
+	          renderTo: containerId,
+						marginLeft: 0,
+						marginRight: 0,
+						marginBottom: 0,
+						marginTop: 0,
+						spacing: [0,0,0,0],
+						height: 306,
+						backgroundColor: '#fcfdfd',
+						plotBackgroundColor: '#f2f2f5',
+			   		type: 'area',
+			   		animation: false,
+			   		style: {
+	            fontFamily: 'Source Sans Pro'
+	          }
+				  },
+				  legend: {
+				  	enabled: false
+				  },
+				  title: {
+	            text: ''
+	        },
+	        yAxis: yAxesSettings,
+	        xAxis: {
+	        	startOnTick: false,
+	        	endOnTick: false,
+	        	showFirstLabel: false,
+	          maxPadding: 0,
+	          minPadding: 0,
+	          type: 'datetime',
+	          dateTimeLabelFormats: {
+	              day: '%e %b'
+	          },
+	          tickmarkPlacement: 'on',
+	          tickPixelInterval: 30,
+	          tickLength: 0,     
+	          labels: {
+	          	align: 'center',
+	            x: 0,
+	            y: 18,
+	            step: 1,
+	            style: {
+	              color: '#81879d',
+	              fontSize: "12px"
+	            }
+	          }
+	        },
+	        plotOptions: {
+	        	area: {
+	            trackByArea: false,
+	        		tooltip: {
+	        			followPointer: true
+	        		},
+	        		states: {
+	        			hover: {
+	        				halo: {
+	        					size: 0
+	        				},
+	        				lineWidthPlus: 0
+	        			}
+	        		}        		
+	        	},
+	          series: {
+	            events: {
+	              click: function() {
+	                var that = this;
+
+	                for(var i = 0; i < this.chart.series.length; i++) {
+	                  if(i !== that.index) {
+	                    var count = 0;
+	                    var isCurrentlyHighlighted = false;
+	                    $('#container .highcharts-series').each(function(){
+	                      if(count == i) {
+	                        var thisFillPath = $(this).find('path:nth-child(2)');                        
+	                        if(thisFillPath.attr("stroke-width") == 3.1) {
+	                          isCurrentlyHighlighted = true
+	                          that.chart.series[i].update({
+	                            lineWidth: 3
+	                          });           
+	                          var counterTwo = 0;
+	                          $('#container .highcharts-series').each(function(){
+	                            if(counterTwo == count) {
+	                              thisFillPath = $(this).find('path:nth-child(2)');
+	                            }
+	                            counterTwo++;
+	                          });                          
+	                          thisFillPath.css("opacity", "1");
+	                          thisFillPath.animate({ "opacity": 0.4 }, 250);
+	                          thisFillPath.siblings("path").css("opacity", "1");
+	                          thisFillPath.siblings("path").animate({ "opacity": 0.1 }, 250);
+	                        }
+	                      }
+	                      count++;
+	                    });
+	                  }
+	                };
+
+	                this.update({
+	                  lineWidth: 3.1
+	                });
+
+	                $('#container .highcharts-series path:nth-child(2)').each(function(){
+	                  if($(this).attr("stroke-width") == 3.1) {
+	                    $(this).css("opacity", "1");
+	                    $(this).siblings("path").css("opacity", "0.1");
+	                    $(this).siblings("path").animate({ "opacity": 1 }, 250);
+	                  }
+	                });
+
+	                // read the graph line id's after this.udpate
+	                var counter = 0;
+
+	                $('#container .highcharts-series path:nth-child(2)').each(function(){
+	                  $(this).attr("id", "series" + counter);
+	                  $(this).parent('.highcharts-series').find('path:first-child').attr("id", "series" + counter + "fill");
+	                  counter++;
+	                });
+	              },
+	            },
+	            cursor: 'pointer',
+	            animation: false
+	          },
+	      	},
+	        series: seriesArray,
+	        tooltip: {
+	        	useHTML: true,
+	        	shared: true,
+	          formatter: function() {
+	            var instance = this;
+	            var s = "";            
+	            $.each(instance.points, function (index, value) {
+	                var chartSeries = value.series;
+	                var imgString = "",
+	                		valueString = "";
+	                
+									imgString = "";
+
+	                s += '<div class="custom-tooltip" style="background-color: ' + chartSeries.color + '">' + imgString + '<span class="chart-tooltip-value">' + valueString + value.y + '</span></div>';
+	            });
+	            return s;
+	          },
+	        	backgroundColor: 'transparent',
+	          borderWidth: 0,
+	          borderColor: '#dae3ed',
+				    crosshairs: [{
+	            width: 0,
+	            color: '#9ea7c4'
+	          }],
+	          shadow: {
+	            color: 'rgba(0,0,0,0.24)',
+	            width: 0,
+	            offsetX: 1,
+	            offsetY: 1
+	        	},
+	        	snap: 25
+	        }
+		    });
+			}
+		}
+		
+		$(function() {
+		$('#request-analytics-form').on("submit",function(e) {
+			e.preventDefault(); // cancel the actual submit
+
+			console.log(e);
+			console.log(decodeURIComponent($('#request-analytics-form').serialize()));
+			
+			var queryString = decodeURIComponent($('#request-analytics-form').serialize());
+			
+			var form = new FormData(document.getElementById('#request-analytics-form'));
+			
+			fetch('http://localhost:3090/?' + queryString, {
+				method: "GET"
+			}).then(function(response) {
+				return response.json();
+			})
+			.then(function(json) {
+				console.log("success!"); console.log(json);
+				var data = [];
+				var metric = $('select#metricSelect option:selected').attr("data-return-value");
+				for(var i = 0; i < json.results[0].data.length; i++) {
+					data.push([json.results[0].data[i].date, json.results[0].data[i][metric]]);
+				}
+				console.log(data);
+				generateChart('itunes-analytics-chart', data);
+			})
+			.catch(function(error) { console.log(error); });
+		});
+	});
+  </script>
+</body>
