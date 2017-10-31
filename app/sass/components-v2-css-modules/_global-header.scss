@@ -1,3 +1,12 @@
+@import "compass/support";
+@import "compass/css3/box-sizing";
+@import "breakpoint";
+@import "../helpers/mixins";
+@import "../helpers/placeholders";
+@import "../variables/colours";
+@import "../variables/layout";
+@import "../variables/typography";
+
 $headerLinkBackgroundHoverColour: #323643;
 
 .global-header {
@@ -37,11 +46,12 @@ $headerLinkBackgroundHoverColour: #323643;
 			display: inline-block;
 			background: none;
 		}
-		img {
-			width: 19px;
-			@include breakpoint($tablet) {
-				width: 100%;
-			}			
+	}
+	.img-site-logo {
+		display: none;
+		@include breakpoint($tablet) {
+			width: 100%;
+			display: inline-block;
 		}
 	}
 	.header__sign-up-button {

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Research Tools - Experimental Tool, LTV Calculator</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="research-tools-experiments.css" />
+	<link rel="stylesheet" type="text/css" href="header.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
+<script src="js/data-vis/developer-leaderboard-grossing.js"></script>
+	<script src="js/data-vis/ltv/test.js"></script>
+<script src="js/vendor/angular.js"></script>
+<script>
+	// populate the data table
+		'use strict';
+
+		/* Controllers */
+	
+		function getMaxValueFromArrayProperty(list, property) {
+			var mx = list[0][property];
+			for(var x = 0; x < list.length; x++) {
+				if(list[x][property] > mx) {
+					mx = list[x][property];
+				}
+			}
+			return mx;
+		}
+	
+		function getMinValueFromArrayProperty(list, property) {
+			var mn = list[0][property];
+			for(var x = 0; x < list.length; x++) {
+				if(list[x][property] < mn) {
+					mn = list[x][property];
+				}
+			}
+			return mn;
+		}
+
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function() {
+				var dataList = this;
+				
+				dataList.ltvData = ltvData; // from js/data-vis/ltv/test.js
+				
+				dataList.getAppOpacity = function(index, propertyName) {
+		    	var min = getMinValueFromArrayProperty(dataList.ltvData, propertyName),
+		    			max = getMaxValueFromArrayProperty(dataList.ltvData, propertyName);
+		    	var range = max - min;
+		    	var valueFromMin;
+		    	valueFromMin = dataList.ltvData[index][propertyName] - min;
+		    	var opacity = 1 / (range / valueFromMin);
+		    	return opacity;
+		    }
+
+		    dataList.setCSSClass = function(index, propertyName) {
+
+					var opacity = dataList.getAppOpacity(index, propertyName);
+					if(opacity > 0.5) {
+						return "is-hotter";
+					}
+
+					return "";
+		    }
+				
+				dataList.getOpacity = function(index, propertyName) {
+					// Heat map is red to white to green (min to max)
+					// At 0% is white opacity 0, background red
+					// At 50% is white opacity 1, background red
+					// Add a class above 50% to change background to white
+					// At 50.01% is green opacity 0, background white
+					// At 100% is green opacity 1, background white
+					var opacity = dataList.getAppOpacity(index, propertyName);
+
+					if(opacity <= 0.5) {
+						opacity = opacity / 0.5;
+					} else {
+						opacity = (opacity - 0.5) / 0.5;
+					}
+
+					return opacity;
+				}
+			});
+</script>
+	<style>
+		.ltv-table th,
+		.ltv-table td {
+			font-size: 12px;
+		}
+		.ltv-table td {
+			position: relative;
+			height: 30px;			
+		}
+		.ltv-table td span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 30px;
+			padding: 5px;
+			display: block;
+			box-sizing: border-box;
+		}
+		.ltv-table td span:first-child {
+			position: relative;
+		}
+		.ltv-table th {
+			min-width: 90px;
+			padding: 5px;
+			font-weight: 700;
+		}
+		.ltv-table th:first-child {
+			min-width: inherit;
+		}
+		.colour-cell {
+			background-color: red;
+		}
+		.colour-cell.is-hotter {
+			background-color: white;
+		}
+		.colour-cell__colour {
+			background-color: white;
+		}
+		.colour-cell.is-hotter .colour-cell__colour {
+			background-color: green;
+		}
+	</style>
+<body>
+  <header id="js-component-import--global-header" class="global-header"></header>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main page-research-tools-experiment" role="main">
+			
+			<div id="js-component-import--data-vis-banner" class="research-experiment__banner" style="display: none;"></div>
+			
+			<div class="grid-container page-developer-leaderboard" ng-controller="DataController as dataList" style="overflow: auto;">
+				<div class="grid__row grid__row--heading-row">
+					<div class="grid__column grid__row--heading-row__left">
+						<h1 class="heading-style--heading-three">LTV Data Output</h1>
+					</div>	
+				</div>
+			
+				<table class="ltv-table">
+					<thead>
+						<tr>
+							<th>Country</th>
+							<th>DL90_8BP</th>
+							<th>DL90_KoP</th>
+							<th>DL90_KoP_norm</th>
+							<th>DL_ratio_vs_benchmark</th>
+							<th>REV90_8BP</th>
+							<th>REV90_KoP</th>
+							<th>REV90_KoP_norm</th>
+							<th>REV_ratio_vs_benchmark</th>
+							<th>REV90/DL90_8BP</th>
+							<th>REV90/DL90_KoP</th>
+							<th>LTV_8BP</th>
+							<th>LTV_KoP</th>
+							<th>CPI</th>
+							<th>ROI90</th>
+							<th>ROI90_vs_benchmark</th>
+							<th>ROI_LTV</th>
+							<th>ROI_LTV_vs_benchmark</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="dataItem in dataList.ltvData">
+							<td><span>{{dataItem.country}}</span><span></span></td>
+							<td><span>{{dataItem.DL90_8BP}}</span><span></span></td>
+							<td><span>{{dataItem.DL90_KoP}}</span><span></span></td>
+							<td><span>{{dataItem.DL90_KoP_norm}}</span><span></span></td>
+							<td><span>{{dataItem.DL_ratio_vs_benchmark}}</span></td>
+							<td><span>{{dataItem.REV90_8BP}}</span></td>
+							<td><span>{{dataItem.REV90_KoP}}</span></td>
+							<td><span>{{dataItem.REV90_KoP_norm}}</span></td>
+							<td><span>{{dataItem.REV_ratio_vs_benchmark}}</span></td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "REV90/DL90_8BP")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'REV90/DL90_8BP')}"></span>
+								<span>{{dataItem["REV90/DL90_8BP"]}}</span>
+							</td>
+							<td><span>{{dataItem["REV90/DL90_KoP"]}}</span></td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "LTV_8BP")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'LTV_8BP')}"></span>
+								<span>{{dataItem.LTV_8BP}}</span>
+							</td>
+							<td><span>{{dataItem.LTV_KoP}}</span></td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "CPI")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'CPI')}"></span>
+								<span>{{dataItem.CPI}}</span>
+							</td>
+							<td><span>{{dataItem.ROI90}}</span></td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "ROI90_vs_benchmark")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'ROI90_vs_benchmark')}"></span>
+								<span>{{dataItem.ROI90_vs_benchmark}}</span>
+							</td>
+							<td><span>{{dataItem.ROI_LTV}}</span></td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "ROI_LTV_vs_benchmark")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'ROI_LTV_vs_benchmark')}"></span>
+								<span>{{dataItem.ROI_LTV_vs_benchmark}}</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>	
+			</div>
+		</div>
+	</div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+	<script src="js-v2/templates/templates.js"></script>
+	<script>
+		var surveyURL = "https://goo.gl/forms/5okVGdS3PbxTPEJt1";
+	</script>
+	<script src="js-v2/app-include-data-vis-components.js"></script>
+		
+  <script>
+		$(document).on("ready", function(){
+
+			togglePercentage();
+
+		  $('#toggle--show-relative').change(function(){
+		  	togglePercentage();
+			});
+
+			$('#toggle--show-breakdown').change(function(){
+		  	togglePercentage();
+			});
+
+			function togglePercentage() {
+				var firstPercentage = 0;
+				$('.developer-apps-revenue-container').each(function() {
+					if($('#toggle--show-relative:checked').length > 0) {
+						if(firstPercentage == 0) {
+							firstPercentage = $(this).data("relativepercentage");
+							$(this).css("width", "100%");
+						} else {
+							var relativeWidth = $(this).data("relativepercentage") / firstPercentage * 100;
+							$(this).css("width", relativeWidth + "%");
+						}
+					} else {
+						$(this).css("width", "100%");
+					}
+				});
+
+				if($('#toggle--show-relative:checked').length > 0) {
+					$('.heading-style--heading-six span, .perc-heading').css("opacity", 1);
+				} else {
+					$('.heading-style--heading-six span, .perc-heading').css("opacity", 0);
+				}
+			}
+		});
+  </script>
+		
+</body>

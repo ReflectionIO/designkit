@@ -1,3 +1,10 @@
+@import "compass/support";
+@import "compass/css3/box-sizing";
+@import "breakpoint";
+@import "../variables/layout";
+@import "../variables/colours";
+@import "../variables/interaction";
+
 .hamburger {
 	display: inline-block;
 	border-right: 1px solid #1e2027;
@@ -17,7 +24,12 @@
 	transition: top 0.3s, background-color $base-transition-speed-off;
 	@include breakpoint($phablet, true) {
 		width: 58px;
-		height: 62px;
+		height: 50px;
+		line-height: 50px;
+		&:before {
+			height: 50px;
+			line-height: 50px;
+		}
 	}
 	@include breakpoint($tablet, true) {
 		width: 78px;
@@ -36,8 +48,8 @@
 		transition: color $base-transition-speed-off;
 		@include breakpoint($phablet, true) {
 			width: 58px;
-			height: 62px;
-			line-height: 62px;
+			height: 50px;
+			line-height: 50px;
 		}
 		@include breakpoint($tablet, true) {
 			width: 78px;			

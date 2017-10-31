@@ -1,0 +1,454 @@
+@-webkit-keyframes bellring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  1.5% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  3% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  4.5% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  6% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  7.5% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  9% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  10.5% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  12% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@keyframes bellring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  1.5% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  3% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  4.5% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  6% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  7.5% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  9% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  10.5% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  12% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes spinweb {
+  100% {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+@-webkit-keyframes hamsterrun {
+  100% {
+    background-position: -392px 0;
+  }
+}
+@keyframes hamsterrun {
+  100% {
+    background-position: -392px 0;
+  }
+}
+@-webkit-keyframes hamsterrunsm {
+  100% {
+    background-position: -330px 0;
+  }
+}
+@keyframes hamsterrunsm {
+  100% {
+    background-position: -330px 0;
+  }
+}
+@-webkit-keyframes hamsternodata {
+  100% {
+    background-position: 0 -10530px;
+  }
+}
+@keyframes hamsternodata {
+  100% {
+    background-position: 0 -10530px;
+  }
+}
+/* line 41, sass/components-v2-css-modules/_animation.scss */
+.hamster-wheel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -65px;
+  width: 131px;
+  height: 131px;
+  overflow: visible;
+}
+/* line 49, sass/components-v2-css-modules/_animation.scss */
+.hamster-wheel img {
+  width: 100%;
+  animation: spin 1s linear 0s infinite;
+  -webkit-animation: spinweb 1s linear 0s infinite;
+}
+/* line 57, sass/components-v2-css-modules/_animation.scss */
+.hamster-wheel.is-error img, .chart__loading.is-error .hamster-wheel img, .popup-error-illustration.is-error .hamster-wheel img {
+  animation: spin 0.6s linear 0s infinite;
+  -webkit-animation: spinweb 0.6s linear 0s infinite;
+}
+
+/* line 63, sass/components-v2-css-modules/_animation.scss */
+.animation-hamster {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -65px;
+  width: 130px;
+  height: 131px;
+  background-image: url("images/sprite-hamsters.png");
+  background-size: 392px 131px;
+  background-position: 0 0;
+  -webkit-animation: hamsterrun 0.2s infinite steps(3);
+  animation: hamsterrun 0.2s infinite steps(3);
+}
+/* line 75, sass/components-v2-css-modules/_animation.scss */
+.animation-hamster.animation-hamster--dark {
+  background-image: url("images/sprite-hamsters-dark.png");
+}
+/* line 78, sass/components-v2-css-modules/_animation.scss */
+.is-error .animation-hamster, .chart__loading.is-error .animation-hamster, .popup-error-illustration.is-error .animation-hamster {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -65px;
+  width: 110px;
+  height: 110px;
+  background-image: url("images/error-hamster.png");
+  background-size: 110px 110px;
+  animation: spin 0.6s linear 0s infinite;
+  -webkit-animation: spinweb 0.6s linear 0s infinite;
+}
+
+/* line 93, sass/components-v2-css-modules/_animation.scss */
+.animation-hamster-no-data {
+  width: 150px;
+  height: 78px;
+  display: inline-block;
+  background-image: url("images/sprite-no-data.png");
+  background-size: 150px 10530px;
+  background-position: 0 0;
+  -webkit-animation: hamsternodata 6s infinite steps(135);
+  animation: hamsternodata 6s infinite steps(135);
+}
+
+/* line 103, sass/components-v2-css-modules/_animation.scss */
+.animation-hamster-no-data-dark {
+  width: 150px;
+  height: 78px;
+  display: inline-block;
+  background-image: url("images/sprite-no-data-dark.png");
+  background-size: 150px 10530px;
+  background-position: 0 0;
+  -webkit-animation: hamsternodata 6s infinite steps(135);
+  animation: hamsternodata 6s infinite steps(135);
+}
+
+/* line 5, ../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* Global */
+/* line 7, sass/components-v2-css-modules/_global-layout.scss */
+.l-page-container {
+  position: relative;
+  width: 100%;
+  min-width: 960px;
+  z-index: 0;
+  overflow: visible;
+  -webkit-transition: -webkit-filter 0.18s, filter 0.18s;
+          transition: filter 0.18s;
+}
+/* line 14, sass/components-v2-css-modules/_global-layout.scss */
+.page-home .l-page-container {
+  min-width: inherit;
+}
+/* line 17, sass/components-v2-css-modules/_global-layout.scss */
+.touchevents .no-scroll .l-page-container {
+  overflow: hidden;
+  height: 100vh;
+}
+/* line 21, sass/components-v2-css-modules/_global-layout.scss */
+.account-access-page .l-page-container {
+  min-height: 100vh;
+}
+/* line 24, sass/components-v2-css-modules/_global-layout.scss */
+.l-page-container.is-blurred-heavy {
+  -webkit-filter: blur(0.8px);
+          filter: blur(0.8px);
+  -webkit-transition: -webkit-filter 0.5s, filter 0.5s;
+          transition: filter 0.5s;
+}
+/* line 27, sass/components-v2-css-modules/_global-layout.scss */
+.ie8 .l-page-container.is-blurred-heavy, .ie9 .l-page-container.is-blurred-heavy {
+  -webkit-filter: none;
+          filter: none;
+}
+/* line 31, sass/components-v2-css-modules/_global-layout.scss */
+.is-responsive .l-page-container {
+  min-width: auto;
+}
+
+/* line 35, sass/components-v2-css-modules/_global-layout.scss */
+.l-main {
+  width: 100%;
+  padding-top: 42px;
+  display: inline-block;
+  float: right;
+  overflow: visible;
+  vertical-align: top;
+  -webkit-transition: width 0.15s ease-in;
+          transition: width 0.15s ease-in;
+}
+@media (min-width: 480px) {
+  /* line 35, sass/components-v2-css-modules/_global-layout.scss */
+  .l-main {
+    padding-top: 50px;
+  }
+}
+/* line 46, sass/components-v2-css-modules/_global-layout.scss */
+.panel-left-open .l-main {
+  width: 100%;
+  overflow: visible;
+}
+@media (min-width: 960px) {
+  /* line 50, sass/components-v2-css-modules/_global-layout.scss */
+  .no-touchevents .l-main, .no-touchevents .panel-left-open .l-main {
+    width: calc(100% - 60px);
+    -webkit-transition: width 0.15s ease-out;
+            transition: width 0.15s ease-out;
+  }
+}
+@media (min-width: 1360px) {
+  /* line 50, sass/components-v2-css-modules/_global-layout.scss */
+  .no-touchevents .l-main, .no-touchevents .panel-left-open .l-main {
+    width: calc(100% - 200px);
+  }
+}
+
+/* line 61, sass/components-v2-css-modules/_global-layout.scss */
+.l-full-screen-section {
+  height: calc(100vh - 42px);
+  background-color: #6d69c5;
+}
+@media (min-width: 480px) {
+  /* line 61, sass/components-v2-css-modules/_global-layout.scss */
+  .l-full-screen-section {
+    height: calc(100vh - 50px);
+  }
+}
+
+/* line 68, sass/components-v2-css-modules/_global-layout.scss */
+.components-row-with-border {
+  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid #e1e5e8;
+}
+
+/* line 73, sass/components-v2-css-modules/_global-layout.scss */
+.article-list--article {
+  padding-bottom: 2.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e1e1e1;
+}
+/* line 77, sass/components-v2-css-modules/_global-layout.scss */
+.article-list--article:last-child {
+  border-bottom: 0;
+}
+@media (min-width: 720px) {
+  /* line 73, sass/components-v2-css-modules/_global-layout.scss */
+  .article-list--article {
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* line 84, sass/components-v2-css-modules/_global-layout.scss */
+.page-section {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+/* line 87, sass/components-v2-css-modules/_global-layout.scss */
+.page-section.page-section--with-border {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #e1e5e8;
+}
+
+/* line 92, sass/components-v2-css-modules/_global-layout.scss */
+.page-header--left,
+.page-header--right {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 98, sass/components-v2-css-modules/_global-layout.scss */
+.page-header--left {
+  float: left;
+  clear: left;
+}
+
+/* line 102, sass/components-v2-css-modules/_global-layout.scss */
+.page-header--right {
+  float: right;
+  clear: right;
+  text-align: right;
+}
+
+/* line 107, sass/components-v2-css-modules/_global-layout.scss */
+.content-centered-section {
+  width: 80%;
+  max-width: 590px;
+  margin: 0 auto;
+}
+
+/* line 112, sass/components-v2-css-modules/_global-layout.scss */
+.aside-component {
+  padding-bottom: 25px;
+  margin: 6px 0 22px 0;
+  border-bottom: 2px solid #e1e5e8;
+}
+/* line 116, sass/components-v2-css-modules/_global-layout.scss */
+.aside-component:last-child {
+  border-bottom: none;
+}
+
+/* line 120, sass/components-v2-css-modules/_global-layout.scss */
+.desktop-only {
+  display: none;
+}
+@media (min-width: 1280px) {
+  /* line 120, sass/components-v2-css-modules/_global-layout.scss */
+  .desktop-only {
+    display: inline-block;
+  }
+}
+
+/* line 126, sass/components-v2-css-modules/_global-layout.scss */
+.centred-content-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
