@@ -1,38 +1,13 @@
-.page-article-list {
-	padding-top: 2.1rem;
-	overflow: visible;
-	+ div .global-footer {
-		border-top: none;
-	}
-	.page-header__headings-container,
-	.page-header__page-actions-container {
-		width: 50%;
-		display: inline-block;
-		vertical-align: top;
-	}
-	.page-header__page-actions-container {
-		padding-top: 2px;
-		text-align: right;
-		.form-field--checkbox-list {
-			padding-top: 10px;
-		}
-	}
-	.page-title {
-		margin-right: 20px;
-		margin-bottom: 0;
-	}
-	.page-title, 
-	.page-sub-title {
-		display: inline-block;
-		vertical-align: top;
-	}
-	.page-sub-title {
-		padding-top: 14px;
-		font-family: $brand-body-font;
-		font-size: 14px;
-		font-weight: 400;
-		color: $mid-grey-1;
-	}
+@import "breakpoint";
+@import "../variables/layout";
+@import "../helpers/mixins";
+@import "../variables/interaction";
+@import "../variables/colours";
+@import "../variables/typography";
+
+.article-list-container {
+	padding-top: 2rem;
+	background-color: $panel-grey;
 	.upgrade-content-container {
 		width: 90%;
 		background-color: $panel-grey;
@@ -50,20 +25,6 @@
 			}
 		}
 	}
-	.divider {
-		height: 1px;
-		width: 100%;
-		margin: 0 auto 5rem;
-		border-bottom: 1px solid $light-grey-2;
-	}
-}
-.page-article-list__header {
-	margin-bottom: 2.1rem;
-	font-size: 0;
-}
-.article-list-container {
-	padding-top: 2rem;
-	background-color: $panel-grey;
 }
 .article-list {
 	width: 100%;
@@ -293,10 +254,11 @@
 	}
 }
 .tooltip--article-list-content {	
-	@extend .text-link;
+	color: $reflection-purple;
 	cursor: pointer;
 	transition: border-color $base-transition-speed-off, background-color $base-transition-speed-off, color $base-transition-speed-off;
 	&:hover {
+		color: $reflection-purple--hover;
 		transition: border-color $base-transition-speed-on, background-color $base-transition-speed-on, color $base-transition-speed-on;
 	}
 }
