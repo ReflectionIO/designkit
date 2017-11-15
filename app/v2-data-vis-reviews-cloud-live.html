@@ -735,11 +735,11 @@
 							var instance = this;
 							var s = "";
 							
-							console.log(instance);
 							var thisDate = new Date(instance.points[0].point.x);
 							var thisDateFormatted = dayNames[thisDate.getDay()] + " " + thisDate.getDate() + " " + monthNames[thisDate.getMonth()] + " " + thisDate.getFullYear();
 							
 							var totalReviewsForPoint = instance.points[1].y + instance.points[2].y;
+							var averageRatingAsPerc = instance.points[0].y.toFixed(1) / 5 * 100;
 							var percOfPos = instance.points[1].y / totalReviewsForPoint * 100;
 							var percOfNeg = instance.points[2].y / totalReviewsForPoint * 100;
 							
@@ -747,7 +747,7 @@
 							
 							s += "<span class='reviews-timeline-tooltip__date'>" + thisDateFormatted + "</span>";
 							
-							s += "<span class='reviews-timeline-tooltip__average-container'>Average: <div class='ratings-container'><div class='ratings-full' style='width:60%'></div></div><span class='reviews-timeline-tooltip__average-value'>" + instance.points[0].y.toFixed(1) + "</span></span>";
+							s += "<span class='reviews-timeline-tooltip__average-container'>Average: <div class='ratings-container'><div class='ratings-full' style='width:" + averageRatingAsPerc + "%'></div></div><span class='reviews-timeline-tooltip__average-value'>" + instance.points[0].y.toFixed(1) + "</span></span>";
 							
 							s += "<span class='reviews-timeline-tooltip__total-reviews-container'><span class='reviews-timeline-tooltip__total-reviews-label'>Reviews</span><span class='reviews-timeline-tooltip__total-reviews-value'>" + totalReviewsForPoint + "</span></span>";
 							
