@@ -58,7 +58,7 @@
 										alt="App Name"
 										class="js-app-icon" />
 								</div>
-								<div style="display: inline-block;" class="overflow-visible">
+								<div class="page-data-vis-reviews-cloud__app-column__search-container">
 									<div class="secondary-filter secondary-filter--medium form-field--search">
 										<input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
 										<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
@@ -72,7 +72,6 @@
 									<h3 class="page-data-vis-reviews-cloud__developer-name">
 										By <span class="js-developer-name">Developer Name</span>
 									</h3>
-									<span>View App Page</span>
 								</div>
 								
 								<div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
@@ -108,10 +107,28 @@
 					</div>
 				</div>
 				
+				<div class="chart-heading">
+					<h2>Average Rating &amp; Reviews Split</h2>
+					<h3>Latest <span class="js-no-of-reviews"></span> Reviews</h3>
+					<div class="chart-heading__row-two">
+						<h4>From Latest <span class="js-no-of-reviews"></span>  Reviews</h4>
+						<div class="overall-reviews-container js-overall-reviews-container">
+							<span class="overall-reviews-container__label">Average</span>
+							<div class='ratings-container'><div class='ratings-full'></div></div><span class='reviews-timeline-tooltip__average-value'></span>
+						</div>
+					</div>
+				</div>
+				
 				<section class="chart-container">
 					<div class="chart" id="chart-reviews" style="overflow: visible;"></div>
 					<div class="start-instruction">
 						<img src="images/onboarding-find-an-app.png" alt="Find an app to get started" />
+					</div>
+					<div class="chart__loading">
+						<div class="hamster-wheel">
+							<img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+						</div>
+						<div class="animation-hamster animation-hamster--dark"></div>
 					</div>
 				</section>
 				
@@ -119,6 +136,35 @@
 				<div class="page-data-vis-reviews-cloud__center-column">
 					<div class="page-data-vis-reviews-cloud__main-content-container">
 						<div>
+							<div class="reviews-cloud-heading">
+								<h3>Commonly Appearing Words in Latest <span class="js-no-of-reviews"></span> Reviews</h3>
+								<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--small">
+									<div class="toggle js-toggle">
+										<input id="toggle--show-all" name="radiomedium" data-cloudtotoggle="tag-cloud--all" checked="" type="radio">
+										<label for="toggle--show-all">
+											All Reviews
+										</label>
+									</div>
+									<div class="toggle js-toggle">
+										<input id="toggle--show-five" name="radiomedium" data-cloudtotoggle="tag-cloud--positive" type="radio">
+										<label for="toggle--show-five">
+											4 - 5 Stars
+										</label>
+									</div>
+									<div class="toggle js-toggle">
+										<input id="toggle--show-three" name="radiomedium" data-cloudtotoggle="tag-cloud--average" type="radio">
+										<label for="toggle--show-three">
+											3 Stars
+										</label>
+									</div>
+									<div class="toggle js-toggle">
+										<input id="toggle--show-one" name="radiomedium" data-cloudtotoggle="tag-cloud--negative" type="radio">
+										<label for="toggle--show-one">
+											1 - 2 Stars
+										</label>
+									</div>
+								</div>
+							</div>
 							<aside class="page-data-vis-reviews-cloud__app-column">
 
 								<div class="page-data-vis-reviews-cloud__reviews-widget">
@@ -157,40 +203,15 @@
 										</li>
 									</ul>
 								</div>
+								
+								<div class="cloud-key-instruction-container">
+									<h2 class="cloud-key-instruction ref-icon-before--info-no-fill">Click a word to read reviews containing it.</h2>
+									
+									<h2 class="cloud-key-instruction ref-icon-before--info-no-fill">The bigger a word in the cloud, the more it has been used. </h2>
+									
+									<h2 class="cloud-key-instruction ref-icon-before--info-no-fill"><span class="positive-colour">Green</span> = Positive, <span class="negative-colour">Red</span> = Negative, <span class="neutral-colour">Grey</span> = Neutral</h2>
+								</div>
 							</aside>
-							
-							<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--medium">
-								<div class="toggle js-toggle">
-									<input id="toggle--show-all" name="radiomedium" data-cloudtotoggle="tag-cloud--all" checked="" type="radio">
-									<label for="toggle--show-all">
-										All Reviews
-									</label>
-								</div>
-								<div class="toggle js-toggle">
-									<input id="toggle--show-five" name="radiomedium" data-cloudtotoggle="tag-cloud--positive" type="radio">
-									<label for="toggle--show-five">
-										4 - 5 Stars
-									</label>
-								</div>
-								<div class="toggle js-toggle">
-									<input id="toggle--show-three" name="radiomedium" data-cloudtotoggle="tag-cloud--average" type="radio">
-									<label for="toggle--show-three">
-										3 Stars
-									</label>
-								</div>
-								<div class="toggle js-toggle">
-									<input id="toggle--show-one" name="radiomedium" data-cloudtotoggle="tag-cloud--negative" type="radio">
-									<label for="toggle--show-one">
-										1 - 2 Stars
-									</label>
-								</div>
-							</div>
-							
-							<div class="cloud-key-instruction-container" style="width: auto;">
-								<h2 class="cloud-key-instruction">Click a word to read reviews featuring it</h2>
-								<h3 class="cloud-key"><span class="size-key">Siz<b>e</b></span> = Frequency</h3>
-								<h3 class="cloud-key"><span class="colour-key">Colour</span> = Sentiment</h3>
-							</div>
 
 							<div class="page-data-vis-reviews-cloud__cloud-section">
 								<div class="tag-cloud-container" style="margin-bottom: 6rem;">
@@ -250,204 +271,9 @@
 	<script src="js-v2/app-include-templates.js"></script> <!-- static templates only -->
   <script src="js-v2/application.js"></script>
 		
-	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://www.reflection.io/js/highcharts.js"></script>
   
 	<script>
-		var chartData = [
-    {
-        "data": [
-            {
-                "date": new Date(1420070400000),
-                "value": 3.4
-            },
-            {
-                "date": new Date(1420243200000),
-                "value": 4.3
-            },
-            {
-                "date": new Date(1420329600000),
-                "value": 4.2
-            },
-            {
-                "date": new Date(1420416000000),
-                "value": 4
-            },
-            {
-                "date": new Date(1420502400000),
-                "value": 3.8
-            },
-            {
-                "date": new Date(1420588800000),
-                "value": 3.5
-            },
-            {
-                "date": new Date(1420675200000),
-                "value": 3
-            },
-            {
-                "date": new Date(1420761600000),
-                "value": 3.2
-            },
-            {
-                "date": new Date(1420848000000),
-                "value": 4
-            },
-            {
-                "date": new Date(1420934400000),
-                "value": 4.2
-            },
-            {
-                "date": new Date(1421020800000),
-                "value": 3.8
-            },
-            {
-                "date": new Date(1421107200000),
-                "value": 3.7
-            },
-            {
-                "date": new Date(1421193600000),
-                "value": 3.6
-            },
-            {
-                "date": new Date(1421280000000),
-                "value": 3.5
-            },
-            {
-                "date": new Date(1421366400000),
-                "value": 3.2
-            },
-            {
-                "date": new Date(1421452800000),
-                "value": 3.2
-            }
-        ]
-    },
-    {
-        "data": [
-            {
-                "date": new Date(1420070400000),
-                "value": 5
-            },
-            {
-                "date": new Date(1420156800000),
-                "value": 6
-            },
-            {
-                "date": new Date(1420243200000),
-                "value": 11
-            },
-            {
-                "date": new Date(1420329600000),
-                "value": 15
-            },
-            {
-                "date": new Date(1420416000000),
-                "value": 13
-            },
-            {
-                "date": new Date(1420502400000),
-                "value": 11
-            },
-            {
-                "date": new Date(1420588800000),
-                "value": 9
-            },
-            {
-                "date": new Date(1420675200000),
-                "value": 9
-            },
-            {
-                "date": new Date(1420761600000),
-                "value": 10
-            },
-            {
-                "date": new Date(1420848000000),
-                "value": 12
-            },
-            {
-                "date": new Date(1420934400000),
-                "value": 8
-            },
-            {
-                "date": new Date(1421020800000),
-                "value": 7
-            },
-            {
-                "date": new Date(1421107200000),
-                "value": 5
-            }
-        ]
-    },{
-        "data": [
-            {
-                "date": new Date(1420070400000),
-                "value": 5
-            },
-            {
-                "date": new Date(1420156800000),
-                "value": 7
-            },
-            {
-                "date": new Date(1420243200000),
-                "value": 7
-            },
-            {
-                "date": new Date(1420329600000),
-                "value": 8
-            },
-            {
-                "date": new Date(1420416000000),
-                "value": 10
-            },
-            {
-                "date": new Date(1420502400000),
-                "value": 7
-            },
-            {
-                "date": new Date(1420675200000),
-                "value": 6
-            },
-            {
-                "date": new Date(1420761600000),
-                "value": 5
-            },
-            {
-                "date": new Date(1420848000000),
-                "value": 4
-            },
-            {
-                "date": new Date(1420934400000),
-                "value": 3
-            },
-            {
-                "date": new Date(1421020800000),
-                "value": 5
-            },
-            {
-                "date": new Date(1421107200000),
-                "value": 6
-            },
-            {
-                "date": new Date(1421193600000),
-                "value": 8
-            },
-            {
-                "date": new Date(1421280000000),
-                "value": 4
-            },
-            {
-                "date": new Date(1421366400000),
-                "value": 2
-            },
-            {
-                "date": new Date(1421452800000),
-                "value": 3
-            },
-            {
-                "date": new Date(1421539200000),
-                "value": 1
-            }]
-    }];  
 		
 		var rawReviews = {};
 
@@ -577,24 +403,21 @@
 					],
 					dayNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 			
+			var chartWidth = $(".chart-container").width();
+			
 			for(var a = 0; a < seriesData.length; a++) {
-
-				var seriesName = dataType;
-				if(a == 0) {
-					seriesName += "-total";
-				}
 
 				seriesArray.push({
 					yAxis: (a == 0) ? 1 : 0,
-					name: seriesName,
-					id : seriesName,
+					name: "series-" + a,
+					id : "series-" + a,
 					type: (a == 0) ? 'area' : 'area',
 					stacking: null,
-					color: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
+					color: seriesColour[a],
 					data: seriesData[a],
 					borderRadiusTopLeft: 3,
 					borderRadiusTopRight: 3,
-					lineColor: (dataType == "downloadsseries" && a == 0) ? "#918edf" : seriesColour[a],
+					lineColor: seriesColour[a],
 					lineWidth: 3,
 					lineWidthPlus: 0,
 					fillOpacity: 0,
@@ -621,10 +444,10 @@
 						renderTo: containerId,
 						marginLeft: 0,
 						marginRight: 0,
-						marginBottom: 30,
-						marginTop: 30,
+						marginBottom: 0,
+						marginTop: 0,
 						spacing: [0,0,0,0],
-						height: 400,
+						height: 250,
 						backgroundColor: '#343438',
 						plotBackgroundColor: '#343438',
 						type: chartType,
@@ -633,22 +456,6 @@
 							fontFamily: 'Source Sans Pro'
 						},
 						events: {
-							load: function() {
-									var countIndex = 0;
-									var graphPointAnimationDelay = 20;
-
-									// set the all series opacity on load
-									var countIndex = 0;
-									$('#' + containerId + ' .highcharts-series path:nth-child(2)').each(function() { // gets each series line
-										if (countIndex > 0) { // first series is set to visible
-											$(this).attr("style", "opacity: 0.3");
-											$(this).siblings("path").attr("style", "opacity: 0");
-										} else {
-											$(this).attr("style", "opacity: 1");
-										}
-										countIndex++;
-									});
-							}
 						}
 					},
 					legend: {
@@ -659,36 +466,39 @@
 					},
 					yAxis: [{
 						lineWidth: 2,
-						offset: -50,
+						offset: 0,
 						lineColor: '#222222',
 					}, {
 						lineWidth: 2,
 						gridLineWidth: 1,
 						gridLineColor: '#222222',
 						opposite: true,
-						offset: -50,
+						offset: 0,
 						lineColor: '#222222',
 					}],
 					xAxis: {
 						lineColor: '#222222',
 						startOnTick: true,
 						endOnTick: true,
-						showFirstLabel: false,
+						showFirstLabel: true,
 						maxPadding: 0,
 						minPadding: 0,
 						type: 'datetime',
 						dateTimeLabelFormats: {
-								day: '%e %b'
+							day: '%e %b',
+							week: '%e %b',
+							month: '%Y-%m',
+							year: '%Y'
 						},
 						tickmarkPlacement: 'on',
 						tickLength: 0,
 						labels: {
 							align: 'center',
 							x: 0,
-							y: 18,
-							step: 2,
+							y: 22,
+							step: 1,
 							style: {
-								color: '#fcfcfd',
+								color: '#81879D',
 								fontSize: "12px"
 							}
 						},
@@ -713,7 +523,7 @@
 						},
 						bar: {
 							borderColor: "#343438",
-							borderWidth: 1,
+							borderWidth: 2,
 							groupPadding: 0.08,
 							pointPadding: 0,
 							states: {
@@ -723,7 +533,7 @@
 							}
 						},
 						series: {
-							pointStart: new Date(seriesData[0][0][0]),
+							pointStart: new Date(seriesData[0][0][0]).addHours(-12),
 							animation: false
 						},
 					},
@@ -747,7 +557,7 @@
 							
 							s += "<span class='reviews-timeline-tooltip__date'>" + thisDateFormatted + "</span>";
 							
-							s += "<span class='reviews-timeline-tooltip__average-container'>Average: <div class='ratings-container'><div class='ratings-full' style='width:" + averageRatingAsPerc + "%'></div></div><span class='reviews-timeline-tooltip__average-value'>" + instance.points[0].y.toFixed(1) + "</span></span>";
+							s += "<span class='reviews-timeline-tooltip__average-container'>Average <div class='ratings-container'><div class='ratings-full' style='width:" + averageRatingAsPerc + "%'></div></div><span class='reviews-timeline-tooltip__average-value'>" + instance.points[0].y.toFixed(1) + "</span></span>";
 							
 							s += "<span class='reviews-timeline-tooltip__total-reviews-container'><span class='reviews-timeline-tooltip__total-reviews-label'>Reviews</span><span class='reviews-timeline-tooltip__total-reviews-value'>" + totalReviewsForPoint + "</span></span>";
 							
@@ -777,8 +587,7 @@
 			} else {
 				clearPreviousTimelineChart();
 				$.each(seriesArray, function (key, series) {
-					console.log(series);
-					series.pointStart = new Date(series.data[0][0]);
+					series.pointStart = new Date(series.data[0][0]).addHours(-12);
 					window.reviewsCloudTimelineChart.addSeries(series, false);
 				});
 				
@@ -810,7 +619,7 @@
 
 			fetch('https://stats.reflection.io/microservices/wordcloud2?itemid=' + appId + '&country=' + countryCode, myInit).then(function(response) {
 				return response.json().then(function(json) {
-
+		console.log(json)			
 					if(json.reviewsCloudData) {
 						var reviewsCloud = {
 							data: json.reviewsCloudData
@@ -847,35 +656,53 @@
 					
 					averageRatingsFromJSON.forEach(function(obj){
 						var newArray = [];
-						var thisDate = new Date(parseInt(obj.date));
-						var dateFormattedToUTC = Date.UTC(thisDate.getFullYear(), thisDate.getMonth(), thisDate.getDate());
 						newArray.push(obj.date);
+						if(obj.average_rating == null) {
+							obj.average_rating = 0;
+						}
 						newArray.push(obj.average_rating);
 						averageRatingsFormatted.push(newArray);
 					});
 					
 					posRatingsFromJSON.forEach(function(obj){
 						var newArrayPos = [];
-						var thisDate = new Date(parseInt(obj.date));
-						var dateFormattedToUTC = Date.UTC(thisDate.getFullYear(), thisDate.getMonth(), thisDate.getDate());
 						newArrayPos.push(obj.date);
+						if(obj.n_pos == null) {
+							obj.n_pos = 0;
+						}
 						newArrayPos.push(obj.n_pos);
 						posRatingsFormatted.push(newArrayPos);
 					});
 					
 					negRatingsFromJSON.forEach(function(obj){
 						var newArrayNeg = [];
-						var thisDate = new Date(parseInt(obj.date));
-						var dateFormattedToUTC = Date.UTC(thisDate.getFullYear(), thisDate.getMonth(), thisDate.getDate());
 						newArrayNeg.push(obj.date);
+						if(obj.n_neg == null) {
+							obj.n_neg = 0;
+						}
 						newArrayNeg.push(obj.n_neg);
 						negRatingsFormatted.push(newArrayNeg);
 					});
 					
 					var mockDataRevenue = [];
 					mockDataRevenue.push(averageRatingsFormatted, posRatingsFormatted, negRatingsFormatted);
+					console.log("mockDataRevenue");
+					console.log(mockDataRevenue);
 					generateChart('chart-reviews', "revenueseries", mockDataRevenue, seriesColours, "area");
 					
+					if(json["n_reviews"]) {
+						$('.js-no-of-reviews').text(json["n_reviews"]).show();
+					} else {
+						$('.js-no-of-reviews').hide();
+					}
+					
+					if(json["avg_review_rating"]) {
+						var ratingAsPercent = json["avg_review_rating"] / 5 * 100;
+						$('.js-overall-reviews-container .ratings-full').css("width", ratingAsPercent + "%");
+						$('.js-overall-reviews-container .reviews-timeline-tooltip__average-value').text(json["avg_review_rating"].toFixed(1));
+					} else {
+						$('.js-overall-reviews-container .ratings-full').css("width", 0);
+					}
 				});
 			});
 		};
@@ -1388,7 +1215,13 @@
       		lastPoint;
 
 	    (function (H) {
-
+				
+				H.setOptions({
+					global : {
+						useUTC : false
+					}
+				});
+				
 	      var customIconRect;
 	      H.wrap(H.Tooltip.prototype, 'refresh', function (proceed) {
 	      	
@@ -1399,25 +1232,25 @@
 	        }
 
 	        var $axisLabel = $(this.chart.container).find('.highcharts-axis-label'),
-	            leftOffset = 29,
+	            leftOffset = 26,
 	            axisLabelYPos = $("#" + arguments[1][0].series.chart.container.id + "").height() - arguments[1][0].series.xAxis.bottom,
 	            //axisLabelYPos = arguments[1][0].series.chart.containerHeight - arguments[1][0].series.xAxis.bottom,
 	            axisLabelXPos = arguments[1][0].plotX - leftOffset,
 	            timeStampString = arguments[1][0].x + "",
 	            timeStampString = timeStampString.substring(0,10),
-	            xAxisDate = new Date(timeStampString*1000).addHours(12),
+	            xAxisDate = new Date(timeStampString*1000),
 	            formattedDate = xAxisDate.getDate() + " " + monthNames[xAxisDate.getMonth()];
 
 	        if($axisLabel.length > 0) {       
 
-	          var labelYPos = axisLabelYPos + 18,
+	          var labelYPos = axisLabelYPos + 22,
 	              labelXPos = axisLabelXPos + 7;
 
 	          $axisLabel.attr("transform", "translate(" + labelXPos + "," + labelYPos + ")");
 	          $axisLabel.find("text").text(formattedDate);
 
 	        } else {
-	          this.chart.renderer.label(formattedDate, axisLabelXPos+7, axisLabelYPos + 18, 'callout', 0, 0, false, true, "axis-label")
+	          this.chart.renderer.label(formattedDate, axisLabelXPos+7, axisLabelYPos + 22, 'callout', 0, 0, false, true, "axis-label")
 	          .css({
 	            color: '#fcfdfd',
 	            fontSize: '12px',
@@ -1430,7 +1263,7 @@
 	          .add();
 	        }
 
-	        this.chart.customIconRect = this.chart.renderer.image('images/axis-label-background.png', axisLabelXPos, axisLabelYPos + 4, 54, 20)
+	        this.chart.customIconRect = this.chart.renderer.image('images/axis-label-background.png', axisLabelXPos, axisLabelYPos + 8, 54, 20)
 	        .attr({
 	          zIndex: 99
 	        })
