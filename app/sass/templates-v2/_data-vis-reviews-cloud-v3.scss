@@ -1,4 +1,10 @@
 .page-data-vis-reviews-cloud {
+	.sharing-container {
+		display: none;
+		@media screen and (min-width: 1550px) {
+			display: block;
+		}
+	}
 	.page-data-vis-reviews-cloud__center-column {
 		text-align: center;
 	}
@@ -10,7 +16,10 @@
 	.page-data-vis-reviews-cloud__main-content-container {
 		min-width: 930px;
 		max-width: 1180px;
-		margin: 0;
+		margin: 0 auto;
+		&.page-data-vis-reviews-cloud__main-content-container__head {
+			margin: 0;
+		}
 	}
 	.data-vis-reviews-cloud__content-title {
 		margin-top: 10rem;
@@ -430,12 +439,17 @@
 	.chart-container {
 		height: 300px;
 		float: none;
-		border-bottom: 0;		
+		border-bottom: 0;
+		.chart__no-data {
+			position: absolute;
+			top: 0;
+		}
 	}
 	.chart {
 		margin-top: 0;
 		padding: 0 2.2rem;
-		.is-loading-data & {
+		.is-loading-data &,
+		.is-no-data & {
 			display: none;
 		}
 	}
@@ -629,7 +643,8 @@
 	color: #54bee5;
 }
 .is-initial-state,
-.is-loading-data {
+.is-loading-data,
+.is-no-data {
 	.page-data-vis-reviews-cloud {
 		.page-data-vis-reviews-cloud__developer-name {
 			display: none;
