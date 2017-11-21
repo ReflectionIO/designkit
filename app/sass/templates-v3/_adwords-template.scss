@@ -95,13 +95,18 @@ html, body {
     margin-bottom: 6rem;
     .page-title {
       margin-bottom: 4rem;
-      font-size: 5em;
+      font-size: 4.8em;      
       line-height: 1.2;      
     }
     .page-subtitle {
       margin-bottom: 5rem;
       font-size: 2em;
       line-height: 1.5;
+    }
+  }
+  @include breakpoint($laptop) {
+    .page-title {
+      font-size: 5em;
     }
   }
 }
@@ -166,6 +171,22 @@ html, body {
   img {
     position: relative;
     left: -1rem;
+    width: 570px;
+  }
+  .is-revenue-page & {
+    @media screen and (max-width: 720px) {
+      width: auto;
+      float: none;
+      img {
+        left: inherit;
+        right: 13rem;
+      }
+    }
+    @media screen and (min-width: 480px) and (max-width: 720px) {
+      img {
+        right: 0;
+      }
+    }
   }
   @include breakpoint($phablet) {
     img {
@@ -177,6 +198,7 @@ html, body {
     margin-top: -1.3rem;
     margin-bottom: 0;
     img {
+      width: 941px;
       left: -4.8rem;
     }
   }
@@ -201,6 +223,14 @@ html, body {
   img {
     position: relative;
     right: 11rem;
+    width: 548px;
+  }
+  .is-revenue-page & {
+    @media screen and (max-width: 480px) {
+      img {
+        right: -9rem;
+      }
+    }
   }
   @include breakpoint($phablet) {
     img {
@@ -214,6 +244,7 @@ html, body {
     width: 53.6%;
     float: left;
     img {
+      width: 900px;
       right: -6rem;
       float: right;
     }
@@ -245,7 +276,8 @@ html, body {
   overflow: visible;
   img {
     position: relative;
-    left: -6rem;    
+    left: -6rem;
+    width: 535px;
   }
   @include breakpoint($phablet) {
     width: 100%;
@@ -257,6 +289,9 @@ html, body {
     width: 60.3125%;
     margin-top: -230px;
     left: -5.6rem;
+    img {
+      width: 886px;
+    }
   }
 }
 .partners-heading {
@@ -307,6 +342,9 @@ html, body {
         margin-bottom: 0;
         padding-left: 2%;
         padding-right: 2%;
+        .no-flexbox & {
+          width: 12.5%;
+        }
       }
     }
   }
@@ -371,6 +409,7 @@ html, body {
     margin-top: 0;
     .quotes-section__quote {
       width: 40%;
+      max-width: 440px;
       margin-left: 8%;
       margin-right: 0;
       padding: 0;
@@ -428,11 +467,11 @@ html, body {
   width: 100%;  
   margin-top: -85px;  
   padding-bottom: 5rem;
-  float: left;  
+  float: left;
   text-align: center;
   background-color: transparent;
   background-image: url('images/adwords-landing/graph-illustration-mobile.png');
-  background-size: auto auto;
+  background-size: 960px auto;
   background-repeat: no-repeat;
   background-position: 46% 0;
   overflow: visible;
@@ -441,11 +480,14 @@ html, body {
     margin: 382px auto 2.9rem;
     padding: 0 35px;
     font-size: 18px;
-    color: #FCFDFD;    
+    color: #FCFDFD;
     line-height: 1.6;
   }
   .chart-image {
     display: none;    
+  }
+  .chart-image-wide {
+    display: none;
   }
   @include breakpoint($tablet) {
     h2 {
@@ -453,13 +495,14 @@ html, body {
     }
   }
   @include breakpoint($laptop) {
-    margin-top: -66px;
+    margin-top: -5vw;
     background-image: url('images/adwords-landing/footer-waves@2x.png');
     background-size: 100% auto;
     .chart-image {
       position: absolute;
-      top: 158px;
+      top: 12vw;
       left: 50%;
+      width: 156px;
       margin-left: -118px;
       display: inline-block;
     }
@@ -469,6 +512,23 @@ html, body {
       padding: 0;
       font-size: 2.8em;
       line-height: 1.3;
+    }
+  }
+  @include breakpoint(1400px) {
+    h2 {
+      margin-top: 34vw;
+    }
+  }
+  @include breakpoint($desktop-super-wide) {
+    .chart-image {
+      display: none;
+    }
+    .chart-image-wide {
+      position: absolute;
+      top: 11vw;
+      left: 50%;
+      margin-left: -118px;
+      display: inline-block;
     }
   }
 }
