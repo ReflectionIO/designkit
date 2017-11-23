@@ -463,19 +463,20 @@
 							text: ''
 					},
 					yAxis: [{
-						lineWidth: 2,
+						lineWidth: 1,
 						offset: 0,
-						lineColor: '#222222',
+						lineColor: '#343438',
 					}, {
-						lineWidth: 2,
+						lineWidth: 1,
 						gridLineWidth: 1,
 						gridLineColor: '#222222',
 						opposite: true,
 						offset: 0,
-						lineColor: '#222222',
+						lineColor: '#54BEE5',
 					}],
 					xAxis: {
-						lineColor: '#222222',
+						lineWidth: 1,
+						lineColor: '#29292C',
 						startOnTick: true,
 						endOnTick: true,
 						showFirstLabel: true,
@@ -845,12 +846,13 @@
 				}
 				$('.tag-cloud--all').append(
 					$("<li>").addClass(cssClass)
-										.text(topResultsArray[t].term)
+										.html("<span>" + topResultsArray[t].term + "<span>")
 										.data("font-size", fontSize + "rem")
 										.data("index", t)
 										.data("total", total)
 										.data("average", topResultsArray[t].freq.average_rating)
 										.attr("data-term", topResultsArray[t].term)
+										.append($("<div class='tooltip'><div class='tooltip-text'>Click to See Reviews</div></div>"))
 										.on("mouseenter", function(){
 											var thisTerm = $(this).text();
 											$('.js-keyword-hover').text("'" + thisTerm + "'");
@@ -906,11 +908,12 @@
 						var fontSize = (topResultsArray[t].freq.freq_5stars + topResultsArray[t].freq.freq_4stars) / highestPositiveReviewTotal * maxFontSize + 0.5;
 						var total = topResultsArray[t].freq.freq_overall;
 						$('.tag-cloud--positive').append(
-							$("<li>").text(topResultsArray[t].term)
+							$("<li>").html("<span>" + topResultsArray[t].term + "</span>")
 												.data("font-size", fontSize + "rem")
 												.data("index", t)
 												.data("total", total)
 												.attr("data-term", topResultsArray[t].term)
+												.append($("<div class='tooltip'><div class='tooltip-text'>Click to See Reviews</div></div>"))
 												.on("mouseenter", function(){
 													var thisTerm = $(this).text();
 													$('.js-keyword-hover').text("'" + thisTerm + "'");
@@ -960,11 +963,12 @@
 						var fontSize = (topResultsArray[t].freq.freq_3stars) / highestAverageReviewTotal * maxFontSize + 0.5;
 						var total = topResultsArray[t].freq.freq_overall;
 						$('.tag-cloud--average').append(
-							$("<li>").text(topResultsArray[t].term)
+							$("<li>").html("<span>" + topResultsArray[t].term + "</span>")
 												.data("font-size", fontSize + "rem")
 												.data("index", t)
 												.data("total", total)
 												.attr("data-term", topResultsArray[t].term)
+												.append($("<div class='tooltip'><div class='tooltip-text'>Click to See Reviews</div></div>"))
 												.on("mouseenter", function(){
 
 													var thisTerm = $(this).text();
@@ -1015,11 +1019,12 @@
 						var fontSize = (topResultsArray[t].freq.freq_2stars + topResultsArray[t].freq.freq_1stars) / highestNegativeReviewTotal * maxFontSize + 0.5;
 						var total = topResultsArray[t].freq.freq_overall;
 						$('.tag-cloud--negative').append(
-							$("<li>").text(topResultsArray[t].term)
+							$("<li>").html("<span>" + topResultsArray[t].term + "</span>")
 												.data("font-size", fontSize + "rem")
 												.data("index", t)
 												.data("total", total)
 												.attr("data-term", topResultsArray[t].term)
+												.append($("<div class='tooltip'><div class='tooltip-text'>Click to See Reviews</div></div>"))
 												.on("mouseenter", function(){
 
 													var thisTerm = $(this).text();
@@ -1063,11 +1068,6 @@
 						);
 				}
 			}
-
-
-			$('.tag-cloud--all').on("mouseleave", function(){
-				//TODO empty ratings widget
-			});
 
 			setTimeout(function() {
 				$('.tag-cloud li').each(function(){
