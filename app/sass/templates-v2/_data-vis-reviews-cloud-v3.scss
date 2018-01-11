@@ -57,7 +57,6 @@
 	.page-data-vis-reviews-cloud__app-column {
 		width: 248px;
 		margin-left: 2.2rem;
-		display: inline-block;
 		float: left;
 	}
 	.page-data-vis-reviews-cloud__app-name {
@@ -210,10 +209,10 @@
 		overflow: visible;
 	}
 	.tag-cloud-container .tag-cloud li {
-		padding: 0.5em;
+		padding: 0.4em;
 		display: inline-block;
 		font-weight: 600;
-		font-family: 'Source Sans Pro', sans-serif;		
+		font-family: 'Source Sans Pro', sans-serif;
 		overflow: visible;
 		cursor: pointer;
 		text-decoration: underline;
@@ -229,18 +228,19 @@
 			left: 50%;
 			width: 150px;
 			margin-left: -75px;
-			display: none;
+			display: inline-block;
 			pointer-events: none;
+			visibility: hidden;
 		}
 		&:hover {
 			opacity: 0.8;
 			transition: opacity 0.3s;
-			text-decoration: none;	
-			.tooltip {
-				display: block;
-			}
+			text-decoration: none;
 			span {
 				opacity: 0.8;
+			}
+			.tooltip {
+				visibility: visible;
 			}
 		}
 	}
@@ -455,13 +455,6 @@
 			margin-top: 9rem;
 		}
 	}
-	.start-instruction {
-		position: absolute;
-    top: 40px;
-    left: 50%;
-    margin-left: -240px;
-		display: none;
-	}
 	.chart-container {
 		height: 300px;
 		float: none;
@@ -603,15 +596,6 @@
 	.ratings-full {
 		background-image: url(images/reviews-stars-full@2x.png);
 	}
-	&.is-initial-state {
-		.cloud-key,
-		.cloud-key-instruction {
-			display: none;
-		}
-		.start-instruction {
-			display: inline-block;
-		}
-	}
 	.chart-heading {
 		margin: 0 2.2rem 0.3rem;
 		h2, h3, h4 {
@@ -641,7 +625,6 @@
 	.overall-reviews-container {
 		position: relative;
 		top: -13px;
-		display: inline-block;
 		float: right;
 		.ratings-container {
 			margin-left: 12px;
@@ -668,7 +651,6 @@
 	font-weight: 600;
 	color: #54bee5;
 }
-.is-initial-state,
 .is-loading-data,
 .is-no-data {
 	.page-data-vis-reviews-cloud {

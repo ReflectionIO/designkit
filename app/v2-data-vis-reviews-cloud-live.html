@@ -31,7 +31,7 @@
 
 	<div class="l-page-container">
 		<div id="main" class="l-main" role="main">
-			<div class="page-lab-base grid-container page-data-vis-reviews-cloud theme-dark is-initial-state overflow-visible">
+			<div class="page-lab-base grid-container page-data-vis-reviews-cloud theme-dark overflow-visible">
 
 				<div class="grid__row">
 					<div class="grid__row--heading-row__right">
@@ -42,7 +42,7 @@
 				</div>
 				
 				<div class="page-data-vis-reviews-cloud__main-content-container overflow-visible page-data-vis-reviews-cloud__main-content-container__head">
-					<div class="filters-row js-reviews-cloud-filters-row overflow-visible">
+					<div class="filters-row overflow-visible">
 						<div class="overflow-visible">
 							<div class="page-data-vis-reviews-cloud__app-column__app-icon-container">
 								<img 
@@ -52,7 +52,7 @@
 							</div>
 							<div class="page-data-vis-reviews-cloud__app-column__search-container">
 								<div class="secondary-filter secondary-filter--medium form-field--search">
-									<input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
+									<input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" data-appid="529479190" />
 									<label for="findapp" class="ref-icon-after--search"><span>Search</span></label>
 									<a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
 									<ul class="form-field--select__dropdown js-search-results-drop-down" style="min-width: 250px; display: none; left: -2px; top: 42px;">
@@ -62,7 +62,7 @@
 									</ul>
 								</div>
 								<h3 class="page-data-vis-reviews-cloud__developer-name">
-									By <span class="js-developer-name">Developer Name</span>
+									By <span class="js-developer-name">Supercell</span>
 								</h3>
 							</div>
 							
@@ -112,9 +112,6 @@
 				
 				<section class="chart-container">
 					<div class="chart" id="chart-reviews" style="overflow: visible;"></div>
-					<div class="start-instruction">
-						<img src="images/onboarding-find-an-app.png" alt="Find an app to get started" />
-					</div>
 					<div class="chart__loading">
 						<div class="hamster-wheel">
 							<img src="images/hamster-wheel-dark.png" alt="hamster wheel">
@@ -130,11 +127,10 @@
 					</div>
 				</section>
 				
-				<div class="is-initial-state">
 				<div class="page-data-vis-reviews-cloud__center-column">
 					<div class="page-data-vis-reviews-cloud__main-content-container">
 						<div>
-							<div class="reviews-cloud-heading">
+							<div class="reviews-cloud-heading js-reviews-cloud-filters-row">
 								<h3>Commonly Appearing Words in Latest <span class="js-no-of-reviews"></span> Reviews</h3>
 								<div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--small">
 									<div class="toggle js-toggle">
@@ -243,12 +239,11 @@
 											</ul>
 										</div>
 									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			</div>
 			</div>
 	</div>
 
@@ -302,9 +297,10 @@
 
 		function populateReviewsContent(term) {
 			// find reviews that contain the term
-			$('.js-reviews-content-container').show();
-			
-			var currentCloud = $('.js-reviews-cloud-filters-row .filter-toggle input:checked').attr("data-cloudtotoggle");
+			const $wnd = window;
+			$wnd.$('.js-reviews-content-container').show();
+
+			var currentCloud = $wnd.$('.js-reviews-cloud-filters-row .filter-toggle input:checked').attr("data-cloudtotoggle");
 			var filterByRating = null;
 			var filterByRatingMin = null;
 			var filterByRatingMax = null;
@@ -321,7 +317,9 @@
 				filterByRatingMin = 0;
 				filterByRatingMax = 2;
 			}
-			
+
+			console.log(currentCloud);
+
 			var reviewsToOutput = [];
 			var counter = 0;
 			for(var i = 0; i < rawReviews.length; i++) {
@@ -337,9 +335,9 @@
 					}
 				}
 			}
-			
-			$('.js-reviews-content').empty();
-			$('.js-keyword').text("'" + term + "'");
+
+			$wnd.$('.js-reviews-content').empty();
+			$wnd.$('.js-keyword').text("'" + term + "'");
 
 			for(var i = 0; i < reviewsToOutput.length; i++) {
 
@@ -349,14 +347,14 @@
 				var formattedContent = contentString.splice(indexOfString + wordLength, 0, "</strong>");
 				formattedContent = formattedContent.splice(indexOfString, 0, "<strong>");
 
-				var ratingsContainer = $("<div>").addClass("ratings-container").append($("<div>").addClass("ratings-full").css("width", ((reviewsToOutput[i].rating / 5) * 100) + "%"));
-				var reviewTitle = $("<h2>").addClass("reviews-content__title").html(reviewsToOutput[i].title);
+				var ratingsContainer = $wnd.$("<div>").addClass("ratings-container").append($wnd.$("<div>").addClass("ratings-full").css("width", ((reviewsToOutput[i].rating / 5) * 100) + "%"));
+				var reviewTitle = $wnd.$("<h2>").addClass("reviews-content__title").html(reviewsToOutput[i].title);
 				var reviewDate = new Date(reviewsToOutput[i].date);
 				var formattedReviewDate = reviewDate.getDate() + "/" + (reviewDate.getMonth()+1) + "/" + reviewDate.getFullYear();
-				var reviewDate = $("<span>").addClass("reviews-content__date").text(formattedReviewDate);
-				var reviewContent = $("<p>").html(formattedContent);
+				var reviewDate = $wnd.$("<span>").addClass("reviews-content__date").text(formattedReviewDate);
+				var reviewContent = $wnd.$("<p>").html(formattedContent);
 
-				$('.js-reviews-content').append($("<li>").append(ratingsContainer)
+				$wnd.$('.js-reviews-content').append($wnd.$("<li>").append(ratingsContainer)
 																									.append(reviewTitle)
 																									.append(reviewDate)
 																									.append(reviewContent)
@@ -454,7 +452,10 @@
 							fontFamily: 'Source Sans Pro'
 						},
 						events: {
-						}
+						}						
+					},
+					credits: {
+						enabled: false
 					},
 					legend: {
 						enabled: false
@@ -554,7 +555,7 @@
 							}
 							var percOfPos = 0;
 							if(instance.points[1].y) {
-								perOfPos = instance.points[1].y / totalReviewsForPoint * 100;
+								percOfPos = instance.points[1].y / totalReviewsForPoint * 100;
 							}
 							var percOfNeg = 0;
 							if(instance.points[2].y) {
@@ -604,112 +605,107 @@
 			
 			updateChartSeriesTypes();
 		} // end generateChart()
+
+		function handleReviewsRequestCallback(json) {
+
+			if(json.reviewsCloudData) {
+				var reviewsCloud = {
+					data: json.reviewsCloudData
+				};
+
+				rawReviews = json.reviewsRaw;
+
+				if(json.appIcon) {
+					$('.js-app-icon').attr("src", json.appIcon);
+				}
+
+				$('body').removeClass("is-loading-data");
+				$('body').removeClass("is-no-data");
+				handleData(reviewsCloud.data);
+				
+				// generate the timeline highchart
+				// format the data for highcharts
+				let chartDataFormatted = [];
+
+				var seriesColours = ["#54BEE5", "#1BC79F", "#FF496A"];
+
+				var averageRatingsFromJSON = JSON.parse(json.timeline.average_rating);
+				var posRatingsFromJSON = JSON.parse(json.timeline["n_positive"]);
+				var negRatingsFromJSON = JSON.parse(json.timeline["n_negative"]);
+				var averageRatingsFormatted = [],
+						posRatingsFormatted = [],
+						negRatingsFormatted = [];
+			
+				averageRatingsFromJSON.forEach(function(obj){
+					var newArray = [];
+					newArray.push(obj.date);
+					if(obj.average_rating == null) {
+						obj.average_rating = 0;
+					}
+					newArray.push(obj.average_rating);
+					averageRatingsFormatted.push(newArray);
+				});
+			
+				posRatingsFromJSON.forEach(function(obj){
+					var newArrayPos = [];
+					newArrayPos.push(obj.date);
+					if(obj.n_pos == null) {
+						obj.n_pos = 0;
+					}
+					newArrayPos.push(obj.n_pos);
+					posRatingsFormatted.push(newArrayPos);
+				});
+				
+				negRatingsFromJSON.forEach(function(obj){
+					var newArrayNeg = [];
+					newArrayNeg.push(obj.date);
+					if(obj.n_neg == null) {
+						obj.n_neg = 0;
+					}
+					newArrayNeg.push(obj.n_neg);
+					negRatingsFormatted.push(newArrayNeg);
+				});
+			
+				var mockDataRevenue = [];
+				mockDataRevenue.push(averageRatingsFormatted, posRatingsFormatted, negRatingsFormatted);
+				generateChart('chart-reviews', "revenueseries", mockDataRevenue, seriesColours, "area");
+				
+				if(json["n_reviews"]) {
+					$('.js-no-of-reviews').text(json["n_reviews"]).show();
+				} else {
+					$('.js-no-of-reviews').hide();
+				}
+			
+				if(json["avg_review_rating"]) {
+					var ratingAsPercent = json["avg_review_rating"] / 5 * 100;
+					$('.js-overall-reviews-container .ratings-full').css("width", ratingAsPercent + "%");
+					$('.js-overall-reviews-container .reviews-timeline-tooltip__average-value').text(json["avg_review_rating"].toFixed(1));
+				} else {
+					$('.js-overall-reviews-container .ratings-full').css("width", 0);
+				}
+			} else {
+				// show cannot find reviews
+				$('body').removeClass("is-loading-data");
+				$('body').addClass("is-no-data");
+			}
+		}
 		
 		function generateReviewsCloud() {
-				
+			console.log("generateReviewsCloud");
+
 			$('.tag-cloud--all').empty();			
 			$('.tag-cloud--positive').empty();
 			$('.tag-cloud--average').empty();
 			$('.tag-cloud--negative').empty();
 			
-			$('.is-initial-state').removeClass("is-initial-state")
 			$('body').addClass("is-loading-data");
 			$('body').removeClass("is-no-data");
-			var myHeaders = new Headers();
-			var myInit = { method: 'GET',
-					 headers: myHeaders,
-					 mode: 'cors',
-					 cache: 'default',
-			};
 
 			var appId = $('.js-app-search-input').attr("data-appid");
 			var countryCode = $('.js-dropdown-country .js-dropdown-trigger').attr("data-value");
 
-			fetch('https://stats.reflection.io/microservices/wordcloud2?itemid=' + appId + '&country=' + countryCode, myInit).then(function(response) {
-				return response.json().then(function(json) {
-
-					if(json.reviewsCloudData) {
-						var reviewsCloud = {
-							data: json.reviewsCloudData
-						};
-
-						rawReviews = json.reviewsRaw;
-
-						if(json.appIcon) {
-							$('.js-app-icon').attr("src", json.appIcon);
-						}
-
-						$('body').removeClass("is-loading-data");
-						$('body').removeClass("is-no-data");
-						handleData(reviewsCloud.data);
-						
-						// generate the timeline highchart
-						// format the data for highcharts
-						let chartDataFormatted = [];
-
-						var seriesColours = ["#54BEE5", "#1BC79F", "#FF496A"];
-
-						var averageRatingsFromJSON = JSON.parse(json.timeline.average_rating);
-						var posRatingsFromJSON = JSON.parse(json.timeline["n_positive"]);
-						var negRatingsFromJSON = JSON.parse(json.timeline["n_negative"]);
-						var averageRatingsFormatted = [],
-								posRatingsFormatted = [],
-								negRatingsFormatted = [];
-					
-						averageRatingsFromJSON.forEach(function(obj){
-							var newArray = [];
-							newArray.push(obj.date);
-							if(obj.average_rating == null) {
-								obj.average_rating = 0;
-							}
-							newArray.push(obj.average_rating);
-							averageRatingsFormatted.push(newArray);
-						});
-					
-						posRatingsFromJSON.forEach(function(obj){
-							var newArrayPos = [];
-							newArrayPos.push(obj.date);
-							if(obj.n_pos == null) {
-								obj.n_pos = 0;
-							}
-							newArrayPos.push(obj.n_pos);
-							posRatingsFormatted.push(newArrayPos);
-						});
-						
-						negRatingsFromJSON.forEach(function(obj){
-							var newArrayNeg = [];
-							newArrayNeg.push(obj.date);
-							if(obj.n_neg == null) {
-								obj.n_neg = 0;
-							}
-							newArrayNeg.push(obj.n_neg);
-							negRatingsFormatted.push(newArrayNeg);
-						});
-					
-						var mockDataRevenue = [];
-						mockDataRevenue.push(averageRatingsFormatted, posRatingsFormatted, negRatingsFormatted);
-						generateChart('chart-reviews', "revenueseries", mockDataRevenue, seriesColours, "area");
-						
-						if(json["n_reviews"]) {
-							$('.js-no-of-reviews').text(json["n_reviews"]).show();
-						} else {
-							$('.js-no-of-reviews').hide();
-						}
-					
-						if(json["avg_review_rating"]) {
-							var ratingAsPercent = json["avg_review_rating"] / 5 * 100;
-							$('.js-overall-reviews-container .ratings-full').css("width", ratingAsPercent + "%");
-							$('.js-overall-reviews-container .reviews-timeline-tooltip__average-value').text(json["avg_review_rating"].toFixed(1));
-						} else {
-							$('.js-overall-reviews-container .ratings-full').css("width", 0);
-						}
-					} else {
-						// show cannot find reviews
-						$('body').removeClass("is-loading-data");
-						$('body').addClass("is-no-data");
-					}
-					
-				});
+			$.get( 'https://stats.reflection.io/microservices/wordcloud2?itemid=' + appId + '&country=' + countryCode, function( json ) {
+				handleReviewsRequestCallback(json);
 			});
 		};
 		
@@ -752,10 +748,9 @@
 																				.attr('data-value', $thisOption.attr('value'))
 																				.on("click", function() {
 																					var $this = $(this);
-																					$('.js-dropdown-trigger').attr("data-value", $(this).attr("data-value"));	
-																					if($('.js-app-search-input').val()) {
-																						generateReviewsCloud();
-																					}
+																					$('.js-dropdown-trigger').attr("data-value", $(this).attr("data-value"));
+
+																					generateReviewsCloud();
 																					closeAllFilters();
 
 																					$('.js-dropdown-option.is-selected').removeClass("is-selected");
@@ -854,7 +849,7 @@
 										.attr("data-term", topResultsArray[t].term)
 										.append($("<div class='tooltip'><div class='tooltip-text'>Click to See Reviews</div></div>"))
 										.on("mouseenter", function(){
-											var thisTerm = $(this).text();
+											var thisTerm = $(this).find("span").text();
 											$('.js-keyword-hover').text("'" + thisTerm + "'");
 
 											var thisIndex = $(this).data("index");
@@ -915,7 +910,7 @@
 												.attr("data-term", topResultsArray[t].term)
 												.append($("<div class='tooltip'><div class='tooltip-text'>Click to See Reviews</div></div>"))
 												.on("mouseenter", function(){
-													var thisTerm = $(this).text();
+													var thisTerm = $(this).find("span").text();
 													$('.js-keyword-hover').text("'" + thisTerm + "'");
 
 													var thisIndex = $(this).data("index");
@@ -971,7 +966,7 @@
 												.append($("<div class='tooltip'><div class='tooltip-text'>Click to See Reviews</div></div>"))
 												.on("mouseenter", function(){
 
-													var thisTerm = $(this).text();
+													var thisTerm = $(this).find("span").text();
 													$('.js-keyword-hover').text("'" + thisTerm + "'");
 
 													var thisIndex = $(this).data("index");
@@ -1027,7 +1022,7 @@
 												.append($("<div class='tooltip'><div class='tooltip-text'>Click to See Reviews</div></div>"))
 												.on("mouseenter", function(){
 
-													var thisTerm = $(this).text();
+													var thisTerm = $(this).find("span").text();
 													$('.js-keyword-hover').text("'" + thisTerm + "'");
 
 													var thisIndex = $(this).data("index");
@@ -1120,67 +1115,38 @@
 
 				var valueToSearch = $(this).val();
 				typingTimer = setTimeout(function(){
-					var myHeaders = new Headers();
-					// myHeaders.append('Authorization', 'Basic ZWxhc3RpYzplWFBsSTUxeFU2Z29OOTI3');
-					myHeaders.append('Content-Type', 'application/json');
-
-					 var myInit = { method: 'POST',
-						 headers: myHeaders,
-						 mode: 'cors',
-						 cache: 'default',
-						 body: JSON.stringify({
-								"query": {
-									"function_score": {
-										"query": {
-											"match": {
-												"application_name": {
-													"query": valueToSearch,
-													"fuzziness": "AUTO"
-												}
-											}
-										},
-										"script_score": {
-											"script": {
-												"inline": "Math.log(2 + doc['downloads'].value + doc['revenue'].value) + _score * 2.5"
-											}
-										}
-									}
-								}
-							})
-					 };
 					
-					var myInitNewSearchURL = { method: 'GET',
-						 headers: myHeaders,
-						 mode: 'cors',
-						 cache: 'default',
-					 };
 					// previous search URL https://es.reflection.io:9200/ios/_search
-					
-					fetch('https://oli-4395-dot-reflection-live.appspot.com/webapp/search/iosapp?term=' + valueToSearch, myInitNewSearchURL).then(function(response) {
-						return response.json().then(function(json) {
-							if(json && json.data && json.data.length) {
+					$.get('https://oli-4395-dot-reflection-live.appspot.com/webapp/search/iosapp?term=' + valueToSearch, function( json ) {
+						if(json && json.data && json.data.length) {
 								
-								var searchResultsDropDown = $('.js-search-results-drop-down');
-								$.each(json.data, function(i, result){
-									// console.log(result);
-									searchResultsDropDown.append($("<li>").attr("data-appid", result.appId).attr("data-appDeveloper", result.developerName).append($("<img>").attr("src", result.appIcon)).append($("<span>").text(result.appName)).on("click", function(){
-										var $this = $(this);
-										var selectedAppId = $this.attr("data-appId");										
-										var selectedAppName = $this.text();
-										var selectedAppDeveloper = $this.attr("data-appDeveloper");
-										$('.js-app-search-input').val(selectedAppName).attr("data-appId", selectedAppId);
-										$('.js-search-results-drop-down').hide();
-										populateAppContent(result.appName, result.developerName, result.appIcon, "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22" + selectedAppId + "%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");	
-										generateReviewsCloud();
-									}));
-									
-									$('.js-app-search-loading-indicator').hide();
-								});
-							}
-						});
-					}).catch(function(error) {
-						console.log('There has been a problem with the fetch operation: ' + error.message);
+							var searchResultsDropDown = $('.js-search-results-drop-down');
+							$.each(json.data, function(i, result){
+								// console.log(result);
+								searchResultsDropDown.append($("<li>").attr("data-appid", result.appId).attr("data-appDeveloper", result.developerName).append($("<img>").attr("src", result.appIcon)).append($("<span>").text(result.appName)).on("click", function(){
+									var $this = $(this);
+									var selectedAppId = $this.attr("data-appId");										
+									var selectedAppName = $this.text();
+									var selectedAppDeveloper = $this.attr("data-appDeveloper");
+									$('.js-app-search-input').val(selectedAppName).attr("data-appId", selectedAppId);
+									$('.js-search-results-drop-down').hide();
+									populateAppContent(result.appName, result.developerName, result.appIcon, "https://www.reflection.io/#app:%7B%22countryRankHistory%22:%22gb%22,%22store%22:%22iOS%22,%22appTab%22:%22ratings_and_info%22,%22iosDeviceRankHistory%22:%22iPhone%22,%22myData%22:false,%22appId%22:%22" + selectedAppId + "%22,%22countriesRevenueDownloads%22:%5B%22au%22,%22br%22,%22ca%22,%22dk%22,%22fr%22,%22de%22,%22id%22,%22ie%22,%22it%22,%22my%22,%22mx%22,%22nz%22,%22no%22,%22pt%22,%22ru%22,%22sa%22,%22sg%22,%22es%22,%22se%22,%22tr%22,%22ae%22,%22gb%22,%22us%22%5D,%22iosDeviceRevenueDownloads%22:%5B%22iPhone%22,%22iPad%22,%22DesktopIos%22,%22OtherIosDevices%22%5D%7D");	
+									generateReviewsCloud();
+								}));
+								
+								$('.js-app-search-loading-indicator').hide();
+							});
+						}
 					});
+
+					// fetch('https://oli-4395-dot-reflection-live.appspot.com/webapp/search/iosapp?term=' + valueToSearch, myInitNewSearchURL).then(function(response) {
+					// 	return response.json().then(function(json) {
+							
+					// 	});
+					// }).catch(function(error) {
+					// 	console.log('There has been a problem with the fetch operation: ' + error.message);
+					// });
+
 				}, 500);
 			});
 
@@ -1357,6 +1323,14 @@
 
 		});
 
+		$('document').ready(function(){
+
+			$('body').addClass("is-loading-data");
+
+			$.get( "https://stats.reflection.io/microservices/wordcloud2?itemid=529479190&country=GB", function( json ) {
+				handleReviewsRequestCallback(json);
+			});
+		});
   </script>
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script> 
 </body>
