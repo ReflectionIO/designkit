@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Reflection V2, Data Lab, Market Benchmarking version 2, live data</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" type="text/css" href="global-layout.css" />
+  <link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+  <link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+      }
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <header id="js-component-import--global-header" class="global-header"></header>
+
+  <div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+  <div class="l-page-container">
+    <div id="main" class="l-main" role="main">
+      <div class="page-lab-base page-market-benchmarking theme-dark">
+        <img src="images/data-lab-article-making-top-mock-data.png" alt="Sharing image of the chart" style="position: fixed; left: -999rem;"
+        />
+
+        <div class="grid__row">
+          <div class="grid__row--heading-row__right">
+            <div class="sharing-container">
+              <div class="addthis_sharing_toolbox"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-lab-article-intro">
+          <h1 class="data-lab-article-intro__heading">App Revenue &amp; Download Sources</h1>
+          <p class="data-lab-article-intro__paragraph">Compare up to 4 apps side-by-side and see where in the world their revenue and downloads are coming from. </p>
+        </div>
+
+        <div class="filters-container overflow-visible">
+
+          <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-chart-type">
+            <select class="js-select-box">
+              <option value="FREE" selected>Free Apps</option>
+              <option value="PAID">Paid Apps</option>
+              <option value="GROSSING">Revenue</option>
+            </select>
+          </div>
+
+          <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
+            <select class="js-select-box">
+              <option value="PHONE" selected>iPhone</option>
+              <option value="TABLET">iPad</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="market-benchmarking-chart js-market-benchmarking-chart">
+          <div class="market-benchmarking-chart__rank-column">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+            </ul>
+          </div>
+          
+          <div class="market-benchmarking-chart__data-column js-market-benchmarking-chart__column" data-column-index="0">
+
+            <div class="secondary-filter secondary-filter--medium form-field--search">
+              <input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
+              <label for="findapp" class="ref-icon-after--search">
+                <span>Search</span>
+              </label>
+              <a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+            </div>
+
+            <div class="market-benchmarking-chart__column__has-data">
+              <header class="market-benchmarking-chart__column__header">
+                <div class="market-benchmarking-chart__column__header__app-details">
+                  <img src="" alt="App Icon" class="js-market-benchmarking-chart__column__app-icon">
+                  <h2 class="js-market-benchmarking-chart__column__app-name"></h2>
+                  <h3 class="js-market-benchmarking-chart__column__developer-name"></h3>
+                </div>
+              </header>
+              <ul class="js-market-benchmarking-chart__column__data-list">
+              </ul>
+            </div>
+          </div>
+
+          <div class="market-benchmarking-chart__data-column js-market-benchmarking-chart__column" data-column-index="1">
+
+            <div class="secondary-filter secondary-filter--medium form-field--search">
+              <input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
+              <label for="findapp" class="ref-icon-after--search">
+                <span>Search</span>
+              </label>
+              <a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+            </div>
+
+            <div class="market-benchmarking-chart__column__has-data">
+              <header class="market-benchmarking-chart__column__header">
+                <div class="market-benchmarking-chart__column__header__app-details">
+                  <img src="" alt="App Icon" class="js-market-benchmarking-chart__column__app-icon">
+                  <h2 class="js-market-benchmarking-chart__column__app-name"></h2>
+                  <h3 class="js-market-benchmarking-chart__column__developer-name"></h3>
+                </div>
+              </header>
+              <ul class="js-market-benchmarking-chart__column__data-list">
+              </ul>
+            </div>
+          </div>
+
+          <div class="market-benchmarking-chart__data-column js-market-benchmarking-chart__column" data-column-index="2">
+
+            <div class="secondary-filter secondary-filter--medium form-field--search">
+              <input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
+              <label for="findapp" class="ref-icon-after--search">
+                <span>Search</span>
+              </label>
+              <a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+            </div>
+
+            <div class="market-benchmarking-chart__column__has-data">
+              <header class="market-benchmarking-chart__column__header">
+                <div class="market-benchmarking-chart__column__header__app-details">
+                  <img src="" alt="App Icon" class="js-market-benchmarking-chart__column__app-icon">
+                  <h2 class="js-market-benchmarking-chart__column__app-name"></h2>
+                  <h3 class="js-market-benchmarking-chart__column__developer-name"></h3>
+                </div>
+              </header>
+              <ul class="js-market-benchmarking-chart__column__data-list">
+              </ul>
+            </div>
+          </div>
+
+          <div class="market-benchmarking-chart__data-column js-market-benchmarking-chart__column" data-column-index="3">
+            
+            <div class="secondary-filter secondary-filter--medium form-field--search">
+              <input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
+              <label for="findapp" class="ref-icon-after--search">
+                <span>Search</span>
+              </label>
+              <a href="#" class="clear-search ref-icon-after--close js-clear-search">Clear</a>
+            </div>
+
+            <div class="market-benchmarking-chart__column__has-data">
+              <header class="market-benchmarking-chart__column__header">
+                <div class="market-benchmarking-chart__column__header__app-details">
+                  <img src="" alt="App Icon" class="js-market-benchmarking-chart__column__app-icon">
+                  <h2 class="js-market-benchmarking-chart__column__app-name"></h2>
+                  <h3 class="js-market-benchmarking-chart__column__developer-name"></h3>
+                </div>
+              </header>
+              <ul class="js-market-benchmarking-chart__column__data-list">
+              </ul>
+            </div>
+          </div>
+        
+          <ul class="form-field--select__dropdown js-search-results-drop-down" style="min-width: 250px; display: none; left: -2px; top: 42px;">
+            <div class="app-search-loading-indicator js-app-search-loading-indicator" style="display: none;">
+              <span>Searching...</span>
+              <img src="images/loadingSpinner.gif" alt="Loading" class="search-loading-indicator" />
+            </div>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/vendor/jquery-1.11.1.min.js"></script>
+  <script src="js/vendor/handlebars-v2.0.0.js"></script>
+  <!-- static templates only -->
+  <script src="js-v2/templates/templates.js"></script>
+  <!-- static templates only -->
+  <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+  <!--[if IE 9]>
+		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+	<![endif]-->
+
+  <div id="js-appendScriptsContainer"></div>
+
+  <script src="js-v2/app-include-templates.js"></script>
+  <!-- static templates only -->
+  <script src="js-v2/application.js"></script>
+
+  <script src="js/data-vis/market-benchmarking/default_dataset_PHONE_FREE.json"></script>
+
+  <script>
+
+    var FilterDropDown = function ($domElement) {
+
+      var $thisSelectBox = $domElement,
+        $dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
+        $currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+
+      $thisSelectBox.find('option').each(function () {
+
+        var $thisOption = $(this),
+          selectedClass = "";
+
+        if ($thisOption.val() != "") {
+
+          if ($thisOption.is(":selected")) {
+            if ($thisOption.val() != "") {
+              selectedClass = "is-selected";
+              $currentValue.text($thisOption.text());
+            }
+          }
+
+          var accessClass = "";
+          if ($thisOption.data("access")) {
+            accessClass = "ref-after-pro";
+          }
+
+          var $newListItem = $("<li>");
+          $dropDownContainer.append($newListItem
+            .addClass("js-dropdown-option")
+            .addClass(selectedClass)
+            .addClass(accessClass)
+            .attr('data-value', $thisOption.attr('value'))
+            .on("click", function () {
+
+              $thisSelectBox.find("option").removeAttr("selected");
+              $thisOption.attr("selected", "selected");
+              $thisSelectBox.trigger("change");
+              $currentValue.text($thisOption.text());
+              $dropDownContainer.toggle();
+              $thisSelectBox.parent("div").toggleClass("is-open");
+              $thisSelectBox.parent("div").removeClass("nothing-selected");
+              $dropDownContainer.find(".is-selected").removeClass("is-selected");
+              $(this).addClass("is-selected");
+
+            })
+            .append($("<span>").text($thisOption.text()))
+          );
+        } else {
+          // no option value means placeholder text before option is selected
+          $currentValue.text($thisOption.text());
+        }
+      });
+
+      $currentValue.on("click", function () {
+        if (!$thisSelectBox.attr("disabled")) {
+          var $parentDiv = $thisSelectBox.parent("div");
+          if ($parentDiv.hasClass("is-open")) {
+            $dropDownContainer.toggle();
+            $parentDiv.toggleClass("is-open");
+          } else {
+            setTimeout(function () {
+              if (!$parentDiv.hasClass("is-open")) {
+                closeAllFilters();
+              }
+              var parentWidth = $parentDiv.width();
+              var parentHeight = $parentDiv.height();
+              $dropDownContainer.css({ "min-width": parentWidth + "px" });
+              $dropDownContainer.toggle();
+              $parentDiv.toggleClass("is-open");
+            }, 50); // allow time for instance.closeAllFilters() to close other filters first
+          }
+        }
+      });
+
+      if ($currentValue.text() == "") {
+        $thisSelectBox.parent("div").addClass("nothing-selected");
+      }
+
+      $thisSelectBox.parent("div").append($currentValue)
+        .append($dropDownContainer);
+    };
+
+    function closeAllFilters() {
+      $('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
+      $('.js-secondary-filter.is-open').removeClass("is-open");
+    }
+
+    function getFilterValues() {
+
+      var selectedList = $('.js-dropdown-chart-type .js-dropdown-option.is-selected').data("value");
+      var selectedDevice = $('.js-dropdown-device .js-dropdown-option.is-selected').data("value");
+
+      filters = {
+        list: selectedList,
+        device: selectedDevice
+      }
+
+      return filters;
+    }
+
+    $("html").on("click", function (e) {
+      if (!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
+        closeAllFilters();
+      }
+    });
+
+    $('.js-select-box').each(function () {
+      new FilterDropDown($(this));
+    });
+
+    function populateAppColumnDetails(columnIndex, data) {
+      var thisColumnContainer = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]");
+      thisColumnContainer.find(".js-market-benchmarking-chart__column__app-icon").attr("src", data.appIcon);
+      var linkToAppPage = 'https://www.reflection.io/index.html#!app:{"countryRankHistory":"gb","iosDeviceRankHistory":"iPhone","store":"iOS","appTab":"ratings_and_info","myData":false,"appId":"' + data.appId + '","endDate":"1515024000000","startDate":"1512345600000","countriesRevenueDownloads":["au","br","ca","dk","fi","fr","de","id","ie","it","my","mx","nz","no","pt","ru","sa","sg","es","se","tr","ae","gb","us"],"iosDeviceRevenueDownloads":["iPhone","iPad","DesktopIos","OtherIosDevices"]}';
+      thisColumnContainer.find(".js-market-benchmarking-chart__column__app-name").append($("<a>").attr("href", linkToAppPage).text(data.appName));
+      thisColumnContainer.find(".js-market-benchmarking-chart__column__developer-name").text(data.developerName);
+    }
+
+    function populateAppColumn(columnIndex, data) {
+      console.log("populateAppColumn");
+      console.log(data);
+
+      var thisColumnContainer = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]");
+
+      var thisColumnListContainer = thisColumnContainer.find(".js-market-benchmarking-chart__column__data-list");
+
+      for (var i = 0; i < data.data.length; i++) {
+
+        var listItem = $("<li>").addClass("market-benchmarking-chart__data-list__item js-list-item-country--" + data.data[i].countryCode.toUpperCase())
+                                .attr("data-country", data.data[i].countryCode.toUpperCase());
+        var countryIcon = $("<div>").addClass("icon-flag-sm icon-flag--" + data.data[i].countryCode.toUpperCase());
+        listItem.append(countryIcon);
+
+        var dataBar = $("<div>").addClass("market-benchmarking-chart__data-bar-container")
+          .append($("<div>").addClass("market-benchmarking-chart__data-bar")
+            .css("width", data.data[i].value + "%"));
+
+        listItem.append(dataBar);
+
+        if (!data.data[i].value) {
+          listItem.append($("<span>").addClass("market-benchmarking-chart__null-value-label").text("No Data - Rank Too Low"));
+        }
+
+        listItem.append($("<span>").addClass("market-benchmarking-chart__value").text(data.data[i].value.toFixed(1) + "%"));
+
+        listItem.on("mouseenter", function(){
+          $('.is-on').removeClass('is-on');
+          var countryCode = $(this).attr("data-country");
+          $('.js-list-item-country--' + countryCode).addClass('is-on');
+          $('.js-market-benchmarking-chart').addClass('is-hovered');
+        });
+
+        thisColumnListContainer.append(listItem);
+      }
+
+      thisColumnContainer.addClass("has-data");
+
+    }
+
+    $(window).on("load", function () {
+
+      new Page();
+
+      $("body").on("click", function () {
+        $('.js-search-results-drop-down').hide();
+      });
+
+      $('.js-market-benchmarking-chart__column__data-list').on('mouseleave', function () {
+        $('.js-market-benchmarking-chart').removeClass('is-hovered');
+        $('.is-on').removeClass('is-on');
+      });
+
+      function requestMarketData(appId, columnIndex) {
+        $.get("http://35.226.180.252/api/v1/janus/query/dataviz/ios?device=tablet&dateFrom=20171101&dateTo=20171231&listType=PAID&app=" + appId, function (data) {
+          populateAppColumn(columnIndex, JSON.parse(data));
+        });
+      }
+
+      var typingTimer;
+
+      $('.js-app-search-input').focus(function () {
+        var leftPos = $(this).offset().left - 16;
+        var topPos = $(this).offset().top + 30;
+        $('.js-search-results-drop-down').css({ top: topPos, left: leftPos});
+      });
+
+      $('.js-app-search-input').keyup(function () {
+
+        var columnIndex = $(this).parents('.js-market-benchmarking-chart__column').attr("data-column-index");
+        $('.js-search-results-drop-down').show();
+        $('.js-app-search-loading-indicator').show();
+        $('.js-search-results-drop-down li').remove();
+
+        if (typingTimer) {
+          clearTimeout(typingTimer);
+        }
+
+        var valueToSearch = $(this).val();
+        typingTimer = setTimeout(function () {
+
+          // previous search URL https://es.reflection.io:9200/ios/_search
+          $.get('https://oli-4395-dot-reflection-live.appspot.com/webapp/search/iosapp?term=' + valueToSearch, function (json) {
+            if (json && json.data && json.data.length) {
+
+              var searchResultsDropDown = $('.js-search-results-drop-down');
+              $.each(json.data, function (i, result) {
+                // console.log(result);
+                searchResultsDropDown.append($("<li>").attr("data-appid", result.appId).attr("data-appDeveloper", result.developerName).append($("<img>").attr("src", result.appIcon)).append($("<span>").text(result.appName)).on("click", function () {
+                  var $this = $(this);
+                  var selectedAppId = $this.attr("data-appId");
+                  var selectedAppName = $this.text();
+                  var selectedAppDeveloper = $this.attr("data-appDeveloper");
+                  $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "] .js-app-search-input").val(selectedAppName).attr("data-appId", selectedAppId);
+                  $('.js-search-results-drop-down').hide();
+                  var data = {
+                    appName: result.appName,
+                    developerName: result.developerName,
+                    appIcon: result.appIcon,
+                    appId: result.appId
+                  }
+                  populateAppColumnDetails(columnIndex, data);
+                  requestMarketData(result.appId, columnIndex);
+                }));
+
+                $('.js-app-search-loading-indicator').hide();
+              });
+            }
+          });
+
+        }, 500);
+      });
+    });
+
+  </script>
+</body>
+
+</html>
