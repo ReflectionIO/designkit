@@ -278,7 +278,8 @@
 
       var $thisSelectBox = $domElement,
         $dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
-        $currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+        $currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger"),
+        columnContainer = $domElement.parents(".js-market-benchmarking-chart__column");
 
       $thisSelectBox.find('option').each(function () {
 
@@ -317,6 +318,25 @@
               $dropDownContainer.find(".is-selected").removeClass("is-selected");
               $(this).addClass("is-selected");
 
+              // if column has data, make new request
+              if(columnContainer.hasClass("has-data")) {
+                var columnIndex = columnContainer.attr("data-column-index");
+                var columnAppId = columnContainer.find(".js-app-search-input").attr("data-appId");
+                if(columnIndex && columnAppId) {
+                  requestMarketData(columnAppId, columnIndex);
+                }
+              }
+
+              // if the date was changed, make a request for each column
+              if($thisSelectBox.parents(".js-dropdown-date").length > 0) {
+                $('.js-market-benchmarking-chart__column').each(function(){
+                  var columnIndex = $(this).attr('data-column-index');
+                  console.log(columnIndex);
+                  var appId = $(this).find('.js-app-search-input').attr("data-appid");
+                  console.log(appId);
+                  requestMarketData(appId, columnIndex);
+                });
+              }
             })
             .append($("<span>").text($thisOption.text()))
           );
@@ -364,10 +384,12 @@
 
       var selectedList = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "] .js-dropdown-chart-type .js-dropdown-option.is-selected").data("value");
       var selectedDevice = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]  .js-dropdown-device .js-dropdown-option.is-selected").data("value");
+      var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
 
       filters = {
         list: selectedList,
-        device: selectedDevice
+        device: selectedDevice,
+        dateRange: selectedDate
       }
 
       return filters;
@@ -392,12 +414,11 @@
     }
 
     function populateAppColumn(columnIndex, data) {
-      console.log("populateAppColumn");
-      console.log(data);
 
       var thisColumnContainer = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]");
 
       var thisColumnListContainer = thisColumnContainer.find(".js-market-benchmarking-chart__column__data-list");
+      thisColumnListContainer.empty();
 
       for (var i = 0; i < data.data.length; i++) {
 
@@ -429,7 +450,19 @@
       }
 
       thisColumnContainer.addClass("has-data");
+    }
 
+    function requestMarketData(appId, columnIndex) {
+      var filterValues = getFilterValues(columnIndex);
+      var thisColumnContainer = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]").removeClass("is-downloads-list");
+      if(filterValues.list == "free") {
+        thisColumnContainer.addClass("is-downloads-list");
+      }
+      var filterDates = filterValues.dateRange.split("_");
+      
+      $.get("http://35.226.180.252/api/v1/janus/query/dataviz/ios?device=" + filterValues.device + "&dateFrom=" + filterDates[0] + "&dateTo=" + filterDates[1] + "&listType=" + filterValues.list + "&app=" + appId, function (data) {
+        populateAppColumn(columnIndex, JSON.parse(data));
+      });
     }
 
     $(window).on("load", function () {
@@ -444,14 +477,6 @@
         $('.js-market-benchmarking-chart').removeClass('is-hovered');
         $('.is-on').removeClass('is-on');
       });
-      
-      function requestMarketData(appId, columnIndex) {
-        var filterValues = getFilterValues(columnIndex);
-        
-        $.get("http://35.226.180.252/api/v1/janus/query/dataviz/ios?device=" + filterValues.device + "&dateFrom=20171101&dateTo=20171231&listType=" + filterValues.list + "&app=" + appId, function (data) {
-          populateAppColumn(columnIndex, JSON.parse(data));
-        });
-      }
 
       var typingTimer;
 
@@ -481,7 +506,6 @@
 
               var searchResultsDropDown = $('.js-search-results-drop-down');
               $.each(json.data, function (i, result) {
-                // console.log(result);
                 searchResultsDropDown.append($("<li>").attr("data-appid", result.appId).attr("data-appDeveloper", result.developerName).append($("<img>").attr("src", result.appIcon)).append($("<span>").text(result.appName)).on("click", function () {
                   var $this = $(this);
                   var selectedAppId = $this.attr("data-appId");
