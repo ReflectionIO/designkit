@@ -40,16 +40,20 @@
         </div>
 
         <div class="data-lab-article-intro">
-          <h1 class="data-lab-article-intro__heading">App Revenue &amp; Download Sources</h1>
-          <p class="data-lab-article-intro__paragraph">Compare up to 4 apps side-by-side and see where in the world their revenue and downloads are coming from. </p>
+          <h1 class="data-lab-article-intro__heading">See Where in the World Apps are Performing Best</h1>
+          <p class="data-lab-article-intro__paragraph">Compare up to 4 apps side-by-side to identify new markets based on competitor performance. Alteranatively, analyse the same app across different devices to spot any opportunities.</p>
         </div>
 
         <div class="filters-container overflow-visible">
 
           <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-date">
+            <label>For Time Period:</label>
             <select class="js-select-box">
               <option value="20171201_20171231" selected>December 2017</option>
               <option value="20171101_20171130">November 2017</option>
+              <option value="20171001_20171031">October 2017</option>
+              <option value="20170901_20170930">September 2017</option>
+              <option value="20170801_20170831">August 2017</option>
             </select>
           </div>
 
@@ -87,21 +91,7 @@
 
           <div class="market-benchmarking-chart__data-column js-market-benchmarking-chart__column" data-column-index="0">
 
-            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-chart-type">
-              <select class="js-select-box">
-                <option value="free" selected>Downloads</option>
-                <option value="grossing">Revenue</option>
-              </select>
-            </div>
-
-            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
-              <select class="js-select-box">
-                <option value="phone" selected>iPhone</option>
-                <option value="tablet">iPad</option>
-              </select>
-            </div>
-
-            <div className="market-benchmarking-chart__data-column__data">
+            <div class="market-benchmarking-chart__data-column__data">
               <div class="secondary-filter secondary-filter--medium form-field--search">
                 <input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
                 <label for="findapp" class="ref-icon-after--search">
@@ -117,7 +107,48 @@
                     <h2 class="js-market-benchmarking-chart__column__app-name"></h2>
                     <h3 class="js-market-benchmarking-chart__column__developer-name"></h3>
                   </div>
+                  <a href="#" class="ref-icon-after--close js-delete-column" data-column="0">
+                    <span>Close</span>
+                  </a>
                 </header>
+
+                <div class="toggle-container filter-toggle filter-toggle--with-text">
+                  <div class="toggle">
+                    <input id="toggle--show-revenue--0" class="js-list-type" name="listtype__0" checked type="radio" data-value="grossing" data-column="0">
+                    <label for="toggle--show-revenue--0">
+                      Revenue
+                    </label>
+                  </div>
+                  <div class="toggle">
+                    <input id="toggle--show-downloads--0" class="js-list-type" name="listtype__0" type="radio" data-value="free" data-column="0">
+                    <label for="toggle--show-downloads--0">
+                      Downloads
+                    </label>
+                  </div>
+                </div>
+
+                <div class="secondary-filter form-field--select js-secondary-filter js-dropdown-device">
+                  <select class="js-select-box">
+                    <option value="phone" selected>iPhone</option>
+                    <option value="tablet">iPad</option>
+                  </select>
+                </div>
+                
+                <div class="chart__loading">
+                  <div class="hamster-wheel">
+                    <img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+                  </div>
+                  <div class="animation-hamster animation-hamster--dark"></div>
+                </div>
+  
+                <div class="chart__no-data">
+                  <div class="animation-hamster-no-data-dark"></div>
+                  <div>
+                    <h2>No Data Found</h2>
+                    <p>There is no data available for the selected app.<br />Please try another app.</p>
+                  </div>
+                </div>
+
                 <ul class="js-market-benchmarking-chart__column__data-list">
                 </ul>
               </div>
@@ -126,22 +157,8 @@
 
           <div class="market-benchmarking-chart__data-column js-market-benchmarking-chart__column" data-column-index="1">
 
-            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-chart-type">
-              <select class="js-select-box">
-                <option value="free" selected>Downloads</option>
-                <option value="grossing">Revenue</option>
-              </select>
-            </div>
-
-            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
-              <select class="js-select-box">
-                <option value="phone" selected>iPhone</option>
-                <option value="tablet">iPad</option>
-              </select>
-            </div>
-
-            <div className="market-benchmarking-chart__data-column__data">
-              <div class="secondary-filter secondary-filter--medium form-field--search">
+            <div class="market-benchmarking-chart__data-column__data">
+              <div class="secondary-filter form-field--search">
                 <input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
                 <label for="findapp" class="ref-icon-after--search">
                   <span>Search</span>
@@ -156,7 +173,48 @@
                     <h2 class="js-market-benchmarking-chart__column__app-name"></h2>
                     <h3 class="js-market-benchmarking-chart__column__developer-name"></h3>
                   </div>
+                  <a href="#" class="ref-icon-after--close js-delete-column" data-column="1">
+                    <span>Close</span>
+                  </a>
                 </header>
+
+                <div class="toggle-container filter-toggle filter-toggle--with-text">
+                  <div class="toggle">
+                    <input id="toggle--show-revenue--1" class="js-list-type" name="listtype__1" checked type="radio" data-value="grossing" data-column="1">
+                    <label for="toggle--show-revenue--1">
+                      Revenue
+                    </label>
+                  </div>
+                  <div class="toggle">
+                    <input id="toggle--show-downloads--1" class="js-list-type" name="listtype__1" type="radio" data-value="free" data-column="1">
+                    <label for="toggle--show-downloads--1">
+                      Downloads
+                    </label>
+                  </div>
+                </div>
+
+                <div class="secondary-filter form-field--select js-secondary-filter js-dropdown-device">
+                  <select class="js-select-box">
+                    <option value="phone" selected>iPhone</option>
+                    <option value="tablet">iPad</option>
+                  </select>
+                </div>
+
+                <div class="chart__loading">
+                  <div class="hamster-wheel">
+                    <img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+                  </div>
+                  <div class="animation-hamster animation-hamster--dark"></div>
+                </div>
+  
+                <div class="chart__no-data">
+                  <div class="animation-hamster-no-data-dark"></div>
+                  <div>
+                    <h2>No Data Found</h2>
+                    <p>There is no data available for the selected app.<br />Please try another app.</p>
+                  </div>
+                </div>
+
                 <ul class="js-market-benchmarking-chart__column__data-list">
                 </ul>
               </div>
@@ -165,21 +223,7 @@
 
           <div class="market-benchmarking-chart__data-column js-market-benchmarking-chart__column" data-column-index="2">
 
-            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-chart-type">
-              <select class="js-select-box">
-                <option value="free" selected>Downloads</option>
-                <option value="grossing">Revenue</option>
-              </select>
-            </div>
-
-            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
-              <select class="js-select-box">
-                <option value="phone" selected>iPhone</option>
-                <option value="tablet">iPad</option>
-              </select>
-            </div>
-
-            <div className="market-benchmarking-chart__data-column__data">
+            <div class="market-benchmarking-chart__data-column__data">
               <div class="secondary-filter secondary-filter--medium form-field--search">
                 <input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
                 <label for="findapp" class="ref-icon-after--search">
@@ -195,7 +239,48 @@
                     <h2 class="js-market-benchmarking-chart__column__app-name"></h2>
                     <h3 class="js-market-benchmarking-chart__column__developer-name"></h3>
                   </div>
+                  <a href="#" class="ref-icon-after--close js-delete-column" data-column="2">
+                    <span>Close</span>
+                  </a>
                 </header>
+
+                <div class="toggle-container filter-toggle filter-toggle--with-text">
+                  <div class="toggle">
+                    <input id="toggle--show-revenue--2" class="js-list-type" name="listtype__2" checked type="radio" data-value="grossing" data-column="2">
+                    <label for="toggle--show-revenue--2">
+                      Revenue
+                    </label>
+                  </div>
+                  <div class="toggle">
+                    <input id="toggle--show-downloads--2" class="js-list-type" name="listtype__2" type="radio" data-value="free" data-column="2">
+                    <label for="toggle--show-downloads--2">
+                      Downloads
+                    </label>
+                  </div>
+                </div>
+
+                <div class="secondary-filter form-field--select js-secondary-filter js-dropdown-device">
+                  <select class="js-select-box">
+                    <option value="phone" selected>iPhone</option>
+                    <option value="tablet">iPad</option>
+                  </select>
+                </div>
+
+                <div class="chart__loading">
+                  <div class="hamster-wheel">
+                    <img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+                  </div>
+                  <div class="animation-hamster animation-hamster--dark"></div>
+                </div>
+  
+                <div class="chart__no-data">
+                  <div class="animation-hamster-no-data-dark"></div>
+                  <div>
+                    <h2>No Data Found</h2>
+                    <p>There is no data available for the selected app.<br />Please try another app.</p>
+                  </div>
+                </div>
+
                 <ul class="js-market-benchmarking-chart__column__data-list">
                 </ul>
               </div>
@@ -203,22 +288,8 @@
           </div>
 
           <div class="market-benchmarking-chart__data-column js-market-benchmarking-chart__column" data-column-index="3">
-            
-            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-chart-type">
-              <select class="js-select-box">
-                <option value="free" selected>Downloads</option>
-                <option value="grossing">Revenue</option>
-              </select>
-            </div>
 
-            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-device">
-              <select class="js-select-box">
-                <option value="phone" selected>iPhone</option>
-                <option value="tablet">iPad</option>
-              </select>
-            </div>
-
-            <div className="market-benchmarking-chart__data-column__data">
+            <div class="market-benchmarking-chart__data-column__data">
               <div class="secondary-filter secondary-filter--medium form-field--search">
                 <input type="text" placeholder="Find an App" name="appId" id="appId" class="js-app-search-input" />
                 <label for="findapp" class="ref-icon-after--search">
@@ -234,13 +305,54 @@
                     <h2 class="js-market-benchmarking-chart__column__app-name"></h2>
                     <h3 class="js-market-benchmarking-chart__column__developer-name"></h3>
                   </div>
+                  <a href="#" class="ref-icon-after--close js-delete-column" data-column="3">
+                    <span>Close</span>
+                  </a>
                 </header>
+
+                <div class="toggle-container filter-toggle filter-toggle--with-text">
+                  <div class="toggle">
+                    <input id="toggle--show-revenue--3" class="js-list-type" name="listtype__3" checked type="radio" data-value="grossing" data-column="3">
+                    <label for="toggle--show-revenue--3">
+                      Revenue
+                    </label>
+                  </div>
+                  <div class="toggle">
+                    <input id="toggle--show-downloads--3" class="js-list-type" name="listtype__3" type="radio" data-value="free" data-column="3">
+                    <label for="toggle--show-downloads--3">
+                      Downloads
+                    </label>
+                  </div>
+                </div>
+
+                <div class="secondary-filter form-field--select js-secondary-filter js-dropdown-device">
+                  <select class="js-select-box">
+                    <option value="phone" selected>iPhone</option>
+                    <option value="tablet">iPad</option>
+                  </select>
+                </div>
+
+                <div class="chart__loading">
+                  <div class="hamster-wheel">
+                    <img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+                  </div>
+                  <div class="animation-hamster animation-hamster--dark"></div>
+                </div>
+  
+                <div class="chart__no-data">
+                  <div class="animation-hamster-no-data-dark"></div>
+                  <div>
+                    <h2>No Data Found</h2>
+                    <p>There is no data available for the selected app.<br />Please try another app.</p>
+                  </div>
+                </div>
+
                 <ul class="js-market-benchmarking-chart__column__data-list">
                 </ul>
               </div>
             </div>
           </div>
-        
+
           <ul class="form-field--select__dropdown js-search-results-drop-down" style="min-width: 250px; display: none; left: -2px; top: 42px;">
             <div class="app-search-loading-indicator js-app-search-loading-indicator" style="display: none;">
               <span>Searching...</span>
@@ -319,22 +431,21 @@
               $(this).addClass("is-selected");
 
               // if column has data, make new request
-              if(columnContainer.hasClass("has-data")) {
+              if (columnContainer.hasClass("has-data")) {
                 var columnIndex = columnContainer.attr("data-column-index");
-                var columnAppId = columnContainer.find(".js-app-search-input").attr("data-appId");
-                if(columnIndex && columnAppId) {
-                  requestMarketData(columnAppId, columnIndex);
+                if (columnIndex) {
+                  requestMarketData(columnIndex);
                 }
               }
 
               // if the date was changed, make a request for each column
-              if($thisSelectBox.parents(".js-dropdown-date").length > 0) {
-                $('.js-market-benchmarking-chart__column').each(function(){
-                  var columnIndex = $(this).attr('data-column-index');
-                  console.log(columnIndex);
-                  var appId = $(this).find('.js-app-search-input').attr("data-appid");
-                  console.log(appId);
-                  requestMarketData(appId, columnIndex);
+              if ($thisSelectBox.parents(".js-dropdown-date").length > 0) {
+                $('.js-market-benchmarking-chart__column').each(function () {
+                  var $this = $(this);
+                  var columnIndex = $this.attr('data-column-index');
+                  if (columnIndex && $this.hasClass("has-data")) {
+                    requestMarketData(columnIndex);
+                  }
                 });
               }
             })
@@ -381,12 +492,14 @@
     }
 
     function getFilterValues(columnIndex) {
-
-      var selectedList = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "] .js-dropdown-chart-type .js-dropdown-option.is-selected").data("value");
-      var selectedDevice = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]  .js-dropdown-device .js-dropdown-option.is-selected").data("value");
+      var selectedColumnContainer = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]");
+      var selectedList = selectedColumnContainer.find(".js-list-type:checked").attr("data-value");
+      var selectedDevice = selectedColumnContainer.find(".js-dropdown-device .js-dropdown-option.is-selected").data("value");
+      var appId = selectedColumnContainer.find(".js-app-search-input").attr("data-appId");
       var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
 
       filters = {
+        appId: appId,
         list: selectedList,
         device: selectedDevice,
         dateRange: selectedDate
@@ -417,51 +530,67 @@
 
       var thisColumnContainer = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]");
 
-      var thisColumnListContainer = thisColumnContainer.find(".js-market-benchmarking-chart__column__data-list");
-      thisColumnListContainer.empty();
+      if (!data.data.length) {
+        thisColumnContainer.addClass("is-no-data");
+      } else {
+        thisColumnContainer.removeClass("is-loading");
+        var thisColumnListContainer = thisColumnContainer.find(".js-market-benchmarking-chart__column__data-list");
+        thisColumnListContainer.empty();
 
-      for (var i = 0; i < data.data.length; i++) {
+        for (var i = 0; i < data.data.length; i++) {
 
-        var listItem = $("<li>").addClass("market-benchmarking-chart__data-list__item js-list-item-country--" + data.data[i].countryCode.toUpperCase())
-                                .attr("data-country", data.data[i].countryCode.toUpperCase());
-        var countryIcon = $("<div>").addClass("icon-flag-sm icon-flag--" + data.data[i].countryCode.toUpperCase());
-        listItem.append(countryIcon);
+          var listItem = $("<li>").addClass("market-benchmarking-chart__data-list__item js-list-item-country--" + data.data[i].countryCode.toUpperCase())
+            .attr("data-country", data.data[i].countryCode.toUpperCase());
+          var countryIcon = $("<div>").addClass("icon-flag-sm icon-flag--" + data.data[i].countryCode.toUpperCase());
+          listItem.append(countryIcon);
 
-        var dataBar = $("<div>").addClass("market-benchmarking-chart__data-bar-container")
-          .append($("<div>").addClass("market-benchmarking-chart__data-bar")
-            .css("width", data.data[i].value + "%"));
+          var dataBar = $("<div>").addClass("market-benchmarking-chart__data-bar-container")
+            .append($("<div>").addClass("market-benchmarking-chart__data-bar")
+              .css("width", data.data[i].value + "%"));
 
-        listItem.append(dataBar);
+          listItem.append(dataBar);
 
-        if (!data.data[i].value) {
-          listItem.append($("<span>").addClass("market-benchmarking-chart__null-value-label").text("No Data - Rank Too Low"));
-        }
+          if (!data.data[i].value) {
+            listItem.append($("<span>").addClass("market-benchmarking-chart__null-value-label").text("No Data - Rank Too Low"));
+          }
 
-        listItem.append($("<span>").addClass("market-benchmarking-chart__value").text(data.data[i].value.toFixed(1) + "%"));
+          listItem.append($("<span>").addClass("market-benchmarking-chart__value").text(data.data[i].value.toFixed(1) + "%"));
 
-        listItem.on("mouseenter", function(){
-          $('.is-on').removeClass('is-on');
-          var countryCode = $(this).attr("data-country");
-          $('.js-list-item-country--' + countryCode).addClass('is-on');
-          $('.js-market-benchmarking-chart').addClass('is-hovered');
-        });
+          listItem.on("mouseenter", function () {
+            $('.is-on').removeClass('is-on');
+            var countryCode = $(this).attr("data-country");
+            $('.js-list-item-country--' + countryCode).addClass('is-on');
+            $('.js-market-benchmarking-chart').addClass('is-hovered');
+          });
 
-        thisColumnListContainer.append(listItem);
+          thisColumnListContainer.append(listItem);
+        }        
       }
-
-      thisColumnContainer.addClass("has-data");
     }
 
-    function requestMarketData(appId, columnIndex) {
-      var filterValues = getFilterValues(columnIndex);
+    function requestMarketData(columnIndex, appId) {
       var thisColumnContainer = $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]").removeClass("is-downloads-list");
-      if(filterValues.list == "free") {
+      thisColumnContainer.removeClass("is-no-data");
+      thisColumnContainer.addClass("is-loading");
+      thisColumnContainer.find('.js-market-benchmarking-chart__column__data-list').empty();
+      var filterValues = getFilterValues(columnIndex);
+
+      if (filterValues.list == "free") {
         thisColumnContainer.addClass("is-downloads-list");
       }
       var filterDates = filterValues.dateRange.split("_");
-      
-      $.get("http://35.226.180.252/api/v1/janus/query/dataviz/ios?device=" + filterValues.device + "&dateFrom=" + filterDates[0] + "&dateTo=" + filterDates[1] + "&listType=" + filterValues.list + "&app=" + appId, function (data) {
-        populateAppColumn(columnIndex, JSON.parse(data));
+      if (appId) {
+        filterValues.appId = appId;
+      }
+
+      $.get("http://35.226.180.252/api/v1/janus/query/dataviz/ios?device=" + filterValues.device + "&dateFrom=" + filterDates[0] + "&dateTo=" + filterDates[1] + "&listType=" + filterValues.list + "&app=" + filterValues.appId, function (data) {
+        if (data) {
+          populateAppColumn(columnIndex, JSON.parse(data));
+          thisColumnContainer.removeClass("is-loading");
+        } else {
+          thisColumnContainer.removeClass("is-loading");
+          thisColumnContainer.addClass("is-no-data");
+        }
       });
     }
 
@@ -483,7 +612,7 @@
       $('.js-app-search-input').focus(function () {
         var leftPos = $(this).offset().left - 16;
         var topPos = $(this).offset().top + 30;
-        $('.js-search-results-drop-down').css({ top: topPos, left: leftPos});
+        $('.js-search-results-drop-down').css({ top: topPos, left: leftPos });
       });
 
       $('.js-app-search-input').keyup(function () {
@@ -520,7 +649,8 @@
                     appId: result.appId
                   }
                   populateAppColumnDetails(columnIndex, data);
-                  requestMarketData(result.appId, columnIndex);
+                  $(".js-market-benchmarking-chart .js-market-benchmarking-chart__column[data-column-index=" + columnIndex + "]").addClass("has-data");
+                  requestMarketData(columnIndex, result.appId);
                 }));
 
                 $('.js-app-search-loading-indicator').hide();
@@ -529,6 +659,26 @@
           });
 
         }, 500);
+      });
+
+      $('input.js-list-type').on("change", function () {
+        var columnIndex = $(this).attr("data-column");
+        if (columnIndex && $('.js-market-benchmarking-chart__column[data-column-index=' + columnIndex + ']').hasClass("has-data")) {
+          requestMarketData(columnIndex);
+        }
+      });
+
+      $('.js-delete-column').on("click", function (e) {
+        e.preventDefault();
+        var columnIndex = $(this).attr("data-column");
+        if (columnIndex) {
+          var thisColumnContainer = $('.js-market-benchmarking-chart__column[data-column-index=' + columnIndex + ']').removeClass("has-data");
+          thisColumnContainer.find('.js-market-benchmarking-chart__column__app-icon').attr("src", "");
+          thisColumnContainer.find('.js-market-benchmarking-chart__column__data-list').empty();
+          thisColumnContainer.find('.js-market-benchmarking-chart__column__app-name').text("");
+          thisColumnContainer.find('.js-market-benchmarking-chart__column__developer-name').text("");
+          thisColumnContainer.find('.js-app-search-input').attr("data-appid", "");
+        }
       });
     });
 
