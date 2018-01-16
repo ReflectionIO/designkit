@@ -53,7 +53,8 @@
 	}
 }
 .market-benchmarking-chart {	
-	width: 1176px;
+	width: 100%;
+	max-width: 1176px;
 	margin: 18px auto 100px;
 	font-size: 0;
 }
@@ -162,7 +163,7 @@
 }
 .page-lab-base .market-benchmarking-chart__data-column h2,
 .page-lab-base .market-benchmarking-chart__data-column h3 {
-	width: 162px;
+	width: calc(100% - 84px);
 	text-overflow: ellipsis;
   white-space: nowrap;
   color: #FCFDFD;
@@ -189,7 +190,7 @@
 	}
 }
 .market-benchmarking-chart__data-bar-container {
-	width: 63%;
+	width: 57%;
 	height: 20px;
   margin-right: 7px;
 	display: inline-block;
@@ -197,6 +198,9 @@
 	background-color: $dark-grey-1;
 	.is-null-value & {
 		display: none;
+	}
+	@include breakpoint($laptop-plus) {
+		width: 63%;
 	}
 }
 .market-benchmarking-chart__null-value-label {
@@ -217,11 +221,11 @@
 	}
 }
 .market-benchmarking-chart__value {
-  width: 45px;
+  width: 5%;
   padding-top: 2px;
   display: inline-block;
 	vertical-align: top;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 700;
 	color: $light-grey-1;
 	text-align: center;
@@ -236,13 +240,26 @@
 	.is-null-value & {
 		display: none;
 	}
+	@include breakpoint($laptop-plus) {
+		font-size: 14px;
+	}
 }
 .market-benchmarking-chart__column__header__app-details {
+	position: relative;
+	padding-left: 28px;
 	text-align: left;
+	overflow: visible;
+	&:before {
+		position: absolute;
+    left: -1px;
+    top: 10px;
+    font-size: 20px;
+    color: #81879d;
+	}
 	img {
 		width: 40px;
 		height: 40px;
-		margin-right: 15px;
+		margin-right: 12px;
 		display: inline-block;
 		float: left;
 		border-radius: 7px;
@@ -250,9 +267,6 @@
 	h2, h3 {
 		margin: 0;
 		color: $reflection-purple--dark;
-	}
-	h2 {
-    margin-top: 1px;
 	}
 	h3 {
 		font-size: 14px;
@@ -265,13 +279,14 @@
   left: 11px;
   padding: 12px 15px 12px;  
   z-index: 1000;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   font-family: $brand-body-font;
   color: #C4C7D0;
   opacity: 0;
-  border-radius: 10px;
-  background-color: #363A47;
+  border-radius: 5px;
+	background-color: #363A47;
+	pointer-events: none;
   .is-on & {
   	opacity: 1;
   	pointer-events: none;
