@@ -34,7 +34,7 @@
     var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");
     var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
     var selectedCategory = "";
-    if (selectedStore = "ios") {
+    if (selectedStore == "ios") {
       selectedCategory = $('.js-dropdown-category-ios .js-dropdown-option.is-selected').data("value");
     } else {
       selectedCategory = $('.js-dropdown-category-google .js-dropdown-option.is-selected').data("value");
@@ -62,17 +62,37 @@
           dataList.dataListGrossingTotal += dataList.dataListGrossing[i].total;
         }
 
-        $('#toggle--show-revenue, #toggle--show-downloads').change(function () {
-          var dataToDisplay = ($(this).attr("id") == "toggle--show-revenue") ? "ranks_revenue" : "ranks_downloads";
-          $scope.$apply(function () {
-            console.log("apply");
-            dataList.dataListGrossing = dataList.rawData[dataToDisplay];
-            dataList.dataListGrossingTotal = 0;
+        $('.js-page-developer-leaderboard').removeClass("is-loading");
 
-            for (var i = 0; i < dataList.dataListGrossing.length; i++) {
-              dataList.dataListGrossingTotal += dataList.dataListGrossing[i].total;
-            }
+        $('#toggle--show-revenue, #toggle--show-downloads').change(function () {
+          $('.js-page-developer-leaderboard').addClass("is-loading");
+          var dataToDisplay = ($(this).attr("id") == "toggle--show-revenue") ? "ranks_revenue" : "ranks_downloads";
+          if(dataToDisplay == "ranks_revenue") {
+            $('.js-rev-dow-label').text("Revenue");
+          } else {
+            $('.js-rev-dow-label').text("Downloads");
+          }
+
+          $scope.$apply(function () {
+            dataList.dataListGrossing = [];
+            dataList.dataListGrossingTotal = 0;                     
           });
+
+          setTimeout(function(){
+            $scope.$apply(function () {
+
+              dataList.dataListGrossing = dataList.rawData[dataToDisplay];
+              dataList.dataListGrossingTotal = 0;
+
+              for (var i = 0; i < dataList.dataListGrossing.length; i++) {
+                dataList.dataListGrossingTotal += dataList.dataListGrossing[i].total;
+              }                  
+            });
+          }, 500);
+
+          setTimeout(function(){
+            $('.js-page-developer-leaderboard').removeClass("is-loading");
+          }, 500);
         });
 
         $('.js-select-box').on("change", function () {
@@ -141,10 +161,17 @@
           return (totalOfAllDeveloperApps / dataList.dataListGrossingTotal * 100);
         }
 
+        dataList.formatTotal = function(x) {
+          if($('#toggle--show-revenue').is(":checked")) {
+            var x = (x != null) ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-";
+            return "$" + x;
+          }
+          return (x != null) ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-";
+        }
+
       }); // var reflectionApp
 
     window.angular.element(document).ready(function () {
-      console.log("bootstrap!")
       window.angular.bootstrap(document, ["reflectionApp"]);
     });
 
@@ -158,9 +185,9 @@
 
   <div class="l-page-container">
     <div id="main" class="l-main" role="main">
-      <div class="page-developer-leaderboard page-lab-base theme-dark">
+      <div class="page-developer-leaderboard page-lab-base theme-dark js-page-developer-leaderboard is-loading">
 
-        <div class="grid-container js-page-developer-leaderboard" ng-controller="DataController as dataList">
+        <div class="grid-container" ng-controller="DataController as dataList">
           <div class="grid__row">
             <div class="grid__column grid__row--heading-row__left">
               
@@ -184,17 +211,15 @@
               </div>
             </div>
             <div class="grid__column grid__row--heading-row__right">
-              <div class="page-developer-leaderboard__total-container">
-                <h2 class="heading-style--heading-five">Total
-                  <span class="js-rev-dow-label">Revenue</span> for Period:
-                  <span>{{dataList.dataListGrossingTotal}}</span>
-                </h2>
-              </div>
+              <h2 class="page-developer-leaderboard__total">
+                Total <span class="js-rev-dow-label">Revenue</span> for Period:
+                <span class="page-developer-leaderboard__total__value">{{dataList.formatTotal(dataList.dataListGrossingTotal)}}</span>
+              </h2>
             </div>
           </div>
 
           <div class="grid__column filters-container overflow-visible">
-            <div class="toggle-container">
+            <div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--medium">
               <div class="filter-toggle">
                 <div class="toggle">
                   <input id="toggle--show-revenue" name="radio-toggle-rev-down" checked="" type="radio" />
@@ -263,7 +288,7 @@
               </select>
             </div>
 
-            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-category-google">
+            <div class="secondary-filter secondary-filter--medium form-field--select dropdown-category-google js-secondary-filter js-dropdown-category-google">
               <select class="js-select-box">
                 <option value="Overall" selected>GP Overall</option>
                 <option value="Games" data-access="key">GP Games</option>
@@ -291,32 +316,32 @@
 
             <div class="grid__row row-headings">
               <div class="developer-rank-container">
-                <h2 class="heading-style--heading-six">Rank</h2>
+                <span class="row-headings__heading">Rank</span>
               </div>
               <div class="developer-container">
-                <h2 class="heading-style--heading-six">Developer</h2>
+                <span class="row-headings__heading">Developer</span>
               </div>
               <div class="revenue-container">
-                <h2 class="heading-style--heading-six">Revenue</h2>
+                <span class="row-headings__heading js-rev-dow-label">Revenue</span>
               </div>
               <div class="app-breakdown-container">
-                <h2 class="heading-style--heading-six">% of Total for Period</h2>
+                <span class="row-headings__heading">% of Total for Period</span>
               </div>
             </div>
 
             <div class="grid__row data-row" ng-repeat="dataItem in dataList.dataListGrossing">
               <div class="developer-rank-container">
-                <h2 class="heading-style--heading-six">{{$index + 1}}</h2>
+                <span>{{$index + 1}}</span>
               </div>
               <div class="developer-container">
-                <h2 class="heading-style--heading-six">{{dataItem.developer}}</h2>
+                <span>{{dataItem.developer}}</span>
               </div>
               <div class="revenue-container">
-                <h2 class="heading-style--heading-six">{{dataItem.total}}</h2>
+                <span>{{dataList.formatTotal(dataItem.total)}}</span>
               </div>
               <div class="app-breakdown-container">
                 <div class="percentage-container">
-                  <h2 class="heading-style--heading-six">{{dataList.getDeveloperPercentage($index) | number : 1}}</h2>
+                  <span>{{dataList.getDeveloperPercentage($index) | number : 1}}%</span>
                 </div>
                 <div class="developer-apps-revenue__data-bar">
                   <div class="developer-apps-revenue-container" data-relativepercentage='{{dataList.getDeveloperPercentage($index) | number : 5}}'>
@@ -324,7 +349,6 @@
                       <div class="developer-app-revenue" ng-repeat="appItem in dataItem.app_names track by dataItem.app_names + $index" style='width:{{dataList.getAppPercentage($parent.$index, $index)}}%'>
                         <div class="developer-leaderboard__app-details">
                           <img src='{{dataItem.icon_url[$index]}}' alt='{{appItem}}} logo' />
-        
                           <h2>{{appItem}}</h2>
                           <h3>{{dataItem.app_totals[$index]}}</h3>
                         </div>
@@ -419,8 +443,9 @@
                 .addClass(accessClass)
                 .attr('data-value', $thisOption.attr('value'))
                 .on("click", function () {
-
-                  var thisValue = $(this).attr("data-value");
+                  
+                  var $this = $(this);
+                  var thisValue = $this.attr("data-value");
                   var userId = getUserRole();
                   if (userId != null) {
 
@@ -432,7 +457,15 @@
                     $thisSelectBox.parent("div").toggleClass("is-open");
                     $thisSelectBox.parent("div").removeClass("nothing-selected");
                     $dropDownContainer.find(".is-selected").removeClass("is-selected");
-                    $(this).addClass("is-selected");
+                    $this.addClass("is-selected");
+
+                    if($thisOption.text() == "iOS") {
+                      $('.js-dropdown-category-google').css("display", "none");
+                      $('.js-dropdown-category-ios').css("display", "inline-block");
+                    } else if($thisOption.text() == "Google Play") {
+                      $('.js-dropdown-category-ios').css("display", "none");
+                      $('.js-dropdown-category-google').css("display", "inline-block");
+                    }
 
                   } else {
                     $dropDownContainer.toggle();
