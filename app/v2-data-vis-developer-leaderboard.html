@@ -48,8 +48,40 @@
     return "js/data-vis";
   }
 
-  /* Controllers */
   $(window).on("load", function () {
+
+    $('#toggle--show-relative').change(function () {
+      togglePercentage();
+    });
+
+    $('#toggle--show-breakdown').change(function () {
+      togglePercentage();
+    });
+
+    function togglePercentage() {
+      var firstPercentage = 0;
+      var isShowRelativeChecked = $('#toggle--show-relative:checked').length > 0;
+      $('.developer-apps-revenue-container').each(function () {
+        var $this = $(this);
+        if (isShowRelativeChecked) {
+          if (firstPercentage == 0) {
+            firstPercentage = $this.data("relativepercentage");
+            $this.css("width", "100%");
+          } else {
+            var relativeWidth = $this.data("relativepercentage") / firstPercentage * 100;
+            $this.css("width", relativeWidth + "%");
+          }
+        } else {
+          $this.css("width", "100%");
+        }
+      });
+
+      if ($('#toggle--show-relative:checked').length > 0) {
+        $('.heading-style--heading-six span, .perc-heading').css("opacity", 1);
+      } else {
+        $('.heading-style--heading-six span, .perc-heading').css("opacity", 0);
+      }
+    }
 
     var reflectionApp = angular.module('reflectionApp', [])
       .controller('DataController', function ($scope, $http) {
@@ -93,6 +125,12 @@
           setTimeout(function(){
             $('.js-page-developer-leaderboard').removeClass("is-loading");
           }, 500);
+
+          setTimeout(function(){
+            if ($('#toggle--show-relative:checked').length > 0) {
+              togglePercentage();
+            }
+          }, 1000);
         });
 
         $('.js-select-box').on("change", function () {
@@ -104,13 +142,7 @@
             var userId = getUserRole();
             if (userId != null) {
 
-              // set loading state
               $('.js-page-developer-leaderboard').addClass("is-loading");
-
-              // $scope.$apply(function () {  
-              // empty the data set necessary?
-              // dataList.weeksData = emptyWeeksData;
-              // });
 
               setTimeout(function () {
 
@@ -119,8 +151,7 @@
                 console.log("getJSON url = " + userId + fileNameToRequest);
 
                 // check whether to revenue or downloads is selected
-                // var dataToDisplay = ($(this).attr("id") == "toggle--show-revenue") ? "ranks_revenue" : "ranks_downloads";
-                var dataToDisplay = "ranks_revenue";
+                var dataToDisplay = ($('#toggle--show-revenue').is(":checked")) ? "ranks_revenue" : "ranks_downloads";
 
                 $.getJSON("js/data-vis/developer-leaderboard--test2.json", function (data) {
                   console.log("gotJson");
@@ -137,6 +168,11 @@
 
                     // remove loading state
                     $('.js-page-developer-leaderboard').removeClass("is-loading");
+                    setTimeout(function(){
+                      if ($('#toggle--show-relative:checked').length > 0) {
+                        togglePercentage();
+                      }
+                    }, 1000);              
                   });
                 }).error(function () {
                   // remove loading state
@@ -377,39 +413,6 @@
 
     <script>
       $(document).on("ready", function () {
-
-        togglePercentage();
-
-        $('#toggle--show-relative').change(function () {
-          togglePercentage();
-        });
-
-        $('#toggle--show-breakdown').change(function () {
-          togglePercentage();
-        });
-
-        function togglePercentage() {
-          var firstPercentage = 0;
-          $('.developer-apps-revenue-container').each(function () {
-            if ($('#toggle--show-relative:checked').length > 0) {
-              if (firstPercentage == 0) {
-                firstPercentage = $(this).data("relativepercentage");
-                $(this).css("width", "100%");
-              } else {
-                var relativeWidth = $(this).data("relativepercentage") / firstPercentage * 100;
-                $(this).css("width", relativeWidth + "%");
-              }
-            } else {
-              $(this).css("width", "100%");
-            }
-          });
-
-          if ($('#toggle--show-relative:checked').length > 0) {
-            $('.heading-style--heading-six span, .perc-heading').css("opacity", 1);
-          } else {
-            $('.heading-style--heading-six span, .perc-heading').css("opacity", 0);
-          }
-        }
 
         var FilterDropDown = function ($domElement) {
 
