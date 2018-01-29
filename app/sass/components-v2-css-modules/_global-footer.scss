@@ -1,0 +1,206 @@
+@import "compass/support";
+@import "compass/css3/box-sizing";
+@import "breakpoint";
+@import "../helpers/mixins";
+@import "../helpers/placeholders";
+@import "../variables/colours";
+@import "../variables/layout";
+@import "../variables/typography";
+
+.global-footer {
+	padding: 2.2rem 10px 4rem;
+	width: 100%;
+	margin-left: auto;	
+	margin-right: auto;
+	float: right;
+	font-family: $brand-heading-font;
+	font-weight: 400;
+	font-size: 1.6rem;
+	line-height: 1.3;
+	border-top: 1px solid $divider-grey;
+	.global-footer--no-border & {
+		border-top: none;
+	}
+	@include breakpoint($tablet) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	@include breakpoint($laptop) {
+		.no-touchevents & {
+			width: calc(100% - 60px);
+		}
+	}
+	@include breakpoint($leftnav-wide) {
+		.no-touchevents & {
+			width: calc(100% - 200px);
+		}
+	}
+	.global-footer-dark & {
+		border-top: 1px solid $dark-grey-1;
+	}
+	.no-border-top & {
+		border-top: 0;
+	}
+	> div:first-child {
+		padding-top: 3px;
+		padding-left: 0;
+		@include breakpoint($tablet) {
+			padding-left: 1.4%;
+		}
+	}
+	ul {
+		padding-top: 20px;
+		padding-left: 0;
+		&:last-of-type {
+			padding-top: 5rem;
+	    padding-right: 0;
+	    padding-left: 2%;
+	    text-align: left;
+	    clear: both;
+	    @include breakpoint($laptop) {
+	    	padding: 0;
+	    	clear: none;
+				text-align: right;
+	    }			
+		}
+		@include breakpoint($tablet) {
+			padding-top: 4px;
+		}
+	}
+	li {
+		padding-bottom: 0.42rem;
+		&.is-selected {
+			a {
+				color: $light-grey-2;
+				&:hover {
+					color: $light-grey-2;
+				}
+			}
+		}
+		.touchevents & {
+			padding-bottom: 0.82rem;
+		}		
+	}
+	a {
+		font-family: $brand-heading-font;
+		font-size: 1.4rem;
+		color: $reflection-purple;
+		&:hover {
+			color: $reflection-purple--hover;
+		}
+		.global-footer-dark & {
+			color: $light-grey-1;
+			&:hover {
+				color: lighten($light-grey-1, 10%);
+			}
+		}
+		span {
+			display: none;
+		}
+		&.ref-icon-before--twitter {
+			&:before {
+				font-size: 25px;
+				color: #55acee;
+				transition: color 0.1s;
+			}
+			&:hover {
+				&:before {
+					color: darken(#55acee, 10%);
+					transition: color $base-transition-speed-on;
+				}
+			}
+		}
+		&.ref-icon-before--linkedin {
+			&:before {
+				font-size: 22px;
+				color: #0077b5;
+				transition: color 0.1s;
+			}
+			&:hover {
+				&:before {
+					color: darken(#0077b5, 10%);
+					transition: color $base-transition-speed-on;
+				}
+			}
+		}
+		&.ref-icon-before--facebook {
+			&:before {
+				font-size: 21px;
+				color: #3b5998;
+				transition: color 0.1s;
+			}
+			&:hover {
+				&:before {
+					color: darken(#3b5998, 10%);
+					transition: color $base-transition-speed-on;
+				}
+			}
+		}
+		&.ref-icon-before--google-plus {
+			&:before {
+				font-size: 21px;
+				color: #dd4b39;
+				transition: color 0.1s;
+			}
+			&:hover {
+				&:before {
+					color: darken(#dd4b39, 10%);
+					transition: color $base-transition-speed-on;
+				}
+			}
+		}
+	}
+	.social-link {
+		margin-right: 17px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	p {
+		position: relative;
+		top: -24px;
+		width: 100%;		
+		max-width: none;
+		font-family: $brand-body-font;
+		font-size: 1.2rem;
+		color: #5a5a68;
+		text-align: right;
+		.global-footer-dark & {
+			color: $light-grey-2;
+		}
+		@include breakpoint($tablet) {
+			top: -19px;
+			padding-right: 15px;
+		}
+		@include breakpoint($laptop) {
+			top: 0;
+			padding-top: 10px;
+		}
+	}
+	@include breakpoint($desktop-wide) {
+		li {
+			padding-bottom: 1.02rem;
+		}
+		a {
+			font-size: 1.6rem;
+		}
+	}
+}
+.logo-footer {
+	width: 105px;
+	height: 23px;
+	display: inline-block;
+	background-image: url(images/logo-reflection-footer@2x.png);
+	background-size: 105px 23px;
+}
+.global-footer-dark {
+	background-color: #363a47;
+	.logo-footer {
+		background-image: url(images/logo-reflection-light.png);
+	}
+	&.global-footer-dark--lab {		
+		background-color: $dark-grey-1;
+		.global-footer {
+			border-top: 1px solid $dark-grey-2;
+		}
+	}
+}

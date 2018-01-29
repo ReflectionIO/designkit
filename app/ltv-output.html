@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="reflectionApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Reflection Research Tools - Experimental Tool, LTV Calculator</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="research-tools-experiments.css" />
+	<link rel="stylesheet" type="text/css" href="global-header.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+    }
+  });
+</script>
+</head>
+<script src="js/data-vis/ltv/igp-mm2.json"></script>
+<script src="js/vendor/angular.js"></script>
+<script>
+	// populate the data table
+		'use strict';
+
+		/* Controllers */
+	
+		function getMaxValueFromArrayProperty(list, property) {
+			var mx = list[0][property];
+			for(var x = 0; x < list.length; x++) {
+				if(list[x][property] > mx) {
+					mx = list[x][property];
+				}
+			}
+			return mx;
+		}
+	
+		function getMinValueFromArrayProperty(list, property) {
+			var mn = list[0][property];
+			for(var x = 0; x < list.length; x++) {
+				if(list[x][property] < mn) {
+					mn = list[x][property];
+				}
+			}
+			return mn;
+		}
+		
+		function calcAveragesForEachColumn(data) {
+			
+			let averages = {};
+			
+			for (var property in data[0]) {
+				if (data[0].hasOwnProperty(property)) {
+					let thisAverage = 0;
+					for(var i = 0; i < data.length; i++) {
+						thisAverage += data[i][property];
+					}
+					thisAverage = thisAverage / data.length;
+					averages[property] = thisAverage;
+				}
+			}
+			return averages;
+		}
+	
+		var reflectionApp = angular.module('reflectionApp', [])
+			.controller('DataController', function() {
+				var dataList = this;
+				
+				dataList.ltvData = ltvData; // from js/data-vis/ltv/test.js
+				
+				dataList.averages = calcAveragesForEachColumn(ltvData);
+				
+				dataList.getAppOpacity = function(index, propertyName, isPercent) {
+					
+					var min = getMinValueFromArrayProperty(dataList.ltvData, propertyName),
+		    			max = getMaxValueFromArrayProperty(dataList.ltvData, propertyName);
+
+					if(dataList.ltvData[index][propertyName] < dataList.averages[propertyName]) {
+						max = dataList.averages[propertyName];
+					}
+					
+					let isPositive = false;
+					if(dataList.ltvData[index][propertyName] > dataList.averages[propertyName]) {
+						min = dataList.averages[propertyName];
+						isPositive = true;
+					}
+					
+					if(isPercent) {
+						if(dataList.ltvData[index][propertyName] < 1) {
+							max = 1;
+						} else {
+							min = 1;
+						}
+					}
+					
+		    	var range = max - min;
+		    	var valueFromMin;
+		    	valueFromMin = dataList.ltvData[index][propertyName] - min;
+		    	var opacity = 1 / (range / valueFromMin);
+					
+		    	return opacity;
+		    }
+
+		    dataList.setCSSClass = function(index, propertyName) {
+
+					if(dataList.ltvData[index][propertyName] > dataList.averages[propertyName]) {
+						return "is-hotter";
+					}
+
+					return "";
+		    }
+				
+				dataList.setCSSClassPercent = function(index, propertyName) {
+
+					if(dataList.ltvData[index][propertyName] >= 1) {
+						return "is-hotter";
+					}
+
+					return "";
+		    }
+				
+				dataList.getOpacity = function(index, propertyName, isPercent) {
+					// Heat map is red to white to green (min to max)
+					// At 0% is white opacity 0, background red
+					// At 50% is white opacity 1, background red
+					// Add a class above 50% to change background to white
+					// At 50.01% is green opacity 0, background white
+					// At 100% is green opacity 1, background white
+					var opacity = dataList.getAppOpacity(index, propertyName, isPercent);
+
+					return opacity;
+				}
+			});
+</script>
+	<style>
+		.ltv-table {
+			padding-right: 23px;
+			border-collapse: separate;
+    	border-spacing: 1px;
+		}
+		.ltv-table tr:nth-child(even) {
+			background: #eee;
+		}
+		.ltv-table th,
+		.ltv-table td {
+			font-size: 12px;
+			text-align: right;
+		}
+		.ltv-table td:first-child {
+			position: absolute;
+			z-index: 10;
+			padding-left: 50px;
+    	left: -30px;
+			width: 50px;
+			background: #fff;
+		}
+		.ltv-table td:first-child span {
+			padding-right: 20px;
+		}
+		.ltv-table tr:nth-child(even) td:first-child {
+			background: #eee;
+		}
+		.ltv-table td {
+			position: relative;
+			height: 27px;			
+		}
+		.ltv-table td span {
+			position: relative;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 27px;
+			padding: 5px;
+			display: block;
+			z-index: 1;
+			box-sizing: border-box;
+		}
+		.ltv-table td span:first-child {
+			position: absolute;
+    	z-index: 0;
+		}
+		.ltv-table .bold-cell {
+			font-weight: 700;
+		}
+		.ltv-table th {
+			position: relative;
+			min-width: 90px;
+			padding: 25px 5px 5px 5px;
+			font-weight: 700;
+			cursor: pointer;
+		}
+		.ltv-table th div {
+			position: fixed;
+			z-index: 2000;
+			background: #fff;
+			border-radius: 10px;
+			width: 300px;
+			padding: 22px 20px 25px;
+			text-align: center;
+			bottom: 20px;
+			right: 20px;
+			font-size: 13px;
+			font-weight: 400;
+			line-height: 1.4;
+			border: 3px solid #6d69c5;
+			opacity: 0;
+		}
+		.ltv-table th:hover div {
+			opacity: 1;
+			transition: opacity 0.3s;
+		}
+		.ltv-table th div b {
+			font-weight: bold;
+		}
+		.ltv-table th:first-child {
+			min-width: inherit;
+		}
+		.ltv-table th img {
+			position: absolute;
+    	top: 5px;
+			right: 4px;
+			width: 14px;
+		}
+		.ltv-table tr:last-child  td:first-child span {
+			padding-right: 5px;
+		}
+		.colour-cell {
+			background-color: #fc656c;
+		}
+		.colour-cell.is-hotter {
+			background-color: white;
+		}
+		.colour-cell__colour {
+			background-color: white;
+		}
+		.colour-cell.is-hotter .colour-cell__colour {
+			background-color: #60be7e;
+		}
+		#table-max,
+		#table-min {
+			display: none;
+		}
+		#table-min:target,
+		#table-max:target{
+			display: block;
+		}
+	</style>
+<body>
+  <header id="js-component-import--global-header" class="global-header">
+		<div class="site-logo">
+			<a href="http://reflection.io">
+				<img src="images/logo-reflection-header.png" alt="Reflection logo" class="img-site-logo">
+			</a>
+		</div>
+	</header>
+
+	<div class="l-page-container">
+		<div id="main" class="l-main page-research-tools-experiment" role="main">
+			
+			<div id="js-component-import--data-vis-banner" class="research-experiment__banner" style="display: none;"></div>
+			
+			<div class="grid-container page-developer-leaderboard" ng-controller="DataController as dataList" style="overflow: auto;">
+
+				<div class="grid__row grid__row--heading-row">
+					<div class="grid__column grid__row--heading-row__left">
+						<h1 class="heading-style--heading-three">LTV Data Output</h1>
+						<h2><a class="js-toggle-table" href="#table-max">Maximise table</a> | <a class="js-toggle-table" href="#table-min">Minimise table</a></h2>
+					</div>	
+				</div>
+				
+				<table class="ltv-table" id="table-min" style="display: table;">
+					<thead>
+						<tr>
+							<th>Country</th>
+							<th><img src="images/question-mark.svg" /> DL_ratio_vs_benchmark <div><b>What?</b> Your downloads / your competitor downloads scaled<br /><br /><b>Why?</b> This is to see which app is more popular than the other proportionaly - per country. Above 100% it means that your app has a bigger slice of that market - proportionaly</div></th>
+							<th><img src="images/question-mark.svg" /> REV_ratio_vs_benchmark <div><b>What?</b> Your revenue / your competitor revenue scaled<br /><br /><b>Why?</b> This is to see which app has more revenue than the other proportionaly - per country. Above 100% it means that your app has a bigger slice of that market - proportionaly</div></th>
+							<th><img src="images/question-mark.svg" /> LTV <div><b>What?</b> The Life Time Value calculated assuming a "typical" freemium Retention curve (R1=50%, R7=20%, R14=10%, R30=5%, R90=1%, R365=0.5%) and the history of your app estimated revenue and downloads.<br /><br /><b>Why?</b> This is the best metric to estimate how well your app is monetizing - per download.</div></th>
+							<th><img src="images/question-mark.svg" /> LTV_competitor <div><b>What?</b> The Life Time Value calculated assuming a "typical" freemium Retention curve (R1=50%, R7=20%, R14=10%, R30=5%, R90=1%, R365=0.5%) and the history of your competitor's estimated revenue and downloads.<br /><br /><b>Why?</b> This is the best metric to estimate how well your competitor's app is monetizing - per download.</div></th>
+							<th><img src="images/question-mark.svg" /> CPI <div><b>What?</b> Cost Per Install - This is the price to pay to get an install - from the Chartboots estimates of September 2017.<br /><br /><b>Why?</b> This is to benchmark the cost of User Aquisition in different countries - note that this may vary a lot for a different Ad network, but it can give you an idea. </div></th>
+							<th><img src="images/question-mark.svg" /> ROI_LTV <div><b>What?</b> Your Return on Investment (LTV / CPI) - this is the rate of return that you would get on User Aquisition. So >1 you would be making profit, but keep in mind both LTV and CPI are estimates...<br /><br /><b>Why?</b> Because profit is good!</div></th>
+							<th><img src="images/question-mark.svg" /> ROI_LTV_competitor <div><b>What?</b> Their Return on Investment (LTV / CPI) - this is the rate of return that they get on User Aquisition. So >1 they would be making profit, but keep in mind both LTV and CPI are estimates...<br /><br /><b>Why?</b> Their profit... not so good...</div></th>
+							<th><img src="images/question-mark.svg" /> ROI_LTV_vs_benchmark <div><b>What?</b> 2 * ROI / (DL_ratio_vs_benchmark + REV_ration_vs_benchmark)<br /><br /><b>Why?</b> This is an opportunity index - this index is your ROI bonified in markets where you are underperforming vs your competitor - because there might be a better market opportunity there. This is no longer a direct rate of return, but it's potentially a better indicator of an opportunity.</div></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="dataItem in dataList.ltvData">
+							<td><span>{{dataItem.country}}</span><span></span></td>
+							<td class='colour-cell  {{dataList.setCSSClassPercent($index, "DL_ratio_vs_benchmark")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'DL_ratio_vs_benchmark', 'true')}"></span>
+								<span>{{(dataItem.DL_ratio_vs_benchmark * 100).toFixed(2)}}%</span></td>
+							<td class='colour-cell {{dataList.setCSSClassPercent($index, "REV_ratio_vs_benchmark")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'REV_ratio_vs_benchmark', 'true')}"></span>
+								<span>{{(dataItem.REV_ratio_vs_benchmark * 100).toFixed(2)}}%</span></td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "LTV")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'LTV')}"></span>
+								<span>{{(dataItem["LTV"]).toFixed(2)}}</span>
+							</td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "LTV_competitor")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'LTV_competitor')}"></span>
+								<span>{{(dataItem["LTV_competitor"]).toFixed(2)}}</span>
+							</td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "CPI")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'CPI')}"></span>
+								<span>{{(dataItem["CPI"]).toFixed(2)}}</span>
+							</td>
+							<td class='colour-cell bold-cell {{dataList.setCSSClass($index, "ROI_LTV")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'ROI_LTV')}"></span>
+								<span>{{(dataItem.ROI_LTV).toFixed(2)}}</span>
+							</td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "ROI_LTV_competitor")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'ROI_LTV_competitor')}"></span>
+								<span>{{(dataItem.ROI_LTV_competitor).toFixed(2)}}</span>
+							</td>
+							<td class='colour-cell bold-cell {{dataList.setCSSClass($index, "ROI_LTV_vs_benchmark")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'ROI_LTV_vs_benchmark')}"></span>
+								<span>{{(dataItem.ROI_LTV_vs_benchmark).toFixed(2)}}</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="bold-cell"><span>Average</span></td>
+							<td class="bold-cell">{{(dataList.averages.DL_ratio_vs_benchmark * 100).toFixed(2)}}%</td>
+							<td class="bold-cell">{{(dataList.averages.REV_ratio_vs_benchmark + 100).toFixed(2)}}%</td>
+							<td class="bold-cell">{{(dataList.averages.LTV).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.LTV_competitor).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.CPI).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.ROI_LTV).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.ROI_LTV_competitor).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.ROI_LTV_vs_benchmark).toFixed(2)}}</td>
+						</tr>
+					</tbody>
+				</table>	
+				
+				<table class="ltv-table" id="table-max">
+					<thead>
+						<tr>
+							<th>Country</th>
+							<th><img src="images/question-mark.svg" /> DL90 <div><b>What?</b> The total number of estimated downloads over the last 90 day period for your app<br /><br /><b>Why?</b> We use this number to compare the popularity of your app in different countries </div></th>
+							<th><img src="images/question-mark.svg" /> DL90_competitor <div><b>What?</b> The total number of estimated downloads over the last 90 day period for your competitor<br /><br /><b>Why?</b> Compare the popularity of your app with your competitor</div></th>
+							<th><img src="images/question-mark.svg" /> DL90_competitor_norm <div><b>What?</b> This is the scaled number of downloads from your competitor - as if he had the same amount of downloads in total as your app<br /><br /><b>Why?</b> This is to compare the popularity of your app with your competitor, on equal footing - as if they had the same amount of downloads in total.</div></th>
+							<th><img src="images/question-mark.svg" /> DL_ratio_vs_benchmark <div><b>What?</b> Your downloads / your competitor downloads scaled<br /><br /><b>Why?</b> This is to see which app is more popular than the other proportionaly - per country. Above 100% it means that your app has a bigger slice of that market - proportionaly</div></th>
+							<th><img src="images/question-mark.svg" /> REV90 <div><b>What?</b> The total number of estimated revenue over the last 90 day period for your app<br /><br /><b>Why?</b> We use this number to compare the revenue of your app in different countries</div></th>
+							<th><img src="images/question-mark.svg" /> REV90_competitor <div><b>What?</b> The total number of estimated revenue over the last 90 day period for your competitor<br /><br /><b>Why?</b> Compare the revenue of your app with your competitor</div></th>
+							<th><img src="images/question-mark.svg" /> REV90_competitor_norm <div><b>What?</b> This is the scaled revenue from your competitor - as if he had the same amount of revenue in total as your app<br /><br /><b>Why?</b> This is to compare the revenue of your app with your competitor, on equal footing - as if they had the same amount of revenue in total</div></th>
+							<th><img src="images/question-mark.svg" /> REV_ratio_vs_benchmark <div><b>What?</b> Your revenue / your competitor revenue scaled<br /><br /><b>Why?</b> This is to see which app has more revenue than the other proportionaly - per country. Above 100% it means that your app has a bigger slice of that market - proportionaly</div></th>
+							<th><img src="images/question-mark.svg" /> LTV <div><b>What?</b> The Life Time Value calculated assuming a "typical" freemium Retention curve (R1=50%, R7=20%, R14=10%, R30=5%, R90=1%, R365=0.5%) and the history of your app estimated revenue and downloads.<br /><br /><b>Why?</b> This is the best metric to estimate how well your app is monetizing - per download.</div></th>
+							<th><img src="images/question-mark.svg" /> LTV_competitor <div><b>What?</b> The Life Time Value calculated assuming a "typical" freemium Retention curve (R1=50%, R7=20%, R14=10%, R30=5%, R90=1%, R365=0.5%) and the history of your competitor's estimated revenue and downloads.<br /><br /><b>Why?</b> This is the best metric to estimate how well your competitor's app is monetizing - per download.</div></th>
+							<th><img src="images/question-mark.svg" /> CPI <div><b>What?</b> Cost Per Install - This is the price to pay to get an install - from the Chartboots estimates of September 2017.<br /><br /><b>Why?</b> This is to benchmark the cost of User Aquisition in different countries - note that this may vary a lot for a different Ad network, but it can give you an idea. </div></th>
+							<th><img src="images/question-mark.svg" /> ROI_LTV <div><b>What?</b> Your Return on Investment (LTV / CPI) - this is the rate of return that you would get on User Aquisition. So >1 you would be making profit, but keep in mind both LTV and CPI are estimates...<br /><br /><b>Why?</b> Because profit is good!</div></th>
+							<th><img src="images/question-mark.svg" /> ROI_LTV_competitor <div><b>What?</b> Their Return on Investment (LTV / CPI) - this is the rate of return that they get on User Aquisition. So >1 they would be making profit, but keep in mind both LTV and CPI are estimates...<br /><br /><b>Why?</b> Their profit... not so good...</div></th>
+							<th><img src="images/question-mark.svg" /> ROI_LTV_vs_benchmark <div><b>What?</b> 2 * ROI / (DL_ratio_vs_benchmark + REV_ration_vs_benchmark)<br /><br /><b>Why?</b> This is an opportunity index - this index is your ROI bonified in markets where you are underperforming vs your competitor - because there might be a better market opportunity there. This is no longer a direct rate of return, but it's potentially a better indicator of an opportunity.</div></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="dataItem in dataList.ltvData">
+							<td><span>{{dataItem.country}}</span><span></span></td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "DL90")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'DL90')}"></span>
+								<span>{{(dataItem["DL90"]).toFixed(2)}}</span>
+							</td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "DL90_competitor")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'DL90_competitor')}"></span>
+								<span>{{(dataItem["DL90_competitor"]).toFixed(2)}}</span>
+							</td>
+							<td><span>{{(dataItem.DL90_competitor_norm).toFixed(2)}}</span><span></span></td>
+							<td class='colour-cell bold-cell  {{dataList.setCSSClassPercent($index, "DL_ratio_vs_benchmark")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'DL_ratio_vs_benchmark', 'true')}"></span>
+								<span>{{(dataItem.DL_ratio_vs_benchmark * 100).toFixed(2)}}%</span></td>
+							<td class='colour-cell   {{dataList.setCSSClass($index, "REV90")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'REV90')}"></span>
+								<span>{{(dataItem.REV90).toFixed(2)}}</span></td>
+							<td class='colour-cell  {{dataList.setCSSClass($index, "REV90_competitor")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'REV90_competitor')}"></span>
+								<span>{{(dataItem.REV90_competitor).toFixed(2)}}</span></td>
+							<td><span>{{(dataItem.REV90_competitor_norm).toFixed(2)}}</span></td>
+							<td class='colour-cell bold-cell {{dataList.setCSSClassPercent($index, "REV_ratio_vs_benchmark")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'REV_ratio_vs_benchmark', 'true')}"></span>
+								<span>{{(dataItem.REV_ratio_vs_benchmark * 100).toFixed(2)}}%</span></td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "LTV")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'LTV')}"></span>
+								<span>{{(dataItem["LTV"]).toFixed(2)}}</span>
+							</td>
+							<td><span>{{(dataItem["LTV_competitor"]).toFixed(2)}}</span></td>
+							<td>
+								<span>{{(dataItem.CPI).toFixed(2)}}</span>
+							</td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "ROI_LTV")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'ROI_LTV')}"></span>
+								<span>{{(dataItem.ROI_LTV).toFixed(2)}}</span>
+							</td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "ROI_LTV_competitor")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'ROI_LTV_competitor')}"></span>
+								<span>{{(dataItem.ROI_LTV_competitor).toFixed(2)}}</span>
+							</td>
+							<td class='colour-cell {{dataList.setCSSClass($index, "ROI_LTV_vs_benchmark")}}'>
+								<span class="colour-cell__colour" ng-style="{opacity: dataList.getOpacity($index, 'ROI_LTV_vs_benchmark')}"></span>
+								<span>{{(dataItem.ROI_LTV_vs_benchmark).toFixed(2)}}</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="bold-cell"><span>Average</span></td>
+							<td class="bold-cell">{{(dataList.averages.DL90).toFixed(2)}}
+							<td class="bold-cell">{{(dataList.averages.DL90_competitor).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.DL90_competitor_norm).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.DL_ratio_vs_benchmark * 100).toFixed(2)}}%</td>
+							<td class="bold-cell">{{(dataList.averages.REV90).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.REV90_competitor).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.REV90_competitor_norm).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.REV_ratio_vs_benchmark + 100).toFixed(2)}}%</td>
+							<td class="bold-cell">{{(dataList.averages.LTV).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.LTV_competitor).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.CPI).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.ROI_LTV).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.ROI_LTV_competitor).toFixed(2)}}</td>
+							<td class="bold-cell">{{(dataList.averages.ROI_LTV_vs_benchmark).toFixed(2)}}</td>
+						</tr>
+					</tbody>
+				</table>	
+			</div>
+		</div>
+	</div>
+
+ 	<script src="js/vendor/jquery-1.11.1.min.js"></script>
+		
+  <script>
+		$(document).on("ready", function(){
+			
+			$('.js-toggle-table').on("click", function(e){
+				e.preventDefault();				
+				var idToShow = $(this).attr("href");
+				$('.ltv-table').hide();
+				$(idToShow).show(200);
+			});
+		});
+
+  </script>
+		
+</body>

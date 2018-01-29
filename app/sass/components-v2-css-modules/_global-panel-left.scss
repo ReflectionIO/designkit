@@ -1,0 +1,360 @@
+@import "compass/support";
+@import "compass/css3/box-sizing";
+@import "breakpoint";
+@import "../variables/colours";
+@import "../variables/layout";
+@import "../variables/typography";
+
+$white-navigation: $reflection-white;
+$grey-hover: #bec2d2;
+$blur-opacity: 0.5;
+$navigation-purple: #47447c;
+
+.panel-left {
+	position: fixed;
+	top: 0;
+	width: 241px;
+	height: 100vh;
+	padding-top: 42px;
+	left: -241px;
+	display: inline-block;
+	z-index: 10;
+	float: left;
+	overflow: auto;
+	font-size: 10px;
+	vertical-align: top;
+	border-right: 1px solid #000;
+	background-color: $dark-grey-1;	
+	transition: left 0.15s ease-in, transform 0.15s ease-in, filter 0.27s;
+	@include breakpoint($phablet, true) {
+		padding-top: 50px;
+	}
+	&.is-blurred-heavy {
+		filter: blur(0.8px);
+		transition: filter 0.5s;
+		.ie8 &, .ie9 & {
+			filter: none;
+		}
+	}
+	.panel-left-open & {
+		left: 0px;
+		transition: left 0.15s ease-out;
+	}
+}
+#mCSB_1_scrollbar_vertical {
+	z-index: 100;
+}
+.no-touchevents {
+	@include breakpoint($laptop) {
+		.panel-left {
+			left: 0;
+			width: 60px;
+			overflow: hidden;
+			transition: width 0.1s;
+			&:hover {
+				width: 240px;
+				transition: width 0.2s;
+			}
+		}
+	}
+	@include breakpoint($leftnav-wide) {
+		.panel-left {
+			width: 200px;
+			&:hover {
+				width: 200px;
+			}
+		}
+	}
+}
+
+.main-navigation {	
+	padding: 0 0 20px;
+	background-color: $dark-grey-1;
+	.panel-left & {
+		width: 240px;
+		@include breakpoint($leftnav-wide) {
+			width: 200px;
+		}
+	}
+	.touchevents .panel-left & {
+		@include breakpoint($leftnav-wide) {
+			width: 240px;
+		}
+	}
+	> ul {
+		> li {
+			font-size:  12px;
+			line-height: 1.5;
+			font-weight: 700;
+			border-bottom: 1px solid #161617;
+			> a {
+				position: relative;
+				padding: 16px 0px 15px 20px;
+				letter-spacing: 0.4px;
+				display: block;
+				z-index: 20;
+				float: left;
+				width: 100%;
+				text-transform: uppercase;
+				background-color: $dark-grey-1;	
+				@include box-sizing(border-box);
+				svg {
+					width: 19px;
+					height: 19px;
+					vertical-align: middle;
+					path, polygon {
+						fill: $light-grey-1;
+					}
+				}
+				span {
+					position: relative;
+					padding-left: 16px;
+					display: inline-block;
+					vertical-align: middle;
+					color: $mid-grey-2;					
+				}
+				.main-navigation__new-text {
+					position: absolute;
+					top: 3px;
+					right: 12px;
+					display: inline-block;
+					font-size: 12px;
+					font-weight: 700;	
+					font-family: $brand-heading-font;
+					color: $reflection-red;
+					letter-spacing: -.5px;
+					@include breakpoint($leftnav-wide) {
+						top: 1px;
+						right: 7px;
+						font-size: 11px;
+						letter-spacing: 0;
+					}
+				}
+				&:after {
+					position: absolute;
+					top: 15px;
+    			right: 15px;
+					font-size: 20px;
+					color: $mid-grey-2;
+				}
+				@include breakpoint($laptop) {
+					.no-touchevents .panel-left & {
+						span {
+							opacity: 0;
+						}
+					}
+					.no-touchevents .panel-left:hover & {
+						span {
+							opacity: 1;
+						}
+					}					
+				}
+				@include breakpoint($leftnav-wide) {
+					.no-touchevents .panel-left &,
+					.no-touchevents .panel-left:hover {
+						span {
+							opacity: 1;
+						}
+					}
+				}
+			}
+			.no-touchevents & {
+				&:hover > a {
+					background-color: #222224;
+					svg {
+						path, polygon {
+							fill: $light-grey-2;
+						}
+					}
+					span, &:after {
+						color: $light-grey-2;
+					}
+					.main-navigation__new-text {
+						color: $reflection-red;
+					}
+				}
+				&.is-selected:hover {
+					> a {
+						background-color: $navigation-purple;
+						span, &:after {
+							color: $reflection-white;
+						}
+						.main-navigation__new-text {
+							color: $reflection-red;
+						}
+						svg path, svg polygon {
+							fill: $reflection-white;
+						}
+					}
+				}
+			}			
+			> ul {
+				width: 100%;
+				float: left;
+				z-index: 0;
+				transition: margin-top 0.16s ease-in;
+			}
+			&.is-open {
+				background-color: #363a47;
+				> a {
+					background-color: #222224;
+					svg {
+						path, polygon {
+							fill: $light-grey-2;
+						}
+					}
+					span, &:after {
+						color: $light-grey-2;
+					}
+				}
+				> ul {
+					position: relative;
+					margin-top: 0;
+					display: block;
+					z-index: 0;
+					transition: margin-top 0.2s ease-out;
+				}
+			}
+			&.is-selected {
+				> a {
+					background-color: $navigation-purple;
+					span, &:after {
+						color: $reflection-white;
+					}
+					.main-navigation__new-text {
+						color: $reflection-red;
+					}
+					svg path, svg polygon {
+						fill: $reflection-white;
+					}
+				}
+			}
+		}
+	}
+	> ul > li > ul {
+    background-color: #363a47;
+		li {
+			position: relative;
+			width: 100%;
+			font-size: 13px;
+			font-weight: 400;
+			line-height: 1.5;
+			background-color: #363a47;
+			border-bottom: 0px;
+			&:first-child {
+				padding-top: 13px;
+			}
+			&:last-child {
+				padding-bottom: 12px;
+			}
+			a {
+				position: relative;
+				width: 100%;
+				padding: 8px 0px 7px 20px;
+				letter-spacing: 0.4px;
+				display: block;
+				z-index: 10;
+				float: left;				
+				color: $light-grey-1;
+				background-color: #363a47;
+				@include box-sizing(border-box);
+				span {
+					padding-left: 16px;
+					color: #81879d;
+				}
+				svg {
+					width: 19px;
+					height: 19px;
+					vertical-align: middle;
+					path, polygon {
+						fill: #5a5a68;
+					}
+				}
+				@include breakpoint($laptop) {
+					.no-touchevents .panel-left & {
+						span {
+							opacity: 0;
+						}
+					}
+					.no-touchevents .panel-left:hover & {
+						span {
+							opacity: 1;
+						}
+					}
+				}
+				@include breakpoint($leftnav-wide) {
+					.no-touchevents .panel-left &,
+					.no-touchevents .panel-left:hover {
+						span {
+							opacity: 1;
+						}
+					}
+				}
+			}
+			.no-touchevents & {
+				&:hover > a {
+					span {
+						color: #949cb8;
+					}
+					svg path, svg polygon {
+						fill: #949cb8;
+					}
+				}
+				&.is-selected:hover > a {
+					span {
+						color: $reflection-white;
+					}
+					svg path, svg polygon {
+						fill: $reflection-white;
+					}
+				}
+			}
+			&.is-selected {
+				a {
+					span {
+						color: $reflection-white;
+					}
+					svg path, svg polygon {
+						fill: $reflection-white;
+					}
+				}
+			}
+		}
+	}
+}
+.main-navigation.main-navigation--account {
+	> ul {
+		border-top: 1px solid $dark-grey-1;
+		> li {
+			&:first-child {
+				border-top: 1px solid #161617;
+			}
+			> a {
+				padding: 15px 0px 15px 27px;
+				span {
+					padding-left: 11px;
+					letter-spacing: 0.05em;
+				}
+				svg {
+			    width: 18px;
+    			height: 18px;
+					path, polygon {
+						fill: #5a5a68;
+					}
+				}
+			}
+			&.is-selected {
+				svg {
+					path, polygon {
+						fill: $reflection-white;
+					}
+				}
+			}
+			.no-touchevents & {
+				&:hover > a {
+
+				}
+			}
+		}
+	}
+}

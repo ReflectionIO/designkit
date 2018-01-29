@@ -463,7 +463,24 @@ textarea {
     display: inline-block;
     vertical-align: top;
     border-radius: 4px;
-	}	
+	}
+	.dropdown-item-info-text {
+		position: relative;
+		top: 2px;
+		width: 15px;
+		padding-left: 9px;		
+		display: inline-block;
+		vertical-align: top;
+		font-size: 0px;
+		@extend .ref-icon-after--warning-filled;
+		&:after {
+	    position: absolute;
+			top: 3px;
+			font-size: 14px;
+			color: $reflection-purple;
+			opacity: 0.8;
+		}
+	}
 }
 .form-field--select__dropdown li {
 	span {
@@ -1566,15 +1583,15 @@ input[type="radio"]:disabled + label + .radioButtonLabelVisible {
 	.checkboxLabelVisible,
 	.radioButtonLabelVisible {
 		color: #a5a2e5;
-	}
-	span {		
-		@extend .ref-icon-after--warning-filled;
-		&:after {
-	    position: absolute;
-			top: 4px;
-			font-size: 14px;
-			color: #b3b1ed;
-			opacity: 0.6;
+		span {		
+			@extend .ref-icon-after--warning-filled;
+			&:after {
+				position: absolute;
+				top: 4px;
+				font-size: 14px;
+				color: $reflection-purple;
+				opacity: 0.8;
+			}
 		}
 	}
 }

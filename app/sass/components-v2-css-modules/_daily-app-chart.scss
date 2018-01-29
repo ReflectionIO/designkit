@@ -1,0 +1,374 @@
+@import "breakpoint";
+@import "../variables/layout";
+@import "../variables/colours";
+@import "../variables/typography";
+
+.live-chart-container {
+	padding-left: 19px;
+  padding-right: 21px;
+  text-align: center;
+	background-color: $panel-grey;
+}
+.live-chart {
+	width: 100%;
+	margin-bottom: 2rem;
+	table-layout: fixed;
+	text-align: left;
+	col {
+		width: 33.333333333%;
+	}
+	th {
+		padding: 13px 0 10px 17px;
+		font-family: $brand-heading-font;
+		font-weight: 600;
+		font-size: 18px;
+		color: $dark-grey-2;
+		background-color: transparent;
+		svg {
+			width: 24px;
+	    height: 24px;
+	    margin-right: 15px;
+			display: inline-block;
+			vertical-align: top;
+			path {
+				fill: $mid-grey-2;
+			}
+		}
+		span {
+			padding-top: 3px;
+		  display: inline-block;
+		  vertical-align: top;
+		}
+	}
+	td {
+		position: relative;
+		vertical-align: top;
+		border: 1px solid $panel-grey;
+		background-color: $panel-grey;
+	}
+}
+.live-chart__head-cell__clear-link {
+	padding: 5px 15px 0 0;
+	display: none;
+	float: right;
+	font-family: $brand-heading-font;
+	font-weight: 600;
+	font-size: 14px;
+	color: $reflection-purple;
+	&:hover {
+		color: $reflection-purple--hover;
+	}
+	.is-showing-search-results & {
+		display: inline-block;
+	}
+}
+
+.live-chart__show-more-button,
+.live-chart__show-more-button:last-child {
+	margin: 0 auto 3rem;
+}
+.live-chart__cell {
+	position: relative;
+	width: 100%;
+	padding: 11px 15px 7px;
+	background-color: #fcfdfd;
+	border: 1px solid $panel-grey;
+	z-index: 1;
+	.live-chart--compact-view & {
+		padding-bottom: 3px;
+	}
+}
+.live-chart__cell__disabled-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	z-index: 10;
+	background-color: $reflection-white;
+	opacity: 0;
+	transition: opacity 0.3s, visibility 0.1s 0.3s;
+	.live-chart__cell--disabled & {
+		display: block;
+		visibility: visible;
+		opacity: 0.9;
+		transition: opacity 0.3s;
+	}
+}
+.live-chart__cell__app-icon {
+	width: 42px;
+	height: 42px;
+	padding-top: 1px;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 7px;
+	.live-chart--compact-view & {
+		display: none;
+	}
+}
+.live-chart__cell__app-details-container {	
+	width: calc(100% - 56px);
+	display: inline-block;
+	float: right;
+	overflow: visible;
+	vertical-align: top;
+	font-size: 0;
+	.live-chart--compact-view & {
+		width: 100%;
+	}
+	.ratings-container {
+		width: 65px;
+		height: 10px;
+		margin-left: -1px;
+    margin-top: 4px;		
+		vertical-align: top;
+		display: none;
+		@include breakpoint($desktop) {
+			display: inline-block;
+		}
+		.live-chart--compact-view & {
+			display: none;
+		}
+	}
+	.ratings-container,
+	.ratings-full {
+		background-size: 65px 10px;
+	}
+}
+.live-chart__cell__app-name {
+	width: calc(100% - 85px);
+	padding-bottom: 2px;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 13.6px;
+	font-weight: 700;
+	letter-spacing: 0.01em;
+	color: $reflection-purple;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+	&:hover {
+		color: $reflection-purple--hover;
+	}
+	&.is-loading {
+		width: calc(100% - 130px);
+		max-width: 200px;
+		height: 10px;
+		padding-bottom: 0;
+		margin-top: 2px;
+		margin-bottom: 8px;
+		background-color: $loading-colour;
+	}
+	&.live-chart__cell__app-name--no-data {
+		margin-top: 3px;
+		margin-bottom: 3px;
+		overflow: visible;
+		font-family: $brand-heading-font;
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: $light-grey-1;
+		&:before {
+			top: -4px;
+	    margin-right: 10px;
+	    font-size: 24px;
+		}
+		.live-chart--compact-view & {
+			margin-bottom: -9px;
+		}
+	}
+	.whats-this-tooltip-icon {
+		margin-top: -1px;
+		margin-left: 5px;
+		vertical-align: top;
+	}
+}
+span.live-chart__cell__app-name {
+	color: $dark-grey-2;
+	&:hover {
+		color: $dark-grey-2;
+	}
+}
+span.live-chart__cell__publisher-name {
+	color: $mid-grey-1;
+	&:hover {
+		color: $mid-grey-1;
+	}
+}
+.live-chart__cell__rank {
+	width: 85px;
+	height: 15px;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 13.6px;
+	font-weight: 700;
+	color: $dark-grey-1;
+	text-align: right;
+	overflow: visible;
+	.ref-icon-after--up,
+	.ref-icon-after--down,
+	.ref-icon-after--equals {
+		position: relative;
+    top: 1px;
+    margin-right: 3px;
+    vertical-align: top;
+		&:after {
+			position: relative;
+			top: -6px;
+			left: -2px;
+		}
+	}
+	.ref-icon-after--up,
+	.ref-icon-after--up:after {
+		color: $reflection-green;
+	}
+	.ref-icon-after--down,
+	.ref-icon-after--down:after {
+		color: $reflection-red;
+	}
+	.ref-icon-after--equals:after {
+		top: 3px;
+    left: -8px;
+    font-size: 10px;
+		color: $light-grey-2;
+	}
+	&.is-loading {
+		float: right;
+	}
+}
+.live-chart__cell__new-entry {
+	position: relative;  
+  top: -2px;
+  width: 44px;
+  height: 17px;
+	padding-top: 1px;
+	margin-right: 9px;
+	display: inline-block;
+	vertical-align: top;
+	font-family: $brand-heading-font;
+	font-weight: 700;
+	font-size: 11.5px;
+	color: $reflection-white;
+	text-align: center;
+	border-radius: 8px;
+	background-color: $reflection-purple;
+}
+.live-chart__cell__publisher-name {
+	width: calc(100% - 65px);
+	display: block;
+	font-size: 12px;
+	color: $reflection-purple;
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+	&:hover {
+		color: $reflection-purple--hover;
+	}
+	.live-chart--compact-view & {
+		position: relative;
+		top: 1px;    
+    width: calc(100% - 120px);
+    display: inline-block;
+	}
+	&.is-loading {
+		width: calc(100% - 150px);
+		max-width: 200px;
+		height: 10px;
+		margin-bottom: 2px;
+		background-color: $loading-colour;
+		.live-chart--compact-view & {
+			display: none;
+		}
+	}		
+}
+.live-chart__cell__number-of-ratings,
+.live-chart__cell__app-price {	
+	display: inline-block;
+	vertical-align: top;
+	font-size: 12px;
+	color: $dark-grey-2;
+	.live-chart--compact-view & {
+		display: none;
+	}
+}
+.live-chart__cell__number-of-ratings {
+	padding-left: 5px;
+	display: none;
+	@include breakpoint($desktop) {
+		display: inline-block;
+	}
+}
+.live-chart__cell__app-price {
+	padding-top: 2px;
+}
+.live-chart__cell__growth,
+.live-chart__cell__app-downloads-revenue {
+	display: inline-block;
+	float: right;
+	vertical-align: top;
+	font-size: 12px;
+	font-weight: 700;
+	color: $dark-grey-2;	
+	.live-chart--compact-view & {
+	  padding-top: 4px;
+	  &.is-loading,
+	  &.is-no-data {
+	  	padding-top: 0;
+	  }
+	  &.is-no-data {
+	 		margin-bottom: 2px;
+	  }
+	}
+	&.positive-colour {
+		color: $reflection-green;
+	}
+	&.negative-colour {
+		color: $reflection-red;
+	}
+	span {
+		padding-top: 3px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	&:before {		
+		font-size: 18px;
+	}
+	&.ref-icon-before--download {
+		&:before {		
+			padding-right: 6px;
+		}
+	}
+	&.ref-icon-before--revenue {
+		&:before {		
+			padding-right: 7px;
+		}
+	}
+}
+.live-chart__cell__growth {
+	position: relative;
+	top: 1px;
+	padding-left: 7px;
+	&.is-loading {
+		display: none;
+	}
+}
+.live-chart__cell__no-results {
+	width: 100%;
+	padding-top: 6px;
+	font-family: $brand-heading-font;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 1.3;
+	color: $light-grey-1;
+	text-align: center;
+}
+.is-unavailable {
+	color: $light-grey-2 !important;
+	&:before,
+	&:after {
+		color: $light-grey-2 !important;
+	}
+}
+.live-chart__cell__app-downloads-revenue {
+	cursor: pointer;
+}

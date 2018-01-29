@@ -1,122 +1,209 @@
+$travel-transition-speed: 23s;
+$travel-transition-speed-original: 15s;
+
 .home-section-head {
 	position: relative;
-	height: 572px;
-	background-image: url(images/bg-home-head.jpg);
-	background-size: cover;
-	.page-title {		
-		margin-bottom: 0.64em;
-    text-align: left;
+	height: 500px;
+	padding-top: 40px;
+	text-align: center;
+	background-color: #404454;
+	.home-banner-animation-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		perspective: 1200px;		
+		.touchevents &,
+		.is-responsive & {
+			background-image: url(images/video-app-animation.jpg);
+    	background-position: 50% 50%;
+    	background-size: cover;
+		}
+	}
+	.video-background {
+		position: absolute;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+		.touchevents & {
+			display: none;
+		}
+	}
+	.page-title {
+		max-width: 320px;
+		margin: 0 auto 2.9rem;
     color: $reflection-white;
+		font-size: 3rem;
+		font-weight: bold;
+		line-height: 1.2;
 	}
-	p {
-		margin-bottom: 1.34em;
-		font-size: 1.8rem;
+	.page-subtitle {
+		max-width: 300px;
+		margin: 0 auto 3.9rem;
+		font-size: 1.9rem;
 		line-height: 1.45;
-		letter-spacing: -0.02px;
 		color: $light-grey-2;
-		text-align: left;
 	}
-}
-.home-section-head__illustration {
-	position: absolute;
-	left: 0;
-  top: 0;
-	height: 572px;
-	width: 100%;
-	display: block;
-	pointer-events: none;
-	text-align: center;    
-	img {
-    position: absolute;
-    left: 50%;
-    margin-left: -1364px;    
-    margin-top: -220px;
-    @include breakpoint($desktop) {
-    	margin-left: -1264px;
-    }
-  }
+	.ref-button--primary--large {
+		border-radius: 4px;
+	}
+	.star {
+		transform-style: preserve-3d;
+		position: absolute;
+		bottom: 50%;
+		left: 50%;
+		opacity: 0;
+		will-change: transform;
+	}
+	.star--travel {
+		width: 180px;
+		height: 180px;
+		margin-left: -90px;
+		border-radius: 6px;
+		background-image: url('images/banner-app-icons/1.png');
+		background-size: 180px 180px;
+		background-repeat: no-repeat;
+		transform: translateZ(-10000px);
+		transition: bottom $travel-transition-speed ease-out, left $travel-transition-speed ease-out, transform $travel-transition-speed ease-out, opacity 0.5s;
+		&.is-travelling {
+			opacity: 1;
+		}
+		&.is-original-star {
+			opacity: 1;
+			transition: bottom $travel-transition-speed-original ease-out, left $travel-transition-speed-original ease-out, transform $travel-transition-speed-original ease-out, opacity 0s;
+		}
+	}
+	@include breakpoint($tablet) {
+		height: 610px;
+    padding-top: 120px;		
+		.page-title {
+			max-width: 590px;
+			font-size: 4.2rem;
+		}
+		.page-subtitle {
+			max-width: inherit;
+			font-size: 2rem;
+		}
+	}
+	@include breakpoint($laptop) {
+		height: 700px;
+		padding-top: 161px;
+		.page-title {
+			font-size: 5rem;
+		}
+		.page-subtitle {
+			font-size: 2.8rem;
+		}
+	}
 }
 .home-section-head__text {
-	width: 960px;
-  margin-top: 98px;
-  margin-left: 70px;
-  padding-right: calc(960px - 525px);
-	@include breakpoint($desktop) {
-		margin: 98px auto;
-	}
-	@include breakpoint($desktop) {
-		width: 1040px;
-		padding-right: calc(1040px - 525px);
-	}
-	strong {
-		color: $reflection-white;
-	}
-	p a {
-		color: $reflection-purple--dark;
-		.no-touchevents & {
-			&:hover {
-				color: $reflection-purple--dark--hover;
-			}
-		}		
+	position: relative;
+	width: 100%;
+  margin: 0 auto;
+	padding: 0 22px;
+	z-index: 1;
+	@include breakpoint($tablet) {
+		width: 680px;
+		padding: 0;
 	}
 }
 .home-section-quote {
 	width: 100%;
-	min-height: 421px;
 	background-image: url(images/bg-home-quote.jpg);
 	background-size: cover;
 	blockquote {
-    position: relative;
-    left: 10px;
-    width: 80%;
-		max-width: 610px;
-		padding-top: 67px;
-		padding-bottom: 80px;
+		width: 100%;
+		padding: 50px 25px 60px;
 		margin: 0 auto;
+		text-align: center;
 		&:before {
 			display: none;
 		}
 		header {
-	    margin-bottom: 1.8rem;
+	    margin-bottom: 2.6rem;
 		}
 		p {
+			max-width: 380px;
+    	margin: 0 auto;
 			font-family: $brand-heading-font;
 			font-weight: 700;
-			font-size: 3.4rem;			
+			font-size: 2rem;	
 			line-height: 1.3;
 			color: $reflection-white;
 		}
 		.blockquote-image {
-			width: 79px;
-			height: 79px;
-			margin-right: 1.8rem;
+			width: 60px;
+			margin-bottom: 12px;
 			display: inline-block;
 			vertical-align: middle;
 		}
 		cite {
-			margin-top: 1px;
+			width: 100%;
 			display: inline-block;
 			vertical-align: middle;
 			font-family: $brand-heading-font;
 			font-weight: 400;
-			font-size: 1.6rem;
+			font-size: 1.4rem;
 			color: $light-grey-2;
 			span {
-				margin-bottom: 1.6rem;
+				margin-bottom: 1.1rem;				
 				display: block;
 				font-weight: 700;				
-				font-size: 2.4rem;
+				font-size: 2rem;
 				color: $reflection-white;
+			}
+		}
+	}
+	@include breakpoint($phablet) {
+		blockquote {
+			padding: 60px 25px 80px;
+			p {
+				font-size: 2.4rem;
+			}
+		}
+	}
+	@include breakpoint($tablet) {
+		min-height: 421px;
+		blockquote {
+			position: relative;
+    	left: 10px;
+			width: 80%;
+			max-width: 610px;
+			padding: 67px 0 80px;
+			text-align: left;
+			header {
+				margin-bottom: 1.8rem;
+			}
+			.blockquote-image {
+				width: 79px;
+				height: 79px;
+				margin-right: 1.8rem;
+				margin-bottom: 0;
+			}
+			cite {
+				width: auto;
+				margin-top: 1px;
+				font-size: 1.6rem;
+				span {
+					margin-bottom: 1.6rem;
+					font-size: 2.4rem;
+				}
+			}
+			p {
+				max-width: inherit;
+				font-size: 3.4rem;
 			}
 		}
 	}
 }
 .home-section-trusted-by {
-	padding-top: 5.2rem;
-	padding-bottom: 6.5rem;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
 	.section-title {
-		margin-bottom: 2rem;
-		font-size: 2.4rem;
+		margin-bottom: 2.5rem;
+		font-size: 2rem;
 		font-weight: 400;
 		text-align: center;
 	}
@@ -124,10 +211,13 @@
 		width: 100%;
 		font-size: 0;
 		li {
-			width: 25%;
+			width: 33%;
 			margin-bottom: 1.5rem;
 			display: inline-block;
 			text-align: center;
+			&:last-child {
+				display: none;
+			}
 			img {
 				width: 80%;				
 				max-width: 170px;
@@ -135,142 +225,226 @@
 			}
 		}
 	}
+	@include breakpoint($phablet) {
+		.logo-list {
+			li {
+				width: 25%;
+				&:last-child {
+					display: inline-block;
+				}
+			}
+		}
+	}
+	@include breakpoint($tablet) {
+		padding-top: 5.2rem;
+		padding-bottom: 6.5rem;
+		.section-title {
+			margin-bottom: 2rem;
+			font-size: 2.4rem;
+		}
+	}
 }
 .home-section-sign-up {
-	padding-top: 48px;
-  padding-bottom: 80px;
-	text-align: center;
+	padding: 48px 20px 80px;
 	background-color: #363a47;
+	text-align: center;
 	.section-title {
 		width: 80%;
-		max-width: 590px;
+		max-width: 300px;		
 		margin: 0 auto 1.6rem;
 		font-weight: 600;
-		font-size: 3.4rem;
+		font-size: 2.6rem;		
 		line-height: 1.5;
 		color: $reflection-white;
 	}
 	p {
 		margin: 0 auto 3.7rem;
-		font-size: 1.8rem;
+		padding: 0 15px;
+		font-size: 1.6rem;
 		line-height: 1.5;
 		color: $light-grey-2;
+	}
+	@include breakpoint($tablet) {
+		padding-left: 0;
+  	padding-right: 0;
+		.section-title {
+			max-width: 370px;
+			font-size: 3.4rem;
+		}
+		p {
+			max-width: 590px;
+			padding: 0;
+			font-size: 1.8rem;
+		}
+	}
+	@include breakpoint($laptop) {
+		.section-title {
+			max-width: inherit;
+		}
 	}
 }
 .home-section-head__partners {
 	position: absolute;
-	bottom: 0;
+	bottom: 30px;
 	left: 50%;
 	margin-left: -450px;
 	width: 900px;
-	height: 86px;
 	text-align: center;
 	> span {
-		margin-bottom: 13px;
+		margin-bottom: 16px;
 		display: block;
 		font-size: 13px;
 		color: $light-grey-2;
 	}
-	img {
-		width: 638px;
+	.img-partners-mobile {
+		width: 263px;
+		display: inline-block;
 	}
-}
-.home-section__title,
-.home-section__title:first-child {
-  margin-top: 4.3rem;
-	font-size: 2.4rem;
-	font-weight: 400;
-	text-align: center;
-	+ .home-section-content-container .home-section-content {
-		padding-top: 75px;
+	.img-partners {
+		width: 639px;
+		display: none;
+	}
+	img {
+		max-width: 639px;
+	}
+	@include breakpoint($tablet) {
+		bottom: 66px;
+		.img-partners-mobile {
+			display: none;
+		}
+		.img-partners {
+			display: inline-block;
+		}
 	}
 }
 .home-section {
 	position: relative;
-	background-color: $reflection-white;
+	background-color: $panel-grey;
 	text-align: center;
 	&.home-section--right-image {
-		background-color: $panel-grey;
+		background-color: $reflection-white;
 	}
 }
 .home-section-content-container {
 	position: relative;
 	width: 100%;
-	max-width: 1240px;
-	min-height: 425px;
-  margin: 0 auto;  
+	max-width: 1240px;	
+  margin: 0 auto;
   display: inline-block;  
   overflow: visible;
+	@include breakpoint($tablet) {
+		min-height: 447px;
+		.home-section--taller-section & {
+			min-height: 559px;
+		}
+		.home-section--content-two & {
+			min-height: 436px;
+		}
+	}
 }
 .home-section-content {	
-	width: 35%;
-  padding-top: 109px;
-	padding-bottom: 83px;
-	margin-right: 5%;
-  float: right;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 30px 20px 10px;
 	overflow: visible;
 	text-align: left;
-	@include breakpoint($laptop-plus) {
-		width: 390px;		
+	@include breakpoint($phablet) {
+		padding-top: 50px;
+		padding-bottom: 20px;
 	}
-	@include breakpoint($desktop) {
-		margin-right: 103px;
+	@include breakpoint($tablet) {
+		width: 42%;
+		max-width: inherit;
+		padding: 159px 0 80px;
+		margin-right: 5%;
+		float: right;
+	}
+	@include breakpoint($laptop-plus) {
+		width: 490px;
+		padding-top: 152px;
 	}
 	> h2 {
-  	margin-bottom: 2.5rem;
+		font-size: 2.6rem;		
+  	margin-bottom: 2rem;
+		@include breakpoint($tablet) {
+			margin-bottom: 3rem;
+			font-size: 3rem;
+		}
+		@include breakpoint($laptop-plus) {
+			font-size: 3.4rem;
+			margin-bottom: 3.7rem;
+		}
 	}
 	p {
 		position: relative;
+		max-width: 420px;
     margin-bottom: 2.8rem;
     overflow: visible;
+		font-size: 1.6rem;		
     line-height: 1.6;
-	}
-	.ref-icon-before--ref-tick:before {
-		position: absolute;
-    left: -52px;
-    top: 7px;
-    font-size: 29px;    
-    color: $reflection-purple;
-	}
-	.ref-before-coming-soon:before {
-		content: "Coming Soon";
-		position: absolute;
-		left: -108px;
-    padding: 1px 10px 1px 9px;
-    top: 7px;
-		font-family: $brand-heading-font;
-		font-weight: 700;
-		font-size: 12px;
-		color: $reflection-white;
-		background-color: $reflection-green;
-		border-radius: 14px;
-		@include breakpoint($desktop) {
-			left: -121px;
-			font-size: 14px;
+		@include breakpoint($tablet) {
+			font-size: 1.7rem;
+		}
+		@include breakpoint($laptop-plus) {
+			font-size: 1.8rem;
 		}
 	}
-	.home-section--right-image & {
-		margin-left: 12.4%;
-		margin-right: 0;
-		float: left;
+	.home-section--right-image & {		
+		@include breakpoint($tablet) {
+			margin-left: 8.7%;
+			float: left;
+		}
 	}
-	.home-section--one & {
-		padding-bottom: 85px;
+	.home-section--content-two & {
+		@include breakpoint($tablet) {
+			padding-top: 123px;
+			margin-right: 7%;
+		}
+		@include breakpoint($laptop-plus) {
+			margin-right: 5%;
+		}
+		@include breakpoint($desktop) {
+			margin-right: 96px;
+		}
+		@include breakpoint(1360px) {
+			margin-right: 5%;
+		}
 	}
+	.home-section--taller-section & {
+		@include breakpoint($tablet) {
+			padding-top: 137px;	
+		}
+	}	
 }
 .home-section-image-container {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 43%;
-	height: 367px;
-	margin-bottom: -3px;
-	overflow: visible;
+	position: relative;
+	width: 100%;		
+	max-height: 280px;
+	margin-bottom: -4px;
+	overflow: hidden;
+	@include breakpoint($tablet) {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 43%;
+		height: 367px;
+		max-height: inherit;
+		overflow: visible;
+	}
 	@include breakpoint($desktop) {
-		width: 525px;
+		width: 512px;
 	}
 	img {
 		float: right;
+		height: 220px;
+		@include breakpoint($phablet) {
+			width: 100%;
+			height: auto;			
+		}
+		@include breakpoint($tablet) {
+			width: auto;			
+		}
 	}
 	.home-section--right-image & {
 		left: inherit;
@@ -278,5 +452,10 @@
 		img {
 			float: left;
 		}
+	}
+	.home-section--taller-section & {
+		@include breakpoint($tablet) {
+			height: 490px;	
+		}		
 	}
 }

@@ -1,0 +1,318 @@
+@import "compass/support";
+@import "compass/css3/box-sizing";
+@import "breakpoint";
+@import "../helpers/mixins";
+@import "../helpers/placeholders";
+@import "../variables/colours";
+@import "../variables/layout";
+@import "../variables/typography";
+
+$headerLinkBackgroundHoverColour: #323643;
+
+.global-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 42px;
+	display: block;
+	float: left;
+	z-index: 1000;
+	overflow: hidden;
+	font-size: 0;
+	background-color: $dark-grey-2;
+	@include breakpoint($phablet) {
+		height: 50px;
+	}
+	.site-logo {
+		width: 25px;
+    height: 27px;
+    margin-top: 8px;
+    margin-left: 10px;
+		display: inline-block;
+		vertical-align: top;
+		background-image: url(images/logo-reflection-mobile@2x.png);
+		background-size: 25px 27px;
+		background-repeat: no-repeat;
+		@include breakpoint($phablet) {
+			margin-top: 12px;
+			margin-left: 16px;
+		}
+		@include breakpoint($tablet) {
+			width: 105px;
+			margin-top: 13px;
+			margin-left: 22px;
+			display: inline-block;
+			background: none;
+		}
+	}
+	.img-site-logo {
+		display: none;
+		@include breakpoint($tablet) {
+			width: 100%;
+			display: inline-block;
+		}
+	}
+	.header__sign-up-button {
+		margin-top: 5px;
+    margin-right: 10px;
+		padding: 0.8rem 1.2rem 0.9rem 1.2rem;
+		display: inline-block;		
+		@media screen and (max-width: $phablet) {
+			&:active {
+				padding: calc(0.8rem - 2px) 1.2rem 0.9rem 1.2rem !important;
+			}
+		}
+		@include breakpoint($phablet) {
+			margin-top: 7px;
+			margin-right: 26px;
+			padding: 10px 20px 11px;
+			display: inline-block;
+			float: right;
+			vertical-align: top;
+			font-size: 14px;
+		}
+	}
+	.help-link {
+		padding-top: 13px;
+		padding-right: 15px;
+		display: inline-block;		
+		svg {
+			position: relative;
+	    width: 22px;
+	    cursor: pointer;
+		}
+	}
+	.link-log-in-container,
+	.search-link-container,
+	.notifications-link-container,
+	.my-account-link-container {
+		height: 42px;
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+		float: right;
+		vertical-align: top;
+		border-left: 1px solid #1e2027;
+		@include breakpoint($phablet) {
+			height: 50px;
+		}
+	}
+	.notifications-link-container,
+	.my-account-link-container {
+		&:hover {
+			background-color: #323643;
+		}
+	}	
+	.link-log-in {
+		position: relative;
+		height: 42px;
+		padding: 13px 15px 0 14px;
+		display: block;
+		@include box-sizing(border-box);
+		vertical-align: top;
+		text-align: center;
+		font-family: $brand-heading-font;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.1;
+		color: $light-grey-1;
+		border: none;
+		background-color: $dark-grey-2;
+		@extend %font-smoothing;
+		outline: none;
+		.no-touchevents & {
+			&:hover, &:active {
+				color: $reflection-white;
+				background: $headerLinkBackgroundHoverColour;
+			}
+			&:active {
+				top: 2px;
+			}
+		}	
+		&.is-selected {
+			color: $reflection-white;
+		}
+		@include breakpoint($phablet) {
+			height: 50px;
+			padding-top: 16px;
+		}
+	}
+	.search-link-container {
+		position: relative;
+		background-color: $panel-grey;
+		border: 1px solid $light-grey-2;
+		border-left: 0;
+		input[type=text] {
+			width: 42px;
+    	margin: 0;
+    	padding: 0 0px 3px 15px;			
+			box-sizing: border-box;
+			font-family: $brand-heading-font;
+			font-size: 15px;
+			font-weight: 600;
+			color: $mid-grey-1;
+			height: 42px;	
+			border: 0;
+			border-radius: 0;
+			background-color: transparent;
+			outline: none;
+			box-shadow: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			@extend %font-smoothing;
+			cursor: pointer;
+			@include breakpoint($phablet) {
+				width: 182px;			
+				padding: 0 75px 3px 15px;
+				height: 48px;
+				.is-ie & {
+					height: 51px;
+				}
+			}
+		}
+		.search-stores-label {
+			position: absolute;
+		  top: 0;
+   		left: 15px;
+			display: none;
+   		font-family: $brand-heading-font;
+			font-size: 14px;
+			color: $reflection-purple;
+			line-height: 42px;
+			cursor: pointer;
+			@include breakpoint($phablet) {
+				display: block;
+				left: 19px;
+				line-height: 47px;
+				.is-ie & {
+					line-height: 49px;
+				}
+			}
+		}
+		.search-icon {
+			position: absolute;
+		  top: 12px;
+    	right: 11px;		  
+			&:after {
+				width: 14px;
+		    font-size: 18px;
+		    color: $reflection-purple;
+			}
+			@include breakpoint($phablet) {
+				top: 15px;
+			}
+		}
+		.clear-search {
+			position: absolute;
+			top: 12px;
+  		right: 11px;  		
+			display: none;
+			&:after {
+				color: #727686;
+				font-size: 18px;
+			}
+			@include breakpoint($phablet) {
+		    top: 15px;
+	    	right: 18px;
+			}
+		}
+		&.is-open {
+			@include breakpoint($tablet) {
+				input[type=text] {
+					width: 318px;
+					transition: width 0.2s;
+				}
+			}
+			.search-stores-label,
+			.search-icon {
+				display: none;
+			}
+			.clear-search {
+				display: block;
+			}
+		}
+	}
+	.notifications-link,
+	.my-account-link {
+		width: 48px;
+		display: block;
+    text-align: center;
+		&:after,
+		&:before {
+			font-size: 17px;
+			color: $light-grey-1;
+			line-height: 42px;
+			@include breakpoint($phablet) {
+				line-height: 50px;
+			}
+		}
+		&:active {
+			&:after,
+			&:before,
+			span {
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+	.my-account-link {
+		width: auto;
+		&:before {
+			margin-left: 15px;
+    	margin-right: 15px;
+		}
+		span {
+			padding: 17px 15px 0 0;
+			display: inline-block;
+    	vertical-align: top;
+    	font-family: $brand-heading-font;
+			font-size: 14px;
+			color: $light-grey-2;
+		}
+	}
+	.has-notifications.notifications-link-container {
+		position: relative;
+		background-color: $reflection-red;
+		.notifications-link:after {
+			top: 6px;
+			width: 100%;
+			color: $reflection-white;
+			display: inline-block;
+			transform-origin: top center;
+			-webkit-animation: bellring 6s infinite;
+			animation: bellring 6s infinite;			
+			.no-touchevents & {
+				&:hover {
+					color: $reflection-white;
+				}
+			}
+		}
+		.notifications-link:active {
+			&:after {
+				top: 8px;
+			}
+			+ .notifications-link-container__notifications-number {
+				top: 5px;
+			}
+		}
+	}
+	.notifications-link-container__notifications-number {
+		position: absolute;
+		top: 3px;
+		width: 100%;
+		margin: 0 auto;
+		display: block;
+		font-family: $brand-body-font;
+		font-weight: 700;
+		font-size: 12px;
+		color: $reflection-white;
+		text-align: center;
+	}
+}
+.global-header__actions {
+	display: inline-block;
+	float: right;
+	overflow: hidden;
+}

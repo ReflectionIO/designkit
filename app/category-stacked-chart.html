@@ -2,19 +2,10 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection V2, Data Template</title>
+	<title>Reflection Research Tools - Experimental Tool, Category Share Over Time</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
-		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
-	<!--<![endif]-->
-	<!--[if IE 9]>
-		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
-		<link rel="stylesheet" type="text/css" href="ie9-v2-two.css" />
-	<![endif]-->
-	<!--[if (lt IE 9)]>
-		<script src="js/vendor/html5shiv.min.js"></script>
-		<link rel="stylesheet" media="screen, projection" type="text/css" href="reflection-main-ie8.css" />
-	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="research-tools-experiments.css" />
+	<link rel="stylesheet" type="text/css" href="header.css" />
 	<link rel="stylesheet" href="js/vendor/jquery.mCustomScrollbar.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 <script>
@@ -31,47 +22,17 @@
 </style>
 </head>
 <body>
-	<!--[if (lt IE 9)]>
-      <div class="window-warning">
-  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
-  		</div>
-  <![endif]-->
 
   <header id="js-component-import--global-header" class="global-header"></header>
   
 	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
 
 	<div class="l-page-container">
-		<div id="main" class="l-main" role="main">
-			<div class="page-data-dashboard" style="padding-top: 0;">
-				
-				<aside class="grid-container secondary-filters-container">
-					<div class="filter-toggle toggle-container--chart-type">
-						<div class="toggle">
-							<input id="toggle--show-area" name="charttype" type="radio" data-chart-type="area">
-							<label for="toggle--show-area" class="js-toggle--show-area">
-								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M16.9,16.9h-2.8h-0.6h-2.8h-0.6H7.3
-	H6.8H3.9H3.4H1.1v-4l2.5-3.8L7,10.7l3.4-6.2L14,6.1l2.9-3.2V16.9z"/></svg>
-							</label>
-						</div>
-						<div class="toggle">
-							<input id="toggle--show-stacked" name="charttype" checked type="radio" data-chart-type="stacked">
-							<label for="toggle--show-stacked" class="js-toggle--show-stacked">
-								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M13.7,4.8L9.9,3L6.5,9.2L3.2,7.7L0,12.6V18h18V0.1L13.7,4.8z M3.6,9.1L7,10.7l3.4-6.2L14,6.1l2.9-3.2v4
-	l-3,4.5l-3.2-1.1l-3.7,3.4L3.7,13l-2.6,1.4v-1.5L3.6,9.1z M14.1,16.9h-0.6h-2.8h-0.6H7.3H6.8H3.9H3.4H1.1V15l2.7-1.5l3.3,0.9
-	l3.7-3.4l3.3,1.1l2.8-4.2v9H14.1z"/></svg>
-							</label>
-						</div>
-						<div class="toggle">
-							<input id="toggle--show-bar" name="charttype" type="radio" data-chart-type="bar">
-							<label for="toggle--show-bar" class="js-toggle--show-bar">
-								<svg x=0px y=0px viewBox="0 0 18 18"enable-background="new 0 0 18 18"xml:space=preserve><path d="M11.2,0v5.6H5.6v3.9H0V18h18V0H11.2z M6.8,6.8h5.1v10.1H6.8V6.8z M1.1,10.7h5.1v6.2H1.1V10.7z
-	 M16.9,16.9h-4.5V1.1h4.5V16.9z"/></svg>
-							</label>
-						</div>
-					</div>
-				</aside>
-
+		<div id="main" class="l-main page-research-tools-experiment" role="main">
+			
+			<div id="js-component-import--data-vis-banner" class="research-experiment__banner"></div>
+			
+			<div class="page-data-dashboard">
 				<div class="grid__row chart-section">
 					<ul class="tabs-content-list">
 						<li class="is-active js-twin-chart-container">
@@ -89,20 +50,21 @@
 	</div>
 
  	<script src="js/vendor/jquery-1.11.1.min.js"></script>
- 	<script src="js/vendor/handlebars-v2.0.0.js"></script> <!-- static templates only -->
- 	<script src="js-v2/templates/templates.js"></script> <!-- static templates only -->
  	<script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
 
 	<!--[if IE 9]>
 		<script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
-	<![endif]-->
+	<![endif]-->	
 
-	<div id="js-appendScriptsContainer"></div>
-
-	<script src="js-v2/app-include-templates-logged-in.js"></script> <!-- static templates only -->
+	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+	<script src="js-v2/templates/templates.js"></script>
+	<script>
+		var surveyURL = "https://goo.gl/forms/0oAvhN9XviLhlbhB3";
+	</script>
+	<script src="js-v2/app-include-data-vis-components.js"></script>
+	
+	<div id="js-appendScriptsContainer"></div>	
   <script src="js-v2/application.js"></script>
-
-  <script src="js/vendor/snap.svg.js"></script> <!-- snap used for animating event flags on charts -->
   <script src="js/vendor/highcharts.5.0.9.js"></script>
   <script src="js/vendor/highslide-software/rounded-corners.js"></script>
   <script src="js/data-vis/stack_data_GB_PHONE_FREE.js"></script> <!-- mock data -->
@@ -578,7 +540,14 @@
 	        }];
 					
 					var hiddenSeries = ["Sports", "Food & Drink", "Book", "Finance", "Business", "News", "Lifestyle", "Medical", "Catalogs", "Reference", "Weather"];
-
+					
+					var seriesColours = ["#f5c943", "#beb9db", "#fd7f6e", "#7fb1d5", "#f2bdd8", "#c7b299", "#bd7ebf", "#8bd4c7", "#ffb55a", "#d9d9d9", "#918edf", "#DA667B", "#797A9E", "#80AB82", "#EE7674", "#4B8F8C", "#C5979D", "#C9D6EA", "#7261A3", "#F1A66A", "#A54657", "#769FB6", "#BDE4A7", "#9FBBCC"];
+					
+					var seriesFills = ["rgba(245,201,67,0)", "rgba(190,185,219,1)", "rgba(253,127,110,1)", "rgba(127,177,213,1)", "rgba(242,189,216,1)", "rgba(199,178,153,1)", "rgba(189,126,191,1)", "rgba(139,212,199,1)", "rgba(255,181,90,1)", "rgba(217,217,217,1)", "rgba(145,142,223,1)", "rgba(218,102,123,1)", "rgba(121,122,158,1)", "rgba(128,171,130,1)", "rgba(238,118,116,1)", "rgba(75,143,140,1)", "rgba(197,151,157,1)", "rgba(201,214,234,1)", "rgba(114,97,163,1)",
+					"rgba(241,166,106,1)", "rgba(165,70,87,1)",
+					"rgba(118,159,182,1)", "rgba(189,228,167,1)",
+					"rgba(159,187,204,1)"];
+					
 	        // TEMPLATE ONLY: Create mock series
 	        for(var a = 0; a < seriesData.length; a++) {
 						
@@ -591,11 +560,14 @@
 		         	yAxis: 0,
 		          name: seriesNames[a],
 		          id : seriesNames[a],
+							color: seriesColours[a],
 		          data: seriesData[a],
 		          borderRadiusTopLeft: 3,
         			borderRadiusTopRight: 3,
 		          lineWidthPlus: 0,
 		          visible: visibility,
+							fillOpacity: 0.2,
+		          fillColor: seriesFills[a],
 		          marker: {
 		            enabled: false,
 		            states: {
@@ -671,7 +643,6 @@
 	              day: '%e %b'
 	          },
 	          tickmarkPlacement: 'on',
-	          tickPixelInterval: 30,
 	          tickLength: 0,
 	          labels: {
 	          	align: 'center',
@@ -750,7 +721,7 @@
 	                	seriesClassName = "downloadsseries";
 	                }
 
-	                if($('#toggle--show-stacked').is(":checked") && thisPointTotalValue != undefined) {
+	                if(thisPointTotalValue != undefined) {
 	                	var percentageOfTotal = (value.y / thisPointTotalValue * 100).toFixed(1);
 	                	stackedString = "<span class='chart-tooltip-percentage' style='background-color: " + chartSeries.color + "'>" + percentageOfTotal + "%</span>";
 	                }
@@ -775,9 +746,6 @@
 	        	snap: 25,
 	        	// the positioner callback could be used in future for the combined chart where it goes off the left of the graph
 	        	positioner: function (labelWidth, labelHeight, point) {
-              console.log("labelWidth = " + labelWidth);
-              console.log("labelHeight = " + labelHeight);
-              console.log(point);
               var chartWidth = $('.highcharts-container').width();
               var xPlot = point.plotX;
               if(point.plotX > chartWidth / 2) {
@@ -789,828 +757,6 @@
 		    });
 
 			} // end generateChart()
-
-			function addAppDataToSeries() {
-				// add the app icon and store to the Highcharts series objects for the tooltip
-
-				// template only, mock data
-				// for(var k = 0; k < 2; k++) {
-				// 	$.each(Highcharts.charts[k].series, function (key, series) { // twin chart
-				//     series.appIcon = seriesAppIcons[key].icon;
-				//     series.appStore = seriesAppIcons[key].store;
-				// 	});
-				// }
-
-				// $.each(Highcharts.charts[2].series, function (key, series) { // combined chart
-			 //    // combined chart, use the same icon for rev and downloads
-			 //    var combinedSeriesIndex = Math.floor(key / 2);
-			 //    series.appIcon = seriesAppIcons[combinedSeriesIndex].icon;
-			 //    series.appStore = seriesAppIcons[combinedSeriesIndex].store;
-				// });
-			}
-
-			function handleCustomLegendInteraction() {
-
-				// Hide/show series from custom legend
-				$('.js-custom-chart-key').on("click", '.js-toggle-series', function(){ // for each current or new '.js-toggle-series' (checkbox in the legend)
-
-					var $this = $(this);
-					var chartIndex = $this.attr("data-chart-index");
-					var seriesIndex = $this.attr("data-series-index");					
-
-					var currentChartType = "area";
-					$('.toggle input[type=radio][name=charttype]').each(function(){
-						if($(this).is(":checked")) {
-							currentChartType = $(this).attr("data-chart-type");
-						}
-					});
-
-					if(chartIndex < 2) { // user is using the twin chart
-
-						if($(this).is(":checked")) {
-
-							// turn on same series on both twin charts
-							Highcharts.charts[0].series[seriesIndex].show();
-							Highcharts.charts[1].series[seriesIndex].show();
-
-							// turn on the combined chart corresponding series
-							Highcharts.charts[2].series[seriesIndex * 2].show();
-							Highcharts.charts[2].series[(seriesIndex * 2) + 1].show();
-
-							// only reset styles for non-stacked area chart
-							setTimeout(function(){
-								if(!$('#toggle--show-stacked').is(":checked") && currentChartType == "area") {
-									Highcharts.Chart.prototype.setGraphCSSClasses();
-									Highcharts.Chart.prototype.resetLineStyling();
-								} else {									
-									Highcharts.Chart.prototype.setGraphCSSClasses();
-									Highcharts.Chart.prototype.setGraphFillsTransparency();
-								}
-							}, 200);
-
-							// turn off other checkboxes in mirror chart key
-							$('.js-twin-chart-container .js-toggle-series').each(function(){
-								var $thisToggle = $(this);
-								if(!$thisToggle.is($this)) {
-									if($thisToggle.attr("data-series-index") == seriesIndex) {
-										$thisToggle[0].checked = true;
-									}
-								}
-							});
-
-							// combined chart turn on/off corresponding series
-							$('.js-combined-chart-container .js-toggle-series').each(function(){
-								var $thisToggle = $(this);
-								if(!$thisToggle.is($this)) {
-									if($thisToggle.attr("data-series-index") == seriesIndex * 2 || $thisToggle.attr("data-series-index") == (seriesIndex * 2) + 1) {
-										$thisToggle[0].checked = true;
-									}
-								}
-							});
-
-						} else { // turn off the series on all charts
-							setTimeout(function(){
-								
-								var isStackedChart = true;
-								if(currentChartType == "area") {
-
-									// If the line being turned off is selected then unselect, and select first visible line
-									if(Highcharts.charts[0].series[seriesIndex].selected == true) {
-										isStackedChart = false;
-
-										// unselect for twin charts
-										Highcharts.Chart.prototype.setSeriesToUnselected(0, seriesIndex);
-										Highcharts.Chart.prototype.setSeriesToUnselected(1, seriesIndex);
-
-										// unselect for combined chart
-										var previousSelectedIndexOnCombined = $('.chart[data-highcharts-chart="2"] .highcharts-series path[data-selected]').attr("data-index");
-
-										Highcharts.Chart.prototype.setSeriesToUnselected(2, previousSelectedIndexOnCombined);
-									}
-								}
-
-								// Hide the series
-								Highcharts.charts[0].series[seriesIndex].hide();
-								Highcharts.charts[1].series[seriesIndex].hide();
-
-								// hide on the combined chart
-								Highcharts.charts[2].series[seriesIndex * 2].hide();
-								Highcharts.charts[2].series[(seriesIndex * 2) + 1].hide();
-
-								setTimeout(function(){
-									if(!isStackedChart) {
-										Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
-										Highcharts.Chart.prototype.setGraphCSSClasses();
-						        Highcharts.Chart.prototype.resetLineStyling();
-									}
-								}, 200);
-							}, 200);
-
-							// turn off other checkboxes in mirror chart key
-							$('.js-twin-chart-container .js-toggle-series').each(function(){
-								var $thisToggle = $(this);
-								if(!$thisToggle.is($this)) {
-									if($thisToggle.attr("data-series-index") == seriesIndex) {
-										$thisToggle[0].checked = false;
-									}
-								}
-							});
-
-							// combined chart turn on/off corresponding series
-							$('.js-combined-chart-container .js-toggle-series').each(function(){
-								var $thisToggle = $(this);
-								if(!$thisToggle.is($this)) {
-									if($thisToggle.attr("data-series-index") == seriesIndex * 2 || $thisToggle.attr("data-series-index") == (seriesIndex * 2) + 1) {
-										$thisToggle[0].checked = false;
-									}
-								}
-							});
-
-						}
-
-					} else { // user is using combined chart
-
-						if($(this).is(":checked")) {
-							Highcharts.charts[2].series[seriesIndex].show();
-
-							// if both rev and dloads are selected on combined, turn that series on on the twin charts
-								
-							// get the corresponding series to see if it's visible
-							var correspondingSeriesIndex,
-									isDownloadsSeriesBeingTurnedOn = seriesIndex % 2 == 1;
-
-							if(isDownloadsSeriesBeingTurnedOn) {
-								correspondingSeriesIndex = seriesIndex - 1;
-							} else {
-								correspondingSeriesIndex = parseInt(seriesIndex) + 1;
-							}
-
-							var isCorrespondingSeriesVisible = Highcharts.charts[2].series[correspondingSeriesIndex].visible;
-
-							if(isCorrespondingSeriesVisible) {
-
-								// make sure correspondingTwinIndex is set to corresponding twin chart index
-								var correspondingTwinIndex;
-								if(isDownloadsSeriesBeingTurnedOn) {
-									correspondingTwinIndex = (seriesIndex - 1) / 2;
-								} else {
-									correspondingTwinIndex = seriesIndex / 2
-								}
-
-								// turn it on on the twin chart
-								Highcharts.charts[0].series[correspondingTwinIndex].show();
-								Highcharts.charts[1].series[correspondingTwinIndex].show();
-
-								// set the key toggle
-								$('.js-twin-chart-container .js-toggle-series').each(function(){
-									var $thisToggle = $(this);
-									if(!$thisToggle.is($this)) {
-										if($thisToggle.attr("data-series-index") == correspondingTwinIndex) {
-											$thisToggle[0].checked = true;
-										}
-									}
-								});
-							}
-
-							// if non-stacked area chart, reset CSS styles/classes
-							if(!$('#toggle--show-stacked').is(":checked") && currentChartType == "area") {
-								Highcharts.Chart.prototype.setGraphCSSClasses();
-								Highcharts.Chart.prototype.resetLineStyling();
-							} else {
-								Highcharts.Chart.prototype.setGraphCSSClasses();
-								Highcharts.Chart.prototype.setGraphFillsTransparency();
-							}
-
-						} else {
-							setTimeout(function(){
-
-								// If series is selected, select next visible series
-								var isStackedChart = true;
-
-								var correspondingTwinIndex;
-								if(seriesIndex % 2 == 1) {
-									correspondingTwinIndex = (seriesIndex - 1) / 2;
-								} else {
-									correspondingTwinIndex = seriesIndex / 2
-								}
-
-								if(currentChartType == "area") {
-
-									if(Highcharts.charts[2].series[seriesIndex].selected == true) {
-										
-										isStackedChart = false;
-
-										Highcharts.Chart.prototype.setSeriesToUnselected(2, seriesIndex);
-
-										// Deselect the equivalent line on the twin charts
-										Highcharts.Chart.prototype.setSeriesToUnselected(0, correspondingTwinIndex);
-										Highcharts.Chart.prototype.setSeriesToUnselected(1, correspondingTwinIndex);
-									}
-								}
-
-								// Hide the series
-								Highcharts.charts[2].series[seriesIndex].hide();
-								Highcharts.charts[0].series[correspondingTwinIndex].hide();
-								Highcharts.charts[1].series[correspondingTwinIndex].hide();
-
-								// set the key toggle
-								$('.js-twin-chart-container .js-toggle-series').each(function(){
-									var $thisToggle = $(this);
-									if(!$thisToggle.is($this)) {
-										if($thisToggle.attr("data-series-index") == correspondingTwinIndex) {
-											$thisToggle[0].checked = false;
-										}
-									}
-								});
-
-								setTimeout(function(){
-									if(!isStackedChart) {
-										Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
-										Highcharts.Chart.prototype.setGraphCSSClasses();
-						        Highcharts.Chart.prototype.resetLineStyling();					
-									}
-								}, 200);
-							}, 200);
-						}
-					}		
-				});
-
-				// hover on/off key to highlight lines
-				$('.js-hover-series').on("mouseenter", function(){					
-					handleMouseEnterChartKeyLabel($(this));
-				}).on("mouseleave", function(){
-					handleMouseLeaveChartKeyLabel($(this));
-				});
-			}
-
-			function handleShowBarChart() {
-
-				// change chart type
-				$('.js-toggle--show-bar').on("click", function(){
-
-					if(!$(this).hasClass("is-disabled")) {
-
-						$('.js-mock-show-single-chart.is-disabled').removeClass("is-disabled")
-																					.siblings("input").removeAttr("disabled", "disabled");
-
-						$.each(Highcharts.charts, function(key, chart) {
-							$.each(chart.series, function (key, series) {
-						    series.update({
-						    	type: 'bar',
-						    	stacking: null
-						    });
-							});
-						});
-					}
-
-					addAppDataToSeries();
-					redrawChartEvents();
-				});
-			}
-
-			function handleShowAreaChart() {
-				// change chart type
-				$('.js-toggle--show-area').on("click", function(){
-
-					// disabled the toggle for combined chart
-					$('.js-mock-show-single-chart.is-disabled').removeClass("is-disabled")
-																					.siblings("input").removeAttr("disabled", "disabled");
-
-					$.each(Highcharts.charts, function(key, chart) {
-						$.each(chart.series, function (key, series) {
-					    series.update({
-					    	type: 'area',
-					    	stacking: null,
-					    	fillColor: {
-		              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-		              stops: [
-		                [0, 'rgba(109,105,197,0.1)'],
-		                [1, 'rgba(27,199,159,0.1)']
-		              ]
-		            },
-		            lineWidth: 3
-					    });
-						});
-					});
-
-					Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
-					Highcharts.Chart.prototype.setGraphCSSClasses();
-	        Highcharts.Chart.prototype.resetLineStyling();
-
-	        addAppDataToSeries();
-	        redrawChartEvents();
-				});
-			}
-
-			function handleShowStackedAreaChart() {
-
-				// change chart type
-				$('.js-toggle--show-stacked').on("click", function(){
-
-					if(!$(this).hasClass("is-disabled")) {
-						// disabled the toggle for combined chart
-						$('.js-mock-show-single-chart').addClass("is-disabled")
-																						.siblings("input").attr("disabled", "disabled");
-
-						$.each(Highcharts.charts, function(key, chart) {
-							$.each(chart.series, function (key, series) {
-								if(key > 0) { // all lines other than the first line (the total line) are stacked - the total does not make up the stacked chart and stays with stacking: null
-									series.update({
-										type: 'area',
-							    	stacking: 'normal',
-							    	fillColor: seriesFills[key],
-							    	lineWidth: 2
-							    });
-								} else { // the first line is the total line for the stacked chart and should not be part of the stacked area
-									series.update({
-										type: 'area',
-										stacking: null,
-										fillColor: seriesFills[key],
-										lineWidth: 2
-									});
-								}				    
-							});
-						});
-
-						Highcharts.Chart.prototype.setGraphCSSClasses();
-						Highcharts.Chart.prototype.setGraphFillsTransparency();
-
-						addAppDataToSeries();
-						redrawChartEvents()
-					}
-				});
-			}
-
-			function handleAddSeriesTest() {
-
-				// mock, just for index when you add a series
-				// not needed in app
-				Highcharts.charts[0].numberofSeriesAdded = Highcharts.charts[0].series.length - 1; 
-
-				$('.js-add-series').on("click", function(e){
-
-					e.preventDefault();
-
-					// set stacking to normal if currently viewing stacked chart
-					var stackingValue = null;
-					if($('#toggle--show-stacked').is(":checked")) {
-						stackingValue = 'normal';
-					}
-
-					var chartType = "area";
-					if($('#toggle--show-bar').is(":checked")) {
-						chartType = "bar";
-					}
-
-					var mockSeries = [];
-					for(var d = 0; d < 12; d++) {
-						var randomNumber = Math.floor((Math.random() * 50000) + 30000);				
-						mockSeries.push(randomNumber);
-					}
-					var mockSeriesDownloads = [];
-					for(var d = 0; d < 12; d++) {
-						var randomNumber = Math.floor((Math.random() * 50000) + 30000);		
-						mockSeriesDownloads.push(randomNumber);
-					}
-
-					// get a series colour that's not in use
-					var availableColour = "#1bc79f";
-					for(var c = 1; c < seriesColours.length; c++) { // (0 is used by revenue total)
-						colourInUse = (usedSeriesColours.indexOf(seriesColours[c]) > -1) ? true : false;
-						if(!colourInUse) {
-							availableColour = seriesColours[c];
-							availableColourIndex = c;
-							break;
-						}
-					}
-
-					usedSeriesColours.push(availableColour);
-
-					var fillColourForNewSeries = {
-							linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-              stops: [
-                [0, 'rgba(109,105,197,0.1)'],
-                [1, 'rgba(27,199,159,0.1)']
-              ]
-          };
-
-					if(stackingValue == 'normal') {
-						fillColourForNewSeries = seriesFills[availableColourIndex];
-					}
-
-					Highcharts.charts[0].addSeries({
-          	yAxis: 0,
-	          name: "revenueseries",
-            id : "revenueseries",
-            type: chartType,
-	          color: availableColour,
-	          data: mockSeries,
-	          pointStart: Date.UTC(2016, 0, 1),
-	          pointInterval: 24 * 3600 * 1000, // one day
-	          lineColor: availableColour,
-	          lineWidth: (stackingValue == null) ? 3 : 2,
-	          lineWidthPlus: 0,
-	          fillOpacity: 0,
-	          fillColor: fillColourForNewSeries,
-            stacking: stackingValue,
-	          marker: {
-	            enabled: false,
-	            states: {
-	              hover: {
-	                enabled: true,
-	                lineWidth: 0,
-	                lineWidthPlus: 0,
-	                radius: 4,
-	                radiusPlus: 0,
-	              }
-	            }
-	          }
-         	});
-
-         	Highcharts.charts[1].addSeries({
-          	yAxis: 0,
-	          name: "downloadsseries",
-            id : "downloads",
-            type: chartType,
-	          color: availableColour,
-	          data: mockSeriesDownloads,
-	          pointStart: Date.UTC(2016, 0, 1),
-	          pointInterval: 24 * 3600 * 1000, // one day
-	          lineColor: availableColour,
-	          lineWidth: (stackingValue == null) ? 3 : 2,
-	          lineWidthPlus: 0,
-	          fillOpacity: 0,
-	          fillColor: fillColourForNewSeries,
-            stacking: stackingValue,
-	          marker: {
-	            enabled: false,
-	            states: {
-	              hover: {
-	                enabled: true,
-	                lineWidth: 0,
-	                lineWidthPlus: 0,
-	                radius: 4,
-	                radiusPlus: 0,
-	              }
-	            }
-	          }
-         	});
-
-         	Highcharts.charts[2].addSeries({
-          	yAxis: 0,
-	          name: "revenueseries",
-            id : "revenueseries",
-            type: chartType,
-	          color: availableColour,
-	          data: mockSeries,
-	          pointStart: Date.UTC(2016, 0, 1),
-	          pointInterval: 24 * 3600 * 1000, // one day
-	          lineColor: availableColour,
-	          lineWidth: 3,
-	          lineWidthPlus: 0,
-	          fillOpacity: 0,
-	          fillColor: fillColourForNewSeries,
-	          marker: {
-	            enabled: false,
-	            states: {
-	              hover: {
-	                enabled: true,
-	                lineWidth: 0,
-	                lineWidthPlus: 0,
-	                radius: 4,
-	                radiusPlus: 0,
-	              }
-	            }
-	          }
-         	});
-
-         	Highcharts.charts[2].addSeries({
-          	yAxis: 1,
-	          name: "downloadsseries",
-            id : "downloads",
-            type: chartType,
-	          color: availableColour,
-	          data: mockSeriesDownloads,
-	          pointStart: Date.UTC(2016, 0, 1),
-	          pointInterval: 24 * 3600 * 1000, // one day
-	          lineColor: availableColour,
-	          lineWidth: 3,
-	          lineWidthPlus: 0,
-	          fillOpacity: 0,
-	          fillColor: fillColourForNewSeries,
-            dashStyle: 'shortdash',
-	          marker: {
-	            enabled: false,
-	            states: {
-	              hover: {
-	                enabled: true,
-	                lineWidth: 0,
-	                lineWidthPlus: 0,
-	                radius: 4,
-	                radiusPlus: 0,
-	              }
-	            }
-	          }
-         	});
-
-         	// reset lines CSS and styling if not viewing stacked chart
-					if(stackingValue == null) {
-						setTimeout(function(){
-							Highcharts.Chart.prototype.setGraphCSSClasses();
-		      		Highcharts.Chart.prototype.resetLineStyling();
-		      	}, 200);
-					} else {
-						Highcharts.Chart.prototype.setGraphCSSClasses();
-						Highcharts.Chart.prototype.setGraphFillsTransparency();
-					}
-
-					Highcharts.charts[0].numberofSeriesAdded++; // MOCK, just to generate index
-
-					// in the app, ("showhiderevenue-" + Highcharts.charts[0].numberofSeriesAdded) should be replaced with an id for that series
-					// the (Highcharts.charts[0].numberofSeriesAdded) index should be the same as the series index
-					addASeriesToggle(Highcharts.charts[0].series.length - 1, "showhiderevenue-" + Highcharts.charts[0].numberofSeriesAdded, availableColourIndex);
-
-					addAppDataToSeries();
-
-				});
-
-			}
-
-			function handleRemoveSeriesTest() {
-				$('.js-remove-series').on("click", function(e){
-
-					e.preventDefault();
-
-					var isStackedChart = true;
-					if($('.chart[data-highcharts-chart="0"] .highcharts-series path[data-selected]').length) {
-						isStackedChart = false;
-					}
-
-					var removedLineWasSelected = false;
-					if(Highcharts.charts[0].series[2].selected == true) {
-						removedLineWasSelected = true;
-					}
-
-					// mock removal of series 2
-					Highcharts.charts[0].series[2].remove(true);
-					Highcharts.charts[1].series[2].remove(true);
-
-					// remove from combined chart - the indexes are the same, because after the first [4] has been removed, the next line becomes [4], which is also removed (the download line for [4], was [5])
-					Highcharts.charts[2].series[4].remove(true);
-					Highcharts.charts[2].series[4].remove(true);
-
-					if(!isStackedChart) {
-						setTimeout(function(){
-							if(removedLineWasSelected) {
-								Highcharts.Chart.prototype.setFirstVisibleSeriesToSelected();
-							}							
-							Highcharts.Chart.prototype.setGraphCSSClasses();
-		      		Highcharts.Chart.prototype.resetLineStyling();
-		      	}, 200);
-					}					
-
-					removeASeriesToggle(2);
-				});
-			}
-			
-			function handleChartEvents() {
-
-				// Use Highcharts.charts[0].refEvents[] to hold the event objects, which consist of an icon, line and tooltip content and tooltip colour
-				Highcharts.charts[0].refEvents = [];
-
-				if($('.js-toggle-events:checked').length > 0) {
-					addEventsToGraph();
-				}
-
-				$('.js-toggle-events').change(function(){
-					if($(this).is(":checked")) {
-						if(Highcharts.charts[0].refEvents.length == 0) {
-							addEventsToGraph();
-						} else { // otherwise show existing events
-							for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
-								if(Highcharts.charts[0].refEvents[e].icon) {
-									$(Highcharts.charts[0].refEvents[e].icon.element).fadeIn(200);
-								}
-								if(Highcharts.charts[0].refEvents[e].line) {
-									$(Highcharts.charts[0].refEvents[e].line.element).fadeIn(200);
-								}
-								if(Highcharts.charts[0].refEvents[e].area) {
-									$(Highcharts.charts[0].refEvents[e].area.element).fadeIn(200);
-								}
-								if(Highcharts.charts[0].refEvents[e].label) {
-									$(Highcharts.charts[0].refEvents[e].label.element).fadeIn(200);
-								}
-							}
-						}
-					} else {
-						if(Highcharts.charts[0].refEvents.length > 0) {
-							// hide existing events
-							for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
-								if(Highcharts.charts[0].refEvents[e].icon) {
-									$(Highcharts.charts[0].refEvents[e].icon.element).fadeOut(200);
-								}
-								if(Highcharts.charts[0].refEvents[e].line) {
-									$(Highcharts.charts[0].refEvents[e].line.element).fadeOut(200);
-								}
-								if(Highcharts.charts[0].refEvents[e].area) {
-									$(Highcharts.charts[0].refEvents[e].area.element).fadeOut(200);
-								}
-								if(Highcharts.charts[0].refEvents[e].label) {
-									$(Highcharts.charts[0].refEvents[e].label.element).fadeOut(200);
-								}
-							}
-						}
-					}
-				});
-
-				// Events - Redraw events for window width change
-				$(window).on("resize", function(){
-					setTimeout(function(){
-						redrawChartEvents();
-					}, 1500);
-				});
-			}
-
-			function redrawChartEvents() {
-				if(Highcharts.charts[0].refEvents.length > 0) {
-						// redraw events
-						for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
-							if(Highcharts.charts[0].refEvents[e].icon) {
-								Highcharts.charts[0].refEvents[e].icon.destroy();
-							}
-							if(Highcharts.charts[0].refEvents[e].line) {
-								Highcharts.charts[0].refEvents[e].line.destroy();
-							}
-							if(Highcharts.charts[0].refEvents[e].area) {
-								Highcharts.charts[0].refEvents[e].area.destroy();
-							}
-							if(Highcharts.charts[0].refEvents[e].label) {
-								Highcharts.charts[0].refEvents[e].label.destroy();
-							}
-						}
-						Highcharts.charts[0].refEvents = [];						
-						if(Highcharts.charts[0].refEvents.length == 0) {
-							if($('.js-toggle-events:checked').length > 0) {
-								addEventsToGraph();
-							}
-						}
-					}
-			}
-
-			// Add events to the graph function
-			function addEventsToGraph() {
-
-				var chart = Highcharts.charts[0];
-				var numberOfChartItems = chart.series[0].data.length - 1;
-			  var chartWidth = $(chart.container).width();
-
-			  Highcharts.charts[0].refEvents = [];
-
-	      Highcharts.charts[0].refEvents.push({
-	      	icon: chart.renderer.image('images/icon-chart-event-launch@2x.png', chart.series[0].data[2].plotX - 11, chart.chartHeight - 36, 22, 36)
-		            .attr({		            	
-		              zIndex: 15
-		            })
-		            .addClass("event-icon--launch")
-		            .add(),
-		    	plotX: chart.series[0].data[2].plotX,
-	      },{
-	      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[6].plotX - 1, chart.chartHeight - 38, 18, 12)
-		            .attr({
-		              zIndex: 9		              
-		            })
-		            .addClass("event-icon--flag")
-		            .add(),
-		      line: chart.renderer.path(['M', chart.series[0].data[6].plotX, chart.chartHeight, 'L', chart.series[0].data[6].plotX, chart.chartHeight - 38])
-		            .attr({
-	                'stroke-width': 1,
-	                stroke: '#81879d',
-	                zIndex: 8
-		            })
-		            .add(),
-					plotX: chart.series[0].data[6].plotX,
-	      },{
-	      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
-		            .attr({
-		              zIndex: 9
-		            })
-		            .addClass("event-icon--flag")
-		            .add(),
-		      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
-		            .attr({
-	                'stroke-width': 1,
-	                stroke: '#81879d',
-	                zIndex: 8
-		            })
-		            .add(),
-					plotX: chart.series[0].data[8].plotX,
-		      },{
-		      	icon: chart.renderer.image('images/icon-chart-event-flag@2x.png', chart.series[0].data[8].plotX - 1, chart.chartHeight - 38, 18, 12)
-			            .attr({
-			            	visibility: "hidden", // duplicate event flags are hidden but are needed to caluclate no of events for a given date
-			              zIndex: 9
-			            })
-			            .addClass("event-icon--flag")
-			            .add(),
-			      line: chart.renderer.path(['M', chart.series[0].data[8].plotX, chart.chartHeight, 'L', chart.series[0].data[8].plotX, chart.chartHeight - 38])
-			            .attr({
-			            	visibility: "hidden",
-		                'stroke-width': 1,
-		                stroke: '#81879d',
-		                zIndex: 8
-			            })
-			            .add(),
-						plotX: chart.series[0].data[8].plotX,
-				});
-
-				// Events - Add tooltip data
-				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltip", "<span>App Launch</span><br /><span>02/01/2016</span>");				
-				$(Highcharts.charts[0].refEvents[0].icon.element).data("datapoint", 2);
-				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipcolour", "#FFFFFF");
-				$(Highcharts.charts[0].refEvents[0].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
-
-				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltip", "<span>App Name Change</span><br /><span>'Splashy Crossy Copy...'</span>");
-				$(Highcharts.charts[0].refEvents[1].icon.element).data("datapoint", 6);
-				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipcolour", "#FFFFFF");
-				$(Highcharts.charts[0].refEvents[1].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
-
-				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltip", "<span>Price Change</span><br /><span>$0.99 - Free</span>");
-				$(Highcharts.charts[0].refEvents[2].icon.element).data("datapoint", 8);
-				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipcolour", "#FFFFFF");
-				$(Highcharts.charts[0].refEvents[2].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
-
-				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltip", "<span>App Update</span><br /><span>Version 1.1.3.1</span>");
-				$(Highcharts.charts[0].refEvents[3].icon.element).data("datapoint", 8);
-				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipcolour", "#FFFFFF");
-				$(Highcharts.charts[0].refEvents[3].icon.element).data("tooltipfill", "rgba(145,142,223, 0.95)");
-
-	      // if there are more than one events on one date, calculate and add number of events label
-		      // find which plotX has more than one event and add to plotXDuplicates[]
-		      var plotXDuplicates = [];
-		      for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
-		      	var thisPlotX = Highcharts.charts[0].refEvents[e].plotX;
-		      	for (var a = e+1; a < Highcharts.charts[0].refEvents.length; a++) {
-		      		if(Highcharts.charts[0].refEvents[a].plotX == thisPlotX) {
-		      			var alreadyExists = false;
-		      			if(plotXDuplicates.length > 0) {	      				
-			      			for (var x = 0; x < plotXDuplicates.length; x++) {
-			      				if(plotXDuplicates[x] == thisPlotX) {
-			      					alreadyExists = true;
-			      				}
-			      			}
-		      			}
-		      			if(!alreadyExists) {
-		      				plotXDuplicates.push(Highcharts.charts[0].refEvents[a].plotX);
-		      			}	      			
-		      		}
-		      	}
-		      }
-
-	      	// iterate plotXDuplicates and find number of events on the same date
-		      var eventIndexesForDuplicateEventDate = [],
-		      		counterOfDuplicates = [];
-		      for(var p = 0; p < plotXDuplicates.length; p++) {
-		      	var counter = 0;
-		      	for (var e = 0; e < Highcharts.charts[0].refEvents.length; e++) {
-			      	if(plotXDuplicates[p] == Highcharts.charts[0].refEvents[e].plotX) {
-			      		eventIndexesForDuplicateEventDate.push(e);
-			      		counter++;
-			      	}
-			      }
-			      counterOfDuplicates.push(counter);
-		      }
-		      
-	      	// add label to chart for number of events on the same data
-		      for(var p = 0; p < plotXDuplicates.length; p++) {
-		      	if(Highcharts.charts[0].refEvents[eventIndexesForDuplicateEventDate[p]]) {
-		      		Highcharts.charts[0].refEvents[eventIndexesForDuplicateEventDate[p]].label = chart.renderer.text('<span>' + counterOfDuplicates[p] + '</span>', plotXDuplicates[p] + 4, 265)
-		          .attr({
-		          	zIndex: 10
-		          })
-		          .css({
-		            color: '#ff496a',
-		            fontSize: '13px',
-		            fontFamily: 'Source Sans Pro',
-		            fontWeight: 'bold',
-		            pointerEvents: 'none'
-		          })
-		          .add();
-		      	}
-		      }
-			}
-
-			function handleChartInteraction() {
-				
-				handleCustomLegendInteraction();
-				handleShowBarChart();
-				handleShowAreaChart();
-				handleShowStackedAreaChart();
-
-				handleAddSeriesTest();
-				handleRemoveSeriesTest();
-
-				handleChartEvents();
-			}
 
 			function handleMouseEnterChartKeyLabel($label) {
 				if($('html.no-touch').length) {
@@ -1810,7 +956,7 @@
 					for(var d = 0; d < chartData[s].data.length; d++) {
 						if(chartData[s].data[d]) {
 							var dataDate = new Date(chartData[s].data[d].date * 1000);
-							var dataDay = dataDate.getDate();
+							var dataDay = dataDate.getDate() + 1;
 							var dataMonth = dataDate.getMonth();
 							var dataYear = dataDate.getFullYear();
 							mockSeries.push([Date.UTC(dataYear, dataMonth, dataDay), chartData[s].data[d].value]);
@@ -1841,9 +987,6 @@
 				generateChart('chart-revenue', "revenueseries", mockDataRevenue, seriesNames, "area", false);
 
 				$('.chart-container').addClass('is-animated');
-				handleChartInteraction();
-
-				addAppDataToSeries();
 
 				Highcharts.Chart.prototype.setGraphCSSClasses();
 			}, 500);
@@ -1884,4 +1027,17 @@
 
   	window.onready = initScripts();
   </script>
+		
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script>
+		
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-88037857-1', 'auto');
+			ga('send', 'pageview');
+
+		</script>
 </body>

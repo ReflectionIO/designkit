@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Reflection Research Tools - Developer Leaderboard</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" type="text/css" href="global-layout.css" />		
+  <link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+  <link rel="stylesheet" media="screen, projection" type="text/css" href="page-developer-leaderboard.css" />
+  <link rel="stylesheet" type="text/css" href="global-panel-left.css" />
+  <link rel="stylesheet" type="text/css" href="global-panel-right.css" />
+  <link rel="stylesheet" type="text/css" href="global-footer.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+      }
+    });
+  </script>
+  <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+  <script src="js/vendor/jquery-1.11.1.min.js"></script>
+  <script src="js/data-vis/developer-leaderboard--test.js"></script>
+  <script src="js/vendor/angular.js"></script>
+</head>
+<script>
+  // populate the data table
+  'use strict';
+  function getFileToNameRequest() {
+
+    var selectedStore = $('.js-dropdown-store .js-dropdown-option.is-selected').data("value");
+    var selectedCountry = $('.js-dropdown-country .js-dropdown-option.is-selected').data("value");
+    var selectedDate = $('.js-dropdown-date .js-dropdown-option.is-selected').data("value");
+    var selectedCategory = "";
+    if (selectedStore == "ios") {
+      selectedCategory = $('.js-dropdown-category-ios .js-dropdown-option.is-selected').data("value");
+    } else {
+      selectedCategory = $('.js-dropdown-category-google .js-dropdown-option.is-selected').data("value");
+    }
+
+    return "?store=" + selectedStore + "&country" + selectedCountry + "&category=" + selectedCategory + "&date=" + selectedDate;
+  }
+
+  function getUserRole() {
+    // return null;
+    return "js/data-vis";
+  }
+
+  $(window).on("load", function () {
+
+    $('#toggle--show-relative').change(function () {
+      togglePercentage();
+    });
+
+    $('#toggle--show-breakdown').change(function () {
+      togglePercentage();
+    });
+
+    function togglePercentage() {
+      var firstPercentage = 0;
+      var isShowRelativeChecked = $('#toggle--show-relative:checked').length > 0;
+      $('.developer-apps-revenue-container').each(function () {
+        var $this = $(this);
+        if (isShowRelativeChecked) {
+          if (firstPercentage == 0) {
+            firstPercentage = $this.data("relativepercentage");
+            $this.css("width", "100%");
+          } else {
+            var relativeWidth = $this.data("relativepercentage") / firstPercentage * 100;
+            $this.css("width", relativeWidth + "%");
+          }
+        } else {
+          $this.css("width", "100%");
+        }
+      });
+
+      if ($('#toggle--show-relative:checked').length > 0) {
+        $('.heading-style--heading-six span, .perc-heading').css("opacity", 1);
+      } else {
+        $('.heading-style--heading-six span, .perc-heading').css("opacity", 0);
+      }
+    }
+
+    var reflectionApp = angular.module('reflectionApp', [])
+      .controller('DataController', function ($scope, $http) {
+        var dataList = this;
+        dataList.rawData = dataDefault;
+        dataList.dataListGrossing = dataDefault["ranks_revenue"];
+        dataList.dataListGrossingTotal = 0;
+
+        for (var i = 0; i < dataList.dataListGrossing.length; i++) {
+          dataList.dataListGrossingTotal += dataList.dataListGrossing[i].total;
+        }
+
+        $('.js-page-developer-leaderboard').removeClass("is-loading");
+
+        $('#toggle--show-revenue, #toggle--show-downloads').change(function () {
+          $('.js-page-developer-leaderboard').addClass("is-loading");
+          var dataToDisplay = ($(this).attr("id") == "toggle--show-revenue") ? "ranks_revenue" : "ranks_downloads";
+          if(dataToDisplay == "ranks_revenue") {
+            $('.js-rev-dow-label').text("Revenue");
+          } else {
+            $('.js-rev-dow-label').text("Downloads");
+          }
+
+          $scope.$apply(function () {
+            dataList.dataListGrossing = [];
+            dataList.dataListGrossingTotal = 0;                     
+          });
+
+          setTimeout(function(){
+            $scope.$apply(function () {
+
+              dataList.dataListGrossing = dataList.rawData[dataToDisplay];
+              dataList.dataListGrossingTotal = 0;
+
+              for (var i = 0; i < dataList.dataListGrossing.length; i++) {
+                dataList.dataListGrossingTotal += dataList.dataListGrossing[i].total;
+              }                  
+            });
+          }, 500);
+
+          setTimeout(function(){
+            $('.js-page-developer-leaderboard').removeClass("is-loading");
+          }, 500);
+
+          setTimeout(function(){
+            if ($('#toggle--show-relative:checked').length > 0) {
+              togglePercentage();
+            }
+          }, 1000);
+        });
+
+        $('.js-select-box').on("change", function () {
+
+          var thisSelect = this;
+
+          setTimeout(function () {
+
+            var userId = getUserRole();
+            if (userId != null) {
+
+              $('.js-page-developer-leaderboard').addClass("is-loading");
+
+              setTimeout(function () {
+
+                var fileNameToRequest = getFileToNameRequest();
+                console.log(fileNameToRequest);
+                console.log("getJSON url = " + userId + fileNameToRequest);
+
+                // check whether to revenue or downloads is selected
+                var dataToDisplay = ($('#toggle--show-revenue').is(":checked")) ? "ranks_revenue" : "ranks_downloads";
+
+                $.getJSON("js/data-vis/developer-leaderboard--test2.json", function (data) {
+                  console.log("gotJson");
+                  console.log(data);
+                  $scope.$apply(function () {
+
+                    dataList.rawData = data;
+                    dataList.dataListGrossing = data[dataToDisplay];
+                    dataList.dataListGrossingTotal = 0;
+
+                    for (var i = 0; i < dataList.dataListGrossing.length; i++) {
+                      dataList.dataListGrossingTotal += dataList.dataListGrossing[i].total;
+                    }
+
+                    // remove loading state
+                    $('.js-page-developer-leaderboard').removeClass("is-loading");
+                    setTimeout(function(){
+                      if ($('#toggle--show-relative:checked').length > 0) {
+                        togglePercentage();
+                      }
+                    }, 1000);              
+                  });
+                }).error(function () {
+                  // remove loading state
+                  $('.js-page-developer-leaderboard').removeClass("is-loading");
+                  // add no data state
+                });
+              }, 300);
+            } else {
+              alert("Go Pro please!")
+            }
+          }, 10);
+        });
+
+        dataList.getAppPercentage = function (listIndex, appIndex) {
+          var totalOfAllDeveloperApps = dataList.dataListGrossing[listIndex].total;
+          var thisAppRevenue = dataList.dataListGrossing[listIndex].app_totals[appIndex];
+          return thisAppRevenue / totalOfAllDeveloperApps * 100;
+        }
+
+        dataList.getDeveloperPercentage = function (listIndex) {
+          var totalOfAllDeveloperApps = dataList.dataListGrossing[listIndex].total;
+          return (totalOfAllDeveloperApps / dataList.dataListGrossingTotal * 100);
+        }
+
+        dataList.formatTotal = function(x) {
+          if($('#toggle--show-revenue').is(":checked")) {
+            var x = (x != null) ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-";
+            return "$" + x;
+          }
+          return (x != null) ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-";
+        }
+
+      }); // var reflectionApp
+
+    window.angular.element(document).ready(function () {
+      window.angular.bootstrap(document, ["reflectionApp"]);
+    });
+
+  }); // window onload
+</script>
+
+<body>
+  <header id="js-component-import--global-header" class="global-header"></header>
+
+  <div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+
+  <div class="l-page-container">
+    <div id="main" class="l-main" role="main">
+      <div class="page-developer-leaderboard page-lab-base theme-dark js-page-developer-leaderboard is-loading">
+
+        <div class="grid-container" ng-controller="DataController as dataList">
+          <div class="grid__row">
+            <div class="grid__column grid__row--heading-row__left">
+              
+              <h1 class="page-developer-leaderboard__page-title">Developer Leaderboard</h1>
+              
+              <div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--small">
+                <div class="filter-toggle">
+                  <div class="toggle">
+                    <input id="toggle--show-breakdown" name="radiogroupname" checked="" type="radio">
+                    <label for="toggle--show-breakdown">
+                      Default View
+                    </label>
+                  </div>
+                  <div class="toggle">
+                    <input id="toggle--show-relative" name="radiogroupname" type="radio">
+                    <label for="toggle--show-relative">
+                      % of Total View
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid__column grid__row--heading-row__right">
+              <h2 class="page-developer-leaderboard__total">
+                Total <span class="js-rev-dow-label">Revenue</span> for Period:
+                <span class="page-developer-leaderboard__total__value">{{dataList.formatTotal(dataList.dataListGrossingTotal)}}</span>
+              </h2>
+            </div>
+          </div>
+
+          <div class="grid__column filters-container overflow-visible">
+            <div class="toggle-container filter-toggle filter-toggle--with-text filter-toggle--medium">
+              <div class="filter-toggle">
+                <div class="toggle">
+                  <input id="toggle--show-revenue" name="radio-toggle-rev-down" checked="" type="radio" />
+                  <label for="toggle--show-revenue">
+                    Revenue
+                  </label>
+                </div>
+                <div class="toggle">
+                  <input id="toggle--show-downloads" name="radio-toggle-rev-down" type="radio" />
+                  <label for="toggle--show-downloads">
+                    Downloads
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-store">
+              <select class="js-select-box">
+                <option value="ios" selected="selected">iOS</option>
+                <option value="google">Google Play</option>
+              </select>
+            </div>
+
+            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-country">
+              <select class="js-select-box">
+                <option value="GB" selected="selected" class="icon-flag-sm icon-flag--GB">United Kingdom</option>
+                <option value="US" class="icon-flag-sm icon-flag--US" data-access="key">USA</option>
+                <option value="AU" class="icon-flag-sm icon-flag--AU" data-access="key">Australia</option>
+                <option value="BR" class="icon-flag-sm icon-flag--BR" data-access="key">Brazil</option>
+                <option value="CA" class="icon-flag-sm icon-flag--CA" data-access="key">Canada</option>
+                <option value="DK" class="icon-flag-sm icon-flag--DK" data-access="key">Denmark</option>
+                <option value="FR" class="icon-flag-sm icon-flag--FR" data-access="key">France</option>
+                <option value="DE" class="icon-flag-sm icon-flag--DE" data-access="key">Germany</option>
+                <option value="ID" class="icon-flag-sm icon-flag--ID" data-access="key">Indonesia</option>
+                <option value="IE" class="icon-flag-sm icon-flag--IE" data-access="key">Ireland</option>
+                <option value="IT" class="icon-flag-sm icon-flag--IT" data-access="key">Italy</option>
+                <option value="MY" class="icon-flag-sm icon-flag--MY" data-access="key">Malaysia</option>
+                <option value="MX" class="icon-flag-sm icon-flag--MX" data-access="key">Mexico</option>
+                <option value="NZ" class="icon-flag-sm icon-flag--NZ" data-access="key">New Zealand</option>
+                <option value="NO" class="icon-flag-sm icon-flag--NO" data-access="key">Norway</option>
+                <option value="PT" class="icon-flag-sm icon-flag--PT" data-access="key">Portugal</option>
+                <option value="RU" class="icon-flag-sm icon-flag--RU" data-access="key">Russia</option>
+                <option value="SA" class="icon-flag-sm icon-flag--SA" data-access="key">Saudi Arabia</option>
+                <option value="SG" class="icon-flag-sm icon-flag--SG" data-access="key">Singapore</option>
+                <option value="ES" class="icon-flag-sm icon-flag--ES" data-access="key">Spain</option>
+                <option value="SE" class="icon-flag-sm icon-flag--SE" data-access="key">Sweden</option>
+                <option value="TR" class="icon-flag-sm icon-flag--TR" data-access="key">Turkey</option>
+                <option value="AE" class="icon-flag-sm icon-flag--AE" data-access="key">United Arab Emirates</option>
+              </select>
+            </div>
+
+            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-date">
+              <select class="js-select-box">
+                <option value="20171201_20171231" selected>December 2017</option>
+                <option value="20171101_20171130" data-access="key">November 2017</option>
+                <option value="20171001_20171031" data-access="key">October 2017</option>
+                <option value="20170901_20170930" data-access="key">September 2017</option>
+                <option value="20170801_20170831" data-access="key">August 2017</option>
+              </select>
+            </div>
+
+            <div class="secondary-filter secondary-filter--medium form-field--select js-secondary-filter js-dropdown-category-ios">
+              <select class="js-select-box">
+                <option value="Overall" selected>iOS Overall</option>
+                <option value="Games" data-access="key">iOS Games</option>
+              </select>
+            </div>
+
+            <div class="secondary-filter secondary-filter--medium form-field--select dropdown-category-google js-secondary-filter js-dropdown-category-google">
+              <select class="js-select-box">
+                <option value="Overall" selected>GP Overall</option>
+                <option value="Games" data-access="key">GP Games</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="chart__loading">
+            <div class="hamster-wheel">
+              <img src="images/hamster-wheel-dark.png" alt="hamster wheel">
+            </div>
+            <div class="animation-hamster animation-hamster--dark"></div>
+          </div>
+
+          <div class="chart__no-data">
+            <div class="animation-hamster-no-data-dark"></div>
+            <div>
+              <h2>No Data Found</h2>
+              <p>There is no data available for the selected app.
+                <br />Please try another app.</p>
+            </div>
+          </div>
+
+          <div class="page-developer-leaderboard__chart-container">
+
+            <div class="grid__row row-headings">
+              <div class="developer-rank-container">
+                <span class="row-headings__heading">Rank</span>
+              </div>
+              <div class="developer-container">
+                <span class="row-headings__heading">Developer</span>
+              </div>
+              <div class="revenue-container">
+                <span class="row-headings__heading js-rev-dow-label">Revenue</span>
+              </div>
+              <div class="app-breakdown-container">
+                <span class="row-headings__heading">% of Total for Period</span>
+              </div>
+            </div>
+
+            <div class="grid__row data-row" ng-repeat="dataItem in dataList.dataListGrossing">
+              <div class="developer-rank-container">
+                <span>{{$index + 1}}</span>
+              </div>
+              <div class="developer-container">
+                <span>{{dataItem.developer}}</span>
+              </div>
+              <div class="revenue-container">
+                <span>{{dataList.formatTotal(dataItem.total)}}</span>
+              </div>
+              <div class="app-breakdown-container">
+                <div class="percentage-container">
+                  <span>{{dataList.getDeveloperPercentage($index) | number : 1}}%</span>
+                </div>
+                <div class="developer-apps-revenue__data-bar">
+                  <div class="developer-apps-revenue-container" data-relativepercentage='{{dataList.getDeveloperPercentage($index) | number : 5}}'>
+                    <div class="app-breakdown">
+                      <div class="developer-app-revenue" ng-repeat="appItem in dataItem.app_names track by dataItem.app_names + $index" style='width:{{dataList.getAppPercentage($parent.$index, $index)}}%'>
+                        <div class="developer-leaderboard__app-details">
+                          <img src='{{dataItem.icon_url[$index]}}' alt='{{appItem}}} logo' />
+                          <h2>{{appItem}}</h2>
+                          <h3>{{dataItem.app_totals[$index]}}</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="js/vendor/jquery-1.11.1.min.js"></script>
+    <script src="js/vendor/handlebars-v2.0.0.js"></script>
+    <!-- static templates only -->
+    <script src="js-v2/templates/templates.js"></script>
+    <!-- static templates only -->
+    <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script>
+
+    <div id="js-appendScriptsContainer"></div>
+
+  <script src="js-v2/app-include-templates.js"></script>
+
+    <script>
+      $(document).on("ready", function () {
+
+        var FilterDropDown = function ($domElement) {
+
+          var $thisSelectBox = $domElement,
+            $dropDownContainer = $("<ul>").addClass("form-field--select__dropdown"),
+            $currentValue = $("<span>").addClass("form-field--select__box ref-icon-after--angle-down js-dropdown-trigger");
+
+          $thisSelectBox.find('option').each(function () {
+
+            var $thisOption = $(this),
+              selectedClass = "";
+
+            if ($thisOption.val() != "") {
+
+              if ($thisOption.is(":selected")) {
+                if ($thisOption.val() != "") {
+                  selectedClass = "is-selected";
+                  $currentValue.text($thisOption.text());
+                }
+              }
+
+              var accessClass = "";
+              if ($thisOption.data("access")) {
+                accessClass = "ref-after-pro";
+              }
+
+              var $newListItem = $("<li>");
+              $dropDownContainer.append($newListItem
+                .addClass("js-dropdown-option")
+                .addClass(selectedClass)
+                .addClass(accessClass)
+                .attr('data-value', $thisOption.attr('value'))
+                .on("click", function () {
+                  
+                  var $this = $(this);
+                  var thisValue = $this.attr("data-value");
+                  var userId = getUserRole();
+                  if (userId != null) {
+
+                    $thisSelectBox.find("option").removeAttr("selected");
+                    $thisOption.attr("selected", "selected");
+                    $thisSelectBox.trigger("change");
+                    $currentValue.text($thisOption.text());
+                    $dropDownContainer.toggle();
+                    $thisSelectBox.parent("div").toggleClass("is-open");
+                    $thisSelectBox.parent("div").removeClass("nothing-selected");
+                    $dropDownContainer.find(".is-selected").removeClass("is-selected");
+                    $this.addClass("is-selected");
+
+                    if($thisOption.text() == "iOS") {
+                      $('.js-dropdown-category-google').css("display", "none");
+                      $('.js-dropdown-category-ios').css("display", "inline-block");
+                    } else if($thisOption.text() == "Google Play") {
+                      $('.js-dropdown-category-ios').css("display", "none");
+                      $('.js-dropdown-category-google').css("display", "inline-block");
+                    }
+
+                  } else {
+                    $dropDownContainer.toggle();
+                    openSignUpPopup();
+                  }
+
+                })
+                .append($("<span>").text($thisOption.text()))
+              );
+            } else {
+              // no option value means placeholder text before option is selected
+              $currentValue.text($thisOption.text());
+            }
+          });
+
+          $currentValue.on("click", function () {
+            if (!$thisSelectBox.attr("disabled")) {
+              var $parentDiv = $thisSelectBox.parent("div");
+              if ($parentDiv.hasClass("is-open")) {
+                $dropDownContainer.toggle();
+                $parentDiv.toggleClass("is-open");
+              } else {
+                setTimeout(function () {
+                  if (!$parentDiv.hasClass("is-open")) {
+                    closeAllFilters();
+                  }
+                  var parentWidth = $parentDiv.width();
+                  var parentHeight = $parentDiv.height();
+                  $dropDownContainer.css({ "min-width": parentWidth + "px" });
+                  $dropDownContainer.toggle();
+                  $parentDiv.toggleClass("is-open");
+                }, 50); // allow time for instance.closeAllFilters() to close other filters first
+              }
+            }
+          });
+
+          if ($currentValue.text() == "") {
+            $thisSelectBox.parent("div").addClass("nothing-selected");
+          }
+
+          $thisSelectBox.parent("div").append($currentValue)
+            .append($dropDownContainer);
+        };
+
+        $("html").on("click", function (e) {
+          if (!$(e.target).hasClass("js-no-close-on-click") && !$(e.target).hasClass("js-clear-all")) {
+            closeAllFilters();
+          }
+        });
+
+        function closeAllFilters() {
+          $('.js-secondary-filter.is-open .form-field--select__dropdown').hide();
+          $('.js-secondary-filter.is-open').removeClass("is-open");
+        }
+
+        $('.js-select-box').each(function () {
+          new FilterDropDown($(this));
+        });
+      });
+    </script>
+</body>

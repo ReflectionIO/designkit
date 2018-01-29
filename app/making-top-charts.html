@@ -5,7 +5,7 @@
 	<title>Reflection V2, Data Lab, Top Downloads</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
-		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+		<link rel="stylesheet" type="text/css" href="global-layout.css" /><link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
 		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
@@ -99,6 +99,7 @@
 						    <option value="IE" data-access="key">Ireland</option>
 						    <option value="NL" data-access="key">Netherlands</option>
 						    <option value="SE" data-access="key">Sweden</option>
+								<option value="FI" data-access="key">Finland</option>
 							</select>
 						</div>
 						<span class="filter-label">Device:</span>
@@ -891,9 +892,8 @@
 
 	<div class="page-overlay js-page-overlay page-overlay--help js-page-overlay--help">
 		<div class="page-popup">
-			<div class="popup-content js-popup-content">
-				<div class="help-popup-content">
-					<a href="#" class="popup-close js-close-help"><span class="ref-icon-after ref-icon-after--close">Close</span></a>
+			<div class="popup-content popup-content--small js-popup-content">
+				<div class="multi-step-section is-viewed-step">
 					<h2 class="heading-style--heading-four multi-step-section__heading">What's This Showing Me?</h2>
 					<p>How many daily downloads and revenue on average an iOS app needs in order to rank inside the top 200 Paid, Free or Grossing charts.</p>
 					<p>These estimates are calculated as a daily average over one month.</p>
@@ -904,10 +904,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="onboarding-overlay js-onboarding-overlay js-onboarding-overlay-filters">
-		<img src="images/onboarding-making-filters.png" alt="See what's needed to rank in a chart from top 200 to top 10" />
 	</div>
 
 	<div class="onboarding-overlay js-onboarding-overlay js-onboarding-overlay-subcategories">
@@ -956,9 +952,6 @@
 		  }
 
 		  function showOnboardingOverlay() {
-		  	var filtersOffset = $('.js-dropdown-rank').offset();
-				$('.js-onboarding-overlay-filters').css({"top": (filtersOffset.top + 50) + "px", "left": (filtersOffset.left - 225) + "px", });
-
 				var subcategoriesOffset = $('.js-has-subcategories').offset();
 				$('.js-onboarding-overlay-subcategories').css({"top": (subcategoriesOffset.top + 40) + "px", "left": (subcategoriesOffset.left - 10) + "px", });
 
@@ -1270,7 +1263,7 @@
 			}
 
 			function loadData(fileToRequest, selectedRank, selectedDevice, selectedCountry) {
-
+console.log(selectedCountry);
 				$('.js-page-container').addClass('is-data-requested');
 
 				// get default data

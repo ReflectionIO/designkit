@@ -467,7 +467,6 @@ var FormFieldSelect = function($domElement) {
 																		.addClass(selectedClass)
 																		.addClass(warningClass)
 																		.attr('data-value', $thisOption.attr('value'))
-																		.data("tooltip", "Currently no estimates available for this category")
 																		.on("click", function() {
 																			$thisSelectBox.find("option").removeAttr("selected");
 																			$thisOption.attr("selected", "selected");
@@ -492,8 +491,13 @@ var FormFieldSelect = function($domElement) {
 																			$dropDownContainer.find(".is-selected").removeClass("is-selected");
 																			$(this).addClass("is-selected");
 																		})
-																		.append($("<span>").text($thisOption.text()))
 															);
+
+			if($thisOption.attr("data-info-discontinued")) {
+				$newListItem.append($("<span>").addClass("js-tooltip js-tooltip--instant js-tooltip--left").attr("data-tooltip", "Category was discontinued so<br/>data only available until:<br/>07/11/17").append($("<span>").text($thisOption.text())).append($("<span>").addClass("dropdown-item-info-text").text("Category Discontinued")));
+			} else {
+				$newListItem.append($("<span>").text($thisOption.text()));
+			}
 
 			if($thisOption.hasClass("js-parent-option")) {
 				$newListItem.addClass("form-field--select__dropdown__parent-option");

@@ -2,15 +2,16 @@
 <html lang="en" class="no-js" ng-app="reflectionApp">
 <head>
 	<meta charset="utf-8" />
-	<title>Reflection Lab - Price Tier Distribution</title>
+	<title>Reflection Research Tools - Experimental Tool, Market Share by Country</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" media="screen, projection" type="text/css" href="design-kit-v2.css" />
+	<link rel="stylesheet" media="screen, projection" type="text/css" href="research-tools-experiments.css" />
+	<link rel="stylesheet" type="text/css" href="header.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
 <script>
   WebFont.load({
     google: {
-      families: ['Open Sans:400,600,700,400italic,600italic', 'Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
+      families: ['Source Sans Pro:400,600,700', 'Lato:400,700,400italic']
     }
   });
 </script> <script src="js/vendor/modernizr.2.8.3.custom.min.js"></script></head>
@@ -34,8 +35,6 @@
 				}
 			}
 
-			console.log(dataList.highestValue);
-
 			dataList.calculateBarHeight = function(value) {
 				var barHeight = 0;
 				if(value > 0) {
@@ -46,31 +45,23 @@
 	    }
 		});
 </script>
-<body class="page-data-vis page-data-vis-market-share">
-	<!--[if (lt IE 9)]>
-      <div class="window-warning">
-  			<p>Uh oh... Reflection doesn't work in this browser. &nbsp; &nbsp;<a href="http://outdatedbrowser.com/en" target="_blank">Download a compatible browser</a></p>
-  		</div>
-  <![endif]-->
-  <header id="js-component-import--global-header" class="global-header">
-  	<div class="site-logo">
-			<a href="/">
-				<img src="images/logo-reflection-header.png" alt="Reflection logo" class="img-site-logo">
-			</a>
-		</div>
-  </header>
-  
-	<div id="js-component-import--panel-left" class="panel-left js-panel-left js-custom-scrollbar" data-mcs-theme="minimal-dark"></div>
+<body class="page-data-vis-market-share">
+
+  <header id="js-component-import--global-header" class="global-header"></header>
 
 	<div class="l-page-container">
-		<div id="main" class="l-main" role="main">
-
+		<div id="main" class="l-main page-research-tools-experiment theme-dark" role="main">
+			
+			<div id="js-component-import--data-vis-banner" class="research-experiment__banner"></div>
+			
 			<div class="grid-container" ng-controller="DataController as dataList">
 				
+				<div class="data-lab-article-intro">
+					<h1 class="data-lab-article-intro__heading">Global App Market Share, Per Capita</h1>
+					<p class="data-lab-article-intro__paragraph">Where in the world are most app revenues generated? A sum of the Top 200 Daily Grossing Chart (&pound;) averaged over Jan to June 2016, iPhone and iPad combined, shown per capita.</p>
+				</div>
+				
 				<div class="grid__row grid__row--heading-row">
-					<h1 class="heading-style--heading-three page-title">Global App Market Share</span></h1>
-					<h2 class="page-subtitle">Where in the world are most app revenues generated?</h2>
-
 					<div class="filter-toggle dark-toggle">
 						<div class="toggle">
 							<input id="toggle--show-revenue" name="radiogroupname" type="radio">
@@ -87,7 +78,6 @@
 					</div>
 				</div>
 
-				<h3 class="market-share-chart-title"><span>Overall Revenue</span> <span>A sum of Top 200 Grossing Daily averaged over Jan to June 2016, iPhone and iPad combined, in &pound;</span></h3>
 				<div id="market-share-map-container"></div>
 				<ul id="market-share-bar-container" ng-controller="DataController as dataList">
 						<li ng-repeat="dataItem in dataList.data" style='height: {{dataList.calculateBarHeight(dataItem.value)}}%' class="bar js-bar" data-index="{{$index}}"></li>
@@ -103,7 +93,14 @@
 
 	<!-- Flag sprites service provided by Martijn Lafeber, https://github.com/lafeber/world-flags-sprite/blob/master/LICENSE -->
 	<link rel="stylesheet" type="text/css" href="https://cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
-
+	
+	<script src="js/vendor/handlebars-v2.0.0.js"></script>
+	<script src="js-v2/templates/templates.js"></script>
+	<script>
+		var surveyURL = "https://goo.gl/forms/5okVGdS3PbxTPEJt1";
+	</script>
+	<script src="js-v2/app-include-data-vis-components.js"></script>
+	
   <script>
 
   	$(function () {
@@ -126,7 +123,7 @@
       });
 
       // Initiate the chart
-      var chart = new Highcharts.Map({
+			var chart = new Highcharts.Map({
 
       		chart: {
       			renderTo: 'market-share-map-container',
@@ -151,7 +148,8 @@
           },
 
           mapNavigation: {
-              enabled: false,
+              enabled: true,
+							enableMouseWheelZoom: false,
               buttonOptions: {
                   verticalAlign: 'bottom'
               }
@@ -172,10 +170,6 @@
               	padding: "10px 15px 14px"
               }
           },
-
-          mapNavigation: {
-                    enabled: true
-                },
 
           plotOptions: {
         		map: {
@@ -220,4 +214,17 @@
 		});
 
   </script>
+	
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5513f37846b6ec2e"></script>
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-88037857-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
 </body>

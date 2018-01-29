@@ -5,7 +5,11 @@
 	<title>Reflection V2, Data Template</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--[if (gt IE 9)|(IEMobile)|(!IE)]><!-->
-		<link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+		<link rel="stylesheet" type="text/css" href="global-layout.css" /><link rel="stylesheet" type="text/css" href="reflection-main-v2.css" />
+		<link rel="stylesheet" type="text/css" href="template-data-dashboard.css" /><link rel="stylesheet" type="text/css" href="chart.css" />
+		<link rel="stylesheet" type="text/css" href="chart.css" />
+		<link rel="stylesheet" type="text/css" href="data-tables.css" /><link rel="stylesheet" type="text/css" href="data-dashboard-summary-widget.css" />
+		<link rel="stylesheet" type="text/css" href="data-dashboard-summary-widget.css" />
 	<!--<![endif]-->
 	<!--[if IE 9]>
 		<link rel="stylesheet" type="text/css" href="ie9-v2-one.css" />
@@ -84,6 +88,12 @@
 						<span class="alert-notice__notice-content">It may take a short time for the data from a recently re-linked account to be displayed below</span>
 						<a href="#" class="alert-notice-cta">OK, Got it thanks</a>
 					</div>
+
+					<div class="alert-notice">
+						<span class="alert-notice__title ref-icon-before--info-no-fill">Please Note</span>
+						<span class="alert-notice__notice-content">It may take a short time for the data from a recently re-linked account to be displayed below</span>
+						<a href="#" class="alert-warning__close ref-icon-after--close">Close</a>
+					</div>
 				</div>
 
 				<div class="grid__row overflow-visible">
@@ -109,9 +119,9 @@
 						    <option value="apr">01/04/16 - 01/05/16</option>
 							</select>
 						</div>
-						<div class="primary-filter form-field--select">
+						<div class="primary-filter form-field--select js-tooltip js-tooltip--instant" data-tooltip="Select from the available countries (currently 24, more coming soon)">
 							<select class="js-select-box">
-						    <option value="all" selected>All Countries</option>
+						    <option value="all" selected>All Available Countries (24)</option>
 						    <option value="uni">United Kingdom</option>
 						    <option value="fra">France</option>
 						    <option value="ger">Germany</option>
@@ -209,7 +219,7 @@
 									<h2 class="chart-heading heading-style--heading-three">Revenue <span>(All)</span></h2>
 									<dl class="chart-summary">
 										<div class="total-for-period-container">
-											<dd class="total-for-period-title">Total for Period</dd>
+											<dd class="total-for-period-title">Total for <a href="#" class="js-tooltip js-tooltip--instant js-tooltip--bottom" data-tooltip="Australia, Brazil, Canada, Denmark, Finland, France, Germany, Indonesia, Ireland, Italy, Malaysia, Mexico, New Zealand, Norway, Portugal, Russia, Saudi Arabia, Singapore, Spain, Sweden, Turkey, United Arab Emirates, United Kingdom, United States"><span class="total-for-period-title__countries">24 Countries</span></a></dd>
 											<dt class="total-for-period">&pound;2,317,265 <span class="growth-on-last-period positive-colour"> + 3%</span></dt>
 										</div>
 									</dl>
@@ -226,7 +236,7 @@
 									<h2 class="chart-heading heading-style--heading-three">Downloads</h2>
 									<dl class="chart-summary">
 										<div class="total-for-period-container">
-											<dd class="total-for-period-title">Total for Period</dd>
+											<dd class="total-for-period-title">Total for <a href="#" class="js-tooltip js-tooltip--instant js-tooltip--bottom" data-tooltip="Australia, Brazil, Canada, Denmark, Finland, France, Germany, Indonesia, Ireland, Italy, Malaysia, Mexico, New Zealand, Norway, Portugal, Russia, Saudi Arabia, Singapore, Spain, Sweden, Turkey, United Arab Emirates, United Kingdom, United States"><span class="total-for-period-title__countries">24 Countries</span></a></dd>
 											<dt class="total-for-period">510,649 <span class="growth-on-last-period positive-colour"> + 2%</span></dt>
 										</div>
 									</dl>
@@ -1660,6 +1670,7 @@
         "Aug", "Sep", "Oct",
         "Nov", "Dec"
       ];
+			var dayNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
       var hasBeenSet = false,
       		lastPoint;
@@ -1674,27 +1685,29 @@
 	        if(this.chart.customIconRect !== undefined) {
 	          this.chart.customIconRect.destroy();
 	        }
-
-	        var $axisLabel = $(this.chart.container).find('.highcharts-axis-label'),
-	            leftOffset = 29,
+					
+					var timeStampString = arguments[1][0].x + "",
+	            timeStampString = timeStampString.substring(0,10),
+							xAxisDate = new Date(timeStampString*1000).addHours(12),
+							thisDate = xAxisDate.getDate(),
+							formattedDateString = (thisDate.toString().length == 1) ? "0" + thisDate : thisDate,
+							$axisLabel = $(this.chart.container).find('.highcharts-axis-label'),							
+	            leftOffset = 39,
 	            axisLabelYPos = $("#" + arguments[1][0].series.chart.container.id + "").height() - arguments[1][0].series.xAxis.bottom,
 	            //axisLabelYPos = arguments[1][0].series.chart.containerHeight - arguments[1][0].series.xAxis.bottom,
 	            axisLabelXPos = arguments[1][0].plotX - leftOffset,
-	            timeStampString = arguments[1][0].x + "",
-	            timeStampString = timeStampString.substring(0,10),
-	            xAxisDate = new Date(timeStampString*1000).addHours(12),
-	            formattedDate = xAxisDate.getDate() + " " + monthNames[xAxisDate.getMonth()];
+	            formattedDate = dayNames[xAxisDate.getDay()] + " " + formattedDateString + " " + monthNames[xAxisDate.getMonth()];
 
 	        if($axisLabel.length > 0) {
 
 	          var labelYPos = axisLabelYPos + 18,
-	              labelXPos = axisLabelXPos + 7;
+	              labelXPos = axisLabelXPos + 8;
 
 	          $axisLabel.attr("transform", "translate(" + labelXPos + "," + labelYPos + ")");
 	          $axisLabel.find("text").text(formattedDate);
 
 	        } else {
-	          this.chart.renderer.label(formattedDate, axisLabelXPos+7, axisLabelYPos + 18, 'callout', 0, 0, false, true, "axis-label")
+	          this.chart.renderer.label(formattedDate, axisLabelXPos+8, axisLabelYPos + 18, 'callout', 0, 0, false, true, "axis-label")
 	          .css({
 	            color: '#fcfdfd',
 	            fontSize: '12px',
@@ -1707,7 +1720,7 @@
 	          .add();
 	        }
 
-	        this.chart.customIconRect = this.chart.renderer.image('images/axis-label-background.png', axisLabelXPos, axisLabelYPos + 4, 54, 20)
+	        this.chart.customIconRect = this.chart.renderer.image('images/axis-label-background.png', axisLabelXPos, axisLabelYPos + 4, 74, 20)
 	        .attr({
 	          zIndex: 99
 	        })
